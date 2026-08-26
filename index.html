@@ -7,10 +7,10 @@
 <meta name="description" content="Westcon Iberia · Decision Intelligence · estrategia tecnológica basada en inteligencia pública" />
 <title>Westcon Iberia · Decision Intelligence</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-<link rel="stylesheet" href="assets/styles.css?v=2.0" />
+<link rel="stylesheet" href="assets/styles.css?v=2.1" />
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
-<script defer src="assets/app.js?v=2.0"></script>
+<script defer src="assets/app.js?v=2.1"></script>
 </head>
 <body>
 <header class="appbar">
@@ -21,9 +21,11 @@
   <nav id="tabs">
     <button class="active" data-view="resumen">Resumen</button>
     <button data-view="fabricantes">Fabricantes</button>
-    <button data-view="sinergias">Sinergias</button>
+    <button data-view="mayoristas">Mayoristas</button>
+    <button data-view="integradores">Integradores</button>
     <button data-view="tendencias">Tendencias</button>
-    <button data-view="datos">Datos</button>
+    <button data-view="arquitecturas">Arquitecturas</button>
+    <button data-view="datos">Fuentes</button>
   </nav>
   <div class="actions">
     <button id="btnFontDown" class="ghost font-btn" title="Reducir texto">A−</button>
@@ -42,14 +44,14 @@
       <p>Competencia de mercado y canal, consultoras, sinergias, solapes y acciones por fabricante. Lo complejo queda detrás; delante solo aparece lo que ayuda a decidir.</p>
     </div>
     <div class="hero-note">
-      <b>Motor v9 · Evidence-to-Action Intelligence</b>
-      <span>Cada decisión exige realidad observada, acción 30/60/90, responsable, KPI, go/no-go y fuentes. Sin evidencia específica, el motor bloquea la inversión y pide validación.</span>
+      <b>Motor v10 · Intelligence Graph adaptativo</b>
+      <span>Actualización incremental y reanudable. Cada dato conserva fuente, ámbito, fecha, método y confianza. Una acción solo aparece con certeza 100/100; si falta una prueba, queda bloqueada.</span>
     </div>
   </div>
 
   <div id="marketKpis" class="kpis"></div>
 
-  <div class="section-title"><div><span>ATENCIÓN AHORA</span><h2>Qué merece una decisión</h2><p>Priorizado por oportunidad, riesgo y evidencia pública.</p></div><button class="linkbtn" data-jump="fabricantes">Ver portfolio completo →</button></div>
+  <div class="section-title"><div><span>LECTURA EJECUTIVA</span><h2>Qué está demostrado</h2><p>Hechos y tesis trazables. Ninguna acción se autoriza sin certeza total.</p></div><button class="linkbtn" data-jump="fabricantes">Ver portfolio completo →</button></div>
   <div id="decisionCards" class="decision-grid"></div>
 
   <div class="grid-2">
@@ -67,9 +69,19 @@
   <div class="table-wrap compact"><table class="vendor-table overview"><thead><tr><th>Fabricante</th><th>Decisión</th><th>Mercado</th><th>Mayoristas alternativos</th><th>Ecosistema Iberia</th><th>Consultoras</th><th>Sinergia / solape</th><th>Próxima acción</th></tr></thead><tbody id="overviewVendorRows"></tbody></table></div>
 </section>
 
+<section id="mayoristas" class="view">
+  <div class="page-head"><div><div class="eyebrow">CHANNEL INTELLIGENCE</div><h1>Mayoristas: escala, portfolio y presión real.</h1><p>Comparación pública con Westcon por cobertura, servicios, vendors coincidentes, ventajas y datos financieros publicados. “No divulgado” nunca se convierte en una estimación.</p></div></div>
+  <div id="distributorCards" class="entity-grid"></div>
+</section>
+
+<section id="integradores" class="view">
+  <div class="page-head"><div><div class="eyebrow">ECOSYSTEM INTELLIGENCE</div><h1>Integradores: capacidad demostrada, no presumida.</h1><p>Fabricantes, certificaciones, especializaciones, clientes y escala solo cuando existe una fuente pública trazable; los huecos se muestran expresamente.</p></div></div>
+  <div id="integratorCards" class="entity-grid"></div>
+</section>
+
 <section id="fabricantes" class="view">
   <div class="page-head">
-    <div><div class="eyebrow">PORTFOLIO INTELLIGENCE</div><h1>36 fabricantes. Decisiones verificables.</h1><p>La interfaz resume; al seleccionar un fabricante se muestran realidad detectada, responsables, hitos, KPI, gates y fuentes. Las hipótesis quedan marcadas como investigación.</p></div>
+    <div><div class="eyebrow">PORTFOLIO INTELLIGENCE</div><h1>36 fabricantes. Hechos antes que acciones.</h1><p>La interfaz resume mercado, canal, ecosistema, consultoras, portfolio, competencia y gaps. Una acción solo se abre cuando supera el gate absoluto de 100/100.</p></div>
     <div class="filters primary-filters"><input id="vendorSearch" type="search" placeholder="Buscar fabricante, tecnología, rival, mayorista, integrador o cliente…"><select id="domainFilter"><option value="all">Todas las áreas</option></select><select id="recommendationFilter"><option value="all">Todas las decisiones</option></select><select id="countryFilter"><option value="all">ES + PT</option><option value="ES">España</option><option value="PT">Portugal</option></select></div>
   </div>
   <div id="smartFilters" class="smart-filters">
@@ -85,16 +97,15 @@
     <span id="resultCount"></span>
   </div>
   <div class="vendor-layout">
-    <div class="table-wrap"><table class="vendor-table full"><thead><tr><th>Fabricante</th><th>Decisión</th><th>Oportunidad</th><th>Competidores</th><th>Mayoristas ES / PT</th><th>Ecosistema</th><th>Consultoras</th><th>Sinergia</th><th>Solape</th><th>Confianza</th><th>Acción</th></tr></thead><tbody id="vendorRows"></tbody></table></div>
+    <div class="table-wrap"><table class="vendor-table full"><thead><tr><th>Fabricante</th><th>Estado</th><th>Oportunidad</th><th>Competidores</th><th>Mayoristas ES / PT</th><th>Ecosistema</th><th>Consultoras</th><th>Sinergia</th><th>Solape</th><th>Confianza</th><th>Gate</th></tr></thead><tbody id="vendorRows"></tbody></table></div>
     <aside id="vendorDetail" class="detail-panel"><div class="empty-detail"><b>Selecciona un fabricante</b><span>La capa ejecutiva muestra la decisión; “Ver datos” abre el razonamiento y las evidencias.</span></div></aside>
   </div>
 </section>
 
-<section id="sinergias" class="view">
+<section id="arquitecturas" class="view">
   <div class="page-head"><div><div class="eyebrow">ESTRATEGIA MULTIVENDOR</div><h1>Convertir el portfolio en ventaja.</h1><p>Sinergias monetizables, solapes gobernados y acciones concretas para que dos o más fabricantes generen más valor juntos.</p></div></div>
-  <div id="playCards" class="play-grid"></div>
-  <div class="section-title"><div><span>OVERLAP</span><h2>Dónde se pisan y qué hacer</h2></div></div>
-  <div id="overlapMap" class="overlap-grid"></div>
+  <div class="confidence-legend"><b>Regla:</b><span class="arch complementary">COMPLEMENTARIA</span> capas distintas · <span class="arch conditional">CONDICIONAL</span> requiere frontera técnica · <span class="arch conflict">CONFLICTO</span> mismo control plane o presupuesto</div>
+  <div id="architectureCards" class="architecture-grid"></div>
 </section>
 
 <section id="tendencias" class="view">

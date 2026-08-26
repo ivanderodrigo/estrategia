@@ -436,6 +436,28 @@
       }
     }
   },
+  "resilience": {
+    "batch_size": 60,
+    "checkpoint_every_batches": 1,
+    "http_retry_total": 4,
+    "http_backoff_factor": 0.8,
+    "retry_statuses": [429, 500, 502, 503, 504],
+    "circuit_breaker_failures": 12,
+    "circuit_breaker_cooldown_batches": 3,
+    "max_pending_age_days": 21,
+    "atomic_outputs": true,
+    "continue_on_engine_failure": true
+  },
+  "adaptive_learning": {
+    "enabled": true,
+    "exploration_rate": 0.18,
+    "minimum_exploration_share": 0.12,
+    "reward_weights": {"primary_source": 0.32, "iberia_precision": 0.22, "new_entity_relation": 0.18, "numeric_claim": 0.14, "corroboration": 0.09, "freshness": 0.05},
+    "penalties": {"duplicate": 0.20, "discovery_only": 0.12, "stale": 0.08, "engine_failure": 0.18},
+    "decay_per_run": 0.985,
+    "priority_boost_max": 35,
+    "never_starve_dimensions": true
+  },
   "change_detection": {
     "enabled": true,
     "new_relation_min_confidence": 70,
@@ -501,16 +523,18 @@
     "shared-customer-adjacency",
     "competitive-pair-evidence",
     "evidence-conflict-detection"
+    ,"product-revenue-mix","annual-recurring-revenue","certification-count","integrator-sales","vertical-revenue","geographic-revenue","analyst-positioning","public-review-score","installed-base","customer-count","distributor-financials","distributor-linecard","distributor-services","distributor-country-coverage","distributor-overlap","distributor-market-share","integrator-certifications","integrator-revenue","integrator-vendor-portfolio","integrator-awards","integrator-customers","integrator-verticals","preferred-distributor","verified-integration","reference-architecture","validated-design","control-plane-conflict","platform-overlap"
   ],
   "query_mix": {
     "strategic": 0.05,
-    "channel": 0.18,
-    "ecosystem": 0.14,
-    "customers": 0.14,
-    "competition": 0.2,
-    "analyst": 0.1,
-    "market": 0.14,
-    "other": 0.05
+    "channel": 0.16,
+    "ecosystem": 0.15,
+    "customers": 0.11,
+    "competition": 0.16,
+    "analyst": 0.11,
+    "market": 0.16,
+    "architecture": 0.06,
+    "other": 0.04
   },
   "capability_research": {
     "enabled": true,

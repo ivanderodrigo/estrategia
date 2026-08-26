@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deep public-intelligence collector for Westcon Iberia Decision Intelligence v2.0.
+"""Adaptive, resumable public-intelligence collector for Westcon Iberia v2.1.
 
 Design goals
 ------------
@@ -36,6 +36,11 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.parse import urlparse
 
 import requests
+try:
+    from requests.adapters import HTTPAdapter
+    from urllib3.util.retry import Retry
+except (ImportError, ModuleNotFoundError):  # offline self-test shim
+    HTTPAdapter = Retry = None
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 BASE = json.loads((ROOT / "data/base.json").read_text(encoding="utf-8"))
@@ -51,6 +56,8 @@ MARKET_REALITY = json.loads((ROOT / "data/market_reality.json").read_text(encodi
 OUT = ROOT / "data/research.latest.json"
 STATUS_OUT = ROOT / "data/research_status.json"
 CHANGES_OUT = ROOT / "data/changes.latest.json"
+LEARNING_OUT = ROOT / "data/research_learning.json"
+QUEUE_OUT = ROOT / "data/research_queue.json"
 HISTORY = ROOT / "data/history"
 HISTORY.mkdir(parents=True, exist_ok=True)
 NOW = dt.datetime.now(dt.timezone.utc)
@@ -64,12 +71,19 @@ if PROFILE not in DEEP.get("profiles", {}):
 PROFILE_CFG = DEEP.get("profiles", {}).get(PROFILE, {})
 BUDGETS = dict(DEEP.get("budgets", {}))
 BUDGETS.update(PROFILE_CFG.get("budgets", {}))
-UA = f"Westcon-Iberia-Decision-Intelligence/2.0 ({PROFILE}; evidence-to-action-public-intelligence)"
+UA = f"Westcon-Iberia-Decision-Intelligence/2.1 ({PROFILE}; adaptive-resumable-public-intelligence)"
 TIMEOUT = int(BUDGETS.get("request_timeout_seconds", 25))
 WORKERS = int(BUDGETS.get("http_workers", 12))
 
 SESSION = requests.Session()
 SESSION.headers.update({"User-Agent": UA, "Accept-Language": "es-ES,es;q=0.9,pt;q=0.8,en;q=0.7"})
+_resilience = DEEP.get("resilience", {})
+if Retry and HTTPAdapter and hasattr(SESSION, "mount"):
+    _retry = Retry(total=int(_resilience.get("http_retry_total", 4)), connect=3, read=3,
+                   backoff_factor=float(_resilience.get("http_backoff_factor", .8)),
+                   status_forcelist=_resilience.get("retry_statuses", [429, 500, 502, 503, 504]),
+                   allowed_methods=frozenset(["GET", "POST"]), respect_retry_after_header=True)
+    SESSION.mount("https://", HTTPAdapter(max_retries=_retry, pool_connections=WORKERS * 2, pool_maxsize=WORKERS * 2))
 SITEMAP_CACHE: dict[str, list[str]] = {}
 PAGE_CACHE: dict[str, dict | None] = {}
 
@@ -127,6 +141,34 @@ def tier_weight(tier: str) -> int:
 
 def sha(*parts: str) -> str:
     return hashlib.sha1("|".join(str(x or "") for x in parts).encode("utf-8", "ignore")).hexdigest()
+
+
+def atomic_json(path: pathlib.Path, payload: dict) -> None:
+    """Never leave a half-written state if a run is interrupted."""
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    os.replace(tmp, path)
+
+
+def load_json_state(path: pathlib.Path, default: dict) -> dict:
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+        return value if isinstance(value, dict) else default
+    except Exception:
+        return default
+
+
+def learning_key(row: dict, engine: str = "all") -> str:
+    return "|".join([engine, row.get("kind", "other"), row.get("intent", "other"), row.get("country", "ALL")])
+
+
+def adaptive_bonus(row: dict, learning: dict) -> int:
+    suffix="|".join([row.get("kind", "other"), row.get("intent", "other"), row.get("country", "ALL")])
+    matches=[v for k,v in learning.get("strategies", {}).items() if k.endswith(suffix)]
+    trials = max(1, sum(int(x.get("trials",0)) for x in matches))
+    mean = sum(float(x.get("reward",0)) for x in matches) / trials
+    explore = (2 * max(1, int(learning.get("totalTrials", 1))) ** .5 / trials) ** .5
+    return round(min(float(DEEP.get("adaptive_learning", {}).get("priority_boost_max", 35)), (mean + explore) * 18))
 
 
 def get_json(url: str, **kwargs):
@@ -476,7 +518,9 @@ def official_entity_sitemap_evidence(entity_domains: dict, entity_kind: str, bud
     per_entity = max(8, min(55, budget // max(1, len(entity_domains))))
     vendor_terms = [(v, [norm(a) for a in aliases_for(v) if len(norm(a)) >= 3]) for v in tracked_names()]
     targets=[]
-    for entity, domain in entity_domains.items():
+    learned=load_json_state(LEARNING_OUT,{}).get('sources',{})
+    ranked_entities=sorted(entity_domains.items(),key=lambda x:-(float(learned.get(x[1],{}).get('primaryHits',0))+1)/(float(learned.get(x[1],{}).get('seen',0))+2))
+    for entity, domain in ranked_entities:
         for u in discover_sitemap_urls(domain, per_entity):
             lu=u.lower()
             if any(x in lu for x in CFG.get('high_value_official_paths',[])):
@@ -512,7 +556,9 @@ def official_analyst_sitemap_evidence(budget: int) -> list[dict]:
     keywords=['2026','market','forecast','security','cyber','network','sase','endpoint','identity','cloud','ai','automation','lan','wlan','ndr','ot','data center','market share']
     vendor_terms=[(v,[norm(a) for a in aliases_for(v)[:4]]) for v in tracked_names()]
     out=[]; targets=[]
-    for analyst,domain in domains.items():
+    learned=load_json_state(LEARNING_OUT,{}).get('sources',{})
+    ranked_domains=sorted(domains.items(),key=lambda x:-(float(learned.get(x[1],{}).get('primaryHits',0))+1)/(float(learned.get(x[1],{}).get('seen',0))+2))
+    for analyst,domain in ranked_domains:
         for u in discover_sitemap_urls(domain,per):
             if any(k.replace(' ','-') in u.lower() or k in u.lower() for k in keywords): targets.append((analyst,u))
     targets=targets[:budget]
@@ -1106,6 +1152,7 @@ def query_bucket(row: dict) -> str:
     if intent in {'customers','customer_verticals'} or kind in {'buyer-followup'}: return 'customers'
     if intent in {'competition','attack'} or kind in {'competitive-pair','buyer-competitive-followup'}: return 'competition'
     if intent in {'analyst','analysts'}: return 'analyst'
+    if intent in {'architecture','integration','overlap'} or kind in {'architecture-pair'}: return 'architecture'
     if intent in {'market','strategy','product','services','partner_program','official','procurement','economics','regulation','financial_health','product_lifecycle','delivery','local_signals'}: return 'market'
     return 'other'
 
@@ -1230,15 +1277,34 @@ def make_queries() -> list[dict]:
             generated.append({"query":f'"{vendor}" "{competitor}" Spain replacement migration TCO',"kind":"competitive-pair","vendor":vendor,"country":"ES","intent":"attack","priority":84})
             generated.append({"query":f'"{vendor}" "{competitor}" Portugal replacement migration TCO',"kind":"competitive-pair","vendor":vendor,"country":"PT","intent":"attack","priority":84})
             generated.append({"query":f'"{vendor}" "{competitor}" case study competitive win displacement',"kind":"competitive-pair","vendor":vendor,"country":"ALL","intent":"competition","priority":78})
+            generated.append({"query":f'site:{CFG.get("vendor_domains",{}).get(vendor,"example.invalid")} "{vendor}" "{competitor}" integration reference architecture',"kind":"architecture-pair","vendor":vendor,"country":"ALL","intent":"architecture","priority":72})
+            generated.append({"query":f'"{vendor}" "{competitor}" control plane overlap platform consolidation',"kind":"architecture-pair","vendor":vendor,"country":"ALL","intent":"overlap","priority":70})
+    # Entity-first research avoids reducing every question to a vendor search.
+    for dist in CFG.get('known_distributors',[]):
+        if dist in {'Westcon-Comstor','Comstor'}: continue
+        for cc,country in [('ES','Spain'),('PT','Portugal')]:
+            for term in ['official linecard vendors','annual report revenue gross sales','value added services labs financing','market share technology distribution','cloud marketplace managed services']:
+                generated.append({'query':f'"{dist}" {country} {term}','kind':'distributor-profile','country':cc,'intent':'channel','entity':dist,'priority':86})
+    for integ in CFG.get('known_integrators',[])[:36]:
+        for cc,country in [('ES','Spain'),('PT','Portugal')]:
+            for term in ['certifications vendor specializations','technology partners portfolio','customer case study','annual revenue employees','distributor preferred procurement']:
+                generated.append({'query':f'"{integ}" {country} {term}','kind':'integrator-profile','country':cc,'intent':'ecosystem','entity':integ,'priority':82})
     # Dedup then deterministic weighted rotation.
     ded={}
     for r in fixed+generated:
         ded[r['query']]=max(ded.get(r['query'],r),r,key=lambda x:x.get('priority',0)) if r['query'] in ded else r
-    rows=list(ded.values())
+    rows=list(ded.values()); learning=load_json_state(LEARNING_OUT, {})
+    for row in rows: row['priority']=int(row.get('priority',0))+adaptive_bonus(row,learning)
     week=NOW.isocalendar().week
     rows.sort(key=lambda r:(-r.get('priority',0),sha(str(week),r['query'])))
     maxq=int(BUDGETS.get('query_limit_brave',BUDGETS.get('brave_queries_max',720)) if os.getenv('BRAVE_SEARCH_API_KEY','').strip() else BUDGETS.get('query_limit_no_brave',CFG.get('no_brave_rotation_max_queries',180)))
-    return stratified_query_selection(rows,maxq)
+    # Keep an explicit exploration slice so high-yield known strategies never starve new dimensions.
+    share=float(DEEP.get('adaptive_learning',{}).get('minimum_exploration_share',.12)); explore_n=max(1,round(maxq*share))
+    unseen=[r for r in rows if not any(k.endswith('|'.join([r.get('kind','other'),r.get('intent','other'),r.get('country','ALL')])) for k in learning.get('strategies',{}))]
+    unseen.sort(key=lambda r:sha('explore',str(NOW.isocalendar().week),r.get('query','')))
+    explore=unseen[:explore_n]; explore_q={x['query'] for x in explore}
+    exploit=stratified_query_selection([r for r in rows if r['query'] not in explore_q],maxq-len(explore))
+    return (explore+exploit)[:maxq]
 
 
 def capability_candidates(evidence: list[dict]) -> list[dict]:
@@ -1469,6 +1535,67 @@ def signal_stats(evidence) -> dict:
     return {'byTier':dict(by_tier),'byType':dict(by_type),'byScope':dict(by_scope),'byEngine':dict(by_engine),'topSources':by_source.most_common(30)}
 
 
+def discovery_plan(queries: list[dict], brave: bool) -> list[tuple[dict,str]]:
+    budgets={'news':int(BUDGETS.get('news_queries_max',180)),'gdelt':int(BUDGETS.get('gdelt_queries_max',150)),'arquivo':int(BUDGETS.get('arquivo_queries_max',40))}
+    counts=Counter(); plan=[]
+    for q in queries:
+        if brave: plan.append((q,'brave'))
+        if counts['news']<budgets['news'] and ((not brave) or q.get('kind')=='strategic' or query_bucket(q) in {'channel','ecosystem','customers','competition','analyst','architecture'}): plan.append((q,'news')); counts['news']+=1
+        if counts['gdelt']<budgets['gdelt'] and (query_bucket(q) in {'channel','ecosystem','customers','competition','market','architecture'} or q.get('kind')=='strategic'): plan.append((q,'gdelt')); counts['gdelt']+=1
+        if counts['arquivo']<budgets['arquivo'] and q.get('country')=='PT' and query_bucket(q) in {'channel','ecosystem','customers'}: plan.append((q,'arquivo')); counts['arquivo']+=1
+    return plan
+
+
+def result_reward(rows: list[dict], qrow: dict) -> float:
+    if not rows: return 0.0
+    cfg=DEEP.get('adaptive_learning',{}); w=cfg.get('reward_weights',{}); reward=0.0
+    domains=set()
+    for row in rows:
+        url=row.get('url',''); tier=source_tier(url); txt=f"{row.get('title','')} {row.get('snippet','')}"
+        domains.add(host(url))
+        reward += (w.get('primary_source',.32) if tier in {'official-company','analyst-public','regulator','public-open-data'} else 0)
+        reward += (w.get('iberia_precision',.22) if infer_scope(txt,qrow.get('country')) in {'Spain','Portugal','Spain / Portugal','Iberia'} else 0)
+        reward += (w.get('numeric_claim',.14) if re.search(r'\b\d+(?:[.,]\d+)?\s?(?:%|billion|million|bn|m|€|\$)',txt,re.I) else 0)
+    reward /= max(1,len(rows)); reward += min(.15,max(0,len(domains)-1)*w.get('corroboration',.09))
+    return round(reward,4)
+
+
+def run_discovery_batches(queries: list[dict], brave: bool) -> tuple[list[dict],dict]:
+    """Bounded, resumable search. One broken engine never aborts the other engines."""
+    plan=discovery_plan(queries,brave); run_key=f'{TODAY}|{PROFILE}'; saved=load_json_state(QUEUE_OUT,{})
+    completed=set(saved.get('completed',[])) if saved.get('runKey')==run_key else set()
+    raw=list(saved.get('partialEvidence',[])) if saved.get('runKey')==run_key else []
+    learning=load_json_state(LEARNING_OUT,{'version':1,'totalTrials':0,'strategies':{},'sources':{}})
+    batch_size=int(DEEP.get('resilience',{}).get('batch_size',60)); fail_limit=int(DEEP.get('resilience',{}).get('circuit_breaker_failures',12)); cooldown=int(DEEP.get('resilience',{}).get('circuit_breaker_cooldown_batches',3))
+    circuit={}; failures=Counter(); processed=0
+    funcs={'brave':search_brave,'news':search_google_news,'gdelt':search_gdelt,'arquivo':search_arquivo}
+    pending=[(q,e,sha(e,q.get('query',''))) for q,e in plan if sha(e,q.get('query','')) not in completed]
+    for batch_no,start in enumerate(range(0,len(pending),batch_size),1):
+        chunk=pending[start:start+batch_size]; runnable=[]
+        for q,e,key in chunk:
+            if circuit.get(e,0)>batch_no: continue
+            runnable.append((q,e,key))
+        with ThreadPoolExecutor(max_workers=WORKERS) as ex:
+            futures={ex.submit(funcs[e],q):(q,e,key) for q,e,key in runnable}
+            for fut in as_completed(futures):
+                q,e,key=futures[fut]; processed+=1; completed.add(key)
+                try: rows=fut.result(); failures[e]=0
+                except Exception as exc:
+                    rows=[]; failures[e]+=1; print(f'{e} isolated error {q.get("query")!r}: {exc}')
+                    if failures[e]>=fail_limit: circuit[e]=batch_no+cooldown; failures[e]=0; print(f'{e} circuit open until batch {circuit[e]}')
+                for row in rows: raw.append(to_evidence(row,q))
+                lk=learning_key(q,e); stat=learning.setdefault('strategies',{}).setdefault(lk,{'trials':0,'reward':0.0,'hits':0})
+                stat['trials']+=1; stat['reward']=round(float(stat.get('reward',0))*float(DEEP.get('adaptive_learning',{}).get('decay_per_run',.985))+result_reward(rows,q),4); stat['hits']+=int(bool(rows)); stat['updatedAt']=NOW.isoformat(); learning['totalTrials']=int(learning.get('totalTrials',0))+1
+                for row in rows:
+                    h=host(row.get('url',''))
+                    if h:
+                        ss=learning.setdefault('sources',{}).setdefault(h,{'seen':0,'primaryHits':0}); ss['seen']+=1; ss['primaryHits']+=int(source_tier(row.get('url','')) in {'official-company','analyst-public','regulator','public-open-data'}); ss['updatedAt']=NOW.isoformat()
+        checkpoint={'version':1,'runKey':run_key,'profile':PROFILE,'updatedAt':NOW.isoformat(),'planned':len(plan),'completed':sorted(completed),'partialEvidence':raw,'circuits':circuit}
+        atomic_json(QUEUE_OUT,checkpoint); atomic_json(LEARNING_OUT,learning)
+    atomic_json(QUEUE_OUT,{'version':1,'runKey':run_key,'profile':PROFILE,'updatedAt':NOW.isoformat(),'planned':len(plan),'completed':sorted(completed),'partialEvidence':[],'complete':True})
+    return raw,{'plannedTasks':len(plan),'processedTasks':processed,'resumedTasks':len(plan)-len(pending),'circuits':circuit,'learningStrategies':len(learning.get('strategies',{}))}
+
+
 # ----------------------------- Main -----------------------------
 
 def main() -> None:
@@ -1479,23 +1606,9 @@ def main() -> None:
     evidence.extend(dict(e,curated=True,realityVerified=True) for e in MARKET_REALITY.get('facts',[]))
     evidence.extend(carryover_evidence(prev))
 
-    # 1) Broad discovery engines with profile-specific budgets.
-    news_budget=int(BUDGETS.get('news_queries_max',180)); gdelt_budget=int(BUDGETS.get('gdelt_queries_max',150)); arquivo_budget=int(BUDGETS.get('arquivo_queries_max',40))
-    news_n=gdelt_n=arquivo_n=0; tasks=[]
-    with ThreadPoolExecutor(max_workers=WORKERS) as ex:
-        for qrow in queries:
-            if brave: tasks.append((qrow,'brave',ex.submit(search_brave,qrow)))
-            if news_n<news_budget and ((not brave) or qrow.get('kind')=='strategic' or qrow.get('intent') in {'channel','channel_changes','competition','attack','customers','customer_verticals','analyst','analysts'}):
-                tasks.append((qrow,'news',ex.submit(search_google_news,qrow))); news_n+=1
-            if gdelt_n<gdelt_budget and (qrow.get('intent') in {'channel','channel_changes','ecosystem','partner_capability','customers','customer_verticals','competition','attack','strategy','services'} or qrow.get('kind')=='strategic'):
-                tasks.append((qrow,'gdelt',ex.submit(search_gdelt,qrow))); gdelt_n+=1
-            if arquivo_n<arquivo_budget and qrow.get('country')=='PT' and qrow.get('intent') in {'channel','channel_changes','ecosystem','partner_capability','customers','customer_verticals'}:
-                tasks.append((qrow,'arquivo',ex.submit(search_arquivo,qrow))); arquivo_n+=1
-        for qrow,engine,fut in tasks:
-            try: rows=fut.result()
-            except Exception as exc:
-                print(f"{engine} error {qrow.get('query')!r}: {exc}"); continue
-            for x in rows: evidence.append(to_evidence(x,qrow))
+    # 1) Broad discovery: bounded batches, checkpoint/resume, retries, circuit breakers and adaptive rewards.
+    discovered,resilience_stats=run_discovery_batches(queries,brave)
+    evidence.extend(discovered)
 
     # 2) Primary-source crawling: vendor, distributor, integrator and analyst public pages.
     try:
@@ -1558,17 +1671,17 @@ def main() -> None:
     changes=compute_changes(prev,channels,integrators,customers,coverage,procurement_market,ended_channels)
 
     payload={
-        'generatedAt':NOW.isoformat(),'profile':PROFILE,'mode':'evidence-to-action-public-intelligence-v9.0','queryCount':len(queries),'braveEnabled':brave,
+        'generatedAt':NOW.isoformat(),'profile':PROFILE,'mode':'adaptive-resumable-intelligence-graph-v10.0','queryCount':len(queries),'braveEnabled':brave,
         'notice':'Solo inteligencia pública externa. Discovery, evidencia ejecutiva, geografía, frescura, corroboración y conflictos se preservan explícitamente. El scope de portfolio se configura aparte del motor de evidencia.',
         'researchEngines':['Brave Search (optional)' if brave else 'Brave Search (not configured)','Google News RSS','GDELT DOC 2.0','Arquivo.pt','official vendor sitemaps','Common Crawl URL discovery + live validation','official distributor/integrator sitemaps','public analyst sitemaps' if PROFILE in {'deep','exhaustive'} else 'public analyst crawl (weekly/monthly)','TED Search API','PLACSP open data (weekly deep)','dados.gov.pt / Portal BASE (weekly deep)'],
         'evidence':evidence,'capabilitySignals':capability_signals,'channelSignals':channels,'channelHistorySignals':ended_channels,'integratorSignals':integrators,'customerSignals':customers,'analystSignals':analysts,'procurementMarket':procurement_market,'coverage':coverage,'gaps':research_gaps(coverage),'conflicts':conflicts,'changes':changes,
-        'derived':{'evidenceCount':len(evidence),'officialOrAnalystCount':sum(1 for e in evidence if e.get('sourceTier') in {'official-company','regulator','public-open-data','analyst-public'}),'channelSignalCount':len(channels),'endedChannelSignalCount':len(ended_channels),'integratorSignalCount':len(integrators),'customerSignalCount':len(customers),'procurementSignalCount':sum(1 for e in evidence if e.get('evidenceType')=='procurement'),'procurementMarketBuckets':len(procurement_market),'knownProcurementValueEUR':round(sum(x.get('knownValueEUR',0) for x in procurement_market),2),'analystSignalCount':len(analysts),'capabilitySignalCount':len(capability_signals),'conflictCount':len(conflicts),'changeCount':len(changes),'statistics':signal_stats(evidence)}
+        'derived':{'evidenceCount':len(evidence),'officialOrAnalystCount':sum(1 for e in evidence if e.get('sourceTier') in {'official-company','regulator','public-open-data','analyst-public'}),'channelSignalCount':len(channels),'endedChannelSignalCount':len(ended_channels),'integratorSignalCount':len(integrators),'customerSignalCount':len(customers),'procurementSignalCount':sum(1 for e in evidence if e.get('evidenceType')=='procurement'),'procurementMarketBuckets':len(procurement_market),'knownProcurementValueEUR':round(sum(x.get('knownValueEUR',0) for x in procurement_market),2),'analystSignalCount':len(analysts),'capabilitySignalCount':len(capability_signals),'conflictCount':len(conflicts),'changeCount':len(changes),'resilience':resilience_stats,'statistics':signal_stats(evidence)}
     }
-    OUT.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8')
-    CHANGES_OUT.write_text(json.dumps({'generatedAt':NOW.isoformat(),'profile':PROFILE,'changes':changes,'conflicts':conflicts},ensure_ascii=False,indent=2),encoding='utf-8')
-    STATUS_OUT.write_text(json.dumps({'generatedAt':NOW.isoformat(),'profile':PROFILE,'braveEnabled':brave,'queryCount':len(queries),'budgets':BUDGETS,'coverageAverage':round(sum(x['coverage'] for x in coverage)/max(1,len(coverage)),1),'vendorsWithCoverage70':sum(1 for x in coverage if x['coverage']>=70),'gapsP0':sum(1 for x in research_gaps(coverage) if x['priority']=='P0'),'engines':payload['researchEngines']},ensure_ascii=False,indent=2),encoding='utf-8')
+    atomic_json(OUT,payload)
+    atomic_json(CHANGES_OUT,{'generatedAt':NOW.isoformat(),'profile':PROFILE,'changes':changes,'conflicts':conflicts})
+    atomic_json(STATUS_OUT,{'generatedAt':NOW.isoformat(),'profile':PROFILE,'braveEnabled':brave,'queryCount':len(queries),'budgets':BUDGETS,'resilience':resilience_stats,'coverageAverage':round(sum(x['coverage'] for x in coverage)/max(1,len(coverage)),1),'vendorsWithCoverage70':sum(1 for x in coverage if x['coverage']>=70),'gapsP0':sum(1 for x in research_gaps(coverage) if x['priority']=='P0'),'engines':payload['researchEngines']})
     write_light_history(payload,changes)
-    print(f"Research v9.0/{PROFILE}: {len(evidence)} evidence, {len(channels)} channel, {len(integrators)} integrators, {len(customers)} customers, {len(queries)} planned queries, {len(changes)} changes")
+    print(f"Research v10.0/{PROFILE}: {len(evidence)} evidence, {len(channels)} channel, {len(integrators)} integrators, {len(customers)} customers, {len(queries)} planned queries, {len(changes)} changes")
 
 
 if __name__=='__main__': main()

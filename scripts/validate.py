@@ -19,7 +19,7 @@ def walk_keys(obj,path=''):
         for i,v in enumerate(obj): yield from walk_keys(v,f'{path}[{i}]')
 
 def main():
-    base=load('data/base.json'); vi=load('data/vendor_intelligence.json'); research=load('data/research.latest.json'); reality=load('data/market_reality.json')
+    base=load('data/base.json'); vi=load('data/vendor_intelligence.json'); research=load('data/research.latest.json'); reality=load('data/market_reality.json'); graph=load('data/intelligence_graph.json')
     engine=load('config/strategy_engine.json'); decision=load('config/decision_intelligence.json'); cap=load('config/capability_intelligence.json'); load('config/research_queries.json'); load('config/source_registry.json'); deep=load('config/deep_research.json'); proc_tax=load('config/procurement_taxonomy.json'); load('data/ecosystem.json')
     active=[x['name'] for x in base.get('vendors',[])]
     vint=[x['name'] for x in vi.get('vendors',[])]
@@ -27,6 +27,14 @@ def main():
     assert set(active)==set(vint), f'Desalineación base/vendor_intelligence: {set(active)^set(vint)}'
     facts=reality.get('facts',[]); plans=reality.get('vendors',{})
     assert len(facts)>=25, 'Capa de realidad pública insuficiente'
+    sources=graph.get('sources',[]); claims=graph.get('claims',[]); source_ids={x.get('id') for x in sources}
+    assert graph.get('policy',{}).get('actionThreshold')==100, 'El umbral de acción debe ser 100'
+    assert len(sources)>=25 and len(claims)>=28, 'Grafo de inteligencia pública insuficiente'
+    assert len(graph.get('distributors',[]))>=6 and len(graph.get('integrators',[]))>=8 and len(graph.get('architectures',[]))>=8, 'Faltan perfiles o arquitecturas'
+    for c in claims:
+        assert c.get('sourceIds') and set(c['sourceIds']).issubset(source_ids), f'Claim sin fuente válida: {c.get("id")}'
+        assert c.get('scope') and c.get('summary') and 0<=int(c.get('confidence',0))<=100, f'Claim incompleto: {c.get("id")}'
+    assert any(a.get('classification')=='CONFLICT' for a in graph.get('architectures',[])), 'No se modelan conflictos de plataforma'
     assert len(plans)>=10 and set(plans).issubset(set(active)), 'Planes verificables insuficientes o fabricante inválido'
     fact_ids=[x.get('id') for x in facts]; assert len(fact_ids)==len(set(fact_ids)) and all(fact_ids), 'IDs de realidad pública inválidos/duplicados'
     for e in facts:
@@ -69,6 +77,9 @@ def main():
         assert 0.95<=total<=1.05, f'{key} suma {total:.3f}, debe aproximar 1'
     qmix=deep.get('query_mix',{})
     assert qmix and 0.95<=sum(float(x) for x in qmix.values())<=1.05, 'query_mix debe sumar aproximadamente 1'
+    resilience=deep.get('resilience',{}); learning=deep.get('adaptive_learning',{})
+    assert int(resilience.get('batch_size',0))>0 and int(resilience.get('circuit_breaker_failures',0))>0, 'Resiliencia de búsqueda incompleta'
+    assert learning.get('enabled') and float(learning.get('minimum_exploration_share',0))>=.1, 'Aprendizaje adaptativo sin exploración suficiente'
     sens=engine.get('sensitivityModel',{})
     assert int(sens.get('runs',0))>=16 and 0<float(sens.get('maxPerturbation',0))<=20, 'Modelo de estabilidad de decisión inválido'
     roles=decision.get('roles',[]); actions=decision.get('actions',[]); archetypes=decision.get('archetypes',[])
@@ -104,7 +115,7 @@ def main():
             assert not any(f in nk for f in forbidden_key_fragments), f'Posible dato interno no permitido en {rel}: {k}'
     for wf in ['.github/workflows/research-daily.yml','.github/workflows/research-weekly.yml','.github/workflows/research-monthly.yml']:
         assert (ROOT/wf).exists(), f'Falta workflow: {wf}'
-    print(f'OK · {len(active)} vendors · {len(facts)} realidades · {len(plans)} contratos verificables · {len(actions)} acciones · {len(roles)} perfiles · Evidence-to-Action v9 validado')
+    print(f'OK · {len(active)} vendors · {len(claims)} claims nuevos · {len(graph.get("distributors",[]))} mayoristas · {len(graph.get("integrators",[]))} integradores · {len(graph.get("architectures",[]))} arquitecturas · motor v10 validado')
 
 if __name__=='__main__':
     try: main()

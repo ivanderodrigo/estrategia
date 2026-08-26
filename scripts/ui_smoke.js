@@ -80,14 +80,18 @@ async function waitForLoad() {
   await waitForLoad();
   if (context.__state.reality.facts.length !== 30) throw new Error('La capa de realidad no cargó 30 hechos');
   if (Object.keys(context.__state.reality.vendors).length !== 12) throw new Error('No cargaron los 12 contratos verificables');
-  if (!getElement('#marketKpis').innerHTML.includes('91')) throw new Error('El KPI no unifica las 91 evidencias públicas');
+  if (context.__state.graph.claims.length < 28) throw new Error('No cargó el grafo de inteligencia v2.1');
+  if (!getElement('#marketKpis').innerHTML.includes('119')) throw new Error('El KPI no unifica las evidencias públicas y los nuevos claims');
+  if (!getElement('#distributorCards').innerHTML.includes('Arrow ECS')) throw new Error('Falta la vista de mayoristas');
+  if (!getElement('#integratorCards').innerHTML.includes('Logicalis Spain')) throw new Error('Falta la vista de integradores');
+  if (!getElement('#architectureCards').innerHTML.includes('CONFLICTO')) throw new Error('Falta el gobierno técnico de solapes');
 
   context.__selectVendor('Palo Alto Networks');
   const verified = getElement('#vendorDetail').innerHTML;
-  if (!verified.includes('DECISIÓN EJECUTIVA VERIFICADA') || !verified.includes('GO / NO-GO') || !verified.includes('60 días')) throw new Error('Contrato verificable incompleto en detalle');
+  if (!verified.includes('ACCIÓN NO AUTORIZADA') || !verified.includes('100/100') || verified.includes('PLAN AUTORIZADO')) throw new Error('El gate 100/100 no bloquea correctamente');
 
   context.__selectVendor('1Password');
-  if (!getElement('#vendorDetail').innerHTML.includes('DECISIÓN BLOQUEADA')) throw new Error('El gate no bloquea una recomendación sin contrato público');
+  if (!getElement('#vendorDetail').innerHTML.includes('ACCIÓN NO AUTORIZADA')) throw new Error('El gate no bloquea una recomendación sin contrato público');
 
-  console.log('OK · UI runtime · 36 vendors · 91 evidencias · 12 contratos · gate verificado');
+  console.log('OK · UI runtime · 36 vendors · 119 evidencias · nuevas vistas · gate 100/100');
 })().catch(error => { console.error(error); process.exitCode = 1; });

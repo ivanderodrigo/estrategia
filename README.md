@@ -1,4 +1,4 @@
-# Westcon Iberia · Evidence-to-Action Intelligence v2.0
+# Westcon Iberia · Adaptive Intelligence Graph v2.1
 
 **España + Portugal · Solo inteligencia pública · GitHub Pages**
 
@@ -8,7 +8,31 @@ La interfaz conserva la organización visual del material FY27 y permite llegar 
 
 No incluye datos internos en los datasets. El alcance analítico es **información pública externa + portfolio/taxonomía derivados de la presentación FY27 facilitada**. La ficha de fabricante incorpora además un gate local y opcional para que el usuario complete cinco respuestas internas en su propio navegador; esas respuestas no se envían, no modifican la evidencia pública y no autorizan automáticamente una inversión.
 
-## Qué cambia en v2.0
+## Qué cambia en v2.1
+
+### 1. Investigación masiva que no bloquea el proceso
+
+El motor v10 divide la búsqueda en lotes acotados y guarda un checkpoint atómico después de cada uno. Cada motor dispone de reintentos con backoff y circuit breaker independiente: si una fuente falla, se aísla temporalmente y las demás continúan. Una ejecución repetida el mismo día y perfil reanuda lo pendiente y conserva la evidencia ya obtenida.
+
+`data/research_learning.json` guarda el aprendizaje acumulativo y `data/research_queue.json` el checkpoint reanudable. Ambos son públicos, auditables y no contienen secretos.
+
+### 2. Aprendizaje adaptativo con exploración garantizada
+
+Las estrategias de consulta reciben recompensa cuando encuentran fuentes primarias, precisión España/Portugal, relaciones nuevas, cifras explícitas, corroboración y señales recientes. Se penalizan duplicados, resultados de mero discovery y fallos. Se mantiene una cuota mínima de exploración para descubrir fuentes nuevas y evitar que el motor se encierre en lo ya conocido.
+
+### 3. Grafo de inteligencia y nuevas vistas ejecutivas
+
+`data/intelligence_graph.json` añade claims atómicos y perfiles de mayoristas, integradores, tendencias y arquitecturas. Cada cifra conserva fuente, fecha, ámbito, tier y confianza. El hover o foco sobre un dato abre su trazabilidad. Los valores no publicados se muestran como gaps y nunca se estiman silenciosamente.
+
+### 4. Arquitecturas con conflicto técnico explícito
+
+Los pares multivendor se clasifican como `COMPLEMENTARY`, `CONDITIONAL` o `CONFLICT`. Dos fabricantes de plataforma no se consideran sinergia por defecto: se exige separación de control plane, ownership operativo, SKU y presupuesto.
+
+### 5. Acciones solo con certeza 100/100
+
+La interfaz conserva hipótesis y scores para priorizar investigación, pero oculta planes y mandatos por debajo de 100/100. La capa v2.0 pasa a ser una tesis trazable hasta que tenga corroboración total y gate interno; no se presenta como acción autorizada.
+
+## Base heredada de v2.0
 
 ### 1. La recomendación se convierte en un contrato verificable
 
