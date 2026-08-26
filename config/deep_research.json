@@ -1,5 +1,5 @@
 {
-  "version": "4.2",
+  "version": "8.0",
   "policy": "Public external intelligence only. Licensed analyst content is never scraped or reconstructed.",
   "budgets": {
     "brave_queries_max": 720,
@@ -10,7 +10,16 @@
     "sitemap_pages_max": 1400,
     "http_workers": 12,
     "request_timeout_seconds": 25,
-    "per_host_delay_ms": 50
+    "per_host_delay_ms": 50,
+    "spain_procurement_months": 6,
+    "spain_procurement_rows_max": 5000,
+    "spain_atom_files_max": 160,
+    "portugal_resources_max": 10,
+    "portugal_procurement_rows_max": 5000,
+    "procurement_download_max_bytes": 160000000,
+    "ted_results_per_query": 180,
+    "base_api_days": 90,
+    "base_api_rows_max": 8000
   },
   "engines": {
     "brave": {
@@ -49,6 +58,12 @@
     "official_sitemaps": {
       "enabled": true,
       "weight": 95
+    },
+    "commoncrawl": {
+      "enabled": true,
+      "weight": 35,
+      "mode": "url-discovery-live-revalidation",
+      "endpoint": "https://index.commoncrawl.org/collinfo.json"
     }
   },
   "country_terms": {
@@ -137,7 +152,42 @@
     "concurso",
     "contrato",
     "concurso público",
-    "adjudicado"
+    "adjudicado",
+    "annual report",
+    "10-K",
+    "20-F",
+    "investor relations",
+    "ARR",
+    "subscription growth",
+    "R&D investment",
+    "product roadmap",
+    "end of sale",
+    "end of support",
+    "partner program tier",
+    "certified partners",
+    "customer count",
+    "competitive win",
+    "migration from competitor",
+    "replacement case study",
+    "channel strategy",
+    "MSSP program",
+    "marketplace private offer",
+    "local stock",
+    "staging",
+    "professional services attach",
+    "renewal rate",
+    "platform consolidation",
+    "Westcon capability availability",
+    "Tech Insights vendor assessment",
+    "3D Lab vendor lab",
+    "Tech Xpert vendor participation",
+    "Intelligent Demand vendor programme",
+    "Westcon Academy training vendor",
+    "Westcon support services vendor",
+    "Westcon professional services vendor",
+    "AWS Marketplace Westcon vendor",
+    "FLEX vendor deal",
+    "supply chain staging vendor"
   ],
   "competitive_gap_types": [
     "channel_commoditization",
@@ -286,23 +336,32 @@
         "buyer-country",
         "winner-name",
         "winner-country",
-        "contract-title",
-        "contract-url",
-        "main-classification-proc",
         "classification-cpv",
+        "main-classification-proc",
         "notice-type",
-        "publication-date"
+        "publication-date",
+        "result-value-notice",
+        "result-value-lot",
+        "estimated-value-proc",
+        "estimated-value-lot",
+        "total-value",
+        "tender-value"
       ]
     },
     "spain": {
       "catalog_page": "https://www.hacienda.gob.es/es-ES/GobiernoAbierto/Datos%20Abiertos/Paginas/LicitacionesContratante.aspx",
       "annual_pattern": "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3_{year}.zip",
-      "note": "The collector discovers current resource URLs from the official catalog page before using pattern fallbacks."
+      "note": "The collector discovers current resource URLs from the official catalog page before using pattern fallbacks.",
+      "monthly_pattern": "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3_{yyyymm}.zip",
+      "aggregation_monthly_pattern": "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_1044/PlataformasAgregadasSinMenores_{yyyymm}.zip",
+      "scope_note": "Se procesan perfiles PLACSP y mecanismos de agregación para cubrir también CCAA/EELL con plataforma propia."
     },
     "portugal": {
       "dataset_query": "Contratos Públicos Portal Base IMPIC contratos",
       "dataset_portal": "https://dados.gov.pt/pt/datasets/contratos-publicos-portal-base-impic-contratos-de-2012-a-2026/",
-      "note": "Read-only dados.gov.pt API is public and needs no key. BASE REST is optional if BASE_API_TOKEN is configured."
+      "note": "Read-only dados.gov.pt API is public and needs no key. BASE REST is optional if BASE_API_TOKEN is configured.",
+      "base_api_endpoint": "https://www.base.gov.pt/APIBase2/GetInfoContrato",
+      "base_api_optional_secret": "BASE_API_TOKEN"
     }
   },
   "profiles": {
@@ -319,7 +378,14 @@
         "analyst_sitemap_pages_max": 90,
         "ted_vendor_limit": 14,
         "full_procurement": false,
-        "carryover_days": 540
+        "carryover_days": 540,
+        "spain_procurement_months": 1,
+        "spain_procurement_rows_max": 1200,
+        "portugal_resources_max": 3,
+        "portugal_procurement_rows_max": 1200,
+        "ted_results_per_query": 90,
+        "commoncrawl_pages_max": 90,
+        "commoncrawl_vendor_limit": 5
       }
     },
     "deep": {
@@ -335,7 +401,38 @@
         "analyst_sitemap_pages_max": 320,
         "ted_vendor_limit": 80,
         "full_procurement": true,
-        "carryover_days": 1095
+        "carryover_days": 1095,
+        "spain_procurement_months": 6,
+        "spain_procurement_rows_max": 6000,
+        "portugal_resources_max": 12,
+        "portugal_procurement_rows_max": 6000,
+        "ted_results_per_query": 220,
+        "commoncrawl_pages_max": 420,
+        "commoncrawl_vendor_limit": 18
+      }
+    },
+    "exhaustive": {
+      "description": "Barrido mensual exhaustivo: long-tail, investor relations, product lifecycle, ecosistema completo, competidores pairwise, contratación, analistas públicos, sitemaps y señales históricas.",
+      "budgets": {
+        "query_limit_brave": 2400,
+        "query_limit_no_brave": 720,
+        "news_queries_max": 900,
+        "gdelt_queries_max": 700,
+        "arquivo_queries_max": 260,
+        "sitemap_pages_max": 6000,
+        "ecosystem_sitemap_pages_max": 4200,
+        "analyst_sitemap_pages_max": 800,
+        "ted_vendor_limit": 120,
+        "full_procurement": true,
+        "carryover_days": 1825,
+        "spain_procurement_months": 12,
+        "spain_procurement_rows_max": 12000,
+        "portugal_resources_max": 20,
+        "portugal_procurement_rows_max": 12000,
+        "ted_results_per_query": 250,
+        "commoncrawl_pages_max": 900,
+        "commoncrawl_vendor_limit": 36,
+        "sitemap_files_per_domain_max": 90
       }
     }
   },
@@ -354,7 +451,8 @@
       "ya no distribuye",
       "fim da distribuição",
       "deixa de distribuir"
-    ]
+    ],
+    "material_procurement_demand_delta": 15
   },
   "relationship_validation": {
     "verified_threshold": 82,
@@ -364,7 +462,7 @@
   },
   "history": {
     "light_snapshots_daily": 45,
-    "light_snapshots_deep": 24
+    "light_snapshots_deep": 60
   },
   "research_dimensions": [
     "channel",
@@ -394,6 +492,60 @@
     "verticals",
     "displacement",
     "tco-roi",
-    "country-white-space"
-  ]
+    "country-white-space",
+    "procurement-demand-by-technology",
+    "buyer-concentration",
+    "winner-integrator-density",
+    "public-sector-demand-index",
+    "shared-integrator-adjacency",
+    "shared-customer-adjacency",
+    "competitive-pair-evidence",
+    "evidence-conflict-detection"
+  ],
+  "query_mix": {
+    "strategic": 0.05,
+    "channel": 0.18,
+    "ecosystem": 0.14,
+    "customers": 0.14,
+    "competition": 0.2,
+    "analyst": 0.1,
+    "market": 0.14,
+    "other": 0.05
+  },
+  "capability_research": {
+    "enabled": true,
+    "official_domains": [
+      "westconcomstor.com",
+      "academy.westconcomstor.com"
+    ],
+    "programme_terms": [
+      "Tech Insights",
+      "3D Lab",
+      "Tech Xpert",
+      "Tech ConneX",
+      "Intelligent Demand",
+      "SkillBoost",
+      "Academy",
+      "Westcon Assist",
+      "Westcon Care",
+      "professional services",
+      "support services",
+      "staging",
+      "supply chain",
+      "FLEX",
+      "AWS Marketplace",
+      "lifecycle",
+      "GSCS"
+    ],
+    "country_terms": [
+      "Spain",
+      "España",
+      "Portugal",
+      "Iberia",
+      "EMEA"
+    ],
+    "revalidate_days": 30,
+    "max_vendor_capability_queries_weekly": 600,
+    "max_vendor_capability_queries_monthly": 1800
+  }
 }

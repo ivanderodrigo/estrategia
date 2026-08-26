@@ -1,10 +1,10 @@
-name: Inteligencia pública diaria
+name: Inteligencia exhaustiva mensual
 
 on:
   workflow_dispatch:
   schedule:
-    # GitHub Actions usa UTC. Minuto no redondo para reducir retrasos de cola.
-    - cron: "23 5 * * *"
+    # Primer sábado de cada mes: barrido long-tail e histórico.
+    - cron: "17 2 1-7 * 6"
 
 permissions:
   contents: write
@@ -16,7 +16,7 @@ concurrency:
 jobs:
   research:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 300
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,12 +28,12 @@ jobs:
           python-version: "3.12"
       - name: Dependencias
         run: pip install requests
-      - name: Investigación diaria
+      - name: Barrido exhaustivo mensual
         env:
-          RESEARCH_PROFILE: daily
+          RESEARCH_PROFILE: exhaustive
           BRAVE_SEARCH_API_KEY: ${{ secrets.BRAVE_SEARCH_API_KEY }}
           BASE_API_TOKEN: ${{ secrets.BASE_API_TOKEN }}
-        run: python scripts/research.py --profile=daily
+        run: python scripts/research.py --profile=exhaustive
       - name: Validar dataset antes de publicar
         run: python scripts/validate.py
       - name: Guardar actualización
@@ -41,6 +41,6 @@ jobs:
           git config user.name "westcon-strategy-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/research.latest.json data/research_status.json data/changes.latest.json data/history/
-          git diff --cached --quiet || git commit -m "chore: inteligencia pública diaria"
+          git diff --cached --quiet || git commit -m "chore: inteligencia exhaustiva mensual"
           git pull --rebase origin main
           git push origin HEAD:main

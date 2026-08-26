@@ -1,240 +1,456 @@
-# Westcon Iberia · Radar Estratégico Tecnológico v1.4
+# Westcon Iberia · Decision Intelligence v1.8
 
-**Deep Intelligence Edition · Motor de recomendación v4 · España + Portugal · Solo inteligencia pública**
+**España + Portugal · Solo inteligencia pública · GitHub Pages**
 
-Aplicación estática para GitHub Pages. La interfaz sigue siendo deliberadamente simple; el salto de esta versión está en lo que no se ve: acumulación de evidencia, más fuentes, búsqueda pairwise contra competidores, contratación pública, ecosistema de integradores/clientes, corroboración, detección de cambios y un motor ofensivo de recomendaciones.
+Aplicación estática para construir una estrategia tecnológica ejecutiva de Westcon Iberia con una regla de diseño: **hipersimple por fuera, extremadamente rigurosa por dentro**.
 
-La configuración de portfolio parte de la presentación FY27 facilitada y de las correcciones de alcance del proyecto. El motor de investigación no utiliza revenue, margen, pipeline, CRM, personas, objetivos ni otra información interna.
+La interfaz conserva la organización visual del material FY27 y permite llegar a una decisión en segundos. El motor de fondo investiga, normaliza, cruza y pondera fabricantes, mercados, competidores, mayoristas, integradores, clientes públicos, contratación, consultoras, M&A, roadmap, recurrencia, partner programs, servicios, logística, financiación y señales regulatorias.
 
-## Profundidad de investigación v4.2
+No utiliza revenue, margen, pipeline, CRM, objetivos, carga individual, personas ni otra información interna. El alcance es exclusivamente **información pública externa + portfolio/taxonomía derivados de la presentación FY27 facilitada**.
 
-La v4.2 amplía el subsuelo de datos sin añadir complejidad visual:
+## Qué cambia en v1.8
 
-- contratación pública europea mediante TED Search API;
-- contratación española mediante datasets oficiales PLACSP, con soporte XLSX y feeds técnicos Atom/ZIP;
-- contratación portuguesa mediante recursos públicos Portal BASE / IMPIC publicados en dados.gov.pt, con soporte JSON, CSV, XLSX y ZIP;
-- rastreo de sitemaps oficiales de fabricantes, mayoristas, integradores y consultoras;
-- Google News RSS, GDELT y Arquivo.pt como discovery complementario;
-- consultas vendor × país × mayorista × integrador × cliente × vertical × competidor;
-- comparativas pairwise para displacement, migración, TCO, casos y partners compartidos;
-- score de evidencia por autoridad, geografía, frescura, corroboración y directness;
-- grafo competitivo y matriz de ataque por fabricante/competidor;
-- priorización adaptativa de búsquedas: los gaps reciben más presupuesto en la siguiente ejecución;
-- control de calidad previo al commit automático: si el dataset falla, no se publica.
+### 1. Decision Intelligence, no receta genérica
 
-El motor mantiene Juniper Networks como `COMPETITOR_TRACKED`, no como fabricante activo de Westcon Iberia, y contempla TD SYNNEX España como presión pública de canal para Extreme Networks.
+El motor ya no recomienda automáticamente `Servicios + FLEX + 3D Labs`. Dispone de **47 palancas Westcon** y las puntúa contra el contexto concreto de cada fabricante. Una palanca solo aparece si supera su umbral de pertinencia.
 
-## Qué responde por fabricante
+Ejemplos de gates:
 
-En segundos:
+- **FLEX**: requiere encaje financiero, recurrencia/hardware y oportunidad suficiente;
+- **3D Lab / PoC**: requiere necesidad real de prueba técnica o displacement;
+- **Intelligent Demand / ABM**: se activa ante whitespace y necesidad de generación de demanda;
+- **stock / staging**: exige intensidad hardware y complejidad de despliegue;
+- **marketplace**: exige encaje cloud/SaaS o evidencia pública de marketplace;
+- **managed services**: exige necesidad operativa/soporte, no solo que el vendor sea de seguridad;
+- **lifecycle**: prioriza recurrencia, base instalada/referencias y expansión;
+- **Tech Xpert / enablement**: prioriza gaps de capacidad o especialización del ecosistema;
+- **GSCS / IoR / 3PL**: aparece cuando el patrón de proyecto exige escala multinacional o logística compleja.
 
-- **qué decisión tomar:** ACELERAR / CONSTRUIR / DEFENDER / OPTIMIZAR / INVESTIGAR;
-- qué mercado y tendencias lo impulsan;
-- cuáles son sus principales fabricantes competidores;
-- qué otros mayoristas aparecen demostrados en España y Portugal;
-- qué integradores/partners tienen capacidad pública demostrable;
-- qué clientes finales públicos y adjudicaciones existen;
-- qué dicen públicamente Gartner, IDC, Forrester, Omdia, Canalys, Dell'Oro, Synergy e ISG;
-- con qué vendors Westcon tiene sinergias y dónde existe overlap;
-- qué gaps competitivos parecen atacables;
-- **qué iniciativas Westcon utilizar** para atacar la competencia;
-- plan recomendado a 30, 90 y 180 días.
+Si ninguna acción de una función supera el umbral, el sistema muestra **“Sin acción prioritaria”** en lugar de consumir recursos por inercia.
 
-`Ver datos` abre el razonamiento completo sin recargar la vista ejecutiva.
+### 2. Recomendaciones por 11 perfiles de Westcon
 
-## Motor de recomendación v4
+Cada fabricante genera una tesis central y recomendaciones distintas para:
 
-El motor separa tres cosas:
+1. Solution Architects / Preventa;
+2. VSM — Vendor Success Manager;
+3. PSM — Partner Success Manager;
+4. Dirección VSM + Solution Architects;
+5. Dirección PSM;
+6. Country Manager;
+7. Marketing;
+8. Servicios / Soporte;
+9. Operaciones;
+10. Finanzas;
+11. Logística.
 
-1. **Oportunidad estratégica** — mercado, portfolio fit, recurrencia, diferenciación, sinergias, analistas, servicios, ecosistema, clientes e integradores.
-2. **Riesgo** — overlap, presión de canal, intensidad competitiva, concentración de partners/clientes, frescura, desequilibrio ES/PT y gaps de evidencia.
-3. **Potencial de ataque** — combina oportunidad, presión competitiva, whitespace, sinergias, servicios, integradores, clientes, solapes explotables y fiabilidad de los datos.
+Cada acción incluye:
 
-La recomendación no sale de una única suma. Usa gates condicionales y un modelo de incertidumbre: cuando faltan datos, el score se contrae hacia una posición neutral en lugar de fingir precisión.
+- score contextual;
+- motivos principales que la activan;
+- evidencia relacionada;
+- enlace a la fuente pública cuando existe;
+- referencia a la capacidad oficial Westcon aplicable.
 
-### Ataque competitivo
+### 3. Catálogo de palancas Westcon mucho más amplio
 
-Las recomendaciones convierten gaps en acciones con las iniciativas de Westcon:
+El motor modela, entre otras:
 
-- **BLUEPRINT** — benchmark, vendor linkage, upskill, ejecución, PoC, resell, implementación y lifecycle;
-- **3D Labs** — demo, validación, PoC alternativo y time-to-value;
-- **Tech Xpert** — preferencia técnica, comunidad y enablement;
-- **Tech Assessments** — discovery y evidencia de riesgo;
-- **FLEX** — OPEX, financiación y propuesta multivendor;
-- **Intelligent Demand** — ABM, intención y generación de demanda;
-- **Servicios Westcon** — diseño, staging, despliegue, educación, soporte y managed services;
-- **Lifecycle / ServiceView** — adopción, expansión, renovación y refresh;
-- **GSCS** — despliegue global y proyectos cross-border;
-- **Cloud Marketplaces** — recurrencia, private offers y route-to-market cloud.
+**Preventa y tecnología**
+- discovery y cualificación;
+- arquitectura, sizing y BOM;
+- RFI/RFP y defensa técnica;
+- PoC/PoV;
+- 3D Lab / Demo Lab / Tech Showcase;
+- Tech Assessments;
+- Tech Xpert / Tech ConneX;
+- SkillBoost / Academy / educación;
+- Tech Insights;
+- arquitecturas de referencia y playbooks multivendor.
 
-El motor no afirma que un competidor carece de una capacidad solo porque no encuentre evidencia. Lo expresa como **gap aparente / hipótesis a validar** y aumenta la investigación antes de convertirlo en una conclusión ejecutiva.
+**Vendor management / negocio**
+- joint business plan;
+- priorización de casos de uso;
+- especialización/certificación de partners;
+- displacement competitivo;
+- roadmap y executive alignment;
+- category plan y gobierno de overlap.
 
-## Investigación mucho más profunda
+**Partner Success**
+- recruitment y activación de partners;
+- segmentación por capacidad;
+- capability maps;
+- cross-sell multivendor;
+- new-logo motions;
+- lifecycle y expansión.
 
-### 1. Web / noticias / histórico
+**Marketing**
+- Intelligent Demand;
+- campañas conjuntas con fabricante;
+- ABM;
+- playbooks verticales;
+- Tech Insights, webinars y eventos.
 
-- Brave Search API, si existe `BRAVE_SEARCH_API_KEY`;
-- Google News RSS;
-- GDELT DOC 2.0 para noticias globales;
-- Arquivo.pt para histórico web y cambios de canal/partner, especialmente Portugal.
+**Servicios y soporte**
+- diseño profesional;
+- instalación, migración y upgrades;
+- health checks / assessments;
+- Westcon Care / Assist;
+- Managed Services;
+- Engineer-to-Site.
 
-### 2. Fuentes primarias
+**Operaciones, logística y supply chain**
+- planificación de stock y disponibilidad;
+- staging;
+- IoR / 3PL / logística avanzada;
+- reverse logistics;
+- GSCS;
+- PartnerCentral / lifecycle operations.
 
-El motor rastrea sitemaps y páginas de alto valor de:
+**Finanzas y consumo**
+- FLEX;
+- CAPEX → OPEX;
+- estructura de suscripción/deal;
+- cloud marketplaces / private offers.
 
-- fabricantes;
-- principales mayoristas;
-- integradores y consultoras;
-- páginas públicas de analistas.
+### 4. Tesis estratégicas por fabricante
 
-Busca partner locators, linecards, casos de cliente, premios, especializaciones, servicios, soporte, formación, marketplaces, referencias, noticias y páginas sectoriales.
+El motor clasifica el contexto en arquetipos como:
 
-### 3. Contratación pública
+- `SCALE PLATFORM`
+- `BUILD ECOSYSTEM`
+- `DEFEND CHANNEL`
+- `DISPLACE`
+- `CROSS-SELL`
+- `PUBLIC SECTOR`
+- `HARDWARE SCALE`
+- `RECURRING EXPANSION`
+- `GOVERN OVERLAP`
+- `INVESTIGATE`
 
-- **TED Search API** para España y Portugal;
-- **Plataforma de Contratación del Sector Público / Hacienda** mediante los feeds oficiales de datos abiertos;
-- **dados.gov.pt / Portal BASE / IMPIC** para contratos y anuncios portugueses.
+Dos vendors con un score parecido pueden recibir recomendaciones diferentes si difieren en canal, ecosistema, fiabilidad, recurrencia, hardware, M&A, demanda pública o presión competitiva.
 
-Estas fuentes permiten descubrir organismos compradores, integradores/adjudicatarios, tecnologías citadas, verticales y referencias reales incluso cuando no existe un caso de éxito comercial publicado.
+## Motor v8: 14 dimensiones + riesgo + incertidumbre
 
-### 4. Investigación competitiva pairwise
+El análisis combina, entre otras señales:
 
-Para cada fabricante se generan búsquedas directas frente a sus competidores, por ejemplo:
+- momentum del mercado;
+- portfolio fit;
+- recurrencia;
+- diferenciación;
+- sinergias;
+- señal pública de consultoras;
+- leverage de servicios;
+- fortaleza de ecosistema;
+- prueba de cliente;
+- capacidad de integradores;
+- cobertura España/Portugal;
+- demanda pública;
+- prueba competitiva;
+- confianza de evidencia.
 
-`Extreme ↔ Cisco · España · replacement / migration / TCO`
+A ello se suman variables derivadas como:
 
-`Extreme ↔ HPE Networking / Juniper · Portugal · displacement / case study`
+- momentum del fabricante;
+- intensidad hardware/cloud;
+- complejidad técnica;
+- necesidad de PoC;
+- encaje regulatorio;
+- marketplace fit;
+- finance fit;
+- deployment complexity;
+- support need;
+- managed-service fit;
+- stock need;
+- lifecycle fit;
+- demand-generation need;
+- partner-enablement need;
+- M&A disruption;
+- shared ecosystem;
+- diversidad vertical;
+- potencial de deal y opcionalidad estratégica.
 
-Esto alimenta battlecards, integradores compartidos, clientes con tecnologías rivales y tácticas de ataque.
+### Riesgo
 
-### 5. Ecosistema Iberia
+Se calcula aparte y contempla:
 
-Se investigan y ponderan:
+- overlap interno;
+- presión de otros mayoristas;
+- intensidad de fabricantes competidores;
+- concentración de integradores/clientes;
+- gaps de evidencia;
+- antigüedad;
+- desequilibrio ES/PT;
+- debilidad de ecosistema;
+- concentración de contratación;
+- falta de prueba competitiva.
 
-- integradores certificados;
-- Partner of the Year / premios oficiales;
-- MSSP y managed services;
-- especializaciones;
-- casos conjuntos vendor + integrador + cliente;
-- adjudicaciones públicas;
-- referencias finales por sector;
-- diversidad y concentración del ecosistema;
-- integradores compartidos entre vendors;
-- clientes con señales multivendor o de competencia.
+### Incertidumbre y estabilidad
 
-Un caso cliente o una adjudicación pesan más que una simple aparición en un directorio.
+No se muestra falsa precisión. Si la evidencia es pobre, el score se contrae hacia una posición neutral. Además, el motor ejecuta una prueba de sensibilidad/estabilidad: una decisión que cambia demasiado ante pequeñas perturbaciones se degrada a una postura más prudente.
 
-## Autoactualización
+## Evidencia a la vista
 
-No hay que actualizar los datos manualmente.
+Al seleccionar un fabricante se puede abrir `Ver datos` para visualizar:
 
-### Diaria
+- drivers y frenos;
+- scores;
+- mayoristas ES/PT;
+- integradores;
+- clientes públicos;
+- señales de Gartner / IDC / Forrester / Omdia / Canalys / Dell'Oro / Synergy / ISG;
+- contratación pública;
+- sinergias;
+- overlap;
+- evidencias concretas;
+- por qué se activa cada recomendación por perfil.
+
+La interfaz distingue siempre **hecho público**, **señal de mercado** e **inferencia estratégica propia**.
+
+## Investigación de fondo
+
+### Velocidad 1 · diaria
 
 `.github/workflows/research-daily.yml`
 
-Ejecuta una pasada ligera todos los días para detectar:
+Busca cambios rápidos:
 
-- nuevos mayoristas / cambios de distribución;
-- partners e integradores;
-- clientes y casos;
+- distribución;
+- nuevos partners/integradores;
+- clientes/casos;
 - M&A;
-- producto/plataforma;
-- noticias competitivas;
-- señales recientes de contratación.
+- producto;
+- partner program;
+- customer stories;
+- noticias de canal;
+- señales competitivas recientes.
 
-### Semanal profunda
+### Velocidad 2 · semanal profunda
 
 `.github/workflows/research-weekly.yml`
 
-Cada domingo realiza la pasada exhaustiva:
+Recalibra el landscape con:
 
-- hasta 1.200 queries si Brave está configurado;
-- hasta 360 sin Brave;
-- crawling de sitemaps de fabricantes, mayoristas e integradores;
-- analistas públicos;
+- búsqueda abierta;
+- webs y sitemaps oficiales;
+- canal e integradores;
+- customer stories;
+- consultoras;
 - TED;
-- PLACSP;
-- dados.gov.pt / BASE;
-- competencia pairwise;
-- recalibración de gaps y cobertura.
+- contratación ES/PT;
+- comparativas vendor-vendor;
+- displacement/migration;
+- datos de mercado;
+- gaps de cobertura.
 
-Los minutos del cron son deliberadamente no redondos para reducir colas de GitHub Actions.
+### Velocidad 3 · mensual exhaustiva
 
-## El sistema acumula conocimiento
+`.github/workflows/research-monthly.yml`
 
-`research.latest.json` ya no se reconstruye desde cero en cada ejecución. Conserva evidencia anterior dentro de una ventana temporal y la mezcla con nuevos hallazgos.
+Barrido long-tail e histórico con presupuestos mucho mayores. Añade especialmente:
 
-Además genera:
+- investor relations / annual reports / filings públicos;
+- ARR, subscription growth y software mix cuando son públicos;
+- R&D / roadmap / platformization;
+- end-of-sale/end-of-support;
+- partner tiers y especializaciones;
+- certified partners;
+- customer counts/references;
+- competitive wins/migrations;
+- MSSP programs;
+- marketplaces;
+- stock/staging/servicios/lifecycle;
+- Common Crawl como discovery + revalidación;
+- Arquivo.pt para histórico;
+- contratación pública extensa;
+- señales de cambio estructural.
 
-- `data/research_status.json` — salud del motor y cobertura;
-- `data/changes.latest.json` — nuevas relaciones y cambios materiales;
-- `data/history/snapshot-*.json` — histórico ligero para detectar evolución;
-- conflictos a validar cuando aparece evidencia contradictoria.
+El planificador no reparte búsquedas por igual: dedica más presupuesto a **gaps concretos** de un vendor/país/dimensión y mantiene fair-share para impedir que una sola marca absorba todo el esfuerzo.
 
-La siguiente ejecución da más presupuesto a vendors con baja cobertura. El objetivo es que el motor **busque más justo donde menos sabe**.
+## Fuentes utilizadas
 
-## Modelo de evidencia
+### Primarias
+- fabricantes;
+- Westcon/Comstor/Datatec públicos;
+- mayoristas;
+- integradores;
+- clientes;
+- investor relations;
+- reguladores/open data;
+- TED;
+- PLACSP / datos abiertos de contratación en España;
+- dados.gov.pt / Portal BASE / IMPIC en Portugal.
 
-Cada evidencia se puntúa por:
+### Analistas públicos
+- Gartner;
+- IDC;
+- Forrester;
+- Omdia;
+- Canalys;
+- Dell'Oro;
+- Synergy Research;
+- ISG;
+- KuppingerCole;
+- Everest Group;
+- GigaOm.
 
-- autoridad de la fuente;
+Solo se utiliza contenido públicamente accesible. **No se reconstruyen Magic Quadrants, Waves, MarketScapes ni contenidos licenciados.**
+
+### Discovery
+- Brave Search API (opcional);
+- Google News RSS;
+- GDELT;
+- Arquivo.pt;
+- Common Crawl.
+
+Discovery no equivale a evidencia ejecutiva: la señal se revalida y se vuelve a puntuar.
+
+## Modelo de calidad de evidencia
+
+Cada evidencia se pondera por:
+
+- autoridad;
 - frescura;
 - precisión geográfica;
-- relación directa con la afirmación;
-- corroboración independiente;
+- relación directa;
+- corroboración;
 - diversidad de fuentes;
 - especificidad.
 
-Jerarquía general:
-
-1. reguladores / contratación pública;
-2. fabricantes, mayoristas, integradores y clientes oficiales;
-3. Gartner / IDC / Forrester / Omdia / Canalys / Dell'Oro / Synergy / ISG públicos;
-4. prensa especializada;
-5. discovery, que nunca se convierte automáticamente en verdad ejecutiva.
-
-Reglas:
+Reglas esenciales:
 
 - EMEA ≠ Iberia ≠ España ≠ Portugal;
-- “no demostrado” ≠ “no existe”;
-- una página antigua no pesa igual que una señal actual;
-- partner directory ≠ capacidad probada;
-- caso cliente/adjudicación/premio > mención comercial;
-- no se reconstruyen contenidos licenciados de Gartner, Forrester o IDC.
+- ausencia pública ≠ inexistencia;
+- partner directory ≠ capacidad demostrada;
+- adjudicación / caso / premio / certificación pesa más que una mención;
+- contratación tecnológica sin vendor explícito = demanda de mercado, no cliente del vendor;
+- una relación de canal antigua no se mantiene activa indefinidamente;
+- las contradicciones se conservan como conflicto a validar.
 
-## Archivos principales
+## Contexto competitivo Iberia modelado
 
-- `data/base.json` — portfolio y solution plays;
-- `data/vendor_intelligence.json` — baseline estratégico;
-- `data/curated_evidence.json` — evidencia pública curada;
-- `data/ecosystem.json` — integradores y referencias públicas;
-- `data/research.latest.json` — grafo de inteligencia vivo;
-- `data/research_status.json` — salud y ejecución;
-- `data/changes.latest.json` — cambios detectados;
-- `config/deep_research.json` — perfiles y presupuestos de investigación;
-- `config/research_queries.json` — aliases, fuentes, queries, integradores, distribuidores y competitors;
-- `config/source_registry.json` — jerarquía de fuentes;
-- `config/strategy_engine.json` — motor de oportunidad, riesgo y ataque;
-- `scripts/research.py` — colector y normalizador.
+- **Juniper Networks** no se cuenta como vendor activo del scope Iberia; permanece monitorizado como competidor estratégico.
+- **Extreme Networks** incluye a **TD SYNNEX España** como presión de canal pública.
 
-## Brave Search es opcional
+El motor usa la competencia de canal para decidir **cómo diferenciar Westcon**, no para reducir automáticamente el atractivo del fabricante.
 
-La aplicación funciona y se autoactualiza sin Brave gracias a fuentes públicas sin clave. Si se configura `BRAVE_SEARCH_API_KEY`, la investigación semanal puede ampliar mucho la cobertura de web abierta y búsquedas `site:`.
+## Accesibilidad y simplicidad
 
-Nunca se expone la clave en GitHub Pages: solo la usa GitHub Actions como `repository secret`.
+La cabecera incorpora:
 
-## Actualizar desde VS Code
+- `A−` para reducir texto;
+- `A+` para aumentar texto;
+- `Ver datos` para abrir/cerrar profundidad;
+- `Informe / PPT` para exportación modular.
 
-Si ya tienes el repositorio `estrategia` conectado:
+El tamaño elegido se conserva en el navegador.
+
+## Informes y presentaciones modulares
+
+Al pulsar `Informe / PPT` se pueden seleccionar módulos:
+
+- ejecutivo;
+- portfolio;
+- recomendaciones por perfiles;
+- canal/competencia;
+- analistas;
+- ecosistema;
+- sinergias;
+- tendencias;
+- evidencias;
+- metodología.
+
+La aplicación genera:
+
+- **PDF ejecutivo**;
+- **PowerPoint editable**.
+
+No hay que exportarlo todo: se construye únicamente con los módulos marcados.
+
+## Arquitectura
+
+```text
+Internet / Open Data / Analyst Public Content
+                    ↓
+             GitHub Actions
+        diaria · semanal · mensual
+                    ↓
+ discover → normalize → dedupe → corroborate
+                    ↓
+          Evidence / Relationship Graph
+                    ↓
+  vendor ↔ market ↔ competitor ↔ distributor
+    ↕        ↕          ↕            ↕
+ analyst ↔ integrator ↔ customer ↔ procurement
+                    ↓
+          Decision Intelligence v6
+                    ↓
+         47 palancas × 11 perfiles
+                    ↓
+             GitHub Pages UI
+                    ↓
+          PDF / PowerPoint modular
+```
+
+## Calidad antes de auto-publicar
+
+Todos los workflows ejecutan `scripts/validate.py` antes de hacer commit. Se valida:
+
+- JSON;
+- alineación de vendors;
+- Juniper fuera de activos;
+- TD SYNNEX España en Extreme;
+- weights del motor;
+- taxonomía de contratación;
+- geografía;
+- URLs en evidencia fuerte;
+- Decision Intelligence config;
+- roles/acciones/gates;
+- workflows diaria/semanal/mensual;
+- ausencia de campos internos prohibidos.
+
+Si falla la validación, el dataset nuevo **no se publica**.
+
+## APIs / secretos
+
+Ninguno es obligatorio para visualizar la aplicación.
+
+### Opcional · Brave Search
+
+`BRAVE_SEARCH_API_KEY`
+
+Aumenta mucho el long-tail de búsqueda abierta.
+
+### Opcional · Portal BASE Portugal
+
+`BASE_API_TOKEN`
+
+Añade enriquecimiento REST a las fuentes portuguesas públicas ya procesadas.
+
+Las claves viven únicamente como GitHub Actions Secrets y nunca se exponen en GitHub Pages.
+
+## Instalación / actualización desde VS Code
+
+Si el repositorio `estrategia` ya está conectado a GitHub, sustituye los archivos conservando `.git/` y ejecuta:
 
 ```bash
 git add .
-git commit -m "Radar estrategico Westcon Iberia v1.4 Deep Intelligence"
+git commit -m "Westcon Iberia Decision Intelligence v1.8"
 git push
 ```
 
-GitHub Pages seguirá usando la misma URL y los dos workflows empezarán a mantener la inteligencia automáticamente.
+GitHub Pages conserva la URL. Los workflows periódicos seguirán actualizando los datasets.
 
-## Diseño
+## Principio de producto
 
-Se mantiene la estética ejecutiva de la presentación FY27: azul marino, blanco, Corbel/Arial y acentos naranja, magenta, turquesa y azul. **La complejidad pertenece al motor, no a la pantalla.**
+> **La complejidad pertenece al motor, no a la pantalla.**
+
+La meta de v1.8 es que Dirección pueda entender el qué en segundos, mientras cualquier recomendación pueda defenderse abriendo el porqué, los datos y las fuentes.
+
+## Motor de capacidades Westcon v1.8
+
+La recomendación ya no parte solo del mercado: primero valida **qué capacidades Westcon existen y cuáles aplican de verdad a cada fabricante**. El fichero `config/capability_intelligence.json` separa capacidad local, EMEA y global; distingue evidencia pública, documentación facilitada, confirmación del proyecto y simples hipótesis; y bloquea una recomendación cuando la compatibilidad no está demostrada.
+
+Se han incorporado como fuentes de referencia el documento **Tech Insights Lead to Opportunity**, que identifica 12 categorías, 10 vendors y 22 assessments, y el documento **3D Lab**, que identifica 17 technology vendors, 27+ use cases y más de 2.450 usuarios FY25. La matriz de 3D Lab solo habilita vendors que aparecen expresamente en esa cobertura; UiPath, por ejemplo, no queda habilitado para 3D Lab.
+
+El motor investiga periódicamente `fabricante × capacidad Westcon × país × evidencia`, además de mercado, analistas, canal, integradores, clientes, licitaciones y competencia. Una señal de discovery no puede promocionarse a capacidad verificada sin evidencia oficial o corroboración suficiente.

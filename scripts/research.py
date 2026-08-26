@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deep public-intelligence collector for Westcon Iberia Strategy Studio v1.4.
+"""Deep public-intelligence collector for Westcon Iberia Decision Intelligence v1.8.
 
 Design goals
 ------------
@@ -21,6 +21,7 @@ import datetime as dt
 import hashlib
 import html
 import io
+import gzip
 import json
 import os
 import pathlib
@@ -30,17 +31,11 @@ import time
 import urllib.parse
 import xml.etree.ElementTree as ET
 import zipfile
-import math
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.parse import urlparse
 
 import requests
-
-try:
-    import openpyxl
-except Exception:
-    openpyxl = None
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 BASE = json.loads((ROOT / "data/base.json").read_text(encoding="utf-8"))
@@ -50,6 +45,8 @@ DEEP = json.loads((ROOT / "config/deep_research.json").read_text(encoding="utf-8
 CURATED = json.loads((ROOT / "data/curated_evidence.json").read_text(encoding="utf-8"))
 ECOSYSTEM = json.loads((ROOT / "data/ecosystem.json").read_text(encoding="utf-8"))
 VENDOR_INTEL = json.loads((ROOT / "data/vendor_intelligence.json").read_text(encoding="utf-8"))
+PROC_TAX = json.loads((ROOT / "config/procurement_taxonomy.json").read_text(encoding="utf-8"))
+CAP = json.loads((ROOT / "config/capability_intelligence.json").read_text(encoding="utf-8"))
 OUT = ROOT / "data/research.latest.json"
 STATUS_OUT = ROOT / "data/research_status.json"
 CHANGES_OUT = ROOT / "data/changes.latest.json"
@@ -66,12 +63,14 @@ if PROFILE not in DEEP.get("profiles", {}):
 PROFILE_CFG = DEEP.get("profiles", {}).get(PROFILE, {})
 BUDGETS = dict(DEEP.get("budgets", {}))
 BUDGETS.update(PROFILE_CFG.get("budgets", {}))
-UA = f"Westcon-Iberia-Strategy-Studio/1.4 ({PROFILE}; public-intelligence-only)"
+UA = f"Westcon-Iberia-Decision-Intelligence/1.8 ({PROFILE}; public-market-and-capability-intelligence)"
 TIMEOUT = int(BUDGETS.get("request_timeout_seconds", 25))
 WORKERS = int(BUDGETS.get("http_workers", 12))
 
 SESSION = requests.Session()
 SESSION.headers.update({"User-Agent": UA, "Accept-Language": "es-ES,es;q=0.9,pt;q=0.8,en;q=0.7"})
+SITEMAP_CACHE: dict[str, list[str]] = {}
+PAGE_CACHE: dict[str, dict | None] = {}
 
 
 def clean(text: str) -> str:
@@ -179,7 +178,7 @@ def infer_evidence_type(text: str, source_tier_name: str = "") -> str:
     rules = [
         ("procurement", ["tender", "award", "contract", "licitacion", "adjudicacion", "contrato", "concurso publico", "winner"]),
         ("channel", ["distributor", "distribution", "mayorista", "distribuidor", "linecard", "partner locator", "authorized distributor"]),
-        ("analyst", ["gartner", "forrester", "idc", "omdia", "canalys", "dell oro", "synergy research", "magic quadrant", "wave", "marketscape"]),
+        ("analyst", ["gartner", "forrester", "idc", "omdia", "canalys", "dell oro", "synergy research", "kuppingercole", "everest group", "gigaom", "magic quadrant", "wave", "marketscape", "peak matrix", "leadership compass", "radar"]),
         ("m&a", ["acquisition", "acquire", "acquired", "merger", "adquisicion", "adquiere", "fusion", "investment"]),
         ("market", ["market share", "market size", "forecast", "spending", "growth", "cuota de mercado", "mercado", "prevision", "gasto"]),
         ("competitive", ["competitor", "alternative", "replacement", "migration", "versus", "competitive displacement", "tco", "roi"]),
@@ -278,40 +277,146 @@ def parse_sitemap(xml_text: str) -> tuple[list[str], list[str]]:
     return urls, maps
 
 
+def robots_sitemaps(domain: str) -> list[str]:
+    out=[]
+    for base in [f'https://{domain}',f'https://www.{domain}']:
+        try:
+            r=SESSION.get(base+'/robots.txt',timeout=min(TIMEOUT,18))
+            if r.status_code<400:
+                out.extend(re.findall(r'^\s*Sitemap:\s*(\S+)',r.text,flags=re.I|re.M))
+        except Exception:
+            pass
+    return list(dict.fromkeys(out))[:30]
+
+
+def _sitemap_text(resp: requests.Response, url: str) -> str:
+    content=resp.content
+    if url.lower().endswith('.gz') or resp.headers.get('content-type','').lower().find('gzip')>=0 or content[:2]==b'\x1f\x8b':
+        try: content=gzip.decompress(content)
+        except Exception: pass
+    for enc in ('utf-8','utf-8-sig','latin-1'):
+        try: return content.decode(enc)
+        except Exception: continue
+    return ''
+
+
 def discover_sitemap_urls(domain: str, max_urls: int = 120) -> list[str]:
-    seeds = [f"https://{domain}/sitemap.xml", f"https://www.{domain}/sitemap.xml", f"https://{domain}/sitemap_index.xml"]
-    seen_maps, urls = set(), []
-    queue = list(seeds)
-    while queue and len(urls) < max_urls:
-        sm = queue.pop(0)
+    cache_key=f'{domain}|{max_urls}'
+    if cache_key in SITEMAP_CACHE: return SITEMAP_CACHE[cache_key]
+    seeds=[f"https://{domain}/sitemap.xml",f"https://www.{domain}/sitemap.xml",f"https://{domain}/sitemap_index.xml",*robots_sitemaps(domain)]
+    seen_maps, urls=set(),[]; queue=list(dict.fromkeys(seeds))
+    while queue and len(urls)<max_urls*5:
+        sm=queue.pop(0)
         if sm in seen_maps: continue
         seen_maps.add(sm)
         try:
-            r = SESSION.get(sm, timeout=TIMEOUT); r.raise_for_status()
-            us, ms = parse_sitemap(r.text)
+            r=SESSION.get(sm,timeout=TIMEOUT); r.raise_for_status(); us,ms=parse_sitemap(_sitemap_text(r,sm))
         except Exception:
             continue
-        urls.extend(us)
-        queue.extend(ms[:12])
-        if len(seen_maps) > 18: break
-    high = CFG.get("high_value_official_paths", [])
+        urls.extend(us); queue.extend(ms[:40])
+        if len(seen_maps)>int(BUDGETS.get('sitemap_files_per_domain_max',55)): break
+    high=CFG.get("high_value_official_paths",[])
     def score(u: str) -> int:
-        lu = u.lower(); return sum(4 for x in high if x in lu) + sum(2 for x in ["spain","es-es","/es/","portugal","pt-pt","/pt/","iberia"] if x in lu)
-    return sorted(list(dict.fromkeys(urls)), key=lambda u: (-score(u), u))[:max_urls]
+        lu=u.lower()
+        return sum(5 for x in high if x in lu)+sum(3 for x in ["spain","es-es","/es/","portugal","pt-pt","/pt/","iberia"] if x in lu)+sum(2 for x in ['customer','case','partner','award','press','news','success','story','blog'] if x in lu)
+    result=sorted(list(dict.fromkeys(urls)),key=lambda u:(-score(u),u))[:max_urls]
+    SITEMAP_CACHE[cache_key]=result
+    return result
 
 
 def fetch_page_metadata(url: str) -> dict | None:
+    if url in PAGE_CACHE: return PAGE_CACHE[url]
     try:
-        r = SESSION.get(url, timeout=TIMEOUT, allow_redirects=True)
-        if r.status_code >= 400 or "text/html" not in r.headers.get("content-type", "text/html"): return None
-        text = r.text[:400000]
-        mt = re.search(r"<title[^>]*>(.*?)</title>", text, re.I | re.S)
-        md = re.search(r'<meta[^>]+(?:name|property)=["\'](?:description|og:description)["\'][^>]+content=["\'](.*?)["\']', text, re.I | re.S)
-        if not md:
-            md = re.search(r'<meta[^>]+content=["\'](.*?)["\'][^>]+(?:name|property)=["\'](?:description|og:description)["\']', text, re.I | re.S)
-        return {"title": clean(mt.group(1) if mt else url.rsplit("/",1)[-1]), "snippet": clean(md.group(1) if md else ""), "url": r.url, "published": "", "engine": "official-sitemap"}
+        r=SESSION.get(url,timeout=TIMEOUT,allow_redirects=True)
+        if r.status_code>=400 or "text/html" not in r.headers.get("content-type","text/html"): PAGE_CACHE[url]=None; return None
+        text=r.text[:650000]
+        mt=re.search(r"<title[^>]*>(.*?)</title>",text,re.I|re.S)
+        md=re.search(r'<meta[^>]+(?:name|property)=["\'](?:description|og:description)["\'][^>]+content=["\'](.*?)["\']',text,re.I|re.S)
+        if not md: md=re.search(r'<meta[^>]+content=["\'](.*?)["\'][^>]+(?:name|property)=["\'](?:description|og:description)["\']',text,re.I|re.S)
+        canonical=re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\'](.*?)["\']',text,re.I|re.S)
+        if not canonical: canonical=re.search(r'<link[^>]+href=["\'](.*?)["\'][^>]+rel=["\']canonical["\']',text,re.I|re.S)
+        published=''
+        for pat in [r'<meta[^>]+(?:property|name)=["\'](?:article:published_time|datePublished|date|publishdate)["\'][^>]+content=["\'](.*?)["\']',r'"datePublished"\s*:\s*"([^"]+)"',r'"dateModified"\s*:\s*"([^"]+)"']:
+            m=re.search(pat,text,re.I|re.S)
+            if m: published=clean(m.group(1)); break
+        body=clean(text)
+        desc=clean(md.group(1) if md else '')
+        snippet=desc or body[:1000]
+        row={"title":clean(mt.group(1) if mt else url.rsplit("/",1)[-1]),"snippet":snippet[:1600],"text":body[:18000],"url":clean(canonical.group(1) if canonical else r.url),"published":published,"engine":"official-sitemap"}
+        PAGE_CACHE[url]=row; return row
     except Exception:
-        return None
+        PAGE_CACHE[url]=None; return None
+
+
+
+COMMONCRAWL_INDEX_CACHE: str | None = None
+
+
+def latest_commoncrawl_index() -> str | None:
+    global COMMONCRAWL_INDEX_CACHE
+    if COMMONCRAWL_INDEX_CACHE is not None: return COMMONCRAWL_INDEX_CACHE or None
+    try:
+        r=SESSION.get('https://index.commoncrawl.org/collinfo.json',timeout=min(TIMEOUT,20)); r.raise_for_status(); data=r.json()
+        COMMONCRAWL_INDEX_CACHE=(data[0].get('cdx-api') or '').strip() if data else ''
+    except Exception:
+        COMMONCRAWL_INDEX_CACHE=''
+    return COMMONCRAWL_INDEX_CACHE or None
+
+
+def commoncrawl_domain_urls(domain: str, max_urls: int = 30) -> list[str]:
+    """Use Common Crawl only as URL discovery. Any live page is re-fetched and rescored normally."""
+    endpoint=latest_commoncrawl_index()
+    if not endpoint or max_urls<=0: return []
+    params={'url':f'{domain}/*','output':'json','filter':['status:200','mime:text/html'],'collapse':'urlkey'}
+    high=[x.lower() for x in CFG.get('high_value_official_paths',[])]+['partner','customer','case','success','award','distributor','channel','reference','press','news','story']
+    found=[]
+    try:
+        with SESSION.get(endpoint,params=params,timeout=max(TIMEOUT,35),stream=True) as r:
+            r.raise_for_status()
+            scanned=0
+            for line in r.iter_lines(decode_unicode=True):
+                if not line: continue
+                scanned+=1
+                if scanned>4000: break
+                try: obj=json.loads(line)
+                except Exception: continue
+                u=clean(obj.get('url'))
+                if not u or host(u)!=domain and not host(u).endswith('.'+domain): continue
+                lu=u.lower()
+                if any(k in lu for k in high): found.append(u)
+                if len(found)>=max_urls*3: break
+    except Exception:
+        return []
+    def score(u):
+        lu=u.lower(); return sum(4 for k in high if k in lu)+sum(3 for k in ['spain','portugal','iberia','/es/','/pt/'] if k in lu)
+    return sorted(dict.fromkeys(found),key=lambda u:(-score(u),u))[:max_urls]
+
+
+def commoncrawl_official_evidence(vendors: list[str], budget: int) -> list[dict]:
+    if budget<=0: return []
+    domains=CFG.get('vendor_domains',{}); cov=previous_gap_priority()
+    ranked=sorted([v for v in vendors if domains.get(v)],key=lambda v:(cov.get(v,0),v))
+    vendor_limit=max(1,min(len(ranked),int(BUDGETS.get('commoncrawl_vendor_limit',12))))
+    ranked=ranked[:vendor_limit]; per=max(5,min(30,budget//max(1,len(ranked))))
+    targets=[]
+    with ThreadPoolExecutor(max_workers=min(6,WORKERS)) as ex:
+        futs={ex.submit(commoncrawl_domain_urls,domains[v],per):v for v in ranked}
+        for fut in as_completed(futs):
+            v=futs[fut]
+            try: urls=fut.result()
+            except Exception: urls=[]
+            for u in urls: targets.append((v,u))
+    targets=targets[:budget]; out=[]
+    with ThreadPoolExecutor(max_workers=min(WORKERS,10)) as ex:
+        futs={ex.submit(fetch_page_metadata,u):(v,u) for v,u in targets}
+        for fut in as_completed(futs):
+            v,u=futs[fut]
+            try: row=fut.result()
+            except Exception: row=None
+            if not row: continue
+            row.update({'vendor':v,'country':infer_country_from_url(row.get('url','')) or 'ALL','kind':'official-commoncrawl-discovery','engine':'commoncrawl-url-discovery'})
+            out.append(row)
+    return out
 
 
 def official_sitemap_evidence(vendors: list[str]) -> list[dict]:
@@ -371,7 +476,7 @@ def official_entity_sitemap_evidence(entity_domains: dict, entity_kind: str, bud
             try: row=fut.result()
             except Exception: row=None
             if not row: continue
-            text=norm(f"{row.get('title','')} {row.get('snippet','')} {row.get('url','')}")
+            text=norm(f"{row.get('title','')} {row.get('snippet','')} {row.get('text','')} {row.get('url','')}")
             matches=[]
             for vendor,terms in vendor_terms:
                 if any(t and t in text for t in terms[:5]): matches.append(vendor)
@@ -404,7 +509,7 @@ def official_analyst_sitemap_evidence(budget: int) -> list[dict]:
             try: row=fut.result()
             except Exception: row=None
             if not row: continue
-            text=norm(f"{row.get('title','')} {row.get('snippet','')} {row.get('url','')}")
+            text=norm(f"{row.get('title','')} {row.get('snippet','')} {row.get('text','')} {row.get('url','')}")
             if not any(norm(k) in text for k in keywords): continue
             matched=[v for v,terms in vendor_terms if any(t and t in text for t in terms)]
             if matched:
@@ -441,7 +546,30 @@ def _relset(rows: list[dict], kind: str) -> set[tuple]:
     return {(r.get('vendor'),r.get('country'),norm(r.get('name'))) for r in rows if r.get('vendor') and r.get('country') and r.get('name') and int(r.get('confidence',0))>=70}
 
 
-def compute_changes(prev: dict, channels, integrators, customers, coverage) -> list[dict]:
+def procurement_change_events(prev: dict, current: list[dict]) -> list[dict]:
+    """Detect material changes in public-procurement demand without claiming market share."""
+    old={(x.get('country'),x.get('technologyId')):x for x in prev.get('procurementMarket',[]) if x.get('country') and x.get('technologyId')}
+    cur={(x.get('country'),x.get('technologyId')):x for x in current if x.get('country') and x.get('technologyId')}
+    out=[]
+    delta_min=int(DEEP.get('change_detection',{}).get('material_procurement_demand_delta',15))
+    for key,row in cur.items():
+        before=old.get(key)
+        if not before: continue
+        a=int(before.get('demandIndex',0)); b=int(row.get('demandIndex',0))
+        if abs(b-a)>=delta_min:
+            out.append({'type':'public-procurement-demand','country':row.get('country'),'technology':row.get('technology'),'technologyId':row.get('technologyId'),'title':'Cambio material en señal de demanda pública','from':a,'to':b,'knownValueEUR':row.get('knownValueEUR',0),'detectedAt':NOW.isoformat()})
+        old_buy={norm(x.get('name')) for x in before.get('topBuyers',[])[:8] if x.get('name')}
+        for x in row.get('topBuyers',[])[:5]:
+            if x.get('name') and norm(x['name']) not in old_buy:
+                out.append({'type':'public-procurement-buyer','country':row.get('country'),'technology':row.get('technology'),'technologyId':row.get('technologyId'),'title':'Nuevo comprador público relevante detectado','entity':x.get('name'),'signals':x.get('signals'),'detectedAt':NOW.isoformat()})
+        old_win={norm(x.get('name')) for x in before.get('topWinners',[])[:8] if x.get('name')}
+        for x in row.get('topWinners',[])[:5]:
+            if x.get('name') and norm(x['name']) not in old_win:
+                out.append({'type':'public-procurement-winner','country':row.get('country'),'technology':row.get('technology'),'technologyId':row.get('technologyId'),'title':'Nuevo adjudicatario / integrador relevante detectado','entity':x.get('name'),'signals':x.get('signals'),'detectedAt':NOW.isoformat()})
+    return out[:100]
+
+
+def compute_changes(prev: dict, channels, integrators, customers, coverage, procurement_market=None, ended_channels=None) -> list[dict]:
     changes=[]
     for kind,label,newrows,oldrows in [
         ('channel','Nuevo mayorista / señal de canal',channels,prev.get('channelSignals',[])),
@@ -452,25 +580,61 @@ def compute_changes(prev: dict, channels, integrators, customers, coverage) -> l
             vendor,country,name=key
             row=next((r for r in newrows if r.get('vendor')==vendor and r.get('country')==country and norm(r.get('distributor' if kind=='channel' else 'name'))==name),{})
             changes.append({'type':kind,'vendor':vendor,'country':country,'title':label,'entity':row.get('distributor') if kind=='channel' else row.get('name'),'confidence':row.get('confidence'),'url':row.get('url'),'detectedAt':NOW.isoformat()})
+        # Detect relationships that disappeared from the active graph. This is a signal, not proof of termination.
+        if kind=='channel':
+            for key in sorted(old-new)[:80]:
+                vendor,country,name=key
+                changes.append({'type':'channel-missing','vendor':vendor,'country':country,'title':'Relación de canal ya no confirmada en el dataset activo','entity':name,'status':'needs-validation','detectedAt':NOW.isoformat()})
+    for row in ended_channels or []:
+        changes.append({'type':'channel-ended','vendor':row.get('vendor'),'country':row.get('country'),'title':'Señal pública de fin de distribución','entity':row.get('distributor'),'confidence':row.get('confidence'),'url':row.get('url'),'evidenceId':row.get('evidenceId'),'detectedAt':NOW.isoformat()})
     prev_cov={r.get('vendor'):int(r.get('coverage',0)) for r in prev.get('coverage',[]) if r.get('vendor')}
     delta_min=int(DEEP.get('change_detection',{}).get('material_coverage_delta',8))
     for r in coverage:
         if r['vendor'] in prev_cov and abs(r['coverage']-prev_cov[r['vendor']])>=delta_min:
             changes.append({'type':'coverage','vendor':r['vendor'],'title':'Cambio material de cobertura de inteligencia','from':prev_cov[r['vendor']],'to':r['coverage'],'detectedAt':NOW.isoformat()})
-    return changes[:250]
+    if procurement_market is not None:
+        changes.extend(procurement_change_events(prev,procurement_market))
+    return changes[:350]
 
 
 def detect_conflicts(evidence: list[dict], channels: list[dict]) -> list[dict]:
     terms=[norm(x) for x in DEEP.get('change_detection',{}).get('conflict_terms',[])]
+    channel_words=[norm(x) for x in ['distribution','distributor','channel','mayorista','distribuidor','distribución','distribuicao','distribuição']]
     out=[]
     for e in evidence:
-        text=norm(f"{e.get('title','')} {e.get('snippet','')}")
+        text=norm(f"{e.get('title','')} {e.get('snippet','')} {e.get('text','')}")
         if not any(t and t in text for t in terms): continue
+        if not any(w in text for w in channel_words): continue
         vendor=e.get('vendor')
         if not vendor: continue
         impacted=[c for c in channels if c.get('vendor')==vendor and (not e.get('country') or c.get('country')==e.get('country'))]
-        out.append({'vendor':vendor,'country':e.get('country'),'title':e.get('title'),'url':e.get('url'),'evidenceId':e.get('id'),'possibleConflictWith':[f"{x.get('country')}:{x.get('distributor')}" for x in impacted[:8]],'status':'needs-validation'})
-    return out[:120]
+        mentioned=[x for x in impacted if norm(x.get('distributor')) and norm(x.get('distributor')) in text]
+        out.append({'vendor':vendor,'country':e.get('country'),'title':e.get('title'),'url':e.get('url'),'evidenceId':e.get('id'),'confidence':e.get('confidence'),'sourceTier':e.get('sourceTier'),'possibleConflictWith':[f"{x.get('country')}:{x.get('distributor')}" for x in impacted[:8]],'explicitDistributorMatches':[f"{x.get('country')}:{x.get('distributor')}" for x in mentioned[:8]],'status':'candidate-channel-termination' if mentioned else 'needs-validation'})
+    return out[:160]
+
+
+def resolve_channel_lifecycle(channels: list[dict], conflicts: list[dict]) -> tuple[list[dict],list[dict]]:
+    """Remove only strongly evidenced, explicitly named ended relations from the ACTIVE graph; keep them in history."""
+    ended=[]; ended_keys=set()
+    for c in conflicts:
+        if c.get('status')!='candidate-channel-termination': continue
+        conf=int(c.get('confidence') or 0); tier=c.get('sourceTier')
+        strong=(tier in {'official-company','regulator','public-open-data'} and conf>=72) or conf>=86
+        if not strong: continue
+        for token in c.get('explicitDistributorMatches',[]):
+            try: country,dist=token.split(':',1)
+            except ValueError: continue
+            key=(c.get('vendor'),country,norm(dist)); ended_keys.add(key)
+            row=next((x for x in channels if (x.get('vendor'),x.get('country'),norm(x.get('distributor')))==key),None)
+            if row:
+                h=dict(row); h.update({'status':'ended-public-signal','active':False,'endedDetectedAt':NOW.isoformat(),'evidenceId':c.get('evidenceId'),'url':c.get('url'),'confidence':max(int(row.get('confidence',0)),conf)})
+                ended.append(h)
+    active=[]
+    for row in channels:
+        key=(row.get('vendor'),row.get('country'),norm(row.get('distributor')))
+        if key in ended_keys: continue
+        x=dict(row); x['active']=True; x.setdefault('status','public-signal'); active.append(x)
+    return active,ended
 
 
 def write_light_history(payload: dict, changes: list[dict]) -> None:
@@ -482,55 +646,6 @@ def write_light_history(payload: dict, changes: list[dict]) -> None:
     for old in files[keep:]:
         try: old.unlink()
         except Exception: pass
-
-
-def parse_date_any(value: str):
-    raw=clean(value)
-    if not raw: return None
-    for fmt in ("%Y-%m-%d","%d/%m/%Y","%d-%m-%Y","%Y/%m/%d","%a, %d %b %Y %H:%M:%S %Z"):
-        try: return dt.datetime.strptime(raw[:32],fmt).date()
-        except Exception: pass
-    m=re.search(r"(20\\d{2})[-/](\\d{1,2})[-/](\\d{1,2})",raw)
-    if m:
-        try: return dt.date(int(m.group(1)),int(m.group(2)),int(m.group(3)))
-        except Exception: pass
-    return None
-
-
-def freshness_bonus(value: str) -> int:
-    d=parse_date_any(value)
-    if not d: return 0
-    age=max(0,(NOW.date()-d).days)
-    if age<=90: return 6
-    if age<=365: return 4
-    if age<=730: return 1
-    if age>1460: return -7
-    if age>1095: return -4
-    return -1
-
-
-def extract_named_field(flat: dict[str,str], needles: list[str]) -> str:
-    scored=[]
-    for k,v in flat.items():
-        nk=norm(k)
-        for i,n in enumerate(needles):
-            if norm(n) in nk and clean(v): scored.append((100-i*4-len(k)*0.001,clean(v)))
-    return max(scored,default=(0,''))[1]
-
-
-def match_vendors_text(text: str, vendors: list[str]) -> list[str]:
-    nt=norm(text)
-    out=[]
-    for v in vendors:
-        aliases=[norm(a) for a in aliases_for(v)]
-        # Require explicit vendor/platform token; ignore very short ambiguous aliases.
-        if any(a and len(a)>=4 and re.search(rf"(?:^|\\s){re.escape(a)}(?:$|\\s)",f" {nt} ") for a in aliases): out.append(v)
-    return out
-
-
-def match_integrators_text(text: str) -> list[str]:
-    nt=norm(text)
-    return [x for x in CFG.get('known_integrators',[]) if len(norm(x))>=3 and norm(x) in nt]
 
 # ----------------------------- Procurement intelligence -----------------------------
 
@@ -569,175 +684,335 @@ def ted_search(vendor: str, country: str) -> list[dict]:
     return out
 
 
-def parse_atom_entries(xml_bytes: bytes) -> list[str]:
-    try: root = ET.fromstring(xml_bytes)
+def lname(tag: str) -> str:
+    return str(tag or '').split('}', 1)[-1]
+
+
+def texts_at(node: ET.Element, path: str) -> list[str]:
+    vals=[]
+    try:
+        for x in node.findall(path):
+            t=clean(x.text)
+            if t: vals.append(t)
+    except Exception:
+        pass
+    return vals
+
+
+def first_at(node: ET.Element, paths: list[str], default: str = '') -> str:
+    for path in paths:
+        vals=texts_at(node,path)
+        if vals: return vals[0]
+    return default
+
+
+def parse_number(value) -> float | None:
+    if value is None: return None
+    s=clean(value).replace('\xa0',' ').replace('€','').replace('$','').strip()
+    if not s: return None
+    # Handle common Iberian thousands/decimal conventions conservatively.
+    s=re.sub(r'[^0-9,.-]','',s)
+    if not s: return None
+    if ',' in s and '.' in s:
+        if s.rfind(',') > s.rfind('.'):
+            s=s.replace('.','').replace(',','.')
+        else:
+            s=s.replace(',','')
+    elif ',' in s:
+        parts=s.split(',')
+        s=''.join(parts[:-1])+'.'+parts[-1] if len(parts[-1]) in {1,2} else ''.join(parts)
+    try: return float(s)
+    except Exception: return None
+
+
+def clean_entity_name(value: str) -> str:
+    s=clean(value)
+    # Portal BASE often prefixes Portuguese NIF: "123456789 - Empresa".
+    s=re.sub(r'^\s*\d{8,10}\s*[-–:]\s*','',s)
+    return s[:240]
+
+
+def classify_procurement(cpv_values: list[str], text: str) -> list[dict]:
+    cpvs=[re.sub(r'\D','',str(x or '')) for x in cpv_values if x]
+    nt=norm(text)
+    matches=[]
+    for bucket in PROC_TAX.get('technologyBuckets',[]):
+        cpv_hit=any(any(c.startswith(str(prefix)) for prefix in bucket.get('cpvPrefixes',[])) for c in cpvs)
+        cpv_only_hit=any(any(c.startswith(str(prefix)) for prefix in bucket.get('cpvOnlyPrefixes',[])) for c in cpvs)
+        kw_hits=[k for k in bucket.get('keywords',[]) if norm(k) and norm(k) in nt]
+        if kw_hits or cpv_only_hit:
+            confidence=94 if cpv_hit and kw_hits else 82 if cpv_only_hit else min(78,55+len(kw_hits)*7)
+            matches.append({'id':bucket['id'],'name':bucket['name'],'themeIds':bucket.get('themeIds',[]),'confidence':confidence,'cpvHit':cpv_hit,'keywordHits':kw_hits[:6]})
+    return sorted(matches,key=lambda x:(-x['confidence'],x['name']))[:5]
+
+
+def infer_procurement_sector(buyer: str, text: str) -> str:
+    nt=norm(f'{buyer} {text}')
+    for rule in PROC_TAX.get('sectorRules',[]):
+        if any(norm(k) in nt for k in rule.get('keywords',[])):
+            return rule['sector']
+    return 'Sector público'
+
+
+def parse_atom_entries(xml_bytes: bytes) -> list[ET.Element]:
+    try: root=ET.fromstring(xml_bytes)
     except Exception: return []
+    return list(root.findall('.//{*}entry'))
+
+
+def parse_placsp_entry(entry: ET.Element, source_url: str, country: str='ES') -> dict:
+    title=first_at(entry,['./{*}title','.//{*}ProcurementProject/{*}Name','.//{*}ProcurementProject/{*}Description'],'PLACSP procurement signal')
+    entry_id=first_at(entry,['./{*}id'])
+    link=''
+    for x in entry.findall('./{*}link'):
+        href=x.attrib.get('href') or x.attrib.get('ref')
+        if href and ('licit' in href.lower() or not link): link=href
+    url=link or entry_id or source_url
+    published=first_at(entry,['./{*}updated','./{*}published','.//{*}IssueDate','.//{*}AwardDate'])
+    expediente=first_at(entry,['.//{*}ContractFolderID','.//{*}ID'])
+    status=first_at(entry,['.//{*}ContractFolderStatusCode','.//{*}ResultCode'])
+    buyer=first_at(entry,[
+        './/{*}ContractingParty/{*}Party/{*}PartyName/{*}Name',
+        './/{*}ContractingParty/{*}PartyName/{*}Name',
+        './/{*}ContractingParty//{*}PartyName/{*}Name'
+    ])
+    obj=first_at(entry,['.//{*}ProcurementProject/{*}Name','.//{*}ProcurementProject/{*}Description'],title)
+    desc=' '.join(texts_at(entry,'.//{*}ProcurementProject/{*}Description')[:3])
+    cpvs=texts_at(entry,'.//{*}RequiredCommodityClassification/{*}ItemClassificationCode')
+    if not cpvs: cpvs=texts_at(entry,'.//{*}ItemClassificationCode')
+    estimated=None; currency='EUR'
+    for path in ['.//{*}EstimatedOverallContractAmount','.//{*}BudgetAmount/{*}TaxExclusiveAmount','.//{*}BudgetAmount/{*}TotalAmount']:
+        nodes=entry.findall(path)
+        if nodes:
+            estimated=parse_number(nodes[0].text); currency=nodes[0].attrib.get('currencyID','EUR'); break
+    winners=[]; awarded=[]; award_dates=[]
+    for tr in entry.findall('.//{*}TenderResult'):
+        names=texts_at(tr,'.//{*}WinningParty/{*}PartyName/{*}Name')
+        if not names: names=texts_at(tr,'.//{*}WinningParty//{*}Name')
+        for n in names:
+            cn=clean_entity_name(n)
+            if cn and cn not in winners: winners.append(cn)
+        award_dates.extend(texts_at(tr,'.//{*}AwardDate'))
+        for path in ['.//{*}AwardedTenderedProject/{*}LegalMonetaryTotal/{*}TaxExclusiveAmount','.//{*}AwardedTenderedProject/{*}LegalMonetaryTotal/{*}PayableAmount']:
+            for an in tr.findall(path):
+                val=parse_number(an.text)
+                if val is not None: awarded.append((val,an.attrib.get('currencyID','EUR')))
+    awarded_value=max((x[0] for x in awarded),default=None)
+    if awarded: currency=awarded[0][1] or currency
+    all_text=clean(' '.join(entry.itertext()))
+    tech=classify_procurement(cpvs,f'{title} {obj} {desc} {all_text[:8000]}')
+    sector=infer_procurement_sector(buyer,f'{title} {obj} {desc}')
+    return {'title':title,'url':url,'snippet':clean(f'{obj}. {desc}')[:2200],'published':published,'engine':'placsp-open-data','country':country,'buyer':clean_entity_name(buyer),'winners':winners,'winner':winners[0] if winners else '', 'procurement':True,'contractId':expediente,'status':status,'cpv':cpvs[:12],'estimatedValue':estimated,'awardedValue':awarded_value,'currency':currency,'awardDate':award_dates[0] if award_dates else '', 'technologyMatches':tech,'sector':sector,'object':obj}
+
+
+def month_sequence(months_back: int) -> list[tuple[int,int]]:
+    y,m=NOW.year,NOW.month; out=[]
+    for _ in range(max(1,months_back)):
+        out.append((y,m)); m-=1
+        if m==0: m=12; y-=1
+    return out
+
+
+def spanish_procurement_urls() -> list[tuple[str,str]]:
+    cfg=DEEP.get('public_procurement',{}).get('spain',{})
+    months=int(BUDGETS.get('spain_procurement_months',1 if PROFILE=='daily' else 6))
     rows=[]
-    for entry in root.findall(".//{*}entry"):
-        rows.append(clean(ET.tostring(entry, encoding="unicode")))
+    for y,m in month_sequence(months):
+        ym=f'{y}{m:02d}'
+        rows.append(('sector-publico',cfg.get('monthly_pattern','https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3_{yyyymm}.zip').format(yyyymm=ym)))
+        rows.append(('agregadas',cfg.get('aggregation_monthly_pattern','https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_1044/PlataformasAgregadasSinMenores_{yyyymm}.zip').format(yyyymm=ym)))
     return rows
 
 
-def discover_official_links(page_url: str, extensions=(".xlsx",".zip",".csv")) -> list[str]:
-    try:
-        r=SESSION.get(page_url,timeout=TIMEOUT); r.raise_for_status(); text=r.text
-    except Exception:
-        return []
-    hrefs=re.findall(r'href=["\\\']([^"\\\']+)["\\\']',text,flags=re.I)
-    out=[]
-    for h in hrefs:
-        u=urllib.parse.urljoin(r.url,h.replace('&amp;','&'))
-        path=urlparse(u).path.lower()
-        if any(ext in path for ext in extensions): out.append(u)
-    return list(dict.fromkeys(out))
-
-
-def xlsx_procurement_scan(content: bytes, vendors: list[str], country: str, source_url: str, engine: str) -> list[dict]:
-    if openpyxl is None: return []
-    try:
-        wb=openpyxl.load_workbook(io.BytesIO(content),read_only=True,data_only=True)
-    except Exception:
-        return []
-    out=[]
-    for ws in wb.worksheets[:6]:
-        rows=ws.iter_rows(values_only=True)
-        try: header=[clean(x) for x in next(rows)]
-        except StopIteration: continue
-        nh=[norm(x) for x in header]
-        def idx(words):
-            for i,h in enumerate(nh):
-                if any(norm(w) in h for w in words): return i
-            return None
-        i_title=idx(['objeto','titulo','title','descricao','descripción','denominacion'])
-        i_buyer=idx(['organo de contratacion','entidad adjudicadora','adjudicante','buyer','entidade adjudicante'])
-        i_winner=idx(['adjudicatario','contratista','winner','fornecedor','cocontratante'])
-        i_date=idx(['fecha adjudicacion','fecha publicacion','date','data publicacao','data celebracao'])
-        i_url=idx(['url','enlace','link','uri'])
-        for ridx,row in enumerate(rows):
-            if ridx>350000: break
-            vals=[clean(x) for x in row]
-            blob=' | '.join(vals)
-            matched=match_vendors_text(blob,vendors)
-            if not matched: continue
-            ints=match_integrators_text(blob)
-            title=vals[i_title] if i_title is not None and i_title<len(vals) else 'Contratación pública'
-            buyer=vals[i_buyer] if i_buyer is not None and i_buyer<len(vals) else ''
-            winner=vals[i_winner] if i_winner is not None and i_winner<len(vals) else (ints[0] if ints else '')
-            date=vals[i_date] if i_date is not None and i_date<len(vals) else ''
-            url=vals[i_url] if i_url is not None and i_url<len(vals) and vals[i_url].startswith('http') else source_url
-            for vendor in matched:
-                out.append({'title':title or 'Contratación pública','url':url,'snippet':clean(blob[:2200]),'published':date,'engine':engine,'vendor':vendor,'country':country,'procurement':True,'winner':winner,'buyer':buyer,'integrators':ints})
-                if len(out)>=2200: return out
-    return out
-
-
 def official_spain_procurement_rows(vendors: list[str]) -> list[dict]:
-    """Use current official PLACSP open data, preferring XLSX and then technical Atom ZIP feeds."""
-    year=NOW.year
-    catalog=DEEP.get('public_procurement',{}).get('spain',{}).get('catalog_page')
-    links=discover_official_links(catalog,(".xlsx",".zip"))
-    # Current/updated files first; avoid archives unrelated to current intelligence.
-    links.sort(key=lambda u:(str(year) in u, 'xlsx' in u.lower(), 'licit' in norm(u)),reverse=True)
-    out=[]
-    for url in links[:6]:
+    """Parse recent official PLACSP and aggregated-platform Atom packages structurally.
+
+    We retain both vendor-specific evidence and technology-market demand signals. A
+    technology match without a vendor mention is not attributed to any vendor.
+    """
+    vendor_terms={v:[norm(a) for a in aliases_for(v) if len(norm(a))>=3] for v in vendors}
+    out=[]; max_rows=int(BUDGETS.get('spain_procurement_rows_max',5000))
+    for source_kind,url in spanish_procurement_urls():
         try:
-            r=SESSION.get(url,timeout=70); r.raise_for_status(); content=r.content
-            if len(content)>140_000_000: continue
-        except Exception: continue
-        if content[:2]==b'PK' and (url.lower().endswith('.xlsx') or b'[Content_Types].xml' in content[:8000]):
-            out.extend(xlsx_procurement_scan(content,vendors,'ES',url,'placsp-xlsx-open-data'))
-            continue
-        try: z=zipfile.ZipFile(io.BytesIO(content))
-        except Exception: continue
-        for name in z.namelist()[:160]:
-            if not name.lower().endswith(('.atom','.xml')): continue
-            try: rows=parse_atom_entries(z.read(name))
+            r=SESSION.get(url,timeout=max(45,TIMEOUT),stream=True); r.raise_for_status(); content=r.content
+            if len(content)>int(BUDGETS.get('procurement_download_max_bytes',160_000_000)): continue
+            z=zipfile.ZipFile(io.BytesIO(content))
+        except Exception as exc:
+            print('PLACSP download error',url,exc); continue
+        names=[n for n in z.namelist() if n.lower().endswith(('.atom','.xml'))]
+        for name in names[:int(BUDGETS.get('spain_atom_files_max',160))]:
+            try: entries=parse_atom_entries(z.read(name))
             except Exception: continue
-            for text in rows:
-                matched=match_vendors_text(text,vendors)
-                if not matched: continue
-                flat={'entry':clean(text)}
-                buyer=extract_named_field(flat,['buyer','contracting','adjudicador'])
-                ints=match_integrators_text(text)
-                title_match=re.search(r'<title[^>]*>(.*?)</title>',text,re.I|re.S)
-                id_match=re.search(r'<id[^>]*>(.*?)</id>',text,re.I|re.S)
-                upd_match=re.search(r'<updated[^>]*>(.*?)</updated>',text,re.I|re.S)
-                for vendor in matched:
-                    out.append({'title':clean(title_match.group(1) if title_match else 'PLACSP procurement signal'),'url':clean(id_match.group(1) if id_match else catalog),'snippet':clean(text[:2200]),'published':clean(upd_match.group(1) if upd_match else ''),'engine':'placsp-open-data','vendor':vendor,'country':'ES','procurement':True,'winner':ints[0] if ints else '','buyer':buyer,'integrators':ints})
-                    if len(out)>=2200:return out
+            for entry in entries:
+                rec=parse_placsp_entry(entry,url,'ES'); full=norm(' '.join(entry.itertext()))
+                matched=[v for v,terms in vendor_terms.items() if any(t and t in full for t in terms)]
+                if not matched and not rec.get('technologyMatches'): continue
+                if matched:
+                    for vendor in matched[:5]:
+                        x=dict(rec); x['vendor']=vendor; x['procurementAttribution']='vendor-explicit-public-record'; x['sourceKind']=source_kind; out.append(x)
+                else:
+                    rec['vendor']=None; rec['procurementAttribution']='technology-market-signal-only'; rec['sourceKind']=source_kind; out.append(rec)
+                if len(out)>=max_rows: return out
     return out
+
+
+def _pick_field(row: dict, patterns: list[str]) -> str:
+    nr={norm(k):v for k,v in row.items()}
+    for pattern in patterns:
+        np=norm(pattern)
+        for k,v in nr.items():
+            if np==k or np in k:
+                if clean(v): return clean(v)
+    return ''
+
+
+def parse_csv_blob(blob: bytes) -> list[dict]:
+    text=''
+    for enc in ('utf-8-sig','utf-8','cp1252','latin-1'):
+        try:
+            text=blob.decode(enc); break
+        except Exception: continue
+    if not text: return []
+    sample=text[:12000]
+    try: dialect=csv.Sniffer().sniff(sample,delimiters=';,\t|')
+    except Exception:
+        dialect=csv.excel; dialect.delimiter=';'
+    try: return list(csv.DictReader(io.StringIO(text),dialect=dialect))
+    except Exception: return []
+
+
+def _resource_payloads(content: bytes, url: str) -> list[bytes]:
+    if url.lower().endswith('.zip') or content[:2]==b'PK':
+        try:
+            z=zipfile.ZipFile(io.BytesIO(content)); return [z.read(n) for n in z.namelist() if n.lower().endswith(('.csv','.txt'))][:40]
+        except Exception: return []
+    return [content]
+
 
 def dados_gov_pt_contract_rows(vendors: list[str]) -> list[dict]:
-    """Read public Portal BASE / IMPIC contract datasets via dados.gov.pt resources."""
     endpoint=DEEP.get('engines',{}).get('dados_gov_pt',{}).get('endpoint')
     q=DEEP.get('public_procurement',{}).get('portugal',{}).get('dataset_query','Contratos Públicos Portal Base IMPIC contratos')
     try: data=get_json(endpoint,params={'q':q,'page_size':20})
-    except Exception:return []
+    except Exception: return []
+    datasets=data.get('data',[]) or data.get('results',[]) or []
     resources=[]
-    for ds in data.get('data',[])[:8]:
-        title=norm(ds.get('title',''))
-        if 'contrato' not in title: continue
-        for res in ds.get('resources') or []:
-            rr=dict(res); rr['_dataset_title']=ds.get('title',''); resources.append(rr)
+    for ds in datasets[:8]: resources.extend(ds.get('resources') or [])
     def rscore(r):
         s=norm(f"{r.get('title','')} {r.get('url','')} {r.get('format','')}")
-        return (35 if str(NOW.year) in s else 0)+(25 if 'json' in s else 0)+(22 if 'csv' in s else 0)+(18 if 'xlsx' in s else 0)+(10 if 'zip' in s else 0)
-    resources=sorted(resources,key=rscore,reverse=True)[:10]
-    out=[]
+        return (30 if str(NOW.year) in s else 0)+(14 if 'csv' in s else 0)+(10 if 'zip' in s else 0)+int(bool(r.get('latest')))*4
+    resources=sorted(resources,key=rscore,reverse=True)[:int(BUDGETS.get('portugal_resources_max',10))]
+    terms={v:[norm(a) for a in aliases_for(v) if len(norm(a))>=3] for v in vendors}; out=[]; max_rows=int(BUDGETS.get('portugal_procurement_rows_max',5000))
     for res in resources:
         url=res.get('url') or res.get('latest')
         if not url: continue
         try:
-            r=SESSION.get(url,timeout=80);r.raise_for_status();content=r.content
-            if len(content)>160_000_000:continue
-        except Exception:continue
-        # XLSX
-        if url.lower().endswith('.xlsx') or (content[:2]==b'PK' and b'[Content_Types].xml' in content[:8000]):
-            out.extend(xlsx_procurement_scan(content,vendors,'PT',url,'dados-gov-pt-xlsx'))
-            if len(out)>=2200:return out[:2200]
-            continue
-        blobs=[]
-        if content[:2]==b'PK':
-            try:
-                z=zipfile.ZipFile(io.BytesIO(content))
-                for n in z.namelist()[:30]:
-                    if n.lower().endswith(('.csv','.json','.jsonl')):blobs.append((n,z.read(n)))
-            except Exception: pass
-        else: blobs=[(url,content)]
-        for name,blob in blobs:
-            lower=name.lower()
-            if lower.endswith(('.json','.jsonl')):
-                try:
-                    obj=json.loads(blob.decode('utf-8','ignore'))
-                    records=obj if isinstance(obj,list) else obj.get('data') or obj.get('results') or []
-                except Exception: records=[]
-                for rec in records[:500000]:
-                    flat=flatten_json(rec); blobtxt=' | '.join(flat.values()); matched=match_vendors_text(blobtxt,vendors)
-                    if not matched:continue
-                    buyer=extract_named_field(flat,['adjudicante','buyer','entidade','contracting'])
-                    winner=extract_named_field(flat,['adjudicatario','cocontratante','fornecedor','winner'])
-                    title=extract_named_field(flat,['objeto','descricao','description','title']) or 'Portal BASE / IMPIC public contract'
-                    date=extract_named_field(flat,['data publicacao','data celebracao','date'])
-                    for vendor in matched:
-                        out.append({'title':title,'url':url,'snippet':clean(blobtxt[:2200]),'published':date,'engine':'dados-gov-pt','vendor':vendor,'country':'PT','procurement':True,'winner':winner,'buyer':buyer,'integrators':match_integrators_text(blobtxt)})
-                        if len(out)>=2200:return out
-            else:
-                text=blob.decode('utf-8','ignore')
-                sample=text[:12000]
-                delim=';' if sample.count(';')>sample.count(',') else ','
-                reader=csv.DictReader(io.StringIO(text),delimiter=delim)
-                for idx,rec in enumerate(reader):
-                    if idx>600000:break
-                    flat={str(k):clean(v) for k,v in rec.items()}; blobtxt=' | '.join(flat.values());matched=match_vendors_text(blobtxt,vendors)
-                    if not matched:continue
-                    buyer=extract_named_field(flat,['adjudicante','buyer','entidade'])
-                    winner=extract_named_field(flat,['adjudicatario','cocontratante','fornecedor','winner'])
-                    title=extract_named_field(flat,['objeto','descricao','description','title']) or 'Portal BASE / IMPIC public contract'
-                    date=extract_named_field(flat,['data publicacao','data celebracao','date'])
-                    for vendor in matched:
-                        out.append({'title':title,'url':url,'snippet':clean(blobtxt[:2200]),'published':date,'engine':'dados-gov-pt','vendor':vendor,'country':'PT','procurement':True,'winner':winner,'buyer':buyer,'integrators':match_integrators_text(blobtxt)})
-                        if len(out)>=2200:return out
+            r=SESSION.get(url,timeout=max(50,TIMEOUT)); r.raise_for_status(); content=r.content
+            if len(content)>int(BUDGETS.get('procurement_download_max_bytes',160_000_000)): continue
+        except Exception as exc:
+            print('dados.gov.pt resource error',url,exc); continue
+        for blob in _resource_payloads(content,url):
+            for row in parse_csv_blob(blob):
+                buyer=clean_entity_name(_pick_field(row,['adjudicante','entidade adjudicante','contracting authority','buyer']))
+                winner=clean_entity_name(_pick_field(row,['adjudicatarios','adjudicatário','adjudicatario','winner','fornecedor']))
+                obj=_pick_field(row,['objecto contrato','objeto contrato','descricao contrato','descrição contrato','designacao contrato','designação contrato','object'])
+                cpv_raw=_pick_field(row,['cpv','codigo cpv','código cpv']); cpvs=re.findall(r'\d{8}',cpv_raw)
+                published=_pick_field(row,['data publicacao','data publicação','data celebracao','data celebração','date'])
+                amount=parse_number(_pick_field(row,['preco contratual','preço contratual','valor contrato','valor contratual','amount']))
+                cid=_pick_field(row,['idcontrato','id contrato','numero contrato','número contrato'])
+                url_row=_pick_field(row,['url','link']) or url
+                line=' '.join(str(v or '') for v in row.values())
+                nl=norm(line); matched=[v for v,ats in terms.items() if any(a and a in nl for a in ats)]
+                tech=classify_procurement(cpvs,f'{obj} {line[:8000]}')
+                if not matched and not tech: continue
+                rec={'title':obj or 'Portal BASE / IMPIC public contract signal','url':url_row,'snippet':clean(f'{obj}. Adjudicante: {buyer}. Adjudicatário: {winner}.')[:2200],'published':published,'engine':'dados-gov-pt','country':'PT','buyer':buyer,'winner':winner,'winners':[winner] if winner else [],'procurement':True,'contractId':cid,'cpv':cpvs[:12],'awardedValue':amount,'estimatedValue':None,'currency':'EUR','technologyMatches':tech,'sector':infer_procurement_sector(buyer,obj),'object':obj}
+                if matched:
+                    for vendor in matched[:5]:
+                        x=dict(rec); x['vendor']=vendor; x['procurementAttribution']='vendor-explicit-public-record'; out.append(x)
+                else:
+                    rec['vendor']=None; rec['procurementAttribution']='technology-market-signal-only'; out.append(rec)
+                if len(out)>=max_rows: return out
     return out
+
+
+def base_api_recent_contract_rows(vendors: list[str]) -> list[dict]:
+    token=os.getenv('BASE_API_TOKEN','').strip()
+    if not token: return []
+    endpoint=DEEP.get('public_procurement',{}).get('portugal',{}).get('base_api_endpoint','https://www.base.gov.pt/APIBase2/GetInfoContrato')
+    try:
+        r=SESSION.get(endpoint,headers={'_AcessToken':token},params={'numDias':min(90,int(BUDGETS.get('base_api_days',90)))},timeout=max(TIMEOUT,40)); r.raise_for_status(); data=r.json()
+    except Exception as exc:
+        print('BASE API error:',exc); return []
+    records=data if isinstance(data,list) else data.get('data') or data.get('results') or [data]
+    terms={v:[norm(a) for a in aliases_for(v) if len(norm(a))>=3] for v in vendors}; out=[]
+    for rec in records[:int(BUDGETS.get('base_api_rows_max',8000))]:
+        buyer=clean_entity_name(' | '.join(rec.get('adjudicante') or [])); winners=[clean_entity_name(x) for x in (rec.get('adjudicatarios') or []) if clean_entity_name(x)]
+        obj=clean(rec.get('objectoContrato') or rec.get('descContrato') or '')
+        cpv=rec.get('cpv') or []; cpvs=[]
+        for x in cpv: cpvs.extend(re.findall(r'\d{8}',str(x)))
+        flat=norm(json.dumps(rec,ensure_ascii=False)); matched=[v for v,ats in terms.items() if any(a and a in flat for a in ats)]
+        tech=classify_procurement(cpvs,f'{obj} {flat[:12000]}')
+        if not matched and not tech: continue
+        row={'title':obj or 'Portal BASE API public contract','url':'https://www.base.gov.pt/','snippet':clean(f'{obj}. Adjudicante: {buyer}. Adjudicatários: {", ".join(winners)}')[:2200],'published':rec.get('dataPublicacao') or rec.get('dataCelebracaoContrato') or '', 'engine':'base-api-pt','country':'PT','buyer':buyer,'winner':winners[0] if winners else '', 'winners':winners,'procurement':True,'contractId':str(rec.get('idContrato') or ''),'cpv':cpvs[:12],'awardedValue':parse_number(rec.get('precoContratual')),'estimatedValue':parse_number(rec.get('precoBaseProcedimento')),'currency':'EUR','technologyMatches':tech,'sector':infer_procurement_sector(buyer,obj),'object':obj}
+        if matched:
+            for vendor in matched[:5]:
+                x=dict(row); x['vendor']=vendor; x['procurementAttribution']='vendor-explicit-public-record'; out.append(x)
+        else:
+            row['vendor']=None; row['procurementAttribution']='technology-market-signal-only'; out.append(row)
+    return out
+
+
+def ted_search(vendor: str, country: str) -> list[dict]:
+    code=DEEP.get('public_procurement',{}).get('ted',{}).get('countries',{}).get(country)
+    if not code: return []
+    alias=aliases_for(vendor)[0]; query=f'FT~"{alias}" AND CY={code}'
+    fields=DEEP['public_procurement']['ted']['fields']
+    body={'query':query,'fields':fields,'page':1,'limit':min(250,int(BUDGETS.get('ted_results_per_query',180))),'scope':'ALL','checkQuerySyntax':False,'paginationMode':'PAGE_NUMBER'}
+    try:
+        r=SESSION.post(DEEP['engines']['ted']['endpoint'],json=body,timeout=TIMEOUT); r.raise_for_status(); data=r.json()
+    except Exception: return []
+    records=data.get('notices') or data.get('results') or data.get('items') or []
+    out=[]
+    for rec in records:
+        flat=flatten_json(rec)
+        def pick(parts):
+            return next((v for k,v in flat.items() if any(p in k.lower() for p in parts) and clean(v)), '')
+        title=pick(['notice-title','contract-title']) or 'TED procurement notice'; buyer=clean_entity_name(pick(['buyer-name'])); winner=clean_entity_name(pick(['winner-name']))
+        pubno=pick(['publication-number']); published=pick(['publication-date']); cpv_text=' '.join(v for k,v in flat.items() if 'classification-cpv' in k.lower() or 'main-classification' in k.lower()); cpvs=re.findall(r'\d{8}',cpv_text)
+        value=parse_number(pick(['contract-value','tender-value','framework-value','estimated-value']))
+        url=f'https://ted.europa.eu/en/notice/{pubno}/html' if pubno else 'https://ted.europa.eu/'
+        tech=classify_procurement(cpvs,title)
+        out.append({'title':title,'url':url,'snippet':clean(f'Buyer: {buyer}. Winner: {winner}. Vendor search: {vendor}.'),'published':published,'engine':'ted','vendor':vendor,'country':country,'buyer':buyer,'winner':winner,'winners':[winner] if winner else [],'procurement':True,'contractId':pubno,'cpv':cpvs[:12],'awardedValue':value,'currency':'EUR','technologyMatches':tech,'sector':infer_procurement_sector(buyer,title),'object':title,'procurementAttribution':'vendor-explicit-search-result'})
+    return out
+
+
+def procurement_market_aggregate(evidence: list[dict]) -> list[dict]:
+    rows=defaultdict(lambda:{'count':0,'values':[],'buyers':Counter(),'winners':Counter(),'vendors':Counter(),'sectors':Counter(),'dates':[],'themeIds':set(),'ids':set()})
+    for e in evidence:
+        if e.get('evidenceType')!='procurement': continue
+        cc=e.get('country') or ('ES' if 'Spain' in str(e.get('scope')) else 'PT' if 'Portugal' in str(e.get('scope')) else '')
+        if cc not in {'ES','PT'}: continue
+        techs=e.get('technologyMatches') or []
+        for t in techs:
+            tid=t.get('id') if isinstance(t,dict) else str(t)
+            if not tid: continue
+            k=(cc,tid); r=rows[k]; r['count']+=1; r['ids'].add(e.get('id'))
+            val=e.get('awardedValue') or e.get('estimatedValue')
+            if isinstance(val,(int,float)) and 0<val<10_000_000_000: r['values'].append(float(val))
+            if e.get('buyer'): r['buyers'][clean_entity_name(e['buyer'])]+=1
+            for w in (e.get('winners') or ([e.get('winner')] if e.get('winner') else [])):
+                if w: r['winners'][clean_entity_name(w)]+=1
+            if e.get('vendor'): r['vendors'][e['vendor']]+=1
+            if e.get('sector'): r['sectors'][e['sector']]+=1
+            if e.get('published'): r['dates'].append(str(e['published']))
+            if isinstance(t,dict): r['themeIds'].update(t.get('themeIds') or [])
+    max_count=max((r['count'] for r in rows.values()),default=1); out=[]
+    names={x['id']:x['name'] for x in PROC_TAX.get('technologyBuckets',[])}
+    for (cc,tid),r in rows.items():
+        count_score=min(100,round((r['count']/max_count)**0.5*100)); value_total=sum(r['values']); value_score=min(100,round((value_total/50_000_000)**0.35*100)) if value_total else 0
+        diversity=min(100,30+len(r['buyers'])*4+len(r['winners'])*3+len(r['sectors'])*5)
+        demand=clamp(count_score*.55+value_score*.20+diversity*.25)
+        out.append({'country':cc,'technologyId':tid,'technology':names.get(tid,tid),'themeIds':sorted(r['themeIds']),'signalCount':r['count'],'knownValueEUR':round(value_total,2),'demandIndex':demand,'topBuyers':[{'name':n,'signals':c} for n,c in r['buyers'].most_common(12)],'topWinners':[{'name':n,'signals':c} for n,c in r['winners'].most_common(12)],'vendorMentions':[{'name':n,'signals':c} for n,c in r['vendors'].most_common(10)],'sectors':[{'name':n,'signals':c} for n,c in r['sectors'].most_common(8)],'latestDate':max(r['dates']) if r['dates'] else ''})
+    return sorted(out,key=lambda x:(-x['demandIndex'],x['country'],x['technology']))
 
 
 # ----------------------------- Query planning -----------------------------
@@ -750,9 +1025,114 @@ def previous_gap_priority() -> dict[str, int]:
     return {x.get('vendor'): int(x.get('coverage',0)) for x in prev.get('coverage',[]) if x.get('vendor')}
 
 
+def previous_gap_dimensions() -> dict[str, dict]:
+    try: prev=json.loads(OUT.read_text(encoding='utf-8'))
+    except Exception: return {}
+    return {x.get('vendor'):x.get('dimensions',{}) for x in prev.get('coverage',[]) if x.get('vendor')}
+
+
+def discovered_integrators(limit: int = 160) -> list[str]:
+    """Grow the integrator universe from both explicit vendor relations and public-procurement winners."""
+    try: prev=json.loads(OUT.read_text(encoding='utf-8'))
+    except Exception: return []
+    scored=[]
+    for x in prev.get('integratorSignals',[]):
+        n=clean(x.get('name'))
+        if int(x.get('confidence',0))>=68 and n: scored.append((100+int(x.get('confidence',0)),n))
+    for bucket in prev.get('procurementMarket',[]):
+        for pos,x in enumerate(bucket.get('topWinners',[])[:12]):
+            n=clean(x.get('name'))
+            if n: scored.append((90-pos*3+min(20,int(x.get('signals',0))*2),n))
+    names=[]
+    for _,n in sorted(scored,key=lambda z:(-z[0],norm(z[1]))):
+        if n and n not in names and len(n)>=3: names.append(n)
+        if len(names)>=limit: break
+    return names
+
+
+def discovered_buyers(limit: int = 120) -> list[dict]:
+    """Return public buyers discovered from procurement, retaining country/technology context for follow-up research."""
+    try: prev=json.loads(OUT.read_text(encoding='utf-8'))
+    except Exception: return []
+    rows=[]; seen=set()
+    for bucket in sorted(prev.get('procurementMarket',[]),key=lambda x:-int(x.get('demandIndex',0))):
+        for pos,x in enumerate(bucket.get('topBuyers',[])[:10]):
+            n=clean(x.get('name')); key=(norm(n),bucket.get('country'),bucket.get('technologyId'))
+            if not n or key in seen: continue
+            seen.add(key); rows.append({'name':n,'country':bucket.get('country'),'technologyId':bucket.get('technologyId'),'technology':bucket.get('technology'),'priority':int(bucket.get('demandIndex',0))+max(0,20-pos*2)+min(15,int(x.get('signals',0))*2)})
+    rows.sort(key=lambda x:(-x['priority'],x['country'] or '',norm(x['name'])))
+    return rows[:limit]
+
+
+def query_gap_boost(vendor: str, country: str, intent: str, dims: dict[str,dict]) -> int:
+    d=dims.get(vendor,{})
+    boost=0
+    if country=='ES':
+        if intent in {'channel','channel_changes'} and d.get('channelES') is False: boost+=38
+        if intent in {'ecosystem','partner_capability'} and d.get('integratorES') is False: boost+=38
+        if intent in {'customers','customer_verticals'} and d.get('customerES') is False: boost+=38
+    if country=='PT':
+        if intent in {'channel','channel_changes'} and d.get('channelPT') is False: boost+=42
+        if intent in {'ecosystem','partner_capability'} and d.get('integratorPT') is False: boost+=42
+        if intent in {'customers','customer_verticals'} and d.get('customerPT') is False: boost+=42
+    if intent in {'analyst','analysts'} and d.get('analyst') is False: boost+=32
+    if intent in {'competition','attack'} and d.get('competitive') is False: boost+=34
+    if intent in {'services','partner_program'} and d.get('services') is False: boost+=24
+    if intent in {'market','strategy'} and d.get('market') is False: boost+=28
+    if intent in {'product'} and d.get('product') is False: boost+=22
+    return boost
+
+
+def query_bucket(row: dict) -> str:
+    intent=row.get('intent') or ''
+    kind=row.get('kind') or ''
+    if kind=='strategic' or intent=='strategic': return 'strategic'
+    if intent in {'channel','channel_changes'}: return 'channel'
+    if intent in {'ecosystem','partner_capability'} or kind=='competitive-ecosystem': return 'ecosystem'
+    if intent in {'customers','customer_verticals'} or kind in {'buyer-followup'}: return 'customers'
+    if intent in {'competition','attack'} or kind in {'competitive-pair','buyer-competitive-followup'}: return 'competition'
+    if intent in {'analyst','analysts'}: return 'analyst'
+    if intent in {'market','strategy','product','services','partner_program','official','procurement','economics','regulation','financial_health','product_lifecycle','delivery','local_signals'}: return 'market'
+    return 'other'
+
+
+def fair_take(rows: list[dict], n: int) -> list[dict]:
+    """Round-robin vendors/countries so one gap-heavy vendor cannot consume an entire research bucket."""
+    if n<=0 or not rows: return []
+    groups=defaultdict(list)
+    for r in rows:
+        groups[(r.get('vendor') or '__global__',r.get('country') or 'ALL')].append(r)
+    for vals in groups.values(): vals.sort(key=lambda r:(-r.get('priority',0),sha(str(NOW.isocalendar().week),r.get('query',''))))
+    keys=sorted(groups,key=lambda k:(0 if k[0]=='__global__' else 1,sha(str(NOW.isocalendar().week),*k)))
+    out=[]; idx=0
+    while len(out)<n and keys:
+        k=keys[idx%len(keys)]
+        if groups[k]: out.append(groups[k].pop(0))
+        if not groups[k]: keys.remove(k); idx=0; continue
+        idx+=1
+    return out
+
+
+def stratified_query_selection(rows: list[dict], maxq: int) -> list[dict]:
+    mix=DEEP.get('query_mix',{'strategic':0.05,'channel':0.18,'ecosystem':0.14,'customers':0.14,'competition':0.20,'analyst':0.10,'market':0.14,'other':0.05})
+    buckets=defaultdict(list)
+    for r in rows: buckets[query_bucket(r)].append(r)
+    selected=[]; used=set()
+    for name,share in mix.items():
+        n=max(1,round(maxq*float(share))) if buckets.get(name) else 0
+        for r in fair_take(buckets.get(name,[]),n):
+            q=r.get('query');
+            if q not in used: selected.append(r); used.add(q)
+    # Fill unused quota with globally strongest remaining rows, still rotating via hash at equal priority.
+    remaining=[r for r in rows if r.get('query') not in used]
+    remaining.sort(key=lambda r:(-r.get('priority',0),sha(str(NOW.isocalendar().week),r.get('query',''))))
+    selected.extend(remaining[:max(0,maxq-len(selected))])
+    return selected[:maxq]
+
+
 def make_queries() -> list[dict]:
     fixed=[{"query":q,"kind":"strategic","country":"ALL","intent":"strategic","priority":100} for q in CFG.get("strategic_queries",[])]
-    coverage=previous_gap_priority()
+    coverage=previous_gap_priority(); gapdims=previous_gap_dimensions()
     generated=[]
     intents=CFG.get('deep_intents',{})
     countries={'ES':'Spain','PT':'Portugal'}
@@ -766,7 +1146,7 @@ def make_queries() -> list[dict]:
             for intent,terms in intents.items():
                 for term in terms[:8]:
                     alias=vas[(len(term)+len(vendor))%len(vas)]
-                    generated.append({"query":f'"{alias}" {country_word} {term}',"kind":"vendor","vendor":vendor,"country":cc,"intent":intent,"priority":40+lowcov+(20 if intent in {'channel','ecosystem','customers','competition'} else 0)})
+                    generated.append({"query":f'"{alias}" {country_word} {term}',"kind":"vendor","vendor":vendor,"country":cc,"intent":intent,"priority":40+lowcov+(20 if intent in {'channel','ecosystem','customers','competition'} else 0)+query_gap_boost(vendor,cc,intent,gapdims)})
             # official-domain targeted search patterns for high-value proof
             domain=CFG.get('vendor_domains',{}).get(vendor)
             if domain and os.getenv('BRAVE_SEARCH_API_KEY','').strip():
@@ -775,6 +1155,30 @@ def make_queries() -> list[dict]:
         # analyst/global strategic research
         for analyst in CFG.get('analyst_names',[]):
             generated.append({"query":f'"{vas[0]}" {analyst} 2026 public',"kind":"vendor","vendor":vendor,"country":"ALL","intent":"analyst","priority":52+lowcov})
+    # Capability Intelligence: verify Westcon programmes against each active vendor.
+    # Weekly/deep runs rotate a compact set; exhaustive runs can cover the full vendor x capability matrix.
+    cap_terms=CFG.get('westcon_capability_terms',[])
+    cap_cfg=DEEP.get('capability_research',{})
+    if cap_cfg.get('enabled',True):
+        for vendor in active_vendor_names():
+            mapped=CAP.get('vendorApplicability',{}).get(vendor,{})
+            # Unverified or generic programme applicability gets the most research budget.
+            priority_caps=[]
+            for prog in CAP.get('programmes',[]):
+                cid=prog.get('id'); status=(mapped.get(cid) or {}).get('status','UNVERIFIED')
+                pr=94 if status in {'UNVERIFIED','PROGRAMME_ELIGIBLE','MODEL_ELIGIBLE'} else 67
+                priority_caps.append((pr,cid,prog.get('name')))
+            priority_caps.sort(reverse=True)
+            limit=4 if PROFILE=='daily' else 9 if PROFILE=='deep' else len(priority_caps)
+            for pr,cid,label in priority_caps[:limit]:
+                q=f'site:westconcomstor.com "{vendor}" "{label}"'
+                generated.append({'query':q,'kind':'capability-verification','vendor':vendor,'country':'ALL','intent':'capability','capabilityId':cid,'priority':pr+lowcov//6})
+                if PROFILE in {'deep','exhaustive'} and cid in {'tech-insights','3d-lab','tech-xpert','academy','support','professional-services','marketplace'}:
+                    generated.append({'query':f'site:westconcomstor.com/es/es "{vendor}" "{label}"','kind':'capability-verification','vendor':vendor,'country':'ES','intent':'capability','capabilityId':cid,'priority':pr+8})
+        # Programme-level freshness and scope.
+        for term in cap_terms[:20]:
+            generated.append({'query':f'site:westconcomstor.com "{term}" Westcon EMEA Europe Spain Portugal','kind':'capability-programme','country':'ALL','intent':'capability','priority':88})
+
     # Explicit distributor cross-checks: authoritative channel relationships are strategically critical.
     for vendor in active_vendor_names():
         for dist in CFG.get('known_distributors',[]):
@@ -782,13 +1186,29 @@ def make_queries() -> list[dict]:
             generated.append({"query":f'"{vendor}" "{dist}" Spain distributor authorized linecard',"kind":"vendor","vendor":vendor,"country":"ES","intent":"channel","priority":90})
             generated.append({"query":f'"{vendor}" "{dist}" Portugal distributor authorized linecard',"kind":"vendor","vendor":vendor,"country":"PT","intent":"channel","priority":90})
         # Integrator cross-checks rotate deterministically so weekly runs eventually cover the whole ecosystem.
-        ints=CFG.get('known_integrators',[])
+        ints=list(dict.fromkeys(CFG.get('known_integrators',[])+discovered_integrators()))
         if ints:
             start=int(sha(str(NOW.isocalendar().week),vendor)[:6],16)%len(ints)
             selected=[ints[(start+i)%len(ints)] for i in range(min(8,len(ints)))]
             for integ in selected:
                 generated.append({"query":f'"{vendor}" "{integ}" Spain partner case study',"kind":"vendor","vendor":vendor,"country":"ES","intent":"ecosystem","priority":76})
                 generated.append({"query":f'"{vendor}" "{integ}" Portugal partner case study',"kind":"vendor","vendor":vendor,"country":"PT","intent":"ecosystem","priority":76})
+                for rival in (next((x.get('marketCompetitors',[]) for x in VENDOR_INTEL.get('vendors',[]) if x.get('name')==vendor),[])[:2]):
+                    generated.append({"query":f'"{integ}" "{vendor}" "{rival}" partner migration case study',"kind":"competitive-ecosystem","vendor":vendor,"country":"ALL","intent":"attack","priority":82+lowcov})
+    # Follow public buyers discovered in procurement. These are market signals, not assumed customers.
+    buyer_rows=discovered_buyers()
+    if buyer_rows:
+        for vendor in active_vendor_names():
+            # Rotate across the strongest public-demand buyers so coverage grows over time without exploding query volume.
+            start=int(sha('buyer',str(NOW.isocalendar().week),vendor)[:6],16)%len(buyer_rows)
+            selected=[buyer_rows[(start+i)%len(buyer_rows)] for i in range(min(3,len(buyer_rows)))]
+            rivals=(next((x.get('marketCompetitors',[]) for x in VENDOR_INTEL.get('vendors',[]) if x.get('name')==vendor),[])[:2])
+            for b in selected:
+                cc=b.get('country') or 'ALL'; country_word='Spain' if cc=='ES' else 'Portugal' if cc=='PT' else 'Iberia'
+                generated.append({"query":f'"{vendor}" "{b["name"]}" {country_word} case study contract deployment',"kind":"buyer-followup","vendor":vendor,"country":cc,"intent":"customers","priority":72+max(0,b.get('priority',0)//5)})
+                for rival in rivals:
+                    generated.append({"query":f'"{rival}" "{b["name"]}" {country_word} case study contract deployment',"kind":"buyer-competitive-followup","vendor":vendor,"country":cc,"intent":"attack","priority":74+max(0,b.get('priority',0)//5)})
+
     # Pairwise competitive intelligence: displacement, migration, TCO, integrators and customer proof.
     vi={x.get('name'):x for x in VENDOR_INTEL.get('vendors',[])}
     for vendor in active_vendor_names():
@@ -804,8 +1224,50 @@ def make_queries() -> list[dict]:
     week=NOW.isocalendar().week
     rows.sort(key=lambda r:(-r.get('priority',0),sha(str(week),r['query'])))
     maxq=int(BUDGETS.get('query_limit_brave',BUDGETS.get('brave_queries_max',720)) if os.getenv('BRAVE_SEARCH_API_KEY','').strip() else BUDGETS.get('query_limit_no_brave',CFG.get('no_brave_rotation_max_queries',180)))
-    return rows[:maxq]
+    return stratified_query_selection(rows,maxq)
 
+
+def capability_candidates(evidence: list[dict]) -> list[dict]:
+    """Extract vendor x Westcon-capability evidence from official Westcon pages.
+
+    Discovery results remain signals; the UI only auto-promotes official Westcon evidence.
+    """
+    programmes=CAP.get('programmes',[])
+    aliases={p['id']:[p.get('name','')]+({
+        'tech-insights':['Tech Insights','assessment'],
+        '3d-lab':['3D Lab','3DLab'],
+        'tech-xpert':['Tech Xpert','Tech ConneX'],
+        'intelligent-demand':['Intelligent Demand'],
+        'academy':['Academy','SkillBoost','training'],
+        'professional-services':['professional services','installation','configuration','project management'],
+        'support':['Westcon Care','Westcon Assist','support services','Level 1','Level 2 support'],
+        'supply-chain':['supply chain','staging','reverse logistics','shipment'],
+        'flex':['Flex','flexible payment'],
+        'marketplace':['AWS Marketplace','cloud marketplace'],
+        'lifecycle':['lifecycle','renewal','refresh'],
+        'gscs':['GSCS','Global Supply Chain Solutions'],
+        'marketing-local':['Marketing as a Service','campaign','Intelligent Demand'],
+        'local-presales':['Solution Architect','presales','pre-sales','PoC','PoV'],
+        'vsm':['Vendor Success Manager','VSM'],
+        'psm':['Partner Success Manager','PSM']}.get(p['id'],[])) for p in programmes}
+    out=[]; seen=set()
+    for e in evidence:
+        if host(e.get('url','')) not in {'westconcomstor.com','academy.westconcomstor.com'} and not host(e.get('url','')).endswith('.westconcomstor.com'):
+            continue
+        text=norm(f"{e.get('title','')} {e.get('summary','')} {e.get('snippet','')} {e.get('query','')}")
+        vendor=e.get('vendor')
+        if not vendor:
+            for vn in active_vendor_names():
+                if norm(vn) in text: vendor=vn; break
+        if not vendor or vendor not in active_vendor_names(): continue
+        for cid,terms in aliases.items():
+            if any(norm(t) and norm(t) in text for t in terms):
+                key=(vendor,cid,e.get('url'))
+                if key in seen: continue
+                seen.add(key)
+                official=e.get('sourceTier')=='official-company'
+                out.append({'vendor':vendor,'capabilityId':cid,'status':'VERIFIED_PUBLIC_DISCOVERED' if official else 'DISCOVERY','scope':e.get('scope'),'country':e.get('country'),'confidence':min(98,int(e.get('confidence',50))+ (8 if official else 0)),'title':e.get('title'),'url':e.get('url'),'date':e.get('date'),'source':e.get('source'),'evidenceId':e.get('id')})
+    return sorted(out,key=lambda x:(x['vendor'],x['capabilityId'],-x['confidence']))
 
 # ----------------------------- Evidence normalisation -----------------------------
 
@@ -825,9 +1287,11 @@ def to_evidence(x: dict, qrow: dict | None = None) -> dict:
         'title':x.get('title') or 'Untitled public signal','url':url,'source':host(url) or x.get('engine'),'sourceTier':tier,
         'evidenceType':typ,'scope':scope,'kind':qrow.get('kind') or ('procurement' if x.get('procurement') else 'discovery'),
         'vendor':vendor,'country':country if country in {'ES','PT','IBERIA'} else None,'query':qrow.get('query'),'snippet':x.get('snippet'),
-        'published':x.get('published'),'engine':x.get('engine'),'confidence':max(20,min(100,confidence_for(tier,scope,x.get('engine',''),direct)+freshness_bonus(x.get('published','')))),
+        'published':x.get('published'),'engine':x.get('engine'),'confidence':confidence_for(tier,scope,x.get('engine',''),direct),
         'collectedAt':NOW.isoformat(),'validationState':'primary/public source' if tier in {'regulator','public-open-data','official-company','analyst-public'} else 'discovery; validate before executive use',
-        'buyer':x.get('buyer'),'winner':x.get('winner')
+        'buyer':x.get('buyer'),'winner':x.get('winner'),'winners':x.get('winners') or ([x.get('winner')] if x.get('winner') else []),
+        'contractId':x.get('contractId'),'status':x.get('status'),'cpv':x.get('cpv') or [],'estimatedValue':x.get('estimatedValue'),'awardedValue':x.get('awardedValue'),'currency':x.get('currency'),
+        'awardDate':x.get('awardDate'),'technologyMatches':x.get('technologyMatches') or [],'sector':x.get('sector'),'object':x.get('object'),'procurementAttribution':x.get('procurementAttribution'),'sourceKind':x.get('sourceKind')
     }
 
 
@@ -993,33 +1457,6 @@ def signal_stats(evidence) -> dict:
 
 # ----------------------------- Main -----------------------------
 
-def competitive_attack_matrix(evidence: list[dict], channels: list[dict], integrators: list[dict], customers: list[dict]) -> list[dict]:
-    vi={x.get('name'):x for x in VENDOR_INTEL.get('vendors',[])}
-    initiatives=DEEP.get('westcon_initiatives',[])
-    rows=[]
-    for vendor in active_vendor_names():
-        competitors=(vi.get(vendor,{}).get('marketCompetitors') or [])[:8]
-        vints={norm(x.get('name')) for x in integrators if x.get('vendor')==vendor}
-        vcust={norm(x.get('name')) for x in customers if x.get('vendor')==vendor}
-        vchan={(x.get('country'),norm(x.get('distributor'))) for x in channels if x.get('vendor')==vendor}
-        for comp in competitors:
-            ce=[e for e in evidence if e.get('vendor')==vendor and e.get('kind')=='competitive-pair' and norm(comp) in norm(f"{e.get('title','')} {e.get('snippet','')} {e.get('query','')}")]
-            cint={norm(x.get('name')) for x in integrators if norm(x.get('vendor'))==norm(comp)}
-            ccust={norm(x.get('name')) for x in customers if norm(x.get('vendor'))==norm(comp)}
-            shared_i=len(vints & cint); shared_c=len(vcust & ccust)
-            proof=min(100,18+len(ce)*9+sum(1 for e in ce if e.get('sourceTier') in {'official-company','analyst-public','public-open-data'})*11)
-            whitespace=max(10,min(100,70-shared_i*7-shared_c*6+(18 if not ce else 0)))
-            # Pick initiatives based on likely gaps rather than generic ranking.
-            chosen=[]
-            wanted=['3d-labs','assessments','services','flex','intelligent-demand','tech-xpert','lifecycle','gscs']
-            if shared_i: wanted=['blueprint','tech-xpert','3d-labs','intelligent-demand','services','flex']
-            if shared_c: wanted=['assessments','3d-labs','services','lifecycle','flex','intelligent-demand']
-            for iid in wanted:
-                item=next((x for x in initiatives if x.get('id')==iid),None)
-                if item: chosen.append(item.get('name'))
-            rows.append({'vendor':vendor,'competitor':comp,'evidenceCount':len(ce),'proofStrength':proof,'sharedIntegrators':shared_i,'sharedCustomers':shared_c,'whiteSpace':whitespace,'recommendedInitiatives':chosen[:5],'evidenceIds':[e.get('id') for e in sorted(ce,key=lambda x:-int(x.get('confidence',0)))[:8]],'attackHypothesis':f"Desplazar/contener {comp} usando prueba técnica, servicios y ecosistema; priorizar gaps con evidencia y validar por país antes de ejecutar."})
-    return sorted(rows,key=lambda x:(x['vendor'],-x['proofStrength'],-x['whiteSpace'],x['competitor']))
-
 def main() -> None:
     brave=bool(os.getenv('BRAVE_SEARCH_API_KEY','').strip())
     prev=load_previous_payload()
@@ -1047,9 +1484,15 @@ def main() -> None:
 
     # 2) Primary-source crawling: vendor, distributor, integrator and analyst public pages.
     try:
-        for x in official_sitemap_evidence(active_vendor_names()+[v.get('name') for v in BASE.get('externalCompetitors',[]) if v.get('name')]):
+        for x in official_sitemap_evidence([v for v in tracked_names() if CFG.get('vendor_domains',{}).get(v)]):
             evidence.append(to_evidence(x,{'vendor':x.get('vendor'),'kind':'official-vendor-crawl','country':x.get('country'),'query':'official vendor sitemap crawl'}))
     except Exception as exc: print('vendor sitemap crawl error:',exc)
+    try:
+        cc_budget=int(BUDGETS.get('commoncrawl_pages_max',0))
+        if cc_budget>0:
+            for x in commoncrawl_official_evidence([v for v in tracked_names() if CFG.get('vendor_domains',{}).get(v)],cc_budget):
+                evidence.append(to_evidence(x,{'vendor':x.get('vendor'),'kind':'official-commoncrawl-discovery','country':x.get('country'),'query':'Common Crawl URL discovery + live official validation'}))
+    except Exception as exc: print('Common Crawl discovery error:',exc)
     try:
         budget=int(BUDGETS.get('ecosystem_sitemap_pages_max',0))
         dist_budget=budget//2; int_budget=budget-dist_budget
@@ -1058,7 +1501,7 @@ def main() -> None:
         for x in official_entity_sitemap_evidence(CFG.get('integrator_domains',{}),'integrator',int_budget):
             evidence.append(to_evidence(x,{'vendor':x.get('vendor'),'kind':'official-integrator-crawl','country':x.get('country'),'query':f"official integrator crawl {x.get('sourceEntity','')}"}))
     except Exception as exc: print('ecosystem sitemap crawl error:',exc)
-    if PROFILE=='deep':
+    if PROFILE in {'deep','exhaustive'}:
         try:
             for x in official_analyst_sitemap_evidence(int(BUDGETS.get('analyst_sitemap_pages_max',0))):
                 evidence.append(to_evidence(x,{'vendor':x.get('vendor'),'kind':'analyst-official-crawl','country':'ALL','query':'public analyst sitemap crawl'}))
@@ -1078,35 +1521,39 @@ def main() -> None:
         except Exception as exc: print('PLACSP error:',exc)
         try: procurement.extend(dados_gov_pt_contract_rows(active_vendor_names()))
         except Exception as exc: print('dados.gov.pt error:',exc)
+        try: procurement.extend(base_api_recent_contract_rows(active_vendor_names()))
+        except Exception as exc: print('BASE API error:',exc)
     for x in procurement: evidence.append(to_evidence(x,{'vendor':x.get('vendor'),'kind':'procurement','country':x.get('country'),'query':'public procurement'}))
 
     # 4) Deduplication, accumulation and corroboration.
     evidence=corroborate(dedupe_evidence(evidence))
 
     # 5) Relationship graph and coverage.
-    channels=merge_channel_signals(CURATED.get('channelSignals',[]),relation_candidates(evidence))
+    all_channels=merge_channel_signals(CURATED.get('channelSignals',[]),relation_candidates(evidence))
+    conflicts=detect_conflicts(evidence,all_channels)
+    channels,ended_channels=resolve_channel_lifecycle(all_channels,conflicts)
     seeded_integrators=[dict(x,status='curated-public') for x in ECOSYSTEM.get('integrators',[]) if x.get('vendor')!='Juniper Networks']
     integrators=merge_integrators(seeded_integrators,integrator_candidates(evidence))
     seeded_customers=[dict(x,status='curated-public') for x in ECOSYSTEM.get('customers',[]) if x.get('vendor')!='Juniper Networks']
     customers=merge_customers(seeded_customers,procurement_customer_candidates(evidence))
     analysts=analyst_candidates(evidence)
+    capability_signals=capability_candidates(evidence)
     coverage=vendor_coverage(evidence,channels,integrators,customers)
-    conflicts=detect_conflicts(evidence,channels)
-    attack_matrix=competitive_attack_matrix(evidence,channels,integrators,customers)
-    changes=compute_changes(prev,channels,integrators,customers,coverage)
+    procurement_market=procurement_market_aggregate(evidence)
+    changes=compute_changes(prev,channels,integrators,customers,coverage,procurement_market,ended_channels)
 
     payload={
-        'generatedAt':NOW.isoformat(),'profile':PROFILE,'mode':'deep-public-research-v4.2','queryCount':len(queries),'braveEnabled':brave,
+        'generatedAt':NOW.isoformat(),'profile':PROFILE,'mode':'decision-intelligence-market-capability-research-v8.0','queryCount':len(queries),'braveEnabled':brave,
         'notice':'Solo inteligencia pública externa. Discovery, evidencia ejecutiva, geografía, frescura, corroboración y conflictos se preservan explícitamente. El scope de portfolio se configura aparte del motor de evidencia.',
-        'researchEngines':['Brave Search (optional)' if brave else 'Brave Search (not configured)','Google News RSS','GDELT DOC 2.0','Arquivo.pt','official vendor sitemaps','official distributor/integrator sitemaps','public analyst sitemaps' if PROFILE=='deep' else 'public analyst crawl (weekly)','TED Search API','PLACSP open data (weekly deep)','dados.gov.pt / Portal BASE (weekly deep)'],
-        'evidence':evidence,'channelSignals':channels,'integratorSignals':integrators,'customerSignals':customers,'analystSignals':analysts,'coverage':coverage,'gaps':research_gaps(coverage),'conflicts':conflicts,'competitiveAttackMatrix':attack_matrix,'changes':changes,
-        'derived':{'evidenceCount':len(evidence),'officialOrAnalystCount':sum(1 for e in evidence if e.get('sourceTier') in {'official-company','regulator','public-open-data','analyst-public'}),'channelSignalCount':len(channels),'integratorSignalCount':len(integrators),'customerSignalCount':len(customers),'procurementSignalCount':sum(1 for e in evidence if e.get('evidenceType')=='procurement'),'analystSignalCount':len(analysts),'conflictCount':len(conflicts),'competitiveAttackRows':len(attack_matrix),'changeCount':len(changes),'statistics':signal_stats(evidence)}
+        'researchEngines':['Brave Search (optional)' if brave else 'Brave Search (not configured)','Google News RSS','GDELT DOC 2.0','Arquivo.pt','official vendor sitemaps','Common Crawl URL discovery + live validation','official distributor/integrator sitemaps','public analyst sitemaps' if PROFILE in {'deep','exhaustive'} else 'public analyst crawl (weekly/monthly)','TED Search API','PLACSP open data (weekly deep)','dados.gov.pt / Portal BASE (weekly deep)'],
+        'evidence':evidence,'capabilitySignals':capability_signals,'channelSignals':channels,'channelHistorySignals':ended_channels,'integratorSignals':integrators,'customerSignals':customers,'analystSignals':analysts,'procurementMarket':procurement_market,'coverage':coverage,'gaps':research_gaps(coverage),'conflicts':conflicts,'changes':changes,
+        'derived':{'evidenceCount':len(evidence),'officialOrAnalystCount':sum(1 for e in evidence if e.get('sourceTier') in {'official-company','regulator','public-open-data','analyst-public'}),'channelSignalCount':len(channels),'endedChannelSignalCount':len(ended_channels),'integratorSignalCount':len(integrators),'customerSignalCount':len(customers),'procurementSignalCount':sum(1 for e in evidence if e.get('evidenceType')=='procurement'),'procurementMarketBuckets':len(procurement_market),'knownProcurementValueEUR':round(sum(x.get('knownValueEUR',0) for x in procurement_market),2),'analystSignalCount':len(analysts),'capabilitySignalCount':len(capability_signals),'conflictCount':len(conflicts),'changeCount':len(changes),'statistics':signal_stats(evidence)}
     }
     OUT.write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding='utf-8')
     CHANGES_OUT.write_text(json.dumps({'generatedAt':NOW.isoformat(),'profile':PROFILE,'changes':changes,'conflicts':conflicts},ensure_ascii=False,indent=2),encoding='utf-8')
     STATUS_OUT.write_text(json.dumps({'generatedAt':NOW.isoformat(),'profile':PROFILE,'braveEnabled':brave,'queryCount':len(queries),'budgets':BUDGETS,'coverageAverage':round(sum(x['coverage'] for x in coverage)/max(1,len(coverage)),1),'vendorsWithCoverage70':sum(1 for x in coverage if x['coverage']>=70),'gapsP0':sum(1 for x in research_gaps(coverage) if x['priority']=='P0'),'engines':payload['researchEngines']},ensure_ascii=False,indent=2),encoding='utf-8')
     write_light_history(payload,changes)
-    print(f"Research v4.2/{PROFILE}: {len(evidence)} evidence, {len(channels)} channel, {len(integrators)} integrators, {len(customers)} customers, {len(queries)} planned queries, {len(changes)} changes")
+    print(f"Research v8.0/{PROFILE}: {len(evidence)} evidence, {len(channels)} channel, {len(integrators)} integrators, {len(customers)} customers, {len(queries)} planned queries, {len(changes)} changes")
 
 
 if __name__=='__main__': main()

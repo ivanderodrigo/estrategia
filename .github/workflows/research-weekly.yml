@@ -16,7 +16,7 @@ concurrency:
 jobs:
   research:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 150
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,11 +27,12 @@ jobs:
         with:
           python-version: "3.12"
       - name: Dependencias
-        run: pip install requests openpyxl
+        run: pip install requests
       - name: Investigación profunda
         env:
           RESEARCH_PROFILE: deep
           BRAVE_SEARCH_API_KEY: ${{ secrets.BRAVE_SEARCH_API_KEY }}
+          BASE_API_TOKEN: ${{ secrets.BASE_API_TOKEN }}
         run: python scripts/research.py --profile=deep
       - name: Validar dataset antes de publicar
         run: python scripts/validate.py
