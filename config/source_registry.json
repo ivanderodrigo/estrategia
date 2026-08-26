@@ -1,0 +1,110 @@
+{
+  "policy": "Only public external sources are collected. Licensed analyst content is not scraped.",
+  "tiers": [
+    {
+      "id": "regulator",
+      "weight": 100,
+      "domains": [
+        "europa.eu",
+        "ec.europa.eu",
+        "boe.es",
+        "cnmc.es",
+        "incibe.es",
+        "enisa.europa.eu",
+        "cncs.gov.pt"
+      ]
+    },
+    {
+      "id": "official-company",
+      "weight": 95,
+      "domains": [
+        "1password.com",
+        "akamai.com",
+        "also.com",
+        "amazon.com",
+        "anomali.com",
+        "arrow.com",
+        "attackiq.com",
+        "audiocodes.com",
+        "avaya.com",
+        "aws.amazon.com",
+        "azure.microsoft.com",
+        "certesnetworks.com",
+        "checkpoint.com",
+        "ciena.com",
+        "cisco.com",
+        "claroty.com",
+        "cloudflare.com",
+        "cradlepoint.com",
+        "crayon.com",
+        "crowdstrike.com",
+        "datatec.co.za",
+        "efficientip.com",
+        "ericsson.com",
+        "esprinet.com",
+        "exclusive-networks.com",
+        "extremenetworks.com",
+        "f5.com",
+        "firemon.com",
+        "fortanix.com",
+        "infinigate.com",
+        "ingecom.net",
+        "ingrammicro.com",
+        "ivanti.com",
+        "juniper.net",
+        "levelblue.com",
+        "mcr.com.es",
+        "menlosecurity.com",
+        "microsoft.com",
+        "netscout.com",
+        "nokia.com",
+        "nonamesecurity.com",
+        "okta.com",
+        "paloaltonetworks.com",
+        "pax8.com",
+        "penguinsolutions.com",
+        "pingidentity.com",
+        "proofpoint.com",
+        "ruckusnetworks.com",
+        "stratus.com",
+        "tdsynnex.com",
+        "uipath.com",
+        "v-valley.com",
+        "vectra.ai",
+        "weblib.com",
+        "westconcomstor.com",
+        "xmcyber.com",
+        "zscaler.com"
+      ]
+    },
+    {
+      "id": "analyst-public",
+      "weight": 90,
+      "domains": [
+        "gartner.com",
+        "forrester.com",
+        "idc.com",
+        "omdia.tech",
+        "canalys.com",
+        "delloro.com",
+        "srgresearch.com",
+        "isg-one.com"
+      ]
+    },
+    {
+      "id": "industry-press",
+      "weight": 70,
+      "domains": [
+        "aslan.es",
+        "channelbiz.es",
+        "itreseller.es",
+        "newsbook.es",
+        "muycanal.com",
+        "ituser.es",
+        "computing.es",
+        "redestelecom.es"
+      ]
+    }
+  ],
+  "licensedAnalystRule": "Use public press releases, blogs, webinars and publicly visible summaries only. Never scrape or reconstruct paywalled Magic Quadrants, Waves, MarketScapes, trackers or paid forecasts."
+}

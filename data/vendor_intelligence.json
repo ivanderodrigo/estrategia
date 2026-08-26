@@ -1,0 +1,2878 @@
+{
+  "meta": {
+    "version": "1.1.0",
+    "edition": "Edición Ejecutiva · Inteligencia Pública",
+    "generated": "2026-08-26",
+    "language": "es",
+    "policy": "Solo información pública externa + portfolio/taxonomía de la presentación FY27 facilitada. Sin datos internos."
+  },
+  "marketSignals": [
+    {
+      "analyst": "IDC",
+      "date": "2026-05-07",
+      "title": "EMEA IT Market 2026 — Q2",
+      "metric": "$319B",
+      "label": "Gasto IA EMEA 2026",
+      "detail": "+19,2% interanual; la ejecución, infraestructura, datos, gobernanza y skills son el cuello de botella.",
+      "url": "https://www.idc.com/resource-center/blog/emea-it-market-2026-q2-updates-5-key-takeaways-on-ai-it-spending-and-market-trends/"
+    },
+    {
+      "analyst": "IDC",
+      "date": "2026-05-18",
+      "title": "European CISO priorities in 2026",
+      "metric": "84%",
+      "label": "Prioriza plataformización",
+      "detail": "En la encuesta IDC de diciembre de 2025, 84% prioriza consolidación/plataformización de seguridad; también destacan agentes IA y soberanía.",
+      "url": "https://www.idc.com/resource-center/blog/european-ciso-priorities-in-2026-ai-agents-plataformización-and-sovereignty/"
+    },
+    {
+      "analyst": "Forrester",
+      "date": "2026-02-02",
+      "title": "European Tech Market Forecast",
+      "metric": "€1,5T+",
+      "label": "Gasto tecnológico Europa 2026",
+      "detail": "Forrester prevé +6,3%, con impulso de IA, cloud, ciberseguridad y soberanía.",
+      "url": "https://www.forrester.com/blogs/europes-2026-tech-spend-exceeds-e1-5-trillion-driven-by-ai-cloud-and-sovereignty/"
+    },
+    {
+      "analyst": "Forrester",
+      "date": "2025-11-10",
+      "title": "Predictions 2026: Infrastructure & Operations",
+      "metric": "50%",
+      "label": "SASE vendors → secure LAN",
+      "detail": "Forrester prevé que la mitad de los vendors de seguridad SASE se muevan hacia secure LAN; también anticipa agentic operations.",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/"
+    },
+    {
+      "analyst": "Forrester",
+      "date": "2026-07-16",
+      "title": "Global Sovereignty Forecast 2025–2030",
+      "metric": "40%",
+      "label": "Soberanía media 2030",
+      "detail": "La soberanía tecnológica crecerá lentamente; la clave práctica será gestionar dependencias, no perseguir autosuficiencia total.",
+      "url": "https://investor.forrester.com/news-releases/news-release-details/forrester-global-sovereignty-forecast-despite-rising/"
+    }
+  ],
+  "strategyBets": [
+    {
+      "name": "SecOps y plataformización",
+      "score": 96,
+      "why": "IDC: 84% prioriza plataformización; portfolio muy fuerte en XDR, NDR, CTEM, SIEM/MDR.",
+      "action": "Construir SOC moderno y exposición como arquitectura multivendor con servicios."
+    },
+    {
+      "name": "SASE + LAN segura",
+      "score": 95,
+      "why": "Gartner 2026: SASE incorpora AI/PQC/soberanía; Forrester prevé convergencia security→LAN.",
+      "action": "Unificar arquitectura de acceso, identidad, campus y soporte; gobernar overlap."
+    },
+    {
+      "name": "Seguridad y gobierno de IA",
+      "score": 94,
+      "why": "IDC: 16,7% de inversión IA planificada se destina a seguridad/gobierno de agentes; Forrester eleva IAM/provenance de agentes.",
+      "action": "Crear arquitectura de IA segura con identity, data, API, cloud y governance."
+    },
+    {
+      "name": "Networking nativo de IA",
+      "score": 91,
+      "why": "Gartner 2026: LAN compite por autonomía, software operativo y Zero Trust; Forrester: networking se mueve a plataformas.",
+      "action": "Campus autónomo con AIOps + DDI + Zero Trust + servicios."
+    },
+    {
+      "name": "Resiliencia OT / XIoT",
+      "score": 89,
+      "why": "Gartner 2026 separa CPS Protection como mercado clave; encaja con Claroty + networking + private 5G.",
+      "action": "Paquetizar descubrimiento, acceso de terceros, segmentación y detección."
+    },
+    {
+      "name": "Cloud e infraestructura IA",
+      "score": 88,
+      "why": "Gartner 2026 ya trata Cloud AI Infrastructure como mercado propio; IDC prevé fuerte aceleración de gasto IA.",
+      "action": "Crear infraestructura preparada para IA + security + marketplace, evitando competir solo por IaaS."
+    },
+    {
+      "name": "Soberanía y agilidad criptográfica",
+      "score": 86,
+      "why": "IDC y Forrester sitúan soberanía como criterio de compra europeo; SASE incorpora PQC y controles soberanos.",
+      "action": "Fortanix + cloud + SASE + data security con mensajes regulatorios concretos."
+    },
+    {
+      "name": "Automatización agéntica",
+      "score": 85,
+      "why": "RPA sigue siendo base eficiente y Gartner amplía el foco a orchestration/agentic automation.",
+      "action": "UiPath + cloud + identity/security, entrando por procesos con ROI medible."
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Anomali",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "Threat Intelligence"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "OPTIMIZAR",
+      "priorityScore": 3,
+      "marketCompetitors": [
+        "Recorded Future",
+        "ThreatConnect",
+        "Google Mandiant",
+        "Flashpoint"
+      ],
+      "internalOverlaps": [],
+      "synergies": [
+        {
+          "play": "SOC moderno y exposición",
+          "with": [
+            "CrowdStrike",
+            "Palo Alto Networks",
+            "Vectra AI",
+            "XM Cyber",
+            "AttackIQ"
+          ],
+          "value": "Combinar detección, SIEM/XDR, NDR, validación de exposición y operaciones gestionadas."
+        }
+      ],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: Threat Intelligence. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Convertir Threat Intelligence en una capa transversal del arquitectura SOC moderno: integrar con XDR/SIEM y vender workshops threat-led por sector.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "AttackIQ",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "BAS",
+        "CTEM"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "CONSTRUIR",
+      "priorityScore": 4,
+      "marketCompetitors": [
+        "Cymulate",
+        "Picus Security",
+        "SafeBreach"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "XM Cyber",
+          "area": "CTEM / validación"
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "CTEM / validación"
+        },
+        {
+          "vendor": "CrowdStrike",
+          "area": "CTEM / validación"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "SOC moderno y exposición",
+          "with": [
+            "CrowdStrike",
+            "Palo Alto Networks",
+            "Vectra AI",
+            "XM Cyber",
+            "Anomali"
+          ],
+          "value": "Combinar detección, SIEM/XDR, NDR, validación de exposición y operaciones gestionadas."
+        }
+      ],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: BAS, CTEM. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Industrializar un “Control Validation / CTEM Sprint” que mida eficacia de PAN, CrowdStrike, Cisco y controles existentes antes de ampliar licencias.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Certes Networks",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "Network Encryption",
+        "Crypto Segmentation"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "OPTIMIZAR",
+      "priorityScore": 3,
+      "marketCompetitors": [
+        "Fortanix",
+        "Thales",
+        "Utimaco",
+        "Rohde & Schwarz Cybersecurity"
+      ],
+      "internalOverlaps": [],
+      "synergies": [],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: Network Encryption, Crypto Segmentation. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Posicionar crypto-segmentation y crypto-agility en regulados/OT, unido a Fortanix y a redes Cisco/Extreme/Nokia.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Cisco",
+      "domain": "Multi-domain",
+      "capabilities": [
+        "Networking",
+        "Security",
+        "Data Center",
+        "Collaboration",
+        "Observability"
+      ],
+      "countries": [
+        "ES",
+        "PT"
+      ],
+      "priority": "ACELERAR",
+      "priorityScore": 5,
+      "marketCompetitors": [
+        "HPE Networking",
+        "Arista Networks",
+        "Fortinet",
+        "Netskope",
+        "Cato Networks"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "Zscaler",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "Check Point",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "Menlo Security",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "CrowdStrike",
+          "area": "Endpoint / XDR"
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "Endpoint / XDR"
+        },
+        {
+          "vendor": "Check Point",
+          "area": "Endpoint / XDR"
+        },
+        {
+          "vendor": "Extreme Networks",
+          "area": "Campus / Wi-Fi"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "Zero Trust integral",
+          "with": [
+            "Zscaler",
+            "Palo Alto Networks",
+            "Okta",
+            "Ping Identity",
+            "Extreme Networks"
+          ],
+          "value": "Unir identidad, dispositivo, campus y acceso cloud en una arquitectura común, en lugar de vender fabricante por fabricante."
+        },
+        {
+          "play": "Campus autónomo",
+          "with": [
+            "Extreme Networks",
+            "Juniper Networks",
+            "EfficientIP",
+            "Zscaler"
+          ],
+          "value": "Campus gobernado por AIOps con identidad/política, DDI y seguridad entregada desde cloud."
+        },
+        {
+          "play": "Resiliencia OT",
+          "with": [
+            "Claroty",
+            "Extreme Networks",
+            "Ericsson Cradlepoint",
+            "Nokia",
+            "Fortanix"
+          ],
+          "value": "Unir conectividad industrial, visibilidad de activos, acceso, segmentación, detección y protección del dato."
+        },
+        {
+          "play": "Infraestructura preparada para IA",
+          "with": [
+            "AWS",
+            "Microsoft Azure",
+            "Juniper Networks",
+            "Nokia",
+            "Ciena"
+          ],
+          "value": "Combinar infraestructura, fabric de red, transporte, edge y cloud para cargas de IA."
+        }
+      ],
+      "analystSignals": [
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for SASE Platforms",
+          "date": "2026-07-28",
+          "summary": "El mercado SASE madura y se diferencia por seguridad de IA, controles soberanos, criptografía poscuántica y capacidades de plataforma.",
+          "peers": [
+            "Cato Networks",
+            "Fortinet",
+            "HPE",
+            "Netskope",
+            "Versa Networks"
+          ],
+          "url": "https://www.gartner.com/en/documents/8183329"
+        },
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for Enterprise Wired and Wireless LAN",
+          "date": "2026-05-18",
+          "summary": "El LAN empresarial se define por resultados operativos: IA, redes más autónomas, software operativo y aplicación de políticas Zero Trust.",
+          "peers": [
+            "HPE",
+            "Arista Networks",
+            "Fortinet",
+            "ALE",
+            "Huawei"
+          ],
+          "url": "https://www.gartner.com/en/documents/7860081"
+        },
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for CPS Protection Platforms",
+          "date": "2026-03-03",
+          "summary": "Las plataformas CPS se vuelven clave para descubrir activos y relaciones en OT/ICS/IoT y proteger entornos de misión crítica.",
+          "peers": [
+            "Armis",
+            "Nozomi Networks",
+            "Dragos",
+            "Tenable",
+            "Darktrace",
+            "Forescout Technologies"
+          ],
+          "url": "https://www.gartner.com/en/documents/7540249"
+        }
+      ],
+      "analystDifferential": "Señal analista: El mercado SASE madura y se diferencia por seguridad de IA, controles soberanos, criptografía poscuántica y capacidades de plataforma. Encaje Westcon: Networking, Security, Data Center. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [
+        {
+          "name": "Ingram Micro",
+          "country": "ES",
+          "url": "https://es-new.ingrammicro.com/Site/Vendor",
+          "evidence": "Fabricantes Ingram Micro España",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "TD SYNNEX",
+          "country": "ES",
+          "url": "https://www.ciscochannelconnect.com/DistiProfile/347",
+          "evidence": "Cisco Channel Connect — TD SYNNEX Spain",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "Ingram Micro",
+          "country": "PT",
+          "url": "https://pt-new.ingrammicro.com/site/vendor/index",
+          "evidence": "Fabricantes Ingram Micro Portugal",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "TD SYNNEX",
+          "country": "PT",
+          "url": "https://www.ciscochannelconnect.com/DistiProfile/269",
+          "evidence": "Cisco Channel Connect — TD SYNNEX Portugal",
+          "status": "VERIFICADO",
+          "confidence": 92
+        }
+      ],
+      "action": "Explotar la base Comstor con arquitecturas Secure LAN + SASE + preparada para IA networking; usar servicios y lifecycle como diferenciador y gobernar solapes con Extreme/PAN/Zscaler.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Claroty",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "OT Security",
+        "XIoT"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "ACELERAR",
+      "priorityScore": 5,
+      "marketCompetitors": [
+        "Armis",
+        "Nozomi Networks",
+        "Dragos",
+        "Tenable",
+        "Forescout"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Cisco",
+          "area": "OT Security"
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "OT Security"
+        },
+        {
+          "vendor": "Vectra AI",
+          "area": "OT Security"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "Resiliencia OT",
+          "with": [
+            "Extreme Networks",
+            "Cisco",
+            "Ericsson Cradlepoint",
+            "Nokia",
+            "Fortanix"
+          ],
+          "value": "Unir conectividad industrial, visibilidad de activos, acceso, segmentación, detección y protección del dato."
+        }
+      ],
+      "analystSignals": [
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for CPS Protection Platforms",
+          "date": "2026-03-03",
+          "summary": "Las plataformas CPS se vuelven clave para descubrir activos y relaciones en OT/ICS/IoT y proteger entornos de misión crítica.",
+          "peers": [
+            "Armis",
+            "Nozomi Networks",
+            "Dragos",
+            "Tenable",
+            "Darktrace",
+            "Forescout Technologies"
+          ],
+          "url": "https://www.gartner.com/en/documents/7540249"
+        }
+      ],
+      "analystDifferential": "Señal analista: Las plataformas CPS se vuelven clave para descubrir activos y relaciones en OT/ICS/IoT y proteger entornos de misión crítica. Encaje Westcon: OT Security, XIoT. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [],
+      "action": "Crear un arquitectura Resiliencia OT repetible: descubrimiento pasivo + acceso de terceros + segmentación + NDR, con campus/private 5G del portfolio.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "CrowdStrike",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "EDR/XDR",
+        "Identity Security",
+        "Cloud Security",
+        "Next-Gen SIEM"
+      ],
+      "countries": [
+        "ES",
+        "PT"
+      ],
+      "priority": "ACELERAR",
+      "priorityScore": 5,
+      "marketCompetitors": [
+        "Microsoft",
+        "SentinelOne",
+        "Sophos",
+        "Fortinet",
+        "TrendAI"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "Endpoint / XDR"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "Endpoint / XDR"
+        },
+        {
+          "vendor": "Check Point",
+          "area": "Endpoint / XDR"
+        },
+        {
+          "vendor": "AttackIQ",
+          "area": "CTEM / validación"
+        },
+        {
+          "vendor": "XM Cyber",
+          "area": "CTEM / validación"
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "CTEM / validación"
+        },
+        {
+          "vendor": "LevelBlue",
+          "area": "MDR / SecOps"
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "MDR / SecOps"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "SOC moderno y exposición",
+          "with": [
+            "Palo Alto Networks",
+            "Vectra AI",
+            "XM Cyber",
+            "AttackIQ",
+            "Anomali"
+          ],
+          "value": "Combinar detección, SIEM/XDR, NDR, validación de exposición y operaciones gestionadas."
+        },
+        {
+          "play": "IA y dato seguros",
+          "with": [
+            "Fortanix",
+            "Palo Alto Networks",
+            "AWS",
+            "Microsoft Azure",
+            "F5"
+          ],
+          "value": "Proteger cargas de IA, identidades, datos y APIs desde la infraestructura hasta la aplicación."
+        }
+      ],
+      "analystSignals": [
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for Endpoint Protection",
+          "date": "2026-05-26",
+          "summary": "La selección de EPP está cada vez más influida por soberanía y por descubrimiento/control del uso de IA en el endpoint.",
+          "peers": [
+            "Microsoft",
+            "SentinelOne",
+            "Sophos",
+            "Fortinet",
+            "ESET",
+            "TrendAI"
+          ],
+          "url": "https://www.gartner.com/en/documents/7913209"
+        }
+      ],
+      "analystDifferential": "Señal analista: La selección de EPP está cada vez más influida por soberanía y por descubrimiento/control del uso de IA en el endpoint. Encaje Westcon: EDR/XDR, Identity Security, Cloud Security. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [
+        {
+          "name": "Ignition Technology",
+          "country": "ES",
+          "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-ignition-technology-expand-partnership/",
+          "evidence": "CrowdStrike — ampliación de distribución de Ignition a España y Portugal",
+          "status": "VERIFICADO",
+          "confidence": 96
+        },
+        {
+          "name": "Ignition Technology",
+          "country": "PT",
+          "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-ignition-technology-expand-partnership/",
+          "evidence": "CrowdStrike — ampliación de distribución de Ignition a España y Portugal",
+          "status": "VERIFICADO",
+          "confidence": 96
+        }
+      ],
+      "action": "Escalar Z-Strike y 3D Labs; unir Falcon con Okta, Zscaler, Claroty, AttackIQ y Vectra; monetizar soporte L1/L2 y expansión a Next-Gen SIEM/cloud/identity.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "F5",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "ADC",
+        "WAAP/WAF",
+        "API Security",
+        "Multicloud Networking"
+      ],
+      "countries": [
+        "ES",
+        "PT"
+      ],
+      "priority": "ACELERAR",
+      "priorityScore": 5,
+      "marketCompetitors": [
+        "Cloudflare",
+        "Akamai",
+        "Thales / Imperva",
+        "Fortinet",
+        "Radware"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Akamai / Noname",
+          "area": "WAAP / API"
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "WAAP / API"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "IA y dato seguros",
+          "with": [
+            "Fortanix",
+            "Palo Alto Networks",
+            "CrowdStrike",
+            "AWS",
+            "Microsoft Azure"
+          ],
+          "value": "Proteger cargas de IA, identidades, datos y APIs desde la infraestructura hasta la aplicación."
+        }
+      ],
+      "analystSignals": [
+        {
+          "analyst": "Gartner Peer Insights",
+          "title": "Cloud Web Application and API Protection — alternativas de F5",
+          "date": "2026",
+          "summary": "La comparación pública de usuarios sitúa el terreno competitivo de WAAP/API frente a Akamai, Imperva, AWS, Cloudflare, Fortinet y Radware.",
+          "peers": [
+            "Cloudflare",
+            "Thales / Imperva",
+            "Fortinet",
+            "Radware",
+            "A10 Networks"
+          ],
+          "url": "https://www.gartner.com/reviews/market/cloud-web-application-and-api-protection/vendor/f5/alternatives"
+        }
+      ],
+      "analystDifferential": "Señal analista: La comparación pública de usuarios sitúa el terreno competitivo de WAAP/API frente a Akamai, Imperva, AWS, Cloudflare, Fortinet y Radware. Encaje Westcon: ADC, WAAP/WAF, API Security. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [
+        {
+          "name": "Arrow",
+          "country": "ES",
+          "url": "https://www.arrow.com/globalecs/es/productos/",
+          "evidence": "Portfolio público Arrow España",
+          "status": "VERIFICADO",
+          "confidence": 92
+        }
+      ],
+      "action": "Liderar “Secure Apps & APIs”: descubrimiento/API + WAAP + identidad + cloud; defender diferenciación frente a Akamai/Cloudflare/Imperva con PoV de métricas.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "FireMon",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "Security Policy Management"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "OPTIMIZAR",
+      "priorityScore": 3,
+      "marketCompetitors": [
+        "Tufin",
+        "AlgoSec",
+        "Skybox Security"
+      ],
+      "internalOverlaps": [],
+      "synergies": [],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: Security Policy Management. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Usarlo como capa neutral de policy automation en clientes multi-firewall; arquitectura de compliance y reducción de reglas con PAN/Cisco/Check Point.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Fortanix",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "Data Security",
+        "KMS/HSM",
+        "Tokenization",
+        "Confidential Computing"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "CONSTRUIR",
+      "priorityScore": 4,
+      "marketCompetitors": [
+        "Thales",
+        "Entrust",
+        "HashiCorp",
+        "Utimaco"
+      ],
+      "internalOverlaps": [],
+      "synergies": [
+        {
+          "play": "IA y dato seguros",
+          "with": [
+            "Palo Alto Networks",
+            "CrowdStrike",
+            "AWS",
+            "Microsoft Azure",
+            "F5"
+          ],
+          "value": "Proteger cargas de IA, identidades, datos y APIs desde la infraestructura hasta la aplicación."
+        },
+        {
+          "play": "Resiliencia OT",
+          "with": [
+            "Claroty",
+            "Extreme Networks",
+            "Cisco",
+            "Ericsson Cradlepoint",
+            "Nokia"
+          ],
+          "value": "Unir conectividad industrial, visibilidad de activos, acceso, segmentación, detección y protección del dato."
+        }
+      ],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: Data Security, KMS/HSM, Tokenization. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Apropiarse de IA segura/Data & Sovereignty: KMS/HSM/tokenización/confidential computing + AWS/Azure + seguridad cloud y API.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Ivanti",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "UEM",
+        "Patch",
+        "ITSM/ITAM",
+        "ZTNA"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "OPTIMIZAR",
+      "priorityScore": 3,
+      "marketCompetitors": [
+        "Microsoft",
+        "Omnissa",
+        "Tanium",
+        "ManageEngine",
+        "NinjaOne"
+      ],
+      "internalOverlaps": [],
+      "synergies": [],
+      "analystSignals": [
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for Endpoint Management Tools",
+          "date": "2026-01-05",
+          "summary": "La gestión de endpoints sigue siendo una capa esencial para operar, asegurar y habilitar el puesto de trabajo moderno.",
+          "peers": [
+            "Microsoft",
+            "Omnissa",
+            "Tanium",
+            "Jamf",
+            "ManageEngine",
+            "NinjaOne"
+          ],
+          "url": "https://www.gartner.com/en/documents/7298830"
+        }
+      ],
+      "analystDifferential": "Señal analista: La gestión de endpoints sigue siendo una capa esencial para operar, asegurar y habilitar el puesto de trabajo moderno. Encaje Westcon: UEM, Patch, ITSM/ITAM. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [],
+      "action": "Vender hygiene/patch/UEM como prerrequisito de Zero Trust; conectar postura de dispositivo con Zscaler/PAN/Okta y automatización ITSM.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "LevelBlue",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "MDR",
+        "MSSP",
+        "SOC"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "CONSTRUIR",
+      "priorityScore": 4,
+      "marketCompetitors": [
+        "Secureworks",
+        "Orange Cyberdefense",
+        "Telefónica Tech",
+        "Kyndryl",
+        "NTT DATA"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "CrowdStrike",
+          "area": "MDR / SecOps"
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "MDR / SecOps"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "SOC moderno y exposición",
+          "with": [
+            "CrowdStrike",
+            "Palo Alto Networks",
+            "Vectra AI",
+            "XM Cyber",
+            "AttackIQ"
+          ],
+          "value": "Combinar detección, SIEM/XDR, NDR, validación de exposición y operaciones gestionadas."
+        }
+      ],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: MDR, MSSP, SOC. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Convertirlo en “service wrapper” del portfolio: MDR/SOC para partners sin capacidad 24x7, con attach a XDR/NDR/identity.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Menlo Security",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "Secure Browser",
+        "RBI"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "OPTIMIZAR",
+      "priorityScore": 3,
+      "marketCompetitors": [
+        "Cloudflare",
+        "Netskope",
+        "Zscaler",
+        "Island",
+        "Palo Alto Networks Browser"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "Zscaler",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "Check Point",
+          "area": "SASE / SSE"
+        }
+      ],
+      "synergies": [],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: Secure Browser, RBI. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Especializar en riesgo de navegador y usuarios de alto riesgo; integrarlo con identidad, DLP y SSE sin competir frontalmente en todo SASE.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "NETSCOUT",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "DDoS",
+        "Network Visibility",
+        "NDR"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "OPTIMIZAR",
+      "priorityScore": 3,
+      "marketCompetitors": [
+        "Radware",
+        "Cloudflare",
+        "Akamai",
+        "Corero",
+        "ExtraHop"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Vectra AI",
+          "area": "NDR / visibilidad"
+        }
+      ],
+      "synergies": [],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: DDoS, Network Visibility, NDR. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Unir DDoS + observabilidad de red a transport/DCI y aplicaciones críticas; priorizar carriers, banca y servicios esenciales.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Akamai / Noname",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "API Security",
+        "WAAP"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "CONSTRUIR",
+      "priorityScore": 4,
+      "marketCompetitors": [
+        "Cloudflare",
+        "Thales / Imperva",
+        "Salt Security",
+        "F5",
+        "Fortinet"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "F5",
+          "area": "WAAP / API"
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "WAAP / API"
+        }
+      ],
+      "synergies": [],
+      "analystSignals": [
+        {
+          "analyst": "Gartner Peer Insights",
+          "title": "Cloud Web Application and API Protection — alternativas de F5",
+          "date": "2026",
+          "summary": "La comparación pública de usuarios sitúa el terreno competitivo de WAAP/API frente a Akamai, Imperva, AWS, Cloudflare, Fortinet y Radware.",
+          "peers": [
+            "Cloudflare",
+            "Thales / Imperva",
+            "Fortinet",
+            "Radware",
+            "A10 Networks"
+          ],
+          "url": "https://www.gartner.com/reviews/market/cloud-web-application-and-api-protection/vendor/f5/alternatives"
+        }
+      ],
+      "analystDifferential": "Señal analista: La comparación pública de usuarios sitúa el terreno competitivo de WAAP/API frente a Akamai, Imperva, AWS, Cloudflare, Fortinet y Radware. Encaje Westcon: API Security, WAAP. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [],
+      "action": "Construir API Security Quick Assessment + descubrimiento de shadow APIs; complementar F5/cloud/identity y definir claramente cuándo compite con F5.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Okta",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "IAM",
+        "CIAM",
+        "SSO",
+        "MFA"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "ACELERAR",
+      "priorityScore": 5,
+      "marketCompetitors": [
+        "Microsoft",
+        "CyberArk",
+        "Thales",
+        "One Identity",
+        "Entrust"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Ping Identity",
+          "area": "IAM / acceso"
+        },
+        {
+          "vendor": "1Password",
+          "area": "IAM / acceso"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "Zero Trust integral",
+          "with": [
+            "Zscaler",
+            "Palo Alto Networks",
+            "Cisco",
+            "Ping Identity",
+            "Extreme Networks"
+          ],
+          "value": "Unir identidad, dispositivo, campus y acceso cloud en una arquitectura común, en lugar de vender fabricante por fabricante."
+        },
+        {
+          "play": "IA y dato seguros",
+          "with": [
+            "Fortanix",
+            "Palo Alto Networks",
+            "CrowdStrike",
+            "AWS",
+            "Microsoft Azure"
+          ],
+          "value": "Proteger cargas de IA, identidades, datos y APIs desde la infraestructura hasta la aplicación."
+        }
+      ],
+      "analystSignals": [
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for Access Management",
+          "date": "2025-11-11",
+          "summary": "Las diferencias se desplazan hacia CIAM complejo, partner IAM y machine IAM, además del acceso workforce maduro.",
+          "peers": [
+            "Microsoft",
+            "CyberArk",
+            "Thales",
+            "IBM",
+            "One Identity",
+            "Entrust"
+          ],
+          "url": "https://www.gartner.com/en/documents/7169730"
+        }
+      ],
+      "analystDifferential": "Señal analista: Las diferencias se desplazan hacia CIAM complejo, partner IAM y machine IAM, además del acceso workforce maduro. Encaje Westcon: IAM, CIAM, SSO. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [],
+      "action": "Hacer de identidad el punto de entrada de Zero Trust y AI-agent governance; paquetizar con CrowdStrike/Zscaler y separar workforce vs CIAM.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Palo Alto Networks",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "NGFW",
+        "SASE",
+        "XDR/SecOps",
+        "CNAPP"
+      ],
+      "countries": [
+        "ES",
+        "PT"
+      ],
+      "priority": "ACELERAR",
+      "priorityScore": 5,
+      "marketCompetitors": [
+        "Fortinet",
+        "Check Point",
+        "Cisco",
+        "Zscaler",
+        "Netskope",
+        "CrowdStrike"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Zscaler",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "Check Point",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "Menlo Security",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "CrowdStrike",
+          "area": "Endpoint / XDR"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "Endpoint / XDR"
+        },
+        {
+          "vendor": "Check Point",
+          "area": "Endpoint / XDR"
+        },
+        {
+          "vendor": "F5",
+          "area": "WAAP / API"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "Zero Trust integral",
+          "with": [
+            "Zscaler",
+            "Cisco",
+            "Okta",
+            "Ping Identity",
+            "Extreme Networks"
+          ],
+          "value": "Unir identidad, dispositivo, campus y acceso cloud en una arquitectura común, en lugar de vender fabricante por fabricante."
+        },
+        {
+          "play": "SOC moderno y exposición",
+          "with": [
+            "CrowdStrike",
+            "Vectra AI",
+            "XM Cyber",
+            "AttackIQ",
+            "Anomali"
+          ],
+          "value": "Combinar detección, SIEM/XDR, NDR, validación de exposición y operaciones gestionadas."
+        },
+        {
+          "play": "IA y dato seguros",
+          "with": [
+            "Fortanix",
+            "CrowdStrike",
+            "AWS",
+            "Microsoft Azure",
+            "F5"
+          ],
+          "value": "Proteger cargas de IA, identidades, datos y APIs desde la infraestructura hasta la aplicación."
+        }
+      ],
+      "analystSignals": [
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for SASE Platforms",
+          "date": "2026-07-28",
+          "summary": "El mercado SASE madura y se diferencia por seguridad de IA, controles soberanos, criptografía poscuántica y capacidades de plataforma.",
+          "peers": [
+            "Cato Networks",
+            "Fortinet",
+            "HPE",
+            "Netskope",
+            "Versa Networks"
+          ],
+          "url": "https://www.gartner.com/en/documents/8183329"
+        },
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for Endpoint Protection",
+          "date": "2026-05-26",
+          "summary": "La selección de EPP está cada vez más influida por soberanía y por descubrimiento/control del uso de IA en el endpoint.",
+          "peers": [
+            "Microsoft",
+            "SentinelOne",
+            "Sophos",
+            "Fortinet",
+            "ESET",
+            "TrendAI"
+          ],
+          "url": "https://www.gartner.com/en/documents/7913209"
+        },
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for CPS Protection Platforms",
+          "date": "2026-03-03",
+          "summary": "Las plataformas CPS se vuelven clave para descubrir activos y relaciones en OT/ICS/IoT y proteger entornos de misión crítica.",
+          "peers": [
+            "Armis",
+            "Nozomi Networks",
+            "Dragos",
+            "Tenable",
+            "Darktrace",
+            "Forescout Technologies"
+          ],
+          "url": "https://www.gartner.com/en/documents/7540249"
+        }
+      ],
+      "analystDifferential": "Señal analista: El mercado SASE madura y se diferencia por seguridad de IA, controles soberanos, criptografía poscuántica y capacidades de plataforma. Encaje Westcon: NGFW, SASE, XDR/SecOps. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [
+        {
+          "name": "Arrow",
+          "country": "ES",
+          "url": "https://www.arrow.com/globalecs/es/productos/",
+          "evidence": "Portfolio público Arrow España",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "Exclusive Networks",
+          "country": "ES",
+          "url": "https://www.exclusive-networks.com/es/vendors/",
+          "evidence": "Portfolio público Exclusive Networks España",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "TD SYNNEX",
+          "country": "ES",
+          "url": "https://news.tdsynnex.com/news/td-synnex-strengthens-cybersecurity-portfolio-with-addition-of-palo-alto-networks-in-europe/",
+          "evidence": "TD SYNNEX — acuerdo europeo Palo Alto Networks; huella pública en España",
+          "status": "VERIFICADO",
+          "confidence": 85
+        },
+        {
+          "name": "Arrow",
+          "country": "PT",
+          "url": "https://www.arrow.com/globalecs/pt/produtos/",
+          "evidence": "Portfolio público Arrow Portugal",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "Exclusive Networks",
+          "country": "PT",
+          "url": "https://www.exclusive-networks.com/pt/vendors/",
+          "evidence": "Portfolio público Exclusive Networks Portugal",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "TD SYNNEX",
+          "country": "PT",
+          "url": "https://d29oepp167a5av.cloudfront.net/PC_2024_c_v7.pdf",
+          "evidence": "Programa de canal público Portugal (lista de marcas directas)",
+          "status": "VERIFICADO",
+          "confidence": 92
+        }
+      ],
+      "action": "Escalar SASEvolution y plataformización; unir Strata/Prisma/Cortex con servicios Westcon, pero mapear conflicto con Zscaler/CrowdStrike/Cisco por cuenta y caso de uso.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Ping Identity",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "IAM",
+        "CIAM",
+        "Identity Orchestration"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "CONSTRUIR",
+      "priorityScore": 4,
+      "marketCompetitors": [
+        "Microsoft",
+        "CyberArk",
+        "Thales",
+        "Okta",
+        "One Identity"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Okta",
+          "area": "IAM / acceso"
+        },
+        {
+          "vendor": "1Password",
+          "area": "IAM / acceso"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "Zero Trust integral",
+          "with": [
+            "Zscaler",
+            "Palo Alto Networks",
+            "Cisco",
+            "Okta",
+            "Extreme Networks"
+          ],
+          "value": "Unir identidad, dispositivo, campus y acceso cloud en una arquitectura común, en lugar de vender fabricante por fabricante."
+        }
+      ],
+      "analystSignals": [
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for Access Management",
+          "date": "2025-11-11",
+          "summary": "Las diferencias se desplazan hacia CIAM complejo, partner IAM y machine IAM, además del acceso workforce maduro.",
+          "peers": [
+            "Microsoft",
+            "CyberArk",
+            "Thales",
+            "IBM",
+            "One Identity",
+            "Entrust"
+          ],
+          "url": "https://www.gartner.com/en/documents/7169730"
+        }
+      ],
+      "analystDifferential": "Señal analista: Las diferencias se desplazan hacia CIAM complejo, partner IAM y machine IAM, además del acceso workforce maduro. Encaje Westcon: IAM, CIAM, Identity Orchestration. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [],
+      "action": "Especializar en CIAM/partner IAM e identidades complejas/híbridas; evitar duplicar el discurso de Okta y crear criterios de elección claros.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Proofpoint",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "Email Security",
+        "DLP",
+        "Human Risk"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "CONSTRUIR",
+      "priorityScore": 4,
+      "marketCompetitors": [
+        "Microsoft",
+        "Mimecast",
+        "Abnormal Security",
+        "Barracuda",
+        "Cloudflare"
+      ],
+      "internalOverlaps": [],
+      "synergies": [],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: Email Security, DLP, Human Risk. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [
+        {
+          "name": "Exclusive Networks",
+          "country": "ES",
+          "url": "https://www.exclusive-networks.com/es/vendors/",
+          "evidence": "Portfolio público Exclusive Networks España",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "Exclusive Networks",
+          "country": "PT",
+          "url": "https://www.exclusive-networks.com/pt/vendors/",
+          "evidence": "Portfolio público Exclusive Networks Portugal",
+          "status": "VERIFICADO",
+          "confidence": 92
+        }
+      ],
+      "action": "Play Human Risk + Data: email/DLP + identidad + endpoint; utilizar partners tecnológicos con CrowdStrike/Okta/PAN y foco en M365.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Vectra AI",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "NDR",
+        "Identity Threat Detection"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "CONSTRUIR",
+      "priorityScore": 4,
+      "marketCompetitors": [
+        "Darktrace",
+        "ExtraHop",
+        "Corelight",
+        "Fortinet",
+        "Stellar Cyber"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "NETSCOUT",
+          "area": "NDR / visibilidad"
+        },
+        {
+          "vendor": "Claroty",
+          "area": "OT Security"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "OT Security"
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "OT Security"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "SOC moderno y exposición",
+          "with": [
+            "CrowdStrike",
+            "Palo Alto Networks",
+            "XM Cyber",
+            "AttackIQ",
+            "Anomali"
+          ],
+          "value": "Combinar detección, SIEM/XDR, NDR, validación de exposición y operaciones gestionadas."
+        },
+        {
+          "play": "Resiliencia OT",
+          "with": [
+            "Claroty",
+            "Extreme Networks",
+            "Cisco",
+            "Ericsson Cradlepoint",
+            "Nokia"
+          ],
+          "value": "Unir conectividad industrial, visibilidad de activos, acceso, segmentación, detección y protección del dato."
+        }
+      ],
+      "analystSignals": [
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for Network Detection and Response",
+          "date": "2026-05-18",
+          "summary": "NDR evoluciona hacia automatización SOC con IA y cobertura híbrida/multicloud, manteniéndose como capa complementaria de detección.",
+          "peers": [
+            "Darktrace",
+            "ExtraHop",
+            "Corelight",
+            "Fortinet",
+            "Arista Networks",
+            "Stellar Cyber"
+          ],
+          "url": "https://www.gartner.com/en/documents/7865681"
+        }
+      ],
+      "analystDifferential": "Señal analista: NDR evoluciona hacia automatización SOC con IA y cobertura híbrida/multicloud, manteniéndose como capa complementaria de detección. Encaje Westcon: NDR, Identity Threat Detection. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [],
+      "action": "Posicionar NDR como señal complementaria, no como sustituto de EDR; SOC moderno con CrowdStrike/PAN y casos identity/cloud.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "XM Cyber",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "Exposure Management",
+        "CTEM"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "CONSTRUIR",
+      "priorityScore": 4,
+      "marketCompetitors": [
+        "Tenable",
+        "Rapid7",
+        "Qualys",
+        "Picus Security",
+        "Cymulate"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "AttackIQ",
+          "area": "CTEM / validación"
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "CTEM / validación"
+        },
+        {
+          "vendor": "CrowdStrike",
+          "area": "CTEM / validación"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "SOC moderno y exposición",
+          "with": [
+            "CrowdStrike",
+            "Palo Alto Networks",
+            "Vectra AI",
+            "AttackIQ",
+            "Anomali"
+          ],
+          "value": "Combinar detección, SIEM/XDR, NDR, validación de exposición y operaciones gestionadas."
+        }
+      ],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: Exposure Management, CTEM. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Industrializar CTEM/attack-path como servicio de priorización de riesgo; conectar hallazgos con PAN/Crowd/FireMon y remediation.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Zscaler",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "SSE",
+        "SASE",
+        "ZTNA",
+        "Data Protection"
+      ],
+      "countries": [
+        "ES",
+        "PT"
+      ],
+      "priority": "ACELERAR",
+      "priorityScore": 5,
+      "marketCompetitors": [
+        "Netskope",
+        "Palo Alto Networks",
+        "Cloudflare",
+        "Cato Networks",
+        "Fortinet",
+        "Cisco"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "Check Point",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "Menlo Security",
+          "area": "SASE / SSE"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "Zero Trust integral",
+          "with": [
+            "Palo Alto Networks",
+            "Cisco",
+            "Okta",
+            "Ping Identity",
+            "Extreme Networks"
+          ],
+          "value": "Unir identidad, dispositivo, campus y acceso cloud en una arquitectura común, en lugar de vender fabricante por fabricante."
+        },
+        {
+          "play": "Campus autónomo",
+          "with": [
+            "Extreme Networks",
+            "Juniper Networks",
+            "Cisco",
+            "EfficientIP"
+          ],
+          "value": "Campus gobernado por AIOps con identidad/política, DDI y seguridad entregada desde cloud."
+        }
+      ],
+      "analystSignals": [
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for SASE Platforms",
+          "date": "2026-07-28",
+          "summary": "El mercado SASE madura y se diferencia por seguridad de IA, controles soberanos, criptografía poscuántica y capacidades de plataforma.",
+          "peers": [
+            "Cato Networks",
+            "Fortinet",
+            "HPE",
+            "Netskope",
+            "Versa Networks"
+          ],
+          "url": "https://www.gartner.com/en/documents/8183329"
+        }
+      ],
+      "analystDifferential": "Señal analista: El mercado SASE madura y se diferencia por seguridad de IA, controles soberanos, criptografía poscuántica y capacidades de plataforma. Encaje Westcon: SSE, SASE, ZTNA. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [],
+      "action": "Escalar Z-Strike + Velocity + 3D Labs; dominar SSE/Zero Trust y conectar con identity/endpoint; gobernar overlap con PAN/Cisco/Check Point.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "1Password",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "Password Management",
+        "Secrets",
+        "Access"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "OPTIMIZAR",
+      "priorityScore": 3,
+      "marketCompetitors": [
+        "Bitwarden",
+        "Keeper",
+        "Dashlane",
+        "CyberArk"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Okta",
+          "area": "IAM / acceso"
+        },
+        {
+          "vendor": "Ping Identity",
+          "area": "IAM / acceso"
+        }
+      ],
+      "synergies": [],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: Password Management, Secrets, Access. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Usar “access + secrets” como entrada simple a identidad de workforce y DevOps; attach a Okta/Ping y cloud/DevSecOps.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Check Point",
+      "domain": "Cybersecurity",
+      "capabilities": [
+        "NGFW",
+        "SASE",
+        "Cloud Security",
+        "Email Security"
+      ],
+      "countries": [
+        "PT"
+      ],
+      "priority": "CONSTRUIR",
+      "priorityScore": 4,
+      "marketCompetitors": [
+        "Fortinet",
+        "Palo Alto Networks",
+        "Cisco",
+        "Zscaler",
+        "Netskope"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "Zscaler",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "Menlo Security",
+          "area": "SASE / SSE"
+        },
+        {
+          "vendor": "CrowdStrike",
+          "area": "Endpoint / XDR"
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "area": "Endpoint / XDR"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "Endpoint / XDR"
+        }
+      ],
+      "synergies": [],
+      "analystSignals": [
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for SASE Platforms",
+          "date": "2026-07-28",
+          "summary": "El mercado SASE madura y se diferencia por seguridad de IA, controles soberanos, criptografía poscuántica y capacidades de plataforma.",
+          "peers": [
+            "Cato Networks",
+            "Fortinet",
+            "HPE",
+            "Netskope",
+            "Versa Networks"
+          ],
+          "url": "https://www.gartner.com/en/documents/8183329"
+        },
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for Endpoint Protection",
+          "date": "2026-05-26",
+          "summary": "La selección de EPP está cada vez más influida por soberanía y por descubrimiento/control del uso de IA en el endpoint.",
+          "peers": [
+            "Microsoft",
+            "SentinelOne",
+            "Sophos",
+            "Fortinet",
+            "ESET",
+            "TrendAI"
+          ],
+          "url": "https://www.gartner.com/en/documents/7913209"
+        }
+      ],
+      "analystDifferential": "Señal analista: El mercado SASE madura y se diferencia por seguridad de IA, controles soberanos, criptografía poscuántica y capacidades de plataforma. Encaje Westcon: NGFW, SASE, Cloud Security. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [
+        {
+          "name": "Arrow",
+          "country": "ES",
+          "url": "https://www.arrow.com/globalecs/es/productos/",
+          "evidence": "Portfolio público Arrow España",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "Arrow",
+          "country": "PT",
+          "url": "https://www.arrow.com/globalecs/pt/produtos/",
+          "evidence": "Portfolio público Arrow Portugal",
+          "status": "VERIFICADO",
+          "confidence": 92
+        }
+      ],
+      "action": "En Portugal, defender base NGFW y expandir a SASE/cloud/email; construir criterios de coexistencia frente a PAN/Zscaler/Cisco y aprovechar casos regulados.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Ciena",
+      "domain": "Networking",
+      "capabilities": [
+        "Optical",
+        "Transport",
+        "Network Automation"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "CONSTRUIR",
+      "priorityScore": 4,
+      "marketCompetitors": [
+        "Nokia",
+        "Cisco",
+        "Huawei",
+        "Infinera / Nokia"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Nokia",
+          "area": "Óptica / transporte"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "Óptica / transporte"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "Infraestructura preparada para IA",
+          "with": [
+            "AWS",
+            "Microsoft Azure",
+            "Juniper Networks",
+            "Cisco",
+            "Nokia"
+          ],
+          "value": "Combinar infraestructura, fabric de red, transporte, edge y cloud para cargas de IA."
+        }
+      ],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: Optical, Transport, Network Automation. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Vincular transporte óptico/DCI al ciclo de inversión de AI data centers; arquitectura “preparada para IA interconnect” con cloud, DC fabric y servicios.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "EfficientIP",
+      "domain": "Networking",
+      "capabilities": [
+        "DDI",
+        "DNS Security",
+        "IPAM"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "CONSTRUIR",
+      "priorityScore": 4,
+      "marketCompetitors": [
+        "Infoblox",
+        "BlueCat",
+        "Men&Mice / Micetro"
+      ],
+      "internalOverlaps": [],
+      "synergies": [
+        {
+          "play": "Campus autónomo",
+          "with": [
+            "Extreme Networks",
+            "Juniper Networks",
+            "Cisco",
+            "Zscaler"
+          ],
+          "value": "Campus gobernado por AIOps con identidad/política, DDI y seguridad entregada desde cloud."
+        }
+      ],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: DDI, DNS Security, IPAM. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Convertir DDI/DNS en capa común de automatización y seguridad para cualquier campus/WAN; attach sistemático a Extreme/Cisco/Juniper y Zero Trust.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Ericsson Cradlepoint",
+      "domain": "Networking",
+      "capabilities": [
+        "Wireless WAN",
+        "Private 5G",
+        "IoT"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "OPTIMIZAR",
+      "priorityScore": 3,
+      "marketCompetitors": [
+        "Cisco",
+        "Fortinet",
+        "Peplink",
+        "Nokia"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Nokia",
+          "area": "Private 5G / WAN"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "Private 5G / WAN"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "Resiliencia OT",
+          "with": [
+            "Claroty",
+            "Extreme Networks",
+            "Cisco",
+            "Nokia",
+            "Fortanix"
+          ],
+          "value": "Unir conectividad industrial, visibilidad de activos, acceso, segmentación, detección y protección del dato."
+        }
+      ],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: Wireless WAN, Private 5G, IoT. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Paquetizar branch resilience + 5G + OT/edge; usar verticales retail, industria, transporte y ubicaciones temporales.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Extreme Networks",
+      "domain": "Networking",
+      "capabilities": [
+        "Campus",
+        "Wi-Fi",
+        "Fabric",
+        "NAC",
+        "Cloud Management",
+        "SD-WAN"
+      ],
+      "countries": [
+        "ES",
+        "PT"
+      ],
+      "priority": "ACELERAR",
+      "priorityScore": 5,
+      "marketCompetitors": [
+        "HPE Networking",
+        "Cisco",
+        "Arista Networks",
+        "Fortinet",
+        "Nile"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Cisco",
+          "area": "Campus / Wi-Fi"
+        },
+        {
+          "vendor": "Juniper Networks",
+          "area": "Campus / Wi-Fi"
+        },
+        {
+          "vendor": "Ruckus Networks",
+          "area": "Campus / Wi-Fi"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "Routing / DC"
+        },
+        {
+          "vendor": "Juniper Networks",
+          "area": "Routing / DC"
+        },
+        {
+          "vendor": "Nokia",
+          "area": "Routing / DC"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "Zero Trust integral",
+          "with": [
+            "Zscaler",
+            "Palo Alto Networks",
+            "Cisco",
+            "Okta",
+            "Ping Identity"
+          ],
+          "value": "Unir identidad, dispositivo, campus y acceso cloud en una arquitectura común, en lugar de vender fabricante por fabricante."
+        },
+        {
+          "play": "Campus autónomo",
+          "with": [
+            "Juniper Networks",
+            "Cisco",
+            "EfficientIP",
+            "Zscaler"
+          ],
+          "value": "Campus gobernado por AIOps con identidad/política, DDI y seguridad entregada desde cloud."
+        },
+        {
+          "play": "Resiliencia OT",
+          "with": [
+            "Claroty",
+            "Cisco",
+            "Ericsson Cradlepoint",
+            "Nokia",
+            "Fortanix"
+          ],
+          "value": "Unir conectividad industrial, visibilidad de activos, acceso, segmentación, detección y protección del dato."
+        }
+      ],
+      "analystSignals": [
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for Enterprise Wired and Wireless LAN",
+          "date": "2026-05-18",
+          "summary": "El LAN empresarial se define por resultados operativos: IA, redes más autónomas, software operativo y aplicación de políticas Zero Trust.",
+          "peers": [
+            "HPE",
+            "Arista Networks",
+            "Fortinet",
+            "ALE",
+            "Huawei"
+          ],
+          "url": "https://www.gartner.com/en/documents/7860081"
+        }
+      ],
+      "analystDifferential": "Señal analista: El LAN empresarial se define por resultados operativos: IA, redes más autónomas, software operativo y aplicación de políticas Zero Trust. Encaje Westcon: Campus, Wi-Fi, Fabric. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [
+        {
+          "name": "Exclusive Networks",
+          "country": "ES",
+          "url": "https://www.exclusive-networks.com/es/vendors/",
+          "evidence": "Portfolio público Exclusive Networks España",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "Exclusive Networks",
+          "country": "PT",
+          "url": "https://www.exclusive-networks.com/pt/vendors/",
+          "evidence": "Portfolio público Exclusive Networks Portugal",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "TD SYNNEX",
+          "country": "PT",
+          "url": "https://d29oepp167a5av.cloudfront.net/PC_2024_c_v7.pdf",
+          "evidence": "Programa de canal público Portugal (lista de marcas directas)",
+          "status": "VERIFICADO",
+          "confidence": 92
+        }
+      ],
+      "action": "Liderar Campus autónomo: Fabric + AIOps + NAC + cloud, unido a EfficientIP y Zscaler; vender resultados operativos frente a Cisco/HPE/Ruckus.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Juniper Networks",
+      "domain": "Networking",
+      "capabilities": [
+        "Campus",
+        "Mist AI",
+        "WAN",
+        "Data Center",
+        "AIOps"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "CONSTRUIR",
+      "priorityScore": 4,
+      "marketCompetitors": [
+        "Cisco",
+        "Arista Networks",
+        "HPE Aruba Networking",
+        "Nokia"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Cisco",
+          "area": "Campus / Wi-Fi"
+        },
+        {
+          "vendor": "Extreme Networks",
+          "area": "Campus / Wi-Fi"
+        },
+        {
+          "vendor": "Ruckus Networks",
+          "area": "Campus / Wi-Fi"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "Routing / DC"
+        },
+        {
+          "vendor": "Nokia",
+          "area": "Routing / DC"
+        },
+        {
+          "vendor": "Extreme Networks",
+          "area": "Routing / DC"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "Campus autónomo",
+          "with": [
+            "Extreme Networks",
+            "Cisco",
+            "EfficientIP",
+            "Zscaler"
+          ],
+          "value": "Campus gobernado por AIOps con identidad/política, DDI y seguridad entregada desde cloud."
+        },
+        {
+          "play": "Infraestructura preparada para IA",
+          "with": [
+            "AWS",
+            "Microsoft Azure",
+            "Cisco",
+            "Nokia",
+            "Ciena"
+          ],
+          "value": "Combinar infraestructura, fabric de red, transporte, edge y cloud para cargas de IA."
+        }
+      ],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: Campus, Mist AI, WAN. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Revisar la oportunidad tras la integración en HPE: explotar Mist/AI-native y DC/routing donde siga siendo diferencial, vigilando evolución de canal y roadmap.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Nokia",
+      "domain": "Networking",
+      "capabilities": [
+        "IP/MPLS",
+        "Optical",
+        "Fixed Access",
+        "Private Wireless"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "CONSTRUIR",
+      "priorityScore": 4,
+      "marketCompetitors": [
+        "Cisco",
+        "Juniper / HPE",
+        "Huawei",
+        "Ciena",
+        "Ericsson"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Cisco",
+          "area": "Routing / DC"
+        },
+        {
+          "vendor": "Juniper Networks",
+          "area": "Routing / DC"
+        },
+        {
+          "vendor": "Extreme Networks",
+          "area": "Routing / DC"
+        },
+        {
+          "vendor": "Ciena",
+          "area": "Óptica / transporte"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "Óptica / transporte"
+        },
+        {
+          "vendor": "Ericsson Cradlepoint",
+          "area": "Private 5G / WAN"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "Private 5G / WAN"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "Resiliencia OT",
+          "with": [
+            "Claroty",
+            "Extreme Networks",
+            "Cisco",
+            "Ericsson Cradlepoint",
+            "Fortanix"
+          ],
+          "value": "Unir conectividad industrial, visibilidad de activos, acceso, segmentación, detección y protección del dato."
+        },
+        {
+          "play": "Infraestructura preparada para IA",
+          "with": [
+            "AWS",
+            "Microsoft Azure",
+            "Juniper Networks",
+            "Cisco",
+            "Ciena"
+          ],
+          "value": "Combinar infraestructura, fabric de red, transporte, edge y cloud para cargas de IA."
+        }
+      ],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: IP/MPLS, Optical, Fixed Access. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Especializar en carrier/critical networks y private wireless; combinar óptica/IP con Ciena y OT/edge, evitando dispersión en enterprise generalista.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Ruckus Networks",
+      "domain": "Networking",
+      "capabilities": [
+        "Wi-Fi",
+        "Campus",
+        "Cloud Management"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "OPTIMIZAR",
+      "priorityScore": 3,
+      "marketCompetitors": [
+        "Cisco",
+        "HPE Networking",
+        "Extreme Networks",
+        "Fortinet",
+        "Arista Networks"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Cisco",
+          "area": "Campus / Wi-Fi"
+        },
+        {
+          "vendor": "Extreme Networks",
+          "area": "Campus / Wi-Fi"
+        },
+        {
+          "vendor": "Juniper Networks",
+          "area": "Campus / Wi-Fi"
+        }
+      ],
+      "synergies": [],
+      "analystSignals": [
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for Enterprise Wired and Wireless LAN",
+          "date": "2026-05-18",
+          "summary": "El LAN empresarial se define por resultados operativos: IA, redes más autónomas, software operativo y aplicación de políticas Zero Trust.",
+          "peers": [
+            "HPE",
+            "Arista Networks",
+            "Fortinet",
+            "ALE",
+            "Huawei"
+          ],
+          "url": "https://www.gartner.com/en/documents/7860081"
+        }
+      ],
+      "analystDifferential": "Señal analista: El LAN empresarial se define por resultados operativos: IA, redes más autónomas, software operativo y aplicación de políticas Zero Trust. Encaje Westcon: Wi-Fi, Campus, Cloud Management. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [],
+      "action": "Foco vertical en Wi-Fi de alta densidad/entornos difíciles y hospitality; evitar competir solo por switching commodity y unir guest engagement.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Weblib",
+      "domain": "Networking",
+      "capabilities": [
+        "Guest Wi-Fi",
+        "Digital Engagement"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "OPTIMIZAR",
+      "priorityScore": 3,
+      "marketCompetitors": [
+        "Purple",
+        "Cloud4Wi",
+        "Cisco Spaces",
+        "GoZone WiFi"
+      ],
+      "internalOverlaps": [],
+      "synergies": [],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: Guest Wi-Fi, Digital Engagement. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Convertir Wi-Fi en resultado de negocio en retail/hospitality: portal + analytics + CRM, siempre pegado a un vendor de campus.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "AudioCodes",
+      "domain": "Cloud & UC",
+      "capabilities": [
+        "Voice",
+        "SBC",
+        "Teams Phone",
+        "Contact Center"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "OPTIMIZAR",
+      "priorityScore": 3,
+      "marketCompetitors": [
+        "Ribbon Communications",
+        "Oracle Communications",
+        "Cisco",
+        "Microsoft Teams native"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Avaya",
+          "area": "UC / CX"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "UC / CX"
+        }
+      ],
+      "synergies": [],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: Voice, SBC, Teams Phone. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [
+        {
+          "name": "Ingram Micro",
+          "country": "ES",
+          "url": "https://es-new.ingrammicro.com/Site/Vendor",
+          "evidence": "Fabricantes Ingram Micro España",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "Ingram Micro",
+          "country": "PT",
+          "url": "https://pt-new.ingrammicro.com/site/vendor/index",
+          "evidence": "Fabricantes Ingram Micro Portugal",
+          "status": "VERIFICADO",
+          "confidence": 92
+        }
+      ],
+      "action": "Acelerar Teams Phone/voice modernization y contact-center connectivity; attach natural a Azure y coexistencia Avaya.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Avaya",
+      "domain": "Cloud & UC",
+      "capabilities": [
+        "UC",
+        "CCaaS",
+        "CX",
+        "Conversational AI"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "OPTIMIZAR",
+      "priorityScore": 3,
+      "marketCompetitors": [
+        "Genesys",
+        "NICE",
+        "Cisco",
+        "Five9",
+        "Talkdesk"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "AudioCodes",
+          "area": "UC / CX"
+        },
+        {
+          "vendor": "Cisco",
+          "area": "UC / CX"
+        }
+      ],
+      "synergies": [],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: UC, CCaaS, CX. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Monetizar modernización gradual de installed base a CX/CCaaS e IA conversacional; unir automatización UiPath y Azure sin forzar rip-and-replace.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "AWS",
+      "domain": "Cloud & AI",
+      "capabilities": [
+        "IaaS/PaaS",
+        "Data",
+        "AI",
+        "Marketplace"
+      ],
+      "countries": [
+        "ES",
+        "PT"
+      ],
+      "priority": "ACELERAR",
+      "priorityScore": 5,
+      "marketCompetitors": [
+        "Microsoft Azure",
+        "Google Cloud",
+        "Oracle Cloud",
+        "IBM Cloud",
+        "OVHcloud"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "Microsoft Azure",
+          "area": "Cloud / AI"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "IA y dato seguros",
+          "with": [
+            "Fortanix",
+            "Palo Alto Networks",
+            "CrowdStrike",
+            "Microsoft Azure",
+            "F5"
+          ],
+          "value": "Proteger cargas de IA, identidades, datos y APIs desde la infraestructura hasta la aplicación."
+        },
+        {
+          "play": "Infraestructura preparada para IA",
+          "with": [
+            "Microsoft Azure",
+            "Juniper Networks",
+            "Cisco",
+            "Nokia",
+            "Ciena"
+          ],
+          "value": "Combinar infraestructura, fabric de red, transporte, edge y cloud para cargas de IA."
+        }
+      ],
+      "analystSignals": [
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for Strategic Cloud Platform Services",
+          "date": "2025-08-04",
+          "summary": "IA, soberanía digital y resiliencia están cambiando los criterios de selección de plataformas cloud estratégicas.",
+          "peers": [
+            "Google Cloud",
+            "Oracle",
+            "IBM",
+            "Alibaba Cloud",
+            "Huawei Cloud"
+          ],
+          "url": "https://www.gartner.com/en/documents/6808434"
+        },
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for Cloud AI Infrastructure",
+          "date": "2026-07-06",
+          "summary": "La infraestructura cloud para entrenamiento, inferencia y agentic AI se separa como mercado propio, con hyperscalers y neoclouds.",
+          "peers": [
+            "Google Cloud",
+            "Oracle",
+            "CoreWeave",
+            "OVHcloud",
+            "Scaleway",
+            "Nebius"
+          ],
+          "url": "https://www.gartner.com/en/documents/8084665"
+        }
+      ],
+      "analystDifferential": "Señal analista: IA, soberanía digital y resiliencia están cambiando los criterios de selección de plataformas cloud estratégicas. Encaje Westcon: IaaS/PaaS, Data, AI. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [
+        {
+          "name": "Arrow",
+          "country": "ES",
+          "url": "https://www.arrow.com/globalecs/es/productos/",
+          "evidence": "Portfolio público Arrow España",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "Ingram Micro",
+          "country": "ES",
+          "url": "https://es-new.ingrammicro.com/Site/Vendor",
+          "evidence": "Fabricantes Ingram Micro España",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "Arrow",
+          "country": "PT",
+          "url": "https://www.arrow.com/globalecs/pt/produtos/",
+          "evidence": "Portfolio público Arrow Portugal",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "TD SYNNEX",
+          "country": "PT",
+          "url": "https://d29oepp167a5av.cloudfront.net/PC_2024_c_v7.pdf",
+          "evidence": "Programa de canal público Portugal (lista de marcas directas)",
+          "status": "VERIFICADO",
+          "confidence": 92
+        }
+      ],
+      "action": "Usar Marketplace como multiplicador del portfolio cyber; crear IA segura/Data landing zones con Fortanix/PAN/F5 y FinOps/lifecycle.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Microsoft Azure",
+      "domain": "Cloud & AI",
+      "capabilities": [
+        "IaaS/PaaS",
+        "Data",
+        "AI",
+        "Hybrid Cloud"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "ACELERAR",
+      "priorityScore": 5,
+      "marketCompetitors": [
+        "AWS",
+        "Google Cloud",
+        "Oracle Cloud",
+        "IBM Cloud"
+      ],
+      "internalOverlaps": [
+        {
+          "vendor": "AWS",
+          "area": "Cloud / AI"
+        }
+      ],
+      "synergies": [
+        {
+          "play": "IA y dato seguros",
+          "with": [
+            "Fortanix",
+            "Palo Alto Networks",
+            "CrowdStrike",
+            "AWS",
+            "F5"
+          ],
+          "value": "Proteger cargas de IA, identidades, datos y APIs desde la infraestructura hasta la aplicación."
+        },
+        {
+          "play": "Infraestructura preparada para IA",
+          "with": [
+            "AWS",
+            "Juniper Networks",
+            "Cisco",
+            "Nokia",
+            "Ciena"
+          ],
+          "value": "Combinar infraestructura, fabric de red, transporte, edge y cloud para cargas de IA."
+        }
+      ],
+      "analystSignals": [
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for Strategic Cloud Platform Services",
+          "date": "2025-08-04",
+          "summary": "IA, soberanía digital y resiliencia están cambiando los criterios de selección de plataformas cloud estratégicas.",
+          "peers": [
+            "Google Cloud",
+            "Oracle",
+            "IBM",
+            "Alibaba Cloud",
+            "Huawei Cloud"
+          ],
+          "url": "https://www.gartner.com/en/documents/6808434"
+        },
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for Cloud AI Infrastructure",
+          "date": "2026-07-06",
+          "summary": "La infraestructura cloud para entrenamiento, inferencia y agentic AI se separa como mercado propio, con hyperscalers y neoclouds.",
+          "peers": [
+            "Google Cloud",
+            "Oracle",
+            "CoreWeave",
+            "OVHcloud",
+            "Scaleway",
+            "Nebius"
+          ],
+          "url": "https://www.gartner.com/en/documents/8084665"
+        }
+      ],
+      "analystDifferential": "Señal analista: IA, soberanía digital y resiliencia están cambiando los criterios de selección de plataformas cloud estratégicas. Encaje Westcon: IaaS/PaaS, Data, AI. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [
+        {
+          "name": "Arrow",
+          "country": "ES",
+          "url": "https://www.arrow.com/globalecs/es/productos/",
+          "evidence": "Portfolio público Arrow España",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "Arrow",
+          "country": "PT",
+          "url": "https://www.arrow.com/globalecs/pt/produtos/",
+          "evidence": "Portfolio público Arrow Portugal",
+          "status": "VERIFICADO",
+          "confidence": 92
+        },
+        {
+          "name": "TD SYNNEX",
+          "country": "PT",
+          "url": "https://d29oepp167a5av.cloudfront.net/PC_2024_c_v7.pdf",
+          "evidence": "Programa de canal público Portugal (lista de marcas directas)",
+          "status": "VERIFICADO",
+          "confidence": 92
+        }
+      ],
+      "action": "Unir Azure AI + Arc + Security + marketplace con identidad/automatización; diferenciar casos híbridos y soberanía pragmática.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "Stratus / Penguin Solutions",
+      "domain": "Edge & AI Infrastructure",
+      "capabilities": [
+        "Fault-tolerant Edge",
+        "AI/HPC Infrastructure"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "OPTIMIZAR",
+      "priorityScore": 3,
+      "marketCompetitors": [
+        "Dell Technologies",
+        "HPE",
+        "Lenovo",
+        "Supermicro",
+        "NVIDIA ecosystem integrators"
+      ],
+      "internalOverlaps": [],
+      "synergies": [
+        {
+          "play": "Infraestructura preparada para IA",
+          "with": [
+            "AWS",
+            "Microsoft Azure",
+            "Juniper Networks",
+            "Cisco",
+            "Nokia"
+          ],
+          "value": "Combinar infraestructura, fabric de red, transporte, edge y cloud para cargas de IA."
+        }
+      ],
+      "analystSignals": [],
+      "analystDifferential": "Sin evaluación pública de analista suficientemente específica cargada. Diferencial observable en el portfolio: Fault-tolerant Edge, AI/HPC Infrastructure. La app mantiene este punto en investigación antes de usarlo como argumento ejecutivo.",
+      "channelCompetitors": [],
+      "action": "Especializar en edge/HA/AI infrastructure para workloads donde downtime y latencia tengan valor económico medible.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    },
+    {
+      "name": "UiPath",
+      "domain": "Automation & AI",
+      "capabilities": [
+        "RPA",
+        "Process Mining",
+        "Agentic Automation"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "priority": "ACELERAR",
+      "priorityScore": 5,
+      "marketCompetitors": [
+        "Microsoft",
+        "Automation Anywhere",
+        "ServiceNow",
+        "SS&C Blue Prism",
+        "Pegasystems"
+      ],
+      "internalOverlaps": [],
+      "synergies": [],
+      "analystSignals": [
+        {
+          "analyst": "Gartner",
+          "title": "Magic Quadrant for Robotic Process Automation",
+          "date": "2026-06-24",
+          "summary": "RPA permanece como tecnología fiable y coste-eficiente para automatizar interacciones de interfaz y flujos basados en tareas.",
+          "peers": [
+            "Microsoft",
+            "Automation Anywhere",
+            "ServiceNow",
+            "SS&C Blue Prism",
+            "Pegasystems",
+            "Appian"
+          ],
+          "url": "https://www.gartner.com/en/documents/8049333"
+        }
+      ],
+      "analystDifferential": "Señal analista: RPA permanece como tecnología fiable y coste-eficiente para automatizar interacciones de interfaz y flujos basados en tareas. Encaje Westcon: RPA, Process Mining, Agentic Automation. La ventaja concreta por vendor se valida con fuentes públicas, no se infiere de la posición del cuadrante.",
+      "channelCompetitors": [],
+      "action": "Pasar de RPA a agentic automation con process intelligence y governance; entrar por un proceso medible y unir Azure/AWS/identity/security.",
+      "researchStatus": "BASE PUBLICA + INVESTIGACION AUTOMATICA"
+    }
+  ],
+  "externalChanges": [
+    {
+      "date": "2026-06-16",
+      "type": "CANAL",
+      "title": "Arrow amplía Palo Alto Networks a España y Portugal",
+      "impact": "Aumenta la presión competitiva de distribución en un fabricante estratégico; conviene reforzar diferenciación por servicios, enablement y lifecycle.",
+      "url": "https://www.arrow.com/globalecs/es/arrow-channel-advisor/arrow-amplia-su-acuerdo-de-distribucion-con-palo-alto-networks-a-espana-y-portugal/"
+    },
+    {
+      "date": "2026-02-19",
+      "type": "SERVICIOS",
+      "title": "Westcon amplía soporte para CrowdStrike y Zscaler",
+      "impact": "Refuerza una ventaja defendible basada en soporte L1/L2 y escalabilidad para MSSP/partners, no solo en transacción.",
+      "url": "https://www.westconcomstor.com/es/es/news/announcements/2026/expands-support-services-for-crowdstrike-and-zscaler.html"
+    },
+    {
+      "date": "2026-05-21",
+      "type": "SASE",
+      "title": "Westcon lanza SASEvolution con Palo Alto Networks",
+      "impact": "Ejemplo de movimiento que la estrategia debería replicar: empaquetar tecnología + servicios en una oferta repetible y recurrente.",
+      "url": "https://www.westconcomstor.com/es/es/news/announcements/2026/sase-evolution-powered-by-palo-alto-networks-to-accelerate.html"
+    },
+    {
+      "date": "2025-07-02",
+      "type": "M&A",
+      "title": "HPE completa la adquisición de Juniper Networks",
+      "impact": "Cambia la lectura competitiva de networking: HPE Juniper Networking converge cloud/AI-native y altera solapes, roadmap y canal.",
+      "url": "https://www.hpe.com/us/en/newsroom/press-release/2025/07/hewlett-packard-enterprise-closes-acquisition-of-juniper-networks-to-offer-industry-leading-comprehensive-cloud-native-ai-driven-portfolio.html"
+    }
+  ],
+  "sources": [
+    {
+      "id": "g-sase-2026",
+      "type": "Analista",
+      "source": "Gartner",
+      "date": "2026-07-28",
+      "title": "Magic Quadrant for SASE Platforms",
+      "url": "https://www.gartner.com/en/documents/8183329"
+    },
+    {
+      "id": "g-lan-2026",
+      "type": "Analista",
+      "source": "Gartner",
+      "date": "2026-05-18",
+      "title": "Magic Quadrant for Enterprise Wired and Wireless LAN",
+      "url": "https://www.gartner.com/en/documents/7860081"
+    },
+    {
+      "id": "g-epp-2026",
+      "type": "Analista",
+      "source": "Gartner",
+      "date": "2026-05-26",
+      "title": "Magic Quadrant for Endpoint Protection",
+      "url": "https://www.gartner.com/en/documents/7913209"
+    },
+    {
+      "id": "g-ndr-2026",
+      "type": "Analista",
+      "source": "Gartner",
+      "date": "2026-05-18",
+      "title": "Magic Quadrant for Network Detection and Response",
+      "url": "https://www.gartner.com/en/documents/7865681"
+    },
+    {
+      "id": "g-cps-2026",
+      "type": "Analista",
+      "source": "Gartner",
+      "date": "2026-03-03",
+      "title": "Magic Quadrant for CPS Protection Platforms",
+      "url": "https://www.gartner.com/en/documents/7540249"
+    },
+    {
+      "id": "g-am-2025",
+      "type": "Analista",
+      "source": "Gartner",
+      "date": "2025-11-11",
+      "title": "Magic Quadrant for Access Management",
+      "url": "https://www.gartner.com/en/documents/7169730"
+    },
+    {
+      "id": "g-uem-2026",
+      "type": "Analista",
+      "source": "Gartner",
+      "date": "2026-01-05",
+      "title": "Magic Quadrant for Endpoint Management Tools",
+      "url": "https://www.gartner.com/en/documents/7298830"
+    },
+    {
+      "id": "g-rpa-2026",
+      "type": "Analista",
+      "source": "Gartner",
+      "date": "2026-06-24",
+      "title": "Magic Quadrant for Robotic Process Automation",
+      "url": "https://www.gartner.com/en/documents/8049333"
+    },
+    {
+      "id": "g-cloudai-2026",
+      "type": "Analista",
+      "source": "Gartner",
+      "date": "2026-07-06",
+      "title": "Magic Quadrant for Cloud AI Infrastructure",
+      "url": "https://www.gartner.com/en/documents/8084665"
+    },
+    {
+      "id": "idc-ciso-2026",
+      "type": "Analista",
+      "source": "IDC",
+      "date": "2026-05-18",
+      "title": "European CISO priorities in 2026",
+      "url": "https://www.idc.com/resource-center/blog/european-ciso-priorities-in-2026-ai-agents-plataformización-and-sovereignty/"
+    },
+    {
+      "id": "idc-market-2026",
+      "type": "Analista",
+      "source": "IDC",
+      "date": "2026-05-07",
+      "title": "EMEA IT Market 2026 — Q2",
+      "url": "https://www.idc.com/resource-center/blog/emea-it-market-2026-q2-updates-5-key-takeaways-on-ai-it-spending-and-market-trends/"
+    },
+    {
+      "id": "forr-europe-2026",
+      "type": "Analista",
+      "source": "Forrester",
+      "date": "2026-02-02",
+      "title": "Europe’s 2026 Tech Spend Exceeds €1.5 Trillion",
+      "url": "https://www.forrester.com/blogs/europes-2026-tech-spend-exceeds-e1-5-trillion-driven-by-ai-cloud-and-sovereignty/"
+    },
+    {
+      "id": "forr-net-2026",
+      "type": "Analista",
+      "source": "Forrester",
+      "date": "2025-11-10",
+      "title": "Predictions 2026: AI, Security and Integrated Network I&O",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/"
+    },
+    {
+      "id": "arrow-pan-iberia",
+      "type": "Canal",
+      "source": "Arrow",
+      "date": "2026-06-16",
+      "title": "Palo Alto Networks distribution Spain & Portugal",
+      "url": "https://www.arrow.com/globalecs/es/arrow-channel-advisor/arrow-amplia-su-acuerdo-de-distribucion-con-palo-alto-networks-a-espana-y-portugal/"
+    },
+    {
+      "id": "exclusive-es",
+      "type": "Canal",
+      "source": "Exclusive Networks",
+      "date": "2026",
+      "title": "Portfolio fabricantes España",
+      "url": "https://www.exclusive-networks.com/es/vendors/"
+    },
+    {
+      "id": "exclusive-pt",
+      "type": "Canal",
+      "source": "Exclusive Networks",
+      "date": "2026",
+      "title": "Portfolio fabricantes Portugal",
+      "url": "https://www.exclusive-networks.com/pt/vendors/"
+    },
+    {
+      "id": "arrow-es",
+      "type": "Canal",
+      "source": "Arrow",
+      "date": "2026",
+      "title": "Portfolio fabricantes España",
+      "url": "https://www.arrow.com/globalecs/es/productos/"
+    },
+    {
+      "id": "arrow-pt",
+      "type": "Canal",
+      "source": "Arrow",
+      "date": "2026",
+      "title": "Portfolio fabricantes Portugal",
+      "url": "https://www.arrow.com/globalecs/pt/produtos/"
+    },
+    {
+      "id": "td-pt",
+      "type": "Canal",
+      "source": "TD SYNNEX",
+      "date": "2024-2026",
+      "title": "Portfolio directo Portugal / canal",
+      "url": "https://d29oepp167a5av.cloudfront.net/PC_2024_c_v7.pdf"
+    },
+    {
+      "id": "westcon-zstrike",
+      "type": "Westcon público",
+      "source": "Westcon-Comstor",
+      "date": "2026",
+      "title": "Z-Strike: CrowdStrike + Zscaler",
+      "url": "https://www.westconcomstor.com/es/es/vendors/zscaler.html"
+    },
+    {
+      "id": "westcon-sasevolution",
+      "type": "Westcon público",
+      "source": "Westcon-Comstor",
+      "date": "2026-05-21",
+      "title": "SASEvolution with Palo Alto Networks",
+      "url": "https://www.westconcomstor.com/es/es/news/announcements/2026/sase-evolution-powered-by-palo-alto-networks-to-accelerate.html"
+    },
+    {
+      "id": "crowd-ignition",
+      "type": "Canal",
+      "source": "CrowdStrike",
+      "date": "2025-05-21",
+      "title": "CrowdStrike + Ignition Technology — España y Portugal",
+      "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-ignition-technology-expand-partnership/"
+    },
+    {
+      "id": "cisco-td-es",
+      "type": "Canal",
+      "source": "Cisco",
+      "date": "2026",
+      "title": "TD SYNNEX — distribuidor Cisco España",
+      "url": "https://www.ciscochannelconnect.com/DistiProfile/347"
+    },
+    {
+      "id": "cisco-td-pt",
+      "type": "Canal",
+      "source": "Cisco",
+      "date": "2026",
+      "title": "TD SYNNEX — distribuidor Cisco Portugal",
+      "url": "https://www.ciscochannelconnect.com/DistiProfile/269"
+    },
+    {
+      "id": "ingram-es",
+      "type": "Canal",
+      "source": "Ingram Micro",
+      "date": "2026",
+      "title": "Portfolio público Ingram Micro España",
+      "url": "https://es-new.ingrammicro.com/Site/Vendor"
+    },
+    {
+      "id": "ingram-pt",
+      "type": "Canal",
+      "source": "Ingram Micro",
+      "date": "2026",
+      "title": "Portfolio público Ingram Micro Portugal",
+      "url": "https://pt-new.ingrammicro.com/site/vendor/index"
+    },
+    {
+      "id": "hpe-juniper",
+      "type": "M&A",
+      "source": "HPE",
+      "date": "2025-07-02",
+      "title": "HPE completa la adquisición de Juniper Networks",
+      "url": "https://www.hpe.com/us/en/newsroom/press-release/2025/07/hewlett-packard-enterprise-closes-acquisition-of-juniper-networks-to-offer-industry-leading-comprehensive-cloud-native-ai-driven-portfolio.html"
+    },
+    {
+      "id": "westcon-support-cz",
+      "type": "Westcon público",
+      "source": "Westcon-Comstor",
+      "date": "2026-02-19",
+      "title": "Soporte ampliado para CrowdStrike y Zscaler",
+      "url": "https://www.westconcomstor.com/es/es/news/announcements/2026/expands-support-services-for-crowdstrike-and-zscaler.html"
+    }
+  ],
+  "externalWatch": [
+    {
+      "name": "Cloudflare",
+      "status": "Señal EMEA 2026 — validar alcance Iberia",
+      "why": "Aparece como competidor en SASE/WAAP/cloud AI y Westcon anunció acuerdo EMEA; no se asume automáticamente disponibilidad local Iberia.",
+      "priority": "SEGUIR"
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#082335" />
+<meta name="description" content="Westcon Iberia · Radar Estratégico Tecnológico" />
+<title>Westcon Iberia · Radar Estratégico</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="assets/styles.css" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+<script defer src="assets/app.js"></script>
+</head>
+<body>
+<header class="appbar">
+  <div class="brand">
+    <div class="brandmark"><span></span><span></span><span></span></div>
+    <div><b>WESTCON IBERIA</b><small>Radar Estratégico Tecnológico · FY27–FY30</small></div>
+  </div>
+  <nav id="tabs">
+    <button class="active" data-view="resumen">Resumen</button>
+    <button data-view="fabricantes">Fabricantes</button>
+    <button data-view="sinergias">Sinergias</button>
+    <button data-view="tendencias">Tendencias</button>
+    <button data-view="fuentes">Fuentes</button>
+  </nav>
+  <div class="actions">
+    <button id="btnPdf" class="ghost">PDF</button>
+    <button id="btnPptx" class="primary">PowerPoint</button>
+  </div>
+</header>
+
+<main>
+<section id="resumen" class="view active">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">INTELIGENCIA PÚBLICA · ESPAÑA + PORTUGAL</div>
+      <h1>Una estrategia que se entiende<br><span>de un vistazo.</span></h1>
+      <p>Portfolio, competencia, canal, analistas, sinergias, solapes y acciones recomendadas. La interfaz es sencilla; la investigación que la alimenta no.</p>
+    </div>
+    <div class="hero-note">
+      <b>Regla de evidencia</b>
+      <span>Presentación FY27 + fuentes públicas verificables. Sin datos internos. Una relación EMEA no se convierte automáticamente en Iberia.</span>
+    </div>
+  </div>
+
+  <div id="marketKpis" class="kpis"></div>
+
+  <div class="section-title"><div><span>PRIORIDADES</span><h2>Dónde concentrar esfuerzo</h2></div><button class="linkbtn" data-jump="tendencias">Ver radar completo →</button></div>
+  <div id="topBets" class="bets"></div>
+
+  <div class="grid-2">
+    <article class="panel">
+      <div class="panel-head"><div><span>CAMBIOS EXTERNOS</span><h3>Lo que ya altera la estrategia</h3></div></div>
+      <div id="externalChanges" class="timeline"></div>
+    </article>
+    <article class="panel">
+      <div class="panel-head"><div><span>LECTURA EJECUTIVA</span><h3>Qué significa para Westcon</h3></div></div>
+      <div class="exec-points">
+        <div><i class="teal"></i><p><b>Menos catálogo, más arquitecturas.</b> La diferenciación defendible está en combinar vendors y servicios en arquitecturas repetibles.</p></div>
+        <div><i class="orange"></i><p><b>Más plataformización, más conflicto interno.</b> Cuanto más amplían plataforma PAN, CrowdStrike, Cisco o Zscaler, más necesario es gobernar el overlap.</p></div>
+        <div><i class="pink"></i><p><b>El canal también cambia.</b> Nuevos acuerdos de distribución pueden erosionar una ventaja histórica si no se compite por enablement, soporte, labs y lifecycle.</p></div>
+        <div><i class="blue"></i><p><b>IA no es un silo.</b> Genera oportunidades simultáneas en infraestructura, seguridad, identidad, datos, networking y automatización.</p></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="section-title"><div><span>FABRICANTES</span><h2>Mapa ejecutivo del portfolio</h2><p>Top 12 por prioridad. Pulsa cualquier fila para abrir el análisis completo.</p></div><button class="linkbtn" data-jump="fabricantes">Ver los 37 →</button></div>
+  <div class="table-wrap compact"><table class="vendor-table"><thead><tr><th>Fabricante</th><th>Prioridad</th><th>Competidores</th><th>Mayoristas alternativos</th><th>Señal analista</th><th>Acción</th></tr></thead><tbody id="overviewVendorRows"></tbody></table></div>
+</section>
+
+<section id="fabricantes" class="view">
+  <div class="page-head">
+    <div><div class="eyebrow">PORTFOLIO INTELLIGENCE</div><h1>37 fabricantes. Una decisión por fabricante.</h1><p>La vista compara tecnología, competidores de mercado, mayoristas alternativos en Iberia, señales de analistas, sinergias, solapes y acción recomendada.</p></div>
+    <div class="filters"><input id="vendorSearch" type="search" placeholder="Buscar fabricante, tecnología o competidor…"><select id="domainFilter"><option value="all">Todas las áreas</option></select><select id="priorityFilter"><option value="all">Todas las prioridades</option><option>ACELERAR</option><option>CONSTRUIR</option><option>OPTIMIZAR</option></select></div>
+  </div>
+  <div class="vendor-layout">
+    <div class="table-wrap"><table class="vendor-table full"><thead><tr><th>Fabricante</th><th>Foco</th><th>Prioridad</th><th>Competidores de mercado</th><th>Mayoristas ES / PT</th><th>Analistas</th><th>Sinergias</th><th>Solape interno</th><th>Acción</th></tr></thead><tbody id="vendorRows"></tbody></table></div>
+    <aside id="vendorDetail" class="detail-panel"><div class="empty-detail"><b>Selecciona un fabricante</b><span>Verás aquí la lectura estratégica completa y sus evidencias.</span></div></aside>
+  </div>
+</section>
+
+<section id="sinergias" class="view">
+  <div class="page-head"><div><div class="eyebrow">ESTRATEGIA MULTIVENDOR</div><h1>Sinergias primero. Solapes visibles.</h1><p>El objetivo no es ocultar conflictos del portfolio, sino convertirlos en criterios de arquitectura y movimientos comerciales claros.</p></div></div>
+  <div id="playCards" class="play-grid"></div>
+  <div class="section-title"><div><span>SOLAPES</span><h2>Dónde se pisan nuestros fabricantes</h2></div></div>
+  <div id="overlapMap" class="overlap-grid"></div>
+</section>
+
+<section id="tendencias" class="view">
+  <div class="page-head"><div><div class="eyebrow">2026–2030</div><h1>Radar de oportunidades</h1><p>Las puntuaciones son una inferencia estratégica construida sobre señales públicas de mercado, no rankings de Gartner/IDC/Forrester.</p></div></div>
+  <div id="trendCards" class="trend-grid"></div>
+  <div class="section-title"><div><span>SEÑALES DE MERCADO</span><h2>Datos que sustentan el radar</h2></div></div>
+  <div id="signalCards" class="signal-grid"></div>
+</section>
+
+<section id="fuentes" class="view">
+  <div class="page-head"><div><div class="eyebrow">TRAZABILIDAD</div><h1>Cada conclusión tiene fuente.</h1><p>Se priorizan fuentes oficiales y resúmenes públicos de analistas. El contenido licenciado no se copia ni se reconstruye.</p></div></div>
+  <div class="source-rules"><div><b>1</b><span>Reguladores y fuentes oficiales</span></div><div><b>2</b><span>Gartner · IDC · Forrester · Omdia · Dell'Oro · Synergy</span></div><div><b>3</b><span>Mayoristas y fabricantes</span></div><div><b>4</b><span>Prensa de canal como discovery, no como verdad final</span></div></div>
+  <div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Tipo</th><th>Fuente</th><th>Evidencia pública</th><th>Enlace</th></tr></thead><tbody id="sourceRows"></tbody></table></div>
+  <div class="research-box"><div><span>AUTOMATIZACIÓN</span><h2>Investigación de fondo</h2><p>GitHub Actions ejecuta búsquedas rotatorias por fabricante y país para descubrir cambios de canal, competencia, adquisiciones, nuevos productos y señales de analistas. Las evidencias nuevas se separan de las curadas hasta validación.</p></div><pre id="researchSummary"></pre></div>
+</section>
+
+<section id="report" class="report-sheet" aria-hidden="true"></section>
+</main>
+<div id="toast" class="toast"></div>
+</body>
+</html>
