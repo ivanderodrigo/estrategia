@@ -73,6 +73,19 @@ SITEMAP_CACHE: dict[str, list[str]] = {}
 PAGE_CACHE: dict[str, dict | None] = {}
 
 
+def clamp(value, minimum: int = 0, maximum: int = 100) -> int:
+    """Clamp a numeric score to an inclusive range, mirroring the UI helper.
+
+    Kept in the research engine because aggregate functions run server-side in
+    GitHub Actions and must not depend on JavaScript utilities.
+    """
+    try:
+        number = round(float(value or 0))
+    except (TypeError, ValueError):
+        number = 0
+    return max(minimum, min(maximum, number))
+
+
 def clean(text: str) -> str:
     text = html.unescape(str(text or ""))
     text = re.sub(r"<script\b[^>]*>.*?</script>", " ", text, flags=re.I | re.S)

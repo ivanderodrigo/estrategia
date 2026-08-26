@@ -3,8 +3,8 @@ name: Inteligencia exhaustiva mensual
 on:
   workflow_dispatch:
   schedule:
-    # Primer sábado de cada mes: barrido long-tail e histórico.
-    - cron: "17 2 1-7 * 6"
+    # Día 1 de cada mes: barrido long-tail e histórico.
+    - cron: "17 2 1 * *"
 
 permissions:
   contents: write
@@ -19,15 +19,19 @@ jobs:
     timeout-minutes: 300
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Python 3.12
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Dependencias
         run: pip install requests
+      - name: Preflight offline del motor
+        run: |
+          python -m py_compile scripts/research.py scripts/validate.py scripts/selftest.py
+          python scripts/selftest.py
       - name: Barrido exhaustivo mensual
         env:
           RESEARCH_PROFILE: exhaustive

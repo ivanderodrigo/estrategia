@@ -19,15 +19,19 @@ jobs:
     timeout-minutes: 150
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Python 3.12
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Dependencias
         run: pip install requests
+      - name: Preflight offline del motor
+        run: |
+          python -m py_compile scripts/research.py scripts/validate.py scripts/selftest.py
+          python scripts/selftest.py
       - name: Investigación profunda
         env:
           RESEARCH_PROFILE: deep

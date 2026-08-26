@@ -454,3 +454,10 @@ La recomendación ya no parte solo del mercado: primero valida **qué capacidade
 Se han incorporado como fuentes de referencia el documento **Tech Insights Lead to Opportunity**, que identifica 12 categorías, 10 vendors y 22 assessments, y el documento **3D Lab**, que identifica 17 technology vendors, 27+ use cases y más de 2.450 usuarios FY25. La matriz de 3D Lab solo habilita vendors que aparecen expresamente en esa cobertura; UiPath, por ejemplo, no queda habilitado para 3D Lab.
 
 El motor investiga periódicamente `fabricante × capacidad Westcon × país × evidencia`, además de mercado, analistas, canal, integradores, clientes, licitaciones y competencia. Una señal de discovery no puede promocionarse a capacidad verificada sin evidencia oficial o corroboración suficiente.
+
+## v1.8.1 — hotfix del motor de investigación
+
+- Corrige el `NameError: clamp is not defined` que podía hacer fallar los perfiles diario, semanal y mensual al agregar demanda de contratación pública.
+- Añade `scripts/selftest.py`, un preflight offline que prueba las funciones de agregación antes de iniciar las búsquedas largas.
+- Los tres workflows ejecutan ahora `py_compile` + self-test antes del crawl, evitando descubrir errores deterministas al final de una ejecución de muchos minutos.
+- Actualiza `actions/checkout` y `actions/setup-python` a runtimes Node 24 para eliminar los avisos de deprecación de Node 20 en runners hospedados actuales.
