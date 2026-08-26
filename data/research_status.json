@@ -1,13 +1,39 @@
 {
-  "generatedAt": "2026-08-26T11:21:26.346143+00:00",
-  "profile": "baseline",
+  "generatedAt": "2026-08-26T11:55:08.710933+00:00",
+  "profile": "daily",
   "braveEnabled": false,
-  "queryCount": 0,
-  "coverageAverage": 14.1,
-  "vendorsWithCoverage70": 0,
-  "gapsP0": 29,
+  "queryCount": 110,
+  "budgets": {
+    "brave_queries_max": 720,
+    "news_queries_max": 150,
+    "gdelt_queries_max": 110,
+    "arquivo_queries_max": 24,
+    "ted_queries_max": 110,
+    "sitemap_pages_max": 260,
+    "http_workers": 12,
+    "request_timeout_seconds": 25,
+    "per_host_delay_ms": 50,
+    "query_limit_brave": 260,
+    "query_limit_no_brave": 110,
+    "ecosystem_sitemap_pages_max": 220,
+    "analyst_sitemap_pages_max": 90,
+    "ted_vendor_limit": 14,
+    "full_procurement": false,
+    "carryover_days": 540
+  },
+  "coverageAverage": 32.3,
+  "vendorsWithCoverage70": 1,
+  "gapsP0": 18,
   "engines": [
-    "Curated baseline; daily/weekly GitHub Actions will enrich after deploy"
-  ],
-  "note": "36 active vendors in current portfolio scope. Juniper tracked competitively, not scored as active."
+    "Brave Search (not configured)",
+    "Google News RSS",
+    "GDELT DOC 2.0",
+    "Arquivo.pt",
+    "official vendor sitemaps",
+    "official distributor/integrator sitemaps",
+    "public analyst crawl (weekly)",
+    "TED Search API",
+    "PLACSP open data (weekly deep)",
+    "dados.gov.pt / Portal BASE (weekly deep)"
+  ]
 }
