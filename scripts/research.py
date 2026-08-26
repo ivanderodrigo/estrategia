@@ -37,7 +37,7 @@ HISTORY = ROOT / "data/history"
 HISTORY.mkdir(parents=True, exist_ok=True)
 NOW = dt.datetime.now(dt.timezone.utc)
 TODAY = NOW.date().isoformat()
-UA = "Westcon-Iberia-Strategy-Studio/1.1 (+public-evidence-only)"
+UA = "Westcon-Iberia-Strategy-Studio/1.2 (+public-evidence-only)"
 
 
 def clean(text: str) -> str:
@@ -253,13 +253,58 @@ def analyst_candidates(evidence: list[dict]) -> list[dict]:
     return out
 
 
+def vendor_coverage(evidence: list[dict], channel_rows: list[dict]) -> list[dict]:
+    vendors = [v["name"] for v in BASE.get("vendors", [])] + [v["name"] for v in BASE.get("externalAdditions", [])]
+    result = []
+    for vendor in vendors:
+        rows = [e for e in evidence if (e.get("vendor") == vendor) or vendor.lower() in " ".join(map(str, e.get("tags", []))).lower() or vendor.lower() in f"{e.get('title','')} {e.get('summary','')} {e.get('snippet','')}".lower()]
+        kinds = {e.get("evidenceType") or e.get("kind") for e in rows}
+        analysts = {e.get("source") for e in rows if e.get("sourceTier") == "analyst-public"}
+        official = {e.get("source") for e in rows if e.get("sourceTier") in {"official-company", "regulator"}}
+        channel = [c for c in channel_rows if c.get("vendor") == vendor and c.get("distributor") not in {"Westcon-Comstor", "Comstor"}]
+        es = any(c.get("country") in {"ES", "IBERIA"} for c in channel)
+        pt = any(c.get("country") in {"PT", "IBERIA"} for c in channel)
+        dimensions = {
+            "channelES": es, "channelPT": pt, "analyst": bool(analysts),
+            "market": "market" in kinds, "ma": "m&a" in kinds, "product": "product" in kinds,
+            "services": "services" in kinds or "partner-program" in kinds,
+        }
+        score = round(sum(1 for x in dimensions.values() if x) / len(dimensions) * 100)
+        result.append({
+            "vendor": vendor, "coverage": score, "dimensions": dimensions,
+            "evidenceCount": len(rows), "analystSources": sorted(x for x in analysts if x),
+            "officialSources": sorted(x for x in official if x), "alternativeChannelSignals": len(channel),
+        })
+    return sorted(result, key=lambda x: (x["coverage"], x["vendor"]))
+
+
+def research_gaps(coverage: list[dict]) -> list[dict]:
+    labels = {"channelES":"mayoristas alternativos en España", "channelPT":"mayoristas alternativos en Portugal", "analyst":"señal pública de analistas", "market":"tamaño/crecimiento de mercado", "ma":"M&A / cambio estratégico", "product":"novedades de plataforma/producto", "services":"servicios/programa de canal"}
+    out=[]
+    for row in coverage:
+        missing=[labels[k] for k,v in row["dimensions"].items() if not v]
+        if missing:
+            out.append({"vendor":row["vendor"],"coverage":row["coverage"],"missing":missing,"priority":"P0" if row["coverage"]<30 else "P1" if row["coverage"]<55 else "P2"})
+    return out
+
+
+def signal_stats(evidence: list[dict]) -> dict:
+    by_tier={} ; by_type={} ; by_scope={} ; by_source={}
+    for e in evidence:
+        by_tier[e.get("sourceTier","unknown")]=by_tier.get(e.get("sourceTier","unknown"),0)+1
+        typ=e.get("evidenceType") or e.get("kind") or "general"; by_type[typ]=by_type.get(typ,0)+1
+        scope=e.get("scope") or "unknown"; by_scope[scope]=by_scope.get(scope,0)+1
+        src=e.get("source") or "unknown"; by_source[src]=by_source.get(src,0)+1
+    return {"byTier":by_tier,"byType":by_type,"byScope":by_scope,"topSources":sorted(by_source.items(), key=lambda x:(-x[1],x[0]))[:20]}
+
+
 def main() -> None:
     queries = make_queries()
     brave = bool(os.getenv("BRAVE_SEARCH_API_KEY", "").strip())
     if not brave:
         # Keep the zero-secret fallback polite and lightweight. Strategic queries + a small weekly vendor rotation.
         strategic = [q for q in queries if q.get("kind") == "strategic"]
-        vendor = [q for q in queries if q.get("kind") == "vendor"][:30]
+        vendor = [q for q in queries if q.get("kind") == "vendor"][:48]
         queries = strategic + vendor
     evidence: list[dict] = [dict(e, curated=True) for e in CURATED.get("evidence", [])]
     seen = {hashlib.sha1((e.get("title", "") + "|" + (e.get("url") or "")).encode()).hexdigest() for e in evidence}
@@ -304,18 +349,26 @@ def main() -> None:
         if brave:
             time.sleep(0.12)
 
+    channels = merge_channel_signals(CURATED.get("channelSignals", []), relation_candidates(evidence))
+    coverage = vendor_coverage(evidence, channels)
+    analysts = analyst_candidates(evidence)
     payload = {
         "generatedAt": NOW.isoformat(),
-        "mode": "automated-public-research",
+        "mode": "automated-public-research-v2",
         "queryCount": len(queries),
         "braveEnabled": brave,
-        "notice": "Public external research only. No internal/confidential Westcon data. Search discovery is not Board-level evidence until validated against a primary/public source.",
+        "notice": "Public external research only. No internal/confidential Westcon data. Discovery is separated from executive evidence; geography and confidence are preserved.",
         "evidence": evidence,
-        "channelSignals": merge_channel_signals(CURATED.get("channelSignals", []), relation_candidates(evidence)),
-        "analystSignals": analyst_candidates(evidence),
+        "channelSignals": channels,
+        "analystSignals": analysts,
+        "coverage": coverage,
+        "gaps": research_gaps(coverage),
         "derived": {
             "evidenceCount": len(evidence),
             "officialOrAnalystCount": sum(1 for e in evidence if e.get("sourceTier") in {"official-company", "regulator", "analyst-public"}),
+            "channelSignalCount": len(channels),
+            "analystSignalCount": len(analysts),
+            "statistics": signal_stats(evidence),
         },
     }
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")

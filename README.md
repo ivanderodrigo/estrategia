@@ -1,74 +1,106 @@
-# Westcon Iberia · Radar Estratégico Tecnológico v1.1
+# Westcon Iberia · Radar Estratégico Tecnológico v1.2
 
-**Edición ejecutiva · Inteligencia pública**
+**Edición ejecutiva · Motor de recomendación v2 · Inteligencia pública**
 
-Aplicación estática para GitHub Pages que transforma el portfolio FY27 de Westcon España en un cockpit de estrategia tecnológica para Iberia. La interfaz está diseñada para ser muy simple y ejecutiva; la capa de investigación es deliberadamente más profunda.
+Aplicación estática para GitHub Pages. La filosofía es deliberada: **muy sencilla delante y muy profunda detrás**. Parte del portfolio/taxonomía de la presentación FY27 facilitada y lo cruza con información pública externa sobre mercado, canal, fabricantes, analistas, M&A, producto, servicios y tendencias.
 
-## Qué muestra de un vistazo
+## Qué ves de un vistazo
 
-Para cada fabricante del portfolio:
+Por fabricante:
 
-- prioridad estratégica: **ACELERAR / CONSTRUIR / OPTIMIZAR**;
+- decisión calculada: **ACELERAR / CONSTRUIR / DEFENDER / OPTIMIZAR / INVESTIGAR**;
+- score de oportunidad;
 - principales fabricantes competidores;
-- otros mayoristas públicamente verificados en España y/o Portugal;
+- otros mayoristas públicamente demostrados en España y Portugal;
 - señales públicas de Gartner, IDC, Forrester y otras consultoras;
-- sinergias con otros fabricantes Westcon;
-- overlaps internos del portfolio;
-- acción recomendada para explotar la oportunidad o reducir conflicto;
-- enlaces a las evidencias públicas.
+- sinergias con el resto del portfolio;
+- nivel de solape/canibalización;
+- confianza de la evidencia;
+- acción recomendada a 30, 90 y 180 días.
 
-Incluye además radar 2026–2030, mapa de sinergias, cambios externos relevantes, biblioteca de fuentes y generación de PDF y PowerPoint.
+La vista **Ver datos** despliega la profundidad del motor sin cargar la pantalla ejecutiva.
 
-## Política de datos
+## Motor de recomendación v2
 
-La aplicación utiliza exclusivamente:
+La recomendación ya no depende de una prioridad escrita a mano. Se recalcula con:
 
-1. información pública accesible externamente;
-2. el portfolio, taxonomía y capacidades descritas en la presentación FY27 facilitada para este proyecto.
+- 24% momentum de mercado;
+- 16% encaje con el portfolio;
+- 14% potencial de sinergia;
+- 12% recurrencia;
+- 12% diferenciación;
+- 10% señal pública de analistas;
+- 7% palanca de servicios;
+- 5% calidad de evidencia.
 
-No solicita ni almacena revenue, margen, pipeline, forecast, MDF, personas, carga de preventa, CRM ni ningún otro dato interno.
+El riesgo se calcula con:
 
-Una relación EMEA **no se extrapola automáticamente** a España o Portugal. La ausencia de un mayorista en la base significa **“no demostrado todavía”**, no exclusividad.
+- 45% solape interno;
+- 35% presión competitiva del canal;
+- 20% gap de evidencia pública.
 
-## Instalación en GitHub Pages
+Las ponderaciones están en `config/strategy_engine.json` y pueden modificarse sin tocar la interfaz.
 
-1. Crea un repositorio en GitHub.
-2. Sube **el contenido de esta carpeta** a la raíz del repositorio. `index.html` debe quedar en la raíz.
-3. Ve a `Settings → Pages`.
-4. Selecciona `Deploy from a branch`.
-5. Branch: `main`; Folder: `/ (root)`.
-6. Guarda.
+## Capa de datos
 
-La aplicación no necesita backend ni API para funcionar.
+- `data/base.json`: portfolio y taxonomía de partida.
+- `data/vendor_intelligence.json`: baseline estratégico curado.
+- `data/curated_evidence.json`: evidencias públicas de alta confianza.
+- `data/research.latest.json`: última investigación automatizada + cobertura + gaps.
+- `data/history/`: snapshots históricos.
+- `config/source_registry.json`: jerarquía y confianza de fuentes.
+- `config/research_queries.json`: consultas rotatorias de investigación.
+- `config/strategy_engine.json`: reglas y pesos del motor.
 
 ## Investigación automática
 
-El workflow `.github/workflows/research.yml` ejecuta `scripts/research.py` periódicamente.
+`.github/workflows/research.yml` ejecuta `scripts/research.py` semanalmente.
 
-La investigación genera queries por fabricante para:
+El colector busca y clasifica por fabricante:
 
-- Westcon y presencia pública ES/PT;
-- distribuidores en España y Portugal;
-- Arrow, TD SYNNEX, Exclusive, Infinigate, V-Valley e Ingram Micro;
-- Gartner, Forrester, IDC, Omdia, Canalys, Dell’Oro y Synergy Research;
-- market share;
-- competidores;
-- adquisiciones;
-- estrategia de plataforma;
-- lanzamientos 2025–2026;
-- servicios, soporte, marketplace y programas de canal.
+- distribución y mayoristas ES/PT;
+- Gartner, IDC, Forrester, Omdia, Canalys, Dell’Oro, Synergy e ISG;
+- market share, tamaño y crecimiento de mercado;
+- adquisiciones y movimientos corporativos;
+- expansión de plataformas y lanzamientos;
+- servicios, soporte, marketplaces y programas de canal;
+- tendencias estratégicas generales 2026–2030.
 
-Sin API key usa Google News RSS como discovery limitado. Si se añade opcionalmente `BRAVE_SEARCH_API_KEY` como GitHub Actions Secret, aumenta la amplitud de búsqueda. **Brave no es necesario para instalar ni utilizar la aplicación.**
+Además calcula automáticamente:
 
-## Gobernanza de evidencia
+- cobertura por fabricante;
+- gaps de investigación;
+- diversidad de fuentes;
+- señales de canal;
+- señales de analistas;
+- distribución de evidencias por tipo, fuente y geografía.
 
-- `data/vendor_intelligence.json`: baseline ejecutivo curado.
-- `data/curated_evidence.json`: evidencias públicas validadas.
-- `data/research.latest.json`: discovery dinámico.
-- `data/history/`: snapshots de investigación.
+Sin API key utiliza Google News RSS como discovery. `BRAVE_SEARCH_API_KEY` es **opcional** y solo amplía la búsqueda; no es necesaria ni para instalar ni para ejecutar la aplicación.
 
-Un resultado de búsqueda no se trata automáticamente como verdad ejecutiva. Las conclusiones relevantes deben quedar vinculadas a una fuente primaria pública o a un resumen público de analista.
+## Reglas de evidencia
 
-## Estilo visual
+- Solo información pública externa + presentación FY27 facilitada.
+- Sin revenue, margen, pipeline, CRM, personas ni información interna.
+- EMEA **no** se convierte automáticamente en Iberia.
+- Iberia **no** se convierte automáticamente en España y Portugal si la fuente no lo soporta.
+- “No demostrado” no significa “no existe”.
+- Search/discovery no se eleva a evidencia ejecutiva hasta validarse contra fuente pública suficientemente fiable.
+- No se reconstruyen posiciones de Magic Quadrants, Waves o MarketScapes licenciados si no son públicas.
 
-La v1.1 toma como referencia visual la presentación FY27 facilitada: Corbel/Arial, azul marino, blanco y acentos naranja, magenta, turquesa y azul.
+## Instalación / actualización desde VS Code
+
+Si ya tienes el repositorio clonado, sustituye los archivos por esta versión y ejecuta:
+
+```bash
+git add .
+git commit -m "Radar estrategico v1.2 - motor de recomendacion v2"
+git push
+```
+
+GitHub Pages se actualizará automáticamente.
+
+Para una instalación nueva: sube el contenido de esta carpeta a la raíz del repositorio y activa `Settings → Pages → Deploy from a branch → main → /(root)`.
+
+## Estilo
+
+Mantiene la estética ejecutiva de la presentación FY27: azul marino, blanco, Corbel/Arial y acentos naranja, magenta, turquesa y azul. La prioridad visual es que Dirección pueda entender la situación en segundos.

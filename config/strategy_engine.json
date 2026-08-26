@@ -1,0 +1,72 @@
+{
+  "version": "1.2.0",
+  "principle": "La interfaz simplifica; el motor conserva evidencia, contexto, incertidumbre y trazabilidad.",
+  "opportunityWeights": {
+    "marketMomentum": 0.24,
+    "portfolioFit": 0.16,
+    "recurringPotential": 0.12,
+    "differentiation": 0.12,
+    "synergyPotential": 0.14,
+    "analystSignal": 0.10,
+    "servicesLeverage": 0.07,
+    "evidenceConfidence": 0.05
+  },
+  "riskWeights": {
+    "overlapRisk": 0.45,
+    "channelPressure": 0.35,
+    "evidenceGap": 0.20
+  },
+  "recommendations": [
+    {"id":"ACELERAR","minOpportunity":78,"minConfidence":48,"maxRisk":76,"description":"Mercado atractivo, buen encaje y evidencia suficiente para escalar."},
+    {"id":"CONSTRUIR","minOpportunity":64,"minConfidence":42,"maxRisk":82,"description":"Oportunidad relevante; necesita paquetización, enablement o mayor prueba de mercado."},
+    {"id":"DEFENDER","minOpportunity":60,"minConfidence":48,"minChannelPressure":55,"description":"Buena oportunidad, pero con presión de canal: diferenciar por servicios, especialización y lifecycle."},
+    {"id":"OPTIMIZAR","minOpportunity":48,"minConfidence":38,"description":"Mantener foco selectivo, reducir dispersión y gobernar solapes."},
+    {"id":"INVESTIGAR","description":"La evidencia pública aún no permite una recomendación fuerte."}
+  ],
+  "evidenceTiers": {
+    "regulator": 100,
+    "official-company": 92,
+    "analyst-public": 90,
+    "industry-press": 68,
+    "search-discovery": 42
+  },
+  "freshness": {
+    "0-180": 100,
+    "181-365": 88,
+    "366-730": 72,
+    "731+": 55
+  },
+  "domainDefaults": {
+    "Cybersecurity": {"servicesLeverage":92,"recurringPotential":94,"marketMomentum":88},
+    "Networking": {"servicesLeverage":84,"recurringPotential":78,"marketMomentum":82},
+    "Multi-domain": {"servicesLeverage":94,"recurringPotential":91,"marketMomentum":92},
+    "Cloud / Other": {"servicesLeverage":90,"recurringPotential":96,"marketMomentum":91},
+    "Cloud": {"servicesLeverage":90,"recurringPotential":96,"marketMomentum":91},
+    "Other": {"servicesLeverage":75,"recurringPotential":78,"marketMomentum":72}
+  },
+  "themeRules": [
+    {"theme":"ai-security","keywords":["AI","Identity","XDR","API","Data Security","Cloud Security","Threat Intelligence","Secrets"]},
+    {"theme":"sase","keywords":["SASE","SSE","ZTNA","SWG","SD-WAN","Secure Browser","Firewall"]},
+    {"theme":"secops","keywords":["XDR","NDR","MDR","SOC","CTEM","BAS","Threat Intelligence","Exposure"]},
+    {"theme":"identity","keywords":["IAM","CIAM","Identity","Password","Secrets","MFA"]},
+    {"theme":"data-security","keywords":["Data Security","KMS","HSM","Tokenization","Encryption","Crypto"]},
+    {"theme":"cloud-security","keywords":["CNAPP","Cloud Security","AWS","Azure","Cloud"]},
+    {"theme":"network-aiops","keywords":["AIOps","AI-Native","Cloud Networking","Wi-Fi","WLAN","Switching","Mist"]},
+    {"theme":"secure-lan","keywords":["Campus","NAC","Wi-Fi","WLAN","Switching","DDI","Secure LAN"]},
+    {"theme":"naas","keywords":["NaaS","Cloud Networking","Managed Networking","SD-WAN"]},
+    {"theme":"ai-infra","keywords":["HPC","AI Infrastructure","Data Center","Optical","DCI","Cloud Infrastructure","Edge"]},
+    {"theme":"observability","keywords":["Observability","NPM","Visibility","Digital Experience","Telemetry"]},
+    {"theme":"ot","keywords":["OT","IoT","XIoT","Private 5G","Industrial","CPS"]},
+    {"theme":"services","keywords":["MDR","MSSP","Support","Services","Cloud","Managed"]},
+    {"theme":"sovereignty","keywords":["KMS","HSM","Encryption","Cloud","Data Security","SASE"]},
+    {"theme":"agentic-automation","keywords":["Automation","RPA","Agentic","AI"]}
+  ],
+  "actionPatterns": {
+    "highSynergy": "Convertir la relación en un play multivendor repetible, con arquitectura, demo y argumentario conjunto.",
+    "highOverlap": "Definir reglas de cualificación por caso de uso para evitar canibalización y proteger el posicionamiento de cada fabricante.",
+    "highChannel": "Diferenciar frente a otros mayoristas con especialización técnica, servicios, labs, soporte y lifecycle.",
+    "lowEvidence": "Cerrar primero los gaps públicos de canal, analistas y mercado antes de elevar la inversión.",
+    "analystLed": "Traducir los criterios públicos de analistas a battlecards, workshops y criterios de discovery para partners.",
+    "default": "Concentrar la actividad en los casos de uso con mayor crecimiento, recurrencia y encaje multivendor."
+  }
+}
