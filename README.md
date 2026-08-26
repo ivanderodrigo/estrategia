@@ -1,4 +1,4 @@
-# Westcon Iberia · Decision Intelligence v1.8
+# Westcon Iberia · Evidence-to-Action Intelligence v2.0
 
 **España + Portugal · Solo inteligencia pública · GitHub Pages**
 
@@ -6,9 +6,37 @@ Aplicación estática para construir una estrategia tecnológica ejecutiva de We
 
 La interfaz conserva la organización visual del material FY27 y permite llegar a una decisión en segundos. El motor de fondo investiga, normaliza, cruza y pondera fabricantes, mercados, competidores, mayoristas, integradores, clientes públicos, contratación, consultoras, M&A, roadmap, recurrencia, partner programs, servicios, logística, financiación y señales regulatorias.
 
-No utiliza revenue, margen, pipeline, CRM, objetivos, carga individual, personas ni otra información interna. El alcance es exclusivamente **información pública externa + portfolio/taxonomía derivados de la presentación FY27 facilitada**.
+No incluye datos internos en los datasets. El alcance analítico es **información pública externa + portfolio/taxonomía derivados de la presentación FY27 facilitada**. La ficha de fabricante incorpora además un gate local y opcional para que el usuario complete cinco respuestas internas en su propio navegador; esas respuestas no se envían, no modifican la evidencia pública y no autorizan automáticamente una inversión.
 
-## Qué cambia en v1.8
+## Qué cambia en v2.0
+
+### 1. La recomendación se convierte en un contrato verificable
+
+La capa `data/market_reality.json` reúne 30 hechos públicos nuevos y 12 planes de fabricante de alta confianza. Una recomendación ejecutiva solo se presenta como tal cuando contiene:
+
+- realidad de mercado observada y su implicación para Westcon Iberia;
+- decisión y nivel de confianza;
+- responsable explícito;
+- acciones a 30, 60 y 90 días;
+- KPI cuantificados;
+- condición de escalado o retirada (`go/no-go`);
+- fuentes públicas enlazadas.
+
+AWS, Check Point, Cisco, CrowdStrike, Extreme Networks, F5, Fortanix, Microsoft Azure, Palo Alto Networks, Proofpoint, UiPath y Zscaler disponen de este contrato en la versión inicial. Los restantes fabricantes continúan en el motor general, pero cualquier acción sin evidencia específica queda bloqueada como `INVESTIGAR`.
+
+### 2. Separación estricta entre hechos, inferencias y datos internos
+
+El motor v9 unifica la evidencia de investigación con la nueva capa de realidad pública, sin confundirla con datos del negocio. Para autorizar inversión solicita cinco datos internos concretos —pipeline/cuentas, partner/ruta de compra, capacidad, economía y owner/fecha— y los guarda solo en `localStorage` del navegador.
+
+### 3. Recomendaciones comprensibles por función
+
+Cada uno de los 11 perfiles recibe ahora un **mandato**, la **realidad detectada**, el **resultado/KPI**, el **gate** y las **fuentes**. El plan ejecutivo ya no sustituye hitos concretos por una lista genérica de nombres de acciones.
+
+### 4. Investigación pública acumulativa
+
+El crawler periódico incorpora las realidades verificadas antes de deduplicar, corroborar y recalcular cobertura. Así, una actualización diaria/semanal/mensual amplía la base sin borrar el baseline editorial validado.
+
+## Base funcional heredada de v1.8
 
 ### 1. Decision Intelligence, no receta genérica
 
@@ -130,7 +158,7 @@ El motor clasifica el contexto en arquetipos como:
 
 Dos vendors con un score parecido pueden recibir recomendaciones diferentes si difieren en canal, ecosistema, fiabilidad, recurrencia, hardware, M&A, demanda pública o presión competitiva.
 
-## Motor v8: 14 dimensiones + riesgo + incertidumbre
+## Motor v9: 14 dimensiones + riesgo + incertidumbre + contrato de ejecución
 
 El análisis combina, entre otras señales:
 
@@ -435,7 +463,7 @@ Si el repositorio `estrategia` ya está conectado a GitHub, sustituye los archiv
 
 ```bash
 git add .
-git commit -m "Westcon Iberia Decision Intelligence v1.8"
+git commit -m "Westcon Iberia Evidence-to-Action v2.0"
 git push
 ```
 
@@ -445,9 +473,9 @@ GitHub Pages conserva la URL. Los workflows periódicos seguirán actualizando l
 
 > **La complejidad pertenece al motor, no a la pantalla.**
 
-La meta de v1.8 es que Dirección pueda entender el qué en segundos, mientras cualquier recomendación pueda defenderse abriendo el porqué, los datos y las fuentes.
+La meta de v2.0 es que Dirección pueda entender el qué en segundos y comprobar, sin ambigüedad, quién hace qué, cuándo, contra qué KPI, bajo qué condición y con qué fuentes.
 
-## Motor de capacidades Westcon v1.8
+## Motor de capacidades Westcon v2.0
 
 La recomendación ya no parte solo del mercado: primero valida **qué capacidades Westcon existen y cuáles aplican de verdad a cada fabricante**. El fichero `config/capability_intelligence.json` separa capacidad local, EMEA y global; distingue evidencia pública, documentación facilitada, confirmación del proyecto y simples hipótesis; y bloquea una recomendación cuando la compatibilidad no está demostrada.
 

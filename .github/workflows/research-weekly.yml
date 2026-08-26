@@ -28,10 +28,12 @@ jobs:
           python-version: "3.12"
       - name: Dependencias
         run: pip install requests
-      - name: Preflight offline del motor
+      - name: Preflight offline del motor y la UI
         run: |
           python -m py_compile scripts/research.py scripts/validate.py scripts/selftest.py
           python scripts/selftest.py
+          node --check assets/app.js
+          node scripts/ui_smoke.js
       - name: Investigación profunda
         env:
           RESEARCH_PROFILE: deep

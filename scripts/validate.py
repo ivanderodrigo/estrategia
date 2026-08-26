@@ -19,12 +19,25 @@ def walk_keys(obj,path=''):
         for i,v in enumerate(obj): yield from walk_keys(v,f'{path}[{i}]')
 
 def main():
-    base=load('data/base.json'); vi=load('data/vendor_intelligence.json'); research=load('data/research.latest.json')
+    base=load('data/base.json'); vi=load('data/vendor_intelligence.json'); research=load('data/research.latest.json'); reality=load('data/market_reality.json')
     engine=load('config/strategy_engine.json'); decision=load('config/decision_intelligence.json'); cap=load('config/capability_intelligence.json'); load('config/research_queries.json'); load('config/source_registry.json'); deep=load('config/deep_research.json'); proc_tax=load('config/procurement_taxonomy.json'); load('data/ecosystem.json')
     active=[x['name'] for x in base.get('vendors',[])]
     vint=[x['name'] for x in vi.get('vendors',[])]
     assert len(active)==len(set(active)), 'Fabricantes activos duplicados'
     assert set(active)==set(vint), f'Desalineación base/vendor_intelligence: {set(active)^set(vint)}'
+    facts=reality.get('facts',[]); plans=reality.get('vendors',{})
+    assert len(facts)>=25, 'Capa de realidad pública insuficiente'
+    assert len(plans)>=10 and set(plans).issubset(set(active)), 'Planes verificables insuficientes o fabricante inválido'
+    fact_ids=[x.get('id') for x in facts]; assert len(fact_ids)==len(set(fact_ids)) and all(fact_ids), 'IDs de realidad pública inválidos/duplicados'
+    for e in facts:
+        assert e.get('url') and e.get('source') and e.get('summary') and e.get('implication'), f'Realidad incompleta: {e.get("id")}'
+        assert e.get('sourceTier') in {'official-company','regulator','analyst-public','public-open-data','industry-press'}, f'Tier inválido: {e.get("id")}'
+        assert 0<=int(e.get('confidence',0))<=100, f'Confianza inválida: {e.get("id")}'
+    for vendor,plan in plans.items():
+        action=plan.get('action',{})
+        assert plan.get('decision') in {'ACELERAR','CONSTRUIR','DEFENDER','OPTIMIZAR','INVESTIGAR'}, f'Decisión inválida: {vendor}'
+        assert all(x in fact_ids for x in plan.get('evidenceIds',[])) and len(plan.get('evidenceIds',[]))>=2, f'Fuentes insuficientes: {vendor}'
+        assert all(action.get(k) for k in ['owner','objective','day30','day60','day90','kpis','goNoGo','internalQuestions']), f'Contrato ejecutivo incompleto: {vendor}'
     assert 'Juniper Networks' not in active, 'Juniper no debe contarse como vendor activo en el scope actual'
     assert any(x.get('name')=='Juniper Networks' for x in base.get('externalCompetitors',[])), 'Juniper debe seguirse como competidor'
     extreme=next(x for x in vi['vendors'] if x['name']=='Extreme Networks')
@@ -91,7 +104,7 @@ def main():
             assert not any(f in nk for f in forbidden_key_fragments), f'Posible dato interno no permitido en {rel}: {k}'
     for wf in ['.github/workflows/research-daily.yml','.github/workflows/research-weekly.yml','.github/workflows/research-monthly.yml']:
         assert (ROOT/wf).exists(), f'Falta workflow: {wf}'
-    print(f'OK · {len(active)} vendors activos · {len(actions)} acciones · {len(roles)} perfiles · {len(research.get("evidence",[]))} evidencias · {len(research.get("procurementMarket",[]))} buckets contratación · Decision Intelligence v8 + Capability Intelligence validado')
+    print(f'OK · {len(active)} vendors · {len(facts)} realidades · {len(plans)} contratos verificables · {len(actions)} acciones · {len(roles)} perfiles · Evidence-to-Action v9 validado')
 
 if __name__=='__main__':
     try: main()

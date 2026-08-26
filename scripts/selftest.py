@@ -8,6 +8,15 @@ from __future__ import annotations
 import importlib.util
 import json
 import pathlib
+import sys
+import types
+
+try:
+    import requests  # noqa: F401
+except ModuleNotFoundError:
+    class _OfflineSession:
+        def __init__(self): self.headers = {}
+    sys.modules["requests"] = types.SimpleNamespace(Session=_OfflineSession)
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("westcon_research", ROOT / "scripts/research.py")

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deep public-intelligence collector for Westcon Iberia Decision Intelligence v1.8.
+"""Deep public-intelligence collector for Westcon Iberia Decision Intelligence v2.0.
 
 Design goals
 ------------
@@ -47,6 +47,7 @@ ECOSYSTEM = json.loads((ROOT / "data/ecosystem.json").read_text(encoding="utf-8"
 VENDOR_INTEL = json.loads((ROOT / "data/vendor_intelligence.json").read_text(encoding="utf-8"))
 PROC_TAX = json.loads((ROOT / "config/procurement_taxonomy.json").read_text(encoding="utf-8"))
 CAP = json.loads((ROOT / "config/capability_intelligence.json").read_text(encoding="utf-8"))
+MARKET_REALITY = json.loads((ROOT / "data/market_reality.json").read_text(encoding="utf-8"))
 OUT = ROOT / "data/research.latest.json"
 STATUS_OUT = ROOT / "data/research_status.json"
 CHANGES_OUT = ROOT / "data/changes.latest.json"
@@ -63,7 +64,7 @@ if PROFILE not in DEEP.get("profiles", {}):
 PROFILE_CFG = DEEP.get("profiles", {}).get(PROFILE, {})
 BUDGETS = dict(DEEP.get("budgets", {}))
 BUDGETS.update(PROFILE_CFG.get("budgets", {}))
-UA = f"Westcon-Iberia-Decision-Intelligence/1.8 ({PROFILE}; public-market-and-capability-intelligence)"
+UA = f"Westcon-Iberia-Decision-Intelligence/2.0 ({PROFILE}; evidence-to-action-public-intelligence)"
 TIMEOUT = int(BUDGETS.get("request_timeout_seconds", 25))
 WORKERS = int(BUDGETS.get("http_workers", 12))
 
@@ -1475,6 +1476,7 @@ def main() -> None:
     prev=load_previous_payload()
     queries=make_queries()
     evidence=[dict(e,curated=True) for e in CURATED.get('evidence',[])]
+    evidence.extend(dict(e,curated=True,realityVerified=True) for e in MARKET_REALITY.get('facts',[]))
     evidence.extend(carryover_evidence(prev))
 
     # 1) Broad discovery engines with profile-specific budgets.
@@ -1556,7 +1558,7 @@ def main() -> None:
     changes=compute_changes(prev,channels,integrators,customers,coverage,procurement_market,ended_channels)
 
     payload={
-        'generatedAt':NOW.isoformat(),'profile':PROFILE,'mode':'decision-intelligence-market-capability-research-v8.0','queryCount':len(queries),'braveEnabled':brave,
+        'generatedAt':NOW.isoformat(),'profile':PROFILE,'mode':'evidence-to-action-public-intelligence-v9.0','queryCount':len(queries),'braveEnabled':brave,
         'notice':'Solo inteligencia pública externa. Discovery, evidencia ejecutiva, geografía, frescura, corroboración y conflictos se preservan explícitamente. El scope de portfolio se configura aparte del motor de evidencia.',
         'researchEngines':['Brave Search (optional)' if brave else 'Brave Search (not configured)','Google News RSS','GDELT DOC 2.0','Arquivo.pt','official vendor sitemaps','Common Crawl URL discovery + live validation','official distributor/integrator sitemaps','public analyst sitemaps' if PROFILE in {'deep','exhaustive'} else 'public analyst crawl (weekly/monthly)','TED Search API','PLACSP open data (weekly deep)','dados.gov.pt / Portal BASE (weekly deep)'],
         'evidence':evidence,'capabilitySignals':capability_signals,'channelSignals':channels,'channelHistorySignals':ended_channels,'integratorSignals':integrators,'customerSignals':customers,'analystSignals':analysts,'procurementMarket':procurement_market,'coverage':coverage,'gaps':research_gaps(coverage),'conflicts':conflicts,'changes':changes,
@@ -1566,7 +1568,7 @@ def main() -> None:
     CHANGES_OUT.write_text(json.dumps({'generatedAt':NOW.isoformat(),'profile':PROFILE,'changes':changes,'conflicts':conflicts},ensure_ascii=False,indent=2),encoding='utf-8')
     STATUS_OUT.write_text(json.dumps({'generatedAt':NOW.isoformat(),'profile':PROFILE,'braveEnabled':brave,'queryCount':len(queries),'budgets':BUDGETS,'coverageAverage':round(sum(x['coverage'] for x in coverage)/max(1,len(coverage)),1),'vendorsWithCoverage70':sum(1 for x in coverage if x['coverage']>=70),'gapsP0':sum(1 for x in research_gaps(coverage) if x['priority']=='P0'),'engines':payload['researchEngines']},ensure_ascii=False,indent=2),encoding='utf-8')
     write_light_history(payload,changes)
-    print(f"Research v8.0/{PROFILE}: {len(evidence)} evidence, {len(channels)} channel, {len(integrators)} integrators, {len(customers)} customers, {len(queries)} planned queries, {len(changes)} changes")
+    print(f"Research v9.0/{PROFILE}: {len(evidence)} evidence, {len(channels)} channel, {len(integrators)} integrators, {len(customers)} customers, {len(queries)} planned queries, {len(changes)} changes")
 
 
 if __name__=='__main__': main()
