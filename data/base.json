@@ -2,7 +2,7 @@
   "meta": {
     "name": "Westcon Iberia Strategy Studio",
     "edition": "Edición Ejecutiva · Inteligencia Pública",
-    "version": "1.1.0",
+    "version": "1.4.0",
     "generated": "2026-08-26",
     "scope": [
       "Iberia",
@@ -455,23 +455,6 @@
       "status": "PORTFOLIO_SEED"
     },
     {
-      "name": "Juniper Networks",
-      "domain": "Networking",
-      "capabilities": [
-        "Campus",
-        "Mist AI",
-        "WAN",
-        "Data Center",
-        "AIOps"
-      ],
-      "presentationCountries": [
-        "ES"
-      ],
-      "seedSource": "presentation",
-      "publicVerification": "verified",
-      "status": "PORTFOLIO_SEED"
-    },
-    {
       "name": "Nokia",
       "domain": "Networking",
       "capabilities": [
@@ -872,7 +855,6 @@
       "name": "Campus autónomo",
       "vendors": [
         "Extreme Networks",
-        "Juniper Networks",
         "Cisco",
         "EfficientIP",
         "Zscaler"
@@ -906,7 +888,6 @@
       "vendors": [
         "AWS",
         "Microsoft Azure",
-        "Juniper Networks",
         "Cisco",
         "Nokia",
         "Ciena",
@@ -996,5 +977,26 @@
       "Conflicting evidence is preserved and flagged rather than silently reconciled.",
       "Strategic scores are model-derived inferences, not analyst ratings."
     ]
-  }
+  },
+  "externalCompetitors": [
+    {
+      "name": "Juniper Networks",
+      "parent": "HPE",
+      "domain": "Networking",
+      "capabilities": [
+        "Campus",
+        "Mist AI",
+        "WAN",
+        "Data Center",
+        "AIOps"
+      ],
+      "scope": [
+        "ES",
+        "PT",
+        "EMEA"
+      ],
+      "status": "COMPETITOR_TRACKED",
+      "note": "Tracked as a competitive vendor, not counted as active Westcon Iberia portfolio in this project scope."
+    }
+  ]
 }

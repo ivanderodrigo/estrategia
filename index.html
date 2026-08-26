@@ -41,8 +41,8 @@
       <p>Competencia de mercado y canal, consultoras, sinergias, solapes y acciones por fabricante. Lo complejo queda detrás; delante solo aparece lo que ayuda a decidir.</p>
     </div>
     <div class="hero-note">
-      <b>Motor de recomendación v2</b>
-      <span>La decisión no está escrita a mano: combina mercado, encaje del portfolio, recurrencia, analistas, sinergias, canal, solape y calidad de evidencia.</span>
+      <b>Motor de recomendación v4</b>
+      <span>La decisión no está escrita a mano: combina mercado, encaje, analistas, canal, integradores, clientes públicos, sinergias, solapes, servicios y calidad de evidencia.</span>
     </div>
   </div>
 
@@ -62,14 +62,14 @@
     </article>
   </div>
 
-  <div class="section-title"><div><span>FABRICANTES</span><h2>La foto ejecutiva</h2><p>Una línea por fabricante. Pulsa para ver el porqué y la evidencia.</p></div><button class="linkbtn" data-jump="fabricantes">Ver los 37 →</button></div>
-  <div class="table-wrap compact"><table class="vendor-table overview"><thead><tr><th>Fabricante</th><th>Decisión</th><th>Mercado</th><th>Mayoristas alternativos</th><th>Consultoras</th><th>Sinergia / solape</th><th>Próxima acción</th></tr></thead><tbody id="overviewVendorRows"></tbody></table></div>
+  <div class="section-title"><div><span>FABRICANTES</span><h2>La foto ejecutiva</h2><p>Una línea por fabricante. Pulsa para ver el porqué y la evidencia.</p></div><button class="linkbtn" data-jump="fabricantes">Ver los 36 →</button></div>
+  <div class="table-wrap compact"><table class="vendor-table overview"><thead><tr><th>Fabricante</th><th>Decisión</th><th>Mercado</th><th>Mayoristas alternativos</th><th>Ecosistema Iberia</th><th>Consultoras</th><th>Sinergia / solape</th><th>Próxima acción</th></tr></thead><tbody id="overviewVendorRows"></tbody></table></div>
 </section>
 
 <section id="fabricantes" class="view">
   <div class="page-head">
-    <div><div class="eyebrow">PORTFOLIO INTELLIGENCE</div><h1>37 fabricantes. Una decisión defendible por fabricante.</h1><p>La interfaz resume; el detalle conserva métricas, fuentes, incertidumbre y razonamiento.</p></div>
-    <div class="filters primary-filters"><input id="vendorSearch" type="search" placeholder="Buscar fabricante, tecnología, rival o mayorista…"><select id="domainFilter"><option value="all">Todas las áreas</option></select><select id="recommendationFilter"><option value="all">Todas las decisiones</option></select><select id="countryFilter"><option value="all">ES + PT</option><option value="ES">España</option><option value="PT">Portugal</option></select></div>
+    <div><div class="eyebrow">PORTFOLIO INTELLIGENCE</div><h1>36 fabricantes. Una decisión defendible por fabricante.</h1><p>La interfaz resume; el detalle conserva métricas, fuentes, incertidumbre y razonamiento.</p></div>
+    <div class="filters primary-filters"><input id="vendorSearch" type="search" placeholder="Buscar fabricante, tecnología, rival, mayorista, integrador o cliente…"><select id="domainFilter"><option value="all">Todas las áreas</option></select><select id="recommendationFilter"><option value="all">Todas las decisiones</option></select><select id="countryFilter"><option value="all">ES + PT</option><option value="ES">España</option><option value="PT">Portugal</option></select></div>
   </div>
   <div id="smartFilters" class="smart-filters">
     <button class="active" data-quick="all">Todos</button>
@@ -77,11 +77,14 @@
     <button data-quick="channel">Canal presionado</button>
     <button data-quick="synergy">Alta sinergia</button>
     <button data-quick="overlap">Solape alto</button>
+    <button data-quick="ecosystem">Ecosistema fuerte</button>
+    <button data-quick="whitespace">White space</button>
+    <button data-quick="references">Referencias Iberia</button>
     <button data-quick="gaps">Falta evidencia</button>
     <span id="resultCount"></span>
   </div>
   <div class="vendor-layout">
-    <div class="table-wrap"><table class="vendor-table full"><thead><tr><th>Fabricante</th><th>Decisión</th><th>Oportunidad</th><th>Competidores</th><th>Mayoristas ES / PT</th><th>Consultoras</th><th>Sinergia</th><th>Solape</th><th>Confianza</th><th>Acción</th></tr></thead><tbody id="vendorRows"></tbody></table></div>
+    <div class="table-wrap"><table class="vendor-table full"><thead><tr><th>Fabricante</th><th>Decisión</th><th>Oportunidad</th><th>Competidores</th><th>Mayoristas ES / PT</th><th>Ecosistema</th><th>Consultoras</th><th>Sinergia</th><th>Solape</th><th>Confianza</th><th>Acción</th></tr></thead><tbody id="vendorRows"></tbody></table></div>
     <aside id="vendorDetail" class="detail-panel"><div class="empty-detail"><b>Selecciona un fabricante</b><span>La capa ejecutiva muestra la decisión; “Ver datos” abre el razonamiento y las evidencias.</span></div></aside>
   </div>
 </section>
@@ -101,16 +104,16 @@
 </section>
 
 <section id="datos" class="view">
-  <div class="page-head"><div><div class="eyebrow">DATA LAYER</div><h1>Muchos datos detrás. Cero ruido delante.</h1><p>Fuentes, confianza, cobertura, antigüedad, geografía, research pendiente y explicación del motor de recomendación.</p></div></div>
+  <div class="page-head"><div><div class="eyebrow">DATA LAYER</div><h1>Muchos datos detrás. Cero ruido delante.</h1><p>Fuentes, confianza, cobertura, antigüedad, geografía, integradores, referencias de cliente, research pendiente y explicación del motor de recomendación.</p></div></div>
   <div id="dataKpis" class="kpis data-kpis"></div>
   <div class="grid-2 data-grid">
     <article class="panel"><div class="panel-head"><div><span>MOTOR</span><h3>Cómo decide</h3></div></div><div id="engineExplanation" class="engine-box"></div></article>
     <article class="panel"><div class="panel-head"><div><span>GAPS</span><h3>Qué falta demostrar públicamente</h3></div></div><div id="researchGaps" class="gap-list"></div></article>
   </div>
   <div class="source-rules"><div><b>1</b><span>Reguladores</span></div><div><b>2</b><span>Fuentes oficiales</span></div><div><b>3</b><span>Gartner · IDC · Forrester · Omdia · Dell'Oro · Synergy</span></div><div><b>4</b><span>Prensa / discovery hasta validación</span></div></div>
-  <div class="source-tools"><input id="sourceSearch" type="search" placeholder="Filtrar evidencia por fabricante, fuente, mercado o palabra…"><select id="sourceTierFilter"><option value="all">Todas las fuentes</option><option value="analyst-public">Analistas públicos</option><option value="official-company">Oficiales</option><option value="industry-press">Prensa</option><option value="search-discovery">Discovery</option></select></div>
+  <div class="source-tools"><input id="sourceSearch" type="search" placeholder="Filtrar por fabricante, integrador, cliente, fuente o palabra…"><select id="sourceTierFilter"><option value="all">Todas las fuentes</option><option value="analyst-public">Analistas públicos</option><option value="official-company">Oficiales</option><option value="industry-press">Prensa</option><option value="search-discovery">Discovery</option></select><select id="sourceTypeFilter"><option value="all">Todos los tipos</option><option value="channel">Canal</option><option value="integrator">Integradores</option><option value="customer">Clientes</option><option value="analyst">Analistas</option><option value="market">Mercado</option><option value="product">Producto</option><option value="procurement">Contratación pública</option><option value="competitive">Competencia</option><option value="services">Servicios</option><option value="partner-program">Programa de canal</option><option value="m&a">M&A</option></select><select id="sourceGeoFilter"><option value="all">Todas las geografías</option><option value="ES">España</option><option value="PT">Portugal</option><option value="IBERIA">Iberia</option><option value="EMEA">EMEA / Europa</option></select></div>
   <div class="table-wrap data-table"><table><thead><tr><th>Fecha</th><th>Conf.</th><th>Ámbito</th><th>Fuente</th><th>Tipo</th><th>Evidencia pública</th><th></th></tr></thead><tbody id="sourceRows"></tbody></table></div>
-  <div class="research-box"><div><span>AUTOMATIZACIÓN</span><h2>Investigación de fondo</h2><p>GitHub Actions rota consultas por fabricante, país y tipo de señal; separa discovery de evidencia validada, deduplica, conserva geografía y calcula cobertura y gaps.</p></div><pre id="researchSummary"></pre></div>
+  <div class="research-box"><div><span>AUTOMATIZACIÓN</span><h2>Investigación de fondo</h2><p>GitHub Actions actualiza a diario y realiza una investigación profunda semanal. Cruza búsquedas, sitemaps oficiales, TED, contratación pública de España y Portugal, canal, integradores, MSSP, clientes, consultoras, mercado, competencia y producto; acumula histórico, corrobora señales, detecta cambios/conflictos y prioriza automáticamente los gaps.</p></div><pre id="researchSummary"></pre></div>
 </section>
 
 <section id="report" class="report-sheet" aria-hidden="true"></section>

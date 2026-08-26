@@ -1,5 +1,5 @@
 {
-  "rotation_max_queries": 180,
+  "rotation_max_queries": 1200,
   "strategic_queries": [
     "Westcon Comstor Spain Portugal Iberia vendor portfolio distribution agreement 2026",
     "Westcon Comstor 2026 services support lifecycle marketplace SASE AI cybersecurity networking",
@@ -27,7 +27,18 @@
     "Canalys 2026 EMEA cybersecurity channel distributors",
     "Dell Oro 2026 SASE enterprise campus switch WLAN data center networking",
     "Spain technology distributor portfolio cybersecurity networking vendors 2026",
-    "Portugal technology distributor portfolio cybersecurity networking vendors 2026"
+    "Portugal technology distributor portfolio cybersecurity networking vendors 2026",
+    "Spain public procurement cybersecurity networking cloud vendors integrators 2026",
+    "Portugal public procurement cybersecurity networking cloud vendors integrators 2026",
+    "Spain system integrator cybersecurity partner awards 2026 Palo Alto CrowdStrike Zscaler F5 Extreme Cisco",
+    "Portugal system integrator cybersecurity partner awards 2026 Palo Alto CrowdStrike Zscaler F5 Extreme Cisco",
+    "Spain enterprise networking market share 2026 campus WLAN switch public analyst",
+    "Portugal cybersecurity market channel 2026 managed services public analyst",
+    "Europe distributor value added services labs financing lifecycle cybersecurity 2026",
+    "Iberia MSSP SOC MDR market 2026 Spain Portugal",
+    "Iberia AI infrastructure data center networking cybersecurity 2026 public market forecast",
+    "Spain Portugal NIS2 DORA CRA ENS cybersecurity investment 2026",
+    "Spain Portugal public sector tenders Palo Alto CrowdStrike Zscaler Extreme F5 Check Point 2026"
   ],
   "vendor_query_templates": [
     "{vendor} Westcon Comstor Spain Portugal 2026",
@@ -58,7 +69,23 @@
     "{vendor} Gartner Peer Insights 2026 alternatives",
     "{vendor} Critical Capabilities Gartner 2026",
     "{vendor} Spain Portugal professional services support 2026",
-    "{vendor} EMEA Southern Europe channel expansion 2026"
+    "{vendor} EMEA Southern Europe channel expansion 2026",
+    "{vendor} Spain system integrator partner of the year certified partner 2025 2026",
+    "{vendor} Portugal system integrator partner of the year certified partner 2025 2026",
+    "{vendor} Spain partner directory solution provider integrator",
+    "{vendor} Portugal partner directory solution provider integrator",
+    "{vendor} Spain customer story case study client",
+    "{vendor} Portugal customer story case study client",
+    "{vendor} Spain case study integrator implementation customer",
+    "{vendor} Portugal case study integrator implementation customer",
+    "{vendor} Spain public sector customer case study",
+    "{vendor} Portugal public sector customer case study",
+    "{vendor} Spain banking retail industrial healthcare customer case",
+    "{vendor} Portugal banking retail industrial healthcare customer case",
+    "{vendor} Spain MSSP managed service provider partner",
+    "{vendor} Portugal MSSP managed service provider partner",
+    "{vendor} Iberia partner award system integrator",
+    "{vendor} Iberia customer success story"
   ],
   "known_distributors": [
     "Westcon-Comstor",
@@ -134,6 +161,534 @@
       "marketplace",
       "lifecycle",
       "MSSP"
+    ],
+    "integrator": [
+      "system integrator",
+      "integrator",
+      "integrador",
+      "partner of the year",
+      "solution provider",
+      "mssp",
+      "managed service provider",
+      "certified partner",
+      "partner directory",
+      "implementation partner"
+    ],
+    "customer": [
+      "customer story",
+      "case study",
+      "caso de éxito",
+      "caso de cliente",
+      "customer success",
+      "client story",
+      "cliente",
+      "implementation",
+      "deployment"
     ]
-  }
+  },
+  "known_integrators": [
+    "Telefónica Tech",
+    "Telefónica",
+    "Axians",
+    "NTT",
+    "SATEC",
+    "Kyndryl",
+    "IKUSI",
+    "Logicalis",
+    "SCC",
+    "Indra",
+    "Minsait",
+    "Evolutio",
+    "Vodafone",
+    "Orange",
+    "MasOrange",
+    "All4Sec",
+    "SIRT",
+    "Nunsys",
+    "Italtel",
+    "Fibratel",
+    "Grupo ICA",
+    "SIA",
+    "ESED",
+    "Decunify",
+    "Claranet",
+    "acens",
+    "3Hold Technologies",
+    "Seidor",
+    "Inetum",
+    "Accenture",
+    "Capgemini",
+    "Deloitte",
+    "KPMG",
+    "EY",
+    "PwC",
+    "Computacenter",
+    "DXC Technology",
+    "IBM",
+    "SoftwareOne",
+    "Seyrcom",
+    "Hopla! Software"
+  ],
+  "no_brave_rotation_max_queries": 360,
+  "tracked_competitors": [
+    "Juniper Networks",
+    "HPE Networking",
+    "Aruba Networking",
+    "Fortinet",
+    "Arista Networks",
+    "Nile",
+    "Versa Networks",
+    "Netskope",
+    "SentinelOne",
+    "Microsoft Security",
+    "Google Cloud",
+    "Wiz",
+    "CyberArk",
+    "SailPoint",
+    "Infoblox",
+    "BlueCat",
+    "Cloudflare"
+  ],
+  "vendor_aliases": {
+    "Palo Alto Networks": [
+      "Palo Alto Networks",
+      "PANW",
+      "Prisma SASE",
+      "Prisma Access",
+      "Cortex XSIAM",
+      "Cortex XDR"
+    ],
+    "Extreme Networks": [
+      "Extreme Networks",
+      "ExtremeCloud IQ",
+      "Extreme Platform ONE",
+      "Extreme Fabric"
+    ],
+    "CrowdStrike": [
+      "CrowdStrike",
+      "Falcon",
+      "Falcon Complete"
+    ],
+    "Zscaler": [
+      "Zscaler",
+      "Zero Trust Exchange",
+      "ZIA",
+      "ZPA"
+    ],
+    "Cisco": [
+      "Cisco",
+      "Cisco Meraki",
+      "Catalyst",
+      "Cisco Secure Access",
+      "Cisco XDR"
+    ],
+    "F5": [
+      "F5",
+      "F5 Distributed Cloud",
+      "BIG-IP",
+      "NGINX"
+    ],
+    "Okta": [
+      "Okta",
+      "Auth0"
+    ],
+    "Ping Identity": [
+      "Ping Identity",
+      "PingOne"
+    ],
+    "EfficientIP": [
+      "EfficientIP",
+      "SOLIDserver"
+    ],
+    "Claroty": [
+      "Claroty",
+      "xDome"
+    ],
+    "Vectra AI": [
+      "Vectra AI",
+      "Vectra"
+    ],
+    "AttackIQ": [
+      "AttackIQ"
+    ],
+    "XM Cyber": [
+      "XM Cyber"
+    ],
+    "Fortanix": [
+      "Fortanix"
+    ],
+    "Proofpoint": [
+      "Proofpoint"
+    ],
+    "Ruckus Networks": [
+      "Ruckus Networks",
+      "RUCKUS",
+      "Ruckus One"
+    ],
+    "Nokia": [
+      "Nokia",
+      "Nokia NSP",
+      "SR Linux"
+    ],
+    "Ciena": [
+      "Ciena",
+      "WaveLogic",
+      "Waveserver"
+    ],
+    "AWS": [
+      "AWS",
+      "Amazon Web Services"
+    ],
+    "Microsoft Azure": [
+      "Microsoft Azure",
+      "Azure",
+      "Microsoft Cloud"
+    ],
+    "UiPath": [
+      "UiPath"
+    ],
+    "Juniper Networks": [
+      "Juniper Networks",
+      "Mist AI",
+      "Apstra",
+      "Juniper Mist"
+    ]
+  },
+  "vendor_domains": {
+    "1Password": "1password.com",
+    "Akamai / Noname": "akamai.com",
+    "Anomali": "anomali.com",
+    "AttackIQ": "attackiq.com",
+    "AudioCodes": "audiocodes.com",
+    "Avaya": "avaya.com",
+    "AWS": "aws.amazon.com",
+    "Certes Networks": "certesnetworks.com",
+    "Check Point": "checkpoint.com",
+    "Ciena": "ciena.com",
+    "Cisco": "cisco.com",
+    "Claroty": "claroty.com",
+    "CrowdStrike": "crowdstrike.com",
+    "EfficientIP": "efficientip.com",
+    "Ericsson Cradlepoint": "cradlepoint.com",
+    "Extreme Networks": "extremenetworks.com",
+    "F5": "f5.com",
+    "FireMon": "firemon.com",
+    "Fortanix": "fortanix.com",
+    "Ivanti": "ivanti.com",
+    "LevelBlue": "levelblue.com",
+    "Menlo Security": "menlosecurity.com",
+    "Microsoft Azure": "microsoft.com",
+    "NETSCOUT": "netscout.com",
+    "Nokia": "nokia.com",
+    "Okta": "okta.com",
+    "Palo Alto Networks": "paloaltonetworks.com",
+    "Ping Identity": "pingidentity.com",
+    "Proofpoint": "proofpoint.com",
+    "Ruckus Networks": "ruckusnetworks.com",
+    "Stratus / Penguin Solutions": "penguinsolutions.com",
+    "UiPath": "uipath.com",
+    "Vectra AI": "vectra.ai",
+    "Weblib": "weblib.com",
+    "XM Cyber": "xmcyber.com",
+    "Zscaler": "zscaler.com",
+    "Juniper Networks": "juniper.net",
+    "HPE Networking": "hpe.com"
+  },
+  "high_value_official_paths": [
+    "partner",
+    "partners",
+    "find-a-partner",
+    "distributor",
+    "distribution",
+    "customer",
+    "customers",
+    "case-study",
+    "case-studies",
+    "success",
+    "press",
+    "news",
+    "blog",
+    "events",
+    "marketplace",
+    "services",
+    "training",
+    "academy",
+    "certification",
+    "investor",
+    "awards",
+    "solutions",
+    "industries",
+    "resources",
+    "reference",
+    "references",
+    "casestudy",
+    "stories",
+    "success-stories",
+    "partner-locator",
+    "find-partner",
+    "channel",
+    "alliances",
+    "ecosystem",
+    "market-share",
+    "forecast",
+    "research",
+    "insights",
+    "reports",
+    "whitepaper",
+    "white-paper"
+  ],
+  "deep_intents": {
+    "channel": [
+      "distributor",
+      "authorized distributor",
+      "distribution agreement",
+      "linecard",
+      "partner locator",
+      "mayorista",
+      "distribuidor"
+    ],
+    "ecosystem": [
+      "system integrator",
+      "integrator",
+      "partner of the year",
+      "certified partner",
+      "MSSP",
+      "managed services partner",
+      "specialization"
+    ],
+    "customers": [
+      "customer story",
+      "case study",
+      "deployment",
+      "implementation",
+      "client success",
+      "public sector",
+      "government",
+      "healthcare",
+      "banking",
+      "retail",
+      "industrial",
+      "utilities",
+      "education"
+    ],
+    "competition": [
+      "competitor",
+      "alternative",
+      "replacement",
+      "migration",
+      "competitive displacement",
+      "versus",
+      "win against",
+      "TCO",
+      "ROI"
+    ],
+    "analysts": [
+      "Gartner",
+      "Forrester",
+      "IDC",
+      "Omdia",
+      "Canalys",
+      "Dell Oro",
+      "Synergy Research",
+      "ISG",
+      "market share",
+      "forecast"
+    ],
+    "strategy": [
+      "acquisition",
+      "merger",
+      "earnings",
+      "investor presentation",
+      "strategy",
+      "AI platform",
+      "sovereignty",
+      "PQC",
+      "roadmap"
+    ],
+    "services": [
+      "professional services",
+      "support",
+      "training",
+      "demo",
+      "PoC",
+      "marketplace",
+      "financing",
+      "renewals",
+      "lifecycle",
+      "managed service"
+    ],
+    "procurement": [
+      "tender",
+      "award",
+      "contract",
+      "licitación",
+      "adjudicación",
+      "contrato",
+      "concurso público"
+    ],
+    "channel_changes": [
+      "distribution termination",
+      "new distributor",
+      "distribution expansion",
+      "distribution agreement",
+      "authorized distributor",
+      "linecard 2026",
+      "vendor portfolio"
+    ],
+    "partner_capability": [
+      "advanced specialization",
+      "expert specialization",
+      "certification",
+      "partner tier",
+      "MSSP",
+      "managed service",
+      "professional services",
+      "award partner"
+    ],
+    "customer_verticals": [
+      "public administration",
+      "government",
+      "healthcare",
+      "hospital",
+      "bank",
+      "insurance",
+      "retail",
+      "manufacturing",
+      "industrial",
+      "utility",
+      "telecom",
+      "university",
+      "transport",
+      "hospitality"
+    ],
+    "economics": [
+      "market size",
+      "market share",
+      "growth forecast",
+      "CAGR",
+      "ARR",
+      "subscription",
+      "recurring revenue",
+      "TCO",
+      "ROI"
+    ],
+    "attack": [
+      "replacement",
+      "migration from",
+      "competitive win",
+      "displacement",
+      "alternative to",
+      "versus",
+      "consolidation",
+      "platformization"
+    ],
+    "regulation": [
+      "NIS2",
+      "DORA",
+      "CRA",
+      "AI Act",
+      "ENS",
+      "sovereignty",
+      "data residency",
+      "PQC",
+      "post quantum"
+    ]
+  },
+  "distributor_domains": {
+    "Arrow": "arrow.com",
+    "TD SYNNEX": "tdsynnex.com",
+    "Exclusive Networks": "exclusive-networks.com",
+    "Infinigate": "infinigate.com",
+    "V-Valley": "v-valley.com",
+    "ALSO": "also.com",
+    "Esprinet": "esprinet.com",
+    "Ingram Micro": "ingrammicro.com",
+    "Pax8": "pax8.com",
+    "Crayon": "crayon.com",
+    "MCR": "mcr.com.es",
+    "Ingecom": "ingecom.net",
+    "Ignition Technology": "ignition-technology.com"
+  },
+  "integrator_domains": {
+    "Telefónica Tech": "telefonicatech.com",
+    "Axians España": "axians.es",
+    "Axians Portugal": "axians.pt",
+    "NTT DATA": "nttdata.com",
+    "SATEC": "satec.es",
+    "Kyndryl": "kyndryl.com",
+    "IKUSI": "ikusi.com",
+    "Logicalis": "logicalis.com",
+    "SCC": "scc.com",
+    "Indra": "indra.es",
+    "Minsait": "minsait.com",
+    "Evolutio": "evolutio.com",
+    "Claranet": "claranet.com",
+    "acens": "acens.com",
+    "SoftwareOne": "softwareone.com",
+    "SIA": "sia.es",
+    "Grupo Oesía": "grupooesia.com",
+    "Decunify": "decunify.com",
+    "Seidor": "seidor.com",
+    "Inetum": "inetum.com",
+    "Computacenter": "computacenter.com",
+    "DXC Technology": "dxc.com",
+    "Accenture": "accenture.com",
+    "Capgemini": "capgemini.com",
+    "Deloitte": "deloitte.com",
+    "KPMG": "kpmg.com",
+    "EY": "ey.com",
+    "PwC": "pwc.com",
+    "IBM": "ibm.com"
+  },
+  "analyst_domains": {
+    "Gartner": "gartner.com",
+    "Forrester": "forrester.com",
+    "IDC": "idc.com",
+    "Omdia": "omdia.tech",
+    "Canalys": "canalys.com",
+    "Dell'Oro": "delloro.com",
+    "Synergy Research": "srgresearch.com",
+    "ISG": "isg-one.com"
+  },
+  "vertical_terms": [
+    "public sector",
+    "government",
+    "healthcare",
+    "banking",
+    "insurance",
+    "retail",
+    "manufacturing",
+    "industrial",
+    "utilities",
+    "telecom",
+    "education",
+    "transport",
+    "hospitality"
+  ],
+  "competitive_terms": [
+    "replacement",
+    "migration",
+    "competitive displacement",
+    "win against",
+    "consolidation",
+    "alternative",
+    "versus",
+    "TCO",
+    "ROI",
+    "platformization"
+  ],
+  "official_proof_terms": [
+    "partner of the year",
+    "customer story",
+    "case study",
+    "authorized distributor",
+    "partner locator",
+    "managed services",
+    "professional services",
+    "support",
+    "training",
+    "marketplace",
+    "certification",
+    "specialization"
+  ]
 }

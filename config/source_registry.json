@@ -1,5 +1,5 @@
 {
-  "policy": "Only public external sources are collected. Licensed analyst content is not scraped.",
+  "policy": "Only public external sources are collected. Licensed analyst content is not scraped. Procurement/open-data sources and official company sources are weighted above discovery snippets.",
   "tiers": [
     {
       "id": "regulator",
@@ -11,7 +11,28 @@
         "cnmc.es",
         "incibe.es",
         "enisa.europa.eu",
-        "cncs.gov.pt"
+        "cncs.gov.pt",
+        "dre.pt",
+        "diariodarepublica.pt",
+        "aepd.es",
+        "ccn-cert.cni.es",
+        "digital-strategy.ec.europa.eu"
+      ]
+    },
+    {
+      "id": "public-open-data",
+      "weight": 97,
+      "domains": [
+        "ted.europa.eu",
+        "api.ted.europa.eu",
+        "docs.ted.europa.eu",
+        "contrataciondelestado.es",
+        "contrataciondelsectorpublico.gob.es",
+        "hacienda.gob.es",
+        "base.gov.pt",
+        "dados.gov.pt",
+        "data.europa.eu",
+        "arquivo.pt"
       ]
     },
     {
@@ -76,7 +97,40 @@
         "xmcyber.com",
         "zscaler.com",
         "hpe.com",
-        "hp.com"
+        "hp.com",
+        "telefonicatech.com",
+        "axians.es",
+        "axians.pt",
+        "decunify.com",
+        "sia.es",
+        "grupooesia.com",
+        "grupooesia.es",
+        "esedsl.com",
+        "satec.es",
+        "nttdata.com",
+        "kyndryl.com",
+        "ikusi.com",
+        "logicalis.com",
+        "scc.com",
+        "indra.es",
+        "minsait.com",
+        "evolutio.com",
+        "claranet.com",
+        "acens.com",
+        "3hold.com",
+        "softwareone.com",
+        "seidor.com",
+        "inetum.com",
+        "computacenter.com",
+        "dxc.com",
+        "accenture.com",
+        "capgemini.com",
+        "deloitte.com",
+        "kpmg.com",
+        "ey.com",
+        "pwc.com",
+        "ibm.com",
+        "ignition-technology.com"
       ]
     },
     {
@@ -104,7 +158,23 @@
         "muycanal.com",
         "ituser.es",
         "computing.es",
-        "redestelecom.es"
+        "redestelecom.es",
+        "channelpartner.es",
+        "revistabyte.es",
+        "itchannel.pt",
+        "itinsight.pt",
+        "business-it.pt",
+        "computerworld.com.pt",
+        "tek.sapo.pt",
+        "ciberseguridad.com"
+      ]
+    },
+    {
+      "id": "open-news-intelligence",
+      "weight": 58,
+      "domains": [
+        "gdeltproject.org",
+        "api.gdeltproject.org"
       ]
     }
   ],

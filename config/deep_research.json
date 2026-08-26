@@ -1,0 +1,399 @@
+{
+  "version": "4.2",
+  "policy": "Public external intelligence only. Licensed analyst content is never scraped or reconstructed.",
+  "budgets": {
+    "brave_queries_max": 720,
+    "news_queries_max": 220,
+    "gdelt_queries_max": 180,
+    "arquivo_queries_max": 80,
+    "ted_queries_max": 110,
+    "sitemap_pages_max": 1400,
+    "http_workers": 12,
+    "request_timeout_seconds": 25,
+    "per_host_delay_ms": 50
+  },
+  "engines": {
+    "brave": {
+      "enabled_if_secret": "BRAVE_SEARCH_API_KEY",
+      "weight": 45
+    },
+    "google_news": {
+      "enabled": true,
+      "weight": 48
+    },
+    "gdelt": {
+      "enabled": true,
+      "weight": 55,
+      "endpoint": "https://api.gdeltproject.org/api/v2/doc/doc"
+    },
+    "arquivo_pt": {
+      "enabled": true,
+      "weight": 64,
+      "endpoint": "https://arquivo.pt/textsearch"
+    },
+    "ted": {
+      "enabled": true,
+      "weight": 92,
+      "endpoint": "https://api.ted.europa.eu/v3/notices/search"
+    },
+    "placsp": {
+      "enabled": true,
+      "weight": 96,
+      "mode": "open-data-feed"
+    },
+    "dados_gov_pt": {
+      "enabled": true,
+      "weight": 96,
+      "endpoint": "https://dados.gov.pt/api/1/datasets/"
+    },
+    "official_sitemaps": {
+      "enabled": true,
+      "weight": 95
+    }
+  },
+  "country_terms": {
+    "ES": [
+      "Spain",
+      "España",
+      "Spanish",
+      "Madrid",
+      "Barcelona",
+      "Iberia"
+    ],
+    "PT": [
+      "Portugal",
+      "Portuguese",
+      "Lisboa",
+      "Porto",
+      "Iberia"
+    ]
+  },
+  "query_lenses": [
+    "distribution",
+    "linecard",
+    "authorized distributor",
+    "partner locator",
+    "channel agreement",
+    "distribution termination",
+    "integrator",
+    "partner of the year",
+    "certified partner",
+    "MSSP",
+    "managed services",
+    "implementation partner",
+    "specialization",
+    "customer story",
+    "case study",
+    "deployment",
+    "public sector",
+    "healthcare",
+    "banking",
+    "retail",
+    "industrial",
+    "utilities",
+    "education",
+    "Gartner",
+    "Forrester",
+    "IDC",
+    "Omdia",
+    "Canalys",
+    "Dell'Oro",
+    "Synergy Research",
+    "ISG",
+    "market share",
+    "forecast",
+    "competitors",
+    "alternatives",
+    "replacement",
+    "migration",
+    "win",
+    "competitive displacement",
+    "TCO",
+    "ROI",
+    "acquisition",
+    "merger",
+    "earnings",
+    "investor presentation",
+    "strategy",
+    "platform",
+    "AI",
+    "sovereignty",
+    "PQC",
+    "professional services",
+    "support",
+    "training",
+    "academy",
+    "demo",
+    "PoC",
+    "marketplace",
+    "financing",
+    "renewals",
+    "lifecycle",
+    "tender",
+    "award",
+    "contract",
+    "licitación",
+    "adjudicación",
+    "concurso",
+    "contrato",
+    "concurso público",
+    "adjudicado"
+  ],
+  "competitive_gap_types": [
+    "channel_commoditization",
+    "enablement_gap",
+    "proof_gap",
+    "services_gap",
+    "financing_gap",
+    "lifecycle_gap",
+    "local_reference_gap",
+    "country_coverage_gap",
+    "integrator_concentration",
+    "multivendor_gap",
+    "regulatory_gap",
+    "analyst_positioning_gap",
+    "time_to_value_gap",
+    "managed_services_gap",
+    "marketplace_gap",
+    "global_delivery_gap"
+  ],
+  "westcon_initiatives": [
+    {
+      "id": "blueprint",
+      "name": "BLUEPRINT",
+      "strengths": [
+        "benchmark",
+        "vendor linkage",
+        "upskill",
+        "demand",
+        "PoC",
+        "resell",
+        "implement",
+        "lifecycle",
+        "transform"
+      ]
+    },
+    {
+      "id": "3d-labs",
+      "name": "3D Labs",
+      "strengths": [
+        "demo",
+        "multi-vendor",
+        "PoC alternative",
+        "enablement",
+        "time-to-value"
+      ]
+    },
+    {
+      "id": "tech-xpert",
+      "name": "Tech Xpert",
+      "strengths": [
+        "community",
+        "technical enablement",
+        "peer network",
+        "labs",
+        "rewards"
+      ]
+    },
+    {
+      "id": "assessments",
+      "name": "Tech Assessments",
+      "strengths": [
+        "discovery",
+        "risk evidence",
+        "security baseline",
+        "DNS/API/identity/cloud assessments"
+      ]
+    },
+    {
+      "id": "flex",
+      "name": "FLEX",
+      "strengths": [
+        "OPEX",
+        "financing",
+        "multi-vendor subscription",
+        "budget barrier removal"
+      ]
+    },
+    {
+      "id": "intelligent-demand",
+      "name": "Intelligent Demand",
+      "strengths": [
+        "intent data",
+        "ABM",
+        "lead generation",
+        "analytics",
+        "campaign execution"
+      ]
+    },
+    {
+      "id": "services",
+      "name": "Servicios Westcon",
+      "strengths": [
+        "design",
+        "staging",
+        "deployment",
+        "education",
+        "support",
+        "managed services",
+        "optimization"
+      ]
+    },
+    {
+      "id": "lifecycle",
+      "name": "Lifecycle / ServiceView",
+      "strengths": [
+        "renewal",
+        "adoption",
+        "expansion",
+        "tech refresh",
+        "visibility"
+      ]
+    },
+    {
+      "id": "gscs",
+      "name": "GSCS",
+      "strengths": [
+        "global delivery",
+        "compliance",
+        "logistics",
+        "cross-border",
+        "international projects"
+      ]
+    },
+    {
+      "id": "marketplaces",
+      "name": "Cloud Marketplaces",
+      "strengths": [
+        "AWS Marketplace",
+        "SaaS",
+        "recurrence",
+        "private offers",
+        "cloud route-to-market"
+      ]
+    }
+  ],
+  "public_procurement": {
+    "ted": {
+      "countries": {
+        "ES": "ESP",
+        "PT": "PRT"
+      },
+      "fields": [
+        "publication-number",
+        "notice-title",
+        "buyer-name",
+        "buyer-country",
+        "winner-name",
+        "winner-country",
+        "contract-title",
+        "contract-url",
+        "main-classification-proc",
+        "classification-cpv",
+        "notice-type",
+        "publication-date"
+      ]
+    },
+    "spain": {
+      "catalog_page": "https://www.hacienda.gob.es/es-ES/GobiernoAbierto/Datos%20Abiertos/Paginas/LicitacionesContratante.aspx",
+      "annual_pattern": "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3_{year}.zip",
+      "note": "The collector discovers current resource URLs from the official catalog page before using pattern fallbacks."
+    },
+    "portugal": {
+      "dataset_query": "Contratos Públicos Portal Base IMPIC contratos",
+      "dataset_portal": "https://dados.gov.pt/pt/datasets/contratos-publicos-portal-base-impic-contratos-de-2012-a-2026/",
+      "note": "Read-only dados.gov.pt API is public and needs no key. BASE REST is optional if BASE_API_TOKEN is configured."
+    }
+  },
+  "profiles": {
+    "daily": {
+      "description": "Cambios rápidos: canal, partners, clientes, M&A, producto, noticias y contratación reciente.",
+      "budgets": {
+        "query_limit_brave": 260,
+        "query_limit_no_brave": 110,
+        "news_queries_max": 150,
+        "gdelt_queries_max": 110,
+        "arquivo_queries_max": 24,
+        "sitemap_pages_max": 260,
+        "ecosystem_sitemap_pages_max": 220,
+        "analyst_sitemap_pages_max": 90,
+        "ted_vendor_limit": 14,
+        "full_procurement": false,
+        "carryover_days": 540
+      }
+    },
+    "deep": {
+      "description": "Investigación profunda: todos los vendors, ecosistema, analistas, contratación ES/PT, canal, competencia, servicios y gaps.",
+      "budgets": {
+        "query_limit_brave": 1200,
+        "query_limit_no_brave": 360,
+        "news_queries_max": 420,
+        "gdelt_queries_max": 320,
+        "arquivo_queries_max": 130,
+        "sitemap_pages_max": 2600,
+        "ecosystem_sitemap_pages_max": 1800,
+        "analyst_sitemap_pages_max": 320,
+        "ted_vendor_limit": 80,
+        "full_procurement": true,
+        "carryover_days": 1095
+      }
+    }
+  },
+  "change_detection": {
+    "enabled": true,
+    "new_relation_min_confidence": 70,
+    "material_coverage_delta": 8,
+    "conflict_terms": [
+      "termination",
+      "terminated",
+      "ends distribution",
+      "distribution ends",
+      "ceases distribution",
+      "fin de distribución",
+      "deja de distribuir",
+      "ya no distribuye",
+      "fim da distribuição",
+      "deixa de distribuir"
+    ]
+  },
+  "relationship_validation": {
+    "verified_threshold": 82,
+    "strong_candidate_threshold": 70,
+    "require_country_precision_for_verified": true,
+    "prefer_primary_sources": true
+  },
+  "history": {
+    "light_snapshots_daily": 45,
+    "light_snapshots_deep": 24
+  },
+  "research_dimensions": [
+    "channel",
+    "competitive-channel",
+    "integrators",
+    "mssp",
+    "customer-references",
+    "public-procurement",
+    "analyst-public",
+    "market-size",
+    "market-share",
+    "growth",
+    "m&a",
+    "product-roadmap",
+    "partner-program",
+    "services",
+    "support",
+    "training",
+    "labs",
+    "marketplace",
+    "financing",
+    "renewals",
+    "regulation",
+    "sovereignty",
+    "pqc",
+    "ai",
+    "verticals",
+    "displacement",
+    "tco-roi",
+    "country-white-space"
+  ]
+}
