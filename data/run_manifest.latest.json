@@ -1,77 +1,80 @@
 {
   "version": 2,
-  "runId": "20260827T073033Z-7",
+  "runId": "20260827T081502Z-2061",
   "profile": "daily",
-  "startedAt": "2026-08-27T07:30:33.554113+00:00",
-  "finishedAt": "2026-08-27T07:30:34.012830+00:00",
+  "startedAt": "2026-08-27T08:15:02.827607+00:00",
+  "finishedAt": "2026-08-27T08:24:33.200374+00:00",
   "outcome": "partial-recoverable",
-  "maxRuntimeSeconds": 35,
-  "elapsedSeconds": 0.46,
+  "maxRuntimeSeconds": 720,
+  "elapsedSeconds": 570.37,
   "stopReason": "",
   "stages": [
     {
       "name": "adaptive-discovery",
       "status": "partial",
-      "startedAt": "2026-08-27T07:30:33.809304+00:00",
-      "durationSeconds": 0.0,
-      "finishedAt": "2026-08-27T07:30:33.810080+00:00",
-      "signals": 0,
+      "startedAt": "2026-08-27T08:15:03.036404+00:00",
+      "durationSeconds": 197.66,
+      "finishedAt": "2026-08-27T08:18:20.696272+00:00",
+      "signals": 65,
       "plannedTasks": 137,
-      "processedTasks": 0,
-      "completedTasks": 0,
-      "pendingTasks": 137,
+      "processedTasks": 120,
+      "completedTasks": 120,
+      "pendingTasks": 17,
       "partialRun": true,
       "resumedTasks": 0,
       "circuits": {},
-      "learningStrategies": 0
+      "learningStrategies": 52
     },
     {
       "name": "official-vendor-crawl",
-      "status": "deferred",
-      "startedAt": "2026-08-27T07:30:33.810109+00:00",
-      "durationSeconds": 0.0,
-      "finishedAt": "2026-08-27T07:30:33.810119+00:00"
+      "status": "completed",
+      "startedAt": "2026-08-27T08:18:20.696302+00:00",
+      "durationSeconds": 112.47,
+      "finishedAt": "2026-08-27T08:20:13.170475+00:00",
+      "signals": 114
     },
     {
       "name": "commoncrawl-revalidation",
       "status": "deferred",
-      "startedAt": "2026-08-27T07:30:33.810125+00:00",
+      "startedAt": "2026-08-27T08:20:13.170507+00:00",
       "durationSeconds": 0.0,
-      "finishedAt": "2026-08-27T07:30:33.810130+00:00"
+      "finishedAt": "2026-08-27T08:20:13.170520+00:00"
     },
     {
       "name": "ecosystem-official-crawl",
-      "status": "deferred",
-      "startedAt": "2026-08-27T07:30:33.810135+00:00",
-      "durationSeconds": 0.0,
-      "finishedAt": "2026-08-27T07:30:33.810139+00:00"
+      "status": "completed",
+      "startedAt": "2026-08-27T08:20:13.170525+00:00",
+      "durationSeconds": 259.27,
+      "finishedAt": "2026-08-27T08:24:32.440165+00:00",
+      "distributorSignals": 5,
+      "integratorSignals": 20
     },
     {
       "name": "analyst-public-crawl",
       "status": "deferred",
-      "startedAt": "2026-08-27T07:30:33.810143+00:00",
+      "startedAt": "2026-08-27T08:24:32.440203+00:00",
       "durationSeconds": 0.0,
-      "finishedAt": "2026-08-27T07:30:33.810148+00:00"
+      "finishedAt": "2026-08-27T08:24:32.440212+00:00"
     },
     {
       "name": "public-procurement",
       "status": "deferred",
-      "startedAt": "2026-08-27T07:30:33.810152+00:00",
+      "startedAt": "2026-08-27T08:24:32.440219+00:00",
       "durationSeconds": 0.0,
-      "finishedAt": "2026-08-27T07:30:33.810156+00:00"
+      "finishedAt": "2026-08-27T08:24:32.440224+00:00"
     },
     {
       "name": "corroborate-and-publish",
       "status": "completed",
-      "startedAt": "2026-08-27T07:30:33.810160+00:00",
-      "durationSeconds": 0.2,
-      "finishedAt": "2026-08-27T07:30:34.006444+00:00",
-      "evidence": 91,
-      "changes": 0
+      "startedAt": "2026-08-27T08:24:32.440228+00:00",
+      "durationSeconds": 0.75,
+      "finishedAt": "2026-08-27T08:24:33.190483+00:00",
+      "evidence": 284,
+      "changes": 13
     }
   ],
   "errorCount": 0,
   "errorsFile": "data/research_errors.json",
-  "evidenceCount": 91,
-  "pendingTasks": 137
+  "evidenceCount": 284,
+  "pendingTasks": 17
 }

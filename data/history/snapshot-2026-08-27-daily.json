@@ -1,61 +1,66 @@
 {
-  "generatedAt": "2026-08-27T07:30:33.554113+00:00",
+  "generatedAt": "2026-08-27T08:15:02.827607+00:00",
   "profile": "daily",
   "derived": {
-    "evidenceCount": 91,
-    "officialOrAnalystCount": 90,
-    "channelSignalCount": 40,
+    "evidenceCount": 284,
+    "officialOrAnalystCount": 198,
+    "channelSignalCount": 48,
     "endedChannelSignalCount": 0,
-    "integratorSignalCount": 36,
+    "integratorSignalCount": 45,
     "customerSignalCount": 29,
-    "procurementSignalCount": 0,
+    "procurementSignalCount": 13,
     "procurementMarketBuckets": 0,
     "knownProcurementValueEUR": 0,
-    "analystSignalCount": 36,
+    "analystSignalCount": 46,
     "capabilitySignalCount": 8,
     "conflictCount": 0,
-    "changeCount": 0,
+    "changeCount": 13,
     "resilience": {
       "plannedTasks": 137,
-      "processedTasks": 0,
-      "completedTasks": 0,
-      "pendingTasks": 137,
+      "processedTasks": 120,
+      "completedTasks": 120,
+      "pendingTasks": 17,
       "partialRun": true,
       "resumedTasks": 0,
       "circuits": {},
-      "learningStrategies": 0
+      "learningStrategies": 52
     },
     "statistics": {
       "byTier": {
-        "official-company": 51,
+        "official-company": 159,
         "analyst-public": 34,
-        "industry-press": 1,
-        "regulator": 5
+        "industry-press": 2,
+        "regulator": 5,
+        "search-discovery": 84
       },
       "byType": {
         "company": 3,
-        "channel": 25,
+        "channel": 56,
         "services": 8,
         "portfolio": 5,
-        "market": 19,
+        "market": 23,
         "trend": 7,
-        "analyst": 14,
-        "m&a": 1,
-        "competitive": 2,
-        "integrator": 5,
-        "customer": 1,
-        "financial": 1
+        "analyst": 19,
+        "m&a": 6,
+        "competitive": 20,
+        "integrator": 32,
+        "customer": 14,
+        "financial": 1,
+        "partner-program": 13,
+        "general": 52,
+        "product": 12,
+        "procurement": 13
       },
       "byScope": {
         "Global": 16,
         "EMEA / Southern Europe": 1,
         "Europe / Spanish-language support": 1,
         "Spain": 11,
-        "Portugal": 4,
+        "Portugal": 63,
         "EMEA": 4,
         "Europe": 6,
         "Europe incl. Spain/Portugal footprint": 1,
-        "Spain / Portugal": 4,
+        "Spain / Portugal": 6,
         "Spain / Portugal listed": 1,
         "Spain / Portugal / Europe": 1,
         "Global / sovereignty relevance": 1,
@@ -76,12 +81,26 @@
         "Europe incl. Spain": 1,
         "Global / Europe applicable": 1,
         "Europe incl. Spain and Portugal": 1,
-        "EMEA / award in Portugal": 1
+        "EMEA / award in Portugal": 1,
+        "Global / unspecified": 130,
+        "Europe / EMEA": 2
       },
       "byEngine": {
-        "curated": 91
+        "curated": 91,
+        "google-news-rss": 24,
+        "arquivo-pt": 31,
+        "official-sitemap": 113,
+        "official-ecosystem-sitemap": 25
       },
       "topSources": [
+        [
+          "news.google.com",
+          24
+        ],
+        [
+          "cdn.prod.website-files.com\" rel=\"preconnect\" crossorigin=\"anonymous\"",
+          23
+        ],
         [
           "Gartner",
           21
@@ -91,7 +110,51 @@
           15
         ],
         [
+          "partners.amazonaws.com",
+          12
+        ],
+        [
+          "avaya.com",
+          12
+        ],
+        [
+          "netscout.com",
+          12
+        ],
+        [
+          "levelblue.com",
+          12
+        ],
+        [
+          "audiocodes.com",
+          12
+        ],
+        [
+          "bluecatnetworks.com",
+          12
+        ],
+        [
+          "ivanti.com",
+          12
+        ],
+        [
+          "claranet.com",
+          9
+        ],
+        [
+          "accenture.com",
+          7
+        ],
+        [
+          "attackiq.com",
+          6
+        ],
+        [
           "Exclusive Networks",
+          5
+        ],
+        [
+          "exclusive-networks.pt",
           5
         ],
         [
@@ -103,11 +166,19 @@
           4
         ],
         [
+          "infinigate.com",
+          4
+        ],
+        [
           "CrowdStrike",
           3
         ],
         [
           "Arrow ECS",
+          3
+        ],
+        [
+          "fortinet.com",
           3
         ],
         [
@@ -139,68 +210,8 @@
           2
         ],
         [
-          "Datatec",
-          1
-        ],
-        [
-          "@aslan / Arrow announcement coverage",
-          1
-        ],
-        [
-          "HPE",
-          1
-        ],
-        [
-          "Arrow",
-          1
-        ],
-        [
-          "Telefónica Tech",
-          1
-        ],
-        [
-          "Claroty",
-          1
-        ],
-        [
-          "INCIBE / CONETIC",
-          1
-        ],
-        [
-          "INCIBE",
-          1
-        ],
-        [
-          "República Portuguesa / Compete 2030",
-          1
-        ],
-        [
-          "Omdia / Canalys",
-          1
-        ],
-        [
-          "Telefónica Tech / Logicalis Spain",
-          1
-        ],
-        [
-          "Ignition Technology / CrowdStrike",
-          1
-        ],
-        [
-          "Westcon-Comstor / Proofpoint",
-          1
-        ],
-        [
-          "Westcon-Comstor / Check Point",
-          1
-        ],
-        [
-          "Westcon-Comstor / Cisco",
-          1
-        ],
-        [
-          "Telefónica Tech / F5",
-          1
+          "tracker.moodle.org",
+          2
         ]
       ]
     },
@@ -208,62 +219,65 @@
       {
         "name": "adaptive-discovery",
         "status": "partial",
-        "startedAt": "2026-08-27T07:30:33.809304+00:00",
-        "durationSeconds": 0.0,
-        "finishedAt": "2026-08-27T07:30:33.810080+00:00",
-        "signals": 0,
+        "startedAt": "2026-08-27T08:15:03.036404+00:00",
+        "durationSeconds": 197.66,
+        "finishedAt": "2026-08-27T08:18:20.696272+00:00",
+        "signals": 65,
         "plannedTasks": 137,
-        "processedTasks": 0,
-        "completedTasks": 0,
-        "pendingTasks": 137,
+        "processedTasks": 120,
+        "completedTasks": 120,
+        "pendingTasks": 17,
         "partialRun": true,
         "resumedTasks": 0,
         "circuits": {},
-        "learningStrategies": 0
+        "learningStrategies": 52
       },
       {
         "name": "official-vendor-crawl",
-        "status": "deferred",
-        "startedAt": "2026-08-27T07:30:33.810109+00:00",
-        "durationSeconds": 0.0,
-        "finishedAt": "2026-08-27T07:30:33.810119+00:00"
+        "status": "completed",
+        "startedAt": "2026-08-27T08:18:20.696302+00:00",
+        "durationSeconds": 112.47,
+        "finishedAt": "2026-08-27T08:20:13.170475+00:00",
+        "signals": 114
       },
       {
         "name": "commoncrawl-revalidation",
         "status": "deferred",
-        "startedAt": "2026-08-27T07:30:33.810125+00:00",
+        "startedAt": "2026-08-27T08:20:13.170507+00:00",
         "durationSeconds": 0.0,
-        "finishedAt": "2026-08-27T07:30:33.810130+00:00"
+        "finishedAt": "2026-08-27T08:20:13.170520+00:00"
       },
       {
         "name": "ecosystem-official-crawl",
-        "status": "deferred",
-        "startedAt": "2026-08-27T07:30:33.810135+00:00",
-        "durationSeconds": 0.0,
-        "finishedAt": "2026-08-27T07:30:33.810139+00:00"
+        "status": "completed",
+        "startedAt": "2026-08-27T08:20:13.170525+00:00",
+        "durationSeconds": 259.27,
+        "finishedAt": "2026-08-27T08:24:32.440165+00:00",
+        "distributorSignals": 5,
+        "integratorSignals": 20
       },
       {
         "name": "analyst-public-crawl",
         "status": "deferred",
-        "startedAt": "2026-08-27T07:30:33.810143+00:00",
+        "startedAt": "2026-08-27T08:24:32.440203+00:00",
         "durationSeconds": 0.0,
-        "finishedAt": "2026-08-27T07:30:33.810148+00:00"
+        "finishedAt": "2026-08-27T08:24:32.440212+00:00"
       },
       {
         "name": "public-procurement",
         "status": "deferred",
-        "startedAt": "2026-08-27T07:30:33.810152+00:00",
+        "startedAt": "2026-08-27T08:24:32.440219+00:00",
         "durationSeconds": 0.0,
-        "finishedAt": "2026-08-27T07:30:33.810156+00:00"
+        "finishedAt": "2026-08-27T08:24:32.440224+00:00"
       },
       {
         "name": "corroborate-and-publish",
         "status": "completed",
-        "startedAt": "2026-08-27T07:30:33.810160+00:00",
-        "durationSeconds": 0.2,
-        "finishedAt": "2026-08-27T07:30:34.006444+00:00",
-        "evidence": 91,
-        "changes": 0
+        "startedAt": "2026-08-27T08:24:32.440228+00:00",
+        "durationSeconds": 0.75,
+        "finishedAt": "2026-08-27T08:24:33.190483+00:00",
+        "evidence": 284,
+        "changes": 13
       }
     ],
     "runErrorCount": 0
@@ -299,34 +313,6 @@
     },
     {
       "vendor": "Akamai / Noname",
-      "coverage": 0,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Anomali",
       "coverage": 0,
       "dimensions": {
         "channelES": false,
@@ -410,34 +396,6 @@
       "customerSectors": []
     },
     {
-      "vendor": "LevelBlue",
-      "coverage": 0,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
       "vendor": "Menlo Security",
       "coverage": 0,
       "dimensions": {
@@ -456,35 +414,7 @@
         "services": false,
         "official": false
       },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "NETSCOUT",
-      "coverage": 0,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
+      "evidenceCount": 11,
       "analystSources": [],
       "officialSources": [],
       "alternativeChannelSignals": 0,
@@ -568,39 +498,11 @@
         "services": false,
         "official": false
       },
-      "evidenceCount": 0,
+      "evidenceCount": 3,
       "analystSources": [],
       "officialSources": [],
       "alternativeChannelSignals": 0,
       "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "AttackIQ",
-      "coverage": 7,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 1,
       "customerSignals": 0,
       "procurementSignals": 0,
       "customerSectors": []
@@ -666,34 +568,6 @@
       "customerSectors": []
     },
     {
-      "vendor": "Ivanti",
-      "coverage": 7,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 1,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
       "vendor": "Vectra AI",
       "coverage": 7,
       "dimensions": {
@@ -712,7 +586,7 @@
         "services": false,
         "official": false
       },
-      "evidenceCount": 1,
+      "evidenceCount": 3,
       "analystSources": [
         "Gartner"
       ],
@@ -815,65 +689,6 @@
       ]
     },
     {
-      "vendor": "Okta",
-      "coverage": 14,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": true,
-        "integratorPT": true,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 1,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Avaya",
-      "coverage": 21,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": true,
-        "customerES": true,
-        "customerPT": true,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 1,
-      "customerSignals": 2,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Retail / Turismo",
-        "Transporte / Logística"
-      ]
-    },
-    {
       "vendor": "FireMon",
       "coverage": 21,
       "dimensions": {
@@ -892,10 +707,71 @@
         "services": false,
         "official": true
       },
-      "evidenceCount": 2,
+      "evidenceCount": 3,
       "analystSources": [],
       "officialSources": [
-        "FireMon"
+        "FireMon",
+        "infinigate.com"
+      ],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 1,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "LevelBlue",
+      "coverage": 21,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": true,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": true,
+        "product": false,
+        "services": false,
+        "official": true
+      },
+      "evidenceCount": 12,
+      "analystSources": [],
+      "officialSources": [
+        "levelblue.com"
+      ],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 0,
+      "procurementSignals": 2,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Okta",
+      "coverage": 21,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": true,
+        "integratorPT": true,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": true
+      },
+      "evidenceCount": 1,
+      "analystSources": [],
+      "officialSources": [
+        "accenture.com"
       ],
       "alternativeChannelSignals": 0,
       "integratorSignals": 1,
@@ -973,76 +849,105 @@
       ]
     },
     {
-      "vendor": "AudioCodes",
+      "vendor": "Anomali",
       "coverage": 29,
       "dimensions": {
-        "channelES": true,
-        "channelPT": true,
-        "integratorES": true,
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
         "integratorPT": false,
-        "customerES": true,
+        "customerES": false,
         "customerPT": false,
         "procurement": false,
         "analyst": false,
         "market": false,
-        "competitive": false,
+        "competitive": true,
         "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
+        "product": true,
+        "services": true,
+        "official": true
       },
-      "evidenceCount": 0,
+      "evidenceCount": 14,
       "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 2,
-      "integratorSignals": 2,
-      "customerSignals": 1,
+      "officialSources": [
+        "admcloudservices.com",
+        "infinigate.com"
+      ],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 0,
       "procurementSignals": 0,
-      "customerSectors": [
-        "Telecom"
-      ]
+      "customerSectors": []
     },
     {
-      "vendor": "Claroty",
+      "vendor": "AttackIQ",
       "coverage": 29,
       "dimensions": {
         "channelES": false,
         "channelPT": false,
         "integratorES": true,
         "integratorPT": false,
-        "customerES": true,
+        "customerES": false,
         "customerPT": false,
-        "procurement": false,
-        "analyst": true,
+        "procurement": true,
+        "analyst": false,
         "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": true,
+        "services": false,
+        "official": true
+      },
+      "evidenceCount": 7,
+      "analystSources": [],
+      "officialSources": [
+        "accenture.com",
+        "attackiq.com"
+      ],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 1,
+      "customerSignals": 0,
+      "procurementSignals": 1,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Ivanti",
+      "coverage": 29,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": true,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": true,
+        "analyst": false,
+        "market": true,
         "competitive": false,
         "ma": false,
         "product": false,
         "services": false,
         "official": true
       },
-      "evidenceCount": 2,
-      "analystSources": [
-        "Gartner"
-      ],
+      "evidenceCount": 13,
+      "analystSources": [],
       "officialSources": [
-        "Claroty"
+        "infinigate.com",
+        "ivanti.com"
       ],
       "alternativeChannelSignals": 0,
       "integratorSignals": 1,
-      "customerSignals": 1,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Sanidad"
-      ]
+      "customerSignals": 0,
+      "procurementSignals": 4,
+      "customerSectors": []
     },
     {
-      "vendor": "Microsoft Azure",
+      "vendor": "NETSCOUT",
       "coverage": 29,
       "dimensions": {
-        "channelES": true,
-        "channelPT": true,
-        "integratorES": true,
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
         "integratorPT": false,
         "customerES": false,
         "customerPT": false,
@@ -1050,18 +955,19 @@
         "analyst": false,
         "market": false,
         "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
+        "ma": true,
+        "product": true,
+        "services": true,
         "official": true
       },
-      "evidenceCount": 2,
+      "evidenceCount": 13,
       "analystSources": [],
       "officialSources": [
-        "Arrow ECS"
+        "infinigate.com",
+        "netscout.com"
       ],
-      "alternativeChannelSignals": 3,
-      "integratorSignals": 1,
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
       "customerSignals": 0,
       "procurementSignals": 0,
       "customerSectors": []
@@ -1103,6 +1009,41 @@
       ]
     },
     {
+      "vendor": "Claroty",
+      "coverage": 36,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": true,
+        "integratorPT": false,
+        "customerES": true,
+        "customerPT": false,
+        "procurement": true,
+        "analyst": true,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": true
+      },
+      "evidenceCount": 3,
+      "analystSources": [
+        "Gartner"
+      ],
+      "officialSources": [
+        "Claroty",
+        "babelgroup.com"
+      ],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 1,
+      "customerSignals": 1,
+      "procurementSignals": 1,
+      "customerSectors": [
+        "Sanidad"
+      ]
+    },
+    {
       "vendor": "CrowdStrike",
       "coverage": 36,
       "dimensions": {
@@ -1121,13 +1062,14 @@
         "services": true,
         "official": true
       },
-      "evidenceCount": 7,
+      "evidenceCount": 8,
       "analystSources": [],
       "officialSources": [
         "CrowdStrike",
         "Ignition Technology / CrowdStrike",
         "Telefónica Tech",
-        "Westcon-Comstor"
+        "Westcon-Comstor",
+        "accenture.com"
       ],
       "alternativeChannelSignals": 2,
       "integratorSignals": 1,
@@ -1136,16 +1078,16 @@
       "customerSectors": []
     },
     {
-      "vendor": "F5",
+      "vendor": "Microsoft Azure",
       "coverage": 36,
       "dimensions": {
         "channelES": true,
-        "channelPT": false,
+        "channelPT": true,
         "integratorES": true,
-        "integratorPT": true,
-        "customerES": true,
+        "integratorPT": false,
+        "customerES": false,
         "customerPT": false,
-        "procurement": false,
+        "procurement": true,
         "analyst": false,
         "market": false,
         "competitive": false,
@@ -1154,20 +1096,18 @@
         "services": false,
         "official": true
       },
-      "evidenceCount": 3,
+      "evidenceCount": 8,
       "analystSources": [],
       "officialSources": [
         "Arrow ECS",
-        "Telefónica Tech / F5",
-        "Westcon-Comstor"
+        "babelgroup.com",
+        "claranet.com"
       ],
-      "alternativeChannelSignals": 1,
-      "integratorSignals": 4,
-      "customerSignals": 1,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Telecomunicaciones / Servicios gestionados"
-      ]
+      "alternativeChannelSignals": 3,
+      "integratorSignals": 1,
+      "customerSignals": 0,
+      "procurementSignals": 1,
+      "customerSectors": []
     },
     {
       "vendor": "Proofpoint",
@@ -1201,7 +1141,42 @@
       "customerSectors": []
     },
     {
-      "vendor": "AWS",
+      "vendor": "F5",
+      "coverage": 43,
+      "dimensions": {
+        "channelES": true,
+        "channelPT": false,
+        "integratorES": true,
+        "integratorPT": true,
+        "customerES": true,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": true,
+        "official": true
+      },
+      "evidenceCount": 4,
+      "analystSources": [],
+      "officialSources": [
+        "Arrow ECS",
+        "Telefónica Tech / F5",
+        "Westcon-Comstor",
+        "academy.westconcomstor.com"
+      ],
+      "alternativeChannelSignals": 1,
+      "integratorSignals": 4,
+      "customerSignals": 1,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Telecomunicaciones / Servicios gestionados"
+      ]
+    },
+    {
+      "vendor": "AudioCodes",
       "coverage": 50,
       "dimensions": {
         "channelES": true,
@@ -1211,64 +1186,25 @@
         "customerES": true,
         "customerPT": false,
         "procurement": false,
-        "analyst": true,
-        "market": true,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": true
-      },
-      "evidenceCount": 5,
-      "analystSources": [
-        "Synergy Research Group"
-      ],
-      "officialSources": [
-        "Arrow ECS",
-        "Exclusive Networks",
-        "Westcon-Comstor / AWS"
-      ],
-      "alternativeChannelSignals": 5,
-      "integratorSignals": 4,
-      "customerSignals": 2,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Retail",
-        "Software / ERP"
-      ]
-    },
-    {
-      "vendor": "Extreme Networks",
-      "coverage": 50,
-      "dimensions": {
-        "channelES": true,
-        "channelPT": true,
-        "integratorES": true,
-        "integratorPT": true,
-        "customerES": true,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": true,
+        "analyst": false,
         "market": false,
-        "competitive": false,
+        "competitive": true,
         "ma": false,
-        "product": false,
+        "product": true,
         "services": false,
         "official": true
       },
-      "evidenceCount": 2,
-      "analystSources": [
-        "Gartner"
-      ],
+      "evidenceCount": 12,
+      "analystSources": [],
       "officialSources": [
-        "Exclusive Networks"
+        "audiocodes.com"
       ],
-      "alternativeChannelSignals": 3,
+      "alternativeChannelSignals": 2,
       "integratorSignals": 2,
       "customerSignals": 1,
       "procurementSignals": 0,
       "customerSectors": [
-        "Administración Pública / Sanidad"
+        "Telecom"
       ]
     },
     {
@@ -1290,7 +1226,7 @@
         "services": true,
         "official": true
       },
-      "evidenceCount": 15,
+      "evidenceCount": 17,
       "analystSources": [
         "Gartner"
       ],
@@ -1307,6 +1243,39 @@
       "customerSignals": 0,
       "procurementSignals": 0,
       "customerSectors": []
+    },
+    {
+      "vendor": "Avaya",
+      "coverage": 57,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": true,
+        "integratorES": false,
+        "integratorPT": true,
+        "customerES": true,
+        "customerPT": true,
+        "procurement": false,
+        "analyst": false,
+        "market": true,
+        "competitive": true,
+        "ma": false,
+        "product": true,
+        "services": false,
+        "official": true
+      },
+      "evidenceCount": 13,
+      "analystSources": [],
+      "officialSources": [
+        "avaya.com"
+      ],
+      "alternativeChannelSignals": 1,
+      "integratorSignals": 1,
+      "customerSignals": 2,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Retail / Turismo",
+        "Transporte / Logística"
+      ]
     },
     {
       "vendor": "Check Point",
@@ -1349,8 +1318,43 @@
       ]
     },
     {
-      "vendor": "Cisco",
+      "vendor": "Extreme Networks",
       "coverage": 57,
+      "dimensions": {
+        "channelES": true,
+        "channelPT": true,
+        "integratorES": true,
+        "integratorPT": true,
+        "customerES": true,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": true,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": true,
+        "official": true
+      },
+      "evidenceCount": 3,
+      "analystSources": [
+        "Gartner"
+      ],
+      "officialSources": [
+        "Exclusive Networks",
+        "academy.westconcomstor.com"
+      ],
+      "alternativeChannelSignals": 3,
+      "integratorSignals": 2,
+      "customerSignals": 1,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Administración Pública / Sanidad"
+      ]
+    },
+    {
+      "vendor": "AWS",
+      "coverage": 64,
       "dimensions": {
         "channelES": true,
         "channelPT": true,
@@ -1358,7 +1362,48 @@
         "integratorPT": false,
         "customerES": true,
         "customerPT": false,
-        "procurement": false,
+        "procurement": true,
+        "analyst": true,
+        "market": true,
+        "competitive": true,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": true
+      },
+      "evidenceCount": 32,
+      "analystSources": [
+        "Synergy Research Group"
+      ],
+      "officialSources": [
+        "Arrow ECS",
+        "Exclusive Networks",
+        "Westcon-Comstor / AWS",
+        "accenture.com",
+        "attackiq.com",
+        "capgemini.com",
+        "claranet.com"
+      ],
+      "alternativeChannelSignals": 5,
+      "integratorSignals": 4,
+      "customerSignals": 2,
+      "procurementSignals": 3,
+      "customerSectors": [
+        "Retail",
+        "Software / ERP"
+      ]
+    },
+    {
+      "vendor": "Cisco",
+      "coverage": 71,
+      "dimensions": {
+        "channelES": true,
+        "channelPT": true,
+        "integratorES": true,
+        "integratorPT": true,
+        "customerES": true,
+        "customerPT": false,
+        "procurement": true,
         "analyst": true,
         "market": false,
         "competitive": true,
@@ -1367,19 +1412,22 @@
         "services": true,
         "official": true
       },
-      "evidenceCount": 7,
+      "evidenceCount": 16,
       "analystSources": [
         "Dell'Oro Group",
         "Gartner"
       ],
       "officialSources": [
         "Cisco",
-        "Westcon-Comstor / Cisco"
+        "Westcon-Comstor / Cisco",
+        "accenture.com",
+        "claranet.com",
+        "fortinet.com"
       ],
-      "alternativeChannelSignals": 4,
-      "integratorSignals": 6,
+      "alternativeChannelSignals": 6,
+      "integratorSignals": 8,
       "customerSignals": 1,
-      "procurementSignals": 0,
+      "procurementSignals": 1,
       "customerSectors": [
         "Telecomunicaciones"
       ]
@@ -1409,27 +1457,6 @@
     },
     {
       "vendor": "Akamai / Noname",
-      "coverage": 0,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Anomali",
       "coverage": 0,
       "missing": [
         "mayoristas alternativos en España",
@@ -1492,49 +1519,7 @@
       "priority": "P0"
     },
     {
-      "vendor": "LevelBlue",
-      "coverage": 0,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
       "vendor": "Menlo Security",
-      "coverage": 0,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "NETSCOUT",
       "coverage": 0,
       "missing": [
         "mayoristas alternativos en España",
@@ -1618,26 +1603,6 @@
       "priority": "P0"
     },
     {
-      "vendor": "AttackIQ",
-      "coverage": 7,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
       "vendor": "Ericsson Cradlepoint",
       "coverage": 7,
       "missing": [
@@ -1674,26 +1639,6 @@
         "M&A/cambio estratégico",
         "novedades de plataforma/producto",
         "servicios/programa de canal"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Ivanti",
-      "coverage": 7,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
       ],
       "priority": "P0"
     },
@@ -1776,43 +1721,6 @@
       "priority": "P0"
     },
     {
-      "vendor": "Okta",
-      "coverage": 14,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Avaya",
-      "coverage": 21,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
       "vendor": "FireMon",
       "coverage": 21,
       "missing": [
@@ -1824,6 +1732,42 @@
         "contratación pública ES/PT",
         "señal pública de analistas",
         "tamaño/crecimiento de mercado",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "LevelBlue",
+      "coverage": 21,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Okta",
+      "coverage": 21,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
         "M&A/cambio estratégico",
         "novedades de plataforma/producto",
         "servicios/programa de canal"
@@ -1867,53 +1811,70 @@
       "priority": "P0"
     },
     {
-      "vendor": "AudioCodes",
-      "coverage": 29,
-      "missing": [
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Claroty",
+      "vendor": "Anomali",
       "coverage": 29,
       "missing": [
         "mayoristas alternativos en España",
         "mayoristas alternativos en Portugal",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Microsoft Azure",
-      "coverage": 29,
-      "missing": [
+        "integradores demostrados en España",
         "integradores demostrados en Portugal",
         "referencias públicas de cliente en España",
         "referencias públicas de cliente en Portugal",
         "contratación pública ES/PT",
         "señal pública de analistas",
         "tamaño/crecimiento de mercado",
+        "M&A/cambio estratégico"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "AttackIQ",
+      "coverage": 29,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "servicios/programa de canal"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Ivanti",
+      "coverage": 29,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "señal pública de analistas",
         "evidencia competitiva/displacement",
         "M&A/cambio estratégico",
         "novedades de plataforma/producto",
         "servicios/programa de canal"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "NETSCOUT",
+      "coverage": 29,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement"
       ],
       "priority": "P0"
     },
@@ -1935,6 +1896,22 @@
       "priority": "P0"
     },
     {
+      "vendor": "Claroty",
+      "coverage": 36,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en Portugal",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal"
+      ],
+      "priority": "P1"
+    },
+    {
       "vendor": "CrowdStrike",
       "coverage": 36,
       "missing": [
@@ -1951,12 +1928,12 @@
       "priority": "P1"
     },
     {
-      "vendor": "F5",
+      "vendor": "Microsoft Azure",
       "coverage": 36,
       "missing": [
-        "mayoristas alternativos en Portugal",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
         "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
         "señal pública de analistas",
         "tamaño/crecimiento de mercado",
         "evidencia competitiva/displacement",
@@ -1983,29 +1960,30 @@
       "priority": "P1"
     },
     {
-      "vendor": "AWS",
+      "vendor": "F5",
+      "coverage": 43,
+      "missing": [
+        "mayoristas alternativos en Portugal",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto"
+      ],
+      "priority": "P1"
+    },
+    {
+      "vendor": "AudioCodes",
       "coverage": 50,
       "missing": [
         "integradores demostrados en Portugal",
         "referencias públicas de cliente en Portugal",
         "contratación pública ES/PT",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal"
-      ],
-      "priority": "P1"
-    },
-    {
-      "vendor": "Extreme Networks",
-      "coverage": 50,
-      "missing": [
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
+        "señal pública de analistas",
         "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
         "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
         "servicios/programa de canal"
       ],
       "priority": "P1"
@@ -2025,6 +2003,19 @@
       "priority": "P1"
     },
     {
+      "vendor": "Avaya",
+      "coverage": 57,
+      "missing": [
+        "mayoristas alternativos en España",
+        "integradores demostrados en España",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "M&A/cambio estratégico",
+        "servicios/programa de canal"
+      ],
+      "priority": "P1"
+    },
+    {
       "vendor": "Check Point",
       "coverage": 57,
       "missing": [
@@ -2038,19 +2029,155 @@
       "priority": "P1"
     },
     {
-      "vendor": "Cisco",
+      "vendor": "Extreme Networks",
       "coverage": 57,
       "missing": [
-        "integradores demostrados en Portugal",
         "referencias públicas de cliente en Portugal",
         "contratación pública ES/PT",
         "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
         "M&A/cambio estratégico",
         "novedades de plataforma/producto"
       ],
       "priority": "P1"
+    },
+    {
+      "vendor": "AWS",
+      "coverage": 64,
+      "missing": [
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en Portugal",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal"
+      ],
+      "priority": "P2"
+    },
+    {
+      "vendor": "Cisco",
+      "coverage": 71,
+      "missing": [
+        "referencias públicas de cliente en Portugal",
+        "tamaño/crecimiento de mercado",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto"
+      ],
+      "priority": "P2"
     }
   ],
-  "changes": [],
+  "changes": [
+    {
+      "type": "integrator",
+      "vendor": "Arista Networks",
+      "country": "PT",
+      "title": "Nuevo integrador / partner",
+      "entity": "SIA",
+      "confidence": 96,
+      "url": "https://www.fortinet.com/tw/products/next-generation-firewall.html",
+      "detectedAt": "2026-08-27T08:15:02.827607+00:00"
+    },
+    {
+      "type": "integrator",
+      "vendor": "Cisco",
+      "country": "PT",
+      "title": "Nuevo integrador / partner",
+      "entity": "SIA",
+      "confidence": 96,
+      "url": "https://www.fortinet.com/tw/products/next-generation-firewall.html",
+      "detectedAt": "2026-08-27T08:15:02.827607+00:00"
+    },
+    {
+      "type": "integrator",
+      "vendor": "Fortinet",
+      "country": "PT",
+      "title": "Nuevo integrador / partner",
+      "entity": "SIA",
+      "confidence": 96,
+      "url": "https://www.fortinet.com/tw/products/next-generation-firewall.html",
+      "detectedAt": "2026-08-27T08:15:02.827607+00:00"
+    },
+    {
+      "type": "integrator",
+      "vendor": "Infoblox",
+      "country": "PT",
+      "title": "Nuevo integrador / partner",
+      "entity": "Italtel",
+      "confidence": 96,
+      "url": "https://www.italtel.com/content/uploads/2019/06/Italtel_SpA_Annual_Report_2018English.pdf",
+      "detectedAt": "2026-08-27T08:15:02.827607+00:00"
+    },
+    {
+      "type": "coverage",
+      "vendor": "LevelBlue",
+      "title": "Cambio material de cobertura de inteligencia",
+      "from": 0,
+      "to": 21,
+      "detectedAt": "2026-08-27T08:15:02.827607+00:00"
+    },
+    {
+      "type": "coverage",
+      "vendor": "Anomali",
+      "title": "Cambio material de cobertura de inteligencia",
+      "from": 0,
+      "to": 29,
+      "detectedAt": "2026-08-27T08:15:02.827607+00:00"
+    },
+    {
+      "type": "coverage",
+      "vendor": "AttackIQ",
+      "title": "Cambio material de cobertura de inteligencia",
+      "from": 7,
+      "to": 29,
+      "detectedAt": "2026-08-27T08:15:02.827607+00:00"
+    },
+    {
+      "type": "coverage",
+      "vendor": "Ivanti",
+      "title": "Cambio material de cobertura de inteligencia",
+      "from": 7,
+      "to": 29,
+      "detectedAt": "2026-08-27T08:15:02.827607+00:00"
+    },
+    {
+      "type": "coverage",
+      "vendor": "NETSCOUT",
+      "title": "Cambio material de cobertura de inteligencia",
+      "from": 0,
+      "to": 29,
+      "detectedAt": "2026-08-27T08:15:02.827607+00:00"
+    },
+    {
+      "type": "coverage",
+      "vendor": "AudioCodes",
+      "title": "Cambio material de cobertura de inteligencia",
+      "from": 29,
+      "to": 50,
+      "detectedAt": "2026-08-27T08:15:02.827607+00:00"
+    },
+    {
+      "type": "coverage",
+      "vendor": "Avaya",
+      "title": "Cambio material de cobertura de inteligencia",
+      "from": 21,
+      "to": 57,
+      "detectedAt": "2026-08-27T08:15:02.827607+00:00"
+    },
+    {
+      "type": "coverage",
+      "vendor": "AWS",
+      "title": "Cambio material de cobertura de inteligencia",
+      "from": 50,
+      "to": 64,
+      "detectedAt": "2026-08-27T08:15:02.827607+00:00"
+    },
+    {
+      "type": "coverage",
+      "vendor": "Cisco",
+      "title": "Cambio material de cobertura de inteligencia",
+      "from": 57,
+      "to": 71,
+      "detectedAt": "2026-08-27T08:15:02.827607+00:00"
+    }
+  ],
   "conflicts": []
 }

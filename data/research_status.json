@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-27T07:30:33.554113+00:00",
-  "runId": "20260827T073033Z-7",
-  "outcome": "partial-recoverable",
+  "generatedAt": "2026-08-27T08:15:02.827607+00:00",
+  "runId": "20260827T081502Z-2061",
+  "outcome": "failed-last-good-preserved",
   "profile": "daily",
   "freeOnly": true,
   "queryCount": 70,
@@ -38,17 +38,17 @@
   },
   "resilience": {
     "plannedTasks": 137,
-    "processedTasks": 0,
-    "completedTasks": 0,
-    "pendingTasks": 137,
+    "processedTasks": 120,
+    "completedTasks": 120,
+    "pendingTasks": 17,
     "partialRun": true,
     "resumedTasks": 0,
     "circuits": {},
-    "learningStrategies": 0
+    "learningStrategies": 52
   },
-  "coverageAverage": 18.2,
-  "vendorsWithCoverage70": 0,
-  "gapsP0": 28,
+  "coverageAverage": 25.0,
+  "vendorsWithCoverage70": 1,
+  "gapsP0": 24,
   "errorCount": 0,
   "engines": [
     "Google News RSS",
@@ -64,18 +64,18 @@
   ],
   "supervisor": {
     "version": 2,
-    "runId": "20260827T073033Z",
+    "runId": "20260827T081502Z",
     "profileRequested": "daily",
-    "startedAt": "2026-08-27T07:30:33.416662+00:00",
-    "finishedAt": "2026-08-27T07:30:34.098817+00:00",
-    "elapsedSeconds": 0.68,
-    "outcome": "complete-or-partial-valid",
+    "startedAt": "2026-08-27T08:15:02.717300+00:00",
+    "finishedAt": "2026-08-27T08:24:33.344086+00:00",
+    "elapsedSeconds": 570.63,
+    "outcome": "failed-last-good-preserved",
     "processOutcome": "completed",
     "exitCode": 0,
     "fallbackUsed": false,
-    "lastGoodRestored": false,
+    "lastGoodRestored": true,
     "datasetValid": true,
-    "diagnosticLog": "diagnostics/research-20260827T073033Z-daily.log",
+    "diagnosticLog": "diagnostics/research-20260827T081502Z-daily.log",
     "validationTail": "OK · 36 vendors · 28 claims nuevos · 6 perfiles mayoristas consolidados · 8 perfiles integradores consolidados · 8 arquitecturas · motor v11 validado"
   }
 }
