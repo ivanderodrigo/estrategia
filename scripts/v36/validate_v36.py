@@ -31,8 +31,8 @@ def validate(root: Path) -> list[str]:
     except Exception as exc:
         return [f"intelligence.json inválido: {exc}"]
 
-    if data.get("meta", {}).get("version") != "3.6.0":
-        errors.append("la versión pública no es 3.6.0")
+    if data.get("meta", {}).get("version") != "3.6.1":
+        errors.append("la versión pública no es 3.6.1")
 
     minimums = {"manufacturers": 36, "integrators": 30, "distributors": 8, "trends": 15, "architectures": 10}
     for section in SECTIONS:
@@ -143,4 +143,4 @@ if __name__ == "__main__":
         for error in errors:
             print("ERROR ·", error)
         raise SystemExit(1)
-    print("VALIDACIÓN v3.6.0 · PASS")
+    print("VALIDACIÓN v3.6.1 · PASS")

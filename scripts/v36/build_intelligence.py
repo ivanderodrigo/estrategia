@@ -148,6 +148,8 @@ def build_manufacturers() -> list[dict[str, Any]]:
     base = load("data/vendor_intelligence.json", {})
     v31 = load("data/v31/entity_intelligence.json", {})
     relationships = load("data/v34/relationships.json", {})
+    curated_integrators = load("config/v36/curated_integrator_relations.json", {}).get("relations", []) or []
+    curated_distributors = load("config/v36/curated_distributor_relations.json", {}).get("relations", []) or []
     current = base.get("vendors", []) or []
 
     alias = {
@@ -167,6 +169,15 @@ def build_manufacturers() -> list[dict[str, Any]]:
     for rel in relationships.get("distributor_vendor", []) or []:
         if rel.get("status") in {"CONFIRMED", "PROBABLE"}:
             dist_by_vendor[canonical(rel.get("vendor"))].append(rel)
+    # Curated public portal/award/linecard evidence also feeds manufacturer
+    # channel fields. It was already trusted by ecosystem rows; v3.6.1 removes
+    # the artificial sparsity caused by not reusing the same evidence here.
+    for rel in curated_integrators:
+        if rel.get("vendor") and rel.get("url"):
+            int_by_vendor[canonical(rel.get("vendor"))].append({"_curated": True, **rel})
+    for rel in curated_distributors:
+        if rel.get("vendor") and rel.get("url"):
+            dist_by_vendor[canonical(rel.get("vendor"))].append({"_curated": True, **rel})
 
     portfolio_src = internal_evidence(
         "Westcon España – Presentación Corporativa FY2027",
@@ -220,16 +231,30 @@ def build_manufacturers() -> list[dict[str, Any]]:
             if ev:
                 dist_evs.append(ev)
         for rel in dist_rels:
-            dist = rel.get("distributor")
-            if dist and "westcon" not in norm(dist):
-                dist_values.append(f"{dist} · {(rel.get('geography') or {}).get('scope') or '—'} · {rel.get('status_label') or rel.get('status')}")
-                dist_evs.extend(rel_evidence(rel))
+            if rel.get("_curated"):
+                dist = rel.get("distributor")
+                if dist and "westcon" not in norm(dist):
+                    dist_values.append(f"{dist} · {rel.get('country') or rel.get('scope') or '—'} · Evidencia pública")
+                    ev = _signal_evidence(rel)
+                    if ev: dist_evs.append(ev)
+            else:
+                dist = rel.get("distributor")
+                if dist and "westcon" not in norm(dist):
+                    dist_values.append(f"{dist} · {(rel.get('geography') or {}).get('scope') or '—'} · {rel.get('status_label') or rel.get('status')}")
+                    dist_evs.extend(rel_evidence(rel))
 
         int_values: list[str] = []
         int_evs: list[dict[str, Any]] = []
         for rel in int_rels:
-            int_values.append(f"{rel.get('integrator')} · {(rel.get('geography') or {}).get('scope') or '—'} · {rel.get('status_label') or rel.get('status')}")
-            int_evs.extend(rel_evidence(rel))
+            if rel.get("_curated"):
+                partner = rel.get("name")
+                if partner:
+                    int_values.append(f"{partner} · {rel.get('country') or '—'} · {rel.get('role') or 'Partner'}")
+                    ev = _signal_evidence(rel)
+                    if ev: int_evs.append(ev)
+            else:
+                int_values.append(f"{rel.get('integrator')} · {(rel.get('geography') or {}).get('scope') or '—'} · {rel.get('status_label') or rel.get('status')}")
+                int_evs.extend(rel_evidence(rel))
 
         analyst_values = [f"{x.get('analyst')}: {x.get('title')}" for x in vendor.get("analystSignals", []) or []]
         latest_public = sorted(public_evidence, key=lambda x: str(x.get("date") or ""), reverse=True)[:5]
@@ -309,6 +334,8 @@ def build_ecosystem(kind: str) -> list[dict[str, Any]]:
     signal_rows = research.get("integratorSignals" if kind == "integrator" else "channelSignals", []) or []
     if kind == "integrator":
         signal_rows = [*signal_rows, *(load("config/v36/curated_integrator_relations.json", {}).get("relations", []) or [])]
+    else:
+        signal_rows = [*signal_rows, *(load("config/v36/curated_distributor_relations.json", {}).get("relations", []) or [])]
     for sig in signal_rows:
         name = sig.get("name") if kind == "integrator" else sig.get("distributor")
         vendor = sig.get("vendor")
@@ -346,12 +373,18 @@ def build_ecosystem(kind: str) -> list[dict[str, Any]]:
         relation_values += [f"{r.get('vendor')} · Probable · {(r.get('geography') or {}).get('scope') or '—'}" for r in probable]
         relation_evs = [ev for r in (confirmed + probable) for ev in rel_evidence(r)]
         roles: list[str] = []
+        signal_specializations: list[str] = []
+        signal_services: list[str] = []
+        signal_verticals: list[str] = []
+        signal_cases: list[str] = []
+        signal_capabilities: list[str] = []
+        signal_field_evidence: dict[str, list[dict[str, Any]]] = defaultdict(list)
         for sig in item.get("signals") or []:
             ev = _signal_evidence(sig)
             # Signals from jobs do not establish a partnership. Only explicit
             # vendor/partner proof or already curated public relationships do.
             proof = norm(sig.get("proofType") or sig.get("classification"))
-            relation_proof = any(token in proof for token in ("partner", "award", "directory", "case", "integrator", "reseller", "mssp")) or sig.get("status") == "curated-public"
+            relation_proof = any(token in proof for token in ("partner", "award", "directory", "case", "integrator", "reseller", "mssp", "distributor", "linecard")) or sig.get("status") == "curated-public"
             if relation_proof and sig.get("vendor"):
                 scope = sig.get("country") or "—"
                 relation_values.append(f"{sig.get('vendor')} · Evidencia pública · {scope}")
@@ -359,6 +392,16 @@ def build_ecosystem(kind: str) -> list[dict[str, Any]]:
                     relation_evs.append(ev)
             if sig.get("role"):
                 roles.append(str(sig.get("role")))
+            # A single high-quality public source can support several explicit
+            # dimensions (tier/specialization/services/vertical/case). Preserve
+            # evidence independently for every populated dimension.
+            for key_name, target in (("specializations", signal_specializations), ("services", signal_services), ("verticals", signal_verticals), ("public_cases", signal_cases), ("capabilities", signal_capabilities)):
+                values = sig.get(key_name) or []
+                if isinstance(values, str): values = [values]
+                for value in values:
+                    if value not in (None, ""):
+                        target.append(str(value))
+                        if ev: signal_field_evidence[key_name].append(ev)
 
         # If this is an integrator, it must have at least one supported relation
         # to a Westcon vendor. This keeps discovery broad without turning the
@@ -385,28 +428,28 @@ def build_ecosystem(kind: str) -> list[dict[str, Any]]:
                     vals.extend(r.get(k, []) or [])
             return uniq(vals)
 
-        services = collect_list("managed_services", "services")
-        specializations = collect_list("specializations", "competencies")
-        verticals = collect_list("verticals")
-        public_cases = collect_list("customers_public_cases")
+        services = uniq([*collect_list("managed_services", "services"), *signal_services])
+        specializations = uniq([*collect_list("specializations", "competencies"), *signal_specializations])
+        verticals = uniq([*collect_list("verticals"), *signal_verticals])
+        public_cases = uniq([*collect_list("customers_public_cases"), *signal_cases])
         scopes = uniq([r.get("scope") for r in source_rows if r.get("scope")] + [s.get("country") for s in item.get("signals", []) if s.get("country")])
         capabilities: list[str] = []
         for r in source_rows:
             for attr, label in (("soc","SOC"),("noc","NOC"),("mssp","MSSP"),("msp","MSP"),("professional_services","Servicios profesionales"),("financing","Financiación"),("marketplace","Marketplace"),("cloud_marketplace","Marketplace cloud"),("training_enablement","Formación / enablement"),("labs_demos","Labs / demos"),("poc","PoC"),("staging_configuration","Staging / configuración"),("logistics","Logística")):
                 if r.get(attr):
                     capabilities.append(label)
-        capabilities = uniq(capabilities)
+        capabilities = uniq([*capabilities, *signal_capabilities])
 
         all_entity_evidence = dedupe_evidence([*generic, *relation_evs, *talent_signals], 16)
         fields = {
             "scope": field(" / ".join(str(x) for x in scopes), all_entity_evidence),
             "roles": field(uniq(roles), relation_evs, qualifier="Rol descrito por la evidencia pública: integrador, reseller, MSP, MSSP, service provider, etc. No es una clasificación comercial propia."),
             "vendor_relations": field(relation_values, relation_evs, qualifier="Solo relaciones con fabricantes Westcon soportadas por evidencia pública. Empleo nunca crea una relación por sí solo."),
-            "specializations": field(specializations, all_entity_evidence, qualifier="Solo señales explícitas; no se infieren certificaciones por afinidad tecnológica."),
-            "services": field(services, all_entity_evidence),
-            "capabilities": field(capabilities, all_entity_evidence),
-            "verticals": field(verticals, all_entity_evidence, qualifier="Sectores con actividad/casos públicos; no representa toda la cartera."),
-            "public_cases": field(public_cases, all_entity_evidence, qualifier="Casos públicos detectados; no representa la base completa de clientes."),
+            "specializations": field(specializations, [*entity_field_evidence(base_row, ("special", "certif", "compet")), *signal_field_evidence["specializations"]] or all_entity_evidence, qualifier="Solo señales explícitas; no se infieren certificaciones por afinidad tecnológica."),
+            "services": field(services, [*entity_field_evidence(base_row, ("service", "managed", "servicio")), *signal_field_evidence["services"]] or all_entity_evidence),
+            "capabilities": field(capabilities, [*entity_field_evidence(base_row, ("soc", "noc", "msp", "mssp", "lab", "poc", "capabil")), *signal_field_evidence["capabilities"]] or all_entity_evidence),
+            "verticals": field(verticals, [*entity_field_evidence(base_row, ("vertical", "sector", "industry")), *signal_field_evidence["verticals"]] or all_entity_evidence, qualifier="Sectores con actividad/casos públicos; no representa toda la cartera."),
+            "public_cases": field(public_cases, [*entity_field_evidence(base_row, ("case", "customer", "cliente")), *signal_field_evidence["public_cases"]] or all_entity_evidence, qualifier="Casos públicos detectados; no representa la base completa de clientes."),
             "job_vendors": field(job_vendors, talent_signals, qualifier="Menciones de fabricantes/certificaciones en vacantes: señal de skills, nunca prueba de partnership ni ventas."),
             "job_profiles": field(job_profiles, talent_signals, qualifier="Familias de perfiles demandadas en portales/ATS públicos; una vacante no equivale a headcount efectivo."),
         }
@@ -692,7 +735,7 @@ def build() -> dict[str, Any]:
     sources = merge_source_catalog()
     result = {
         "meta": {
-            "version": "3.6.0",
+            "version": "3.6.1",
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "scope": "España + Portugal",
             "principle": "Inteligencia de negocio descriptiva limitada a Fabricantes, Integradores, Mayoristas competidores, Tendencias y Arquitecturas.",
@@ -714,7 +757,7 @@ if __name__ == "__main__":
     data = build()
     write("data/v36/intelligence.json", data)
     write("data/v36/last_run.json", {
-        "version": "3.6.0", "generated_at": data["meta"]["generated_at"], "status": "published",
+        "version": "3.6.1", "generated_at": data["meta"]["generated_at"], "status": "published",
         "manufacturers": len(data["manufacturers"]), "integrators": len(data["integrators"]),
         "distributors": len(data["distributors"]), "trends": len(data["trends"]),
         "architectures": len(data["architectures"]), "source_count": len(data["source_catalog"]),

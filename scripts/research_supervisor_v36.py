@@ -51,7 +51,7 @@ def main() -> int:
         print("v3.6 validation failed · " + "; ".join(errors[:16]), file=sys.stderr, flush=True)
         return 1
     print(
-        f"v3.6.0 published · fabricantes {result['manufacturers']} · integradores {result['integrators']} · "
+        f"v3.6.1 published · fabricantes {result['manufacturers']} · integradores {result['integrators']} · "
         f"mayoristas {result['distributors']} · tendencias {result['trends']} · arquitecturas {result['architectures']} · "
         f"fuentes {result['source_count']} · campos trazables {result['traceable_fields']} · foundation rc {foundation_rc}",
         flush=True,

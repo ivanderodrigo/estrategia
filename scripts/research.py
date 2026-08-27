@@ -52,6 +52,8 @@ REG = json.loads((ROOT / "config/source_registry.json").read_text(encoding="utf-
 DEEP = json.loads((ROOT / "config/deep_research.json").read_text(encoding="utf-8"))
 UNIVERSE_PATH = ROOT / "config/source_universe.json"
 UNIVERSE = json.loads(UNIVERSE_PATH.read_text(encoding="utf-8")) if UNIVERSE_PATH.exists() else {}
+V36_PORTAL_PATH = ROOT / "config/v36/vendor_portal_intelligence.json"
+V36_PORTALS = json.loads(V36_PORTAL_PATH.read_text(encoding="utf-8")) if V36_PORTAL_PATH.exists() else {"seeds": []}
 CURATED = json.loads((ROOT / "data/curated_evidence.json").read_text(encoding="utf-8"))
 ECOSYSTEM = json.loads((ROOT / "data/ecosystem.json").read_text(encoding="utf-8"))
 VENDOR_INTEL = json.loads((ROOT / "data/vendor_intelligence.json").read_text(encoding="utf-8"))
@@ -638,6 +640,61 @@ def commoncrawl_official_evidence(vendors: list[str], budget: int) -> list[dict]
             except Exception: row=None
             if not row: continue
             row.update({'vendor':v,'country':infer_country_from_url(row.get('url','')) or 'ALL','kind':'official-commoncrawl-discovery','engine':'commoncrawl-url-discovery'})
+            out.append(row)
+    return out
+
+
+def official_portal_seed_evidence() -> list[dict]:
+    """Fetch high-value official partner pages before broad discovery.
+
+    The page body is correlated with the known Iberia ecosystem. This is much
+    higher-yield than waiting for a sitemap/search engine to surface the page,
+    while remaining conservative: only explicit partner/channel context is
+    accepted and every resulting candidate keeps the exact official URL.
+    """
+    seeds=V36_PORTALS.get('seeds',[]) or []
+    if not seeds: return []
+    context_terms=[norm(x) for x in (V36_PORTALS.get('partner_context_terms',[]) or [])]
+    known_integrators=list(dict.fromkeys(CFG.get('known_integrators',[])+discovered_integrators(400)))
+    known_distributors=list(dict.fromkeys(CFG.get('known_distributors',[])))
+    targets=seeds[:int(BUDGETS.get('portal_seed_pages_max',max(20,len(seeds))))]
+    pages=[]
+    with ThreadPoolExecutor(max_workers=min(WORKERS,10)) as ex:
+        futs={ex.submit(fetch_page_metadata,x.get('url')):x for x in targets if x.get('url')}
+        for fut in as_completed(futs):
+            seed=futs[fut]
+            try: page=fut.result()
+            except Exception: page=None
+            if page: pages.append((seed,page))
+    out=[]
+    for seed,page in pages:
+        body=norm(f"{page.get('title','')} {page.get('snippet','')} {page.get('text','')}")
+        if context_terms and not any(t and t in body for t in context_terms):
+            continue
+        vendor=seed.get('vendor'); country=seed.get('country') or 'ALL'
+        # Exact entity-name matching is intentionally conservative. The expanded
+        # source universe ensures smaller Iberia partners can still be found.
+        matches=[]
+        for entity in known_integrators:
+            ne=norm(entity)
+            if len(ne)>=3 and ne in body: matches.append(('integrator',entity))
+        for entity in known_distributors:
+            ne=norm(entity)
+            if len(ne)>=3 and ne in body: matches.append(('distributor',entity))
+        seen=set()
+        for entity_kind,entity in matches:
+            key=(entity_kind,norm(entity))
+            if key in seen: continue
+            seen.add(key)
+            raw=page.get('text','') or page.get('snippet','') or ''
+            nr=norm(raw); ne=norm(entity); pos=nr.find(ne)
+            # Keep a compact context around the matched company when possible.
+            snippet=page.get('snippet','')
+            if pos>=0:
+                start=max(0,pos-220); end=min(len(raw),pos+len(str(entity))+420)
+                snippet=clean(raw[start:end])
+            row=dict(page)
+            row.update({'vendor':vendor,'country':country,'kind':'official-partner-portal-seed','engine':'official-partner-portal-seed','winner':entity if entity_kind=='integrator' else None,'distributor':entity if entity_kind=='distributor' else None,'snippet':snippet,'portalKind':seed.get('kind'),'sourceEntity':entity})
             out.append(row)
     return out
 
@@ -1657,6 +1714,81 @@ def partner_name_candidates_from_evidence(e: dict) -> list[str]:
     return candidates[:6]
 
 
+def _integrator_signal_dimensions(text: str, evidence: dict) -> dict:
+    """Extract only explicitly stated public capabilities from partner evidence.
+
+    This enriches the user-facing intelligence without turning keyword affinity into
+    a partnership claim. Partnership is still established separately by the existing
+    relation-proof rules. The terms below only populate descriptive dimensions when
+    they actually occur in the source text.
+    """
+    nt = norm(text)
+    services=[]; capabilities=[]; specializations=[]; verticals=[]; public_cases=[]
+
+    service_terms=[
+        (("managed service","servicios gestionados","managed security"), "Managed services"),
+        (("professional service","servicios profesionales"), "Professional services"),
+        (("consulting","consultoria","consultoría"), "Consulting"),
+        (("implementation","implementacion","implementación","deployment","despliegue"), "Implementation / deployment"),
+        (("systems integration","system integrator","integracion de sistemas","integración de sistemas"), "Systems integration"),
+        (("support service","support services","soporte"), "Support services"),
+    ]
+    capability_terms=[
+        (("mssp","managed security service provider"), "MSSP"),
+        (("managed service provider",), "MSP"),
+        (("security operations center","security operations centre"," soc ","centro de operaciones de seguridad"), "SOC"),
+        (("network operations center","network operations centre"," noc ","centro de operaciones de red"), "NOC"),
+        (("24x7","24/7","24 x 7"), "24x7 operations"),
+    ]
+    specialization_terms=[
+        (("zero trust","confianza cero"), "Zero Trust"),
+        (("sase",), "SASE"), (("sse","security service edge"), "SSE"),
+        (("private 5g","private mobile network","red privada 5g","redes privadas 5g"), "Private 4G/5G"),
+        (("ot security","industrial cybersecurity","ciberseguridad ot","ciberseguridad industrial","ics security"), "OT / ICS security"),
+        (("identity","iam","identity and access"), "Identity & Access"),
+        (("threat intelligence","inteligencia de amenazas"), "Threat intelligence"),
+        (("ctem","continuous threat exposure"), "CTEM / Exposure validation"),
+        (("application security","web application security","api security","seguridad de aplicaciones"), "Application & API security"),
+        (("microsegmentation","microsegmentacion","microsegmentación"), "Microsegmentation"),
+        (("ddos",), "DDoS protection"),
+        (("observability","observabilidad"), "Observability"),
+        (("microsoft teams","direct routing"), "Microsoft Teams / Direct Routing"),
+        (("contact center","contact centre","centro de contacto"), "Contact Center"),
+        (("automation","automatizacion","automatización","rpa"), "Automation"),
+    ]
+    vertical_terms=[
+        (("public sector","sector publico","sector público","government"), "Public sector"),
+        (("healthcare","hospital","salud"), "Healthcare"),
+        (("financial services","banking","banca"), "Financial services"),
+        (("manufacturing","fabricacion","fabricación","factory","industrial"), "Manufacturing / Industrial"),
+        (("energy","utilities","energia","energía"), "Energy & Utilities"),
+        (("retail",), "Retail"),
+        (("telecom","service provider","operador"), "Telecommunications"),
+        (("education","university","universidad"), "Education"),
+        (("transport","logistics","logistica","logística","port","puerto"), "Transport & Logistics"),
+        (("defence","defense","defensa"), "Defense"),
+    ]
+    for terms,label in service_terms:
+        if any(t in nt for t in terms): services.append(label)
+    for terms,label in capability_terms:
+        if any(t in nt for t in terms): capabilities.append(label)
+    for terms,label in specialization_terms:
+        if any(t in nt for t in terms): specializations.append(label)
+    for terms,label in vertical_terms:
+        if any(t in nt for t in terms): verticals.append(label)
+
+    buyer=clean(evidence.get('buyer',''))
+    if buyer and evidence.get('evidenceType') in {'customer','procurement'}:
+        public_cases.append(buyer)
+    return {
+        'services': list(dict.fromkeys(services)),
+        'capabilities': list(dict.fromkeys(capabilities)),
+        'specializations': list(dict.fromkeys(specializations)),
+        'verticals': list(dict.fromkeys(verticals)),
+        'public_cases': list(dict.fromkeys(public_cases)),
+    }
+
+
 def integrator_candidates(evidence: list[dict]) -> list[dict]:
     names=list(dict.fromkeys(CFG.get('known_integrators',[])+discovered_integrators(300))); vendors=tracked_names(); rows={}
     for e in evidence:
@@ -1679,7 +1811,10 @@ def integrator_candidates(evidence: list[dict]) -> list[dict]:
                     role='MSSP' if 'mssp' in nt else 'MSP' if 'managed service provider' in nt or re.search(r'\bmsp\b',nt) else 'Reseller / VAR' if 'reseller' in nt or re.search(r'\bvar\b',nt) else 'Instalador / Integrador' if 'installer' in nt or 'instalador' in nt else 'Integrador / Partner'
                     explicit_partner = e.get('sourceTier') in {'official-company','public-open-data'} or e.get('evidenceType') in {'partner-program','integrator'}
                     proof_type='official-partner-signal' if explicit_partner else 'public-partner-signal'
-                    row=rows.setdefault(key,{'vendor':v,'country':cc,'name':clean(name),'role':role,'status':'candidate-public-signal','proofType':proof_type,'confidence':0,'evidence':[],'url':e.get('url'),'source':e.get('source'),'signal':e.get('title') or e.get('snippet')})
+                    dims=_integrator_signal_dimensions(text,e)
+                    row=rows.setdefault(key,{'vendor':v,'country':cc,'name':clean(name),'role':role,'status':'candidate-public-signal','proofType':proof_type,'confidence':0,'evidence':[],'url':e.get('url'),'source':e.get('source'),'signal':e.get('title') or e.get('snippet'),'services':[],'capabilities':[],'specializations':[],'verticals':[],'public_cases':[]})
+                    for dim in ('services','capabilities','specializations','verticals','public_cases'):
+                        row[dim]=list(dict.fromkeys((row.get(dim) or [])+(dims.get(dim) or [])))
                     bonus=10 if e.get('sourceTier') in {'official-company','public-open-data'} else 0
                     row['confidence']=max(row['confidence'],min(96,int(e.get('confidence',45))+bonus))
                     if e.get('id') not in row['evidence']: row['evidence'].append(e.get('id'))
@@ -1846,6 +1981,18 @@ def main() -> None:
         trace_error('adaptive-discovery',exc)
         stage_end(row,started,'degraded',signals=0)
 
+    row,started=stage_start('official-partner-portal-seeds')
+    if should_stop(240):
+        stage_end(row,started,'deferred')
+    else:
+        try:
+            found=official_portal_seed_evidence()
+            for x in found:
+                evidence.append(to_evidence(x,{'vendor':x.get('vendor'),'kind':'partner-universe','country':x.get('country'),'intent':'ecosystem','query':f"official partner portal seed {x.get('sourceEntity','')}"}))
+            stage_end(row,started,'completed',signals=len(found))
+        except Exception as exc:
+            trace_error('official-partner-portal-seeds',exc); stage_end(row,started,'degraded')
+
     row,started=stage_start('official-vendor-crawl')
     if should_stop(300):
         stage_end(row,started,'deferred')
@@ -1934,9 +2081,9 @@ def main() -> None:
     stage_end(row,started,'completed',evidence=len(evidence),changes=len(changes))
     partial=bool(resilience_stats.get('partialRun') or RUN_ERRORS or any(x.get('status') in {'partial','degraded','deferred'} for x in RUN_STAGES))
     outcome='partial-recoverable' if partial else 'complete'
-    engines=['Google News RSS','GDELT DOC 2.0','Arquivo.pt','official vendor sitemaps','Common Crawl URL discovery + live validation','official distributor/integrator sitemaps','public analyst pages','TED Search API','PLACSP open data','dados.gov.pt public datasets']
+    engines=['official partner portal seeds','Google News RSS','GDELT DOC 2.0','Arquivo.pt','official vendor sitemaps','Common Crawl URL discovery + live validation','official distributor/integrator sitemaps','public analyst pages','TED Search API','PLACSP open data','dados.gov.pt public datasets']
     payload={
-        'generatedAt':NOW.isoformat(),'runId':RUN_ID,'runOutcome':outcome,'profile':PROFILE,'mode':'bounded-adaptive-intelligence-graph-v11.0','queryCount':len(queries),'freeOnly':True,
+        'generatedAt':NOW.isoformat(),'runId':RUN_ID,'runOutcome':outcome,'profile':PROFILE,'mode':'bounded-adaptive-intelligence-graph-v11.1','queryCount':len(queries),'freeOnly':True,
         'notice':'Solo inteligencia pública externa y gratuita, sin claves ni suscripciones. Cada ejecución está acotada por tiempo: publica lo válido, conserva pendientes y nunca convierte discovery o ausencia de datos en un hecho.',
         'researchEngines':engines,'evidence':evidence,'capabilitySignals':capability_signals,'channelSignals':channels,'channelHistorySignals':ended_channels,'integratorSignals':integrators,'customerSignals':customers,'analystSignals':analysts,'procurementMarket':procurement_market,'coverage':coverage,'gaps':research_gaps(coverage),'conflicts':conflicts,'changes':changes,
         'derived':{'evidenceCount':len(evidence),'officialOrAnalystCount':sum(1 for e in evidence if e.get('sourceTier') in {'official-company','regulator','public-open-data','analyst-public'}),'channelSignalCount':len(channels),'endedChannelSignalCount':len(ended_channels),'integratorSignalCount':len(integrators),'customerSignalCount':len(customers),'procurementSignalCount':sum(1 for e in evidence if e.get('evidenceType')=='procurement'),'procurementMarketBuckets':len(procurement_market),'knownProcurementValueEUR':round(sum(x.get('knownValueEUR',0) for x in procurement_market),2),'analystSignalCount':len(analysts),'capabilitySignalCount':len(capability_signals),'conflictCount':len(conflicts),'changeCount':len(changes),'resilience':resilience_stats,'statistics':signal_stats(evidence),'runStages':RUN_STAGES,'runErrorCount':len(RUN_ERRORS)}
@@ -1945,7 +2092,7 @@ def main() -> None:
     atomic_json(STATUS_OUT,{'generatedAt':NOW.isoformat(),'runId':RUN_ID,'outcome':outcome,'profile':PROFILE,'freeOnly':True,'queryCount':len(queries),'budgets':BUDGETS,'resilience':resilience_stats,'coverageAverage':round(sum(x['coverage'] for x in coverage)/max(1,len(coverage)),1),'vendorsWithCoverage70':sum(1 for x in coverage if x['coverage']>=70),'gapsP0':sum(1 for x in research_gaps(coverage) if x['priority']=='P0'),'errorCount':len(RUN_ERRORS),'engines':engines})
     write_light_history(payload,changes)
     write_run_diagnostics(outcome,evidenceCount=len(evidence),pendingTasks=resilience_stats.get('pendingTasks',0))
-    print(f"Research v11.0/{PROFILE} [{RUN_ID}] {outcome}: {len(evidence)} evidence, {len(channels)} channel, {len(integrators)} integrators, {len(customers)} customers, {len(queries)} planned queries, {len(changes)} changes",flush=True)
+    print(f"Research v11.1/{PROFILE} [{RUN_ID}] {outcome}: {len(evidence)} evidence, {len(channels)} channel, {len(integrators)} integrators, {len(customers)} customers, {len(queries)} planned queries, {len(changes)} changes",flush=True)
 
 
 if __name__=='__main__':

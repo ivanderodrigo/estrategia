@@ -168,48 +168,178 @@
   }
 
   function selectedModules(){ return new Set($$('.export-modules input:checked').map(x=>x.value)); }
-  function reportSourcesFor(rows, limit=35){
-    const map=new Map(); rows.forEach(r=>{(r.evidence||[]).forEach(ev=>{const k=ev.url||`${ev.source}|${ev.title}`; if(!map.has(k)) map.set(k,ev)}); Object.values(r.fields||{}).forEach(f=>(f.evidence||[]).forEach(ev=>{const k=ev.url||`${ev.source}|${ev.title}`; if(!map.has(k)) map.set(k,ev)}));});
+  const exportTheme={navy:'082335',navy2:'113A50',ink:'142B3B',muted:'647986',line:'D9E3E8',bg:'F3F6F8',cyan:'12C7C0',orange:'F09E0D',pink:'E5007D',blue:'3195BB',green:'159B7F',white:'FFFFFF'};
+  const domainCopy={
+    manufacturers:{label:'Fabricantes',eyebrow:'PORTFOLIO WESTCON',desc:'Portfolio Westcon Iberia con competencia, canal, ecosistema y señales de mercado trazables.',accent:'12C7C0'},
+    integrators:{label:'Integradores',eyebrow:'ECOSISTEMA IBERIA',desc:'Partners, integradores, instaladores, VAR, MSP/MSSP, consultoras y service providers vinculados a nuestros fabricantes.',accent:'F09E0D'},
+    distributors:{label:'Mayoristas de la competencia',eyebrow:'CANAL COMPETITIVO',desc:'Linecards, solape, servicios y capacidades de los mayoristas competidores con evidencia pública.',accent:'E5007D'},
+    trends:{label:'Tendencias',eyebrow:'TENDENCIAS 2026–2030',desc:'Mercado, crecimiento, drivers, demanda y actores relevantes observados en analistas y fuentes sectoriales.',accent:'3195BB'},
+    architectures:{label:'Arquitecturas',eyebrow:'ARQUITECTURAS',desc:'Marcos funcionales basados en analistas y estándares, con encaje explícito del portfolio Westcon por capa.',accent:'159B7F'}
+  };
+  function uniqueEvidence(rows, limit=80){
+    const map=new Map();
+    rows.forEach(r=>{
+      [...(r.evidence||[]),...Object.values(r.fields||{}).flatMap(f=>f.evidence||[])].forEach(ev=>{
+        const k=ev.url||`${ev.source}|${ev.title}`;
+        if(!map.has(k)) map.set(k,ev);
+      });
+    });
     return [...map.values()].slice(0,limit);
   }
-  function reportTable(rows, schema, limit=40){
-    const sample=rows.slice(0,limit), cols=activeColumns(schema,sample).slice(0,7);
-    return `<table><thead><tr><th>Entidad</th>${cols.map(c=>`<th>${esc(c.label)}</th>`).join('')}</tr></thead><tbody>${sample.map(r=>`<tr><td><b>${esc(r.name)}</b></td>${cols.map(c=>`<td>${esc(valueText(r.fields?.[c.id]?.value||''))}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+  function rowEvidenceCount(row){ return uniqueEvidence([row],999).length; }
+  function shortText(v,max=165){ const t=valueText(v).replace(/\s+/g,' ').trim(); return t.length>max?`${t.slice(0,max-1)}…`:t; }
+  function compactValue(v,maxItems=5,maxChars=175){
+    if(Array.isArray(v)){
+      if(v.length&&typeof v[0]==='object'&&v[0].layer){
+        const parts=v.slice(0,4).map(x=>`${x.layer}: ${(x.vendors||[]).slice(0,5).join(', ')}`); if(v.length>4)parts.push(`+${v.length-4} capas`); return shortText(parts.join(' · '),maxChars);
+      }
+      const parts=v.slice(0,maxItems).map(x=>typeof x==='object'?JSON.stringify(x):String(x)); if(v.length>maxItems)parts.push(`+${v.length-maxItems}`); return shortText(parts.join(' · '),maxChars);
+    }
+    if(typeof v==='object') return shortText(JSON.stringify(v),maxChars);
+    return shortText(v,maxChars);
   }
-  function reportHtml(title, modules){
-    const sections=[];
-    const add=(key,label,rows,schema)=>{if(!modules.has(key))return; const src=reportSourcesFor(rows); sections.push(`<section class="report-section"><h2>${esc(label)}</h2>${reportTable(rows,schema)}<h3>Fuentes principales</h3><div class="report-sources">${src.map((s,i)=>`${i+1}. ${esc(s.source)} · ${esc(s.title)}${s.date?` · ${esc(s.date)}`:''}${s.url?` · ${esc(s.url)}`:''}`).join('<br>')}</div></section>`)};
-    add('manufacturers','Fabricantes',state.data.manufacturers,state.data.schemas.manufacturers);
-    add('integrators','Integradores',state.data.integrators,state.data.schemas.integrators);
-    add('distributors','Mayoristas de la competencia',state.data.distributors,state.data.schemas.distributors);
-    add('trends','Tendencias',state.data.trends,state.data.schemas.trends);
-    add('architectures','Arquitecturas',state.data.architectures,state.data.schemas.architectures);
-    return `<div class="report-export"><section class="report-cover"><div class="eyebrow">WESTCON IBERIA · BUSINESS INTELLIGENCE</div><h1>${esc(title)}</h1><p>Fabricantes · Integradores · Mayoristas competidores · Tendencias · Arquitecturas</p><p>${esc(state.data.meta.generated_at||'')}</p></section>${sections.join('')}</div>`;
+  function reportValueHtml(field){
+    const v=field?.value;
+    if(Array.isArray(v)){
+      if(v.length&&typeof v[0]==='object'&&v[0].layer){
+        return `<div class="r-layers">${v.slice(0,4).map(x=>`<div><b>${esc(x.layer)}</b><span>${esc((x.vendors||[]).slice(0,6).join(' · '))}</span></div>`).join('')}${v.length>4?`<small>+${v.length-4} capas adicionales en la aplicación</small>`:''}</div>`;
+      }
+      const shown=v.slice(0,6); return `<div class="r-tags">${shown.map(x=>`<span>${esc(typeof x==='object'?JSON.stringify(x):x)}</span>`).join('')}${v.length>shown.length?`<span class="more">+${v.length-shown.length}</span>`:''}</div>`;
+    }
+    return `<span>${esc(shortText(v,190))}</span>`;
+  }
+  function reportBrand(){return `<div class="r-brand"><span class="r-mark"><i></i><i></i><i></i></span><b>WESTCON IBERIA</b><small>BUSINESS INTELLIGENCE</small></div>`;}
+  function reportFooter(label){return `<footer class="r-footer"><span>${esc(label)}</span><span>v${esc(state.data.meta.version||'3.6.1')} · ${esc(state.data.meta.scope||'Iberia')} · inteligencia trazable</span></footer>`;}
+  function reportCover(title,modules){
+    const stats=[
+      ['manufacturers','Fabricantes',state.data.manufacturers.length],['integrators','Integradores',state.data.integrators.length],['distributors','Mayoristas',state.data.distributors.length],['trends','Tendencias',state.data.trends.length],['architectures','Arquitecturas',state.data.architectures.length]
+    ].filter(x=>modules.has(x[0]));
+    return `<section class="report-page report-cover">
+      <div class="r-cover-top">${reportBrand()}<span class="r-version">v${esc(state.data.meta.version||'3.6.1')}</span></div>
+      <div class="r-cover-main"><div class="r-kicker">INTELIGENCIA DE NEGOCIO · ESPAÑA + PORTUGAL</div><h1>${esc(title)}</h1><p>La misma lógica visual de la aplicación: información útil, estructura limpia y fuentes verificables.</p></div>
+      <div class="r-kpis">${stats.map((x,i)=>`<div style="--accent:#${[exportTheme.cyan,exportTheme.orange,exportTheme.pink,exportTheme.blue,exportTheme.green][i%5]}"><b>${esc(x[2])}</b><span>${esc(x[1])}</span></div>`).join('')}<div style="--accent:#${exportTheme.cyan}"><b>${esc(state.data.meta.source_count||0)}</b><span>fuentes / familias</span></div></div>
+      <div class="r-cover-note"><b>Generado</b><span>${esc(state.data.meta.generated_at||'')}</span></div>
+      ${reportFooter('Westcon Iberia · Business Intelligence')}
+    </section>`;
+  }
+  function chunk(arr,size){const out=[];for(let i=0;i<arr.length;i+=size)out.push(arr.slice(i,i+size));return out;}
+  function reportTablePages(key,rows,schema){
+    const info=domainCopy[key], cols=activeColumns(schema,rows), colGroups=chunk(cols,5), rowGroups=chunk(rows,18), pages=[];
+    const total=Math.max(1,colGroups.length)*Math.max(1,rowGroups.length); let n=0;
+    (colGroups.length?colGroups:[[]]).forEach((cg,ci)=>rowGroups.forEach((rg,ri)=>{
+      n++; pages.push(`<section class="report-page r-section-page" style="--accent:#${info.accent}">
+        <div class="r-page-head"><div>${reportBrand()}<div class="r-eyebrow">${esc(info.eyebrow)}</div><h2>${esc(info.label)}</h2><p>${esc(info.desc)}</p></div><div class="r-page-count"><b>${esc(rows.length)}</b><span>entidades</span></div></div>
+        <div class="r-page-meta"><span>Bloque ${ci+1}/${Math.max(1,colGroups.length)}</span><span>Página ${n}/${total}</span><span>Resumen visual; detalle completo en la aplicación</span></div>
+        <div class="r-table-wrap"><table class="r-table"><thead><tr><th class="r-entity">Entidad</th>${cg.map(c=>`<th>${esc(c.label)}</th>`).join('')}</tr></thead><tbody>${rg.map(r=>`<tr><td class="r-entity"><b>${esc(r.name)}</b><small>${rowEvidenceCount(r)} fuentes</small></td>${cg.map(c=>{const f=r.fields?.[c.id];return `<td>${f&&hasValue(f.value)?reportValueHtml(f):''}</td>`}).join('')}</tr>`).join('')}</tbody></table></div>
+        ${reportFooter(info.label)}
+      </section>`);
+    })); return pages.join('');
+  }
+  function reportCardPage(key,row,index,total,schema){
+    const info=domainCopy[key], cols=activeColumns(schema,[row]);
+    return `<section class="report-page r-section-page r-card-page" style="--accent:#${info.accent}">
+      <div class="r-page-head"><div>${reportBrand()}<div class="r-eyebrow">${esc(info.eyebrow)}</div><h2>${esc(row.name)}</h2><p>${esc(info.desc)}</p></div><div class="r-page-count"><b>${index+1}</b><span>de ${total}</span></div></div>
+      <div class="r-intel-card"><div class="r-card-title"><h3>${esc(row.name)}</h3><span>${rowEvidenceCount(row)} fuentes</span></div><div class="r-card-fields">${cols.map(c=>{const f=row.fields?.[c.id];return `<div class="r-card-field"><label>${esc(c.label)}</label><div>${reportValueHtml(f)}</div></div>`}).join('')}</div></div>
+      ${reportFooter(info.label)}
+    </section>`;
+  }
+  function reportSourcesPages(key,rows){
+    const info=domainCopy[key], sources=uniqueEvidence(rows,60); if(!sources.length)return '';
+    return chunk(sources,12).map((group,gi)=>`<section class="report-page r-section-page r-source-page" style="--accent:#${info.accent}">
+      <div class="r-page-head"><div>${reportBrand()}<div class="r-eyebrow">TRAZABILIDAD</div><h2>Fuentes · ${esc(info.label)}</h2><p>Principales fuentes utilizadas en los datos incluidos en este informe.</p></div><div class="r-page-count"><b>${sources.length}</b><span>fuentes</span></div></div>
+      <div class="r-source-grid">${group.map((s,i)=>`<div class="r-source"><span>${gi*12+i+1}</span><div><b>${esc(s.source||'Fuente pública')}</b><p>${esc(s.title||'Evidencia')}</p><small>${esc([s.date,s.type].filter(Boolean).join(' · '))}</small>${s.url?`<a href="${esc(s.url)}">${esc(shortText(s.url,120))}</a>`:''}</div></div>`).join('')}</div>
+      ${reportFooter(`Fuentes · ${info.label}`)}
+    </section>`).join('');
+  }
+  function reportHtml(title,modules){
+    const sections=[reportCover(title,modules)];
+    const order=[['manufacturers',state.data.manufacturers,state.data.schemas.manufacturers],['integrators',state.data.integrators,state.data.schemas.integrators],['distributors',state.data.distributors,state.data.schemas.distributors],['trends',state.data.trends,state.data.schemas.trends],['architectures',state.data.architectures,state.data.schemas.architectures]];
+    order.forEach(([key,rows,schema])=>{if(!modules.has(key))return; if(key==='trends'||key==='architectures') rows.forEach((r,i)=>sections.push(reportCardPage(key,r,i,rows.length,schema))); else sections.push(reportTablePages(key,rows,schema)); sections.push(reportSourcesPages(key,rows));});
+    return `<div class="report-export">${sections.join('')}</div>`;
   }
   async function exportPdf(){
     const modules=selectedModules(); if(!modules.size){toast('Selecciona al menos un área');return;}
-    const title=$('#reportTitle')?.value.trim()||'Westcon Iberia · Business Intelligence'; const sheet=$('#reportSheet'); sheet.innerHTML=reportHtml(title,modules); sheet.setAttribute('aria-hidden','false'); closeModal('exportModal');
+    const title=$('#reportTitle')?.value.trim()||'Westcon Iberia · Business Intelligence'; const sheet=$('#reportSheet'); sheet.innerHTML=reportHtml(title,modules); sheet.setAttribute('aria-hidden','false'); sheet.classList.add('rendering'); closeModal('exportModal');
     try{
-      if(window.html2pdf){ await window.html2pdf().set({margin:0,filename:'Westcon_Iberia_Business_Intelligence_v3.6.0.pdf',image:{type:'jpeg',quality:.97},html2canvas:{scale:1.5,useCORS:true},jsPDF:{unit:'mm',format:'a4',orientation:'landscape'},pagebreak:{mode:['css','legacy']}}).from(sheet.firstElementChild).save(); toast('PDF generado'); }
+      if(window.html2pdf){ await window.html2pdf().set({margin:0,filename:'Westcon_Iberia_Business_Intelligence_v3.6.1.pdf',image:{type:'jpeg',quality:.98},html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff',logging:false},jsPDF:{unit:'mm',format:'a4',orientation:'landscape'},pagebreak:{mode:['css']}}).from(sheet.firstElementChild).save(); toast('PDF generado con diseño Westcon'); }
       else { window.print(); }
-    } finally { sheet.setAttribute('aria-hidden','true'); }
+    } finally { sheet.classList.remove('rendering'); sheet.setAttribute('aria-hidden','true'); }
   }
-  function flatSummary(row,schema){
-    const cols=activeColumns(schema,[row]).slice(0,4); return cols.map(c=>`${c.label}: ${valueText(row.fields?.[c.id]?.value||'')}`).join('\n');
+  function pptCompact(v,max=115){return compactValue(v,4,max);}
+  function pptEvidenceNames(row,max=2){const names=[];for(const ev of uniqueEvidence([row],12)){const n=ev.source||ev.title;if(n&&!names.includes(n))names.push(n);if(names.length>=max)break;}return names;}
+  function pptAddBrand(slide,pptx,dark=false){
+    const base=dark?exportTheme.white:exportTheme.navy, sub=dark?'C9D7DE':exportTheme.muted;
+    [exportTheme.orange,exportTheme.pink,exportTheme.cyan].forEach((c,i)=>slide.addShape(pptx.ShapeType.rect,{x:.52+i*.11,y:.33,w:.075,h:.32,fill:{color:c},line:{color:c}}));
+    slide.addText('WESTCON IBERIA',{x:.92,y:.32,w:2.5,h:.2,fontFace:'Aptos',fontSize:9.5,bold:true,color:base,margin:0,charSpacing:1.1});
+    slide.addText('BUSINESS INTELLIGENCE',{x:.92,y:.53,w:2.7,h:.16,fontFace:'Aptos',fontSize:5.8,bold:true,color:sub,margin:0,charSpacing:1.2});
+  }
+  function pptAddFooter(slide,pptx,label,dark=false){
+    const line=dark?'315267':'D9E3E8', color=dark?'AFC1CA':'647986';
+    slide.addShape(pptx.ShapeType.line,{x:.55,y:7.05,w:12.2,h:0,line:{color:line,pt:.7}});
+    slide.addText(label,{x:.55,y:7.1,w:4.8,h:.14,fontFace:'Aptos',fontSize:6.6,color,margin:0});
+    slide.addText(`v${state.data.meta.version||'3.6.1'} · ${state.data.meta.scope||'Iberia'} · trazabilidad en la aplicación`,{x:7.0,y:7.1,w:5.75,h:.14,fontFace:'Aptos',fontSize:6.6,color,align:'right',margin:0});
+  }
+  function pptAddSlideTitle(slide,pptx,title,sub='',accent=exportTheme.cyan){
+    pptAddBrand(slide,pptx,false); slide.addShape(pptx.ShapeType.rect,{x:.55,y:.92,w:.08,h:.63,fill:{color:accent},line:{color:accent}});
+    slide.addText(title,{x:.78,y:.92,w:11.6,h:.37,fontFace:'Aptos Display',fontSize:23,bold:true,color:exportTheme.navy,margin:0});
+    if(sub)slide.addText(sub,{x:.79,y:1.34,w:11.45,h:.24,fontFace:'Aptos',fontSize:8.5,color:exportTheme.muted,margin:0});
+  }
+  function pptAddDomainDivider(pptx,key,count){
+    const info=domainCopy[key], slide=pptx.addSlide(); slide.background={color:exportTheme.bg}; pptAddBrand(slide,pptx,false);
+    slide.addShape(pptx.ShapeType.rect,{x:.55,y:1.52,w:.11,h:3.75,fill:{color:info.accent},line:{color:info.accent}});
+    slide.addText(info.eyebrow,{x:.9,y:1.6,w:5.8,h:.22,fontFace:'Aptos',fontSize:8.5,bold:true,color:info.accent,margin:0,charSpacing:1.2});
+    slide.addText(info.label,{x:.9,y:2.02,w:7.7,h:.72,fontFace:'Aptos Display',fontSize:34,bold:true,color:exportTheme.navy,margin:0});
+    slide.addText(info.desc,{x:.92,y:2.95,w:7.35,h:1.0,fontFace:'Aptos',fontSize:14,color:exportTheme.ink,margin:0,breakLine:true});
+    slide.addShape(pptx.ShapeType.roundRect,{x:9.2,y:2.02,w:2.7,h:1.65,rectRadius:.05,fill:{color:exportTheme.white},line:{color:exportTheme.line,pt:1}});
+    slide.addText(String(count),{x:9.5,y:2.28,w:2.1,h:.55,fontFace:'Aptos Display',fontSize:31,bold:true,color:exportTheme.navy,align:'center',margin:0});
+    slide.addText('ENTIDADES / ELEMENTOS',{x:9.45,y:3.0,w:2.2,h:.2,fontFace:'Aptos',fontSize:7.2,bold:true,color:exportTheme.muted,align:'center',margin:0,charSpacing:.8});
+    pptAddFooter(slide,pptx,info.label,false);
+  }
+  function pptAddEntityCard(slide,pptx,row,schema,x,y,w,h,accent){
+    slide.addShape(pptx.ShapeType.roundRect,{x,y,w,h,rectRadius:.04,fill:{color:exportTheme.white},line:{color:exportTheme.line,pt:.8}});
+    slide.addShape(pptx.ShapeType.rect,{x,y,w,h:.07,fill:{color:accent},line:{color:accent}});
+    slide.addText(row.name,{x:x+.16,y:y+.18,w:w-1.15,h:.25,fontFace:'Aptos Display',fontSize:12.5,bold:true,color:exportTheme.navy,margin:0,fit:'shrink'});
+    slide.addShape(pptx.ShapeType.roundRect,{x:x+w-.88,y:y+.17,w:.7,h:.27,rectRadius:.05,fill:{color:'EDF3F5'},line:{color:'EDF3F5'}});
+    slide.addText(`${rowEvidenceCount(row)} src`,{x:x+w-.84,y:y+.225,w:.62,h:.13,fontFace:'Aptos',fontSize:5.7,bold:true,color:'42606F',align:'center',margin:0});
+    const cols=activeColumns(schema,[row]).filter(c=>c.id!=='scope').slice(0,3); let yy=y+.58;
+    cols.forEach(c=>{const f=row.fields?.[c.id];slide.addText(c.label.toUpperCase(),{x:x+.16,y:yy,w:1.35,h:.13,fontFace:'Aptos',fontSize:5.5,bold:true,color:exportTheme.muted,margin:0,charSpacing:.4});slide.addText(pptCompact(f?.value,92),{x:x+1.52,y:yy-.01,w:w-1.7,h:.28,fontFace:'Aptos',fontSize:7.2,color:exportTheme.ink,margin:0,fit:'shrink',valign:'top'});yy+=.31;});
+    const src=pptEvidenceNames(row,2); if(src.length)slide.addText(`Fuentes: ${src.join(' · ')}`,{x:x+.16,y:y+h-.25,w:w-.32,h:.13,fontFace:'Aptos',fontSize:5.6,color:'758994',italic:true,margin:0,fit:'shrink'});
+  }
+  function pptAddEntitySlides(pptx,key,rows,schema){
+    const info=domainCopy[key], groups=chunk(rows,6); groups.forEach((group,gi)=>{const slide=pptx.addSlide(); slide.background={color:exportTheme.bg}; pptAddSlideTitle(slide,pptx,info.label,`${rows.length} entidades · página ${gi+1}/${groups.length} · resumen visual, detalle completo en la aplicación`,info.accent); const pos=[[.55,1.78],[6.92,1.78],[.55,3.48],[6.92,3.48],[.55,5.18],[6.92,5.18]]; group.forEach((r,i)=>pptAddEntityCard(slide,pptx,r,schema,pos[i][0],pos[i][1],5.86,1.48,info.accent)); pptAddFooter(slide,pptx,info.label,false);});
+  }
+  function pptAddDetailCard(slide,pptx,row,schema,x,y,w,h,accent){
+    slide.addShape(pptx.ShapeType.roundRect,{x,y,w,h,rectRadius:.04,fill:{color:exportTheme.white},line:{color:exportTheme.line,pt:.8}});
+    slide.addShape(pptx.ShapeType.rect,{x,y,w:.09,h,fill:{color:accent},line:{color:accent}});
+    slide.addText(row.name,{x:x+.25,y:y+.2,w:w-1.45,h:.32,fontFace:'Aptos Display',fontSize:15,bold:true,color:exportTheme.navy,margin:0,fit:'shrink'});
+    slide.addText(`${rowEvidenceCount(row)} fuentes`,{x:x+w-1.15,y:y+.23,w:.92,h:.17,fontFace:'Aptos',fontSize:6.4,bold:true,color:exportTheme.muted,align:'right',margin:0});
+    const cols=activeColumns(schema,[row]).slice(0,8), left=cols.slice(0,4), right=cols.slice(4,8);
+    const draw=(list,xx,ww)=>{let yy=y+.72;list.forEach(c=>{const f=row.fields?.[c.id];slide.addText(c.label.toUpperCase(),{x:xx,y:yy,w:ww,h:.13,fontFace:'Aptos',fontSize:5.8,bold:true,color:exportTheme.muted,margin:0,charSpacing:.45});slide.addText(pptCompact(f?.value,255),{x:xx,y:yy+.17,w:ww,h:.72,fontFace:'Aptos',fontSize:7.7,color:exportTheme.ink,margin:0,fit:'shrink',valign:'top'});yy+=1.02;});};
+    draw(left,x+.25,(w-.7)/2);draw(right,x+w/2+.1,(w-.7)/2);
+    const src=pptEvidenceNames(row,3); if(src.length)slide.addText(`Fuentes: ${src.join(' · ')}`,{x:x+.25,y:y+h-.28,w:w-.5,h:.13,fontFace:'Aptos',fontSize:5.8,color:'758994',italic:true,margin:0,fit:'shrink'});
+  }
+  function pptAddDetailSlides(pptx,key,rows,schema){
+    const info=domainCopy[key]; rows.forEach((row,gi)=>{const slide=pptx.addSlide(); slide.background={color:exportTheme.bg}; pptAddSlideTitle(slide,pptx,info.label,`${gi+1}/${rows.length} · ficha completa con el lenguaje visual de la web`,info.accent); pptAddDetailCard(slide,pptx,row,schema,.55,1.78,12.22,4.98,info.accent); pptAddFooter(slide,pptx,info.label,false);});
+  }
+  function pptAddSources(pptx,selectedRows){
+    const all=uniqueEvidence(selectedRows,72); if(!all.length)return; const groups=chunk(all,9); groups.forEach((group,gi)=>{const slide=pptx.addSlide(); slide.background={color:exportTheme.bg}; pptAddSlideTitle(slide,pptx,'Fuentes principales',`${all.length} evidencias únicas seleccionadas · página ${gi+1}/${groups.length}`,exportTheme.cyan); let y=1.78; group.forEach((ev,i)=>{slide.addShape(pptx.ShapeType.roundRect,{x:.55,y,w:12.22,h:.52,rectRadius:.03,fill:{color:exportTheme.white},line:{color:exportTheme.line,pt:.6}});slide.addShape(pptx.ShapeType.roundRect,{x:.72,y:y+.13,w:.33,h:.25,rectRadius:.04,fill:{color:'E7F4F5'},line:{color:'E7F4F5'}});slide.addText(String(gi*9+i+1),{x:.75,y:y+.19,w:.27,h:.1,fontFace:'Aptos',fontSize:5.8,bold:true,color:'0A7280',align:'center',margin:0});slide.addText(ev.source||'Fuente pública',{x:1.18,y:y+.1,w:2.2,h:.15,fontFace:'Aptos',fontSize:7.4,bold:true,color:exportTheme.navy,margin:0,fit:'shrink'});slide.addText(shortText(ev.title||'Evidencia',115),{x:3.42,y:y+.08,w:7.75,h:.18,fontFace:'Aptos',fontSize:6.9,color:exportTheme.ink,margin:0,fit:'shrink'});slide.addText([ev.date,ev.type].filter(Boolean).join(' · '),{x:3.42,y:y+.3,w:6.7,h:.12,fontFace:'Aptos',fontSize:5.5,color:exportTheme.muted,margin:0});if(ev.url)slide.addText('Abrir ↗',{x:11.32,y:y+.18,w:1.05,h:.13,fontFace:'Aptos',fontSize:6.2,bold:true,color:'177E9F',align:'right',margin:0,hyperlink:{url:ev.url}});y+=.58;}); pptAddFooter(slide,pptx,'Fuentes principales',false);});
   }
   async function exportPptx(){
     if(!window.PptxGenJS){toast('PptxGenJS no está disponible');return;}
     const modules=selectedModules(); if(!modules.size){toast('Selecciona al menos un área');return;}
-    const title=$('#reportTitle')?.value.trim()||'Westcon Iberia · Business Intelligence'; const pptx=new window.PptxGenJS(); pptx.layout='LAYOUT_WIDE'; pptx.author='Westcon Iberia'; pptx.subject='Business Intelligence'; pptx.title=title;
-    const addTitle=(s,t,sub='')=>{s.addText(t,{x:.55,y:.35,w:12.2,h:.5,fontFace:'Aptos Display',fontSize:24,bold:true,color:'082335'});if(sub)s.addText(sub,{x:.55,y:.9,w:12.2,h:.3,fontFace:'Aptos',fontSize:9,color:'647986'});};
-    let s=pptx.addSlide(); s.background={color:'082335'}; s.addText('WESTCON IBERIA',{x:.7,y:.6,w:5,h:.35,fontFace:'Aptos',fontSize:12,bold:true,color:'12C7C0'}); s.addText(title,{x:.7,y:2.3,w:11.4,h:1.1,fontFace:'Aptos Display',fontSize:30,bold:true,color:'FFFFFF'}); s.addText('Fabricantes · Integradores · Mayoristas competidores · Tendencias · Arquitecturas',{x:.7,y:3.65,w:11.4,h:.4,fontFace:'Aptos',fontSize:12,color:'D2E0E6'}); s.addText(`v3.6.0 · ${state.data.meta.source_count} fuentes/familias públicas`,{x:.7,y:6.55,w:5,h:.25,fontFace:'Aptos',fontSize:9,color:'9EB8C5'});
-    const addDomain=(key,label,rows,schema)=>{if(!modules.has(key))return; const chunks=[]; for(let i=0;i<Math.min(rows.length,24);i+=8) chunks.push(rows.slice(i,i+8)); chunks.forEach((chunk,ci)=>{const slide=pptx.addSlide(); addTitle(slide,`${label}${chunks.length>1?` · ${ci+1}/${chunks.length}`:''}`,`${rows.length} entidades/elementos · datos trazables en la aplicación`); chunk.forEach((r,i)=>{const y=1.35+i*.72; slide.addText(r.name,{x:.55,y,w:2.7,h:.3,fontFace:'Aptos',fontSize:10,bold:true,color:'113A50'}); slide.addText(flatSummary(r,schema),{x:3.05,y,w:9.5,h:.55,fontFace:'Aptos',fontSize:7.4,color:'425B69',breakLine:true,margin:0});}); slide.addText('El PPT resume. Para la trazabilidad campo a campo, consultar la aplicación y sus fuentes al pasar el ratón.',{x:.55,y:7.05,w:12,h:.22,fontFace:'Aptos',fontSize:6.5,color:'758994'});});};
-    addDomain('manufacturers','Fabricantes',state.data.manufacturers,state.data.schemas.manufacturers);
-    addDomain('integrators','Integradores',state.data.integrators,state.data.schemas.integrators);
-    addDomain('distributors','Mayoristas de la competencia',state.data.distributors,state.data.schemas.distributors);
-    addDomain('trends','Tendencias',state.data.trends,state.data.schemas.trends);
-    addDomain('architectures','Arquitecturas',state.data.architectures,state.data.schemas.architectures);
-    await pptx.writeFile({fileName:'Westcon_Iberia_Business_Intelligence_v3.6.0.pptx'}); closeModal('exportModal'); toast('PowerPoint generado');
+    const title=$('#reportTitle')?.value.trim()||'Westcon Iberia · Business Intelligence'; const pptx=new window.PptxGenJS(); pptx.layout='LAYOUT_WIDE'; pptx.author='Westcon Iberia'; pptx.company='Westcon Iberia'; pptx.subject='Business Intelligence'; pptx.title=title; pptx.lang='es-ES';
+    let slide=pptx.addSlide(); slide.background={color:exportTheme.navy}; pptAddBrand(slide,pptx,true);
+    slide.addShape(pptx.ShapeType.rect,{x:12.56,y:0,w:.18,h:7.5,fill:{color:exportTheme.cyan},line:{color:exportTheme.cyan}}); slide.addShape(pptx.ShapeType.rect,{x:12.78,y:0,w:.18,h:7.5,fill:{color:exportTheme.pink},line:{color:exportTheme.pink}}); slide.addShape(pptx.ShapeType.rect,{x:13.0,y:0,w:.18,h:7.5,fill:{color:exportTheme.orange},line:{color:exportTheme.orange}});
+    slide.addText('INTELIGENCIA DE NEGOCIO · ESPAÑA + PORTUGAL',{x:.72,y:1.62,w:7.8,h:.22,fontFace:'Aptos',fontSize:9,bold:true,color:exportTheme.cyan,margin:0,charSpacing:1.4});
+    slide.addText(title,{x:.72,y:2.05,w:10.7,h:1.2,fontFace:'Aptos Display',fontSize:31,bold:true,color:exportTheme.white,margin:0,fit:'shrink'});
+    slide.addText('Fabricantes · Integradores · Mayoristas · Tendencias · Arquitecturas',{x:.74,y:3.55,w:10.7,h:.32,fontFace:'Aptos',fontSize:11.5,color:'D2E0E6',margin:0});
+    const stats=[['manufacturers','FAB',state.data.manufacturers.length],['integrators','INT',state.data.integrators.length],['distributors','MAY',state.data.distributors.length],['trends','TEN',state.data.trends.length],['architectures','ARQ',state.data.architectures.length]].filter(x=>modules.has(x[0]));
+    stats.slice(0,5).forEach((item,i)=>{const v=item[2],lab=item[1];slide.addShape(pptx.ShapeType.roundRect,{x:.72+i*1.55,y:4.55,w:1.35,h:.78,rectRadius:.04,fill:{color:'113A50',transparency:0},line:{color:'315267',pt:.7}});slide.addText(String(v),{x:.82+i*1.55,y:4.72,w:1.15,h:.25,fontFace:'Aptos Display',fontSize:16,bold:true,color:exportTheme.white,align:'center',margin:0});slide.addText(lab,{x:.82+i*1.55,y:5.06,w:1.15,h:.11,fontFace:'Aptos',fontSize:5.6,bold:true,color:'AFC1CA',align:'center',margin:0,charSpacing:.6});});
+    slide.addText(`${state.data.meta.source_count||0} fuentes/familias públicas · generado ${state.data.meta.generated_at||''}`,{x:.72,y:6.35,w:8.5,h:.2,fontFace:'Aptos',fontSize:7.5,color:'9EB8C5',margin:0}); pptAddFooter(slide,pptx,'Westcon Iberia · Business Intelligence',true);
+    const order=[['manufacturers',state.data.manufacturers,state.data.schemas.manufacturers],['integrators',state.data.integrators,state.data.schemas.integrators],['distributors',state.data.distributors,state.data.schemas.distributors],['trends',state.data.trends,state.data.schemas.trends],['architectures',state.data.architectures,state.data.schemas.architectures]], selectedRows=[];
+    order.forEach(([key,rows,schema])=>{if(!modules.has(key))return;pptAddDomainDivider(pptx,key,rows.length);if(key==='trends'||key==='architectures')pptAddDetailSlides(pptx,key,rows,schema);else pptAddEntitySlides(pptx,key,rows,schema);selectedRows.push(...rows);});
+    pptAddSources(pptx,selectedRows);
+    await pptx.writeFile({fileName:'Westcon_Iberia_Business_Intelligence_v3.6.1.pptx'}); closeModal('exportModal'); toast('PowerPoint generado con diseño Westcon');
   }
 
   function renderAll(){

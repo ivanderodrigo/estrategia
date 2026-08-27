@@ -105,7 +105,7 @@ def run(root: Path, profile: str = "daily", foundation_rc: int = 0) -> dict[str,
 
     finished = datetime.now(timezone.utc)
     result = {
-        "version": "3.6.0",
+        "version": "3.6.1",
         "profile": profile,
         "status": "published",
         "started_at": started.isoformat(),

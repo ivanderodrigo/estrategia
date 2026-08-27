@@ -1,4 +1,4 @@
-# Westcon Iberia Business Intelligence v3.6.0
+# Westcon Iberia Business Intelligence v3.6.1
 
 ## Qué es
 
@@ -83,7 +83,7 @@ Conserva `.git`, sustituye el resto del contenido por este paquete y ejecuta:
 ```powershell
 git status
 git add -A
-git commit -m "Upgrade Business Intelligence v3.6.0"
+git commit -m "Upgrade Business Intelligence v3.6.1"
 git pull --rebase origin main
 git push origin main
 ```
@@ -91,10 +91,14 @@ git push origin main
 ## Dataset incluido en esta candidata
 
 - 36 fabricantes Westcon
-- 68 partners/integradores con relación publicable ya soportada en la snapshot incluida
+- 91 partners/integradores con relación publicable ya soportada en la snapshot incluida
 - 11 mayoristas competidores
 - 15 tendencias enriquecidas
 - 12 arquitecturas validadas por taxonomía funcional
-- 210 fuentes/familias de investigación
+- 216 fuentes/familias de investigación
 
 El universo de integradores no se considera cerrado: el objetivo del recolector v3.6 es crecer de forma continua a medida que encuentre nuevas relaciones demostrables en los ecosistemas de los fabricantes.
+
+## Mejora v3.6.1
+
+Sin cambiar la estructura visible, v3.6.1 aumenta la cobertura del ecosistema y rediseña las exportaciones para que PDF y PowerPoint mantengan el mismo lenguaje visual de la aplicación: portada Westcon, colores corporativos, tarjetas, cabeceras, contadores y fuentes. Tendencias y Arquitecturas se exportan como fichas, no como tablas planas; el PowerPoint incluye además un apéndice de fuentes con enlaces.

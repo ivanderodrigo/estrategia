@@ -18,4 +18,6 @@ assert(js.includes('westcon-font-scale'), 'Falta persistencia del tamaño de tex
 assert(html.includes('textLarger') && html.includes('textSmaller'), 'Faltan controles de tamaño de texto');
 assert(data.manufacturers.length === 36, 'Fabricantes debe publicar exactamente el portfolio Westcon');
 for (const section of ['manufacturers','integrators','distributors','trends','architectures']) assert(Array.isArray(data[section]) && data[section].length > 0, `Sin datos en ${section}`);
-console.log('UI smoke v3.6.0 · PASS');
+assert(js.includes('pptAddEntityCard') && js.includes('pptAddDetailCard'), 'El PPT no usa el sistema visual de tarjetas');
+assert(js.includes('reportCover') && js.includes('r-intel-card'), 'El PDF no usa el sistema visual alineado con la web');
+console.log('UI smoke v3.6.1 · PASS');

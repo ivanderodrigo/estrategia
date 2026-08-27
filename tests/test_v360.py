@@ -78,6 +78,16 @@ class BusinessIntelligenceV360(unittest.TestCase):
         for rel in ("index.html", "assets/v360/intelligence.js", "data/v36/intelligence.json"):
             self.assertIsNone(pattern.search((ROOT / rel).read_text(encoding="utf-8")), rel)
 
+    def test_exports_follow_web_visual_system(self):
+        js = (ROOT / "assets/v360/intelligence.js").read_text(encoding="utf-8")
+        css = (ROOT / "assets/v360/intelligence.css").read_text(encoding="utf-8")
+        for token in ("pptAddEntityCard", "pptAddDetailCard", "pptAddDomainDivider", "pptAddSources", "reportCover", "reportCardPage"):
+            self.assertIn(token, js)
+        for token in (".r-brand", ".r-intel-card", ".r-table", ".r-source-grid", ".report-sheet.rendering"):
+            self.assertIn(token, css)
+        self.assertIn("Westcon_Iberia_Business_Intelligence_v3.6.1.pptx", js)
+        self.assertIn("Westcon_Iberia_Business_Intelligence_v3.6.1.pdf", js)
+
 
 if __name__ == "__main__":
     unittest.main()
