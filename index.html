@@ -7,16 +7,16 @@
 <meta name="description" content="Westcon Iberia · Business Intelligence · Fabricantes, integradores, mayoristas competidores, tendencias y arquitecturas con trazabilidad por campo.">
 <title>Westcon Iberia · Business Intelligence</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/v350/intelligence.css?v=3.5.0">
+<link rel="stylesheet" href="assets/v360/intelligence.css?v=3.6.0">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
-<script defer src="assets/v350/intelligence.js?v=3.5.0"></script>
+<script defer src="assets/v360/intelligence.js?v=3.6.0"></script>
 </head>
 <body>
 <header class="appbar">
   <div class="brand">
     <div class="brandmark" aria-hidden="true"><span></span><span></span><span></span></div>
-    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v3.5</small></div>
+    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v3.6</small></div>
   </div>
   <button id="navToggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="tabs">Menú</button>
   <nav id="tabs" aria-label="Áreas de inteligencia">
@@ -27,6 +27,11 @@
     <button data-view="arquitecturas" type="button">Arquitecturas</button>
   </nav>
   <div class="actions">
+    <div class="text-size" role="group" aria-label="Tamaño del texto">
+      <button id="textSmaller" class="ghost compact" type="button" aria-label="Reducir tamaño del texto">A−</button>
+      <button id="textReset" class="ghost compact scale-value" type="button" aria-label="Restablecer tamaño del texto">100%</button>
+      <button id="textLarger" class="ghost compact" type="button" aria-label="Aumentar tamaño del texto">A+</button>
+    </div>
     <button id="btnSources" class="ghost" type="button">Fuentes</button>
     <button id="btnExport" class="primary" type="button">Informe / PPT</button>
   </div>
@@ -35,23 +40,23 @@
 <main>
   <section id="fabricantes" class="view active">
     <div class="page-head">
-      <div><div class="eyebrow">FABRICANTES</div><h1>Portfolio, competencia y ecosistema.</h1><p>Información pública sobre fabricantes de Westcon y fabricantes competidores o adyacentes con evidencia disponible. Pasa el ratón sobre cualquier dato para ver sus fuentes.</p></div>
+      <div><div class="eyebrow">FABRICANTES</div><h1>Portfolio Westcon, competencia y ecosistema.</h1><p>Las filas corresponden exclusivamente a fabricantes del portfolio Westcon Iberia. Para cada uno se muestran todos los competidores/peers, mayoristas alternativos, partners e información de mercado que disponga de evidencia trazable.</p></div>
       <div class="view-count" id="manufacturerCount"></div>
     </div>
-    <div class="toolbar">
-      <input id="manufacturerSearch" type="search" placeholder="Buscar fabricante, tecnología, mayorista, integrador o analista…">
-      <select id="manufacturerRole"><option value="all">Todos</option><option value="Portfolio Westcon Iberia">Portfolio Westcon Iberia</option><option value="Fabricante competidor / adyacente">Competidores / adyacentes</option></select>
+    <div class="toolbar single">
+      <input id="manufacturerSearch" type="search" placeholder="Buscar fabricante Westcon, competidor, tecnología, mayorista, partner o analista…">
     </div>
     <div id="manufacturerTable" class="intelligence-table"></div>
   </section>
 
   <section id="integradores" class="view">
     <div class="page-head">
-      <div><div class="eyebrow">INTEGRADORES</div><h1>Fabricantes, capacidades, casos y señales de talento.</h1><p>Relaciones públicas con fabricantes, especializaciones, servicios, verticales, contratación y perfiles demandados en España y Portugal. Las vacantes se tratan solo como señal de skills.</p></div>
+      <div><div class="eyebrow">INTEGRADORES</div><h1>El ecosistema real de partners de nuestros fabricantes.</h1><p>La investigación incluye integradores, instaladores, resellers/VAR, MSP, MSSP, service providers, consultoras y partners certificados vinculados a fabricantes Westcon en España y Portugal. Se exploran locators, páginas de partner, premios, casos, certificaciones, contratación pública y empleo; una vacante solo enriquece skills y nunca prueba por sí sola una relación.</p></div>
       <div class="view-count" id="integratorCount"></div>
     </div>
-    <div class="toolbar">
-      <input id="integratorSearch" type="search" placeholder="Buscar integrador, fabricante, certificación, servicio, cliente o perfil…">
+    <div class="toolbar integrator-toolbar">
+      <input id="integratorSearch" type="search" placeholder="Buscar integrador, instalador, MSP, certificación, servicio o perfil…">
+      <select id="integratorVendor" aria-label="Filtrar por fabricante Westcon"><option value="all">Todos los fabricantes Westcon</option></select>
       <select id="integratorScope"><option value="all">España + Portugal / Iberia</option><option value="ES">España</option><option value="PT">Portugal</option><option value="IBERIA">Iberia</option></select>
     </div>
     <div id="integratorTable" class="intelligence-table"></div>
@@ -71,7 +76,7 @@
 
   <section id="tendencias" class="view">
     <div class="page-head">
-      <div><div class="eyebrow">TENDENCIAS 2026–2030</div><h1>Señales de mercado y evolución tecnológica.</h1><p>Síntesis trazable de señales públicas de analistas, organismos, fabricantes y fuentes especializadas. Las síntesis describen lo observado; no prescriben acciones.</p></div>
+      <div><div class="eyebrow">TENDENCIAS 2026–2030</div><h1>Mercado, crecimiento, actores y evolución tecnológica.</h1><p>Cada tendencia cruza señales de analistas, organismos, fabricantes y fuentes especializadas: tamaño y crecimiento de mercado cuando existe, horizonte, drivers, prioridades de compra, actores citados, fabricantes Westcon relacionados, evolución e información específica de Iberia.</p></div>
       <div class="view-count" id="trendCount"></div>
     </div>
     <div class="toolbar single"><input id="trendSearch" type="search" placeholder="Buscar tendencia, área, métrica o fuente…"></div>
@@ -80,7 +85,7 @@
 
   <section id="arquitecturas" class="view">
     <div class="page-head">
-      <div><div class="eyebrow">ARQUITECTURAS</div><h1>Mapas multivendor con límites explícitos.</h1><p>Capas funcionales, fabricantes, integraciones respaldadas y cautelas. Un encaje funcional nunca se presenta como integración certificada sin evidencia específica.</p></div>
+      <div><div class="eyebrow">ARQUITECTURAS</div><h1>Marcos funcionales guiados por analistas y estándares.</h1><p>Primero se define la arquitectura con referencias de Gartner, Forrester, IDC, NIST y otras fuentes relevantes; después se mapea el portfolio Westcon solo donde existe encaje funcional explícito. Compartir capa no significa integración certificada y las capacidades adyacentes se identifican como tales.</p></div>
       <div class="view-count" id="architectureCount"></div>
     </div>
     <div class="toolbar single"><input id="architectureSearch" type="search" placeholder="Buscar arquitectura, fabricante, capa o tecnología…"></div>

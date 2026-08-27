@@ -1388,8 +1388,15 @@ def make_queries() -> list[dict]:
             # official-domain targeted search patterns for high-value proof
             domain=CFG.get('vendor_domains',{}).get(vendor)
             if domain:
-                for term in ['partners','customer case study','press release','managed services','Spain','Portugal']:
+                for term in ['partners','partner locator','find a partner','partner directory','reseller','VAR','systems integrator','installer','MSP','MSSP','service provider','certified partner','partner awards','customer case study','press release','managed services','Spain','Portugal']:
                     generated.append({"query":f'site:{domain} "{vas[0]}" {country_word} {term}',"kind":"vendor","vendor":vendor,"country":cc,"intent":"official","priority":70+lowcov})
+                # Broad partner-universe discovery. Search is intentionally role-rich because
+                # vendors use very different channel terminology. Official-domain evidence
+                # is preferred; results become relationships only after explicit proof.
+                for role_term in ['integrator OR reseller OR VAR','installer OR integrator','MSP OR MSSP OR managed service provider','solution provider OR service provider','certified partner OR gold partner OR platinum partner']:
+                    generated.append({"query":f'site:{domain} {country_word} ({role_term}) partner',"kind":"partner-universe","vendor":vendor,"country":cc,"intent":"ecosystem","priority":92+lowcov})
+            generated.append({"query":f'"{vas[0]}" {country_word} "partner locator" OR "find a partner"',"kind":"partner-universe","vendor":vendor,"country":cc,"intent":"ecosystem","priority":88+lowcov})
+            generated.append({"query":f'"{vas[0]}" {country_word} integrator reseller MSP MSSP certified partner',"kind":"partner-universe","vendor":vendor,"country":cc,"intent":"ecosystem","priority":84+lowcov})
         # analyst/global strategic research
         for analyst in CFG.get('analyst_names',[]):
             generated.append({"query":f'"{vas[0]}" {analyst} 2026 public',"kind":"vendor","vendor":vendor,"country":"ALL","intent":"analyst","priority":52+lowcov})
@@ -1462,7 +1469,13 @@ def make_queries() -> list[dict]:
         for cc,country in [('ES','Spain'),('PT','Portugal')]:
             for term in ['official linecard vendors','annual report revenue gross sales','value added services labs financing','market share technology distribution','cloud marketplace managed services']:
                 generated.append({'query':f'"{dist}" {country} {term}','kind':'distributor-profile','country':cc,'intent':'channel','entity':dist,'priority':86})
-    for integ in CFG.get('known_integrators',[])[:36]:
+    
+    profile_universe=list(dict.fromkeys(CFG.get('known_integrators',[])+discovered_integrators(300)))
+    profile_limit=48 if PROFILE=='daily' else 120 if PROFILE=='deep' else min(300,len(profile_universe))
+    if profile_universe:
+        offset=int(sha('integrator-profiles',str(NOW.isocalendar().week))[:6],16)%len(profile_universe)
+        profile_universe=[profile_universe[(offset+i)%len(profile_universe)] for i in range(min(profile_limit,len(profile_universe)))]
+    for integ in profile_universe:
         for cc,country in [('ES','Spain'),('PT','Portugal')]:
             for term in ['certifications vendor specializations','technology partners portfolio','customer case study','annual revenue employees','distributor preferred procurement']:
                 generated.append({'query':f'"{integ}" {country} {term}','kind':'integrator-profile','country':cc,'intent':'ecosystem','entity':integ,'priority':82})
@@ -1616,13 +1629,43 @@ def merge_channel_signals(*groups) -> list[dict]:
     return sorted(merged.values(),key=lambda r:(-int(r.get('confidence',0)),r['vendor'],r['country'],r['distributor']))
 
 
+def partner_name_candidates_from_evidence(e: dict) -> list[str]:
+    """Conservatively extract new partner names from explicit relationship text.
+
+    This never promotes a relationship on its own: integrator_candidates still
+    requires a tracked Westcon vendor, partner/integrator context and geography.
+    The heuristic is purposely narrow to avoid turning generic prose into firms.
+    """
+    text=clean(f"{e.get('title','')} {e.get('snippet','')}")
+    if not text or not any(x in norm(text) for x in ['partner','integrator','reseller','msp','mssp','solution provider','service provider','instalador','integrador','parceiro']):
+        return []
+    vendor_aliases={norm(a) for v in tracked_names() for a in aliases_for(v)[:3]}
+    stop={'spain','espana','portugal','iberia','partners','partner','customer','customers','case study','home','solutions','services','network','security','cloud'}
+    candidates=[]
+    patterns=[
+        r'^([^|–—:\-]{2,80})\s*(?:\||–|—|:)\s*[^|]{0,100}\b(?:partner|integrator|reseller|msp|mssp)\b',
+        r'\b(?:names?|named|recognizes?|recognised|recognized|premia|premiado|premiada|award(?:s|ed)?|wins?)\s+([A-ZÁÉÍÓÚÑÇ][A-Za-zÀ-ÿ0-9&+. ]{2,70}?)\s+(?:as|como|the|a|partner|integrator|reseller)',
+        r'\b(?:partner|integrator|reseller|msp|mssp|parceiro|integrador)\s+(?:is|es|é|:)?\s*([A-ZÁÉÍÓÚÑÇ][A-Za-zÀ-ÿ0-9&+. ]{2,70})(?:[,.|–—]|$)'
+    ]
+    for pat in patterns:
+        for m in re.finditer(pat,text,re.I if pat.startswith('^') else 0):
+            name=clean(m.group(1)).strip(' -–—:|,.')
+            n=norm(name)
+            if not name or len(name)<3 or len(name)>80 or n in stop or n in vendor_aliases: continue
+            if any(term in n for term in ['find a partner','partner locator','case study','customer story','press release']): continue
+            if name not in candidates: candidates.append(name)
+    return candidates[:6]
+
+
 def integrator_candidates(evidence: list[dict]) -> list[dict]:
-    names=CFG.get('known_integrators',[]); vendors=tracked_names(); rows={}
+    names=list(dict.fromkeys(CFG.get('known_integrators',[])+discovered_integrators(300))); vendors=tracked_names(); rows={}
     for e in evidence:
         text=norm(f"{e.get('title','')} {e.get('snippet','')} {e.get('query','')} {e.get('winner','')}")
         matched_vendors=[v for v in vendors if any(norm(a) in text for a in aliases_for(v)[:3])]
         if e.get('vendor') and e['vendor'] not in matched_vendors: matched_vendors.append(e['vendor'])
         matched=[n for n in names if norm(n) in text]
+        for discovered_name in partner_name_candidates_from_evidence(e):
+            if discovered_name not in matched: matched.append(discovered_name)
         if e.get('winner') and e['winner'] and e['winner'] not in matched: matched.append(e['winner'])
         if not matched_vendors or not matched: continue
         if e.get('evidenceType') not in {'integrator','customer','partner-program','services','procurement'} and not any(x in text for x in ['partner','integrator','mssp','implementation','winner','adjudicat']): continue
@@ -1631,7 +1674,12 @@ def integrator_candidates(evidence: list[dict]) -> list[dict]:
             for v in matched_vendors:
                 for name in matched[:4]:
                     if not clean(name): continue
-                    key=(v,cc,clean(name)); row=rows.setdefault(key,{'vendor':v,'country':cc,'name':clean(name),'role':'Integrador / Partner','status':'candidate-public-signal','confidence':0,'evidence':[],'url':e.get('url')})
+                    key=(v,cc,clean(name))
+                    nt=norm(text)
+                    role='MSSP' if 'mssp' in nt else 'MSP' if 'managed service provider' in nt or re.search(r'\bmsp\b',nt) else 'Reseller / VAR' if 'reseller' in nt or re.search(r'\bvar\b',nt) else 'Instalador / Integrador' if 'installer' in nt or 'instalador' in nt else 'Integrador / Partner'
+                    explicit_partner = e.get('sourceTier') in {'official-company','public-open-data'} or e.get('evidenceType') in {'partner-program','integrator'}
+                    proof_type='official-partner-signal' if explicit_partner else 'public-partner-signal'
+                    row=rows.setdefault(key,{'vendor':v,'country':cc,'name':clean(name),'role':role,'status':'candidate-public-signal','proofType':proof_type,'confidence':0,'evidence':[],'url':e.get('url'),'source':e.get('source'),'signal':e.get('title') or e.get('snippet')})
                     bonus=10 if e.get('sourceTier') in {'official-company','public-open-data'} else 0
                     row['confidence']=max(row['confidence'],min(96,int(e.get('confidence',45))+bonus))
                     if e.get('id') not in row['evidence']: row['evidence'].append(e.get('id'))

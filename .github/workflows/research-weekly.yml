@@ -37,21 +37,21 @@ jobs:
       - name: Dependencias
         if: steps.schedule.outputs.run == 'true'
         run: pip install -r requirements.txt
-      - name: Preflight offline del motor y la UI v3.5
+      - name: Preflight offline del motor y la UI v3.6
         if: steps.schedule.outputs.run == 'true'
         run: |
-          python -m py_compile scripts/research.py scripts/configure_updates.py scripts/schedule_guard.py scripts/research_supervisor_v33.py scripts/research_supervisor_v35.py scripts/v34/*.py scripts/v35/*.py
+          python -m py_compile scripts/research.py scripts/configure_updates.py scripts/schedule_guard.py scripts/research_supervisor_v33.py scripts/research_supervisor_v36.py scripts/v34/*.py scripts/v36/*.py
           python scripts/test_resilience.py
           python scripts/test_schedule.py
-          python -m unittest tests/test_v350.py
-          python scripts/v35/validate_v35.py
-          node --check assets/v350/intelligence.js
-          node tests/ui_smoke_v350.js
+          python -m unittest tests/test_v360.py
+          python scripts/v36/validate_v36.py
+          node --check assets/v360/intelligence.js
+          node tests/ui_smoke_v360.js
       - name: Investigación profunda
         if: steps.schedule.outputs.run == 'true'
         env:
           RESEARCH_PROFILE: deep
-        run: python scripts/research_supervisor_v35.py --profile deep --max-runtime 1800 --fallback-runtime 240
+        run: python scripts/research_supervisor_v36.py --profile deep --max-runtime 1800 --fallback-runtime 240
       - name: Conservar diagnóstico de ejecución
         if: always() && steps.schedule.outputs.run == 'true'
         uses: actions/upload-artifact@v4
@@ -62,7 +62,7 @@ jobs:
             data/v32/
             data/v33/
             data/v34/
-            data/v35/
+            data/v36/
             diagnostics/*.log
             data/run_manifest.latest.json
             data/supervisor.latest.json
@@ -75,7 +75,7 @@ jobs:
           retention-days: 45
       - name: Validar dataset antes de publicar
         if: steps.schedule.outputs.run == 'true'
-        run: python scripts/v35/validate_v35.py
+        run: python scripts/v36/validate_v36.py
       - name: Guardar actualización
         if: steps.schedule.outputs.run == 'true'
         run: |
@@ -83,7 +83,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add data/research.latest.json data/research_status.json data/research_learning.json data/research_queue.json data/changes.latest.json data/source_health.json data/discovered_entities.json data/research_errors.json data/run_manifest.latest.json data/supervisor.latest.json data/history/
           git add data/v31/ data/v32/ data/v33/
-          git add -A data/v34/ data/v35/
+          git add -A data/v34/ data/v36/
           git diff --cached --quiet || git commit -m "chore: investigación estratégica profunda"
           git pull --rebase origin main
           git push origin HEAD:main

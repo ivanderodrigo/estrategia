@@ -1,0 +1,15 @@
+{
+  "version":"3.6.0",
+  "goal":"Descubrir el ecosistema real de partners de los fabricantes Westcon en España y Portugal, más allá de una lista cerrada de grandes integradores.",
+  "entity_types":["system integrator","integrador","instalador","reseller","VAR","MSP","MSSP","managed service provider","solution provider","service provider","consulting partner","implementation partner","technology partner","channel partner","certified partner","elite partner","platinum partner","gold partner","specialized partner","ATC/training partner"],
+  "official_discovery_paths":["partners","partner locator","find a partner","partner directory","resellers","solution providers","managed service providers","certified partners","partner awards","partner of the year","customer stories","case studies","marketplace","integrations","training partners"],
+  "employment_sources":["LinkedIn Jobs","Indeed","InfoJobs","Tecnoempleo","JobToday","Glassdoor","Welcome to the Jungle","Jooble","Net-Empregos","ITJobs.pt","Expresso Emprego","Sapo Emprego","Landing.jobs","Teamlyzer","Greenhouse","Lever","Workday","SmartRecruiters","Ashby","SuccessFactors"],
+  "promotion_policy":"Una entidad puede entrar en la interfaz si existe al menos una evidencia oficial del fabricante o del propio partner que vincule explícitamente al partner con un fabricante Westcon; señales de empleo solo enriquecen skills y nunca crean la relación por sí solas.",
+  "query_templates":[
+    "site:{vendor_domain} ({partner_terms}) (Spain OR España OR Portugal OR Iberia)",
+    "\"{vendor}\" (partner OR reseller OR integrator OR integrador OR instalador OR MSP OR MSSP OR \"solution provider\") (Spain OR España)",
+    "\"{vendor}\" (partner OR reseller OR integrator OR parceiro OR instalador OR MSP OR MSSP OR \"service provider\") Portugal",
+    "\"{vendor}\" (\"partner of the year\" OR \"partner del año\" OR \"partner do ano\" OR platinum OR elite OR specialized) (Spain OR Portugal OR Iberia)",
+    "\"{vendor}\" (certification OR certified OR specialization OR especialización OR especializacao) (Spain OR Portugal) partner"
+  ]
+}
