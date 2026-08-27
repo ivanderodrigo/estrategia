@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generated_at": "2026-08-27T15:46:01.453192+00:00",
+    "generated_at": "2026-08-27T22:47:41.905829+00:00",
     "registered_sources": 151,
-    "direct_source_rows": 205,
-    "direct_raw_rows": 205,
+    "direct_source_rows": 107,
+    "direct_raw_rows": 107,
     "direct_deduplicated_rows": 0
   },
   "direct_connectors": {
@@ -11,203 +11,203 @@
       "attempted": 2,
       "successful": 2,
       "failed": 0,
-      "rows": 55,
+      "rows": 71,
       "raw_notices": 360,
-      "technology_notices": 55,
+      "technology_notices": 65,
       "errors": [],
-      "latency_ms": 4501.5
+      "latency_ms": 3580.0
     },
     "placsp_atom": {
       "attempted": 1,
       "successful": 1,
       "failed": 0,
-      "rows": 11,
+      "rows": 3,
       "raw_feed_rows": 80,
-      "technology_rows": 11,
+      "technology_rows": 3,
       "entity_matched_rows": 0,
       "url_used": "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3.atom",
       "cached": 0,
       "errors": [],
-      "latency_ms": 9261.3
+      "latency_ms": 11024.2
     },
     "cisa_kev": {
       "attempted": 1,
       "failed": 0,
       "rows": 33,
-      "latency_ms": 1416.3
+      "latency_ms": 337.4
     },
     "generic_feeds": {
       "attempted_sources": 18,
-      "successful_sources": 8,
+      "successful_sources": 1,
       "failed_sources": 0,
-      "no_feed_sources": 10,
+      "no_feed_sources": 17,
       "failed": 0,
-      "rows": 106,
+      "rows": 0,
       "per_source": {
-        "first": {
+        "nvd": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "ParseError: syntax error: line 1, column 0",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "cisa": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 403: <HTML><HEAD> <TITLE>Access Denied</TITLE> </HEAD><BODY> <H1>Access Denied</H1>   You don't have permission to access \"http&#58;&#47;&#47;cisa&#46;gov&#47;rss\" on this server.<P> Reference&#32;&#35;18&#46;a5bbce17&#46;1787870840&#46;1f907517 <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;a5bbce17&#46;1787870840&#46;1f907517</P> </BODY> </HTML>",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "cnpd_pt": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'cnpd.pt'. (_ssl.c:1010)>",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "ccncert": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 403: <html><head><title>Voight-Kampff Browser Test</title><style>#main{margin:auto;width:100%;padding:10px}#content{font-family:sans-serif;max-width:800px;width:100%;text-align:center;margin:auto}.loading{color:#3fa3a5;text-align:center;font-size:6em;font-family:sans;font-weight:bolder}.loading span{opacity:0;animation:blink 1.4s infinite}.loading span:nth-child(1){animation-delay:.2s}.loading span:nth-child(2){animation-delay:.4s}.loading span:nth-child(3){animation-delay:.6s}@keyframes blink{0%{opacity:.1}50%{opacity:1}100%{opacity:.1}}@media screen and (max-width:800px){#content{padding:10px}}</style></head><body><div id=main><div id=content><div class=loading><span>.</span> <span>.</span> <span>.</span></div><h2>Checking Your Browser</h2><p>Please wait, this will only take a moment. You'll be redirected shortly.</div></div><a href=https://statics.transparentedge.eu/btchk01 tabindex=-1 ari",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "cve": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "ParseError: not well-formed (invalid token): line 9, column 38",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "placsp": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"> <html><head> <title>404 Not Found</title> </head><body> <h1>Not Found</h1> <p>The requested URL was not found on this server.</p> <hr> <address>IBM_HTTP_Server Server at contrataciondelsectorpublico.gob.es Port 80</address> </body></html>",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "cnmc": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404: <!DOCTYPE html> <html  lang=\"es\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\">   <head>     <meta charset=\"utf-8\" /> <meta name=\"description\" content=\"Hemos actualizado la página web El contenido que buscas ha cambiado de URL. Revisa los apartados correspondientes. Gracias. Volver a la Home\" /> <link rel=\"canonical\" href=\"https://www.cnmc.es/node/411565\" /> <link rel=\"image_src\" href=\",,,https://www.cnmc.es/sites/default/files/CNMC_Logotipo.png\" /> <meta property=\"og:url\" content=\"https://www.cnmc.es/node/411565\" /> <meta property=\"og:title\" content=\"Hemos actualizado la página web\" /> <meta property=\"og:image\" content=\"https://www.cnmc.es/sites/default/files/CNMC_Logotipo.png\" /> <meta name=\"Generator\" content=\"Drupal 10 (https://www.drupal.org)\" /> <meta name=\"MobileOptimized\" content=\"width\" /> <meta name=\"HandheldFriendly\" content=\"true\" /> <meta name=\"viewport\" content=\"width=device-wi",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "cert_eu": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404: <!DOCTYPE html> <html lang=\"en\"> <head>     <!-- Meta Data -->     <meta charset=\"UTF-8\">     <meta content=\"text/html; charset=UTF-8\" http-equiv=\"Content-Type\"/>     <meta content=\"IE=edge\" http-equiv=\"X-UA-Compatible\">     <meta content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1\" name=\"viewport\">     <link href=\"/favicon.ico\" rel=\"apple-touch-icon\" sizes=\"180x180\">     <link href=\"/favicon.ico\" rel=\"icon\" sizes=\"32x32\" type=\"image/png\">     <link href=\"/favicon.ico\" rel=\"icon\" sizes=\"16x16\" type=\"image/png\">      <!-- Site Stylesheet -->     <link href=\"/files/css/styles.min.css?v=1.0\" rel=\"stylesheet\">     <link href=\"//fonts.googleapis.com\" rel=\"preconnect\">     <link crossorigin href=\"//fonts.gstatic.com\" rel=\"preconnect\">     <link href=\"//fonts.googleapis.com/css2?family=Barlow:wght@200;300;400;500;600&display=swap\" rel=\"stylesheet\">     <!--Basic meta",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "dre": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "ParseError: not well-formed (invalid token): line 23, column 19",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "boe": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "ParseError: mismatched tag: line 25, column 4",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "nist": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404: <!DOCTYPE html> <html lang=\"en\" dir=\"ltr\" prefix=\"content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# \">   <head>     <meta charset=\"utf-8\" /><script type=\"text/javascript\">(window.NREUM||(NREUM={})).init={ajax:{deny_list:[\"bam.nr-data.net\"]},feature_flags:[\"soft_nav\"]};(window.NREUM||(NREUM={})).loader_config={licenseKey:\"37b7ccb661\",applicationID:\"1089704227\",browserID:\"1134161994\"};;/*! For license information please see nr-loader-rum-1.320.1.min.js.LICENSE.txt */ (()=>{var e={8122(e,t,r){\"use strict\";r.d(t,{a:()=>i});var n=r(944);function i(e,t){try{if(!e||\"object\"!=typeof e)ret",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "portal_base": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\"http://www.w3.org/TR/html4/strict.dtd\">\r <HTML><HEAD><TITLE>Not Found</TITLE>\r <META HTTP-EQUIV=\"Content-Type\" Content=\"text/html; charset=us-ascii\"></HEAD>\r <BODY><h2>Not Found</h2>\r <hr><p>HTTP Error 404. The requested resource is not found.</p>\r </BODY></HTML>",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "companies_house": {
           "attempts": 1,
-          "feed_rows": 25,
-          "accepted_rows": 18,
-          "working_feed": "https://first.org/newsroom/news/rss.xml",
+          "feed_rows": 20,
+          "accepted_rows": 0,
+          "working_feed": "https://www.gov.uk/government/organisations/companies-house.atom",
           "error": "",
           "row_cap": 25,
           "status": "ok"
         },
-        "vendor_17": {
-          "attempts": 1,
-          "feed_rows": 10,
-          "accepted_rows": 10,
-          "working_feed": "https://xmcyber.com/feed",
-          "error": "",
-          "row_cap": 25,
-          "status": "ok"
-        },
-        "vendor_16": {
-          "attempts": 1,
-          "feed_rows": 10,
-          "accepted_rows": 10,
-          "working_feed": "https://www.attackiq.com/feed/",
-          "error": "",
-          "row_cap": 25,
-          "status": "ok"
-        },
-        "int_es_12": {
+        "edpb": {
           "attempts": 2,
           "feed_rows": 0,
           "accepted_rows": 0,
           "working_feed": "",
-          "error": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+          "error": "HTTP 404: <!DOCTYPE html> <html lang=\"en\" dir=\"ltr\"> <head>   <meta charset=\"utf-8\" /> <meta name=\"robots\" content=\"noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate\" /> <meta name=\"MobileOptimized\" content=\"width\" /> <meta name=\"HandheldFriendly\" content=\"true\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /> <link rel=\"icon\" href=\"/themes/custom/frontend/favicon.ico\" type=\"image/vnd.microsoft.icon\" /> <link rel=\"alternate\" hreflang=\"en\" href=\"https://www.edpb.europa.eu/not-found_en\" /> <link rel=\"canonical\" href=\"https://www.edpb.europa.eu/not-found_en\" /> <link rel=\"shortlink\" href=\"https://www.edpb.europa.eu/node/2_en\" />    <title>Not found | European Data Protection Board</title>   <link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_wanSBL4771h5CeW547QkuKbWkGjqzOaEmnwlAWCSXOM.css?delta=0&amp;language=en&amp;theme=frontend&amp;incl",
           "row_cap": 25,
           "status": "no_feed"
         },
-        "vendor_21": {
-          "attempts": 1,
-          "feed_rows": 25,
-          "accepted_rows": 25,
-          "working_feed": "https://netscout.com/feed",
-          "error": "",
-          "row_cap": 25,
-          "status": "ok"
-        },
-        "vendor_24": {
-          "attempts": 1,
-          "feed_rows": 25,
-          "accepted_rows": 25,
-          "working_feed": "https://aws.amazon.com/rss",
-          "error": "",
-          "row_cap": 25,
-          "status": "ok"
-        },
-        "int_es_20": {
+        "aepd": {
           "attempts": 2,
           "feed_rows": 0,
           "accepted_rows": 0,
           "working_feed": "",
-          "error": "HTTP 404: <!DOCTYPE html><html lang=\"en\" data-astro-cid-zetdm5md> <head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Claranet Limited | Page not found</title><link rel=\"icon\" type=\"image/svg\" href=\"/favicon.svg\"><script type=\"module\" src=\"/com/_astro/404.astro_astro_type_script_index_0_lang.BRyqG8IC.js\"></script><link rel=\"stylesheet\" href=\"/com/_astro/_page_.BsRRHd3D.css\"> <style>.main-page[data-astro-cid-zetdm5md]{position:relative;background:radial-gradient(ellipse at bottom,#1b2947,#0d1420);overflow:hidden}.star-layer[data-astro-cid-zetdm5md]{position:absolute;top:0;left:0;width:200vw;height:100vh;pointer-events:none;will-change:transform}#stars-small[data-astro-cid-zetdm5md]{z-index:2;animation:scrollStars 51s linear infinite}#stars-medium[data-astro-cid-zetdm5md]{z-index:3;animation:scrollStars 25.5s linear infinite}#stars-large[data-astr",
+          "error": "HTTP 503: <HTML><HEAD> <TITLE>Service Unavailable</TITLE> </HEAD><BODY> <H1>Service Unavailable - Zero size object</H1> The server is temporarily unable to service your request.  Please try again later.<P> Reference&#32;&#35;15&#46;8467cd17&#46;1787870845&#46;1bde4e5 <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;15&#46;8467cd17&#46;1787870845&#46;1bde4e5</P> </BODY></HTML>",
           "row_cap": 25,
           "status": "no_feed"
         },
-        "int_es_15": {
-          "attempts": 1,
-          "feed_rows": 7,
-          "accepted_rows": 7,
-          "working_feed": "https://www.nunsys.com/feed/",
-          "error": "",
-          "row_cap": 25,
-          "status": "ok"
-        },
-        "int_es_24": {
+        "sec_edgar": {
           "attempts": 2,
           "feed_rows": 0,
           "accepted_rows": 0,
           "working_feed": "",
-          "error": "HTTP 403: Forbidden",
+          "error": "URLError: <urlopen error timed out>",
           "row_cap": 25,
           "status": "no_feed"
         },
-        "int_es_8": {
+        "anacom": {
           "attempts": 2,
           "feed_rows": 0,
           "accepted_rows": 0,
           "working_feed": "",
-          "error": "ParseError: not well-formed (invalid token): line 25, column 2398",
+          "error": "URLError: <urlopen error timed out>",
           "row_cap": 25,
           "status": "no_feed"
         },
-        "int_es_21": {
+        "cncs_pt": {
           "attempts": 2,
           "feed_rows": 0,
           "accepted_rows": 0,
           "working_feed": "",
-          "error": "HTTP 404:  <!DOCTYPE html> <html lang=\"en\"  hreflang=\"en\" item-lang=\"en\"> <head> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"> <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /> <title>\r \t  \r </title> <!-- Page generated: 8/26/2026 11:11:51 AM // ut 28465 --> <!-- Favicons --> <link href=\"/favicon.ico\" rel=\"icon\"> <link href=\"/favicon.png\" rel=\"icon\"> <link href=\"/apple-touch-icon.png\" rel=\"apple-touch-icon\"> <link href=\"/favicon.svg\" rel=\"icon\" type=\"image/svg+xml\"> <!-- Google Fonts --> <link rel=\"preload\" href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i\" as=\"style\" onload=\"this.rel='stylesheet'\"> <noscript><link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Open",
-          "row_cap": 25,
-          "status": "no_feed"
-        },
-        "int_pt_11": {
-          "attempts": 1,
-          "feed_rows": 6,
-          "accepted_rows": 6,
-          "working_feed": "https://xpand-it.com/pt-pt//feed/",
-          "error": "",
-          "row_cap": 25,
-          "status": "ok"
-        },
-        "int_pt_14": {
-          "attempts": 1,
-          "feed_rows": 5,
-          "accepted_rows": 5,
-          "working_feed": "https://www.glinttglobal.com/feed/",
-          "error": "",
-          "row_cap": 25,
-          "status": "ok"
-        },
-        "int_es_3": {
-          "attempts": 2,
-          "feed_rows": 0,
-          "accepted_rows": 0,
-          "working_feed": "",
-          "error": "HTTP 404: <!DOCTYPE HTML>   <html lang=\"en-US\">        <head data-page-title=\"Page Not Found\" data-cmp-utag-data=\"{&#34;webpageType&#34;:&#34;&#34;,&#34;template&#34;:&#34;&#34;,&#34;keywords&#34;:&#34;&#34;,&#34;contentOwner&#34;:&#34;&#34;,&#34;globalPractice&#34;:&#34;&#34;,&#34;serviceLine&#34;:&#34;&#34;,&#34;alliancePartner&#34;:&#34;&#34;,&#34;industry&#34;:&#34;&#34;,&#34;channel&#34;:&#34;&#34;,&#34;status&#34;:&#34;published&#34;,&#34;publishedUrl&#34;:&#34;https://www-pre.kyndryl.com/us/en/errors&#34;,&#34;firstPublished&#34;:&#34;2026-06-15T04:45:03.803Z&#34;,&#34;lastPublished&#34;:&#34;&#34;,&#34;organizationMarkets&#34;:&#34;&#34;,&#34;topics&#34;:[],&#34;adl_site_hierarchy&#34;:[&#34;errors&#34;],&#34;adl_category&#34;:&#34;errors&#34;,&#34;adl_subcategory&#34;:&#34;&#34;,&#34;adl_language&#34;:&#34;en&#34;,&#34;adl_country&#34;:&#34;us&#34;,&#34;adl_page_type&#34;:&#34;&#34;,&#34;",
-          "row_cap": 25,
-          "status": "no_feed"
-        },
-        "int_pt_7": {
-          "attempts": 2,
-          "feed_rows": 0,
-          "accepted_rows": 0,
-          "working_feed": "",
-          "error": "HTTP 404:  <!DOCTYPE HTML> <html lang=\"en-US\">     <head>     <meta charset=\"UTF-8\"/>     <meta name=\"content-page-ref\" content=\"qZjrnj2VxWlgck9uZ19m1t-LAcu6YJaudRttdqFhx7-x8lYVY_Wd7VqbvF0RCwfAF3EW6rXSZdshqq17jOBSfQ\"/> <script defer=\"defer\" type=\"text/javascript\" src=\"/.rum/@adobe/helix-rum-js@%5E2/dist/micro.js\"></script> <script>     const privacyUrlTranslation = {         en: 'Cookie policy',         fr: 'Politique relative aux cookies',         nl: 'Cookieverklaring',         es: 'Política de cookies',         pt: 'Política de cookies'     };      function getLanguage(){         const availableLanguages = 'ar,bg,ca,cn,cs,da,de,et,el,en,es,fi,fr,hr,hu,it,ja,ko,lb,lt,lv,nl,no,oc,pl,pt,ro,ru,se,sk,sq,sv,tr,uk,vi,zh',             defaultLanguage = 'en';          // get the html lang         if (document.documentElement.getAttribute(\"lang\") !== undefined && document.documentElement.getAttribute(\"la",
-          "row_cap": 25,
-          "status": "no_feed"
-        },
-        "int_pt_5": {
-          "attempts": 2,
-          "feed_rows": 0,
-          "accepted_rows": 0,
-          "working_feed": "",
-          "error": "HTTP 404: <!DOCTYPE html> <!--[if IE 8 ]><html class=\"coh-ie8\"  lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <![endif]--> <!--[if IE 9 ]><html class=\"coh-ie9\"  lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <![endif]--> <!--[if (gt IE 9)|!(IE)]><!--> <html lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <!--<![endif]--> <head>     <meta charset=\"utf-8\" /> <script type=\"text/javascript\" nonce=\"bEN2WFZuUk5YRktNTkd1UHpKeVF1Q0NJSlcxY2xLaW8=\">     window.dataLayer = window.dataLayer || [];      function gtag() { dataLayer.push(arguments); }          gtag('set', 'developer_id.dMDhkMT', true);     gtag('consent', 'default', {          ad_storage: 'denied',         analytics_storage: 'denied',         functionality_storage: 'denied',         personalization_storage: 'denied',         security_storage: 'granted',         ad_user_data: 'denied',         ad_personalization: 'denied',",
-          "row_cap": 25,
-          "status": "no_feed"
-        },
-        "int_es_1": {
-          "attempts": 2,
-          "feed_rows": 0,
-          "accepted_rows": 0,
-          "working_feed": "",
-          "error": "HTTP 404: <!DOCTYPE html><html lang=\"en\" class=\"__variable_a7808f __variable_c9345c __variable_6e7a57\"><head><meta charSet=\"utf-8\" data-next-head=\"\"/><meta name=\"viewport\" content=\"width=device-width\" data-next-head=\"\"/><title data-next-head=\"\">We’re sorry, we cannot find that page</title><link rel=\"icon\" href=\"/favicon.ico\" data-next-head=\"\"/><meta name=\"google-site-verification\" content=\"cu1EpN26Mx_DwKcuyE3PPEPyIlAEq08Sbk8H4Nq642c\" data-next-head=\"\"/><meta property=\"og:title\" content=\"We’re sorry, we cannot find that page\" data-next-head=\"\"/><meta property=\"og:type\" content=\"website\" data-next-head=\"\"/><meta property=\"og:url\" content=\"https://www.nttdata.com/en-us/404-page\" data-next-head=\"\"/><meta name=\"twitter:title\" content=\"We’re sorry, we cannot find that page\" data-next-head=\"\"/><link rel=\"canonical\" href=\"https://www.nttdata.com/en-us/404-page\" data-next-head=\"\"/><link rel=\"preconnect\" hr",
-          "row_cap": 25,
-          "status": "no_feed"
-        },
-        "int_es_19": {
-          "attempts": 2,
-          "feed_rows": 0,
-          "accepted_rows": 0,
-          "working_feed": "",
-          "error": "",
+          "error": "HTTP 307: <html>\r <head><title>307 Temporary Redirect</title></head>\r <body>\r <center><h1>307 Temporary Redirect</h1></center>\r <hr><center>DiamWall</center>\r </body>\r </html>",
           "row_cap": 25,
           "status": "no_feed"
         }
       },
-      "latency_ms": 9171.4
+      "latency_ms": 21889.6
     }
   },
   "sources": {
@@ -215,199 +215,199 @@
       "attempted": 2,
       "successful": 2,
       "failed": 0,
-      "rows": 55,
+      "rows": 71,
       "raw_notices": 360,
-      "technology_notices": 55,
+      "technology_notices": 65,
       "errors": [],
-      "latency_ms": 4501.5
+      "latency_ms": 3580.0
     },
     "placsp_atom": {
       "attempted": 1,
       "successful": 1,
       "failed": 0,
-      "rows": 11,
+      "rows": 3,
       "raw_feed_rows": 80,
-      "technology_rows": 11,
+      "technology_rows": 3,
       "entity_matched_rows": 0,
       "url_used": "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3.atom",
       "cached": 0,
       "errors": [],
-      "latency_ms": 9261.3
+      "latency_ms": 11024.2
     },
     "cisa_kev": {
       "attempted": 1,
       "failed": 0,
       "rows": 33,
-      "latency_ms": 1416.3
+      "latency_ms": 337.4
     },
     "generic_feeds": {
       "attempted_sources": 18,
-      "successful_sources": 8,
+      "successful_sources": 1,
       "failed_sources": 0,
-      "no_feed_sources": 10,
+      "no_feed_sources": 17,
       "failed": 0,
-      "rows": 106,
-      "latency_ms": 9171.4
+      "rows": 0,
+      "latency_ms": 21889.6
     },
-    "feed:first": {
+    "feed:nvd": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "ParseError: syntax error: line 1, column 0",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:cisa": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 403: <HTML><HEAD> <TITLE>Access Denied</TITLE> </HEAD><BODY> <H1>Access Denied</H1>   You don't have permission to access \"http&#58;&#47;&#47;cisa&#46;gov&#47;rss\" on this server.<P> Reference&#32;&#35;18&#46;a5bbce17&#46;1787870840&#46;1f907517 <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;a5bbce17&#46;1787870840&#46;1f907517</P> </BODY> </HTML>",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:cnpd_pt": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'cnpd.pt'. (_ssl.c:1010)>",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:ccncert": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 403: <html><head><title>Voight-Kampff Browser Test</title><style>#main{margin:auto;width:100%;padding:10px}#content{font-family:sans-serif;max-width:800px;width:100%;text-align:center;margin:auto}.loading{color:#3fa3a5;text-align:center;font-size:6em;font-family:sans;font-weight:bolder}.loading span{opacity:0;animation:blink 1.4s infinite}.loading span:nth-child(1){animation-delay:.2s}.loading span:nth-child(2){animation-delay:.4s}.loading span:nth-child(3){animation-delay:.6s}@keyframes blink{0%{opacity:.1}50%{opacity:1}100%{opacity:.1}}@media screen and (max-width:800px){#content{padding:10px}}</style></head><body><div id=main><div id=content><div class=loading><span>.</span> <span>.</span> <span>.</span></div><h2>Checking Your Browser</h2><p>Please wait, this will only take a moment. You'll be redirected shortly.</div></div><a href=https://statics.transparentedge.eu/btchk01 tabindex=-1 ari",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:cve": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "ParseError: not well-formed (invalid token): line 9, column 38",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:placsp": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"> <html><head> <title>404 Not Found</title> </head><body> <h1>Not Found</h1> <p>The requested URL was not found on this server.</p> <hr> <address>IBM_HTTP_Server Server at contrataciondelsectorpublico.gob.es Port 80</address> </body></html>",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:cnmc": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 404: <!DOCTYPE html> <html  lang=\"es\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\">   <head>     <meta charset=\"utf-8\" /> <meta name=\"description\" content=\"Hemos actualizado la página web El contenido que buscas ha cambiado de URL. Revisa los apartados correspondientes. Gracias. Volver a la Home\" /> <link rel=\"canonical\" href=\"https://www.cnmc.es/node/411565\" /> <link rel=\"image_src\" href=\",,,https://www.cnmc.es/sites/default/files/CNMC_Logotipo.png\" /> <meta property=\"og:url\" content=\"https://www.cnmc.es/node/411565\" /> <meta property=\"og:title\" content=\"Hemos actualizado la página web\" /> <meta property=\"og:image\" content=\"https://www.cnmc.es/sites/default/files/CNMC_Logotipo.png\" /> <meta name=\"Generator\" content=\"Drupal 10 (https://www.drupal.org)\" /> <meta name=\"MobileOptimized\" content=\"width\" /> <meta name=\"HandheldFriendly\" content=\"true\" /> <meta name=\"viewport\" content=\"width=device-wi",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:cert_eu": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 404: <!DOCTYPE html> <html lang=\"en\"> <head>     <!-- Meta Data -->     <meta charset=\"UTF-8\">     <meta content=\"text/html; charset=UTF-8\" http-equiv=\"Content-Type\"/>     <meta content=\"IE=edge\" http-equiv=\"X-UA-Compatible\">     <meta content=\"width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1\" name=\"viewport\">     <link href=\"/favicon.ico\" rel=\"apple-touch-icon\" sizes=\"180x180\">     <link href=\"/favicon.ico\" rel=\"icon\" sizes=\"32x32\" type=\"image/png\">     <link href=\"/favicon.ico\" rel=\"icon\" sizes=\"16x16\" type=\"image/png\">      <!-- Site Stylesheet -->     <link href=\"/files/css/styles.min.css?v=1.0\" rel=\"stylesheet\">     <link href=\"//fonts.googleapis.com\" rel=\"preconnect\">     <link crossorigin href=\"//fonts.gstatic.com\" rel=\"preconnect\">     <link href=\"//fonts.googleapis.com/css2?family=Barlow:wght@200;300;400;500;600&display=swap\" rel=\"stylesheet\">     <!--Basic meta",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:dre": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "ParseError: not well-formed (invalid token): line 23, column 19",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:boe": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "ParseError: mismatched tag: line 25, column 4",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:nist": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 404: <!DOCTYPE html> <html lang=\"en\" dir=\"ltr\" prefix=\"content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# \">   <head>     <meta charset=\"utf-8\" /><script type=\"text/javascript\">(window.NREUM||(NREUM={})).init={ajax:{deny_list:[\"bam.nr-data.net\"]},feature_flags:[\"soft_nav\"]};(window.NREUM||(NREUM={})).loader_config={licenseKey:\"37b7ccb661\",applicationID:\"1089704227\",browserID:\"1134161994\"};;/*! For license information please see nr-loader-rum-1.320.1.min.js.LICENSE.txt */ (()=>{var e={8122(e,t,r){\"use strict\";r.d(t,{a:()=>i});var n=r(944);function i(e,t){try{if(!e||\"object\"!=typeof e)ret",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:portal_base": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\"http://www.w3.org/TR/html4/strict.dtd\">\r <HTML><HEAD><TITLE>Not Found</TITLE>\r <META HTTP-EQUIV=\"Content-Type\" Content=\"text/html; charset=us-ascii\"></HEAD>\r <BODY><h2>Not Found</h2>\r <hr><p>HTTP Error 404. The requested resource is not found.</p>\r </BODY></HTML>",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:companies_house": {
       "attempts": 1,
-      "feed_rows": 25,
-      "accepted_rows": 18,
-      "working_feed": "https://first.org/newsroom/news/rss.xml",
+      "feed_rows": 20,
+      "accepted_rows": 0,
+      "working_feed": "https://www.gov.uk/government/organisations/companies-house.atom",
       "error": "",
       "row_cap": 25,
       "status": "ok"
     },
-    "feed:vendor_17": {
-      "attempts": 1,
-      "feed_rows": 10,
-      "accepted_rows": 10,
-      "working_feed": "https://xmcyber.com/feed",
-      "error": "",
-      "row_cap": 25,
-      "status": "ok"
-    },
-    "feed:vendor_16": {
-      "attempts": 1,
-      "feed_rows": 10,
-      "accepted_rows": 10,
-      "working_feed": "https://www.attackiq.com/feed/",
-      "error": "",
-      "row_cap": 25,
-      "status": "ok"
-    },
-    "feed:int_es_12": {
+    "feed:edpb": {
       "attempts": 2,
       "feed_rows": 0,
       "accepted_rows": 0,
       "working_feed": "",
-      "error": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+      "error": "HTTP 404: <!DOCTYPE html> <html lang=\"en\" dir=\"ltr\"> <head>   <meta charset=\"utf-8\" /> <meta name=\"robots\" content=\"noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate\" /> <meta name=\"MobileOptimized\" content=\"width\" /> <meta name=\"HandheldFriendly\" content=\"true\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /> <link rel=\"icon\" href=\"/themes/custom/frontend/favicon.ico\" type=\"image/vnd.microsoft.icon\" /> <link rel=\"alternate\" hreflang=\"en\" href=\"https://www.edpb.europa.eu/not-found_en\" /> <link rel=\"canonical\" href=\"https://www.edpb.europa.eu/not-found_en\" /> <link rel=\"shortlink\" href=\"https://www.edpb.europa.eu/node/2_en\" />    <title>Not found | European Data Protection Board</title>   <link rel=\"stylesheet\" media=\"all\" href=\"/sites/default/files/css/css_wanSBL4771h5CeW547QkuKbWkGjqzOaEmnwlAWCSXOM.css?delta=0&amp;language=en&amp;theme=frontend&amp;incl",
       "row_cap": 25,
       "status": "no_feed"
     },
-    "feed:vendor_21": {
-      "attempts": 1,
-      "feed_rows": 25,
-      "accepted_rows": 25,
-      "working_feed": "https://netscout.com/feed",
-      "error": "",
-      "row_cap": 25,
-      "status": "ok"
-    },
-    "feed:vendor_24": {
-      "attempts": 1,
-      "feed_rows": 25,
-      "accepted_rows": 25,
-      "working_feed": "https://aws.amazon.com/rss",
-      "error": "",
-      "row_cap": 25,
-      "status": "ok"
-    },
-    "feed:int_es_20": {
+    "feed:aepd": {
       "attempts": 2,
       "feed_rows": 0,
       "accepted_rows": 0,
       "working_feed": "",
-      "error": "HTTP 404: <!DOCTYPE html><html lang=\"en\" data-astro-cid-zetdm5md> <head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Claranet Limited | Page not found</title><link rel=\"icon\" type=\"image/svg\" href=\"/favicon.svg\"><script type=\"module\" src=\"/com/_astro/404.astro_astro_type_script_index_0_lang.BRyqG8IC.js\"></script><link rel=\"stylesheet\" href=\"/com/_astro/_page_.BsRRHd3D.css\"> <style>.main-page[data-astro-cid-zetdm5md]{position:relative;background:radial-gradient(ellipse at bottom,#1b2947,#0d1420);overflow:hidden}.star-layer[data-astro-cid-zetdm5md]{position:absolute;top:0;left:0;width:200vw;height:100vh;pointer-events:none;will-change:transform}#stars-small[data-astro-cid-zetdm5md]{z-index:2;animation:scrollStars 51s linear infinite}#stars-medium[data-astro-cid-zetdm5md]{z-index:3;animation:scrollStars 25.5s linear infinite}#stars-large[data-astr",
+      "error": "HTTP 503: <HTML><HEAD> <TITLE>Service Unavailable</TITLE> </HEAD><BODY> <H1>Service Unavailable - Zero size object</H1> The server is temporarily unable to service your request.  Please try again later.<P> Reference&#32;&#35;15&#46;8467cd17&#46;1787870845&#46;1bde4e5 <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;15&#46;8467cd17&#46;1787870845&#46;1bde4e5</P> </BODY></HTML>",
       "row_cap": 25,
       "status": "no_feed"
     },
-    "feed:int_es_15": {
-      "attempts": 1,
-      "feed_rows": 7,
-      "accepted_rows": 7,
-      "working_feed": "https://www.nunsys.com/feed/",
-      "error": "",
-      "row_cap": 25,
-      "status": "ok"
-    },
-    "feed:int_es_24": {
+    "feed:sec_edgar": {
       "attempts": 2,
       "feed_rows": 0,
       "accepted_rows": 0,
       "working_feed": "",
-      "error": "HTTP 403: Forbidden",
+      "error": "URLError: <urlopen error timed out>",
       "row_cap": 25,
       "status": "no_feed"
     },
-    "feed:int_es_8": {
+    "feed:anacom": {
       "attempts": 2,
       "feed_rows": 0,
       "accepted_rows": 0,
       "working_feed": "",
-      "error": "ParseError: not well-formed (invalid token): line 25, column 2398",
+      "error": "URLError: <urlopen error timed out>",
       "row_cap": 25,
       "status": "no_feed"
     },
-    "feed:int_es_21": {
+    "feed:cncs_pt": {
       "attempts": 2,
       "feed_rows": 0,
       "accepted_rows": 0,
       "working_feed": "",
-      "error": "HTTP 404:  <!DOCTYPE html> <html lang=\"en\"  hreflang=\"en\" item-lang=\"en\"> <head> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"> <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /> <title>\r \t  \r </title> <!-- Page generated: 8/26/2026 11:11:51 AM // ut 28465 --> <!-- Favicons --> <link href=\"/favicon.ico\" rel=\"icon\"> <link href=\"/favicon.png\" rel=\"icon\"> <link href=\"/apple-touch-icon.png\" rel=\"apple-touch-icon\"> <link href=\"/favicon.svg\" rel=\"icon\" type=\"image/svg+xml\"> <!-- Google Fonts --> <link rel=\"preload\" href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i\" as=\"style\" onload=\"this.rel='stylesheet'\"> <noscript><link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Open",
-      "row_cap": 25,
-      "status": "no_feed"
-    },
-    "feed:int_pt_11": {
-      "attempts": 1,
-      "feed_rows": 6,
-      "accepted_rows": 6,
-      "working_feed": "https://xpand-it.com/pt-pt//feed/",
-      "error": "",
-      "row_cap": 25,
-      "status": "ok"
-    },
-    "feed:int_pt_14": {
-      "attempts": 1,
-      "feed_rows": 5,
-      "accepted_rows": 5,
-      "working_feed": "https://www.glinttglobal.com/feed/",
-      "error": "",
-      "row_cap": 25,
-      "status": "ok"
-    },
-    "feed:int_es_3": {
-      "attempts": 2,
-      "feed_rows": 0,
-      "accepted_rows": 0,
-      "working_feed": "",
-      "error": "HTTP 404: <!DOCTYPE HTML>   <html lang=\"en-US\">        <head data-page-title=\"Page Not Found\" data-cmp-utag-data=\"{&#34;webpageType&#34;:&#34;&#34;,&#34;template&#34;:&#34;&#34;,&#34;keywords&#34;:&#34;&#34;,&#34;contentOwner&#34;:&#34;&#34;,&#34;globalPractice&#34;:&#34;&#34;,&#34;serviceLine&#34;:&#34;&#34;,&#34;alliancePartner&#34;:&#34;&#34;,&#34;industry&#34;:&#34;&#34;,&#34;channel&#34;:&#34;&#34;,&#34;status&#34;:&#34;published&#34;,&#34;publishedUrl&#34;:&#34;https://www-pre.kyndryl.com/us/en/errors&#34;,&#34;firstPublished&#34;:&#34;2026-06-15T04:45:03.803Z&#34;,&#34;lastPublished&#34;:&#34;&#34;,&#34;organizationMarkets&#34;:&#34;&#34;,&#34;topics&#34;:[],&#34;adl_site_hierarchy&#34;:[&#34;errors&#34;],&#34;adl_category&#34;:&#34;errors&#34;,&#34;adl_subcategory&#34;:&#34;&#34;,&#34;adl_language&#34;:&#34;en&#34;,&#34;adl_country&#34;:&#34;us&#34;,&#34;adl_page_type&#34;:&#34;&#34;,&#34;",
-      "row_cap": 25,
-      "status": "no_feed"
-    },
-    "feed:int_pt_7": {
-      "attempts": 2,
-      "feed_rows": 0,
-      "accepted_rows": 0,
-      "working_feed": "",
-      "error": "HTTP 404:  <!DOCTYPE HTML> <html lang=\"en-US\">     <head>     <meta charset=\"UTF-8\"/>     <meta name=\"content-page-ref\" content=\"qZjrnj2VxWlgck9uZ19m1t-LAcu6YJaudRttdqFhx7-x8lYVY_Wd7VqbvF0RCwfAF3EW6rXSZdshqq17jOBSfQ\"/> <script defer=\"defer\" type=\"text/javascript\" src=\"/.rum/@adobe/helix-rum-js@%5E2/dist/micro.js\"></script> <script>     const privacyUrlTranslation = {         en: 'Cookie policy',         fr: 'Politique relative aux cookies',         nl: 'Cookieverklaring',         es: 'Política de cookies',         pt: 'Política de cookies'     };      function getLanguage(){         const availableLanguages = 'ar,bg,ca,cn,cs,da,de,et,el,en,es,fi,fr,hr,hu,it,ja,ko,lb,lt,lv,nl,no,oc,pl,pt,ro,ru,se,sk,sq,sv,tr,uk,vi,zh',             defaultLanguage = 'en';          // get the html lang         if (document.documentElement.getAttribute(\"lang\") !== undefined && document.documentElement.getAttribute(\"la",
-      "row_cap": 25,
-      "status": "no_feed"
-    },
-    "feed:int_pt_5": {
-      "attempts": 2,
-      "feed_rows": 0,
-      "accepted_rows": 0,
-      "working_feed": "",
-      "error": "HTTP 404: <!DOCTYPE html> <!--[if IE 8 ]><html class=\"coh-ie8\"  lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <![endif]--> <!--[if IE 9 ]><html class=\"coh-ie9\"  lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <![endif]--> <!--[if (gt IE 9)|!(IE)]><!--> <html lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <!--<![endif]--> <head>     <meta charset=\"utf-8\" /> <script type=\"text/javascript\" nonce=\"bEN2WFZuUk5YRktNTkd1UHpKeVF1Q0NJSlcxY2xLaW8=\">     window.dataLayer = window.dataLayer || [];      function gtag() { dataLayer.push(arguments); }          gtag('set', 'developer_id.dMDhkMT', true);     gtag('consent', 'default', {          ad_storage: 'denied',         analytics_storage: 'denied',         functionality_storage: 'denied',         personalization_storage: 'denied',         security_storage: 'granted',         ad_user_data: 'denied',         ad_personalization: 'denied',",
-      "row_cap": 25,
-      "status": "no_feed"
-    },
-    "feed:int_es_1": {
-      "attempts": 2,
-      "feed_rows": 0,
-      "accepted_rows": 0,
-      "working_feed": "",
-      "error": "HTTP 404: <!DOCTYPE html><html lang=\"en\" class=\"__variable_a7808f __variable_c9345c __variable_6e7a57\"><head><meta charSet=\"utf-8\" data-next-head=\"\"/><meta name=\"viewport\" content=\"width=device-width\" data-next-head=\"\"/><title data-next-head=\"\">We’re sorry, we cannot find that page</title><link rel=\"icon\" href=\"/favicon.ico\" data-next-head=\"\"/><meta name=\"google-site-verification\" content=\"cu1EpN26Mx_DwKcuyE3PPEPyIlAEq08Sbk8H4Nq642c\" data-next-head=\"\"/><meta property=\"og:title\" content=\"We’re sorry, we cannot find that page\" data-next-head=\"\"/><meta property=\"og:type\" content=\"website\" data-next-head=\"\"/><meta property=\"og:url\" content=\"https://www.nttdata.com/en-us/404-page\" data-next-head=\"\"/><meta name=\"twitter:title\" content=\"We’re sorry, we cannot find that page\" data-next-head=\"\"/><link rel=\"canonical\" href=\"https://www.nttdata.com/en-us/404-page\" data-next-head=\"\"/><link rel=\"preconnect\" hr",
-      "row_cap": 25,
-      "status": "no_feed"
-    },
-    "feed:int_es_19": {
-      "attempts": 2,
-      "feed_rows": 0,
-      "accepted_rows": 0,
-      "working_feed": "",
-      "error": "",
+      "error": "HTTP 307: <html>\r <head><title>307 Temporary Redirect</title></head>\r <body>\r <center><h1>307 Temporary Redirect</h1></center>\r <hr><center>DiamWall</center>\r </body>\r </html>",
       "row_cap": 25,
       "status": "no_feed"
     }

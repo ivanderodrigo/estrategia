@@ -10,7 +10,7 @@
       "successful_calls": 1,
       "planned": 1,
       "errors": [
-        "gdelt:URLError:_ssl.c:1064: The handshake operation timed out"
+        "gdelt:URLError:timed out"
       ]
     },
     {
@@ -1312,6 +1312,17 @@
       "errors": []
     },
     {
+      "entity": "CrowdStrike",
+      "entity_type": "vendor",
+      "country": "GLOBAL",
+      "dimension": "ma",
+      "reason": "no_signal",
+      "attempted": 1,
+      "successful_calls": 1,
+      "planned": 1,
+      "errors": []
+    },
+    {
       "entity": "F5",
       "entity_type": "vendor",
       "country": "GLOBAL",
@@ -4646,6 +4657,17 @@
     },
     {
       "entity": "AWS",
+      "entity_type": "vendor",
+      "country": "GLOBAL",
+      "dimension": "customers",
+      "reason": "no_signal",
+      "attempted": 1,
+      "successful_calls": 1,
+      "planned": 1,
+      "errors": []
+    },
+    {
+      "entity": "Microsoft Azure",
       "entity_type": "vendor",
       "country": "GLOBAL",
       "dimension": "customers",
@@ -5916,11 +5938,11 @@
     "planned_tasks": 595,
     "attempted_tasks": 595,
     "completed_tasks": 594,
-    "new_signals": 91,
-    "current_signals": 64,
-    "historical_context_signals": 27,
-    "covered_gaps": 57,
-    "debt_gaps": 537,
+    "new_signals": 90,
+    "current_signals": 62,
+    "historical_context_signals": 28,
+    "covered_gaps": 55,
+    "debt_gaps": 539,
     "provider_circuits_open": [
       "gdelt"
     ],
@@ -5930,20 +5952,20 @@
         "successful": 594,
         "failed": 0,
         "raw_rows": 1210,
-        "accepted_rows": 91,
-        "relevance_rejected": 563,
+        "accepted_rows": 90,
+        "relevance_rejected": 559,
         "geo_rejected": 107,
         "stale_rejected": 0,
-        "semantic_rejected": 410,
+        "semantic_rejected": 414,
         "semantic_reclassified": 58,
-        "current_accepted_rows": 64,
-        "historical_accepted_rows": 27,
+        "current_accepted_rows": 62,
+        "historical_accepted_rows": 28,
         "owned_awards_rejected": 0,
-        "third_party_cert_rejected": 2,
+        "third_party_cert_rejected": 3,
         "secondary_people_move_rejected": 1,
         "duplicates": 36,
-        "empty_success": 326,
-        "avg_latency_ms": 519.7
+        "empty_success": 327,
+        "avg_latency_ms": 381.1
       },
       "gdelt": {
         "attempted": 1,
@@ -5963,8 +5985,8 @@
         "secondary_people_move_rejected": 0,
         "duplicates": 0,
         "empty_success": 0,
-        "last_error": "gdelt:URLError:_ssl.c:1064: The handshake operation timed out",
-        "avg_latency_ms": 4307.4
+        "last_error": "gdelt:URLError:timed out",
+        "avg_latency_ms": 4116.1
       }
     }
   }

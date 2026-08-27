@@ -1,69 +1,63 @@
 {
   "meta": {
     "version": "3.4.0",
-    "generated_at": "2026-08-27T22:05:17.671963+00:00",
+    "generated_at": "2026-08-27T22:47:51.812769+00:00",
     "method": "Ventanas móviles sobre fechas de evidencia; no se inventa una serie temporal cuando no existen snapshots comparables."
   },
   "windows": {
     "30": {
       "days": 30,
-      "events": 89,
+      "events": 75,
       "by_type": {
-        "certification": 3,
-        "award": 1,
-        "market_expansion": 1,
+        "certification": 2,
         "ma_acquisition": 1,
-        "pricing_licensing": 3,
         "financial_performance": 5,
-        "operational_incident": 3,
-        "managed_service": 1,
-        "hiring": 1,
         "strategy": 5,
-        "product_release": 4,
-        "security_incident": 3,
         "customer_reference": 1,
-        "procurement_award": 35,
-        "procurement_notice": 22
+        "operational_incident": 1,
+        "product_release": 1,
+        "procurement_award": 40,
+        "procurement_notice": 19
       },
       "by_scope": {
-        "GLOBAL": 23,
-        "EUROPE": 3,
-        "ES": 39,
-        "OTHER_REGION": 3,
-        "PT": 20,
-        "IBERIA": 1
+        "GLOBAL": 13,
+        "ES": 30,
+        "EUROPE": 1,
+        "PT": 31
       },
       "vendors": {
-        "AWS": 13,
         "Cisco": 3,
+        "AWS": 2,
         "Palo Alto Networks": 2,
-        "NETSCOUT": 2,
-        "AttackIQ": 2,
         "Microsoft Azure": 2,
         "Okta": 1,
         "Fortinet": 1,
         "CrowdStrike": 1,
         "Check Point": 1,
-        "XM Cyber": 1,
-        "Proofpoint": 1
+        "Proofpoint": 1,
+        "Zscaler": 1
       },
       "integrators": {
         "Bechtle Spain": 2,
+        "NTT DATA Spain": 2,
+        "NTT DATA Portugal": 2,
+        "Nunsys": 1,
+        "Babel": 1,
+        "Claranet Spain": 1,
+        "Claranet Portugal": 1,
+        "Accenture Spain": 1,
+        "Atos Spain": 1,
+        "Indra": 1,
         "Timestamp": 1,
-        "Econocom Spain": 1,
-        "SEIDOR": 1,
-        "Ricoh Spain": 1,
         "Glintt Global": 1
       },
       "technologies": {
-        "IT Services": 21,
-        "Cloud": 17,
-        "Cybersecurity": 16,
-        "Networking": 11,
-        "AI": 7,
-        "Data Center": 3,
-        "Observability": 2,
-        "Identity": 2
+        "IT Services": 31,
+        "Cybersecurity": 10,
+        "Networking": 10,
+        "Cloud": 7,
+        "AI": 4,
+        "Data Center": 4
       },
       "changes": [
         {
@@ -73,34 +67,10 @@
           "entity": "AWS",
           "scope": "GLOBAL",
           "title": "“El cuidado de una cuenca es algo colectivo”: la certificación AWS de Eco Aguas en Moreno - Visión Sustentable",
-          "materiality": 0.742,
+          "materiality": 0.741,
           "confidence": 0.621,
           "source": "Visión Sustentable",
           "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPY0lHSUZqNkxpd00wUWlpczlaSHVqR2ZiOWkwemE5THBWY0taeUJpaDU1cy0tajFhYkpUeUkzRkNfbVlGdWh1NDFIUjVSTmgzR1BkVGItcEQ4THBPaWJqSTl3d3Z3ck1JV2tZaERzaVZYWDdPUTdid1VveDROOGZPZ2x3LThBWkZsVmJOWXRFcXFXY2l4aTZtUtIBmAFBVV95cUxPY0lHSUZqNkxpd00wUWlpczlaSHVqR2ZiOWkwemE5THBWY0taeUJpaDU1cy0tajFhYkpUeUkzRkNfbVlGdWh1NDFIUjVSTmgzR1BkVGItcEQ4THBPaWJqSTl3d3Z3ck1JV2tZaERzaVZYWDdPUTdid1VveDROOGZPZ2x3LThBWkZsVmJOWXRFcXFXY2l4aTZtUg?oc=5"
-        },
-        {
-          "event_id": "617b5099e447ed5d",
-          "date": "Wed, 26 Aug 2026 17:00:00 GMT",
-          "type": "award",
-          "entity": "AWS",
-          "scope": "GLOBAL",
-          "title": "Amazon Connect Customer now supports points-based scoring in performance evaluations",
-          "materiality": 0.697,
-          "confidence": 0.731,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-connect-customer-points-based-scoring-evaluations/"
-        },
-        {
-          "event_id": "03b10082a704953b",
-          "date": "Wed, 26 Aug 2026 16:26:00 GMT",
-          "type": "market_expansion",
-          "entity": "AWS",
-          "scope": "EUROPE",
-          "title": "AWS Glue 5.1 is now available in AWS European Sovereign Cloud Region",
-          "materiality": 0.851,
-          "confidence": 0.804,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-glue-5-1-european-sovereign-cloud"
         },
         {
           "event_id": "1e16953845f9adfa",
@@ -113,18 +83,6 @@
           "confidence": 0.7,
           "source": "Investing.com España",
           "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOOXo3TWJIel9EaGFSX3BDRnl6cGpYcDFuX192dzEtRGxsQ0V4bGJOeHV1bjdTdVM0TkFVbVBWS1A2ekc2YXVaVncweGZjSHhZU1pwU0EtVElMS3hEWERDcHJHdTlWLXF2aFV3M3RKRVZCaXhWWm9Db1N0ekZWQjg5ODRqUEJvYkhOekhkWnhVclA3c1RWNU9BRlRZLWZUZVdwSVlGeFJtM2t3YzdIb1hXN1Y3RThDRWtKRGdYRWdCaTVDcVVqdVUwUmdBT0YySVdT?oc=5"
-        },
-        {
-          "event_id": "4f932f32e77419b3",
-          "date": "Wed, 26 Aug 2026 10:00:00 GMT",
-          "type": "pricing_licensing",
-          "entity": "AWS",
-          "scope": "ES",
-          "title": "AWS Backup adds cross-Region backup copy and logically air-gapped vault support for Amazon DocumentDB in nine additional AWS Regions",
-          "materiality": 0.843,
-          "confidence": 0.808,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-backup-cross-region-air-gapped-docdb/"
         },
         {
           "event_id": "cfe0d1ea6f74a10a",
@@ -151,42 +109,6 @@
           "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNOUFWTmtCYy1RQl94cGsyVzVPLVk5LW0wUF84ajlLVUh2WHYwU0thcDIxTEVZa2JzMFhYNlozUXY5OWhhT0RRR1BkbndQM2xOaXB2d1p0cDQ3Vk1QTTdqaGUtdDhGM0NtZkRsMDRxeGZVZy1WQzRidU5zNGNfT0NVRmtKdTJoT01KQmRuVXRNN1U4Q1J1WThubHN5ZkhHelNPZV9BNzZGaVVtQkFsWE5PMWdR?oc=5"
         },
         {
-          "event_id": "4162c944621603a0",
-          "date": "Wed, 05 Aug 2026 09:00:00 -0400\n",
-          "type": "operational_incident",
-          "entity": "NETSCOUT",
-          "scope": "GLOBAL",
-          "title": "Six Critical Business Benefits of Real-Time Data Insights",
-          "materiality": 0.734,
-          "confidence": 0.745,
-          "source": "NETSCOUT",
-          "url": "https://www.netscout.com/blog/six-critical-business-benefits-real-time-data-insights"
-        },
-        {
-          "event_id": "060300b23f8d070d",
-          "date": "Tue, 25 Aug 2026 19:42:00 GMT",
-          "type": "managed_service",
-          "entity": "AWS",
-          "scope": "OTHER_REGION",
-          "title": "AWS IoT Core now supports native InfluxDB routing for time-series data",
-          "materiality": 0.653,
-          "confidence": 0.698,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-iot-core-influxdb/"
-        },
-        {
-          "event_id": "806c189be6b2918e",
-          "date": "Tue, 25 Aug 2026 19:36:00 GMT",
-          "type": "hiring",
-          "entity": "AWS",
-          "scope": "GLOBAL",
-          "title": "AWS Batch now supports Amazon ECS Managed Instances",
-          "materiality": 0.68,
-          "confidence": 0.717,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-batch-on-ecs-managed-instances/"
-        },
-        {
           "event_id": "82809759846faad7",
           "date": "Tue, 25 Aug 2026 19:34:10 GMT",
           "type": "strategy",
@@ -197,102 +119,6 @@
           "confidence": 0.542,
           "source": "TradingView",
           "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQTWNnc2xhVUJveXhsSEhlM0NLUEZYTy0yUENMZUNheE1SbWV4cXRtMzNXYVRaZ1FIWmNjaklzMUJkbllKU3FnMUF2T0x5dTB6T0pDckJGbFJGQ0VpWTZ5TGxzWU05MkxCWkdtWjd0WFhLZDhMR29pS1owaXF3WWY4VmotOHRaOTA5RVlaVUpHTlp5cnVrRm85WlhYaU5zVUhCSXl1aUJMUnc3SWM2cmZTUFNR?oc=5"
-        },
-        {
-          "event_id": "818508c03164aa4f",
-          "date": "Tue, 25 Aug 2026 16:34:00 GMT",
-          "type": "pricing_licensing",
-          "entity": "AWS",
-          "scope": "GLOBAL",
-          "title": "AWS Lambda MicroVMs now supports AWS PrivateLink",
-          "materiality": 0.769,
-          "confidence": 0.768,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/lambda-microvms-supports-privatelink"
-        },
-        {
-          "event_id": "1988b7545abc99f6",
-          "date": "Tue, 25 Aug 2026 16:00:00 GMT",
-          "type": "pricing_licensing",
-          "entity": "AWS",
-          "scope": "GLOBAL",
-          "title": "Amazon RDS for PostgreSQL supports minor versions 18.6, 17.11, 16.15, 15.19, and 14.24",
-          "materiality": 0.769,
-          "confidence": 0.768,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-rds-postgresql-18-6-17-11-16-15-15-19-14-24/"
-        },
-        {
-          "event_id": "431e158f64cc702b",
-          "date": "Tue, 25 Aug 2026 13:18:00 GMT",
-          "type": "product_release",
-          "entity": "AWS",
-          "scope": "EUROPE",
-          "title": "IAM Roles Anywhere now provides a Java plugin for the AWS SDK",
-          "materiality": 0.802,
-          "confidence": 0.785,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/iam-roles-anywhere-java/"
-        },
-        {
-          "event_id": "6feade1bbe33195e",
-          "date": "Tue, 25 Aug 2026 13:00:00 GMT",
-          "type": "product_release",
-          "entity": "AWS",
-          "scope": "GLOBAL",
-          "title": "AWS Lambda introduces managed runtimes in public preview for Node.js 26 and Python 3.15",
-          "materiality": 0.769,
-          "confidence": 0.768,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-lambda-node-js-python-public-preview/"
-        },
-        {
-          "event_id": "66b1ca7aa5bfd734",
-          "date": "Tue, 25 Aug 2026 13:00:00 GMT",
-          "type": "certification",
-          "entity": "AWS",
-          "scope": "OTHER_REGION",
-          "title": "Amazon EC2 M8i and M8i-flex instances are now available in Canada West (Calgary) region",
-          "materiality": 0.615,
-          "confidence": 0.689,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/ec2-m8i-m8i-flex-canada-west/"
-        },
-        {
-          "event_id": "3ccfee9ca7867f87",
-          "date": "Tue, 25 Aug 2026 09:00:00 -0400\n",
-          "type": "operational_incident",
-          "entity": "NETSCOUT",
-          "scope": "GLOBAL",
-          "title": "Cyberattack in Poland Causes Heat and Power Outages for 50,000 Residents",
-          "materiality": 0.741,
-          "confidence": 0.745,
-          "source": "NETSCOUT",
-          "url": "https://www.netscout.com/blog/cyberattack-poland-causes-heat-and-power-outages-50000"
-        },
-        {
-          "event_id": "d5cab0ac5064ab2b",
-          "date": "Tue, 25 Aug 2026 07:24:00 GMT",
-          "type": "product_release",
-          "entity": "AWS",
-          "scope": "GLOBAL",
-          "title": "Amazon RDS for Oracle now supports July 2026 Release Update",
-          "materiality": 0.769,
-          "confidence": 0.768,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-rds-oracle-july-2026-release-update"
-        },
-        {
-          "event_id": "9989968c174804c4",
-          "date": "Thu, 20 Aug 2026 20:45:27 +0000",
-          "type": "security_incident",
-          "entity": "AttackIQ",
-          "scope": "OTHER_REGION",
-          "title": "Updated Response to CISA Advisory (AA25-071A): #StopRansomware: Medusa Ransomware",
-          "materiality": 0.619,
-          "confidence": 0.694,
-          "source": "AttackIQ",
-          "url": "https://www.attackiq.com/2026/08/20/updated-response-to-aa25-071a/"
         },
         {
           "event_id": "192f93fe60ac6f1f",
@@ -355,40 +181,16 @@
           "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNT2RwWmdHXzFxcXJueXVhbUtMdWRfQkdjVUJHaHhDTFZJVENEV1dWSGpRR3dWWkpweDF1TzJ1OGxwakJlLW5YTllQUG82bW1PVy1xcUI0S2FWSGpTWjU5TFU2V3ZleUgyLW80dVdETHRTeldDQUhqZzlZQjN4NzN0WDZhcHhIaXNy0gGIAUFVX3lxTE5pREhMcGFxeVA2YWFaZVQwbXVWNmlXNnpFTXFBUmhMd2ZIeHJ3VmItU05rY1ZsSkZpSkhVMnRKSEJJZm0yYjlqdUk2bV9rNXJQdU4yOUNfXzMySmlBNUFVX2hncmI2MExOa1laOFE4ZjNmLVpvZVdOVjdsa01DQUw1dmlpRC1BRDc?oc=5"
         },
         {
-          "event_id": "a9d621831940af6b",
-          "date": "Mon, 17 Aug 2026 09:52:14 +0000",
-          "type": "security_incident",
-          "entity": "XM Cyber",
-          "scope": "GLOBAL",
-          "title": "How Bizerba Strengthens Digital Sovereignty with Continuous Exposure Management",
-          "materiality": 0.783,
-          "confidence": 0.782,
-          "source": "XM Cyber",
-          "url": "https://xmcyber.com/case-studies/how-bizerba-strengthens-digital-sovereignty-with-continuous-exposure-management/"
-        },
-        {
           "event_id": "e9b661a19d85645e",
           "date": "Mon, 10 Aug 2026 07:00:00 GMT",
           "type": "financial_performance",
           "entity": "Cisco",
           "scope": "GLOBAL",
           "title": "Earnings To Watch: Cisco (CSCO) Reports Q2 Results Tomorrow - TradingView",
-          "materiality": 0.395,
+          "materiality": 0.394,
           "confidence": 0.542,
           "source": "TradingView",
           "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNYzMyVlZJOVhnSXlkVGVTTVBXUUFfTjM4WVhZWHI3b0lHTy1ZTnVod3VVckRxQk9ra3lZMG8ybTZDWlExZmZteU9WYndILTlzRHRPU2FVLVJsRlpnbjQ5TnVCWm9XUkE3MVRCcE94ZmVRSFBBdTVBUjZZNU90Rl9wc2s4MnI1TnJFYlh2cGhvbW1yTUlrUGdfU1I4cmpJTE9HOUhmc1hZR2tIWTlCSWdRMVVDektLcUk?oc=5"
-        },
-        {
-          "event_id": "23e22a0d804ef0ad",
-          "date": "Fri, 31 Jul 2026 13:04:59 +0000",
-          "type": "security_incident",
-          "entity": "AttackIQ",
-          "scope": "GLOBAL",
-          "title": "Analyzing Nova Ransomware: A Rust-Based Encryptor with Multi-Layered Microsoft Defender Evasion Techniques",
-          "materiality": 0.777,
-          "confidence": 0.782,
-          "source": "AttackIQ",
-          "url": "https://www.attackiq.com/2026/07/31/analyzing-nova-ransomware/"
         },
         {
           "event_id": "30cadf7b3a66ee4c",
@@ -425,78 +227,266 @@
           "confidence": 0.611,
           "source": "La Ecuación Digital",
           "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQUUw0ODhjc0Y3UmFwWlFtMmpVdzdqMUszZ1c4UWdzdG9rbUtKd2locmc5SnFTMHpYVXM3RDF4WnNfRWIxd2NaS3gyakc1b3ZTYWViRUMwcUtCYnJmU05oU1h3RDZQaWZlYjVrTTdaVmNXQjRKZU5zSm9ObGxaaHVlTVFKRW04dHRaNXNrUGtQbzNabWlEaVE?oc=5"
+        },
+        {
+          "event_id": "fe080eeb5f144955",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "Nunsys",
+          "scope": "ES",
+          "title": "España – Equipos de radio, televisión, comunicaciones y telecomunicaciones y equipos conexos – Proyecto Para El Refuerzo De La Securización Y Resiliencia De Las Redes Con Comunicaciones 5G Del Ministerio De Defensa (Ministerio De Defensa-Subdirección General De Contratación De Tecnologías De La Información Y De Las Comunicaciones (Tic))",
+          "materiality": 0.88,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/594274-2026"
+        },
+        {
+          "event_id": "f9c37e50623e19f1",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "NTT DATA Spain",
+          "scope": "ES",
+          "title": "España – Servicios TI: consultoría, desarrollo de software, Internet y apoyo – Servicio de desarrollo de una Plataforma Integral de Gestión Activa de Sumideros Naturales de Carbono de Galicia mediante Compra Pública de Tecnología Innovadora (Proyecto SICLE CO2: Soluciones Innovadoras para la Compensación Local de Emisiones de CO2), cofinanciado en un 60% por el Fondo Europeo de Desarrollo Regional (FEDER) en el marco del Programa Plurirregional de España (PPE) 2021-2027.",
+          "materiality": 0.827,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/593648-2026"
+        },
+        {
+          "event_id": "28724600d1ec7457",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "NTT DATA Spain",
+          "scope": "PT",
+          "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
+          "materiality": 0.827,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/595312-2026"
+        },
+        {
+          "event_id": "e22426d443f2c1b2",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "NTT DATA Portugal",
+          "scope": "ES",
+          "title": "España – Servicios TI: consultoría, desarrollo de software, Internet y apoyo – Servicio de desarrollo de una Plataforma Integral de Gestión Activa de Sumideros Naturales de Carbono de Galicia mediante Compra Pública de Tecnología Innovadora (Proyecto SICLE CO2: Soluciones Innovadoras para la Compensación Local de Emisiones de CO2), cofinanciado en un 60% por el Fondo Europeo de Desarrollo Regional (FEDER) en el marco del Programa Plurirregional de España (PPE) 2021-2027.",
+          "materiality": 0.827,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/593648-2026"
+        },
+        {
+          "event_id": "5bab5fda608ec9fe",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "NTT DATA Portugal",
+          "scope": "PT",
+          "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
+          "materiality": 0.827,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/595312-2026"
+        },
+        {
+          "event_id": "1a42c8ae4045d852",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "Babel",
+          "scope": "ES",
+          "title": "España – Servicios informáticos – Servicios de desarrollo y mantenimiento de aplicaciones informáticas de la Agencia Estatal de Administración Digital (4782)",
+          "materiality": 0.827,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/594365-2026"
+        },
+        {
+          "event_id": "f99f6b2ec659241f",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "Claranet Spain",
+          "scope": "PT",
+          "title": "Portugal – Servicios informáticos – (DAG) Aquisição de Serviços de Suporte e Manutenção Aplicacional da Plataforma EAGENDA 2.0 (20260132)",
+          "materiality": 0.827,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/593861-2026"
+        },
+        {
+          "event_id": "7fac6d1b7db2839c",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "Claranet Portugal",
+          "scope": "PT",
+          "title": "Portugal – Servicios informáticos – (DAG) Aquisição de Serviços de Suporte e Manutenção Aplicacional da Plataforma EAGENDA 2.0 (20260132)",
+          "materiality": 0.827,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/593861-2026"
+        },
+        {
+          "event_id": "4803b40966b7bcc6",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "Accenture Spain",
+          "scope": "PT",
+          "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
+          "materiality": 0.827,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/595312-2026"
+        },
+        {
+          "event_id": "c892fe8477f97a76",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "Atos Spain",
+          "scope": "PT",
+          "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
+          "materiality": 0.827,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/595312-2026"
+        },
+        {
+          "event_id": "bdd622e093db9c99",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "Indra",
+          "scope": "ES",
+          "title": "España – Servicios de instalación (excepto software) – Servicio de desarrollo y mantenimiento de AGORA en modelo producto",
+          "materiality": 0.803,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/596054-2026"
+        },
+        {
+          "event_id": "8ab6252ce32df5f4",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "Iberia Public Procurement Market",
+          "scope": "ES",
+          "title": "España – Mantenimiento de equipos de redes de datos – Suministro, instalación y servicio de mantenimiento y soporte de infraestructuras y servicios inalámbricos (wifi) de la GRS",
+          "materiality": 0.799,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/596294-2026"
+        },
+        {
+          "event_id": "cee8264fd6f9e1c8",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "Iberia Public Procurement Market",
+          "scope": "ES",
+          "title": "España – Servicios de reparación y mantenimiento – Servicio de mantenimiento para el equipamiento l2/l3 de RedIRIS",
+          "materiality": 0.799,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/594828-2026"
+        },
+        {
+          "event_id": "e58a233849e030da",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "Iberia Public Procurement Market",
+          "scope": "ES",
+          "title": "España – Servicios de vigilancia de sistemas de alarma – Servicio de conexión a CRA, custodia de llaves y acuda así como el mantenimiento de las instalaciones de seguridad antiintrusión y circuitos cerrados de televisión (CCTV), en los Edificios Municipales de Sevilla (2Lotes)",
+          "materiality": 0.799,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/593862-2026"
+        },
+        {
+          "event_id": "fe51594f36ae077d",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "Iberia Public Procurement Market",
+          "scope": "ES",
+          "title": "España – Servicios de taxi – Servicio de Transporte No Sanitario desde el ámbito territorial de la Comunidad Autónoma de Aragón",
+          "materiality": 0.799,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/596067-2026"
+        },
+        {
+          "event_id": "019cc9bdc9e805ab",
+          "date": "2026-08-28+02:00",
+          "type": "procurement_award",
+          "entity": "Iberia Public Procurement Market",
+          "scope": "ES",
+          "title": "España – Servicios telefónicos y de transmisión de datos – Servicios de Comunicaciones Digitales de la Administración de Castilla-La Mancha.-1502TO20SER00165",
+          "materiality": 0.799,
+          "confidence": 0.877,
+          "source": "TED EU Procurement",
+          "url": "https://ted.europa.eu/en/notice/-/detail/593603-2026"
         }
       ]
     },
     "90": {
       "days": 90,
-      "events": 154,
+      "events": 138,
       "by_type": {
-        "certification": 6,
-        "award": 5,
-        "market_expansion": 2,
+        "certification": 5,
         "ma_acquisition": 9,
-        "pricing_licensing": 3,
-        "financial_performance": 18,
+        "financial_performance": 17,
         "service_launch": 4,
         "strategy": 15,
         "partnership": 2,
-        "procurement_award": 40,
+        "procurement_award": 45,
         "distribution_agreement": 3,
-        "operational_incident": 3,
-        "hiring": 4,
-        "managed_service": 1,
-        "product_release": 6,
+        "award": 5,
+        "hiring": 3,
+        "product_release": 3,
         "customer_reference": 6,
         "capability_expansion": 1,
-        "security_incident": 4,
-        "procurement_notice": 22
+        "operational_incident": 1,
+        "procurement_notice": 19
       },
       "by_scope": {
-        "GLOBAL": 52,
-        "EUROPE": 6,
-        "ES": 64,
-        "OTHER_REGION": 4,
-        "IBERIA": 8,
-        "PT": 20
+        "GLOBAL": 40,
+        "ES": 56,
+        "OTHER_REGION": 1,
+        "IBERIA": 6,
+        "EUROPE": 4,
+        "PT": 31
       },
       "vendors": {
-        "AWS": 18,
         "Cisco": 10,
+        "AWS": 8,
         "Fortinet": 6,
         "Palo Alto Networks": 5,
         "Nokia": 5,
         "Microsoft Azure": 4,
-        "NETSCOUT": 3,
-        "AttackIQ": 3,
         "Check Point": 3,
         "CrowdStrike": 2,
         "Zscaler": 2,
-        "Okta": 1
+        "Okta": 1,
+        "Proofpoint": 1,
+        "Splunk": 1
       },
       "integrators": {
-        "Indra": 6,
-        "Accenture Spain": 4,
+        "Indra": 7,
+        "Accenture Spain": 5,
         "Bechtle Spain": 3,
-        "SEIDOR": 3,
-        "Babel": 2,
+        "Babel": 3,
+        "NTT DATA Spain": 3,
+        "SEIDOR": 2,
         "Minsait": 2,
-        "Ricoh Spain": 2,
-        "Econocom Spain": 2,
+        "NTT DATA Portugal": 2,
         "SCC Spain": 1,
         "Ayesa": 1,
-        "NTT DATA Spain": 1,
-        "T-Systems Spain": 1
+        "T-Systems Spain": 1,
+        "Ricoh Spain": 1
       },
       "technologies": {
-        "Cloud": 40,
-        "Cybersecurity": 29,
-        "AI": 25,
-        "Networking": 22,
-        "IT Services": 21,
-        "Identity": 6,
-        "Data Center": 5,
-        "Observability": 4
+        "Cloud": 31,
+        "IT Services": 31,
+        "AI": 21,
+        "Cybersecurity": 21,
+        "Networking": 20,
+        "Data Center": 6,
+        "Identity": 4,
+        "Observability": 1
       },
       "changes": [
         {
@@ -506,34 +496,10 @@
           "entity": "AWS",
           "scope": "GLOBAL",
           "title": "“El cuidado de una cuenca es algo colectivo”: la certificación AWS de Eco Aguas en Moreno - Visión Sustentable",
-          "materiality": 0.742,
+          "materiality": 0.741,
           "confidence": 0.621,
           "source": "Visión Sustentable",
           "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPY0lHSUZqNkxpd00wUWlpczlaSHVqR2ZiOWkwemE5THBWY0taeUJpaDU1cy0tajFhYkpUeUkzRkNfbVlGdWh1NDFIUjVSTmgzR1BkVGItcEQ4THBPaWJqSTl3d3Z3ck1JV2tZaERzaVZYWDdPUTdid1VveDROOGZPZ2x3LThBWkZsVmJOWXRFcXFXY2l4aTZtUtIBmAFBVV95cUxPY0lHSUZqNkxpd00wUWlpczlaSHVqR2ZiOWkwemE5THBWY0taeUJpaDU1cy0tajFhYkpUeUkzRkNfbVlGdWh1NDFIUjVSTmgzR1BkVGItcEQ4THBPaWJqSTl3d3Z3ck1JV2tZaERzaVZYWDdPUTdid1VveDROOGZPZ2x3LThBWkZsVmJOWXRFcXFXY2l4aTZtUg?oc=5"
-        },
-        {
-          "event_id": "617b5099e447ed5d",
-          "date": "Wed, 26 Aug 2026 17:00:00 GMT",
-          "type": "award",
-          "entity": "AWS",
-          "scope": "GLOBAL",
-          "title": "Amazon Connect Customer now supports points-based scoring in performance evaluations",
-          "materiality": 0.697,
-          "confidence": 0.731,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-connect-customer-points-based-scoring-evaluations/"
-        },
-        {
-          "event_id": "03b10082a704953b",
-          "date": "Wed, 26 Aug 2026 16:26:00 GMT",
-          "type": "market_expansion",
-          "entity": "AWS",
-          "scope": "EUROPE",
-          "title": "AWS Glue 5.1 is now available in AWS European Sovereign Cloud Region",
-          "materiality": 0.851,
-          "confidence": 0.804,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-glue-5-1-european-sovereign-cloud"
         },
         {
           "event_id": "1e16953845f9adfa",
@@ -546,18 +512,6 @@
           "confidence": 0.7,
           "source": "Investing.com España",
           "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOOXo3TWJIel9EaGFSX3BDRnl6cGpYcDFuX192dzEtRGxsQ0V4bGJOeHV1bjdTdVM0TkFVbVBWS1A2ekc2YXVaVncweGZjSHhZU1pwU0EtVElMS3hEWERDcHJHdTlWLXF2aFV3M3RKRVZCaXhWWm9Db1N0ekZWQjg5ODRqUEJvYkhOekhkWnhVclA3c1RWNU9BRlRZLWZUZVdwSVlGeFJtM2t3YzdIb1hXN1Y3RThDRWtKRGdYRWdCaTVDcVVqdVUwUmdBT0YySVdT?oc=5"
-        },
-        {
-          "event_id": "4f932f32e77419b3",
-          "date": "Wed, 26 Aug 2026 10:00:00 GMT",
-          "type": "pricing_licensing",
-          "entity": "AWS",
-          "scope": "ES",
-          "title": "AWS Backup adds cross-Region backup copy and logically air-gapped vault support for Amazon DocumentDB in nine additional AWS Regions",
-          "materiality": 0.843,
-          "confidence": 0.808,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-backup-cross-region-air-gapped-docdb/"
         },
         {
           "event_id": "cfe0d1ea6f74a10a",
@@ -656,16 +610,16 @@
           "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPTVlZZlY5c2NJUGpRZjRnNFRPR2FIOEZ2MVV2czI5US1KTDgwY1lUX0Z0YkxBVktfcjQ2dWNxbFAxQS1ubnlGVzNzTDRxWGFUSEF1X1kwdW1ocGRKRmFwWTRJTUNQQjBlRVhWRUhOWnk3LU5Yd2Rjc0RCbFM5MVJnb21aZi1PMHNWY0xZR2JiMjFoMnh0c2Zvd1k2WnNlVnotbEVRQlpWVUlZN1psdC1mdGxOZTFuN1NTQ0F6Y0pHbjYxSmlvenY4bTJjQko?oc=5"
         },
         {
-          "event_id": "4162c944621603a0",
-          "date": "Wed, 05 Aug 2026 09:00:00 -0400\n",
-          "type": "operational_incident",
-          "entity": "NETSCOUT",
-          "scope": "GLOBAL",
-          "title": "Six Critical Business Benefits of Real-Time Data Insights",
-          "materiality": 0.734,
-          "confidence": 0.745,
-          "source": "NETSCOUT",
-          "url": "https://www.netscout.com/blog/six-critical-business-benefits-real-time-data-insights"
+          "event_id": "69797785b51f9abe",
+          "date": "Wed, 03 Jun 2026 07:00:00 GMT",
+          "type": "award",
+          "entity": "AWS",
+          "scope": "ES",
+          "title": "Indra recibe el reconocimiento de AWS como 'Socio del año' en España por su contribución al alza del negocio - Forbes España",
+          "materiality": 0.706,
+          "confidence": 0.615,
+          "source": "Forbes España",
+          "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNd0ZibzdHcDktU2o3VVl2TUZ4SHhaZy11Rm1xa1hMYVJpdk9hOWxTeWpxMGpRa2RhT0NhWEg1R3NsX3dnMGJWUnd3UlNIRlo3dlV4LThCM2YtNWdWRzhwLWROaHNvbEM4SmFKRmlUcTNEUzBleTBlbzdJLW13ZTJ2LWdEbnNvVHBuaGFTYkl6a241VjhjSmxSVmdMZ2UzcXpmOEtHdmFrS25XaUdrb3R5dWMwNTNsMXB6MS1WdkdrNElKYmQzaWNVOFBOblBjUC1Wejc2VGk2RlM?oc=5"
         },
         {
           "event_id": "053eb25b161be40b",
@@ -680,28 +634,28 @@
           "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNMmc1bHdrVVN5THVmX0ZCLWZSRUNoWElKY2VTbFVGM24xQU5lZTM2NWJoYVNEM0NDTTU0azktemNhWmNmaUdSWWZGbk1NWEJuN005UkVnOE1lbXlERFE4TExIamR2RGVaRHpvdVplQnVIVUJJV2k2RGJZeTBoeUR2SUhhTUFFeERqQ245QWhpbG1SYW9PdEg2Z3Y1Yklob29IWThZRUVJRzRQWk1RX1F3ck54VHZTRDlRYWw0LWFEQkNuRW5NbXR2ZzRUOUFJdURzN3hSNGVvUVc0QnJLaGlhVUxqU2hyd3pSMzN6aDNn?oc=5"
         },
         {
-          "event_id": "de84a06dca799699",
-          "date": "Wed, 03 Jun 2026 07:00:00 GMT",
-          "type": "award",
-          "entity": "Indra",
-          "scope": "ES",
-          "title": "Indra recibe el reconocimiento de AWS como 'Socio del año' en España por su contribución al alza del negocio - Forbes España",
-          "materiality": 0.672,
-          "confidence": 0.647,
-          "source": "Forbes España",
-          "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNd0ZibzdHcDktU2o3VVl2TUZ4SHhaZy11Rm1xa1hMYVJpdk9hOWxTeWpxMGpRa2RhT0NhWEg1R3NsX3dnMGJWUnd3UlNIRlo3dlV4LThCM2YtNWdWRzhwLWROaHNvbEM4SmFKRmlUcTNEUzBleTBlbzdJLW13ZTJ2LWdEbnNvVHBuaGFTYkl6a241VjhjSmxSVmdMZ2UzcXpmOEtHdmFrS25XaUdrb3R5dWMwNTNsMXB6MS1WdkdrNElKYmQzaWNVOFBOblBjUC1Wejc2VGk2RlM?oc=5"
-        },
-        {
           "event_id": "4dbfdf9dc91cb585",
           "date": "Wed, 03 Jun 2026 07:00:00 GMT",
           "type": "award",
           "entity": "Indra",
           "scope": "ES",
           "title": "Indra es reconocida como “Partner of the Year” de AWS en España por su impulso en inteligencia artificial agéntica - Demócrata",
-          "materiality": 0.66,
-          "confidence": 0.615,
+          "materiality": 0.672,
+          "confidence": 0.647,
           "source": "Demócrata",
           "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA1NFpMNWhzRUdGVUx2VmUybXM0YklmVURtTHZ5T2hjZWtFNTZsQnR2dWE1dVpTYzNQUmRtc0J6VXM1VXVyRlZsdEV6TVhpRWlSeGl3Q05sTW01dENObmxldXFfQUVyYmphX2NtbmxOZ0lMTEJiMkpqaXlaNVdkNXPSAYQBQVVfeXFMTzNSWV9GVnhtU25pLWR4UFNpeDlIYm1nWTJiV3pja01oOTd2UWNSNVgtN1p2aFRaaE1fVVFlZ0ZURnNOdnpkQ052N1VoV1Vpc2UtUkUyazQ4ZzBIVmU2aDh5NEZvc25OUWtnQVhZM2pKclQ0ZEZhd0loUzZtUDdaQnNlQnp4?oc=5"
+        },
+        {
+          "event_id": "de84a06dca799699",
+          "date": "Wed, 03 Jun 2026 07:00:00 GMT",
+          "type": "award",
+          "entity": "Indra",
+          "scope": "ES",
+          "title": "Indra recibe el reconocimiento de AWS como 'Socio del año' en España por su contribución al alza del negocio - Forbes España",
+          "materiality": 0.66,
+          "confidence": 0.615,
+          "source": "Forbes España",
+          "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNd0ZibzdHcDktU2o3VVl2TUZ4SHhaZy11Rm1xa1hMYVJpdk9hOWxTeWpxMGpRa2RhT0NhWEg1R3NsX3dnMGJWUnd3UlNIRlo3dlV4LThCM2YtNWdWRzhwLWROaHNvbEM4SmFKRmlUcTNEUzBleTBlbzdJLW13ZTJ2LWdEbnNvVHBuaGFTYkl6a241VjhjSmxSVmdMZ2UzcXpmOEtHdmFrS25XaUdrb3R5dWMwNTNsMXB6MS1WdkdrNElKYmQzaWNVOFBOblBjUC1Wejc2VGk2RlM?oc=5"
         },
         {
           "event_id": "e071332492735baf",
@@ -746,46 +700,22 @@
           "entity": "Babel",
           "scope": "ES",
           "title": "Babel compra la división de consultoría de Bosonit y se refuerza en IA y análisis de datos - Cinco Días",
-          "materiality": 0.828,
+          "materiality": 0.827,
           "confidence": 0.672,
           "source": "Cinco Días",
           "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPUVhFeVltdTF3aHZFWUw2d1hJbl92ZWJIR0ZaOVVibV9LOTBaMG42QUpzeXdGbE8xWTlFTC1MR0tKQjJnR0JGRDNFMHNyZGQ0Tm9fSGFka0g0OElBMjNmTDlOSUVzMmZvd2o2OWEzSHo0cXA1YVN1ZDZlU0dlZjhJRmZPYlpranQxbGcwZThBdzlPOHBnNmtYZ0R5VmVyR19SaEo2MWNpend3Z2ZxdHE3M3FwNGRGMG1UUHVfcnBwX245VTBybTlLZWNlYzZOLWVkeklCaHZLR1l6TEFHY3fSAfIBQVVfeXFMTmRlVEZRLW44eVFMLTJ4TlJlNVViSC02ZENRbXhVUHprSmNaUE9MdHFkS3dWTG9naGVXcDQ2ZG1BTWFlOXV0RmQ2RUJtVXZGUmVmTVVpS0pZQXBhc2JacGRLUENqOURsNm5VdDF1M2FzTi1sbDR0c1Y3M0EtOWFwZmhVemNWU0Jjb2xNbzVFTkszWHNScWNGQWlMM0p2WXRHXzAyNHRGTWJyYUlRUUF0dmFyVDJPaS1raGR1NFZEUEtJWTdOaVNmVGlCVUwtYzVrLUctMU5UVDJwcjc5UjBJdkRHTVpidUllTUp5Z0VkOWdpclE?oc=5"
         },
         {
-          "event_id": "cdec527829c8558b",
+          "event_id": "62ee4c5e1217e8e2",
           "date": "Tue, 30 Jun 2026 07:00:00 GMT",
           "type": "hiring",
           "entity": "Indra",
           "scope": "ES",
-          "title": "Miguel López-Quesada, nuevo director de Comunicación de Indra Group - Dircomfidencial",
+          "title": "Miguel López-Quesada Gil, nuevo director de Comunicación de Indra Group - Servimedia",
           "materiality": 0.639,
           "confidence": 0.603,
-          "source": "Dircomfidencial",
-          "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNWkR2YkxObUxEVHk2dXBZZmQ0ZlhmMzFobnpmSDNUalJtbUFtb0REZnV0MHFzdkhFMTdnNW9aYXNHUi12VmNMWkJhY0VTbkpOYUhJTkJUME5yTFRnRGpDbU5IeHlCSjMyQUFLajlCa0Examc3ZnVxZXZwQzhKd2VxaXdHdjJQTUVZQWxpc0NCenNoTllYdk96blIwQ3BkUlpVblJFZGlrTTFleEFzWkY2N0txWWdFdkc5Tzd3ZDlYVQ?oc=5"
-        },
-        {
-          "event_id": "060300b23f8d070d",
-          "date": "Tue, 25 Aug 2026 19:42:00 GMT",
-          "type": "managed_service",
-          "entity": "AWS",
-          "scope": "OTHER_REGION",
-          "title": "AWS IoT Core now supports native InfluxDB routing for time-series data",
-          "materiality": 0.653,
-          "confidence": 0.698,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-iot-core-influxdb/"
-        },
-        {
-          "event_id": "806c189be6b2918e",
-          "date": "Tue, 25 Aug 2026 19:36:00 GMT",
-          "type": "hiring",
-          "entity": "AWS",
-          "scope": "GLOBAL",
-          "title": "AWS Batch now supports Amazon ECS Managed Instances",
-          "materiality": 0.68,
-          "confidence": 0.717,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-batch-on-ecs-managed-instances/"
+          "source": "Servimedia",
+          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOS01iTEZ5SGw5OGVONzJqYjU3NEpEZGFBa2g4LTNyZ3RBRWVobnVnTGtEWkVQVWRvVUNxblUyYUFPMHliYVZwOVIwQkF2VEUyNG5vblhBREVGc3dNckxHdl9hemR1NnNIN1NORnZGQ04yQXdHTE54c19LX04wS1pSNXdlWi1SUzZ6RW42T2ZVajNaMU1KTm52cUhMTHVYR1p1d2dUbmcyaWQ5LXFLT3dR?oc=5"
         },
         {
           "event_id": "82809759846faad7",
@@ -800,140 +730,198 @@
           "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQTWNnc2xhVUJveXhsSEhlM0NLUEZYTy0yUENMZUNheE1SbWV4cXRtMzNXYVRaZ1FIWmNjaklzMUJkbllKU3FnMUF2T0x5dTB6T0pDckJGbFJGQ0VpWTZ5TGxzWU05MkxCWkdtWjd0WFhLZDhMR29pS1owaXF3WWY4VmotOHRaOTA5RVlaVUpHTlp5cnVrRm85WlhYaU5zVUhCSXl1aUJMUnc3SWM2cmZTUFNR?oc=5"
         },
         {
-          "event_id": "818508c03164aa4f",
-          "date": "Tue, 25 Aug 2026 16:34:00 GMT",
-          "type": "pricing_licensing",
-          "entity": "AWS",
-          "scope": "GLOBAL",
-          "title": "AWS Lambda MicroVMs now supports AWS PrivateLink",
-          "materiality": 0.769,
-          "confidence": 0.768,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/lambda-microvms-supports-privatelink"
-        },
-        {
-          "event_id": "1988b7545abc99f6",
-          "date": "Tue, 25 Aug 2026 16:00:00 GMT",
-          "type": "pricing_licensing",
-          "entity": "AWS",
-          "scope": "GLOBAL",
-          "title": "Amazon RDS for PostgreSQL supports minor versions 18.6, 17.11, 16.15, 15.19, and 14.24",
-          "materiality": 0.769,
-          "confidence": 0.768,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-rds-postgresql-18-6-17-11-16-15-15-19-14-24/"
-        },
-        {
-          "event_id": "431e158f64cc702b",
-          "date": "Tue, 25 Aug 2026 13:18:00 GMT",
+          "event_id": "26c0017feb6f27d1",
+          "date": "Tue, 21 Jul 2026 07:00:00 GMT",
           "type": "product_release",
-          "entity": "AWS",
-          "scope": "EUROPE",
-          "title": "IAM Roles Anywhere now provides a Java plugin for the AWS SDK",
-          "materiality": 0.802,
-          "confidence": 0.785,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/iam-roles-anywhere-java/"
-        },
-        {
-          "event_id": "6feade1bbe33195e",
-          "date": "Tue, 25 Aug 2026 13:00:00 GMT",
-          "type": "product_release",
-          "entity": "AWS",
+          "entity": "Nokia",
           "scope": "GLOBAL",
-          "title": "AWS Lambda introduces managed runtimes in public preview for Node.js 26 and Python 3.15",
-          "materiality": 0.769,
-          "confidence": 0.768,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-lambda-node-js-python-public-preview/"
+          "title": "Nokia lanzará la primera plataforma RAN comercial nativa de IA - DPL News",
+          "materiality": 0.718,
+          "confidence": 0.611,
+          "source": "DPL News",
+          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9MSWc5LXBJN3JTU3FqSUNjN2lpV2dFLXJBM2k1UDJ6VXZvMC1VQW5wNDdDWTEzVWVzQXpLX3BzbFRIWXRtREtkeU40Zk1jVVNJY2M0RGt4MnRudWhiZ2ZGMnl3LVpPeTQzZWEyUTZOY0hOeEZjajZteHkxTXU?oc=5"
         },
         {
-          "event_id": "66b1ca7aa5bfd734",
-          "date": "Tue, 25 Aug 2026 13:00:00 GMT",
+          "event_id": "7a330adec1664e14",
+          "date": "Tue, 16 Jun 2026 16:04:29 GMT",
           "type": "certification",
-          "entity": "AWS",
-          "scope": "OTHER_REGION",
-          "title": "Amazon EC2 M8i and M8i-flex instances are now available in Canada West (Calgary) region",
-          "materiality": 0.615,
-          "confidence": 0.689,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/ec2-m8i-m8i-flex-canada-west/"
+          "entity": "Cisco",
+          "scope": "GLOBAL",
+          "title": "Sede Santiago Centro inicia su primer Programa de Apresto para la Certificación Internacional CCST Networking de Cisco - portal.inacap.cl",
+          "materiality": 0.719,
+          "confidence": 0.621,
+          "source": "portal.inacap.cl",
+          "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPSEN6eldfM0NUcEx2Qjg0eXB3MWJlQkx5dDdweXFVRHhLVTZvVGNKX0FuUEtIaTlnQU1Wc1pDRHNzakZST19OaEI5ampWUUQtdnBMaC1DU2VwWEhwNkZ0VW9tWXBnYkZpUFYxWWplTDZCcVR1NGh0QWRDYi1oanVqcVN1YmtyeUJEWlNYRldVRTVQNkgtdXBSVU1TaV9BMUxScnYyaVFLa1VQSUtZREhTYTc4aUhMdG90R1BhSDBCRGo0Ni1RVHBZTnFuR3FVUmJkeUhkb1RwdlktdkdkaG5vV25KYnM?oc=5"
+        },
+        {
+          "event_id": "266d7ef7c54de264",
+          "date": "Tue, 16 Jun 2026 09:50:45 GMT",
+          "type": "customer_reference",
+          "entity": "Ayesa",
+          "scope": "ES",
+          "title": "HBX Group aplica IA agéntica a su servicio de atención al cliente de la mano de Ayesa Digital - Estrategia Empresarial",
+          "materiality": 0.757,
+          "confidence": 0.67,
+          "source": "Estrategia Empresarial",
+          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOak1WNjZFWHVTUnlmY0E1eGRtVEdBcUlxbFlWU0pDcHQ1WmM5am5rMW51cHl3c3pBMl9lV0tMWUNGYVpiS1Jaa3RISXd0dC13enZJMkFhYlVCVVNveTFfMVYtMWJZRHdrZC12YjV1bWtnd3Nkek1HTFZ3Mm1HMDBwU0o0SlFEWllFUE82TmhGM1RLMlJrZFlsYi0tU3lDSHNhb2pCTXBCSEVWR1k4OWdBWFcwZjJQcXRySFZ3NnpLd2tKNFYxOG5ZRw?oc=5"
+        },
+        {
+          "event_id": "9f411cac06e20690",
+          "date": "Tue, 16 Jun 2026 07:00:00 GMT",
+          "type": "procurement_award",
+          "entity": "Indra",
+          "scope": "ES",
+          "title": "General Dynamics, a por todas contra el Gobierno: recurrirá en la Audiencia la adjudicación de blindados a Indra y EM&E - El Español",
+          "materiality": 0.713,
+          "confidence": 0.693,
+          "source": "El Español",
+          "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQbGZNT2lfQlE0enpRYkR1b0RkWktpZDJ2TnNZbnJxUEJvN3Q3U1B0eFFzckFYNDcxMS1SQ3Z2SDlKdkRsb29CRGNEYlJJMjJJUlBsSkpPRXR1ZlcxemF0VUpuWEZSWUItWWhFdTZpbWtWc09adWswNWlMaEJFMnZxTkNiLXJSemc2RldMbFlRMjhjN1JxMDJraWhBZzFpVW8tSHJJajRmR1FYcjdyZVNiS3lmejBuUDRYdC1ncnpBRmkwbWJGVktqSWVpcHVHUVZucDFZVmRmNC0tei1Dem1OUEpOLWpmWEhZd1g4VGNNa9IB9AFBVV95cUxNSlRXQXBzVEszY1ZzdGlmaTJpa2ZKa1Q5TXFvUHJQamFyeWx0RzhtMnR5UWVYbjZETHlrRlZxbTN0aG5aMWExN2xsT3lfaGU4ZHRYM3VlYlRoQ3d5clBNXzEzYTB2cDc5ajB1dUY2ek1qb1MzM0dKUHp1NVRrZ0J1Qm91TlFaM1NrUjExRWpJeUNfMzFQRHZxaFF2ajZhSm1hR1hNY24yazUtQVE1aDllZWtXNV8wWFhYUXhpSTBvQTFGd0FveU8wdDRUa2Y0YXhPX1puTVhvOXdsRXVrUDFweHk3WEJaUlJzeWE5Zk5XWEhJNUps?oc=5"
+        },
+        {
+          "event_id": "0ac818816c87c45c",
+          "date": "Tue, 07 Jul 2026 07:00:00 GMT",
+          "type": "product_release",
+          "entity": "Accenture Spain",
+          "scope": "ES",
+          "title": "Accenture y Google Cloud lanzan soluciones de IA para empresas medianas - Investing.com España",
+          "materiality": 0.741,
+          "confidence": 0.651,
+          "source": "Investing.com España",
+          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOZFVLUkIxcFppbmJySjk1MUdEZXBzb0NYMFpZZllOQ255cDdqNmgzZnk0eTV4SUFTSC1ZTkpCN1FQS1lkUkFnRkhpb3d4RE1jZkRuLVlodFFFQ2d2ZXBNZS1vVkJXOGRGbDMwcm1yVzFoQ2k1WHE4UWp5Z3NqTUstM2x5TkZOQTZCa2k3aDY5ZEhldTNCcDB6MmoydzRid2Qxa3pGbjl6MFhnSF80SkxTLXZsX0taeEQxaUt4QjV4cG41X3BOUmc?oc=5"
+        },
+        {
+          "event_id": "549a4f52bbdcc436",
+          "date": "Tue, 02 Jun 2026 07:00:00 GMT",
+          "type": "customer_reference",
+          "entity": "Bechtle Spain",
+          "scope": "ES",
+          "title": "Bechtle celebra 25 años en España en compañía de varios cientos de clientes - BPS Channel Partner",
+          "materiality": 0.729,
+          "confidence": 0.64,
+          "source": "BPS Channel Partner",
+          "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPMHlSNW1jWUQyUkQtTFRVcmlUUVdzSWZsQW1sbU9od3FjN2lOZHp3bzU4N3ZfS1JyeC1Fdkx4X0phekhBODJCSmpQNWxkZ3hsbWlOUmRSTWlkcWxZandHaEJrOXJiM01lc1JzcHVKM0pXRGJKNFFpeEkwRzRfSzF1OUR3YUJzY2pkdmlGaVNScDB2bFpaUUM2ZUotSmhTWGF0LUd3enNaZlA2REpFOXRKWFpOQ2NnaTN3S2YtYlZhdF9ISUNZWnRfanpPYVkxQ0ww?oc=5"
+        },
+        {
+          "event_id": "56308798c4806da5",
+          "date": "Thu, 25 Jun 2026 07:00:00 GMT",
+          "type": "award",
+          "entity": "NTT DATA Spain",
+          "scope": "ES",
+          "title": "La Fundación NTT DATA recibe el premio Beef Awards 2026 de Innovación - El Diario de Madrid",
+          "materiality": 0.642,
+          "confidence": 0.615,
+          "source": "El Diario de Madrid",
+          "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNeVgtUjBjOUVpNldzWEdyYzJLR2o2cmtpaXJQbXRsM0VTaFIyTkpzeEtxSG5YdTZJN3BGbzBBMS1Ca0hqTnlrTkRRTWVLWGZadGdBN3B5eExERmk0NUZQcjlmUDlZUm5hRnFCSTF2OVFCU2VrMWNSYXdfcEZDZUNBdTFkZjJFeTVRWW5ERG84dWNXVmU2dmk3WnVuZ1hDRVo1a2lHY0VrTHE5R3prUXYxMGlGTUk3TWFWNzluZTBGUkQxT0RMTmRkUUpCNEpweEZ60gHWAUFVX3lxTE55REdSWGx0XzRpUFJhWUFONVZJbW4wRjdRVk94bHR4UzF4SV8yR1dFd1EzNDhvM3JaaEt2RXh5Mnd6S051U2M4MnpPNnIwbUhsSWhmdV9rSGRUUGh3UEcxV3F2LVIxanVMMTNCeTJYSk5kRklBd3JwMWJodGt6a2x0aXBTRDNXSkc4ZUJfaVF4SGxySG9IelNoclV0UUl0bk1ndnpMdjVmQzFoZjVrUTVjLUVtbjJPaDlPLTVQVE4xYTIyQVpPYWhRdzZKVDBEYkxSNDFoQ0E?oc=5"
+        },
+        {
+          "event_id": "3cc2aacf9a07b705",
+          "date": "Thu, 23 Jul 2026 07:00:00 GMT",
+          "type": "ma_acquisition",
+          "entity": "Palo Alto Networks",
+          "scope": "GLOBAL",
+          "title": "Palo Alto Networks refuerza su plataforma de observabilidad con la adquisición de Embrace - Portal Innova",
+          "materiality": 0.807,
+          "confidence": 0.66,
+          "source": "Portal Innova",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPUm1YMVRYWml4RVNKSkx5UW45NjE1Z2NDYi1zQV8xM05sLVN2RzBDMXNqVFd0cVpMYWpJRmFBZUZIS1hkSVJmZVpzM3dCMlNCbldLYkJhYUNOdkxsODJtdHhxZE9DVVhkdGxQa18wNzhVczdYLTVyS01WQ0s1eGVBb0xVWWEwalhYdDdDaUx0V2lqZzY3M2gxSTByQnF0VWdaY2thbHVDMkVZcjhzOGRZeGo3cGM?oc=5"
+        },
+        {
+          "event_id": "1f183e07392c8b20",
+          "date": "Thu, 23 Jul 2026 07:00:00 GMT",
+          "type": "financial_performance",
+          "entity": "Nokia",
+          "scope": "ES",
+          "title": "Informe de resultados: Nokia supera el BPA previsto en el segundo trimestre de 2026 gracias al auge de las ventas de IA - Investing.com España",
+          "materiality": 0.726,
+          "confidence": 0.619,
+          "source": "Investing.com España",
+          "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxPNFlSWDZvYWt0dUdTTkhWS2RnUHVoSlozbUpkR2NKcTFlaHA1QjJxUnJBcUtDSTJ1YW53TUhVSUFsemgyVkVHMlFzUFpEMDR1WFl6YjhRaThNYUQ5c2xxeWNzMk9xYjJYZ0p3cG5LTW82Tld1OXVnWnFLVkk5ZWlMdFQ0MWVnaG9QbUdJb0M2b2RtNDY5X0xIY0ZIUkF4Tkk3dlM4UG1KTE9ONVpYeFJpUVVqZUN2SC03WjAza3VQc2tzbjJUTDNpTnJqbGVzQmJGV0Y3azVtazBvblFacWV6dG1meWRMdWhQYmUzdFJUZE5jUlNHd1RsSFZvNC1uay1vaXhv?oc=5"
+        },
+        {
+          "event_id": "a10f013eadda0d9c",
+          "date": "Thu, 23 Jul 2026 07:00:00 GMT",
+          "type": "capability_expansion",
+          "entity": "Cisco",
+          "scope": "GLOBAL",
+          "title": "Cisco despliega su gran apuesta agéntica: red, seguridad y operaciones bajo un control unificado - ituser.es",
+          "materiality": 0.724,
+          "confidence": 0.616,
+          "source": "ituser.es",
+          "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOWF80b1B4OEVmRXc2MlJhRktxcm8yWE1fWVZLZDE4OWJzZDViQkVlelFtTGQ0RWpwdl81YzU2TlZqYld1Skctc25GUV8xMEpQQjRfS3lMOE1rSnpEQ2FvMEtTVTdCMFRkdTZfTGFHaVhKLUYzZUJEMG5iVm1NZTdNVHZ5XzRZVVRBUnJubGI3ZFV0SHZ2anJHeDNxQUNPNUpxNlJFYW8zcWRoX2ZteHlVOGFHS0tqTnR5S2l5d0tIOEZReXFfVjBzdnRqaGtYTU1KWWdKcndKejRtUQ?oc=5"
         }
       ]
     },
     "365": {
       "days": 365,
-      "events": 211,
+      "events": 195,
       "by_type": {
         "strategy": 27,
-        "hiring": 7,
-        "certification": 8,
-        "award": 9,
-        "market_expansion": 4,
+        "hiring": 6,
+        "leadership_change": 5,
+        "certification": 7,
         "ma_acquisition": 18,
-        "pricing_licensing": 3,
-        "financial_performance": 24,
+        "financial_performance": 23,
         "service_launch": 7,
-        "partnership": 3,
-        "procurement_award": 40,
+        "partnership": 2,
+        "market_expansion": 2,
+        "procurement_award": 45,
         "distribution_agreement": 3,
-        "leadership_change": 4,
-        "operational_incident": 3,
-        "managed_service": 3,
+        "award": 9,
+        "managed_service": 2,
         "customer_reference": 11,
-        "product_release": 7,
+        "product_release": 4,
         "analyst_positioning": 1,
         "investment": 1,
         "capability_expansion": 1,
-        "security_incident": 4,
-        "procurement_notice": 22,
+        "operational_incident": 1,
+        "procurement_notice": 19,
         "end_of_sale": 1
       },
       "by_scope": {
-        "GLOBAL": 69,
-        "ES": 94,
-        "EUROPE": 6,
-        "IBERIA": 16,
-        "OTHER_REGION": 4,
-        "PT": 22
+        "GLOBAL": 57,
+        "ES": 87,
+        "IBERIA": 14,
+        "OTHER_REGION": 1,
+        "EUROPE": 4,
+        "PT": 32
       },
       "vendors": {
-        "AWS": 19,
         "Cisco": 12,
+        "AWS": 9,
         "Fortinet": 8,
         "Microsoft Azure": 7,
         "Palo Alto Networks": 6,
         "Nokia": 6,
         "Check Point": 5,
         "CrowdStrike": 4,
-        "NETSCOUT": 3,
         "Zscaler": 3,
-        "AttackIQ": 3,
-        "Proofpoint": 2
+        "Proofpoint": 2,
+        "Ivanti": 2,
+        "Okta": 1
       },
       "integrators": {
-        "Indra": 16,
-        "SEIDOR": 6,
-        "Accenture Spain": 5,
+        "Indra": 18,
+        "Accenture Spain": 6,
         "Ayesa": 5,
-        "Econocom Spain": 4,
+        "SEIDOR": 5,
+        "Babel": 4,
         "Bechtle Spain": 3,
-        "Babel": 3,
+        "NTT DATA Spain": 3,
         "Minsait": 3,
-        "Glintt Global": 2,
+        "Econocom Spain": 3,
         "Telefónica Tech": 2,
         "Capgemini Spain": 2,
         "Kyndryl Spain": 2
       },
       "technologies": {
-        "Cloud": 49,
-        "Cybersecurity": 35,
-        "AI": 31,
-        "Networking": 24,
-        "IT Services": 22,
-        "Identity": 8,
-        "Data Center": 6,
-        "Observability": 4
+        "Cloud": 40,
+        "IT Services": 32,
+        "AI": 27,
+        "Cybersecurity": 27,
+        "Networking": 22,
+        "Data Center": 7,
+        "Identity": 6,
+        "Observability": 1
       },
       "changes": [
         {
@@ -961,40 +949,28 @@
           "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPRUpqOFlxemh1MnloS1dIRndseEZEWXhEcllORVFBdDl3ZmRSU1BrTWgwYWhPeWVHcThMNjZSQjEtOXBST1QtWGlYUXVCQjdJaUdScm1QV3BXRE5ibXUyUUxRY3pqaWNlZVFFTmd0NlVzVUFwVUhQSW8wWHluQ2NOSFc5RVFuRHlROTBZUXJUOFV3S2d2RFVFaGVEdU1CY21zaEkzT2d3OTjSAa4BQVVfeXFMTk5yaTduQXl0LTczWWI5eXZvbkYtRUoyd0htSTE4c2ZrWnQ0TnlnNTl0cmJZQWdfRldtX09jQmphUmt2Vnh0cGxqRXNkOWs0WFNDeGZfaVdFajgzT05iYTVPYVV5aW4yaXN2S2p4b01qWjZSbWNUWEdKa3JtUXh0OGdmQ05mT0VOT19kLXFQZ2FQN1FWaHdKczlCUjZFQTd3eUZsZkgwN2t2Y3dMNmNR?oc=5"
         },
         {
+          "event_id": "d6d67e7614842097",
+          "date": "Wed, 27 May 2026 07:00:00 GMT",
+          "type": "leadership_change",
+          "entity": "Indra",
+          "scope": "ES",
+          "title": "Indra: los deberes del nuevo CEO de Ángel Simón - TradingView",
+          "materiality": 0.645,
+          "confidence": 0.624,
+          "source": "TradingView",
+          "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5qcURRczFKVG5qVVNKQzlJQ0xFb0NoTFlsWWdpZG15bDViWmgzbmo0VUlscU5JTGNldUNLRmNTNFNLYmhQS0U0WnBWTWR4UWlZZzVBUExuYnU4QzdmbGNfMTJMN1pvM29p?oc=5"
+        },
+        {
           "event_id": "e02167d76d6d5542",
           "date": "Wed, 26 Aug 2026 19:24:18 GMT",
           "type": "certification",
           "entity": "AWS",
           "scope": "GLOBAL",
           "title": "“El cuidado de una cuenca es algo colectivo”: la certificación AWS de Eco Aguas en Moreno - Visión Sustentable",
-          "materiality": 0.742,
+          "materiality": 0.741,
           "confidence": 0.621,
           "source": "Visión Sustentable",
           "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPY0lHSUZqNkxpd00wUWlpczlaSHVqR2ZiOWkwemE5THBWY0taeUJpaDU1cy0tajFhYkpUeUkzRkNfbVlGdWh1NDFIUjVSTmgzR1BkVGItcEQ4THBPaWJqSTl3d3Z3ck1JV2tZaERzaVZYWDdPUTdid1VveDROOGZPZ2x3LThBWkZsVmJOWXRFcXFXY2l4aTZtUtIBmAFBVV95cUxPY0lHSUZqNkxpd00wUWlpczlaSHVqR2ZiOWkwemE5THBWY0taeUJpaDU1cy0tajFhYkpUeUkzRkNfbVlGdWh1NDFIUjVSTmgzR1BkVGItcEQ4THBPaWJqSTl3d3Z3ck1JV2tZaERzaVZYWDdPUTdid1VveDROOGZPZ2x3LThBWkZsVmJOWXRFcXFXY2l4aTZtUg?oc=5"
-        },
-        {
-          "event_id": "617b5099e447ed5d",
-          "date": "Wed, 26 Aug 2026 17:00:00 GMT",
-          "type": "award",
-          "entity": "AWS",
-          "scope": "GLOBAL",
-          "title": "Amazon Connect Customer now supports points-based scoring in performance evaluations",
-          "materiality": 0.697,
-          "confidence": 0.731,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-connect-customer-points-based-scoring-evaluations/"
-        },
-        {
-          "event_id": "03b10082a704953b",
-          "date": "Wed, 26 Aug 2026 16:26:00 GMT",
-          "type": "market_expansion",
-          "entity": "AWS",
-          "scope": "EUROPE",
-          "title": "AWS Glue 5.1 is now available in AWS European Sovereign Cloud Region",
-          "materiality": 0.851,
-          "confidence": 0.804,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-glue-5-1-european-sovereign-cloud"
         },
         {
           "event_id": "1e16953845f9adfa",
@@ -1007,18 +983,6 @@
           "confidence": 0.7,
           "source": "Investing.com España",
           "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOOXo3TWJIel9EaGFSX3BDRnl6cGpYcDFuX192dzEtRGxsQ0V4bGJOeHV1bjdTdVM0TkFVbVBWS1A2ekc2YXVaVncweGZjSHhZU1pwU0EtVElMS3hEWERDcHJHdTlWLXF2aFV3M3RKRVZCaXhWWm9Db1N0ekZWQjg5ODRqUEJvYkhOekhkWnhVclA3c1RWNU9BRlRZLWZUZVdwSVlGeFJtM2t3YzdIb1hXN1Y3RThDRWtKRGdYRWdCaTVDcVVqdVUwUmdBT0YySVdT?oc=5"
-        },
-        {
-          "event_id": "4f932f32e77419b3",
-          "date": "Wed, 26 Aug 2026 10:00:00 GMT",
-          "type": "pricing_licensing",
-          "entity": "AWS",
-          "scope": "ES",
-          "title": "AWS Backup adds cross-Region backup copy and logically air-gapped vault support for Amazon DocumentDB in nine additional AWS Regions",
-          "materiality": 0.843,
-          "confidence": 0.808,
-          "source": "AWS",
-          "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-backup-cross-region-air-gapped-docdb/"
         },
         {
           "event_id": "cfe0d1ea6f74a10a",
@@ -1165,18 +1129,6 @@
           "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxOWW1WZGZOTzBIMnBCVmhLUjRJUFJ2dFlzWU9tVmRSd1dqZ2RZNjcwbHN0R1RMTHI0RF9BRXJyM3pJOVhmRjAwajh6cUFQTnhmekZxc2E3T2V2M0JCTWVXXzNSdy1YZG5IWWpBdEJCeGJ2Q3d0RkZYMXI3NGdWdFBYYVR6MWIyZ29zYWpaM0d1TTdaZTdsVnFjRzlDUW9pMG9seVUySGlLcVpMa0dCbFQ1S2FaVHd5b0xyUjlGWFN0NEhvcGUxUDZBWUpsODQ4SHVsMVk4Znl4bTRQOFNreFF1VTZPUVowaWdZMmlWNm5XSzhLWUpxWnRr?oc=5"
         },
         {
-          "event_id": "89d6d29fc1f18f63",
-          "date": "Wed, 11 Mar 2026 15:56:00 +0000",
-          "type": "partnership",
-          "entity": "Glintt Global",
-          "scope": "PT",
-          "title": "Glintt Global e ENSP NOVA unem-se para acelerar a inovação e a transformação digital na saúde",
-          "materiality": 0.771,
-          "confidence": 0.792,
-          "source": "Glintt Global",
-          "url": "https://www.glinttglobal.com/pt/glintt-global-ensp-nova-saude-digital/"
-        },
-        {
           "event_id": "df1d42a542a7d230",
           "date": "Wed, 11 Feb 2026 08:00:00 GMT",
           "type": "leadership_change",
@@ -1231,7 +1183,7 @@
           "entity": "Fortinet",
           "scope": "GLOBAL",
           "title": "La Contratación en Ciberseguridad se estanca, según un informe de Fortinet - Automática e Instrumentación",
-          "materiality": 0.587,
+          "materiality": 0.586,
           "confidence": 0.542,
           "source": "Automática e Instrumentación",
           "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNS1dXMzZLTEhQMzNQRU5sTXNsZnp0dkZMYmF3X0ItYXJCb2ltNmpFa2stLVA2dWwyTTByZ0lvVEVqN19lRDNvdzV5bEVoU0lZS2FjU1pSdGw4NDYzYlgzLUlWN1VMN3pLZ0JOZU9QaTJ1dHV2eXNsUmVzVEVYaDFZanlLeDBkenFVWmlHNVBZSHNCb1BiWWtLc1Y0R1BIbl9BRk0weEJYeE02RGZYRzlzbU9pRGs1UmdMQTVJcHFfMzdTZTdvVHJjOFk1VFdEdw?oc=5"
@@ -1247,18 +1199,6 @@
           "confidence": 0.672,
           "source": "Business Insider España",
           "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOMHdKcGZoMTBEVUFlOTJHQnJPTmxnNG9NSnEwaFZHbFM1Y0duc2NhZkhXZkhJSkFya01mUWNTUkk4LU5zdTFNVDZrOXdLQVA0bmVUd2ZSNjBBSDl6V05tODhrUTZncUd4aVlkZWV6cmpnQ0xoQ21YNERvWkdMRWRWTnJmUGdDTHlsOUkzX1JuZ1NFeEdCUFkxTE1xNnEwd25NenQyZGR0amV2ZmQzN1NFLU5HZmxaNnlVaFpETmNscjBUZDdkZExQMTNSN3lFLUlOeVFqbVZTbHRKS1d5VEtIX3FvVUVOdTRB0gHuAUFVX3lxTFBSQmpxNmxrd21QZGNFYk9HaTBzMmVIbFR2XzBiTGxWWlN5Zk8wMkY0amdUWjV3bjY2WmhiTGd6MEN6UkdyMU1renM4bDI3bmE1S09OTU4taEJLM05XTjJkWVdrR3JudXluTzlYTXBYWFV0ODZNVXhfYUVCSDlsQ090Z3l2WXhXV1ZhUEIwWF91N3JpMnJsdzRhZW1KMFJvZHdEVGIyci01V2ZiVHFhZFB4cXQxZzBrUmUtOEpHZjFDTGxOMzQ3anNUVGJqY01fTXlOU2EwLVlGMWNzbkI5TlhRbXpWajYtbjZnUjN4WlE?oc=5"
-        },
-        {
-          "event_id": "4162c944621603a0",
-          "date": "Wed, 05 Aug 2026 09:00:00 -0400\n",
-          "type": "operational_incident",
-          "entity": "NETSCOUT",
-          "scope": "GLOBAL",
-          "title": "Six Critical Business Benefits of Real-Time Data Insights",
-          "materiality": 0.734,
-          "confidence": 0.745,
-          "source": "NETSCOUT",
-          "url": "https://www.netscout.com/blog/six-critical-business-benefits-real-time-data-insights"
         },
         {
           "event_id": "671d6ffd8d49fce7",
@@ -1285,6 +1225,18 @@
           "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQQVJGQjBCb1VRYWFqREZjZHB6ZXhPeS1sdXhkOERoSlo4amlkOGZqMENIbnJ1MG9HVFFZMENGRnhiZmVjWWpLQlJsMjhrTEQzV3Q5QmJYbmE5Tk1GQm1PbU5HSFIteDVuRjY0djhJT2N4SUo3TVh6aWFIbzlRWTl6UXp5dmdwcTBFZnVId0xSNno5TGhhYkZFazZaRUVIdHNwXzNtSWdfQ0E4SHczMEtLdWJPOWxfTnBRaDlmb1dSZFhkQQ?oc=5"
         },
         {
+          "event_id": "69797785b51f9abe",
+          "date": "Wed, 03 Jun 2026 07:00:00 GMT",
+          "type": "award",
+          "entity": "AWS",
+          "scope": "ES",
+          "title": "Indra recibe el reconocimiento de AWS como 'Socio del año' en España por su contribución al alza del negocio - Forbes España",
+          "materiality": 0.706,
+          "confidence": 0.615,
+          "source": "Forbes España",
+          "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNd0ZibzdHcDktU2o3VVl2TUZ4SHhaZy11Rm1xa1hMYVJpdk9hOWxTeWpxMGpRa2RhT0NhWEg1R3NsX3dnMGJWUnd3UlNIRlo3dlV4LThCM2YtNWdWRzhwLWROaHNvbEM4SmFKRmlUcTNEUzBleTBlbzdJLW13ZTJ2LWdEbnNvVHBuaGFTYkl6a241VjhjSmxSVmdMZ2UzcXpmOEtHdmFrS25XaUdrb3R5dWMwNTNsMXB6MS1WdkdrNElKYmQzaWNVOFBOblBjUC1Wejc2VGk2RlM?oc=5"
+        },
+        {
           "event_id": "053eb25b161be40b",
           "date": "Wed, 03 Jun 2026 07:00:00 GMT",
           "type": "award",
@@ -1295,39 +1247,182 @@
           "confidence": 0.615,
           "source": "Indra Group",
           "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNMmc1bHdrVVN5THVmX0ZCLWZSRUNoWElKY2VTbFVGM24xQU5lZTM2NWJoYVNEM0NDTTU0azktemNhWmNmaUdSWWZGbk1NWEJuN005UkVnOE1lbXlERFE4TExIamR2RGVaRHpvdVplQnVIVUJJV2k2RGJZeTBoeUR2SUhhTUFFeERqQ245QWhpbG1SYW9PdEg2Z3Y1Yklob29IWThZRUVJRzRQWk1RX1F3ck54VHZTRDlRYWw0LWFEQkNuRW5NbXR2ZzRUOUFJdURzN3hSNGVvUVc0QnJLaGlhVUxqU2hyd3pSMzN6aDNn?oc=5"
+        },
+        {
+          "event_id": "4dbfdf9dc91cb585",
+          "date": "Wed, 03 Jun 2026 07:00:00 GMT",
+          "type": "award",
+          "entity": "Indra",
+          "scope": "ES",
+          "title": "Indra es reconocida como “Partner of the Year” de AWS en España por su impulso en inteligencia artificial agéntica - Demócrata",
+          "materiality": 0.672,
+          "confidence": 0.647,
+          "source": "Demócrata",
+          "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA1NFpMNWhzRUdGVUx2VmUybXM0YklmVURtTHZ5T2hjZWtFNTZsQnR2dWE1dVpTYzNQUmRtc0J6VXM1VXVyRlZsdEV6TVhpRWlSeGl3Q05sTW01dENObmxldXFfQUVyYmphX2NtbmxOZ0lMTEJiMkpqaXlaNVdkNXPSAYQBQVVfeXFMTzNSWV9GVnhtU25pLWR4UFNpeDlIYm1nWTJiV3pja01oOTd2UWNSNVgtN1p2aFRaaE1fVVFlZ0ZURnNOdnpkQ052N1VoV1Vpc2UtUkUyazQ4ZzBIVmU2aDh5NEZvc25OUWtnQVhZM2pKclQ0ZEZhd0loUzZtUDdaQnNlQnp4?oc=5"
+        },
+        {
+          "event_id": "de84a06dca799699",
+          "date": "Wed, 03 Jun 2026 07:00:00 GMT",
+          "type": "award",
+          "entity": "Indra",
+          "scope": "ES",
+          "title": "Indra recibe el reconocimiento de AWS como 'Socio del año' en España por su contribución al alza del negocio - Forbes España",
+          "materiality": 0.66,
+          "confidence": 0.615,
+          "source": "Forbes España",
+          "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNd0ZibzdHcDktU2o3VVl2TUZ4SHhaZy11Rm1xa1hMYVJpdk9hOWxTeWpxMGpRa2RhT0NhWEg1R3NsX3dnMGJWUnd3UlNIRlo3dlV4LThCM2YtNWdWRzhwLWROaHNvbEM4SmFKRmlUcTNEUzBleTBlbzdJLW13ZTJ2LWdEbnNvVHBuaGFTYkl6a241VjhjSmxSVmdMZ2UzcXpmOEtHdmFrS25XaUdrb3R5dWMwNTNsMXB6MS1WdkdrNElKYmQzaWNVOFBOblBjUC1Wejc2VGk2RlM?oc=5"
+        },
+        {
+          "event_id": "e071332492735baf",
+          "date": "Wed, 03 Jun 2026 07:00:00 GMT",
+          "type": "strategy",
+          "entity": "Cisco",
+          "scope": "GLOBAL",
+          "title": "Cisco Cloud Control - Redes & Telecom",
+          "materiality": 0.657,
+          "confidence": 0.542,
+          "source": "Redes & Telecom",
+          "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxORF9tRGhYbFd6OEt2RG0tSC1hR2M2VndiSGtEZ2NBbm1pTlpKc2pXTkJrU0Z1US1VMTJ4Um5SVnZHdUg1QkdhX0lPZmRSbmoySG0xSG5hbkpuZUsyTkdSUTJtd1RjOHp1cVVRR0VBUDRSXzNWdkpuLUJWSzMxek9TYzlFWU1LZkt4ZWZzSWdQQ0pvcEJfWFBXYU5KN3RRaG5EVUNwWTJNUzhKVTFYWlZ6dWdIaGUzWnNQc01fRXZMblNjRGV2ajJkX2FCUmN6d0ltU21ObDdhcXZQQ0JXMmdZbXNfSWhvZkk?oc=5"
         }
       ]
     }
   },
   "relationship_movement": {
-    "generated_at": "2026-08-27T18:23:05.630863+00:00",
+    "generated_at": "2026-08-27T22:47:49.862871+00:00",
     "integrator": {
       "comparable_pairs": 2691,
-      "new_pairs": 0,
+      "new_pairs": 585,
       "removed_pairs": 0,
-      "changed_pairs": 1,
-      "uncertainty_resolved": 1,
+      "changed_pairs": 14,
+      "uncertainty_resolved": 2,
       "transitions": {
-        "INSUFFICIENT_PUBLIC_EVIDENCE→INSUFFICIENT_PUBLIC_EVIDENCE": 2620,
-        "WHITESPACE_RESEARCH_PRIORITY→WHITESPACE_RESEARCH_PRIORITY": 39,
-        "CONFIRMED_RELATION→CONFIRMED_RELATION": 20,
-        "PROBABLE_RELATION→PROBABLE_RELATION": 11,
-        "PROBABLE_RELATION→CONFIRMED_RELATION": 1
+        "INSUFFICIENT_PUBLIC_EVIDENCE→INSUFFICIENT_PUBLIC_EVIDENCE": 2618,
+        "WHITESPACE_RESEARCH_PRIORITY→INSUFFICIENT_PUBLIC_EVIDENCE": 3,
+        "WHITESPACE_RESEARCH_PRIORITY→WHITESPACE_RESEARCH_PRIORITY": 36,
+        "CONFIRMED_RELATION→CONFIRMED_RELATION": 14,
+        "PROBABLE_RELATION→CONFIRMED_RELATION": 2,
+        "INSUFFICIENT_PUBLIC_EVIDENCE→WHITESPACE_RESEARCH_PRIORITY": 2,
+        "CONFIRMED_RELATION→PROBABLE_RELATION": 7,
+        "PROBABLE_RELATION→PROBABLE_RELATION": 9
       },
       "changes": [
         {
-          "entity": "IBM",
+          "entity": "Telefónica",
           "vendor": "AWS",
           "from": "PROBABLE_RELATION",
           "to": "CONFIRMED_RELATION",
+          "priority_score": 92,
+          "relationship_intensity": 57
+        },
+        {
+          "entity": "SEIDOR",
+          "vendor": "Cisco",
+          "from": "PROBABLE_RELATION",
+          "to": "CONFIRMED_RELATION",
           "priority_score": 83,
-          "relationship_intensity": 65
+          "relationship_intensity": 56
+        },
+        {
+          "entity": "Kyndryl",
+          "vendor": "Cisco",
+          "from": "CONFIRMED_RELATION",
+          "to": "PROBABLE_RELATION",
+          "priority_score": 81,
+          "relationship_intensity": 45
+        },
+        {
+          "entity": "Telefónica Tech",
+          "vendor": "Cisco",
+          "from": "CONFIRMED_RELATION",
+          "to": "PROBABLE_RELATION",
+          "priority_score": 81,
+          "relationship_intensity": 45
+        },
+        {
+          "entity": "Telefónica Tech",
+          "vendor": "F5",
+          "from": "CONFIRMED_RELATION",
+          "to": "PROBABLE_RELATION",
+          "priority_score": 81,
+          "relationship_intensity": 45
+        },
+        {
+          "entity": "Telefónica Tech",
+          "vendor": "Proofpoint",
+          "from": "CONFIRMED_RELATION",
+          "to": "PROBABLE_RELATION",
+          "priority_score": 81,
+          "relationship_intensity": 45
+        },
+        {
+          "entity": "Telefónica Tech",
+          "vendor": "Check Point",
+          "from": "CONFIRMED_RELATION",
+          "to": "PROBABLE_RELATION",
+          "priority_score": 81,
+          "relationship_intensity": 45
+        },
+        {
+          "entity": "SATEC",
+          "vendor": "Cisco",
+          "from": "CONFIRMED_RELATION",
+          "to": "PROBABLE_RELATION",
+          "priority_score": 80,
+          "relationship_intensity": 45
+        },
+        {
+          "entity": "IKUSI",
+          "vendor": "Cisco",
+          "from": "CONFIRMED_RELATION",
+          "to": "PROBABLE_RELATION",
+          "priority_score": 79,
+          "relationship_intensity": 44
+        },
+        {
+          "entity": "NTT DATA Spain",
+          "vendor": "Check Point",
+          "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+          "to": "WHITESPACE_RESEARCH_PRIORITY",
+          "priority_score": 55,
+          "relationship_intensity": 0
+        },
+        {
+          "entity": "Claranet Portugal",
+          "vendor": "Check Point",
+          "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+          "to": "WHITESPACE_RESEARCH_PRIORITY",
+          "priority_score": 51,
+          "relationship_intensity": 0
+        },
+        {
+          "entity": "Bechtle Spain",
+          "vendor": "AWS",
+          "from": "WHITESPACE_RESEARCH_PRIORITY",
+          "to": "INSUFFICIENT_PUBLIC_EVIDENCE",
+          "priority_score": 16,
+          "relationship_intensity": 0
+        },
+        {
+          "entity": "Ricoh Spain",
+          "vendor": "AWS",
+          "from": "WHITESPACE_RESEARCH_PRIORITY",
+          "to": "INSUFFICIENT_PUBLIC_EVIDENCE",
+          "priority_score": 14,
+          "relationship_intensity": 0
+        },
+        {
+          "entity": "Ricoh Spain",
+          "vendor": "Check Point",
+          "from": "WHITESPACE_RESEARCH_PRIORITY",
+          "to": "INSUFFICIENT_PUBLIC_EVIDENCE",
+          "priority_score": 14,
+          "relationship_intensity": 0
         }
       ]
     },
     "distributor": {
       "comparable_pairs": 546,
-      "new_pairs": 0,
+      "new_pairs": 1482,
       "removed_pairs": 0,
       "changed_pairs": 0,
       "uncertainty_resolved": 0,

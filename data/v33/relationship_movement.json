@@ -1,32 +1,139 @@
 {
-  "generated_at": "2026-08-27T18:23:05.630863+00:00",
+  "generated_at": "2026-08-27T22:47:49.862871+00:00",
   "integrator": {
     "comparable_pairs": 2691,
-    "new_pairs": 0,
+    "new_pairs": 585,
     "removed_pairs": 0,
-    "changed_pairs": 1,
-    "uncertainty_resolved": 1,
+    "changed_pairs": 14,
+    "uncertainty_resolved": 2,
     "transitions": {
-      "INSUFFICIENT_PUBLIC_EVIDENCE→INSUFFICIENT_PUBLIC_EVIDENCE": 2620,
-      "WHITESPACE_RESEARCH_PRIORITY→WHITESPACE_RESEARCH_PRIORITY": 39,
-      "CONFIRMED_RELATION→CONFIRMED_RELATION": 20,
-      "PROBABLE_RELATION→PROBABLE_RELATION": 11,
-      "PROBABLE_RELATION→CONFIRMED_RELATION": 1
+      "INSUFFICIENT_PUBLIC_EVIDENCE→INSUFFICIENT_PUBLIC_EVIDENCE": 2618,
+      "WHITESPACE_RESEARCH_PRIORITY→INSUFFICIENT_PUBLIC_EVIDENCE": 3,
+      "WHITESPACE_RESEARCH_PRIORITY→WHITESPACE_RESEARCH_PRIORITY": 36,
+      "CONFIRMED_RELATION→CONFIRMED_RELATION": 14,
+      "PROBABLE_RELATION→CONFIRMED_RELATION": 2,
+      "INSUFFICIENT_PUBLIC_EVIDENCE→WHITESPACE_RESEARCH_PRIORITY": 2,
+      "CONFIRMED_RELATION→PROBABLE_RELATION": 7,
+      "PROBABLE_RELATION→PROBABLE_RELATION": 9
     },
     "changes": [
       {
-        "entity": "IBM",
+        "entity": "Telefónica",
         "vendor": "AWS",
         "from": "PROBABLE_RELATION",
         "to": "CONFIRMED_RELATION",
+        "priority_score": 92,
+        "relationship_intensity": 57
+      },
+      {
+        "entity": "SEIDOR",
+        "vendor": "Cisco",
+        "from": "PROBABLE_RELATION",
+        "to": "CONFIRMED_RELATION",
         "priority_score": 83,
-        "relationship_intensity": 65
+        "relationship_intensity": 56
+      },
+      {
+        "entity": "Kyndryl",
+        "vendor": "Cisco",
+        "from": "CONFIRMED_RELATION",
+        "to": "PROBABLE_RELATION",
+        "priority_score": 81,
+        "relationship_intensity": 45
+      },
+      {
+        "entity": "Telefónica Tech",
+        "vendor": "Cisco",
+        "from": "CONFIRMED_RELATION",
+        "to": "PROBABLE_RELATION",
+        "priority_score": 81,
+        "relationship_intensity": 45
+      },
+      {
+        "entity": "Telefónica Tech",
+        "vendor": "F5",
+        "from": "CONFIRMED_RELATION",
+        "to": "PROBABLE_RELATION",
+        "priority_score": 81,
+        "relationship_intensity": 45
+      },
+      {
+        "entity": "Telefónica Tech",
+        "vendor": "Proofpoint",
+        "from": "CONFIRMED_RELATION",
+        "to": "PROBABLE_RELATION",
+        "priority_score": 81,
+        "relationship_intensity": 45
+      },
+      {
+        "entity": "Telefónica Tech",
+        "vendor": "Check Point",
+        "from": "CONFIRMED_RELATION",
+        "to": "PROBABLE_RELATION",
+        "priority_score": 81,
+        "relationship_intensity": 45
+      },
+      {
+        "entity": "SATEC",
+        "vendor": "Cisco",
+        "from": "CONFIRMED_RELATION",
+        "to": "PROBABLE_RELATION",
+        "priority_score": 80,
+        "relationship_intensity": 45
+      },
+      {
+        "entity": "IKUSI",
+        "vendor": "Cisco",
+        "from": "CONFIRMED_RELATION",
+        "to": "PROBABLE_RELATION",
+        "priority_score": 79,
+        "relationship_intensity": 44
+      },
+      {
+        "entity": "NTT DATA Spain",
+        "vendor": "Check Point",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 55,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Claranet Portugal",
+        "vendor": "Check Point",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 51,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Bechtle Spain",
+        "vendor": "AWS",
+        "from": "WHITESPACE_RESEARCH_PRIORITY",
+        "to": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "priority_score": 16,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Ricoh Spain",
+        "vendor": "AWS",
+        "from": "WHITESPACE_RESEARCH_PRIORITY",
+        "to": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "priority_score": 14,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Ricoh Spain",
+        "vendor": "Check Point",
+        "from": "WHITESPACE_RESEARCH_PRIORITY",
+        "to": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "priority_score": 14,
+        "relationship_intensity": 0
       }
     ]
   },
   "distributor": {
     "comparable_pairs": 546,
-    "new_pairs": 0,
+    "new_pairs": 1482,
     "removed_pairs": 0,
     "changed_pairs": 0,
     "uncertainty_resolved": 0,

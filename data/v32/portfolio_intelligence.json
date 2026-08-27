@@ -1,39 +1,13 @@
 {
   "meta": {
-    "generated_at": "2026-08-27T15:46:01.436030+00:00",
-    "vendors": 15
+    "generated_at": "2026-08-27T22:47:41.899004+00:00",
+    "vendors": 12
   },
   "vendors": [
     {
-      "vendor": "XM Cyber",
-      "evidence_events": 1,
-      "avg_materiality": 0.783,
-      "top_technologies": [
-        "Cybersecurity"
-      ],
-      "top_event_types": [
-        [
-          "security_incident",
-          1
-        ]
-      ],
-      "scope_mix": {
-        "GLOBAL": 1
-      },
-      "top_signals": [
-        {
-          "event_id": "a9d621831940af6b",
-          "event_type": "security_incident",
-          "title": "How Bizerba Strengthens Digital Sovereignty with Continuous Exposure Management",
-          "materiality": 0.783,
-          "confidence": 0.782
-        }
-      ]
-    },
-    {
       "vendor": "Palo Alto Networks",
       "evidence_events": 6,
-      "avg_materiality": 0.755,
+      "avg_materiality": 0.756,
       "top_technologies": [
         "Cloud",
         "Identity",
@@ -71,15 +45,15 @@
           "event_id": "3cc2aacf9a07b705",
           "event_type": "ma_acquisition",
           "title": "Palo Alto Networks refuerza su plataforma de observabilidad con la adquisición de Embrace - Portal Innova",
-          "materiality": 0.808,
+          "materiality": 0.807,
           "confidence": 0.66
         },
         {
-          "event_id": "b3c5949794fd85eb",
+          "event_id": "ba2902def4ff8da0",
           "event_type": "ma_acquisition",
-          "title": "Palo Alto Networks completa la adquisición de Portkey para proteger el ecosistema de los agentes de IA - Computing BPS",
-          "materiality": 0.793,
-          "confidence": 0.66
+          "title": "Palo Alto Networks Completa la Adquisición de Portkey para Proteger Agentes de IA - Edomex Al Día",
+          "materiality": 0.805,
+          "confidence": 0.692
         },
         {
           "event_id": "07455bdfbe3728d7",
@@ -333,199 +307,6 @@
       ]
     },
     {
-      "vendor": "AttackIQ",
-      "evidence_events": 3,
-      "avg_materiality": 0.723,
-      "top_technologies": [
-        "Cybersecurity"
-      ],
-      "top_event_types": [
-        [
-          "security_incident",
-          3
-        ]
-      ],
-      "scope_mix": {
-        "GLOBAL": 2,
-        "OTHER_REGION": 1
-      },
-      "top_signals": [
-        {
-          "event_id": "23e22a0d804ef0ad",
-          "event_type": "security_incident",
-          "title": "Analyzing Nova Ransomware: A Rust-Based Encryptor with Multi-Layered Microsoft Defender Evasion Techniques",
-          "materiality": 0.777,
-          "confidence": 0.782
-        },
-        {
-          "event_id": "88c4c8509c16be20",
-          "event_type": "security_incident",
-          "title": "Chaos Ransomware: BlackSuit-Linked RaaS Resurgence and Detection Opportunities",
-          "materiality": 0.773,
-          "confidence": 0.782
-        }
-      ]
-    },
-    {
-      "vendor": "AWS",
-      "evidence_events": 19,
-      "avg_materiality": 0.722,
-      "top_technologies": [
-        "Cloud",
-        "AI",
-        "Cybersecurity",
-        "Identity",
-        "Networking",
-        "Observability",
-        "IT Services",
-        "Data Center"
-      ],
-      "top_event_types": [
-        [
-          "strategy",
-          4
-        ],
-        [
-          "pricing_licensing",
-          3
-        ],
-        [
-          "product_release",
-          3
-        ],
-        [
-          "certification",
-          3
-        ],
-        [
-          "award",
-          3
-        ],
-        [
-          "market_expansion",
-          1
-        ],
-        [
-          "hiring",
-          1
-        ],
-        [
-          "managed_service",
-          1
-        ]
-      ],
-      "scope_mix": {
-        "EUROPE": 4,
-        "ES": 2,
-        "GLOBAL": 11,
-        "OTHER_REGION": 2
-      },
-      "top_signals": [
-        {
-          "event_id": "03b10082a704953b",
-          "event_type": "market_expansion",
-          "title": "AWS Glue 5.1 is now available in AWS European Sovereign Cloud Region",
-          "materiality": 0.851,
-          "confidence": 0.804
-        },
-        {
-          "event_id": "4f932f32e77419b3",
-          "event_type": "pricing_licensing",
-          "title": "AWS Backup adds cross-Region backup copy and logically air-gapped vault support for Amazon DocumentDB in nine additional AWS Regions",
-          "materiality": 0.843,
-          "confidence": 0.808
-        },
-        {
-          "event_id": "431e158f64cc702b",
-          "event_type": "product_release",
-          "title": "IAM Roles Anywhere now provides a Java plugin for the AWS SDK",
-          "materiality": 0.802,
-          "confidence": 0.785
-        },
-        {
-          "event_id": "818508c03164aa4f",
-          "event_type": "pricing_licensing",
-          "title": "AWS Lambda MicroVMs now supports AWS PrivateLink",
-          "materiality": 0.769,
-          "confidence": 0.768
-        },
-        {
-          "event_id": "1988b7545abc99f6",
-          "event_type": "pricing_licensing",
-          "title": "Amazon RDS for PostgreSQL supports minor versions 18.6, 17.11, 16.15, 15.19, and 14.24",
-          "materiality": 0.769,
-          "confidence": 0.768
-        },
-        {
-          "event_id": "6feade1bbe33195e",
-          "event_type": "product_release",
-          "title": "AWS Lambda introduces managed runtimes in public preview for Node.js 26 and Python 3.15",
-          "materiality": 0.769,
-          "confidence": 0.768
-        },
-        {
-          "event_id": "d5cab0ac5064ab2b",
-          "event_type": "product_release",
-          "title": "Amazon RDS for Oracle now supports July 2026 Release Update",
-          "materiality": 0.769,
-          "confidence": 0.768
-        },
-        {
-          "event_id": "73f23a5989db2d03",
-          "event_type": "certification",
-          "title": "AWS ayuda a medir el impacto de la IA en las organizaciones con la certificación BVR y funciones para la IA agéntica - Europa Press",
-          "materiality": 0.759,
-          "confidence": 0.638
-        }
-      ]
-    },
-    {
-      "vendor": "NETSCOUT",
-      "evidence_events": 3,
-      "avg_materiality": 0.722,
-      "top_technologies": [
-        "Networking",
-        "Cybersecurity",
-        "Observability"
-      ],
-      "top_event_types": [
-        [
-          "operational_incident",
-          2
-        ],
-        [
-          "financial_performance",
-          1
-        ]
-      ],
-      "scope_mix": {
-        "GLOBAL": 3
-      },
-      "top_signals": [
-        {
-          "event_id": "3ccfee9ca7867f87",
-          "event_type": "operational_incident",
-          "title": "Cyberattack in Poland Causes Heat and Power Outages for 50,000 Residents",
-          "materiality": 0.741,
-          "confidence": 0.745
-        },
-        {
-          "event_id": "4162c944621603a0",
-          "event_type": "operational_incident",
-          "title": "Six Critical Business Benefits of Real-Time Data Insights",
-          "materiality": 0.734,
-          "confidence": 0.745
-        },
-        {
-          "event_id": "b721b48ec60ec6cf",
-          "event_type": "financial_performance",
-          "title": "Why Customer Lifetime Value Begins on the Network",
-          "materiality": 0.692,
-          "confidence": 0.736
-        }
-      ]
-    },
-    {
       "vendor": "CrowdStrike",
       "evidence_events": 4,
       "avg_materiality": 0.691,
@@ -571,6 +352,92 @@
           "event_type": "strategy",
           "title": "Nvidia, Marvell y CrowdStrike: las empresas que pueden mover la bolsa la próxima semana - El Boletín",
           "materiality": 0.657,
+          "confidence": 0.542
+        }
+      ]
+    },
+    {
+      "vendor": "AWS",
+      "evidence_events": 9,
+      "avg_materiality": 0.689,
+      "top_technologies": [
+        "Cloud",
+        "AI"
+      ],
+      "top_event_types": [
+        [
+          "strategy",
+          4
+        ],
+        [
+          "award",
+          3
+        ],
+        [
+          "certification",
+          2
+        ]
+      ],
+      "scope_mix": {
+        "EUROPE": 2,
+        "GLOBAL": 5,
+        "ES": 2
+      },
+      "top_signals": [
+        {
+          "event_id": "73f23a5989db2d03",
+          "event_type": "certification",
+          "title": "AWS ayuda a medir el impacto de la IA en las organizaciones con la certificación BVR y funciones para la IA agéntica - Europa Press",
+          "materiality": 0.759,
+          "confidence": 0.638
+        },
+        {
+          "event_id": "e02167d76d6d5542",
+          "event_type": "certification",
+          "title": "“El cuidado de una cuenca es algo colectivo”: la certificación AWS de Eco Aguas en Moreno - Visión Sustentable",
+          "materiality": 0.741,
+          "confidence": 0.621
+        },
+        {
+          "event_id": "69797785b51f9abe",
+          "event_type": "award",
+          "title": "Indra recibe el reconocimiento de AWS como 'Socio del año' en España por su contribución al alza del negocio - Forbes España",
+          "materiality": 0.706,
+          "confidence": 0.615
+        },
+        {
+          "event_id": "053eb25b161be40b",
+          "event_type": "award",
+          "title": "Indra Group recibe el reconocimiento de AWS como “Partner of the Year” en España y amplía sus capacidades en IA agéntica | Actualidad - Indra Group",
+          "materiality": 0.706,
+          "confidence": 0.615
+        },
+        {
+          "event_id": "0b518e3adf853b8b",
+          "event_type": "strategy",
+          "title": "ARIS se convierte en socio exclusivo para el lanzamiento de Process Intelligence en la nube soberana europea de AWS - Yahoo Finanzas",
+          "materiality": 0.691,
+          "confidence": 0.56
+        },
+        {
+          "event_id": "468dfb93434cc58d",
+          "event_type": "strategy",
+          "title": "Oracle stock jumps as AWS partnership expands to 22 regions - TradingView",
+          "materiality": 0.678,
+          "confidence": 0.542
+        },
+        {
+          "event_id": "176759f571028909",
+          "event_type": "strategy",
+          "title": "Competencia: la Comisión propone designar a AWS y Microsoft Azure como gatekeepers - CEOExEuropa",
+          "materiality": 0.664,
+          "confidence": 0.542
+        },
+        {
+          "event_id": "bf340752dcab7bc7",
+          "event_type": "strategy",
+          "title": "Orion Innovation logra la competencia en migración de AWS para la transformación a la nube - Yahoo Finanzas",
+          "materiality": 0.661,
           "confidence": 0.542
         }
       ]
@@ -752,7 +619,7 @@
           "event_id": "a10f013eadda0d9c",
           "event_type": "capability_expansion",
           "title": "Cisco despliega su gran apuesta agéntica: red, seguridad y operaciones bajo un control unificado - ituser.es",
-          "materiality": 0.725,
+          "materiality": 0.724,
           "confidence": 0.616
         },
         {

@@ -1,24 +1,28 @@
 {
   "version": "3.1.5",
-  "run_id": "20260827T154218Z",
+  "run_id": "20260827T224540Z",
   "profile": "daily",
-  "max_runtime": 417,
-  "snapshot": "r20260827T154218Z",
+  "max_runtime": 255,
+  "snapshot": "r20260827T224540Z",
   "legacy": {
     "returncode": 0,
-    "budget_seconds": 316,
+    "budget_seconds": 193,
     "status": "ok"
   },
   "v31": {
-    "new_signals": 91,
-    "total_signals": 125,
-    "research_debt_gaps": 537,
+    "new_signals": 90,
+    "total_signals": 128,
+    "research_debt_gaps": 539,
     "repairs": {
-      "repairs": 10,
+      "repairs": 270,
       "changed_files": [
-        "v32/direct_signals.json",
         "v32/events.json",
-        "v32/knowledge_graph.json"
+        "v32/knowledge_graph.json",
+        "v33/ecosystem_profiles.json",
+        "v33/targeted_evidence.json",
+        "v34/entities.json",
+        "v34/historical_intelligence.json",
+        "v35/intelligence.json"
       ]
     },
     "discovery": {
@@ -27,11 +31,11 @@
       "planned_tasks": 595,
       "attempted_tasks": 595,
       "completed_tasks": 594,
-      "new_signals": 91,
-      "current_signals": 64,
-      "historical_context_signals": 27,
-      "covered_gaps": 57,
-      "debt_gaps": 537,
+      "new_signals": 90,
+      "current_signals": 62,
+      "historical_context_signals": 28,
+      "covered_gaps": 55,
+      "debt_gaps": 539,
       "provider_circuits_open": [
         "gdelt"
       ],
@@ -41,20 +45,20 @@
           "successful": 594,
           "failed": 0,
           "raw_rows": 1210,
-          "accepted_rows": 91,
-          "relevance_rejected": 563,
+          "accepted_rows": 90,
+          "relevance_rejected": 559,
           "geo_rejected": 107,
           "stale_rejected": 0,
-          "semantic_rejected": 410,
+          "semantic_rejected": 414,
           "semantic_reclassified": 58,
-          "current_accepted_rows": 64,
-          "historical_accepted_rows": 27,
+          "current_accepted_rows": 62,
+          "historical_accepted_rows": 28,
           "owned_awards_rejected": 0,
-          "third_party_cert_rejected": 2,
+          "third_party_cert_rejected": 3,
           "secondary_people_move_rejected": 1,
           "duplicates": 36,
-          "empty_success": 326,
-          "avg_latency_ms": 519.7
+          "empty_success": 327,
+          "avg_latency_ms": 381.1
         },
         "gdelt": {
           "attempted": 1,
@@ -74,8 +78,8 @@
           "secondary_people_move_rejected": 0,
           "duplicates": 0,
           "empty_success": 0,
-          "last_error": "gdelt:URLError:_ssl.c:1064: The handshake operation timed out",
-          "avg_latency_ms": 4307.4
+          "last_error": "gdelt:URLError:timed out",
+          "avg_latency_ms": 4116.1
         }
       }
     },

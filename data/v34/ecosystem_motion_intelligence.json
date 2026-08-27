@@ -1,128 +1,14 @@
 {
   "meta": {
     "version": "3.4.0",
-    "generated_at": "2026-08-27T22:05:17.646656+00:00",
-    "entities": 40,
-    "accepted_talent_signals": 5,
+    "generated_at": "2026-08-27T22:47:51.771590+00:00",
+    "entities": 60,
+    "accepted_talent_signals": 2,
     "deduplicated_signals": 0,
     "rejected_hiring_false_positives": 1,
     "principle": "El talento es una señal adelantada: se triangula con evidencia de relación, casos, certificaciones y país antes de elevar una decisión."
   },
   "entities": [
-    {
-      "entity_id": "entity_adf71eb3dc92c6da8d",
-      "entity": "Indra",
-      "entity_type": "integrator",
-      "entity_tier": "T1",
-      "scope": "ES",
-      "manufacturers_confirmed": [],
-      "manufacturers_probable": [
-        {
-          "vendor": "AWS",
-          "intensity": 42,
-          "confidence": {
-            "score": 0.64,
-            "band": "media",
-            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
-          },
-          "scope": "ES",
-          "last_verified": "2026-06-03"
-        }
-      ],
-      "manufacturers_to_research": [
-        {
-          "vendor": "Cisco",
-          "priority": 69,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Palo Alto Networks",
-          "priority": 69,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Zscaler",
-          "priority": 69,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Nokia",
-          "priority": 69,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Microsoft Azure",
-          "priority": 69,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Check Point",
-          "priority": 69,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        }
-      ],
-      "manufacturers_in_job_profiles": [],
-      "profiles_sought": [
-        {
-          "family": "ciberseguridad",
-          "signals": 1
-        }
-      ],
-      "talent_signals": [
-        {
-          "title": "La unidad de ciberseguridad de Indra lanza su centro de innovación y talento en Cataluña - Crónica Global",
-          "source": "Crónica Global",
-          "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNa0NuZUQtd29OZTVyVzZhTmRFTlY3YXhHN3ZxQzJoOUhOY2pFN2JfV0xITnlLZEFBdHdWVGdZdmdfRUh3bC1sMTN3TEwzcHdnQWl1RjQ0WFhpbVdVdzRjOHdOWjdaWVpOeld6ZlNfNHdicWw1SjNld3ZtZFNncDRZbGJhNFdJMGNNV2JGdGF3QlZEZldtSDM4dnJPUV83Q0xxekxjSTJoTFB5bW40MzhOU2FJc2w5Y0p1OEcxWUV4WWNIRDQ3YzEyZGhjeHFrVmZ6bGRz0gHYAUFVX3lxTE4tU18wNWZvLTNXNm9pUzIyMzRsRDV6dno4Y2F6Sm5CNU9qQkN1Ry1iNGxkZS1lM3RKV2NqQzhVcU1iVnRLZ1RVQkNNVUZMbzU2by12ek5DTkU3ejg1WHpPUURMd2ZtSUtFVnlOZDV5NWtSSDhsMzJTN244cXhxV3k4M2JJSTAtOFZhdXFSeGM5WWdnNmFFdkgzV25PTEl4XzZKT3hRVnBiLXpMSFBIa0V4TEwxaUJ4V1ZuNEZ0S3c5dGpJdUNCWWFnNE9KazlQWERCNWFDaW5oZg?oc=5",
-          "date": "2026-04-22",
-          "confidence": 0.62,
-          "method": "targeted_research",
-          "classification": "managed_services",
-          "source_grade": "C",
-          "source_type": "aggregator",
-          "entity": "Indra",
-          "entity_type": "integrator",
-          "scope": "ES",
-          "signal_id": "talent_946472413a3039b904",
-          "signal_type": "workforce_momentum",
-          "role_families": [
-            "ciberseguridad"
-          ],
-          "vendor_mentions": [],
-          "interpretation_rule": "Una mención en una vacante demuestra demanda de la competencia en ese perfil; no prueba partnership ni volumen de negocio."
-        }
-      ],
-      "talent_momentum": {
-        "30": 0,
-        "90": 0,
-        "365": 1
-      },
-      "countries_observed": [
-        "ES"
-      ],
-      "next_source_ids": [
-        "official_careers",
-        "employer_ats",
-        "linkedin_jobs_public",
-        "infojobs_es",
-        "tecnoempleo_es",
-        "landing_jobs_pt",
-        "itjobs_pt",
-        "net_empregos_pt",
-        "emprego_sapo_pt",
-        "eures_jobs",
-        "iefp_jobs_pt",
-        "indeed_public",
-        "glassdoor_public",
-        "linkedin_public_company"
-      ],
-      "query_templates": [
-        "\"Indra\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
-        "site:linkedin.com/jobs \"Indra\" (security OR cloud OR network OR SOC OR presales)",
-        "\"Indra\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
-      ],
-      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
-      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
-    },
     {
       "entity_id": "entity_dfb854927b71794b39",
       "entity": "Kyndryl",
@@ -212,6 +98,377 @@
         "\"Kyndryl\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
         "site:linkedin.com/jobs \"Kyndryl\" (security OR cloud OR network OR SOC OR presales)",
         "\"Kyndryl\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_2f800220c8d6940edb",
+      "entity": "Arrow",
+      "entity_type": "distributor",
+      "entity_tier": "T1",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [
+        {
+          "vendor": "Palo Alto Networks",
+          "intensity": 26,
+          "confidence": {
+            "score": 0.78,
+            "band": "media",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-06-16"
+        }
+      ],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Arrow\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Arrow\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Arrow\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_81786d5cf4f58810b2",
+      "entity": "AWS",
+      "entity_type": "distributor",
+      "entity_tier": "T1",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [
+        {
+          "vendor": "AWS",
+          "intensity": 55,
+          "confidence": {
+            "score": 0.678,
+            "band": "media",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-08-26"
+        },
+        {
+          "vendor": "Microsoft Azure",
+          "intensity": 31,
+          "confidence": {
+            "score": 0.582,
+            "band": "baja",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-06-29"
+        }
+      ],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"AWS\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"AWS\" (security OR cloud OR network OR SOC OR presales)",
+        "\"AWS\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_56ca409d5441d03a02",
+      "entity": "Ayesa",
+      "entity_type": "integrator",
+      "entity_tier": "T1",
+      "scope": "ES",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [],
+      "manufacturers_to_research": [
+        {
+          "vendor": "Cisco",
+          "priority": 63,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "priority": 63,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Proofpoint",
+          "priority": 63,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Zscaler",
+          "priority": 63,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Nokia",
+          "priority": 63,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "AWS",
+          "priority": 63,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Microsoft Azure",
+          "priority": 63,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Check Point",
+          "priority": 63,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        }
+      ],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "ES"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Ayesa\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Ayesa\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Ayesa\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_da7249708c7ac57bbf",
+      "entity": "Babel",
+      "entity_type": "integrator",
+      "entity_tier": "T1",
+      "scope": "ES",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [],
+      "manufacturers_to_research": [
+        {
+          "vendor": "Cisco",
+          "priority": 57,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "priority": 57,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Proofpoint",
+          "priority": 57,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Zscaler",
+          "priority": 57,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Nokia",
+          "priority": 57,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "AWS",
+          "priority": 57,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Microsoft Azure",
+          "priority": 57,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Check Point",
+          "priority": 57,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        }
+      ],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "ES"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Babel\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Babel\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Babel\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_d3f2340db56fad1c05",
+      "entity": "Comstor",
+      "entity_type": "distributor",
+      "entity_tier": "T1",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [
+        {
+          "vendor": "Ivanti",
+          "intensity": 34,
+          "confidence": {
+            "score": 0.624,
+            "band": "media",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-03-20"
+        },
+        {
+          "vendor": "AWS",
+          "intensity": 29,
+          "confidence": {
+            "score": 0.78,
+            "band": "media",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-08-03"
+        },
+        {
+          "vendor": "1Password",
+          "intensity": 26,
+          "confidence": {
+            "score": 0.78,
+            "band": "media",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-08-03"
+        }
+      ],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Comstor\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Comstor\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Comstor\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
       ],
       "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
@@ -390,6 +647,137 @@
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
     },
     {
+      "entity_id": "entity_adf71eb3dc92c6da8d",
+      "entity": "Indra",
+      "entity_type": "integrator",
+      "entity_tier": "T1",
+      "scope": "ES",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [
+        {
+          "vendor": "AWS",
+          "intensity": 45,
+          "confidence": {
+            "score": 0.64,
+            "band": "media",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "ES",
+          "last_verified": "2026-06-03"
+        }
+      ],
+      "manufacturers_to_research": [
+        {
+          "vendor": "Cisco",
+          "priority": 69,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "priority": 69,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Zscaler",
+          "priority": 69,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Nokia",
+          "priority": 69,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Microsoft Azure",
+          "priority": 69,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        },
+        {
+          "vendor": "Check Point",
+          "priority": 69,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        }
+      ],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "ES"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Indra\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Indra\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Indra\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_457a100b18aa438909",
+      "entity": "Ingram Micro",
+      "entity_type": "distributor",
+      "entity_tier": "T1",
+      "scope": "IBERIA",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "IBERIA"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Ingram Micro\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Ingram Micro\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Ingram Micro\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
       "entity_id": "entity_6de31ae5372829fc10",
       "entity": "Logicalis Spain",
       "entity_type": "integrator",
@@ -453,6 +841,179 @@
         "\"Logicalis Spain\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
         "site:linkedin.com/jobs \"Logicalis Spain\" (security OR cloud OR network OR SOC OR presales)",
         "\"Logicalis Spain\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_8fcbe7f0ac83eb375a",
+      "entity": "Microsoft Azure",
+      "entity_type": "distributor",
+      "entity_tier": "T1",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [
+        {
+          "vendor": "Microsoft Azure",
+          "intensity": 59,
+          "confidence": {
+            "score": 0.78,
+            "band": "media",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-08-20"
+        }
+      ],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Microsoft Azure\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Microsoft Azure\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Microsoft Azure\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_dcbfb439f7ecded2b9",
+      "entity": "NTT DATA Spain",
+      "entity_type": "integrator",
+      "entity_tier": "T1",
+      "scope": "ES",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [],
+      "manufacturers_to_research": [
+        {
+          "vendor": "Check Point",
+          "priority": 55,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        }
+      ],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "ES"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"NTT DATA Spain\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"NTT DATA Spain\" (security OR cloud OR network OR SOC OR presales)",
+        "\"NTT DATA Spain\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_e14b1028436d87b573",
+      "entity": "Okta",
+      "entity_type": "distributor",
+      "entity_tier": "T1",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [
+        {
+          "vendor": "Okta",
+          "intensity": 35,
+          "confidence": {
+            "score": 0.66,
+            "band": "media",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-08-27"
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "intensity": 29,
+          "confidence": {
+            "score": 0.66,
+            "band": "media",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-08-26"
+        }
+      ],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Okta\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Okta\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Okta\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
       ],
       "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
@@ -1215,62 +1776,6 @@
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
     },
     {
-      "entity_id": "entity_2f800220c8d6940edb",
-      "entity": "Arrow",
-      "entity_type": "distributor",
-      "entity_tier": "T2",
-      "scope": "GLOBAL",
-      "manufacturers_confirmed": [],
-      "manufacturers_probable": [
-        {
-          "vendor": "Palo Alto Networks",
-          "intensity": 26,
-          "confidence": {
-            "score": 0.78,
-            "band": "media",
-            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
-          },
-          "scope": "GLOBAL",
-          "last_verified": "2026-06-16"
-        }
-      ],
-      "manufacturers_to_research": [],
-      "manufacturers_in_job_profiles": [],
-      "profiles_sought": [],
-      "talent_signals": [],
-      "talent_momentum": {
-        "30": 0,
-        "90": 0,
-        "365": 0
-      },
-      "countries_observed": [
-        "GLOBAL"
-      ],
-      "next_source_ids": [
-        "official_careers",
-        "employer_ats",
-        "linkedin_jobs_public",
-        "infojobs_es",
-        "tecnoempleo_es",
-        "landing_jobs_pt",
-        "itjobs_pt",
-        "net_empregos_pt",
-        "emprego_sapo_pt",
-        "eures_jobs",
-        "iefp_jobs_pt",
-        "indeed_public",
-        "glassdoor_public",
-        "linkedin_public_company"
-      ],
-      "query_templates": [
-        "\"Arrow\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
-        "site:linkedin.com/jobs \"Arrow\" (security OR cloud OR network OR SOC OR presales)",
-        "\"Arrow\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
-      ],
-      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
-      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
-    },
-    {
       "entity_id": "entity_78b32b8374eddb1261",
       "entity": "Arrow ECS",
       "entity_type": "distributor",
@@ -1310,6 +1815,50 @@
         "\"Arrow ECS\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
         "site:linkedin.com/jobs \"Arrow ECS\" (security OR cloud OR network OR SOC OR presales)",
         "\"Arrow ECS\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_43e7364c3b3e034280",
+      "entity": "Atos Spain",
+      "entity_type": "integrator",
+      "entity_tier": "T2",
+      "scope": "ES",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "ES"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Atos Spain\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Atos Spain\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Atos Spain\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
       ],
       "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
@@ -1383,176 +1932,6 @@
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
     },
     {
-      "entity_id": "entity_56ca409d5441d03a02",
-      "entity": "Ayesa",
-      "entity_type": "integrator",
-      "entity_tier": "T2",
-      "scope": "ES",
-      "manufacturers_confirmed": [],
-      "manufacturers_probable": [],
-      "manufacturers_to_research": [
-        {
-          "vendor": "Cisco",
-          "priority": 63,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Palo Alto Networks",
-          "priority": 63,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Proofpoint",
-          "priority": 63,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Zscaler",
-          "priority": 63,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Nokia",
-          "priority": 63,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "AWS",
-          "priority": 63,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Microsoft Azure",
-          "priority": 63,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Check Point",
-          "priority": 63,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        }
-      ],
-      "manufacturers_in_job_profiles": [],
-      "profiles_sought": [],
-      "talent_signals": [],
-      "talent_momentum": {
-        "30": 0,
-        "90": 0,
-        "365": 0
-      },
-      "countries_observed": [
-        "ES"
-      ],
-      "next_source_ids": [
-        "official_careers",
-        "employer_ats",
-        "linkedin_jobs_public",
-        "infojobs_es",
-        "tecnoempleo_es",
-        "landing_jobs_pt",
-        "itjobs_pt",
-        "net_empregos_pt",
-        "emprego_sapo_pt",
-        "eures_jobs",
-        "iefp_jobs_pt",
-        "indeed_public",
-        "glassdoor_public",
-        "linkedin_public_company"
-      ],
-      "query_templates": [
-        "\"Ayesa\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
-        "site:linkedin.com/jobs \"Ayesa\" (security OR cloud OR network OR SOC OR presales)",
-        "\"Ayesa\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
-      ],
-      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
-      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
-    },
-    {
-      "entity_id": "entity_da7249708c7ac57bbf",
-      "entity": "Babel",
-      "entity_type": "integrator",
-      "entity_tier": "T2",
-      "scope": "ES",
-      "manufacturers_confirmed": [],
-      "manufacturers_probable": [],
-      "manufacturers_to_research": [
-        {
-          "vendor": "Cisco",
-          "priority": 53,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Palo Alto Networks",
-          "priority": 53,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Proofpoint",
-          "priority": 53,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Zscaler",
-          "priority": 53,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Nokia",
-          "priority": 53,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "AWS",
-          "priority": 53,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Microsoft Azure",
-          "priority": 53,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Check Point",
-          "priority": 53,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        }
-      ],
-      "manufacturers_in_job_profiles": [],
-      "profiles_sought": [],
-      "talent_signals": [],
-      "talent_momentum": {
-        "30": 0,
-        "90": 0,
-        "365": 0
-      },
-      "countries_observed": [
-        "ES"
-      ],
-      "next_source_ids": [
-        "official_careers",
-        "employer_ats",
-        "linkedin_jobs_public",
-        "infojobs_es",
-        "tecnoempleo_es",
-        "landing_jobs_pt",
-        "itjobs_pt",
-        "net_empregos_pt",
-        "emprego_sapo_pt",
-        "eures_jobs",
-        "iefp_jobs_pt",
-        "indeed_public",
-        "glassdoor_public",
-        "linkedin_public_company"
-      ],
-      "query_templates": [
-        "\"Babel\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
-        "site:linkedin.com/jobs \"Babel\" (security OR cloud OR network OR SOC OR presales)",
-        "\"Babel\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
-      ],
-      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
-      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
-    },
-    {
       "entity_id": "entity_79092e7a6d897093e1",
       "entity": "Bechtle Spain",
       "entity_type": "integrator",
@@ -1561,11 +1940,6 @@
       "manufacturers_confirmed": [],
       "manufacturers_probable": [],
       "manufacturers_to_research": [
-        {
-          "vendor": "AWS",
-          "priority": 51,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
         {
           "vendor": "Check Point",
           "priority": 51,
@@ -1652,6 +2026,129 @@
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
     },
     {
+      "entity_id": "entity_75c050ad1b91b216f4",
+      "entity": "Check Point",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [
+        {
+          "vendor": "Check Point",
+          "intensity": 62,
+          "confidence": {
+            "score": 0.887,
+            "band": "alta",
+            "explanation": "Confianza en la existencia de la relación (CONFIRMED); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-08-02"
+        }
+      ],
+      "manufacturers_probable": [],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Check Point\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Check Point\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Check Point\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_6475d9937f5374c9ad",
+      "entity": "Cisco",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [
+        {
+          "vendor": "Cisco",
+          "intensity": 45,
+          "confidence": {
+            "score": 0.78,
+            "band": "media",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-08-07"
+        },
+        {
+          "vendor": "Nokia",
+          "intensity": 31,
+          "confidence": {
+            "score": 0.693,
+            "band": "media",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-07-09"
+        }
+      ],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Cisco\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Cisco\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Cisco\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
       "entity_id": "entity_50dbf61d8b70c121be",
       "entity": "Claranet",
       "entity_type": "integrator",
@@ -1708,45 +2205,73 @@
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
     },
     {
-      "entity_id": "entity_d3f2340db56fad1c05",
-      "entity": "Comstor",
+      "entity_id": "entity_f9d4a5458852e79893",
+      "entity": "Claranet Portugal",
+      "entity_type": "integrator",
+      "entity_tier": "T2",
+      "scope": "PT",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [],
+      "manufacturers_to_research": [
+        {
+          "vendor": "Check Point",
+          "priority": 51,
+          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
+        }
+      ],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "PT"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Claranet Portugal\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Claranet Portugal\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Claranet Portugal\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_fb9aa9c997909b8536",
+      "entity": "CrowdStrike",
       "entity_type": "distributor",
       "entity_tier": "T2",
       "scope": "GLOBAL",
       "manufacturers_confirmed": [],
       "manufacturers_probable": [
         {
-          "vendor": "Ivanti",
-          "intensity": 34,
+          "vendor": "CrowdStrike",
+          "intensity": 49,
           "confidence": {
-            "score": 0.78,
-            "band": "media",
+            "score": 0.88,
+            "band": "alta",
             "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
           },
           "scope": "GLOBAL",
-          "last_verified": "2026-03-20"
-        },
-        {
-          "vendor": "AWS",
-          "intensity": 29,
-          "confidence": {
-            "score": 0.78,
-            "band": "media",
-            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
-          },
-          "scope": "GLOBAL",
-          "last_verified": "2026-08-03"
-        },
-        {
-          "vendor": "1Password",
-          "intensity": 26,
-          "confidence": {
-            "score": 0.78,
-            "band": "media",
-            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
-          },
-          "scope": "GLOBAL",
-          "last_verified": "2026-08-03"
+          "last_verified": "2026-08-23"
         }
       ],
       "manufacturers_to_research": [],
@@ -1778,9 +2303,9 @@
         "linkedin_public_company"
       ],
       "query_templates": [
-        "\"Comstor\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
-        "site:linkedin.com/jobs \"Comstor\" (security OR cloud OR network OR SOC OR presales)",
-        "\"Comstor\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+        "\"CrowdStrike\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"CrowdStrike\" (security OR cloud OR network OR SOC OR presales)",
+        "\"CrowdStrike\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
       ],
       "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
@@ -1830,56 +2355,24 @@
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
     },
     {
-      "entity_id": "entity_bea070413628c5deaf",
-      "entity": "Glintt Global",
-      "entity_type": "integrator",
-      "entity_tier": "T2",
-      "scope": "PT",
-      "manufacturers_confirmed": [],
-      "manufacturers_probable": [],
-      "manufacturers_to_research": [],
-      "manufacturers_in_job_profiles": [],
-      "profiles_sought": [],
-      "talent_signals": [],
-      "talent_momentum": {
-        "30": 0,
-        "90": 0,
-        "365": 0
-      },
-      "countries_observed": [
-        "PT"
-      ],
-      "next_source_ids": [
-        "official_careers",
-        "employer_ats",
-        "linkedin_jobs_public",
-        "infojobs_es",
-        "tecnoempleo_es",
-        "landing_jobs_pt",
-        "itjobs_pt",
-        "net_empregos_pt",
-        "emprego_sapo_pt",
-        "eures_jobs",
-        "iefp_jobs_pt",
-        "indeed_public",
-        "glassdoor_public",
-        "linkedin_public_company"
-      ],
-      "query_templates": [
-        "\"Glintt Global\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
-        "site:linkedin.com/jobs \"Glintt Global\" (security OR cloud OR network OR SOC OR presales)",
-        "\"Glintt Global\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
-      ],
-      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
-      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
-    },
-    {
-      "entity_id": "entity_457a100b18aa438909",
-      "entity": "Ingram Micro",
+      "entity_id": "entity_9e84aaa11e25afefe8",
+      "entity": "Ivanti",
       "entity_type": "distributor",
       "entity_tier": "T2",
-      "scope": "IBERIA",
-      "manufacturers_confirmed": [],
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [
+        {
+          "vendor": "Ivanti",
+          "intensity": 49,
+          "confidence": {
+            "score": 0.887,
+            "band": "alta",
+            "explanation": "Confianza en la existencia de la relación (CONFIRMED); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-06-11"
+        }
+      ],
       "manufacturers_probable": [],
       "manufacturers_to_research": [],
       "manufacturers_in_job_profiles": [],
@@ -1891,7 +2384,7 @@
         "365": 0
       },
       "countries_observed": [
-        "IBERIA"
+        "GLOBAL"
       ],
       "next_source_ids": [
         "official_careers",
@@ -1910,9 +2403,9 @@
         "linkedin_public_company"
       ],
       "query_templates": [
-        "\"Ingram Micro\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
-        "site:linkedin.com/jobs \"Ingram Micro\" (security OR cloud OR network OR SOC OR presales)",
-        "\"Ingram Micro\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+        "\"Ivanti\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Ivanti\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Ivanti\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
       ],
       "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
@@ -2162,6 +2655,62 @@
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
     },
     {
+      "entity_id": "entity_05f18b874a89092d38",
+      "entity": "Nokia",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [
+        {
+          "vendor": "Nokia",
+          "intensity": 50,
+          "confidence": {
+            "score": 0.693,
+            "band": "media",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-07-11"
+        }
+      ],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Nokia\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Nokia\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Nokia\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
       "entity_id": "entity_e61c51a770bff71cb2",
       "entity": "NTT",
       "entity_type": "integrator",
@@ -2218,6 +2767,50 @@
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
     },
     {
+      "entity_id": "entity_1b5dcb411247a15bc5",
+      "entity": "NTT DATA Portugal",
+      "entity_type": "integrator",
+      "entity_tier": "T2",
+      "scope": "PT",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "PT"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"NTT DATA Portugal\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"NTT DATA Portugal\" (security OR cloud OR network OR SOC OR presales)",
+        "\"NTT DATA Portugal\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
       "entity_id": "entity_932d2819f4e7e32f5f",
       "entity": "Nunsys",
       "entity_type": "integrator",
@@ -2262,23 +2855,34 @@
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
     },
     {
-      "entity_id": "entity_e6ce7ba7dc2a7a61da",
-      "entity": "Orcinus",
-      "entity_type": "integrator",
+      "entity_id": "entity_04696f99595978c5f6",
+      "entity": "Palo Alto Networks",
+      "entity_type": "distributor",
       "entity_tier": "T2",
-      "scope": "PT",
+      "scope": "GLOBAL",
       "manufacturers_confirmed": [],
       "manufacturers_probable": [
         {
-          "vendor": "Avaya",
-          "intensity": 21,
+          "vendor": "Palo Alto Networks",
+          "intensity": 55,
           "confidence": {
-            "score": 0.65,
+            "score": 0.78,
             "band": "media",
             "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
           },
-          "scope": "PT",
-          "last_verified": ""
+          "scope": "GLOBAL",
+          "last_verified": "2026-08-26"
+        },
+        {
+          "vendor": "Okta",
+          "intensity": 26,
+          "confidence": {
+            "score": 0.74,
+            "band": "media",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-08-26"
         }
       ],
       "manufacturers_to_research": [],
@@ -2291,7 +2895,7 @@
         "365": 0
       },
       "countries_observed": [
-        "PT"
+        "GLOBAL"
       ],
       "next_source_ids": [
         "official_careers",
@@ -2310,33 +2914,22 @@
         "linkedin_public_company"
       ],
       "query_templates": [
-        "\"Orcinus\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
-        "site:linkedin.com/jobs \"Orcinus\" (security OR cloud OR network OR SOC OR presales)",
-        "\"Orcinus\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+        "\"Palo Alto Networks\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Palo Alto Networks\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Palo Alto Networks\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
       ],
       "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
     },
     {
-      "entity_id": "entity_408d5094cca9172f28",
-      "entity": "Ricoh Spain",
-      "entity_type": "integrator",
+      "entity_id": "entity_29a341aa1397c59434",
+      "entity": "Ping Identity",
+      "entity_type": "distributor",
       "entity_tier": "T2",
-      "scope": "ES",
+      "scope": "GLOBAL",
       "manufacturers_confirmed": [],
       "manufacturers_probable": [],
-      "manufacturers_to_research": [
-        {
-          "vendor": "AWS",
-          "priority": 54,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        },
-        {
-          "vendor": "Check Point",
-          "priority": 54,
-          "why": "Comprobar directorio oficial, certificaciones y casos por ES/PT; registrar también evidencia negativa de búsqueda."
-        }
-      ],
+      "manufacturers_to_research": [],
       "manufacturers_in_job_profiles": [],
       "profiles_sought": [],
       "talent_signals": [],
@@ -2346,7 +2939,7 @@
         "365": 0
       },
       "countries_observed": [
-        "ES"
+        "GLOBAL"
       ],
       "next_source_ids": [
         "official_careers",
@@ -2365,9 +2958,121 @@
         "linkedin_public_company"
       ],
       "query_templates": [
-        "\"Ricoh Spain\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
-        "site:linkedin.com/jobs \"Ricoh Spain\" (security OR cloud OR network OR SOC OR presales)",
-        "\"Ricoh Spain\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+        "\"Ping Identity\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Ping Identity\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Ping Identity\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_a24fd4dba90f959c8b",
+      "entity": "Proofpoint",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [
+        {
+          "vendor": "Proofpoint",
+          "intensity": 29,
+          "confidence": {
+            "score": 0.66,
+            "band": "media",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-08-14"
+        }
+      ],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Proofpoint\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Proofpoint\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Proofpoint\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_871095063bcc1ed334",
+      "entity": "Ruckus Networks",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [
+        {
+          "vendor": "Ruckus Networks",
+          "intensity": 26,
+          "confidence": {
+            "score": 0.66,
+            "band": "media",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-03-26"
+        }
+      ],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Ruckus Networks\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Ruckus Networks\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Ruckus Networks\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
       ],
       "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
@@ -2485,6 +3190,150 @@
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
     },
     {
+      "entity_id": "entity_f77f30ef84cf37cec4",
+      "entity": "Splunk",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [
+        {
+          "vendor": "Splunk",
+          "intensity": 34,
+          "confidence": {
+            "score": 0.847,
+            "band": "alta",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-06-18"
+        }
+      ],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Splunk\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Splunk\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Splunk\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_8961e350230fa5e0a7",
+      "entity": "Stratus Technologies",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Stratus Technologies\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Stratus Technologies\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Stratus Technologies\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_68f59ae7b8efe6f790",
+      "entity": "UiPath",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"UiPath\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"UiPath\" (security OR cloud OR network OR SOC OR presales)",
+        "\"UiPath\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
       "entity_id": "entity_ca771667cc3dffb8d4",
       "entity": "VarGroup Iberia",
       "entity_type": "integrator",
@@ -2539,30 +3388,197 @@
       ],
       "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
       "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_8d16c63c340ff68fb0",
+      "entity": "Vectra AI",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Vectra AI\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Vectra AI\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Vectra AI\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_8a061aaba4912057f5",
+      "entity": "Weblib",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Weblib\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Weblib\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Weblib\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_ed9737c3accd0a2633",
+      "entity": "XM Cyber",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"XM Cyber\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"XM Cyber\" (security OR cloud OR network OR SOC OR presales)",
+        "\"XM Cyber\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
+    },
+    {
+      "entity_id": "entity_42f282a98c2433960e",
+      "entity": "Zscaler",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "scope": "GLOBAL",
+      "manufacturers_confirmed": [],
+      "manufacturers_probable": [
+        {
+          "vendor": "Zscaler",
+          "intensity": 35,
+          "confidence": {
+            "score": 0.88,
+            "band": "alta",
+            "explanation": "Confianza en la existencia de la relación (PROBABLE); separada de su intensidad comercial."
+          },
+          "scope": "GLOBAL",
+          "last_verified": "2026-08-07"
+        }
+      ],
+      "manufacturers_to_research": [],
+      "manufacturers_in_job_profiles": [],
+      "profiles_sought": [],
+      "talent_signals": [],
+      "talent_momentum": {
+        "30": 0,
+        "90": 0,
+        "365": 0
+      },
+      "countries_observed": [
+        "GLOBAL"
+      ],
+      "next_source_ids": [
+        "official_careers",
+        "employer_ats",
+        "linkedin_jobs_public",
+        "infojobs_es",
+        "tecnoempleo_es",
+        "landing_jobs_pt",
+        "itjobs_pt",
+        "net_empregos_pt",
+        "emprego_sapo_pt",
+        "eures_jobs",
+        "iefp_jobs_pt",
+        "indeed_public",
+        "glassdoor_public",
+        "linkedin_public_company"
+      ],
+      "query_templates": [
+        "\"Zscaler\" (jobs OR careers OR empleo OR vagas) (Cisco OR Palo Alto OR Fortinet OR Check Point OR AWS OR Azure)",
+        "site:linkedin.com/jobs \"Zscaler\" (security OR cloud OR network OR SOC OR presales)",
+        "\"Zscaler\" (CCNP OR PCNSE OR NSE OR CCSA OR AWS certified OR Azure) (España OR Portugal)"
+      ],
+      "decision_use": "Cruzar fabricante/certificación demandados, recurrencia, país y familia de rol con locator, casos, certificaciones y contratación pública para priorizar activación o investigación.",
+      "caution": "Las vacantes prueban demanda de competencias; no partnership, ventas, headcount efectivo ni contrato ganado."
     }
   ],
   "talent_signals": [
-    {
-      "title": "La unidad de ciberseguridad de Indra lanza su centro de innovación y talento en Cataluña - Crónica Global",
-      "source": "Crónica Global",
-      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNa0NuZUQtd29OZTVyVzZhTmRFTlY3YXhHN3ZxQzJoOUhOY2pFN2JfV0xITnlLZEFBdHdWVGdZdmdfRUh3bC1sMTN3TEwzcHdnQWl1RjQ0WFhpbVdVdzRjOHdOWjdaWVpOeld6ZlNfNHdicWw1SjNld3ZtZFNncDRZbGJhNFdJMGNNV2JGdGF3QlZEZldtSDM4dnJPUV83Q0xxekxjSTJoTFB5bW40MzhOU2FJc2w5Y0p1OEcxWUV4WWNIRDQ3YzEyZGhjeHFrVmZ6bGRz0gHYAUFVX3lxTE4tU18wNWZvLTNXNm9pUzIyMzRsRDV6dno4Y2F6Sm5CNU9qQkN1Ry1iNGxkZS1lM3RKV2NqQzhVcU1iVnRLZ1RVQkNNVUZMbzU2by12ek5DTkU3ejg1WHpPUURMd2ZtSUtFVnlOZDV5NWtSSDhsMzJTN244cXhxV3k4M2JJSTAtOFZhdXFSeGM5WWdnNmFFdkgzV25PTEl4XzZKT3hRVnBiLXpMSFBIa0V4TEwxaUJ4V1ZuNEZ0S3c5dGpJdUNCWWFnNE9KazlQWERCNWFDaW5oZg?oc=5",
-      "date": "2026-04-22",
-      "confidence": 0.62,
-      "method": "targeted_research",
-      "classification": "managed_services",
-      "source_grade": "C",
-      "source_type": "aggregator",
-      "entity": "Indra",
-      "entity_type": "integrator",
-      "scope": "ES",
-      "signal_id": "talent_946472413a3039b904",
-      "signal_type": "workforce_momentum",
-      "role_families": [
-        "ciberseguridad"
-      ],
-      "vendor_mentions": [],
-      "interpretation_rule": "Una mención en una vacante demuestra demanda de la competencia en ese perfil; no prueba partnership ni volumen de negocio."
-    },
     {
       "title": "“Buscamos partners locales que aporten cercanía, conocimiento sectorial y agilidad”: Belén Gancedo, (Kyndryl) - BPS Channel Partner",
       "source": "BPS Channel Partner",
@@ -2606,48 +3622,6 @@
         "cloud_datos_ia",
         "ciberseguridad",
         "networking_datacenter"
-      ],
-      "vendor_mentions": [],
-      "interpretation_rule": "Una mención en una vacante demuestra demanda de la competencia en ese perfil; no prueba partnership ni volumen de negocio."
-    },
-    {
-      "title": "AWS Backup adds cross-Region backup copy and logically air-gapped vault support for Amazon DocumentDB in nine additional AWS Regions",
-      "summary": "<p>AWS Backup now supports copying Amazon DocumentDB backups across AWS Regions and storing them in logically air-gapped vaults in nine additional AWS Regions: Asia Pacific (Hong Kong, Jakarta, Melbourne, Osaka), Europe (Spain, Stockholm, Zurich), Africa (Cape Town), and Israel (Tel Aviv).</p> \n<p>With cross-Region copy now available in these Regions, you can copy DocumentDB backups into and out of them using backup plans or on-demand copy jobs. This helps you meet disaster recovery, business continuity, and compliance requirements. You can also copy DocumentDB backups to a logically air-gapped vault in these Regions to store immutable, isolated backups that are locked by default and encrypted using AWS owned or customer-managed keys. Share vaults for recovery using AWS Resource Access Manager (RAM) and protect vault access during account compromise with Multi-party approval, reducing recovery time from a data loss event.</p> \n<p>To get started, visit the AWS Backup console, AWS Command Line Interface (CLI), or AWS SDKs. For a complete list of supported Regions and features, visit the <a href=\"https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-feature-availability.html#f",
-      "source": "AWS",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-backup-cross-region-air-gapped-docdb/",
-      "date": "2026-08-26",
-      "confidence": 0.808,
-      "entity": "AWS",
-      "entity_type": "vendor",
-      "scope": "ES",
-      "source_type": "secondary",
-      "signal_id": "talent_8514c4afdaf1210329",
-      "signal_type": "vacancy",
-      "role_families": [
-        "cloud_datos_ia"
-      ],
-      "vendor_mentions": [],
-      "interpretation_rule": "Una mención en una vacante demuestra demanda de la competencia en ese perfil; no prueba partnership ni volumen de negocio."
-    },
-    {
-      "title": "AWS Batch now supports Amazon ECS Managed Instances",
-      "summary": "<p>AWS Batch now supports Amazon ECS Managed Instances (ECS MI) as a new compute option, enabling you to run GPU-accelerated and compute-intensive batch workloads on AWS-managed infrastructure. With AWS Batch on ECS MI you can now access GPU-accelerated instances while AWS handles AMI updates, security patching,&nbsp;and instance lifecycle automatically, eliminating the operational overhead of customer-managed Amazon EC2 infrastructure.<br> <br> To get started, create an AWS Batch on ECS MI compute environment using the AWS Batch <i>CreateComputeEnvironment</i> API or the AWS Batch Management Console. You can specify your allowed instance types and networking configuration in the <i>managedInstancesProvider</i> block, associate the compute environment with a job queue, and submit jobs using On-Demand, Spot, or reserved capacity.<br> <br> AWS Batch on ECS Managed Instances is supported in all <a href=\"https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/\">AWS Regions</a> where AWS Batch is available. For more information, see the <a href=\"https://docs.aws.amazon.com/batch/latest/userguide/ecs_managed_instances.html\">AWS Batch User Guide</a>.</p>",
-      "source": "AWS",
-      "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-batch-on-ecs-managed-instances/",
-      "date": "2026-08-25",
-      "confidence": 0.717,
-      "entity": "AWS",
-      "entity_type": "vendor",
-      "scope": "GLOBAL",
-      "source_type": "secondary",
-      "signal_id": "talent_4255a69d4aa65d2bdb",
-      "signal_type": "vacancy",
-      "role_families": [
-        "servicios_gestionados",
-        "cloud_datos_ia",
-        "ciberseguridad",
-        "networking_datacenter",
-        "liderazgo"
       ],
       "vendor_mentions": [],
       "interpretation_rule": "Una mención en una vacante demuestra demanda de la competencia en ese perfil; no prueba partnership ni volumen de negocio."

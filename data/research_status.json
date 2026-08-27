@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-27T08:15:02.827607+00:00",
-  "runId": "20260827T081502Z-2061",
-  "outcome": "failed-last-good-preserved",
+  "generatedAt": "2026-08-27T22:45:40.960594+00:00",
+  "runId": "20260827T224540Z-2233",
+  "outcome": "partial-recoverable",
   "profile": "daily",
   "freeOnly": true,
   "queryCount": 70,
@@ -38,17 +38,17 @@
   },
   "resilience": {
     "plannedTasks": 137,
-    "processedTasks": 120,
-    "completedTasks": 120,
-    "pendingTasks": 17,
-    "partialRun": true,
-    "resumedTasks": 0,
+    "processedTasks": 24,
+    "completedTasks": 144,
+    "pendingTasks": 0,
+    "partialRun": false,
+    "resumedTasks": 98,
     "circuits": {},
-    "learningStrategies": 52
+    "learningStrategies": 70
   },
-  "coverageAverage": 25.0,
-  "vendorsWithCoverage70": 1,
-  "gapsP0": 24,
+  "coverageAverage": 19.6,
+  "vendorsWithCoverage70": 0,
+  "gapsP0": 27,
   "errorCount": 0,
   "engines": [
     "Google News RSS",
@@ -64,18 +64,25 @@
   ],
   "supervisor": {
     "version": 2,
-    "runId": "20260827T081502Z",
+    "runId": "20260827T224540Z",
     "profileRequested": "daily",
-    "startedAt": "2026-08-27T08:15:02.717300+00:00",
-    "finishedAt": "2026-08-27T08:24:33.344086+00:00",
-    "elapsedSeconds": 570.63,
-    "outcome": "failed-last-good-preserved",
-    "processOutcome": "completed",
+    "startedAt": "2026-08-27T22:45:40.781787+00:00",
+    "finishedAt": "2026-08-27T22:46:31.229057+00:00",
+    "elapsedSeconds": 50.45,
+    "outcome": "complete-or-partial-valid",
+    "processOutcome": {
+      "status": "success",
+      "timed_out": false,
+      "returncode": 0,
+      "elapsed_seconds": 50.3,
+      "lines": 17,
+      "stream_backend": "thread_queue"
+    },
     "exitCode": 0,
     "fallbackUsed": false,
-    "lastGoodRestored": true,
+    "lastGoodRestored": false,
     "datasetValid": true,
-    "diagnosticLog": "diagnostics/research-20260827T081502Z-daily.log",
-    "validationTail": "OK · 36 vendors · 28 claims nuevos · 6 perfiles mayoristas consolidados · 8 perfiles integradores consolidados · 8 arquitecturas · motor v11 validado"
+    "diagnosticLog": "diagnostics/research-20260827T224540Z-daily.log",
+    "validationTail": "OK · foundation validada · 36 vendors base · 28 claims · v3.5 86 fabricantes / 47 integradores / 11 mayoristas / 15 tendencias / 12 arquitecturas"
   }
 }
