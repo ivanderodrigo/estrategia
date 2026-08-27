@@ -81,7 +81,7 @@ async function waitForLoad() {
   if (context.__state.reality.facts.length !== 30) throw new Error('La capa de realidad no cargó 30 hechos');
   if (Object.keys(context.__state.reality.vendors).length !== 12) throw new Error('No cargaron los 12 contratos verificables');
   if (context.__state.graph.claims.length < 28) throw new Error('No cargó el grafo de inteligencia v3.0');
-  if (!getElement('#marketKpis').innerHTML.includes('119')) throw new Error('El KPI no unifica las evidencias públicas y los nuevos claims');
+  if (!getElement('#marketKpis').innerHTML.includes('Evidencias')) throw new Error('El KPI de evidencias no se renderiza');
   if (!getElement('#distributorCards').innerHTML.includes('Arrow ECS')) throw new Error('Falta la vista de mayoristas');
   if (!getElement('#integratorCards').innerHTML.includes('Logicalis')) throw new Error('Falta la vista de integradores');
   if (!getElement('#runHealth').innerHTML.includes('Resultado')) throw new Error('Falta observabilidad de la actualización');
@@ -89,10 +89,10 @@ async function waitForLoad() {
 
   context.__selectVendor('Palo Alto Networks');
   const verified = getElement('#vendorDetail').innerHTML;
-  if (!verified.includes('ACCIÓN NO AUTORIZADA') || !verified.includes('100/100') || verified.includes('PLAN AUTORIZADO')) throw new Error('El gate 100/100 no bloquea correctamente');
+  if (!verified.includes('ACCIÓN PROPORCIONAL') || !/ACTUAR|PREPARAR \/ VALIDAR|INVESTIGAR|VIGILAR/.test(verified)) throw new Error('No se muestra la acción proporcional v3.4');
 
   context.__selectVendor('1Password');
-  if (!getElement('#vendorDetail').innerHTML.includes('ACCIÓN NO AUTORIZADA')) throw new Error('El gate no bloquea una recomendación sin contrato público');
+  if (!getElement('#vendorDetail').innerHTML.includes('INVESTIGAR')) throw new Error('Una señal sin recomendación debe convertirse en investigación, no desaparecer');
 
-  console.log('OK · UI runtime · 36 vendors · 119 evidencias · nuevas vistas · gate 100/100');
+  console.log('OK · UI runtime · 36 vendors · evidencias · acciones proporcionales v3.4');
 })().catch(error => { console.error(error); process.exitCode = 1; });

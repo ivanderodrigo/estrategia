@@ -1,0 +1,3551 @@
+{
+  "meta": {
+    "version": "3.4.0",
+    "generated_at": "2026-08-27T22:05:17.717786+00:00",
+    "architectures": 12,
+    "style": "original, business-first, non-proprietary",
+    "caution": "Cada arquitectura es una hipótesis comercial a validar; la presencia de fabricantes en capas no prueba integración."
+  },
+  "architectures": [
+    {
+      "architecture_id": "ai-security",
+      "title": "AI Security",
+      "problem": "Proteger datos, identidades, modelos y uso de IA; aplicar IA con gobierno a SecOps.",
+      "opportunity": "Crear una oferta repetible de AI Security que combine arquitectura, enablement, PoC y servicios de ciclo de vida.",
+      "layers": [
+        {
+          "layer_id": "ai-security-layer-1",
+          "name": "Datos/modelos",
+          "vendors": [
+            {
+              "vendor": "Vectra AI",
+              "fit_basis": [
+                "identity",
+                "threat"
+              ]
+            },
+            {
+              "vendor": "Ping Identity",
+              "fit_basis": [
+                "identity"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "ai-security-layer-2",
+          "name": "Identidad",
+          "vendors": [
+            {
+              "vendor": "UiPath",
+              "fit_basis": [
+                "ai"
+              ]
+            },
+            {
+              "vendor": "Microsoft Azure",
+              "fit_basis": [
+                "ai"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "ai-security-layer-3",
+          "name": "Protección",
+          "vendors": [
+            {
+              "vendor": "Stratus / Penguin Solutions",
+              "fit_basis": [
+                "ai"
+              ]
+            },
+            {
+              "vendor": "Fortanix",
+              "fit_basis": [
+                "data security"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "ai-security-layer-4",
+          "name": "Gobierno",
+          "vendors": [
+            {
+              "vendor": "Proofpoint",
+              "fit_basis": [
+                "ai"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        }
+      ],
+      "vendors": [
+        {
+          "vendor": "Vectra AI",
+          "fit_basis": [
+            "identity",
+            "threat"
+          ]
+        },
+        {
+          "vendor": "UiPath",
+          "fit_basis": [
+            "ai"
+          ]
+        },
+        {
+          "vendor": "Stratus / Penguin Solutions",
+          "fit_basis": [
+            "ai"
+          ]
+        },
+        {
+          "vendor": "Proofpoint",
+          "fit_basis": [
+            "ai"
+          ]
+        },
+        {
+          "vendor": "Ping Identity",
+          "fit_basis": [
+            "identity"
+          ]
+        },
+        {
+          "vendor": "Microsoft Azure",
+          "fit_basis": [
+            "ai"
+          ]
+        },
+        {
+          "vendor": "Fortanix",
+          "fit_basis": [
+            "data security"
+          ]
+        }
+      ],
+      "integrations": [
+        {
+          "from": "ai-security-layer-1",
+          "to": "ai-security-layer-2",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "ai-security-layer-2",
+          "to": "ai-security-layer-3",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "ai-security-layer-3",
+          "to": "ai-security-layer-4",
+          "status": "A VALIDAR"
+        }
+      ],
+      "integrators": [
+        {
+          "name": "Indra",
+          "scope": "ES",
+          "activation_priority": 83,
+          "confidence": 0.938
+        },
+        {
+          "name": "SEIDOR",
+          "scope": "ES",
+          "activation_priority": 72,
+          "confidence": 0.953
+        },
+        {
+          "name": "Ayesa",
+          "scope": "ES",
+          "activation_priority": 64,
+          "confidence": 0.918
+        },
+        {
+          "name": "Telefónica Tech",
+          "scope": "ES",
+          "activation_priority": 62,
+          "confidence": 0.907
+        },
+        {
+          "name": "Telefónica",
+          "scope": "ES",
+          "activation_priority": 60,
+          "confidence": 0.9
+        },
+        {
+          "name": "Babel",
+          "scope": "ES",
+          "activation_priority": 55,
+          "confidence": 0.942
+        }
+      ],
+      "gaps": [
+        "Integración oficial entre componentes",
+        "Dos integradores con capacidad vigente",
+        "Cuenta/caso Iberia",
+        "BOM y modelo económico",
+        "Frontera de solape y ownership"
+      ],
+      "westcon_services": [
+        "AI security workshop",
+        "Threat model",
+        "PoC",
+        "Gobierno y operación"
+      ],
+      "monetization": [
+        "Assessment",
+        "Diseño/BOM",
+        "PoC",
+        "Enablement",
+        "Servicios profesionales",
+        "Lifecycle o servicio gestionado"
+      ],
+      "recurrence": {
+        "band": "media",
+        "basis": "Lifecycle, suscripción, soporte y/o operación gestionada; validar attach y margen internos."
+      },
+      "kpis": [
+        "Integradores habilitados",
+        "Oportunidades calificadas",
+        "Tiempo a primera oportunidad",
+        "Attach de servicios",
+        "Ingresos recurrentes influenciados",
+        "Cobertura de evidencias"
+      ],
+      "risks": [
+        "Asumir integración no documentada",
+        "Solape funcional sin segmentación",
+        "Falta de capacidad de entrega",
+        "Economics internos no validados"
+      ],
+      "readiness": {
+        "score": 100,
+        "band": "alta",
+        "formula": "35% evidencia de mercado + 30% capas cubiertas + 20% integradores compatibles + 15% amplitud de fabricantes; no es readiness comercial interna."
+      },
+      "evidence": [
+        {
+          "evidence_id": "ev_c484b6bcf8466aab09",
+          "fact": "INCIBE y CONETIC contabilizan 3.431 empresas, sitúan a España como cuarto mercado europeo y proyectan un crecimiento del empleo del 14,25% anual hasta 2029.",
+          "source": "INCIBE / CONETIC",
+          "url": "https://www.incibe.es/incibe/sala-de-prensa/incibe-y-conetic-presentan-las-conclusiones-del-estudio-sobre-la-industria-de",
+          "date": "2026-03-18",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 1.0
+        },
+        {
+          "evidence_id": "ev_6496e6f24e53e4cd1b",
+          "fact": "La Comisión Europea destaca conectividad, capacidades y servicios públicos digitales, pero señala menor aprovechamiento empresarial de tecnologías avanzadas y falta relativa de especialistas TIC.",
+          "source": "European Commission",
+          "url": "https://digital-strategy.ec.europa.eu/en/factpages/spains-2026-digital-decade-country-report",
+          "date": "2026-06-17",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 1.0
+        },
+        {
+          "evidence_id": "ev_1a640d80fd553c2ecd",
+          "fact": "El plan fija como metas para 2030 que el 90% de las pymes alcance intensidad digital básica y que el 75% de las empresas use IA y cloud.",
+          "source": "República Portuguesa / Compete 2030",
+          "url": "https://compete2030.gov.pt/comunicacao/portugal-aprova-estrategia-digital-nacional/",
+          "date": "2024-12-20",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 1.0
+        },
+        {
+          "evidence_id": "ev_f730f7e777079ab808",
+          "fact": "El informe de Década Digital sitúa a Portugal por debajo de la media UE del 13,48%; en pymes, la adopción fue del 7,87%.",
+          "source": "European Commission",
+          "url": "https://ec.europa.eu/transparency/documents-register/api/files/SWD%282025%29294_21/090166e51e13f2d4?rendition=false",
+          "date": "2025-06-18",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 1.0
+        }
+      ],
+      "diagram": {
+        "nodes": [
+          {
+            "id": "ai-security-layer-1",
+            "label": "Datos/modelos"
+          },
+          {
+            "id": "ai-security-layer-2",
+            "label": "Identidad"
+          },
+          {
+            "id": "ai-security-layer-3",
+            "label": "Protección"
+          },
+          {
+            "id": "ai-security-layer-4",
+            "label": "Gobierno"
+          }
+        ],
+        "edges": [
+          {
+            "from": "ai-security-layer-1",
+            "to": "ai-security-layer-2"
+          },
+          {
+            "from": "ai-security-layer-2",
+            "to": "ai-security-layer-3"
+          },
+          {
+            "from": "ai-security-layer-3",
+            "to": "ai-security-layer-4"
+          }
+        ]
+      },
+      "originality": "Diagrama original generado por capas funcionales; no reproduce gráficos propietarios de analistas."
+    },
+    {
+      "architecture_id": "automation",
+      "title": "Automation",
+      "problem": "Eliminar tareas repetitivas y acelerar cambios con control y trazabilidad.",
+      "opportunity": "Crear una oferta repetible de Automation que combine arquitectura, enablement, PoC y servicios de ciclo de vida.",
+      "layers": [
+        {
+          "layer_id": "automation-layer-1",
+          "name": "Procesos",
+          "vendors": [
+            {
+              "vendor": "UiPath",
+              "fit_basis": [
+                "automation",
+                "rpa",
+                "ai"
+              ]
+            },
+            {
+              "vendor": "Stratus / Penguin Solutions",
+              "fit_basis": [
+                "ai"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "automation-layer-2",
+          "name": "Orquestación",
+          "vendors": [
+            {
+              "vendor": "Cisco",
+              "fit_basis": [
+                "ai",
+                "network"
+              ]
+            },
+            {
+              "vendor": "Ruckus Networks",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "automation-layer-3",
+          "name": "Políticas",
+          "vendors": [
+            {
+              "vendor": "Ciena",
+              "fit_basis": [
+                "automation",
+                "network"
+              ]
+            },
+            {
+              "vendor": "Proofpoint",
+              "fit_basis": [
+                "ai"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "automation-layer-4",
+          "name": "Medición",
+          "vendors": [
+            {
+              "vendor": "Weblib",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        }
+      ],
+      "vendors": [
+        {
+          "vendor": "UiPath",
+          "fit_basis": [
+            "automation",
+            "rpa",
+            "ai"
+          ]
+        },
+        {
+          "vendor": "Cisco",
+          "fit_basis": [
+            "ai",
+            "network"
+          ]
+        },
+        {
+          "vendor": "Ciena",
+          "fit_basis": [
+            "automation",
+            "network"
+          ]
+        },
+        {
+          "vendor": "Weblib",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "Stratus / Penguin Solutions",
+          "fit_basis": [
+            "ai"
+          ]
+        },
+        {
+          "vendor": "Ruckus Networks",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "Proofpoint",
+          "fit_basis": [
+            "ai"
+          ]
+        }
+      ],
+      "integrations": [
+        {
+          "from": "automation-layer-1",
+          "to": "automation-layer-2",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "automation-layer-2",
+          "to": "automation-layer-3",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "automation-layer-3",
+          "to": "automation-layer-4",
+          "status": "A VALIDAR"
+        }
+      ],
+      "integrators": [
+        {
+          "name": "Indra",
+          "scope": "ES",
+          "activation_priority": 83,
+          "confidence": 0.938
+        },
+        {
+          "name": "SEIDOR",
+          "scope": "ES",
+          "activation_priority": 72,
+          "confidence": 0.953
+        },
+        {
+          "name": "Ayesa",
+          "scope": "ES",
+          "activation_priority": 64,
+          "confidence": 0.918
+        },
+        {
+          "name": "Telefónica Tech",
+          "scope": "ES",
+          "activation_priority": 62,
+          "confidence": 0.907
+        },
+        {
+          "name": "Telefónica",
+          "scope": "ES",
+          "activation_priority": 60,
+          "confidence": 0.9
+        },
+        {
+          "name": "Babel",
+          "scope": "ES",
+          "activation_priority": 55,
+          "confidence": 0.942
+        }
+      ],
+      "gaps": [
+        "Integración oficial entre componentes",
+        "Dos integradores con capacidad vigente",
+        "Cuenta/caso Iberia",
+        "BOM y modelo económico",
+        "Frontera de solape y ownership"
+      ],
+      "westcon_services": [
+        "Automation discovery",
+        "Backlog priorizado",
+        "MVP",
+        "Operación y mejora continua"
+      ],
+      "monetization": [
+        "Assessment",
+        "Diseño/BOM",
+        "PoC",
+        "Enablement",
+        "Servicios profesionales",
+        "Lifecycle o servicio gestionado"
+      ],
+      "recurrence": {
+        "band": "media",
+        "basis": "Lifecycle, suscripción, soporte y/o operación gestionada; validar attach y margen internos."
+      },
+      "kpis": [
+        "Integradores habilitados",
+        "Oportunidades calificadas",
+        "Tiempo a primera oportunidad",
+        "Attach de servicios",
+        "Ingresos recurrentes influenciados",
+        "Cobertura de evidencias"
+      ],
+      "risks": [
+        "Asumir integración no documentada",
+        "Solape funcional sin segmentación",
+        "Falta de capacidad de entrega",
+        "Economics internos no validados"
+      ],
+      "readiness": {
+        "score": 100,
+        "band": "alta",
+        "formula": "35% evidencia de mercado + 30% capas cubiertas + 20% integradores compatibles + 15% amplitud de fabricantes; no es readiness comercial interna."
+      },
+      "evidence": [
+        {
+          "evidence_id": "ev_c484b6bcf8466aab09",
+          "fact": "INCIBE y CONETIC contabilizan 3.431 empresas, sitúan a España como cuarto mercado europeo y proyectan un crecimiento del empleo del 14,25% anual hasta 2029.",
+          "source": "INCIBE / CONETIC",
+          "url": "https://www.incibe.es/incibe/sala-de-prensa/incibe-y-conetic-presentan-las-conclusiones-del-estudio-sobre-la-industria-de",
+          "date": "2026-03-18",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 1.0
+        },
+        {
+          "evidence_id": "ev_6496e6f24e53e4cd1b",
+          "fact": "La Comisión Europea destaca conectividad, capacidades y servicios públicos digitales, pero señala menor aprovechamiento empresarial de tecnologías avanzadas y falta relativa de especialistas TIC.",
+          "source": "European Commission",
+          "url": "https://digital-strategy.ec.europa.eu/en/factpages/spains-2026-digital-decade-country-report",
+          "date": "2026-06-17",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 1.0
+        },
+        {
+          "evidence_id": "ev_1a640d80fd553c2ecd",
+          "fact": "El plan fija como metas para 2030 que el 90% de las pymes alcance intensidad digital básica y que el 75% de las empresas use IA y cloud.",
+          "source": "República Portuguesa / Compete 2030",
+          "url": "https://compete2030.gov.pt/comunicacao/portugal-aprova-estrategia-digital-nacional/",
+          "date": "2024-12-20",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 1.0
+        },
+        {
+          "evidence_id": "ev_f730f7e777079ab808",
+          "fact": "El informe de Década Digital sitúa a Portugal por debajo de la media UE del 13,48%; en pymes, la adopción fue del 7,87%.",
+          "source": "European Commission",
+          "url": "https://ec.europa.eu/transparency/documents-register/api/files/SWD%282025%29294_21/090166e51e13f2d4?rendition=false",
+          "date": "2025-06-18",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 1.0
+        }
+      ],
+      "diagram": {
+        "nodes": [
+          {
+            "id": "automation-layer-1",
+            "label": "Procesos"
+          },
+          {
+            "id": "automation-layer-2",
+            "label": "Orquestación"
+          },
+          {
+            "id": "automation-layer-3",
+            "label": "Políticas"
+          },
+          {
+            "id": "automation-layer-4",
+            "label": "Medición"
+          }
+        ],
+        "edges": [
+          {
+            "from": "automation-layer-1",
+            "to": "automation-layer-2"
+          },
+          {
+            "from": "automation-layer-2",
+            "to": "automation-layer-3"
+          },
+          {
+            "from": "automation-layer-3",
+            "to": "automation-layer-4"
+          }
+        ]
+      },
+      "originality": "Diagrama original generado por capas funcionales; no reproduce gráficos propietarios de analistas."
+    },
+    {
+      "architecture_id": "sase-sse",
+      "title": "SASE / SSE",
+      "problem": "Reducir herramientas y políticas desconectadas para usuarios, sedes y cloud.",
+      "opportunity": "Crear una oferta repetible de SASE / SSE que combine arquitectura, enablement, PoC y servicios de ciclo de vida.",
+      "layers": [
+        {
+          "layer_id": "sase-sse-layer-1",
+          "name": "Acceso",
+          "vendors": [
+            {
+              "vendor": "Zscaler",
+              "fit_basis": [
+                "sase",
+                "sse"
+              ]
+            },
+            {
+              "vendor": "Palo Alto Networks",
+              "fit_basis": [
+                "sase"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "sase-sse-layer-2",
+          "name": "SSE",
+          "vendors": [
+            {
+              "vendor": "Extreme Networks",
+              "fit_basis": [
+                "sd wan",
+                "network"
+              ]
+            },
+            {
+              "vendor": "Nokia",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "sase-sse-layer-3",
+          "name": "SD-WAN",
+          "vendors": [
+            {
+              "vendor": "Weblib",
+              "fit_basis": [
+                "network"
+              ]
+            },
+            {
+              "vendor": "NETSCOUT",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "sase-sse-layer-4",
+          "name": "Operación",
+          "vendors": [
+            {
+              "vendor": "Ruckus Networks",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        }
+      ],
+      "vendors": [
+        {
+          "vendor": "Zscaler",
+          "fit_basis": [
+            "sase",
+            "sse"
+          ]
+        },
+        {
+          "vendor": "Extreme Networks",
+          "fit_basis": [
+            "sd wan",
+            "network"
+          ]
+        },
+        {
+          "vendor": "Weblib",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "Ruckus Networks",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "fit_basis": [
+            "sase"
+          ]
+        },
+        {
+          "vendor": "Nokia",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "NETSCOUT",
+          "fit_basis": [
+            "network"
+          ]
+        }
+      ],
+      "integrations": [
+        {
+          "from": "sase-sse-layer-1",
+          "to": "sase-sse-layer-2",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "sase-sse-layer-2",
+          "to": "sase-sse-layer-3",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "sase-sse-layer-3",
+          "to": "sase-sse-layer-4",
+          "status": "A VALIDAR"
+        }
+      ],
+      "integrators": [
+        {
+          "name": "Indra",
+          "scope": "ES",
+          "activation_priority": 83,
+          "confidence": 0.938
+        },
+        {
+          "name": "SEIDOR",
+          "scope": "ES",
+          "activation_priority": 72,
+          "confidence": 0.953
+        },
+        {
+          "name": "Telefónica Tech",
+          "scope": "ES",
+          "activation_priority": 62,
+          "confidence": 0.907
+        },
+        {
+          "name": "Telefónica",
+          "scope": "ES",
+          "activation_priority": 60,
+          "confidence": 0.9
+        },
+        {
+          "name": "Kyndryl",
+          "scope": "ES",
+          "activation_priority": 51,
+          "confidence": 0.913
+        },
+        {
+          "name": "IBM",
+          "scope": "PT",
+          "activation_priority": 49,
+          "confidence": 0.9
+        }
+      ],
+      "gaps": [
+        "Integración oficial entre componentes",
+        "Dos integradores con capacidad vigente",
+        "Cuenta/caso Iberia",
+        "BOM y modelo económico",
+        "Frontera de solape y ownership"
+      ],
+      "westcon_services": [
+        "Assessment SASE",
+        "Workshop de políticas",
+        "PoC multivendor",
+        "Servicio gestionado"
+      ],
+      "monetization": [
+        "Assessment",
+        "Diseño/BOM",
+        "PoC",
+        "Enablement",
+        "Servicios profesionales",
+        "Lifecycle o servicio gestionado"
+      ],
+      "recurrence": {
+        "band": "alta",
+        "basis": "Lifecycle, suscripción, soporte y/o operación gestionada; validar attach y margen internos."
+      },
+      "kpis": [
+        "Integradores habilitados",
+        "Oportunidades calificadas",
+        "Tiempo a primera oportunidad",
+        "Attach de servicios",
+        "Ingresos recurrentes influenciados",
+        "Cobertura de evidencias"
+      ],
+      "risks": [
+        "Asumir integración no documentada",
+        "Solape funcional sin segmentación",
+        "Falta de capacidad de entrega",
+        "Economics internos no validados"
+      ],
+      "readiness": {
+        "score": 99,
+        "band": "alta",
+        "formula": "35% evidencia de mercado + 30% capas cubiertas + 20% integradores compatibles + 15% amplitud de fabricantes; no es readiness comercial interna."
+      },
+      "evidence": [
+        {
+          "evidence_id": "ev_c1aa5dac0f5e0a766e",
+          "fact": "Solo el 26% ofrecía servicios avanzados de networking integrado con IA.",
+          "source": "Westcon-Comstor",
+          "url": "https://www.westconcomstor.com/global/en/news/announcements/2025/key-gaps-in-channel-readiness-for-ai-driven-networking.html",
+          "date": "2025-11-18",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.94
+        },
+        {
+          "evidence_id": "ev_c23296bc191af79196",
+          "fact": "Arrow amplió a Iberia un acuerdo que ya tenía en Norteamérica y Marruecos.",
+          "source": "Arrow ECS",
+          "url": "https://www.arrow.com/globalecs/es/arrow-channel-advisor/arrow-amplia-su-acuerdo-de-distribucion-con-palo-alto-networks-a-espana-y-portugal/",
+          "date": "2026-06-16",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.98
+        },
+        {
+          "evidence_id": "ev_13237643139d96e6dc",
+          "fact": "Exclusive publica capacidad Centre of Excellence, soporte a DMP y programas SASE/MSSP propios.",
+          "source": "Exclusive Networks",
+          "url": "https://www.exclusive-networks.com/es/ecosistema/fabricantes/palo-alto-networks",
+          "date": "2026-04-16",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.96
+        },
+        {
+          "evidence_id": "ev_27e5fdb7b568af8231",
+          "fact": "El programa combina tecnología SASE con servicios para simplificar adopción y monetización Zero Trust.",
+          "source": "Westcon-Comstor",
+          "url": "https://www.westconcomstor.com/global/en/news/announcements/2026/sase-evolution-powered-by-palo-alto-networks-to-accelerate.html",
+          "date": "2026-05-21",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.96
+        }
+      ],
+      "diagram": {
+        "nodes": [
+          {
+            "id": "sase-sse-layer-1",
+            "label": "Acceso"
+          },
+          {
+            "id": "sase-sse-layer-2",
+            "label": "SSE"
+          },
+          {
+            "id": "sase-sse-layer-3",
+            "label": "SD-WAN"
+          },
+          {
+            "id": "sase-sse-layer-4",
+            "label": "Operación"
+          }
+        ],
+        "edges": [
+          {
+            "from": "sase-sse-layer-1",
+            "to": "sase-sse-layer-2"
+          },
+          {
+            "from": "sase-sse-layer-2",
+            "to": "sase-sse-layer-3"
+          },
+          {
+            "from": "sase-sse-layer-3",
+            "to": "sase-sse-layer-4"
+          }
+        ]
+      },
+      "originality": "Diagrama original generado por capas funcionales; no reproduce gráficos propietarios de analistas."
+    },
+    {
+      "architecture_id": "network-security",
+      "title": "Network + Security",
+      "problem": "Diseñar red y seguridad como una arquitectura operable, no como silos.",
+      "opportunity": "Crear una oferta repetible de Network + Security que combine arquitectura, enablement, PoC y servicios de ciclo de vida.",
+      "layers": [
+        {
+          "layer_id": "network-security-layer-1",
+          "name": "Campus/WAN",
+          "vendors": [
+            {
+              "vendor": "NETSCOUT",
+              "fit_basis": [
+                "network",
+                "ddos"
+              ]
+            },
+            {
+              "vendor": "Ruckus Networks",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "network-security-layer-2",
+          "name": "Seguridad",
+          "vendors": [
+            {
+              "vendor": "EfficientIP",
+              "fit_basis": [
+                "network",
+                "dns"
+              ]
+            },
+            {
+              "vendor": "Nokia",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "network-security-layer-3",
+          "name": "Observabilidad",
+          "vendors": [
+            {
+              "vendor": "Cisco",
+              "fit_basis": [
+                "network",
+                "observability"
+              ]
+            },
+            {
+              "vendor": "F5",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "network-security-layer-4",
+          "name": "Automatización",
+          "vendors": [
+            {
+              "vendor": "Weblib",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        }
+      ],
+      "vendors": [
+        {
+          "vendor": "NETSCOUT",
+          "fit_basis": [
+            "network",
+            "ddos"
+          ]
+        },
+        {
+          "vendor": "EfficientIP",
+          "fit_basis": [
+            "network",
+            "dns"
+          ]
+        },
+        {
+          "vendor": "Cisco",
+          "fit_basis": [
+            "network",
+            "observability"
+          ]
+        },
+        {
+          "vendor": "Weblib",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "Ruckus Networks",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "Nokia",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "F5",
+          "fit_basis": [
+            "network"
+          ]
+        }
+      ],
+      "integrations": [
+        {
+          "from": "network-security-layer-1",
+          "to": "network-security-layer-2",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "network-security-layer-2",
+          "to": "network-security-layer-3",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "network-security-layer-3",
+          "to": "network-security-layer-4",
+          "status": "A VALIDAR"
+        }
+      ],
+      "integrators": [
+        {
+          "name": "Indra",
+          "scope": "ES",
+          "activation_priority": 83,
+          "confidence": 0.938
+        },
+        {
+          "name": "SEIDOR",
+          "scope": "ES",
+          "activation_priority": 72,
+          "confidence": 0.953
+        },
+        {
+          "name": "Telefónica Tech",
+          "scope": "ES",
+          "activation_priority": 62,
+          "confidence": 0.907
+        },
+        {
+          "name": "Telefónica",
+          "scope": "ES",
+          "activation_priority": 60,
+          "confidence": 0.9
+        },
+        {
+          "name": "Kyndryl",
+          "scope": "ES",
+          "activation_priority": 51,
+          "confidence": 0.913
+        },
+        {
+          "name": "IBM",
+          "scope": "PT",
+          "activation_priority": 49,
+          "confidence": 0.9
+        }
+      ],
+      "gaps": [
+        "Integración oficial entre componentes",
+        "Dos integradores con capacidad vigente",
+        "Cuenta/caso Iberia",
+        "BOM y modelo económico",
+        "Frontera de solape y ownership"
+      ],
+      "westcon_services": [
+        "Assessment de red",
+        "Diseño seguro",
+        "Staging",
+        "Soporte y lifecycle"
+      ],
+      "monetization": [
+        "Assessment",
+        "Diseño/BOM",
+        "PoC",
+        "Enablement",
+        "Servicios profesionales",
+        "Lifecycle o servicio gestionado"
+      ],
+      "recurrence": {
+        "band": "media",
+        "basis": "Lifecycle, suscripción, soporte y/o operación gestionada; validar attach y margen internos."
+      },
+      "kpis": [
+        "Integradores habilitados",
+        "Oportunidades calificadas",
+        "Tiempo a primera oportunidad",
+        "Attach de servicios",
+        "Ingresos recurrentes influenciados",
+        "Cobertura de evidencias"
+      ],
+      "risks": [
+        "Asumir integración no documentada",
+        "Solape funcional sin segmentación",
+        "Falta de capacidad de entrega",
+        "Economics internos no validados"
+      ],
+      "readiness": {
+        "score": 99,
+        "band": "alta",
+        "formula": "35% evidencia de mercado + 30% capas cubiertas + 20% integradores compatibles + 15% amplitud de fabricantes; no es readiness comercial interna."
+      },
+      "evidence": [
+        {
+          "evidence_id": "ev_c1aa5dac0f5e0a766e",
+          "fact": "Solo el 26% ofrecía servicios avanzados de networking integrado con IA.",
+          "source": "Westcon-Comstor",
+          "url": "https://www.westconcomstor.com/global/en/news/announcements/2025/key-gaps-in-channel-readiness-for-ai-driven-networking.html",
+          "date": "2025-11-18",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.94
+        },
+        {
+          "evidence_id": "ev_c23296bc191af79196",
+          "fact": "Arrow amplió a Iberia un acuerdo que ya tenía en Norteamérica y Marruecos.",
+          "source": "Arrow ECS",
+          "url": "https://www.arrow.com/globalecs/es/arrow-channel-advisor/arrow-amplia-su-acuerdo-de-distribucion-con-palo-alto-networks-a-espana-y-portugal/",
+          "date": "2026-06-16",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.98
+        },
+        {
+          "evidence_id": "ev_13237643139d96e6dc",
+          "fact": "Exclusive publica capacidad Centre of Excellence, soporte a DMP y programas SASE/MSSP propios.",
+          "source": "Exclusive Networks",
+          "url": "https://www.exclusive-networks.com/es/ecosistema/fabricantes/palo-alto-networks",
+          "date": "2026-04-16",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.96
+        },
+        {
+          "evidence_id": "ev_27e5fdb7b568af8231",
+          "fact": "El programa combina tecnología SASE con servicios para simplificar adopción y monetización Zero Trust.",
+          "source": "Westcon-Comstor",
+          "url": "https://www.westconcomstor.com/global/en/news/announcements/2026/sase-evolution-powered-by-palo-alto-networks-to-accelerate.html",
+          "date": "2026-05-21",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.96
+        }
+      ],
+      "diagram": {
+        "nodes": [
+          {
+            "id": "network-security-layer-1",
+            "label": "Campus/WAN"
+          },
+          {
+            "id": "network-security-layer-2",
+            "label": "Seguridad"
+          },
+          {
+            "id": "network-security-layer-3",
+            "label": "Observabilidad"
+          },
+          {
+            "id": "network-security-layer-4",
+            "label": "Automatización"
+          }
+        ],
+        "edges": [
+          {
+            "from": "network-security-layer-1",
+            "to": "network-security-layer-2"
+          },
+          {
+            "from": "network-security-layer-2",
+            "to": "network-security-layer-3"
+          },
+          {
+            "from": "network-security-layer-3",
+            "to": "network-security-layer-4"
+          }
+        ]
+      },
+      "originality": "Diagrama original generado por capas funcionales; no reproduce gráficos propietarios de analistas."
+    },
+    {
+      "architecture_id": "modern-soc",
+      "title": "SOC moderno",
+      "problem": "Mejorar detección y respuesta sin crecer linealmente en personas.",
+      "opportunity": "Crear una oferta repetible de SOC moderno que combine arquitectura, enablement, PoC y servicios de ciclo de vida.",
+      "layers": [
+        {
+          "layer_id": "modern-soc-layer-1",
+          "name": "Telemetría",
+          "vendors": [
+            {
+              "vendor": "CrowdStrike",
+              "fit_basis": [
+                "xdr",
+                "siem",
+                "security"
+              ]
+            },
+            {
+              "vendor": "Anomali",
+              "fit_basis": [
+                "threat",
+                "security"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "modern-soc-layer-2",
+          "name": "Analítica",
+          "vendors": [
+            {
+              "vendor": "Vectra AI",
+              "fit_basis": [
+                "threat",
+                "security"
+              ]
+            },
+            {
+              "vendor": "Zscaler",
+              "fit_basis": [
+                "security"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "modern-soc-layer-3",
+          "name": "Respuesta",
+          "vendors": [
+            {
+              "vendor": "Palo Alto Networks",
+              "fit_basis": [
+                "xdr",
+                "security"
+              ]
+            },
+            {
+              "vendor": "XM Cyber",
+              "fit_basis": [
+                "security"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "modern-soc-layer-4",
+          "name": "Operación gestionada",
+          "vendors": [
+            {
+              "vendor": "LevelBlue",
+              "fit_basis": [
+                "soc",
+                "security"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        }
+      ],
+      "vendors": [
+        {
+          "vendor": "CrowdStrike",
+          "fit_basis": [
+            "xdr",
+            "siem",
+            "security"
+          ]
+        },
+        {
+          "vendor": "Vectra AI",
+          "fit_basis": [
+            "threat",
+            "security"
+          ]
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "fit_basis": [
+            "xdr",
+            "security"
+          ]
+        },
+        {
+          "vendor": "LevelBlue",
+          "fit_basis": [
+            "soc",
+            "security"
+          ]
+        },
+        {
+          "vendor": "Anomali",
+          "fit_basis": [
+            "threat",
+            "security"
+          ]
+        },
+        {
+          "vendor": "Zscaler",
+          "fit_basis": [
+            "security"
+          ]
+        },
+        {
+          "vendor": "XM Cyber",
+          "fit_basis": [
+            "security"
+          ]
+        }
+      ],
+      "integrations": [
+        {
+          "from": "modern-soc-layer-1",
+          "to": "modern-soc-layer-2",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "modern-soc-layer-2",
+          "to": "modern-soc-layer-3",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "modern-soc-layer-3",
+          "to": "modern-soc-layer-4",
+          "status": "A VALIDAR"
+        }
+      ],
+      "integrators": [
+        {
+          "name": "Indra",
+          "scope": "ES",
+          "activation_priority": 83,
+          "confidence": 0.938
+        },
+        {
+          "name": "SEIDOR",
+          "scope": "ES",
+          "activation_priority": 72,
+          "confidence": 0.953
+        },
+        {
+          "name": "Ayesa",
+          "scope": "ES",
+          "activation_priority": 64,
+          "confidence": 0.918
+        },
+        {
+          "name": "Telefónica",
+          "scope": "ES",
+          "activation_priority": 60,
+          "confidence": 0.9
+        },
+        {
+          "name": "Babel",
+          "scope": "ES",
+          "activation_priority": 55,
+          "confidence": 0.942
+        },
+        {
+          "name": "Kyndryl",
+          "scope": "ES",
+          "activation_priority": 51,
+          "confidence": 0.913
+        }
+      ],
+      "gaps": [
+        "Integración oficial entre componentes",
+        "Dos integradores con capacidad vigente",
+        "Cuenta/caso Iberia",
+        "BOM y modelo económico",
+        "Frontera de solape y ownership"
+      ],
+      "westcon_services": [
+        "SOC maturity assessment",
+        "Integración de telemetría",
+        "Use cases",
+        "Managed SOC attach"
+      ],
+      "monetization": [
+        "Assessment",
+        "Diseño/BOM",
+        "PoC",
+        "Enablement",
+        "Servicios profesionales",
+        "Lifecycle o servicio gestionado"
+      ],
+      "recurrence": {
+        "band": "alta",
+        "basis": "Lifecycle, suscripción, soporte y/o operación gestionada; validar attach y margen internos."
+      },
+      "kpis": [
+        "Integradores habilitados",
+        "Oportunidades calificadas",
+        "Tiempo a primera oportunidad",
+        "Attach de servicios",
+        "Ingresos recurrentes influenciados",
+        "Cobertura de evidencias"
+      ],
+      "risks": [
+        "Asumir integración no documentada",
+        "Solape funcional sin segmentación",
+        "Falta de capacidad de entrega",
+        "Economics internos no validados"
+      ],
+      "readiness": {
+        "score": 99,
+        "band": "alta",
+        "formula": "35% evidencia de mercado + 30% capas cubiertas + 20% integradores compatibles + 15% amplitud de fabricantes; no es readiness comercial interna."
+      },
+      "evidence": [
+        {
+          "evidence_id": "ev_c484b6bcf8466aab09",
+          "fact": "INCIBE y CONETIC contabilizan 3.431 empresas, sitúan a España como cuarto mercado europeo y proyectan un crecimiento del empleo del 14,25% anual hasta 2029.",
+          "source": "INCIBE / CONETIC",
+          "url": "https://www.incibe.es/incibe/sala-de-prensa/incibe-y-conetic-presentan-las-conclusiones-del-estudio-sobre-la-industria-de",
+          "date": "2026-03-18",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 1.0
+        },
+        {
+          "evidence_id": "ev_5cb78a146f5abc8df5",
+          "fact": "En operadores esenciales e importantes, banca concentró el 34% de los incidentes, transporte el 14% y energía el 8%; el 85% de las botnets detectadas estaba relacionado con IoT.",
+          "source": "INCIBE",
+          "url": "https://www.incibe.es/incibe/sala-de-prensa/incibe-detecto-mas-de-122000-incidentes-de-ciberseguridad-en-2025",
+          "date": "2026-02-09",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 1.0
+        },
+        {
+          "evidence_id": "ev_9442457cd8b12345e8",
+          "fact": "La previsión pública de IDC mantiene crecimiento de doble dígito, impulsado por software y servicios.",
+          "source": "IDC",
+          "url": "https://my.idc.com/getdoc.jsp?containerId=prEUR253305325",
+          "date": "2025-04-10",
+          "source_type": "secondary-quality",
+          "quality": "alta",
+          "confidence": 0.91
+        },
+        {
+          "evidence_id": "ev_a8e22e5a2f1d702076",
+          "fact": "El servicio permite a partners ofrecer SOC por suscripción sin construir infraestructura propia.",
+          "source": "Westcon-Comstor / Cisco",
+          "url": "https://www.westconcomstor.com/global/en/news/announcements/2025/managed-soc-solution-for-cisco-partners-.html",
+          "date": "2025-04-22",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.97
+        }
+      ],
+      "diagram": {
+        "nodes": [
+          {
+            "id": "modern-soc-layer-1",
+            "label": "Telemetría"
+          },
+          {
+            "id": "modern-soc-layer-2",
+            "label": "Analítica"
+          },
+          {
+            "id": "modern-soc-layer-3",
+            "label": "Respuesta"
+          },
+          {
+            "id": "modern-soc-layer-4",
+            "label": "Operación gestionada"
+          }
+        ],
+        "edges": [
+          {
+            "from": "modern-soc-layer-1",
+            "to": "modern-soc-layer-2"
+          },
+          {
+            "from": "modern-soc-layer-2",
+            "to": "modern-soc-layer-3"
+          },
+          {
+            "from": "modern-soc-layer-3",
+            "to": "modern-soc-layer-4"
+          }
+        ]
+      },
+      "originality": "Diagrama original generado por capas funcionales; no reproduce gráficos propietarios de analistas."
+    },
+    {
+      "architecture_id": "observability",
+      "title": "Observability",
+      "problem": "Unificar experiencia, red, aplicación y seguridad con señal accionable.",
+      "opportunity": "Crear una oferta repetible de Observability que combine arquitectura, enablement, PoC y servicios de ciclo de vida.",
+      "layers": [
+        {
+          "layer_id": "observability-layer-1",
+          "name": "Fuentes",
+          "vendors": [
+            {
+              "vendor": "NETSCOUT",
+              "fit_basis": [
+                "visibility",
+                "network"
+              ]
+            },
+            {
+              "vendor": "Palo Alto Networks",
+              "fit_basis": [
+                "xdr"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "observability-layer-2",
+          "name": "Ingesta",
+          "vendors": [
+            {
+              "vendor": "Cisco",
+              "fit_basis": [
+                "observability",
+                "network"
+              ]
+            },
+            {
+              "vendor": "Nokia",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "observability-layer-3",
+          "name": "Correlación",
+          "vendors": [
+            {
+              "vendor": "Weblib",
+              "fit_basis": [
+                "network"
+              ]
+            },
+            {
+              "vendor": "F5",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "observability-layer-4",
+          "name": "Acción",
+          "vendors": [
+            {
+              "vendor": "Ruckus Networks",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        }
+      ],
+      "vendors": [
+        {
+          "vendor": "NETSCOUT",
+          "fit_basis": [
+            "visibility",
+            "network"
+          ]
+        },
+        {
+          "vendor": "Cisco",
+          "fit_basis": [
+            "observability",
+            "network"
+          ]
+        },
+        {
+          "vendor": "Weblib",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "Ruckus Networks",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "fit_basis": [
+            "xdr"
+          ]
+        },
+        {
+          "vendor": "Nokia",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "F5",
+          "fit_basis": [
+            "network"
+          ]
+        }
+      ],
+      "integrations": [
+        {
+          "from": "observability-layer-1",
+          "to": "observability-layer-2",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "observability-layer-2",
+          "to": "observability-layer-3",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "observability-layer-3",
+          "to": "observability-layer-4",
+          "status": "A VALIDAR"
+        }
+      ],
+      "integrators": [
+        {
+          "name": "Indra",
+          "scope": "ES",
+          "activation_priority": 83,
+          "confidence": 0.938
+        },
+        {
+          "name": "SEIDOR",
+          "scope": "ES",
+          "activation_priority": 72,
+          "confidence": 0.953
+        },
+        {
+          "name": "Telefónica Tech",
+          "scope": "ES",
+          "activation_priority": 62,
+          "confidence": 0.907
+        },
+        {
+          "name": "Telefónica",
+          "scope": "ES",
+          "activation_priority": 60,
+          "confidence": 0.9
+        },
+        {
+          "name": "Kyndryl",
+          "scope": "ES",
+          "activation_priority": 51,
+          "confidence": 0.913
+        },
+        {
+          "name": "IBM",
+          "scope": "PT",
+          "activation_priority": 49,
+          "confidence": 0.9
+        }
+      ],
+      "gaps": [
+        "Integración oficial entre componentes",
+        "Dos integradores con capacidad vigente",
+        "Cuenta/caso Iberia",
+        "BOM y modelo económico",
+        "Frontera de solape y ownership"
+      ],
+      "westcon_services": [
+        "Assessment de observabilidad",
+        "Diseño de telemetría",
+        "Dashboard/KPI",
+        "Operación gestionada"
+      ],
+      "monetization": [
+        "Assessment",
+        "Diseño/BOM",
+        "PoC",
+        "Enablement",
+        "Servicios profesionales",
+        "Lifecycle o servicio gestionado"
+      ],
+      "recurrence": {
+        "band": "alta",
+        "basis": "Lifecycle, suscripción, soporte y/o operación gestionada; validar attach y margen internos."
+      },
+      "kpis": [
+        "Integradores habilitados",
+        "Oportunidades calificadas",
+        "Tiempo a primera oportunidad",
+        "Attach de servicios",
+        "Ingresos recurrentes influenciados",
+        "Cobertura de evidencias"
+      ],
+      "risks": [
+        "Asumir integración no documentada",
+        "Solape funcional sin segmentación",
+        "Falta de capacidad de entrega",
+        "Economics internos no validados"
+      ],
+      "readiness": {
+        "score": 99,
+        "band": "alta",
+        "formula": "35% evidencia de mercado + 30% capas cubiertas + 20% integradores compatibles + 15% amplitud de fabricantes; no es readiness comercial interna."
+      },
+      "evidence": [
+        {
+          "evidence_id": "ev_c1aa5dac0f5e0a766e",
+          "fact": "Solo el 26% ofrecía servicios avanzados de networking integrado con IA.",
+          "source": "Westcon-Comstor",
+          "url": "https://www.westconcomstor.com/global/en/news/announcements/2025/key-gaps-in-channel-readiness-for-ai-driven-networking.html",
+          "date": "2025-11-18",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.94
+        },
+        {
+          "evidence_id": "ev_c23296bc191af79196",
+          "fact": "Arrow amplió a Iberia un acuerdo que ya tenía en Norteamérica y Marruecos.",
+          "source": "Arrow ECS",
+          "url": "https://www.arrow.com/globalecs/es/arrow-channel-advisor/arrow-amplia-su-acuerdo-de-distribucion-con-palo-alto-networks-a-espana-y-portugal/",
+          "date": "2026-06-16",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.98
+        },
+        {
+          "evidence_id": "ev_13237643139d96e6dc",
+          "fact": "Exclusive publica capacidad Centre of Excellence, soporte a DMP y programas SASE/MSSP propios.",
+          "source": "Exclusive Networks",
+          "url": "https://www.exclusive-networks.com/es/ecosistema/fabricantes/palo-alto-networks",
+          "date": "2026-04-16",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.96
+        },
+        {
+          "evidence_id": "ev_27e5fdb7b568af8231",
+          "fact": "El programa combina tecnología SASE con servicios para simplificar adopción y monetización Zero Trust.",
+          "source": "Westcon-Comstor",
+          "url": "https://www.westconcomstor.com/global/en/news/announcements/2026/sase-evolution-powered-by-palo-alto-networks-to-accelerate.html",
+          "date": "2026-05-21",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.96
+        }
+      ],
+      "diagram": {
+        "nodes": [
+          {
+            "id": "observability-layer-1",
+            "label": "Fuentes"
+          },
+          {
+            "id": "observability-layer-2",
+            "label": "Ingesta"
+          },
+          {
+            "id": "observability-layer-3",
+            "label": "Correlación"
+          },
+          {
+            "id": "observability-layer-4",
+            "label": "Acción"
+          }
+        ],
+        "edges": [
+          {
+            "from": "observability-layer-1",
+            "to": "observability-layer-2"
+          },
+          {
+            "from": "observability-layer-2",
+            "to": "observability-layer-3"
+          },
+          {
+            "from": "observability-layer-3",
+            "to": "observability-layer-4"
+          }
+        ]
+      },
+      "originality": "Diagrama original generado por capas funcionales; no reproduce gráficos propietarios de analistas."
+    },
+    {
+      "architecture_id": "hybrid-cloud",
+      "title": "Hybrid Cloud",
+      "problem": "Mover y operar cargas con seguridad, visibilidad y control de coste.",
+      "opportunity": "Crear una oferta repetible de Hybrid Cloud que combine arquitectura, enablement, PoC y servicios de ciclo de vida.",
+      "layers": [
+        {
+          "layer_id": "hybrid-cloud-layer-1",
+          "name": "Workloads",
+          "vendors": [
+            {
+              "vendor": "F5",
+              "fit_basis": [
+                "cloud",
+                "network",
+                "security"
+              ]
+            },
+            {
+              "vendor": "EfficientIP",
+              "fit_basis": [
+                "network",
+                "security"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "hybrid-cloud-layer-2",
+          "name": "Conectividad",
+          "vendors": [
+            {
+              "vendor": "Ruckus Networks",
+              "fit_basis": [
+                "cloud",
+                "network"
+              ]
+            },
+            {
+              "vendor": "CrowdStrike",
+              "fit_basis": [
+                "cloud",
+                "security"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "hybrid-cloud-layer-3",
+          "name": "Seguridad",
+          "vendors": [
+            {
+              "vendor": "NETSCOUT",
+              "fit_basis": [
+                "network",
+                "security"
+              ]
+            },
+            {
+              "vendor": "Cisco",
+              "fit_basis": [
+                "network",
+                "security"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "hybrid-cloud-layer-4",
+          "name": "Operación",
+          "vendors": [
+            {
+              "vendor": "Extreme Networks",
+              "fit_basis": [
+                "cloud",
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        }
+      ],
+      "vendors": [
+        {
+          "vendor": "F5",
+          "fit_basis": [
+            "cloud",
+            "network",
+            "security"
+          ]
+        },
+        {
+          "vendor": "Ruckus Networks",
+          "fit_basis": [
+            "cloud",
+            "network"
+          ]
+        },
+        {
+          "vendor": "NETSCOUT",
+          "fit_basis": [
+            "network",
+            "security"
+          ]
+        },
+        {
+          "vendor": "Extreme Networks",
+          "fit_basis": [
+            "cloud",
+            "network"
+          ]
+        },
+        {
+          "vendor": "EfficientIP",
+          "fit_basis": [
+            "network",
+            "security"
+          ]
+        },
+        {
+          "vendor": "CrowdStrike",
+          "fit_basis": [
+            "cloud",
+            "security"
+          ]
+        },
+        {
+          "vendor": "Cisco",
+          "fit_basis": [
+            "network",
+            "security"
+          ]
+        }
+      ],
+      "integrations": [
+        {
+          "from": "hybrid-cloud-layer-1",
+          "to": "hybrid-cloud-layer-2",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "hybrid-cloud-layer-2",
+          "to": "hybrid-cloud-layer-3",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "hybrid-cloud-layer-3",
+          "to": "hybrid-cloud-layer-4",
+          "status": "A VALIDAR"
+        }
+      ],
+      "integrators": [
+        {
+          "name": "Indra",
+          "scope": "ES",
+          "activation_priority": 83,
+          "confidence": 0.938
+        },
+        {
+          "name": "SEIDOR",
+          "scope": "ES",
+          "activation_priority": 72,
+          "confidence": 0.953
+        },
+        {
+          "name": "Ayesa",
+          "scope": "ES",
+          "activation_priority": 64,
+          "confidence": 0.918
+        },
+        {
+          "name": "Telefónica Tech",
+          "scope": "ES",
+          "activation_priority": 62,
+          "confidence": 0.907
+        },
+        {
+          "name": "Telefónica",
+          "scope": "ES",
+          "activation_priority": 60,
+          "confidence": 0.9
+        },
+        {
+          "name": "Babel",
+          "scope": "ES",
+          "activation_priority": 55,
+          "confidence": 0.942
+        }
+      ],
+      "gaps": [
+        "Integración oficial entre componentes",
+        "Dos integradores con capacidad vigente",
+        "Cuenta/caso Iberia",
+        "BOM y modelo económico",
+        "Frontera de solape y ownership"
+      ],
+      "westcon_services": [
+        "Cloud readiness",
+        "Landing zone",
+        "Seguridad cloud",
+        "FinOps / operación"
+      ],
+      "monetization": [
+        "Assessment",
+        "Diseño/BOM",
+        "PoC",
+        "Enablement",
+        "Servicios profesionales",
+        "Lifecycle o servicio gestionado"
+      ],
+      "recurrence": {
+        "band": "alta",
+        "basis": "Lifecycle, suscripción, soporte y/o operación gestionada; validar attach y margen internos."
+      },
+      "kpis": [
+        "Integradores habilitados",
+        "Oportunidades calificadas",
+        "Tiempo a primera oportunidad",
+        "Attach de servicios",
+        "Ingresos recurrentes influenciados",
+        "Cobertura de evidencias"
+      ],
+      "risks": [
+        "Asumir integración no documentada",
+        "Solape funcional sin segmentación",
+        "Falta de capacidad de entrega",
+        "Economics internos no validados"
+      ],
+      "readiness": {
+        "score": 99,
+        "band": "alta",
+        "formula": "35% evidencia de mercado + 30% capas cubiertas + 20% integradores compatibles + 15% amplitud de fabricantes; no es readiness comercial interna."
+      },
+      "evidence": [
+        {
+          "evidence_id": "ev_c484b6bcf8466aab09",
+          "fact": "INCIBE y CONETIC contabilizan 3.431 empresas, sitúan a España como cuarto mercado europeo y proyectan un crecimiento del empleo del 14,25% anual hasta 2029.",
+          "source": "INCIBE / CONETIC",
+          "url": "https://www.incibe.es/incibe/sala-de-prensa/incibe-y-conetic-presentan-las-conclusiones-del-estudio-sobre-la-industria-de",
+          "date": "2026-03-18",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 1.0
+        },
+        {
+          "evidence_id": "ev_6496e6f24e53e4cd1b",
+          "fact": "La Comisión Europea destaca conectividad, capacidades y servicios públicos digitales, pero señala menor aprovechamiento empresarial de tecnologías avanzadas y falta relativa de especialistas TIC.",
+          "source": "European Commission",
+          "url": "https://digital-strategy.ec.europa.eu/en/factpages/spains-2026-digital-decade-country-report",
+          "date": "2026-06-17",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 1.0
+        },
+        {
+          "evidence_id": "ev_1a640d80fd553c2ecd",
+          "fact": "El plan fija como metas para 2030 que el 90% de las pymes alcance intensidad digital básica y que el 75% de las empresas use IA y cloud.",
+          "source": "República Portuguesa / Compete 2030",
+          "url": "https://compete2030.gov.pt/comunicacao/portugal-aprova-estrategia-digital-nacional/",
+          "date": "2024-12-20",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 1.0
+        },
+        {
+          "evidence_id": "ev_9442457cd8b12345e8",
+          "fact": "La previsión pública de IDC mantiene crecimiento de doble dígito, impulsado por software y servicios.",
+          "source": "IDC",
+          "url": "https://my.idc.com/getdoc.jsp?containerId=prEUR253305325",
+          "date": "2025-04-10",
+          "source_type": "secondary-quality",
+          "quality": "alta",
+          "confidence": 0.91
+        }
+      ],
+      "diagram": {
+        "nodes": [
+          {
+            "id": "hybrid-cloud-layer-1",
+            "label": "Workloads"
+          },
+          {
+            "id": "hybrid-cloud-layer-2",
+            "label": "Conectividad"
+          },
+          {
+            "id": "hybrid-cloud-layer-3",
+            "label": "Seguridad"
+          },
+          {
+            "id": "hybrid-cloud-layer-4",
+            "label": "Operación"
+          }
+        ],
+        "edges": [
+          {
+            "from": "hybrid-cloud-layer-1",
+            "to": "hybrid-cloud-layer-2"
+          },
+          {
+            "from": "hybrid-cloud-layer-2",
+            "to": "hybrid-cloud-layer-3"
+          },
+          {
+            "from": "hybrid-cloud-layer-3",
+            "to": "hybrid-cloud-layer-4"
+          }
+        ]
+      },
+      "originality": "Diagrama original generado por capas funcionales; no reproduce gráficos propietarios de analistas."
+    },
+    {
+      "architecture_id": "resilience",
+      "title": "Resilience",
+      "problem": "Preparar continuidad ante incidentes, vulnerabilidades y fallos de proveedor.",
+      "opportunity": "Crear una oferta repetible de Resilience que combine arquitectura, enablement, PoC y servicios de ciclo de vida.",
+      "layers": [
+        {
+          "layer_id": "resilience-layer-1",
+          "name": "Exposición",
+          "vendors": [
+            {
+              "vendor": "NETSCOUT",
+              "fit_basis": [
+                "security",
+                "ddos"
+              ]
+            },
+            {
+              "vendor": "Proofpoint",
+              "fit_basis": [
+                "security"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "resilience-layer-2",
+          "name": "Protección",
+          "vendors": [
+            {
+              "vendor": "Zscaler",
+              "fit_basis": [
+                "security"
+              ]
+            },
+            {
+              "vendor": "Ping Identity",
+              "fit_basis": [
+                "security"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "resilience-layer-3",
+          "name": "Recuperación",
+          "vendors": [
+            {
+              "vendor": "XM Cyber",
+              "fit_basis": [
+                "security"
+              ]
+            },
+            {
+              "vendor": "Palo Alto Networks",
+              "fit_basis": [
+                "security"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "resilience-layer-4",
+          "name": "Crisis",
+          "vendors": [
+            {
+              "vendor": "Vectra AI",
+              "fit_basis": [
+                "security"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        }
+      ],
+      "vendors": [
+        {
+          "vendor": "NETSCOUT",
+          "fit_basis": [
+            "security",
+            "ddos"
+          ]
+        },
+        {
+          "vendor": "Zscaler",
+          "fit_basis": [
+            "security"
+          ]
+        },
+        {
+          "vendor": "XM Cyber",
+          "fit_basis": [
+            "security"
+          ]
+        },
+        {
+          "vendor": "Vectra AI",
+          "fit_basis": [
+            "security"
+          ]
+        },
+        {
+          "vendor": "Proofpoint",
+          "fit_basis": [
+            "security"
+          ]
+        },
+        {
+          "vendor": "Ping Identity",
+          "fit_basis": [
+            "security"
+          ]
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "fit_basis": [
+            "security"
+          ]
+        }
+      ],
+      "integrations": [
+        {
+          "from": "resilience-layer-1",
+          "to": "resilience-layer-2",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "resilience-layer-2",
+          "to": "resilience-layer-3",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "resilience-layer-3",
+          "to": "resilience-layer-4",
+          "status": "A VALIDAR"
+        }
+      ],
+      "integrators": [
+        {
+          "name": "Indra",
+          "scope": "ES",
+          "activation_priority": 83,
+          "confidence": 0.938
+        },
+        {
+          "name": "SEIDOR",
+          "scope": "ES",
+          "activation_priority": 72,
+          "confidence": 0.953
+        },
+        {
+          "name": "Ayesa",
+          "scope": "ES",
+          "activation_priority": 64,
+          "confidence": 0.918
+        },
+        {
+          "name": "Telefónica",
+          "scope": "ES",
+          "activation_priority": 60,
+          "confidence": 0.9
+        },
+        {
+          "name": "Babel",
+          "scope": "ES",
+          "activation_priority": 55,
+          "confidence": 0.942
+        },
+        {
+          "name": "Kyndryl",
+          "scope": "ES",
+          "activation_priority": 51,
+          "confidence": 0.913
+        }
+      ],
+      "gaps": [
+        "Integración oficial entre componentes",
+        "Dos integradores con capacidad vigente",
+        "Cuenta/caso Iberia",
+        "BOM y modelo económico",
+        "Frontera de solape y ownership"
+      ],
+      "westcon_services": [
+        "Resilience assessment",
+        "Tabletop",
+        "Arquitectura de recuperación",
+        "Retainer / lifecycle"
+      ],
+      "monetization": [
+        "Assessment",
+        "Diseño/BOM",
+        "PoC",
+        "Enablement",
+        "Servicios profesionales",
+        "Lifecycle o servicio gestionado"
+      ],
+      "recurrence": {
+        "band": "media",
+        "basis": "Lifecycle, suscripción, soporte y/o operación gestionada; validar attach y margen internos."
+      },
+      "kpis": [
+        "Integradores habilitados",
+        "Oportunidades calificadas",
+        "Tiempo a primera oportunidad",
+        "Attach de servicios",
+        "Ingresos recurrentes influenciados",
+        "Cobertura de evidencias"
+      ],
+      "risks": [
+        "Asumir integración no documentada",
+        "Solape funcional sin segmentación",
+        "Falta de capacidad de entrega",
+        "Economics internos no validados"
+      ],
+      "readiness": {
+        "score": 99,
+        "band": "alta",
+        "formula": "35% evidencia de mercado + 30% capas cubiertas + 20% integradores compatibles + 15% amplitud de fabricantes; no es readiness comercial interna."
+      },
+      "evidence": [
+        {
+          "evidence_id": "ev_c484b6bcf8466aab09",
+          "fact": "INCIBE y CONETIC contabilizan 3.431 empresas, sitúan a España como cuarto mercado europeo y proyectan un crecimiento del empleo del 14,25% anual hasta 2029.",
+          "source": "INCIBE / CONETIC",
+          "url": "https://www.incibe.es/incibe/sala-de-prensa/incibe-y-conetic-presentan-las-conclusiones-del-estudio-sobre-la-industria-de",
+          "date": "2026-03-18",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 1.0
+        },
+        {
+          "evidence_id": "ev_5cb78a146f5abc8df5",
+          "fact": "En operadores esenciales e importantes, banca concentró el 34% de los incidentes, transporte el 14% y energía el 8%; el 85% de las botnets detectadas estaba relacionado con IoT.",
+          "source": "INCIBE",
+          "url": "https://www.incibe.es/incibe/sala-de-prensa/incibe-detecto-mas-de-122000-incidentes-de-ciberseguridad-en-2025",
+          "date": "2026-02-09",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 1.0
+        },
+        {
+          "evidence_id": "ev_9442457cd8b12345e8",
+          "fact": "La previsión pública de IDC mantiene crecimiento de doble dígito, impulsado por software y servicios.",
+          "source": "IDC",
+          "url": "https://my.idc.com/getdoc.jsp?containerId=prEUR253305325",
+          "date": "2025-04-10",
+          "source_type": "secondary-quality",
+          "quality": "alta",
+          "confidence": 0.91
+        },
+        {
+          "evidence_id": "ev_c73cc4e3d908ebd24a",
+          "fact": "El servicio combina WAF, Bot Defense, API Security y mitigación DDoS con operación SOC 24x7.",
+          "source": "Telefónica Tech / F5",
+          "url": "https://telefonicatech.com/en/news/telefonica-tech-f5-new-service-protect-web-apps",
+          "date": "2023-06-19",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.96
+        }
+      ],
+      "diagram": {
+        "nodes": [
+          {
+            "id": "resilience-layer-1",
+            "label": "Exposición"
+          },
+          {
+            "id": "resilience-layer-2",
+            "label": "Protección"
+          },
+          {
+            "id": "resilience-layer-3",
+            "label": "Recuperación"
+          },
+          {
+            "id": "resilience-layer-4",
+            "label": "Crisis"
+          }
+        ],
+        "edges": [
+          {
+            "from": "resilience-layer-1",
+            "to": "resilience-layer-2"
+          },
+          {
+            "from": "resilience-layer-2",
+            "to": "resilience-layer-3"
+          },
+          {
+            "from": "resilience-layer-3",
+            "to": "resilience-layer-4"
+          }
+        ]
+      },
+      "originality": "Diagrama original generado por capas funcionales; no reproduce gráficos propietarios de analistas."
+    },
+    {
+      "architecture_id": "data-center",
+      "title": "Data Center",
+      "problem": "Modernizar infraestructura manteniendo resiliencia y continuidad.",
+      "opportunity": "Crear una oferta repetible de Data Center que combine arquitectura, enablement, PoC y servicios de ciclo de vida.",
+      "layers": [
+        {
+          "layer_id": "data-center-layer-1",
+          "name": "Compute/edge",
+          "vendors": [
+            {
+              "vendor": "Cisco",
+              "fit_basis": [
+                "data center",
+                "network"
+              ]
+            },
+            {
+              "vendor": "NETSCOUT",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "data-center-layer-2",
+          "name": "Red DC",
+          "vendors": [
+            {
+              "vendor": "Weblib",
+              "fit_basis": [
+                "network"
+              ]
+            },
+            {
+              "vendor": "F5",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "data-center-layer-3",
+          "name": "Seguridad",
+          "vendors": [
+            {
+              "vendor": "Ruckus Networks",
+              "fit_basis": [
+                "network"
+              ]
+            },
+            {
+              "vendor": "Extreme Networks",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "data-center-layer-4",
+          "name": "Continuidad",
+          "vendors": [
+            {
+              "vendor": "Nokia",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        }
+      ],
+      "vendors": [
+        {
+          "vendor": "Cisco",
+          "fit_basis": [
+            "data center",
+            "network"
+          ]
+        },
+        {
+          "vendor": "Weblib",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "Ruckus Networks",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "Nokia",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "NETSCOUT",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "F5",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "Extreme Networks",
+          "fit_basis": [
+            "network"
+          ]
+        }
+      ],
+      "integrations": [
+        {
+          "from": "data-center-layer-1",
+          "to": "data-center-layer-2",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "data-center-layer-2",
+          "to": "data-center-layer-3",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "data-center-layer-3",
+          "to": "data-center-layer-4",
+          "status": "A VALIDAR"
+        }
+      ],
+      "integrators": [
+        {
+          "name": "Indra",
+          "scope": "ES",
+          "activation_priority": 83,
+          "confidence": 0.938
+        },
+        {
+          "name": "SEIDOR",
+          "scope": "ES",
+          "activation_priority": 72,
+          "confidence": 0.953
+        },
+        {
+          "name": "Ayesa",
+          "scope": "ES",
+          "activation_priority": 64,
+          "confidence": 0.918
+        },
+        {
+          "name": "Telefónica Tech",
+          "scope": "ES",
+          "activation_priority": 62,
+          "confidence": 0.907
+        },
+        {
+          "name": "Telefónica",
+          "scope": "ES",
+          "activation_priority": 60,
+          "confidence": 0.9
+        },
+        {
+          "name": "Babel",
+          "scope": "ES",
+          "activation_priority": 55,
+          "confidence": 0.942
+        }
+      ],
+      "gaps": [
+        "Integración oficial entre componentes",
+        "Dos integradores con capacidad vigente",
+        "Cuenta/caso Iberia",
+        "BOM y modelo económico",
+        "Frontera de solape y ownership"
+      ],
+      "westcon_services": [
+        "Assessment DC",
+        "Diseño y BOM",
+        "Staging",
+        "Migración y soporte"
+      ],
+      "monetization": [
+        "Assessment",
+        "Diseño/BOM",
+        "PoC",
+        "Enablement",
+        "Servicios profesionales",
+        "Lifecycle o servicio gestionado"
+      ],
+      "recurrence": {
+        "band": "media",
+        "basis": "Lifecycle, suscripción, soporte y/o operación gestionada; validar attach y margen internos."
+      },
+      "kpis": [
+        "Integradores habilitados",
+        "Oportunidades calificadas",
+        "Tiempo a primera oportunidad",
+        "Attach de servicios",
+        "Ingresos recurrentes influenciados",
+        "Cobertura de evidencias"
+      ],
+      "risks": [
+        "Asumir integración no documentada",
+        "Solape funcional sin segmentación",
+        "Falta de capacidad de entrega",
+        "Economics internos no validados"
+      ],
+      "readiness": {
+        "score": 98,
+        "band": "alta",
+        "formula": "35% evidencia de mercado + 30% capas cubiertas + 20% integradores compatibles + 15% amplitud de fabricantes; no es readiness comercial interna."
+      },
+      "evidence": [
+        {
+          "evidence_id": "ev_0df776885e78530e55",
+          "fact": "Wi-Fi 7, AIOps, puertos multigigabit y fin de vida de equipos en 2025-2026 impulsan ciclos de renovación; se prevé CAGR superior al 20% en puertos de 5 Gbps entre 2024 y 2029.",
+          "source": "Dell'Oro Group",
+          "url": "https://www.delloro.com/news/wi-fi-7-and-aiops-features-will-lift-campus-switch-sales-to-over-20b-in-2025/",
+          "date": "2025-08-05",
+          "source_type": "secondary-quality",
+          "quality": "alta",
+          "confidence": 0.91
+        },
+        {
+          "evidence_id": "ev_c1aa5dac0f5e0a766e",
+          "fact": "Solo el 26% ofrecía servicios avanzados de networking integrado con IA.",
+          "source": "Westcon-Comstor",
+          "url": "https://www.westconcomstor.com/global/en/news/announcements/2025/key-gaps-in-channel-readiness-for-ai-driven-networking.html",
+          "date": "2025-11-18",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.94
+        },
+        {
+          "evidence_id": "ev_c23296bc191af79196",
+          "fact": "Arrow amplió a Iberia un acuerdo que ya tenía en Norteamérica y Marruecos.",
+          "source": "Arrow ECS",
+          "url": "https://www.arrow.com/globalecs/es/arrow-channel-advisor/arrow-amplia-su-acuerdo-de-distribucion-con-palo-alto-networks-a-espana-y-portugal/",
+          "date": "2026-06-16",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.98
+        },
+        {
+          "evidence_id": "ev_13237643139d96e6dc",
+          "fact": "Exclusive publica capacidad Centre of Excellence, soporte a DMP y programas SASE/MSSP propios.",
+          "source": "Exclusive Networks",
+          "url": "https://www.exclusive-networks.com/es/ecosistema/fabricantes/palo-alto-networks",
+          "date": "2026-04-16",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.96
+        }
+      ],
+      "diagram": {
+        "nodes": [
+          {
+            "id": "data-center-layer-1",
+            "label": "Compute/edge"
+          },
+          {
+            "id": "data-center-layer-2",
+            "label": "Red DC"
+          },
+          {
+            "id": "data-center-layer-3",
+            "label": "Seguridad"
+          },
+          {
+            "id": "data-center-layer-4",
+            "label": "Continuidad"
+          }
+        ],
+        "edges": [
+          {
+            "from": "data-center-layer-1",
+            "to": "data-center-layer-2"
+          },
+          {
+            "from": "data-center-layer-2",
+            "to": "data-center-layer-3"
+          },
+          {
+            "from": "data-center-layer-3",
+            "to": "data-center-layer-4"
+          }
+        ]
+      },
+      "originality": "Diagrama original generado por capas funcionales; no reproduce gráficos propietarios de analistas."
+    },
+    {
+      "architecture_id": "naas",
+      "title": "NaaS",
+      "problem": "Convertir conectividad y operación en un servicio medible y recurrente.",
+      "opportunity": "Crear una oferta repetible de NaaS que combine arquitectura, enablement, PoC y servicios de ciclo de vida.",
+      "layers": [
+        {
+          "layer_id": "naas-layer-1",
+          "name": "Acceso",
+          "vendors": [
+            {
+              "vendor": "Extreme Networks",
+              "fit_basis": [
+                "network",
+                "sd wan"
+              ]
+            },
+            {
+              "vendor": "NETSCOUT",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "naas-layer-2",
+          "name": "Control",
+          "vendors": [
+            {
+              "vendor": "Weblib",
+              "fit_basis": [
+                "network"
+              ]
+            },
+            {
+              "vendor": "F5",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "naas-layer-3",
+          "name": "Experiencia",
+          "vendors": [
+            {
+              "vendor": "Ruckus Networks",
+              "fit_basis": [
+                "network"
+              ]
+            },
+            {
+              "vendor": "Ericsson Cradlepoint",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "naas-layer-4",
+          "name": "Lifecycle",
+          "vendors": [
+            {
+              "vendor": "Nokia",
+              "fit_basis": [
+                "network"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        }
+      ],
+      "vendors": [
+        {
+          "vendor": "Extreme Networks",
+          "fit_basis": [
+            "network",
+            "sd wan"
+          ]
+        },
+        {
+          "vendor": "Weblib",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "Ruckus Networks",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "Nokia",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "NETSCOUT",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "F5",
+          "fit_basis": [
+            "network"
+          ]
+        },
+        {
+          "vendor": "Ericsson Cradlepoint",
+          "fit_basis": [
+            "network"
+          ]
+        }
+      ],
+      "integrations": [
+        {
+          "from": "naas-layer-1",
+          "to": "naas-layer-2",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "naas-layer-2",
+          "to": "naas-layer-3",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "naas-layer-3",
+          "to": "naas-layer-4",
+          "status": "A VALIDAR"
+        }
+      ],
+      "integrators": [
+        {
+          "name": "Indra",
+          "scope": "ES",
+          "activation_priority": 83,
+          "confidence": 0.938
+        },
+        {
+          "name": "SEIDOR",
+          "scope": "ES",
+          "activation_priority": 72,
+          "confidence": 0.953
+        },
+        {
+          "name": "Telefónica Tech",
+          "scope": "ES",
+          "activation_priority": 62,
+          "confidence": 0.907
+        },
+        {
+          "name": "Telefónica",
+          "scope": "ES",
+          "activation_priority": 60,
+          "confidence": 0.9
+        },
+        {
+          "name": "Kyndryl",
+          "scope": "ES",
+          "activation_priority": 51,
+          "confidence": 0.913
+        },
+        {
+          "name": "IBM",
+          "scope": "PT",
+          "activation_priority": 49,
+          "confidence": 0.9
+        }
+      ],
+      "gaps": [
+        "Integración oficial entre componentes",
+        "Dos integradores con capacidad vigente",
+        "Cuenta/caso Iberia",
+        "BOM y modelo económico",
+        "Frontera de solape y ownership"
+      ],
+      "westcon_services": [
+        "NaaS business case",
+        "Diseño",
+        "Onboarding",
+        "Lifecycle gestionado"
+      ],
+      "monetization": [
+        "Assessment",
+        "Diseño/BOM",
+        "PoC",
+        "Enablement",
+        "Servicios profesionales",
+        "Lifecycle o servicio gestionado"
+      ],
+      "recurrence": {
+        "band": "alta",
+        "basis": "Lifecycle, suscripción, soporte y/o operación gestionada; validar attach y margen internos."
+      },
+      "kpis": [
+        "Integradores habilitados",
+        "Oportunidades calificadas",
+        "Tiempo a primera oportunidad",
+        "Attach de servicios",
+        "Ingresos recurrentes influenciados",
+        "Cobertura de evidencias"
+      ],
+      "risks": [
+        "Asumir integración no documentada",
+        "Solape funcional sin segmentación",
+        "Falta de capacidad de entrega",
+        "Economics internos no validados"
+      ],
+      "readiness": {
+        "score": 98,
+        "band": "alta",
+        "formula": "35% evidencia de mercado + 30% capas cubiertas + 20% integradores compatibles + 15% amplitud de fabricantes; no es readiness comercial interna."
+      },
+      "evidence": [
+        {
+          "evidence_id": "ev_9442457cd8b12345e8",
+          "fact": "La previsión pública de IDC mantiene crecimiento de doble dígito, impulsado por software y servicios.",
+          "source": "IDC",
+          "url": "https://my.idc.com/getdoc.jsp?containerId=prEUR253305325",
+          "date": "2025-04-10",
+          "source_type": "secondary-quality",
+          "quality": "alta",
+          "confidence": 0.91
+        },
+        {
+          "evidence_id": "ev_4d252150eabb4a76b3",
+          "fact": "La señal pública apunta a servicios gestionados como una de las áreas de mayor crecimiento para MSP y VAR.",
+          "source": "Omdia / Canalys",
+          "url": "https://www.canalys.com/insights/msp-trends-2025-es",
+          "date": "2025-01-15",
+          "source_type": "secondary-quality",
+          "quality": "alta",
+          "confidence": 0.9
+        },
+        {
+          "evidence_id": "ev_c1aa5dac0f5e0a766e",
+          "fact": "Solo el 26% ofrecía servicios avanzados de networking integrado con IA.",
+          "source": "Westcon-Comstor",
+          "url": "https://www.westconcomstor.com/global/en/news/announcements/2025/key-gaps-in-channel-readiness-for-ai-driven-networking.html",
+          "date": "2025-11-18",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.94
+        },
+        {
+          "evidence_id": "ev_c23296bc191af79196",
+          "fact": "Arrow amplió a Iberia un acuerdo que ya tenía en Norteamérica y Marruecos.",
+          "source": "Arrow ECS",
+          "url": "https://www.arrow.com/globalecs/es/arrow-channel-advisor/arrow-amplia-su-acuerdo-de-distribucion-con-palo-alto-networks-a-espana-y-portugal/",
+          "date": "2026-06-16",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.98
+        }
+      ],
+      "diagram": {
+        "nodes": [
+          {
+            "id": "naas-layer-1",
+            "label": "Acceso"
+          },
+          {
+            "id": "naas-layer-2",
+            "label": "Control"
+          },
+          {
+            "id": "naas-layer-3",
+            "label": "Experiencia"
+          },
+          {
+            "id": "naas-layer-4",
+            "label": "Lifecycle"
+          }
+        ],
+        "edges": [
+          {
+            "from": "naas-layer-1",
+            "to": "naas-layer-2"
+          },
+          {
+            "from": "naas-layer-2",
+            "to": "naas-layer-3"
+          },
+          {
+            "from": "naas-layer-3",
+            "to": "naas-layer-4"
+          }
+        ]
+      },
+      "originality": "Diagrama original generado por capas funcionales; no reproduce gráficos propietarios de analistas."
+    },
+    {
+      "architecture_id": "zero-trust",
+      "title": "Zero Trust",
+      "problem": "Aplicar controles continuos de identidad, dispositivo, red y datos.",
+      "opportunity": "Crear una oferta repetible de Zero Trust que combine arquitectura, enablement, PoC y servicios de ciclo de vida.",
+      "layers": [
+        {
+          "layer_id": "zero-trust-layer-1",
+          "name": "Identidad",
+          "vendors": [
+            {
+              "vendor": "CrowdStrike",
+              "fit_basis": [
+                "identity",
+                "xdr"
+              ]
+            },
+            {
+              "vendor": "Certes Networks",
+              "fit_basis": [
+                "segmentation"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "zero-trust-layer-2",
+          "name": "Postura",
+          "vendors": [
+            {
+              "vendor": "Vectra AI",
+              "fit_basis": [
+                "identity"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "zero-trust-layer-3",
+          "name": "Acceso",
+          "vendors": [
+            {
+              "vendor": "Ping Identity",
+              "fit_basis": [
+                "identity"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "zero-trust-layer-4",
+          "name": "Telemetría",
+          "vendors": [
+            {
+              "vendor": "Palo Alto Networks",
+              "fit_basis": [
+                "xdr"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        }
+      ],
+      "vendors": [
+        {
+          "vendor": "CrowdStrike",
+          "fit_basis": [
+            "identity",
+            "xdr"
+          ]
+        },
+        {
+          "vendor": "Vectra AI",
+          "fit_basis": [
+            "identity"
+          ]
+        },
+        {
+          "vendor": "Ping Identity",
+          "fit_basis": [
+            "identity"
+          ]
+        },
+        {
+          "vendor": "Palo Alto Networks",
+          "fit_basis": [
+            "xdr"
+          ]
+        },
+        {
+          "vendor": "Certes Networks",
+          "fit_basis": [
+            "segmentation"
+          ]
+        }
+      ],
+      "integrations": [
+        {
+          "from": "zero-trust-layer-1",
+          "to": "zero-trust-layer-2",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "zero-trust-layer-2",
+          "to": "zero-trust-layer-3",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "zero-trust-layer-3",
+          "to": "zero-trust-layer-4",
+          "status": "A VALIDAR"
+        }
+      ],
+      "integrators": [
+        {
+          "name": "Telefónica Tech",
+          "scope": "ES",
+          "activation_priority": 62,
+          "confidence": 0.907
+        },
+        {
+          "name": "Kyndryl",
+          "scope": "ES",
+          "activation_priority": 51,
+          "confidence": 0.913
+        }
+      ],
+      "gaps": [
+        "Integración oficial entre componentes",
+        "Dos integradores con capacidad vigente",
+        "Cuenta/caso Iberia",
+        "BOM y modelo económico",
+        "Frontera de solape y ownership"
+      ],
+      "westcon_services": [
+        "Assessment Zero Trust",
+        "Diseño de controles",
+        "Plan de adopción",
+        "Lifecycle"
+      ],
+      "monetization": [
+        "Assessment",
+        "Diseño/BOM",
+        "PoC",
+        "Enablement",
+        "Servicios profesionales",
+        "Lifecycle o servicio gestionado"
+      ],
+      "recurrence": {
+        "band": "media",
+        "basis": "Lifecycle, suscripción, soporte y/o operación gestionada; validar attach y margen internos."
+      },
+      "kpis": [
+        "Integradores habilitados",
+        "Oportunidades calificadas",
+        "Tiempo a primera oportunidad",
+        "Attach de servicios",
+        "Ingresos recurrentes influenciados",
+        "Cobertura de evidencias"
+      ],
+      "risks": [
+        "Asumir integración no documentada",
+        "Solape funcional sin segmentación",
+        "Falta de capacidad de entrega",
+        "Economics internos no validados"
+      ],
+      "readiness": {
+        "score": 89,
+        "band": "alta",
+        "formula": "35% evidencia de mercado + 30% capas cubiertas + 20% integradores compatibles + 15% amplitud de fabricantes; no es readiness comercial interna."
+      },
+      "evidence": [
+        {
+          "evidence_id": "ev_27e5fdb7b568af8231",
+          "fact": "El programa combina tecnología SASE con servicios para simplificar adopción y monetización Zero Trust.",
+          "source": "Westcon-Comstor",
+          "url": "https://www.westconcomstor.com/global/en/news/announcements/2026/sase-evolution-powered-by-palo-alto-networks-to-accelerate.html",
+          "date": "2026-05-21",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.96
+        },
+        {
+          "evidence_id": "ev_a8e22e5a2f1d702076",
+          "fact": "El servicio permite a partners ofrecer SOC por suscripción sin construir infraestructura propia.",
+          "source": "Westcon-Comstor / Cisco",
+          "url": "https://www.westconcomstor.com/global/en/news/announcements/2025/managed-soc-solution-for-cisco-partners-.html",
+          "date": "2025-04-22",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.97
+        }
+      ],
+      "diagram": {
+        "nodes": [
+          {
+            "id": "zero-trust-layer-1",
+            "label": "Identidad"
+          },
+          {
+            "id": "zero-trust-layer-2",
+            "label": "Postura"
+          },
+          {
+            "id": "zero-trust-layer-3",
+            "label": "Acceso"
+          },
+          {
+            "id": "zero-trust-layer-4",
+            "label": "Telemetría"
+          }
+        ],
+        "edges": [
+          {
+            "from": "zero-trust-layer-1",
+            "to": "zero-trust-layer-2"
+          },
+          {
+            "from": "zero-trust-layer-2",
+            "to": "zero-trust-layer-3"
+          },
+          {
+            "from": "zero-trust-layer-3",
+            "to": "zero-trust-layer-4"
+          }
+        ]
+      },
+      "originality": "Diagrama original generado por capas funcionales; no reproduce gráficos propietarios de analistas."
+    },
+    {
+      "architecture_id": "identity",
+      "title": "Identity",
+      "problem": "Reducir riesgo y fricción con identidad como plano de control.",
+      "opportunity": "Crear una oferta repetible de Identity que combine arquitectura, enablement, PoC y servicios de ciclo de vida.",
+      "layers": [
+        {
+          "layer_id": "identity-layer-1",
+          "name": "Directorio",
+          "vendors": [
+            {
+              "vendor": "Ping Identity",
+              "fit_basis": [
+                "identity",
+                "iam"
+              ]
+            },
+            {
+              "vendor": "CrowdStrike",
+              "fit_basis": [
+                "identity"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "identity-layer-2",
+          "name": "Acceso",
+          "vendors": [
+            {
+              "vendor": "Vectra AI",
+              "fit_basis": [
+                "identity"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "identity-layer-3",
+          "name": "Privilegio",
+          "vendors": [
+            {
+              "vendor": "Okta",
+              "fit_basis": [
+                "iam"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        },
+        {
+          "layer_id": "identity-layer-4",
+          "name": "Gobierno",
+          "vendors": [
+            {
+              "vendor": "EfficientIP",
+              "fit_basis": [
+                "pam"
+              ]
+            }
+          ],
+          "integration_status": "A VALIDAR",
+          "note": "La asignación indica encaje funcional público; no afirma integración certificada entre fabricantes."
+        }
+      ],
+      "vendors": [
+        {
+          "vendor": "Ping Identity",
+          "fit_basis": [
+            "identity",
+            "iam"
+          ]
+        },
+        {
+          "vendor": "Vectra AI",
+          "fit_basis": [
+            "identity"
+          ]
+        },
+        {
+          "vendor": "Okta",
+          "fit_basis": [
+            "iam"
+          ]
+        },
+        {
+          "vendor": "EfficientIP",
+          "fit_basis": [
+            "pam"
+          ]
+        },
+        {
+          "vendor": "CrowdStrike",
+          "fit_basis": [
+            "identity"
+          ]
+        }
+      ],
+      "integrations": [
+        {
+          "from": "identity-layer-1",
+          "to": "identity-layer-2",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "identity-layer-2",
+          "to": "identity-layer-3",
+          "status": "A VALIDAR"
+        },
+        {
+          "from": "identity-layer-3",
+          "to": "identity-layer-4",
+          "status": "A VALIDAR"
+        }
+      ],
+      "integrators": [
+        {
+          "name": "Telefónica Tech",
+          "scope": "ES",
+          "activation_priority": 62,
+          "confidence": 0.907
+        },
+        {
+          "name": "Kyndryl",
+          "scope": "ES",
+          "activation_priority": 51,
+          "confidence": 0.913
+        }
+      ],
+      "gaps": [
+        "Integración oficial entre componentes",
+        "Dos integradores con capacidad vigente",
+        "Cuenta/caso Iberia",
+        "BOM y modelo económico",
+        "Frontera de solape y ownership"
+      ],
+      "westcon_services": [
+        "Identity assessment",
+        "Diseño IAM",
+        "Migración",
+        "Servicio de lifecycle"
+      ],
+      "monetization": [
+        "Assessment",
+        "Diseño/BOM",
+        "PoC",
+        "Enablement",
+        "Servicios profesionales",
+        "Lifecycle o servicio gestionado"
+      ],
+      "recurrence": {
+        "band": "media",
+        "basis": "Lifecycle, suscripción, soporte y/o operación gestionada; validar attach y margen internos."
+      },
+      "kpis": [
+        "Integradores habilitados",
+        "Oportunidades calificadas",
+        "Tiempo a primera oportunidad",
+        "Attach de servicios",
+        "Ingresos recurrentes influenciados",
+        "Cobertura de evidencias"
+      ],
+      "risks": [
+        "Asumir integración no documentada",
+        "Solape funcional sin segmentación",
+        "Falta de capacidad de entrega",
+        "Economics internos no validados"
+      ],
+      "readiness": {
+        "score": 89,
+        "band": "alta",
+        "formula": "35% evidencia de mercado + 30% capas cubiertas + 20% integradores compatibles + 15% amplitud de fabricantes; no es readiness comercial interna."
+      },
+      "evidence": [
+        {
+          "evidence_id": "ev_27e5fdb7b568af8231",
+          "fact": "El programa combina tecnología SASE con servicios para simplificar adopción y monetización Zero Trust.",
+          "source": "Westcon-Comstor",
+          "url": "https://www.westconcomstor.com/global/en/news/announcements/2026/sase-evolution-powered-by-palo-alto-networks-to-accelerate.html",
+          "date": "2026-05-21",
+          "source_type": "primary",
+          "quality": "alta",
+          "confidence": 0.96
+        }
+      ],
+      "diagram": {
+        "nodes": [
+          {
+            "id": "identity-layer-1",
+            "label": "Directorio"
+          },
+          {
+            "id": "identity-layer-2",
+            "label": "Acceso"
+          },
+          {
+            "id": "identity-layer-3",
+            "label": "Privilegio"
+          },
+          {
+            "id": "identity-layer-4",
+            "label": "Gobierno"
+          }
+        ],
+        "edges": [
+          {
+            "from": "identity-layer-1",
+            "to": "identity-layer-2"
+          },
+          {
+            "from": "identity-layer-2",
+            "to": "identity-layer-3"
+          },
+          {
+            "from": "identity-layer-3",
+            "to": "identity-layer-4"
+          }
+        ]
+      },
+      "originality": "Diagrama original generado por capas funcionales; no reproduce gráficos propietarios de analistas."
+    }
+  ]
+}

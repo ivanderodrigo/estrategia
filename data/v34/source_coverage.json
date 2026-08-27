@@ -1,0 +1,4666 @@
+{
+  "meta": {
+    "version": "3.4.0",
+    "generated_at": "2026-08-27T22:05:17.659566+00:00",
+    "registered_sources_v31": 151,
+    "v34_public_expansion_sources": 192,
+    "total_public_source_candidates": 343,
+    "planned_queries_last_run": 220,
+    "attempted_queries_last_run": 220,
+    "accepted_evidence_last_run": 140,
+    "errors_last_run": 0,
+    "learning_granularity": "entidad × dimensión × país × tipo de fuente",
+    "principle": "Una fuente fallida reduce prioridad temporal; no interrumpe el pipeline ni borra evidencias válidas previas."
+  },
+  "coverage": [
+    {
+      "entity_type": "integrator",
+      "dimension": "vendor_pair_verification",
+      "country": "PT",
+      "source_type": "primary",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 1,
+      "average_quality": 0.89,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.86,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "vendor_pair_verification",
+      "country": "ES",
+      "source_type": "primary",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 1,
+      "average_quality": 0.89,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.86,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "managed_services",
+      "country": "ES",
+      "source_type": "primary",
+      "queries": 3,
+      "success_rate": 1,
+      "evidence_accepted": 6,
+      "average_quality": 0.84,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.848,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "verticals",
+      "country": "ES",
+      "source_type": "primary",
+      "queries": 4,
+      "success_rate": 1,
+      "evidence_accepted": 13,
+      "average_quality": 0.84,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.847,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "customers",
+      "country": "ES",
+      "source_type": "primary",
+      "queries": 4,
+      "success_rate": 1,
+      "evidence_accepted": 7,
+      "average_quality": 0.84,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.847,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "vendors",
+      "country": "PT",
+      "source_type": "primary",
+      "queries": 2,
+      "success_rate": 1,
+      "evidence_accepted": 5,
+      "average_quality": 0.84,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.847,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "services",
+      "country": "ES",
+      "source_type": "primary",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 4,
+      "average_quality": 0.84,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.847,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "services",
+      "country": "IBERIA",
+      "source_type": "secondary-quality",
+      "queries": 2,
+      "success_rate": 1,
+      "evidence_accepted": 5,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.823,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "managed_services",
+      "country": "ES",
+      "source_type": "secondary-quality",
+      "queries": 3,
+      "success_rate": 1,
+      "evidence_accepted": 3,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.823,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "vendors",
+      "country": "ES",
+      "source_type": "secondary-quality",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 3,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.823,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "services",
+      "country": "ES",
+      "source_type": "secondary-quality",
+      "queries": 2,
+      "success_rate": 1,
+      "evidence_accepted": 2,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.823,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "customers",
+      "country": "PT",
+      "source_type": "secondary-quality",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 1,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.823,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "vendors",
+      "country": "IBERIA",
+      "source_type": "secondary-quality",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 1,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.823,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "vendors",
+      "country": "ES",
+      "source_type": "primary",
+      "queries": 7,
+      "success_rate": 1,
+      "evidence_accepted": 13,
+      "average_quality": 0.84,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.308,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.817,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "value_added",
+      "country": "IBERIA",
+      "source_type": "secondary-quality",
+      "queries": 3,
+      "success_rate": 1,
+      "evidence_accepted": 8,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.125,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.81,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "certifications",
+      "country": "ES",
+      "source_type": "primary",
+      "queries": 5,
+      "success_rate": 1,
+      "evidence_accepted": 5,
+      "average_quality": 0.84,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.4,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.807,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "vendor_pair_verification",
+      "country": "ES",
+      "source_type": "aggregator/discovery",
+      "queries": 2,
+      "success_rate": 1,
+      "evidence_accepted": 3,
+      "average_quality": 0.67,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.805,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "verticals",
+      "country": "ES",
+      "source_type": "secondary-quality",
+      "queries": 7,
+      "success_rate": 1,
+      "evidence_accepted": 15,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.2,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.802,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "customers",
+      "country": "ES",
+      "source_type": "secondary-quality",
+      "queries": 6,
+      "success_rate": 1,
+      "evidence_accepted": 10,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.3,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.792,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "verticals",
+      "country": "PT",
+      "source_type": "aggregator/discovery",
+      "queries": 3,
+      "success_rate": 1,
+      "evidence_accepted": 5,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.792,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "services",
+      "country": "ES",
+      "source_type": "aggregator/discovery",
+      "queries": 3,
+      "success_rate": 1,
+      "evidence_accepted": 4,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.792,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "value_added",
+      "country": "IBERIA",
+      "source_type": "aggregator/discovery",
+      "queries": 2,
+      "success_rate": 1,
+      "evidence_accepted": 4,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.792,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "channel_moves",
+      "country": "GLOBAL",
+      "source_type": "aggregator/discovery",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 4,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.792,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "vendors",
+      "country": "ES",
+      "source_type": "aggregator/discovery",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 4,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.792,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "customers",
+      "country": "IBERIA",
+      "source_type": "aggregator/discovery",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 3,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.792,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "services",
+      "country": "IBERIA",
+      "source_type": "aggregator/discovery",
+      "queries": 2,
+      "success_rate": 1,
+      "evidence_accepted": 3,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.792,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "vendors",
+      "country": "IBERIA",
+      "source_type": "aggregator/discovery",
+      "queries": 2,
+      "success_rate": 1,
+      "evidence_accepted": 2,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.792,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "services",
+      "country": "IBERIA",
+      "source_type": "aggregator/discovery",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 1,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.792,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "value_added",
+      "country": "ES",
+      "source_type": "aggregator/discovery",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 1,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.792,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "channel_moves",
+      "country": "IBERIA",
+      "source_type": "aggregator/discovery",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 1,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.792,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "services",
+      "country": "GLOBAL",
+      "source_type": "aggregator/discovery",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 1,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.792,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "customers",
+      "country": "ES",
+      "source_type": "aggregator/discovery",
+      "queries": 11,
+      "success_rate": 1,
+      "evidence_accepted": 36,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.111,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.781,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "customers",
+      "country": "PT",
+      "source_type": "aggregator/discovery",
+      "queries": 3,
+      "success_rate": 1,
+      "evidence_accepted": 9,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.111,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.781,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "vendors",
+      "country": "IBERIA",
+      "source_type": "aggregator/discovery",
+      "queries": 2,
+      "success_rate": 1,
+      "evidence_accepted": 7,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.143,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.778,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "verticals",
+      "country": "ES",
+      "source_type": "aggregator/discovery",
+      "queries": 13,
+      "success_rate": 1,
+      "evidence_accepted": 53,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.151,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.777,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "vendors",
+      "country": "IBERIA",
+      "source_type": "secondary-quality",
+      "queries": 5,
+      "success_rate": 1,
+      "evidence_accepted": 24,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.458,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.777,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "managed_services",
+      "country": "ES",
+      "source_type": "aggregator/discovery",
+      "queries": 4,
+      "success_rate": 1,
+      "evidence_accepted": 13,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.154,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.777,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "managed_services",
+      "country": "IBERIA",
+      "source_type": "secondary-quality",
+      "queries": 4,
+      "success_rate": 1,
+      "evidence_accepted": 13,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.462,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.776,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "vendors",
+      "country": "GLOBAL",
+      "source_type": "secondary-quality",
+      "queries": 3,
+      "success_rate": 1,
+      "evidence_accepted": 12,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.5,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.773,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "vendors",
+      "country": "PT",
+      "source_type": "secondary-quality",
+      "queries": 3,
+      "success_rate": 1,
+      "evidence_accepted": 4,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.5,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.773,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "channel_moves",
+      "country": "GLOBAL",
+      "source_type": "secondary-quality",
+      "queries": 2,
+      "success_rate": 1,
+      "evidence_accepted": 2,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.5,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.773,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "verticals",
+      "country": "PT",
+      "source_type": "secondary-quality",
+      "queries": 2,
+      "success_rate": 1,
+      "evidence_accepted": 2,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.5,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.773,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "vendors",
+      "country": "ES",
+      "source_type": "secondary-quality",
+      "queries": 13,
+      "success_rate": 1,
+      "evidence_accepted": 26,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.5,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.772,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "value_added",
+      "country": "GLOBAL",
+      "source_type": "aggregator/discovery",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 4,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.25,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.768,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "vendors",
+      "country": "ES",
+      "source_type": "aggregator/discovery",
+      "queries": 15,
+      "success_rate": 1,
+      "evidence_accepted": 33,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.273,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.765,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "vendors",
+      "country": "PT",
+      "source_type": "aggregator/discovery",
+      "queries": 2,
+      "success_rate": 1,
+      "evidence_accepted": 6,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.333,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.759,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "managed_services",
+      "country": "IBERIA",
+      "source_type": "aggregator/discovery",
+      "queries": 3,
+      "success_rate": 1,
+      "evidence_accepted": 3,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.333,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.759,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "certifications",
+      "country": "ES",
+      "source_type": "aggregator/discovery",
+      "queries": 11,
+      "success_rate": 1,
+      "evidence_accepted": 26,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.346,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.758,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "channel_moves",
+      "country": "IBERIA",
+      "source_type": "secondary-quality",
+      "queries": 2,
+      "success_rate": 1,
+      "evidence_accepted": 3,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.667,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.756,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "certifications",
+      "country": "ES",
+      "source_type": "secondary-quality",
+      "queries": 8,
+      "success_rate": 1,
+      "evidence_accepted": 12,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.833,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.739,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "vendors",
+      "country": "GLOBAL",
+      "source_type": "aggregator/discovery",
+      "queries": 2,
+      "success_rate": 1,
+      "evidence_accepted": 3,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 0.667,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.726,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "value_added",
+      "country": "GLOBAL",
+      "source_type": "secondary-quality",
+      "queries": 2,
+      "success_rate": 1,
+      "evidence_accepted": 4,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 1.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.723,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "services",
+      "country": "PT",
+      "source_type": "secondary-quality",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 1,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 1.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.723,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "certifications",
+      "country": "PT",
+      "source_type": "secondary-quality",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 1,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 1.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.723,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "managed_services",
+      "country": "GLOBAL",
+      "source_type": "secondary-quality",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 1,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 1.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.723,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "services",
+      "country": "GLOBAL",
+      "source_type": "secondary-quality",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 1,
+      "average_quality": 0.74,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 1.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.723,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "integrator",
+      "dimension": "certifications",
+      "country": "PT",
+      "source_type": "aggregator/discovery",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 1,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 1.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.693,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    },
+    {
+      "entity_type": "distributor",
+      "dimension": "managed_services",
+      "country": "GLOBAL",
+      "source_type": "aggregator/discovery",
+      "queries": 1,
+      "success_rate": 1,
+      "evidence_accepted": 1,
+      "average_quality": 0.62,
+      "freshness_rate_365d": 1.0,
+      "duplication_rate": 1.0,
+      "average_latency_ms": null,
+      "errors": 0,
+      "source_diversity": 1,
+      "next_use_priority": 0.693,
+      "formula": "30% éxito + 25% calidad + 20% actualidad + 15% diversidad + 10% baja duplicación; errores y latencia se usan como restricciones operativas."
+    }
+  ],
+  "source_expansion": [
+    {
+      "id": "ted_api",
+      "name": "TED Search API",
+      "url": "https://api.ted.europa.eu",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "EU"
+      ],
+      "dimensions": [
+        "procurement",
+        "awards"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "placsp",
+      "name": "Plataforma de Contratación del Sector Público",
+      "url": "https://contrataciondelestado.es",
+      "class": "primary",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "procurement",
+        "awards"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "base_portugal",
+      "name": "BASE Portugal",
+      "url": "https://www.base.gov.pt",
+      "class": "primary",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "procurement",
+        "awards"
+      ],
+      "access_policy": "public_when_accessible"
+    },
+    {
+      "id": "dre_pt",
+      "name": "Diário da República",
+      "url": "https://diariodarepublica.pt",
+      "class": "primary",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "regulation",
+        "public_sector"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "dados_gov_pt",
+      "name": "Dados.gov.pt",
+      "url": "https://dados.gov.pt",
+      "class": "primary",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "open_data",
+        "public_sector"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "datos_gob_es",
+      "name": "Datos.gob.es",
+      "url": "https://datos.gob.es",
+      "class": "primary",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "open_data",
+        "public_sector"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "sec_edgar",
+      "name": "SEC EDGAR",
+      "url": "https://www.sec.gov/edgar",
+      "class": "primary",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "filings",
+        "financial",
+        "acquisitions"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "cnmv",
+      "name": "CNMV",
+      "url": "https://www.cnmv.es",
+      "class": "primary",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "filings",
+        "financial",
+        "acquisitions"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "cmvm",
+      "name": "CMVM Portugal",
+      "url": "https://www.cmvm.pt",
+      "class": "primary",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "filings",
+        "financial",
+        "acquisitions"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "companies_house",
+      "name": "Companies House",
+      "url": "https://find-and-update.company-information.service.gov.uk",
+      "class": "primary",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "identity",
+        "corporate_group",
+        "filings"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "cisa_kev",
+      "name": "CISA Known Exploited Vulnerabilities",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "class": "primary",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "security",
+        "vulnerabilities"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "nvd",
+      "name": "NIST NVD",
+      "url": "https://nvd.nist.gov",
+      "class": "primary",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "security",
+        "vulnerabilities"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "first_epss",
+      "name": "FIRST EPSS",
+      "url": "https://www.first.org/epss",
+      "class": "primary",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "security",
+        "exploit_probability"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "mitre_cve",
+      "name": "MITRE CVE",
+      "url": "https://www.cve.org",
+      "class": "primary",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "security",
+        "vulnerabilities"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "enisa",
+      "name": "ENISA",
+      "url": "https://www.enisa.europa.eu",
+      "class": "primary",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "security",
+        "regulation",
+        "market"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "incibe",
+      "name": "INCIBE",
+      "url": "https://www.incibe.es",
+      "class": "primary",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "security",
+        "market",
+        "advisories"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "ccn_cert",
+      "name": "CCN-CERT",
+      "url": "https://www.ccn-cert.cni.es",
+      "class": "primary",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "security",
+        "advisories",
+        "public_sector"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "cncs_pt",
+      "name": "Centro Nacional de Cibersegurança",
+      "url": "https://www.cncs.gov.pt",
+      "class": "primary",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "security",
+        "advisories",
+        "market"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "ec_digital",
+      "name": "European Commission Digital Strategy",
+      "url": "https://digital-strategy.ec.europa.eu",
+      "class": "primary",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "market",
+        "policy",
+        "digital_adoption"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "eurostat",
+      "name": "Eurostat",
+      "url": "https://ec.europa.eu/eurostat",
+      "class": "primary",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "market",
+        "skills",
+        "adoption"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "gartner_public",
+      "name": "Gartner public newsroom",
+      "url": "https://www.gartner.com/en/newsroom",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "market",
+        "trends",
+        "analyst_positioning"
+      ],
+      "access_policy": "public_metadata_only"
+    },
+    {
+      "id": "idc_public",
+      "name": "IDC public newsroom",
+      "url": "https://www.idc.com/getdoc.jsp?containerId=prUS",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "market",
+        "trends",
+        "analyst_positioning"
+      ],
+      "access_policy": "public_metadata_only"
+    },
+    {
+      "id": "forrester_public",
+      "name": "Forrester public blogs and press",
+      "url": "https://www.forrester.com/blogs",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "market",
+        "trends",
+        "analyst_positioning"
+      ],
+      "access_policy": "public_metadata_only"
+    },
+    {
+      "id": "canalys",
+      "name": "Canalys public research",
+      "url": "https://www.canalys.com/insights",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "channel",
+        "market",
+        "cloud",
+        "cybersecurity"
+      ],
+      "access_policy": "public_summaries_only"
+    },
+    {
+      "id": "omdia",
+      "name": "Omdia public research",
+      "url": "https://omdia.tech.informa.com",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "market",
+        "trends"
+      ],
+      "access_policy": "public_summaries_only"
+    },
+    {
+      "id": "synergy",
+      "name": "Synergy Research Group",
+      "url": "https://www.srgresearch.com/articles",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "cloud",
+        "data_center",
+        "market"
+      ],
+      "access_policy": "public_summaries_only"
+    },
+    {
+      "id": "delloro",
+      "name": "Dell'Oro Group public research",
+      "url": "https://www.delloro.com/news",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "networking",
+        "data_center",
+        "sase",
+        "market"
+      ],
+      "access_policy": "public_summaries_only"
+    },
+    {
+      "id": "counterpoint",
+      "name": "Counterpoint Research public insights",
+      "url": "https://www.counterpointresearch.com/insights",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "market",
+        "networking",
+        "devices"
+      ],
+      "access_policy": "public_summaries_only"
+    },
+    {
+      "id": "650group",
+      "name": "650 Group public research",
+      "url": "https://650group.com/blog",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "networking",
+        "cloud",
+        "market"
+      ],
+      "access_policy": "public_summaries_only"
+    },
+    {
+      "id": "futuriom",
+      "name": "Futuriom",
+      "url": "https://www.futuriom.com",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "cloud",
+        "networking",
+        "sase",
+        "automation"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "kuppingercole",
+      "name": "KuppingerCole public content",
+      "url": "https://www.kuppingercole.com",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "identity",
+        "security",
+        "analyst_positioning"
+      ],
+      "access_policy": "public_metadata_only"
+    },
+    {
+      "id": "isg",
+      "name": "ISG public research",
+      "url": "https://isg-one.com/research",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "services",
+        "managed_services",
+        "market"
+      ],
+      "access_policy": "public_summaries_only"
+    },
+    {
+      "id": "everest",
+      "name": "Everest Group public insights",
+      "url": "https://www.everestgrp.com/insights",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "services",
+        "managed_services",
+        "market"
+      ],
+      "access_policy": "public_summaries_only"
+    },
+    {
+      "id": "channelpartner_es",
+      "name": "Channel Partner España",
+      "url": "https://www.channelpartner.es",
+      "class": "secondary-quality",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "channel",
+        "vendors",
+        "distributors",
+        "integrators"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "muycanal",
+      "name": "MuyCanal",
+      "url": "https://www.muycanal.com",
+      "class": "secondary-quality",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "channel",
+        "vendors",
+        "distributors"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "dealerworld",
+      "name": "DealerWorld",
+      "url": "https://www.dealerworld.es",
+      "class": "secondary-quality",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "channel",
+        "vendors",
+        "distributors"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "itreseller_es",
+      "name": "IT Reseller España",
+      "url": "https://www.itreseller.es",
+      "class": "secondary-quality",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "channel",
+        "services",
+        "integrators"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "redestelecom",
+      "name": "Redes & Telecom",
+      "url": "https://www.redestelecom.es",
+      "class": "secondary-quality",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "networking",
+        "channel",
+        "integrators"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "computing_es",
+      "name": "Computing España",
+      "url": "https://www.computing.es",
+      "class": "secondary-quality",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "enterprise_it",
+        "integrators",
+        "market"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "itchannel_pt",
+      "name": "IT Channel Portugal",
+      "url": "https://www.itchannel.pt",
+      "class": "secondary-quality",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "channel",
+        "vendors",
+        "distributors",
+        "integrators"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "computerworld_pt",
+      "name": "Computerworld Portugal",
+      "url": "https://www.computerworld.com.pt",
+      "class": "secondary-quality",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "enterprise_it",
+        "integrators",
+        "market"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "tek_pt",
+      "name": "SAPO Tek",
+      "url": "https://tek.sapo.pt",
+      "class": "secondary-quality",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "technology",
+        "market",
+        "channel"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "dinheiro_vivo",
+      "name": "Dinheiro Vivo",
+      "url": "https://www.dinheirovivo.pt",
+      "class": "secondary-quality",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "financial",
+        "acquisitions",
+        "market"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "ametic",
+      "name": "AMETIC",
+      "url": "https://ametic.es",
+      "class": "primary-or-association",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "market",
+        "skills",
+        "policy"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "apdc",
+      "name": "APDC Portugal",
+      "url": "https://www.apdc.pt",
+      "class": "primary-or-association",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "market",
+        "telecom",
+        "skills"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "vendor_partner_locators",
+      "name": "Official vendor partner locators",
+      "url": "dynamic://vendor-partner-locators",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "partnership_level",
+        "certifications",
+        "specializations",
+        "relationship"
+      ],
+      "access_policy": "public_dynamic_per_vendor"
+    },
+    {
+      "id": "vendor_customer_stories",
+      "name": "Official vendor customer stories",
+      "url": "dynamic://vendor-customer-stories",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "customers",
+        "integrators",
+        "verticals",
+        "architectures"
+      ],
+      "access_policy": "public_dynamic_per_vendor"
+    },
+    {
+      "id": "vendor_ir",
+      "name": "Vendor investor relations and filings",
+      "url": "dynamic://vendor-investor-relations",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "financial",
+        "acquisitions",
+        "strategy",
+        "roadmap"
+      ],
+      "access_policy": "public_dynamic_per_vendor"
+    },
+    {
+      "id": "vendor_advisories",
+      "name": "Official vendor advisories and lifecycle",
+      "url": "dynamic://vendor-advisories",
+      "class": "primary",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "eos_eol",
+        "security",
+        "licensing",
+        "roadmap"
+      ],
+      "access_policy": "public_dynamic_per_vendor"
+    },
+    {
+      "id": "integrator_case_studies",
+      "name": "Official integrator case studies",
+      "url": "dynamic://integrator-case-studies",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "customers",
+        "verticals",
+        "capabilities",
+        "vendors"
+      ],
+      "access_policy": "public_dynamic_per_entity"
+    },
+    {
+      "id": "distributor_linecards",
+      "name": "Official distributor linecards and services",
+      "url": "dynamic://distributor-linecards",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "linecard",
+        "country_relation",
+        "services",
+        "marketplace",
+        "financing"
+      ],
+      "access_policy": "public_dynamic_per_entity"
+    },
+    {
+      "id": "context_public",
+      "name": "CONTEXT public channel insights",
+      "url": "https://www.contextworld.com",
+      "class": "secondary-quality",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "channel",
+        "sell_out",
+        "category_momentum",
+        "market"
+      ],
+      "access_policy": "public_summaries_only_no_paid_reconstruction"
+    },
+    {
+      "id": "conetic",
+      "name": "CONETIC",
+      "url": "https://conetic.info",
+      "class": "primary-or-association",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "cybersecurity_market",
+        "skills",
+        "companies",
+        "adoption"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "bdns",
+      "name": "Base de Datos Nacional de Subvenciones / SNPSAP",
+      "url": "https://www.subvenciones.gob.es",
+      "class": "primary",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "funding",
+        "grants",
+        "future_demand",
+        "beneficiaries"
+      ],
+      "access_policy": "public_open_data_csv_json_xml"
+    },
+    {
+      "id": "red_es",
+      "name": "Red.es convocatorias y ayudas",
+      "url": "https://www.red.es",
+      "class": "primary",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "funding",
+        "digitalisation",
+        "future_demand",
+        "sme"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "cdti",
+      "name": "CDTI Innovación",
+      "url": "https://www.cdti.es",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "EU"
+      ],
+      "dimensions": [
+        "funding",
+        "innovation",
+        "technology",
+        "future_vendors"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "portugal_2030",
+      "name": "Portugal 2030 Transparência",
+      "url": "https://transparencia.gov.pt/pt/fundos-europeus/pt2030",
+      "class": "primary",
+      "scope": [
+        "PT",
+        "EU"
+      ],
+      "dimensions": [
+        "funding",
+        "calls",
+        "beneficiaries",
+        "future_demand"
+      ],
+      "access_policy": "public_open_data_when_available"
+    },
+    {
+      "id": "prr_portugal",
+      "name": "Recuperar Portugal / PRR",
+      "url": "https://recuperarportugal.gov.pt",
+      "class": "primary",
+      "scope": [
+        "PT",
+        "EU"
+      ],
+      "dimensions": [
+        "funding",
+        "digitalisation",
+        "calls",
+        "future_demand"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "eu_funding_tenders",
+      "name": "EU Funding & Tenders Portal",
+      "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal",
+      "class": "primary",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "funding",
+        "calls",
+        "projects",
+        "consortia",
+        "future_demand"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "eccc",
+      "name": "European Cybersecurity Competence Centre",
+      "url": "https://cybersecurity-centre.europa.eu",
+      "class": "primary",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "cybersecurity",
+        "funding",
+        "calls",
+        "future_vendors"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "eur_lex",
+      "name": "EUR-Lex",
+      "url": "https://eur-lex.europa.eu",
+      "class": "primary",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "regulation",
+        "nis2",
+        "dora",
+        "ai_act",
+        "cra",
+        "data_act"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "boe",
+      "name": "Boletín Oficial del Estado",
+      "url": "https://www.boe.es",
+      "class": "primary",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "regulation",
+        "public_sector",
+        "funding",
+        "procurement_context"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "aepd",
+      "name": "Agencia Española de Protección de Datos",
+      "url": "https://www.aepd.es",
+      "class": "primary",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "privacy",
+        "regulation",
+        "advisories",
+        "enforcement"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "cnpd_pt",
+      "name": "Comissão Nacional de Proteção de Dados",
+      "url": "https://www.cnpd.pt",
+      "class": "primary",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "privacy",
+        "regulation",
+        "advisories",
+        "enforcement"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "cert_eu",
+      "name": "CERT-EU",
+      "url": "https://cert.europa.eu",
+      "class": "primary",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "security",
+        "advisories",
+        "threats",
+        "vulnerabilities"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "ens_ccn",
+      "name": "CCN Esquema Nacional de Seguridad",
+      "url": "https://ens.ccn.cni.es",
+      "class": "primary",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "ens",
+        "certified_entities",
+        "integrators",
+        "maturity",
+        "public_sector"
+      ],
+      "access_policy": "public_directory"
+    },
+    {
+      "id": "vendor_psirts",
+      "name": "Official vendor PSIRTs",
+      "url": "dynamic://vendor-psirts",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "security",
+        "advisories",
+        "affected_products",
+        "eos_eol"
+      ],
+      "access_policy": "public_dynamic_per_vendor"
+    },
+    {
+      "id": "cnmc_data",
+      "name": "CNMC Data",
+      "url": "https://data.cnmc.es",
+      "class": "primary",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "telecom",
+        "revenue",
+        "investment",
+        "customers",
+        "infrastructure",
+        "market"
+      ],
+      "access_policy": "public_open_data_api_csv_json"
+    },
+    {
+      "id": "anacom_stats",
+      "name": "STAT.ANACOM",
+      "url": "https://stat.anacom.pt",
+      "class": "primary",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "telecom",
+        "accesses",
+        "customers",
+        "traffic",
+        "prices",
+        "revenue",
+        "iot"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "ine_es",
+      "name": "INE España",
+      "url": "https://www.ine.es",
+      "class": "primary",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "economy",
+        "companies",
+        "employment",
+        "digital_adoption"
+      ],
+      "access_policy": "public_open_data"
+    },
+    {
+      "id": "ine_pt",
+      "name": "Instituto Nacional de Estatística Portugal",
+      "url": "https://www.ine.pt",
+      "class": "primary",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "economy",
+        "companies",
+        "employment",
+        "digital_adoption"
+      ],
+      "access_policy": "public_open_data"
+    },
+    {
+      "id": "banco_espana",
+      "name": "Banco de España statistics",
+      "url": "https://www.bde.es",
+      "class": "primary",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "economy",
+        "financial_sector",
+        "investment",
+        "risk"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "banco_portugal",
+      "name": "Banco de Portugal statistics",
+      "url": "https://www.bportugal.pt",
+      "class": "primary",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "economy",
+        "financial_sector",
+        "companies",
+        "risk"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "oecd_data",
+      "name": "OECD Data",
+      "url": "https://data.oecd.org",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "economy",
+        "digital_adoption",
+        "skills",
+        "investment"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "borme",
+      "name": "BORME",
+      "url": "https://www.boe.es/diario_borme",
+      "class": "primary",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "corporate_changes",
+        "leadership",
+        "capital",
+        "acquisitions",
+        "identity"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "euronext",
+      "name": "Euronext filings and issuer news",
+      "url": "https://live.euronext.com",
+      "class": "primary",
+      "scope": [
+        "EU",
+        "PT"
+      ],
+      "dimensions": [
+        "filings",
+        "financial",
+        "acquisitions",
+        "strategy"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "registradores_es",
+      "name": "Registradores de España public metadata",
+      "url": "https://www.registradores.org",
+      "class": "primary-metadata",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "identity",
+        "corporate_group",
+        "filings"
+      ],
+      "access_policy": "public_metadata_only_no_paid_data"
+    },
+    {
+      "id": "informa_public",
+      "name": "INFORMA D&B public company metadata",
+      "url": "https://www.informa.es",
+      "class": "secondary-quality",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "identity",
+        "corporate_group",
+        "relative_size",
+        "financial"
+      ],
+      "access_policy": "public_metadata_only_no_paid_report_reconstruction"
+    },
+    {
+      "id": "iberinform_public",
+      "name": "Iberinform public company metadata",
+      "url": "https://www.iberinform.es",
+      "class": "secondary-quality",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "identity",
+        "corporate_group",
+        "relative_size",
+        "financial"
+      ],
+      "access_policy": "public_metadata_only_no_paid_report_reconstruction"
+    },
+    {
+      "id": "racius_public",
+      "name": "Racius public company metadata",
+      "url": "https://www.racius.com",
+      "class": "secondary-quality",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "identity",
+        "corporate_group",
+        "relative_size",
+        "public_contracts"
+      ],
+      "access_policy": "public_metadata_only_no_paid_report_reconstruction"
+    },
+    {
+      "id": "builtwith_public",
+      "name": "BuiltWith public technology lookup",
+      "url": "https://builtwith.com",
+      "class": "discovery",
+      "scope": [
+        "GLOBAL",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "installed_technology_signal",
+        "technology_change",
+        "web_stack"
+      ],
+      "access_policy": "public_lookup_passive_only_not_customer_assertion"
+    },
+    {
+      "id": "wappalyzer_public",
+      "name": "Wappalyzer public technology lookup",
+      "url": "https://www.wappalyzer.com",
+      "class": "discovery",
+      "scope": [
+        "GLOBAL",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "installed_technology_signal",
+        "technology_change",
+        "web_stack"
+      ],
+      "access_policy": "public_lookup_passive_only_not_customer_assertion"
+    },
+    {
+      "id": "netcraft_public",
+      "name": "Netcraft public site reports",
+      "url": "https://www.netcraft.com",
+      "class": "discovery",
+      "scope": [
+        "GLOBAL",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "hosting",
+        "web_stack",
+        "technology_signal"
+      ],
+      "access_policy": "public_passive_metadata_only"
+    },
+    {
+      "id": "peeringdb",
+      "name": "PeeringDB",
+      "url": "https://www.peeringdb.com",
+      "class": "primary-community-data",
+      "scope": [
+        "GLOBAL",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "networks",
+        "facilities",
+        "interconnection",
+        "geography"
+      ],
+      "access_policy": "public_api"
+    },
+    {
+      "id": "ripe_stat",
+      "name": "RIPEstat",
+      "url": "https://stat.ripe.net",
+      "class": "primary",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "networks",
+        "asn",
+        "routing",
+        "geography"
+      ],
+      "access_policy": "public_api_passive_only"
+    },
+    {
+      "id": "securitytrails_public",
+      "name": "SecurityTrails public metadata",
+      "url": "https://securitytrails.com",
+      "class": "discovery",
+      "scope": [
+        "GLOBAL",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "dns",
+        "technology_signal",
+        "infrastructure"
+      ],
+      "access_policy": "public_passive_metadata_only_no_scanning"
+    },
+    {
+      "id": "censys_public",
+      "name": "Censys public internet intelligence",
+      "url": "https://search.censys.io",
+      "class": "discovery",
+      "scope": [
+        "GLOBAL",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "exposure_signal",
+        "certificates",
+        "infrastructure"
+      ],
+      "access_policy": "public_aggregate_passive_only_no_target_scanning_no_customer_assertion"
+    },
+    {
+      "id": "crunchbase_public",
+      "name": "Crunchbase public company and funding metadata",
+      "url": "https://www.crunchbase.com",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "funding",
+        "acquisitions",
+        "future_vendors",
+        "growth"
+      ],
+      "access_policy": "public_metadata_only_no_paid_reconstruction"
+    },
+    {
+      "id": "dealroom_public",
+      "name": "Dealroom public ecosystem metadata",
+      "url": "https://dealroom.co",
+      "class": "secondary-quality",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "funding",
+        "startups",
+        "future_vendors",
+        "growth"
+      ],
+      "access_policy": "public_metadata_only_no_paid_reconstruction"
+    },
+    {
+      "id": "sifted_public",
+      "name": "Sifted public European technology coverage",
+      "url": "https://sifted.eu",
+      "class": "secondary-quality",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "startups",
+        "funding",
+        "future_vendors",
+        "technology"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "techcrunch_public",
+      "name": "TechCrunch public company coverage",
+      "url": "https://techcrunch.com",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "startups",
+        "funding",
+        "acquisitions",
+        "technology"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "eic",
+      "name": "European Innovation Council",
+      "url": "https://eic.ec.europa.eu",
+      "class": "primary",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "funding",
+        "future_vendors",
+        "innovation",
+        "portfolio_companies"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "google_cloud_partner_directory",
+      "name": "Google Cloud Partner Directory",
+      "url": "https://cloud.google.com/find-a-partner",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "relationship",
+        "partnership_level",
+        "specializations",
+        "country_relation"
+      ],
+      "access_policy": "public_directory"
+    },
+    {
+      "id": "vendor_release_notes",
+      "name": "Official release notes and What's New feeds",
+      "url": "dynamic://vendor-release-notes",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "roadmap",
+        "product_release",
+        "licensing",
+        "eos_eol"
+      ],
+      "access_policy": "public_dynamic_per_vendor",
+      "audience": [
+        "fabricante",
+        "integrador",
+        "mayorista"
+      ]
+    },
+    {
+      "id": "vendor_status_pages",
+      "name": "Official vendor status pages",
+      "url": "dynamic://vendor-status-pages",
+      "class": "primary",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "incidents",
+        "availability",
+        "operations"
+      ],
+      "access_policy": "public_dynamic_per_vendor",
+      "audience": [
+        "integrador",
+        "mayorista"
+      ]
+    },
+    {
+      "id": "vendor_technical_communities",
+      "name": "Official vendor technical communities",
+      "url": "dynamic://vendor-technical-communities",
+      "class": "primary-or-community",
+      "scope": [
+        "GLOBAL",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "product",
+        "implementation",
+        "skills",
+        "adoption"
+      ],
+      "access_policy": "public_discovery_then_primary_validation",
+      "audience": [
+        "integrador",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "cisco_community",
+      "name": "Cisco Community",
+      "url": "https://community.cisco.com",
+      "class": "primary-or-community",
+      "scope": [
+        "GLOBAL",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "networking",
+        "security",
+        "skills",
+        "product"
+      ],
+      "access_policy": "public_discovery_then_primary_validation",
+      "audience": [
+        "integrador"
+      ]
+    },
+    {
+      "id": "cisco_live",
+      "name": "Cisco Live public sessions",
+      "url": "https://www.ciscolive.com",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "roadmap",
+        "architecture",
+        "skills",
+        "partners"
+      ],
+      "access_policy": "public_metadata_and_sessions",
+      "audience": [
+        "integrador",
+        "mayorista"
+      ]
+    },
+    {
+      "id": "checkpoint_checkmates",
+      "name": "Check Point CheckMates",
+      "url": "https://community.checkpoint.com",
+      "class": "primary-or-community",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "security",
+        "implementation",
+        "advisories",
+        "skills"
+      ],
+      "access_policy": "public_discovery_then_primary_validation",
+      "audience": [
+        "integrador"
+      ]
+    },
+    {
+      "id": "paloalto_livecommunity",
+      "name": "Palo Alto Networks LIVEcommunity",
+      "url": "https://live.paloaltonetworks.com",
+      "class": "primary-or-community",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "security",
+        "implementation",
+        "advisories",
+        "skills"
+      ],
+      "access_policy": "public_discovery_then_primary_validation",
+      "audience": [
+        "integrador"
+      ]
+    },
+    {
+      "id": "f5_devcentral",
+      "name": "F5 DevCentral",
+      "url": "https://community.f5.com",
+      "class": "primary-or-community",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "application_security",
+        "implementation",
+        "skills",
+        "partners"
+      ],
+      "access_policy": "public_discovery_then_primary_validation",
+      "audience": [
+        "integrador"
+      ]
+    },
+    {
+      "id": "aws_apn_blog",
+      "name": "AWS Partner Network Blog",
+      "url": "https://aws.amazon.com/blogs/apn",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "partners",
+        "customer_cases",
+        "services",
+        "architecture"
+      ],
+      "access_policy": "public",
+      "audience": [
+        "integrador",
+        "mayorista"
+      ]
+    },
+    {
+      "id": "aws_whats_new",
+      "name": "AWS What's New",
+      "url": "https://aws.amazon.com/about-aws/whats-new",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "product_release",
+        "regions",
+        "pricing_licensing",
+        "roadmap"
+      ],
+      "access_policy": "public",
+      "audience": [
+        "integrador",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "microsoft_techcommunity",
+      "name": "Microsoft Tech Community",
+      "url": "https://techcommunity.microsoft.com",
+      "class": "primary-or-community",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "cloud",
+        "security",
+        "ai",
+        "skills",
+        "product"
+      ],
+      "access_policy": "public_discovery_then_primary_validation",
+      "audience": [
+        "integrador"
+      ]
+    },
+    {
+      "id": "marketplaces_public",
+      "name": "AWS and Azure public marketplaces",
+      "url": "dynamic://public-cloud-marketplaces",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "marketplace",
+        "availability",
+        "transactability",
+        "recurrence"
+      ],
+      "access_policy": "public_listing_metadata",
+      "audience": [
+        "mayorista",
+        "integrador",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "public_certification_directories",
+      "name": "Vendor certification and specialisation directories",
+      "url": "dynamic://public-certification-directories",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "certifications",
+        "specializations",
+        "partnership_level"
+      ],
+      "access_policy": "public_dynamic_per_vendor",
+      "audience": [
+        "integrador",
+        "mayorista"
+      ]
+    },
+    {
+      "id": "public_badges",
+      "name": "Public professional badges",
+      "url": "https://www.credly.com",
+      "class": "secondary",
+      "scope": [
+        "GLOBAL",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "skills",
+        "certifications"
+      ],
+      "access_policy": "public_profiles_only_aggregate_cautiously",
+      "audience": [
+        "integrador"
+      ]
+    },
+    {
+      "id": "official_youtube_webinars",
+      "name": "Official YouTube channels and webinar recordings",
+      "url": "https://www.youtube.com",
+      "class": "discovery",
+      "scope": [
+        "GLOBAL",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "events",
+        "training",
+        "roadmap",
+        "demos"
+      ],
+      "access_policy": "official_channels_only_then_primary_validation",
+      "audience": [
+        "fabricante",
+        "integrador",
+        "mayorista"
+      ]
+    },
+    {
+      "id": "conference_agendas",
+      "name": "Public conference and event agendas",
+      "url": "dynamic://conference-agendas",
+      "class": "secondary-quality",
+      "scope": [
+        "EU",
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "momentum",
+        "speakers",
+        "partnerships",
+        "skills"
+      ],
+      "access_policy": "public_metadata_only",
+      "audience": [
+        "integrador",
+        "mayorista",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "github_organisations",
+      "name": "Official GitHub organisations",
+      "url": "https://github.com",
+      "class": "primary-or-community",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "developer_momentum",
+        "integrations",
+        "automation",
+        "open_source"
+      ],
+      "access_policy": "official_organisations_public_repositories",
+      "audience": [
+        "integrador",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "official_careers",
+      "name": "Official company career pages",
+      "url": "dynamic://official-careers",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "hiring",
+        "skills_demand",
+        "expansion"
+      ],
+      "access_policy": "public_aggregate_no_headcount_inference",
+      "audience": [
+        "integrador",
+        "mayorista",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "employer_ats",
+      "name": "Public employer ATS pages (Workday, Greenhouse, Lever and equivalent)",
+      "url": "dynamic://employer-ats",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "hiring",
+        "skills_demand",
+        "geography",
+        "technology_priority",
+        "channel_investment"
+      ],
+      "access_policy": "public_employer_pages_deduplicate_syndication",
+      "audience": [
+        "integrador",
+        "mayorista",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "linkedin_jobs_public",
+      "name": "LinkedIn Jobs public listings",
+      "url": "https://www.linkedin.com/jobs",
+      "class": "discovery",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "hiring",
+        "skills_demand",
+        "geography",
+        "momentum"
+      ],
+      "access_policy": "public_only_no_login_then_employer_validation",
+      "audience": [
+        "integrador",
+        "mayorista",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "infojobs_es",
+      "name": "InfoJobs España",
+      "url": "https://www.infojobs.net",
+      "class": "aggregator",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "hiring",
+        "skills_demand",
+        "geography",
+        "momentum"
+      ],
+      "access_policy": "public_metadata_deduplicate_then_employer_validation",
+      "audience": [
+        "integrador",
+        "mayorista",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "tecnoempleo_es",
+      "name": "Tecnoempleo",
+      "url": "https://www.tecnoempleo.com",
+      "class": "secondary-specialist",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "hiring",
+        "technology_skills",
+        "certifications",
+        "geography",
+        "momentum"
+      ],
+      "access_policy": "public_metadata_deduplicate_then_employer_validation",
+      "audience": [
+        "integrador"
+      ]
+    },
+    {
+      "id": "landing_jobs_pt",
+      "name": "Landing.jobs",
+      "url": "https://landing.jobs",
+      "class": "secondary-specialist",
+      "scope": [
+        "PT",
+        "ES",
+        "EU"
+      ],
+      "dimensions": [
+        "hiring",
+        "technology_skills",
+        "remote_work",
+        "geography",
+        "momentum"
+      ],
+      "access_policy": "public_metadata_deduplicate_then_employer_validation",
+      "audience": [
+        "integrador"
+      ]
+    },
+    {
+      "id": "itjobs_pt",
+      "name": "ITJobs Portugal",
+      "url": "https://www.itjobs.pt",
+      "class": "secondary-specialist",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "hiring",
+        "technology_skills",
+        "certifications",
+        "geography",
+        "momentum"
+      ],
+      "access_policy": "public_metadata_deduplicate_then_employer_validation",
+      "audience": [
+        "integrador"
+      ]
+    },
+    {
+      "id": "net_empregos_pt",
+      "name": "Net-Empregos",
+      "url": "https://www.net-empregos.com",
+      "class": "aggregator",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "hiring",
+        "skills_demand",
+        "geography",
+        "momentum"
+      ],
+      "access_policy": "public_metadata_deduplicate_then_employer_validation",
+      "audience": [
+        "integrador",
+        "mayorista",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "emprego_sapo_pt",
+      "name": "SAPO Emprego",
+      "url": "https://emprego.sapo.pt",
+      "class": "aggregator",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "hiring",
+        "skills_demand",
+        "geography",
+        "momentum"
+      ],
+      "access_policy": "public_metadata_deduplicate_then_employer_validation",
+      "audience": [
+        "integrador",
+        "mayorista",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "eures_jobs",
+      "name": "EURES public job mobility portal",
+      "url": "https://eures.europa.eu",
+      "class": "primary-public-service",
+      "scope": [
+        "ES",
+        "PT",
+        "EU"
+      ],
+      "dimensions": [
+        "hiring",
+        "skills_demand",
+        "geography",
+        "mobility"
+      ],
+      "access_policy": "public_metadata_deduplicate_then_employer_validation",
+      "audience": [
+        "integrador",
+        "mayorista",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "iefp_jobs_pt",
+      "name": "IEFP Ofertas de Emprego",
+      "url": "https://iefponline.iefp.pt",
+      "class": "primary-public-service",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "hiring",
+        "skills_demand",
+        "geography"
+      ],
+      "access_policy": "public_when_accessible_deduplicate",
+      "audience": [
+        "integrador",
+        "mayorista",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "indeed_public",
+      "name": "Indeed public listings",
+      "url": "https://www.indeed.com",
+      "class": "aggregator",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "hiring",
+        "skills_demand",
+        "geography",
+        "momentum"
+      ],
+      "access_policy": "discovery_only_deduplicate_then_employer_validation",
+      "audience": [
+        "integrador",
+        "mayorista",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "glassdoor_public",
+      "name": "Glassdoor public company and job metadata",
+      "url": "https://www.glassdoor.com",
+      "class": "discovery",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "hiring",
+        "skills_demand",
+        "employer_signal"
+      ],
+      "access_policy": "public_metadata_only_no_rating_as_fact_then_employer_validation",
+      "audience": [
+        "integrador",
+        "mayorista",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "linkedin_public_company",
+      "name": "LinkedIn public company posts",
+      "url": "https://www.linkedin.com",
+      "class": "discovery",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "channel_moves",
+        "events",
+        "hiring",
+        "partnerships"
+      ],
+      "access_policy": "public_only_no_login_then_primary_validation",
+      "audience": [
+        "integrador",
+        "mayorista",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "packet_pushers",
+      "name": "Packet Pushers",
+      "url": "https://packetpushers.net",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "networking",
+        "cloud",
+        "security",
+        "operations"
+      ],
+      "access_policy": "public",
+      "audience": [
+        "integrador"
+      ]
+    },
+    {
+      "id": "channel_futures",
+      "name": "Channel Futures",
+      "url": "https://www.channelfutures.com",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "msp",
+        "mssp",
+        "channel",
+        "managed_services"
+      ],
+      "access_policy": "public",
+      "audience": [
+        "mayorista",
+        "integrador"
+      ]
+    },
+    {
+      "id": "it_europa",
+      "name": "IT Europa",
+      "url": "https://www.iteuropa.com",
+      "class": "secondary-quality",
+      "scope": [
+        "EU"
+      ],
+      "dimensions": [
+        "channel",
+        "distributors",
+        "integrators",
+        "managed_services"
+      ],
+      "access_policy": "public",
+      "audience": [
+        "mayorista",
+        "integrador"
+      ]
+    },
+    {
+      "id": "crn_public",
+      "name": "CRN public channel coverage",
+      "url": "https://www.crn.com",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "channel",
+        "partners",
+        "acquisitions",
+        "leadership"
+      ],
+      "access_policy": "public",
+      "audience": [
+        "mayorista",
+        "integrador",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "techtarget_public",
+      "name": "TechTarget / SearchNetworking / SearchSecurity",
+      "url": "https://www.techtarget.com",
+      "class": "secondary-quality",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "technology",
+        "architecture",
+        "market",
+        "buyer_topics"
+      ],
+      "access_policy": "public",
+      "audience": [
+        "integrador",
+        "fabricante"
+      ]
+    },
+    {
+      "id": "vendor_homepages",
+      "name": "Official vendor country and product websites",
+      "url": "dynamic://vendor-websites",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "portfolio",
+        "capabilities",
+        "positioning",
+        "country_presence"
+      ],
+      "access_policy": "public_dynamic_per_vendor"
+    },
+    {
+      "id": "vendor_pressrooms",
+      "name": "Official vendor pressrooms and newsrooms",
+      "url": "dynamic://vendor-pressrooms",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "launches",
+        "alliances",
+        "acquisitions",
+        "leadership",
+        "strategy"
+      ],
+      "access_policy": "public_dynamic_per_vendor"
+    },
+    {
+      "id": "vendor_partner_awards",
+      "name": "Official vendor partner awards",
+      "url": "dynamic://vendor-partner-awards",
+      "class": "primary",
+      "scope": [
+        "EU",
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "partners",
+        "partner_level",
+        "country_relation",
+        "momentum"
+      ],
+      "access_policy": "public_dynamic_per_vendor"
+    },
+    {
+      "id": "vendor_distributor_locators",
+      "name": "Official vendor distributor locators",
+      "url": "dynamic://vendor-distributor-locators",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA",
+        "EU"
+      ],
+      "dimensions": [
+        "distribution",
+        "country_relation",
+        "linecard"
+      ],
+      "access_policy": "public_dynamic_per_vendor"
+    },
+    {
+      "id": "vendor_training_catalogs",
+      "name": "Official vendor training and certification catalogs",
+      "url": "dynamic://vendor-training",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "certifications",
+        "skills",
+        "specializations",
+        "enablement"
+      ],
+      "access_policy": "public_dynamic_per_vendor"
+    },
+    {
+      "id": "vendor_solution_briefs",
+      "name": "Official solution briefs and reference architectures",
+      "url": "dynamic://vendor-solution-briefs",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "architectures",
+        "integrations",
+        "use_cases",
+        "capabilities"
+      ],
+      "access_policy": "public_dynamic_per_vendor"
+    },
+    {
+      "id": "vendor_integration_marketplaces",
+      "name": "Official vendor integration marketplaces",
+      "url": "dynamic://vendor-integrations",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "integrations",
+        "ecosystem",
+        "architectures"
+      ],
+      "access_policy": "public_dynamic_per_vendor"
+    },
+    {
+      "id": "vendor_local_events",
+      "name": "Official vendor local events and partner sessions",
+      "url": "dynamic://vendor-local-events",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "partners",
+        "skills",
+        "momentum",
+        "country_presence"
+      ],
+      "access_policy": "public_dynamic_per_vendor"
+    },
+    {
+      "id": "vendor_podcasts_webinars",
+      "name": "Official vendor podcasts, webinars and technical sessions",
+      "url": "dynamic://vendor-media",
+      "class": "primary",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "roadmap",
+        "architecture",
+        "technology",
+        "skills"
+      ],
+      "access_policy": "public_dynamic_per_vendor"
+    },
+    {
+      "id": "integrator_partner_pages",
+      "name": "Official integrator alliance and partner pages",
+      "url": "dynamic://integrator-partners",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA",
+        "EU"
+      ],
+      "dimensions": [
+        "vendors",
+        "alliances",
+        "specializations",
+        "country_relation"
+      ],
+      "access_policy": "public_dynamic_per_entity"
+    },
+    {
+      "id": "integrator_service_catalogs",
+      "name": "Official integrator service catalogs",
+      "url": "dynamic://integrator-services",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "managed_services",
+        "professional_services",
+        "soc",
+        "noc",
+        "cloud",
+        "networking",
+        "cybersecurity"
+      ],
+      "access_policy": "public_dynamic_per_entity"
+    },
+    {
+      "id": "integrator_certification_pages",
+      "name": "Official integrator certification and competency pages",
+      "url": "dynamic://integrator-certifications",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "certifications",
+        "competencies",
+        "specializations",
+        "vendors"
+      ],
+      "access_policy": "public_dynamic_per_entity"
+    },
+    {
+      "id": "integrator_customer_stories",
+      "name": "Official integrator customer stories and references",
+      "url": "dynamic://integrator-customer-stories",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "customers",
+        "verticals",
+        "vendors",
+        "architectures"
+      ],
+      "access_policy": "public_dynamic_per_entity"
+    },
+    {
+      "id": "integrator_pressrooms",
+      "name": "Official integrator newsrooms",
+      "url": "dynamic://integrator-newsrooms",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA",
+        "EU"
+      ],
+      "dimensions": [
+        "alliances",
+        "acquisitions",
+        "expansion",
+        "services",
+        "leadership"
+      ],
+      "access_policy": "public_dynamic_per_entity"
+    },
+    {
+      "id": "integrator_tenders_cases",
+      "name": "Public tender awards and case references naming integrators",
+      "url": "dynamic://public-awards-by-integrator",
+      "class": "primary-public-service",
+      "scope": [
+        "ES",
+        "PT",
+        "EU"
+      ],
+      "dimensions": [
+        "procurement",
+        "customers",
+        "vendors",
+        "technology",
+        "contract_value"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "distributor_vendor_pages",
+      "name": "Official competitor distributor vendor pages and linecards",
+      "url": "dynamic://distributor-linecards",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "linecard",
+        "vendors",
+        "country_relation",
+        "portfolio_changes"
+      ],
+      "access_policy": "public_dynamic_per_entity"
+    },
+    {
+      "id": "distributor_services_pages",
+      "name": "Official competitor distributor services pages",
+      "url": "dynamic://distributor-services",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "professional_services",
+        "managed_services",
+        "training",
+        "labs",
+        "poc",
+        "staging",
+        "financing",
+        "marketplace",
+        "logistics"
+      ],
+      "access_policy": "public_dynamic_per_entity"
+    },
+    {
+      "id": "distributor_pressrooms",
+      "name": "Official competitor distributor pressrooms",
+      "url": "dynamic://distributor-newsrooms",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA",
+        "EU"
+      ],
+      "dimensions": [
+        "vendor_wins",
+        "vendor_losses",
+        "acquisitions",
+        "leadership",
+        "expansion",
+        "services"
+      ],
+      "access_policy": "public_dynamic_per_entity"
+    },
+    {
+      "id": "distributor_events",
+      "name": "Official competitor distributor events and enablement calendars",
+      "url": "dynamic://distributor-events",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "vendors",
+        "enablement",
+        "partners",
+        "momentum",
+        "technology_focus"
+      ],
+      "access_policy": "public_dynamic_per_entity"
+    },
+    {
+      "id": "distributor_careers",
+      "name": "Official competitor distributor careers",
+      "url": "dynamic://distributor-careers",
+      "class": "primary",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "hiring",
+        "skills_demand",
+        "technology_focus",
+        "growth_signal"
+      ],
+      "access_policy": "public_dynamic_per_entity"
+    },
+    {
+      "id": "ituser_es",
+      "name": "IT User España",
+      "url": "https://www.ituser.es",
+      "class": "secondary-specialist",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "enterprise_it",
+        "vendors",
+        "integrators",
+        "channel",
+        "trends"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "silicon_es",
+      "name": "Silicon España",
+      "url": "https://www.silicon.es",
+      "class": "secondary-specialist",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "enterprise_it",
+        "cloud",
+        "cybersecurity",
+        "vendors",
+        "market"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "mcpro_es",
+      "name": "MuyComputerPRO",
+      "url": "https://www.muycomputerpro.com",
+      "class": "secondary-specialist",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "enterprise_it",
+        "channel",
+        "cloud",
+        "cybersecurity",
+        "vendors"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "byte_ti_es",
+      "name": "Byte TI",
+      "url": "https://revistabyte.es",
+      "class": "secondary-specialist",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "enterprise_it",
+        "vendors",
+        "integrators",
+        "cloud",
+        "cybersecurity"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "cio_es",
+      "name": "CIO España",
+      "url": "https://www.cio.com/es",
+      "class": "secondary-quality",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "enterprise_demand",
+        "cios",
+        "trends",
+        "cloud",
+        "cybersecurity",
+        "ai"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "cso_es",
+      "name": "CSO España",
+      "url": "https://www.csoonline.com/es",
+      "class": "secondary-quality",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "cybersecurity",
+        "ciso",
+        "trends",
+        "vendors",
+        "regulation"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "eco_pt",
+      "name": "ECO Portugal",
+      "url": "https://eco.sapo.pt",
+      "class": "secondary-quality",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "business",
+        "technology",
+        "companies",
+        "investment",
+        "leadership"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "jornal_economico_pt",
+      "name": "O Jornal Económico",
+      "url": "https://jornaleconomico.sapo.pt",
+      "class": "secondary-quality",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "business",
+        "technology",
+        "companies",
+        "investment",
+        "market"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "pplware_pt",
+      "name": "Pplware",
+      "url": "https://pplware.sapo.pt",
+      "class": "secondary-specialist",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "technology",
+        "cybersecurity",
+        "cloud",
+        "networking",
+        "market"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "sapo_tek_empresas",
+      "name": "SAPO Tek Empresas",
+      "url": "https://tek.sapo.pt",
+      "class": "secondary-specialist",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "enterprise_it",
+        "vendors",
+        "integrators",
+        "telecom",
+        "market"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "spglobal_451_public",
+      "name": "S&P Global 451 Research public insights",
+      "url": "https://www.spglobal.com/market-intelligence/en/solutions/451-research",
+      "class": "analyst-public",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "market",
+        "trends",
+        "cloud",
+        "data_center",
+        "security",
+        "ai"
+      ],
+      "access_policy": "public_metadata_and_public_insights"
+    },
+    {
+      "id": "gigaom_public",
+      "name": "GigaOm public research",
+      "url": "https://gigaom.com",
+      "class": "analyst-public",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "market",
+        "trends",
+        "vendor_positioning",
+        "cloud",
+        "security",
+        "observability"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "abi_research_public",
+      "name": "ABI Research public insights",
+      "url": "https://www.abiresearch.com",
+      "class": "analyst-public",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "market",
+        "iot",
+        "edge",
+        "5g",
+        "security",
+        "ai"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "frost_sullivan_public",
+      "name": "Frost & Sullivan public insights",
+      "url": "https://www.frost.com",
+      "class": "analyst-public",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "market",
+        "trends",
+        "cybersecurity",
+        "networking",
+        "cloud",
+        "data_center"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "globaldata_public",
+      "name": "GlobalData public technology insights",
+      "url": "https://www.globaldata.com",
+      "class": "analyst-public",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "market",
+        "vendors",
+        "trends",
+        "m&a",
+        "technology"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "gsma_intelligence_public",
+      "name": "GSMA Intelligence public reports",
+      "url": "https://www.gsma.com/solutions-and-impact/connectivity-for-good/mobile-economy/",
+      "class": "industry-research",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "mobile",
+        "5g",
+        "iot",
+        "private_networks",
+        "edge",
+        "market"
+      ],
+      "access_policy": "public_reports"
+    },
+    {
+      "id": "uptime_institute_public",
+      "name": "Uptime Institute public research",
+      "url": "https://uptimeinstitute.com/resources/research-and-reports",
+      "class": "industry-research",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "data_center",
+        "resilience",
+        "energy",
+        "operations",
+        "capacity"
+      ],
+      "access_policy": "public_reports"
+    },
+    {
+      "id": "flexera_state_cloud",
+      "name": "Flexera State of the Cloud public report",
+      "url": "https://info.flexera.com/CM-REPORT-State-of-the-Cloud",
+      "class": "industry-research",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "cloud",
+        "finops",
+        "multi_cloud",
+        "adoption",
+        "spend"
+      ],
+      "access_policy": "public_report"
+    },
+    {
+      "id": "cloud_security_alliance",
+      "name": "Cloud Security Alliance research",
+      "url": "https://cloudsecurityalliance.org/research",
+      "class": "industry-research",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "cloud_security",
+        "zero_trust",
+        "ai_security",
+        "governance"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "cncf_surveys",
+      "name": "CNCF annual surveys and landscape",
+      "url": "https://www.cncf.io/reports/",
+      "class": "industry-research",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "cloud_native",
+        "kubernetes",
+        "observability",
+        "platform_engineering",
+        "adoption"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "linux_foundation_research",
+      "name": "Linux Foundation Research",
+      "url": "https://www.linuxfoundation.org/research",
+      "class": "industry-research",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "open_source",
+        "cloud_native",
+        "ai",
+        "security",
+        "skills"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "isc2_workforce",
+      "name": "ISC2 Cybersecurity Workforce Study",
+      "url": "https://www.isc2.org/Insights",
+      "class": "industry-research",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "cybersecurity",
+        "skills",
+        "workforce",
+        "hiring"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "isaca_research",
+      "name": "ISACA research and State of Cybersecurity",
+      "url": "https://www.isaca.org/resources/research",
+      "class": "industry-research",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "cybersecurity",
+        "governance",
+        "skills",
+        "risk",
+        "ai"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "owasp_projects",
+      "name": "OWASP projects and Top 10",
+      "url": "https://owasp.org",
+      "class": "industry-community",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "application_security",
+        "api_security",
+        "ai_security",
+        "risk"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "mitre_attack",
+      "name": "MITRE ATT&CK",
+      "url": "https://attack.mitre.org",
+      "class": "primary-community-data",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "cybersecurity",
+        "threats",
+        "detections",
+        "architecture"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "ietf_rfc",
+      "name": "IETF RFC and drafts",
+      "url": "https://www.ietf.org",
+      "class": "standards",
+      "scope": [
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "networking",
+        "security",
+        "protocols",
+        "architecture",
+        "standards"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "etsi_standards",
+      "name": "ETSI standards and reports",
+      "url": "https://www.etsi.org",
+      "class": "standards",
+      "scope": [
+        "EU",
+        "GLOBAL"
+      ],
+      "dimensions": [
+        "networking",
+        "5g",
+        "edge",
+        "security",
+        "standards"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "iso_public_metadata",
+      "name": "ISO public standard metadata",
+      "url": "https://www.iso.org/standards.html",
+      "class": "standards",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "security",
+        "ai_governance",
+        "service_management",
+        "standards"
+      ],
+      "access_policy": "public_metadata_only"
+    },
+    {
+      "id": "cloudflare_radar",
+      "name": "Cloudflare Radar",
+      "url": "https://radar.cloudflare.com",
+      "class": "primary-company-data",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "internet",
+        "security",
+        "traffic",
+        "outages",
+        "protocols"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "akamai_state_internet",
+      "name": "Akamai State of the Internet",
+      "url": "https://www.akamai.com/resources/state-of-the-internet",
+      "class": "primary-company-research",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "security",
+        "internet",
+        "applications",
+        "api",
+        "threats"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "thousandeyes_internet_insights",
+      "name": "Cisco ThousandEyes Internet Insights",
+      "url": "https://www.thousandeyes.com/outages/",
+      "class": "primary-company-data",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "internet",
+        "saas",
+        "cloud",
+        "network_performance",
+        "outages"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "speedtest_global_index",
+      "name": "Ookla Speedtest Global Index",
+      "url": "https://www.speedtest.net/global-index",
+      "class": "industry-data",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "connectivity",
+        "broadband",
+        "mobile",
+        "performance"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "stack_overflow_survey",
+      "name": "Stack Overflow Developer Survey",
+      "url": "https://survey.stackoverflow.co",
+      "class": "community-research",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "skills",
+        "developer_tools",
+        "cloud",
+        "ai",
+        "technology_adoption"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "github_octoverse",
+      "name": "GitHub Octoverse",
+      "url": "https://octoverse.github.com",
+      "class": "primary-company-research",
+      "scope": [
+        "GLOBAL",
+        "EU"
+      ],
+      "dimensions": [
+        "developer_trends",
+        "ai",
+        "open_source",
+        "languages",
+        "platforms"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "meetup_public",
+      "name": "Public technology Meetup event pages",
+      "url": "https://www.meetup.com",
+      "class": "community-discovery",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "skills",
+        "community",
+        "technology_momentum",
+        "vendors"
+      ],
+      "access_policy": "public_metadata_only"
+    },
+    {
+      "id": "eventbrite_public",
+      "name": "Public Eventbrite technology events",
+      "url": "https://www.eventbrite.com",
+      "class": "community-discovery",
+      "scope": [
+        "ES",
+        "PT",
+        "IBERIA"
+      ],
+      "dimensions": [
+        "events",
+        "vendors",
+        "skills",
+        "technology_momentum"
+      ],
+      "access_policy": "public_metadata_only"
+    },
+    {
+      "id": "youtube_public_search",
+      "name": "Public YouTube technical and channel content",
+      "url": "https://www.youtube.com",
+      "class": "discovery",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "webinars",
+        "events",
+        "partners",
+        "skills",
+        "roadmap"
+      ],
+      "access_policy": "public_metadata_and_transcripts_when_available"
+    },
+    {
+      "id": "google_news_discovery",
+      "name": "Google News public discovery",
+      "url": "https://news.google.com",
+      "class": "aggregator",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "news_discovery",
+        "vendors",
+        "integrators",
+        "distributors",
+        "market",
+        "hiring"
+      ],
+      "access_policy": "public_discovery_requires_original_source_validation"
+    },
+    {
+      "id": "bing_news_discovery",
+      "name": "Bing News public discovery",
+      "url": "https://www.bing.com/news",
+      "class": "aggregator",
+      "scope": [
+        "GLOBAL",
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "news_discovery",
+        "vendors",
+        "integrators",
+        "distributors",
+        "market"
+      ],
+      "access_policy": "public_discovery_requires_original_source_validation"
+    },
+    {
+      "id": "euipo_public",
+      "name": "EUIPO public company and trademark metadata",
+      "url": "https://euipo.europa.eu",
+      "class": "primary",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "identity",
+        "brands",
+        "corporate_changes"
+      ],
+      "access_policy": "public_metadata"
+    },
+    {
+      "id": "ec_competition_cases",
+      "name": "European Commission Competition case search",
+      "url": "https://competition-cases.ec.europa.eu",
+      "class": "primary",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "m&a",
+        "competition",
+        "market_structure",
+        "companies"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "ec_digital_decade_data",
+      "name": "European Digital Decade country reports and data",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/desi",
+      "class": "primary",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "digital_adoption",
+        "cloud",
+        "ai",
+        "skills",
+        "connectivity",
+        "public_sector"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "eurostat_digital_economy",
+      "name": "Eurostat Digital economy and society datasets",
+      "url": "https://ec.europa.eu/eurostat/web/digital-economy-and-society",
+      "class": "primary",
+      "scope": [
+        "EU",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "digital_adoption",
+        "cloud",
+        "ai",
+        "cybersecurity",
+        "skills",
+        "companies"
+      ],
+      "access_policy": "public_open_data"
+    }
+  ],
+  "audience_source_routes": [
+    {
+      "actor": "fabricante",
+      "decision_stage": "roadmap y producto",
+      "priority": 1.0,
+      "source_types": [
+        "release notes",
+        "what's new",
+        "status pages",
+        "advisories",
+        "developer blogs"
+      ],
+      "examples": [
+        "AWS What's New",
+        "Microsoft Tech Community",
+        "Cisco blogs",
+        "Palo Alto Networks advisories",
+        "F5 DevCentral"
+      ]
+    },
+    {
+      "actor": "fabricante",
+      "decision_stage": "canal y enablement",
+      "priority": 1.0,
+      "source_types": [
+        "partner locator",
+        "partner programme",
+        "certification catalogue",
+        "academy",
+        "partner awards"
+      ],
+      "examples": [
+        "Cisco Partner Locator",
+        "AWS Partner Network",
+        "Microsoft partner documentation",
+        "Check Point PartnerMAP",
+        "vendor academies"
+      ]
+    },
+    {
+      "actor": "fabricante",
+      "decision_stage": "adopción y casos",
+      "priority": 0.95,
+      "source_types": [
+        "customer stories",
+        "reference architectures",
+        "marketplaces",
+        "public webinars",
+        "conference agendas"
+      ],
+      "examples": [
+        "AWS Marketplace",
+        "Azure Marketplace",
+        "Cisco Live",
+        "vendor customer stories"
+      ]
+    },
+    {
+      "actor": "mayorista",
+      "decision_stage": "linecard y competencia",
+      "priority": 1.0,
+      "source_types": [
+        "country linecards",
+        "vendor distribution announcements",
+        "cloud marketplaces",
+        "academy calendars",
+        "demo/lab catalogues"
+      ],
+      "examples": [
+        "TD SYNNEX Academy",
+        "Arrow Education",
+        "Exclusive Networks Academy",
+        "Westcon-Comstor programmes"
+      ]
+    },
+    {
+      "actor": "mayorista",
+      "decision_stage": "demanda de partner",
+      "priority": 0.92,
+      "source_types": [
+        "event registrations",
+        "webinar agendas",
+        "training demand",
+        "community questions",
+        "public campaign pages"
+      ],
+      "examples": [
+        "vendor communities",
+        "distributor event calendars",
+        "channel media newsletters"
+      ]
+    },
+    {
+      "actor": "integrador",
+      "decision_stage": "capacidad y especialización",
+      "priority": 1.0,
+      "source_types": [
+        "certification directories",
+        "badges",
+        "case studies",
+        "technical blogs",
+        "GitHub organisations",
+        "conference speakers"
+      ],
+      "examples": [
+        "vendor locators",
+        "Credly public badges",
+        "GitHub",
+        "Cisco Live sessions",
+        "F5 DevCentral"
+      ]
+    },
+    {
+      "actor": "integrador",
+      "decision_stage": "pipeline y cuentas",
+      "priority": 1.0,
+      "source_types": [
+        "TED",
+        "PLACSP",
+        "BASE Portugal",
+        "buyer profiles",
+        "award notices",
+        "framework agreements"
+      ],
+      "examples": [
+        "TED",
+        "PLACSP",
+        "BASE.gov.pt"
+      ]
+    },
+    {
+      "actor": "integrador",
+      "decision_stage": "expansión y contratación",
+      "priority": 0.96,
+      "source_types": [
+        "career pages",
+        "employer ATS",
+        "specialist technology job boards",
+        "public employment services",
+        "general job boards",
+        "acquisition news",
+        "new office pages",
+        "leadership announcements"
+      ],
+      "examples": [
+        "official careers",
+        "Workday/Greenhouse/Lever employer pages",
+        "LinkedIn Jobs",
+        "InfoJobs",
+        "Tecnoempleo",
+        "Landing.jobs",
+        "ITJobs",
+        "EURES",
+        "IEFP",
+        "company newsrooms"
+      ]
+    },
+    {
+      "actor": "mayorista",
+      "decision_stage": "inversión en capacidad y go-to-market",
+      "priority": 0.93,
+      "source_types": [
+        "career pages",
+        "employer ATS",
+        "sales and presales vacancies",
+        "vendor business manager vacancies",
+        "cloud marketplace roles",
+        "services roles"
+      ],
+      "examples": [
+        "official careers",
+        "LinkedIn Jobs",
+        "InfoJobs",
+        "Indeed",
+        "EURES"
+      ]
+    },
+    {
+      "actor": "fabricante",
+      "decision_stage": "prioridad tecnológica y de canal",
+      "priority": 0.91,
+      "source_types": [
+        "career pages",
+        "employer ATS",
+        "channel vacancies",
+        "territory roles",
+        "engineering roles",
+        "services roles"
+      ],
+      "examples": [
+        "official careers",
+        "Workday/Greenhouse/Lever employer pages",
+        "LinkedIn Jobs",
+        "EURES"
+      ]
+    },
+    {
+      "actor": "ecosistema",
+      "decision_stage": "peer learning",
+      "priority": 0.82,
+      "source_types": [
+        "technical communities",
+        "podcasts",
+        "YouTube official channels",
+        "meetups",
+        "association events"
+      ],
+      "examples": [
+        "CheckMates",
+        "LIVEcommunity",
+        "Cisco Community",
+        "Packet Pushers",
+        "APDC",
+        "AMETIC"
+      ]
+    }
+  ],
+  "audience_source_rules": [
+    "Las comunidades, redes sociales y vídeos sirven para descubrir señales; una decisión fuerte exige revalidación primaria.",
+    "No se accede a portales de partner, newsletters o academias que requieran autenticación.",
+    "Un calendario, webinar o publicación social demuestra actividad, no capacidad certificada ni relación comercial.",
+    "Las ofertas de empleo indican demanda de capacidades, no headcount real ni contrato ganado.",
+    "La misma vacante sindicada en varios portales cuenta una sola vez; se deduplica por empresa, título, país, ubicación y ventana temporal.",
+    "Una vacante en el portal oficial o ATS del empleador pesa más que una copia en un agregador.",
+    "La ausencia de vacantes públicas no demuestra ausencia de inversión, capacidad o contratación.",
+    "El momentum de contratación exige serie temporal: nuevas, recurrentes, retiradas y antigüedad, separadas por país y familia de capacidad."
+  ]
+}

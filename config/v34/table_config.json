@@ -1,0 +1,67 @@
+{
+  "version": "3.4.0",
+  "behavior": {"sortable": true, "selectable": true, "movable": true, "persistent": true, "filters": true, "search": true, "export_csv": true, "auto_hide_empty": true, "minimum_population_ratio": 0.2, "hide_internal_fields": true},
+  "entities": {
+    "integrators": {
+      "columns": [
+        {"field":"name","label":"Integrador","help":"Entidad canónica mostrada en v3.4.","required":true},
+        {"field":"scope","label":"Ámbito ES/PT/Iberia","help":"Ámbito exacto respaldado; Iberia no se desdobla sin prueba."},
+        {"field":"entity_tier","label":"Prioridad de profundidad","help":"Variable interna del planificador adaptativo; no se muestra al usuario.","user_visible":false},
+        {"field":"corporate_group","label":"Grupo corporativo","help":"Solo aparece cuando existe un grupo distinto con soporte en los datos."},
+        {"field":"strategic_importance_score","label":"Importancia estratégica relativa","help":"Indicador relativo; no es cuota ni facturación."},
+        {"field":"vendors","label":"Fabricantes con evidencia","help":"Relaciones públicas detectadas; ver matriz para estado e intensidad."},
+        {"field":"specializations","label":"Certificaciones y especializaciones","help":"Solo señales explícitas; no se infieren por tecnología."},
+        {"field":"competencies","label":"Competencias","help":"Capacidades tecnológicas respaldadas por evidencia pública."},
+        {"field":"managed_services","label":"Servicios gestionados","help":"SOC, NOC, MSSP, MSP u operación continua cuando existe evidencia."},
+        {"field":"soc","label":"SOC","help":"Señal pública explícita de capacidad SOC."},
+        {"field":"noc","label":"NOC","help":"Señal pública explícita de capacidad NOC."},
+        {"field":"mssp","label":"MSSP","help":"Señal pública explícita de servicio de seguridad gestionado."},
+        {"field":"msp","label":"MSP","help":"Señal pública explícita de proveedor de servicios gestionados."},
+        {"field":"professional_services","label":"Servicios profesionales","help":"Consultoría, implantación u otros servicios profesionales explícitos."},
+        {"field":"verticals","label":"Verticales","help":"Sectores con casos o actividad pública."},
+        {"field":"customers_public_cases","label":"Clientes/casos públicos","help":"Casos trazables; no implica base de clientes completa."},
+        {"field":"public_procurement_awards","label":"Contratación pública","help":"Eventos públicos detectados; no es cuota de adjudicación."},
+        {"field":"momentum_30d","label":"Actividad 30 días","help":"Señales públicas en ventana móvil de 30 días."},
+        {"field":"momentum_90d","label":"Actividad 90 días","help":"Señales públicas en ventana móvil de 90 días."},
+        {"field":"momentum_365d","label":"Actividad 365 días","help":"Señales públicas en ventana móvil de 365 días."},
+        {"field":"activation_priority","label":"Potencial de activación","help":"Prioridad relativa; exige validar cuenta, interés, economics y capacidad."},
+        {"field":"recurring_services_potential","label":"Potencial recurrente","help":"Indicador relativo, no forecast."},
+        {"field":"coverage","label":"Cobertura de información","help":"Campos de negocio con evidencia sobre el total prioritario."},
+        {"field":"confidence","label":"Confianza de hechos","help":"Confianza agregada en la evidencia del perfil."},
+        {"field":"last_verified","label":"Última verificación","help":"Fecha más reciente de evidencia utilizada."},
+        {"field":"research_gaps","label":"Información pendiente","help":"Datos que el motor debe investigar antes de concluir."}
+      ]
+    },
+    "distributors": {
+      "columns": [
+        {"field":"name","label":"Mayorista","help":"Entidad canónica mostrada en v3.4.","required":true},
+        {"field":"scope","label":"Ámbito ES/PT/Iberia","help":"Ámbito exacto respaldado por evidencia."},
+        {"field":"entity_tier","label":"Prioridad de profundidad","help":"Variable interna del planificador adaptativo; no se muestra al usuario.","user_visible":false},
+        {"field":"strategic_importance_score","label":"Importancia estratégica relativa","help":"Indicador relativo; no es cuota ni facturación."},
+        {"field":"confirmed_linecard","label":"Fabricantes confirmados","help":"Linecard/relación pública detectada; ver matriz por país y estado."},
+        {"field":"probable_linecard","label":"Fabricantes probables","help":"Señales pendientes de evidencia suficiente."},
+        {"field":"westcon_overlap","label":"Solape con Westcon","help":"Coincidencia pública de fabricantes; no implica presión comercial efectiva."},
+        {"field":"technology_focus","label":"Especialización tecnológica","help":"Áreas tecnológicas visibles en evidencias públicas."},
+        {"field":"professional_services","label":"Servicios profesionales","help":"Capacidad pública explícita."},
+        {"field":"managed_services","label":"Servicios gestionados","help":"Capacidad recurrente explícita; no se infiere por catálogo."},
+        {"field":"financing","label":"Financiación","help":"Programa o capacidad pública de financiación."},
+        {"field":"marketplace","label":"Marketplace","help":"Marketplace público general."},
+        {"field":"cloud_marketplace","label":"Marketplace cloud","help":"Capacidad pública específica de cloud marketplace."},
+        {"field":"training_enablement","label":"Formación y enablement","help":"Academia, formación o enablement público."},
+        {"field":"labs_demos","label":"Labs y demos","help":"Laboratorios o demos públicas."},
+        {"field":"poc","label":"PoC","help":"Capacidad pública de prueba de concepto."},
+        {"field":"staging_configuration","label":"Staging/configuración","help":"Capacidad pública de preconfiguración o staging."},
+        {"field":"logistics","label":"Logística","help":"Servicios logísticos explícitos."},
+        {"field":"competitive_pressure","label":"Presión competitiva","help":"Indicador relativo; no es cuota de mercado."},
+        {"field":"competitive_response_priority","label":"Prioridad de respuesta","help":"Prioridad relativa para verificar/responder; no mandato automático."},
+        {"field":"momentum_30d","label":"Actividad 30 días","help":"Señales públicas en ventana móvil de 30 días."},
+        {"field":"momentum_90d","label":"Actividad 90 días","help":"Señales públicas en ventana móvil de 90 días."},
+        {"field":"momentum_365d","label":"Actividad 365 días","help":"Señales públicas en ventana móvil de 365 días."},
+        {"field":"coverage","label":"Cobertura de información","help":"Campos de negocio cubiertos sobre el total prioritario."},
+        {"field":"confidence","label":"Confianza de hechos","help":"Confianza en el perfil, separada de presión e importancia."},
+        {"field":"last_verified","label":"Última verificación","help":"Fecha más reciente de evidencia utilizada."},
+        {"field":"research_gaps","label":"Información pendiente","help":"Datos que deben buscarse o verificarse."}
+      ]
+    }
+  }
+}

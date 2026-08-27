@@ -29,7 +29,7 @@ def main():
     facts=reality.get('facts',[]); plans=reality.get('vendors',{})
     assert len(facts)>=25, 'Capa de realidad pública insuficiente'
     sources=graph.get('sources',[]); claims=graph.get('claims',[]); source_ids={x.get('id') for x in sources}
-    assert graph.get('policy',{}).get('actionThreshold')==100, 'El umbral de acción debe ser 100'
+    assert graph.get('policy',{}).get('actionThreshold')==100, 'La compatibilidad heredada del grafo v3 exige conservar su gate; v3.4 gobierna recomendaciones por tipo de acción'
     assert len(sources)>=25 and len(claims)>=28, 'Grafo de inteligencia pública insuficiente'
     assert len(graph.get('distributors',[]))>=6 and len(graph.get('integrators',[]))>=8 and len(graph.get('architectures',[]))>=8, 'Faltan perfiles o arquitecturas'
     assert len(universe.get('analysts',[]))>=20 and len(universe.get('distributors',[]))>=25 and len(universe.get('integrators',[]))>=55, 'Universo de fuentes/actores v3 insuficiente'
@@ -125,19 +125,23 @@ def main():
         assert (ROOT/wf).exists(), f'Falta workflow: {wf}'
         text=(ROOT/wf).read_text(encoding='utf-8')
         # V326_WORKFLOW_HIERARCHY_COMPAT
-        supervisors=('research_supervisor_v32.py','research_supervisor_v31.py','research_supervisor.py')
+        supervisors=('research_supervisor_v35.py','research_supervisor_v33.py','research_supervisor_v32.py','research_supervisor_v31.py','research_supervisor.py')
         assert any(name in text for name in supervisors) and 'upload-artifact@v4' in text, f'Workflow sin supervisor/diagnóstico: {wf}'
-        if (ROOT/'scripts/research_supervisor_v32.py').exists():
-            assert 'research_supervisor_v32.py' in text, f'Workflow no apunta al supervisor v3.2: {wf}'
-            assert 'data/v31/' in text and 'data/v32/' in text, f'Workflow no persiste datasets v3.1/v3.2: {wf}'
+        assert 'research_supervisor_v35.py' in text, f'Workflow no apunta al supervisor v3.5: {wf}'
+        assert 'data/v31/' in text and 'data/v32/' in text and 'data/v35/' in text, f'Workflow no persiste datasets foundation/v3.5: {wf}'
         assert 'schedule_guard.py' in text and 'BEGIN CONFIGURABLE_SCHEDULE' in text, f'Workflow sin calendario configurable: {wf}'
         assert 'BRAVE_SEARCH_API_KEY' not in text and 'BASE_API_TOKEN' not in text, f'Workflow depende de una clave o suscripción: {wf}'
         assert 'run: python scripts/research.py' not in text and 'research.py --profile=' not in text, f'Workflow conserva el reintento monolítico defectuoso: {wf}'
     collector=(ROOT/'scripts/research.py').read_text(encoding='utf-8')
     assert 'BRAVE_SEARCH_API_KEY' not in collector and 'BASE_API_TOKEN' not in collector, 'El colector conserva dependencias de pago o tokenizadas'
-    for script in ['research_supervisor.py','configure_updates.py','schedule_guard.py','test_schedule.py','research_supervisor_v31.py','research_supervisor_v32.py']:
+    for script in ['research_supervisor.py','configure_updates.py','schedule_guard.py','test_schedule.py','research_supervisor_v31.py','research_supervisor_v32.py','research_supervisor_v33.py','research_supervisor_v35.py']:
         assert (ROOT/'scripts'/script).exists(), f'Falta script operativo: {script}'
-    print(f'OK · {len(active)} vendors · {len(claims)} claims nuevos · {len(graph.get("distributors",[]))} perfiles mayoristas consolidados · {len(graph.get("integrators",[]))} perfiles integradores consolidados · {len(graph.get("architectures",[]))} arquitecturas · motor v11 validado')
+    sys.path.insert(0,str(ROOT/'scripts'))
+    from v35.validate_v35 import validate as validate_v35
+    v35_errors=validate_v35(ROOT)
+    assert not v35_errors, 'v3.5 inválida: '+'; '.join(v35_errors[:8])
+    v35=load('data/v35/last_run.json')
+    print(f'OK · foundation validada · {len(active)} vendors base · {len(claims)} claims · v3.5 {v35.get("manufacturers",0)} fabricantes / {v35.get("integrators",0)} integradores / {v35.get("distributors",0)} mayoristas / {v35.get("trends",0)} tendencias / {v35.get("architectures",0)} arquitecturas')
 
 if __name__=='__main__':
     try: main()

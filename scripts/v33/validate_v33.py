@@ -12,7 +12,11 @@ def validate(root:Path):
     p=root/"data/v33/ecosystem_profiles.json"
     if p.exists():
         d=json.loads(p.read_text(encoding="utf-8"));profiles=d.get("profiles")
-        if not isinstance(profiles,list):errors.append("ecosystem_profiles.json sin colección profiles aplanada");profiles=[]
+        if not isinstance(profiles,list):
+            errors.append("ecosystem_profiles.json sin colección profiles aplanada")
+            # Validate legacy-shaped rows too, so the provenance gate cannot be
+            # bypassed merely by omitting the flattened collection.
+            profiles=(d.get("integrators") or [])+(d.get("distributors") or [])
         keys=set()
         for x in profiles:
             if not x.get("name"):errors.append("Perfil sin name");continue

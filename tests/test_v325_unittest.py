@@ -16,7 +16,7 @@ class V325Tests(unittest.TestCase):
     def test_v32_surfaces_foundation(self):
         text=(Path(__file__).resolve().parents[1]/"scripts/research_supervisor_v32.py").read_text(encoding="utf-8")
         self.assertIn("foundation v31=",text)
-        self.assertIn('"version":"3.2.5"',text)
+        self.assertIn('"version":"3.2.6"',text)
 
     def test_supervisors_compile(self):
         root=Path(__file__).resolve().parents[1]
