@@ -1,0 +1,73 @@
+{
+  "version": "3.3.3a",
+  "runtime_share": {
+    "daily": 0.22,
+    "weekly": 0.34,
+    "monthly": 0.44
+  },
+  "targeted_search": {
+    "daily_max_queries": 220,
+    "weekly_max_queries": 650,
+    "monthly_max_queries": 1500,
+    "workers": 12,
+    "timeout_seconds": 8,
+    "max_results_per_query": 10,
+    "fresh_days": {
+      "daily": 180,
+      "weekly": 365,
+      "monthly": 730
+    },
+    "pair_verification_share": {
+      "daily": 0.25,
+      "weekly": 0.38,
+      "monthly": 0.45
+    },
+    "minimum_integrator_share": 0.68,
+    "field_priorities": {
+      "vendors": 1.0,
+      "certifications": 1.08,
+      "customers": 1.02,
+      "managed_services": 1.04,
+      "verticals": 0.94,
+      "value_added": 0.92,
+      "services": 0.88,
+      "channel_moves": 0.82
+    }
+  },
+  "relationship_thresholds": {
+    "confirmed": 0.82,
+    "probable": 0.64,
+    "whitespace_shortlist": 0.68,
+    "confirmed_min_evidence": 2
+  },
+  "entity_tiering": {
+    "t1_threshold": 70,
+    "t2_threshold": 50,
+    "coverage_targets": {
+      "integrator": {
+        "T1": 85,
+        "T2": 65,
+        "T3": 40
+      },
+      "distributor": {
+        "T1": 80,
+        "T2": 60,
+        "T3": 35
+      }
+    }
+  },
+  "business_thresholds": {
+    "high": 0.78,
+    "medium": 0.56
+  },
+  "principles": [
+    "Ausencia de evidencia pública no equivale a ausencia de relación.",
+    "Una inferencia nunca se presenta como hecho.",
+    "La evidencia dirigida se acumula entre ejecuciones; una ejecución corta no borra la profundidad obtenida en una weekly o monthly.",
+    "Los actores T1 se investigan con mucha más profundidad que el long tail; el objetivo es cobertura útil, no cobertura uniforme.",
+    "La fuerza de una relación y la confianza en que existe son métricas distintas.",
+    "Los scores económicos son relativos hasta cargar datos internos de ventas, margen y pipeline.",
+    "Las columnas sin datos útiles se ocultan automáticamente.",
+    "Una segunda fuente aumenta la confianza de un hecho; no duplica el hecho."
+  ]
+}

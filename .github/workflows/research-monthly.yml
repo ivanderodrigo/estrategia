@@ -50,7 +50,7 @@ jobs:
         if: steps.schedule.outputs.run == 'true'
         env:
           RESEARCH_PROFILE: exhaustive
-        run: python scripts/research_supervisor_v32.py --profile exhaustive --max-runtime 3300 --fallback-runtime 300
+        run: python scripts/research_supervisor_v33.py --profile exhaustive --max-runtime 3300 --fallback-runtime 300
       - name: Conservar diagnóstico de ejecución
         if: always() && steps.schedule.outputs.run == 'true'
         uses: actions/upload-artifact@v4
@@ -59,6 +59,7 @@ jobs:
           path: |
             data/v31/
             data/v32/
+            data/v33/
             diagnostics/*.log
             data/run_manifest.latest.json
             data/supervisor.latest.json
@@ -78,7 +79,7 @@ jobs:
           git config user.name "westcon-strategy-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/research.latest.json data/research_status.json data/research_learning.json data/research_queue.json data/changes.latest.json data/source_health.json data/discovered_entities.json data/research_errors.json data/run_manifest.latest.json data/supervisor.latest.json data/history/
-          git add data/v31/ data/v32/
+          git add data/v31/ data/v32/ data/v33/
           git diff --cached --quiet || git commit -m "chore: inteligencia exhaustiva mensual"
           git pull --rebase origin main
           git push origin HEAD:main

@@ -1,0 +1,274 @@
+{
+  "distributors": {
+    "name": {
+      "label": "Mayorista",
+      "help": "Empresa de distribución analizada."
+    },
+    "scope": {
+      "label": "Cobertura",
+      "help": "Mercados para los que existe evidencia pública reciente: España, Portugal, Iberia, Europa o Global."
+    },
+    "vendors": {
+      "label": "Fabricantes con relación pública",
+      "help": "Fabricantes identificados mediante portfolio, acuerdos de distribución, noticias de canal u otras evidencias públicas. No equivale necesariamente a linecard contractual completa."
+    },
+    "vendor_relation_count": {
+      "label": "N.º de fabricantes detectados",
+      "help": "Número de fabricantes para los que existe al menos una relación pública identificada con el mayorista."
+    },
+    "westcon_overlap": {
+      "label": "Solape con Westcon",
+      "help": "Fabricantes del ámbito Westcon que también aparecen relacionados públicamente con este mayorista."
+    },
+    "westcon_overlap_count": {
+      "label": "N.º de fabricantes en solape",
+      "help": "Número de fabricantes del ámbito Westcon que también aparecen relacionados públicamente con este mayorista."
+    },
+    "technology_focus": {
+      "label": "Foco tecnológico",
+      "help": "Áreas tecnológicas que aparecen con mayor recurrencia en evidencias públicas del mayorista."
+    },
+    "managed_services": {
+      "label": "Servicios gestionados",
+      "help": "Capacidades públicas relacionadas con SOC, NOC, MSSP, soporte gestionado, cloud gestionada u operaciones continuas."
+    },
+    "value_added": {
+      "label": "Capacidades de valor añadido",
+      "help": "Servicios que pueden diferenciar al mayorista más allá de logística: formación, servicios profesionales, marketplace, financiación, staging, lifecycle o soporte."
+    },
+    "recurring_services_potential": {
+      "label": "Potencial de servicios recurrentes",
+      "help": "Indicador relativo 0–100 del potencial para adjuntar servicios recurrentes según servicios gestionados, capacidades, evidencia y confianza. No es una previsión de ingresos."
+    },
+    "channel_moves": {
+      "label": "Movimientos de canal",
+      "help": "Altas, acuerdos de distribución, partnerships, adquisiciones o expansiones detectadas recientemente."
+    },
+    "competitive_pressure": {
+      "label": "Presión competitiva",
+      "help": "Indicador relativo 0–100 calculado con movimientos de canal, expansión, servicios, M&A y proximidad a Iberia. No es cuota de mercado."
+    },
+    "competitive_response_priority": {
+      "label": "Prioridad de respuesta competitiva",
+      "help": "Prioridad relativa 0–100 para revisar o responder a este mayorista según presión, solape, momentum, relevancia para Westcon, confianza y cobertura del perfil."
+    },
+    "momentum_90d": {
+      "label": "Actividad reciente (90 días)",
+      "help": "Intensidad relativa de señales materiales observadas durante los últimos 90 días."
+    },
+    "westcon_relevance": {
+      "label": "Relevancia para Westcon",
+      "help": "Grado en que las evidencias afectan al portfolio, canal, tecnologías o posición competitiva de Westcon Iberia."
+    },
+    "opportunities": {
+      "label": "Oportunidades detectadas",
+      "help": "Número de decisiones de v3.2 clasificadas como oportunidad y relacionadas con la entidad."
+    },
+    "threats": {
+      "label": "Amenazas confirmadas",
+      "help": "Número de decisiones de v3.2 elevadas a amenaza con evidencia suficiente. Una presión competitiva alta no se convierte automáticamente en amenaza."
+    },
+    "coverage_score": {
+      "label": "Cobertura del perfil",
+      "help": "Porcentaje de áreas de información de negocio prioritarias para las que ya existe al menos una evidencia útil. Sirve para saber cuánto conocemos y dónde investigar más."
+    },
+    "research_gaps": {
+      "label": "Información pendiente",
+      "help": "Áreas del perfil en las que todavía falta evidencia pública suficiente y que el motor priorizará en próximas búsquedas."
+    },
+    "source_diversity": {
+      "label": "Fuentes distintas",
+      "help": "Número de fuentes públicas diferentes utilizadas para construir el perfil. Más diversidad reduce dependencia de una única fuente."
+    },
+    "evidence_grade": {
+      "label": "Calidad de evidencia",
+      "help": "Calificación A–D. A indica evidencia más sólida y diversa; D significa que el dato debe tratarse todavía con cautela."
+    },
+    "evidence_count": {
+      "label": "Evidencias públicas",
+      "help": "Número de evidencias públicas deduplicadas utilizadas en el perfil consolidado."
+    },
+    "confidence": {
+      "label": "Confianza de la evidencia",
+      "help": "Confianza agregada en la evidencia pública disponible. Una entidad puede ser T1 y tener confianza baja: en ese caso aumenta la prioridad de investigación, no disminuye su importancia estratégica."
+    },
+    "last_verified": {
+      "label": "Última verificación",
+      "help": "Fecha más reciente de evidencia utilizada en el perfil."
+    },
+    "entity_tier": {
+      "label": "Prioridad de profundidad",
+      "help": "T1/T2/T3 relativo dentro del universo actual: T1 requiere investigación profunda, T2 seguimiento sistemático y T3 vigilancia selectiva. El tier depende de importancia estructural, no de cuánta información hay disponible."
+    },
+    "coverage_target": {
+      "label": "Objetivo de cobertura",
+      "help": "Nivel de profundidad de información que el motor intenta alcanzar para esta entidad según su tier. Un T1 exige mucha más evidencia que un actor de long tail."
+    },
+    "coverage_gap": {
+      "label": "Información pendiente frente al objetivo",
+      "help": "Deuda de conocimiento de esta entidad: puntos que faltan para alcanzar su objetivo individual de cobertura. Se calcula por entidad y no debe confundirse con la diferencia entre medias globales."
+    },
+    "relationship_intensity_max": {
+      "label": "Relación más intensa detectada",
+      "help": "Fuerza 0–100 de la relación pública más intensa con un fabricante. Combina número y diversidad de evidencias, fuentes oficiales, certificaciones/casos y confianza. No equivale a volumen de negocio."
+    },
+    "distribution_confirmed_count": {
+      "label": "Distribuciones confirmadas",
+      "help": "Número de fabricantes para los que existe evidencia pública suficientemente sólida de distribución por este mayorista."
+    },
+    "distribution_probable_count": {
+      "label": "Relaciones de distribución probables",
+      "help": "Número de fabricantes con señales públicas de relación de canal todavía insuficientes para elevarlas a distribución confirmada."
+    },
+    "strategic_importance_score": {
+      "label": "Importancia estratégica relativa",
+      "help": "Prioridad estructural relativa dentro del universo analizado. Considera alcance Iberia, relaciones de fabricantes, solape con Westcon y capacidades/servicios observados. No baja por tener poca evidencia y no representa facturación ni cuota de mercado."
+    },
+    "operation_count": {
+      "label": "Ámbitos preservados",
+      "help": "Número de ámbitos geográficos o variantes operativas públicas conservadas dentro del perfil canónico. Sirve para no perder España, Portugal, Iberia o Global al consolidar entradas repetidas."
+    }
+  },
+  "integrators": {
+    "name": {
+      "label": "Integrador",
+      "help": "Integrador o proveedor de servicios tecnológicos analizado."
+    },
+    "scope": {
+      "label": "Cobertura",
+      "help": "Mercados para los que existe evidencia pública reciente."
+    },
+    "vendors": {
+      "label": "Fabricantes con relación pública",
+      "help": "Fabricantes asociados mediante certificaciones, partnerships, portfolio, casos de cliente o evidencias equivalentes."
+    },
+    "vendor_relation_count": {
+      "label": "N.º de fabricantes detectados",
+      "help": "Número de fabricantes para los que existe alguna relación pública identificada con el integrador."
+    },
+    "certifications": {
+      "label": "Certificaciones y especializaciones",
+      "help": "Certificaciones o especializaciones explícitas del integrador. Certificaciones de alumnos, terceros o clientes se excluyen."
+    },
+    "technology_focus": {
+      "label": "Capacidades tecnológicas",
+      "help": "Tecnologías en las que el integrador muestra actividad pública demostrable."
+    },
+    "verticals": {
+      "label": "Sectores con experiencia",
+      "help": "Sectores en los que existen referencias, proyectos o actividad pública repetida."
+    },
+    "customer_cases": {
+      "label": "Clientes y casos públicos",
+      "help": "Clientes o casos publicados. Solo se muestran cuando existe evidencia trazable."
+    },
+    "public_sector": {
+      "label": "Eventos de sector público",
+      "help": "Número de señales de contratación pública tecnológica o referencias públicas con alcance Iberia."
+    },
+    "public_sector_score": {
+      "label": "Tracción en sector público",
+      "help": "Indicador relativo 0–100 que combina volumen, materialidad, confianza y proximidad de la actividad pública. No es cuota de contratación."
+    },
+    "managed_services": {
+      "label": "Servicios gestionados",
+      "help": "Capacidad pública de SOC, NOC, MSSP, operaciones cloud, soporte o servicios gestionados continuos."
+    },
+    "recurring_services_potential": {
+      "label": "Potencial de servicios recurrentes",
+      "help": "Indicador relativo 0–100 del potencial para adjuntar servicios recurrentes según capacidades, servicios gestionados, evidencia y confianza."
+    },
+    "capability_score": {
+      "label": "Madurez de capacidades",
+      "help": "Indicador relativo 0–100 basado en amplitud tecnológica, certificaciones, servicios, clientes y evidencia. No es una certificación oficial."
+    },
+    "activation_priority": {
+      "label": "Prioridad de activación",
+      "help": "Prioridad relativa 0–100 para trabajar comercial y técnicamente con el integrador. Combina relevancia para Westcon, capacidad, posible whitespace, actividad reciente, confianza y cobertura de datos."
+    },
+    "momentum_90d": {
+      "label": "Actividad reciente (90 días)",
+      "help": "Intensidad de movimientos materiales recientes: nuevas capacidades, acuerdos, clientes, servicios, contratación o expansión."
+    },
+    "whitespace": {
+      "label": "Posible whitespace a investigar",
+      "help": "Prioridad para verificar una posible oportunidad fabricante–integrador. No significa que la relación no exista."
+    },
+    "competitive_pressure": {
+      "label": "Presión competitiva",
+      "help": "Intensidad relativa de expansión/capacidades del integrador frente al ecosistema relevante para Westcon."
+    },
+    "westcon_relevance": {
+      "label": "Relevancia para Westcon",
+      "help": "Grado en que las capacidades y movimientos del integrador encajan con fabricantes y tecnologías estratégicas de Westcon."
+    },
+    "coverage_score": {
+      "label": "Cobertura del perfil",
+      "help": "Porcentaje de áreas de información prioritarias para las que existe evidencia útil. Un valor bajo indica que el motor debe investigar más antes de concluir."
+    },
+    "research_gaps": {
+      "label": "Información pendiente",
+      "help": "Campos de negocio todavía insuficientemente cubiertos: fabricantes, certificaciones, clientes, verticales, servicios gestionados, etc."
+    },
+    "source_diversity": {
+      "label": "Fuentes distintas",
+      "help": "Número de fuentes públicas diferentes utilizadas para construir el perfil."
+    },
+    "evidence_grade": {
+      "label": "Calidad de evidencia",
+      "help": "Calificación A–D. A indica evidencia más sólida y diversa; D exige más comprobación antes de tomar decisiones."
+    },
+    "opportunities": {
+      "label": "Oportunidades detectadas",
+      "help": "Número de decisiones de v3.2 clasificadas como oportunidad y relacionadas con el integrador."
+    },
+    "evidence_count": {
+      "label": "Evidencias públicas",
+      "help": "Número de evidencias públicas deduplicadas utilizadas en el perfil consolidado."
+    },
+    "confidence": {
+      "label": "Confianza de la evidencia",
+      "help": "Confianza agregada en la evidencia pública disponible. Una entidad puede ser T1 y tener confianza baja: en ese caso aumenta la prioridad de investigación, no disminuye su importancia estratégica."
+    },
+    "last_verified": {
+      "label": "Última verificación",
+      "help": "Fecha más reciente de evidencia utilizada en el perfil."
+    },
+    "entity_tier": {
+      "label": "Prioridad de profundidad",
+      "help": "T1/T2/T3 relativo dentro del universo actual: T1 requiere investigación profunda, T2 seguimiento sistemático y T3 vigilancia selectiva. El tier depende de importancia estructural, no de cuánta información hay disponible."
+    },
+    "coverage_target": {
+      "label": "Objetivo de cobertura",
+      "help": "Nivel de profundidad de información que el motor intenta alcanzar para esta entidad según su tier. Un T1 exige mucha más evidencia que un actor de long tail."
+    },
+    "coverage_gap": {
+      "label": "Información pendiente frente al objetivo",
+      "help": "Deuda de conocimiento de esta entidad: puntos que faltan para alcanzar su objetivo individual de cobertura. Se calcula por entidad y no debe confundirse con la diferencia entre medias globales."
+    },
+    "relationship_intensity_max": {
+      "label": "Relación más intensa detectada",
+      "help": "Fuerza 0–100 de la relación pública más intensa con un fabricante. Combina número y diversidad de evidencias, fuentes oficiales, certificaciones/casos y confianza. No equivale a volumen de negocio."
+    },
+    "relationship_confirmed_count": {
+      "label": "Relaciones con fabricantes confirmadas",
+      "help": "Número de fabricantes Westcon para los que existe una relación pública suficientemente corroborada con el integrador."
+    },
+    "relationship_probable_count": {
+      "label": "Relaciones con fabricantes probables",
+      "help": "Número de relaciones fabricante–integrador con evidencia pública prometedora, pero todavía pendiente de una segunda fuente u otra verificación."
+    },
+    "relationship_research_count": {
+      "label": "Relaciones por investigar",
+      "help": "Número de combinaciones fabricante–integrador priorizadas para investigación. No significa que la relación no exista ni que sea una oportunidad confirmada."
+    },
+    "strategic_importance_score": {
+      "label": "Importancia estratégica relativa",
+      "help": "Prioridad estructural relativa dentro del universo analizado. Considera alcance Iberia, relaciones de fabricantes, solape con Westcon y capacidades/servicios observados. No baja por tener poca evidencia y no representa facturación ni cuota de mercado."
+    },
+    "operation_count": {
+      "label": "Ámbitos preservados",
+      "help": "Número de ámbitos geográficos o variantes operativas públicas conservadas dentro del perfil canónico. Sirve para no perder España, Portugal, Iberia o Global al consolidar entradas repetidas."
+    }
+  }
+}
