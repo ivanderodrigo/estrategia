@@ -1,0 +1,415 @@
+{
+  "meta": {
+    "generated_at": "2026-08-27T15:46:01.453192+00:00",
+    "registered_sources": 151,
+    "direct_source_rows": 205,
+    "direct_raw_rows": 205,
+    "direct_deduplicated_rows": 0
+  },
+  "direct_connectors": {
+    "ted_search": {
+      "attempted": 2,
+      "successful": 2,
+      "failed": 0,
+      "rows": 55,
+      "raw_notices": 360,
+      "technology_notices": 55,
+      "errors": [],
+      "latency_ms": 4501.5
+    },
+    "placsp_atom": {
+      "attempted": 1,
+      "successful": 1,
+      "failed": 0,
+      "rows": 11,
+      "raw_feed_rows": 80,
+      "technology_rows": 11,
+      "entity_matched_rows": 0,
+      "url_used": "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3.atom",
+      "cached": 0,
+      "errors": [],
+      "latency_ms": 9261.3
+    },
+    "cisa_kev": {
+      "attempted": 1,
+      "failed": 0,
+      "rows": 33,
+      "latency_ms": 1416.3
+    },
+    "generic_feeds": {
+      "attempted_sources": 18,
+      "successful_sources": 8,
+      "failed_sources": 0,
+      "no_feed_sources": 10,
+      "failed": 0,
+      "rows": 106,
+      "per_source": {
+        "first": {
+          "attempts": 1,
+          "feed_rows": 25,
+          "accepted_rows": 18,
+          "working_feed": "https://first.org/newsroom/news/rss.xml",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "vendor_17": {
+          "attempts": 1,
+          "feed_rows": 10,
+          "accepted_rows": 10,
+          "working_feed": "https://xmcyber.com/feed",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "vendor_16": {
+          "attempts": 1,
+          "feed_rows": 10,
+          "accepted_rows": 10,
+          "working_feed": "https://www.attackiq.com/feed/",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "int_es_12": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "vendor_21": {
+          "attempts": 1,
+          "feed_rows": 25,
+          "accepted_rows": 25,
+          "working_feed": "https://netscout.com/feed",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "vendor_24": {
+          "attempts": 1,
+          "feed_rows": 25,
+          "accepted_rows": 25,
+          "working_feed": "https://aws.amazon.com/rss",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "int_es_20": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404: <!DOCTYPE html><html lang=\"en\" data-astro-cid-zetdm5md> <head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Claranet Limited | Page not found</title><link rel=\"icon\" type=\"image/svg\" href=\"/favicon.svg\"><script type=\"module\" src=\"/com/_astro/404.astro_astro_type_script_index_0_lang.BRyqG8IC.js\"></script><link rel=\"stylesheet\" href=\"/com/_astro/_page_.BsRRHd3D.css\"> <style>.main-page[data-astro-cid-zetdm5md]{position:relative;background:radial-gradient(ellipse at bottom,#1b2947,#0d1420);overflow:hidden}.star-layer[data-astro-cid-zetdm5md]{position:absolute;top:0;left:0;width:200vw;height:100vh;pointer-events:none;will-change:transform}#stars-small[data-astro-cid-zetdm5md]{z-index:2;animation:scrollStars 51s linear infinite}#stars-medium[data-astro-cid-zetdm5md]{z-index:3;animation:scrollStars 25.5s linear infinite}#stars-large[data-astr",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_es_15": {
+          "attempts": 1,
+          "feed_rows": 7,
+          "accepted_rows": 7,
+          "working_feed": "https://www.nunsys.com/feed/",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "int_es_24": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 403: Forbidden",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_es_8": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "ParseError: not well-formed (invalid token): line 25, column 2398",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_es_21": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404:  <!DOCTYPE html> <html lang=\"en\"  hreflang=\"en\" item-lang=\"en\"> <head> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"> <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /> <title>\r \t  \r </title> <!-- Page generated: 8/26/2026 11:11:51 AM // ut 28465 --> <!-- Favicons --> <link href=\"/favicon.ico\" rel=\"icon\"> <link href=\"/favicon.png\" rel=\"icon\"> <link href=\"/apple-touch-icon.png\" rel=\"apple-touch-icon\"> <link href=\"/favicon.svg\" rel=\"icon\" type=\"image/svg+xml\"> <!-- Google Fonts --> <link rel=\"preload\" href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i\" as=\"style\" onload=\"this.rel='stylesheet'\"> <noscript><link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Open",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_pt_11": {
+          "attempts": 1,
+          "feed_rows": 6,
+          "accepted_rows": 6,
+          "working_feed": "https://xpand-it.com/pt-pt//feed/",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "int_pt_14": {
+          "attempts": 1,
+          "feed_rows": 5,
+          "accepted_rows": 5,
+          "working_feed": "https://www.glinttglobal.com/feed/",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "int_es_3": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404: <!DOCTYPE HTML>   <html lang=\"en-US\">        <head data-page-title=\"Page Not Found\" data-cmp-utag-data=\"{&#34;webpageType&#34;:&#34;&#34;,&#34;template&#34;:&#34;&#34;,&#34;keywords&#34;:&#34;&#34;,&#34;contentOwner&#34;:&#34;&#34;,&#34;globalPractice&#34;:&#34;&#34;,&#34;serviceLine&#34;:&#34;&#34;,&#34;alliancePartner&#34;:&#34;&#34;,&#34;industry&#34;:&#34;&#34;,&#34;channel&#34;:&#34;&#34;,&#34;status&#34;:&#34;published&#34;,&#34;publishedUrl&#34;:&#34;https://www-pre.kyndryl.com/us/en/errors&#34;,&#34;firstPublished&#34;:&#34;2026-06-15T04:45:03.803Z&#34;,&#34;lastPublished&#34;:&#34;&#34;,&#34;organizationMarkets&#34;:&#34;&#34;,&#34;topics&#34;:[],&#34;adl_site_hierarchy&#34;:[&#34;errors&#34;],&#34;adl_category&#34;:&#34;errors&#34;,&#34;adl_subcategory&#34;:&#34;&#34;,&#34;adl_language&#34;:&#34;en&#34;,&#34;adl_country&#34;:&#34;us&#34;,&#34;adl_page_type&#34;:&#34;&#34;,&#34;",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_pt_7": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404:  <!DOCTYPE HTML> <html lang=\"en-US\">     <head>     <meta charset=\"UTF-8\"/>     <meta name=\"content-page-ref\" content=\"qZjrnj2VxWlgck9uZ19m1t-LAcu6YJaudRttdqFhx7-x8lYVY_Wd7VqbvF0RCwfAF3EW6rXSZdshqq17jOBSfQ\"/> <script defer=\"defer\" type=\"text/javascript\" src=\"/.rum/@adobe/helix-rum-js@%5E2/dist/micro.js\"></script> <script>     const privacyUrlTranslation = {         en: 'Cookie policy',         fr: 'Politique relative aux cookies',         nl: 'Cookieverklaring',         es: 'Política de cookies',         pt: 'Política de cookies'     };      function getLanguage(){         const availableLanguages = 'ar,bg,ca,cn,cs,da,de,et,el,en,es,fi,fr,hr,hu,it,ja,ko,lb,lt,lv,nl,no,oc,pl,pt,ro,ru,se,sk,sq,sv,tr,uk,vi,zh',             defaultLanguage = 'en';          // get the html lang         if (document.documentElement.getAttribute(\"lang\") !== undefined && document.documentElement.getAttribute(\"la",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_pt_5": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404: <!DOCTYPE html> <!--[if IE 8 ]><html class=\"coh-ie8\"  lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <![endif]--> <!--[if IE 9 ]><html class=\"coh-ie9\"  lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <![endif]--> <!--[if (gt IE 9)|!(IE)]><!--> <html lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <!--<![endif]--> <head>     <meta charset=\"utf-8\" /> <script type=\"text/javascript\" nonce=\"bEN2WFZuUk5YRktNTkd1UHpKeVF1Q0NJSlcxY2xLaW8=\">     window.dataLayer = window.dataLayer || [];      function gtag() { dataLayer.push(arguments); }          gtag('set', 'developer_id.dMDhkMT', true);     gtag('consent', 'default', {          ad_storage: 'denied',         analytics_storage: 'denied',         functionality_storage: 'denied',         personalization_storage: 'denied',         security_storage: 'granted',         ad_user_data: 'denied',         ad_personalization: 'denied',",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_es_1": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404: <!DOCTYPE html><html lang=\"en\" class=\"__variable_a7808f __variable_c9345c __variable_6e7a57\"><head><meta charSet=\"utf-8\" data-next-head=\"\"/><meta name=\"viewport\" content=\"width=device-width\" data-next-head=\"\"/><title data-next-head=\"\">We’re sorry, we cannot find that page</title><link rel=\"icon\" href=\"/favicon.ico\" data-next-head=\"\"/><meta name=\"google-site-verification\" content=\"cu1EpN26Mx_DwKcuyE3PPEPyIlAEq08Sbk8H4Nq642c\" data-next-head=\"\"/><meta property=\"og:title\" content=\"We’re sorry, we cannot find that page\" data-next-head=\"\"/><meta property=\"og:type\" content=\"website\" data-next-head=\"\"/><meta property=\"og:url\" content=\"https://www.nttdata.com/en-us/404-page\" data-next-head=\"\"/><meta name=\"twitter:title\" content=\"We’re sorry, we cannot find that page\" data-next-head=\"\"/><link rel=\"canonical\" href=\"https://www.nttdata.com/en-us/404-page\" data-next-head=\"\"/><link rel=\"preconnect\" hr",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_es_19": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "",
+          "row_cap": 25,
+          "status": "no_feed"
+        }
+      },
+      "latency_ms": 9171.4
+    }
+  },
+  "sources": {
+    "ted_search": {
+      "attempted": 2,
+      "successful": 2,
+      "failed": 0,
+      "rows": 55,
+      "raw_notices": 360,
+      "technology_notices": 55,
+      "errors": [],
+      "latency_ms": 4501.5
+    },
+    "placsp_atom": {
+      "attempted": 1,
+      "successful": 1,
+      "failed": 0,
+      "rows": 11,
+      "raw_feed_rows": 80,
+      "technology_rows": 11,
+      "entity_matched_rows": 0,
+      "url_used": "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3.atom",
+      "cached": 0,
+      "errors": [],
+      "latency_ms": 9261.3
+    },
+    "cisa_kev": {
+      "attempted": 1,
+      "failed": 0,
+      "rows": 33,
+      "latency_ms": 1416.3
+    },
+    "generic_feeds": {
+      "attempted_sources": 18,
+      "successful_sources": 8,
+      "failed_sources": 0,
+      "no_feed_sources": 10,
+      "failed": 0,
+      "rows": 106,
+      "latency_ms": 9171.4
+    },
+    "feed:first": {
+      "attempts": 1,
+      "feed_rows": 25,
+      "accepted_rows": 18,
+      "working_feed": "https://first.org/newsroom/news/rss.xml",
+      "error": "",
+      "row_cap": 25,
+      "status": "ok"
+    },
+    "feed:vendor_17": {
+      "attempts": 1,
+      "feed_rows": 10,
+      "accepted_rows": 10,
+      "working_feed": "https://xmcyber.com/feed",
+      "error": "",
+      "row_cap": 25,
+      "status": "ok"
+    },
+    "feed:vendor_16": {
+      "attempts": 1,
+      "feed_rows": 10,
+      "accepted_rows": 10,
+      "working_feed": "https://www.attackiq.com/feed/",
+      "error": "",
+      "row_cap": 25,
+      "status": "ok"
+    },
+    "feed:int_es_12": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:vendor_21": {
+      "attempts": 1,
+      "feed_rows": 25,
+      "accepted_rows": 25,
+      "working_feed": "https://netscout.com/feed",
+      "error": "",
+      "row_cap": 25,
+      "status": "ok"
+    },
+    "feed:vendor_24": {
+      "attempts": 1,
+      "feed_rows": 25,
+      "accepted_rows": 25,
+      "working_feed": "https://aws.amazon.com/rss",
+      "error": "",
+      "row_cap": 25,
+      "status": "ok"
+    },
+    "feed:int_es_20": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 404: <!DOCTYPE html><html lang=\"en\" data-astro-cid-zetdm5md> <head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Claranet Limited | Page not found</title><link rel=\"icon\" type=\"image/svg\" href=\"/favicon.svg\"><script type=\"module\" src=\"/com/_astro/404.astro_astro_type_script_index_0_lang.BRyqG8IC.js\"></script><link rel=\"stylesheet\" href=\"/com/_astro/_page_.BsRRHd3D.css\"> <style>.main-page[data-astro-cid-zetdm5md]{position:relative;background:radial-gradient(ellipse at bottom,#1b2947,#0d1420);overflow:hidden}.star-layer[data-astro-cid-zetdm5md]{position:absolute;top:0;left:0;width:200vw;height:100vh;pointer-events:none;will-change:transform}#stars-small[data-astro-cid-zetdm5md]{z-index:2;animation:scrollStars 51s linear infinite}#stars-medium[data-astro-cid-zetdm5md]{z-index:3;animation:scrollStars 25.5s linear infinite}#stars-large[data-astr",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:int_es_15": {
+      "attempts": 1,
+      "feed_rows": 7,
+      "accepted_rows": 7,
+      "working_feed": "https://www.nunsys.com/feed/",
+      "error": "",
+      "row_cap": 25,
+      "status": "ok"
+    },
+    "feed:int_es_24": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 403: Forbidden",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:int_es_8": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "ParseError: not well-formed (invalid token): line 25, column 2398",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:int_es_21": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 404:  <!DOCTYPE html> <html lang=\"en\"  hreflang=\"en\" item-lang=\"en\"> <head> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"> <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /> <title>\r \t  \r </title> <!-- Page generated: 8/26/2026 11:11:51 AM // ut 28465 --> <!-- Favicons --> <link href=\"/favicon.ico\" rel=\"icon\"> <link href=\"/favicon.png\" rel=\"icon\"> <link href=\"/apple-touch-icon.png\" rel=\"apple-touch-icon\"> <link href=\"/favicon.svg\" rel=\"icon\" type=\"image/svg+xml\"> <!-- Google Fonts --> <link rel=\"preload\" href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i\" as=\"style\" onload=\"this.rel='stylesheet'\"> <noscript><link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Open",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:int_pt_11": {
+      "attempts": 1,
+      "feed_rows": 6,
+      "accepted_rows": 6,
+      "working_feed": "https://xpand-it.com/pt-pt//feed/",
+      "error": "",
+      "row_cap": 25,
+      "status": "ok"
+    },
+    "feed:int_pt_14": {
+      "attempts": 1,
+      "feed_rows": 5,
+      "accepted_rows": 5,
+      "working_feed": "https://www.glinttglobal.com/feed/",
+      "error": "",
+      "row_cap": 25,
+      "status": "ok"
+    },
+    "feed:int_es_3": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 404: <!DOCTYPE HTML>   <html lang=\"en-US\">        <head data-page-title=\"Page Not Found\" data-cmp-utag-data=\"{&#34;webpageType&#34;:&#34;&#34;,&#34;template&#34;:&#34;&#34;,&#34;keywords&#34;:&#34;&#34;,&#34;contentOwner&#34;:&#34;&#34;,&#34;globalPractice&#34;:&#34;&#34;,&#34;serviceLine&#34;:&#34;&#34;,&#34;alliancePartner&#34;:&#34;&#34;,&#34;industry&#34;:&#34;&#34;,&#34;channel&#34;:&#34;&#34;,&#34;status&#34;:&#34;published&#34;,&#34;publishedUrl&#34;:&#34;https://www-pre.kyndryl.com/us/en/errors&#34;,&#34;firstPublished&#34;:&#34;2026-06-15T04:45:03.803Z&#34;,&#34;lastPublished&#34;:&#34;&#34;,&#34;organizationMarkets&#34;:&#34;&#34;,&#34;topics&#34;:[],&#34;adl_site_hierarchy&#34;:[&#34;errors&#34;],&#34;adl_category&#34;:&#34;errors&#34;,&#34;adl_subcategory&#34;:&#34;&#34;,&#34;adl_language&#34;:&#34;en&#34;,&#34;adl_country&#34;:&#34;us&#34;,&#34;adl_page_type&#34;:&#34;&#34;,&#34;",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:int_pt_7": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 404:  <!DOCTYPE HTML> <html lang=\"en-US\">     <head>     <meta charset=\"UTF-8\"/>     <meta name=\"content-page-ref\" content=\"qZjrnj2VxWlgck9uZ19m1t-LAcu6YJaudRttdqFhx7-x8lYVY_Wd7VqbvF0RCwfAF3EW6rXSZdshqq17jOBSfQ\"/> <script defer=\"defer\" type=\"text/javascript\" src=\"/.rum/@adobe/helix-rum-js@%5E2/dist/micro.js\"></script> <script>     const privacyUrlTranslation = {         en: 'Cookie policy',         fr: 'Politique relative aux cookies',         nl: 'Cookieverklaring',         es: 'Política de cookies',         pt: 'Política de cookies'     };      function getLanguage(){         const availableLanguages = 'ar,bg,ca,cn,cs,da,de,et,el,en,es,fi,fr,hr,hu,it,ja,ko,lb,lt,lv,nl,no,oc,pl,pt,ro,ru,se,sk,sq,sv,tr,uk,vi,zh',             defaultLanguage = 'en';          // get the html lang         if (document.documentElement.getAttribute(\"lang\") !== undefined && document.documentElement.getAttribute(\"la",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:int_pt_5": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 404: <!DOCTYPE html> <!--[if IE 8 ]><html class=\"coh-ie8\"  lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <![endif]--> <!--[if IE 9 ]><html class=\"coh-ie9\"  lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <![endif]--> <!--[if (gt IE 9)|!(IE)]><!--> <html lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <!--<![endif]--> <head>     <meta charset=\"utf-8\" /> <script type=\"text/javascript\" nonce=\"bEN2WFZuUk5YRktNTkd1UHpKeVF1Q0NJSlcxY2xLaW8=\">     window.dataLayer = window.dataLayer || [];      function gtag() { dataLayer.push(arguments); }          gtag('set', 'developer_id.dMDhkMT', true);     gtag('consent', 'default', {          ad_storage: 'denied',         analytics_storage: 'denied',         functionality_storage: 'denied',         personalization_storage: 'denied',         security_storage: 'granted',         ad_user_data: 'denied',         ad_personalization: 'denied',",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:int_es_1": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 404: <!DOCTYPE html><html lang=\"en\" class=\"__variable_a7808f __variable_c9345c __variable_6e7a57\"><head><meta charSet=\"utf-8\" data-next-head=\"\"/><meta name=\"viewport\" content=\"width=device-width\" data-next-head=\"\"/><title data-next-head=\"\">We’re sorry, we cannot find that page</title><link rel=\"icon\" href=\"/favicon.ico\" data-next-head=\"\"/><meta name=\"google-site-verification\" content=\"cu1EpN26Mx_DwKcuyE3PPEPyIlAEq08Sbk8H4Nq642c\" data-next-head=\"\"/><meta property=\"og:title\" content=\"We’re sorry, we cannot find that page\" data-next-head=\"\"/><meta property=\"og:type\" content=\"website\" data-next-head=\"\"/><meta property=\"og:url\" content=\"https://www.nttdata.com/en-us/404-page\" data-next-head=\"\"/><meta name=\"twitter:title\" content=\"We’re sorry, we cannot find that page\" data-next-head=\"\"/><link rel=\"canonical\" href=\"https://www.nttdata.com/en-us/404-page\" data-next-head=\"\"/><link rel=\"preconnect\" hr",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:int_es_19": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "",
+      "row_cap": 25,
+      "status": "no_feed"
+    }
+  }
+}

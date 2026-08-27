@@ -1,0 +1,1009 @@
+{
+  "version": "3.2.6",
+  "profile": "daily",
+  "started_at": "2026-08-27T15:42:18.259933+00:00",
+  "v31_budget": 417,
+  "v32_budget": 293,
+  "v31_rc": 0,
+  "foundation": {
+    "v31_status": "published",
+    "legacy_status": "ok",
+    "legacy_returncode": 0
+  },
+  "events": 214,
+  "unclassified": 82,
+  "candidates": 330,
+  "deduplicated": 34,
+  "decisions": 30,
+  "direct_rows": 205,
+  "direct_raw_rows": 205,
+  "direct_deduplicated_rows": 0,
+  "nodes": 136,
+  "edges": 97,
+  "direct_stats": {
+    "ted_search": {
+      "attempted": 2,
+      "successful": 2,
+      "failed": 0,
+      "rows": 55,
+      "raw_notices": 360,
+      "technology_notices": 55,
+      "errors": [],
+      "latency_ms": 4501.5
+    },
+    "placsp_atom": {
+      "attempted": 1,
+      "successful": 1,
+      "failed": 0,
+      "rows": 11,
+      "raw_feed_rows": 80,
+      "technology_rows": 11,
+      "entity_matched_rows": 0,
+      "url_used": "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3.atom",
+      "cached": 0,
+      "errors": [],
+      "latency_ms": 9261.3
+    },
+    "cisa_kev": {
+      "attempted": 1,
+      "failed": 0,
+      "rows": 33,
+      "latency_ms": 1416.3
+    },
+    "generic_feeds": {
+      "attempted_sources": 18,
+      "successful_sources": 8,
+      "failed_sources": 0,
+      "no_feed_sources": 10,
+      "failed": 0,
+      "rows": 106,
+      "per_source": {
+        "first": {
+          "attempts": 1,
+          "feed_rows": 25,
+          "accepted_rows": 18,
+          "working_feed": "https://first.org/newsroom/news/rss.xml",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "vendor_17": {
+          "attempts": 1,
+          "feed_rows": 10,
+          "accepted_rows": 10,
+          "working_feed": "https://xmcyber.com/feed",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "vendor_16": {
+          "attempts": 1,
+          "feed_rows": 10,
+          "accepted_rows": 10,
+          "working_feed": "https://www.attackiq.com/feed/",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "int_es_12": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "vendor_21": {
+          "attempts": 1,
+          "feed_rows": 25,
+          "accepted_rows": 25,
+          "working_feed": "https://netscout.com/feed",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "vendor_24": {
+          "attempts": 1,
+          "feed_rows": 25,
+          "accepted_rows": 25,
+          "working_feed": "https://aws.amazon.com/rss",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "int_es_20": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404: <!DOCTYPE html><html lang=\"en\" data-astro-cid-zetdm5md> <head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Claranet Limited | Page not found</title><link rel=\"icon\" type=\"image/svg\" href=\"/favicon.svg\"><script type=\"module\" src=\"/com/_astro/404.astro_astro_type_script_index_0_lang.BRyqG8IC.js\"></script><link rel=\"stylesheet\" href=\"/com/_astro/_page_.BsRRHd3D.css\"> <style>.main-page[data-astro-cid-zetdm5md]{position:relative;background:radial-gradient(ellipse at bottom,#1b2947,#0d1420);overflow:hidden}.star-layer[data-astro-cid-zetdm5md]{position:absolute;top:0;left:0;width:200vw;height:100vh;pointer-events:none;will-change:transform}#stars-small[data-astro-cid-zetdm5md]{z-index:2;animation:scrollStars 51s linear infinite}#stars-medium[data-astro-cid-zetdm5md]{z-index:3;animation:scrollStars 25.5s linear infinite}#stars-large[data-astr",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_es_15": {
+          "attempts": 1,
+          "feed_rows": 7,
+          "accepted_rows": 7,
+          "working_feed": "https://www.nunsys.com/feed/",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "int_es_24": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 403: Forbidden",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_es_8": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "ParseError: not well-formed (invalid token): line 25, column 2398",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_es_21": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404:  <!DOCTYPE html> <html lang=\"en\"  hreflang=\"en\" item-lang=\"en\"> <head> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"> <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /> <title>\r \t  \r </title> <!-- Page generated: 8/26/2026 11:11:51 AM // ut 28465 --> <!-- Favicons --> <link href=\"/favicon.ico\" rel=\"icon\"> <link href=\"/favicon.png\" rel=\"icon\"> <link href=\"/apple-touch-icon.png\" rel=\"apple-touch-icon\"> <link href=\"/favicon.svg\" rel=\"icon\" type=\"image/svg+xml\"> <!-- Google Fonts --> <link rel=\"preload\" href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i\" as=\"style\" onload=\"this.rel='stylesheet'\"> <noscript><link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Open",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_pt_11": {
+          "attempts": 1,
+          "feed_rows": 6,
+          "accepted_rows": 6,
+          "working_feed": "https://xpand-it.com/pt-pt//feed/",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "int_pt_14": {
+          "attempts": 1,
+          "feed_rows": 5,
+          "accepted_rows": 5,
+          "working_feed": "https://www.glinttglobal.com/feed/",
+          "error": "",
+          "row_cap": 25,
+          "status": "ok"
+        },
+        "int_es_3": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404: <!DOCTYPE HTML>   <html lang=\"en-US\">        <head data-page-title=\"Page Not Found\" data-cmp-utag-data=\"{&#34;webpageType&#34;:&#34;&#34;,&#34;template&#34;:&#34;&#34;,&#34;keywords&#34;:&#34;&#34;,&#34;contentOwner&#34;:&#34;&#34;,&#34;globalPractice&#34;:&#34;&#34;,&#34;serviceLine&#34;:&#34;&#34;,&#34;alliancePartner&#34;:&#34;&#34;,&#34;industry&#34;:&#34;&#34;,&#34;channel&#34;:&#34;&#34;,&#34;status&#34;:&#34;published&#34;,&#34;publishedUrl&#34;:&#34;https://www-pre.kyndryl.com/us/en/errors&#34;,&#34;firstPublished&#34;:&#34;2026-06-15T04:45:03.803Z&#34;,&#34;lastPublished&#34;:&#34;&#34;,&#34;organizationMarkets&#34;:&#34;&#34;,&#34;topics&#34;:[],&#34;adl_site_hierarchy&#34;:[&#34;errors&#34;],&#34;adl_category&#34;:&#34;errors&#34;,&#34;adl_subcategory&#34;:&#34;&#34;,&#34;adl_language&#34;:&#34;en&#34;,&#34;adl_country&#34;:&#34;us&#34;,&#34;adl_page_type&#34;:&#34;&#34;,&#34;",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_pt_7": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404:  <!DOCTYPE HTML> <html lang=\"en-US\">     <head>     <meta charset=\"UTF-8\"/>     <meta name=\"content-page-ref\" content=\"qZjrnj2VxWlgck9uZ19m1t-LAcu6YJaudRttdqFhx7-x8lYVY_Wd7VqbvF0RCwfAF3EW6rXSZdshqq17jOBSfQ\"/> <script defer=\"defer\" type=\"text/javascript\" src=\"/.rum/@adobe/helix-rum-js@%5E2/dist/micro.js\"></script> <script>     const privacyUrlTranslation = {         en: 'Cookie policy',         fr: 'Politique relative aux cookies',         nl: 'Cookieverklaring',         es: 'Política de cookies',         pt: 'Política de cookies'     };      function getLanguage(){         const availableLanguages = 'ar,bg,ca,cn,cs,da,de,et,el,en,es,fi,fr,hr,hu,it,ja,ko,lb,lt,lv,nl,no,oc,pl,pt,ro,ru,se,sk,sq,sv,tr,uk,vi,zh',             defaultLanguage = 'en';          // get the html lang         if (document.documentElement.getAttribute(\"lang\") !== undefined && document.documentElement.getAttribute(\"la",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_pt_5": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404: <!DOCTYPE html> <!--[if IE 8 ]><html class=\"coh-ie8\"  lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <![endif]--> <!--[if IE 9 ]><html class=\"coh-ie9\"  lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <![endif]--> <!--[if (gt IE 9)|!(IE)]><!--> <html lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <!--<![endif]--> <head>     <meta charset=\"utf-8\" /> <script type=\"text/javascript\" nonce=\"bEN2WFZuUk5YRktNTkd1UHpKeVF1Q0NJSlcxY2xLaW8=\">     window.dataLayer = window.dataLayer || [];      function gtag() { dataLayer.push(arguments); }          gtag('set', 'developer_id.dMDhkMT', true);     gtag('consent', 'default', {          ad_storage: 'denied',         analytics_storage: 'denied',         functionality_storage: 'denied',         personalization_storage: 'denied',         security_storage: 'granted',         ad_user_data: 'denied',         ad_personalization: 'denied',",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_es_1": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404: <!DOCTYPE html><html lang=\"en\" class=\"__variable_a7808f __variable_c9345c __variable_6e7a57\"><head><meta charSet=\"utf-8\" data-next-head=\"\"/><meta name=\"viewport\" content=\"width=device-width\" data-next-head=\"\"/><title data-next-head=\"\">We’re sorry, we cannot find that page</title><link rel=\"icon\" href=\"/favicon.ico\" data-next-head=\"\"/><meta name=\"google-site-verification\" content=\"cu1EpN26Mx_DwKcuyE3PPEPyIlAEq08Sbk8H4Nq642c\" data-next-head=\"\"/><meta property=\"og:title\" content=\"We’re sorry, we cannot find that page\" data-next-head=\"\"/><meta property=\"og:type\" content=\"website\" data-next-head=\"\"/><meta property=\"og:url\" content=\"https://www.nttdata.com/en-us/404-page\" data-next-head=\"\"/><meta name=\"twitter:title\" content=\"We’re sorry, we cannot find that page\" data-next-head=\"\"/><link rel=\"canonical\" href=\"https://www.nttdata.com/en-us/404-page\" data-next-head=\"\"/><link rel=\"preconnect\" hr",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "int_es_19": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "",
+          "row_cap": 25,
+          "status": "no_feed"
+        }
+      },
+      "latency_ms": 9171.4
+    }
+  },
+  "briefing": {
+    "generated_at": "2026-08-27T15:46:01.425241+00:00",
+    "headline_metrics": {
+      "events": 214,
+      "high_materiality_events": 94,
+      "iberia_events": 134,
+      "actionable_decisions": 30,
+      "threats": 0,
+      "opportunities": 9,
+      "watches": 21,
+      "p1": 0,
+      "p2": 5,
+      "high_economic_potential": 0,
+      "medium_economic_potential": 27,
+      "max_economic_priority_score": 0.712,
+      "strong_evidence_decisions": 29
+    },
+    "decision_evidence_grades": {
+      "A": 29,
+      "C": 1
+    },
+    "top_event_types": [
+      [
+        "procurement_award",
+        40
+      ],
+      [
+        "strategy",
+        27
+      ],
+      [
+        "financial_performance",
+        24
+      ],
+      [
+        "procurement_notice",
+        22
+      ],
+      [
+        "ma_acquisition",
+        18
+      ],
+      [
+        "customer_reference",
+        12
+      ],
+      [
+        "award",
+        10
+      ],
+      [
+        "certification",
+        8
+      ],
+      [
+        "product_release",
+        7
+      ],
+      [
+        "service_launch",
+        7
+      ],
+      [
+        "hiring",
+        7
+      ],
+      [
+        "market_expansion",
+        4
+      ]
+    ],
+    "top_technologies": [
+      [
+        "Cloud",
+        49
+      ],
+      [
+        "Cybersecurity",
+        35
+      ],
+      [
+        "AI",
+        31
+      ],
+      [
+        "Networking",
+        24
+      ],
+      [
+        "IT Services",
+        22
+      ],
+      [
+        "Identity",
+        8
+      ],
+      [
+        "Data Center",
+        6
+      ],
+      [
+        "Observability",
+        4
+      ],
+      [
+        "SASE/SSE",
+        1
+      ]
+    ],
+    "scope_mix": {
+      "PT": 23,
+      "ES": 95,
+      "EUROPE": 6,
+      "IBERIA": 16,
+      "GLOBAL": 70,
+      "OTHER_REGION": 4
+    },
+    "top_decisions": [
+      {
+        "decision_id": "d_4f932f32e77419b3",
+        "impact": "watch",
+        "priority": "P2",
+        "priority_score": 0.812,
+        "evidence_priority_score": 0.864,
+        "title": "AWS Backup adds cross-Region backup copy and logically air-gapped vault support for Amazon DocumentDB in nine additional AWS Regions",
+        "entity_name": "AWS",
+        "object_entity": "",
+        "event_type": "pricing_licensing",
+        "technology_domains": [
+          "Cloud"
+        ],
+        "market_scope": "ES",
+        "materiality": 0.843,
+        "confidence": 0.808,
+        "westcon_relevance": 0.95,
+        "strategic_fit": 0.88,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.0,
+        "why": "Evento pricing_licensing: materialidad 0.84, fit estratégico 0.88, relevancia Westcon/Iberia 0.95, confianza 0.81.",
+        "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+        "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+        "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+        "owner_hint": "Estrategia / Vendor Management",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "AWS"
+        ],
+        "evidence_urls": [
+          "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-backup-cross-region-air-gapped-docdb/"
+        ],
+        "sources": [
+          "AWS"
+        ],
+        "source_count": 1,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.678,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.887,
+        "margin_potential": 0.638,
+        "recurrence_potential": 0.78,
+        "time_to_revenue_score": 0.38,
+        "enablement_effort_score": 0.46,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      },
+      {
+        "decision_id": "d_3ad6d084fb921f03",
+        "impact": "watch",
+        "priority": "P2",
+        "priority_score": 0.795,
+        "evidence_priority_score": 0.878,
+        "title": "Portugal – Centrales telefónicas – Aquisição de Upgrade à central telefónica do INEM",
+        "entity_name": "Timestamp",
+        "object_entity": "Timestamp – Sistemas de Informação, S.A.",
+        "event_type": "procurement_award",
+        "technology_domains": [],
+        "market_scope": "PT",
+        "materiality": 0.884,
+        "confidence": 0.877,
+        "westcon_relevance": 0.951,
+        "strategic_fit": 0.771,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.82,
+        "why": "Evento procurement_award: materialidad 0.88, fit estratégico 0.77, relevancia Westcon/Iberia 0.95, confianza 0.88.",
+        "recommended_action": "Mapear comprador, adjudicatario, tecnologías y partners; extraer aprendizaje del contrato adjudicado y cuentas análogas.",
+        "monetization": "Inteligencia de adjudicatarios, réplica de arquitectura, campañas por organismo/vertical y servicios attach.",
+        "kpi": "adjudicatarios mapeados; oportunidades análogas; pipeline influenciado; attach",
+        "owner_hint": "Ventas / PSM / Preventa",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "TED EU Procurement"
+        ],
+        "evidence_urls": [
+          "https://ted.europa.eu/en/notice/-/detail/593224-2026"
+        ],
+        "sources": [
+          "TED EU Procurement"
+        ],
+        "source_count": 1,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.583,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.865,
+        "margin_potential": 0.619,
+        "recurrence_potential": 0.36,
+        "time_to_revenue_score": 0.38,
+        "enablement_effort_score": 0.46,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      },
+      {
+        "decision_id": "d_41019353c37ce438",
+        "impact": "watch",
+        "priority": "P2",
+        "priority_score": 0.79,
+        "evidence_priority_score": 0.871,
+        "title": "España – Servicios de mantenimiento de sistemas – Infraestructura almacenamiento: soporte y mantenimiento",
+        "entity_name": "Econocom Spain",
+        "object_entity": "ECONOCOM SERVICIOS, S.A.",
+        "event_type": "procurement_award",
+        "technology_domains": [],
+        "market_scope": "ES",
+        "materiality": 0.88,
+        "confidence": 0.877,
+        "westcon_relevance": 0.945,
+        "strategic_fit": 0.749,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.78,
+        "why": "Evento procurement_award: materialidad 0.88, fit estratégico 0.75, relevancia Westcon/Iberia 0.94, confianza 0.88.",
+        "recommended_action": "Mapear comprador, adjudicatario, tecnologías y partners; extraer aprendizaje del contrato adjudicado y cuentas análogas.",
+        "monetization": "Inteligencia de adjudicatarios, réplica de arquitectura, campañas por organismo/vertical y servicios attach.",
+        "kpi": "adjudicatarios mapeados; oportunidades análogas; pipeline influenciado; attach",
+        "owner_hint": "Ventas / PSM / Preventa",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "TED EU Procurement"
+        ],
+        "evidence_urls": [
+          "https://ted.europa.eu/en/notice/-/detail/590552-2026"
+        ],
+        "sources": [
+          "TED EU Procurement"
+        ],
+        "source_count": 1,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.581,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.858,
+        "margin_potential": 0.615,
+        "recurrence_potential": 0.36,
+        "time_to_revenue_score": 0.38,
+        "enablement_effort_score": 0.46,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      },
+      {
+        "decision_id": "d_03b10082a704953b",
+        "impact": "watch",
+        "priority": "P2",
+        "priority_score": 0.788,
+        "evidence_priority_score": 0.868,
+        "title": "AWS Glue 5.1 is now available in AWS European Sovereign Cloud Region",
+        "entity_name": "AWS",
+        "object_entity": "",
+        "event_type": "market_expansion",
+        "technology_domains": [
+          "Cybersecurity",
+          "Cloud"
+        ],
+        "market_scope": "EUROPE",
+        "materiality": 0.851,
+        "confidence": 0.804,
+        "westcon_relevance": 0.93,
+        "strategic_fit": 0.92,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.0,
+        "why": "Evento market_expansion: materialidad 0.85, fit estratégico 0.92, relevancia Westcon/Iberia 0.93, confianza 0.80.",
+        "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+        "monetization": "Defensa/captura de cuentas y partners ante cambio de cobertura competitiva.",
+        "kpi": "cuentas defendidas; partners retenidos/captados; pipeline competitivo",
+        "owner_hint": "Dirección de Canal / Vendor Management",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "AWS"
+        ],
+        "evidence_urls": [
+          "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-glue-5-1-european-sovereign-cloud"
+        ],
+        "sources": [
+          "AWS"
+        ],
+        "source_count": 1,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.584,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.973,
+        "margin_potential": 0.646,
+        "recurrence_potential": 0.44,
+        "time_to_revenue_score": 0.24,
+        "enablement_effort_score": 0.68,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      },
+      {
+        "decision_id": "d_a9d621831940af6b",
+        "impact": "watch",
+        "priority": "P2",
+        "priority_score": 0.76,
+        "evidence_priority_score": 0.778,
+        "title": "How Bizerba Strengthens Digital Sovereignty with Continuous Exposure Management",
+        "entity_name": "XM Cyber",
+        "object_entity": "",
+        "event_type": "security_incident",
+        "technology_domains": [
+          "Cybersecurity"
+        ],
+        "market_scope": "GLOBAL",
+        "materiality": 0.783,
+        "confidence": 0.782,
+        "westcon_relevance": 0.78,
+        "strategic_fit": 0.76,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.0,
+        "why": "Evento security_incident: materialidad 0.78, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.78.",
+        "recommended_action": "Priorizar mitigación, servicios attach y comunicación técnica al canal.",
+        "monetization": "Assessment, hardening, managed security, remediation y renovación tecnológica.",
+        "kpi": "assessments; remediaciones; attach; renovaciones aceleradas",
+        "owner_hint": "Preventa / Ingeniería / Servicios",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "XM Cyber"
+        ],
+        "evidence_urls": [
+          "https://xmcyber.com/case-studies/how-bizerba-strengthens-digital-sovereignty-with-continuous-exposure-management/"
+        ],
+        "sources": [
+          "XM Cyber"
+        ],
+        "source_count": 1,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.712,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.821,
+        "margin_potential": 0.757,
+        "recurrence_potential": 0.78,
+        "time_to_revenue_score": 0.58,
+        "enablement_effort_score": 0.54,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      },
+      {
+        "decision_id": "d_431e158f64cc702b",
+        "impact": "opportunity",
+        "priority": "P3",
+        "priority_score": 0.759,
+        "evidence_priority_score": 0.811,
+        "title": "IAM Roles Anywhere now provides a Java plugin for the AWS SDK",
+        "entity_name": "AWS",
+        "object_entity": "",
+        "event_type": "product_release",
+        "technology_domains": [
+          "Cloud",
+          "Identity",
+          "IT Services"
+        ],
+        "market_scope": "EUROPE",
+        "materiality": 0.802,
+        "confidence": 0.785,
+        "westcon_relevance": 0.85,
+        "strategic_fit": 0.82,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.0,
+        "why": "Evento product_release: materialidad 0.80, fit estratégico 0.82, relevancia Westcon/Iberia 0.85, confianza 0.79.",
+        "recommended_action": "Actualizar enablement, demos, campañas y compatibilidades de portfolio.",
+        "monetization": "Upgrade/migración, demos, PoC, servicios profesionales y renewal pull-through.",
+        "kpi": "PoC; upgrades; pipeline; attach de servicios",
+        "owner_hint": "Preventa / Ingeniería / Servicios",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "AWS"
+        ],
+        "evidence_urls": [
+          "https://aws.amazon.com/about-aws/whats-new/2026/08/iam-roles-anywhere-java/"
+        ],
+        "sources": [
+          "AWS"
+        ],
+        "source_count": 1,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.624,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.85,
+        "margin_potential": 0.628,
+        "recurrence_potential": 0.44,
+        "time_to_revenue_score": 0.58,
+        "enablement_effort_score": 0.54,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      },
+      {
+        "decision_id": "d_23e22a0d804ef0ad",
+        "impact": "watch",
+        "priority": "P3",
+        "priority_score": 0.758,
+        "evidence_priority_score": 0.776,
+        "title": "Analyzing Nova Ransomware: A Rust-Based Encryptor with Multi-Layered Microsoft Defender Evasion Techniques",
+        "entity_name": "AttackIQ",
+        "object_entity": "",
+        "event_type": "security_incident",
+        "technology_domains": [
+          "Cybersecurity"
+        ],
+        "market_scope": "GLOBAL",
+        "materiality": 0.777,
+        "confidence": 0.782,
+        "westcon_relevance": 0.78,
+        "strategic_fit": 0.76,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.0,
+        "why": "Evento security_incident: materialidad 0.78, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.78.",
+        "recommended_action": "Priorizar mitigación, servicios attach y comunicación técnica al canal.",
+        "monetization": "Assessment, hardening, managed security, remediation y renovación tecnológica.",
+        "kpi": "assessments; remediaciones; attach; renovaciones aceleradas",
+        "owner_hint": "Preventa / Ingeniería / Servicios",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "AttackIQ"
+        ],
+        "evidence_urls": [
+          "https://www.attackiq.com/2026/07/31/analyzing-nova-ransomware/"
+        ],
+        "sources": [
+          "AttackIQ"
+        ],
+        "source_count": 1,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.712,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.821,
+        "margin_potential": 0.757,
+        "recurrence_potential": 0.78,
+        "time_to_revenue_score": 0.58,
+        "enablement_effort_score": 0.54,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      },
+      {
+        "decision_id": "d_88c4c8509c16be20",
+        "impact": "watch",
+        "priority": "P3",
+        "priority_score": 0.757,
+        "evidence_priority_score": 0.775,
+        "title": "Chaos Ransomware: BlackSuit-Linked RaaS Resurgence and Detection Opportunities",
+        "entity_name": "AttackIQ",
+        "object_entity": "",
+        "event_type": "security_incident",
+        "technology_domains": [
+          "Cybersecurity"
+        ],
+        "market_scope": "GLOBAL",
+        "materiality": 0.773,
+        "confidence": 0.782,
+        "westcon_relevance": 0.78,
+        "strategic_fit": 0.76,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.0,
+        "why": "Evento security_incident: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.78.",
+        "recommended_action": "Priorizar mitigación, servicios attach y comunicación técnica al canal.",
+        "monetization": "Assessment, hardening, managed security, remediation y renovación tecnológica.",
+        "kpi": "assessments; remediaciones; attach; renovaciones aceleradas",
+        "owner_hint": "Preventa / Ingeniería / Servicios",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "AttackIQ"
+        ],
+        "evidence_urls": [
+          "https://www.attackiq.com/2026/07/16/chaos-ransomware/"
+        ],
+        "sources": [
+          "AttackIQ"
+        ],
+        "source_count": 1,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.712,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.82,
+        "margin_potential": 0.757,
+        "recurrence_potential": 0.78,
+        "time_to_revenue_score": 0.58,
+        "enablement_effort_score": 0.54,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      },
+      {
+        "decision_id": "d_818508c03164aa4f",
+        "impact": "watch",
+        "priority": "P3",
+        "priority_score": 0.728,
+        "evidence_priority_score": 0.77,
+        "title": "AWS Lambda MicroVMs now supports AWS PrivateLink",
+        "entity_name": "AWS",
+        "object_entity": "",
+        "event_type": "pricing_licensing",
+        "technology_domains": [
+          "Networking",
+          "Cloud"
+        ],
+        "market_scope": "GLOBAL",
+        "materiality": 0.769,
+        "confidence": 0.768,
+        "westcon_relevance": 0.78,
+        "strategic_fit": 0.76,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.0,
+        "why": "Evento pricing_licensing: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+        "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+        "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+        "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+        "owner_hint": "Estrategia / Vendor Management",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "AWS"
+        ],
+        "evidence_urls": [
+          "https://aws.amazon.com/about-aws/whats-new/2026/08/lambda-microvms-supports-privatelink"
+        ],
+        "sources": [
+          "AWS"
+        ],
+        "source_count": 1,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.62,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.82,
+        "margin_potential": 0.617,
+        "recurrence_potential": 0.78,
+        "time_to_revenue_score": 0.24,
+        "enablement_effort_score": 0.54,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      },
+      {
+        "decision_id": "d_1988b7545abc99f6",
+        "impact": "watch",
+        "priority": "P3",
+        "priority_score": 0.728,
+        "evidence_priority_score": 0.77,
+        "title": "Amazon RDS for PostgreSQL supports minor versions 18.6, 17.11, 16.15, 15.19, and 14.24",
+        "entity_name": "AWS",
+        "object_entity": "",
+        "event_type": "pricing_licensing",
+        "technology_domains": [
+          "Cloud"
+        ],
+        "market_scope": "GLOBAL",
+        "materiality": 0.769,
+        "confidence": 0.768,
+        "westcon_relevance": 0.78,
+        "strategic_fit": 0.76,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.0,
+        "why": "Evento pricing_licensing: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+        "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+        "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+        "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+        "owner_hint": "Estrategia / Vendor Management",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "AWS"
+        ],
+        "evidence_urls": [
+          "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-rds-postgresql-18-6-17-11-16-15-15-19-14-24/"
+        ],
+        "sources": [
+          "AWS"
+        ],
+        "source_count": 1,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.62,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.82,
+        "margin_potential": 0.617,
+        "recurrence_potential": 0.78,
+        "time_to_revenue_score": 0.24,
+        "enablement_effort_score": 0.54,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      },
+      {
+        "decision_id": "d_6feade1bbe33195e",
+        "impact": "opportunity",
+        "priority": "P3",
+        "priority_score": 0.726,
+        "evidence_priority_score": 0.77,
+        "title": "AWS Lambda introduces managed runtimes in public preview for Node.js 26 and Python 3.15",
+        "entity_name": "AWS",
+        "object_entity": "",
+        "event_type": "product_release",
+        "technology_domains": [
+          "Cloud",
+          "Observability"
+        ],
+        "market_scope": "GLOBAL",
+        "materiality": 0.769,
+        "confidence": 0.768,
+        "westcon_relevance": 0.78,
+        "strategic_fit": 0.76,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.0,
+        "why": "Evento product_release: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+        "recommended_action": "Actualizar enablement, demos, campañas y compatibilidades de portfolio.",
+        "monetization": "Upgrade/migración, demos, PoC, servicios profesionales y renewal pull-through.",
+        "kpi": "PoC; upgrades; pipeline; attach de servicios",
+        "owner_hint": "Preventa / Ingeniería / Servicios",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "AWS"
+        ],
+        "evidence_urls": [
+          "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-lambda-node-js-python-public-preview/"
+        ],
+        "sources": [
+          "AWS"
+        ],
+        "source_count": 1,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.613,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.82,
+        "margin_potential": 0.617,
+        "recurrence_potential": 0.44,
+        "time_to_revenue_score": 0.58,
+        "enablement_effort_score": 0.54,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      },
+      {
+        "decision_id": "d_d5cab0ac5064ab2b",
+        "impact": "opportunity",
+        "priority": "P3",
+        "priority_score": 0.726,
+        "evidence_priority_score": 0.77,
+        "title": "Amazon RDS for Oracle now supports July 2026 Release Update",
+        "entity_name": "AWS",
+        "object_entity": "",
+        "event_type": "product_release",
+        "technology_domains": [
+          "Cybersecurity",
+          "Cloud"
+        ],
+        "market_scope": "GLOBAL",
+        "materiality": 0.769,
+        "confidence": 0.768,
+        "westcon_relevance": 0.78,
+        "strategic_fit": 0.76,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.0,
+        "why": "Evento product_release: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+        "recommended_action": "Actualizar enablement, demos, campañas y compatibilidades de portfolio.",
+        "monetization": "Upgrade/migración, demos, PoC, servicios profesionales y renewal pull-through.",
+        "kpi": "PoC; upgrades; pipeline; attach de servicios",
+        "owner_hint": "Preventa / Ingeniería / Servicios",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "AWS"
+        ],
+        "evidence_urls": [
+          "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-rds-oracle-july-2026-release-update",
+          "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-rds-supports-latest-cu-microsoft-sql-server/"
+        ],
+        "sources": [
+          "AWS"
+        ],
+        "source_count": 1,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.613,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.82,
+        "margin_potential": 0.617,
+        "recurrence_potential": 0.44,
+        "time_to_revenue_score": 0.58,
+        "enablement_effort_score": 0.54,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      }
+    ]
+  },
+  "competitive_entities": 14,
+  "competitive_high": 3,
+  "competitive_medium": 5,
+  "whitespace_candidates": 70,
+  "whitespace_shortlist": 25,
+  "portfolio_vendors": 15,
+  "event_type_counts": {
+    "procurement_award": 40,
+    "ma_acquisition": 18,
+    "market_expansion": 4,
+    "pricing_licensing": 3,
+    "distribution_agreement": 3,
+    "product_release": 7,
+    "security_incident": 4,
+    "managed_service": 3,
+    "partnership": 3,
+    "end_of_sale": 1,
+    "customer_reference": 12,
+    "procurement_notice": 22,
+    "certification": 8,
+    "service_launch": 7,
+    "operational_incident": 3,
+    "financial_performance": 24,
+    "capability_expansion": 1,
+    "strategy": 27,
+    "award": 10,
+    "investment": 1,
+    "hiring": 7,
+    "analyst_positioning": 2,
+    "leadership_change": 4
+  },
+  "quality_report": {
+    "generated_at": "2026-08-27T15:46:01.448714+00:00",
+    "events": 214,
+    "decisions": 30,
+    "decision_rate": 0.14,
+    "evidence_grade_counts": {
+      "A": 29,
+      "C": 1
+    },
+    "impact_counts": {
+      "watch": 21,
+      "opportunity": 9
+    },
+    "priority_counts": {
+      "P2": 5,
+      "P3": 25
+    },
+    "top_sources": [
+      [
+        "TED EU Procurement",
+        14
+      ],
+      [
+        "AWS",
+        7
+      ],
+      [
+        "AttackIQ",
+        2
+      ],
+      [
+        "Plataforma Contratación Sector Público",
+        2
+      ],
+      [
+        "NETSCOUT",
+        2
+      ],
+      [
+        "XM Cyber",
+        1
+      ],
+      [
+        "Glintt Global",
+        1
+      ],
+      [
+        "CISA KEV",
+        1
+      ]
+    ],
+    "top_source_share": 0.467,
+    "competitive_pressure": {
+      "generated_at": "2026-08-27T15:46:01.430422+00:00",
+      "entities": 14,
+      "high_pressure": 3,
+      "medium_pressure": 5,
+      "alerts": 8
+    },
+    "whitespace_shortlist": 25
+  },
+  "status": "published",
+  "finished_at": "2026-08-27T15:46:02.003912+00:00",
+  "runtime_seconds": 223.8
+}

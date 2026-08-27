@@ -48,43 +48,127 @@ def valid_json(path: pathlib.Path) -> bool:
         return False
 
 
-def run_streamed(command: list[str], env: dict, hard_timeout: int, log_path: pathlib.Path, label: str) -> tuple[int, str]:
-    started = time.monotonic()
+# V325_WINDOWS_STREAM_COMPAT
+
+def run_streamed(command, env, max_runtime, log_path, profile):
+    """Portable subprocess streaming: thread+queue instead of selectors on pipes."""
+    import queue as _queue
+    import subprocess as _subprocess
+    import threading as _threading
+    import time as _time
+
+    started = _time.monotonic()
+    deadline = started + max(1, float(max_runtime))
     last_heartbeat = started
-    proc = subprocess.Popen(command, cwd=ROOT, env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, start_new_session=True)
-    selector = selectors.DefaultSelector()
-    selector.register(proc.stdout, selectors.EVENT_READ)
-    outcome = "completed"
-    with log_path.open("a", encoding="utf-8") as log:
-        log.write(f"\n[{dt.datetime.now(dt.timezone.utc).isoformat()}] {label} command started\n")
-        while proc.poll() is None:
-            now = time.monotonic()
-            if now - started >= hard_timeout:
-                outcome = "outer-timeout"
-                print(f"supervisor: {label} reached outer deadline; requesting graceful publication", flush=True)
-                log.write(f"[{dt.datetime.now(dt.timezone.utc).isoformat()}] outer deadline; SIGINT sent\n")
-                os.killpg(proc.pid, signal.SIGINT)
+    q = _queue.Queue()
+    eof = object()
+    timed_out = False
+    line_count = 0
+
+    process = _subprocess.Popen(
+        command,
+        cwd=globals().get("ROOT"),
+        env=env,
+        stdout=_subprocess.PIPE,
+        stderr=_subprocess.STDOUT,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        bufsize=1,
+    )
+
+    def _reader():
+        try:
+            if process.stdout is not None:
+                for line in iter(process.stdout.readline, ""):
+                    q.put(line)
+        finally:
+            q.put(eof)
+
+    reader = _threading.Thread(
+        target=_reader,
+        name="legacy-stdout-reader",
+        daemon=True,
+    )
+    reader.start()
+
+    try:
+        parent = getattr(log_path, "parent", None)
+        if parent is not None:
+            parent.mkdir(parents=True, exist_ok=True)
+    except Exception:
+        pass
+
+    saw_eof = False
+    with open(log_path, "a", encoding="utf-8", errors="replace") as log_handle:
+        while True:
+            now = _time.monotonic()
+            if process.poll() is None and now >= deadline:
+                timed_out = True
+                print(
+                    f"supervisor timeout: {profile} · {int(now-started)}s elapsed · terminating child",
+                    flush=True,
+                )
                 try:
-                    proc.wait(timeout=90)
-                except subprocess.TimeoutExpired:
-                    os.killpg(proc.pid, signal.SIGTERM)
-                    try: proc.wait(timeout=20)
-                    except subprocess.TimeoutExpired: os.killpg(proc.pid, signal.SIGKILL)
+                    process.terminate()
+                    process.wait(timeout=5)
+                except Exception:
+                    try:
+                        process.kill()
+                    except Exception:
+                        pass
+
+            try:
+                item = q.get(timeout=0.5)
+                if item is eof:
+                    saw_eof = True
+                else:
+                    line_count += 1
+                    print(item, end="", flush=True)
+                    log_handle.write(item)
+                    log_handle.flush()
+            except _queue.Empty:
+                pass
+
+            now = _time.monotonic()
+            if process.poll() is None and now - last_heartbeat >= 30:
+                print(
+                    f"supervisor heartbeat: {profile} · {int(now-started)}s elapsed · process active",
+                    flush=True,
+                )
+                last_heartbeat = now
+
+            if process.poll() is not None and (saw_eof or not reader.is_alive()) and q.empty():
                 break
-            events = selector.select(timeout=2)
-            for key, _ in events:
-                line = key.fileobj.readline()
-                if line:
-                    safe = redact(line)
-                    print(safe, flush=True)
-                    log.write(safe + "\n")
-            if now - last_heartbeat >= 30:
-                heartbeat = f"supervisor heartbeat: {label} · {round(now-started)}s elapsed · process active"
-                print(heartbeat, flush=True);log.write(heartbeat + "\n");last_heartbeat = now
-        if proc.stdout:
-            for line in proc.stdout:
-                safe = redact(line);print(safe, flush=True);log.write(safe + "\n")
-    return int(proc.returncode or 0), outcome
+
+        while True:
+            try:
+                item = q.get_nowait()
+            except _queue.Empty:
+                break
+            if item is eof:
+                continue
+            line_count += 1
+            print(item, end="", flush=True)
+            log_handle.write(item)
+
+    try:
+        if process.stdout is not None:
+            process.stdout.close()
+    except Exception:
+        pass
+
+    rc = process.wait()
+    elapsed = round(_time.monotonic() - started, 1)
+    return rc, {
+        "status": "timeout" if timed_out else ("success" if rc == 0 else "failed"),
+        "timed_out": timed_out,
+        "returncode": rc,
+        "elapsed_seconds": elapsed,
+        "lines": line_count,
+        "stream_backend": "thread_queue",
+    }
+
 
 
 def run_validation(log_path: pathlib.Path) -> tuple[bool, str]:

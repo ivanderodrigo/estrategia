@@ -40,7 +40,7 @@ jobs:
       - name: Preflight offline del motor y la UI
         if: steps.schedule.outputs.run == 'true'
         run: |
-          python -m py_compile scripts/research.py scripts/research_supervisor.py scripts/configure_updates.py scripts/schedule_guard.py scripts/validate.py scripts/selftest.py scripts/test_resilience.py scripts/test_schedule.py
+          python -m py_compile scripts/research.py scripts/research_supervisor_v32.py scripts/configure_updates.py scripts/schedule_guard.py scripts/validate.py scripts/selftest.py scripts/test_resilience.py scripts/test_schedule.py scripts/research_supervisor.py scripts/research_supervisor_v31.py
           python scripts/selftest.py
           python scripts/test_resilience.py
           python scripts/test_schedule.py
@@ -50,13 +50,15 @@ jobs:
         if: steps.schedule.outputs.run == 'true'
         env:
           RESEARCH_PROFILE: deep
-        run: python scripts/research_supervisor.py --profile deep --max-runtime 1800 --fallback-runtime 240
+        run: python scripts/research_supervisor_v32.py --profile deep --max-runtime 1800 --fallback-runtime 240
       - name: Conservar diagnóstico de ejecución
         if: always() && steps.schedule.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: research-diagnostic-weekly-${{ github.run_id }}
           path: |
+            data/v31/
+            data/v32/
             diagnostics/*.log
             data/run_manifest.latest.json
             data/supervisor.latest.json
@@ -76,6 +78,7 @@ jobs:
           git config user.name "westcon-strategy-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/research.latest.json data/research_status.json data/research_learning.json data/research_queue.json data/changes.latest.json data/source_health.json data/discovered_entities.json data/research_errors.json data/run_manifest.latest.json data/supervisor.latest.json data/history/
+          git add data/v31/ data/v32/
           git diff --cached --quiet || git commit -m "chore: investigación estratégica profunda"
           git pull --rebase origin main
           git push origin HEAD:main

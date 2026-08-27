@@ -124,13 +124,18 @@ def main():
     for wf in ['.github/workflows/research-daily.yml','.github/workflows/research-weekly.yml','.github/workflows/research-monthly.yml']:
         assert (ROOT/wf).exists(), f'Falta workflow: {wf}'
         text=(ROOT/wf).read_text(encoding='utf-8')
-        assert 'research_supervisor.py' in text and 'upload-artifact@v4' in text, f'Workflow sin supervisor/diagnóstico: {wf}'
+        # V326_WORKFLOW_HIERARCHY_COMPAT
+        supervisors=('research_supervisor_v32.py','research_supervisor_v31.py','research_supervisor.py')
+        assert any(name in text for name in supervisors) and 'upload-artifact@v4' in text, f'Workflow sin supervisor/diagnóstico: {wf}'
+        if (ROOT/'scripts/research_supervisor_v32.py').exists():
+            assert 'research_supervisor_v32.py' in text, f'Workflow no apunta al supervisor v3.2: {wf}'
+            assert 'data/v31/' in text and 'data/v32/' in text, f'Workflow no persiste datasets v3.1/v3.2: {wf}'
         assert 'schedule_guard.py' in text and 'BEGIN CONFIGURABLE_SCHEDULE' in text, f'Workflow sin calendario configurable: {wf}'
         assert 'BRAVE_SEARCH_API_KEY' not in text and 'BASE_API_TOKEN' not in text, f'Workflow depende de una clave o suscripción: {wf}'
         assert 'run: python scripts/research.py' not in text and 'research.py --profile=' not in text, f'Workflow conserva el reintento monolítico defectuoso: {wf}'
     collector=(ROOT/'scripts/research.py').read_text(encoding='utf-8')
     assert 'BRAVE_SEARCH_API_KEY' not in collector and 'BASE_API_TOKEN' not in collector, 'El colector conserva dependencias de pago o tokenizadas'
-    for script in ['research_supervisor.py','configure_updates.py','schedule_guard.py','test_schedule.py']:
+    for script in ['research_supervisor.py','configure_updates.py','schedule_guard.py','test_schedule.py','research_supervisor_v31.py','research_supervisor_v32.py']:
         assert (ROOT/'scripts'/script).exists(), f'Falta script operativo: {script}'
     print(f'OK · {len(active)} vendors · {len(claims)} claims nuevos · {len(graph.get("distributors",[]))} perfiles mayoristas consolidados · {len(graph.get("integrators",[]))} perfiles integradores consolidados · {len(graph.get("architectures",[]))} arquitecturas · motor v11 validado')
 

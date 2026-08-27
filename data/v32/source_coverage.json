@@ -1,0 +1,1823 @@
+{
+  "meta": {
+    "generated_at": "2026-08-27T15:46:01.456917+00:00",
+    "registered": 151,
+    "direct_connector": 5,
+    "direct_feed": 8,
+    "direct_feed_probe": 10
+  },
+  "sources": [
+    {
+      "source_id": "gdelt",
+      "name": "GDELT DOC 2.0",
+      "category": "discovery",
+      "authority": 0.62,
+      "mode": "discovery_fallback",
+      "domains": [
+        "gdeltproject.org"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "google_news_es",
+      "name": "Google News RSS ES",
+      "category": "discovery",
+      "authority": 0.52,
+      "mode": "discovery_fallback",
+      "domains": [
+        "news.google.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "google_news_pt",
+      "name": "Google News RSS PT",
+      "category": "discovery",
+      "authority": 0.52,
+      "mode": "discovery_fallback",
+      "domains": [
+        "news.google.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "brave_optional",
+      "name": "Brave Search API",
+      "category": "discovery",
+      "authority": 0.6,
+      "mode": "discovery_fallback",
+      "domains": [
+        "search.brave.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "ted",
+      "name": "TED EU Procurement",
+      "category": "official",
+      "authority": 0.96,
+      "mode": "direct_connector",
+      "domains": [
+        "ted.europa.eu",
+        "api.ted.europa.eu"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "placsp",
+      "name": "Plataforma Contratación Sector Público",
+      "category": "official",
+      "authority": 0.98,
+      "mode": "direct_connector",
+      "domains": [
+        "contrataciondelsectorpublico.gob.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "portal_base",
+      "name": "Portal BASE Portugal",
+      "category": "official",
+      "authority": 0.98,
+      "mode": "token_or_policy_gated",
+      "domains": [
+        "base.gov.pt"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "impic",
+      "name": "IMPIC",
+      "category": "official",
+      "authority": 0.94,
+      "mode": "discovery_fallback",
+      "domains": [
+        "impic.pt"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "boe",
+      "name": "BOE",
+      "category": "official",
+      "authority": 0.98,
+      "mode": "discovery_fallback",
+      "domains": [
+        "boe.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "dre",
+      "name": "Diário da República",
+      "category": "official",
+      "authority": 0.98,
+      "mode": "discovery_fallback",
+      "domains": [
+        "diariodarepublica.pt"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "data_eu",
+      "name": "data.europa.eu",
+      "category": "official",
+      "authority": 0.94,
+      "mode": "discovery_fallback",
+      "domains": [
+        "data.europa.eu"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "eurostat",
+      "name": "Eurostat",
+      "category": "official",
+      "authority": 0.96,
+      "mode": "discovery_fallback",
+      "domains": [
+        "ec.europa.eu",
+        "eurostat.ec.europa.eu"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "cnmv",
+      "name": "CNMV",
+      "category": "official",
+      "authority": 0.97,
+      "mode": "discovery_fallback",
+      "domains": [
+        "cnmv.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "sec_edgar",
+      "name": "SEC EDGAR",
+      "category": "official",
+      "authority": 0.98,
+      "mode": "direct_connector",
+      "domains": [
+        "sec.gov",
+        "data.sec.gov"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "companies_house",
+      "name": "UK Companies House",
+      "category": "official",
+      "authority": 0.97,
+      "mode": "discovery_fallback",
+      "domains": [
+        "companieshouse.gov.uk"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "europarl",
+      "name": "European Parliament",
+      "category": "official",
+      "authority": 0.94,
+      "mode": "discovery_fallback",
+      "domains": [
+        "europarl.europa.eu"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "enisa",
+      "name": "ENISA",
+      "category": "regulatory",
+      "authority": 0.97,
+      "mode": "discovery_fallback",
+      "domains": [
+        "enisa.europa.eu"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "incibe",
+      "name": "INCIBE",
+      "category": "regulatory",
+      "authority": 0.96,
+      "mode": "discovery_fallback",
+      "domains": [
+        "incibe.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "ccncert",
+      "name": "CCN-CERT",
+      "category": "regulatory",
+      "authority": 0.98,
+      "mode": "discovery_fallback",
+      "domains": [
+        "ccn-cert.cni.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "cncs_pt",
+      "name": "CNCS Portugal",
+      "category": "regulatory",
+      "authority": 0.98,
+      "mode": "discovery_fallback",
+      "domains": [
+        "cncs.gov.pt"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "cert_eu",
+      "name": "CERT-EU",
+      "category": "regulatory",
+      "authority": 0.98,
+      "mode": "discovery_fallback",
+      "domains": [
+        "cert.europa.eu"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "cisa",
+      "name": "CISA",
+      "category": "regulatory",
+      "authority": 0.98,
+      "mode": "direct_connector",
+      "domains": [
+        "cisa.gov"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "nvd",
+      "name": "NVD NIST",
+      "category": "regulatory",
+      "authority": 0.98,
+      "mode": "direct_connector",
+      "domains": [
+        "nvd.nist.gov"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "nist",
+      "name": "NIST",
+      "category": "regulatory",
+      "authority": 0.98,
+      "mode": "discovery_fallback",
+      "domains": [
+        "nist.gov"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "mitre",
+      "name": "MITRE ATT&CK",
+      "category": "regulatory",
+      "authority": 0.97,
+      "mode": "discovery_fallback",
+      "domains": [
+        "mitre.org",
+        "attack.mitre.org"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "first",
+      "name": "FIRST",
+      "category": "regulatory",
+      "authority": 0.95,
+      "mode": "direct_feed",
+      "domains": [
+        "first.org"
+      ],
+      "feed_probe": {
+        "attempts": 1,
+        "feed_rows": 25,
+        "accepted_rows": 18,
+        "working_feed": "https://first.org/newsroom/news/rss.xml",
+        "error": "",
+        "row_cap": 25,
+        "status": "ok"
+      }
+    },
+    {
+      "source_id": "cve",
+      "name": "CVE Program",
+      "category": "regulatory",
+      "authority": 0.98,
+      "mode": "discovery_fallback",
+      "domains": [
+        "cve.org"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "aepd",
+      "name": "AEPD",
+      "category": "regulatory",
+      "authority": 0.98,
+      "mode": "discovery_fallback",
+      "domains": [
+        "aepd.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "cnpd_pt",
+      "name": "CNPD Portugal",
+      "category": "regulatory",
+      "authority": 0.98,
+      "mode": "discovery_fallback",
+      "domains": [
+        "cnpd.pt"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "cnmc",
+      "name": "CNMC",
+      "category": "regulatory",
+      "authority": 0.98,
+      "mode": "discovery_fallback",
+      "domains": [
+        "cnmc.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "anacom",
+      "name": "ANACOM",
+      "category": "regulatory",
+      "authority": 0.98,
+      "mode": "discovery_fallback",
+      "domains": [
+        "anacom.pt"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "edpb",
+      "name": "EDPB",
+      "category": "regulatory",
+      "authority": 0.98,
+      "mode": "discovery_fallback",
+      "domains": [
+        "edpb.europa.eu"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "gartner",
+      "name": "Gartner public",
+      "category": "analyst",
+      "authority": 0.88,
+      "mode": "discovery_fallback",
+      "domains": [
+        "gartner.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "idc",
+      "name": "IDC public",
+      "category": "analyst",
+      "authority": 0.88,
+      "mode": "discovery_fallback",
+      "domains": [
+        "idc.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "forrester",
+      "name": "Forrester public",
+      "category": "analyst",
+      "authority": 0.88,
+      "mode": "discovery_fallback",
+      "domains": [
+        "forrester.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "omdia",
+      "name": "Omdia public",
+      "category": "analyst",
+      "authority": 0.86,
+      "mode": "discovery_fallback",
+      "domains": [
+        "omdia.tech.informa.com",
+        "omdia.tech"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "canalys",
+      "name": "Canalys",
+      "category": "analyst",
+      "authority": 0.9,
+      "mode": "discovery_fallback",
+      "domains": [
+        "canalys.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "delloro",
+      "name": "Dell’Oro Group",
+      "category": "analyst",
+      "authority": 0.9,
+      "mode": "discovery_fallback",
+      "domains": [
+        "delloro.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "synergy",
+      "name": "Synergy Research Group",
+      "category": "analyst",
+      "authority": 0.9,
+      "mode": "discovery_fallback",
+      "domains": [
+        "srgresearch.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "isg",
+      "name": "ISG",
+      "category": "analyst",
+      "authority": 0.86,
+      "mode": "discovery_fallback",
+      "domains": [
+        "isg-one.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "kuppingercole",
+      "name": "KuppingerCole",
+      "category": "analyst",
+      "authority": 0.86,
+      "mode": "discovery_fallback",
+      "domains": [
+        "kuppingercole.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "everest",
+      "name": "Everest Group",
+      "category": "analyst",
+      "authority": 0.85,
+      "mode": "discovery_fallback",
+      "domains": [
+        "everestgrp.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "gigaom",
+      "name": "GigaOm",
+      "category": "analyst",
+      "authority": 0.79,
+      "mode": "discovery_fallback",
+      "domains": [
+        "gigaom.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "futuriom",
+      "name": "Futuriom",
+      "category": "analyst",
+      "authority": 0.78,
+      "mode": "discovery_fallback",
+      "domains": [
+        "futuriom.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "650group",
+      "name": "650 Group",
+      "category": "analyst",
+      "authority": 0.8,
+      "mode": "discovery_fallback",
+      "domains": [
+        "650group.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "abi",
+      "name": "ABI Research public",
+      "category": "analyst",
+      "authority": 0.78,
+      "mode": "discovery_fallback",
+      "domains": [
+        "abiresearch.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "counterpoint",
+      "name": "Counterpoint Research",
+      "category": "analyst",
+      "authority": 0.82,
+      "mode": "discovery_fallback",
+      "domains": [
+        "counterpointresearch.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "channelpartner_es",
+      "name": "Channel Partner ES",
+      "category": "channel_media",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "channelpartner.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "muycanal",
+      "name": "MuyCanal",
+      "category": "channel_media",
+      "authority": 0.72,
+      "mode": "discovery_fallback",
+      "domains": [
+        "muycanal.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "redestelecom",
+      "name": "Redes&Telecom",
+      "category": "channel_media",
+      "authority": 0.74,
+      "mode": "discovery_fallback",
+      "domains": [
+        "redestelecom.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "computing_es",
+      "name": "Computing España",
+      "category": "channel_media",
+      "authority": 0.74,
+      "mode": "discovery_fallback",
+      "domains": [
+        "computing.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "ituser",
+      "name": "IT User",
+      "category": "channel_media",
+      "authority": 0.72,
+      "mode": "discovery_fallback",
+      "domains": [
+        "ituser.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "revistabyte",
+      "name": "Byte TI",
+      "category": "channel_media",
+      "authority": 0.7,
+      "mode": "discovery_fallback",
+      "domains": [
+        "revistabyte.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "dealerworld",
+      "name": "DealerWorld",
+      "category": "channel_media",
+      "authority": 0.71,
+      "mode": "discovery_fallback",
+      "domains": [
+        "dealerworld.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "mcpro",
+      "name": "MCPRO",
+      "category": "channel_media",
+      "authority": 0.7,
+      "mode": "discovery_fallback",
+      "domains": [
+        "mcpro.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "itchannel_pt",
+      "name": "IT Channel Portugal",
+      "category": "channel_media",
+      "authority": 0.77,
+      "mode": "discovery_fallback",
+      "domains": [
+        "itchannel.pt"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "computerworld_pt",
+      "name": "Computerworld Portugal",
+      "category": "channel_media",
+      "authority": 0.76,
+      "mode": "discovery_fallback",
+      "domains": [
+        "computerworld.com.pt"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "tek_pt",
+      "name": "SAPO TEK",
+      "category": "channel_media",
+      "authority": 0.72,
+      "mode": "discovery_fallback",
+      "domains": [
+        "tek.sapo.pt"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "dinheirovivo",
+      "name": "Dinheiro Vivo tech",
+      "category": "channel_media",
+      "authority": 0.68,
+      "mode": "discovery_fallback",
+      "domains": [
+        "dinheirovivo.pt"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "crn",
+      "name": "CRN",
+      "category": "channel_media",
+      "authority": 0.8,
+      "mode": "discovery_fallback",
+      "domains": [
+        "crn.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "channelweb",
+      "name": "ChannelWeb",
+      "category": "channel_media",
+      "authority": 0.78,
+      "mode": "discovery_fallback",
+      "domains": [
+        "channelweb.co.uk"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "theregister",
+      "name": "The Register",
+      "category": "channel_media",
+      "authority": 0.76,
+      "mode": "discovery_fallback",
+      "domains": [
+        "theregister.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "sdxcentral",
+      "name": "SDxCentral",
+      "category": "channel_media",
+      "authority": 0.77,
+      "mode": "discovery_fallback",
+      "domains": [
+        "sdxcentral.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "networkworld",
+      "name": "Network World",
+      "category": "channel_media",
+      "authority": 0.77,
+      "mode": "discovery_fallback",
+      "domains": [
+        "networkworld.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "darkreading",
+      "name": "Dark Reading",
+      "category": "channel_media",
+      "authority": 0.78,
+      "mode": "discovery_fallback",
+      "domains": [
+        "darkreading.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "securityweek",
+      "name": "SecurityWeek",
+      "category": "channel_media",
+      "authority": 0.77,
+      "mode": "discovery_fallback",
+      "domains": [
+        "securityweek.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "dist_0",
+      "name": "TD SYNNEX",
+      "category": "distributor",
+      "authority": 0.88,
+      "mode": "discovery_fallback",
+      "domains": [
+        "tdsynnex.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "dist_1",
+      "name": "Ingram Micro",
+      "category": "distributor",
+      "authority": 0.88,
+      "mode": "discovery_fallback",
+      "domains": [
+        "ingrammicro.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "dist_2",
+      "name": "Arrow ECS",
+      "category": "distributor",
+      "authority": 0.88,
+      "mode": "discovery_fallback",
+      "domains": [
+        "arrow.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "dist_3",
+      "name": "Exclusive Networks",
+      "category": "distributor",
+      "authority": 0.88,
+      "mode": "discovery_fallback",
+      "domains": [
+        "exclusive-networks.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "dist_4",
+      "name": "V-Valley / Esprinet",
+      "category": "distributor",
+      "authority": 0.88,
+      "mode": "discovery_fallback",
+      "domains": [
+        "v-valley.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "dist_5",
+      "name": "ALSO",
+      "category": "distributor",
+      "authority": 0.88,
+      "mode": "discovery_fallback",
+      "domains": [
+        "also.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "dist_6",
+      "name": "MCR",
+      "category": "distributor",
+      "authority": 0.88,
+      "mode": "discovery_fallback",
+      "domains": [
+        "mcr.com.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "dist_7",
+      "name": "DMI Computer",
+      "category": "distributor",
+      "authority": 0.88,
+      "mode": "discovery_fallback",
+      "domains": [
+        "dmi.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "dist_8",
+      "name": "Lidera Network",
+      "category": "distributor",
+      "authority": 0.88,
+      "mode": "discovery_fallback",
+      "domains": [
+        "lidera.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "dist_9",
+      "name": "EET Group",
+      "category": "distributor",
+      "authority": 0.88,
+      "mode": "discovery_fallback",
+      "domains": [
+        "eetgroup.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "dist_10",
+      "name": "Westcon-Comstor",
+      "category": "distributor",
+      "authority": 0.88,
+      "mode": "discovery_fallback",
+      "domains": [
+        "westconcomstor.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_0",
+      "name": "Telefónica Tech",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "telefonicatech.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_1",
+      "name": "NTT DATA Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "direct_feed_probe",
+      "domains": [
+        "nttdata.com"
+      ],
+      "feed_probe": {
+        "attempts": 2,
+        "feed_rows": 0,
+        "accepted_rows": 0,
+        "working_feed": "",
+        "error": "HTTP 404: <!DOCTYPE html><html lang=\"en\" class=\"__variable_a7808f __variable_c9345c __variable_6e7a57\"><head><meta charSet=\"utf-8\" data-next-head=\"\"/><meta name=\"viewport\" content=\"width=device-width\" data-next-head=\"\"/><title data-next-head=\"\">We’re sorry, we cannot find that page</title><link rel=\"icon\" href=\"/favicon.ico\" data-next-head=\"\"/><meta name=\"google-site-verification\" content=\"cu1EpN26Mx_DwKcuyE3PPEPyIlAEq08Sbk8H4Nq642c\" data-next-head=\"\"/><meta property=\"og:title\" content=\"We’re sorry, we cannot find that page\" data-next-head=\"\"/><meta property=\"og:type\" content=\"website\" data-next-head=\"\"/><meta property=\"og:url\" content=\"https://www.nttdata.com/en-us/404-page\" data-next-head=\"\"/><meta name=\"twitter:title\" content=\"We’re sorry, we cannot find that page\" data-next-head=\"\"/><link rel=\"canonical\" href=\"https://www.nttdata.com/en-us/404-page\" data-next-head=\"\"/><link rel=\"preconnect\" hr",
+        "row_cap": 25,
+        "status": "no_feed"
+      }
+    },
+    {
+      "source_id": "int_es_2",
+      "name": "Inetum Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "inetum.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_3",
+      "name": "Kyndryl Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "direct_feed_probe",
+      "domains": [
+        "kyndryl.com"
+      ],
+      "feed_probe": {
+        "attempts": 2,
+        "feed_rows": 0,
+        "accepted_rows": 0,
+        "working_feed": "",
+        "error": "HTTP 404: <!DOCTYPE HTML>   <html lang=\"en-US\">        <head data-page-title=\"Page Not Found\" data-cmp-utag-data=\"{&#34;webpageType&#34;:&#34;&#34;,&#34;template&#34;:&#34;&#34;,&#34;keywords&#34;:&#34;&#34;,&#34;contentOwner&#34;:&#34;&#34;,&#34;globalPractice&#34;:&#34;&#34;,&#34;serviceLine&#34;:&#34;&#34;,&#34;alliancePartner&#34;:&#34;&#34;,&#34;industry&#34;:&#34;&#34;,&#34;channel&#34;:&#34;&#34;,&#34;status&#34;:&#34;published&#34;,&#34;publishedUrl&#34;:&#34;https://www-pre.kyndryl.com/us/en/errors&#34;,&#34;firstPublished&#34;:&#34;2026-06-15T04:45:03.803Z&#34;,&#34;lastPublished&#34;:&#34;&#34;,&#34;organizationMarkets&#34;:&#34;&#34;,&#34;topics&#34;:[],&#34;adl_site_hierarchy&#34;:[&#34;errors&#34;],&#34;adl_category&#34;:&#34;errors&#34;,&#34;adl_subcategory&#34;:&#34;&#34;,&#34;adl_language&#34;:&#34;en&#34;,&#34;adl_country&#34;:&#34;us&#34;,&#34;adl_page_type&#34;:&#34;&#34;,&#34;",
+        "row_cap": 25,
+        "status": "no_feed"
+      }
+    },
+    {
+      "source_id": "int_es_4",
+      "name": "Accenture Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "accenture.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_5",
+      "name": "Capgemini Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "capgemini.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_6",
+      "name": "Eviden Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "eviden.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_7",
+      "name": "Atos Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "atos.net"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_8",
+      "name": "Indra",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "direct_feed_probe",
+      "domains": [
+        "indracompany.com"
+      ],
+      "feed_probe": {
+        "attempts": 2,
+        "feed_rows": 0,
+        "accepted_rows": 0,
+        "working_feed": "",
+        "error": "ParseError: not well-formed (invalid token): line 25, column 2398",
+        "row_cap": 25,
+        "status": "no_feed"
+      }
+    },
+    {
+      "source_id": "int_es_9",
+      "name": "Minsait",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "minsait.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_10",
+      "name": "SATEC",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "satec.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_11",
+      "name": "Logicalis Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "logicalis.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_12",
+      "name": "S21sec",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "direct_feed_probe",
+      "domains": [
+        "s21sec.com"
+      ],
+      "feed_probe": {
+        "attempts": 2,
+        "feed_rows": 0,
+        "accepted_rows": 0,
+        "working_feed": "",
+        "error": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+        "row_cap": 25,
+        "status": "no_feed"
+      }
+    },
+    {
+      "source_id": "int_es_13",
+      "name": "Babel",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "babelgroup.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_14",
+      "name": "SEIDOR",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "seidor.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_15",
+      "name": "Nunsys",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "direct_feed",
+      "domains": [
+        "nunsys.com"
+      ],
+      "feed_probe": {
+        "attempts": 1,
+        "feed_rows": 7,
+        "accepted_rows": 7,
+        "working_feed": "https://www.nunsys.com/feed/",
+        "error": "",
+        "row_cap": 25,
+        "status": "ok"
+      }
+    },
+    {
+      "source_id": "int_es_16",
+      "name": "Ayesa",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "ayesa.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_17",
+      "name": "Ricoh Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "ricoh.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_18",
+      "name": "Econocom Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "econocom.es"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_19",
+      "name": "Axians Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "direct_feed_probe",
+      "domains": [
+        "axians.es"
+      ],
+      "feed_probe": {
+        "attempts": 2,
+        "feed_rows": 0,
+        "accepted_rows": 0,
+        "working_feed": "",
+        "error": "",
+        "row_cap": 25,
+        "status": "no_feed"
+      }
+    },
+    {
+      "source_id": "int_es_20",
+      "name": "Claranet Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "direct_feed_probe",
+      "domains": [
+        "claranet.com"
+      ],
+      "feed_probe": {
+        "attempts": 2,
+        "feed_rows": 0,
+        "accepted_rows": 0,
+        "working_feed": "",
+        "error": "HTTP 404: <!DOCTYPE html><html lang=\"en\" data-astro-cid-zetdm5md> <head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Claranet Limited | Page not found</title><link rel=\"icon\" type=\"image/svg\" href=\"/favicon.svg\"><script type=\"module\" src=\"/com/_astro/404.astro_astro_type_script_index_0_lang.BRyqG8IC.js\"></script><link rel=\"stylesheet\" href=\"/com/_astro/_page_.BsRRHd3D.css\"> <style>.main-page[data-astro-cid-zetdm5md]{position:relative;background:radial-gradient(ellipse at bottom,#1b2947,#0d1420);overflow:hidden}.star-layer[data-astro-cid-zetdm5md]{position:absolute;top:0;left:0;width:200vw;height:100vh;pointer-events:none;will-change:transform}#stars-small[data-astro-cid-zetdm5md]{z-index:2;animation:scrollStars 51s linear infinite}#stars-medium[data-astro-cid-zetdm5md]{z-index:3;animation:scrollStars 25.5s linear infinite}#stars-large[data-astr",
+        "row_cap": 25,
+        "status": "no_feed"
+      }
+    },
+    {
+      "source_id": "int_es_21",
+      "name": "Computacenter Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "direct_feed_probe",
+      "domains": [
+        "computacenter.com"
+      ],
+      "feed_probe": {
+        "attempts": 2,
+        "feed_rows": 0,
+        "accepted_rows": 0,
+        "working_feed": "",
+        "error": "HTTP 404:  <!DOCTYPE html> <html lang=\"en\"  hreflang=\"en\" item-lang=\"en\"> <head> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"> <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /> <title>\r \t  \r </title> <!-- Page generated: 8/26/2026 11:11:51 AM // ut 28465 --> <!-- Favicons --> <link href=\"/favicon.ico\" rel=\"icon\"> <link href=\"/favicon.png\" rel=\"icon\"> <link href=\"/apple-touch-icon.png\" rel=\"apple-touch-icon\"> <link href=\"/favicon.svg\" rel=\"icon\" type=\"image/svg+xml\"> <!-- Google Fonts --> <link rel=\"preload\" href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i\" as=\"style\" onload=\"this.rel='stylesheet'\"> <noscript><link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Open",
+        "row_cap": 25,
+        "status": "no_feed"
+      }
+    },
+    {
+      "source_id": "int_es_22",
+      "name": "SCC Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "scc.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_23",
+      "name": "Orange Business Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "orange-business.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_es_24",
+      "name": "T-Systems Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "direct_feed_probe",
+      "domains": [
+        "t-systems.com"
+      ],
+      "feed_probe": {
+        "attempts": 2,
+        "feed_rows": 0,
+        "accepted_rows": 0,
+        "working_feed": "",
+        "error": "HTTP 403: Forbidden",
+        "row_cap": 25,
+        "status": "no_feed"
+      }
+    },
+    {
+      "source_id": "int_es_25",
+      "name": "Bechtle Spain",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "bechtle.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_pt_0",
+      "name": "Claranet Portugal",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "claranet.pt",
+        "claranet.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_pt_1",
+      "name": "Warpcom",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "warpcom.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_pt_2",
+      "name": "Noesis",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "noesis.pt"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_pt_3",
+      "name": "Timestamp",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "timestampgroup.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_pt_4",
+      "name": "Devoteam Portugal",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "devoteam.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_pt_5",
+      "name": "Logicalis Portugal",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "direct_feed_probe",
+      "domains": [
+        "logicalis.com"
+      ],
+      "feed_probe": {
+        "attempts": 2,
+        "feed_rows": 0,
+        "accepted_rows": 0,
+        "working_feed": "",
+        "error": "HTTP 404: <!DOCTYPE html> <!--[if IE 8 ]><html class=\"coh-ie8\"  lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <![endif]--> <!--[if IE 9 ]><html class=\"coh-ie9\"  lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <![endif]--> <!--[if (gt IE 9)|!(IE)]><!--> <html lang=\"en\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\"> <!--<![endif]--> <head>     <meta charset=\"utf-8\" /> <script type=\"text/javascript\" nonce=\"bEN2WFZuUk5YRktNTkd1UHpKeVF1Q0NJSlcxY2xLaW8=\">     window.dataLayer = window.dataLayer || [];      function gtag() { dataLayer.push(arguments); }          gtag('set', 'developer_id.dMDhkMT', true);     gtag('consent', 'default', {          ad_storage: 'denied',         analytics_storage: 'denied',         functionality_storage: 'denied',         personalization_storage: 'denied',         security_storage: 'granted',         ad_user_data: 'denied',         ad_personalization: 'denied',",
+        "row_cap": 25,
+        "status": "no_feed"
+      }
+    },
+    {
+      "source_id": "int_pt_6",
+      "name": "NTT DATA Portugal",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "nttdata.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_pt_7",
+      "name": "Inetum Portugal",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "direct_feed_probe",
+      "domains": [
+        "inetum.com"
+      ],
+      "feed_probe": {
+        "attempts": 2,
+        "feed_rows": 0,
+        "accepted_rows": 0,
+        "working_feed": "",
+        "error": "HTTP 404:  <!DOCTYPE HTML> <html lang=\"en-US\">     <head>     <meta charset=\"UTF-8\"/>     <meta name=\"content-page-ref\" content=\"qZjrnj2VxWlgck9uZ19m1t-LAcu6YJaudRttdqFhx7-x8lYVY_Wd7VqbvF0RCwfAF3EW6rXSZdshqq17jOBSfQ\"/> <script defer=\"defer\" type=\"text/javascript\" src=\"/.rum/@adobe/helix-rum-js@%5E2/dist/micro.js\"></script> <script>     const privacyUrlTranslation = {         en: 'Cookie policy',         fr: 'Politique relative aux cookies',         nl: 'Cookieverklaring',         es: 'Política de cookies',         pt: 'Política de cookies'     };      function getLanguage(){         const availableLanguages = 'ar,bg,ca,cn,cs,da,de,et,el,en,es,fi,fr,hr,hu,it,ja,ko,lb,lt,lv,nl,no,oc,pl,pt,ro,ru,se,sk,sq,sv,tr,uk,vi,zh',             defaultLanguage = 'en';          // get the html lang         if (document.documentElement.getAttribute(\"lang\") !== undefined && document.documentElement.getAttribute(\"la",
+        "row_cap": 25,
+        "status": "no_feed"
+      }
+    },
+    {
+      "source_id": "int_pt_8",
+      "name": "Axians Portugal",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "axians.pt"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_pt_9",
+      "name": "NOS Sistemas",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "nos.pt"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_pt_10",
+      "name": "MEO Empresas",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "meo.pt"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_pt_11",
+      "name": "Xpand IT",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "direct_feed",
+      "domains": [
+        "xpand-it.com"
+      ],
+      "feed_probe": {
+        "attempts": 1,
+        "feed_rows": 6,
+        "accepted_rows": 6,
+        "working_feed": "https://xpand-it.com/pt-pt//feed/",
+        "error": "",
+        "row_cap": 25,
+        "status": "ok"
+      }
+    },
+    {
+      "source_id": "int_pt_12",
+      "name": "askblue",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "askblue.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_pt_13",
+      "name": "Link Consulting",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "discovery_fallback",
+      "domains": [
+        "linkconsulting.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "int_pt_14",
+      "name": "Glintt Global",
+      "category": "integrator",
+      "authority": 0.75,
+      "mode": "direct_feed",
+      "domains": [
+        "glinttglobal.com"
+      ],
+      "feed_probe": {
+        "attempts": 1,
+        "feed_rows": 5,
+        "accepted_rows": 5,
+        "working_feed": "https://www.glinttglobal.com/feed/",
+        "error": "",
+        "row_cap": 25,
+        "status": "ok"
+      }
+    },
+    {
+      "source_id": "vendor_0",
+      "name": "Cisco",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "cisco.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_1",
+      "name": "Palo Alto Networks",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "paloaltonetworks.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_2",
+      "name": "CrowdStrike",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "crowdstrike.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_3",
+      "name": "Zscaler",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "zscaler.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_4",
+      "name": "F5",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "f5.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_5",
+      "name": "Proofpoint",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "proofpoint.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_6",
+      "name": "Splunk",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "splunk.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_7",
+      "name": "Extreme Networks",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "extremenetworks.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_8",
+      "name": "Fortinet",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "fortinet.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_9",
+      "name": "Check Point",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "checkpoint.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_10",
+      "name": "HPE Aruba Networking",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "hpe.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_11",
+      "name": "Juniper Networks",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "juniper.net"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_12",
+      "name": "Okta",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "okta.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_13",
+      "name": "Ping Identity",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "pingidentity.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_14",
+      "name": "Claroty",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "claroty.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_15",
+      "name": "Vectra AI",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "vectra.ai"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_16",
+      "name": "AttackIQ",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "direct_feed",
+      "domains": [
+        "attackiq.com"
+      ],
+      "feed_probe": {
+        "attempts": 1,
+        "feed_rows": 10,
+        "accepted_rows": 10,
+        "working_feed": "https://www.attackiq.com/feed/",
+        "error": "",
+        "row_cap": 25,
+        "status": "ok"
+      }
+    },
+    {
+      "source_id": "vendor_17",
+      "name": "XM Cyber",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "direct_feed",
+      "domains": [
+        "xmcyber.com"
+      ],
+      "feed_probe": {
+        "attempts": 1,
+        "feed_rows": 10,
+        "accepted_rows": 10,
+        "working_feed": "https://xmcyber.com/feed",
+        "error": "",
+        "row_cap": 25,
+        "status": "ok"
+      }
+    },
+    {
+      "source_id": "vendor_18",
+      "name": "FireMon",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "firemon.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_19",
+      "name": "Fortanix",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "fortanix.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_20",
+      "name": "Ivanti",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "ivanti.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_21",
+      "name": "NETSCOUT",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "direct_feed",
+      "domains": [
+        "netscout.com"
+      ],
+      "feed_probe": {
+        "attempts": 1,
+        "feed_rows": 25,
+        "accepted_rows": 25,
+        "working_feed": "https://netscout.com/feed",
+        "error": "",
+        "row_cap": 25,
+        "status": "ok"
+      }
+    },
+    {
+      "source_id": "vendor_22",
+      "name": "Ciena",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "ciena.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_23",
+      "name": "Nokia",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "nokia.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_24",
+      "name": "AWS",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "direct_feed",
+      "domains": [
+        "aws.amazon.com"
+      ],
+      "feed_probe": {
+        "attempts": 1,
+        "feed_rows": 25,
+        "accepted_rows": 25,
+        "working_feed": "https://aws.amazon.com/rss",
+        "error": "",
+        "row_cap": 25,
+        "status": "ok"
+      }
+    },
+    {
+      "source_id": "vendor_25",
+      "name": "Microsoft Azure",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "azure.microsoft.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "vendor_26",
+      "name": "UiPath",
+      "category": "vendor",
+      "authority": 0.91,
+      "mode": "discovery_fallback",
+      "domains": [
+        "uipath.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "github",
+      "name": "GitHub",
+      "category": "web_footprint",
+      "authority": 0.68,
+      "mode": "discovery_fallback",
+      "domains": [
+        "github.com"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "commoncrawl",
+      "name": "Common Crawl",
+      "category": "web_footprint",
+      "authority": 0.62,
+      "mode": "discovery_fallback",
+      "domains": [
+        "commoncrawl.org"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "arquivo",
+      "name": "Arquivo.pt",
+      "category": "web_footprint",
+      "authority": 0.78,
+      "mode": "discovery_fallback",
+      "domains": [
+        "arquivo.pt"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "wayback",
+      "name": "Internet Archive",
+      "category": "web_footprint",
+      "authority": 0.72,
+      "mode": "discovery_fallback",
+      "domains": [
+        "archive.org",
+        "web.archive.org"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "stackshare",
+      "name": "StackShare",
+      "category": "web_footprint",
+      "authority": 0.55,
+      "mode": "discovery_fallback",
+      "domains": [
+        "stackshare.io"
+      ],
+      "feed_probe": null
+    },
+    {
+      "source_id": "builtwith",
+      "name": "BuiltWith public",
+      "category": "web_footprint",
+      "authority": 0.58,
+      "mode": "discovery_fallback",
+      "domains": [
+        "builtwith.com"
+      ],
+      "feed_probe": null
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+name: Inteligencia exhaustiva mensual
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Generado por scripts/configure_updates.py; la guardia elige horario de verano/invierno.
+    # BEGIN CONFIGURABLE_SCHEDULE
+    - cron: "17 1 1 * *"
+    - cron: "17 2 1 * *"
+    # END CONFIGURABLE_SCHEDULE
+
+permissions:
+  contents: write
+
+concurrency:
+  group: westcon-public-intelligence
+  cancel-in-progress: false
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Comprobar calendario local
+        id: schedule
+        env:
+          SCHEDULE_EXPRESSION: ${{ github.event.schedule }}
+        run: python scripts/schedule_guard.py --profile exhaustive
+      - name: Dependencias
+        if: steps.schedule.outputs.run == 'true'
+        run: pip install -r requirements.txt
+      - name: Preflight offline del motor y la UI
+        if: steps.schedule.outputs.run == 'true'
+        run: |
+          python -m py_compile scripts/research.py scripts/research_supervisor_v32.py scripts/configure_updates.py scripts/schedule_guard.py scripts/validate.py scripts/selftest.py scripts/test_resilience.py scripts/test_schedule.py
+          python scripts/selftest.py
+          python scripts/test_resilience.py
+          python scripts/test_schedule.py
+          node --check assets/app.js
+          node scripts/ui_smoke.js
+      - name: Barrido exhaustivo mensual
+        if: steps.schedule.outputs.run == 'true'
+        env:
+          RESEARCH_PROFILE: exhaustive
+        run: python scripts/research_supervisor_v32.py --profile exhaustive --max-runtime 3300 --fallback-runtime 300
+      - name: Conservar diagnóstico de ejecución
+        if: always() && steps.schedule.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-diagnostic-monthly-${{ github.run_id }}
+          path: |
+            diagnostics/*.log
+            data/run_manifest.latest.json
+            data/supervisor.latest.json
+            data/research_errors.json
+            data/source_health.json
+            data/discovered_entities.json
+            data/research_status.json
+            data/research_queue.json
+          if-no-files-found: warn
+          retention-days: 60
+      - name: Validar dataset antes de publicar
+        if: steps.schedule.outputs.run == 'true'
+        run: python scripts/validate.py
+      - name: Guardar actualización
+        if: steps.schedule.outputs.run == 'true'
+        run: |
+          git config user.name "westcon-strategy-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/research.latest.json data/research_status.json data/research_learning.json data/research_queue.json data/changes.latest.json data/source_health.json data/discovered_entities.json data/research_errors.json data/run_manifest.latest.json data/supervisor.latest.json data/history/
+          git diff --cached --quiet || git commit -m "chore: inteligencia exhaustiva mensual"
+          git pull --rebase origin main
+          git push origin HEAD:main
