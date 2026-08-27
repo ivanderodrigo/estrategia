@@ -7,10 +7,10 @@
 <meta name="description" content="Westcon Iberia · Decision Intelligence · estrategia tecnológica basada en inteligencia pública" />
 <title>Westcon Iberia · Decision Intelligence</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-<link rel="stylesheet" href="assets/styles.css?v=2.1" />
+<link rel="stylesheet" href="assets/styles.css?v=3.0" />
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
-<script defer src="assets/app.js?v=2.1"></script>
+<script defer src="assets/app.js?v=3.0"></script>
 </head>
 <body>
 <header class="appbar">
@@ -18,6 +18,7 @@
     <div class="brandmark"><span></span><span></span><span></span></div>
     <div><b>WESTCON IBERIA</b><small>Radar Estratégico Tecnológico · FY27–FY30</small></div>
   </div>
+  <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="tabs">Menú</button>
   <nav id="tabs">
     <button class="active" data-view="resumen">Resumen</button>
     <button data-view="fabricantes">Fabricantes</button>
@@ -44,7 +45,7 @@
       <p>Competencia de mercado y canal, consultoras, sinergias, solapes y acciones por fabricante. Lo complejo queda detrás; delante solo aparece lo que ayuda a decidir.</p>
     </div>
     <div class="hero-note">
-      <b>Motor v10 · Intelligence Graph adaptativo</b>
+      <b>Motor v11 · Inteligencia acotada y observable</b>
       <span>Actualización incremental y reanudable. Cada dato conserva fuente, ámbito, fecha, método y confianza. Una acción solo aparece con certeza 100/100; si falta una prueba, queda bloqueada.</span>
     </div>
   </div>
@@ -71,11 +72,13 @@
 
 <section id="mayoristas" class="view">
   <div class="page-head"><div><div class="eyebrow">CHANNEL INTELLIGENCE</div><h1>Mayoristas: escala, portfolio y presión real.</h1><p>Comparación pública con Westcon por cobertura, servicios, vendors coincidentes, ventajas y datos financieros publicados. “No divulgado” nunca se convierte en una estimación.</p></div></div>
+  <div class="entity-tools"><input id="distributorSearch" type="search" placeholder="Buscar mayorista, tipo o país…"><select id="distributorCountry"><option value="all">España + Portugal</option><option value="ES">España</option><option value="PT">Portugal</option></select><span id="distributorCount"></span></div>
   <div id="distributorCards" class="entity-grid"></div>
 </section>
 
 <section id="integradores" class="view">
   <div class="page-head"><div><div class="eyebrow">ECOSYSTEM INTELLIGENCE</div><h1>Integradores: capacidad demostrada, no presumida.</h1><p>Fabricantes, certificaciones, especializaciones, clientes y escala solo cuando existe una fuente pública trazable; los huecos se muestran expresamente.</p></div></div>
+  <div class="entity-tools"><input id="integratorSearch" type="search" placeholder="Buscar integrador, especialización, fabricante o país…"><select id="integratorCountry"><option value="all">España + Portugal</option><option value="ES">España</option><option value="PT">Portugal</option></select><span id="integratorCount"></span></div>
   <div id="integratorCards" class="entity-grid"></div>
 </section>
 
@@ -96,8 +99,13 @@
     <button data-quick="gaps">Falta evidencia</button><button data-quick="capabilities">Capacidades verificadas</button>
     <span id="resultCount"></span>
   </div>
+  <div class="table-studio">
+    <div><button id="columnToggle" class="tool-button" aria-expanded="false">Campos de la tabla</button><div id="columnPicker" class="column-picker"></div></div>
+    <label>Ordenar por <select id="vendorSort"></select></label><button id="vendorSortDirection" class="tool-button" title="Cambiar dirección">↓ Descendente</button>
+    <span>Arrastra las cabeceras para reordenar · la selección se usa también en PDF y PowerPoint</span>
+  </div>
   <div class="vendor-layout">
-    <div class="table-wrap"><table class="vendor-table full"><thead><tr><th>Fabricante</th><th>Estado</th><th>Oportunidad</th><th>Competidores</th><th>Mayoristas ES / PT</th><th>Ecosistema</th><th>Consultoras</th><th>Sinergia</th><th>Solape</th><th>Confianza</th><th>Gate</th></tr></thead><tbody id="vendorRows"></tbody></table></div>
+    <div class="table-wrap"><table class="vendor-table full"><thead><tr id="vendorTableHead"></tr></thead><tbody id="vendorRows"></tbody></table></div>
     <aside id="vendorDetail" class="detail-panel"><div class="empty-detail"><b>Selecciona un fabricante</b><span>La capa ejecutiva muestra la decisión; “Ver datos” abre el razonamiento y las evidencias.</span></div></aside>
   </div>
 </section>
@@ -122,6 +130,10 @@
     <article class="panel"><div class="panel-head"><div><span>MOTOR</span><h3>Cómo decide</h3></div></div><div id="engineExplanation" class="engine-box"></div></article>
     <article class="panel"><div class="panel-head"><div><span>GAPS</span><h3>Qué falta demostrar públicamente</h3></div></div><div id="researchGaps" class="gap-list"></div></article>
   </div>
+  <div class="section-title"><div><span>OBSERVABILIDAD</span><h2>Última ejecución y fallos trazables</h2><p>Cada actualización conserva etapa, fuente, latencia, error, reintentos y recuperación aplicada.</p></div></div>
+  <div id="runHealth" class="run-health"></div>
+  <div class="grid-2 ops-grid"><article class="panel"><div class="panel-head"><div><span>PIPELINE</span><h3>Etapas de la última ejecución</h3></div></div><div id="runStages" class="stage-list"></div></article><article class="panel"><div class="panel-head"><div><span>FUENTES</span><h3>Disponibilidad y rendimiento</h3></div></div><div id="sourceHealth" class="source-health"></div></article></div>
+  <div class="table-wrap failure-table"><table><thead><tr><th>Fecha</th><th>Run ID</th><th>Etapa</th><th>Fuente / consulta</th><th>Error</th><th>Recuperable</th></tr></thead><tbody id="failureRows"></tbody></table></div>
   <div class="source-rules"><div><b>1</b><span>Reguladores</span></div><div><b>2</b><span>Fuentes oficiales</span></div><div><b>3</b><span>Gartner · IDC · Forrester · Omdia · Dell'Oro · Synergy</span></div><div><b>4</b><span>Prensa / discovery hasta validación</span></div></div>
   <div class="source-tools"><input id="sourceSearch" type="search" placeholder="Filtrar por fabricante, integrador, cliente, fuente o palabra…"><select id="sourceTierFilter"><option value="all">Todas las fuentes</option><option value="analyst-public">Analistas públicos</option><option value="official-company">Oficiales</option><option value="industry-press">Prensa</option><option value="search-discovery">Discovery</option></select><select id="sourceTypeFilter"><option value="all">Todos los tipos</option><option value="channel">Canal</option><option value="integrator">Integradores</option><option value="customer">Clientes</option><option value="analyst">Analistas</option><option value="market">Mercado</option><option value="product">Producto</option><option value="procurement">Contratación pública</option><option value="competitive">Competencia</option><option value="services">Servicios</option><option value="capability">Capacidades Westcon</option><option value="partner-program">Programa de canal</option><option value="m&a">M&A</option></select><select id="sourceGeoFilter"><option value="all">Todas las geografías</option><option value="ES">España</option><option value="PT">Portugal</option><option value="IBERIA">Iberia</option><option value="EMEA">EMEA / Europa</option></select></div>
   <div class="table-wrap data-table"><table><thead><tr><th>Fecha</th><th>Conf.</th><th>Ámbito</th><th>Fuente</th><th>Tipo</th><th>Evidencia pública</th><th></th></tr></thead><tbody id="sourceRows"></tbody></table></div>
@@ -133,7 +145,8 @@
 <div id="toast" class="toast"></div>
 <div id="exportModal" class="export-modal" role="dialog" aria-modal="true" aria-label="Crear informe o presentación">
   <div class="export-card">
-    <div class="export-head"><div><span>EXPORTACIÓN MODULAR</span><h2>Elige qué quieres contar</h2><p>La aplicación construye el PDF o PowerPoint solo con los módulos seleccionados.</p></div><button id="exportClose" aria-label="Cerrar">×</button></div>
+    <div class="export-head"><div><span>EXPORTACIÓN MODULAR</span><h2>Elige qué quieres contar</h2><p>La aplicación construye el PDF o PowerPoint solo con los módulos y campos seleccionados.</p></div><button id="exportClose" aria-label="Cerrar">×</button></div>
+    <label class="report-title-label">Título ejecutivo<input id="reportTitle" value="Radar Estratégico Tecnológico · Westcon Iberia"></label>
     <div id="exportModules" class="export-modules"></div>
     <div class="export-actions"><button id="exportPdf" class="ghost dark">Crear PDF</button><button id="exportPptx" class="primary">Crear PowerPoint</button></div>
   </div>

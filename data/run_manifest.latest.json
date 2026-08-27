@@ -1,0 +1,77 @@
+{
+  "version": 2,
+  "runId": "20260827T073033Z-7",
+  "profile": "daily",
+  "startedAt": "2026-08-27T07:30:33.554113+00:00",
+  "finishedAt": "2026-08-27T07:30:34.012830+00:00",
+  "outcome": "partial-recoverable",
+  "maxRuntimeSeconds": 35,
+  "elapsedSeconds": 0.46,
+  "stopReason": "",
+  "stages": [
+    {
+      "name": "adaptive-discovery",
+      "status": "partial",
+      "startedAt": "2026-08-27T07:30:33.809304+00:00",
+      "durationSeconds": 0.0,
+      "finishedAt": "2026-08-27T07:30:33.810080+00:00",
+      "signals": 0,
+      "plannedTasks": 137,
+      "processedTasks": 0,
+      "completedTasks": 0,
+      "pendingTasks": 137,
+      "partialRun": true,
+      "resumedTasks": 0,
+      "circuits": {},
+      "learningStrategies": 0
+    },
+    {
+      "name": "official-vendor-crawl",
+      "status": "deferred",
+      "startedAt": "2026-08-27T07:30:33.810109+00:00",
+      "durationSeconds": 0.0,
+      "finishedAt": "2026-08-27T07:30:33.810119+00:00"
+    },
+    {
+      "name": "commoncrawl-revalidation",
+      "status": "deferred",
+      "startedAt": "2026-08-27T07:30:33.810125+00:00",
+      "durationSeconds": 0.0,
+      "finishedAt": "2026-08-27T07:30:33.810130+00:00"
+    },
+    {
+      "name": "ecosystem-official-crawl",
+      "status": "deferred",
+      "startedAt": "2026-08-27T07:30:33.810135+00:00",
+      "durationSeconds": 0.0,
+      "finishedAt": "2026-08-27T07:30:33.810139+00:00"
+    },
+    {
+      "name": "analyst-public-crawl",
+      "status": "deferred",
+      "startedAt": "2026-08-27T07:30:33.810143+00:00",
+      "durationSeconds": 0.0,
+      "finishedAt": "2026-08-27T07:30:33.810148+00:00"
+    },
+    {
+      "name": "public-procurement",
+      "status": "deferred",
+      "startedAt": "2026-08-27T07:30:33.810152+00:00",
+      "durationSeconds": 0.0,
+      "finishedAt": "2026-08-27T07:30:33.810156+00:00"
+    },
+    {
+      "name": "corroborate-and-publish",
+      "status": "completed",
+      "startedAt": "2026-08-27T07:30:33.810160+00:00",
+      "durationSeconds": 0.2,
+      "finishedAt": "2026-08-27T07:30:34.006444+00:00",
+      "evidence": 91,
+      "changes": 0
+    }
+  ],
+  "errorCount": 0,
+  "errorsFile": "data/research_errors.json",
+  "evidenceCount": 91,
+  "pendingTasks": 137
+}

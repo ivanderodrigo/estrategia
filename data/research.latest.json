@@ -1,9 +1,24 @@
 {
-  "generatedAt": "2026-08-26T11:24:00+00:00",
-  "mode": "evidence-to-action-public-research-v9.0-baseline",
-  "queryCount": 0,
-  "braveEnabled": false,
-  "notice": "Baseline público curado + capa de realidad verificable v2.0. GitHub Actions amplía diariamente, recalibra semanalmente y ejecuta un barrido exhaustivo mensual de mercado, canal, ecosistema, clientes, contratación, analistas y competencia.",
+  "generatedAt": "2026-08-27T07:30:33.554113+00:00",
+  "runId": "20260827T073033Z-7",
+  "runOutcome": "partial-recoverable",
+  "profile": "daily",
+  "mode": "bounded-adaptive-intelligence-graph-v11.0",
+  "queryCount": 70,
+  "freeOnly": true,
+  "notice": "Solo inteligencia pública externa y gratuita, sin claves ni suscripciones. Cada ejecución está acotada por tiempo: publica lo válido, conserva pendientes y nunca convierte discovery o ausencia de datos en un hecho.",
+  "researchEngines": [
+    "Google News RSS",
+    "GDELT DOC 2.0",
+    "Arquivo.pt",
+    "official vendor sitemaps",
+    "Common Crawl URL discovery + live validation",
+    "official distributor/integrator sitemaps",
+    "public analyst pages",
+    "TED Search API",
+    "PLACSP open data",
+    "dados.gov.pt public datasets"
+  ],
   "evidence": [
     {
       "id": "wc-fy26",
@@ -1059,6 +1074,907 @@
         "integrator"
       ],
       "curated": true
+    },
+    {
+      "id": "market-es-cyber-2025",
+      "date": "2026-03-18",
+      "title": "La industria española de ciberseguridad facturó 6.351 M€ en 2024",
+      "summary": "INCIBE y CONETIC contabilizan 3.431 empresas, sitúan a España como cuarto mercado europeo y proyectan un crecimiento del empleo del 14,25% anual hasta 2029.",
+      "implication": "Hay mercado, pero también mucha oferta local: Westcon debe diferenciarse por servicios, ecosistema y velocidad de ejecución, no por disponibilidad de catálogo.",
+      "source": "INCIBE / CONETIC",
+      "sourceTier": "regulator",
+      "evidenceType": "market",
+      "scope": "Spain",
+      "country": "ES",
+      "confidence": 100,
+      "url": "https://www.incibe.es/incibe/sala-de-prensa/incibe-y-conetic-presentan-las-conclusiones-del-estudio-sobre-la-industria-de",
+      "vendors": [],
+      "tags": [
+        "cybersecurity",
+        "Spain",
+        "market-size",
+        "competition"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "market-es-incidents-2025",
+      "date": "2026-02-09",
+      "title": "INCIBE gestionó 122.223 incidentes en 2025, un 26% más",
+      "summary": "En operadores esenciales e importantes, banca concentró el 34% de los incidentes, transporte el 14% y energía el 8%; el 85% de las botnets detectadas estaba relacionado con IoT.",
+      "implication": "Banca, transporte, energía e IoT/OT son segmentos defendibles para plays de SOC, Zero Trust, exposición y resiliencia industrial.",
+      "source": "INCIBE",
+      "sourceTier": "regulator",
+      "evidenceType": "market",
+      "scope": "Spain",
+      "country": "ES",
+      "confidence": 100,
+      "url": "https://www.incibe.es/incibe/sala-de-prensa/incibe-detecto-mas-de-122000-incidentes-de-ciberseguridad-en-2025",
+      "vendors": [
+        "Claroty",
+        "CrowdStrike",
+        "Palo Alto Networks",
+        "Check Point",
+        "Cisco",
+        "Vectra AI",
+        "XM Cyber",
+        "AttackIQ"
+      ],
+      "tags": [
+        "NIS2",
+        "banking",
+        "transport",
+        "energy",
+        "OT",
+        "IoT",
+        "SOC"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "market-es-digital-decade-2026",
+      "date": "2026-06-17",
+      "title": "España mantiene buenos activos digitales pero no los convierte plenamente en adopción empresarial avanzada",
+      "summary": "La Comisión Europea destaca conectividad, capacidades y servicios públicos digitales, pero señala menor aprovechamiento empresarial de tecnologías avanzadas y falta relativa de especialistas TIC.",
+      "implication": "La oportunidad no es vender tecnología aislada: es reducir la brecha de adopción con assessment, arquitectura, implantación y capacitación del partner.",
+      "source": "European Commission",
+      "sourceTier": "regulator",
+      "evidenceType": "market",
+      "scope": "Spain",
+      "country": "ES",
+      "confidence": 100,
+      "url": "https://digital-strategy.ec.europa.eu/en/factpages/spains-2026-digital-decade-country-report",
+      "vendors": [
+        "AWS",
+        "Microsoft Azure",
+        "UiPath",
+        "Cisco",
+        "Extreme Networks"
+      ],
+      "tags": [
+        "AI",
+        "cloud",
+        "skills",
+        "adoption"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "market-pt-strategy-2030",
+      "date": "2024-12-20",
+      "title": "Portugal moviliza 350 M€ en 2025-2026 para su Estrategia Digital Nacional",
+      "summary": "El plan fija como metas para 2030 que el 90% de las pymes alcance intensidad digital básica y que el 75% de las empresas use IA y cloud.",
+      "implication": "Portugal merece un plan específico de canal y sector público; no debe heredarse automáticamente la tesis española.",
+      "source": "República Portuguesa / Compete 2030",
+      "sourceTier": "regulator",
+      "evidenceType": "market",
+      "scope": "Portugal",
+      "country": "PT",
+      "confidence": 100,
+      "url": "https://compete2030.gov.pt/comunicacao/portugal-aprova-estrategia-digital-nacional/",
+      "vendors": [
+        "AWS",
+        "Microsoft Azure",
+        "UiPath",
+        "Cisco",
+        "Extreme Networks",
+        "Check Point"
+      ],
+      "tags": [
+        "Portugal",
+        "AI",
+        "cloud",
+        "public-sector",
+        "SME"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "market-pt-ai-gap-2025",
+      "date": "2025-06-18",
+      "title": "Solo el 8,63% de las empresas portuguesas adoptó IA en 2024",
+      "summary": "El informe de Década Digital sitúa a Portugal por debajo de la media UE del 13,48%; en pymes, la adopción fue del 7,87%.",
+      "implication": "El mercado portugués requiere casos de uso con ROI y partners de implantación; una campaña genérica de IA no resolverá la brecha.",
+      "source": "European Commission",
+      "sourceTier": "regulator",
+      "evidenceType": "market",
+      "scope": "Portugal",
+      "country": "PT",
+      "confidence": 100,
+      "url": "https://ec.europa.eu/transparency/documents-register/api/files/SWD%282025%29294_21/090166e51e13f2d4?rendition=false",
+      "vendors": [
+        "UiPath",
+        "AWS",
+        "Microsoft Azure"
+      ],
+      "tags": [
+        "Portugal",
+        "AI",
+        "adoption",
+        "SME"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "market-eu-security-growth-2025",
+      "date": "2025-04-10",
+      "title": "IDC proyectó un crecimiento del 11,8% del gasto europeo en seguridad en 2025",
+      "summary": "La previsión pública de IDC mantiene crecimiento de doble dígito, impulsado por software y servicios.",
+      "implication": "El crecimiento favorece modelos recurrentes y servicios; no prueba por sí solo que todos los fabricantes deban acelerarse.",
+      "source": "IDC",
+      "sourceTier": "analyst-public",
+      "evidenceType": "market",
+      "scope": "Europe",
+      "country": "EMEA",
+      "confidence": 91,
+      "url": "https://my.idc.com/getdoc.jsp?containerId=prEUR253305325",
+      "vendors": [],
+      "tags": [
+        "security-spending",
+        "Europe",
+        "managed-services"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "market-managed-services-2025",
+      "date": "2025-01-15",
+      "title": "Omdia estimó un crecimiento aproximado del 13% en servicios gestionados del canal en 2025",
+      "summary": "La señal pública apunta a servicios gestionados como una de las áreas de mayor crecimiento para MSP y VAR.",
+      "implication": "Westcon debe productizar capacidades white-label y medir activación, no limitarse a recomendar que el partner cree servicios.",
+      "source": "Omdia / Canalys",
+      "sourceTier": "analyst-public",
+      "evidenceType": "market",
+      "scope": "Global / channel",
+      "country": "EMEA",
+      "confidence": 90,
+      "url": "https://www.canalys.com/insights/msp-trends-2025-es",
+      "vendors": [
+        "Cisco",
+        "CrowdStrike",
+        "Zscaler",
+        "Palo Alto Networks",
+        "Check Point",
+        "F5"
+      ],
+      "tags": [
+        "MSP",
+        "MSSP",
+        "managed-services",
+        "recurring"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "market-campus-refresh-2025",
+      "date": "2025-08-05",
+      "title": "Dell'Oro previó más de 20.000 M$ en switching campus en 2025",
+      "summary": "Wi-Fi 7, AIOps, puertos multigigabit y fin de vida de equipos en 2025-2026 impulsan ciclos de renovación; se prevé CAGR superior al 20% en puertos de 5 Gbps entre 2024 y 2029.",
+      "implication": "La oportunidad de networking es un motion de renovación identificable por fecha, base instalada, densidad Wi-Fi y software AIOps.",
+      "source": "Dell'Oro Group",
+      "sourceTier": "analyst-public",
+      "evidenceType": "market",
+      "scope": "Global / relevance Iberia",
+      "country": "EMEA",
+      "confidence": 91,
+      "url": "https://www.delloro.com/news/wi-fi-7-and-aiops-features-will-lift-campus-switch-sales-to-over-20b-in-2025/",
+      "vendors": [
+        "Cisco",
+        "Extreme Networks",
+        "Ruckus Networks"
+      ],
+      "tags": [
+        "campus",
+        "Wi-Fi 7",
+        "AIOps",
+        "refresh",
+        "switching"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "market-wifi7-cisco-2025",
+      "date": "2026-03-13",
+      "title": "Cisco lideró por poco el revenue de AP Wi-Fi 7 indoor en 2025",
+      "summary": "Dell'Oro atribuye el liderazgo inicial a una estrategia de precios agresiva y prevé crecimiento WLAN en 2026.",
+      "implication": "Comstor dispone de una señal de producto concreta para abrir renovaciones, pero debe proteger margen y adjuntar software/servicios.",
+      "source": "Dell'Oro Group",
+      "sourceTier": "analyst-public",
+      "evidenceType": "competitive",
+      "scope": "Global / relevance Iberia",
+      "country": "EMEA",
+      "confidence": 91,
+      "url": "https://www.delloro.com/news/cisco-ekes-out-wi-fi-7-lead-in-2025/",
+      "vendors": [
+        "Cisco",
+        "Extreme Networks",
+        "Ruckus Networks"
+      ],
+      "tags": [
+        "Cisco",
+        "Wi-Fi 7",
+        "market-share",
+        "competitive"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "market-cloud-2025",
+      "date": "2026-02-05",
+      "title": "El mercado cloud alcanzó 419.000 M$ en 2025",
+      "summary": "Synergy situó las cuotas mundiales del cuarto trimestre en AWS 28%, Microsoft 21% y Google 14%.",
+      "implication": "AWS y Azure son rutas a mercado dominantes; Westcon debe monetizar la capa de seguridad, marketplace y servicios alrededor de ellas, no intentar competir como hyperscaler.",
+      "source": "Synergy Research Group",
+      "sourceTier": "analyst-public",
+      "evidenceType": "market",
+      "scope": "Global / Europe relevance",
+      "country": "EMEA",
+      "confidence": 91,
+      "url": "https://www.srgresearch.com/articles/genai-helps-drive-quarterly-cloud-revenues-to-119-billion-as-growth-rate-jumped-yet-again-in-q4",
+      "vendors": [
+        "AWS",
+        "Microsoft Azure"
+      ],
+      "tags": [
+        "cloud",
+        "market-share",
+        "AWS",
+        "Microsoft"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "market-cloud-europe-sovereignty-2024",
+      "date": "2025-07-24",
+      "title": "Los proveedores cloud europeos mantuvieron solo el 15% de su mercado local",
+      "summary": "Synergy estima un mercado europeo de 61.000 M€ en 2024; los proveedores locales triplicaron ingresos desde 2017, pero perdieron cuota frente a AWS, Microsoft y Google.",
+      "implication": "Soberanía es un criterio de arquitectura y riesgo, no una razón suficiente para excluir hyperscalers; la recomendación debe gobernar dependencias y datos.",
+      "source": "Synergy Research Group",
+      "sourceTier": "analyst-public",
+      "evidenceType": "market",
+      "scope": "Europe",
+      "country": "EMEA",
+      "confidence": 91,
+      "url": "https://www.srgresearch.com/articles/european-cloud-providers-local-market-share-now-holds-steady-at-15",
+      "vendors": [
+        "AWS",
+        "Microsoft Azure",
+        "Fortanix"
+      ],
+      "tags": [
+        "cloud",
+        "sovereignty",
+        "Europe",
+        "market-share"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "westcon-fy26",
+      "date": "2026-05-26",
+      "title": "Westcon-Comstor elevó ventas brutas un 9,6% y beneficio bruto un 13,1% en FY26",
+      "summary": "Ventas brutas de 5.740 M$, beneficio bruto de 499,2 M$ y EBITDA ajustado de 172,4 M$; la compañía atribuye la mejora de margen al giro hacia software, servicios y negocio repetible.",
+      "implication": "La estrategia Iberia debe exigir a cada recomendación una vía explícita a recurrencia, servicios, lifecycle o mayor margen.",
+      "source": "Westcon-Comstor",
+      "sourceTier": "official-company",
+      "evidenceType": "financial",
+      "scope": "Global company",
+      "country": "Global",
+      "confidence": 98,
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2026/fy26-growth-as-shift-to-software-and-services-accelerates.html",
+      "vendors": [],
+      "tags": [
+        "Westcon",
+        "services",
+        "software",
+        "recurring",
+        "margin"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "westcon-spain-data-partners-2026",
+      "date": "2026-01-08",
+      "title": "El 35% de los partners encuestados en España prioriza proyectos basados en datos",
+      "summary": "El 26% señala consultoría de datos como fuente prometedora de ingresos; las campañas de Intelligent Demand crecieron un 132% en 2025, de 540 a más de 1.200.",
+      "implication": "Intelligent Demand debe activarse con una lista de cuentas y un CTA técnico concreto, no como campaña genérica.",
+      "source": "Westcon-Comstor",
+      "sourceTier": "official-company",
+      "evidenceType": "market",
+      "scope": "Spain / multi-country survey",
+      "country": "ES",
+      "confidence": 94,
+      "url": "https://www.westconcomstor.com/es/es/news/announcements/2026/channel-partners-embrace-data-to-drive-2026-growth.html",
+      "vendors": [
+        "AWS",
+        "Microsoft Azure",
+        "UiPath"
+      ],
+      "tags": [
+        "Spain",
+        "partners",
+        "data",
+        "Intelligent Demand"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "westcon-ai-network-gap-2025",
+      "date": "2025-11-18",
+      "title": "El 74% de los partners encuestados no podía diseñar y entregar redes preparadas para IA",
+      "summary": "Solo el 26% ofrecía servicios avanzados de networking integrado con IA.",
+      "implication": "El cuello de botella es capacidad del partner; la primera acción debe ser seleccionar renovaciones y habilitar partners sobre una arquitectura concreta.",
+      "source": "Westcon-Comstor",
+      "sourceTier": "official-company",
+      "evidenceType": "market",
+      "scope": "Multi-country survey incl. Spain",
+      "country": "ES",
+      "confidence": 94,
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2025/key-gaps-in-channel-readiness-for-ai-driven-networking.html",
+      "vendors": [
+        "Cisco",
+        "Extreme Networks",
+        "Ruckus Networks",
+        "Nokia",
+        "Ciena"
+      ],
+      "tags": [
+        "AI-ready networking",
+        "skills",
+        "partner-capability"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "pan-arrow-iberia-2026",
+      "date": "2026-06-16",
+      "title": "Arrow entró como distribuidor de Palo Alto Networks en España y Portugal",
+      "summary": "Arrow amplió a Iberia un acuerdo que ya tenía en Norteamérica y Marruecos.",
+      "implication": "La presión de distribución es nueva y verificable; la respuesta debe defender partners y renovaciones por capacidad, no bajar precio sin criterio.",
+      "source": "Arrow ECS",
+      "sourceTier": "official-company",
+      "evidenceType": "channel",
+      "scope": "Spain / Portugal",
+      "country": "IBERIA",
+      "confidence": 98,
+      "url": "https://www.arrow.com/globalecs/es/arrow-channel-advisor/arrow-amplia-su-acuerdo-de-distribucion-con-palo-alto-networks-a-espana-y-portugal/",
+      "vendors": [
+        "Palo Alto Networks"
+      ],
+      "tags": [
+        "Arrow",
+        "distribution",
+        "Spain",
+        "Portugal"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "pan-exclusive-2026",
+      "date": "2026-04-16",
+      "title": "Exclusive Networks mantiene una relación de 18 años y fue distribuidor EMEA 2025 de Palo Alto Networks",
+      "summary": "Exclusive publica capacidad Centre of Excellence, soporte a DMP y programas SASE/MSSP propios.",
+      "implication": "Westcon compite contra dos VAD con capacidades visibles; SASEvolution debe traducirse en una ventaja local medible.",
+      "source": "Exclusive Networks",
+      "sourceTier": "official-company",
+      "evidenceType": "channel",
+      "scope": "Spain / EMEA",
+      "country": "ES",
+      "confidence": 96,
+      "url": "https://www.exclusive-networks.com/es/ecosistema/fabricantes/palo-alto-networks",
+      "vendors": [
+        "Palo Alto Networks"
+      ],
+      "tags": [
+        "Exclusive Networks",
+        "DMP",
+        "SASE",
+        "MSSP",
+        "distribution"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "pan-westcon-sasevolution-2026",
+      "date": "2026-05-21",
+      "title": "Westcon lanzó SASEvolution con Palo Alto Networks",
+      "summary": "El programa combina tecnología SASE con servicios para simplificar adopción y monetización Zero Trust.",
+      "implication": "Existe una capacidad defendible que debe convertirse en pipeline Iberia, attach de servicios y partners activos.",
+      "source": "Westcon-Comstor",
+      "sourceTier": "official-company",
+      "evidenceType": "services",
+      "scope": "EMEA / Iberia applicable",
+      "country": "EMEA",
+      "confidence": 96,
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2026/sase-evolution-powered-by-palo-alto-networks-to-accelerate.html",
+      "vendors": [
+        "Palo Alto Networks"
+      ],
+      "tags": [
+        "SASEvolution",
+        "SASE",
+        "services",
+        "Zero Trust"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "pan-integrators-iberia-2026",
+      "date": "2026-02-16",
+      "title": "Telefónica Tech y Logicalis muestran capacidad avanzada en Palo Alto Networks",
+      "summary": "Telefónica Tech declara nivel Diamond Innovator, ASC y CPSP; Logicalis Spain fue Platform Partner of the Year FY25 y Best Partner Presales 2024.",
+      "implication": "Hay partners públicos con capacidad real para un motion de plataforma/SASE; deben tratarse como cuentas de canal específicas, no como un segmento abstracto.",
+      "source": "Telefónica Tech / Logicalis Spain",
+      "sourceTier": "official-company",
+      "evidenceType": "integrator",
+      "scope": "Spain",
+      "country": "ES",
+      "confidence": 96,
+      "url": "https://www.es.logicalis.com/es/perspectivas/noticias/logicalis-spain-ha-sido-reconocido-como-platform-partner-year-fy25-por-palo",
+      "vendors": [
+        "Palo Alto Networks"
+      ],
+      "tags": [
+        "Logicalis",
+        "Telefónica Tech",
+        "integrator",
+        "SASE",
+        "platformization"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "crowdstrike-ignition-iberia-2025",
+      "date": "2025-05-21",
+      "title": "Ignition Technology amplió CrowdStrike a España y Portugal",
+      "summary": "El acuerdo distribuye Falcon en seis nuevos mercados europeos y se apoya en desarrollo de canal y consolidación de plataformas.",
+      "implication": "Westcon debe defenderse con soporte, marketplace, 3D Lab y lifecycle verificables, no con un mensaje genérico de plataforma.",
+      "source": "Ignition Technology / CrowdStrike",
+      "sourceTier": "official-company",
+      "evidenceType": "channel",
+      "scope": "Spain / Portugal",
+      "country": "IBERIA",
+      "confidence": 98,
+      "url": "https://www.ignition-technology.com/blog/crowdstrike-and-ignition-technology-expand-partership/",
+      "vendors": [
+        "CrowdStrike"
+      ],
+      "tags": [
+        "Ignition Technology",
+        "distribution",
+        "Falcon",
+        "platform-consolidation"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "support-crowdstrike-zscaler-2026",
+      "date": "2026-02-19",
+      "title": "Westcon amplió soporte para partners de CrowdStrike y Zscaler",
+      "summary": "La capacidad refuerza diferenciación por soporte L1/L2 y escalabilidad operativa.",
+      "implication": "El soporte debe venderse con SLA, segmento objetivo y attach rate; no como atributo inespecífico.",
+      "source": "Westcon-Comstor",
+      "sourceTier": "official-company",
+      "evidenceType": "services",
+      "scope": "EMEA / Spain page",
+      "country": "EMEA",
+      "confidence": 96,
+      "url": "https://www.westconcomstor.com/es/es/news/announcements/2026/expands-support-services-for-crowdstrike-and-zscaler.html",
+      "vendors": [
+        "CrowdStrike",
+        "Zscaler"
+      ],
+      "tags": [
+        "support",
+        "L1",
+        "L2",
+        "services"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "proofpoint-services-2026",
+      "date": "2026-02-25",
+      "title": "Westcon fue el primer distribuidor europeo autorizado para servicios profesionales Proofpoint",
+      "summary": "La autorización sigue al hito de ser primer ATP europeo y permite implantación certificada a escala.",
+      "implication": "Proofpoint tiene una ventaja de distribución concreta para atacar partners sin práctica de implantación propia.",
+      "source": "Westcon-Comstor / Proofpoint",
+      "sourceTier": "official-company",
+      "evidenceType": "services",
+      "scope": "Europe / Spain and Portugal portfolio",
+      "country": "EMEA",
+      "confidence": 98,
+      "url": "https://www.westconcomstor.com/es/es/news/announcements/2026/first-in-europe-for-proofpoint-professional-services.html",
+      "vendors": [
+        "Proofpoint"
+      ],
+      "tags": [
+        "professional services",
+        "training",
+        "ATP",
+        "deployment"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "checkpoint-renewal-api-2025",
+      "date": "2025-12-01",
+      "title": "Westcon y Check Point lanzaron la primera API de renovaciones de este tipo en EMEA",
+      "summary": "La integración reduce turnaround, elimina entradas manuales y prepara quote-to-cash automatizado.",
+      "implication": "La ventaja medible está en renovaciones: velocidad de cotización, exactitud, tasa de renovación y expansión.",
+      "source": "Westcon-Comstor / Check Point",
+      "sourceTier": "official-company",
+      "evidenceType": "services",
+      "scope": "EMEA / Portugal portfolio",
+      "country": "EMEA",
+      "confidence": 98,
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2025/check-point-software-renewal-api-launch.html",
+      "vendors": [
+        "Check Point"
+      ],
+      "tags": [
+        "renewals",
+        "API",
+        "automation",
+        "lifecycle"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "cisco-managed-soc-2025",
+      "date": "2025-04-22",
+      "title": "Comstor lanzó un SOC white-label basado en Cisco XDR",
+      "summary": "El servicio permite a partners ofrecer SOC por suscripción sin construir infraestructura propia.",
+      "implication": "Cisco debe monetizarse también como servicio recurrente; la acción correcta es activar partners y clientes concretos para Managed SOC.",
+      "source": "Westcon-Comstor / Cisco",
+      "sourceTier": "official-company",
+      "evidenceType": "services",
+      "scope": "EMEA",
+      "country": "EMEA",
+      "confidence": 97,
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2025/managed-soc-solution-for-cisco-partners-.html",
+      "vendors": [
+        "Cisco"
+      ],
+      "tags": [
+        "Cisco XDR",
+        "SOC",
+        "white-label",
+        "recurring"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "f5-telefonica-wad",
+      "date": "2023-06-19",
+      "title": "Telefónica Tech opera en España un servicio mensual WAD sobre F5 Distributed Cloud",
+      "summary": "El servicio combina WAF, Bot Defense, API Security y mitigación DDoS con operación SOC 24x7.",
+      "implication": "Existe prueba local de un play F5 de seguridad de aplicaciones como servicio; puede replicarse con otros partners, no competir contra Telefónica sin acceso.",
+      "source": "Telefónica Tech / F5",
+      "sourceTier": "official-company",
+      "evidenceType": "integrator",
+      "scope": "Spain",
+      "country": "ES",
+      "confidence": 96,
+      "url": "https://telefonicatech.com/en/news/telefonica-tech-f5-new-service-protect-web-apps",
+      "vendors": [
+        "F5"
+      ],
+      "tags": [
+        "Telefónica Tech",
+        "WAF",
+        "API Security",
+        "DDoS",
+        "managed-services"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "extreme-iberia-partners",
+      "date": "2025-01-01",
+      "title": "Axians y Decunify muestran capacidad Extreme en España y Portugal",
+      "summary": "Extreme reconoció públicamente a Axians como Partner of the Year España y a Decunify como Partner of the Year Portugal.",
+      "implication": "El play de renovación campus puede empezar por dos partners con prueba pública, uno por país, y ampliarse solo tras validar pipeline.",
+      "source": "Extreme Networks",
+      "sourceTier": "official-company",
+      "evidenceType": "integrator",
+      "scope": "Spain / Portugal",
+      "country": "IBERIA",
+      "confidence": 96,
+      "url": "https://es.extremenetworks.com/press/press-release/axians-reconocida-como-partner-del-ano-de-extreme-networks-en-espana/",
+      "vendors": [
+        "Extreme Networks"
+      ],
+      "tags": [
+        "Axians",
+        "Decunify",
+        "campus",
+        "integrator"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "aws-europe-distribution-2024",
+      "date": "2024-11-28",
+      "title": "Westcon se convirtió en distribuidor autorizado de AWS para Europa, incluida España",
+      "summary": "El acuerdo cubre más de 30 países; la integración 3D Lab permite demostrar ciberseguridad en AWS y transaccionar por private offers.",
+      "implication": "La prioridad es attach de seguridad y marketplace sobre AWS, con partners que ya tengan capacidad cloud.",
+      "source": "Westcon-Comstor / AWS",
+      "sourceTier": "official-company",
+      "evidenceType": "channel",
+      "scope": "Europe incl. Spain",
+      "country": "ES",
+      "confidence": 98,
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2024/westcon-comstor-to-distribute-aws-solutions-across-europe.html",
+      "vendors": [
+        "AWS",
+        "CrowdStrike",
+        "Palo Alto Networks",
+        "F5",
+        "Check Point",
+        "Vectra AI",
+        "Zscaler"
+      ],
+      "tags": [
+        "AWS",
+        "distribution",
+        "3D Lab",
+        "private offers",
+        "security attach"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "microsoft-reo-2026",
+      "date": "2026-04-28",
+      "title": "Westcon habilitó crecimiento de canal mediante Microsoft REO",
+      "summary": "REO permite a ISV autorizar partners para crear y gestionar private offers con facturación y cobro de Microsoft Marketplace.",
+      "implication": "Azure/Microsoft Marketplace debe medirse por ISV activados, private offers y ciclo de venta, no por actividad genérica de cloud.",
+      "source": "Westcon-Comstor / Microsoft",
+      "sourceTier": "official-company",
+      "evidenceType": "channel",
+      "scope": "Global / Europe applicable",
+      "country": "EMEA",
+      "confidence": 97,
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2026/accelerate-global-marketplace-led-growth-with-microsoft-reo.html",
+      "vendors": [
+        "Microsoft Azure"
+      ],
+      "tags": [
+        "Microsoft Marketplace",
+        "REO",
+        "private offers",
+        "ISV"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "uipath-europe-2026",
+      "date": "2026-02-17",
+      "title": "Westcon se convirtió en distribuidor estratégico europeo de UiPath",
+      "summary": "El modelo combina ruta unificada, preventa, servicios profesionales, Intelligent Demand y FLEX para pasar de proyectos bot a programas de automatización empresarial.",
+      "implication": "La oportunidad está en construir prácticas de partner y programas multianuales con ROI, no en vender licencias RPA aisladas.",
+      "source": "Westcon-Comstor / UiPath",
+      "sourceTier": "official-company",
+      "evidenceType": "channel",
+      "scope": "Europe incl. Spain and Portugal",
+      "country": "IBERIA",
+      "confidence": 98,
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2026/uipath-sign-european-distribution-deal.html",
+      "vendors": [
+        "UiPath"
+      ],
+      "tags": [
+        "agentic automation",
+        "professional services",
+        "Intelligent Demand",
+        "FLEX"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "fortanix-emea-2025",
+      "date": "2025-11-27",
+      "title": "Westcon incorporó Fortanix para seguridad de IA y preparación post-cuántica en EMEA",
+      "summary": "El acuerdo se centra en protección de datos multicloud, crypto-agility, confidential computing, tokenización y cumplimiento.",
+      "implication": "Es una apuesta de construcción: comenzar por regulados y datos sensibles, con assessment criptográfico y partner especializado antes de escalar.",
+      "source": "Westcon-Comstor / Fortanix",
+      "sourceTier": "official-company",
+      "evidenceType": "channel",
+      "scope": "EMEA",
+      "country": "EMEA",
+      "confidence": 94,
+      "url": "https://technologyreseller.uk/westcon-comstor-and-fortanix-empower-channel-partners-to-drive-secure-ai-and-post-quantum-readiness/",
+      "vendors": [
+        "Fortanix"
+      ],
+      "tags": [
+        "secure AI",
+        "PQC",
+        "crypto-agility",
+        "regulated"
+      ],
+      "curated": true,
+      "realityVerified": true
+    },
+    {
+      "id": "zscaler-technical-2025",
+      "date": "2025-02-13",
+      "title": "Westcon fue Zscaler EMEA Technical Partner of the Year",
+      "summary": "La compañía obtuvo además reconocimiento de especialización en data security y amplió servicios de soporte en 2026.",
+      "implication": "La ventaja técnica debe enfocarse en adopción y expansión de SSE/data security, no solo en nuevo logo.",
+      "source": "Westcon-Comstor / Zscaler",
+      "sourceTier": "official-company",
+      "evidenceType": "services",
+      "scope": "EMEA / award in Portugal",
+      "country": "EMEA",
+      "confidence": 97,
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2025/westcon-comstor-named-zscaler-technical-partner-of-the-year.html",
+      "vendors": [
+        "Zscaler"
+      ],
+      "tags": [
+        "SSE",
+        "data security",
+        "technical",
+        "support"
+      ],
+      "curated": true,
+      "realityVerified": true
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "vendor": "AWS",
+      "capabilityId": "3d-lab",
+      "status": "VERIFIED_PUBLIC_DISCOVERED",
+      "scope": "Europe incl. Spain",
+      "country": "ES",
+      "confidence": 98,
+      "title": "Westcon se convirtió en distribuidor autorizado de AWS para Europa, incluida España",
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2024/westcon-comstor-to-distribute-aws-solutions-across-europe.html",
+      "date": "2024-11-28",
+      "source": "Westcon-Comstor / AWS",
+      "evidenceId": "aws-europe-distribution-2024"
+    },
+    {
+      "vendor": "Check Point",
+      "capabilityId": "local-presales",
+      "status": "VERIFIED_PUBLIC_DISCOVERED",
+      "scope": "Portugal",
+      "country": null,
+      "confidence": 58,
+      "title": "Check Point solutions from Westcon-Comstor Portugal",
+      "url": "https://www.westconcomstor.com/pt/pt/vendors/check-point.html",
+      "date": "2026",
+      "source": "Westcon-Comstor",
+      "evidenceId": "wc-checkpoint-pt"
+    },
+    {
+      "vendor": "CrowdStrike",
+      "capabilityId": "support",
+      "status": "VERIFIED_PUBLIC_DISCOVERED",
+      "scope": "Europe / Spanish-language support",
+      "country": null,
+      "confidence": 58,
+      "title": "Westcon-Comstor expands support services for CrowdStrike and Zscaler partners",
+      "url": "https://www.westconcomstor.com/es/es/news/announcements/2026/expands-support-services-for-crowdstrike-and-zscaler.html",
+      "date": "2026-02-19",
+      "source": "Westcon-Comstor",
+      "evidenceId": "wc-crowd-zscaler-support"
+    },
+    {
+      "vendor": "Proofpoint",
+      "capabilityId": "professional-services",
+      "status": "VERIFIED_PUBLIC_DISCOVERED",
+      "scope": "Europe / Spain and Portugal portfolio",
+      "country": "EMEA",
+      "confidence": 98,
+      "title": "Westcon fue el primer distribuidor europeo autorizado para servicios profesionales Proofpoint",
+      "url": "https://www.westconcomstor.com/es/es/news/announcements/2026/first-in-europe-for-proofpoint-professional-services.html",
+      "date": "2026-02-25",
+      "source": "Westcon-Comstor / Proofpoint",
+      "evidenceId": "proofpoint-services-2026"
+    },
+    {
+      "vendor": "UiPath",
+      "capabilityId": "flex",
+      "status": "VERIFIED_PUBLIC_DISCOVERED",
+      "scope": "Europe incl. Spain and Portugal",
+      "country": "IBERIA",
+      "confidence": 98,
+      "title": "Westcon se convirtió en distribuidor estratégico europeo de UiPath",
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2026/uipath-sign-european-distribution-deal.html",
+      "date": "2026-02-17",
+      "source": "Westcon-Comstor / UiPath",
+      "evidenceId": "uipath-europe-2026"
+    },
+    {
+      "vendor": "UiPath",
+      "capabilityId": "intelligent-demand",
+      "status": "VERIFIED_PUBLIC_DISCOVERED",
+      "scope": "Europe incl. Spain and Portugal",
+      "country": "IBERIA",
+      "confidence": 98,
+      "title": "Westcon se convirtió en distribuidor estratégico europeo de UiPath",
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2026/uipath-sign-european-distribution-deal.html",
+      "date": "2026-02-17",
+      "source": "Westcon-Comstor / UiPath",
+      "evidenceId": "uipath-europe-2026"
+    },
+    {
+      "vendor": "UiPath",
+      "capabilityId": "marketing-local",
+      "status": "VERIFIED_PUBLIC_DISCOVERED",
+      "scope": "Europe incl. Spain and Portugal",
+      "country": "IBERIA",
+      "confidence": 98,
+      "title": "Westcon se convirtió en distribuidor estratégico europeo de UiPath",
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2026/uipath-sign-european-distribution-deal.html",
+      "date": "2026-02-17",
+      "source": "Westcon-Comstor / UiPath",
+      "evidenceId": "uipath-europe-2026"
+    },
+    {
+      "vendor": "UiPath",
+      "capabilityId": "professional-services",
+      "status": "VERIFIED_PUBLIC_DISCOVERED",
+      "scope": "Europe incl. Spain and Portugal",
+      "country": "IBERIA",
+      "confidence": 98,
+      "title": "Westcon se convirtió en distribuidor estratégico europeo de UiPath",
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2026/uipath-sign-european-distribution-deal.html",
+      "date": "2026-02-17",
+      "source": "Westcon-Comstor / UiPath",
+      "evidenceId": "uipath-europe-2026"
     }
   ],
   "channelSignals": [
@@ -1129,7 +2045,8 @@
       "status": "confirmed",
       "confidence": 96,
       "evidence": [
-        "crowd-ignition-eu"
+        "crowd-ignition-eu",
+        "crowdstrike-ignition-iberia-2025"
       ],
       "curated": true,
       "active": true
@@ -1141,7 +2058,8 @@
       "status": "confirmed",
       "confidence": 96,
       "evidence": [
-        "crowd-ignition-eu"
+        "crowd-ignition-eu",
+        "crowdstrike-ignition-iberia-2025"
       ],
       "curated": true,
       "active": true
@@ -1173,6 +2091,30 @@
     {
       "vendor": "Palo Alto Networks",
       "country": "ES",
+      "distributor": "Arrow",
+      "status": "candidate-public-signal",
+      "confidence": 96,
+      "evidence": [
+        "arrow-pan-iberia",
+        "pan-arrow-iberia-2026"
+      ],
+      "active": true
+    },
+    {
+      "vendor": "Palo Alto Networks",
+      "country": "ES",
+      "distributor": "Exclusive Networks",
+      "status": "candidate-public-signal",
+      "confidence": 96,
+      "evidence": [
+        "exclusive-pan",
+        "pan-exclusive-2026"
+      ],
+      "active": true
+    },
+    {
+      "vendor": "Palo Alto Networks",
+      "country": "ES",
       "distributor": "Westcon-Comstor",
       "status": "confirmed",
       "confidence": 96,
@@ -1180,6 +2122,18 @@
         "wc-pan-es"
       ],
       "curated": true,
+      "active": true
+    },
+    {
+      "vendor": "Palo Alto Networks",
+      "country": "PT",
+      "distributor": "Arrow",
+      "status": "candidate-public-signal",
+      "confidence": 96,
+      "evidence": [
+        "arrow-pan-iberia",
+        "pan-arrow-iberia-2026"
+      ],
       "active": true
     },
     {
@@ -1447,30 +2401,6 @@
       "active": true
     },
     {
-      "vendor": "Palo Alto Networks",
-      "country": "ES",
-      "distributor": "Arrow",
-      "status": "confirmed",
-      "confidence": 82,
-      "evidence": [
-        "arrow-pan-iberia"
-      ],
-      "curated": true,
-      "active": true
-    },
-    {
-      "vendor": "Palo Alto Networks",
-      "country": "PT",
-      "distributor": "Arrow",
-      "status": "confirmed",
-      "confidence": 82,
-      "evidence": [
-        "arrow-pan-iberia"
-      ],
-      "curated": true,
-      "active": true
-    },
-    {
       "vendor": "Cloudflare",
       "country": "IBERIA",
       "distributor": "Westcon-Comstor",
@@ -1478,18 +2408,6 @@
       "confidence": 78,
       "evidence": [
         "wc-cloudflare"
-      ],
-      "curated": true,
-      "active": true
-    },
-    {
-      "vendor": "Palo Alto Networks",
-      "country": "ES",
-      "distributor": "Exclusive Networks",
-      "status": "public-relationship",
-      "confidence": 78,
-      "evidence": [
-        "exclusive-pan"
       ],
       "curated": true,
       "active": true
@@ -1551,2225 +2469,7 @@
       "active": true
     }
   ],
-  "analystSignals": [
-    {
-      "evidenceId": "gartner-it-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Global",
-      "title": "Worldwide IT spending forecast 2026",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "gartner-ai-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Global",
-      "title": "Worldwide AI spending to grow 47% in 2026",
-      "candidateStats": [
-        " 47%"
-      ],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "gartner-cyber-trends",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Global",
-      "title": "Gartner top cybersecurity trends for 2026",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "idc-emea-q2",
-      "analyst": "IDC",
-      "vendor": null,
-      "scope": "EMEA",
-      "title": "EMEA IT Market 2026 Q2 updates",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "idc-ciso-2026",
-      "analyst": "IDC",
-      "vendor": null,
-      "scope": "Europe",
-      "title": "European CISO priorities in 2026: AI agents, platformization and sovereignty",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "forrester-eu-spend",
-      "analyst": "Forrester",
-      "vendor": null,
-      "scope": "Europe",
-      "title": "Europe 2026 tech spend exceeds €1.5T",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "forrester-netops",
-      "analyst": "Forrester",
-      "vendor": null,
-      "scope": "Global",
-      "title": "Forrester 2026 infrastructure and operations predictions",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "forrester-cyber",
-      "analyst": "Forrester",
-      "vendor": null,
-      "scope": "Global",
-      "title": "Forrester 2026 cybersecurity and risk predictions",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "forrester-europe",
-      "analyst": "Forrester",
-      "vendor": null,
-      "scope": "Europe",
-      "title": "Forrester 2026 European predictions",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-security-spend-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Global",
-      "title": "Forecast Analysis: Information Security, Worldwide, 2026",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-ai-platforms-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Global",
-      "title": "Worldwide AI Platforms and Models Market to Grow 63% in 2026",
-      "candidateStats": [
-        " 63%"
-      ],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-ai-cloud-2030",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Global / sovereignty relevance",
-      "title": "Neocloud providers to capture 20% of the $267B AI cloud market by 2030",
-      "candidateStats": [
-        " 20%"
-      ],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-sase-cc-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Global",
-      "title": "Critical Capabilities for SASE Platforms",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-lan-cc-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Global",
-      "title": "Critical Capabilities for Enterprise Wired and Wireless LAN",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-ndr-cc-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Global",
-      "title": "Critical Capabilities for Network Detection and Response",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-cps-cc-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Global",
-      "title": "Critical Capabilities for CPS Protection Platforms",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-workspace-cyber-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Global",
-      "title": "Market Overview for Workspace Cybersecurity Platforms",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-sase-sovereignty-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Global / Europe relevance",
-      "title": "The SASE Geopatriation Pivot: Addressing the Sovereign-First Era",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-sase-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Public source",
-      "title": "Magic Quadrant for SASE Platforms",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-lan-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Public source",
-      "title": "Magic Quadrant for Enterprise Wired and Wireless LAN",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-epp-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Public source",
-      "title": "Magic Quadrant for Endpoint Protection",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-ndr-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Public source",
-      "title": "Magic Quadrant for Network Detection and Response",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-cps-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Public source",
-      "title": "Magic Quadrant for CPS Protection Platforms",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-am-2025",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Public source",
-      "title": "Magic Quadrant for Access Management",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-uem-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Public source",
-      "title": "Magic Quadrant for Endpoint Management Tools",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-rpa-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Public source",
-      "title": "Magic Quadrant for Robotic Process Automation",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "g-cloudai-2026",
-      "analyst": "Gartner",
-      "vendor": null,
-      "scope": "Public source",
-      "title": "Magic Quadrant for Cloud AI Infrastructure",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    },
-    {
-      "evidenceId": "idc-ciso-2026-src",
-      "analyst": "IDC",
-      "vendor": null,
-      "scope": "Public source",
-      "title": "European CISO priorities in 2026",
-      "candidateStats": [],
-      "confidence": 45,
-      "status": "public-summary",
-      "evidenceType": "analyst"
-    }
-  ],
-  "coverage": [
-    {
-      "vendor": "1Password",
-      "coverage": 0,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Akamai / Noname",
-      "coverage": 0,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Anomali",
-      "coverage": 0,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Certes Networks",
-      "coverage": 0,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Ciena",
-      "coverage": 0,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Fortanix",
-      "coverage": 0,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "LevelBlue",
-      "coverage": 0,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Menlo Security",
-      "coverage": 0,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "NETSCOUT",
-      "coverage": 0,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Ping Identity",
-      "coverage": 0,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Stratus / Penguin Solutions",
-      "coverage": 0,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Weblib",
-      "coverage": 0,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "AttackIQ",
-      "coverage": 7,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 1,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Ericsson Cradlepoint",
-      "coverage": 7,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": true,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 1,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Educación / Investigación / 5G"
-      ]
-    },
-    {
-      "vendor": "Ivanti",
-      "coverage": 7,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 1,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Vectra AI",
-      "coverage": 7,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": true,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 1,
-      "analystSources": [
-        "Gartner"
-      ],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "XM Cyber",
-      "coverage": 7,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": true,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 1,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Retail"
-      ]
-    },
-    {
-      "vendor": "EfficientIP",
-      "coverage": 14,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": true,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 1,
-      "customerSignals": 1,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Administración Pública"
-      ]
-    },
-    {
-      "vendor": "Nokia",
-      "coverage": 14,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": true,
-        "customerPT": true,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 2,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Telecomunicaciones / Cloud DCI",
-        "Telecomunicaciones / Edge / IA"
-      ]
-    },
-    {
-      "vendor": "Okta",
-      "coverage": 14,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": true,
-        "integratorPT": true,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 1,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "UiPath",
-      "coverage": 14,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": true,
-        "customerPT": true,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 7,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Banca",
-        "Industria",
-        "Infraestructuras / Energía",
-        "Sector social / Público",
-        "Seguros",
-        "Telecomunicaciones"
-      ]
-    },
-    {
-      "vendor": "Avaya",
-      "coverage": 21,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": true,
-        "customerES": true,
-        "customerPT": true,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 1,
-      "customerSignals": 2,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Retail / Turismo",
-        "Transporte / Logística"
-      ]
-    },
-    {
-      "vendor": "FireMon",
-      "coverage": 21,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": true,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": true
-      },
-      "evidenceCount": 2,
-      "analystSources": [],
-      "officialSources": [
-        "FireMon"
-      ],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 1,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Ruckus Networks",
-      "coverage": 21,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": true,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": true,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 1,
-      "analystSources": [
-        "Gartner"
-      ],
-      "officialSources": [],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 1,
-      "customerSignals": 1,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Industria / Alimentación y bebidas"
-      ]
-    },
-    {
-      "vendor": "AudioCodes",
-      "coverage": 29,
-      "dimensions": {
-        "channelES": true,
-        "channelPT": true,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": true,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": false
-      },
-      "evidenceCount": 0,
-      "analystSources": [],
-      "officialSources": [],
-      "alternativeChannelSignals": 2,
-      "integratorSignals": 2,
-      "customerSignals": 1,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Telecom"
-      ]
-    },
-    {
-      "vendor": "Claroty",
-      "coverage": 29,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": true,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": true,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": true
-      },
-      "evidenceCount": 2,
-      "analystSources": [
-        "Gartner"
-      ],
-      "officialSources": [
-        "Claroty"
-      ],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 1,
-      "customerSignals": 1,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Sanidad"
-      ]
-    },
-    {
-      "vendor": "Microsoft Azure",
-      "coverage": 29,
-      "dimensions": {
-        "channelES": true,
-        "channelPT": true,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": true
-      },
-      "evidenceCount": 2,
-      "analystSources": [],
-      "officialSources": [
-        "Arrow ECS"
-      ],
-      "alternativeChannelSignals": 3,
-      "integratorSignals": 1,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Proofpoint",
-      "coverage": 29,
-      "dimensions": {
-        "channelES": true,
-        "channelPT": true,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": true
-      },
-      "evidenceCount": 1,
-      "analystSources": [],
-      "officialSources": [
-        "Exclusive Networks"
-      ],
-      "alternativeChannelSignals": 2,
-      "integratorSignals": 1,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Zscaler",
-      "coverage": 29,
-      "dimensions": {
-        "channelES": false,
-        "channelPT": false,
-        "integratorES": false,
-        "integratorPT": false,
-        "customerES": true,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": true,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": true,
-        "official": true
-      },
-      "evidenceCount": 3,
-      "analystSources": [
-        "Gartner"
-      ],
-      "officialSources": [
-        "Westcon-Comstor"
-      ],
-      "alternativeChannelSignals": 0,
-      "integratorSignals": 0,
-      "customerSignals": 2,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Automoción / Industria",
-        "Servicios financieros / Tecnología"
-      ]
-    },
-    {
-      "vendor": "AWS",
-      "coverage": 36,
-      "dimensions": {
-        "channelES": true,
-        "channelPT": true,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": true,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": true
-      },
-      "evidenceCount": 3,
-      "analystSources": [],
-      "officialSources": [
-        "Arrow ECS",
-        "Exclusive Networks"
-      ],
-      "alternativeChannelSignals": 5,
-      "integratorSignals": 4,
-      "customerSignals": 2,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Retail",
-        "Software / ERP"
-      ]
-    },
-    {
-      "vendor": "CrowdStrike",
-      "coverage": 36,
-      "dimensions": {
-        "channelES": true,
-        "channelPT": true,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": true,
-        "official": true
-      },
-      "evidenceCount": 5,
-      "analystSources": [],
-      "officialSources": [
-        "CrowdStrike",
-        "Telefónica Tech",
-        "Westcon-Comstor"
-      ],
-      "alternativeChannelSignals": 2,
-      "integratorSignals": 1,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "F5",
-      "coverage": 36,
-      "dimensions": {
-        "channelES": true,
-        "channelPT": false,
-        "integratorES": true,
-        "integratorPT": true,
-        "customerES": true,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": false,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": true
-      },
-      "evidenceCount": 2,
-      "analystSources": [],
-      "officialSources": [
-        "Arrow ECS",
-        "Westcon-Comstor"
-      ],
-      "alternativeChannelSignals": 1,
-      "integratorSignals": 3,
-      "customerSignals": 1,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Telecomunicaciones / Servicios gestionados"
-      ]
-    },
-    {
-      "vendor": "Palo Alto Networks",
-      "coverage": 36,
-      "dimensions": {
-        "channelES": true,
-        "channelPT": true,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": false,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": true,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": true
-      },
-      "evidenceCount": 11,
-      "analystSources": [
-        "Gartner"
-      ],
-      "officialSources": [
-        "Arrow",
-        "Arrow ECS",
-        "Exclusive Networks",
-        "TD SYNNEX",
-        "Westcon-Comstor"
-      ],
-      "alternativeChannelSignals": 6,
-      "integratorSignals": 2,
-      "customerSignals": 0,
-      "procurementSignals": 0,
-      "customerSectors": []
-    },
-    {
-      "vendor": "Cisco",
-      "coverage": 43,
-      "dimensions": {
-        "channelES": true,
-        "channelPT": true,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": true,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": true,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": true
-      },
-      "evidenceCount": 5,
-      "analystSources": [
-        "Gartner"
-      ],
-      "officialSources": [
-        "Cisco"
-      ],
-      "alternativeChannelSignals": 4,
-      "integratorSignals": 6,
-      "customerSignals": 1,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Telecomunicaciones"
-      ]
-    },
-    {
-      "vendor": "Check Point",
-      "coverage": 50,
-      "dimensions": {
-        "channelES": true,
-        "channelPT": true,
-        "integratorES": true,
-        "integratorPT": false,
-        "customerES": true,
-        "customerPT": true,
-        "procurement": false,
-        "analyst": true,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": true
-      },
-      "evidenceCount": 4,
-      "analystSources": [
-        "Gartner"
-      ],
-      "officialSources": [
-        "Arrow ECS",
-        "Westcon-Comstor"
-      ],
-      "alternativeChannelSignals": 2,
-      "integratorSignals": 1,
-      "customerSignals": 5,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Administración Pública",
-        "Energía / Infraestructura crítica",
-        "Legal",
-        "Manufacturing / Retail",
-        "Telecomunicaciones"
-      ]
-    },
-    {
-      "vendor": "Extreme Networks",
-      "coverage": 50,
-      "dimensions": {
-        "channelES": true,
-        "channelPT": true,
-        "integratorES": true,
-        "integratorPT": true,
-        "customerES": true,
-        "customerPT": false,
-        "procurement": false,
-        "analyst": true,
-        "market": false,
-        "competitive": false,
-        "ma": false,
-        "product": false,
-        "services": false,
-        "official": true
-      },
-      "evidenceCount": 2,
-      "analystSources": [
-        "Gartner"
-      ],
-      "officialSources": [
-        "Exclusive Networks"
-      ],
-      "alternativeChannelSignals": 3,
-      "integratorSignals": 2,
-      "customerSignals": 1,
-      "procurementSignals": 0,
-      "customerSectors": [
-        "Administración Pública / Sanidad"
-      ]
-    }
-  ],
-  "gaps": [
-    {
-      "vendor": "1Password",
-      "coverage": 0,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Akamai / Noname",
-      "coverage": 0,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Anomali",
-      "coverage": 0,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Certes Networks",
-      "coverage": 0,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Ciena",
-      "coverage": 0,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Fortanix",
-      "coverage": 0,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "LevelBlue",
-      "coverage": 0,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Menlo Security",
-      "coverage": 0,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "NETSCOUT",
-      "coverage": 0,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Ping Identity",
-      "coverage": 0,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Stratus / Penguin Solutions",
-      "coverage": 0,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Weblib",
-      "coverage": 0,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "AttackIQ",
-      "coverage": 7,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Ericsson Cradlepoint",
-      "coverage": 7,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Ivanti",
-      "coverage": 7,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Vectra AI",
-      "coverage": 7,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "XM Cyber",
-      "coverage": 7,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "EfficientIP",
-      "coverage": 14,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Nokia",
-      "coverage": 14,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Okta",
-      "coverage": 14,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "UiPath",
-      "coverage": 14,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Avaya",
-      "coverage": 21,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "FireMon",
-      "coverage": 21,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Ruckus Networks",
-      "coverage": 21,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "AudioCodes",
-      "coverage": 29,
-      "missing": [
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal",
-        "fuente oficial directa"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Claroty",
-      "coverage": 29,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Microsoft Azure",
-      "coverage": 29,
-      "missing": [
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Proofpoint",
-      "coverage": 29,
-      "missing": [
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "Zscaler",
-      "coverage": 29,
-      "missing": [
-        "mayoristas alternativos en España",
-        "mayoristas alternativos en Portugal",
-        "integradores demostrados en España",
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto"
-      ],
-      "priority": "P0"
-    },
-    {
-      "vendor": "AWS",
-      "coverage": 36,
-      "missing": [
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal"
-      ],
-      "priority": "P1"
-    },
-    {
-      "vendor": "CrowdStrike",
-      "coverage": 36,
-      "missing": [
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto"
-      ],
-      "priority": "P1"
-    },
-    {
-      "vendor": "F5",
-      "coverage": 36,
-      "missing": [
-        "mayoristas alternativos en Portugal",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "señal pública de analistas",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal"
-      ],
-      "priority": "P1"
-    },
-    {
-      "vendor": "Palo Alto Networks",
-      "coverage": 36,
-      "missing": [
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en España",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal"
-      ],
-      "priority": "P1"
-    },
-    {
-      "vendor": "Cisco",
-      "coverage": 43,
-      "missing": [
-        "integradores demostrados en Portugal",
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal"
-      ],
-      "priority": "P1"
-    },
-    {
-      "vendor": "Check Point",
-      "coverage": 50,
-      "missing": [
-        "integradores demostrados en Portugal",
-        "contratación pública ES/PT",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal"
-      ],
-      "priority": "P1"
-    },
-    {
-      "vendor": "Extreme Networks",
-      "coverage": 50,
-      "missing": [
-        "referencias públicas de cliente en Portugal",
-        "contratación pública ES/PT",
-        "tamaño/crecimiento de mercado",
-        "evidencia competitiva/displacement",
-        "M&A/cambio estratégico",
-        "novedades de plataforma/producto",
-        "servicios/programa de canal"
-      ],
-      "priority": "P1"
-    }
-  ],
-  "derived": {
-    "evidenceCount": 61,
-    "officialOrAnalystCount": 60,
-    "channelSignalCount": 40,
-    "endedChannelSignalCount": 0,
-    "integratorSignalCount": 31,
-    "customerSignalCount": 29,
-    "procurementSignalCount": 0,
-    "procurementMarketBuckets": 0,
-    "knownProcurementValueEUR": 0,
-    "analystSignalCount": 28,
-    "conflictCount": 0,
-    "changeCount": 0,
-    "statistics": {
-      "byTier": {
-        "official-company": 32,
-        "analyst-public": 28,
-        "industry-press": 1
-      },
-      "byType": {
-        "company": 3,
-        "channel": 18,
-        "services": 2,
-        "portfolio": 5,
-        "market": 7,
-        "trend": 7,
-        "analyst": 14,
-        "m&a": 1,
-        "competitive": 1,
-        "integrator": 2,
-        "customer": 1
-      },
-      "byScope": {
-        "Global": 16,
-        "EMEA / Southern Europe": 1,
-        "Europe / Spanish-language support": 1,
-        "Spain": 6,
-        "Portugal": 2,
-        "EMEA": 2,
-        "Europe": 4,
-        "Europe incl. Spain/Portugal footprint": 1,
-        "Spain / Portugal": 1,
-        "Spain / Portugal listed": 1,
-        "Spain / Portugal / Europe": 1,
-        "Global / sovereignty relevance": 1,
-        "Global / Europe relevance": 1,
-        "Public source": 19,
-        "ES / Southern Europe": 1,
-        "ES": 3
-      },
-      "byEngine": {
-        "curated": 61
-      },
-      "topSources": [
-        [
-          "Gartner",
-          21
-        ],
-        [
-          "Westcon-Comstor",
-          10
-        ],
-        [
-          "Forrester",
-          4
-        ],
-        [
-          "Exclusive Networks",
-          4
-        ],
-        [
-          "IDC",
-          3
-        ],
-        [
-          "CrowdStrike",
-          3
-        ],
-        [
-          "TD SYNNEX",
-          2
-        ],
-        [
-          "Arrow ECS",
-          2
-        ],
-        [
-          "Cisco",
-          2
-        ],
-        [
-          "Ingram Micro",
-          2
-        ],
-        [
-          "FireMon",
-          2
-        ],
-        [
-          "Datatec",
-          1
-        ],
-        [
-          "@aslan / Arrow announcement coverage",
-          1
-        ],
-        [
-          "HPE",
-          1
-        ],
-        [
-          "Arrow",
-          1
-        ],
-        [
-          "Telefónica Tech",
-          1
-        ],
-        [
-          "Claroty",
-          1
-        ]
-      ]
-    }
-  },
+  "channelHistorySignals": [],
   "integratorSignals": [
     {
       "vendor": "CrowdStrike",
@@ -3884,7 +2584,10 @@
         "Managed Security",
         "Hybrid Cloud"
       ],
-      "status": "curated-public"
+      "status": "curated-public",
+      "evidence": [
+        "f5-telefonica-wad"
+      ]
     },
     {
       "vendor": "FireMon",
@@ -3978,6 +2681,18 @@
       "status": "curated-public"
     },
     {
+      "vendor": "F5",
+      "country": "ES",
+      "name": "Telefónica",
+      "role": "Integrador / Partner",
+      "status": "candidate-public-signal",
+      "confidence": 96,
+      "evidence": [
+        "f5-telefonica-wad"
+      ],
+      "url": "https://telefonicatech.com/en/news/telefonica-tech-f5-new-service-protect-web-apps"
+    },
+    {
       "vendor": "Ivanti",
       "name": "SoftwareOne",
       "country": "ES",
@@ -3996,6 +2711,30 @@
         "Automation"
       ],
       "status": "curated-public"
+    },
+    {
+      "vendor": "Palo Alto Networks",
+      "country": "ES",
+      "name": "Evolutio",
+      "role": "Integrador / Partner",
+      "status": "candidate-public-signal",
+      "confidence": 96,
+      "evidence": [
+        "pan-westcon-sasevolution-2026"
+      ],
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2026/sase-evolution-powered-by-palo-alto-networks-to-accelerate.html"
+    },
+    {
+      "vendor": "Palo Alto Networks",
+      "country": "ES",
+      "name": "Logicalis",
+      "role": "Integrador / Partner",
+      "status": "candidate-public-signal",
+      "confidence": 96,
+      "evidence": [
+        "pan-integrators-iberia-2026"
+      ],
+      "url": "https://www.es.logicalis.com/es/perspectivas/noticias/logicalis-spain-ha-sido-reconocido-como-platform-partner-year-fy25-por-palo"
     },
     {
       "vendor": "Palo Alto Networks",
@@ -4019,6 +2758,18 @@
     },
     {
       "vendor": "Palo Alto Networks",
+      "country": "ES",
+      "name": "Telefónica",
+      "role": "Integrador / Partner",
+      "status": "candidate-public-signal",
+      "confidence": 96,
+      "evidence": [
+        "pan-integrators-iberia-2026"
+      ],
+      "url": "https://www.es.logicalis.com/es/perspectivas/noticias/logicalis-spain-ha-sido-reconocido-como-platform-partner-year-fy25-por-palo"
+    },
+    {
+      "vendor": "Palo Alto Networks",
       "name": "Telefónica Tech",
       "country": "ES",
       "role": "Strategic Integrator / Managed Security Partner",
@@ -4034,7 +2785,22 @@
         "Managed Security",
         "Professional Services"
       ],
-      "status": "curated-public"
+      "status": "curated-public",
+      "evidence": [
+        "pan-integrators-iberia-2026"
+      ]
+    },
+    {
+      "vendor": "Palo Alto Networks",
+      "country": "PT",
+      "name": "Evolutio",
+      "role": "Integrador / Partner",
+      "status": "candidate-public-signal",
+      "confidence": 96,
+      "evidence": [
+        "pan-westcon-sasevolution-2026"
+      ],
+      "url": "https://www.westconcomstor.com/global/en/news/announcements/2026/sase-evolution-powered-by-palo-alto-networks-to-accelerate.html"
     },
     {
       "vendor": "Proofpoint",
@@ -4754,9 +3520,2471 @@
       "status": "curated-public"
     }
   ],
-  "profile": "baseline",
+  "analystSignals": [
+    {
+      "evidenceId": "wc-es-sitemap",
+      "analyst": "EMA",
+      "vendor": null,
+      "scope": "Spain",
+      "title": "Westcon-Comstor Spain public vendor sitemap",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "discovery-only",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "gartner-it-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Global",
+      "title": "Worldwide IT spending forecast 2026",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "gartner-ai-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Global",
+      "title": "Worldwide AI spending to grow 47% in 2026",
+      "candidateStats": [
+        " 47%"
+      ],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "gartner-cyber-trends",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Global",
+      "title": "Gartner top cybersecurity trends for 2026",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "idc-emea-q2",
+      "analyst": "IDC",
+      "vendor": null,
+      "scope": "EMEA",
+      "title": "EMEA IT Market 2026 Q2 updates",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "idc-ciso-2026",
+      "analyst": "IDC",
+      "vendor": null,
+      "scope": "Europe",
+      "title": "European CISO priorities in 2026: AI agents, platformization and sovereignty",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "forrester-eu-spend",
+      "analyst": "Forrester",
+      "vendor": null,
+      "scope": "Europe",
+      "title": "Europe 2026 tech spend exceeds €1.5T",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "forrester-netops",
+      "analyst": "Forrester",
+      "vendor": null,
+      "scope": "Global",
+      "title": "Forrester 2026 infrastructure and operations predictions",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "forrester-cyber",
+      "analyst": "Forrester",
+      "vendor": null,
+      "scope": "Global",
+      "title": "Forrester 2026 cybersecurity and risk predictions",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "forrester-europe",
+      "analyst": "Forrester",
+      "vendor": null,
+      "scope": "Europe",
+      "title": "Forrester 2026 European predictions",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-security-spend-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Global",
+      "title": "Forecast Analysis: Information Security, Worldwide, 2026",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-ai-platforms-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Global",
+      "title": "Worldwide AI Platforms and Models Market to Grow 63% in 2026",
+      "candidateStats": [
+        " 63%"
+      ],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-ai-cloud-2030",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Global / sovereignty relevance",
+      "title": "Neocloud providers to capture 20% of the $267B AI cloud market by 2030",
+      "candidateStats": [
+        " 20%"
+      ],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-sase-cc-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Global",
+      "title": "Critical Capabilities for SASE Platforms",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-lan-cc-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Global",
+      "title": "Critical Capabilities for Enterprise Wired and Wireless LAN",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-ndr-cc-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Global",
+      "title": "Critical Capabilities for Network Detection and Response",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-cps-cc-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Global",
+      "title": "Critical Capabilities for CPS Protection Platforms",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-workspace-cyber-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Global",
+      "title": "Market Overview for Workspace Cybersecurity Platforms",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-sase-sovereignty-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Global / Europe relevance",
+      "title": "The SASE Geopatriation Pivot: Addressing the Sovereign-First Era",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "exclusive-es-portfolio",
+      "analyst": "EMA",
+      "vendor": null,
+      "scope": "Spain",
+      "title": "Exclusive Networks España · Ecosistema de fabricantes",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "discovery-only",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-sase-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Public source",
+      "title": "Magic Quadrant for SASE Platforms",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-lan-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Public source",
+      "title": "Magic Quadrant for Enterprise Wired and Wireless LAN",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-epp-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Public source",
+      "title": "Magic Quadrant for Endpoint Protection",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-ndr-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Public source",
+      "title": "Magic Quadrant for Network Detection and Response",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-cps-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Public source",
+      "title": "Magic Quadrant for CPS Protection Platforms",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-am-2025",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Public source",
+      "title": "Magic Quadrant for Access Management",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-uem-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Public source",
+      "title": "Magic Quadrant for Endpoint Management Tools",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-rpa-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Public source",
+      "title": "Magic Quadrant for Robotic Process Automation",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "g-cloudai-2026",
+      "analyst": "Gartner",
+      "vendor": null,
+      "scope": "Public source",
+      "title": "Magic Quadrant for Cloud AI Infrastructure",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "idc-ciso-2026-src",
+      "analyst": "IDC",
+      "vendor": null,
+      "scope": "Public source",
+      "title": "European CISO priorities in 2026",
+      "candidateStats": [],
+      "confidence": 45,
+      "status": "public-summary",
+      "evidenceType": "analyst"
+    },
+    {
+      "evidenceId": "market-eu-security-growth-2025",
+      "analyst": "IDC",
+      "vendor": null,
+      "scope": "Europe",
+      "title": "IDC proyectó un crecimiento del 11,8% del gasto europeo en seguridad en 2025",
+      "candidateStats": [
+        " 11,8%"
+      ],
+      "confidence": 91,
+      "status": "public-summary",
+      "evidenceType": "market"
+    },
+    {
+      "evidenceId": "market-managed-services-2025",
+      "analyst": "Omdia",
+      "vendor": null,
+      "scope": "Global / channel",
+      "title": "Omdia estimó un crecimiento aproximado del 13% en servicios gestionados del canal en 2025",
+      "candidateStats": [
+        " 13%"
+      ],
+      "confidence": 90,
+      "status": "public-summary",
+      "evidenceType": "market"
+    },
+    {
+      "evidenceId": "market-campus-refresh-2025",
+      "analyst": "Dell'Oro",
+      "vendor": null,
+      "scope": "Global / relevance Iberia",
+      "title": "Dell'Oro previó más de 20.000 M$ en switching campus en 2025",
+      "candidateStats": [
+        " 20.000 M"
+      ],
+      "confidence": 91,
+      "status": "public-summary",
+      "evidenceType": "market"
+    },
+    {
+      "evidenceId": "market-wifi7-cisco-2025",
+      "analyst": "Dell'Oro",
+      "vendor": null,
+      "scope": "Global / relevance Iberia",
+      "title": "Cisco lideró por poco el revenue de AP Wi-Fi 7 indoor en 2025",
+      "candidateStats": [],
+      "confidence": 91,
+      "status": "public-summary",
+      "evidenceType": "competitive"
+    },
+    {
+      "evidenceId": "market-cloud-2025",
+      "analyst": "Synergy Research",
+      "vendor": null,
+      "scope": "Global / Europe relevance",
+      "title": "El mercado cloud alcanzó 419.000 M$ en 2025",
+      "candidateStats": [
+        " 419.000 M"
+      ],
+      "confidence": 91,
+      "status": "public-summary",
+      "evidenceType": "market"
+    },
+    {
+      "evidenceId": "market-cloud-europe-sovereignty-2024",
+      "analyst": "Synergy Research",
+      "vendor": null,
+      "scope": "Europe",
+      "title": "Los proveedores cloud europeos mantuvieron solo el 15% de su mercado local",
+      "candidateStats": [
+        " 15%"
+      ],
+      "confidence": 91,
+      "status": "public-summary",
+      "evidenceType": "market"
+    }
+  ],
+  "procurementMarket": [],
+  "coverage": [
+    {
+      "vendor": "1Password",
+      "coverage": 0,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Akamai / Noname",
+      "coverage": 0,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Anomali",
+      "coverage": 0,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Certes Networks",
+      "coverage": 0,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Ciena",
+      "coverage": 0,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "LevelBlue",
+      "coverage": 0,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Menlo Security",
+      "coverage": 0,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "NETSCOUT",
+      "coverage": 0,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Ping Identity",
+      "coverage": 0,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Stratus / Penguin Solutions",
+      "coverage": 0,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Weblib",
+      "coverage": 0,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "AttackIQ",
+      "coverage": 7,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": true,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 1,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Ericsson Cradlepoint",
+      "coverage": 7,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": true,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 1,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Educación / Investigación / 5G"
+      ]
+    },
+    {
+      "vendor": "Fortanix",
+      "coverage": 7,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": true
+      },
+      "evidenceCount": 1,
+      "analystSources": [],
+      "officialSources": [
+        "Westcon-Comstor / Fortanix"
+      ],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Ivanti",
+      "coverage": 7,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": true,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 1,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Vectra AI",
+      "coverage": 7,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": true,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 1,
+      "analystSources": [
+        "Gartner"
+      ],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "XM Cyber",
+      "coverage": 7,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": true,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 1,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Retail"
+      ]
+    },
+    {
+      "vendor": "EfficientIP",
+      "coverage": 14,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": true,
+        "integratorPT": false,
+        "customerES": true,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 1,
+      "customerSignals": 1,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Administración Pública"
+      ]
+    },
+    {
+      "vendor": "Nokia",
+      "coverage": 14,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": true,
+        "customerPT": true,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 2,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Telecomunicaciones / Cloud DCI",
+        "Telecomunicaciones / Edge / IA"
+      ]
+    },
+    {
+      "vendor": "Okta",
+      "coverage": 14,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": true,
+        "integratorPT": true,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 1,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Avaya",
+      "coverage": 21,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": true,
+        "customerES": true,
+        "customerPT": true,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 1,
+      "customerSignals": 2,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Retail / Turismo",
+        "Transporte / Logística"
+      ]
+    },
+    {
+      "vendor": "FireMon",
+      "coverage": 21,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": true,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": true,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": true
+      },
+      "evidenceCount": 2,
+      "analystSources": [],
+      "officialSources": [
+        "FireMon"
+      ],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 1,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Ruckus Networks",
+      "coverage": 21,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": true,
+        "integratorPT": false,
+        "customerES": true,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": true,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 1,
+      "analystSources": [
+        "Gartner"
+      ],
+      "officialSources": [],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 1,
+      "customerSignals": 1,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Industria / Alimentación y bebidas"
+      ]
+    },
+    {
+      "vendor": "UiPath",
+      "coverage": 21,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": true,
+        "customerPT": true,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": true
+      },
+      "evidenceCount": 1,
+      "analystSources": [],
+      "officialSources": [
+        "Westcon-Comstor / UiPath"
+      ],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 7,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Banca",
+        "Industria",
+        "Infraestructuras / Energía",
+        "Sector social / Público",
+        "Seguros",
+        "Telecomunicaciones"
+      ]
+    },
+    {
+      "vendor": "AudioCodes",
+      "coverage": 29,
+      "dimensions": {
+        "channelES": true,
+        "channelPT": true,
+        "integratorES": true,
+        "integratorPT": false,
+        "customerES": true,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": false
+      },
+      "evidenceCount": 0,
+      "analystSources": [],
+      "officialSources": [],
+      "alternativeChannelSignals": 2,
+      "integratorSignals": 2,
+      "customerSignals": 1,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Telecom"
+      ]
+    },
+    {
+      "vendor": "Claroty",
+      "coverage": 29,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": true,
+        "integratorPT": false,
+        "customerES": true,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": true,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": true
+      },
+      "evidenceCount": 2,
+      "analystSources": [
+        "Gartner"
+      ],
+      "officialSources": [
+        "Claroty"
+      ],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 1,
+      "customerSignals": 1,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Sanidad"
+      ]
+    },
+    {
+      "vendor": "Microsoft Azure",
+      "coverage": 29,
+      "dimensions": {
+        "channelES": true,
+        "channelPT": true,
+        "integratorES": true,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": true
+      },
+      "evidenceCount": 2,
+      "analystSources": [],
+      "officialSources": [
+        "Arrow ECS"
+      ],
+      "alternativeChannelSignals": 3,
+      "integratorSignals": 1,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Zscaler",
+      "coverage": 29,
+      "dimensions": {
+        "channelES": false,
+        "channelPT": false,
+        "integratorES": false,
+        "integratorPT": false,
+        "customerES": true,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": true,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": true,
+        "official": true
+      },
+      "evidenceCount": 5,
+      "analystSources": [
+        "Gartner"
+      ],
+      "officialSources": [
+        "Westcon-Comstor",
+        "Westcon-Comstor / Zscaler"
+      ],
+      "alternativeChannelSignals": 0,
+      "integratorSignals": 0,
+      "customerSignals": 2,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Automoción / Industria",
+        "Servicios financieros / Tecnología"
+      ]
+    },
+    {
+      "vendor": "CrowdStrike",
+      "coverage": 36,
+      "dimensions": {
+        "channelES": true,
+        "channelPT": true,
+        "integratorES": true,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": true,
+        "official": true
+      },
+      "evidenceCount": 7,
+      "analystSources": [],
+      "officialSources": [
+        "CrowdStrike",
+        "Ignition Technology / CrowdStrike",
+        "Telefónica Tech",
+        "Westcon-Comstor"
+      ],
+      "alternativeChannelSignals": 2,
+      "integratorSignals": 1,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "F5",
+      "coverage": 36,
+      "dimensions": {
+        "channelES": true,
+        "channelPT": false,
+        "integratorES": true,
+        "integratorPT": true,
+        "customerES": true,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": true
+      },
+      "evidenceCount": 3,
+      "analystSources": [],
+      "officialSources": [
+        "Arrow ECS",
+        "Telefónica Tech / F5",
+        "Westcon-Comstor"
+      ],
+      "alternativeChannelSignals": 1,
+      "integratorSignals": 4,
+      "customerSignals": 1,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Telecomunicaciones / Servicios gestionados"
+      ]
+    },
+    {
+      "vendor": "Proofpoint",
+      "coverage": 36,
+      "dimensions": {
+        "channelES": true,
+        "channelPT": true,
+        "integratorES": true,
+        "integratorPT": false,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": false,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": true,
+        "official": true
+      },
+      "evidenceCount": 2,
+      "analystSources": [],
+      "officialSources": [
+        "Exclusive Networks",
+        "Westcon-Comstor / Proofpoint"
+      ],
+      "alternativeChannelSignals": 2,
+      "integratorSignals": 1,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "AWS",
+      "coverage": 50,
+      "dimensions": {
+        "channelES": true,
+        "channelPT": true,
+        "integratorES": true,
+        "integratorPT": false,
+        "customerES": true,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": true,
+        "market": true,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": true
+      },
+      "evidenceCount": 5,
+      "analystSources": [
+        "Synergy Research Group"
+      ],
+      "officialSources": [
+        "Arrow ECS",
+        "Exclusive Networks",
+        "Westcon-Comstor / AWS"
+      ],
+      "alternativeChannelSignals": 5,
+      "integratorSignals": 4,
+      "customerSignals": 2,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Retail",
+        "Software / ERP"
+      ]
+    },
+    {
+      "vendor": "Extreme Networks",
+      "coverage": 50,
+      "dimensions": {
+        "channelES": true,
+        "channelPT": true,
+        "integratorES": true,
+        "integratorPT": true,
+        "customerES": true,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": true,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": false,
+        "official": true
+      },
+      "evidenceCount": 2,
+      "analystSources": [
+        "Gartner"
+      ],
+      "officialSources": [
+        "Exclusive Networks"
+      ],
+      "alternativeChannelSignals": 3,
+      "integratorSignals": 2,
+      "customerSignals": 1,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Administración Pública / Sanidad"
+      ]
+    },
+    {
+      "vendor": "Palo Alto Networks",
+      "coverage": 50,
+      "dimensions": {
+        "channelES": true,
+        "channelPT": true,
+        "integratorES": true,
+        "integratorPT": true,
+        "customerES": false,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": true,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": true,
+        "official": true
+      },
+      "evidenceCount": 15,
+      "analystSources": [
+        "Gartner"
+      ],
+      "officialSources": [
+        "Arrow",
+        "Arrow ECS",
+        "Exclusive Networks",
+        "TD SYNNEX",
+        "Telefónica Tech / Logicalis Spain",
+        "Westcon-Comstor"
+      ],
+      "alternativeChannelSignals": 6,
+      "integratorSignals": 6,
+      "customerSignals": 0,
+      "procurementSignals": 0,
+      "customerSectors": []
+    },
+    {
+      "vendor": "Check Point",
+      "coverage": 57,
+      "dimensions": {
+        "channelES": true,
+        "channelPT": true,
+        "integratorES": true,
+        "integratorPT": false,
+        "customerES": true,
+        "customerPT": true,
+        "procurement": false,
+        "analyst": true,
+        "market": false,
+        "competitive": false,
+        "ma": false,
+        "product": false,
+        "services": true,
+        "official": true
+      },
+      "evidenceCount": 5,
+      "analystSources": [
+        "Gartner"
+      ],
+      "officialSources": [
+        "Arrow ECS",
+        "Westcon-Comstor",
+        "Westcon-Comstor / Check Point"
+      ],
+      "alternativeChannelSignals": 2,
+      "integratorSignals": 1,
+      "customerSignals": 5,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Administración Pública",
+        "Energía / Infraestructura crítica",
+        "Legal",
+        "Manufacturing / Retail",
+        "Telecomunicaciones"
+      ]
+    },
+    {
+      "vendor": "Cisco",
+      "coverage": 57,
+      "dimensions": {
+        "channelES": true,
+        "channelPT": true,
+        "integratorES": true,
+        "integratorPT": false,
+        "customerES": true,
+        "customerPT": false,
+        "procurement": false,
+        "analyst": true,
+        "market": false,
+        "competitive": true,
+        "ma": false,
+        "product": false,
+        "services": true,
+        "official": true
+      },
+      "evidenceCount": 7,
+      "analystSources": [
+        "Dell'Oro Group",
+        "Gartner"
+      ],
+      "officialSources": [
+        "Cisco",
+        "Westcon-Comstor / Cisco"
+      ],
+      "alternativeChannelSignals": 4,
+      "integratorSignals": 6,
+      "customerSignals": 1,
+      "procurementSignals": 0,
+      "customerSectors": [
+        "Telecomunicaciones"
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "vendor": "1Password",
+      "coverage": 0,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Akamai / Noname",
+      "coverage": 0,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Anomali",
+      "coverage": 0,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Certes Networks",
+      "coverage": 0,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Ciena",
+      "coverage": 0,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "LevelBlue",
+      "coverage": 0,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Menlo Security",
+      "coverage": 0,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "NETSCOUT",
+      "coverage": 0,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Ping Identity",
+      "coverage": 0,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Stratus / Penguin Solutions",
+      "coverage": 0,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Weblib",
+      "coverage": 0,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "AttackIQ",
+      "coverage": 7,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Ericsson Cradlepoint",
+      "coverage": 7,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Fortanix",
+      "coverage": 7,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Ivanti",
+      "coverage": 7,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Vectra AI",
+      "coverage": 7,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "XM Cyber",
+      "coverage": 7,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "EfficientIP",
+      "coverage": 14,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Nokia",
+      "coverage": 14,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Okta",
+      "coverage": 14,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Avaya",
+      "coverage": 21,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "FireMon",
+      "coverage": 21,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Ruckus Networks",
+      "coverage": 21,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "UiPath",
+      "coverage": 21,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "AudioCodes",
+      "coverage": 29,
+      "missing": [
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal",
+        "fuente oficial directa"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Claroty",
+      "coverage": 29,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Microsoft Azure",
+      "coverage": 29,
+      "missing": [
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "Zscaler",
+      "coverage": 29,
+      "missing": [
+        "mayoristas alternativos en España",
+        "mayoristas alternativos en Portugal",
+        "integradores demostrados en España",
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto"
+      ],
+      "priority": "P0"
+    },
+    {
+      "vendor": "CrowdStrike",
+      "coverage": 36,
+      "missing": [
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto"
+      ],
+      "priority": "P1"
+    },
+    {
+      "vendor": "F5",
+      "coverage": 36,
+      "missing": [
+        "mayoristas alternativos en Portugal",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal"
+      ],
+      "priority": "P1"
+    },
+    {
+      "vendor": "Proofpoint",
+      "coverage": 36,
+      "missing": [
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "señal pública de analistas",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto"
+      ],
+      "priority": "P1"
+    },
+    {
+      "vendor": "AWS",
+      "coverage": 50,
+      "missing": [
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal"
+      ],
+      "priority": "P1"
+    },
+    {
+      "vendor": "Extreme Networks",
+      "coverage": 50,
+      "missing": [
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto",
+        "servicios/programa de canal"
+      ],
+      "priority": "P1"
+    },
+    {
+      "vendor": "Palo Alto Networks",
+      "coverage": 50,
+      "missing": [
+        "referencias públicas de cliente en España",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto"
+      ],
+      "priority": "P1"
+    },
+    {
+      "vendor": "Check Point",
+      "coverage": 57,
+      "missing": [
+        "integradores demostrados en Portugal",
+        "contratación pública ES/PT",
+        "tamaño/crecimiento de mercado",
+        "evidencia competitiva/displacement",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto"
+      ],
+      "priority": "P1"
+    },
+    {
+      "vendor": "Cisco",
+      "coverage": 57,
+      "missing": [
+        "integradores demostrados en Portugal",
+        "referencias públicas de cliente en Portugal",
+        "contratación pública ES/PT",
+        "tamaño/crecimiento de mercado",
+        "M&A/cambio estratégico",
+        "novedades de plataforma/producto"
+      ],
+      "priority": "P1"
+    }
+  ],
   "conflicts": [],
   "changes": [],
-  "channelHistorySignals": [],
-  "procurementMarket": []
+  "derived": {
+    "evidenceCount": 91,
+    "officialOrAnalystCount": 90,
+    "channelSignalCount": 40,
+    "endedChannelSignalCount": 0,
+    "integratorSignalCount": 36,
+    "customerSignalCount": 29,
+    "procurementSignalCount": 0,
+    "procurementMarketBuckets": 0,
+    "knownProcurementValueEUR": 0,
+    "analystSignalCount": 36,
+    "capabilitySignalCount": 8,
+    "conflictCount": 0,
+    "changeCount": 0,
+    "resilience": {
+      "plannedTasks": 137,
+      "processedTasks": 0,
+      "completedTasks": 0,
+      "pendingTasks": 137,
+      "partialRun": true,
+      "resumedTasks": 0,
+      "circuits": {},
+      "learningStrategies": 0
+    },
+    "statistics": {
+      "byTier": {
+        "official-company": 51,
+        "analyst-public": 34,
+        "industry-press": 1,
+        "regulator": 5
+      },
+      "byType": {
+        "company": 3,
+        "channel": 25,
+        "services": 8,
+        "portfolio": 5,
+        "market": 19,
+        "trend": 7,
+        "analyst": 14,
+        "m&a": 1,
+        "competitive": 2,
+        "integrator": 5,
+        "customer": 1,
+        "financial": 1
+      },
+      "byScope": {
+        "Global": 16,
+        "EMEA / Southern Europe": 1,
+        "Europe / Spanish-language support": 1,
+        "Spain": 11,
+        "Portugal": 4,
+        "EMEA": 4,
+        "Europe": 6,
+        "Europe incl. Spain/Portugal footprint": 1,
+        "Spain / Portugal": 4,
+        "Spain / Portugal listed": 1,
+        "Spain / Portugal / Europe": 1,
+        "Global / sovereignty relevance": 1,
+        "Global / Europe relevance": 2,
+        "Public source": 19,
+        "ES / Southern Europe": 1,
+        "ES": 3,
+        "Global / channel": 1,
+        "Global / relevance Iberia": 2,
+        "Global company": 1,
+        "Spain / multi-country survey": 1,
+        "Multi-country survey incl. Spain": 1,
+        "Spain / EMEA": 1,
+        "EMEA / Iberia applicable": 1,
+        "EMEA / Spain page": 1,
+        "Europe / Spain and Portugal portfolio": 1,
+        "EMEA / Portugal portfolio": 1,
+        "Europe incl. Spain": 1,
+        "Global / Europe applicable": 1,
+        "Europe incl. Spain and Portugal": 1,
+        "EMEA / award in Portugal": 1
+      },
+      "byEngine": {
+        "curated": 91
+      },
+      "topSources": [
+        [
+          "Gartner",
+          21
+        ],
+        [
+          "Westcon-Comstor",
+          15
+        ],
+        [
+          "Exclusive Networks",
+          5
+        ],
+        [
+          "IDC",
+          4
+        ],
+        [
+          "Forrester",
+          4
+        ],
+        [
+          "CrowdStrike",
+          3
+        ],
+        [
+          "Arrow ECS",
+          3
+        ],
+        [
+          "TD SYNNEX",
+          2
+        ],
+        [
+          "Cisco",
+          2
+        ],
+        [
+          "Ingram Micro",
+          2
+        ],
+        [
+          "FireMon",
+          2
+        ],
+        [
+          "European Commission",
+          2
+        ],
+        [
+          "Dell'Oro Group",
+          2
+        ],
+        [
+          "Synergy Research Group",
+          2
+        ],
+        [
+          "Datatec",
+          1
+        ],
+        [
+          "@aslan / Arrow announcement coverage",
+          1
+        ],
+        [
+          "HPE",
+          1
+        ],
+        [
+          "Arrow",
+          1
+        ],
+        [
+          "Telefónica Tech",
+          1
+        ],
+        [
+          "Claroty",
+          1
+        ],
+        [
+          "INCIBE / CONETIC",
+          1
+        ],
+        [
+          "INCIBE",
+          1
+        ],
+        [
+          "República Portuguesa / Compete 2030",
+          1
+        ],
+        [
+          "Omdia / Canalys",
+          1
+        ],
+        [
+          "Telefónica Tech / Logicalis Spain",
+          1
+        ],
+        [
+          "Ignition Technology / CrowdStrike",
+          1
+        ],
+        [
+          "Westcon-Comstor / Proofpoint",
+          1
+        ],
+        [
+          "Westcon-Comstor / Check Point",
+          1
+        ],
+        [
+          "Westcon-Comstor / Cisco",
+          1
+        ],
+        [
+          "Telefónica Tech / F5",
+          1
+        ]
+      ]
+    },
+    "runStages": [
+      {
+        "name": "adaptive-discovery",
+        "status": "partial",
+        "startedAt": "2026-08-27T07:30:33.809304+00:00",
+        "durationSeconds": 0.0,
+        "finishedAt": "2026-08-27T07:30:33.810080+00:00",
+        "signals": 0,
+        "plannedTasks": 137,
+        "processedTasks": 0,
+        "completedTasks": 0,
+        "pendingTasks": 137,
+        "partialRun": true,
+        "resumedTasks": 0,
+        "circuits": {},
+        "learningStrategies": 0
+      },
+      {
+        "name": "official-vendor-crawl",
+        "status": "deferred",
+        "startedAt": "2026-08-27T07:30:33.810109+00:00",
+        "durationSeconds": 0.0,
+        "finishedAt": "2026-08-27T07:30:33.810119+00:00"
+      },
+      {
+        "name": "commoncrawl-revalidation",
+        "status": "deferred",
+        "startedAt": "2026-08-27T07:30:33.810125+00:00",
+        "durationSeconds": 0.0,
+        "finishedAt": "2026-08-27T07:30:33.810130+00:00"
+      },
+      {
+        "name": "ecosystem-official-crawl",
+        "status": "deferred",
+        "startedAt": "2026-08-27T07:30:33.810135+00:00",
+        "durationSeconds": 0.0,
+        "finishedAt": "2026-08-27T07:30:33.810139+00:00"
+      },
+      {
+        "name": "analyst-public-crawl",
+        "status": "deferred",
+        "startedAt": "2026-08-27T07:30:33.810143+00:00",
+        "durationSeconds": 0.0,
+        "finishedAt": "2026-08-27T07:30:33.810148+00:00"
+      },
+      {
+        "name": "public-procurement",
+        "status": "deferred",
+        "startedAt": "2026-08-27T07:30:33.810152+00:00",
+        "durationSeconds": 0.0,
+        "finishedAt": "2026-08-27T07:30:33.810156+00:00"
+      },
+      {
+        "name": "corroborate-and-publish",
+        "status": "completed",
+        "startedAt": "2026-08-27T07:30:33.810160+00:00",
+        "durationSeconds": 0.2,
+        "finishedAt": "2026-08-27T07:30:34.006444+00:00",
+        "evidence": 91,
+        "changes": 0
+      }
+    ],
+    "runErrorCount": 0
+  }
 }

@@ -1,515 +1,183 @@
-# Westcon Iberia · Adaptive Intelligence Graph v2.1
-
-**España + Portugal · Solo inteligencia pública · GitHub Pages**
-
-Aplicación estática para construir una estrategia tecnológica ejecutiva de Westcon Iberia con una regla de diseño: **hipersimple por fuera, extremadamente rigurosa por dentro**.
-
-La interfaz conserva la organización visual del material FY27 y permite llegar a una decisión en segundos. El motor de fondo investiga, normaliza, cruza y pondera fabricantes, mercados, competidores, mayoristas, integradores, clientes públicos, contratación, consultoras, M&A, roadmap, recurrencia, partner programs, servicios, logística, financiación y señales regulatorias.
-
-No incluye datos internos en los datasets. El alcance analítico es **información pública externa + portfolio/taxonomía derivados de la presentación FY27 facilitada**. La ficha de fabricante incorpora además un gate local y opcional para que el usuario complete cinco respuestas internas en su propio navegador; esas respuestas no se envían, no modifican la evidencia pública y no autorizan automáticamente una inversión.
-
-## Qué cambia en v2.1
-
-### 1. Investigación masiva que no bloquea el proceso
-
-El motor v10 divide la búsqueda en lotes acotados y guarda un checkpoint atómico después de cada uno. Cada motor dispone de reintentos con backoff y circuit breaker independiente: si una fuente falla, se aísla temporalmente y las demás continúan. Una ejecución repetida el mismo día y perfil reanuda lo pendiente y conserva la evidencia ya obtenida.
-
-`data/research_learning.json` guarda el aprendizaje acumulativo y `data/research_queue.json` el checkpoint reanudable. Ambos son públicos, auditables y no contienen secretos.
-
-### 2. Aprendizaje adaptativo con exploración garantizada
-
-Las estrategias de consulta reciben recompensa cuando encuentran fuentes primarias, precisión España/Portugal, relaciones nuevas, cifras explícitas, corroboración y señales recientes. Se penalizan duplicados, resultados de mero discovery y fallos. Se mantiene una cuota mínima de exploración para descubrir fuentes nuevas y evitar que el motor se encierre en lo ya conocido.
-
-### 3. Grafo de inteligencia y nuevas vistas ejecutivas
-
-`data/intelligence_graph.json` añade claims atómicos y perfiles de mayoristas, integradores, tendencias y arquitecturas. Cada cifra conserva fuente, fecha, ámbito, tier y confianza. El hover o foco sobre un dato abre su trazabilidad. Los valores no publicados se muestran como gaps y nunca se estiman silenciosamente.
-
-### 4. Arquitecturas con conflicto técnico explícito
-
-Los pares multivendor se clasifican como `COMPLEMENTARY`, `CONDITIONAL` o `CONFLICT`. Dos fabricantes de plataforma no se consideran sinergia por defecto: se exige separación de control plane, ownership operativo, SKU y presupuesto.
-
-### 5. Acciones solo con certeza 100/100
-
-La interfaz conserva hipótesis y scores para priorizar investigación, pero oculta planes y mandatos por debajo de 100/100. La capa v2.0 pasa a ser una tesis trazable hasta que tenga corroboración total y gate interno; no se presenta como acción autorizada.
-
-## Base heredada de v2.0
-
-### 1. La recomendación se convierte en un contrato verificable
-
-La capa `data/market_reality.json` reúne 30 hechos públicos nuevos y 12 planes de fabricante de alta confianza. Una recomendación ejecutiva solo se presenta como tal cuando contiene:
-
-- realidad de mercado observada y su implicación para Westcon Iberia;
-- decisión y nivel de confianza;
-- responsable explícito;
-- acciones a 30, 60 y 90 días;
-- KPI cuantificados;
-- condición de escalado o retirada (`go/no-go`);
-- fuentes públicas enlazadas.
-
-AWS, Check Point, Cisco, CrowdStrike, Extreme Networks, F5, Fortanix, Microsoft Azure, Palo Alto Networks, Proofpoint, UiPath y Zscaler disponen de este contrato en la versión inicial. Los restantes fabricantes continúan en el motor general, pero cualquier acción sin evidencia específica queda bloqueada como `INVESTIGAR`.
-
-### 2. Separación estricta entre hechos, inferencias y datos internos
-
-El motor v9 unifica la evidencia de investigación con la nueva capa de realidad pública, sin confundirla con datos del negocio. Para autorizar inversión solicita cinco datos internos concretos —pipeline/cuentas, partner/ruta de compra, capacidad, economía y owner/fecha— y los guarda solo en `localStorage` del navegador.
-
-### 3. Recomendaciones comprensibles por función
-
-Cada uno de los 11 perfiles recibe ahora un **mandato**, la **realidad detectada**, el **resultado/KPI**, el **gate** y las **fuentes**. El plan ejecutivo ya no sustituye hitos concretos por una lista genérica de nombres de acciones.
-
-### 4. Investigación pública acumulativa
-
-El crawler periódico incorpora las realidades verificadas antes de deduplicar, corroborar y recalcular cobertura. Así, una actualización diaria/semanal/mensual amplía la base sin borrar el baseline editorial validado.
-
-## Base funcional heredada de v1.8
-
-### 1. Decision Intelligence, no receta genérica
-
-El motor ya no recomienda automáticamente `Servicios + FLEX + 3D Labs`. Dispone de **47 palancas Westcon** y las puntúa contra el contexto concreto de cada fabricante. Una palanca solo aparece si supera su umbral de pertinencia.
-
-Ejemplos de gates:
-
-- **FLEX**: requiere encaje financiero, recurrencia/hardware y oportunidad suficiente;
-- **3D Lab / PoC**: requiere necesidad real de prueba técnica o displacement;
-- **Intelligent Demand / ABM**: se activa ante whitespace y necesidad de generación de demanda;
-- **stock / staging**: exige intensidad hardware y complejidad de despliegue;
-- **marketplace**: exige encaje cloud/SaaS o evidencia pública de marketplace;
-- **managed services**: exige necesidad operativa/soporte, no solo que el vendor sea de seguridad;
-- **lifecycle**: prioriza recurrencia, base instalada/referencias y expansión;
-- **Tech Xpert / enablement**: prioriza gaps de capacidad o especialización del ecosistema;
-- **GSCS / IoR / 3PL**: aparece cuando el patrón de proyecto exige escala multinacional o logística compleja.
-
-Si ninguna acción de una función supera el umbral, el sistema muestra **“Sin acción prioritaria”** en lugar de consumir recursos por inercia.
-
-### 2. Recomendaciones por 11 perfiles de Westcon
-
-Cada fabricante genera una tesis central y recomendaciones distintas para:
-
-1. Solution Architects / Preventa;
-2. VSM — Vendor Success Manager;
-3. PSM — Partner Success Manager;
-4. Dirección VSM + Solution Architects;
-5. Dirección PSM;
-6. Country Manager;
-7. Marketing;
-8. Servicios / Soporte;
-9. Operaciones;
-10. Finanzas;
-11. Logística.
-
-Cada acción incluye:
-
-- score contextual;
-- motivos principales que la activan;
-- evidencia relacionada;
-- enlace a la fuente pública cuando existe;
-- referencia a la capacidad oficial Westcon aplicable.
-
-### 3. Catálogo de palancas Westcon mucho más amplio
-
-El motor modela, entre otras:
-
-**Preventa y tecnología**
-- discovery y cualificación;
-- arquitectura, sizing y BOM;
-- RFI/RFP y defensa técnica;
-- PoC/PoV;
-- 3D Lab / Demo Lab / Tech Showcase;
-- Tech Assessments;
-- Tech Xpert / Tech ConneX;
-- SkillBoost / Academy / educación;
-- Tech Insights;
-- arquitecturas de referencia y playbooks multivendor.
-
-**Vendor management / negocio**
-- joint business plan;
-- priorización de casos de uso;
-- especialización/certificación de partners;
-- displacement competitivo;
-- roadmap y executive alignment;
-- category plan y gobierno de overlap.
-
-**Partner Success**
-- recruitment y activación de partners;
-- segmentación por capacidad;
-- capability maps;
-- cross-sell multivendor;
-- new-logo motions;
-- lifecycle y expansión.
-
-**Marketing**
-- Intelligent Demand;
-- campañas conjuntas con fabricante;
-- ABM;
-- playbooks verticales;
-- Tech Insights, webinars y eventos.
-
-**Servicios y soporte**
-- diseño profesional;
-- instalación, migración y upgrades;
-- health checks / assessments;
-- Westcon Care / Assist;
-- Managed Services;
-- Engineer-to-Site.
-
-**Operaciones, logística y supply chain**
-- planificación de stock y disponibilidad;
-- staging;
-- IoR / 3PL / logística avanzada;
-- reverse logistics;
-- GSCS;
-- PartnerCentral / lifecycle operations.
-
-**Finanzas y consumo**
-- FLEX;
-- CAPEX → OPEX;
-- estructura de suscripción/deal;
-- cloud marketplaces / private offers.
-
-### 4. Tesis estratégicas por fabricante
-
-El motor clasifica el contexto en arquetipos como:
-
-- `SCALE PLATFORM`
-- `BUILD ECOSYSTEM`
-- `DEFEND CHANNEL`
-- `DISPLACE`
-- `CROSS-SELL`
-- `PUBLIC SECTOR`
-- `HARDWARE SCALE`
-- `RECURRING EXPANSION`
-- `GOVERN OVERLAP`
-- `INVESTIGATE`
-
-Dos vendors con un score parecido pueden recibir recomendaciones diferentes si difieren en canal, ecosistema, fiabilidad, recurrencia, hardware, M&A, demanda pública o presión competitiva.
-
-## Motor v9: 14 dimensiones + riesgo + incertidumbre + contrato de ejecución
-
-El análisis combina, entre otras señales:
-
-- momentum del mercado;
-- portfolio fit;
-- recurrencia;
-- diferenciación;
-- sinergias;
-- señal pública de consultoras;
-- leverage de servicios;
-- fortaleza de ecosistema;
-- prueba de cliente;
-- capacidad de integradores;
-- cobertura España/Portugal;
-- demanda pública;
-- prueba competitiva;
-- confianza de evidencia.
-
-A ello se suman variables derivadas como:
-
-- momentum del fabricante;
-- intensidad hardware/cloud;
-- complejidad técnica;
-- necesidad de PoC;
-- encaje regulatorio;
-- marketplace fit;
-- finance fit;
-- deployment complexity;
-- support need;
-- managed-service fit;
-- stock need;
-- lifecycle fit;
-- demand-generation need;
-- partner-enablement need;
-- M&A disruption;
-- shared ecosystem;
-- diversidad vertical;
-- potencial de deal y opcionalidad estratégica.
-
-### Riesgo
-
-Se calcula aparte y contempla:
-
-- overlap interno;
-- presión de otros mayoristas;
-- intensidad de fabricantes competidores;
-- concentración de integradores/clientes;
-- gaps de evidencia;
-- antigüedad;
-- desequilibrio ES/PT;
-- debilidad de ecosistema;
-- concentración de contratación;
-- falta de prueba competitiva.
-
-### Incertidumbre y estabilidad
-
-No se muestra falsa precisión. Si la evidencia es pobre, el score se contrae hacia una posición neutral. Además, el motor ejecuta una prueba de sensibilidad/estabilidad: una decisión que cambia demasiado ante pequeñas perturbaciones se degrada a una postura más prudente.
-
-## Evidencia a la vista
-
-Al seleccionar un fabricante se puede abrir `Ver datos` para visualizar:
-
-- drivers y frenos;
-- scores;
-- mayoristas ES/PT;
-- integradores;
-- clientes públicos;
-- señales de Gartner / IDC / Forrester / Omdia / Canalys / Dell'Oro / Synergy / ISG;
-- contratación pública;
-- sinergias;
-- overlap;
-- evidencias concretas;
-- por qué se activa cada recomendación por perfil.
-
-La interfaz distingue siempre **hecho público**, **señal de mercado** e **inferencia estratégica propia**.
-
-## Investigación de fondo
-
-### Velocidad 1 · diaria
-
-`.github/workflows/research-daily.yml`
-
-Busca cambios rápidos:
-
-- distribución;
-- nuevos partners/integradores;
-- clientes/casos;
-- M&A;
-- producto;
-- partner program;
-- customer stories;
-- noticias de canal;
-- señales competitivas recientes.
-
-### Velocidad 2 · semanal profunda
-
-`.github/workflows/research-weekly.yml`
-
-Recalibra el landscape con:
-
-- búsqueda abierta;
-- webs y sitemaps oficiales;
-- canal e integradores;
-- customer stories;
-- consultoras;
-- TED;
-- contratación ES/PT;
-- comparativas vendor-vendor;
-- displacement/migration;
-- datos de mercado;
-- gaps de cobertura.
-
-### Velocidad 3 · mensual exhaustiva
-
-`.github/workflows/research-monthly.yml`
-
-Barrido long-tail e histórico con presupuestos mucho mayores. Añade especialmente:
-
-- investor relations / annual reports / filings públicos;
-- ARR, subscription growth y software mix cuando son públicos;
-- R&D / roadmap / platformization;
-- end-of-sale/end-of-support;
-- partner tiers y especializaciones;
-- certified partners;
-- customer counts/references;
-- competitive wins/migrations;
-- MSSP programs;
-- marketplaces;
-- stock/staging/servicios/lifecycle;
-- Common Crawl como discovery + revalidación;
-- Arquivo.pt para histórico;
-- contratación pública extensa;
-- señales de cambio estructural.
-
-El planificador no reparte búsquedas por igual: dedica más presupuesto a **gaps concretos** de un vendor/país/dimensión y mantiene fair-share para impedir que una sola marca absorba todo el esfuerzo.
-
-## Fuentes utilizadas
-
-### Primarias
-- fabricantes;
-- Westcon/Comstor/Datatec públicos;
-- mayoristas;
-- integradores;
-- clientes;
-- investor relations;
-- reguladores/open data;
-- TED;
-- PLACSP / datos abiertos de contratación en España;
-- dados.gov.pt / Portal BASE / IMPIC en Portugal.
-
-### Analistas públicos
-- Gartner;
-- IDC;
-- Forrester;
-- Omdia;
-- Canalys;
-- Dell'Oro;
-- Synergy Research;
-- ISG;
-- KuppingerCole;
-- Everest Group;
-- GigaOm.
-
-Solo se utiliza contenido públicamente accesible. **No se reconstruyen Magic Quadrants, Waves, MarketScapes ni contenidos licenciados.**
-
-### Discovery
-- Brave Search API (opcional);
-- Google News RSS;
-- GDELT;
-- Arquivo.pt;
-- Common Crawl.
-
-Discovery no equivale a evidencia ejecutiva: la señal se revalida y se vuelve a puntuar.
-
-## Modelo de calidad de evidencia
-
-Cada evidencia se pondera por:
-
-- autoridad;
-- frescura;
-- precisión geográfica;
-- relación directa;
-- corroboración;
-- diversidad de fuentes;
-- especificidad.
-
-Reglas esenciales:
-
-- EMEA ≠ Iberia ≠ España ≠ Portugal;
-- ausencia pública ≠ inexistencia;
-- partner directory ≠ capacidad demostrada;
-- adjudicación / caso / premio / certificación pesa más que una mención;
-- contratación tecnológica sin vendor explícito = demanda de mercado, no cliente del vendor;
-- una relación de canal antigua no se mantiene activa indefinidamente;
-- las contradicciones se conservan como conflicto a validar.
-
-## Contexto competitivo Iberia modelado
-
-- **Juniper Networks** no se cuenta como vendor activo del scope Iberia; permanece monitorizado como competidor estratégico.
-- **Extreme Networks** incluye a **TD SYNNEX España** como presión de canal pública.
-
-El motor usa la competencia de canal para decidir **cómo diferenciar Westcon**, no para reducir automáticamente el atractivo del fabricante.
-
-## Accesibilidad y simplicidad
-
-La cabecera incorpora:
-
-- `A−` para reducir texto;
-- `A+` para aumentar texto;
-- `Ver datos` para abrir/cerrar profundidad;
-- `Informe / PPT` para exportación modular.
-
-El tamaño elegido se conserva en el navegador.
-
-## Informes y presentaciones modulares
-
-Al pulsar `Informe / PPT` se pueden seleccionar módulos:
-
-- ejecutivo;
-- portfolio;
-- recomendaciones por perfiles;
-- canal/competencia;
-- analistas;
-- ecosistema;
-- sinergias;
-- tendencias;
-- evidencias;
-- metodología.
-
-La aplicación genera:
-
-- **PDF ejecutivo**;
-- **PowerPoint editable**.
-
-No hay que exportarlo todo: se construye únicamente con los módulos marcados.
-
-## Arquitectura
-
-```text
-Internet / Open Data / Analyst Public Content
-                    ↓
-             GitHub Actions
-        diaria · semanal · mensual
-                    ↓
- discover → normalize → dedupe → corroborate
-                    ↓
-          Evidence / Relationship Graph
-                    ↓
-  vendor ↔ market ↔ competitor ↔ distributor
-    ↕        ↕          ↕            ↕
- analyst ↔ integrator ↔ customer ↔ procurement
-                    ↓
-          Decision Intelligence v6
-                    ↓
-         47 palancas × 11 perfiles
-                    ↓
-             GitHub Pages UI
-                    ↓
-          PDF / PowerPoint modular
+# Westcon Iberia Decision Intelligence v3.0
+
+Aplicación ejecutiva estática para inteligencia pública de fabricantes, mayoristas, integradores, tendencias, arquitecturas, sinergias y solapes en España y Portugal.
+
+La v3.0 rehace el proceso de actualización para que sea acotado, reanudable, observable y tolerante a fallos. No necesita bases de datos, servidores de aplicación, claves de búsqueda ni suscripciones. Puede publicarse en GitHub Pages y actualizar sus JSON mediante GitHub Actions.
+
+## Principios no negociables
+
+- Solo fuentes gratuitas y accesibles públicamente.
+- Gartner, IDC, Forrester y otras consultoras: únicamente páginas, notas, resúmenes, webinars y materiales públicos; nunca se raspan ni reconstruyen informes licenciados.
+- Una entidad configurada para investigar no se presenta como relación comercial demostrada.
+- Descubrimiento, evidencia e inferencia se mantienen separados.
+- ES, PT, Iberia, EMEA y global no se mezclan.
+- La ausencia de evidencia pública se muestra como gap, no como cero ni como inexistencia.
+- Solo se muestra una acción cuando el gate global alcanza exactamente 100/100 y tiene corroboración suficiente; el resto queda como hipótesis de investigación.
+
+## Qué incluye
+
+- Vista ejecutiva, fabricantes, mayoristas, integradores, tendencias, arquitecturas, sinergias/solapes, fuentes y operación.
+- Universo semilla abierto: 24 consultoras, 27 mayoristas y más de 55 integradores, ampliable por descubrimiento dinámico.
+- Perfiles con portfolio, presión de canal, integradores, clientes públicos, posicionamiento, demanda pública, competencia, certificaciones/señales y gaps.
+- Arquitecturas técnicas con sinergias, dependencias, límites y conflictos de plataforma.
+- Tabla de fabricantes con columnas seleccionables, ordenables y movibles mediante arrastrar y soltar.
+- Hover contextual para métricas e inferencias: explicación, confianza y fuentes principales.
+- Exportación PDF y PowerPoint con portada ejecutiva, metadatos, campos elegidos y gate de acciones.
+- Panel de operación con estado del run, etapas, salud por dominio y fallos trazados.
+
+## Fuentes gratuitas
+
+| Capa | Fuentes |
+| --- | --- |
+| Primarias | webs, notas, partner locators, casos, sitemaps y páginas oficiales |
+| Noticias | Google News RSS |
+| Eventos globales | GDELT DOC 2.0 |
+| Histórico portugués | Arquivo.pt |
+| Descubrimiento web | Common Crawl, siempre con revalidación en la URL oficial viva |
+| Contratación UE | TED Search API pública |
+| Contratación España | PLACSP y feeds oficiales de agregación |
+| Contratación Portugal | catálogo y recursos públicos de dados.gov.pt / Portal BASE |
+| Consultoras | contenido público de Gartner, IDC, Forrester, Omdia, Canalys, Dell’Oro, Synergy, ISG y otras |
+
+No hay variables `BRAVE_SEARCH_API_KEY`, `BASE_API_TOKEN` ni otra clave de búsqueda en los workflows o en el colector.
+
+## Arquitectura de actualización
+
+```mermaid
+flowchart TD
+    A[Calendario local] --> B[Supervisor]
+    B --> C[Descubrimiento adaptativo]
+    B --> D[Fuentes oficiales y abiertas]
+    C --> E[Checkpoint y aprendizaje]
+    D --> F[Corroboración y confianza]
+    E --> F
+    F --> G{Validación}
+    G -->|válida| H[Publicación atómica]
+    G -->|inválida| I[Restaurar último dataset válido]
+    H --> J[Frontend y exportaciones]
+    I --> J
 ```
 
-## Calidad antes de auto-publicar
+El motor trabaja por lotes pequeños y con un presupuesto máximo. Si una fuente responde lentamente, agota cuota pública o falla, abre un circuito temporal, conserva lo conseguido y deja la cola pendiente para el siguiente ciclo. El supervisor emite heartbeats, impone un límite exterior, valida el resultado y recupera el último dataset válido si fuera necesario.
 
-Todos los workflows ejecutan `scripts/validate.py` antes de hacer commit. Se valida:
+## Instalación rápida
 
-- JSON;
-- alineación de vendors;
-- Juniper fuera de activos;
-- TD SYNNEX España en Extreme;
-- weights del motor;
-- taxonomía de contratación;
-- geografía;
-- URLs en evidencia fuerte;
-- Decision Intelligence config;
-- roles/acciones/gates;
-- workflows diaria/semanal/mensual;
-- ausencia de campos internos prohibidos.
-
-Si falla la validación, el dataset nuevo **no se publica**.
-
-## APIs / secretos
-
-Ninguno es obligatorio para visualizar la aplicación.
-
-### Opcional · Brave Search
-
-`BRAVE_SEARCH_API_KEY`
-
-Aumenta mucho el long-tail de búsqueda abierta.
-
-### Opcional · Portal BASE Portugal
-
-`BASE_API_TOKEN`
-
-Añade enriquecimiento REST a las fuentes portuguesas públicas ya procesadas.
-
-Las claves viven únicamente como GitHub Actions Secrets y nunca se exponen en GitHub Pages.
-
-## Instalación / actualización desde VS Code
-
-Si el repositorio `estrategia` ya está conectado a GitHub, sustituye los archivos conservando `.git/` y ejecuta:
+Requisitos: Python 3.11 o 3.12, Node.js para las pruebas de UI y un repositorio GitHub si se desea automatización/publicación.
 
 ```bash
-git add .
-git commit -m "Westcon Iberia Evidence-to-Action v2.0"
-git push
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python scripts/configure_updates.py --show
+python scripts/selftest.py
+python scripts/test_resilience.py
+python scripts/test_schedule.py
+python scripts/validate.py
+python -m http.server 8000
 ```
 
-GitHub Pages conserva la URL. Los workflows periódicos seguirán actualizando los datasets.
+En Windows PowerShell, active el entorno con:
 
-## Principio de producto
+```powershell
+.venv\Scripts\Activate.ps1
+```
 
-> **La complejidad pertenece al motor, no a la pantalla.**
+Abra `http://localhost:8000`. Para instalar sobre v2.1 sin perder aprendizaje o histórico, siga [INSTALACION_SOBRE_V2.1.md](INSTALACION_SOBRE_V2.1.md).
 
-La meta de v2.0 es que Dirección pueda entender el qué en segundos y comprobar, sin ambigüedad, quién hace qué, cuándo, contra qué KPI, bajo qué condición y con qué fuentes.
+## Configurar actualizaciones automáticas
 
-## Motor de capacidades Westcon v2.0
+La configuración efectiva vive en `config/update_schedule.json`. No edite el YAML a mano; utilice:
 
-La recomendación ya no parte solo del mercado: primero valida **qué capacidades Westcon existen y cuáles aplican de verdad a cada fabricante**. El fichero `config/capability_intelligence.json` separa capacidad local, EMEA y global; distingue evidencia pública, documentación facilitada, confirmación del proyecto y simples hipótesis; y bloquea una recomendación cuando la compatibilidad no está demostrada.
+```bash
+python scripts/configure_updates.py \
+  --timezone Europe/Madrid \
+  --daily 06:23 \
+  --weekly SUN@04:47 \
+  --monthly 1@03:17
+```
 
-Se han incorporado como fuentes de referencia el documento **Tech Insights Lead to Opportunity**, que identifica 12 categorías, 10 vendors y 22 assessments, y el documento **3D Lab**, que identifica 17 technology vendors, 27+ use cases y más de 2.450 usuarios FY25. La matriz de 3D Lab solo habilita vendors que aparecen expresamente en esa cobertura; UiPath, por ejemplo, no queda habilitado para 3D Lab.
+Otros ejemplos:
 
-El motor investiga periódicamente `fabricante × capacidad Westcon × país × evidencia`, además de mercado, analistas, canal, integradores, clientes, licitaciones y competencia. Una señal de discovery no puede promocionarse a capacidad verificada sin evidencia oficial o corroboración suficiente.
+```bash
+python scripts/configure_updates.py --timezone Europe/Lisbon
+python scripts/configure_updates.py --weekly off
+python scripts/configure_updates.py --daily 07:10 --weekly SAT@05:20 --monthly 2@04:30
+python scripts/configure_updates.py --show
+```
 
-## v1.8.1 — hotfix del motor de investigación
+El script modifica de forma coordinada la configuración local y los bloques marcados de los tres workflows. Genera candidatos UTC de verano e invierno; `schedule_guard.py` ejecuta únicamente el candidato que coincide con la hora local y evita repeticiones. `workflow_dispatch` permite lanzar cualquier perfil manualmente.
 
-- Corrige el `NameError: clamp is not defined` que podía hacer fallar los perfiles diario, semanal y mensual al agregar demanda de contratación pública.
-- Añade `scripts/selftest.py`, un preflight offline que prueba las funciones de agregación antes de iniciar las búsquedas largas.
-- Los tres workflows ejecutan ahora `py_compile` + self-test antes del crawl, evitando descubrir errores deterministas al final de una ejecución de muchos minutos.
-- Actualiza `actions/checkout` y `actions/setup-python` a runtimes Node 24 para eliminar los avisos de deprecación de Node 20 en runners hospedados actuales.
+| Perfil | Uso | Límite exterior |
+| --- | --- | ---: |
+| `daily` | cambios recientes y cola prioritaria | 12 min |
+| `deep` | barrido semanal y recalibración | 30 min |
+| `exhaustive` | long tail, histórico y universo ampliado | 55 min |
+
+Ejecución manual local:
+
+```bash
+python scripts/research_supervisor.py --profile daily --max-runtime 720
+python scripts/research_supervisor.py --profile deep --max-runtime 1800 --fallback-runtime 240
+python scripts/research_supervisor.py --profile exhaustive --max-runtime 3300 --fallback-runtime 300
+```
+
+No ejecute `research.py` dos veces con `||`: el supervisor ya gestiona timeout, fallback, validación y recuperación.
+
+## Trazabilidad de datos y fallos
+
+| Archivo | Contenido |
+| --- | --- |
+| `data/research.latest.json` | dataset publicado, run ID, motores y etapas |
+| `data/run_manifest.latest.json` | duración, resultado y estado de cada etapa |
+| `data/research_errors.json` | error sanitizado, etapa, tipo, fuente, hora y recuperabilidad |
+| `data/source_health.json` | intentos, éxitos, latencia, utilidad, fallos consecutivos y cooldown por dominio |
+| `data/research_queue.json` | checkpoint y tareas pendientes/reanudables |
+| `data/research_learning.json` | rendimiento histórico de estrategias y fuentes |
+| `data/supervisor.latest.json` | timeout, fallback, validación y restauración del último dato válido |
+| `data/discovered_entities.json` | candidatos y promociones por corroboración independiente |
+| `data/changes.latest.json` | cambios y conflictos detectados |
+| `diagnostics/*.log` | log detallado sanitizado; se conserva como artefacto de GitHub Actions |
+
+Los logs eliminan tokens, claves y cabeceras bearer aunque esta versión no necesita secretos de búsqueda. Los artefactos de diagnóstico se conservan 30, 45 o 60 días según el perfil.
+
+## Diagnóstico rápido
+
+1. Abra la vista **Operación** y copie el `runId`.
+2. Revise `run_manifest.latest.json` para localizar la etapa parcial, degradada o diferida.
+3. Consulte `research_errors.json` y `source_health.json` para identificar dominio, clase de error y cooldown.
+4. Descargue el artefacto `research-diagnostic-*` de la ejecución de GitHub Actions para ver el log completo.
+5. Reproduzca con el mismo perfil mediante `research_supervisor.py`; no borre la cola, pues permite reanudar.
+6. Ejecute las cuatro pruebas antes de modificar el motor.
+
+## Pruebas de regresión
+
+```bash
+python -m py_compile scripts/*.py
+python scripts/selftest.py
+python scripts/test_resilience.py
+python scripts/test_schedule.py
+python scripts/validate.py
+node --check assets/app.js
+node scripts/ui_smoke.js
+```
+
+`test_resilience.py` es offline y determinista: comprueba checkpoint, publicación parcial y reanudación. `test_schedule.py` comprueba Madrid, verano/invierno y la guardia antirrepetición. `validate.py` impide publicar si reaparecen claves de pago, el reintento monolítico o un workflow sin trazabilidad.
+
+## Publicación en GitHub Pages
+
+1. Suba el contenido a la rama `main`.
+2. En **Settings → Pages**, elija **Deploy from a branch**, `main` y `/ (root)`.
+3. En **Actions**, lance manualmente **Inteligencia pública diaria**.
+4. Compruebe la validación, el commit automático y la vista **Operación**.
+5. Lance después el perfil semanal para iniciar la ampliación profunda.
+
+No se necesitan secretos para el funcionamiento del motor.
+
+## Límites honestos
+
+- Una cifra de cuota, ventas o portfolio solo aparece como hecho cuando existe una fuente pública directa y trazable.
+- La cobertura exhaustiva del canal es un objetivo dinámico, no una afirmación cerrada.
+- El contenido público de una consultora suele ser menos detallado que su investigación licenciada; la aplicación marca los gaps en vez de completarlos por inferencia silenciosa.
+- El 100/100 es el cumplimiento exacto del gate definido por el modelo y sus evidencias disponibles, no una garantía metafísica sobre el futuro.
+
+Consulte [CHANGELOG_v3.0.md](CHANGELOG_v3.0.md) para el detalle técnico de esta versión.

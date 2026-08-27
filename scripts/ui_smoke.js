@@ -14,7 +14,7 @@ class FakeElement {
     this.textContent = '';
     this.style = {setProperty() {}};
     this.classList = {add() {}, remove() {}, toggle() {}};
-    this.value = selector === '#vendorSearch' || selector === '#sourceSearch' ? '' : 'all';
+    this.value = ['#vendorSearch','#sourceSearch','#distributorSearch','#integratorSearch'].includes(selector) ? '' : 'all';
   }
   addEventListener() {}
   querySelector(selector) { return getElement(`${this.selector} ${selector}`); }
@@ -80,10 +80,11 @@ async function waitForLoad() {
   await waitForLoad();
   if (context.__state.reality.facts.length !== 30) throw new Error('La capa de realidad no cargó 30 hechos');
   if (Object.keys(context.__state.reality.vendors).length !== 12) throw new Error('No cargaron los 12 contratos verificables');
-  if (context.__state.graph.claims.length < 28) throw new Error('No cargó el grafo de inteligencia v2.1');
+  if (context.__state.graph.claims.length < 28) throw new Error('No cargó el grafo de inteligencia v3.0');
   if (!getElement('#marketKpis').innerHTML.includes('119')) throw new Error('El KPI no unifica las evidencias públicas y los nuevos claims');
   if (!getElement('#distributorCards').innerHTML.includes('Arrow ECS')) throw new Error('Falta la vista de mayoristas');
-  if (!getElement('#integratorCards').innerHTML.includes('Logicalis Spain')) throw new Error('Falta la vista de integradores');
+  if (!getElement('#integratorCards').innerHTML.includes('Logicalis')) throw new Error('Falta la vista de integradores');
+  if (!getElement('#runHealth').innerHTML.includes('Resultado')) throw new Error('Falta observabilidad de la actualización');
   if (!getElement('#architectureCards').innerHTML.includes('CONFLICTO')) throw new Error('Falta el gobierno técnico de solapes');
 
   context.__selectVendor('Palo Alto Networks');

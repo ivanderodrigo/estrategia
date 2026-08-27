@@ -20,7 +20,8 @@ def walk_keys(obj,path=''):
 
 def main():
     base=load('data/base.json'); vi=load('data/vendor_intelligence.json'); research=load('data/research.latest.json'); reality=load('data/market_reality.json'); graph=load('data/intelligence_graph.json')
-    engine=load('config/strategy_engine.json'); decision=load('config/decision_intelligence.json'); cap=load('config/capability_intelligence.json'); load('config/research_queries.json'); load('config/source_registry.json'); deep=load('config/deep_research.json'); proc_tax=load('config/procurement_taxonomy.json'); load('data/ecosystem.json')
+    engine=load('config/strategy_engine.json'); decision=load('config/decision_intelligence.json'); cap=load('config/capability_intelligence.json'); load('config/research_queries.json'); load('config/source_registry.json'); deep=load('config/deep_research.json'); universe=load('config/source_universe.json'); schedule=load('config/update_schedule.json'); proc_tax=load('config/procurement_taxonomy.json'); load('data/ecosystem.json')
+    load('data/source_health.json'); load('data/discovered_entities.json'); load('data/research_errors.json'); load('data/run_manifest.latest.json'); load('data/supervisor.latest.json')
     active=[x['name'] for x in base.get('vendors',[])]
     vint=[x['name'] for x in vi.get('vendors',[])]
     assert len(active)==len(set(active)), 'Fabricantes activos duplicados'
@@ -31,6 +32,13 @@ def main():
     assert graph.get('policy',{}).get('actionThreshold')==100, 'El umbral de acción debe ser 100'
     assert len(sources)>=25 and len(claims)>=28, 'Grafo de inteligencia pública insuficiente'
     assert len(graph.get('distributors',[]))>=6 and len(graph.get('integrators',[]))>=8 and len(graph.get('architectures',[]))>=8, 'Faltan perfiles o arquitecturas'
+    assert len(universe.get('analysts',[]))>=20 and len(universe.get('distributors',[]))>=25 and len(universe.get('integrators',[]))>=55, 'Universo de fuentes/actores v3 insuficiente'
+    assert 'free' in deep.get('policy','').lower() and 'brave' not in deep.get('engines',{}), 'El motor debe ser gratuito y sin buscadores de pago'
+    assert universe.get('discoveryPolicy',{}).get('dynamic') and 'gratuit' in universe.get('generatedPolicy','').lower(), 'La política de universo público/gratuito no está declarada'
+    assert schedule.get('timezone') and set(schedule.get('profiles',{}))=={'daily','deep','exhaustive'}, 'Calendario automático incompleto'
+    for kind in ['analysts','distributors','integrators']:
+        names=[x.get('name') for x in universe.get(kind,[])]; assert len(names)==len(set(names)) and all(names), f'Entidades duplicadas o sin nombre: {kind}'
+        assert all(x.get('domain') for x in universe.get(kind,[])), f'Dominios incompletos: {kind}'
     for c in claims:
         assert c.get('sourceIds') and set(c['sourceIds']).issubset(source_ids), f'Claim sin fuente válida: {c.get("id")}'
         assert c.get('scope') and c.get('summary') and 0<=int(c.get('confidence',0))<=100, f'Claim incompleto: {c.get("id")}'
@@ -115,7 +123,16 @@ def main():
             assert not any(f in nk for f in forbidden_key_fragments), f'Posible dato interno no permitido en {rel}: {k}'
     for wf in ['.github/workflows/research-daily.yml','.github/workflows/research-weekly.yml','.github/workflows/research-monthly.yml']:
         assert (ROOT/wf).exists(), f'Falta workflow: {wf}'
-    print(f'OK · {len(active)} vendors · {len(claims)} claims nuevos · {len(graph.get("distributors",[]))} mayoristas · {len(graph.get("integrators",[]))} integradores · {len(graph.get("architectures",[]))} arquitecturas · motor v10 validado')
+        text=(ROOT/wf).read_text(encoding='utf-8')
+        assert 'research_supervisor.py' in text and 'upload-artifact@v4' in text, f'Workflow sin supervisor/diagnóstico: {wf}'
+        assert 'schedule_guard.py' in text and 'BEGIN CONFIGURABLE_SCHEDULE' in text, f'Workflow sin calendario configurable: {wf}'
+        assert 'BRAVE_SEARCH_API_KEY' not in text and 'BASE_API_TOKEN' not in text, f'Workflow depende de una clave o suscripción: {wf}'
+        assert 'run: python scripts/research.py' not in text and 'research.py --profile=' not in text, f'Workflow conserva el reintento monolítico defectuoso: {wf}'
+    collector=(ROOT/'scripts/research.py').read_text(encoding='utf-8')
+    assert 'BRAVE_SEARCH_API_KEY' not in collector and 'BASE_API_TOKEN' not in collector, 'El colector conserva dependencias de pago o tokenizadas'
+    for script in ['research_supervisor.py','configure_updates.py','schedule_guard.py','test_schedule.py']:
+        assert (ROOT/'scripts'/script).exists(), f'Falta script operativo: {script}'
+    print(f'OK · {len(active)} vendors · {len(claims)} claims nuevos · {len(graph.get("distributors",[]))} perfiles mayoristas consolidados · {len(graph.get("integrators",[]))} perfiles integradores consolidados · {len(graph.get("architectures",[]))} arquitecturas · motor v11 validado')
 
 if __name__=='__main__':
     try: main()
