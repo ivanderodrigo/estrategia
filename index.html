@@ -7,18 +7,19 @@
 <meta name="description" content="Westcon Iberia · Business Intelligence · Fabricantes, mayoristas, integradores, clientes, tendencias y arquitecturas con trazabilidad por campo.">
 <title>Westcon Iberia · Business Intelligence</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/v390/intelligence.css?v=3.9.0">
+<link rel="stylesheet" href="assets/v310/intelligence.css?v=3.10.0">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
-<script defer src="assets/v390/intelligence.js?v=3.9.0"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script defer src="assets/v310/intelligence.js?v=3.10.0"></script>
 </head>
 <body>
 <header class="appbar">
   <div class="brand">
     <div class="brandmark" aria-hidden="true"><span></span><span></span><span></span></div>
-    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v3.9.0</small></div>
+    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v3.10.0</small></div>
   </div>
-  <button id="navToggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="tabs">Menú</button>
   <nav id="tabs" aria-label="Áreas de inteligencia">
     <button class="active" data-view="fabricantes" type="button">Fabricantes</button>
     <button data-view="mayoristas" type="button">Mayoristas</button>
@@ -27,16 +28,21 @@
     <button data-view="tendencias" type="button">Tendencias</button>
     <button data-view="arquitecturas" type="button">Arquitecturas</button>
   </nav>
-  <div class="actions appbar-actions">
-    <div class="text-size" role="group" aria-label="Tamaño del texto">
-      <button id="textSmaller" class="ghost compact" type="button" aria-label="Reducir tamaño del texto">A−</button>
-      <button id="textReset" class="ghost compact scale-value" type="button" aria-label="Restablecer tamaño del texto">100%</button>
-      <button id="textLarger" class="ghost compact" type="button" aria-label="Aumentar tamaño del texto">A+</button>
+  <div class="utility-wrap">
+    <button id="utilityMenuToggle" class="utility-menu-toggle" type="button" aria-expanded="false" aria-controls="utilityMenu" aria-label="Abrir opciones">☰</button>
+    <div id="utilityMenu" class="utility-menu" aria-hidden="true">
+      <div class="utility-menu-head"><b>Opciones</b><span>Herramientas frecuentes</span></div>
+      <button id="dataStatusBtn" class="utility-item" type="button"><span class="data-status-dot"></span><span id="dataStatusLabel">Datos · cargando…</span></button>
+      <button id="confidenceHelpBtn" class="utility-item" type="button"><span class="confidence-mini high"></span><span class="confidence-mini medium"></span><span class="confidence-mini low"></span><span>Confianza</span></button>
+      <button id="btnSources" class="utility-item" type="button">Fuentes</button>
+      <button id="btnContributions" class="utility-item" type="button">Aportaciones manuales</button>
+      <button id="btnIngest" class="utility-item" type="button">Ingerir documento</button>
+      <button id="btnExport" class="utility-item primary-menu" type="button">Generar informe / PPT</button>
+      <div class="utility-text-size" role="group" aria-label="Tamaño del texto">
+        <span>Tamaño de texto</span>
+        <div><button id="textSmaller" type="button">A−</button><button id="textReset" class="scale-value" type="button">100%</button><button id="textLarger" type="button">A+</button></div>
+      </div>
     </div>
-    <button id="dataStatusBtn" class="ghost compact data-status-btn" type="button" aria-label="Estado de actualización de los datos"><span class="data-status-dot"></span><span id="dataStatusLabel">Datos · cargando…</span></button>
-    <button id="confidenceHelpBtn" class="ghost compact confidence-help-btn" type="button" aria-label="Ayuda para interpretar la confianza"><span class="confidence-mini high"></span><span class="confidence-mini medium"></span><span class="confidence-mini low"></span> Confianza</button>
-    <button id="btnSources" class="ghost compact utility-btn" type="button">Fuentes</button>
-    <button id="btnExport" class="primary utility-btn" type="button">Informe / PPT</button>
   </div>
 </header>
 
@@ -145,7 +151,7 @@
 
 <div id="sourceModal" class="modal" aria-hidden="true">
   <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="sourceTitle">
-    <div class="modal-head"><div><span>CAPA DE INVESTIGACIÓN</span><h2 id="sourceTitle">Fuentes públicas</h2><p>Catálogo amplio para investigar fabricantes, mayoristas, integradores, clientes, tendencias y arquitecturas. Una fuente candidata no se convierte en dato hasta generar evidencia trazable.</p></div><button class="modal-close" data-close="sourceModal" type="button" aria-label="Cerrar">×</button></div>
+    <div class="modal-head"><div><span>CAPA DE INVESTIGACIÓN</span><h2 id="sourceTitle">Fuentes públicas</h2><p>Catálogo amplio para investigar fabricantes, mayoristas, integradores, clientes, tendencias y arquitecturas. La capa v3.10 distingue evidencia pública, aportaciones manuales y documentos ingeridos; ninguna señal se publica como hecho sin trazabilidad.</p></div><button class="modal-close" data-close="sourceModal" type="button" aria-label="Cerrar">×</button></div>
     <div class="source-summary" id="sourceSummary"></div>
     <input id="sourceSearch" class="modal-search" type="search" placeholder="Buscar Gartner, empleo, partner locator, contratación, clientes, arquitectura…">
     <div id="sourceCatalog" class="source-catalog"></div>
@@ -179,6 +185,45 @@
   </div>
 </div>
 
+
+<div id="contributionModal" class="modal" aria-hidden="true">
+  <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="contributionTitle">
+    <div class="modal-head"><div><span>CAPA HUMANA</span><h2 id="contributionTitle">Aportaciones manuales</h2><p>Puedes añadir contexto a una etiqueta sin alterar ni ocultar la evidencia pública. En GitHub Pages las aportaciones se guardan localmente; para compartirlas de forma segura se exportan al repositorio o se envían a un gateway autenticado.</p></div><button class="modal-close" data-close="contributionModal" type="button" aria-label="Cerrar">×</button></div>
+    <div class="contribution-status" id="contributionStatus"></div>
+    <div id="contributionList" class="contribution-list"></div>
+    <div class="modal-actions-row"><button id="exportContributions" class="ghost dark" type="button">Exportar JSON para el repo</button><button id="clearContributions" class="ghost dark danger" type="button">Borrar aportaciones locales</button></div>
+  </div>
+</div>
+
+<div id="editContributionModal" class="modal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="editContributionTitle">
+    <div class="modal-head"><div><span>INTELIGENCIA MANUAL</span><h2 id="editContributionTitle">Añadir contexto a la etiqueta</h2><p id="editContributionContext">La aportación queda separada de la evidencia pública.</p></div><button class="modal-close" data-close="editContributionModal" type="button" aria-label="Cerrar">×</button></div>
+    <form id="contributionForm" class="contribution-form">
+      <input id="contribSection" type="hidden"><input id="contribEntity" type="hidden"><input id="contribField" type="hidden"><input id="contribTarget" type="hidden">
+      <label>Inteligencia / contexto<textarea id="contribNote" required rows="4" placeholder="Ej.: renovación prevista, contacto, tecnología observada, matiz sobre la señal pública…"></textarea></label>
+      <div class="form-grid"><label>Fuente o procedencia<input id="contribSource" placeholder="Ej.: reunión, CRM, documento interno, web…"></label><label>Fecha<input id="contribDate" type="date"></label></div>
+      <label>URL de soporte (opcional)<input id="contribUrl" type="url" placeholder="https://…"></label>
+      <label>Autor / iniciales (opcional)<input id="contribAuthor" maxlength="60"></label>
+      <div class="modal-actions-row"><button class="ghost dark" data-close="editContributionModal" type="button">Cancelar</button><button class="primary" type="submit">Guardar aportación</button></div>
+    </form>
+  </div>
+</div>
+
+<div id="ingestModal" class="modal" aria-hidden="true">
+  <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="ingestTitle">
+    <div class="modal-head"><div><span>INGESTA DOCUMENTAL</span><h2 id="ingestTitle">Ingerir documento</h2><p>Extrae texto en el navegador de PPTX, DOCX, PDF, TXT, MD, CSV o JSON. El archivo original no se envía a ningún sitio por defecto. Puedes exportar un paquete de inteligencia para `inputs/documents/` o enviarlo a un gateway seguro si se configura.</p></div><button class="modal-close" data-close="ingestModal" type="button" aria-label="Cerrar">×</button></div>
+    <div class="security-note"><b>Importante:</b> si el repositorio que publica GitHub Pages es público, no subas documentos confidenciales. Para documentación interna usa un repositorio privado de ingesta o un gateway autenticado.</div>
+    <div class="ingest-form">
+      <label>Documento<input id="ingestFile" type="file" accept=".pptx,.ppt,.docx,.pdf,.txt,.md,.csv,.json"></label>
+      <div class="form-grid"><label>Área / contexto<input id="ingestArea" placeholder="Ej.: cliente, fabricante, proyecto, ciberseguridad…"></label><label>Entidad relacionada<input id="ingestEntity" placeholder="Ej.: Santander, Palo Alto Networks…"></label></div>
+      <label>Nota de contexto<textarea id="ingestNote" rows="3" placeholder="Qué información esperas extraer o cómo debe interpretarse"></textarea></label>
+      <div id="ingestPreview" class="ingest-preview"><span>Selecciona un documento para analizarlo localmente.</span></div>
+      <div class="modal-actions-row"><button id="downloadIngestPackage" class="ghost dark" type="button" disabled>Descargar paquete para repo</button><button id="sendIngestPackage" class="primary" type="button" disabled>Enviar a ingesta compartida</button></div>
+    </div>
+  </div>
+</div>
+
+<div id="tracePortal" class="trace-portal" aria-hidden="true"></div>
 <div id="exportModal" class="modal" aria-hidden="true">
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="exportTitle">
     <div class="modal-head"><div><span>EXPORTACIÓN</span><h2 id="exportTitle">Informe de inteligencia</h2><p>El documento incluye las seis áreas de la aplicación y mantiene las fuentes principales.</p></div><button class="modal-close" data-close="exportModal" type="button" aria-label="Cerrar">×</button></div>
@@ -191,6 +236,7 @@
       <label><input type="checkbox" value="trends" checked> Tendencias</label>
       <label><input type="checkbox" value="architectures" checked> Arquitecturas</label>
     </div>
+    <label class="export-appendix"><input id="exportDetailedAppendix" type="checkbox"> Incluir anexo detallado de entidades y fuentes en el PowerPoint</label>
     <div class="export-actions"><button id="exportPdf" class="ghost dark" type="button">Crear PDF</button><button id="exportPptx" class="primary" type="button">Crear PowerPoint</button></div>
   </div>
 </div>

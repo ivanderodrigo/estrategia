@@ -1,43 +1,93 @@
-# Westcon Iberia Business Intelligence v3.9.0
+# Westcon Iberia Business Intelligence v3.10.0
 
-Release de producción candidata centrada en cuatro mejoras principales:
+Production Candidate centrada en experiencia de uso, reporting ejecutivo y una nueva capa de inteligencia humana/documental.
 
-1. **Corrección de maquetación del header** para evitar el bloque blanco y el recorte de `Fuentes / Informe`.
-2. **Nueva pestaña `Clientes`** entre Integradores y Tendencias.
-3. **Cobertura de clientes públicos y privados ES/PT** con trazabilidad por campo.
-4. **Responsive real** para desktop, tablet y móvil.
+## Cambios principales
 
-## Qué añade v3.9.0
+### 1. Trazabilidad sin solapamientos
+Los popovers de confianza/fuentes ya no viven dentro de la tabla con scroll. v3.10 utiliza un **portal global fijo** (`#tracePortal`) por encima de cabeceras, celdas sticky y barras de desplazamiento. Esto evita que una tarjeta de trazabilidad quede tapada por otras filas o columnas.
 
-- Orden de navegación: **Fabricantes · Mayoristas · Integradores · Clientes · Tendencias · Arquitecturas**.
-- Clientes públicos: oportunidades de AAPP España/Portugal basadas en contratación, pliegos, perfiles del contratante y estrategia digital.
-- Clientes privados: grandes cuentas ES/PT con señales de tecnología y renovación apoyadas en webs corporativas, informes e inteligencia procedente de empleo.
-- Exportación PDF/PPT actualizada para incluir el nuevo bloque de clientes.
-- Catálogo de fuentes ampliado con contratación pública (`PLACSP`, `TED`, `BASE.gov.pt`), planes digitales del sector público, grandes cuentas y portales de empleo corporativos.
+### 2. Cabecera reordenada
+La navegación principal queda siempre visible y ordenada:
 
-## Validación rápida
+**Fabricantes · Mayoristas · Integradores · Clientes · Tendencias · Arquitecturas**
 
-```bash
-python -m unittest tests/test_v390.py
-PYTHONPATH=scripts python scripts/v39/build_intelligence.py
-python scripts/v39/validate_v39.py
-node --check assets/v390/intelligence.js
-node tests/ui_smoke_v390.js
+La parte derecha se sustituye por un botón **☰** de utilidades con:
+- estado de datos,
+- confianza,
+- fuentes,
+- aportaciones manuales,
+- ingesta documental,
+- informe/PPT,
+- tamaño de texto.
+
+En móvil/tablet la navegación pasa a una segunda línea horizontal desplazable y el menú de utilidades permanece accesible.
+
+### 3. Informe PDF corregido y enriquecido
+El PDF se renderiza en una superficie visible durante la captura de `html2canvas`, evitando el informe en blanco causado por el render fuera del viewport. Se añade una **Lectura ejecutiva** con KPIs, oportunidades públicas, cuentas privadas, momentum tecnológico y amplitud de ecosistema antes del detalle y las fuentes.
+
+### 4. PowerPoint orientado a presentación
+El PPT ya no empieza como una sucesión de fichas equivalentes a la web. Por defecto genera:
+- portada,
+- lectura ejecutiva,
+- cuentas y ecosistema,
+- una lectura ejecutiva por dominio,
+- Trend Loop / Vendor Arena,
+- metodología, confianza y gobernanza.
+
+El usuario puede marcar **“Incluir anexo detallado”** para añadir todas las fichas y fuentes al final.
+
+### 5. Aportaciones manuales
+Cada etiqueta de las tablas incorpora **✎**. Las aportaciones:
+- no sustituyen ni ocultan la evidencia pública;
+- quedan diferenciadas como capa manual;
+- se guardan en `localStorage` en modo GitHub Pages puro;
+- pueden exportarse a JSON para `inputs/manual/`;
+- pueden enviarse automáticamente si se configura un `contribution_api_url` seguro en `config/v310/runtime.json`.
+
+### 6. Ingesta documental
+Desde **☰ → Ingerir documento** se pueden analizar localmente:
+- PPTX,
+- DOCX,
+- PDF,
+- TXT / MD / CSV / JSON.
+
+El navegador extrae texto y prepara un JSON de ingesta. El cron escanea:
+- `inputs/manual/`
+- `inputs/documents/`
+
+y puede escanear también un **repositorio privado de ingesta** mediante los secrets `PRIVATE_INPUT_REPO` y `PRIVATE_INPUT_REPO_TOKEN`.
+
+El motor identifica menciones directas a entidades del dataset y áreas tecnológicas, y las muestra como **señales documentales internas**, no como hechos públicos confirmados.
+
+> No subas documentación confidencial a un repositorio público. Para inteligencia interna usa el repositorio privado de ingesta o un gateway autenticado.
+
+## GitHub Pages y actualización automática
+
+Se añade `.github/workflows/pages-deploy.yml`. Publica solo el sitio mínimo (`index.html`, `assets`, `data/v310` y `config/v310/runtime.json`) y **no publica `inputs/` ni los scripts internos**.
+
+Para usarlo, GitHub → **Settings → Pages → Build and deployment → Source → GitHub Actions**.
+
+La publicación se ejecuta:
+- en pushes manuales relevantes a `main`, y
+- al terminar correctamente los workflows diario, semanal o mensual.
+
+## Validación
+
+```powershell
+$env:PYTHONPATH="scripts"
+python scripts/v310/build_intelligence.py
+python -m unittest tests/test_v310.py
+python scripts/v310/validate_v310.py
+node --check assets/v310/intelligence.js
+node tests/ui_smoke_v310.js
 ```
 
-## Actualización automática
+## Rutas v3.10
 
-La capa pública v3.9.0 se reconstruye desde `scripts/research_supervisor_v39.py`.
-
-- **Diaria**: incremental
-- **Semanal**: profunda
-- **Mensual**: exhaustiva
-
-La publicación visible está en `data/v39/`.
-
-## Estructura relevante
-
-- `assets/v390/` → frontend v3.9.0
-- `data/v39/` → dataset público v3.9.0
-- `scripts/v39/` → construcción, pipeline y validación v3.9.0
-- `config/v39/` → ampliaciones de fuentes y semillas de clientes
+- `assets/v310/` – frontend
+- `data/v310/` – dataset publicado
+- `scripts/v310/` – builder, pipeline, validador e ingesta
+- `config/v310/` – runtime y nuevas fuentes
+- `inputs/manual/` – contribuciones compartidas controladas
+- `inputs/documents/` – documentos/paquetes que leerá el cron

@@ -1,0 +1,18 @@
+const fs=require('fs'),path=require('path'),assert=require('assert');
+const root=path.resolve(__dirname,'..');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const js=fs.readFileSync(path.join(root,'assets/v310/intelligence.js'),'utf8');
+const css=fs.readFileSync(path.join(root,'assets/v310/intelligence.css'),'utf8');
+const data=JSON.parse(fs.readFileSync(path.join(root,'data/v310/intelligence.json'),'utf8'));
+assert(html.includes('utilityMenuToggle'),'Falta menú de utilidades');
+assert(!html.includes('id="navToggle"'),'Sigue presente el menú antiguo');
+assert(html.includes('tracePortal'),'Falta portal global de hover');
+assert(js.includes('showTracePortal')&&css.includes('.trace-portal'),'Portal de hover incompleto');
+assert(js.includes("data/v310/intelligence.json"),'Frontend no carga v310');
+assert(js.includes('reportExecutivePage')&&js.includes('pptAddExecutiveSummary'),'Informe no tiene lectura ejecutiva');
+assert(js.includes('report-export-active'),'PDF no activa superficie visible');
+assert(html.includes('btnContributions')&&js.includes('exportContributions'),'Falta edición manual');
+assert(html.includes('btnIngest')&&js.includes('extractDocumentText'),'Falta ingesta documental');
+assert((data.clients_public||[]).length>=8&&(data.clients_private||[]).length>=8,'Clientes incompletos');
+assert(data.meta.version==='3.10.0','Dataset no es v3.10.0');
+console.log('UI smoke v3.10.0 · PASS');

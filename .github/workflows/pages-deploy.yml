@@ -1,0 +1,61 @@
+name: Publicar Business Intelligence en GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "assets/**"
+      - "data/v310/**"
+      - "config/v310/runtime.json"
+      - ".github/workflows/pages-deploy.yml"
+  workflow_run:
+    workflows:
+      - "Inteligencia pública diaria"
+      - "Investigación estratégica profunda semanal"
+      - "Inteligencia exhaustiva mensual"
+    types: [completed]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout de la última main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: Preparar sitio público mínimo
+        run: |
+          rm -rf _site
+          mkdir -p _site/data _site/config
+          cp index.html _site/
+          cp -R assets _site/assets
+          cp -R data/v310 _site/data/v310
+          mkdir -p _site/config/v310
+          cp config/v310/runtime.json _site/config/v310/runtime.json
+          [ -f CNAME ] && cp CNAME _site/CNAME || true
+          touch _site/.nojekyll
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Subir artefacto estático
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Desplegar GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
