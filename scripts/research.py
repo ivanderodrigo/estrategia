@@ -49,11 +49,11 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 BASE = json.loads((ROOT / "data/base.json").read_text(encoding="utf-8"))
 CFG = json.loads((ROOT / "config/research_queries.json").read_text(encoding="utf-8"))
 REG = json.loads((ROOT / "config/source_registry.json").read_text(encoding="utf-8"))
-DEEP_PATH = ROOT / "config/v37/deep_research.json"
+DEEP_PATH = ROOT / "config/v38/deep_research.json"
 DEEP = json.loads((DEEP_PATH if DEEP_PATH.exists() else ROOT / "config/deep_research.json").read_text(encoding="utf-8"))
 UNIVERSE_PATH = ROOT / "config/source_universe.json"
 UNIVERSE = json.loads(UNIVERSE_PATH.read_text(encoding="utf-8")) if UNIVERSE_PATH.exists() else {}
-V36_PORTAL_PATH = ROOT / "config/v37/vendor_portal_intelligence.json"
+V36_PORTAL_PATH = ROOT / "config/v38/vendor_portal_intelligence.json"
 V36_PORTALS = json.loads(V36_PORTAL_PATH.read_text(encoding="utf-8")) if V36_PORTAL_PATH.exists() else {"seeds": []}
 CURATED = json.loads((ROOT / "data/curated_evidence.json").read_text(encoding="utf-8"))
 ECOSYSTEM = json.loads((ROOT / "data/ecosystem.json").read_text(encoding="utf-8"))
@@ -70,7 +70,7 @@ SOURCE_HEALTH_OUT = ROOT / "data/source_health.json"
 ERRORS_OUT = ROOT / "data/research_errors.json"
 RUN_MANIFEST_OUT = ROOT / "data/run_manifest.latest.json"
 DYNAMIC_ENTITIES_OUT = ROOT / "data/discovered_entities.json"
-V37_GAPS_OUT = ROOT / "data/v37/research_gaps.json"
+V38_GAPS_OUT = ROOT / "data/v38/research_gaps.json"
 HISTORY = ROOT / "data/history"
 HISTORY.mkdir(parents=True, exist_ok=True)
 NOW = dt.datetime.now(dt.timezone.utc)
@@ -567,7 +567,18 @@ def fetch_page_metadata(url: str) -> dict | None:
         body=clean(text)
         desc=clean(md.group(1) if md else '')
         snippet=desc or body[:1000]
-        row={"title":clean(mt.group(1) if mt else url.rsplit("/",1)[-1]),"snippet":snippet[:1600],"text":body[:18000],"url":clean(canonical.group(1) if canonical else r.url),"published":published,"engine":"official-sitemap"}
+        anchors=[]
+        for am in re.finditer(r'<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',text,re.I|re.S):
+            label=clean(am.group(2)); href=urllib.parse.urljoin(r.url,html.unescape(am.group(1)))
+            if label and 2 <= len(label) <= 120 and href.startswith(('http://','https://')):
+                anchors.append({'text':label,'href':href})
+            if len(anchors)>=240: break
+        headings=[]
+        for hm in re.finditer(r'<h[1-4]\b[^>]*>(.*?)</h[1-4]>',text,re.I|re.S):
+            label=clean(hm.group(1))
+            if label and label not in headings: headings.append(label[:180])
+            if len(headings)>=80: break
+        row={"title":clean(mt.group(1) if mt else url.rsplit("/",1)[-1]),"snippet":snippet[:1600],"text":body[:18000],"url":clean(canonical.group(1) if canonical else r.url),"published":published,"engine":"official-sitemap","links":anchors,"headings":headings}
         record_source_health(url, True, time.monotonic()-started, int(bool(snippet)))
         PAGE_CACHE[url]=row; return row
     except Exception as exc:
@@ -646,6 +657,40 @@ def commoncrawl_official_evidence(vendors: list[str], budget: int) -> list[dict]
     return out
 
 
+def partner_anchor_candidates(page: dict, vendor: str) -> list[dict]:
+    """Extract exact visible company names from official partner pages.
+
+    These are discovery candidates, not confirmed partnerships. They are capped at
+    low/medium confidence until reciprocal evidence or a structured directory page
+    corroborates them. This lets the collector investigate long-tail Iberia actors
+    instead of only matching the pre-seeded universe.
+    """
+    generic={norm(x) for x in [
+        'become a partner','find a partner','partner portal','partners','partner','login','log in','learn more','read more','contact us','home','services','solutions','products','resources','company','about','support','training','certifications','customer stories','case studies','marketplace','technology partners','solution partners','distributors','resellers','system integrators','msp','mssp','view all','see all'
+    ]}
+    vendor_terms={norm(a) for a in aliases_for(vendor)[:6]}
+    out=[];seen=set(); vendor_host=CFG.get('vendor_domains',{}).get(vendor,'')
+    for link in page.get('links',[]) or []:
+        label=clean(link.get('text','')).strip(' -–—|:,.')
+        n=norm(label); href=link.get('href','')
+        if not n or n in generic or n in vendor_terms or len(label)<3 or len(label)>85: continue
+        if any(n.startswith(x) for x in ('http ','www ','privacy','terms','cookie','copyright')): continue
+        # Company-like label: acronym / title-case / legal suffix / known ecosystem candidate.
+        words=label.split(); titleish=sum(1 for w in words if w[:1].isupper() or w.isupper()) >= max(1,len(words)//2)
+        legal=bool(re.search(r'\b(?:s\.?l\.?|s\.?a\.?|lda\.?|ltd\.?|limited|group|systems|technologies|technology|solutions|consulting|digital|networks|security|services|telecom|inform[aá]tica)\b',label,re.I))
+        if not (titleish or legal): continue
+        # Prefer partner detail/profile links or external company links from an official page.
+        h=host(href); path=href.lower(); profileish=any(x in path for x in ('partner','profile','locator','directory','reseller','integrator','msp','mssp'))
+        external=bool(h and vendor_host and h!=vendor_host and not h.endswith('.'+vendor_host))
+        if not (profileish or external): continue
+        key=n
+        if key in seen: continue
+        seen.add(key)
+        out.append({'name':label,'href':href,'confidence_cap':0.58 if external else 0.64,'method':'official-partner-page-link'})
+        if len(out)>=40: break
+    return out
+
+
 def official_portal_seed_evidence() -> list[dict]:
     """Fetch high-value official partner pages before broad discovery.
 
@@ -697,6 +742,13 @@ def official_portal_seed_evidence() -> list[dict]:
                 snippet=clean(raw[start:end])
             row=dict(page)
             row.update({'vendor':vendor,'country':country,'kind':'official-partner-portal-seed','engine':'official-partner-portal-seed','winner':entity if entity_kind=='integrator' else None,'distributor':entity if entity_kind=='distributor' else None,'snippet':snippet,'portalKind':seed.get('kind'),'sourceEntity':entity})
+            out.append(row)
+        # Long-tail discovery from exact company names visible on official partner pages.
+        # The confidence cap keeps them red/yellow until a reciprocal source validates them.
+        for cand in partner_anchor_candidates(page,vendor):
+            if any(norm(cand['name'])==norm(x[1]) for x in matches): continue
+            row=dict(page)
+            row.update({'vendor':vendor,'country':country,'kind':'official-partner-anchor-discovery','engine':'official-partner-anchor-discovery','winner':cand['name'],'snippet':f"{cand['name']} · visible en página oficial de partners de {vendor}",'portalKind':seed.get('kind'),'sourceEntity':cand['name'],'candidateConfidenceCap':cand['confidence_cap'],'candidateMethod':cand['method'],'candidateHref':cand['href']})
             out.append(row)
     return out
 
@@ -1360,23 +1412,23 @@ def dynamic_entity_catalog(channels: list[dict], integrators: list[dict], procur
     return {'version':1,'generatedAt':NOW.isoformat(),'policy':'Discovery candidates are not executive evidence. Promotion needs at least two independent public domains and confidence >=70.','distributors':aggregate(channels,'distributor','distributor'),'integrators':aggregate([*integrators,*winners],'name','integrator')}
 
 
-def v37_gap_tasks(limit: int = 180) -> list[dict]:
+def v38_gap_tasks(limit: int = 180) -> list[dict]:
     """Read the previous public-layer gap queue and turn it into research hints.
 
     The queue is internal only. Missing cells, low-confidence data and stale
     evidence become higher-priority research on the next automatic run.
     """
     try:
-        payload=json.loads(V37_GAPS_OUT.read_text(encoding='utf-8'))
+        payload=json.loads(V38_GAPS_OUT.read_text(encoding='utf-8'))
     except Exception:
         return []
     rows=[]
     for gap in payload.get('gaps',[]) or []:
         hints=gap.get('query_hints') or []
-        for hint in hints[:4]:
+        for hint in hints[:8]:
             rows.append({
                 'query':hint,
-                'kind':'v37-gap-revalidation' if 'envejecida' in str(gap.get('reason','')) else 'v37-gap-fill',
+                'kind':'v38-gap-revalidation' if 'envejecida' in str(gap.get('reason','')) else 'v38-gap-fill',
                 'country':'ALL',
                 'intent':'ecosystem' if gap.get('field') in {'integrators','vendor_relations','services','specializations','capabilities','verticals','public_cases','job_profiles'} else 'channel' if gap.get('field') in {'distributors','westcon_overlap'} else 'analyst' if gap.get('section')=='trends' or gap.get('field') in {'competitors','analyst_signals'} else 'market',
                 'vendor':gap.get('entity') if gap.get('section')=='manufacturers' else None,
@@ -1385,7 +1437,7 @@ def v37_gap_tasks(limit: int = 180) -> list[dict]:
                 'gapField':gap.get('field'),
                 'priority':min(135,int(gap.get('priority',80))+8),
             })
-    rows.sort(key=lambda r:(-int(r.get('priority',0)),sha('v37-gap',r.get('query',''))))
+    rows.sort(key=lambda r:(-int(r.get('priority',0)),sha('v38-gap',r.get('query',''))))
     ded=[];seen=set()
     for row in rows:
         if row['query'] in seen: continue
@@ -1465,9 +1517,9 @@ def make_queries() -> list[dict]:
     fixed=[{"query":q,"kind":"strategic","country":"ALL","intent":"strategic","priority":100} for q in CFG.get("strategic_queries",[])]
     coverage=previous_gap_priority(); gapdims=previous_gap_dimensions()
     generated=[]
-    # v3.7 feedback loop: incomplete/low-confidence/stale public cells feed the next run.
-    gap_limit = 48 if PROFILE=='daily' else 120 if PROFILE=='deep' else 220
-    generated.extend(v37_gap_tasks(gap_limit))
+    # v3.8 feedback loop: incomplete/low-confidence/stale public cells feed the next run.
+    gap_limit = 80 if PROFILE=='daily' else 210 if PROFILE=='deep' else 380
+    generated.extend(v38_gap_tasks(gap_limit))
     intents=CFG.get('deep_intents',{})
     countries={'ES':'Spain','PT':'Portugal'}
     vendors=tracked_names()
@@ -1530,7 +1582,7 @@ def make_queries() -> list[dict]:
         ints=list(dict.fromkeys(CFG.get('known_integrators',[])+discovered_integrators()))
         if ints:
             start=int(sha(str(NOW.isocalendar().week),vendor)[:6],16)%len(ints)
-            selected=[ints[(start+i)%len(ints)] for i in range(min(8,len(ints)))]
+            selected=[ints[(start+i)%len(ints)] for i in range(min(16 if PROFILE=='daily' else 30 if PROFILE=='deep' else 60,len(ints)))]
             for integ in selected:
                 generated.append({"query":f'"{vendor}" "{integ}" Spain partner case study',"kind":"vendor","vendor":vendor,"country":"ES","intent":"ecosystem","priority":76})
                 generated.append({"query":f'"{vendor}" "{integ}" Portugal partner case study',"kind":"vendor","vendor":vendor,"country":"PT","intent":"ecosystem","priority":76})
@@ -1573,7 +1625,7 @@ def make_queries() -> list[dict]:
         profile_universe=[profile_universe[(offset+i)%len(profile_universe)] for i in range(min(profile_limit,len(profile_universe)))]
     for integ in profile_universe:
         for cc,country in [('ES','Spain'),('PT','Portugal')]:
-            for term in ['certifications vendor specializations','technology partners portfolio','customer case study','annual revenue employees','distributor preferred procurement']:
+            for term in ['certifications vendor specializations','technology partners portfolio alliances','customer case study success story','managed services MSSP MSP SOC NOC','careers jobs certifications engineer architect','vendor certifications careers jobs','partner awards competencies specializations','annual revenue employees','distributor preferred procurement','Spain Portugal technology alliance partner']:
                 generated.append({'query':f'"{integ}" {country} {term}','kind':'integrator-profile','country':cc,'intent':'ecosystem','entity':integ,'priority':82})
     # Dedup then deterministic weighted rotation.
     ded={}
@@ -1657,7 +1709,8 @@ def to_evidence(x: dict, qrow: dict | None = None) -> dict:
         'collectedAt':NOW.isoformat(),'validationState':'primary/public source' if tier in {'regulator','public-open-data','official-company','analyst-public'} else 'discovery; validate before executive use',
         'buyer':x.get('buyer'),'winner':x.get('winner'),'winners':x.get('winners') or ([x.get('winner')] if x.get('winner') else []),
         'contractId':x.get('contractId'),'status':x.get('status'),'cpv':x.get('cpv') or [],'estimatedValue':x.get('estimatedValue'),'awardedValue':x.get('awardedValue'),'currency':x.get('currency'),
-        'awardDate':x.get('awardDate'),'technologyMatches':x.get('technologyMatches') or [],'sector':x.get('sector'),'object':x.get('object'),'procurementAttribution':x.get('procurementAttribution'),'sourceKind':x.get('sourceKind')
+        'awardDate':x.get('awardDate'),'technologyMatches':x.get('technologyMatches') or [],'sector':x.get('sector'),'object':x.get('object'),'procurementAttribution':x.get('procurementAttribution'),'sourceKind':x.get('sourceKind'),
+        'links':x.get('links') or [],'headings':x.get('headings') or [],'candidateConfidenceCap':x.get('candidateConfidenceCap'),'candidateMethod':x.get('candidateMethod'),'candidateHref':x.get('candidateHref')
     }
 
 
@@ -1855,7 +1908,14 @@ def integrator_candidates(evidence: list[dict]) -> list[dict]:
                     for dim in ('services','capabilities','specializations','verticals','public_cases'):
                         row[dim]=list(dict.fromkeys((row.get(dim) or [])+(dims.get(dim) or [])))
                     bonus=10 if e.get('sourceTier') in {'official-company','public-open-data'} else 0
-                    row['confidence']=max(row['confidence'],min(96,int(e.get('confidence',45))+bonus))
+                    candidate_score=min(96,int(e.get('confidence',45))+bonus)
+                    if e.get('candidateConfidenceCap') is not None:
+                        candidate_score=min(candidate_score,round(float(e.get('candidateConfidenceCap'))*100))
+                        row['proofType']='official-directory-name-candidate'
+                        row['status']='candidate-needs-reciprocal-validation'
+                        row['signal']=f"{name} aparece nominalmente en una página oficial de partners de {v}; validar reciprocidad/rol antes de elevar confianza."
+                        row['url']=e.get('candidateHref') or e.get('url')
+                    row['confidence']=max(row['confidence'],candidate_score)
                     if e.get('id') not in row['evidence']: row['evidence'].append(e.get('id'))
     return sorted(rows.values(),key=lambda r:(-int(r.get('confidence',0)),r['vendor'],r['country'],r['name']))
 

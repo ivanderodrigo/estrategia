@@ -37,21 +37,21 @@ jobs:
       - name: Dependencias
         if: steps.schedule.outputs.run == 'true'
         run: pip install -r requirements.txt
-      - name: Preflight offline del motor y la UI v3.7
+      - name: Preflight offline del motor y la UI v3.8
         if: steps.schedule.outputs.run == 'true'
         run: |
-          python -m py_compile scripts/research.py scripts/configure_updates.py scripts/schedule_guard.py scripts/research_supervisor_v33.py scripts/research_supervisor_v37.py scripts/v34/*.py scripts/v37/*.py
+          python -m py_compile scripts/research.py scripts/configure_updates.py scripts/schedule_guard.py scripts/research_supervisor_v33.py scripts/research_supervisor_v38.py scripts/v34/*.py scripts/v38/*.py
           python scripts/test_resilience.py
           python scripts/test_schedule.py
-          python -m unittest tests/test_v370.py
-          python scripts/v37/validate_v37.py
-          node --check assets/v370/intelligence.js
-          node tests/ui_smoke_v370.js
+          python -m unittest tests/test_v380.py
+          python scripts/v38/validate_v38.py
+          node --check assets/v380/intelligence.js
+          node tests/ui_smoke_v380.js
       - name: Barrido exhaustivo mensual
         if: steps.schedule.outputs.run == 'true'
         env:
           RESEARCH_PROFILE: exhaustive
-        run: python scripts/research_supervisor_v37.py --profile exhaustive --max-runtime 3300 --fallback-runtime 300
+        run: python scripts/research_supervisor_v38.py --profile exhaustive --max-runtime 3300 --fallback-runtime 300
       - name: Conservar diagnóstico de ejecución
         if: always() && steps.schedule.outputs.run == 'true'
         uses: actions/upload-artifact@v4
@@ -63,6 +63,7 @@ jobs:
             data/v33/
             data/v34/
             data/v37/
+            data/v38/
             diagnostics/*.log
             data/run_manifest.latest.json
             data/supervisor.latest.json
@@ -75,7 +76,7 @@ jobs:
           retention-days: 60
       - name: Validar dataset antes de publicar
         if: steps.schedule.outputs.run == 'true'
-        run: python scripts/v37/validate_v37.py
+        run: python scripts/v38/validate_v38.py
       - name: Guardar actualización
         if: steps.schedule.outputs.run == 'true'
         run: |

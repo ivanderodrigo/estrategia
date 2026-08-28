@@ -36,6 +36,7 @@ GENERATED_PATHS = [
     "data/v33",
     "data/v34",
     "data/v37",
+    "data/v38",
 ]
 
 
@@ -74,15 +75,15 @@ def restore_generated(tmp: Path, present: list[str]) -> None:
 
 
 def validate() -> None:
-    run(sys.executable,"scripts/v37/validate_v37.py")
+    run(sys.executable,"scripts/v38/validate_v38.py")
     if shutil.which("node"):
-        run("node","--check","assets/v370/intelligence.js")
-        run("node","tests/ui_smoke_v370.js")
+        run("node","--check","assets/v380/intelligence.js")
+        run("node","tests/ui_smoke_v380.js")
 
 
 def main() -> int:
     ap=argparse.ArgumentParser()
-    ap.add_argument("--message",default="chore: actualizar inteligencia pública v3.7")
+    ap.add_argument("--message",default="chore: actualizar inteligencia pública v3.8")
     ap.add_argument("--attempts",type=int,default=3)
     args=ap.parse_args()
     if not (ROOT/".git").exists():
