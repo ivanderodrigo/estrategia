@@ -36,6 +36,20 @@ def norm(value: Any) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
+# Westcon-owned/internal distribution brands are context, never competitor rows.
+# Comstor is the Cisco-specialist business unit of Westcon and must therefore
+# be excluded from competitor distributor tables and alternative-distributor fields.
+INTERNAL_WESTCON_DISTRIBUTOR_KEYS = {
+    "westcon", "westcon comstor", "comstor",
+}
+
+def is_internal_westcon_distributor(value: Any) -> bool:
+    key = norm(value)
+    canonical = re.sub(r"[-_/]+", " ", key)
+    canonical = re.sub(r"\s+", " ", canonical).strip()
+    return canonical in INTERNAL_WESTCON_DISTRIBUTOR_KEYS or canonical.startswith("westcon comstor ")
+
+
 def uniq(values: Iterable[Any]) -> list[Any]:
     out: list[Any] = []
     seen: set[str] = set()
@@ -231,22 +245,72 @@ def confidence_band(score: float | int | None) -> str:
     return "low"
 
 
+def confidence_factors(score: float, sources: Iterable[Mapping[str, Any] | None]) -> list[str]:
+    """Explica *por qué* un dato obtiene su nivel de confianza.
+
+    Los factores son descriptivos y se calculan únicamente a partir de metadatos
+    de las evidencias enlazadas: independencia, carácter oficial/directo,
+    método/tipo de fuente y vigencia. Nunca convierten una señal indirecta en
+    una relación confirmada.
+    """
+    linked = dedupe_evidence(sources, 8)
+    if not linked:
+        return ["No hay evidencia pública suficiente para explicar este dato."]
+
+    blobs = [norm(" ".join(str(ev.get(k) or "") for k in ("type", "method", "source", "source_type", "source_grade", "url", "classification"))) for ev in linked]
+    independent = len({norm(ev.get("source") or ev.get("url") or ev.get("title")) for ev in linked if ev})
+    official_terms = ("official", "primary", "partner-locator", "partner-directory", "user-provided", "vendor-own", "integrator-own", "manufacturer")
+    indirect_terms = ("job", "career", "vacan", "aggregator", "semantic", "discovery", "news.google", "secondary")
+    official_count = sum(any(term in blob for term in official_terms) for blob in blobs)
+    indirect_count = sum(any(term in blob for term in indirect_terms) for blob in blobs)
+    freshness = [_freshness(ev).get("status") for ev in linked]
+    current = sum(x == "current" for x in freshness)
+    aging = sum(x == "aging" for x in freshness)
+    stale = sum(x == "stale" for x in freshness)
+    unknown = sum(x in (None, "", "unknown") for x in freshness)
+
+    factors: list[str] = []
+    if independent >= 2:
+        factors.append(f"Corroboración: {independent} fuentes/evidencias independientes sostienen el dato.")
+    else:
+        factors.append("Corroboración limitada: solo se dispone de una fuente/evidencia independiente.")
+
+    if official_count:
+        factors.append(f"Calidad de fuente: {official_count} evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.")
+    else:
+        factors.append("Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.")
+
+    if indirect_count:
+        factors.append(f"Tipo de señal: {indirect_count} evidencia(s) proceden de empleo, agregadores, descubrimiento o fuentes secundarias; aportan contexto o indicio, no confirmación aislada.")
+
+    if stale:
+        factors.append(f"Vigencia: {stale} evidencia(s) están fuera de su ventana de revalidación y el motor prioriza volver a comprobarlas.")
+    elif aging:
+        factors.append(f"Vigencia: {aging} evidencia(s) están envejeciendo y requieren revalidación próxima.")
+    elif current:
+        factors.append(f"Vigencia: {current} evidencia(s) están dentro de su ventana de revalidación.")
+    elif unknown:
+        factors.append("Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.")
+
+    band = confidence_band(score)
+    if band == "medium":
+        factors.append("Para elevarla a alta: normalmente hace falta una fuente oficial/directa adicional, corroboración independiente o una revalidación más reciente.")
+    elif band == "low":
+        factors.append("Para elevarla: hace falta corroborar el indicio con una fuente oficial/directa o varias evidencias independientes actuales.")
+    else:
+        factors.append("Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica.")
+    return factors
+
+
 def confidence_reason(score: float, sources: Iterable[Mapping[str, Any] | None]) -> str:
     linked = dedupe_evidence(sources, 8)
     band = confidence_band(score)
-    official = any(any(t in norm(" ".join(str(ev.get(k) or "") for k in ("type","method","source","url"))) for t in ("official", "primary", "partner-locator", "partner-directory", "user-provided")) for ev in linked)
-    freshness = [_freshness(ev).get("status") for ev in linked]
-    suffix = ""
-    if freshness and all(x == "stale" for x in freshness):
-        suffix = " Evidencia antigua: revalidación automática prioritaria."
-    elif "aging" in freshness and "current" not in freshness:
-        suffix = " Evidencia envejecida: el motor la revalida automáticamente."
+    factors = confidence_factors(score, linked)
     if band == "high":
-        base = "Confianza alta: evidencia oficial/primaria o corroboración pública suficientemente sólida." if official else "Confianza alta: varias evidencias públicas coherentes y trazables."
-        return base + suffix
+        return "Confianza alta: evidencia sólida y trazable. " + factors[0]
     if band == "medium":
-        return "Confianza media: evidencia pública útil pero parcial, indirecta o todavía con corroboración limitada." + suffix
-    return "Confianza baja: indicio trazable pendiente de corroboración adicional; no debe interpretarse como relación contractual confirmada." + suffix
+        return "Confianza media: dato útil, pero la evidencia aún es parcial, indirecta, poco corroborada o necesita revalidación. " + factors[0]
+    return "Confianza baja: indicio trazable que requiere corroboración; no debe leerse como relación o hecho plenamente confirmado. " + factors[0]
 
 
 def atomic_item(value: Any, sources: Iterable[Mapping[str, Any] | None], confidence: float | int | None = None, qualifier: str | None = None) -> dict[str, Any] | None:
@@ -261,6 +325,7 @@ def atomic_item(value: Any, sources: Iterable[Mapping[str, Any] | None], confide
         "confidence": score,
         "confidence_band": confidence_band(score),
         "confidence_reason": confidence_reason(score, linked),
+        "confidence_factors": confidence_factors(score, linked),
         "evidence": linked,
     }
     if qualifier:
@@ -296,6 +361,7 @@ def field(value: Any, sources: Iterable[Mapping[str, Any] | None], confidence: f
         "confidence": score,
         "confidence_band": confidence_band(score),
         "confidence_reason": confidence_reason(score, linked),
+        "confidence_factors": confidence_factors(score, linked),
     }
     if isinstance(value, list) and value and not (isinstance(value[0], dict) and value[0].get("layer")):
         atomic: list[dict[str, Any]] = []
@@ -421,7 +487,7 @@ def build_manufacturers() -> list[dict[str, Any]]:
         dist_items: list[dict[str, Any]] = []
         for x in vendor.get("channelCompetitors", []) or []:
             dist = x.get("name")
-            if not dist or "westcon" in norm(dist):
+            if not dist or is_internal_westcon_distributor(dist):
                 continue
             ev = evidence({"source": x.get("name"), "title": x.get("evidence") or f"Distribución de {name}", "url": x.get("url"), "date": x.get("date"), "confidence": x.get("confidence"), "classification": "distribution"})
             atom = atomic_item(f"{dist} · {x.get('country') or '—'}", [ev] if ev else [], x.get("confidence"), "Relación de distribución observada en fuente pública.")
@@ -435,7 +501,7 @@ def build_manufacturers() -> list[dict[str, Any]]:
                 dist = rel.get("distributor")
                 evs = rel_evidence(rel)
                 atom = atomic_item(f"{dist} · {(rel.get('geography') or {}).get('scope') or '—'}", evs, _rel_fact_score(rel), rel.get("status_label") or rel.get("status"))
-            if atom and dist and "westcon" not in norm(dist): dist_items.append(atom)
+            if atom and dist and not is_internal_westcon_distributor(dist): dist_items.append(atom)
         # Deduplicate by displayed value, retaining the strongest evidence.
         dist_best: dict[str, dict[str, Any]] = {}
         for item in dist_items:
@@ -580,7 +646,7 @@ def build_ecosystem(kind: str) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for key, item in merged.items():
         name = item.get("name")
-        if kind == "distributor" and "westcon" in norm(name):
+        if kind == "distributor" and is_internal_westcon_distributor(name):
             continue
         source_rows = item.get("rows") or []
         base_row = source_rows[0] if source_rows else {}
@@ -1146,7 +1212,7 @@ def build() -> dict[str, Any]:
     sources = merge_source_catalog()
     result = {
         "meta": {
-            "version": "3.8.0",
+            "version": "3.8.2",
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "scope": "España + Portugal",
             "principle": "Inteligencia de negocio descriptiva limitada a Fabricantes, Integradores, Mayoristas competidores, Tendencias y Arquitecturas.",
@@ -1167,10 +1233,21 @@ def build() -> dict[str, Any]:
 if __name__ == "__main__":
     data = build()
     write("data/v38/intelligence.json", data)
+    gaps = load("data/v38/research_gaps.json", {})
+    traceable_fields = sum(
+        1
+        for section in ("manufacturers", "integrators", "distributors", "trends", "architectures")
+        for row in data.get(section, [])
+        for value in (row.get("fields") or {}).values()
+        if value and value.get("evidence")
+    )
     write("data/v38/last_run.json", {
-        "version": "3.8.0", "generated_at": data["meta"]["generated_at"], "status": "published",
+        "version": "3.8.2", "generated_at": data["meta"]["generated_at"],
+        "finished_at": data["meta"]["generated_at"], "profile": "snapshot", "status": "published",
         "manufacturers": len(data["manufacturers"]), "integrators": len(data["integrators"]),
         "distributors": len(data["distributors"]), "trends": len(data["trends"]),
         "architectures": len(data["architectures"]), "source_count": len(data["source_catalog"]),
+        "traceable_fields": traceable_fields, "research_gaps": gaps.get("total_gaps", 0),
+        "high_priority_research_gaps": gaps.get("high_priority_gaps", 0),
     })
     print(json.dumps(load("data/v38/last_run.json", {}), ensure_ascii=False))

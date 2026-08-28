@@ -37,16 +37,16 @@ jobs:
       - name: Dependencias
         if: steps.schedule.outputs.run == 'true'
         run: pip install -r requirements.txt
-      - name: Preflight offline del motor y la UI v3.8
+      - name: Preflight offline del motor v3.8 y la UI v3.8.2
         if: steps.schedule.outputs.run == 'true'
         run: |
           python -m py_compile scripts/research.py scripts/configure_updates.py scripts/schedule_guard.py scripts/research_supervisor_v33.py scripts/research_supervisor_v38.py scripts/v34/*.py scripts/v38/*.py
           python scripts/test_resilience.py
           python scripts/test_schedule.py
-          python -m unittest tests/test_v380.py
+          python -m unittest tests/test_v382.py
           python scripts/v38/validate_v38.py
-          node --check assets/v380/intelligence.js
-          node tests/ui_smoke_v380.js
+          node --check assets/v382/intelligence.js
+          node tests/ui_smoke_v382.js
       - name: Investigación diaria
         if: steps.schedule.outputs.run == 'true'
         env:

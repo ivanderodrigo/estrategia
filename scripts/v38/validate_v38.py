@@ -31,8 +31,8 @@ def validate(root: Path) -> list[str]:
     except Exception as exc:
         return [f"intelligence.json inválido: {exc}"]
 
-    if data.get("meta", {}).get("version") != "3.8.0":
-        errors.append("la versión pública no es 3.8.0")
+    if data.get("meta", {}).get("version") != "3.8.2":
+        errors.append("la versión pública no es 3.8.2")
 
     minimums = {"manufacturers": 36, "integrators": 30, "distributors": 8, "trends": 15, "architectures": 10}
     for section in SECTIONS:
@@ -61,10 +61,20 @@ def validate(root: Path) -> list[str]:
                             errors.append(f"{section}/{row.get('name')}/{field_id}: etiqueta sin confianza numérica 0–1")
                         if atom.get("confidence_band") not in {"high","medium","low"}:
                             errors.append(f"{section}/{row.get('name')}/{field_id}: etiqueta sin banda de confianza")
+                        if atom.get("confidence_band") in {"medium", "low"} and not atom.get("confidence_factors"):
+                            errors.append(f"{section}/{row.get('name')}/{field_id}: etiqueta media/baja sin razones explícitas de confianza")
 
+    internal_distributor_tokens = ("westcon", "comstor")
     for row in data.get("distributors") or []:
-        if "westcon" in str(row.get("name") or "").lower():
-            errors.append("Westcon aparece como mayorista competidor")
+        name = str(row.get("name") or "").lower()
+        if any(token in name for token in internal_distributor_tokens):
+            errors.append(f"unidad interna Westcon aparece como mayorista competidor: {row.get('name')}")
+    for row in data.get("manufacturers") or []:
+        dist_field = ((row.get("fields") or {}).get("distributors") or {})
+        for value in dist_field.get("value") or []:
+            text = str(value).lower()
+            if any(token in text for token in internal_distributor_tokens):
+                errors.append(f"fabricantes/{row.get('name')}: unidad interna Westcon publicada como mayorista alternativo: {value}")
 
     # Fabricantes: solo portfolio Westcon como filas. Los competidores viven como contexto trazable.
     portfolio = _load(root / "data/vendor_intelligence.json").get("vendors", [])
@@ -117,8 +127,8 @@ def validate(root: Path) -> list[str]:
         errors.append("faltan familias de fuente clave: " + ", ".join(missing_sources))
 
     index_path = root / "index.html"
-    js_path = root / "assets/v380/intelligence.js"
-    css_path = root / "assets/v380/intelligence.css"
+    js_path = root / "assets/v382/intelligence.js"
+    css_path = root / "assets/v382/intelligence.css"
     for path in (index_path, js_path, css_path):
         if not path.exists():
             errors.append(f"falta activo frontend: {path.relative_to(root)}")
@@ -128,7 +138,7 @@ def validate(root: Path) -> list[str]:
         expected = ["fabricantes", "integradores", "mayoristas", "tendencias", "arquitecturas"]
         if views != expected:
             errors.append(f"navegación principal incorrecta: {views}")
-        if "assets/v380/intelligence.js" not in index or "assets/v380/intelligence.css" not in index:
+        if "assets/v382/intelligence.js" not in index or "assets/v382/intelligence.css" not in index:
             errors.append("index.html no carga exclusivamente la capa v3.8 esperada")
         if re.search(r"assets/(?:v31|v32|v33|v333|v340)/", index, re.I):
             errors.append("index.html carga activos legacy")
@@ -152,4 +162,4 @@ if __name__ == "__main__":
         for error in errors:
             print("ERROR ·", error)
         raise SystemExit(1)
-    print("VALIDACIÓN v3.8.0 · PASS")
+    print("VALIDACIÓN v3.8.2 · PASS")

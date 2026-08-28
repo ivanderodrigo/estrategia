@@ -7,16 +7,16 @@
 <meta name="description" content="Westcon Iberia · Business Intelligence · Fabricantes, integradores, mayoristas competidores, tendencias y arquitecturas con trazabilidad por campo.">
 <title>Westcon Iberia · Business Intelligence</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/v380/intelligence.css?v=3.8.0">
+<link rel="stylesheet" href="assets/v382/intelligence.css?v=3.8.2">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
-<script defer src="assets/v380/intelligence.js?v=3.8.0"></script>
+<script defer src="assets/v382/intelligence.js?v=3.8.2"></script>
 </head>
 <body>
 <header class="appbar">
   <div class="brand">
     <div class="brandmark" aria-hidden="true"><span></span><span></span><span></span></div>
-    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v3.8.0</small></div>
+    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v3.8.2</small></div>
   </div>
   <button id="navToggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="tabs">Menú</button>
   <nav id="tabs" aria-label="Áreas de inteligencia">
@@ -32,6 +32,8 @@
       <button id="textReset" class="ghost compact scale-value" type="button" aria-label="Restablecer tamaño del texto">100%</button>
       <button id="textLarger" class="ghost compact" type="button" aria-label="Aumentar tamaño del texto">A+</button>
     </div>
+    <button id="dataStatusBtn" class="ghost compact data-status-btn" type="button" aria-label="Estado de actualización de los datos"><span class="data-status-dot"></span><span id="dataStatusLabel">Datos · cargando…</span></button>
+    <button id="confidenceHelpBtn" class="ghost compact confidence-help-btn" type="button" aria-label="Ayuda para interpretar la confianza"><span class="confidence-mini high"></span><span class="confidence-mini medium"></span><span class="confidence-mini low"></span> Confianza</button>
     <button id="btnSources" class="ghost" type="button">Fuentes</button>
     <button id="btnExport" class="primary" type="button">Informe / PPT</button>
   </div>
@@ -64,7 +66,7 @@
 
   <section id="mayoristas" class="view">
     <div class="page-head">
-      <div><div class="eyebrow">MAYORISTAS DE LA COMPETENCIA</div><h1>Linecard, servicios y foco tecnológico.</h1><p>Solo mayoristas competidores. Se cruzan linecards públicos, servicios de valor, señales de talento y solape de fabricantes con el portfolio Westcon aportado.</p></div>
+      <div><div class="eyebrow">MAYORISTAS DE LA COMPETENCIA</div><h1>Linecard, servicios y foco tecnológico.</h1><p>Solo mayoristas competidores. Se cruzan linecards públicos, servicios de valor, señales de talento y solape de fabricantes con el portfolio Westcon aportado. Comstor no se trata como competidor: es la unidad especializada en Cisco de Westcon.</p></div>
       <div class="view-count" id="distributorCount"></div>
     </div>
     <div class="toolbar">
@@ -82,6 +84,7 @@
     <div class="toolbar single"><input id="trendSearch" type="search" placeholder="Buscar tendencia, área, métrica o fuente…"></div>
     <div id="trendGrid" class="card-grid"></div>
     <section class="trend-analytics" aria-label="Análisis visual de tendencias">
+      <div class="analytics-intro"><div><span>LECTURA VISUAL</span><b>Dos vistas complementarias</b></div><p><strong>Trend Loop</strong> responde «¿en qué fase está cada tendencia y con qué velocidad avanza?». <strong>Vendor Arena</strong> responde «¿qué fabricantes aparecen de forma más amplia y mejor documentada en esas tendencias?». Ninguno de los dos gráficos representa cuota de mercado ni replica metodologías propietarias de consultoras.</p></div>
       <div id="trendLifecycleChart" class="analytics-panel"></div>
       <div id="vendorTrendMap" class="analytics-panel"></div>
     </section>
@@ -106,6 +109,33 @@
     <div class="source-summary" id="sourceSummary"></div>
     <input id="sourceSearch" class="modal-search" type="search" placeholder="Buscar Gartner, empleo, partner locator, contratación, arquitectura…">
     <div id="sourceCatalog" class="source-catalog"></div>
+  </div>
+</div>
+
+<div id="updateModal" class="modal" aria-hidden="true">
+  <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="updateTitle">
+    <div class="modal-head"><div><span>ACTUALIZACIÓN AUTOMÁTICA</span><h2 id="updateTitle">Estado de los datos</h2><p>La aplicación publica una fotografía trazable y la vuelve a investigar de forma incremental, profunda y exhaustiva. Aquí puedes comprobar cuándo se actualizó, qué ciclo la generó y qué cobertura publicó.</p></div><button class="modal-close" data-close="updateModal" type="button" aria-label="Cerrar">×</button></div>
+    <div id="updateStatusBody" class="update-status-body"><div class="empty-state">Cargando estado…</div></div>
+  </div>
+</div>
+
+<div id="confidenceModal" class="modal" aria-hidden="true">
+  <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="confidenceTitle">
+    <div class="modal-head"><div><span>AYUDA DE TRAZABILIDAD</span><h2 id="confidenceTitle">Cómo interpretar la confianza</h2><p>La confianza mide la solidez de la evidencia que sostiene cada dato. No mide la calidad de un fabricante, su atractivo comercial, cuota de mercado ni constituye una instrucción de actuación.</p></div><button class="modal-close" data-close="confidenceModal" type="button" aria-label="Cerrar">×</button></div>
+    <div class="confidence-guide">
+      <div class="confidence-level high"><div><span class="confidence-swatch high"></span><b>Alta · 80–99%</b></div><p>Evidencia oficial/primaria o varias fuentes públicas coherentes y suficientemente corroboradas. Sigue sujeta a revalidación.</p></div>
+      <div class="confidence-level medium"><div><span class="confidence-swatch medium"></span><b>Media · 60–79%</b></div><p>Dato útil, pero parcial: puede depender de una sola fuente, evidencia indirecta, corroboración limitada o información que necesita actualización.</p></div>
+      <div class="confidence-level low"><div><span class="confidence-swatch low"></span><b>Baja · 35–59%</b></div><p>Indicio trazable. Puede proceder de empleo, prensa secundaria, agregadores, una única señal o evidencia antigua. No debe leerse como relación o hecho plenamente confirmado.</p></div>
+      <div class="confidence-level hidden"><div><span class="confidence-swatch hidden"></span><b>Inferior al 35% · no se publica</b></div><p>Las señales por debajo del umbral permanecen en las tripas y alimentan nuevas búsquedas, pero no se presentan como inteligencia visible.</p></div>
+    </div>
+    <div id="confidenceDistribution" class="confidence-distribution"></div>
+    <div class="confidence-method">
+      <div><b>Qué hace subir la confianza</b><span>Fuentes oficiales, partner locators, páginas propias, documentos primarios, varias fuentes independientes que coinciden y evidencia reciente.</span></div>
+      <div><b>Qué hace bajar la confianza</b><span>Una única fuente, señales indirectas, empleo como único indicio, agregadores, falta de corroboración, ambigüedad geográfica o evidencia envejecida.</span></div>
+      <div><b>Qué verás al pasar el ratón</b><span>Porcentaje exacto, razones concretas del nivel, fuente que sostiene ese dato, descripción, fecha, tipo/método, vigencia, revalidación y enlace.</span></div>
+      <div><b>Cómo evoluciona</b><span>El motor vuelve a sondear datos amarillos/rojos y evidencias antiguas. Una señal puede subir o bajar de confianza cuando aparecen nuevas fuentes o cambia su vigencia.</span></div>
+    </div>
+    <div class="confidence-note"><b>Regla de lectura:</b> verde = hecho suficientemente sólido para inteligencia; amarillo = útil con cautela; rojo = indicio que merece atención pero necesita corroboración. El color nunca equivale a “bueno/malo” ni a una instrucción de actuación.</div>
   </div>
 </div>
 

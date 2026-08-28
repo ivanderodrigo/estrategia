@@ -1,34 +1,37 @@
-# Westcon Iberia Business Intelligence v3.8.0
+# Westcon Iberia Business Intelligence v3.8.2
 
-Aplicación estática para GitHub Pages centrada exclusivamente en **Fabricantes, Integradores, Mayoristas, Tendencias y Arquitecturas**. No publica recomendaciones.
+Aplicación estática para GitHub Pages centrada exclusivamente en **Fabricantes, Integradores, Mayoristas, Tendencias y Arquitecturas**, con inteligencia descriptiva trazable y sin salidas prescriptivas.
 
-## v3.8.0
+## v3.8.2
 
-- Tablas legibles con ancho mínimo semántico por columna, scroll horizontal antes de comprimir y primera columna fija.
-- Etiquetas compactas en una línea, truncado visual y detalle completo en hover; las listas largas muestran `… +N` y se expanden por celda.
-- Confianza atómica por etiqueta: verde (alta), amarillo (media) y rojo (baja), siempre con porcentaje y fuente individual.
-- Columnas extremadamente dispersas se ocultan temporalmente hasta alcanzar cobertura útil; sus huecos siguen alimentando la cola interna de investigación.
-- **Westcon Trend Loop** y **Westcon Vendor Arena** usan marcadores numerados y leyendas con nombres completos para evitar solapamientos. PDF y PPT aplican el mismo principio.
-- Tendencias mantienen un esquema homogéneo y separan métricas del mercado específico de métricas adyacentes/contextuales.
-- Investigación v3.8 más exhaustiva: partner locators/directorios, sitemaps oficiales, páginas de alianzas, linecards, casos, premios, certificaciones, empleo/ATS, prensa, analistas públicos, contratación ES/PT y Common Crawl como descubrimiento con revalidación en vivo.
-- Las páginas oficiales de partners pueden descubrir actores long-tail fuera del universo precargado; se publican inicialmente con confianza limitada hasta corroboración recíproca.
-- Celdas vacías, datos rojos/amarillos y evidencias envejecidas generan automáticamente nuevas consultas en ejecuciones posteriores.
-- Actualización automática diaria, semanal profunda y mensual exhaustiva con publicación resiliente sobre el último `origin/main`.
+- Tarjetas de Tendencias contenidas y legibles: cada fila mantiene su espacio, las listas se pliegan con `… +N` y los textos extensos con `Ver más`.
+- **Westcon Trend Loop** explica de forma visible qué significan Emergente, Aceleración, Escala y Consolidación, además de madurez, momentum y urgencia.
+- **Westcon Vendor Arena** explica ejes, cuadrantes, utilidad y límites: mide presencia documentada en el dataset, no cuota ni liderazgo comercial.
+- Estado visible de **actualización automática** desde la cabecera: última publicación, ciclo, cobertura y huecos que siguen investigándose.
+- Ayuda global de **Confianza** con umbrales: alta 80–99%, media 60–79%, baja 35–59%; por debajo del 35% no se publica.
+- Confianza explicable por dato: el hover muestra razones concretas, porcentaje, fuentes, fecha, tipo/método, vigencia, revalidación y enlace.
+- Los datos medios/bajos indican explícitamente qué limita la confianza y qué evidencia adicional permitiría elevarla.
+- Se mantiene el motor v3.8 de búsqueda exhaustiva, realimentación de huecos y revalidación automática.
 - Regla de portfolio: España = portfolio base; Portugal = mismo portfolio + Proofpoint + Check Point.
+- Regla de canal: **Comstor = unidad especializada Cisco de Westcon**, por lo que no aparece como mayorista competidor ni como mayorista alternativo de fabricantes.
 
 ## Validación local
 
 ```powershell
-python -m unittest tests/test_v380.py
+python -m unittest tests/test_v382.py
 python scripts/v38/validate_v38.py
-node --check assets/v380/intelligence.js
-node tests/ui_smoke_v380.js
+node --check assets/v382/intelligence.js
+node tests/ui_smoke_v382.js
 python scripts/test_resilience.py
 python scripts/test_schedule.py
 ```
 
 ## Actualización automática
 
-Los workflows `research-daily.yml`, `research-weekly.yml` y `research-monthly.yml` ejecutan `research_supervisor_v38.py`. `data/v38/research_gaps.json` es una cola interna de realimentación: no se muestra al usuario final, pero aumenta el sondeo de campos incompletos, débiles o envejecidos.
+Los workflows `research-daily.yml`, `research-weekly.yml` y `research-monthly.yml` ejecutan el supervisor v3.8 y validan la capa v3.8.2 antes de publicar.
 
-`publish_research_update.py` conserva las salidas generadas, refresca el checkout contra el último `origin/main`, restaura solo los datos automáticos, valida v3.8 y reintenta el push si `main` avanza durante la publicación.
+- **Diaria · 06:23 Madrid**: cambios recientes, nuevas relaciones, empleo, casos y revalidación rápida.
+- **Semanal · domingo 04:47**: locators, webs de integradores/mayoristas, certificaciones, servicios, casos, empleo y fuentes sectoriales.
+- **Mensual · día 1 03:17**: long-tail, huecos persistentes, nuevas entidades, tendencias, arquitecturas y evidencia envejecida.
+
+`data/v38/research_gaps.json` mantiene la cola interna que eleva el sondeo de celdas vacías y señales de confianza limitada. `publish_research_update.py` publica sobre el último `origin/main` y reintenta si la rama cambia durante la actualización.
