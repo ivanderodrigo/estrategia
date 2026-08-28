@@ -37,21 +37,21 @@ jobs:
       - name: Dependencias
         if: steps.schedule.outputs.run == 'true'
         run: pip install -r requirements.txt
-      - name: Preflight offline del motor v3.8 y la UI v3.8.2
+      - name: Preflight offline del motor v3.9 y la UI v3.9.0
         if: steps.schedule.outputs.run == 'true'
         run: |
-          python -m py_compile scripts/research.py scripts/configure_updates.py scripts/schedule_guard.py scripts/research_supervisor_v33.py scripts/research_supervisor_v38.py scripts/v34/*.py scripts/v38/*.py
+          python -m py_compile scripts/research.py scripts/configure_updates.py scripts/schedule_guard.py scripts/research_supervisor_v33.py scripts/research_supervisor_v38.py scripts/research_supervisor_v39.py scripts/v34/*.py scripts/v38/*.py scripts/v39/*.py
           python scripts/test_resilience.py
           python scripts/test_schedule.py
-          python -m unittest tests/test_v382.py
-          python scripts/v38/validate_v38.py
-          node --check assets/v382/intelligence.js
-          node tests/ui_smoke_v382.js
+          python -m unittest tests/test_v390.py
+          python scripts/v39/validate_v39.py
+          node --check assets/v390/intelligence.js
+          node tests/ui_smoke_v390.js
       - name: Investigación profunda
         if: steps.schedule.outputs.run == 'true'
         env:
           RESEARCH_PROFILE: deep
-        run: python scripts/research_supervisor_v38.py --profile deep --max-runtime 1800 --fallback-runtime 240
+        run: python scripts/research_supervisor_v39.py --profile deep --max-runtime 1800 --fallback-runtime 240
       - name: Conservar diagnóstico de ejecución
         if: always() && steps.schedule.outputs.run == 'true'
         uses: actions/upload-artifact@v4
@@ -64,6 +64,7 @@ jobs:
             data/v34/
             data/v37/
             data/v38/
+            data/v39/
             diagnostics/*.log
             data/run_manifest.latest.json
             data/supervisor.latest.json
@@ -76,7 +77,7 @@ jobs:
           retention-days: 45
       - name: Validar dataset antes de publicar
         if: steps.schedule.outputs.run == 'true'
-        run: python scripts/v38/validate_v38.py
+        run: python scripts/v39/validate_v39.py
       - name: Guardar actualización
         if: steps.schedule.outputs.run == 'true'
         run: |

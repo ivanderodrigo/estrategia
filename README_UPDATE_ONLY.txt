@@ -1,20 +1,13 @@
-UPDATE ONLY v3.8.2
+UPDATE ONLY v3.9.0
 
-Copiar todo el contenido de este paquete sobre el repositorio v3.8.1 existente, sin borrar nada y conservando .git.
+1. Sustituye el contenido del proyecto por esta versión manteniendo tu carpeta `.git`.
+2. Ejecuta:
 
-La actualización mantiene las mejoras visuales y de confianza de v3.8.1 y corrige el modelado competitivo de Comstor: es la unidad especializada Cisco de Westcon y no se publica como mayorista competidor.
+   python -m unittest tests/test_v390.py
+   PYTHONPATH=scripts python scripts/v39/build_intelligence.py
+   python scripts/v39/validate_v39.py
+   node --check assets/v390/intelligence.js
+   node tests/ui_smoke_v390.js
 
-El paquete incremental no sustituye históricos ajenos a los archivos incluidos. Después ejecutar:
-
-  git status
-
-Validación recomendada:
-
-  python -m unittest tests/test_v382.py
-  python scripts/v38/validate_v38.py
-  node --check assets/v382/intelligence.js
-  node tests/ui_smoke_v382.js
-  python scripts/test_resilience.py
-  python scripts/test_schedule.py
-
-Después: git add -A, commit, git pull --rebase origin main y git push origin main.
+3. Si todo pasa, publica en tu repo habitual.
+4. Para reconstrucción automática usa `scripts/research_supervisor_v39.py`.

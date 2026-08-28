@@ -1,37 +1,43 @@
-# Westcon Iberia Business Intelligence v3.8.2
+# Westcon Iberia Business Intelligence v3.9.0
 
-Aplicación estática para GitHub Pages centrada exclusivamente en **Fabricantes, Integradores, Mayoristas, Tendencias y Arquitecturas**, con inteligencia descriptiva trazable y sin salidas prescriptivas.
+Release de producción candidata centrada en cuatro mejoras principales:
 
-## v3.8.2
+1. **Corrección de maquetación del header** para evitar el bloque blanco y el recorte de `Fuentes / Informe`.
+2. **Nueva pestaña `Clientes`** entre Integradores y Tendencias.
+3. **Cobertura de clientes públicos y privados ES/PT** con trazabilidad por campo.
+4. **Responsive real** para desktop, tablet y móvil.
 
-- Tarjetas de Tendencias contenidas y legibles: cada fila mantiene su espacio, las listas se pliegan con `… +N` y los textos extensos con `Ver más`.
-- **Westcon Trend Loop** explica de forma visible qué significan Emergente, Aceleración, Escala y Consolidación, además de madurez, momentum y urgencia.
-- **Westcon Vendor Arena** explica ejes, cuadrantes, utilidad y límites: mide presencia documentada en el dataset, no cuota ni liderazgo comercial.
-- Estado visible de **actualización automática** desde la cabecera: última publicación, ciclo, cobertura y huecos que siguen investigándose.
-- Ayuda global de **Confianza** con umbrales: alta 80–99%, media 60–79%, baja 35–59%; por debajo del 35% no se publica.
-- Confianza explicable por dato: el hover muestra razones concretas, porcentaje, fuentes, fecha, tipo/método, vigencia, revalidación y enlace.
-- Los datos medios/bajos indican explícitamente qué limita la confianza y qué evidencia adicional permitiría elevarla.
-- Se mantiene el motor v3.8 de búsqueda exhaustiva, realimentación de huecos y revalidación automática.
-- Regla de portfolio: España = portfolio base; Portugal = mismo portfolio + Proofpoint + Check Point.
-- Regla de canal: **Comstor = unidad especializada Cisco de Westcon**, por lo que no aparece como mayorista competidor ni como mayorista alternativo de fabricantes.
+## Qué añade v3.9.0
 
-## Validación local
+- Orden de navegación: **Fabricantes · Mayoristas · Integradores · Clientes · Tendencias · Arquitecturas**.
+- Clientes públicos: oportunidades de AAPP España/Portugal basadas en contratación, pliegos, perfiles del contratante y estrategia digital.
+- Clientes privados: grandes cuentas ES/PT con señales de tecnología y renovación apoyadas en webs corporativas, informes e inteligencia procedente de empleo.
+- Exportación PDF/PPT actualizada para incluir el nuevo bloque de clientes.
+- Catálogo de fuentes ampliado con contratación pública (`PLACSP`, `TED`, `BASE.gov.pt`), planes digitales del sector público, grandes cuentas y portales de empleo corporativos.
 
-```powershell
-python -m unittest tests/test_v382.py
-python scripts/v38/validate_v38.py
-node --check assets/v382/intelligence.js
-node tests/ui_smoke_v382.js
-python scripts/test_resilience.py
-python scripts/test_schedule.py
+## Validación rápida
+
+```bash
+python -m unittest tests/test_v390.py
+PYTHONPATH=scripts python scripts/v39/build_intelligence.py
+python scripts/v39/validate_v39.py
+node --check assets/v390/intelligence.js
+node tests/ui_smoke_v390.js
 ```
 
 ## Actualización automática
 
-Los workflows `research-daily.yml`, `research-weekly.yml` y `research-monthly.yml` ejecutan el supervisor v3.8 y validan la capa v3.8.2 antes de publicar.
+La capa pública v3.9.0 se reconstruye desde `scripts/research_supervisor_v39.py`.
 
-- **Diaria · 06:23 Madrid**: cambios recientes, nuevas relaciones, empleo, casos y revalidación rápida.
-- **Semanal · domingo 04:47**: locators, webs de integradores/mayoristas, certificaciones, servicios, casos, empleo y fuentes sectoriales.
-- **Mensual · día 1 03:17**: long-tail, huecos persistentes, nuevas entidades, tendencias, arquitecturas y evidencia envejecida.
+- **Diaria**: incremental
+- **Semanal**: profunda
+- **Mensual**: exhaustiva
 
-`data/v38/research_gaps.json` mantiene la cola interna que eleva el sondeo de celdas vacías y señales de confianza limitada. `publish_research_update.py` publica sobre el último `origin/main` y reintenta si la rama cambia durante la actualización.
+La publicación visible está en `data/v39/`.
+
+## Estructura relevante
+
+- `assets/v390/` → frontend v3.9.0
+- `data/v39/` → dataset público v3.9.0
+- `scripts/v39/` → construcción, pipeline y validación v3.9.0
+- `config/v39/` → ampliaciones de fuentes y semillas de clientes

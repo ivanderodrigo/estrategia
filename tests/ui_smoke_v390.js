@@ -1,0 +1,24 @@
+const fs = require('fs');
+const path = require('path');
+const assert = require('assert');
+const root = path.resolve(__dirname, '..');
+const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const js = fs.readFileSync(path.join(root, 'assets/v390/intelligence.js'), 'utf8');
+const css = fs.readFileSync(path.join(root, 'assets/v390/intelligence.css'), 'utf8');
+const data = JSON.parse(fs.readFileSync(path.join(root, 'data/v39/intelligence.json'), 'utf8'));
+
+assert(html.includes('assets/v390/intelligence.js'), 'Falta JS v3.9.0');
+assert(html.includes('assets/v390/intelligence.css'), 'Falta CSS v3.9.0');
+assert(html.includes('data-view="clientes"'), 'Falta pestaña de clientes');
+assert(html.includes('publicClientTable') && html.includes('privateClientTable'), 'Faltan tablas de clientes');
+assert(js.includes("data/v39/intelligence.json"), 'El frontend no carga el dataset v3.9');
+assert(js.includes("data/v39/last_run.json"), 'El frontend no carga el estado automático v3.9');
+assert(js.includes('renderClients'), 'Falta render de clientes');
+assert(js.includes('exportSections(modules)'), 'Falta inclusión de clientes en exportaciones');
+assert(js.includes('Westcon_Iberia_Business_Intelligence_v3.9.0.pdf'), 'Falta nombre PDF v3.9.0');
+assert(js.includes('Westcon_Iberia_Business_Intelligence_v3.9.0.pptx'), 'Falta nombre PPTX v3.9.0');
+assert(css.includes('client-blocks') && css.includes('appbar-actions'), 'Faltan estilos de clientes/header');
+assert(css.includes('@media(max-width:720px)'), 'Falta responsive móvil');
+assert((data.clients_public || []).length >= 8, 'Debe haber al menos 8 clientes públicos');
+assert((data.clients_private || []).length >= 8, 'Debe haber al menos 8 clientes privados');
+console.log('UI smoke v3.9.0 · PASS');
