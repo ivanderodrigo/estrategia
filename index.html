@@ -7,16 +7,16 @@
 <meta name="description" content="Westcon Iberia · Business Intelligence · Fabricantes, integradores, mayoristas competidores, tendencias y arquitecturas con trazabilidad por campo.">
 <title>Westcon Iberia · Business Intelligence</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/v360/intelligence.css?v=3.6.1">
+<link rel="stylesheet" href="assets/v370/intelligence.css?v=3.7.0">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
-<script defer src="assets/v360/intelligence.js?v=3.6.1"></script>
+<script defer src="assets/v370/intelligence.js?v=3.7.0"></script>
 </head>
 <body>
 <header class="appbar">
   <div class="brand">
     <div class="brandmark" aria-hidden="true"><span></span><span></span><span></span></div>
-    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v3.6.1</small></div>
+    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v3.7.0</small></div>
   </div>
   <button id="navToggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="tabs">Menú</button>
   <nav id="tabs" aria-label="Áreas de inteligencia">
@@ -81,6 +81,10 @@
     </div>
     <div class="toolbar single"><input id="trendSearch" type="search" placeholder="Buscar tendencia, área, métrica o fuente…"></div>
     <div id="trendGrid" class="card-grid"></div>
+    <section class="trend-analytics" aria-label="Análisis visual de tendencias">
+      <div id="trendLifecycleChart" class="analytics-panel"></div>
+      <div id="vendorTrendMap" class="analytics-panel"></div>
+    </section>
   </section>
 
   <section id="arquitecturas" class="view">

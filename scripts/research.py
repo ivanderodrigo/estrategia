@@ -49,10 +49,11 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 BASE = json.loads((ROOT / "data/base.json").read_text(encoding="utf-8"))
 CFG = json.loads((ROOT / "config/research_queries.json").read_text(encoding="utf-8"))
 REG = json.loads((ROOT / "config/source_registry.json").read_text(encoding="utf-8"))
-DEEP = json.loads((ROOT / "config/deep_research.json").read_text(encoding="utf-8"))
+DEEP_PATH = ROOT / "config/v37/deep_research.json"
+DEEP = json.loads((DEEP_PATH if DEEP_PATH.exists() else ROOT / "config/deep_research.json").read_text(encoding="utf-8"))
 UNIVERSE_PATH = ROOT / "config/source_universe.json"
 UNIVERSE = json.loads(UNIVERSE_PATH.read_text(encoding="utf-8")) if UNIVERSE_PATH.exists() else {}
-V36_PORTAL_PATH = ROOT / "config/v36/vendor_portal_intelligence.json"
+V36_PORTAL_PATH = ROOT / "config/v37/vendor_portal_intelligence.json"
 V36_PORTALS = json.loads(V36_PORTAL_PATH.read_text(encoding="utf-8")) if V36_PORTAL_PATH.exists() else {"seeds": []}
 CURATED = json.loads((ROOT / "data/curated_evidence.json").read_text(encoding="utf-8"))
 ECOSYSTEM = json.loads((ROOT / "data/ecosystem.json").read_text(encoding="utf-8"))
@@ -69,6 +70,7 @@ SOURCE_HEALTH_OUT = ROOT / "data/source_health.json"
 ERRORS_OUT = ROOT / "data/research_errors.json"
 RUN_MANIFEST_OUT = ROOT / "data/run_manifest.latest.json"
 DYNAMIC_ENTITIES_OUT = ROOT / "data/discovered_entities.json"
+V37_GAPS_OUT = ROOT / "data/v37/research_gaps.json"
 HISTORY = ROOT / "data/history"
 HISTORY.mkdir(parents=True, exist_ok=True)
 NOW = dt.datetime.now(dt.timezone.utc)
@@ -1358,6 +1360,40 @@ def dynamic_entity_catalog(channels: list[dict], integrators: list[dict], procur
     return {'version':1,'generatedAt':NOW.isoformat(),'policy':'Discovery candidates are not executive evidence. Promotion needs at least two independent public domains and confidence >=70.','distributors':aggregate(channels,'distributor','distributor'),'integrators':aggregate([*integrators,*winners],'name','integrator')}
 
 
+def v37_gap_tasks(limit: int = 180) -> list[dict]:
+    """Read the previous public-layer gap queue and turn it into research hints.
+
+    The queue is internal only. Missing cells, low-confidence data and stale
+    evidence become higher-priority research on the next automatic run.
+    """
+    try:
+        payload=json.loads(V37_GAPS_OUT.read_text(encoding='utf-8'))
+    except Exception:
+        return []
+    rows=[]
+    for gap in payload.get('gaps',[]) or []:
+        hints=gap.get('query_hints') or []
+        for hint in hints[:4]:
+            rows.append({
+                'query':hint,
+                'kind':'v37-gap-revalidation' if 'envejecida' in str(gap.get('reason','')) else 'v37-gap-fill',
+                'country':'ALL',
+                'intent':'ecosystem' if gap.get('field') in {'integrators','vendor_relations','services','specializations','capabilities','verticals','public_cases','job_profiles'} else 'channel' if gap.get('field') in {'distributors','westcon_overlap'} else 'analyst' if gap.get('section')=='trends' or gap.get('field') in {'competitors','analyst_signals'} else 'market',
+                'vendor':gap.get('entity') if gap.get('section')=='manufacturers' else None,
+                'entity':gap.get('entity'),
+                'gapSection':gap.get('section'),
+                'gapField':gap.get('field'),
+                'priority':min(135,int(gap.get('priority',80))+8),
+            })
+    rows.sort(key=lambda r:(-int(r.get('priority',0)),sha('v37-gap',r.get('query',''))))
+    ded=[];seen=set()
+    for row in rows:
+        if row['query'] in seen: continue
+        seen.add(row['query']);ded.append(row)
+        if len(ded)>=limit: break
+    return ded
+
+
 def query_gap_boost(vendor: str, country: str, intent: str, dims: dict[str,dict]) -> int:
     d=dims.get(vendor,{})
     boost=0
@@ -1429,6 +1465,9 @@ def make_queries() -> list[dict]:
     fixed=[{"query":q,"kind":"strategic","country":"ALL","intent":"strategic","priority":100} for q in CFG.get("strategic_queries",[])]
     coverage=previous_gap_priority(); gapdims=previous_gap_dimensions()
     generated=[]
+    # v3.7 feedback loop: incomplete/low-confidence/stale public cells feed the next run.
+    gap_limit = 48 if PROFILE=='daily' else 120 if PROFILE=='deep' else 220
+    generated.extend(v37_gap_tasks(gap_limit))
     intents=CFG.get('deep_intents',{})
     countries={'ES':'Spain','PT':'Portugal'}
     vendors=tracked_names()
