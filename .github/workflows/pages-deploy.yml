@@ -7,8 +7,7 @@ on:
     paths:
       - "index.html"
       - "assets/**"
-      - "data/v310/**"
-      - "config/v310/runtime.json"
+      - "data/v311/**"
       - ".github/workflows/pages-deploy.yml"
   workflow_run:
     workflows:
@@ -42,12 +41,10 @@ jobs:
       - name: Preparar sitio público mínimo
         run: |
           rm -rf _site
-          mkdir -p _site/data _site/config
+          mkdir -p _site/data
           cp index.html _site/
           cp -R assets _site/assets
-          cp -R data/v310 _site/data/v310
-          mkdir -p _site/config/v310
-          cp config/v310/runtime.json _site/config/v310/runtime.json
+          cp -R data/v311 _site/data/v311
           [ -f CNAME ] && cp CNAME _site/CNAME || true
           touch _site/.nojekyll
       - name: Configurar GitHub Pages

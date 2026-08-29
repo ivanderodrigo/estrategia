@@ -1,23 +1,17 @@
-UPDATE ONLY v3.10.0
+UPDATE ONLY v3.11.0
 
-1) Copia el contenido de este ZIP sobre tu carpeta `estrategia` SIN borrar `.git`.
+1. Copia el contenido del ZIP encima del repositorio actual sin borrar `.git`.
+2. Como la v3.10 llegó a estar staged, ejecuta la limpieza de las funciones retiradas:
 
-2) Ejecuta:
+   powershell -ExecutionPolicy Bypass -File tools/cleanup_v311.ps1
+
+3. Reconstruye y valida:
+
    $env:PYTHONPATH="scripts"
-   python scripts/v310/build_intelligence.py
-   python -m unittest tests/test_v310.py
-   python scripts/v310/validate_v310.py
-   node --check assets/v310/intelligence.js
-   node tests/ui_smoke_v310.js
+   python scripts/v311/build_intelligence.py
+   python -m unittest tests/test_v311.py
+   python scripts/v311/validate_v311.py
+   node --check assets/v311/intelligence.js
+   node tests/ui_smoke_v311.js
 
-3) Revisa `git status`, commit y push.
-
-4) Para que los cambios generados por cron se reflejen de forma fiable en GitHub Pages:
-   Settings > Pages > Build and deployment > Source > GitHub Actions
-   y ejecuta una vez el workflow "Publicar Business Intelligence en GitHub Pages".
-
-5) Opcional, documentación interna en repositorio privado:
-   PRIVATE_INPUT_REPO=owner/repo-privado
-   PRIVATE_INPUT_REPO_TOKEN=token con lectura de ese repo
-
-IMPORTANTE: no guardes documentos confidenciales dentro de `inputs/documents/` si el repositorio principal es público.
+4. Ejecuta `git add -A` y revisa `git status` antes de commit/push.
