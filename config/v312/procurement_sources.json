@@ -1,0 +1,78 @@
+{
+  "version": "3.12.0",
+  "lookback_days": 365,
+  "max_rows": 800,
+  "keywords": [
+    "cybersecurity",
+    "ciberseguridad",
+    "segurança",
+    "network",
+    "red",
+    "rede",
+    "cloud",
+    "nube",
+    "nuvem",
+    "server",
+    "servidor",
+    "storage",
+    "backup",
+    "firewall",
+    "SIEM",
+    "PAM",
+    "SOC",
+    "NOC",
+    "observability",
+    "monitorización",
+    "monitorização",
+    "identity",
+    "identidad",
+    "identidade",
+    "data center",
+    "datacenter",
+    "software",
+    "licencias",
+    "licenciamento",
+    "artificial intelligence",
+    "inteligencia artificial",
+    "inteligência artificial"
+  ],
+  "sources": [
+    {
+      "id": "ted_api",
+      "url": "https://api.ted.europa.eu/v3/notices/search",
+      "type": "api",
+      "auth": "none",
+      "countries": [
+        "ESP",
+        "PRT"
+      ]
+    },
+    {
+      "id": "placsp_profiles",
+      "url": "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3.atom",
+      "type": "atom",
+      "auth": "none",
+      "countries": [
+        "ES"
+      ]
+    },
+    {
+      "id": "placsp_aggregated",
+      "url": "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_1044/PlataformasAgregadasSinMenores.atom",
+      "type": "atom",
+      "auth": "none",
+      "countries": [
+        "ES"
+      ]
+    },
+    {
+      "id": "base_pt",
+      "url": "https://www.base.gov.pt/APIBase2",
+      "type": "api",
+      "auth": "optional_env_BASE_API_TOKEN",
+      "countries": [
+        "PT"
+      ]
+    }
+  ]
+}

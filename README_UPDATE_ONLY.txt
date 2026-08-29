@@ -1,17 +1,25 @@
-UPDATE ONLY v3.11.0
+UPDATE ONLY v3.12.0
 
-1. Copia el contenido del ZIP encima del repositorio actual sin borrar `.git`.
-2. Como la v3.10 llegó a estar staged, ejecuta la limpieza de las funciones retiradas:
+IMPORTANTE: si la v3.11 está staged pero todavía no se ha hecho commit, NO hagas un commit intermedio.
+La v3.12 puede instalarse directamente encima y terminar en un único commit v3.12.
 
-   powershell -ExecutionPolicy Bypass -File tools/cleanup_v311.ps1
+1. Copia el contenido del ZIP encima del repositorio actual SIN borrar .git.
 
-3. Reconstruye y valida:
+2. Si venías de la v3.11 staged, limpia los artefactos activos de la release intermedia:
+
+   powershell -ExecutionPolicy Bypass -File tools/cleanup_v312.ps1
+
+3. Reconstruye y valida sobre TU dataset real:
 
    $env:PYTHONPATH="scripts"
-   python scripts/v311/build_intelligence.py
-   python -m unittest tests/test_v311.py
-   python scripts/v311/validate_v311.py
-   node --check assets/v311/intelligence.js
-   node tests/ui_smoke_v311.js
+   python scripts/v312/build_intelligence.py
+   python -m unittest tests/test_v312.py
+   python scripts/v312/validate_v312.py
+   node --check assets/v312/intelligence.js
+   node tests/ui_smoke_v312.js
 
-4. Ejecuta `git add -A` y revisa `git status` antes de commit/push.
+4. Comprueba después:
+
+   git status
+
+No hagas commit/push hasta revisar que los recuentos y las eliminaciones de fabricantes falsamente clasificados como mayoristas son coherentes.

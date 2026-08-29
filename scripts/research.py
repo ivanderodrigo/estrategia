@@ -49,12 +49,18 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 BASE = json.loads((ROOT / "data/base.json").read_text(encoding="utf-8"))
 CFG = json.loads((ROOT / "config/research_queries.json").read_text(encoding="utf-8"))
 REG = json.loads((ROOT / "config/source_registry.json").read_text(encoding="utf-8"))
-DEEP_PATH = ROOT / "config/v38/deep_research.json"
+DEEP_PATH = ROOT / "config/v312/deep_research.json"
+if not DEEP_PATH.exists():
+    DEEP_PATH = ROOT / "config/v38/deep_research.json"
 DEEP = json.loads((DEEP_PATH if DEEP_PATH.exists() else ROOT / "config/deep_research.json").read_text(encoding="utf-8"))
 UNIVERSE_PATH = ROOT / "config/source_universe.json"
 UNIVERSE = json.loads(UNIVERSE_PATH.read_text(encoding="utf-8")) if UNIVERSE_PATH.exists() else {}
-V36_PORTAL_PATH = ROOT / "config/v38/vendor_portal_intelligence.json"
+V36_PORTAL_PATH = ROOT / "config/v312/vendor_portal_intelligence.json"
+if not V36_PORTAL_PATH.exists():
+    V36_PORTAL_PATH = ROOT / "config/v38/vendor_portal_intelligence.json"
 V36_PORTALS = json.loads(V36_PORTAL_PATH.read_text(encoding="utf-8")) if V36_PORTAL_PATH.exists() else {"seeds": []}
+V312_INTEGRATOR_UNIVERSE = json.loads((ROOT / "config/v312/integrator_universe.json").read_text(encoding="utf-8")) if (ROOT / "config/v312/integrator_universe.json").exists() else {"entities": []}
+V312_DISTRIBUTOR_REGISTRY = json.loads((ROOT / "config/v312/distributor_registry.json").read_text(encoding="utf-8")) if (ROOT / "config/v312/distributor_registry.json").exists() else {"entries": []}
 CURATED = json.loads((ROOT / "data/curated_evidence.json").read_text(encoding="utf-8"))
 ECOSYSTEM = json.loads((ROOT / "data/ecosystem.json").read_text(encoding="utf-8"))
 VENDOR_INTEL = json.loads((ROOT / "data/vendor_intelligence.json").read_text(encoding="utf-8"))
@@ -89,6 +95,11 @@ for _kind, _key, _domain_key in (("distributors", "known_distributors", "distrib
     _rows = UNIVERSE.get(_kind, [])
     CFG[_key] = list(dict.fromkeys([*CFG.get(_key, []), *[x.get("name") for x in _rows if x.get("name")]]))
     CFG[_domain_key] = {**{x.get("name"): x.get("domain") for x in _rows if x.get("name") and x.get("domain")}, **CFG.get(_domain_key, {})}
+
+# v3.12 expands the explicit research universe without treating discovery as proof.
+CFG["known_integrators"] = list(dict.fromkeys([*CFG.get("known_integrators", []), *[x for x in V312_INTEGRATOR_UNIVERSE.get("entities", []) if x]]))
+CFG["known_distributors"] = list(dict.fromkeys([*CFG.get("known_distributors", []), *[x.get("name") for x in V312_DISTRIBUTOR_REGISTRY.get("entries", []) if x.get("name")]]))
+
 
 _max_runtime_arg = next((x.split("=", 1)[1] for x in os.sys.argv[1:] if x.startswith("--max-runtime=")), "")
 MAX_RUNTIME_SECONDS = max(30, int(_max_runtime_arg or os.getenv("RESEARCH_MAX_RUNTIME_SECONDS") or PROFILE_CFG.get("max_runtime_seconds", 2100)))
@@ -572,7 +583,7 @@ def fetch_page_metadata(url: str) -> dict | None:
             label=clean(am.group(2)); href=urllib.parse.urljoin(r.url,html.unescape(am.group(1)))
             if label and 2 <= len(label) <= 120 and href.startswith(('http://','https://')):
                 anchors.append({'text':label,'href':href})
-            if len(anchors)>=240: break
+            if len(anchors)>=int(BUDGETS.get("partner_page_anchors_max", 900)): break
         headings=[]
         for hm in re.finditer(r'<h[1-4]\b[^>]*>(.*?)</h[1-4]>',text,re.I|re.S):
             label=clean(hm.group(1))
@@ -687,7 +698,7 @@ def partner_anchor_candidates(page: dict, vendor: str) -> list[dict]:
         if key in seen: continue
         seen.add(key)
         out.append({'name':label,'href':href,'confidence_cap':0.58 if external else 0.64,'method':'official-partner-page-link'})
-        if len(out)>=40: break
+        if len(out)>=int(BUDGETS.get("partner_anchor_candidates_max", 220)): break
     return out
 
 
@@ -702,7 +713,7 @@ def official_portal_seed_evidence() -> list[dict]:
     seeds=V36_PORTALS.get('seeds',[]) or []
     if not seeds: return []
     context_terms=[norm(x) for x in (V36_PORTALS.get('partner_context_terms',[]) or [])]
-    known_integrators=list(dict.fromkeys(CFG.get('known_integrators',[])+discovered_integrators(400)))
+    known_integrators=list(dict.fromkeys(CFG.get('known_integrators',[])+discovered_integrators(1200)))
     known_distributors=list(dict.fromkeys(CFG.get('known_distributors',[])))
     targets=seeds[:int(BUDGETS.get('portal_seed_pages_max',max(20,len(seeds))))]
     pages=[]

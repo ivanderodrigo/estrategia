@@ -37,21 +37,21 @@ jobs:
       - name: Dependencias
         if: steps.schedule.outputs.run == 'true'
         run: pip install -r requirements.txt
-      - name: Preflight offline del motor v3.11 y la UI v3.11.0
+      - name: Preflight offline del motor v3.12 y la UI v3.12.0
         if: steps.schedule.outputs.run == 'true'
         run: |
-          python -m py_compile scripts/research.py scripts/configure_updates.py scripts/schedule_guard.py scripts/research_supervisor_v33.py scripts/research_supervisor_v38.py scripts/research_supervisor_v39.py scripts/research_supervisor_v311.py scripts/v34/*.py scripts/v38/*.py scripts/v39/*.py scripts/v311/*.py
+          python -m py_compile scripts/research.py scripts/configure_updates.py scripts/schedule_guard.py scripts/research_supervisor_v33.py scripts/research_supervisor_v38.py scripts/research_supervisor_v39.py scripts/research_supervisor_v312.py scripts/v34/*.py scripts/v38/*.py scripts/v39/*.py scripts/v312/*.py
           python scripts/test_resilience.py
           python scripts/test_schedule.py
-          python -m unittest tests/test_v311.py
-          python scripts/v311/validate_v311.py
-          node --check assets/v311/intelligence.js
-          node tests/ui_smoke_v311.js
+          python -m unittest tests/test_v312.py
+          python scripts/v312/validate_v312.py
+          node --check assets/v312/intelligence.js
+          node tests/ui_smoke_v312.js
       - name: Investigación diaria
         if: steps.schedule.outputs.run == 'true'
         env:
           RESEARCH_PROFILE: daily
-        run: python scripts/research_supervisor_v311.py --profile daily --max-runtime 720 --fallback-runtime 0
+        run: python scripts/research_supervisor_v312.py --profile daily --max-runtime 720 --fallback-runtime 0
       - name: Conservar diagnóstico de ejecución
         if: always() && steps.schedule.outputs.run == 'true'
         uses: actions/upload-artifact@v4
@@ -65,7 +65,7 @@ jobs:
             data/v37/
             data/v38/
             data/v39/
-            data/v311/
+            data/v312/
             diagnostics/*.log
             data/run_manifest.latest.json
             data/supervisor.latest.json
@@ -78,7 +78,7 @@ jobs:
           retention-days: 30
       - name: Validar dataset antes de publicar
         if: steps.schedule.outputs.run == 'true'
-        run: python scripts/v311/validate_v311.py
+        run: python scripts/v312/validate_v312.py
       - name: Guardar actualización
         if: steps.schedule.outputs.run == 'true'
         run: |

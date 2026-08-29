@@ -1,0 +1,18 @@
+const fs=require('fs'),path=require('path'),assert=require('assert');
+const root=path.resolve(__dirname,'..');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const js=fs.readFileSync(path.join(root,'assets/v312/intelligence.js'),'utf8');
+const css=fs.readFileSync(path.join(root,'assets/v312/intelligence.css'),'utf8');
+const data=JSON.parse(fs.readFileSync(path.join(root,'data/v312/intelligence.json'),'utf8'));
+assert(html.includes('assets/v312/intelligence.js?v=3.12.0'));
+assert(js.includes("data/v312/intelligence.json"));
+assert(html.includes('id="tracePortal"')&&html.includes('id="helpPortal"'));
+assert(css.includes('z-index:2147483000'));
+assert(js.includes('repositionTracePortal(); repositionHelpPortal();'));
+assert(js.includes('window.jspdf?.jsPDF')&&js.includes('pdfAddExecutive'));
+assert(!html.includes('btnIngest')&&!html.includes('btnContributions'));
+const vendors=new Set(data.manufacturers.map(x=>x.name.toLowerCase()));
+assert(!data.distributors.some(x=>vendors.has(x.name.toLowerCase())));
+assert(data.distributors.length>=50&&data.integrators.length>=120&&data.clients_private.length===51&&data.clients_public.length>=25);
+assert(data.clients_public.every(x=>(x.evidence||[]).some(e=>String(e.url||'').includes('/notice/-/detail/')||String(e.url||'').includes('contrataciondelestado')||String(e.url||'').includes('contrataciondelsectorpublico'))));
+console.log('UI smoke v3.12.0 · PASS');
