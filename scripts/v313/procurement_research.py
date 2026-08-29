@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from v32.direct_sources import atom_feed, ted_search  # noqa: E402
 
-VERSION = "3.12.0"
+VERSION = "3.13.0"
 
 
 def _load(path: Path, default):
@@ -100,7 +100,7 @@ def _convert(row: dict, source_id: str, scope: str) -> dict | None:
 
 
 def collect(profile: str = "daily", timeout: int = 20) -> dict:
-    cfg = _load(ROOT / "config/v312/procurement_sources.json", {})
+    cfg = _load(ROOT / "config/v313/procurement_sources.json", {})
     notices: dict[str, dict] = {}
     diagnostics = []
 
@@ -124,7 +124,7 @@ def collect(profile: str = "daily", timeout: int = 20) -> dict:
         {"id": "placsp_profiles", "name": "PLACSP · Perfiles de contratante", "category": "official", "authority": .98},
         {"id": "placsp_aggregated", "name": "PLACSP · Plataformas agregadas", "category": "official", "authority": .97},
     ]
-    cache_dir = ROOT / "data/v312/.procurement_cache"
+    cache_dir = ROOT / "data/v313/.procurement_cache"
     for source in cfg.get("sources", []):
         sid = str(source.get("id") or "")
         if not sid.startswith("placsp") or not source.get("url"):
@@ -153,7 +153,7 @@ def collect(profile: str = "daily", timeout: int = 20) -> dict:
 
 
 def run(profile: str = "daily", timeout: int = 20) -> dict:
-    path = ROOT / "data/v312/procurement_live.json"
+    path = ROOT / "data/v313/procurement_live.json"
     previous = _load(path, {})
     result = collect(profile, timeout)
     # A temporary source outage must never erase the last valid live procurement cache.

@@ -1,11 +1,11 @@
 {
   "meta": {
-    "version": "3.12.0",
-    "generated_at": "2026-08-29T16:29:00.274882+00:00",
+    "version": "3.13.0",
+    "generated_at": "2026-08-29T17:07:18.868371+00:00",
     "scope": "España + Portugal",
     "principle": "Inteligencia descriptiva y trazable con clasificación positiva de mayoristas, cobertura estructural de grandes cuentas y relaciones fabricante↔integrador respaldadas por evidencia.",
     "traceability": "Mayoristas requiere evidencia positiva explícita. Clientes públicos enlazan el anuncio exacto. Encaje Westcon solo admite fabricantes presentes en el portfolio activo. Relaciones de ecosistema conservan alcance geográfico.",
-    "source_count": 272,
+    "source_count": 278,
     "portfolio_fit_cleanup": {
       "removed_nonportfolio_public": 7,
       "removed_nonportfolio_private": 12,
@@ -96,6 +96,18 @@
         "LevelBlue"
       ],
       "integrators": 130
+    },
+    "entity_profile_enrichment": {
+      "official_profile_evidence": 0,
+      "integrator_fields_enriched": 0,
+      "distributor_fields_enriched": 0,
+      "relationship_edges_promoted": 0
+    },
+    "private_account_enrichment": {
+      "official_pages": 0,
+      "technology_fields": 0,
+      "hiring_fields": 0,
+      "vendor_fit_signals": 0
     },
     "direct_sales_manufacturers": 0
   },
@@ -31301,7 +31313,7 @@
   ],
   "distributors": [
     {
-      "id": "dist-v312-001",
+      "id": "dist-v313-001",
       "name": "Aicox Soluciones",
       "evidence": [
         {
@@ -31410,7 +31422,7 @@
       }
     },
     {
-      "id": "dist-v312-002",
+      "id": "dist-v313-002",
       "name": "Ajoomal",
       "evidence": [
         {
@@ -33280,11 +33292,175 @@
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
           "qualifier": "Posición en el adelanto del Ranking del Canal 2026 de Channel Partner, basado en facturación 2025."
+        },
+        "westcon_overlap": {
+          "value": [
+            "AWS",
+            "Check Point",
+            "F5",
+            "Microsoft Azure",
+            "Palo Alto Networks"
+          ],
+          "evidence": [
+            {
+              "source": "Arrow ECS España",
+              "title": "Arrow ECS ↔ AWS",
+              "description": "AWS aparece en la oferta pública actual de Arrow ECS",
+              "url": "https://www.arrow.com/globalecs/es/productos/",
+              "confidence": 98,
+              "type": "official-distributor-linecard",
+              "method": "curated-public-correlation",
+              "country": "ES",
+              "freshness_status": "unknown",
+              "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+            }
+          ],
+          "confidence": 0.98,
+          "confidence_band": "high",
+          "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+          "confidence_factors": [
+            "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+            "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+            "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+            "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+          ],
+          "items": [
+            {
+              "value": "AWS",
+              "confidence": 0.98,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Arrow ECS España",
+                  "title": "Arrow ECS ↔ AWS",
+                  "description": "AWS aparece en la oferta pública actual de Arrow ECS",
+                  "url": "https://www.arrow.com/globalecs/es/productos/",
+                  "confidence": 98,
+                  "type": "official-distributor-linecard",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
+            },
+            {
+              "value": "Check Point",
+              "confidence": 0.98,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Arrow ECS España",
+                  "title": "Arrow ECS ↔ AWS",
+                  "description": "AWS aparece en la oferta pública actual de Arrow ECS",
+                  "url": "https://www.arrow.com/globalecs/es/productos/",
+                  "confidence": 98,
+                  "type": "official-distributor-linecard",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
+            },
+            {
+              "value": "F5",
+              "confidence": 0.98,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Arrow ECS España",
+                  "title": "Arrow ECS ↔ AWS",
+                  "description": "AWS aparece en la oferta pública actual de Arrow ECS",
+                  "url": "https://www.arrow.com/globalecs/es/productos/",
+                  "confidence": 98,
+                  "type": "official-distributor-linecard",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
+            },
+            {
+              "value": "Microsoft Azure",
+              "confidence": 0.98,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Arrow ECS España",
+                  "title": "Arrow ECS ↔ AWS",
+                  "description": "AWS aparece en la oferta pública actual de Arrow ECS",
+                  "url": "https://www.arrow.com/globalecs/es/productos/",
+                  "confidence": 98,
+                  "type": "official-distributor-linecard",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
+            },
+            {
+              "value": "Palo Alto Networks",
+              "confidence": 0.98,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Arrow ECS España",
+                  "title": "Arrow ECS ↔ AWS",
+                  "description": "AWS aparece en la oferta pública actual de Arrow ECS",
+                  "url": "https://www.arrow.com/globalecs/es/productos/",
+                  "confidence": 98,
+                  "type": "official-distributor-linecard",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
+            }
+          ]
         }
       }
     },
     {
-      "id": "dist-v312-005",
+      "id": "dist-v313-005",
       "name": "Arrow Electronics",
       "evidence": [
         {
@@ -33422,7 +33598,7 @@
       }
     },
     {
-      "id": "dist-v312-006",
+      "id": "dist-v313-006",
       "name": "Aseminfor",
       "evidence": [
         {
@@ -33531,7 +33707,7 @@
       }
     },
     {
-      "id": "dist-v312-007",
+      "id": "dist-v313-007",
       "name": "Caseking Iberia",
       "evidence": [
         {
@@ -33632,7 +33808,7 @@
       }
     },
     {
-      "id": "dist-v312-008",
+      "id": "dist-v313-008",
       "name": "Charmex",
       "evidence": [
         {
@@ -33733,7 +33909,7 @@
       }
     },
     {
-      "id": "dist-v312-009",
+      "id": "dist-v313-009",
       "name": "CloudIT",
       "evidence": [
         {
@@ -33834,7 +34010,7 @@
       }
     },
     {
-      "id": "dist-v312-010",
+      "id": "dist-v313-010",
       "name": "CPCdi",
       "evidence": [
         {
@@ -33935,7 +34111,7 @@
       }
     },
     {
-      "id": "dist-v312-011",
+      "id": "dist-v313-011",
       "name": "Databox",
       "evidence": [
         {
@@ -34036,7 +34212,7 @@
       }
     },
     {
-      "id": "dist-v312-012",
+      "id": "dist-v313-012",
       "name": "Depau",
       "evidence": [
         {
@@ -34174,7 +34350,7 @@
       }
     },
     {
-      "id": "dist-v312-013",
+      "id": "dist-v313-013",
       "name": "Desyman",
       "evidence": [
         {
@@ -34283,7 +34459,7 @@
       }
     },
     {
-      "id": "dist-v312-014",
+      "id": "dist-v313-014",
       "name": "Digicomp",
       "evidence": [
         {
@@ -34384,7 +34560,7 @@
       }
     },
     {
-      "id": "dist-v312-015",
+      "id": "dist-v313-015",
       "name": "Distr-IT",
       "evidence": [
         {
@@ -34653,7 +34829,7 @@
       }
     },
     {
-      "id": "dist-v312-017",
+      "id": "dist-v313-017",
       "name": "DSSI",
       "evidence": [
         {
@@ -34754,7 +34930,7 @@
       }
     },
     {
-      "id": "dist-v312-018",
+      "id": "dist-v313-018",
       "name": "Dualinfor Hito Innovation",
       "evidence": [
         {
@@ -34855,7 +35031,7 @@
       }
     },
     {
-      "id": "dist-v312-019",
+      "id": "dist-v313-019",
       "name": "EET Portugal",
       "evidence": [
         {
@@ -34956,7 +35132,7 @@
       }
     },
     {
-      "id": "dist-v312-060",
+      "id": "dist-v313-060",
       "name": "ésistemas",
       "evidence": [
         {
@@ -38593,7 +38769,17 @@
             "Cisco",
             "Extreme Networks",
             "Palo Alto Networks",
-            "Proofpoint"
+            "Proofpoint",
+            "Anomali",
+            "Claroty",
+            "CrowdStrike",
+            "F5",
+            "FireMon",
+            "Nokia",
+            "Okta",
+            "Ruckus Networks",
+            "Vectra AI",
+            "XM Cyber"
           ],
           "evidence": [
             {
@@ -39144,6 +39330,306 @@
                 }
               ],
               "qualifier": "Intersección de linecard público con portfolio Westcon; no mide cuota ni presión competitiva."
+            },
+            {
+              "value": "Anomali",
+              "confidence": 0.88,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.",
+                "Tipo de señal: 1 evidencia(s) proceden de empleo, agregadores, descubrimiento o fuentes secundarias; aportan contexto o indicio, no confirmación aislada.",
+                "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "title": "Exclusive Networks crea una Unidad de Negocio Global de AWS - ChannelBiz",
+                  "source": "ChannelBiz",
+                  "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQbFphM29EM05BWmExd0hhcVVDUXN4UXZLSzlpOGh1bEkyTU0zQnFyVDUtVWRKVlZKU0x6UU1Mc19QS284WlZYUlllTE9xc05UWmtTM3RwaHVIWEswckYwcDFuSm02RjE0NmdqeTd0Y0laWmZPT1MzWmprTExlZFNoallGcUlUTnFiNkpTZDJ5U3JrRXcyTUUxUjZFR2Yyd9IBowFBVV95cUxNamZwV3hjTmFnU294T3hEbXFaQ0FNWVRIeHRCTHFWSEJTTkt4c0c4Q2hkb25iT0syNFJuOEtBM0w2Vnl3YVd0MFpNMVhVWjZRUS12aE9aaVRwS1QyYWFRajM5UlVhWm9rZDRmbi1XUm1QSEhNQ2JBeEIyTEx1ZUlnOGhSZ1g2VU5TSUxLWlFOb0x0dlh6UzNrTXp4d0doX0c1TFdB?oc=5",
+                  "date": "2026-07-27",
+                  "confidence": 0.74,
+                  "method": "targeted_research",
+                  "classification": "value_added",
+                  "source_grade": "B",
+                  "source_type": "aggregator",
+                  "freshness_status": "current",
+                  "age_days": 33,
+                  "revalidation_days": 240,
+                  "revalidation": "Evidencia dentro de ventana de revalidación (240 días)."
+                }
+              ]
+            },
+            {
+              "value": "Claroty",
+              "confidence": 0.88,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.",
+                "Tipo de señal: 1 evidencia(s) proceden de empleo, agregadores, descubrimiento o fuentes secundarias; aportan contexto o indicio, no confirmación aislada.",
+                "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "title": "Exclusive Networks crea una Unidad de Negocio Global de AWS - ChannelBiz",
+                  "source": "ChannelBiz",
+                  "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQbFphM29EM05BWmExd0hhcVVDUXN4UXZLSzlpOGh1bEkyTU0zQnFyVDUtVWRKVlZKU0x6UU1Mc19QS284WlZYUlllTE9xc05UWmtTM3RwaHVIWEswckYwcDFuSm02RjE0NmdqeTd0Y0laWmZPT1MzWmprTExlZFNoallGcUlUTnFiNkpTZDJ5U3JrRXcyTUUxUjZFR2Yyd9IBowFBVV95cUxNamZwV3hjTmFnU294T3hEbXFaQ0FNWVRIeHRCTHFWSEJTTkt4c0c4Q2hkb25iT0syNFJuOEtBM0w2Vnl3YVd0MFpNMVhVWjZRUS12aE9aaVRwS1QyYWFRajM5UlVhWm9rZDRmbi1XUm1QSEhNQ2JBeEIyTEx1ZUlnOGhSZ1g2VU5TSUxLWlFOb0x0dlh6UzNrTXp4d0doX0c1TFdB?oc=5",
+                  "date": "2026-07-27",
+                  "confidence": 0.74,
+                  "method": "targeted_research",
+                  "classification": "value_added",
+                  "source_grade": "B",
+                  "source_type": "aggregator",
+                  "freshness_status": "current",
+                  "age_days": 33,
+                  "revalidation_days": 240,
+                  "revalidation": "Evidencia dentro de ventana de revalidación (240 días)."
+                }
+              ]
+            },
+            {
+              "value": "CrowdStrike",
+              "confidence": 0.88,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.",
+                "Tipo de señal: 1 evidencia(s) proceden de empleo, agregadores, descubrimiento o fuentes secundarias; aportan contexto o indicio, no confirmación aislada.",
+                "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "title": "Exclusive Networks crea una Unidad de Negocio Global de AWS - ChannelBiz",
+                  "source": "ChannelBiz",
+                  "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQbFphM29EM05BWmExd0hhcVVDUXN4UXZLSzlpOGh1bEkyTU0zQnFyVDUtVWRKVlZKU0x6UU1Mc19QS284WlZYUlllTE9xc05UWmtTM3RwaHVIWEswckYwcDFuSm02RjE0NmdqeTd0Y0laWmZPT1MzWmprTExlZFNoallGcUlUTnFiNkpTZDJ5U3JrRXcyTUUxUjZFR2Yyd9IBowFBVV95cUxNamZwV3hjTmFnU294T3hEbXFaQ0FNWVRIeHRCTHFWSEJTTkt4c0c4Q2hkb25iT0syNFJuOEtBM0w2Vnl3YVd0MFpNMVhVWjZRUS12aE9aaVRwS1QyYWFRajM5UlVhWm9rZDRmbi1XUm1QSEhNQ2JBeEIyTEx1ZUlnOGhSZ1g2VU5TSUxLWlFOb0x0dlh6UzNrTXp4d0doX0c1TFdB?oc=5",
+                  "date": "2026-07-27",
+                  "confidence": 0.74,
+                  "method": "targeted_research",
+                  "classification": "value_added",
+                  "source_grade": "B",
+                  "source_type": "aggregator",
+                  "freshness_status": "current",
+                  "age_days": 33,
+                  "revalidation_days": 240,
+                  "revalidation": "Evidencia dentro de ventana de revalidación (240 días)."
+                }
+              ]
+            },
+            {
+              "value": "F5",
+              "confidence": 0.88,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.",
+                "Tipo de señal: 1 evidencia(s) proceden de empleo, agregadores, descubrimiento o fuentes secundarias; aportan contexto o indicio, no confirmación aislada.",
+                "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "title": "Exclusive Networks crea una Unidad de Negocio Global de AWS - ChannelBiz",
+                  "source": "ChannelBiz",
+                  "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQbFphM29EM05BWmExd0hhcVVDUXN4UXZLSzlpOGh1bEkyTU0zQnFyVDUtVWRKVlZKU0x6UU1Mc19QS284WlZYUlllTE9xc05UWmtTM3RwaHVIWEswckYwcDFuSm02RjE0NmdqeTd0Y0laWmZPT1MzWmprTExlZFNoallGcUlUTnFiNkpTZDJ5U3JrRXcyTUUxUjZFR2Yyd9IBowFBVV95cUxNamZwV3hjTmFnU294T3hEbXFaQ0FNWVRIeHRCTHFWSEJTTkt4c0c4Q2hkb25iT0syNFJuOEtBM0w2Vnl3YVd0MFpNMVhVWjZRUS12aE9aaVRwS1QyYWFRajM5UlVhWm9rZDRmbi1XUm1QSEhNQ2JBeEIyTEx1ZUlnOGhSZ1g2VU5TSUxLWlFOb0x0dlh6UzNrTXp4d0doX0c1TFdB?oc=5",
+                  "date": "2026-07-27",
+                  "confidence": 0.74,
+                  "method": "targeted_research",
+                  "classification": "value_added",
+                  "source_grade": "B",
+                  "source_type": "aggregator",
+                  "freshness_status": "current",
+                  "age_days": 33,
+                  "revalidation_days": 240,
+                  "revalidation": "Evidencia dentro de ventana de revalidación (240 días)."
+                }
+              ]
+            },
+            {
+              "value": "FireMon",
+              "confidence": 0.88,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.",
+                "Tipo de señal: 1 evidencia(s) proceden de empleo, agregadores, descubrimiento o fuentes secundarias; aportan contexto o indicio, no confirmación aislada.",
+                "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "title": "Exclusive Networks crea una Unidad de Negocio Global de AWS - ChannelBiz",
+                  "source": "ChannelBiz",
+                  "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQbFphM29EM05BWmExd0hhcVVDUXN4UXZLSzlpOGh1bEkyTU0zQnFyVDUtVWRKVlZKU0x6UU1Mc19QS284WlZYUlllTE9xc05UWmtTM3RwaHVIWEswckYwcDFuSm02RjE0NmdqeTd0Y0laWmZPT1MzWmprTExlZFNoallGcUlUTnFiNkpTZDJ5U3JrRXcyTUUxUjZFR2Yyd9IBowFBVV95cUxNamZwV3hjTmFnU294T3hEbXFaQ0FNWVRIeHRCTHFWSEJTTkt4c0c4Q2hkb25iT0syNFJuOEtBM0w2Vnl3YVd0MFpNMVhVWjZRUS12aE9aaVRwS1QyYWFRajM5UlVhWm9rZDRmbi1XUm1QSEhNQ2JBeEIyTEx1ZUlnOGhSZ1g2VU5TSUxLWlFOb0x0dlh6UzNrTXp4d0doX0c1TFdB?oc=5",
+                  "date": "2026-07-27",
+                  "confidence": 0.74,
+                  "method": "targeted_research",
+                  "classification": "value_added",
+                  "source_grade": "B",
+                  "source_type": "aggregator",
+                  "freshness_status": "current",
+                  "age_days": 33,
+                  "revalidation_days": 240,
+                  "revalidation": "Evidencia dentro de ventana de revalidación (240 días)."
+                }
+              ]
+            },
+            {
+              "value": "Nokia",
+              "confidence": 0.88,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.",
+                "Tipo de señal: 1 evidencia(s) proceden de empleo, agregadores, descubrimiento o fuentes secundarias; aportan contexto o indicio, no confirmación aislada.",
+                "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "title": "Exclusive Networks crea una Unidad de Negocio Global de AWS - ChannelBiz",
+                  "source": "ChannelBiz",
+                  "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQbFphM29EM05BWmExd0hhcVVDUXN4UXZLSzlpOGh1bEkyTU0zQnFyVDUtVWRKVlZKU0x6UU1Mc19QS284WlZYUlllTE9xc05UWmtTM3RwaHVIWEswckYwcDFuSm02RjE0NmdqeTd0Y0laWmZPT1MzWmprTExlZFNoallGcUlUTnFiNkpTZDJ5U3JrRXcyTUUxUjZFR2Yyd9IBowFBVV95cUxNamZwV3hjTmFnU294T3hEbXFaQ0FNWVRIeHRCTHFWSEJTTkt4c0c4Q2hkb25iT0syNFJuOEtBM0w2Vnl3YVd0MFpNMVhVWjZRUS12aE9aaVRwS1QyYWFRajM5UlVhWm9rZDRmbi1XUm1QSEhNQ2JBeEIyTEx1ZUlnOGhSZ1g2VU5TSUxLWlFOb0x0dlh6UzNrTXp4d0doX0c1TFdB?oc=5",
+                  "date": "2026-07-27",
+                  "confidence": 0.74,
+                  "method": "targeted_research",
+                  "classification": "value_added",
+                  "source_grade": "B",
+                  "source_type": "aggregator",
+                  "freshness_status": "current",
+                  "age_days": 33,
+                  "revalidation_days": 240,
+                  "revalidation": "Evidencia dentro de ventana de revalidación (240 días)."
+                }
+              ]
+            },
+            {
+              "value": "Okta",
+              "confidence": 0.88,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.",
+                "Tipo de señal: 1 evidencia(s) proceden de empleo, agregadores, descubrimiento o fuentes secundarias; aportan contexto o indicio, no confirmación aislada.",
+                "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "title": "Exclusive Networks crea una Unidad de Negocio Global de AWS - ChannelBiz",
+                  "source": "ChannelBiz",
+                  "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQbFphM29EM05BWmExd0hhcVVDUXN4UXZLSzlpOGh1bEkyTU0zQnFyVDUtVWRKVlZKU0x6UU1Mc19QS284WlZYUlllTE9xc05UWmtTM3RwaHVIWEswckYwcDFuSm02RjE0NmdqeTd0Y0laWmZPT1MzWmprTExlZFNoallGcUlUTnFiNkpTZDJ5U3JrRXcyTUUxUjZFR2Yyd9IBowFBVV95cUxNamZwV3hjTmFnU294T3hEbXFaQ0FNWVRIeHRCTHFWSEJTTkt4c0c4Q2hkb25iT0syNFJuOEtBM0w2Vnl3YVd0MFpNMVhVWjZRUS12aE9aaVRwS1QyYWFRajM5UlVhWm9rZDRmbi1XUm1QSEhNQ2JBeEIyTEx1ZUlnOGhSZ1g2VU5TSUxLWlFOb0x0dlh6UzNrTXp4d0doX0c1TFdB?oc=5",
+                  "date": "2026-07-27",
+                  "confidence": 0.74,
+                  "method": "targeted_research",
+                  "classification": "value_added",
+                  "source_grade": "B",
+                  "source_type": "aggregator",
+                  "freshness_status": "current",
+                  "age_days": 33,
+                  "revalidation_days": 240,
+                  "revalidation": "Evidencia dentro de ventana de revalidación (240 días)."
+                }
+              ]
+            },
+            {
+              "value": "Ruckus Networks",
+              "confidence": 0.88,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.",
+                "Tipo de señal: 1 evidencia(s) proceden de empleo, agregadores, descubrimiento o fuentes secundarias; aportan contexto o indicio, no confirmación aislada.",
+                "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "title": "Exclusive Networks crea una Unidad de Negocio Global de AWS - ChannelBiz",
+                  "source": "ChannelBiz",
+                  "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQbFphM29EM05BWmExd0hhcVVDUXN4UXZLSzlpOGh1bEkyTU0zQnFyVDUtVWRKVlZKU0x6UU1Mc19QS284WlZYUlllTE9xc05UWmtTM3RwaHVIWEswckYwcDFuSm02RjE0NmdqeTd0Y0laWmZPT1MzWmprTExlZFNoallGcUlUTnFiNkpTZDJ5U3JrRXcyTUUxUjZFR2Yyd9IBowFBVV95cUxNamZwV3hjTmFnU294T3hEbXFaQ0FNWVRIeHRCTHFWSEJTTkt4c0c4Q2hkb25iT0syNFJuOEtBM0w2Vnl3YVd0MFpNMVhVWjZRUS12aE9aaVRwS1QyYWFRajM5UlVhWm9rZDRmbi1XUm1QSEhNQ2JBeEIyTEx1ZUlnOGhSZ1g2VU5TSUxLWlFOb0x0dlh6UzNrTXp4d0doX0c1TFdB?oc=5",
+                  "date": "2026-07-27",
+                  "confidence": 0.74,
+                  "method": "targeted_research",
+                  "classification": "value_added",
+                  "source_grade": "B",
+                  "source_type": "aggregator",
+                  "freshness_status": "current",
+                  "age_days": 33,
+                  "revalidation_days": 240,
+                  "revalidation": "Evidencia dentro de ventana de revalidación (240 días)."
+                }
+              ]
+            },
+            {
+              "value": "Vectra AI",
+              "confidence": 0.88,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.",
+                "Tipo de señal: 1 evidencia(s) proceden de empleo, agregadores, descubrimiento o fuentes secundarias; aportan contexto o indicio, no confirmación aislada.",
+                "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "title": "Exclusive Networks crea una Unidad de Negocio Global de AWS - ChannelBiz",
+                  "source": "ChannelBiz",
+                  "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQbFphM29EM05BWmExd0hhcVVDUXN4UXZLSzlpOGh1bEkyTU0zQnFyVDUtVWRKVlZKU0x6UU1Mc19QS284WlZYUlllTE9xc05UWmtTM3RwaHVIWEswckYwcDFuSm02RjE0NmdqeTd0Y0laWmZPT1MzWmprTExlZFNoallGcUlUTnFiNkpTZDJ5U3JrRXcyTUUxUjZFR2Yyd9IBowFBVV95cUxNamZwV3hjTmFnU294T3hEbXFaQ0FNWVRIeHRCTHFWSEJTTkt4c0c4Q2hkb25iT0syNFJuOEtBM0w2Vnl3YVd0MFpNMVhVWjZRUS12aE9aaVRwS1QyYWFRajM5UlVhWm9rZDRmbi1XUm1QSEhNQ2JBeEIyTEx1ZUlnOGhSZ1g2VU5TSUxLWlFOb0x0dlh6UzNrTXp4d0doX0c1TFdB?oc=5",
+                  "date": "2026-07-27",
+                  "confidence": 0.74,
+                  "method": "targeted_research",
+                  "classification": "value_added",
+                  "source_grade": "B",
+                  "source_type": "aggregator",
+                  "freshness_status": "current",
+                  "age_days": 33,
+                  "revalidation_days": 240,
+                  "revalidation": "Evidencia dentro de ventana de revalidación (240 días)."
+                }
+              ]
+            },
+            {
+              "value": "XM Cyber",
+              "confidence": 0.88,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.",
+                "Tipo de señal: 1 evidencia(s) proceden de empleo, agregadores, descubrimiento o fuentes secundarias; aportan contexto o indicio, no confirmación aislada.",
+                "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "title": "Exclusive Networks crea una Unidad de Negocio Global de AWS - ChannelBiz",
+                  "source": "ChannelBiz",
+                  "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQbFphM29EM05BWmExd0hhcVVDUXN4UXZLSzlpOGh1bEkyTU0zQnFyVDUtVWRKVlZKU0x6UU1Mc19QS284WlZYUlllTE9xc05UWmtTM3RwaHVIWEswckYwcDFuSm02RjE0NmdqeTd0Y0laWmZPT1MzWmprTExlZFNoallGcUlUTnFiNkpTZDJ5U3JrRXcyTUUxUjZFR2Yyd9IBowFBVV95cUxNamZwV3hjTmFnU294T3hEbXFaQ0FNWVRIeHRCTHFWSEJTTkt4c0c4Q2hkb25iT0syNFJuOEtBM0w2Vnl3YVd0MFpNMVhVWjZRUS12aE9aaVRwS1QyYWFRajM5UlVhWm9rZDRmbi1XUm1QSEhNQ2JBeEIyTEx1ZUlnOGhSZ1g2VU5TSUxLWlFOb0x0dlh6UzNrTXp4d0doX0c1TFdB?oc=5",
+                  "date": "2026-07-27",
+                  "confidence": 0.74,
+                  "method": "targeted_research",
+                  "classification": "value_added",
+                  "source_grade": "B",
+                  "source_type": "aggregator",
+                  "freshness_status": "current",
+                  "age_days": 33,
+                  "revalidation_days": 240,
+                  "revalidation": "Evidencia dentro de ventana de revalidación (240 días)."
+                }
+              ]
             }
           ],
           "qualifier": "Intersección de linecard público con portfolio Westcon; no mide cuota ni presión competitiva."
@@ -39274,7 +39760,7 @@
       }
     },
     {
-      "id": "dist-v312-022",
+      "id": "dist-v313-022",
       "name": "Factis",
       "evidence": [
         {
@@ -39375,7 +39861,7 @@
       }
     },
     {
-      "id": "dist-v312-023",
+      "id": "dist-v313-023",
       "name": "Globomatik",
       "evidence": [
         {
@@ -39513,7 +39999,7 @@
       }
     },
     {
-      "id": "dist-v312-024",
+      "id": "dist-v313-024",
       "name": "Idiomund",
       "evidence": [
         {
@@ -40333,11 +40819,67 @@
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
           "qualifier": "La entidad entra en Mayoristas porque existe evidencia positiva explícita de distribución; no por coaparición con fabricantes."
+        },
+        "westcon_overlap": {
+          "value": [
+            "NETSCOUT"
+          ],
+          "evidence": [
+            {
+              "source": "Infinigate Spain",
+              "title": "Infinigate ↔ NETSCOUT",
+              "description": "Infinigate Spain mantiene una página actual de NETSCOUT y documenta soporte técnico-comercial, diseño de solución, certificación, portal de partners, deal registration y apoyo de marketing.",
+              "url": "https://www.infinigate.com/es/vendors/netscout/",
+              "confidence": 99,
+              "type": "official-distributor-vendor-page",
+              "method": "curated-public-correlation",
+              "country": "ES",
+              "freshness_status": "unknown",
+              "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+            }
+          ],
+          "confidence": 0.99,
+          "confidence_band": "high",
+          "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+          "confidence_factors": [
+            "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+            "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+            "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+            "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+          ],
+          "items": [
+            {
+              "value": "NETSCOUT",
+              "confidence": 0.99,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Infinigate Spain",
+                  "title": "Infinigate ↔ NETSCOUT",
+                  "description": "Infinigate Spain mantiene una página actual de NETSCOUT y documenta soporte técnico-comercial, diseño de solución, certificación, portal de partners, deal registration y apoyo de marketing.",
+                  "url": "https://www.infinigate.com/es/vendors/netscout/",
+                  "confidence": 99,
+                  "type": "official-distributor-vendor-page",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
+            }
+          ]
         }
       }
     },
     {
-      "id": "dist-v312-027",
+      "id": "dist-v313-027",
       "name": "Inforfoco Distribuição",
       "evidence": [
         {
@@ -40438,7 +40980,7 @@
       }
     },
     {
-      "id": "dist-v312-028",
+      "id": "dist-v313-028",
       "name": "Inforpor",
       "evidence": [
         {
@@ -40576,7 +41118,7 @@
       }
     },
     {
-      "id": "dist-v312-029",
+      "id": "dist-v313-029",
       "name": "Infortisa",
       "evidence": [
         {
@@ -41263,6 +41805,98 @@
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
           "qualifier": "La entidad entra en Mayoristas porque existe evidencia positiva explícita de distribución; no por coaparición con fabricantes."
+        },
+        "westcon_overlap": {
+          "value": [
+            "XM Cyber",
+            "EfficientIP"
+          ],
+          "evidence": [
+            {
+              "source": "Ingecom Ignition",
+              "title": "Ingecom Ignition ↔ XM Cyber",
+              "description": "Acuerdo de distribución XM Cyber para España, Portugal e Italia anunciado en febrero de 2025",
+              "url": "https://www.ingecom.net/xmcyber-ingecom-ignition-nota-prensa/",
+              "date": "2025-02-20",
+              "confidence": 96,
+              "type": "distributor-announcement",
+              "method": "curated-public-correlation",
+              "country": "ES/PT",
+              "freshness_status": "aging",
+              "age_days": 555,
+              "revalidation_days": 365,
+              "revalidation": "Evidencia envejecida; el motor prioriza revalidación automática (>365 días)."
+            }
+          ],
+          "confidence": 0.9,
+          "confidence_band": "high",
+          "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+          "confidence_factors": [
+            "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+            "Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.",
+            "Vigencia: 1 evidencia(s) están envejeciendo y requieren revalidación próxima.",
+            "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+          ],
+          "items": [
+            {
+              "value": "XM Cyber",
+              "confidence": 0.9,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.",
+                "Vigencia: 1 evidencia(s) están envejeciendo y requieren revalidación próxima.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Ingecom Ignition",
+                  "title": "Ingecom Ignition ↔ XM Cyber",
+                  "description": "Acuerdo de distribución XM Cyber para España, Portugal e Italia anunciado en febrero de 2025",
+                  "url": "https://www.ingecom.net/xmcyber-ingecom-ignition-nota-prensa/",
+                  "date": "2025-02-20",
+                  "confidence": 96,
+                  "type": "distributor-announcement",
+                  "method": "curated-public-correlation",
+                  "country": "ES/PT",
+                  "freshness_status": "aging",
+                  "age_days": 555,
+                  "revalidation_days": 365,
+                  "revalidation": "Evidencia envejecida; el motor prioriza revalidación automática (>365 días)."
+                }
+              ]
+            },
+            {
+              "value": "EfficientIP",
+              "confidence": 0.9,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.",
+                "Vigencia: 1 evidencia(s) están envejeciendo y requieren revalidación próxima.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Ingecom Ignition",
+                  "title": "Ingecom Ignition ↔ XM Cyber",
+                  "description": "Acuerdo de distribución XM Cyber para España, Portugal e Italia anunciado en febrero de 2025",
+                  "url": "https://www.ingecom.net/xmcyber-ingecom-ignition-nota-prensa/",
+                  "date": "2025-02-20",
+                  "confidence": 96,
+                  "type": "distributor-announcement",
+                  "method": "curated-public-correlation",
+                  "country": "ES/PT",
+                  "freshness_status": "aging",
+                  "age_days": 555,
+                  "revalidation_days": 365,
+                  "revalidation": "Evidencia envejecida; el motor prioriza revalidación automática (>365 días)."
+                }
+              ]
+            }
+          ]
         }
       }
     },
@@ -42997,7 +43631,14 @@
           "value": [
             "AWS",
             "AudioCodes",
-            "Cisco"
+            "Cisco",
+            "Microsoft Azure",
+            "Palo Alto Networks",
+            "Avaya",
+            "Check Point",
+            "Ivanti",
+            "UiPath",
+            "1Password"
           ],
           "evidence": [
             {
@@ -43272,6 +43913,188 @@
                 }
               ],
               "qualifier": "Intersección de linecard público con portfolio Westcon; no mide cuota ni presión competitiva."
+            },
+            {
+              "value": "Microsoft Azure",
+              "confidence": 0.93,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Ingram Micro España",
+                  "title": "Ingram Micro ↔ AWS",
+                  "description": "AWS aparece en la oferta pública actual de Ingram Micro",
+                  "url": "https://www.ingrammicro.com/es-es/home",
+                  "confidence": 93,
+                  "type": "official-distributor-site",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
+            },
+            {
+              "value": "Palo Alto Networks",
+              "confidence": 0.93,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Ingram Micro España",
+                  "title": "Ingram Micro ↔ AWS",
+                  "description": "AWS aparece en la oferta pública actual de Ingram Micro",
+                  "url": "https://www.ingrammicro.com/es-es/home",
+                  "confidence": 93,
+                  "type": "official-distributor-site",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
+            },
+            {
+              "value": "Avaya",
+              "confidence": 0.93,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Ingram Micro España",
+                  "title": "Ingram Micro ↔ AWS",
+                  "description": "AWS aparece en la oferta pública actual de Ingram Micro",
+                  "url": "https://www.ingrammicro.com/es-es/home",
+                  "confidence": 93,
+                  "type": "official-distributor-site",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
+            },
+            {
+              "value": "Check Point",
+              "confidence": 0.93,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Ingram Micro España",
+                  "title": "Ingram Micro ↔ AWS",
+                  "description": "AWS aparece en la oferta pública actual de Ingram Micro",
+                  "url": "https://www.ingrammicro.com/es-es/home",
+                  "confidence": 93,
+                  "type": "official-distributor-site",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
+            },
+            {
+              "value": "Ivanti",
+              "confidence": 0.93,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Ingram Micro España",
+                  "title": "Ingram Micro ↔ AWS",
+                  "description": "AWS aparece en la oferta pública actual de Ingram Micro",
+                  "url": "https://www.ingrammicro.com/es-es/home",
+                  "confidence": 93,
+                  "type": "official-distributor-site",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
+            },
+            {
+              "value": "UiPath",
+              "confidence": 0.93,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Ingram Micro España",
+                  "title": "Ingram Micro ↔ AWS",
+                  "description": "AWS aparece en la oferta pública actual de Ingram Micro",
+                  "url": "https://www.ingrammicro.com/es-es/home",
+                  "confidence": 93,
+                  "type": "official-distributor-site",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
+            },
+            {
+              "value": "1Password",
+              "confidence": 0.93,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Ingram Micro España",
+                  "title": "Ingram Micro ↔ AWS",
+                  "description": "AWS aparece en la oferta pública actual de Ingram Micro",
+                  "url": "https://www.ingrammicro.com/es-es/home",
+                  "confidence": 93,
+                  "type": "official-distributor-site",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
             }
           ],
           "qualifier": "Intersección de linecard público con portfolio Westcon; no mide cuota ni presión competitiva."
@@ -43736,11 +44559,73 @@
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
           "qualifier": "La entidad entra en Mayoristas porque existe evidencia positiva explícita de distribución; no por coaparición con fabricantes."
+        },
+        "westcon_overlap": {
+          "value": [
+            "Ping Identity"
+          ],
+          "evidence": [
+            {
+              "source": "IT Reseller",
+              "title": "IREO ↔ Ping Identity",
+              "description": "Acuerdo de distribución anunciado para España y Portugal en 2020; vigencia actual pendiente de corroboración",
+              "url": "https://www.itreseller.es/distribucion/2020/02/ireo-se-convierte-en-mayorista-para-espana-y-portugal-de-ping-identity",
+              "date": "2020-02-21",
+              "confidence": 67,
+              "type": "channel-media-distribution-agreement",
+              "method": "curated-public-correlation",
+              "country": "ES/PT · HISTÓRICO",
+              "freshness_status": "stale",
+              "age_days": 2381,
+              "revalidation_days": 365,
+              "revalidation": "Evidencia antigua; se publica solo con cautela y el motor fuerza revalidación automática (>730 días)."
+            }
+          ],
+          "confidence": 0.74,
+          "confidence_band": "medium",
+          "confidence_reason": "Confianza media: dato útil, pero la evidencia aún es parcial, indirecta, poco corroborada o necesita revalidación. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+          "confidence_factors": [
+            "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+            "Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.",
+            "Vigencia: 1 evidencia(s) están fuera de su ventana de revalidación y el motor prioriza volver a comprobarlas.",
+            "Para elevarla a alta: normalmente hace falta una fuente oficial/directa adicional, corroboración independiente o una revalidación más reciente."
+          ],
+          "items": [
+            {
+              "value": "Ping Identity",
+              "confidence": 0.74,
+              "confidence_band": "medium",
+              "confidence_reason": "Confianza media: dato útil, pero la evidencia aún es parcial, indirecta, poco corroborada o necesita revalidación. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: todavía no hay una evidencia oficial/primaria directa enlazada.",
+                "Vigencia: 1 evidencia(s) están fuera de su ventana de revalidación y el motor prioriza volver a comprobarlas.",
+                "Para elevarla a alta: normalmente hace falta una fuente oficial/directa adicional, corroboración independiente o una revalidación más reciente."
+              ],
+              "evidence": [
+                {
+                  "source": "IT Reseller",
+                  "title": "IREO ↔ Ping Identity",
+                  "description": "Acuerdo de distribución anunciado para España y Portugal en 2020; vigencia actual pendiente de corroboración",
+                  "url": "https://www.itreseller.es/distribucion/2020/02/ireo-se-convierte-en-mayorista-para-espana-y-portugal-de-ping-identity",
+                  "date": "2020-02-21",
+                  "confidence": 67,
+                  "type": "channel-media-distribution-agreement",
+                  "method": "curated-public-correlation",
+                  "country": "ES/PT · HISTÓRICO",
+                  "freshness_status": "stale",
+                  "age_days": 2381,
+                  "revalidation_days": 365,
+                  "revalidation": "Evidencia antigua; se publica solo con cautela y el motor fuerza revalidación automática (>730 días)."
+                }
+              ]
+            }
+          ]
         }
       }
     },
     {
-      "id": "dist-v312-033",
+      "id": "dist-v313-033",
       "name": "ITANCIA",
       "evidence": [
         {
@@ -43841,7 +44726,7 @@
       }
     },
     {
-      "id": "dist-v312-034",
+      "id": "dist-v313-034",
       "name": "Jarltech",
       "evidence": [
         {
@@ -43942,7 +44827,7 @@
       }
     },
     {
-      "id": "dist-v312-035",
+      "id": "dist-v313-035",
       "name": "Lidera Networks",
       "evidence": [
         {
@@ -44043,7 +44928,7 @@
       }
     },
     {
-      "id": "dist-v312-036",
+      "id": "dist-v313-036",
       "name": "Liscic",
       "evidence": [
         {
@@ -44144,7 +45029,7 @@
       }
     },
     {
-      "id": "dist-v312-037",
+      "id": "dist-v313-037",
       "name": "Lusomatrix",
       "evidence": [
         {
@@ -44245,7 +45130,7 @@
       }
     },
     {
-      "id": "dist-v312-038",
+      "id": "dist-v313-038",
       "name": "M. Hermida",
       "evidence": [
         {
@@ -45211,7 +46096,7 @@
       }
     },
     {
-      "id": "dist-v312-040",
+      "id": "dist-v313-040",
       "name": "Megasur",
       "evidence": [
         {
@@ -45320,7 +46205,7 @@
       }
     },
     {
-      "id": "dist-v312-041",
+      "id": "dist-v313-041",
       "name": "Minitel",
       "evidence": [
         {
@@ -45421,7 +46306,7 @@
       }
     },
     {
-      "id": "dist-v312-042",
+      "id": "dist-v313-042",
       "name": "Multimac",
       "evidence": [
         {
@@ -45522,7 +46407,7 @@
       }
     },
     {
-      "id": "dist-v312-043",
+      "id": "dist-v313-043",
       "name": "Niposom",
       "evidence": [
         {
@@ -45623,7 +46508,7 @@
       }
     },
     {
-      "id": "dist-v312-044",
+      "id": "dist-v313-044",
       "name": "OptiVisus",
       "evidence": [
         {
@@ -45724,7 +46609,7 @@
       }
     },
     {
-      "id": "dist-v312-045",
+      "id": "dist-v313-045",
       "name": "SCE",
       "evidence": [
         {
@@ -45833,7 +46718,7 @@
       }
     },
     {
-      "id": "dist-v312-046",
+      "id": "dist-v313-046",
       "name": "Soon",
       "evidence": [
         {
@@ -45934,7 +46819,7 @@
       }
     },
     {
-      "id": "dist-v312-047",
+      "id": "dist-v313-047",
       "name": "TBA",
       "evidence": [
         {
@@ -48894,7 +49779,8 @@
             "Cisco",
             "Extreme Networks",
             "Microsoft Azure",
-            "Palo Alto Networks"
+            "Palo Alto Networks",
+            "Check Point"
           ],
           "evidence": [
             {
@@ -49218,6 +50104,32 @@
                 }
               ],
               "qualifier": "Intersección de linecard público con portfolio Westcon; no mide cuota ni presión competitiva."
+            },
+            {
+              "value": "Check Point",
+              "confidence": 0.98,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "TD SYNNEX Academy Spain",
+                  "title": "TD SYNNEX ↔ AWS",
+                  "description": "AWS is present in TD SYNNEX Spain training catalogue",
+                  "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+                  "confidence": 98,
+                  "type": "official-distributor-training",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
             }
           ],
           "qualifier": "Intersección de linecard público con portfolio Westcon; no mide cuota ni presión competitiva."
@@ -49348,7 +50260,7 @@
       }
     },
     {
-      "id": "dist-v312-049",
+      "id": "dist-v313-049",
       "name": "Tempel",
       "evidence": [
         {
@@ -49457,7 +50369,7 @@
       }
     },
     {
-      "id": "dist-v312-050",
+      "id": "dist-v313-050",
       "name": "Tenmega",
       "evidence": [
         {
@@ -49558,7 +50470,7 @@
       }
     },
     {
-      "id": "dist-v312-051",
+      "id": "dist-v313-051",
       "name": "Ticnova",
       "evidence": [
         {
@@ -50327,11 +51239,121 @@
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
           "qualifier": "La entidad entra en Mayoristas porque existe evidencia positiva explícita de distribución; no por coaparición con fabricantes."
+        },
+        "westcon_overlap": {
+          "value": [
+            "Ruckus Networks",
+            "Check Point",
+            "Microsoft Azure"
+          ],
+          "evidence": [
+            {
+              "source": "V-Valley España",
+              "title": "V-Valley / Esprinet ↔ Ruckus Networks",
+              "description": "Dedicated RUCKUS vendor page in Spain",
+              "url": "https://www.v-valley.com/es/vendor/ruckus/",
+              "confidence": 98,
+              "type": "official-distributor-linecard",
+              "method": "curated-public-correlation",
+              "country": "ES",
+              "freshness_status": "unknown",
+              "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+            }
+          ],
+          "confidence": 0.98,
+          "confidence_band": "high",
+          "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+          "confidence_factors": [
+            "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+            "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+            "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+            "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+          ],
+          "items": [
+            {
+              "value": "Ruckus Networks",
+              "confidence": 0.98,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "V-Valley España",
+                  "title": "V-Valley / Esprinet ↔ Ruckus Networks",
+                  "description": "Dedicated RUCKUS vendor page in Spain",
+                  "url": "https://www.v-valley.com/es/vendor/ruckus/",
+                  "confidence": 98,
+                  "type": "official-distributor-linecard",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
+            },
+            {
+              "value": "Check Point",
+              "confidence": 0.98,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "V-Valley España",
+                  "title": "V-Valley / Esprinet ↔ Ruckus Networks",
+                  "description": "Dedicated RUCKUS vendor page in Spain",
+                  "url": "https://www.v-valley.com/es/vendor/ruckus/",
+                  "confidence": 98,
+                  "type": "official-distributor-linecard",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
+            },
+            {
+              "value": "Microsoft Azure",
+              "confidence": 0.98,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "V-Valley España",
+                  "title": "V-Valley / Esprinet ↔ Ruckus Networks",
+                  "description": "Dedicated RUCKUS vendor page in Spain",
+                  "url": "https://www.v-valley.com/es/vendor/ruckus/",
+                  "confidence": 98,
+                  "type": "official-distributor-linecard",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "unknown",
+                  "revalidation": "Sin fecha normalizable; se mantiene en cola de sondeo cuando el campo lo requiere."
+                }
+              ]
+            }
+          ]
         }
       }
     },
     {
-      "id": "dist-v312-053",
+      "id": "dist-v313-053",
       "name": "Valorista",
       "evidence": [
         {
@@ -50469,7 +51491,7 @@
       }
     },
     {
-      "id": "dist-v312-054",
+      "id": "dist-v313-054",
       "name": "Visiotech Security",
       "evidence": [
         {
@@ -50570,7 +51592,7 @@
       }
     },
     {
-      "id": "dist-v312-055",
+      "id": "dist-v313-055",
       "name": "Voxsys",
       "evidence": [
         {
@@ -50671,7 +51693,7 @@
       }
     },
     {
-      "id": "dist-v312-056",
+      "id": "dist-v313-056",
       "name": "WDMI",
       "evidence": [
         {
@@ -50772,7 +51794,7 @@
       }
     },
     {
-      "id": "dist-v312-057",
+      "id": "dist-v313-057",
       "name": "White Hat",
       "evidence": [
         {
@@ -51269,11 +52291,73 @@
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
           "qualifier": "La entidad entra en Mayoristas porque existe evidencia positiva explícita de distribución; no por coaparición con fabricantes."
+        },
+        "westcon_overlap": {
+          "value": [
+            "Ruckus Networks"
+          ],
+          "evidence": [
+            {
+              "source": "Wifidom",
+              "title": "Wifidom ↔ Ruckus Networks",
+              "description": "Wifidom se identifica como distribuidor oficial de RUCKUS Networks en España.",
+              "url": "https://blog.wifidom.com/home/",
+              "date": "2026-06-16",
+              "confidence": 96,
+              "type": "official-distributor-page",
+              "method": "curated-public-correlation",
+              "country": "ES",
+              "freshness_status": "current",
+              "age_days": 74,
+              "revalidation_days": 365,
+              "revalidation": "Evidencia dentro de ventana de revalidación (365 días)."
+            }
+          ],
+          "confidence": 0.96,
+          "confidence_band": "high",
+          "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+          "confidence_factors": [
+            "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+            "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+            "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
+            "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+          ],
+          "items": [
+            {
+              "value": "Ruckus Networks",
+              "confidence": 0.96,
+              "confidence_band": "high",
+              "confidence_reason": "Confianza alta: evidencia sólida y trazable. Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+              "confidence_factors": [
+                "Corroboración limitada: solo se dispone de una fuente/evidencia independiente.",
+                "Calidad de fuente: 1 evidencia(s) oficial(es), primaria(s) o de directorio/portal propio.",
+                "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
+                "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
+              ],
+              "evidence": [
+                {
+                  "source": "Wifidom",
+                  "title": "Wifidom ↔ Ruckus Networks",
+                  "description": "Wifidom se identifica como distribuidor oficial de RUCKUS Networks en España.",
+                  "url": "https://blog.wifidom.com/home/",
+                  "date": "2026-06-16",
+                  "confidence": 96,
+                  "type": "official-distributor-page",
+                  "method": "curated-public-correlation",
+                  "country": "ES",
+                  "freshness_status": "current",
+                  "age_days": 74,
+                  "revalidation_days": 365,
+                  "revalidation": "Evidencia dentro de ventana de revalidación (365 días)."
+                }
+              ]
+            }
+          ]
         }
       }
     },
     {
-      "id": "dist-v312-059",
+      "id": "dist-v313-059",
       "name": "Zaltor",
       "evidence": [
         {
@@ -56106,7 +57190,7 @@
       }
     },
     {
-      "id": "integrator-v312-016",
+      "id": "integrator-v313-016",
       "name": "Acensi",
       "evidence": [
         {
@@ -56164,7 +57248,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -56629,7 +57713,7 @@
       }
     },
     {
-      "id": "integrator-v312-019",
+      "id": "integrator-v313-019",
       "name": "Adarma",
       "evidence": [
         {
@@ -56687,7 +57771,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -57858,7 +58942,7 @@
       }
     },
     {
-      "id": "integrator-v312-025",
+      "id": "integrator-v313-025",
       "name": "AT&T",
       "evidence": [
         {
@@ -57916,7 +59000,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -58105,7 +59189,7 @@
       }
     },
     {
-      "id": "integrator-v312-006",
+      "id": "integrator-v313-006",
       "name": "Atos Spain",
       "evidence": [
         {
@@ -58163,7 +59247,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -61459,7 +62543,7 @@
       }
     },
     {
-      "id": "integrator-v312-031",
+      "id": "integrator-v313-031",
       "name": "Axians Spain",
       "evidence": [
         {
@@ -61519,7 +62603,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -64126,7 +65210,7 @@
       }
     },
     {
-      "id": "integrator-v312-017",
+      "id": "integrator-v313-017",
       "name": "Barrier Networks",
       "evidence": [
         {
@@ -64184,7 +65268,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -71589,7 +72673,7 @@
       }
     },
     {
-      "id": "integrator-v312-013",
+      "id": "integrator-v313-013",
       "name": "Colt Technology Services",
       "evidence": [
         {
@@ -71647,7 +72731,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -71836,7 +72920,7 @@
       }
     },
     {
-      "id": "integrator-v312-010",
+      "id": "integrator-v313-010",
       "name": "Computacenter",
       "evidence": [
         {
@@ -71906,7 +72990,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -75398,7 +76482,7 @@
       }
     },
     {
-      "id": "integrator-v312-029",
+      "id": "integrator-v313-029",
       "name": "Deutsche Telekom",
       "evidence": [
         {
@@ -75458,7 +76542,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -76777,7 +77861,7 @@
       }
     },
     {
-      "id": "integrator-v312-002",
+      "id": "integrator-v313-002",
       "name": "Econocom Spain",
       "evidence": [
         {
@@ -76823,7 +77907,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -79983,7 +81067,7 @@
       }
     },
     {
-      "id": "integrator-v312-027",
+      "id": "integrator-v313-027",
       "name": "Fujitsu",
       "evidence": [
         {
@@ -80041,7 +81125,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -81899,7 +82983,7 @@
       }
     },
     {
-      "id": "integrator-v312-003",
+      "id": "integrator-v313-003",
       "name": "GMV",
       "evidence": [
         {
@@ -81957,7 +83041,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -83129,7 +84213,7 @@
       }
     },
     {
-      "id": "integrator-v312-028",
+      "id": "integrator-v313-028",
       "name": "HCLTech",
       "evidence": [
         {
@@ -83189,7 +84273,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -84218,7 +85302,7 @@
       }
     },
     {
-      "id": "integrator-v312-012",
+      "id": "integrator-v313-012",
       "name": "HPE",
       "evidence": [
         {
@@ -84288,7 +85372,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -95404,7 +96488,7 @@
       }
     },
     {
-      "id": "integrator-v312-007",
+      "id": "integrator-v313-007",
       "name": "Infosys",
       "evidence": [
         {
@@ -95476,7 +96560,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -98863,7 +99947,7 @@
       }
     },
     {
-      "id": "integrator-v312-020",
+      "id": "integrator-v313-020",
       "name": "Kudelski Security",
       "evidence": [
         {
@@ -98921,7 +100005,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -106661,7 +107745,7 @@
       }
     },
     {
-      "id": "integrator-v312-004",
+      "id": "integrator-v313-004",
       "name": "Making Science",
       "evidence": [
         {
@@ -106707,7 +107791,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -107838,7 +108922,7 @@
       }
     },
     {
-      "id": "integrator-v312-021",
+      "id": "integrator-v313-021",
       "name": "MCL",
       "evidence": [
         {
@@ -107896,7 +108980,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -110817,7 +111901,7 @@
       }
     },
     {
-      "id": "integrator-v312-024",
+      "id": "integrator-v313-024",
       "name": "Netability",
       "evidence": [
         {
@@ -110875,7 +111959,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -118412,7 +119496,7 @@
       }
     },
     {
-      "id": "integrator-v312-001",
+      "id": "integrator-v313-001",
       "name": "NTT Data Spain",
       "evidence": [
         {
@@ -118496,7 +119580,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -118941,7 +120025,7 @@
       }
     },
     {
-      "id": "integrator-v312-052",
+      "id": "integrator-v313-052",
       "name": "NTT Group Europe",
       "evidence": [
         {
@@ -118983,7 +120067,7 @@
             "Vigencia: no todas las fuentes tienen una fecha normalizable; se mantiene el sondeo automático.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -123380,7 +124464,7 @@
       }
     },
     {
-      "id": "integrator-v312-011",
+      "id": "integrator-v313-011",
       "name": "Orange Cyberdefense",
       "evidence": [
         {
@@ -123450,7 +124534,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -125818,7 +126902,7 @@
       }
     },
     {
-      "id": "integrator-v312-015",
+      "id": "integrator-v313-015",
       "name": "Sapphire",
       "evidence": [
         {
@@ -125876,7 +126960,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -135311,7 +136395,7 @@
       }
     },
     {
-      "id": "integrator-v312-018",
+      "id": "integrator-v313-018",
       "name": "SITS Group",
       "evidence": [
         {
@@ -135369,7 +136453,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -138080,7 +139164,7 @@
       }
     },
     {
-      "id": "integrator-v312-023",
+      "id": "integrator-v313-023",
       "name": "Solid8",
       "evidence": [
         {
@@ -138138,7 +139222,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -138603,7 +139687,7 @@
       }
     },
     {
-      "id": "integrator-v312-022",
+      "id": "integrator-v313-022",
       "name": "Swiss IT",
       "evidence": [
         {
@@ -138661,7 +139745,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -139767,7 +140851,7 @@
       }
     },
     {
-      "id": "integrator-v312-026",
+      "id": "integrator-v313-026",
       "name": "Tata Communications",
       "evidence": [
         {
@@ -139825,7 +140909,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -140600,7 +141684,7 @@
       }
     },
     {
-      "id": "integrator-v312-008",
+      "id": "integrator-v313-008",
       "name": "Tech Mahindra",
       "evidence": [
         {
@@ -140658,7 +141742,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -153671,7 +154755,7 @@
       }
     },
     {
-      "id": "integrator-v312-014",
+      "id": "integrator-v313-014",
       "name": "Trace3",
       "evidence": [
         {
@@ -153729,7 +154813,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -155158,7 +156242,7 @@
       }
     },
     {
-      "id": "integrator-v312-005",
+      "id": "integrator-v313-005",
       "name": "VASS",
       "evidence": [
         {
@@ -155204,7 +156288,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -157022,7 +158106,7 @@
       }
     },
     {
-      "id": "integrator-v312-009",
+      "id": "integrator-v313-009",
       "name": "Wipro",
       "evidence": [
         {
@@ -157080,7 +158164,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -157269,7 +158353,7 @@
       }
     },
     {
-      "id": "integrator-v312-030",
+      "id": "integrator-v313-030",
       "name": "Xalient",
       "evidence": [
         {
@@ -157329,7 +158413,7 @@
             "Vigencia: 1 evidencia(s) están dentro de su ventana de revalidación.",
             "Nivel alto: la evidencia disponible supera el umbral de solidez, pero sigue sujeta a revalidación periódica."
           ],
-          "qualifier": "Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia."
+          "qualifier": "Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia."
         },
         "roles": {
           "value": [
@@ -157530,7 +158614,7 @@
   ],
   "clients_public": [
     {
-      "id": "pub-v312-001",
+      "id": "pub-v313-001",
       "name": "Infraestruturas de Portugal",
       "evidence": [
         {
@@ -157920,7 +159004,7 @@
       }
     },
     {
-      "id": "pub-v312-002",
+      "id": "pub-v313-002",
       "name": "Diputación de Barcelona",
       "evidence": [
         {
@@ -158282,7 +159366,7 @@
       }
     },
     {
-      "id": "pub-v312-003",
+      "id": "pub-v313-003",
       "name": "Entidade pública portuguesa",
       "evidence": [
         {
@@ -158644,7 +159728,7 @@
       }
     },
     {
-      "id": "pub-v312-004",
+      "id": "pub-v313-004",
       "name": "Entidade pública de saúde portuguesa",
       "evidence": [
         {
@@ -159006,7 +160090,7 @@
       }
     },
     {
-      "id": "pub-v312-005",
+      "id": "pub-v313-005",
       "name": "APCE / Castilla y León",
       "evidence": [
         {
@@ -159368,7 +160452,7 @@
       }
     },
     {
-      "id": "pub-v312-006",
+      "id": "pub-v313-006",
       "name": "Ayuntamiento de Fuenlabrada",
       "evidence": [
         {
@@ -159730,7 +160814,7 @@
       }
     },
     {
-      "id": "pub-v312-007",
+      "id": "pub-v313-007",
       "name": "Entidade pública portuguesa",
       "evidence": [
         {
@@ -160092,7 +161176,7 @@
       }
     },
     {
-      "id": "pub-v312-008",
+      "id": "pub-v313-008",
       "name": "Ayuntamiento de Salamanca",
       "evidence": [
         {
@@ -160454,7 +161538,7 @@
       }
     },
     {
-      "id": "pub-v312-009",
+      "id": "pub-v313-009",
       "name": "Administración pública española",
       "evidence": [
         {
@@ -160816,7 +161900,7 @@
       }
     },
     {
-      "id": "pub-v312-010",
+      "id": "pub-v313-010",
       "name": "Entidade pública de saúde portuguesa",
       "evidence": [
         {
@@ -161178,7 +162262,7 @@
       }
     },
     {
-      "id": "pub-v312-011",
+      "id": "pub-v313-011",
       "name": "Autoridade Tributária e Aduaneira",
       "evidence": [
         {
@@ -161540,7 +162624,7 @@
       }
     },
     {
-      "id": "pub-v312-012",
+      "id": "pub-v313-012",
       "name": "Entidade pública de saúde portuguesa",
       "evidence": [
         {
@@ -161902,7 +162986,7 @@
       }
     },
     {
-      "id": "pub-v312-013",
+      "id": "pub-v313-013",
       "name": "Registro .ES",
       "evidence": [
         {
@@ -162235,7 +163319,7 @@
       }
     },
     {
-      "id": "pub-v312-014",
+      "id": "pub-v313-014",
       "name": "Servicio público de salud",
       "evidence": [
         {
@@ -162597,7 +163681,7 @@
       }
     },
     {
-      "id": "pub-v312-015",
+      "id": "pub-v313-015",
       "name": "CMVM",
       "evidence": [
         {
@@ -162959,7 +164043,7 @@
       }
     },
     {
-      "id": "pub-v312-016",
+      "id": "pub-v313-016",
       "name": "SUMA Gestión Tributaria · Diputación de Alicante",
       "evidence": [
         {
@@ -163321,7 +164405,7 @@
       }
     },
     {
-      "id": "pub-v312-017",
+      "id": "pub-v313-017",
       "name": "Agencia Española de Medicamentos y Productos Sanitarios",
       "evidence": [
         {
@@ -163683,7 +164767,7 @@
       }
     },
     {
-      "id": "pub-v312-018",
+      "id": "pub-v313-018",
       "name": "Ayuntamiento de A Coruña",
       "evidence": [
         {
@@ -164045,7 +165129,7 @@
       }
     },
     {
-      "id": "pub-v312-019",
+      "id": "pub-v313-019",
       "name": "AEMET",
       "evidence": [
         {
@@ -164407,7 +165491,7 @@
       }
     },
     {
-      "id": "pub-v312-020",
+      "id": "pub-v313-020",
       "name": "Ayuntamiento de Adeje",
       "evidence": [
         {
@@ -164769,7 +165853,7 @@
       }
     },
     {
-      "id": "pub-v312-021",
+      "id": "pub-v313-021",
       "name": "Administración sanitaria española",
       "evidence": [
         {
@@ -165160,7 +166244,7 @@
       }
     },
     {
-      "id": "pub-v312-022",
+      "id": "pub-v313-022",
       "name": "IPST",
       "evidence": [
         {
@@ -165522,7 +166606,7 @@
       }
     },
     {
-      "id": "pub-v312-023",
+      "id": "pub-v313-023",
       "name": "Centro de Documentación Judicial",
       "evidence": [
         {
@@ -165884,7 +166968,7 @@
       }
     },
     {
-      "id": "pub-v312-024",
+      "id": "pub-v313-024",
       "name": "SUMA Gestión Tributaria · Diputación de Alicante",
       "evidence": [
         {
@@ -166246,7 +167330,7 @@
       }
     },
     {
-      "id": "pub-v312-025",
+      "id": "pub-v313-025",
       "name": "FIAP",
       "evidence": [
         {
@@ -166637,7 +167721,7 @@
       }
     },
     {
-      "id": "pub-v312-026",
+      "id": "pub-v313-026",
       "name": "Entidade pública portuguesa",
       "evidence": [
         {
@@ -166999,7 +168083,7 @@
       }
     },
     {
-      "id": "pub-v312-027",
+      "id": "pub-v313-027",
       "name": "Ministerio de Asuntos Exteriores, UE y Cooperación",
       "evidence": [
         {
@@ -167332,7 +168416,7 @@
       }
     },
     {
-      "id": "pub-v312-028",
+      "id": "pub-v313-028",
       "name": "Ayuntamiento de Oviedo",
       "evidence": [
         {
@@ -167723,7 +168807,7 @@
       }
     },
     {
-      "id": "pub-v312-029",
+      "id": "pub-v313-029",
       "name": "European Maritime Safety Agency",
       "evidence": [
         {
@@ -168113,7 +169197,7 @@
       }
     },
     {
-      "id": "pub-v312-030",
+      "id": "pub-v313-030",
       "name": "Instituto de Informática, IP",
       "evidence": [
         {
@@ -168534,7 +169618,7 @@
   ],
   "clients_private": [
     {
-      "id": "priv-v312-001",
+      "id": "priv-v313-001",
       "name": "ACS",
       "evidence": [
         {
@@ -168662,7 +169746,7 @@
       }
     },
     {
-      "id": "priv-v312-002",
+      "id": "priv-v313-002",
       "name": "Acerinox",
       "evidence": [
         {
@@ -168790,7 +169874,7 @@
       }
     },
     {
-      "id": "priv-v312-003",
+      "id": "priv-v313-003",
       "name": "Aena",
       "evidence": [
         {
@@ -168918,7 +170002,7 @@
       }
     },
     {
-      "id": "priv-v312-004",
+      "id": "priv-v313-004",
       "name": "Amadeus IT Group",
       "evidence": [
         {
@@ -169046,7 +170130,7 @@
       }
     },
     {
-      "id": "priv-v312-005",
+      "id": "priv-v313-005",
       "name": "Acciona",
       "evidence": [
         {
@@ -169174,7 +170258,7 @@
       }
     },
     {
-      "id": "priv-v312-006",
+      "id": "priv-v313-006",
       "name": "Acciona Energía",
       "evidence": [
         {
@@ -169908,7 +170992,7 @@
       }
     },
     {
-      "id": "priv-v312-008",
+      "id": "priv-v313-008",
       "name": "Bankinter",
       "evidence": [
         {
@@ -170036,7 +171120,7 @@
       }
     },
     {
-      "id": "priv-v312-009",
+      "id": "priv-v313-009",
       "name": "CaixaBank",
       "evidence": [
         {
@@ -170164,7 +171248,7 @@
       }
     },
     {
-      "id": "priv-v312-010",
+      "id": "priv-v313-010",
       "name": "Cellnex",
       "evidence": [
         {
@@ -170292,7 +171376,7 @@
       }
     },
     {
-      "id": "priv-v312-011",
+      "id": "priv-v313-011",
       "name": "Inmobiliaria Colonial",
       "evidence": [
         {
@@ -170420,7 +171504,7 @@
       }
     },
     {
-      "id": "priv-v312-012",
+      "id": "priv-v313-012",
       "name": "Endesa",
       "evidence": [
         {
@@ -170548,7 +171632,7 @@
       }
     },
     {
-      "id": "priv-v312-013",
+      "id": "priv-v313-013",
       "name": "Enagás",
       "evidence": [
         {
@@ -170676,7 +171760,7 @@
       }
     },
     {
-      "id": "priv-v312-014",
+      "id": "priv-v313-014",
       "name": "Fluidra",
       "evidence": [
         {
@@ -170804,7 +171888,7 @@
       }
     },
     {
-      "id": "priv-v312-015",
+      "id": "priv-v313-015",
       "name": "Ferrovial",
       "evidence": [
         {
@@ -170932,7 +172016,7 @@
       }
     },
     {
-      "id": "priv-v312-016",
+      "id": "priv-v313-016",
       "name": "Grifols",
       "evidence": [
         {
@@ -171060,7 +172144,7 @@
       }
     },
     {
-      "id": "priv-v312-017",
+      "id": "priv-v313-017",
       "name": "IAG",
       "evidence": [
         {
@@ -172423,7 +173507,7 @@
       }
     },
     {
-      "id": "priv-v312-020",
+      "id": "priv-v313-020",
       "name": "Indra",
       "evidence": [
         {
@@ -172551,7 +173635,7 @@
       }
     },
     {
-      "id": "priv-v312-021",
+      "id": "priv-v313-021",
       "name": "Logista",
       "evidence": [
         {
@@ -172679,7 +173763,7 @@
       }
     },
     {
-      "id": "priv-v312-022",
+      "id": "priv-v313-022",
       "name": "Mapfre",
       "evidence": [
         {
@@ -172807,7 +173891,7 @@
       }
     },
     {
-      "id": "priv-v312-023",
+      "id": "priv-v313-023",
       "name": "Merlin Properties",
       "evidence": [
         {
@@ -172935,7 +174019,7 @@
       }
     },
     {
-      "id": "priv-v312-024",
+      "id": "priv-v313-024",
       "name": "ArcelorMittal",
       "evidence": [
         {
@@ -173063,7 +174147,7 @@
       }
     },
     {
-      "id": "priv-v312-025",
+      "id": "priv-v313-025",
       "name": "Naturgy",
       "evidence": [
         {
@@ -173191,7 +174275,7 @@
       }
     },
     {
-      "id": "priv-v312-026",
+      "id": "priv-v313-026",
       "name": "Puig Brands",
       "evidence": [
         {
@@ -173319,7 +174403,7 @@
       }
     },
     {
-      "id": "priv-v312-027",
+      "id": "priv-v313-027",
       "name": "Redeia",
       "evidence": [
         {
@@ -174051,7 +175135,7 @@
       }
     },
     {
-      "id": "priv-v312-029",
+      "id": "priv-v313-029",
       "name": "Laboratorios Rovi",
       "evidence": [
         {
@@ -174179,7 +175263,7 @@
       }
     },
     {
-      "id": "priv-v312-030",
+      "id": "priv-v313-030",
       "name": "Banco Sabadell",
       "evidence": [
         {
@@ -174938,7 +176022,7 @@
       }
     },
     {
-      "id": "priv-v312-032",
+      "id": "priv-v313-032",
       "name": "Sacyr",
       "evidence": [
         {
@@ -175066,7 +176150,7 @@
       }
     },
     {
-      "id": "priv-v312-033",
+      "id": "priv-v313-033",
       "name": "Solaria",
       "evidence": [
         {
@@ -175852,7 +176936,7 @@
       }
     },
     {
-      "id": "priv-v312-035",
+      "id": "priv-v313-035",
       "name": "Unicaja",
       "evidence": [
         {
@@ -175980,7 +177064,7 @@
       }
     },
     {
-      "id": "priv-v312-036",
+      "id": "priv-v313-036",
       "name": "Altri",
       "evidence": [
         {
@@ -176118,7 +177202,7 @@
       }
     },
     {
-      "id": "priv-v312-037",
+      "id": "priv-v313-037",
       "name": "Banco Comercial Português",
       "evidence": [
         {
@@ -176256,7 +177340,7 @@
       }
     },
     {
-      "id": "priv-v312-038",
+      "id": "priv-v313-038",
       "name": "Corticeira Amorim",
       "evidence": [
         {
@@ -176394,7 +177478,7 @@
       }
     },
     {
-      "id": "priv-v312-039",
+      "id": "priv-v313-039",
       "name": "CTT Correios de Portugal",
       "evidence": [
         {
@@ -177144,7 +178228,7 @@
       }
     },
     {
-      "id": "priv-v312-041",
+      "id": "priv-v313-041",
       "name": "EDP Renewables",
       "evidence": [
         {
@@ -177867,7 +178951,7 @@
       }
     },
     {
-      "id": "priv-v312-043",
+      "id": "priv-v313-043",
       "name": "Ibersol",
       "evidence": [
         {
@@ -178617,7 +179701,7 @@
       }
     },
     {
-      "id": "priv-v312-045",
+      "id": "priv-v313-045",
       "name": "Mota-Engil",
       "evidence": [
         {
@@ -179340,7 +180424,7 @@
       }
     },
     {
-      "id": "priv-v312-047",
+      "id": "priv-v313-047",
       "name": "REN",
       "evidence": [
         {
@@ -179478,7 +180562,7 @@
       }
     },
     {
-      "id": "priv-v312-048",
+      "id": "priv-v313-048",
       "name": "Semapa",
       "evidence": [
         {
@@ -180253,7 +181337,7 @@
       }
     },
     {
-      "id": "priv-v312-050",
+      "id": "priv-v313-050",
       "name": "Teixeira Duarte",
       "evidence": [
         {
@@ -180391,7 +181475,7 @@
       }
     },
     {
-      "id": "priv-v312-051",
+      "id": "priv-v313-051",
       "name": "The Navigator Company",
       "evidence": [
         {
@@ -256208,6 +257292,23 @@
       "access_policy": "public_metadata_and_public_insights"
     },
     {
+      "id": "itchannel_pt_company_directory_v313",
+      "name": "IT Channel Portugal · Directório de empresas",
+      "url": "https://www.itchannel.pt/directorio",
+      "class": "channel-directory",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "distributors",
+        "services",
+        "networks",
+        "security",
+        "cloud"
+      ],
+      "access_policy": "public"
+    },
+    {
       "id": "itchannel_pt_distributor_directory",
       "name": "IT Channel · Directório de Distribuidores Portugal",
       "url": "https://www.itchannel.pt/directorio/distribuidores/",
@@ -256250,6 +257351,22 @@
         "classification"
       ],
       "access_policy": "public"
+    },
+    {
+      "id": "channelpartner_channel_ranking_2026_v313",
+      "name": "Channel Partner · Ranking del Canal TIC 2026",
+      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
+      "class": "channel-ranking",
+      "scope": [
+        "ES"
+      ],
+      "dimensions": [
+        "distributors",
+        "integrators",
+        "consultancies",
+        "revenue"
+      ],
+      "access_policy": "public-summary"
     },
     {
       "id": "channelpartner_integrator_ranking_2026",
@@ -257181,6 +258298,38 @@
         "renewals"
       ],
       "access_policy": "public"
+    },
+    {
+      "id": "dadosgovpt_base_announcements_v313",
+      "name": "dados.gov.pt / IMPIC · Anúncios Portal BASE 2012–2026",
+      "url": "https://dados.gov.pt/pt/datasets/contratos-publicos-portal-base-impic-anuncios-de-2012-a-2026/",
+      "class": "official-procurement-open-data",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "announcements",
+        "buyers",
+        "procurement"
+      ],
+      "access_policy": "public-open-data"
+    },
+    {
+      "id": "dadosgovpt_base_contracts_v313",
+      "name": "dados.gov.pt / IMPIC · Contratos Portal BASE 2012–2026",
+      "url": "https://dados.gov.pt/pt/datasets/contratos-publicos-portal-base-impic-contratos-de-2012-a-2026/",
+      "class": "official-procurement-open-data",
+      "scope": [
+        "PT"
+      ],
+      "dimensions": [
+        "contracts",
+        "buyers",
+        "suppliers",
+        "amounts",
+        "dates"
+      ],
+      "access_policy": "public-open-data"
     },
     {
       "id": "partner_own_alliances",
@@ -260508,6 +261657,43 @@
       "dimensions": [
         "integrators",
         "vendor_relations"
+      ],
+      "access_policy": "public"
+    },
+    {
+      "id": "aws_partner_discovery_v313",
+      "name": "AWS Partner Central · Partner Discovery",
+      "url": "https://docs.aws.amazon.com/partner-central/latest/sales-guide/partner-discovery.html",
+      "class": "vendor-partner-directory",
+      "scope": [
+        "GLOBAL",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "partner-type",
+        "industry",
+        "location",
+        "specialization",
+        "solution-type"
+      ],
+      "access_policy": "public-docs"
+    },
+    {
+      "id": "cisco_partner_finder_v313",
+      "name": "Cisco · Partner Finder / Evolved Partner Ecosystem",
+      "url": "https://www.cisco.com/site/es/es/partners/evolved-partner-ecosystem/index.html",
+      "class": "vendor-partner-directory",
+      "scope": [
+        "GLOBAL",
+        "ES",
+        "PT"
+      ],
+      "dimensions": [
+        "specializations",
+        "services",
+        "industry",
+        "location"
       ],
       "access_policy": "public"
     },

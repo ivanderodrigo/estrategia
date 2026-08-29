@@ -10,10 +10,10 @@
 
   async function load(){
     const [res, runRes] = await Promise.all([
-      fetch('data/v312/intelligence.json', {cache:'no-store'}),
-      fetch('data/v312/last_run.json', {cache:'no-store'}).catch(()=>null)
+      fetch('data/v313/intelligence.json', {cache:'no-store'}),
+      fetch('data/v313/last_run.json', {cache:'no-store'}).catch(()=>null)
     ]);
-    if(!res.ok) throw new Error(`No se pudo cargar data/v312/intelligence.json (${res.status})`);
+    if(!res.ok) throw new Error(`No se pudo cargar data/v313/intelligence.json (${res.status})`);
     state.data = await res.json();
     if(runRes?.ok){ try{ state.lastRun = await runRes.json(); }catch(_){ state.lastRun=null; } }
     bind();
@@ -54,22 +54,24 @@
       const legend=e.target.closest('[data-trend-index]'); if(legend){ const id=legend.dataset.trendIndex; $$('.trend-loop-node').forEach(n=>n.classList.toggle('active',n.dataset.trendIndex===id)); }
       const actorLegend=e.target.closest('[data-actor-index]'); if(actorLegend){ const id=actorLegend.dataset.actorIndex; $$('.actor-point').forEach(n=>n.classList.toggle('active',n.dataset.actorIndex===id)); }
       const confidenceHelp=e.target.closest('[data-confidence-help]'); if(confidenceHelp){ openModal('confidenceModal'); e.preventDefault(); e.stopPropagation(); }
-      const helpIcon=e.target.closest('.help-icon'); if(helpIcon){const wrap=helpIcon.closest('.help-wrap');if(wrap){showHelpPortal(wrap);e.preventDefault();e.stopPropagation();}}
-      const traceMark=e.target.closest('.trace-mark'); if(traceMark){const trace=traceMark.closest('.traceable');if(trace){showTracePortal(trace);e.preventDefault();e.stopPropagation();}}
+      const helpIcon=e.target.closest('.help-icon'); if(helpIcon){const wrap=helpIcon.closest('.help-wrap');if(wrap){showHelpPortal(wrap);e.preventDefault();e.stopPropagation();return;}}
+      const traceMark=e.target.closest('.trace-mark'); if(traceMark){const trace=traceMark.closest('.traceable');if(trace){showTracePortal(trace);e.preventDefault();e.stopPropagation();return;}}
+      const trace=e.target.closest('.traceable');
+      if(trace && !e.target.closest('a,button,input,select,textarea')){showTracePortal(trace);e.preventDefault();e.stopPropagation();return;}
+      if(!e.target.closest('#tracePortal')) hideTracePortal();
+      if(!e.target.closest('#helpPortal')) hideHelpPortal();
       if(!e.target.closest('.utility-wrap')) closeUtilityMenu();
       const th=e.target.closest('th[data-col]'); if(th && !e.target.closest('.help-icon')){ toggleSort(th.closest('table')?.dataset.view, th.dataset.col); }
     });
-    document.addEventListener('pointerover', e=>{ const trace=e.target.closest('.traceable'); if(trace) showTracePortal(trace); const help=e.target.closest('.help-wrap'); if(help?.querySelector('.help-tip')) showHelpPortal(help); });
-    document.addEventListener('focusin', e=>{ const trace=e.target.closest('.traceable'); if(trace) showTracePortal(trace); const help=e.target.closest('.help-wrap'); if(help?.querySelector('.help-tip')) showHelpPortal(help); });
-    document.addEventListener('pointerout', e=>{ const trace=e.target.closest('.traceable'); if(trace && !trace.contains(e.relatedTarget) && !$('#tracePortal')?.contains(e.relatedTarget)) scheduleTraceHide(); const help=e.target.closest('.help-wrap'); if(help && !help.contains(e.relatedTarget) && !$('#helpPortal')?.contains(e.relatedTarget)) scheduleHelpHide(); });
-    $('#tracePortal')?.addEventListener('pointerenter', cancelTraceHide);
-    $('#tracePortal')?.addEventListener('pointerleave', scheduleTraceHide);
     $('#tracePortal')?.addEventListener('wheel', e=>e.stopPropagation(), {passive:true});
-    $('#helpPortal')?.addEventListener('pointerenter', cancelHelpHide);
-    $('#helpPortal')?.addEventListener('pointerleave', scheduleHelpHide);
     $('#helpPortal')?.addEventListener('wheel', e=>e.stopPropagation(), {passive:true});
     window.addEventListener('scroll', ()=>{ repositionTracePortal(); repositionHelpPortal(); }, true);
     window.addEventListener('resize', ()=>{ repositionTracePortal(); repositionHelpPortal(); });
+    document.addEventListener('keydown', e=>{
+      if((e.key==='Enter'||e.key===' ') && e.target.matches('.traceable')){showTracePortal(e.target);e.preventDefault();}
+      if((e.key==='Enter'||e.key===' ') && e.target.matches('.help-icon')){const wrap=e.target.closest('.help-wrap');if(wrap)showHelpPortal(wrap);e.preventDefault();}
+      if(e.key==='Escape'){hideTracePortal();hideHelpPortal();}
+    });
     document.addEventListener('dragstart', e=>{ const th=e.target.closest('th[data-col]'); if(th){state.dragCol=th.dataset.col; e.dataTransfer.effectAllowed='move';}});
     document.addEventListener('dragover', e=>{if(e.target.closest('th[data-col]')) e.preventDefault();});
     document.addEventListener('drop', e=>{ const th=e.target.closest('th[data-col]'); if(!th||!state.dragCol)return; e.preventDefault(); reorderColumn(th.closest('table')?.dataset.view,state.dragCol,th.dataset.col); state.dragCol=null;});
@@ -217,7 +219,7 @@
       if(view==='cards') return true;
       // Evita columnas casi vacías: siguen en la cola automática de investigación
       // y reaparecen cuando alcanzan cobertura suficiente.
-      const minimum=rows.length>=50?Math.max(5,Math.ceil(rows.length*.08)):1;
+      const minimum=rows.length>=50?Math.max(8,Math.ceil(rows.length*.20)):1;
       return populated>=minimum;
     });
     const order=state.columnOrder[view]||JSON.parse(localStorage.getItem(`westcon-cols-${view}`)||'null');
@@ -431,7 +433,7 @@
     return `<span>${esc(shortText(v,190))}</span>`;
   }
   function reportBrand(){return `<div class="r-brand"><span class="r-mark"><i></i><i></i><i></i></span><b>WESTCON IBERIA</b><small>BUSINESS INTELLIGENCE</small></div>`;}
-  function reportFooter(label){return `<footer class="r-footer"><span>${esc(label)}</span><span>v${esc(state.data.meta.version||'3.12.0')} · ${esc(state.data.meta.scope||'Iberia')} · inteligencia trazable</span></footer>`;}
+  function reportFooter(label){return `<footer class="r-footer"><span>${esc(label)}</span><span>v${esc(state.data.meta.version||'3.13.0')} · ${esc(state.data.meta.scope||'Iberia')} · inteligencia trazable</span></footer>`;}
   function numericAmountMillions(value){
     const raw=valueText(value).replace(/\s/g,'').replace(',','.');const m=raw.match(/(\d+(?:\.\d+)?)([mk])?€/i)||raw.match(/(\d+(?:\.\d+)?)([mk])?/i);if(!m)return 0;let n=Number(m[1])||0;const unit=(m[2]||'').toLowerCase();if(unit==='k')n/=1000;else if(unit!=='m'&&n>1000)n/=1e6;return n;
   }
@@ -456,7 +458,7 @@
       ['manufacturers','Fabricantes',state.data.manufacturers.length],['distributors','Mayoristas',state.data.distributors.length],['integrators','Integradores',state.data.integrators.length],['clients','Clientes',((state.data.clients_public||[]).length+(state.data.clients_private||[]).length)],['trends','Tendencias',state.data.trends.length],['architectures','Arquitecturas',state.data.architectures.length]
     ].filter(x=>modules.has(x[0]));
     return `<section class="report-page report-cover">
-      <div class="r-cover-top">${reportBrand()}<span class="r-version">v${esc(state.data.meta.version||'3.12.0')}</span></div>
+      <div class="r-cover-top">${reportBrand()}<span class="r-version">v${esc(state.data.meta.version||'3.13.0')}</span></div>
       <div class="r-cover-main"><div class="r-kicker">INTELIGENCIA DE NEGOCIO · ESPAÑA + PORTUGAL</div><h1>${esc(title)}</h1><p>Informe ejecutivo construido desde la evidencia trazable: primero síntesis y hallazgos, después detalle y fuentes.</p></div>
       <div class="r-kpis">${stats.map((x,i)=>`<div style="--accent:#${[exportTheme.cyan,exportTheme.orange,exportTheme.pink,exportTheme.blue,exportTheme.green][i%5]}"><b>${esc(x[2])}</b><span>${esc(x[1])}</span></div>`).join('')}<div style="--accent:#${exportTheme.cyan}"><b>${esc(state.data.meta.source_count||0)}</b><span>fuentes / familias</span></div></div>
       <div class="r-cover-note"><b>Generado</b><span>${esc(state.data.meta.generated_at||'')}</span></div>
@@ -519,7 +521,7 @@
     pdf.setFont('helvetica','bold');pdf.setFontSize(10);pdfTextColor(pdf,base);pdf.text('WESTCON IBERIA',21,13);
     pdf.setFont('helvetica','normal');pdf.setFontSize(6);pdfTextColor(pdf,sub);pdf.text('BUSINESS INTELLIGENCE',21,17);
   }
-  function pdfFooter(pdf,label,dark=false){const w=pdf.internal.pageSize.getWidth(),h=pdf.internal.pageSize.getHeight();pdfStroke(pdf,dark?'315267':exportTheme.line);pdf.setLineWidth(.25);pdf.line(12,h-11,w-12,h-11);pdf.setFontSize(6);pdf.setFont('helvetica','normal');pdfTextColor(pdf,dark?'AFC1CA':exportTheme.muted);pdf.text(label,12,h-6);pdf.text(`v${state.data.meta.version||'3.12.0'} · ${state.data.meta.scope||'Iberia'} · inteligencia trazable`,w-12,h-6,{align:'right'});}
+  function pdfFooter(pdf,label,dark=false){const w=pdf.internal.pageSize.getWidth(),h=pdf.internal.pageSize.getHeight();pdfStroke(pdf,dark?'315267':exportTheme.line);pdf.setLineWidth(.25);pdf.line(12,h-11,w-12,h-11);pdf.setFontSize(6);pdf.setFont('helvetica','normal');pdfTextColor(pdf,dark?'AFC1CA':exportTheme.muted);pdf.text(label,12,h-6);pdf.text(`v${state.data.meta.version||'3.13.0'} · ${state.data.meta.scope||'Iberia'} · inteligencia trazable`,w-12,h-6,{align:'right'});}
   function pdfPageTitle(pdf,title,subtitle='',accent=exportTheme.cyan){pdfBrand(pdf,false);pdfFill(pdf,accent);pdf.rect(12,25,2,15,'F');pdf.setFont('helvetica','bold');pdf.setFontSize(22);pdfTextColor(pdf,exportTheme.navy);pdf.text(title,18,34);pdf.setFont('helvetica','normal');pdf.setFontSize(8);pdfTextColor(pdf,exportTheme.muted);const lines=pdf.splitTextToSize(subtitle,250);pdf.text(lines,18,41);}
   function pdfKpi(pdf,x,y,w,label,value,accent){pdfFill(pdf,exportTheme.white);pdfStroke(pdf,exportTheme.line);pdf.roundedRect(x,y,w,24,3,3,'FD');pdfFill(pdf,accent);pdf.rect(x,y,2,24,'F');pdf.setFont('helvetica','bold');pdf.setFontSize(17);pdfTextColor(pdf,exportTheme.navy);pdf.text(String(value),x+6,y+10);pdf.setFont('helvetica','normal');pdf.setFontSize(6.5);pdfTextColor(pdf,exportTheme.muted);pdf.text(label.toUpperCase(),x+6,y+17);}
   function pdfListCard(pdf,x,y,w,h,title,items,accent){pdfFill(pdf,exportTheme.white);pdfStroke(pdf,exportTheme.line);pdf.roundedRect(x,y,w,h,3,3,'FD');pdfFill(pdf,accent);pdf.rect(x,y,w,1.5,'F');pdf.setFont('helvetica','bold');pdf.setFontSize(9);pdfTextColor(pdf,exportTheme.navy);pdf.text(title,x+5,y+8);let yy=y+15;pdf.setFont('helvetica','normal');pdf.setFontSize(6.4);for(const item of items.slice(0,5)){pdfFill(pdf,accent);pdf.circle(x+6,yy-1.4,1.3,'F');pdf.setFont('helvetica','bold');pdfTextColor(pdf,exportTheme.ink);const titleLines=pdf.splitTextToSize(String(item.title||''),w-16).slice(0,2);pdf.text(titleLines,x+10,yy);yy+=titleLines.length*3.2;pdf.setFont('helvetica','normal');pdfTextColor(pdf,exportTheme.muted);const metaLines=pdf.splitTextToSize(String(item.meta||''),w-16).slice(0,2);pdf.text(metaLines,x+10,yy);yy+=metaLines.length*3.1+3;if(yy>y+h-5)break;}}
@@ -530,7 +532,7 @@
   async function exportPdf(){
     const modules=selectedModules();if(!modules.size){toast('Selecciona al menos un área');return;}if(!window.jspdf?.jsPDF){toast('El motor PDF no está disponible');return;}
     const title=$('#reportTitle')?.value.trim()||'Westcon Iberia · Business Intelligence';closeModal('exportModal');toast('Generando PDF ejecutivo…');
-    try{const pdf=new window.jspdf.jsPDF({orientation:'landscape',unit:'mm',format:'a4',compress:true});pdf.setProperties({title,subject:'Westcon Iberia Business Intelligence',author:'Westcon Iberia'});pdfAddCover(pdf,title,modules);pdfAddExecutive(pdf);const selected=[];for(const [key,rows] of exportSections(modules)){if(!rows?.length)continue;selected.push(...rows);pdfAddDomain(pdf,key,rows);}pdfAddMethodology(pdf,selected);pdf.save('Westcon_Iberia_Business_Intelligence_v3.12.0.pdf');toast('PDF ejecutivo generado');}catch(err){console.error(err);toast('No se pudo generar el PDF');}
+    try{const pdf=new window.jspdf.jsPDF({orientation:'landscape',unit:'mm',format:'a4',compress:true});pdf.setProperties({title,subject:'Westcon Iberia Business Intelligence',author:'Westcon Iberia'});pdfAddCover(pdf,title,modules);pdfAddExecutive(pdf);const selected=[];for(const [key,rows] of exportSections(modules)){if(!rows?.length)continue;selected.push(...rows);pdfAddDomain(pdf,key,rows);}pdfAddMethodology(pdf,selected);pdf.save('Westcon_Iberia_Business_Intelligence_v3.13.0.pdf');toast('PDF ejecutivo generado');}catch(err){console.error(err);toast('No se pudo generar el PDF');}
   }
   function pptCompact(v,max=115){return compactValue(v,4,max);}
   function pptEvidenceNames(row,max=2){const names=[];for(const ev of uniqueEvidence([row],12)){const n=ev.source||ev.title;if(n&&!names.includes(n))names.push(n);if(names.length>=max)break;}return names;}
@@ -544,7 +546,7 @@
     const line=dark?'315267':'D9E3E8', color=dark?'AFC1CA':'647986';
     slide.addShape(pptx.ShapeType.line,{x:.55,y:7.05,w:12.2,h:0,line:{color:line,pt:.7}});
     slide.addText(label,{x:.55,y:7.1,w:4.8,h:.14,fontFace:'Aptos',fontSize:6.6,color,margin:0});
-    slide.addText(`v${state.data.meta.version||'3.12.0'} · ${state.data.meta.scope||'Iberia'} · trazabilidad en la aplicación`,{x:7.0,y:7.1,w:5.75,h:.14,fontFace:'Aptos',fontSize:6.6,color,align:'right',margin:0});
+    slide.addText(`v${state.data.meta.version||'3.13.0'} · ${state.data.meta.scope||'Iberia'} · trazabilidad en la aplicación`,{x:7.0,y:7.1,w:5.75,h:.14,fontFace:'Aptos',fontSize:6.6,color,align:'right',margin:0});
   }
   function pptAddSlideTitle(slide,pptx,title,sub='',accent=exportTheme.cyan){
     pptAddBrand(slide,pptx,false); slide.addShape(pptx.ShapeType.rect,{x:.55,y:.92,w:.08,h:.63,fill:{color:accent},line:{color:accent}});
@@ -700,13 +702,13 @@
       order.forEach(([key,rows,schema])=>{if(!rows?.length)return;pptAddDomainDivider(pptx,key,rows.length);if(key==='trends'||key==='architectures')pptAddDetailSlides(pptx,key,rows,schema);else pptAddEntitySlides(pptx,key,rows,schema);});
       pptAddSources(pptx,selectedRows);
     }
-    await pptx.writeFile({fileName:'Westcon_Iberia_Business_Intelligence_v3.12.0.pptx'});closeModal('exportModal');toast(appendix?'PowerPoint ejecutivo + anexo generado':'PowerPoint ejecutivo generado');
+    await pptx.writeFile({fileName:'Westcon_Iberia_Business_Intelligence_v3.13.0.pptx'});closeModal('exportModal');toast(appendix?'PowerPoint ejecutivo + anexo generado':'PowerPoint ejecutivo generado');
   }
 
   function renderAll(){
     populateIntegratorVendorFilter();
     renderManufacturers(); renderDistributors(); renderIntegrators(); renderClients(); renderTrends(); renderArchitectures(); renderSourceCatalog(); renderUpdateStatus(); renderConfidenceGuide();
-    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v3.12.0 · dataset v${meta.version||'3.12.0'} · ${meta.source_count||0} fuentes/familias · ${meta.scope||'Iberia'}`;
+    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v3.13.0 · dataset v${meta.version||'3.13.0'} · ${meta.source_count||0} fuentes/familias · ${meta.scope||'Iberia'}`;
   }
 
   load().catch(err => { console.error(err); const main=document.querySelector('main'); if(main) main.innerHTML=`<div class="fatal"><h1>No se pudo cargar la inteligencia</h1><p>${esc(err.message)}</p></div>`; });

@@ -1,0 +1,49 @@
+{
+  "version": "3.13.0",
+  "generated_at": "2026-08-29T16:57:32.597669+00:00",
+  "profile": "daily",
+  "notices": [],
+  "diagnostics": [
+    {
+      "source": "ted",
+      "attempted": 2,
+      "successful": 0,
+      "failed": 2,
+      "rows": 0,
+      "raw_notices": 0,
+      "technology_notices": 0,
+      "errors": [
+        "ESP: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+        "PRT: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
+      ],
+      "latency_ms": 5022.9
+    },
+    {
+      "source": "placsp_profiles",
+      "attempted": 2,
+      "successful": 0,
+      "failed": 1,
+      "rows": 0,
+      "cached": 0,
+      "latency_ms": 5360.4,
+      "errors": [
+        "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3.atom: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+        "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3.atom: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
+      ]
+    },
+    {
+      "source": "placsp_aggregated",
+      "attempted": 2,
+      "successful": 0,
+      "failed": 1,
+      "rows": 0,
+      "cached": 0,
+      "latency_ms": 5359.2,
+      "errors": [
+        "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_1044/PlataformasAgregadasSinMenores.atom: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+        "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_1044/PlataformasAgregadasSinMenores.atom: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
+      ]
+    }
+  ],
+  "policy": "Solo se publican registros con enlace exacto al anuncio/expediente oficial; los enlaces genéricos del portal se descartan."
+}

@@ -9,12 +9,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
+from v313.gap_engine import build_gaps
+
 ROOT = Path(__file__).resolve().parents[2]
 
 from v38.build_intelligence import atomic_item, dedupe_evidence, evidence, field, load, write
 from v39.build_intelligence import build as build_v39, merge_source_catalog as merge_source_catalog_v39
 
-VERSION = "3.12.0"
+VERSION = "3.13.0"
 
 
 def norm(value: Any) -> str:
@@ -59,7 +61,7 @@ def ev_obj(raw: dict[str, Any]) -> dict[str, Any]:
 
 def merge_source_catalog() -> list[dict[str, Any]]:
     rows = {x.get("id"): dict(x) for x in merge_source_catalog_v39() if x.get("id")}
-    for raw in load("config/v312/source_additions.json", {}).get("sources", []) or []:
+    for raw in load("config/v313/source_additions.json", {}).get("sources", []) or []:
         sid = raw.get("source_id") or raw.get("id")
         if not sid:
             continue
@@ -114,7 +116,7 @@ def _merge_field_list(row: dict[str, Any], fid: str, label: str, ev: dict[str, A
 
 
 def validate_distributors(data: dict[str, Any]) -> dict[str, Any]:
-    registry = load("config/v312/distributor_registry.json", {})
+    registry = load("config/v313/distributor_registry.json", {})
     entries = registry.get("entries") or []
     false_terms = [norm(x) for x in (registry.get("policy") or {}).get("vendor_false_positive_terms", [])]
     manufacturer_keys = {canonical(r.get("name")) for r in data.get("manufacturers", []) if r.get("name")}
@@ -142,7 +144,7 @@ def validate_distributors(data: dict[str, Any]) -> dict[str, Any]:
         candidates = [key, *[canonical(x) for x in entry.get("aliases") or []]]
         base = next((copy.deepcopy(existing_by_key[x]) for x in candidates if x in existing_by_key), None)
         if base is None:
-            base = {"id": f"dist-v312-{len(output)+1:03d}", "name": entry.get("name"), "evidence": [], "fields": {}}
+            base = {"id": f"dist-v313-{len(output)+1:03d}", "name": entry.get("name"), "evidence": [], "fields": {}}
         base["name"] = entry.get("name")
         evs = [ev_obj(x) for x in entry.get("validation_evidence") or []]
         base["evidence"] = dedupe_evidence([*(base.get("evidence") or []), *evs], 12)
@@ -228,7 +230,7 @@ def sanitize_westcon_fit(data: dict[str, Any]) -> dict[str, int]:
 
 
 def build_private_accounts(data: dict[str, Any]) -> dict[str, int]:
-    universe = load("config/v312/private_account_universe.json", {}).get("accounts") or []
+    universe = load("config/v313/private_account_universe.json", {}).get("accounts") or []
     existing = {canonical(r.get("name")): copy.deepcopy(r) for r in data.get("clients_private", []) if r.get("name")}
     # Common-name aliases between seed and index.
     alias_existing = {
@@ -246,7 +248,7 @@ def build_private_accounts(data: dict[str, Any]) -> dict[str, int]:
         row=next((copy.deepcopy(existing[c]) for c in candidates if c in existing),None)
         ev=ev_obj(acc.get("evidence") or {})
         if row is None:
-            row={"id":f"priv-v312-{idx:03d}","name":acc.get("name"),"evidence":[ev],"fields":{}}
+            row={"id":f"priv-v313-{idx:03d}","name":acc.get("name"),"evidence":[ev],"fields":{}}
         else:
             row["name"]=acc.get("name")
             row["evidence"]=dedupe_evidence([*(row.get("evidence") or []),ev],12)
@@ -263,8 +265,8 @@ def build_private_accounts(data: dict[str, Any]) -> dict[str, int]:
 
 
 def build_public_procurement(data: dict[str, Any]) -> dict[str, int]:
-    snapshot = load("config/v312/procurement_snapshot.json", {}).get("notices") or []
-    live = load("data/v312/procurement_live.json", {}).get("notices") or []
+    snapshot = load("config/v313/procurement_snapshot.json", {}).get("notices") or []
+    live = load("data/v313/procurement_live.json", {}).get("notices") or []
     merged: dict[str, dict[str, Any]] = {}
     for item in [*snapshot, *live]:
         notice=str(item.get("notice_id") or "").strip()
@@ -307,7 +309,7 @@ def build_public_procurement(data: dict[str, Any]) -> dict[str, int]:
         if notice in known_amounts:
             fields["estimated_amount"]=field(known_amounts[notice],[ev],.96,"Importe observado en el anuncio TED detallado.")
         fields={k:v for k,v in fields.items() if v}
-        rows.append({"id":f"pub-v312-{idx:03d}","name":buyer,"evidence":[ev],"fields":fields})
+        rows.append({"id":f"pub-v313-{idx:03d}","name":buyer,"evidence":[ev],"fields":fields})
     data["clients_public"]=rows
     return {"exact_notices":len(rows),"live_notices":len(live),"snapshot_notices":len(snapshot)}
 
@@ -316,13 +318,13 @@ def ensure_integrator(row_map: dict[str, dict[str, Any]], name: str, scope: str,
     key=canonical(name)
     row=row_map.get(key)
     if row is None:
-        row={"id":f"integrator-v312-{idx:03d}","name":name,"evidence":[ev],"fields":{}}
+        row={"id":f"integrator-v313-{idx:03d}","name":name,"evidence":[ev],"fields":{}}
         row_map[key]=row
     else:
         row["evidence"]=dedupe_evidence([*(row.get("evidence") or []),ev],12)
     fields=row.setdefault("fields",{})
     if not fields.get("scope"):
-        fields["scope"]=field(scope,[ev],.90,"Ámbito explícito de la evidencia añadida por v3.12; GLOBAL no implica presencia Iberia.")
+        fields["scope"]=field(scope,[ev],.90,"Ámbito explícito de la evidencia añadida por v3.13; GLOBAL no implica presencia Iberia.")
     # Merge role rather than overwrite existing taxonomy.
     roles=fields.get("roles") or {}
     vals=roles.get("value") or []
@@ -335,7 +337,7 @@ def ensure_integrator(row_map: dict[str, dict[str, Any]], name: str, scope: str,
 
 
 def expand_integrator_graph(data: dict[str, Any]) -> dict[str, Any]:
-    universe=load("config/v312/integrator_universe.json",{})
+    universe=load("config/v313/integrator_universe.json",{})
     universe_ev=ev_obj(universe.get("source") or {})
     row_map={canonical(r.get("name")):copy.deepcopy(r) for r in data.get("integrators",[]) if r.get("name")}
     # Add missing top-universe integrators without inventing vendor relationships.
@@ -347,7 +349,7 @@ def expand_integrator_graph(data: dict[str, Any]) -> dict[str, Any]:
         ensure_integrator(row_map,name,scope,"Integrador / consultora TI" if scope=='ES' else "Integrador / service partner",universe_ev,next_idx); next_idx+=1
 
     manufacturers={canonical(r.get("name")):r for r in data.get("manufacturers",[]) if r.get("name")}
-    rels=load("config/v312/curated_integrator_relations.json",{}).get("relations") or []
+    rels=load("config/v313/curated_integrator_relations.json",{}).get("relations") or []
     added=0
     for rel in rels:
         vkey=canonical(rel.get("vendor")); manufacturer=manufacturers.get(vkey)
@@ -387,6 +389,163 @@ def expand_integrator_graph(data: dict[str, Any]) -> dict[str, Any]:
         "manufacturers_without_integrators":[name for name,count in vendor_counts if count==0],
         "integrators":len(data.get("integrators",[])),
     }
+
+
+
+PROFILE_TAXONOMY = {
+    "services": {
+        "Managed Services": ["managed service", "managed-services"],
+        "Servicios profesionales / consultoría": ["professional service", "consulting", "consultoria", "consultoría"],
+        "Implementación e integración": ["implementation", "integration service", "integracion", "integración"],
+        "Soporte": ["support service", "support", "soporte"],
+        "Formación / enablement": ["training", "academy", "formacion", "formación"],
+        "Marketplace / cloud commerce": ["marketplace", "cloud commerce"],
+    },
+    "capabilities": {
+        "Ciberseguridad": ["cybersecurity", "cyber security", "ciberseguridad", "security service"],
+        "Networking": ["networking", "network service", "network infrastructure"],
+        "Cloud": ["cloud migration", "cloud service", "public cloud", "hybrid cloud"],
+        "SOC": [" soc ", "security operations center", "security operations centre"],
+        "NOC": [" noc ", "network operations center", "network operations centre"],
+        "MSSP": ["mssp"],
+        "MSP": ["msp", "managed service provider"],
+        "Observabilidad": ["observability", "monitoring"],
+        "Automatización / IA": ["automation", "artificial intelligence", " ai ", "automatizacion", "automatización"],
+        "Data Center": ["data center", "datacenter"],
+        "Identidad": ["identity", "iam"],
+        "OT / IoT": ["ot security", "operational technology", "iot"],
+    },
+    "verticals": {
+        "Servicios financieros": ["financial services", "banking", "finance"],
+        "Sector público": ["public sector", "government", "administracion publica", "administración pública"],
+        "Sanidad": ["healthcare", "health sector"],
+        "Retail": ["retail"],
+        "Industria": ["industrial", "manufacturing"],
+        "Energía / utilities": ["energy", "utilities"],
+        "Telecomunicaciones": ["telecom", "telco"],
+        "Transporte": ["transport", "mobility"],
+        "Educación": ["education", "university"],
+    },
+    "job_profiles": {
+        "Security Engineer / Analyst": ["security engineer", "security analyst", "soc analyst"],
+        "Network Engineer": ["network engineer"],
+        "Cloud Engineer / Architect": ["cloud engineer", "cloud architect"],
+        "Solution Architect": ["solution architect", "solutions architect"],
+        "Consultoría": ["consultant", "consultor"],
+        "Preventa": ["presales", "pre-sales", "preventa"],
+    },
+}
+
+def _research_blob(ev: dict[str, Any]) -> str:
+    return norm(" ".join(str(ev.get(k) or "") for k in ("title","snippet","summary","url","headings")))
+
+def _labels_from_taxonomy(ev: dict[str, Any], dimension: str) -> list[str]:
+    blob = f" {_research_blob(ev)} "
+    labels=[]
+    for label, terms in PROFILE_TAXONOMY.get(dimension, {}).items():
+        if any(norm(term) in blob for term in terms): labels.append(label)
+    return labels
+
+def enrich_entity_profiles(data: dict[str, Any]) -> dict[str, Any]:
+    """Promote official entity-profile evidence gathered by the research engine.
+
+    Crucially, jobs can fill job fields but never create a partner relationship.
+    Partner/vendor edges require a vendor mention on a non-job official entity page.
+    """
+    research=load('data/research.latest.json',{})
+    evidence_rows=research.get('evidence') or []
+    manufacturer_by_key={canonical(r.get('name')):r for r in data.get('manufacturers',[]) if r.get('name')}
+    stats={'official_profile_evidence':0,'integrator_fields_enriched':0,'distributor_fields_enriched':0,'relationship_edges_promoted':0}
+    sections={'integrator':'integrators','distributor':'distributors'}
+    for kind,section in sections.items():
+        rows={canonical(r.get('name')):r for r in data.get(section,[]) if r.get('name')}
+        for raw in evidence_rows:
+            if raw.get('entityKind') != kind or not raw.get('sourceEntity'): continue
+            row=rows.get(canonical(raw.get('sourceEntity')));
+            if not row: continue
+            tier=norm(raw.get('sourceTier')); engine=norm(raw.get('engine'))
+            if tier not in {'official company','official-company'} and 'official ecosystem sitemap' not in engine: continue
+            ev=ev_obj(raw); dims=set(raw.get('profileDimensions') or []); stats['official_profile_evidence']+=1
+            touched=set()
+            for dim in ('services','capabilities','verticals','job_profiles'):
+                if dim not in dims: continue
+                for label in _labels_from_taxonomy(raw,dim):
+                    _merge_field_list(row,dim,label,ev,.86 if dim!='job_profiles' else .72); touched.add(dim)
+            if 'public_cases' in dims:
+                title=str(raw.get('title') or '').strip()
+                if title and len(title)>8:
+                    _merge_field_list(row,'public_cases',title[:160],ev,.84); touched.add('public_cases')
+            if 'specializations' in dims:
+                title=str(raw.get('title') or '').strip()
+                if title and len(title)>8:
+                    _merge_field_list(row,'specializations',title[:150],ev,.82); touched.add('specializations')
+            # Employment pages are valuable for technology demand, but never prove partnership.
+            if 'job_profiles' in dims:
+                blob=_research_blob(raw)
+                for m in data.get('manufacturers',[]):
+                    mname=str(m.get('name') or ''); aliases=[canonical(mname), canonical(mname.split('/',1)[0])]
+                    if any(a and len(a)>=3 and a in blob for a in aliases):
+                        _merge_field_list(row,'job_vendors',f"{mname} · señal de empleo",ev,.62); touched.add('job_vendors')
+            vendor=raw.get('vendor')
+            if vendor and 'job_profiles' not in dims:
+                m=manufacturer_by_key.get(canonical(vendor))
+                if m:
+                    if kind=='integrator':
+                        before=len(_field_value(row,'vendor_relations') or [])
+                        _merge_field_list(row,'vendor_relations',f"{m.get('name')} · evidencia oficial",ev,.90)
+                        _merge_field_list(m,'integrators',f"{row.get('name')} · evidencia oficial",ev,.90)
+                        if len(_field_value(row,'vendor_relations') or [])>before: stats['relationship_edges_promoted']+=1
+                        touched.add('vendor_relations')
+                    else:
+                        before=len(_field_value(row,'vendor_relations') or [])
+                        _merge_field_list(row,'vendor_relations',f"{m.get('name')} · portfolio oficial",ev,.90)
+                        if len(_field_value(row,'vendor_relations') or [])>before: stats['relationship_edges_promoted']+=1
+                        touched.add('vendor_relations')
+            stats[f'{kind}_fields_enriched']+=len(touched)
+        # Distributor overlap is a derived intersection of validated vendor relations and active Westcon portfolio.
+        if kind=='distributor':
+            for row in rows.values():
+                rels=_field_value(row,'vendor_relations') or []; rels=rels if isinstance(rels,list) else [rels]
+                for rel in rels:
+                    head=str(rel).split('·',1)[0].strip(); m=manufacturer_by_key.get(canonical(head))
+                    if m:
+                        evs=_field_evidence(row,'vendor_relations')
+                        if evs: _merge_field_list(row,'westcon_overlap',m.get('name'),evs[0],.88)
+    return stats
+
+
+def enrich_private_accounts(data: dict[str, Any]) -> dict[str, int]:
+    research=load('data/research.latest.json',{})
+    rows={canonical(r.get('name')):r for r in data.get('clients_private',[]) if r.get('name')}
+    manufacturers={canonical(r.get('name')):r.get('name') for r in data.get('manufacturers',[]) if r.get('name')}
+    stats={'official_pages':0,'technology_fields':0,'hiring_fields':0,'vendor_fit_signals':0}
+    for raw in research.get('evidence') or []:
+        if raw.get('entityKind')!='client' or not raw.get('sourceEntity'): continue
+        row=rows.get(canonical(raw.get('sourceEntity')));
+        if not row: continue
+        tier=norm(raw.get('sourceTier')); engine=norm(raw.get('engine'))
+        if tier not in {'official company','official-company'} and 'official ecosystem sitemap' not in engine: continue
+        ev=ev_obj(raw); dims=set(raw.get('profileDimensions') or []); stats['official_pages']+=1
+        tech=[]
+        for dim in ('capabilities','services'):
+            tech.extend(_labels_from_taxonomy(raw,dim))
+        for label in dict.fromkeys(tech):
+            _merge_field_list(row,'technology_signals',label,ev,.84);stats['technology_fields']+=1
+        if 'job_profiles' in dims:
+            jobs=_labels_from_taxonomy(raw,'job_profiles')
+            if not jobs: jobs=['Tecnología / IT · vacantes observadas']
+            for label in jobs:
+                _merge_field_list(row,'hiring_signals',label,ev,.72);stats['hiring_fields']+=1
+        vendor=raw.get('vendor')
+        if vendor and 'job_profiles' not in dims:
+            m=manufacturers.get(canonical(vendor))
+            if m:
+                _merge_field_list(row,'westcon_fit',m,ev,.86);stats['vendor_fit_signals']+=1
+        if tech or 'public_cases' in dims:
+            title=str(raw.get('title') or '').strip()
+            note=(title[:180] if title else 'Señal tecnológica observada en fuente corporativa oficial.')
+            _merge_field_list(row,'opportunity_notes',note,ev,.78)
+    return stats
 
 
 def mark_direct_sales(data: dict[str, Any]) -> int:
@@ -433,19 +592,19 @@ def build() -> dict[str, Any]:
     data['meta']['portfolio_fit_cleanup']['removed_nonportfolio_private'] += second['removed_nonportfolio_private']
     data['meta']['public_procurement']=build_public_procurement(data)
     data['meta']['integrator_graph']=expand_integrator_graph(data)
+    data['meta']['entity_profile_enrichment']=enrich_entity_profiles(data)
+    data['meta']['private_account_enrichment']=enrich_private_accounts(data)
     data['meta']['direct_sales_manufacturers']=mark_direct_sales(data)
     return data
 
 
 def write_snapshot(data: dict[str, Any]) -> dict[str, Any]:
-    write('data/v312/intelligence.json',data)
-    legacy_gaps=load('data/v39/research_gaps.json',{}) or load('data/v38/research_gaps.json',{}) or {}
+    write('data/v313/intelligence.json',data)
+    gaps=build_gaps(data)
     graph=data.get('meta',{}).get('integrator_graph',{}) or {}
-    write('data/v312/research_gaps.json',{
-        **legacy_gaps,'version':VERSION,
-        'note':'v3.12 prioriza huecos de ecosistema fabricante↔integrador, clasificación positiva de mayoristas, grandes cuentas IBEX/PSI y contratación exacta ES/PT.',
-        'v312_priority_manufacturers':graph.get('manufacturers_below_3_integrators',[]),
-    })
+    gaps['note']='v3.13 calcula los huecos sobre el dataset actual y prioriza perfiles de integrador/mayorista, ecosistema, grandes cuentas y contratación. No hereda el contador 559 de versiones anteriores.'
+    gaps['v313_priority_manufacturers']=graph.get('manufacturers_below_3_integrators',[])
+    write('data/v313/research_gaps.json',gaps)
     traceable_fields=sum(1 for section in ('manufacturers','distributors','integrators','clients_public','clients_private','trends','architectures') for row in data.get(section,[]) or [] for spec in (row.get('fields') or {}).values() if spec and spec.get('evidence'))
     result={
         'version':VERSION,'generated_at':data['meta']['generated_at'],'finished_at':data['meta']['generated_at'],'profile':'snapshot','status':'published',
@@ -453,12 +612,13 @@ def write_snapshot(data: dict[str, Any]) -> dict[str, Any]:
         'clients':len(data.get('clients_public') or [])+len(data.get('clients_private') or []),'clients_public':len(data.get('clients_public') or []),'clients_private':len(data.get('clients_private') or []),
         'clients_private_es':data['meta']['private_account_universe'].get('ibex35',0),'clients_private_pt':data['meta']['private_account_universe'].get('psi',0),
         'trends':len(data.get('trends') or []),'architectures':len(data.get('architectures') or []),'source_count':len(data.get('source_catalog') or []),'traceable_fields':traceable_fields,
-        'research_gaps':legacy_gaps.get('total_gaps',0),'high_priority_research_gaps':legacy_gaps.get('high_priority_gaps',0),
+        'research_gaps':gaps.get('total_gaps',0),'high_priority_research_gaps':gaps.get('high_priority_gaps',0),
+        'gap_by_section':gaps.get('by_section',{}),'gap_missing_by_field':gaps.get('missing_by_field',{}),
         'distributor_validation':data['meta'].get('distributor_validation'), 'portfolio_fit_cleanup':data['meta'].get('portfolio_fit_cleanup'),
         'public_procurement':data['meta'].get('public_procurement'),'integrator_graph':data['meta'].get('integrator_graph'),
         'research_policy':{'distributors':'positive-validation-first','public_procurement':'exact-link-only','private_accounts':'IBEX35+PSI-complete','ecosystem':'bidirectional-evidence-first'},
     }
-    write('data/v312/last_run.json',result); return result
+    write('data/v313/last_run.json',result); return result
 
 
 if __name__=='__main__':

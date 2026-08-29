@@ -49,18 +49,19 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 BASE = json.loads((ROOT / "data/base.json").read_text(encoding="utf-8"))
 CFG = json.loads((ROOT / "config/research_queries.json").read_text(encoding="utf-8"))
 REG = json.loads((ROOT / "config/source_registry.json").read_text(encoding="utf-8"))
-DEEP_PATH = ROOT / "config/v312/deep_research.json"
+DEEP_PATH = ROOT / "config/v313/deep_research.json"
 if not DEEP_PATH.exists():
     DEEP_PATH = ROOT / "config/v38/deep_research.json"
 DEEP = json.loads((DEEP_PATH if DEEP_PATH.exists() else ROOT / "config/deep_research.json").read_text(encoding="utf-8"))
 UNIVERSE_PATH = ROOT / "config/source_universe.json"
 UNIVERSE = json.loads(UNIVERSE_PATH.read_text(encoding="utf-8")) if UNIVERSE_PATH.exists() else {}
-V36_PORTAL_PATH = ROOT / "config/v312/vendor_portal_intelligence.json"
+V36_PORTAL_PATH = ROOT / "config/v313/vendor_portal_intelligence.json"
 if not V36_PORTAL_PATH.exists():
     V36_PORTAL_PATH = ROOT / "config/v38/vendor_portal_intelligence.json"
 V36_PORTALS = json.loads(V36_PORTAL_PATH.read_text(encoding="utf-8")) if V36_PORTAL_PATH.exists() else {"seeds": []}
-V312_INTEGRATOR_UNIVERSE = json.loads((ROOT / "config/v312/integrator_universe.json").read_text(encoding="utf-8")) if (ROOT / "config/v312/integrator_universe.json").exists() else {"entities": []}
-V312_DISTRIBUTOR_REGISTRY = json.loads((ROOT / "config/v312/distributor_registry.json").read_text(encoding="utf-8")) if (ROOT / "config/v312/distributor_registry.json").exists() else {"entries": []}
+V313_INTEGRATOR_UNIVERSE = json.loads((ROOT / "config/v313/integrator_universe.json").read_text(encoding="utf-8")) if (ROOT / "config/v313/integrator_universe.json").exists() else {"entities": []}
+V313_DISTRIBUTOR_REGISTRY = json.loads((ROOT / "config/v313/distributor_registry.json").read_text(encoding="utf-8")) if (ROOT / "config/v313/distributor_registry.json").exists() else {"entries": []}
+V313_PRIVATE_ACCOUNT_DOMAINS = json.loads((ROOT / "config/v313/private_account_domains.json").read_text(encoding="utf-8")) if (ROOT / "config/v313/private_account_domains.json").exists() else {"domains": {}}
 CURATED = json.loads((ROOT / "data/curated_evidence.json").read_text(encoding="utf-8"))
 ECOSYSTEM = json.loads((ROOT / "data/ecosystem.json").read_text(encoding="utf-8"))
 VENDOR_INTEL = json.loads((ROOT / "data/vendor_intelligence.json").read_text(encoding="utf-8"))
@@ -76,7 +77,7 @@ SOURCE_HEALTH_OUT = ROOT / "data/source_health.json"
 ERRORS_OUT = ROOT / "data/research_errors.json"
 RUN_MANIFEST_OUT = ROOT / "data/run_manifest.latest.json"
 DYNAMIC_ENTITIES_OUT = ROOT / "data/discovered_entities.json"
-V38_GAPS_OUT = ROOT / "data/v38/research_gaps.json"
+V38_GAPS_OUT = ROOT / "data/v313/research_gaps.json"
 HISTORY = ROOT / "data/history"
 HISTORY.mkdir(parents=True, exist_ok=True)
 NOW = dt.datetime.now(dt.timezone.utc)
@@ -97,8 +98,8 @@ for _kind, _key, _domain_key in (("distributors", "known_distributors", "distrib
     CFG[_domain_key] = {**{x.get("name"): x.get("domain") for x in _rows if x.get("name") and x.get("domain")}, **CFG.get(_domain_key, {})}
 
 # v3.12 expands the explicit research universe without treating discovery as proof.
-CFG["known_integrators"] = list(dict.fromkeys([*CFG.get("known_integrators", []), *[x for x in V312_INTEGRATOR_UNIVERSE.get("entities", []) if x]]))
-CFG["known_distributors"] = list(dict.fromkeys([*CFG.get("known_distributors", []), *[x.get("name") for x in V312_DISTRIBUTOR_REGISTRY.get("entries", []) if x.get("name")]]))
+CFG["known_integrators"] = list(dict.fromkeys([*CFG.get("known_integrators", []), *[x for x in V313_INTEGRATOR_UNIVERSE.get("entities", []) if x]]))
+CFG["known_distributors"] = list(dict.fromkeys([*CFG.get("known_distributors", []), *[x.get("name") for x in V313_DISTRIBUTOR_REGISTRY.get("entries", []) if x.get("name")]]))
 
 
 _max_runtime_arg = next((x.split("=", 1)[1] for x in os.sys.argv[1:] if x.startswith("--max-runtime=")), "")
@@ -232,7 +233,7 @@ def source_tier(url: str) -> str:
         for d in tier.get("domains", []):
             if h == d or h.endswith("." + d):
                 return tier["id"]
-    official_domains = set(CFG.get("vendor_domains", {}).values()) | set(CFG.get("distributor_domains", {}).values()) | set(CFG.get("integrator_domains", {}).values())
+    official_domains = set(CFG.get("vendor_domains", {}).values()) | set(CFG.get("distributor_domains", {}).values()) | set(CFG.get("integrator_domains", {}).values()) | set((V313_PRIVATE_ACCOUNT_DOMAINS.get('domains') or {}).values())
     analyst_domains = set(CFG.get("analyst_domains", {}).values())
     institutional_domains = {x.get('domain'): x.get('type','') for x in UNIVERSE.get('institutionalSources',[]) if x.get('domain')}
     if any(h == d or h.endswith("." + d) for d in official_domains if d):
@@ -837,13 +838,29 @@ def official_entity_sitemap_evidence(entity_domains: dict, entity_kind: str, bud
             matches=[]
             for vendor,terms in vendor_terms:
                 if any(t and t in text for t in terms[:5]): matches.append(vendor)
-            if not matches: continue
             cc=infer_country_from_url(row.get('url',''))
-            for vendor in matches[:4]:
-                r=dict(row)
-                r.update({'vendor':vendor,'country':cc or 'ALL','kind':f'official-{entity_kind}-crawl','engine':'official-ecosystem-sitemap','sourceEntity':entity})
-                r['snippet']=clean(f"{entity_kind}: {entity}. {r.get('snippet','')}")
-                if entity_kind=='integrator': r['winner']=entity
+            # v3.13: an official entity page is useful even when it does not mention a tracked
+            # Westcon vendor. This fills services, capabilities, verticals, cases and jobs
+            # instead of discarding the majority of high-value entity pages.
+            profile_rules={
+                'services':['managed service','managed-services','professional service','consulting','support service','implementation','integration service','cloud service','security service','network service','servicios','servicos'],
+                'capabilities':['soc','noc','mssp','msp','cloud migration','cybersecurity','ciberseguridad','networking','observability','automation','zero trust','sase','data center','datacenter','identity','ot security','iot'],
+                'specializations':['certified','certification','specialization','specialisation','competency','competence','accreditation','gold partner','platinum','premier partner'],
+                'verticals':['financial','banking','finance','public sector','government','healthcare','health','retail','industry','industrial','energy','utilities','telco','telecom','transport','education'],
+                'public_cases':['case study','case-study','customer story','success story','reference','caso de exito','caso de éxito'],
+                'job_profiles':['career','careers','jobs','vacancies','talent','empleo','emprego','carreiras','trabaja con nosotros'],
+                'vendor_relations':['technology partners','partners','alliances','vendors','portfolio','linecard','line-card','fabricantes','marcas'],
+            }
+            dimensions=[dim for dim,terms in profile_rules.items() if any(norm(term) in text for term in terms)]
+            if not matches and not dimensions: continue
+            base=dict(row)
+            base.update({'country':cc or 'ALL','kind':f'official-{entity_kind}-profile','engine':'official-ecosystem-sitemap','sourceEntity':entity,'entityKind':entity_kind,'profileDimensions':dimensions})
+            base['snippet']=clean(f"{entity_kind}: {entity}. {base.get('snippet','')}")
+            if entity_kind=='integrator': base['winner']=entity
+            out.append(base)
+            # Vendor matches are emitted independently so relationship evidence remains precise.
+            for vendor in matches[:6]:
+                r=dict(base); r.update({'vendor':vendor,'kind':f'official-{entity_kind}-crawl'})
                 out.append(r)
     return out
 
@@ -1613,6 +1630,17 @@ def make_queries() -> list[dict]:
                 for rival in rivals:
                     generated.append({"query":f'"{rival}" "{b["name"]}" {country_word} case study contract deployment',"kind":"buyer-competitive-followup","vendor":vendor,"country":cc,"intent":"attack","priority":74+max(0,b.get('priority',0)//5)})
 
+    # v3.13 large-account research: all IBEX 35 + PSI accounts get recurring official-domain and public-web routes.
+    private_accounts=list((V313_PRIVATE_ACCOUNT_DOMAINS.get('domains') or {}).items())
+    if private_accounts:
+        max_accounts=18 if PROFILE=='daily' else len(private_accounts)
+        offset=int(sha('private-accounts',str(NOW.isocalendar().week))[:6],16)%len(private_accounts)
+        selected=[private_accounts[(offset+i)%len(private_accounts)] for i in range(min(max_accounts,len(private_accounts)))]
+        for account,domain in selected:
+            for term in ['cybersecurity cloud networking infrastructure digital transformation','technology partners vendor case study','careers jobs security cloud network architect engineer','SOC NOC managed services observability','annual report technology investment digital risk']:
+                generated.append({'query':f'site:{domain} {term}','kind':'private-account-profile','country':'ALL','intent':'customers','entity':account,'priority':93})
+            generated.append({'query':f'"{account}" Spain Portugal cybersecurity cloud network technology project 2026','kind':'private-account-profile','country':'ALL','intent':'customers','entity':account,'priority':82})
+
     # Pairwise competitive intelligence: displacement, migration, TCO, integrators and customer proof.
     vi={x.get('name'):x for x in VENDOR_INTEL.get('vendors',[])}
     for vendor in active_vendor_names():
@@ -1721,7 +1749,8 @@ def to_evidence(x: dict, qrow: dict | None = None) -> dict:
         'buyer':x.get('buyer'),'winner':x.get('winner'),'winners':x.get('winners') or ([x.get('winner')] if x.get('winner') else []),
         'contractId':x.get('contractId'),'status':x.get('status'),'cpv':x.get('cpv') or [],'estimatedValue':x.get('estimatedValue'),'awardedValue':x.get('awardedValue'),'currency':x.get('currency'),
         'awardDate':x.get('awardDate'),'technologyMatches':x.get('technologyMatches') or [],'sector':x.get('sector'),'object':x.get('object'),'procurementAttribution':x.get('procurementAttribution'),'sourceKind':x.get('sourceKind'),
-        'links':x.get('links') or [],'headings':x.get('headings') or [],'candidateConfidenceCap':x.get('candidateConfidenceCap'),'candidateMethod':x.get('candidateMethod'),'candidateHref':x.get('candidateHref')
+        'links':x.get('links') or [],'headings':x.get('headings') or [],'candidateConfidenceCap':x.get('candidateConfidenceCap'),'candidateMethod':x.get('candidateMethod'),'candidateHref':x.get('candidateHref'),
+        'sourceEntity':x.get('sourceEntity'),'entityKind':x.get('entityKind'),'profileDimensions':x.get('profileDimensions') or [],'pageRole':x.get('pageRole')
     }
 
 
@@ -2131,12 +2160,14 @@ def main() -> None:
         stage_end(row,started,'deferred')
     else:
         try:
-            budget=int(BUDGETS.get('ecosystem_sitemap_pages_max',0));dist_budget=budget//2;int_budget=budget-dist_budget
+            budget=int(BUDGETS.get('ecosystem_sitemap_pages_max',0));dist_budget=budget//4;client_budget=budget//4;int_budget=budget-dist_budget-client_budget
             dist=official_entity_sitemap_evidence(CFG.get('distributor_domains',{}),'distributor',dist_budget)
             integ=[] if should_stop(300) else official_entity_sitemap_evidence(CFG.get('integrator_domains',{}),'integrator',int_budget)
+            clients=[] if should_stop(240) else official_entity_sitemap_evidence(V313_PRIVATE_ACCOUNT_DOMAINS.get('domains',{}),'client',client_budget)
             for x in dist: evidence.append(to_evidence(x,{'vendor':x.get('vendor'),'kind':'official-distributor-crawl','country':x.get('country'),'query':f"official distributor crawl {x.get('sourceEntity','')}"}))
             for x in integ: evidence.append(to_evidence(x,{'vendor':x.get('vendor'),'kind':'official-integrator-crawl','country':x.get('country'),'query':f"official integrator crawl {x.get('sourceEntity','')}"}))
-            stage_end(row,started,'partial' if not integ and int_budget else 'completed',distributorSignals=len(dist),integratorSignals=len(integ))
+            for x in clients: evidence.append(to_evidence(x,{'vendor':x.get('vendor'),'kind':'official-client-crawl','country':x.get('country'),'query':f"official private-account crawl {x.get('sourceEntity','')}"}))
+            stage_end(row,started,'partial' if not integ and int_budget else 'completed',distributorSignals=len(dist),integratorSignals=len(integ),privateAccountSignals=len(clients))
         except Exception as exc:
             trace_error('ecosystem-official-crawl',exc);stage_end(row,started,'degraded')
 
