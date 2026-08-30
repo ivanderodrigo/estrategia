@@ -7,7 +7,7 @@ on:
     paths:
       - "index.html"
       - "assets/**"
-      - "data/v314/**"
+      - "data/v315/**"
       - ".github/workflows/pages-deploy.yml"
   workflow_run:
     workflows:
@@ -44,7 +44,7 @@ jobs:
           mkdir -p _site/data
           cp index.html _site/
           cp -R assets _site/assets
-          cp -R data/v314 _site/data/v314
+          cp -R data/v315 _site/data/v315
           [ -f CNAME ] && cp CNAME _site/CNAME || true
           touch _site/.nojekyll
       - name: Configurar GitHub Pages

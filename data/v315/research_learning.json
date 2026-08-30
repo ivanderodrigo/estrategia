@@ -1,0 +1,32 @@
+{
+  "version": "3.15.0",
+  "updated_at": "2026-08-30T17:20:00Z",
+  "iterations": 2,
+  "summary": {
+    "entities_enriched": 21,
+    "fields_enriched": 50,
+    "newly_populated_fields": 44,
+    "values_added": 124,
+    "new_source_routes": 66,
+    "errors_isolated": 0,
+    "duplicates_rejected": 8
+  },
+  "strategy_performance": {
+    "fuente oficial directa": {"attempts": 21, "useful": 16, "priority_next_run": 1},
+    "fuentes oficiales relacionadas": {"attempts": 12, "useful": 5, "priority_next_run": 3},
+    "web específica": {"attempts": 21, "useful": 13, "priority_next_run": 2},
+    "variantes semánticas": {"attempts": 15, "useful": 7, "priority_next_run": 4},
+    "idioma alternativo": {"attempts": 12, "useful": 6, "priority_next_run": 5},
+    "PDFs y documentación": {"attempts": 9, "useful": 3, "priority_next_run": 7},
+    "directorios de partners": {"attempts": 10, "useful": 6, "priority_next_run": 6},
+    "casos de éxito": {"attempts": 8, "useful": 1, "priority_next_run": 11},
+    "empleo": {"attempts": 13, "useful": 6, "priority_next_run": 8},
+    "contratación pública": {"attempts": 7, "useful": 1, "priority_next_run": 12},
+    "prensa especializada": {"attempts": 14, "useful": 5, "priority_next_run": 9},
+    "entidades relacionadas": {"attempts": 10, "useful": 3, "priority_next_run": 10},
+    "archivo e histórico": {"attempts": 5, "useful": 0, "priority_next_run": 15},
+    "relaciones del grafo": {"attempts": 8, "useful": 2, "priority_next_run": 13},
+    "corroboración": {"attempts": 11, "useful": 2, "priority_next_run": 14}
+  },
+  "policy": "El rendimiento solo reordena estrategias. Ninguna fuente se elimina por fallos temporales y ningún resultado vacío cierra un gap."
+}

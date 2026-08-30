@@ -1,0 +1,15 @@
+{
+  "version": "3.15.0",
+  "passes_per_gap": 15,
+  "languages": ["es", "pt", "en"],
+  "timeouts_seconds": 20,
+  "retries": 3,
+  "backoff_seconds": [2, 5, 15],
+  "circuit_breaker": {"failure_threshold": 5, "cooldown_seconds": 900},
+  "concurrency": {"global": 8, "per_domain": 2},
+  "checkpoint_every_results": 25,
+  "resume": true,
+  "incremental": true,
+  "close_gap_only_with_sufficient_evidence": true,
+  "zero_results_keep_gap_open": true
+}
