@@ -77,7 +77,7 @@ SOURCE_HEALTH_OUT = ROOT / "data/source_health.json"
 ERRORS_OUT = ROOT / "data/research_errors.json"
 RUN_MANIFEST_OUT = ROOT / "data/run_manifest.latest.json"
 DYNAMIC_ENTITIES_OUT = ROOT / "data/discovered_entities.json"
-V38_GAPS_OUT = ROOT / "data/v313/research_gaps.json"
+V38_GAPS_OUT = ROOT / "data/v314/research_gaps.json"
 HISTORY = ROOT / "data/history"
 HISTORY.mkdir(parents=True, exist_ok=True)
 NOW = dt.datetime.now(dt.timezone.utc)

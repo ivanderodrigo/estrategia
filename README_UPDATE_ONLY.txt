@@ -1,25 +1,16 @@
-UPDATE ONLY v3.13.0
+WESTCON IBERIA BUSINESS INTELLIGENCE · UPDATE ONLY v3.14.0
 
-IMPORTANTE: si la v3.12 está staged pero todavía no se ha hecho commit, NO hagas un commit intermedio.
-La v3.13 puede instalarse directamente encima y terminar en un único commit v3.13.
+Baseline requerida: v3.13.0.
 
-1. Copia el contenido del ZIP encima del repositorio actual SIN borrar .git.
+Opción recomendada:
+1. Descomprime Westcon_v3.14.0_UPDATE_ONLY.zip fuera del repositorio.
+2. Ejecuta:
+   python aplicar_v314.py --repo "C:\Users\ivand\Downloads\estrategia"
+3. El instalador exige que exista .git, comprueba VERSION=3.13.0 o 3.14.0, copia solo el payload v3.14 y ejecuta la validación.
+4. Después:
+   cd C:\Users\ivand\Downloads\estrategia
+   python -m unittest tests/test_v314.py -v
+   python scripts/v314/validate_v314.py
+   node tests/ui_smoke_v314.js
 
-2. Limpia los artefactos activos de v3.12:
-
-   powershell -ExecutionPolicy Bypass -File tools/cleanup_v313.ps1
-
-3. Reconstruye y valida sobre TU dataset real:
-
-   $env:PYTHONPATH="scripts"
-   python scripts/v313/build_intelligence.py
-   python -m unittest tests/test_v313.py
-   python scripts/v313/validate_v313.py
-   node --check assets/v313/intelligence.js
-   node tests/ui_smoke_v313.js
-
-4. Comprueba:
-
-   git status
-
-No hagas commit/push hasta revisar los recuentos y la nueva cola dinámica de investigación.
+No borra .git ni toca el remoto. No hace commit ni push.
