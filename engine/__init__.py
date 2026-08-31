@@ -1,2 +1,2 @@
-"""Westcon Iberia Decision Intelligence canonical v3.19 engine."""
-VERSION='3.19.0'
+"""Canonical engine for Westcon Iberia Decision Intelligence."""
+VERSION = "3.20.0"

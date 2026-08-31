@@ -1,9 +1,7 @@
 # Problemas conocidos y deuda restante
 
-- Quedan **1450 gaps totales**; esta release prioriza Mayoristas y arquitectura. Integradores (737) es la siguiente bolsa de mayor impacto.
-- En Mayoristas quedan **190 gaps**; 163 corresponden a empleo o facturación. Se mantienen abiertos si no hay evidencia suficiente.
-- Line cards aún abiertas: Aicox Soluciones, CloudIT, IREO, Lidera Networks, SCE, Tempel.
-- El catálogo NEXUS/Soon contiene evidencia corporativa histórica que debe revalidarse periódicamente.
-- Dominios con JS, login, anti-bot o robots restrictivos pueden requerir fuentes relacionadas, PDFs, directorios oficiales o investigación externa.
-- El crawler de GitHub Actions es deliberadamente gratuito y respetuoso; no depende de APIs de buscador de pago.
-- No se asigna automáticamente “No consta evidencia pública” por cero resultados. Ese estado exige profundidad registrada en ledger.
+- Gaps totales: **1398**.
+- Integradores: **687**; principalmente empleo, casos, verticales y capacidades.
+- Mayoristas: **190**; predominan empleo y facturación donde la evidencia pública suficiente no está disponible.
+- El research automático no sustituye corroboración humana en señales débiles.
+- Algunas webs con JS, WAF o robots pueden requerir fuentes oficiales relacionadas/partner directories como fallback.

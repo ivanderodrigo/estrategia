@@ -41,7 +41,7 @@ def _query(entity:str,field_id:str,pass_no:int,scope:str)->str:
 def research_plan(section:str,row:Mapping[str,Any],field_id:str)->list[dict[str,Any]]:
  entity=str(row.get('name') or '');scope=_scope(row)
  return [{'pass':i,'strategy':PASS_NAMES[i-1],'query':_query(entity,field_id,i,scope),'languages':['es','pt','en'],'source_family':PASS_NAMES[i-1],'objective':'confirm' if i<31 else ('corroborate' if i in {31,47} else 'challenge' if i in {32,48} else 'expand')} for i in range(1,49)]
-def build_gaps(public:Mapping[str,Any],version:str='3.19.0')->dict[str,Any]:
+def build_gaps(public:Mapping[str,Any],version:str='3.20.0')->dict[str,Any]:
  gaps=[];missing=Counter();critical=Counter();states=Counter();expected=Counter();populated=Counter()
  for section in SECTIONS:
   schema={c.get('id'):c for c in (public.get('schemas') or {}).get(section,[]) if c.get('id')}

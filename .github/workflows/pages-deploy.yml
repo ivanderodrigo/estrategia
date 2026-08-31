@@ -1,9 +1,8 @@
-
 name: Deploy Pages
 on:
   push:
     branches: [main]
-    paths: ["index.html","404.html","assets/**","data/current/intelligence.json","data/current/last_run.json"]
+    paths: ["index.html","404.html","assets/**","data/public/**"]
   workflow_dispatch:
 permissions:
   contents: read
@@ -18,17 +17,24 @@ jobs:
       name: github-pages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -r requirements.txt
       - uses: actions/configure-pages@v5
       - name: Validate
-        run: python scripts/validate.py
+        run: |
+          python scripts/validate_workflows.py
+          python scripts/validate.py
       - name: Build public site
         run: |
-          mkdir -p _site/assets/app _site/data/current
+          mkdir -p _site/assets/app _site/data/public
           cp index.html 404.html _site/
           cp assets/favicon.svg _site/assets/
           cp assets/app/intelligence.css assets/app/intelligence.js _site/assets/app/
-          cp data/current/intelligence.json data/current/last_run.json _site/data/current/
+          cp -R data/public/* _site/data/public/
           [ -f CNAME ] && cp CNAME _site/CNAME || true
       - uses: actions/upload-pages-artifact@v3
         with:

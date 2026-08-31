@@ -49,7 +49,7 @@ def build_graph(data):
             item['confidence']=max(float(item.get('confidence') or 0),float(confidence or 0))
             if status=='CONFIRMADO':item['status']='CONFIRMADO'
             item['derived']=bool(item.get('derived')) and bool(derived)
-    seed_path=ROOT/'config/current/migrated_relationships.json'
+    seed_path=ROOT/'config/current/relationship_seed.json'
     if seed_path.exists():
         for r in json.loads(seed_path.read_text(encoding='utf-8')).get('relationships',[]):
             rel=r.get('relation');kinds={'distributes':('distributor','manufacturer'),'partners_with':('integrator','manufacturer'),'technology_signal':('client','technology')}.get(rel)
@@ -65,4 +65,4 @@ def build_graph(data):
         for row in data.get(section,[]):
             f=(row.get('fields') or {}).get('technology_signals') or {};e=_evidence(f);scope=str(((row.get('fields') or {}).get('scope') or {}).get('value') or 'IBERIA')
             for tech in values(f.get('value')):add('client',row['name'],'technology_signal','technology',str(tech),scope,e,'SEÑAL',.48,True)
-    return {'version':'3.19.0','generated_at':datetime.now(timezone.utc).isoformat(),'entities':sorted(entities.values(),key=lambda x:(x['entity_type'],x['canonical_name'])),'relationships':list(rels.values()),'model':{'truth_source':'canonical relation graph','bidirectional_projection':True,'canonical_entity_ids':True,'single_edge_multi_scope':True,'weak_signals_do_not_promote':True,'v318_migrated_once':True}}
+    return {'version':'3.20.0','generated_at':datetime.now(timezone.utc).isoformat(),'entities':sorted(entities.values(),key=lambda x:(x['entity_type'],x['canonical_name'])),'relationships':list(rels.values()),'model':{'truth_source':'canonical relation graph','bidirectional_projection':True,'canonical_entity_ids':True,'single_edge_multi_scope':True,'weak_signals_do_not_promote':True,'baseline_migrated_once':True}}

@@ -1,40 +1,28 @@
-# Auditoría técnica — v3.19.0
+# Auditoría técnica — v3.20.0
+
+## Resultado
+**Quality score: 100/100 · errores: 0 · warnings: 0.**
 
 ## KEEP
-
-- `index.html`, `404.html`, `assets/app/`, `engine/`, `config/current/`, `data/current/`.
-- Workflows `pages-deploy`, `research-daily`, `research-weekly`, `research-monthly`, `quality`.
-- Fuente histórica útil únicamente cuando ha sido migrada a modelos canónicos y conserva evidencia.
-
-## REMOVE
-
-Se retiran del árbol activo, tras comprobar que el runtime y workflows no los referencian:
-
-- `assets/vXXX`, `config/vXXX`, `data/vXXX`, `scripts/vXXX`;
-- supervisores `research_supervisor_vXXX.py`;
-- tests y aplicadores de generaciones antiguas;
-- README/CHANGELOG versionados redundantes de raíz;
-- snapshots `_baseline_v314` y `_baseline_v315` embebidos en el JSON de producción;
-- outputs/cache/artefactos de investigación no necesarios en Pages.
-
-La baseline extraída ocupaba ~379 MB; el árbol canónico final queda alrededor de 25 MB sin `.git`.
+- Arquitectura canónica `engine/`, `config/current/`, `data/current/`, `assets/app/`.
+- Grafo canónico y trazabilidad campo→evidencia.
+- Motor común de tablas (Fabricantes, Integradores, Mayoristas y Clientes).
 
 ## CONSOLIDATE
-
-- Cuatro tablas → un componente reusable.
-- N generaciones de pipeline → `engine/` único.
-- N datasets versionados → `data/current/`.
-- Relaciones duplicadas por tabla/país → grafo canónico A–relación–B con scopes agregados.
-- Planes de 48 pasos repetidos en cada gap → perfil de estrategia normalizado y generado bajo demanda.
+- Research: un único planner/crawler transversal sustituye al crawler específico de Mayoristas.
+- Publicación: `data/public` es el único contrato de datos del navegador.
+- Relaciones: una arista canónica multi-scope, no copias independientes por tabla/país.
 
 ## MIGRATE
+- `migrated_relationships.json` → `relationship_seed.json`.
+- `distributor_research.json` → `curated_distributors.json`, consumido explícitamente por el pipeline.
+- UI de `data/current` → proyección pública fragmentada.
 
-- Inteligencia y relaciones válidas de v3.18 se migran una vez; el runtime v3.19 nunca lee `data/v318`.
-- Arrow Electronics se resuelve a Arrow ECS; Digicomp a CloudIT; Soon queda asociado históricamente a NEXUS Solutions.
+## REMOVE
+- `engine/research/distributor_web.py`.
+- tests/smoke específicos v3.19 sustituidos por v3.20.
+- Dependencia de `checkout@v4`.
 
 ## REVIEW
-
-- Facturación no corroborada por evidencia suficiente.
-- Empleo cuando no hay perfil nominal o tecnología explícita.
-- Seis line cards todavía sin suficiencia de evidencia.
-- Integradores y Clientes mantienen la mayoría de sus gaps heredados: próxima prioridad de profundidad.
+- Los 1398 gaps restantes siguen siendo deuda real; no se cierran por semántica ni ausencia superficial de resultados.
+- La mayor bolsa sigue en Integradores (687); el nuevo planner la prioriza automáticamente.

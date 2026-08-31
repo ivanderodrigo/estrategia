@@ -2,46 +2,20 @@
 
 ```json
 {
-  "definition": "v3.18.0 → v3.19.0 con la misma definición estricta de gap: un valor no cierra el gap sin evidencia pública suficiente.",
+  "definition": "v3.19.0 → v3.20.0 con definición estricta: un valor no cierra un gap sin evidencia pública suficiente; las señales se mantienen separadas de los hechos.",
   "before": {
-    "entities_total": 334,
-    "manufacturers": 36,
-    "distributors": 60,
-    "integrators": 130,
-    "clients_public": 30,
-    "clients_private": 51,
-    "sources": 386,
-    "domains_unique": 194,
-    "evidences": 5903,
-    "official_evidences": 3001,
-    "gaps_total": 1615,
-    "gaps_critical": 1533,
-    "gaps_by_section": {
-      "manufacturers": 217,
-      "distributors": 355,
-      "integrators": 737,
-      "clients_public": 35,
-      "clients_private": 189,
-      "trends": 63,
-      "architectures": 19
-    },
-    "relations": 711,
-    "relationship_records_legacy": 1149,
-    "manufacturer_distributor_confirmed": 236,
-    "manufacturer_integrator_confirmed": 284,
-    "client_technology_relations": 191
-  },
-  "after": {
     "entities_total": 332,
     "manufacturers": 36,
     "distributors": 58,
     "integrators": 130,
     "clients_public": 30,
     "clients_private": 51,
-    "sources": 504,
-    "domains_unique": 226,
-    "evidences": 6016,
-    "official_evidences": 3141,
+    "sources": 1009,
+    "domains_unique": 378,
+    "evidences": 1184,
+    "official_evidences": 392,
+    "fields_populated": 2765,
+    "traceable_fields": 2765,
     "gaps_total": 1450,
     "gaps_critical": 1368,
     "gaps_by_section": {
@@ -58,20 +32,53 @@
     "manufacturer_integrator_confirmed": 285,
     "client_technology_relations": 191
   },
+  "after": {
+    "entities_total": 332,
+    "manufacturers": 36,
+    "distributors": 58,
+    "integrators": 130,
+    "clients_public": 30,
+    "clients_private": 51,
+    "sources": 1043,
+    "domains_unique": 388,
+    "evidences": 1218,
+    "official_evidences": 426,
+    "fields_populated": 2798,
+    "traceable_fields": 2798,
+    "gaps_total": 1398,
+    "gaps_critical": 1318,
+    "gaps_by_section": {
+      "manufacturers": 215,
+      "distributors": 190,
+      "integrators": 687,
+      "clients_public": 35,
+      "clients_private": 189,
+      "trends": 63,
+      "architectures": 19
+    },
+    "relations": 1251,
+    "manufacturer_distributor_confirmed": 761,
+    "manufacturer_integrator_confirmed": 299,
+    "client_technology_relations": 191
+  },
   "delta": {
-    "entities_total": -2,
-    "sources": 118,
-    "domains_unique": 32,
-    "evidences": 113,
-    "official_evidences": 140,
-    "gaps_total": -165,
-    "relations": 498,
-    "manufacturer_distributor_confirmed": 497,
-    "manufacturer_integrator_confirmed": 1,
+    "entities_total": 0,
+    "sources": 34,
+    "domains_unique": 10,
+    "evidences": 34,
+    "official_evidences": 34,
+    "traceable_fields": 33,
+    "gaps_total": -52,
+    "relations": 42,
+    "manufacturer_distributor_confirmed": 28,
+    "manufacturer_integrator_confirmed": 14,
     "client_technology_relations": 0
   },
-  "gap_reduction_pct": 10.22
+  "gap_reduction_pct": 3.59,
+  "public_projection": {
+    "manifest_bytes": 340374,
+    "sections_bytes": 6198921,
+    "internal_intelligence_bytes": 11895613
+  }
 }
 ```
-
-**Nota metodológica:** v3.18 almacenaba 1.149 registros de relación con scope geográfico. Para comparar arquitectura con arquitectura, esos registros se recanonicalizaron con las mismas reglas de v3.19 y equivalen a 711 aristas únicas con evidencia válida.

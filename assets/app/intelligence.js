@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  const state = {data:null, lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, dragCol:null, resize:null, traceSource:null, helpSource:null};
+  const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, dragCol:null, resize:null, traceSource:null, helpSource:null};
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -11,14 +11,40 @@
   };
   const toast = msg => { const el=$('#toast'); if(!el) return; el.textContent=msg; el.classList.add('show'); clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove('show'),2600); };
 
+  const PUBLIC_SECTIONS=['manufacturers','distributors','integrators','clients_public','clients_private','trends','architectures'];
+  const VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors'],integradores:['integrators','manufacturers'],clientes:['clients_public','clients_private'],tendencias:['trends','manufacturers'],arquitecturas:['architectures']};
+  function hydrateEvidence(obj, registry){
+    if(Array.isArray(obj)) return obj.map(x=>hydrateEvidence(x,registry));
+    if(!obj || typeof obj!=='object') return obj;
+    const out={};
+    for(const [k,v] of Object.entries(obj)){
+      if(k==='evidence_ids') out.evidence=(v||[]).map(id=>registry[id]).filter(Boolean);
+      else out[k]=hydrateEvidence(v,registry);
+    }
+    return out;
+  }
+  async function ensureSection(section){
+    if(state.loadedSections.has(section)) return;
+    const info=state.manifest?.sections?.[section]; if(!info) throw new Error(`Sección pública no disponible: ${section}`);
+    const res=await fetch(info.file,{cache:'no-store'}); if(!res.ok) throw new Error(`No se pudo cargar ${info.file} (${res.status})`);
+    const payload=await res.json(); state.data[section]=hydrateEvidence(payload.rows||[],payload.evidence||{}); state.loadedSections.add(section);
+  }
+  async function ensureViewData(view){for(const section of (VIEW_SECTIONS[view]||[])) await ensureSection(section);}
+  async function ensureAllData(){for(const section of PUBLIC_SECTIONS) await ensureSection(section);}
+  function renderActiveView(){
+    ({fabricantes:renderManufacturers,mayoristas:renderDistributors,integradores:renderIntegrators,clientes:renderClients,tendencias:renderTrends,arquitecturas:renderArchitectures}[state.view]||(()=>{}))();
+  }
   async function load(){
     const [res, runRes] = await Promise.all([
-      fetch('data/current/intelligence.json', {cache:'no-store'}),
-      fetch('data/current/last_run.json', {cache:'no-store'}).catch(()=>null)
+      fetch('data/public/manifest.json', {cache:'no-store'}),
+      fetch('data/public/last_run.json', {cache:'no-store'}).catch(()=>null)
     ]);
-    if(!res.ok) throw new Error(`No se pudo cargar data/current/intelligence.json (${res.status})`);
-    state.data = await res.json();
+    if(!res.ok) throw new Error(`No se pudo cargar data/public/manifest.json (${res.status})`);
+    state.manifest = await res.json();
+    state.data={meta:state.manifest.meta||{},schemas:state.manifest.schemas||{},source_catalog:state.manifest.source_catalog||{}};
+    for(const section of PUBLIC_SECTIONS) state.data[section]=[];
     if(runRes?.ok){ try{ state.lastRun = await runRes.json(); }catch(_){ state.lastRun=null; } }
+    await ensureViewData(state.view);
     bind();
     renderAll();
   }
@@ -46,8 +72,8 @@
     $$('.modal').forEach(modal => modal.addEventListener('click', e => { if(e.target===modal) closeModal(modal.id); }));
     document.addEventListener('keydown', e => { if(e.key==='Escape'){ $$('.modal.open').forEach(m=>closeModal(m.id)); closeUtilityMenu(); hideTracePortal(); hideHelpPortal(); } });
     $('#sourceSearch')?.addEventListener('input', renderSourceCatalog);
-    $('#exportPdf')?.addEventListener('click', exportPdf);
-    $('#exportPptx')?.addEventListener('click', exportPptx);
+    $('#exportPdf')?.addEventListener('click', async()=>{await ensureAllData();await exportPdf();});
+    $('#exportPptx')?.addEventListener('click', async()=>{await ensureAllData();await exportPptx();});
     $('#textSmaller')?.addEventListener('click', () => changeTextScale(-0.1));
     $('#textLarger')?.addEventListener('click', () => changeTextScale(0.1));
     $('#textReset')?.addEventListener('click', resetTextScale);
@@ -103,12 +129,13 @@
     if([...sel.options].some(o=>o.value===current)) sel.value=current;
   }
 
-  function switchView(id){
+  async function switchView(id){
     state.view=id;
     $$('.view').forEach(v=>v.classList.toggle('active',v.id===id));
     $$('#tabs [data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===id));
-    closeUtilityMenu();
-    hideTracePortal();
+    closeUtilityMenu(); hideTracePortal();
+    try{await ensureViewData(id); if(id==='integradores') populateIntegratorVendorFilter(); renderActiveView();}
+    catch(err){console.error(err);toast('No se pudo cargar la sección seleccionada');}
     window.scrollTo({top:0,behavior:'smooth'});
   }
   function openModal(id){ hideTracePortal(); const el=$('#'+id); if(el){ el.classList.add('open'); el.setAttribute('aria-hidden','false'); } }
@@ -364,13 +391,14 @@
     if(label) label.textContent=finished?`Datos · ${updateProfileLabel(run.profile)} · ${ageText(finished)}`:`Datos · estado no disponible`;
     const body=$('#updateStatusBody'); if(!body)return;
     const status=run.status==='published'?'Publicado correctamente':(run.status||'Estado no disponible');
-    const counts=[['Fabricantes',run.manufacturers??state.data?.manufacturers?.length??0],['Mayoristas',run.distributors??state.data?.distributors?.length??0],['Integradores',run.integrators??state.data?.integrators?.length??0],['Clientes',run.clients??((state.data?.clients_public?.length??0)+(state.data?.clients_private?.length??0))],['Tendencias',run.trends??state.data?.trends?.length??0],['Arquitecturas',run.architectures??state.data?.architectures?.length??0]];
+    const counts=[['Fabricantes',run.manufacturers??state.manifest?.counts?.manufacturers??state.data?.manufacturers?.length??0],['Mayoristas',run.distributors??state.manifest?.counts?.distributors??state.data?.distributors?.length??0],['Integradores',run.integrators??state.manifest?.counts?.integrators??state.data?.integrators?.length??0],['Clientes',run.clients??((state.manifest?.counts?.clients_public??state.data?.clients_public?.length??0)+(state.manifest?.counts?.clients_private??state.data?.clients_private?.length??0))],['Tendencias',run.trends??state.manifest?.counts?.trends??state.data?.trends?.length??0],['Arquitecturas',run.architectures??state.manifest?.counts?.architectures??state.data?.architectures?.length??0]];
     body.innerHTML=`<div class="update-hero"><div class="update-stat primary"><b>${esc(status)}</b><span>Última publicación: ${esc(localDateTime(finished))} · ${esc(ageText(finished))} · ciclo ${esc(updateProfileLabel(run.profile))}</span></div><div class="update-stat"><b>${esc(run.sources??meta.source_count??0)}</b><span>fuentes / familias activas</span></div><div class="update-stat"><b>${esc(run.traceable_fields??'Por investigar')}</b><span>campos trazables publicados</span></div><div class="update-stat"><b>${esc(run.research_gaps??'Por investigar')}</b><span>huecos que el motor volverá a investigar</span></div></div><div class="update-cycles"><div class="update-cycle"><b>DIARIA · incremental</b><strong>06:23</strong><span>Todos los días, hora de Madrid. Busca cambios recientes, nuevas relaciones, señales, empleo, casos y evidencias que puedan modificar confianza.</span></div><div class="update-cycle"><b>SEMANAL · profunda</b><strong>Domingo 04:47</strong><span>Amplía partner locators, webs de integradores, mayoristas, clientes públicos/privados, contratación, certificaciones, servicios, casos, portales de empleo y fuentes de mercado.</span></div><div class="update-cycle"><b>MENSUAL · exhaustiva</b><strong>Día 1 · 03:17</strong><span>Revisa long-tail, huecos persistentes, nuevas entidades, tendencias, arquitecturas, evidencias envejecidas y cobertura general.</span></div></div><div class="update-scope"><div><b>Qué datos pueden cambiar</b><span>Fabricante↔integrador, fabricante↔mayorista, fabricantes de cada integrador, servicios, especializaciones, verticales, casos, certificaciones, empleo, competidores, métricas y actores de tendencias, encaje de arquitecturas, fuentes, fechas y confianza.</span></div><div><b>Cómo comprobarlo</b><span>Este botón muestra la última publicación y el tipo de ciclo. En GitHub → Actions puedes verificar research-daily, research-weekly y research-monthly y comprobar si finalizaron correctamente.</span></div><div><b>Qué ocurre con una celda vacía</b><span>No se da por buena: entra en la cola de investigación y genera nuevas rutas de búsqueda. Si aparece una señal débil puede publicarse en rojo; si se corrobora, la confianza puede subir a amarillo o verde.</span></div><div><b>Qué ocurre con evidencia antigua</b><span>El motor conserva fecha y vigencia, vuelve a sondear la relación y puede mantener, degradar o elevar su confianza según la nueva evidencia encontrada.</span></div></div><div class="update-note">Los horarios mostrados son hora local de Madrid y el workflow incluye guardia de horario de verano/invierno. La automatización actualiza inteligencia pública y trazabilidad; no genera salidas prescriptivas.</div><div class="update-scope">${counts.map(([k,v])=>`<div><b>${esc(k)}</b><span>${esc(v)} entidades en la fotografía publicada</span></div>`).join('')}</div>`;
   }
 
   function renderConfidenceGuide(){
     const el=$('#confidenceDistribution'); if(!el||!state.data)return;
     const counts={high:0,medium:0,low:0};
+    if(state.manifest?.confidence_distribution){Object.assign(counts,state.manifest.confidence_distribution);const total=Object.values(counts).reduce((a,b)=>a+b,0);const pct=n=>total?Math.round(n*100/total):0;el.innerHTML=`<div><b>Distribución publicada actual</b><span>La mezcla cambia automáticamente cuando se incorporan o revalidan evidencias.</span></div><div class="confidence-dist-bars"><span class="high" style="--pct:${pct(counts.high)}%"><b>${counts.high}</b><small>Verde · fuerte · ${pct(counts.high)}%</small></span><span class="medium" style="--pct:${pct(counts.medium)}%"><b>${counts.medium}</b><small>Amarillo · parcial · ${pct(counts.medium)}%</small></span><span class="low" style="--pct:${pct(counts.low)}%"><b>${counts.low}</b><small>Rojo · señal · ${pct(counts.low)}%</small></span></div>`;return;}
     let total=0;
     for(const section of ['manufacturers','distributors','integrators','clients_public','clients_private','trends','architectures']){
       for(const row of state.data[section]||[]){
@@ -549,7 +577,7 @@
   async function exportPdf(){
     const modules=selectedModules();if(!modules.size){toast('Selecciona al menos un área');return;}if(!window.jspdf?.jsPDF){toast('El motor PDF no está disponible');return;}
     const title=$('#reportTitle')?.value.trim()||'Westcon Iberia · Business Intelligence';closeModal('exportModal');toast('Generando PDF ejecutivo…');
-    try{const pdf=new window.jspdf.jsPDF({orientation:'landscape',unit:'mm',format:'a4',compress:true});pdf.setProperties({title,subject:'Westcon Iberia Business Intelligence',author:'Westcon Iberia'});pdfAddCover(pdf,title,modules);pdfAddExecutive(pdf);const selected=[];for(const [key,rows] of exportSections(modules)){if(!rows?.length)continue;selected.push(...rows);pdfAddDomain(pdf,key,rows);}pdfAddMethodology(pdf,selected);pdf.save('Westcon_Iberia_Business_Intelligence_v3.19.0.pdf');toast('PDF ejecutivo generado');}catch(err){console.error(err);toast('No se pudo generar el PDF');}
+    try{const pdf=new window.jspdf.jsPDF({orientation:'landscape',unit:'mm',format:'a4',compress:true});pdf.setProperties({title,subject:'Westcon Iberia Business Intelligence',author:'Westcon Iberia'});pdfAddCover(pdf,title,modules);pdfAddExecutive(pdf);const selected=[];for(const [key,rows] of exportSections(modules)){if(!rows?.length)continue;selected.push(...rows);pdfAddDomain(pdf,key,rows);}pdfAddMethodology(pdf,selected);pdf.save('Westcon_Iberia_Business_Intelligence_v3.20.0.pdf');toast('PDF ejecutivo generado');}catch(err){console.error(err);toast('No se pudo generar el PDF');}
   }
   function pptCompact(v,max=115){return compactValue(v,4,max);}
   function pptEvidenceNames(row,max=2){const names=[];for(const ev of uniqueEvidence([row],12)){const n=ev.source||ev.title;if(n&&!names.includes(n))names.push(n);if(names.length>=max)break;}return names;}
@@ -719,13 +747,12 @@
       order.forEach(([key,rows,schema])=>{if(!rows?.length)return;pptAddDomainDivider(pptx,key,rows.length);if(key==='trends'||key==='architectures')pptAddDetailSlides(pptx,key,rows,schema);else pptAddEntitySlides(pptx,key,rows,schema);});
       pptAddSources(pptx,selectedRows);
     }
-    await pptx.writeFile({fileName:'Westcon_Iberia_Business_Intelligence_v3.19.0.pptx'});closeModal('exportModal');toast(appendix?'PowerPoint ejecutivo + anexo generado':'PowerPoint ejecutivo generado');
+    await pptx.writeFile({fileName:'Westcon_Iberia_Business_Intelligence_v3.20.0.pptx'});closeModal('exportModal');toast(appendix?'PowerPoint ejecutivo + anexo generado':'PowerPoint ejecutivo generado');
   }
 
   function renderAll(){
-    populateIntegratorVendorFilter();
-    renderManufacturers(); renderDistributors(); renderIntegrators(); renderClients(); renderTrends(); renderArchitectures(); renderSourceCatalog(); renderUpdateStatus(); renderConfidenceGuide();
-    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v3.19.0 · dataset v${meta.version||'3.17.0'} · ${meta.source_count||0} fuentes/familias · ${meta.scope||'Iberia'}`;
+    populateIntegratorVendorFilter(); renderActiveView(); renderSourceCatalog(); renderUpdateStatus(); renderConfidenceGuide();
+    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v3.20.0 · dataset v${meta.version||'3.20.0'} · ${meta.source_count||0} fuentes/familias · ${meta.scope||'Iberia'}`;
   }
 
   load().catch(err => { console.error(err); const main=document.querySelector('main'); if(main) main.innerHTML=`<div class="fatal"><h1>No se pudo cargar la inteligencia</h1><p>${esc(err.message)}</p></div>`; });

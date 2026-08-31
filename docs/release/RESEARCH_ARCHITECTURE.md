@@ -1,15 +1,11 @@
-# Arquitectura del motor de investigación
+# Arquitectura de investigación v3.20
 
-1. Gap estricto → tarea activa.
-2. Prioridad por impacto de negocio y yield histórico.
-3. Dominio oficial y secciones internas primero.
-4. Sitemap/PDF/catálogos/linecards/partners/careers.
-5. Fuentes oficiales de entidades relacionadas y directorios de fabricante.
-6. Contratación pública, casos de éxito, empleo y prensa especializada.
-7. Español, portugués e inglés; aliases y nombres históricos.
-8. Nuevas entidades generan nuevas tareas.
-9. Candidatos débiles no ascienden a hechos.
-10. Grafo propaga evidencia compatible en ambos sentidos.
-11. Ledger y learning son internos; Pages publica únicamente resultados ejecutivos.
+`plan → fetch → relevance → extract → candidate evidence → validate → apply → graph → corroborate → gap → learn`
 
-El plan de estrategias está normalizado: cada gap guarda un `strategy_profile` y un `next_pass`, no 48 copias de las mismas queries. Las queries se generan bajo demanda, y las ejecuciones se registran en `research_ledger.json`.
+- HTTP 200 solo es éxito de transporte.
+- `accepted_evidences`, `fields_enriched` y gaps cerrados son KPIs de inteligencia.
+- Señal de empleo ≠ partnership.
+- Planificación adaptativa por sección, campo, prioridad y yield histórico.
+- ES/PT/EN y rutas official/partners/services/cases/careers/technology/financial/news.
+- Checkpoint durable; supervisor ejecuta research en subproceso con hard timeout.
+- Una relación nueva se proyecta en ambos sentidos desde el grafo.

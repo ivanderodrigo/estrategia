@@ -1,10 +1,8 @@
-# Relaciones nuevas y grafo
+# Relaciones canónicas
 
-| Métrica canónica | v3.18 | v3.19 | Δ |
-|---|---:|---:|---:|
-| Relaciones totales | 711 | 1209 | 498 |
-| Fabricante × Mayorista | 236 | 733 | 497 |
-| Fabricante × Integrador | 284 | 285 | 1 |
-| Cliente × Tecnología | 191 | 191 | 0 |
+- Total: **1209 → 1251**.
+- Fabricante×Mayorista confirmadas: **733 → 761**.
+- Fabricante×Integrador confirmadas: **285 → 299**.
+- Cliente×Tecnología: **191 → 191**.
 
-Cada relación contiene ID canónico de A/B, relación, scopes geográficos, evidencia, fuente, fecha, confianza, vigencia y estado. La vista inversa se deriva del mismo hecho; no existe una copia independiente por tabla.
+Una relación se almacena una sola vez y se proyecta bidireccionalmente a las vistas.
