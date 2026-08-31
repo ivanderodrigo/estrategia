@@ -1,0 +1,77 @@
+# Métricas before / after
+
+```json
+{
+  "definition": "v3.18.0 → v3.19.0 con la misma definición estricta de gap: un valor no cierra el gap sin evidencia pública suficiente.",
+  "before": {
+    "entities_total": 334,
+    "manufacturers": 36,
+    "distributors": 60,
+    "integrators": 130,
+    "clients_public": 30,
+    "clients_private": 51,
+    "sources": 386,
+    "domains_unique": 194,
+    "evidences": 5903,
+    "official_evidences": 3001,
+    "gaps_total": 1615,
+    "gaps_critical": 1533,
+    "gaps_by_section": {
+      "manufacturers": 217,
+      "distributors": 355,
+      "integrators": 737,
+      "clients_public": 35,
+      "clients_private": 189,
+      "trends": 63,
+      "architectures": 19
+    },
+    "relations": 711,
+    "relationship_records_legacy": 1149,
+    "manufacturer_distributor_confirmed": 236,
+    "manufacturer_integrator_confirmed": 284,
+    "client_technology_relations": 191
+  },
+  "after": {
+    "entities_total": 332,
+    "manufacturers": 36,
+    "distributors": 58,
+    "integrators": 130,
+    "clients_public": 30,
+    "clients_private": 51,
+    "sources": 504,
+    "domains_unique": 226,
+    "evidences": 6016,
+    "official_evidences": 3141,
+    "gaps_total": 1450,
+    "gaps_critical": 1368,
+    "gaps_by_section": {
+      "manufacturers": 217,
+      "distributors": 190,
+      "integrators": 737,
+      "clients_public": 35,
+      "clients_private": 189,
+      "trends": 63,
+      "architectures": 19
+    },
+    "relations": 1209,
+    "manufacturer_distributor_confirmed": 733,
+    "manufacturer_integrator_confirmed": 285,
+    "client_technology_relations": 191
+  },
+  "delta": {
+    "entities_total": -2,
+    "sources": 118,
+    "domains_unique": 32,
+    "evidences": 113,
+    "official_evidences": 140,
+    "gaps_total": -165,
+    "relations": 498,
+    "manufacturer_distributor_confirmed": 497,
+    "manufacturer_integrator_confirmed": 1,
+    "client_technology_relations": 0
+  },
+  "gap_reduction_pct": 10.22
+}
+```
+
+**Nota metodológica:** v3.18 almacenaba 1.149 registros de relación con scope geográfico. Para comparar arquitectura con arquitectura, esos registros se recanonicalizaron con las mismas reglas de v3.19 y equivalen a 711 aristas únicas con evidencia válida.

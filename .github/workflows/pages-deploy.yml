@@ -1,58 +1,36 @@
-name: Publicar Business Intelligence en GitHub Pages
 
+name: Deploy Pages
 on:
-  workflow_dispatch:
   push:
     branches: [main]
-    paths:
-      - "index.html"
-      - "assets/**"
-      - "data/v318/**"
-      - ".github/workflows/pages-deploy.yml"
-  workflow_run:
-    workflows:
-      - "Inteligencia pública diaria"
-      - "Investigación estratégica profunda semanal"
-      - "Inteligencia exhaustiva mensual"
-    types: [completed]
-
+    paths: ["index.html","404.html","assets/**","data/current/intelligence.json","data/current/last_run.json"]
+  workflow_dispatch:
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
   group: pages
   cancel-in-progress: true
-
 jobs:
   deploy:
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
-    runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout de la última main
-        uses: actions/checkout@v6
-        with:
-          ref: main
-          fetch-depth: 1
-      - name: Preparar sitio público mínimo
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Validate
+        run: python scripts/validate.py
+      - name: Build public site
         run: |
-          rm -rf _site
-          mkdir -p _site/data
-          cp index.html _site/
-          cp -R assets _site/assets
-          cp -R data/v318 _site/data/v318
+          mkdir -p _site/assets/app _site/data/current
+          cp index.html 404.html _site/
+          cp assets/favicon.svg _site/assets/
+          cp assets/app/intelligence.css assets/app/intelligence.js _site/assets/app/
+          cp data/current/intelligence.json data/current/last_run.json _site/data/current/
           [ -f CNAME ] && cp CNAME _site/CNAME || true
-          touch _site/.nojekyll
-      - name: Configurar GitHub Pages
-        uses: actions/configure-pages@v5
-      - name: Subir artefacto estático
-        uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
-      - name: Desplegar GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4

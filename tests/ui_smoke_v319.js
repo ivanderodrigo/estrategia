@@ -1,0 +1,1 @@
+const fs=require('fs');const s=fs.readFileSync('assets/app/intelligence.js','utf8');for(const x of ['clients_public:renderClients','clients_private:renderClients','reorderColumn','columnChooser','currentColumnWidth']){if(!s.includes(x))throw new Error('missing '+x)};console.log('UI smoke v3.19 PASS');

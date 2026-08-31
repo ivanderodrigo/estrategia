@@ -1,0 +1,118 @@
+{
+  "version": "3.19.0",
+  "status": "PRODUCTION CANDIDATE",
+  "baseline": "3.18.0",
+  "metrics": {
+    "definition": "v3.18.0 → v3.19.0 con la misma definición estricta de gap: un valor no cierra el gap sin evidencia pública suficiente.",
+    "before": {
+      "entities_total": 334,
+      "manufacturers": 36,
+      "distributors": 60,
+      "integrators": 130,
+      "clients_public": 30,
+      "clients_private": 51,
+      "sources": 386,
+      "domains_unique": 194,
+      "evidences": 5903,
+      "official_evidences": 3001,
+      "gaps_total": 1615,
+      "gaps_critical": 1533,
+      "gaps_by_section": {
+        "manufacturers": 217,
+        "distributors": 355,
+        "integrators": 737,
+        "clients_public": 35,
+        "clients_private": 189,
+        "trends": 63,
+        "architectures": 19
+      },
+      "relations": 711,
+      "relationship_records_legacy": 1149,
+      "manufacturer_distributor_confirmed": 236,
+      "manufacturer_integrator_confirmed": 284,
+      "client_technology_relations": 191
+    },
+    "after": {
+      "entities_total": 332,
+      "manufacturers": 36,
+      "distributors": 58,
+      "integrators": 130,
+      "clients_public": 30,
+      "clients_private": 51,
+      "sources": 504,
+      "domains_unique": 226,
+      "evidences": 6016,
+      "official_evidences": 3141,
+      "gaps_total": 1450,
+      "gaps_critical": 1368,
+      "gaps_by_section": {
+        "manufacturers": 217,
+        "distributors": 190,
+        "integrators": 737,
+        "clients_public": 35,
+        "clients_private": 189,
+        "trends": 63,
+        "architectures": 19
+      },
+      "relations": 1209,
+      "manufacturer_distributor_confirmed": 733,
+      "manufacturer_integrator_confirmed": 285,
+      "client_technology_relations": 191
+    },
+    "delta": {
+      "entities_total": -2,
+      "sources": 118,
+      "domains_unique": 32,
+      "evidences": 113,
+      "official_evidences": 140,
+      "gaps_total": -165,
+      "relations": 498,
+      "manufacturer_distributor_confirmed": 497,
+      "manufacturer_integrator_confirmed": 1,
+      "client_technology_relations": 0
+    },
+    "gap_reduction_pct": 10.22
+  },
+  "distributor_gap_fields_before": {
+    "job_profiles": 60,
+    "job_vendors": 60,
+    "revenue": 60,
+    "westcon_overlap": 45,
+    "specializations": 43,
+    "competitor_vendor_overlap": 42,
+    "vendor_relations": 42,
+    "services": 2,
+    "differential_capabilities": 1
+  },
+  "distributor_gap_fields_after": {
+    "competitor_vendor_overlap": 6,
+    "job_profiles": 52,
+    "job_vendors": 58,
+    "revenue": 53,
+    "vendor_relations": 6,
+    "westcon_overlap": 6,
+    "specializations": 6,
+    "services": 2,
+    "differential_capabilities": 1
+  },
+  "linecards_confirmed": 52,
+  "linecard_manufacturer_mentions": 793,
+  "linecard_unique_vendor_strings": 516,
+  "linecards_pending": [
+    "Aicox Soluciones",
+    "CloudIT",
+    "IREO",
+    "Lidera Networks",
+    "SCE",
+    "Tempel"
+  ],
+  "tree_architecture": [
+    "engine",
+    "config/current",
+    "data/current",
+    "assets/app",
+    "scripts",
+    "tests",
+    ".github/workflows"
+  ]
+}
