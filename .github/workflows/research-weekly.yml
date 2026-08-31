@@ -29,4 +29,5 @@ jobs:
       - name: Validate output
         run: python scripts/validate.py
       - name: Publish canonical intelligence only
-        run: python scripts/publish_research_update.py --message "chore: inteligencia estratégica semanal" --attempts 3
+        run: >-
+          python scripts/publish_research_update.py --message "chore: inteligencia estratégica semanal" --attempts 3
