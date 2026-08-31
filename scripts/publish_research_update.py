@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -19,7 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-GENERATED_PATHS = [
+FOUNDATION_GENERATED_PATHS = [
     "data/research.latest.json",
     "data/research_status.json",
     "data/research_learning.json",
@@ -38,17 +39,27 @@ GENERATED_PATHS = [
     "data/v37",
     "data/v38",
     "data/v39",
-    "data/v312",
 ]
+
+def current_version() -> tuple[str, str]:
+    raw=(ROOT/"VERSION").read_text(encoding="utf-8").strip()
+    if not re.fullmatch(r"\d+\.\d+\.\d+",raw):
+        raise RuntimeError(f"VERSION inválida: {raw!r}")
+    major,minor,patch=raw.split(".")
+    return raw,"v"+major+minor+(patch if patch!="0" else "")
+
+def generated_paths() -> list[str]:
+    _,tag=current_version()
+    return [*FOUNDATION_GENERATED_PATHS,f"data/{tag}"]
 
 
 def run(*args: str, check: bool = True) -> subprocess.CompletedProcess[str]:
     return subprocess.run(args, cwd=ROOT, text=True, check=check)
 
 
-def snapshot_generated(tmp: Path) -> list[str]:
+def snapshot_generated(tmp: Path, paths: list[str]) -> list[str]:
     present=[]
-    for rel in GENERATED_PATHS:
+    for rel in paths:
         src=ROOT/rel
         if not src.exists():
             continue
@@ -77,15 +88,18 @@ def restore_generated(tmp: Path, present: list[str]) -> None:
 
 
 def validate() -> None:
-    run(sys.executable,"scripts/v312/validate_v312.py")
+    version,tag=current_version();validator=ROOT/f"scripts/{tag}/validate_{tag}.py"
+    if not validator.is_file():raise RuntimeError(f"Falta el validador de la versión activa {version}: {validator.relative_to(ROOT)}")
+    run(sys.executable,str(validator.relative_to(ROOT)))
     if shutil.which("node"):
-        run("node","--check","assets/v312/intelligence.js")
-        run("node","tests/ui_smoke_v312.js")
+        js=ROOT/f"assets/{tag}/intelligence.js";smoke=ROOT/f"tests/ui_smoke_{tag}.js"
+        if js.is_file():run("node","--check",str(js.relative_to(ROOT)))
+        if smoke.is_file():run("node",str(smoke.relative_to(ROOT)))
 
 
 def main() -> int:
     ap=argparse.ArgumentParser()
-    ap.add_argument("--message",default="chore: actualizar inteligencia pública v3.12")
+    ap.add_argument("--message",default="chore: actualizar inteligencia pública")
     ap.add_argument("--attempts",type=int,default=3)
     args=ap.parse_args()
     if not (ROOT/".git").exists():
@@ -94,7 +108,7 @@ def main() -> int:
     run("git","config","user.email",os.getenv("GIT_BOT_EMAIL","actions@users.noreply.github.com"))
     with tempfile.TemporaryDirectory(prefix="westcon-research-") as td:
         tmp=Path(td)
-        present=snapshot_generated(tmp)
+        paths=generated_paths();present=snapshot_generated(tmp,paths)
         if not present:
             print("No hay salidas generadas que publicar.");return 0
         for attempt in range(1,max(1,args.attempts)+1):
@@ -104,7 +118,7 @@ def main() -> int:
             run("git","reset","--hard","origin/main")
             restore_generated(tmp,present)
             validate()
-            run("git","add","-A",*GENERATED_PATHS)
+            run("git","add","-A",*paths)
             diff=run("git","diff","--cached","--quiet",check=False)
             if diff.returncode==0:
                 print("La inteligencia generada ya coincide con origin/main.");return 0
