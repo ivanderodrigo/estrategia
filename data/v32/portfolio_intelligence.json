@@ -1,116 +1,58 @@
 {
   "meta": {
-    "generated_at": "2026-08-31T09:19:05.806903+00:00",
-    "vendors": 12
+    "generated_at": "2026-08-31T09:26:51.963818+00:00",
+    "vendors": 18
   },
   "vendors": [
     {
-      "vendor": "Palo Alto Networks",
-      "evidence_events": 7,
-      "avg_materiality": 0.761,
+      "vendor": "UiPath",
+      "evidence_events": 1,
+      "avg_materiality": 0.83,
       "top_technologies": [
-        "Cloud",
-        "Identity",
-        "Observability",
-        "AI",
-        "Cybersecurity"
+        "AI"
       ],
       "top_event_types": [
         [
           "ma_acquisition",
-          4
-        ],
-        [
-          "financial_performance",
-          2
-        ],
-        [
-          "product_release",
           1
         ]
       ],
       "scope_mix": {
-        "ES": 1,
-        "GLOBAL": 6
+        "ES": 1
       },
       "top_signals": [
         {
-          "event_id": "1e16953845f9adfa",
+          "event_id": "349fa510fd31dce6",
           "event_type": "ma_acquisition",
-          "title": "El director ejecutivo de Palo Alto Networks negoció la compra de Okta y Datadog - Investing.com España",
-          "materiality": 0.863,
-          "confidence": 0.7
-        },
-        {
-          "event_id": "3cc2aacf9a07b705",
-          "event_type": "ma_acquisition",
-          "title": "Palo Alto Networks refuerza su plataforma de observabilidad con la adquisición de Embrace - Portal Innova",
-          "materiality": 0.806,
-          "confidence": 0.66
-        },
-        {
-          "event_id": "ba2902def4ff8da0",
-          "event_type": "ma_acquisition",
-          "title": "Palo Alto Networks Completa la Adquisición de Portkey para Proteger Agentes de IA - Edomex Al Día",
-          "materiality": 0.804,
-          "confidence": 0.692
-        },
-        {
-          "event_id": "41a61000a558b9dd",
-          "event_type": "ma_acquisition",
-          "title": "Palo Alto Networks Stock Soars on Okta Takeover Talks Report - TradingView",
-          "materiality": 0.794,
-          "confidence": 0.632
-        },
-        {
-          "event_id": "07455bdfbe3728d7",
-          "event_type": "product_release",
-          "title": "Palo Alto Networks lanza PAN-OS 12.2 Ceres - La Ecuación Digital",
-          "materiality": 0.699,
-          "confidence": 0.611
-        },
-        {
-          "event_id": "6dd76b690c2e20c4",
-          "event_type": "financial_performance",
-          "title": "CVE-2026-0257: Palo Alto Networks PAN-OS · explotación conocida (CISA KEV)",
-          "materiality": 0.683,
-          "confidence": 0.757
-        },
-        {
-          "event_id": "b580fa1cf023f7cb",
-          "event_type": "financial_performance",
-          "title": "CVE-2026-0300: Palo Alto Networks PAN-OS · explotación conocida (CISA KEV)",
-          "materiality": 0.677,
-          "confidence": 0.757
+          "title": "UiPath FUSION Madrid: Agentic AI Meets ROI - ¡Regístrate Ahora! - UiPath",
+          "materiality": 0.83,
+          "confidence": 0.672
         }
       ]
     },
     {
-      "vendor": "Okta",
-      "evidence_events": 2,
-      "avg_materiality": 0.75,
-      "top_technologies": [],
+      "vendor": "XM Cyber",
+      "evidence_events": 1,
+      "avg_materiality": 0.782,
+      "top_technologies": [
+        "Cybersecurity"
+      ],
       "top_event_types": [
         [
-          "ma_acquisition",
-          1
-        ],
-        [
-          "financial_performance",
+          "security_incident",
           1
         ]
       ],
       "scope_mix": {
-        "ES": 1,
         "GLOBAL": 1
       },
       "top_signals": [
         {
-          "event_id": "627c8a2fac1fb03d",
-          "event_type": "ma_acquisition",
-          "title": "El director ejecutivo de Palo Alto Networks negoció la compra de Okta y Datadog - Investing.com España",
-          "materiality": 0.863,
-          "confidence": 0.7
+          "event_id": "a9d621831940af6b",
+          "event_type": "security_incident",
+          "title": "How Bizerba Strengthens Digital Sovereignty with Continuous Exposure Management",
+          "materiality": 0.782,
+          "confidence": 0.782
         }
       ]
     },
@@ -211,86 +153,406 @@
       ]
     },
     {
-      "vendor": "Zscaler",
-      "evidence_events": 4,
-      "avg_materiality": 0.729,
+      "vendor": "AWS",
+      "evidence_events": 42,
+      "avg_materiality": 0.735,
       "top_technologies": [
+        "Cloud",
         "AI",
         "Cybersecurity",
-        "Cloud",
-        "SASE/SSE"
+        "Observability",
+        "Identity",
+        "Automation",
+        "Data Center",
+        "IT Services"
+      ],
+      "top_event_types": [
+        [
+          "pricing_licensing",
+          9
+        ],
+        [
+          "product_release",
+          8
+        ],
+        [
+          "strategy",
+          6
+        ],
+        [
+          "certification",
+          5
+        ],
+        [
+          "award",
+          4
+        ],
+        [
+          "managed_service",
+          3
+        ],
+        [
+          "customer_reference",
+          3
+        ],
+        [
+          "service_launch",
+          1
+        ]
+      ],
+      "scope_mix": {
+        "ES": 4,
+        "GLOBAL": 33,
+        "EUROPE": 4,
+        "OTHER_REGION": 1
+      },
+      "top_signals": [
+        {
+          "event_id": "07adea038088b50a",
+          "event_type": "certification",
+          "title": "Amazon EC2 X8i instances are now available in additional regions",
+          "materiality": 0.853,
+          "confidence": 0.817
+        },
+        {
+          "event_id": "35157a082c63e0c6",
+          "event_type": "managed_service",
+          "title": "Amazon SageMaker HyperPod enhances support for Ray",
+          "materiality": 0.817,
+          "confidence": 0.786
+        },
+        {
+          "event_id": "603b0d18c93c8a11",
+          "event_type": "managed_service",
+          "title": "AWS Deadline Cloud now tracks automatic download status in the Deadline Cloud Monitor",
+          "materiality": 0.816,
+          "confidence": 0.786
+        },
+        {
+          "event_id": "c52065c86c4b3e1f",
+          "event_type": "product_release",
+          "title": "AWS Glue 5.1 is now available in AWS European Sovereign Cloud Region",
+          "materiality": 0.801,
+          "confidence": 0.785
+        },
+        {
+          "event_id": "431e158f64cc702b",
+          "event_type": "product_release",
+          "title": "IAM Roles Anywhere now provides a Java plugin for the AWS SDK",
+          "materiality": 0.8,
+          "confidence": 0.785
+        },
+        {
+          "event_id": "4caf97e59ef239dc",
+          "event_type": "customer_reference",
+          "title": "Amazon Connect Customer now lets managers chat with their data",
+          "materiality": 0.789,
+          "confidence": 0.786
+        },
+        {
+          "event_id": "f222d8640172c2fc",
+          "event_type": "service_launch",
+          "title": "AWS Summit 2026 confirma a España como punta de lanza en adopción de IA - Silicon",
+          "materiality": 0.789,
+          "confidence": 0.631
+        },
+        {
+          "event_id": "343b8e7375a72fc9",
+          "event_type": "pricing_licensing",
+          "title": "Amazon CloudWatch agent adds support for journald logs",
+          "materiality": 0.769,
+          "confidence": 0.768
+        }
+      ]
+    },
+    {
+      "vendor": "Okta",
+      "evidence_events": 3,
+      "avg_materiality": 0.726,
+      "top_technologies": [
+        "Cybersecurity"
       ],
       "top_event_types": [
         [
           "ma_acquisition",
-          2
+          1
         ],
         [
           "strategy",
           1
         ],
         [
-          "analyst_positioning",
+          "financial_performance",
           1
         ]
       ],
       "scope_mix": {
-        "GLOBAL": 3,
-        "EUROPE": 1
+        "ES": 1,
+        "GLOBAL": 2
       },
       "top_signals": [
         {
-          "event_id": "1ab645c3dbc35703",
+          "event_id": "627c8a2fac1fb03d",
           "event_type": "ma_acquisition",
-          "title": "Zscaler refuerza con la compra de Symmetry Systems la seguridad de identidades de la IA - Revista Byte TI",
-          "materiality": 0.79,
-          "confidence": 0.66
+          "title": "El director ejecutivo de Palo Alto Networks negoció la compra de Okta y Datadog - Investing.com España",
+          "materiality": 0.863,
+          "confidence": 0.7
         },
         {
-          "event_id": "05c480f71849a303",
-          "event_type": "ma_acquisition",
-          "title": "Zscaler prepara la adquisición de Symmetry Systems - ituser.es",
-          "materiality": 0.767,
-          "confidence": 0.66
-        },
-        {
-          "event_id": "90523fe804cc804c",
+          "event_id": "4254e7be7493eac7",
           "event_type": "strategy",
-          "title": "Por qué Zscaler (ZS) ha subido un 9,6 % tras reforzar su apuesta por la nube soberana europea y la seguridad basada en la inteligencia artificial - simplywall.st",
-          "materiality": 0.708,
-          "confidence": 0.56
+          "title": "Zscaler and Okta: Redefining US Federal Cybersecurity Standards with Zero Trust - Okta",
+          "materiality": 0.679,
+          "confidence": 0.542
+        }
+      ]
+    },
+    {
+      "vendor": "AttackIQ",
+      "evidence_events": 3,
+      "avg_materiality": 0.722,
+      "top_technologies": [
+        "Cybersecurity"
+      ],
+      "top_event_types": [
+        [
+          "security_incident",
+          3
+        ]
+      ],
+      "scope_mix": {
+        "GLOBAL": 2,
+        "OTHER_REGION": 1
+      },
+      "top_signals": [
+        {
+          "event_id": "23e22a0d804ef0ad",
+          "event_type": "security_incident",
+          "title": "Analyzing Nova Ransomware: A Rust-Based Encryptor with Multi-Layered Microsoft Defender Evasion Techniques",
+          "materiality": 0.776,
+          "confidence": 0.782
         },
         {
-          "event_id": "f5033fd8700b34f4",
-          "event_type": "analyst_positioning",
-          "title": "Zscaler: Leader in 2026 Gartner®️ SASE Magic Quadrant - Zscaler",
-          "materiality": 0.653,
-          "confidence": 0.588
+          "event_id": "88c4c8509c16be20",
+          "event_type": "security_incident",
+          "title": "Chaos Ransomware: BlackSuit-Linked RaaS Resurgence and Detection Opportunities",
+          "materiality": 0.772,
+          "confidence": 0.782
+        }
+      ]
+    },
+    {
+      "vendor": "Palo Alto Networks",
+      "evidence_events": 22,
+      "avg_materiality": 0.713,
+      "top_technologies": [
+        "Cybersecurity",
+        "AI",
+        "Cloud",
+        "Identity",
+        "Observability"
+      ],
+      "top_event_types": [
+        [
+          "ma_acquisition",
+          9
+        ],
+        [
+          "financial_performance",
+          7
+        ],
+        [
+          "security_vulnerability",
+          3
+        ],
+        [
+          "product_release",
+          1
+        ],
+        [
+          "service_launch",
+          1
+        ],
+        [
+          "strategy",
+          1
+        ]
+      ],
+      "scope_mix": {
+        "ES": 2,
+        "GLOBAL": 20
+      },
+      "top_signals": [
+        {
+          "event_id": "1e16953845f9adfa",
+          "event_type": "ma_acquisition",
+          "title": "El director ejecutivo de Palo Alto Networks negoció la compra de Okta y Datadog - Investing.com España",
+          "materiality": 0.863,
+          "confidence": 0.7
+        },
+        {
+          "event_id": "ca50984b2deca884",
+          "event_type": "ma_acquisition",
+          "title": "La estadounidense Palo Alto Networks completa la adquisición de la 'startup' de ciberseguridad Koi - Forbes España",
+          "materiality": 0.849,
+          "confidence": 0.7
+        },
+        {
+          "event_id": "3cc2aacf9a07b705",
+          "event_type": "ma_acquisition",
+          "title": "Palo Alto Networks refuerza su plataforma de observabilidad con la adquisición de Embrace - Portal Innova",
+          "materiality": 0.806,
+          "confidence": 0.66
+        },
+        {
+          "event_id": "ba2902def4ff8da0",
+          "event_type": "ma_acquisition",
+          "title": "Palo Alto Networks Completa la Adquisición de Portkey para Proteger Agentes de IA - Edomex Al Día",
+          "materiality": 0.804,
+          "confidence": 0.692
+        },
+        {
+          "event_id": "41a61000a558b9dd",
+          "event_type": "ma_acquisition",
+          "title": "Palo Alto Networks Stock Soars on Okta Takeover Talks Report - TradingView",
+          "materiality": 0.794,
+          "confidence": 0.632
+        },
+        {
+          "event_id": "0f5a82b222458a72",
+          "event_type": "ma_acquisition",
+          "title": "Palo Alto Networks adquiere Koi y así busca asegurar la IA en endpoints - ITSitio",
+          "materiality": 0.78,
+          "confidence": 0.66
+        },
+        {
+          "event_id": "5bedbba6da2f40e0",
+          "event_type": "ma_acquisition",
+          "title": "Palo Alto Networks anuncia la adquisición de Koi para establecer la seguridad del endpoint agéntico - Escudo Digital",
+          "materiality": 0.769,
+          "confidence": 0.66
+        },
+        {
+          "event_id": "d620d527aee5c981",
+          "event_type": "ma_acquisition",
+          "title": "Palo Alto Networks cierra la compra de CyberArk - redseguridad.com",
+          "materiality": 0.756,
+          "confidence": 0.692
+        }
+      ]
+    },
+    {
+      "vendor": "NETSCOUT",
+      "evidence_events": 8,
+      "avg_materiality": 0.709,
+      "top_technologies": [
+        "Networking",
+        "Observability",
+        "Cybersecurity"
+      ],
+      "top_event_types": [
+        [
+          "operational_incident",
+          3
+        ],
+        [
+          "financial_performance",
+          3
+        ],
+        [
+          "regulatory_change",
+          1
+        ],
+        [
+          "award",
+          1
+        ]
+      ],
+      "scope_mix": {
+        "EUROPE": 1,
+        "GLOBAL": 7
+      },
+      "top_signals": [
+        {
+          "event_id": "8ddd9d27f3a70451",
+          "event_type": "regulatory_change",
+          "title": "75,000 DDoS-for-Hire Actors Targeted by Law Enforcement",
+          "materiality": 0.812,
+          "confidence": 0.808
+        },
+        {
+          "event_id": "3ccfee9ca7867f87",
+          "event_type": "operational_incident",
+          "title": "Cyberattack in Poland Causes Heat and Power Outages for 50,000 Residents",
+          "materiality": 0.74,
+          "confidence": 0.745
+        },
+        {
+          "event_id": "4162c944621603a0",
+          "event_type": "operational_incident",
+          "title": "Six Critical Business Benefits of Real-Time Data Insights",
+          "materiality": 0.733,
+          "confidence": 0.745
+        },
+        {
+          "event_id": "b721b48ec60ec6cf",
+          "event_type": "financial_performance",
+          "title": "Why Customer Lifetime Value Begins on the Network",
+          "materiality": 0.691,
+          "confidence": 0.736
+        },
+        {
+          "event_id": "a63ab7444508f3b3",
+          "event_type": "operational_incident",
+          "title": "Defending Against DDoS Attacks at Scale",
+          "materiality": 0.685,
+          "confidence": 0.745
+        },
+        {
+          "event_id": "7bf078b265350b1e",
+          "event_type": "award",
+          "title": "Intellyx Names NETSCOUT to Prestigious 2026 Digital Innovator Award List",
+          "materiality": 0.672,
+          "confidence": 0.731
+        },
+        {
+          "event_id": "ed94dae538a08795",
+          "event_type": "financial_performance",
+          "title": "Unlocking the Full Value of 5G with Network Slicing",
+          "materiality": 0.669,
+          "confidence": 0.736
+        },
+        {
+          "event_id": "ef72623949d32ce8",
+          "event_type": "financial_performance",
+          "title": "Beyond “Best Effort”: Why Carrier Grade 5G Slicing Matters More Than Ever",
+          "materiality": 0.667,
+          "confidence": 0.736
         }
       ]
     },
     {
       "vendor": "Microsoft Azure",
-      "evidence_events": 7,
-      "avg_materiality": 0.727,
+      "evidence_events": 16,
+      "avg_materiality": 0.696,
       "top_technologies": [
         "Cloud",
         "Cybersecurity",
-        "AI",
         "Networking",
-        "Data Center"
+        "Data Center",
+        "AI"
       ],
       "top_event_types": [
         [
           "financial_performance",
-          4
-        ],
-        [
-          "ma_acquisition",
-          1
+          11
         ],
         [
           "end_of_sale",
+          3
+        ],
+        [
+          "ma_acquisition",
           1
         ],
         [
@@ -299,7 +561,7 @@
         ]
       ],
       "scope_mix": {
-        "GLOBAL": 7
+        "GLOBAL": 16
       },
       "top_signals": [
         {
@@ -324,6 +586,20 @@
           "confidence": 0.662
         },
         {
+          "event_id": "ad97831cbf21dfc6",
+          "event_type": "end_of_sale",
+          "title": "CVE-2026-21509: Microsoft Office · explotación conocida (CISA KEV)",
+          "materiality": 0.744,
+          "confidence": 0.808
+        },
+        {
+          "event_id": "c10c5891618d4a61",
+          "event_type": "end_of_sale",
+          "title": "CVE-2010-3962: Microsoft Internet Explorer · explotación conocida (CISA KEV)",
+          "materiality": 0.726,
+          "confidence": 0.808
+        },
+        {
           "event_id": "9b7e4417706af1c7",
           "event_type": "financial_performance",
           "title": "CVE-2026-33824: Microsoft Internet Key Exchange (IKE) Service Extensions · explotación conocida (CISA KEV)",
@@ -343,141 +619,36 @@
           "title": "CVE-2026-45659: Microsoft SharePoint Server · explotación conocida (CISA KEV)",
           "materiality": 0.692,
           "confidence": 0.757
-        },
-        {
-          "event_id": "799e6ad425dcee1e",
-          "event_type": "financial_performance",
-          "title": "CVE-2026-42897: Microsoft Microsoft · explotación conocida (CISA KEV)",
-          "materiality": 0.679,
-          "confidence": 0.757
         }
       ]
     },
     {
-      "vendor": "AWS",
-      "evidence_events": 12,
-      "avg_materiality": 0.707,
+      "vendor": "Proofpoint",
+      "evidence_events": 6,
+      "avg_materiality": 0.693,
       "top_technologies": [
-        "Cloud",
+        "Cybersecurity",
         "AI"
       ],
       "top_event_types": [
         [
-          "strategy",
-          4
+          "ma_acquisition",
+          2
         ],
         [
-          "award",
-          3
+          "operational_incident",
+          1
+        ],
+        [
+          "analyst_positioning",
+          1
+        ],
+        [
+          "strategy",
+          1
         ],
         [
           "certification",
-          2
-        ],
-        [
-          "service_launch",
-          1
-        ],
-        [
-          "procurement_award",
-          1
-        ],
-        [
-          "customer_reference",
-          1
-        ]
-      ],
-      "scope_mix": {
-        "ES": 3,
-        "EUROPE": 2,
-        "GLOBAL": 7
-      },
-      "top_signals": [
-        {
-          "event_id": "f222d8640172c2fc",
-          "event_type": "service_launch",
-          "title": "AWS Summit 2026 confirma a España como punta de lanza en adopción de IA - Silicon",
-          "materiality": 0.789,
-          "confidence": 0.631
-        },
-        {
-          "event_id": "73f23a5989db2d03",
-          "event_type": "certification",
-          "title": "AWS ayuda a medir el impacto de la IA en las organizaciones con la certificación BVR y funciones para la IA agéntica - Europa Press",
-          "materiality": 0.758,
-          "confidence": 0.638
-        },
-        {
-          "event_id": "373e8f16e2b40314",
-          "event_type": "procurement_award",
-          "title": "Indotel convoca licitación internacional para asignar espectro en las bandas 700, AWS, 2300–2400 y 3500–3700 MHz - Presidencia de la República Dominicana",
-          "materiality": 0.753,
-          "confidence": 0.653
-        },
-        {
-          "event_id": "4c96c34e1cca6d4f",
-          "event_type": "customer_reference",
-          "title": "Oracle y AWS aceleran la migración de clientes hacia Oracle AI Database@AWS - Portal ERP",
-          "materiality": 0.752,
-          "confidence": 0.6
-        },
-        {
-          "event_id": "e02167d76d6d5542",
-          "event_type": "certification",
-          "title": "“El cuidado de una cuenca es algo colectivo”: la certificación AWS de Eco Aguas en Moreno - Visión Sustentable",
-          "materiality": 0.74,
-          "confidence": 0.621
-        },
-        {
-          "event_id": "69797785b51f9abe",
-          "event_type": "award",
-          "title": "Indra recibe el reconocimiento de AWS como 'Socio del año' en España por su contribución al alza del negocio - Forbes España",
-          "materiality": 0.705,
-          "confidence": 0.615
-        },
-        {
-          "event_id": "053eb25b161be40b",
-          "event_type": "award",
-          "title": "Indra Group recibe el reconocimiento de AWS como “Partner of the Year” en España y amplía sus capacidades en IA agéntica | Actualidad - Indra Group",
-          "materiality": 0.705,
-          "confidence": 0.615
-        },
-        {
-          "event_id": "0b518e3adf853b8b",
-          "event_type": "strategy",
-          "title": "ARIS se convierte en socio exclusivo para el lanzamiento de Process Intelligence en la nube soberana europea de AWS - Yahoo Finanzas",
-          "materiality": 0.69,
-          "confidence": 0.56
-        }
-      ]
-    },
-    {
-      "vendor": "Check Point",
-      "evidence_events": 6,
-      "avg_materiality": 0.696,
-      "top_technologies": [
-        "AI",
-        "Cybersecurity",
-        "Cloud",
-        "IT Services",
-        "Identity",
-        "Networking"
-      ],
-      "top_event_types": [
-        [
-          "financial_performance",
-          2
-        ],
-        [
-          "strategy",
-          2
-        ],
-        [
-          "partnership",
-          1
-        ],
-        [
-          "product_release",
           1
         ]
       ],
@@ -486,39 +657,46 @@
       },
       "top_signals": [
         {
-          "event_id": "b86aff4fcc58edc3",
-          "event_type": "partnership",
-          "title": "Check Point Software e Illumio amplían su alianza estratégica para frenar los ataques autónomos de IA avanzada - ITSitio",
-          "materiality": 0.771,
-          "confidence": 0.639
+          "event_id": "5c1acd8667825540",
+          "event_type": "ma_acquisition",
+          "title": "Proofpoint adquiere Acuvity para ofrecer seguridad y gobernanza de IA en el entorno de trabajo agéntico - Proofpoint",
+          "materiality": 0.767,
+          "confidence": 0.66
         },
         {
-          "event_id": "18fe41a2f13892a7",
-          "event_type": "product_release",
-          "title": "Check Point Software lanza una plataforma de IA autónoma para reinventar la seguridad de red empresarial - Madridiario",
-          "materiality": 0.7,
-          "confidence": 0.611
+          "event_id": "b2cf350222fc37fc",
+          "event_type": "ma_acquisition",
+          "title": "Proofpoint completa la adquisición de Hornetsecurity - Proofpoint",
+          "materiality": 0.744,
+          "confidence": 0.692
         },
         {
-          "event_id": "15bd2b7ce4e9c436",
-          "event_type": "financial_performance",
-          "title": "CVE-2026-16232: Check Point SmartConsole · explotación conocida (CISA KEV)",
-          "materiality": 0.698,
-          "confidence": 0.757
-        },
-        {
-          "event_id": "0b22d1e4f13ec4d6",
-          "event_type": "financial_performance",
-          "title": "CVE-2026-50751: Check Point Security Gateway · explotación conocida (CISA KEV)",
-          "materiality": 0.685,
-          "confidence": 0.757
-        },
-        {
-          "event_id": "9efb469b51428b4d",
-          "event_type": "strategy",
-          "title": "Nadav Zafrir, CEO de Check Point: \"Las empresas están entre la espada y la pared; sin la IA perderán relevancia y sin protegerse de ella, desaparecerán\" - El Mundo",
+          "event_id": "30cadf7b3a66ee4c",
+          "event_type": "operational_incident",
+          "title": "Usuarios de Proofpoint y Microsoft Outlook reportan interrupciones del servicio el viernes por la mañana - surnoticias.com",
           "materiality": 0.673,
+          "confidence": 0.588
+        },
+        {
+          "event_id": "b41b8e05a71ec0a6",
+          "event_type": "analyst_positioning",
+          "title": "Líder en el Magic Quadrant™ 2025 de Gartner® para soluciones de seguridad del correo electrónico - Proofpoint",
+          "materiality": 0.671,
+          "confidence": 0.588
+        },
+        {
+          "event_id": "ea941d79a542c4b8",
+          "event_type": "strategy",
+          "title": "S. Dhawan (CEO de Proofpoint): \"Los agentes de IA cometerán errores, pero aún nos preocupan más los humanos\" - El Español",
+          "materiality": 0.653,
           "confidence": 0.542
+        },
+        {
+          "event_id": "76518d70cd592ba2",
+          "event_type": "certification",
+          "title": "Certificaciones de ciberseguridad - Proofpoint",
+          "materiality": 0.65,
+          "confidence": 0.591
         }
       ]
     },
@@ -551,21 +729,115 @@
       ]
     },
     {
+      "vendor": "Check Point",
+      "evidence_events": 11,
+      "avg_materiality": 0.673,
+      "top_technologies": [
+        "IT Services",
+        "AI",
+        "Cybersecurity",
+        "Cloud",
+        "Identity",
+        "Networking"
+      ],
+      "top_event_types": [
+        [
+          "strategy",
+          4
+        ],
+        [
+          "product_release",
+          2
+        ],
+        [
+          "financial_performance",
+          2
+        ],
+        [
+          "partnership",
+          1
+        ],
+        [
+          "ma_acquisition",
+          1
+        ],
+        [
+          "certification",
+          1
+        ]
+      ],
+      "scope_mix": {
+        "GLOBAL": 11
+      },
+      "top_signals": [
+        {
+          "event_id": "b86aff4fcc58edc3",
+          "event_type": "partnership",
+          "title": "Check Point Software e Illumio amplían su alianza estratégica para frenar los ataques autónomos de IA avanzada - ITSitio",
+          "materiality": 0.771,
+          "confidence": 0.639
+        },
+        {
+          "event_id": "744d63c988c4283f",
+          "event_type": "ma_acquisition",
+          "title": "Check Point Software adquiere Lakera para ofrecer seguridad integral de IA - La Gran Noticia",
+          "materiality": 0.756,
+          "confidence": 0.692
+        },
+        {
+          "event_id": "18fe41a2f13892a7",
+          "event_type": "product_release",
+          "title": "Check Point Software lanza una plataforma de IA autónoma para reinventar la seguridad de red empresarial - Madridiario",
+          "materiality": 0.7,
+          "confidence": 0.611
+        },
+        {
+          "event_id": "15bd2b7ce4e9c436",
+          "event_type": "financial_performance",
+          "title": "CVE-2026-16232: Check Point SmartConsole · explotación conocida (CISA KEV)",
+          "materiality": 0.698,
+          "confidence": 0.757
+        },
+        {
+          "event_id": "0b22d1e4f13ec4d6",
+          "event_type": "financial_performance",
+          "title": "CVE-2026-50751: Check Point Security Gateway · explotación conocida (CISA KEV)",
+          "materiality": 0.685,
+          "confidence": 0.757
+        },
+        {
+          "event_id": "9efb469b51428b4d",
+          "event_type": "strategy",
+          "title": "Nadav Zafrir, CEO de Check Point: \"Las empresas están entre la espada y la pared; sin la IA perderán relevancia y sin protegerse de ella, desaparecerán\" - El Mundo",
+          "materiality": 0.673,
+          "confidence": 0.542
+        },
+        {
+          "event_id": "ff4d443e13e9dae9",
+          "event_type": "strategy",
+          "title": "White Paper | Check Point & Illumio: Hybrid Mesh Security in the Age of AI - Check Point Software",
+          "materiality": 0.658,
+          "confidence": 0.542
+        }
+      ]
+    },
+    {
       "vendor": "Ivanti",
-      "evidence_events": 2,
-      "avg_materiality": 0.681,
+      "evidence_events": 5,
+      "avg_materiality": 0.671,
       "top_technologies": [
         "Cloud",
-        "Cybersecurity"
+        "Cybersecurity",
+        "Identity"
       ],
       "top_event_types": [
         [
           "financial_performance",
-          2
+          5
         ]
       ],
       "scope_mix": {
-        "GLOBAL": 2
+        "GLOBAL": 5
       },
       "top_signals": [
         {
@@ -581,19 +853,40 @@
           "title": "CVE-2026-6973: Ivanti Endpoint Manager Mobile (EPMM) · explotación conocida (CISA KEV)",
           "materiality": 0.677,
           "confidence": 0.757
+        },
+        {
+          "event_id": "bdc5b5fb23011d39",
+          "event_type": "financial_performance",
+          "title": "CVE-2026-1340: Ivanti Endpoint Manager Mobile (EPMM) · explotación conocida (CISA KEV)",
+          "materiality": 0.67,
+          "confidence": 0.757
+        },
+        {
+          "event_id": "39df9082e05529bd",
+          "event_type": "financial_performance",
+          "title": "CVE-2026-1603: Ivanti  Endpoint Manager (EPM) · explotación conocida (CISA KEV)",
+          "materiality": 0.664,
+          "confidence": 0.757
+        },
+        {
+          "event_id": "12e9ff5daf429d06",
+          "event_type": "financial_performance",
+          "title": "CVE-2026-1281: Ivanti Endpoint Manager Mobile (EPMM) · explotación conocida (CISA KEV)",
+          "materiality": 0.656,
+          "confidence": 0.757
         }
       ]
     },
     {
-      "vendor": "Cisco",
-      "evidence_events": 12,
-      "avg_materiality": 0.68,
+      "vendor": "Zscaler",
+      "evidence_events": 14,
+      "avg_materiality": 0.668,
       "top_technologies": [
-        "Networking",
-        "Cloud",
-        "Cybersecurity",
         "AI",
-        "Identity"
+        "Cybersecurity",
+        "Cloud",
+        "Identity",
+        "SASE/SSE"
       ],
       "top_event_types": [
         [
@@ -601,24 +894,132 @@
           5
         ],
         [
-          "procurement_award",
+          "security_vulnerability",
+          4
+        ],
+        [
+          "ma_acquisition",
           2
+        ],
+        [
+          "strategy",
+          1
+        ],
+        [
+          "customer_reference",
+          1
+        ],
+        [
+          "analyst_positioning",
+          1
+        ]
+      ],
+      "scope_mix": {
+        "GLOBAL": 13,
+        "EUROPE": 1
+      },
+      "top_signals": [
+        {
+          "event_id": "1ab645c3dbc35703",
+          "event_type": "ma_acquisition",
+          "title": "Zscaler refuerza con la compra de Symmetry Systems la seguridad de identidades de la IA - Revista Byte TI",
+          "materiality": 0.79,
+          "confidence": 0.66
+        },
+        {
+          "event_id": "05c480f71849a303",
+          "event_type": "ma_acquisition",
+          "title": "Zscaler prepara la adquisición de Symmetry Systems - ituser.es",
+          "materiality": 0.767,
+          "confidence": 0.66
+        },
+        {
+          "event_id": "90523fe804cc804c",
+          "event_type": "strategy",
+          "title": "Por qué Zscaler (ZS) ha subido un 9,6 % tras reforzar su apuesta por la nube soberana europea y la seguridad basada en la inteligencia artificial - simplywall.st",
+          "materiality": 0.708,
+          "confidence": 0.56
+        },
+        {
+          "event_id": "bda242fe33b5ee8b",
+          "event_type": "customer_reference",
+          "title": "Mahindra Group Case Study | Customer Stories | Zscaler - Zscaler",
+          "materiality": 0.679,
+          "confidence": 0.63
+        },
+        {
+          "event_id": "c36cd8338c20a823",
+          "event_type": "security_vulnerability",
+          "title": "CVE-2023-28801 · NVD vulnerability affecting Zscaler",
+          "materiality": 0.66,
+          "confidence": 0.749
+        },
+        {
+          "event_id": "b84ff084c29f710c",
+          "event_type": "financial_performance",
+          "title": "SEC filing 10-Q · Zscaler",
+          "materiality": 0.658,
+          "confidence": 0.727
+        },
+        {
+          "event_id": "f5033fd8700b34f4",
+          "event_type": "analyst_positioning",
+          "title": "Zscaler: Leader in 2026 Gartner®️ SASE Magic Quadrant - Zscaler",
+          "materiality": 0.653,
+          "confidence": 0.588
+        }
+      ]
+    },
+    {
+      "vendor": "Cisco",
+      "evidence_events": 33,
+      "avg_materiality": 0.662,
+      "top_technologies": [
+        "Cloud",
+        "Networking",
+        "Cybersecurity",
+        "IT Services",
+        "AI",
+        "Identity",
+        "Data Center"
+      ],
+      "top_event_types": [
+        [
+          "financial_performance",
+          16
+        ],
+        [
+          "security_vulnerability",
+          6
+        ],
+        [
+          "procurement_award",
+          3
+        ],
+        [
+          "strategy",
+          3
         ],
         [
           "certification",
           2
         ],
         [
-          "strategy",
-          2
+          "channel_program",
+          1
         ],
         [
           "capability_expansion",
           1
+        ],
+        [
+          "customer_reference",
+          1
         ]
       ],
       "scope_mix": {
-        "GLOBAL": 12
+        "GLOBAL": 32,
+        "ES": 1
       },
       "top_signals": [
         {
@@ -634,6 +1035,13 @@
           "title": "Contraloría confirma adjudicación a Ericsson de 5G del ICE y deja para Cisco partidas que había ganado Nokia - Semanario Universidad",
           "materiality": 0.77,
           "confidence": 0.653
+        },
+        {
+          "event_id": "64365be043031f6f",
+          "event_type": "channel_program",
+          "title": "Cisco renueva su estrategia de canal con el lanzamiento del Cisco 360 Partner Program - COMPUTERWORLD ESPAÑA",
+          "materiality": 0.741,
+          "confidence": 0.665
         },
         {
           "event_id": "a10f013eadda0d9c",
@@ -669,62 +1077,30 @@
           "title": "CVE-2026-20245: Cisco Catalyst SD-WAN Manager · explotación conocida (CISA KEV)",
           "materiality": 0.686,
           "confidence": 0.757
-        },
-        {
-          "event_id": "1b882ccf06c05dc1",
-          "event_type": "certification",
-          "title": "Gobierno abre cursos gratis con certificación de Microsoft, IBM y Cisco: así puede inscribirse - ENTER.CO",
-          "materiality": 0.683,
-          "confidence": 0.621
-        }
-      ]
-    },
-    {
-      "vendor": "Proofpoint",
-      "evidence_events": 2,
-      "avg_materiality": 0.663,
-      "top_technologies": [
-        "AI"
-      ],
-      "top_event_types": [
-        [
-          "operational_incident",
-          1
-        ],
-        [
-          "strategy",
-          1
-        ]
-      ],
-      "scope_mix": {
-        "GLOBAL": 2
-      },
-      "top_signals": [
-        {
-          "event_id": "30cadf7b3a66ee4c",
-          "event_type": "operational_incident",
-          "title": "Usuarios de Proofpoint y Microsoft Outlook reportan interrupciones del servicio el viernes por la mañana - surnoticias.com",
-          "materiality": 0.673,
-          "confidence": 0.588
-        },
-        {
-          "event_id": "ea941d79a542c4b8",
-          "event_type": "strategy",
-          "title": "S. Dhawan (CEO de Proofpoint): \"Los agentes de IA cometerán errores, pero aún nos preocupan más los humanos\" - El Español",
-          "materiality": 0.653,
-          "confidence": 0.542
         }
       ]
     },
     {
       "vendor": "CrowdStrike",
-      "evidence_events": 7,
-      "avg_materiality": 0.661,
+      "evidence_events": 15,
+      "avg_materiality": 0.662,
       "top_technologies": [
+        "Cloud",
+        "Cybersecurity",
+        "Networking",
+        "Data Center",
         "AI",
-        "Cloud"
+        "Identity"
       ],
       "top_event_types": [
+        [
+          "security_vulnerability",
+          4
+        ],
+        [
+          "financial_performance",
+          4
+        ],
         [
           "strategy",
           2
@@ -742,16 +1118,17 @@
           1
         ],
         [
-          "analyst_positioning",
+          "product_release",
           1
         ],
         [
-          "financial_performance",
+          "analyst_positioning",
           1
         ]
       ],
       "scope_mix": {
-        "GLOBAL": 6,
+        "GLOBAL": 13,
+        "OTHER_REGION": 1,
         "ES": 1
       },
       "top_signals": [
@@ -763,11 +1140,25 @@
           "confidence": 0.639
         },
         {
+          "event_id": "fa5b10526b0bc8f6",
+          "event_type": "security_vulnerability",
+          "title": "CVE-2026-76380 · NVD vulnerability affecting CrowdStrike",
+          "materiality": 0.742,
+          "confidence": 0.749
+        },
+        {
           "event_id": "7581001fddf772f1",
           "event_type": "service_launch",
           "title": "CrowdStrike y AWS lanzan desafío de USD $100.000 para hackear IA - DiarioBitcoin",
           "materiality": 0.733,
           "confidence": 0.591
+        },
+        {
+          "event_id": "beacebf875a99612",
+          "event_type": "security_vulnerability",
+          "title": "CVE-2026-40050 · NVD vulnerability affecting CrowdStrike",
+          "materiality": 0.732,
+          "confidence": 0.749
         },
         {
           "event_id": "513c3f8e1714bee8",
@@ -777,18 +1168,139 @@
           "confidence": 0.632
         },
         {
-          "event_id": "8471f4e2d4433041",
-          "event_type": "strategy",
-          "title": "Acciones de Crowdstrike se disparan 20% tras fuerte reporte trimestral - EBC Financial Group",
-          "materiality": 0.658,
-          "confidence": 0.542
+          "event_id": "4a0c9ce5d61bbdc2",
+          "event_type": "financial_performance",
+          "title": "SEC filing 8-K · CrowdStrike",
+          "materiality": 0.686,
+          "confidence": 0.727
         },
         {
-          "event_id": "22cc9fc6c213f213",
-          "event_type": "strategy",
-          "title": "Nvidia, Marvell y CrowdStrike: las empresas que pueden mover la bolsa la próxima semana - El Boletín",
-          "materiality": 0.656,
-          "confidence": 0.542
+          "event_id": "3130a0978b509e2a",
+          "event_type": "security_vulnerability",
+          "title": "CVE-2025-37728 · NVD vulnerability affecting CrowdStrike",
+          "materiality": 0.673,
+          "confidence": 0.749
+        },
+        {
+          "event_id": "4a0c9ce5d61bbdc2",
+          "event_type": "financial_performance",
+          "title": "SEC filing 8-K · CrowdStrike",
+          "materiality": 0.665,
+          "confidence": 0.727
+        }
+      ]
+    },
+    {
+      "vendor": "F5",
+      "evidence_events": 14,
+      "avg_materiality": 0.653,
+      "top_technologies": [
+        "Identity",
+        "Networking",
+        "Cloud",
+        "Observability",
+        "Data Center"
+      ],
+      "top_event_types": [
+        [
+          "security_vulnerability",
+          8
+        ],
+        [
+          "financial_performance",
+          6
+        ]
+      ],
+      "scope_mix": {
+        "GLOBAL": 14
+      },
+      "top_signals": [
+        {
+          "event_id": "e69ddc7a35ff029f",
+          "event_type": "financial_performance",
+          "title": "SEC filing 8-K · F5",
+          "materiality": 0.676,
+          "confidence": 0.727
+        },
+        {
+          "event_id": "ab1d36fd08466f9a",
+          "event_type": "financial_performance",
+          "title": "CVE-2025-53521: F5 BIG-IP · explotación conocida (CISA KEV)",
+          "materiality": 0.668,
+          "confidence": 0.757
+        },
+        {
+          "event_id": "e69ddc7a35ff029f",
+          "event_type": "financial_performance",
+          "title": "SEC filing 8-K · F5",
+          "materiality": 0.666,
+          "confidence": 0.727
+        },
+        {
+          "event_id": "b1e1c88180137e38",
+          "event_type": "security_vulnerability",
+          "title": "CVE-2006-3550 · NVD vulnerability affecting F5",
+          "materiality": 0.66,
+          "confidence": 0.749
+        },
+        {
+          "event_id": "c6a5d8cf2fae5704",
+          "event_type": "security_vulnerability",
+          "title": "CVE-2005-3802 · NVD vulnerability affecting F5",
+          "materiality": 0.66,
+          "confidence": 0.749
+        },
+        {
+          "event_id": "682bc89e1467a27d",
+          "event_type": "security_vulnerability",
+          "title": "CVE-2005-2245 · NVD vulnerability affecting F5",
+          "materiality": 0.66,
+          "confidence": 0.749
+        },
+        {
+          "event_id": "63dccefa3a3dcec9",
+          "event_type": "security_vulnerability",
+          "title": "CVE-2002-1431 · NVD vulnerability affecting F5",
+          "materiality": 0.66,
+          "confidence": 0.749
+        },
+        {
+          "event_id": "eed18b9eb6c654c3",
+          "event_type": "security_vulnerability",
+          "title": "CVE-2002-1811 · NVD vulnerability affecting F5",
+          "materiality": 0.66,
+          "confidence": 0.749
+        }
+      ]
+    },
+    {
+      "vendor": "Extreme Networks",
+      "evidence_events": 3,
+      "avg_materiality": 0.653,
+      "top_technologies": [],
+      "top_event_types": [
+        [
+          "financial_performance",
+          3
+        ]
+      ],
+      "scope_mix": {
+        "GLOBAL": 3
+      },
+      "top_signals": [
+        {
+          "event_id": "fa0d8dd8ca862c20",
+          "event_type": "financial_performance",
+          "title": "SEC filing 8-K · Extreme Networks",
+          "materiality": 0.677,
+          "confidence": 0.727
+        },
+        {
+          "event_id": "fa0d8dd8ca862c20",
+          "event_type": "financial_performance",
+          "title": "SEC filing 8-K · Extreme Networks",
+          "materiality": 0.651,
+          "confidence": 0.727
         }
       ]
     }

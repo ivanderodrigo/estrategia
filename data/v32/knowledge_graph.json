@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-08-31T09:19:05.794559+00:00",
-    "nodes": 137,
-    "edges": 104
+    "generated_at": "2026-08-31T09:26:51.942247+00:00",
+    "nodes": 213,
+    "edges": 203
   },
   "nodes": [
     {
       "id": "ent_a5a01b8fa531",
       "label": "Timestamp",
       "kind": "integrator",
-      "events": 1,
+      "events": 3,
       "max_materiality": 0.883,
-      "degree": 0
+      "degree": 1
     },
     {
       "id": "ent_314c19703a79",
@@ -30,12 +30,12 @@
       "degree": 1
     },
     {
-      "id": "ent_0004ce55d3e7",
-      "label": "Okta",
+      "id": "ent_8c804d7d1311",
+      "label": "Palo Alto Networks",
       "kind": "vendor",
-      "events": 2,
+      "events": 22,
       "max_materiality": 0.863,
-      "degree": 1
+      "degree": 7
     },
     {
       "id": "ent_d3d04978c1e4",
@@ -46,20 +46,76 @@
       "degree": 2
     },
     {
-      "id": "ent_8c804d7d1311",
-      "label": "Palo Alto Networks",
+      "id": "ent_0004ce55d3e7",
+      "label": "Okta",
       "kind": "vendor",
-      "events": 7,
+      "events": 3,
       "max_materiality": 0.863,
       "degree": 1
+    },
+    {
+      "id": "ent_55357933a731",
+      "label": "AWS",
+      "kind": "vendor",
+      "events": 42,
+      "max_materiality": 0.853,
+      "degree": 37
+    },
+    {
+      "id": "ent_141a92417f71",
+      "label": "AI",
+      "kind": "technology",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 16
+    },
+    {
+      "id": "ent_000e793db70c",
+      "label": "Cloud",
+      "kind": "technology",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 21
+    },
+    {
+      "id": "ent_f415700d4d0c",
+      "label": "Automation",
+      "kind": "technology",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_02e043e31473",
+      "label": "NTT DATA Spain",
+      "kind": "integrator",
+      "events": 3,
+      "max_materiality": 0.839,
+      "degree": 1
+    },
+    {
+      "id": "ent_cb9f3a85c1d3",
+      "label": "NTT DATA Portugal",
+      "kind": "integrator",
+      "events": 4,
+      "max_materiality": 0.839,
+      "degree": 0
+    },
+    {
+      "id": "ent_d5d2dfe83a06",
+      "label": "UiPath",
+      "kind": "vendor",
+      "events": 1,
+      "max_materiality": 0.83,
+      "degree": 0
     },
     {
       "id": "ent_300a29a2fe6e",
       "label": "Indra",
       "kind": "integrator",
-      "events": 17,
+      "events": 27,
       "max_materiality": 0.827,
-      "degree": 2
+      "degree": 4
     },
     {
       "id": "ent_807631b46fa2",
@@ -81,9 +137,9 @@
       "id": "ent_cad160f3d4cd",
       "label": "Babel",
       "kind": "integrator",
-      "events": 5,
+      "events": 13,
       "max_materiality": 0.827,
-      "degree": 2
+      "degree": 4
     },
     {
       "id": "ent_fedc84441d3b",
@@ -129,7 +185,7 @@
       "id": "ent_634c412f9ba5",
       "label": "Claranet Portugal",
       "kind": "integrator",
-      "events": 4,
+      "events": 5,
       "max_materiality": 0.827,
       "degree": 0
     },
@@ -140,38 +196,6 @@
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
-    },
-    {
-      "id": "ent_02e043e31473",
-      "label": "NTT DATA Spain",
-      "kind": "integrator",
-      "events": 3,
-      "max_materiality": 0.826,
-      "degree": 1
-    },
-    {
-      "id": "ent_cb9f3a85c1d3",
-      "label": "NTT DATA Portugal",
-      "kind": "integrator",
-      "events": 2,
-      "max_materiality": 0.826,
-      "degree": 0
-    },
-    {
-      "id": "ent_dbbaa3a611f4",
-      "label": "Serviços Partilhados do Ministério da Saúde, EPE",
-      "kind": "buyer",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 5
-    },
-    {
-      "id": "ent_64eebfbaa60c",
-      "label": "CLARANET PORTUGAL, S.A.",
-      "kind": "supplier",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 2
     },
     {
       "id": "ent_18d7947372c1",
@@ -188,6 +212,22 @@
       "events": 0,
       "max_materiality": 0.0,
       "degree": 4
+    },
+    {
+      "id": "ent_dbbaa3a611f4",
+      "label": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 5
+    },
+    {
+      "id": "ent_64eebfbaa60c",
+      "label": "CLARANET PORTUGAL, S.A.",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 2
     },
     {
       "id": "ent_1422fa16b6c1",
@@ -225,7 +265,7 @@
       "id": "ent_ffe6fa36eb08",
       "label": "Bechtle Spain",
       "kind": "integrator",
-      "events": 3,
+      "events": 4,
       "max_materiality": 0.819,
       "degree": 0
     },
@@ -246,10 +286,26 @@
       "degree": 1
     },
     {
+      "id": "ent_34a102152608",
+      "label": "Observability",
+      "kind": "technology",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 3
+    },
+    {
+      "id": "ent_48f8305acb86",
+      "label": "NETSCOUT",
+      "kind": "vendor",
+      "events": 8,
+      "max_materiality": 0.812,
+      "degree": 0
+    },
+    {
       "id": "ent_2abf1b46520b",
       "label": "Iberia Public Procurement Market",
       "kind": "market",
-      "events": 56,
+      "events": 72,
       "max_materiality": 0.81,
       "degree": 0
     },
@@ -257,15 +313,23 @@
       "id": "ent_8ede098acbe0",
       "label": "Exclusive Networks",
       "kind": "distributor",
-      "events": 2,
+      "events": 3,
       "max_materiality": 0.81,
-      "degree": 1
+      "degree": 2
+    },
+    {
+      "id": "ent_d73d4a8b6a65",
+      "label": "Fortinet",
+      "kind": "vendor",
+      "events": 27,
+      "max_materiality": 0.751,
+      "degree": 8
     },
     {
       "id": "ent_c217bc8b30fe",
       "label": "Econocom Spain",
       "kind": "integrator",
-      "events": 3,
+      "events": 7,
       "max_materiality": 0.804,
       "degree": 1
     },
@@ -286,6 +350,30 @@
       "degree": 1
     },
     {
+      "id": "ent_78fd5cac8c02",
+      "label": "Cybersecurity",
+      "kind": "technology",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 17
+    },
+    {
+      "id": "ent_1db089a9f84e",
+      "label": "Identity",
+      "kind": "technology",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_20725cb1b8af",
+      "label": "IT Services",
+      "kind": "technology",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 12
+    },
+    {
       "id": "ent_6df72c006222",
       "label": "Aena. Presidencia. Consejero Delegado",
       "kind": "buyer",
@@ -296,6 +384,38 @@
     {
       "id": "ent_aa913a8a6a37",
       "label": "ORANGE ESPAGNE SA",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_d60274bc0800",
+      "label": "CANAL DE ISABEL II, S.A., M.P.",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_3db876d60349",
+      "label": "fibratel S.L",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_ba3fc06b6a30",
+      "label": "Gerencia Regional de Salud de Castilla y León",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_8ddd027af474",
+      "label": "TECNOLOGÍAS PLEXUS S.L.",
       "kind": "supplier",
       "events": 0,
       "max_materiality": 0.0,
@@ -313,6 +433,14 @@
       "id": "ent_6ffc797372ae",
       "label": "Vodafone Portugal - Comunicações Pessoais, S.A.",
       "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_2c5478be8285",
+      "label": "Anadat y refuerza su músculo en cloud e infraestructuras",
+      "kind": "external_entity",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
@@ -342,22 +470,6 @@
       "degree": 1
     },
     {
-      "id": "ent_a10bf3f2331b",
-      "label": "Corporació Catalana de Mitjans Audiovisuals, SA (CCMA, SA)",
-      "kind": "buyer",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 1
-    },
-    {
-      "id": "ent_48939c80c1f3",
-      "label": "Datos Media Technologies S.A",
-      "kind": "supplier",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 1
-    },
-    {
       "id": "ent_29f93e113744",
       "label": "Universidade do Minho",
       "kind": "buyer",
@@ -368,6 +480,46 @@
     {
       "id": "ent_e3d1e0ca3bd0",
       "label": "VWR International - Material de Laboratório, Soc. Unipessoal, Lda.",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_7b8f6114122e",
+      "label": "Minsait",
+      "kind": "integrator",
+      "events": 4,
+      "max_materiality": 0.794,
+      "degree": 3
+    },
+    {
+      "id": "ent_3af460555f2f",
+      "label": "de Minsait Business Consulting",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_8b31ddffd2af",
+      "label": "MBC",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_c8d4eec720a7",
+      "label": "Ente Público de Radiotelevisión de las Illes Balears",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_48939c80c1f3",
+      "label": "Datos Media Technologies S.A",
       "kind": "supplier",
       "events": 0,
       "max_materiality": 0.0,
@@ -390,30 +542,6 @@
       "degree": 1
     },
     {
-      "id": "ent_7b8f6114122e",
-      "label": "Minsait",
-      "kind": "integrator",
-      "events": 3,
-      "max_materiality": 0.794,
-      "degree": 3
-    },
-    {
-      "id": "ent_3af460555f2f",
-      "label": "de Minsait Business Consulting",
-      "kind": "external_entity",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 1
-    },
-    {
-      "id": "ent_8b31ddffd2af",
-      "label": "MBC",
-      "kind": "external_entity",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 1
-    },
-    {
       "id": "ent_aebc050a52d6",
       "label": "Agência para a Integração, Migrações e Asilo, IP",
       "kind": "buyer",
@@ -430,10 +558,34 @@
       "degree": 1
     },
     {
+      "id": "ent_5eb6f43b5a92",
+      "label": "Nunsys",
+      "kind": "integrator",
+      "events": 7,
+      "max_materiality": 0.793,
+      "degree": 5
+    },
+    {
+      "id": "ent_68980f3561e0",
+      "label": "Kaizen Networks",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_c92be6821474",
+      "label": "Ayesa",
+      "kind": "integrator",
+      "events": 16,
+      "max_materiality": 0.793,
+      "degree": 5
+    },
+    {
       "id": "ent_ca997ef4820e",
       "label": "Kyndryl Spain",
       "kind": "integrator",
-      "events": 2,
+      "events": 3,
       "max_materiality": 0.793,
       "degree": 0
     },
@@ -441,9 +593,9 @@
       "id": "ent_62c559b42ecb",
       "label": "Zscaler",
       "kind": "vendor",
-      "events": 4,
+      "events": 14,
       "max_materiality": 0.79,
-      "degree": 2
+      "degree": 6
     },
     {
       "id": "ent_089faab51a31",
@@ -452,30 +604,6 @@
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
-    },
-    {
-      "id": "ent_55357933a731",
-      "label": "AWS",
-      "kind": "vendor",
-      "events": 12,
-      "max_materiality": 0.789,
-      "degree": 6
-    },
-    {
-      "id": "ent_141a92417f71",
-      "label": "AI",
-      "kind": "technology",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 9
-    },
-    {
-      "id": "ent_000e793db70c",
-      "label": "Cloud",
-      "kind": "technology",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 7
     },
     {
       "id": "ent_324137e04bc4",
@@ -489,13 +617,37 @@
       "id": "ent_9fb714bd7273",
       "label": "Microsoft Azure",
       "kind": "vendor",
-      "events": 7,
+      "events": 16,
       "max_materiality": 0.787,
       "degree": 2
     },
     {
       "id": "ent_a265cb07167e",
       "label": "WinWire para expandir las capacidades de transformación empre",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_78a78a4654cd",
+      "label": "XM Cyber",
+      "kind": "vendor",
+      "events": 1,
+      "max_materiality": 0.782,
+      "degree": 0
+    },
+    {
+      "id": "ent_169488aadf42",
+      "label": "suíça Digital SupplyAI",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_bc1793962606",
+      "label": "Koi y así busca asegurar la IA en endpoints",
       "kind": "external_entity",
       "events": 0,
       "max_materiality": 0.0,
@@ -510,12 +662,20 @@
       "degree": 1
     },
     {
-      "id": "ent_78fd5cac8c02",
-      "label": "Cybersecurity",
-      "kind": "technology",
+      "id": "ent_4f036e1228e3",
+      "label": "AttackIQ",
+      "kind": "vendor",
+      "events": 3,
+      "max_materiality": 0.776,
+      "degree": 0
+    },
+    {
+      "id": "ent_1e4e9fdec5d2",
+      "label": "Anadat y refuerza su presencia en el mercado español",
+      "kind": "external_entity",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 6
+      "degree": 1
     },
     {
       "id": "ent_bd2aec06633d",
@@ -537,33 +697,65 @@
       "id": "ent_7af78c911d5b",
       "label": "Cisco",
       "kind": "vendor",
-      "events": 12,
+      "events": 33,
       "max_materiality": 0.771,
-      "degree": 4
+      "degree": 10
     },
     {
       "id": "ent_b81902f73021",
       "label": "Check Point",
       "kind": "vendor",
-      "events": 6,
+      "events": 11,
       "max_materiality": 0.771,
-      "degree": 3
+      "degree": 6
     },
     {
-      "id": "ent_46d127e1d0ed",
-      "label": "Dirección General de Telecomunicaciones y Digitalización",
-      "kind": "buyer",
+      "id": "ent_37d110639081",
+      "label": "TD SYNNEX",
+      "kind": "distributor",
+      "events": 15,
+      "max_materiality": 0.77,
+      "degree": 1
+    },
+    {
+      "id": "ent_0e10e164957d",
+      "label": "Data Center",
+      "kind": "technology",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 7
+    },
+    {
+      "id": "ent_e86511938d7d",
+      "label": "Ayesa Engineering",
+      "kind": "external_entity",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
     },
     {
-      "id": "ent_20725cb1b8af",
-      "label": "IT Services",
-      "kind": "technology",
+      "id": "ent_8ddae14799f2",
+      "label": "de Ayesa Ingeniería por 600 M",
+      "kind": "external_entity",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 8
+      "degree": 1
+    },
+    {
+      "id": "ent_9ca85dba9e52",
+      "label": "Proofpoint",
+      "kind": "vendor",
+      "events": 6,
+      "max_materiality": 0.767,
+      "degree": 3
+    },
+    {
+      "id": "ent_34b6ca93618d",
+      "label": "Acuvity para ofrecer seguridad y gobernanza de IA en el entor",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
     },
     {
       "id": "ent_3320743fd555",
@@ -579,7 +771,15 @@
       "kind": "technology",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 8
+      "degree": 11
+    },
+    {
+      "id": "ent_17c03de27b55",
+      "label": "Empresa de Transformación Agraria S.A.,S.M.E., M.P., (TRAGSA)",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 2
     },
     {
       "id": "ent_80f97b438683",
@@ -588,14 +788,6 @@
       "events": 0,
       "max_materiality": 0.0,
       "degree": 2
-    },
-    {
-      "id": "ent_0e10e164957d",
-      "label": "Data Center",
-      "kind": "technology",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 5
     },
     {
       "id": "ent_a07c24767f60",
@@ -611,7 +803,7 @@
       "kind": "technology",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 3
+      "degree": 8
     },
     {
       "id": "ent_581b5cdbc562",
@@ -638,14 +830,6 @@
       "degree": 2
     },
     {
-      "id": "ent_c92be6821474",
-      "label": "Ayesa",
-      "kind": "integrator",
-      "events": 5,
-      "max_materiality": 0.762,
-      "degree": 3
-    },
-    {
       "id": "ent_f4a79e212ad4",
       "label": "de Ayesa Digital",
       "kind": "external_entity",
@@ -670,6 +854,38 @@
       "degree": 1
     },
     {
+      "id": "ent_312ed622edfb",
+      "label": "Telefónica Tech",
+      "kind": "integrator",
+      "events": 4,
+      "max_materiality": 0.76,
+      "degree": 2
+    },
+    {
+      "id": "ent_1c3d75f3a3f6",
+      "label": "de los negocios de Telefónica Tech en Hispanoamérica",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_862f07f2b75a",
+      "label": "Lakera para ofrecer seguridad integral de IA",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_952bb2486daf",
+      "label": "de CyberArk",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
       "id": "ent_1ec1526dc501",
       "label": "HBX Group",
       "kind": "external_entity",
@@ -681,16 +897,32 @@
       "id": "ent_cec06f879afd",
       "label": "CrowdStrike",
       "kind": "vendor",
-      "events": 7,
+      "events": 15,
       "max_materiality": 0.754,
-      "degree": 3
+      "degree": 7
     },
     {
-      "id": "ent_312ed622edfb",
-      "label": "Telefónica Tech",
-      "kind": "integrator",
-      "events": 2,
-      "max_materiality": 0.753,
+      "id": "ent_465edbb75827",
+      "label": "la murciana Gispert Business y completa su tercera adquisició",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_a981f7149f72",
+      "label": "de Dayfisa e InforTel Comunicaciones",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_b97ddaf7de75",
+      "label": "la tecnológica aragonesa Inycom",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
       "degree": 1
     },
     {
@@ -702,20 +934,44 @@
       "degree": 2
     },
     {
+      "id": "ent_72a81d1ded57",
+      "label": "CVE-2026-76380",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
       "id": "ent_37a914ab7269",
       "label": "SEIDOR",
       "kind": "integrator",
-      "events": 5,
-      "max_materiality": 0.72,
+      "events": 9,
+      "max_materiality": 0.736,
       "degree": 0
     },
     {
-      "id": "ent_d73d4a8b6a65",
-      "label": "Fortinet",
-      "kind": "vendor",
-      "events": 10,
-      "max_materiality": 0.719,
-      "degree": 2
+      "id": "ent_6c252d549360",
+      "label": "CVE-2026-40050",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_81643426d28b",
+      "label": "Inetum Spain",
+      "kind": "integrator",
+      "events": 2,
+      "max_materiality": 0.731,
+      "degree": 1
+    },
+    {
+      "id": "ent_682cabac902c",
+      "label": "Chronosphere por 3.350 millones de dólares",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
     },
     {
       "id": "ent_9a0697ceb7bb",
@@ -724,6 +980,22 @@
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
+    },
+    {
+      "id": "ent_2dd3a6376fe5",
+      "label": "Noesis",
+      "kind": "integrator",
+      "events": 2,
+      "max_materiality": 0.715,
+      "degree": 0
+    },
+    {
+      "id": "ent_cd9c24da4f01",
+      "label": "Ricoh Spain",
+      "kind": "integrator",
+      "events": 5,
+      "max_materiality": 0.713,
+      "degree": 0
     },
     {
       "id": "ent_f43a4323675a",
@@ -737,7 +1009,7 @@
       "id": "ent_24f13b572772",
       "label": "T-Systems Spain",
       "kind": "integrator",
-      "events": 1,
+      "events": 2,
       "max_materiality": 0.698,
       "degree": 0
     },
@@ -745,7 +1017,7 @@
       "id": "ent_fe2d6b1f84dd",
       "label": "V-Valley / Esprinet",
       "kind": "distributor",
-      "events": 3,
+      "events": 4,
       "max_materiality": 0.692,
       "degree": 0
     },
@@ -769,24 +1041,96 @@
       "id": "ent_e2fc289d7268",
       "label": "Ivanti",
       "kind": "vendor",
-      "events": 2,
+      "events": 5,
       "max_materiality": 0.686,
       "degree": 0
     },
     {
-      "id": "ent_9ca85dba9e52",
-      "label": "Proofpoint",
+      "id": "ent_d90ece3335c6",
+      "label": "Extreme Networks",
       "kind": "vendor",
-      "events": 2,
-      "max_materiality": 0.673,
+      "events": 3,
+      "max_materiality": 0.677,
       "degree": 0
     },
     {
-      "id": "ent_37d110639081",
-      "label": "TD SYNNEX",
-      "kind": "distributor",
-      "events": 4,
-      "max_materiality": 0.671,
+      "id": "ent_547cd2ba3a17",
+      "label": "F5",
+      "kind": "vendor",
+      "events": 14,
+      "max_materiality": 0.676,
+      "degree": 8
+    },
+    {
+      "id": "ent_e9584ac9a7fa",
+      "label": "CVE-2025-37728",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_7efca62c7bd4",
+      "label": "CVE-2023-28801",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_f3872a42be02",
+      "label": "CVE-2006-3550",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_bb3ac63b321f",
+      "label": "CVE-2005-3802",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_96d4c1675d96",
+      "label": "CVE-2005-2245",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_ea8c7442fffc",
+      "label": "CVE-2002-1431",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_1bfd8a785786",
+      "label": "CVE-2002-1811",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_a40e9fcde397",
+      "label": "CVE-1999-0160",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_0f1bdd6d2994",
+      "label": "CVE-1999-1216",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
       "degree": 1
     },
     {
@@ -801,7 +1145,7 @@
       "id": "ent_23510328a7ee",
       "label": "Capgemini Spain",
       "kind": "integrator",
-      "events": 2,
+      "events": 3,
       "max_materiality": 0.652,
       "degree": 0
     },
@@ -814,11 +1158,147 @@
       "degree": 1
     },
     {
-      "id": "ent_cd9c24da4f01",
-      "label": "Ricoh Spain",
+      "id": "ent_73a74819892d",
+      "label": "CVE-2021-26734",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_2a93015eb7e6",
+      "label": "CVE-2020-11633",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_e3834358b9de",
+      "label": "CVE-2020-11635",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_19d3f682545a",
+      "label": "CVE-2012-6590",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_1e21056f35d9",
+      "label": "CVE-2012-4043",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_f3fea78426be",
+      "label": "CVE-2010-0475",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_6fc2c51b9bd4",
+      "label": "CVE-2006-5416",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_ec600bee872f",
+      "label": "CVE-2006-1357",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_de075a4bd511",
+      "label": "CVE-1999-1550",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_5c55b22d6256",
+      "label": "CVE-1999-1582",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_959a34b7f9ec",
+      "label": "CVE-1999-0230",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_024bd31d0dc4",
+      "label": "CVE-1999-0161",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_2bd06bd87d72",
+      "label": "CVE-1999-1306",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_0eca491548cf",
+      "label": "Ingram Micro",
+      "kind": "distributor",
+      "events": 1,
+      "max_materiality": 0.624,
+      "degree": 0
+    },
+    {
+      "id": "ent_223b0e66ec07",
+      "label": "Devoteam Portugal",
       "kind": "integrator",
       "events": 1,
-      "max_materiality": 0.623,
+      "max_materiality": 0.622,
+      "degree": 0
+    },
+    {
+      "id": "ent_09706c418809",
+      "label": "ALSO",
+      "kind": "distributor",
+      "events": 1,
+      "max_materiality": 0.617,
+      "degree": 0
+    },
+    {
+      "id": "ent_328d383cda2a",
+      "label": "Juniper Networks",
+      "kind": "vendor",
+      "events": 3,
+      "max_materiality": 0.615,
+      "degree": 0
+    },
+    {
+      "id": "ent_50603ed86f4f",
+      "label": "Inetum Portugal",
+      "kind": "integrator",
+      "events": 1,
+      "max_materiality": 0.61,
       "degree": 0
     },
     {
@@ -838,11 +1318,35 @@
       "degree": 0
     },
     {
+      "id": "ent_1c59424f1b20",
+      "label": "Migración Segura y Modernización en los",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
       "id": "ent_1ad5428dbc65",
       "label": "MCR",
       "kind": "distributor",
       "events": 1,
       "max_materiality": 0.589,
+      "degree": 0
+    },
+    {
+      "id": "ent_deff02c74bc1",
+      "label": "Logicalis Portugal",
+      "kind": "integrator",
+      "events": 1,
+      "max_materiality": 0.57,
+      "degree": 0
+    },
+    {
+      "id": "ent_9fbd9642989b",
+      "label": "Iberia Technology Market",
+      "kind": "market",
+      "events": 2,
+      "max_materiality": 0.558,
       "degree": 0
     },
     {
@@ -886,8 +1390,8 @@
       "degree": 1
     },
     {
-      "id": "ent_63683c29818e",
-      "label": "AXIANSEU II DIGITAL CONSULTING, S.A.",
+      "id": "ent_bc69a1bba1b4",
+      "label": "Consórcio OPENSOFT Soluções Informáticas, SA",
       "kind": "supplier",
       "events": 0,
       "max_materiality": 0.0,
@@ -899,19 +1403,11 @@
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 1
+      "degree": 2
     },
     {
       "id": "ent_0f50020eedb8",
       "label": "Wondercom, Gestão de Projectos e Equipamentos de Informação e Telecomunicações, Lda,",
-      "kind": "supplier",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 1
-    },
-    {
-      "id": "ent_bc69a1bba1b4",
-      "label": "Consórcio OPENSOFT Soluções Informáticas, SA",
       "kind": "supplier",
       "events": 0,
       "max_materiality": 0.0,
@@ -923,7 +1419,7 @@
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 1
+      "degree": 2
     },
     {
       "id": "ent_da6cc7b36485",
@@ -950,6 +1446,46 @@
       "degree": 1
     },
     {
+      "id": "ent_b241925db81d",
+      "label": "IQVIA SOLUTIONS PORTUGAL, UNIPESSOAL LDA",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_fe0a2e12da79",
+      "label": "NOS – Comunicações, S.A.",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_7942bfd287d4",
+      "label": "Quickops Consulting, Lda",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_3cfdf3f6d328",
+      "label": "AGRUPAMENTO NORMÁTICA, Serviços de informática, S.A.; WWS - consultoria informática, Lda., representado pela Normática – Serviços de Informática e Organização, S.A. / AGRUPAMENTO NORMÁTICA, Serviços de informática, S.A.; WWS - consultoria informática, Lda., representado pela Normática – Serviços de Informática e Organização, S.A. / AGRUPAMENTO NORMÁTICA, Serviços de informática, S.A.; WWS - consultoria informática, Lda., representado pela Normática – Serviços de Informática e Organização, S.A. / AGRUPAMENTO NORMÁTICA, Serviços de informática, S.A.; WWS - consultoria informática, Lda., representado pela Normática – Serviços de Informática e Organização, S.A. / AGRUPAMENTO NORMÁTICA, Serviços de informática, S.A.; WWS - consultoria informática, Lda., representado pela Normática – Serviços de Informática e Organização, S.A.",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_79821ea7080e",
+      "label": "CVE-2025-1146",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
       "id": "ent_df0a81368b70",
       "label": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
       "kind": "buyer",
@@ -966,16 +1502,16 @@
       "degree": 1
     },
     {
-      "id": "ent_be37f879e188",
-      "label": "Universidade de Évora",
+      "id": "ent_55eb6431c309",
+      "label": "Escola Secundária Campos Melo",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
     },
     {
-      "id": "ent_f9621307caf3",
-      "label": "BASEDOIS - INFORMÁTICA E TELECOMUNICAÇÕES, LDA / BASEDOIS - INFORMÁTICA E TELECOMUNICAÇÕES, LDA / BASEDOIS - INFORMÁTICA E TELECOMUNICAÇÕES, LDA / BASEDOIS - INFORMÁTICA E TELECOMUNICAÇÕES, LDA / CPCECHO, LDA. / NOVABIT, INFORMÁTICA, UNIPESSOAL, LDA.",
+      "id": "ent_0a0d6029bae8",
+      "label": "J. Roma, Lda / AREAL EDITORES, S.A / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / Bricantel - Comércio de Material Eléctrico de Bragança S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA,",
       "kind": "supplier",
       "events": 0,
       "max_materiality": 0.0,
@@ -1022,6 +1558,22 @@
       "degree": 1
     },
     {
+      "id": "ent_fe3a05b3475c",
+      "label": "Delegación Provincial del Servicio Andaluz de Empleo de Sevilla",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_48a811ce1747",
+      "label": "ALAMO INDUSTRIAL, S.A.",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
       "id": "ent_e5326f079e81",
       "label": "Dräger Portugal, Lda.",
       "kind": "supplier",
@@ -1046,6 +1598,14 @@
       "degree": 1
     },
     {
+      "id": "ent_46d127e1d0ed",
+      "label": "Dirección General de Telecomunicaciones y Digitalización",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
       "id": "ent_8d83c3c0e813",
       "label": "Gobierno Vasco - EUSTAT - Instituto Vasco de Estadística",
       "kind": "buyer",
@@ -1062,8 +1622,24 @@
       "degree": 1
     },
     {
-      "id": "ent_f086e3f5aee7",
-      "label": "Agência para o Desenvolvimento e Coesão, IP",
+      "id": "ent_130249dfc253",
+      "label": "Vicepresidencia Segunda de la Junta de Castilla y León",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_c49f9703d4ea",
+      "label": "Santa Casa da Misericórdia de Lisboa",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_159b0ff491f9",
+      "label": "Secretaria-Geral do Ministério do Trabalho, Solidariedade e Segurança Social",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
@@ -1100,6 +1676,38 @@
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
+    },
+    {
+      "id": "ent_0412b0ed5d0b",
+      "label": "Ajuntament de Sant Feliu de Guíxols",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_5b81a985ccb3",
+      "label": "Diputación Foral de Álava - Departamento de Movilidad Sostenible e Infraestructuras Viarias",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 2
+    },
+    {
+      "id": "ent_4828caf55679",
+      "label": "The European Joint Undertaking for ITER and the Development of Fusion Energy ('Fusion for Energy')",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_f05d57f846ff",
+      "label": "Metropolitano de Lisboa, EPE",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
     }
   ],
   "edges": [
@@ -1122,6 +1730,24 @@
       ]
     },
     {
+      "from": "ent_8c804d7d1311",
+      "to": "ent_d3d04978c1e4",
+      "from_label": "Palo Alto Networks",
+      "to_label": "de Okta y Datadog",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "1e16953845f9adfa",
+      "title": "El director ejecutivo de Palo Alto Networks negoció la compra de Okta y Datadog - Investing.com España",
+      "confidence": 0.7,
+      "materiality": 0.863,
+      "scope": "ES",
+      "date": "Wed, 26 Aug 2026 14:10:00 GMT",
+      "sources": [
+        "Investing.com España"
+      ]
+    },
+    {
       "from": "ent_0004ce55d3e7",
       "to": "ent_d3d04978c1e4",
       "from_label": "Okta",
@@ -1140,21 +1766,57 @@
       ]
     },
     {
-      "from": "ent_8c804d7d1311",
-      "to": "ent_d3d04978c1e4",
-      "from_label": "Palo Alto Networks",
-      "to_label": "de Okta y Datadog",
+      "from": "ent_55357933a731",
+      "to": "ent_141a92417f71",
+      "from_label": "AWS",
+      "to_label": "AI",
       "from_kind": "vendor",
-      "to_kind": "external_entity",
-      "relation": "ACQUIRED_OR_MERGED",
-      "event_id": "1e16953845f9adfa",
-      "title": "El director ejecutivo de Palo Alto Networks negoció la compra de Okta y Datadog - Investing.com España",
-      "confidence": 0.7,
-      "materiality": 0.863,
+      "to_kind": "technology",
+      "relation": "CERTIFIED_CAPABILITY",
+      "event_id": "07adea038088b50a",
+      "title": "Amazon EC2 X8i instances are now available in additional regions",
+      "confidence": 0.817,
+      "materiality": 0.853,
       "scope": "ES",
-      "date": "Wed, 26 Aug 2026 14:10:00 GMT",
+      "date": "Thu, 27 Aug 2026 18:40:00 GMT",
       "sources": [
-        "Investing.com España"
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_000e793db70c",
+      "from_label": "AWS",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "CERTIFIED_CAPABILITY",
+      "event_id": "07adea038088b50a",
+      "title": "Amazon EC2 X8i instances are now available in additional regions",
+      "confidence": 0.817,
+      "materiality": 0.853,
+      "scope": "ES",
+      "date": "Thu, 27 Aug 2026 18:40:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_f415700d4d0c",
+      "from_label": "AWS",
+      "to_label": "Automation",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "CERTIFIED_CAPABILITY",
+      "event_id": "07adea038088b50a",
+      "title": "Amazon EC2 X8i instances are now available in additional regions",
+      "confidence": 0.817,
+      "materiality": 0.853,
+      "scope": "ES",
+      "date": "Thu, 27 Aug 2026 18:40:00 GMT",
+      "sources": [
+        "AWS"
       ]
     },
     {
@@ -1248,6 +1910,42 @@
       ]
     },
     {
+      "from": "ent_18d7947372c1",
+      "to": "ent_053edf612d00",
+      "from_label": "Autoridade Tributária e Aduaneira",
+      "to_label": "Consórcio chefiado e representado pela “Accenture, Consultores de Gestão, SA” / ATOS IT Solutions and Services Unipessoal, Lda. / AXIANSEU II DIGITAL CONSULTING, S.A. / Glintt Global, S.A. / NTT Data Portugal, S.A / Opensoft - Soluções Informáticas, S.A.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "28724600d1ec7457",
+      "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
+      "confidence": 0.877,
+      "materiality": 0.826,
+      "scope": "PT",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_18d7947372c1",
+      "to": "ent_053edf612d00",
+      "from_label": "Autoridade Tributária e Aduaneira",
+      "to_label": "Consórcio chefiado e representado pela “Accenture, Consultores de Gestão, SA” / ATOS IT Solutions and Services Unipessoal, Lda. / AXIANSEU II DIGITAL CONSULTING, S.A. / Glintt Global, S.A. / NTT Data Portugal, S.A / Opensoft - Soluções Informáticas, S.A.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "5bab5fda608ec9fe",
+      "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
+      "confidence": 0.877,
+      "materiality": 0.826,
+      "scope": "PT",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
       "from": "ent_dbbaa3a611f4",
       "to": "ent_64eebfbaa60c",
       "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
@@ -1275,24 +1973,6 @@
       "relation": "AWARDED_CONTRACT_TO",
       "event_id": "7fac6d1b7db2839c",
       "title": "Portugal – Servicios informáticos – (DAG) Aquisição de Serviços de Suporte e Manutenção Aplicacional da Plataforma EAGENDA 2.0 (20260132)",
-      "confidence": 0.877,
-      "materiality": 0.826,
-      "scope": "PT",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_18d7947372c1",
-      "to": "ent_053edf612d00",
-      "from_label": "Autoridade Tributária e Aduaneira",
-      "to_label": "Consórcio chefiado e representado pela “Accenture, Consultores de Gestão, SA” / ATOS IT Solutions and Services Unipessoal, Lda. / AXIANSEU II DIGITAL CONSULTING, S.A. / Glintt Global, S.A. / NTT Data Portugal, S.A / Opensoft - Soluções Informáticas, S.A.",
-      "from_kind": "buyer",
-      "to_kind": "supplier",
-      "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "28724600d1ec7457",
-      "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
       "confidence": 0.877,
       "materiality": 0.826,
       "scope": "PT",
@@ -1339,24 +2019,6 @@
     },
     {
       "from": "ent_18d7947372c1",
-      "to": "ent_053edf612d00",
-      "from_label": "Autoridade Tributária e Aduaneira",
-      "to_label": "Consórcio chefiado e representado pela “Accenture, Consultores de Gestão, SA” / ATOS IT Solutions and Services Unipessoal, Lda. / AXIANSEU II DIGITAL CONSULTING, S.A. / Glintt Global, S.A. / NTT Data Portugal, S.A / Opensoft - Soluções Informáticas, S.A.",
-      "from_kind": "buyer",
-      "to_kind": "supplier",
-      "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "5bab5fda608ec9fe",
-      "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
-      "confidence": 0.877,
-      "materiality": 0.826,
-      "scope": "PT",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_18d7947372c1",
       "to": "ent_02ac4aea6632",
       "from_label": "Autoridade Tributária e Aduaneira",
       "to_label": "Consorcio Glintt Global, SA",
@@ -1389,6 +2051,96 @@
       "date": "2026-08-27+02:00",
       "sources": [
         "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_141a92417f71",
+      "from_label": "AWS",
+      "to_label": "AI",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "MANAGED_SERVICE_IN_DOMAIN",
+      "event_id": "35157a082c63e0c6",
+      "title": "Amazon SageMaker HyperPod enhances support for Ray",
+      "confidence": 0.786,
+      "materiality": 0.817,
+      "scope": "GLOBAL",
+      "date": "Mon, 24 Aug 2026 15:00:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_000e793db70c",
+      "from_label": "AWS",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "MANAGED_SERVICE_IN_DOMAIN",
+      "event_id": "35157a082c63e0c6",
+      "title": "Amazon SageMaker HyperPod enhances support for Ray",
+      "confidence": 0.786,
+      "materiality": 0.817,
+      "scope": "GLOBAL",
+      "date": "Mon, 24 Aug 2026 15:00:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_34a102152608",
+      "from_label": "AWS",
+      "to_label": "Observability",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "MANAGED_SERVICE_IN_DOMAIN",
+      "event_id": "35157a082c63e0c6",
+      "title": "Amazon SageMaker HyperPod enhances support for Ray",
+      "confidence": 0.786,
+      "materiality": 0.817,
+      "scope": "GLOBAL",
+      "date": "Mon, 24 Aug 2026 15:00:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_000e793db70c",
+      "from_label": "AWS",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "MANAGED_SERVICE_IN_DOMAIN",
+      "event_id": "603b0d18c93c8a11",
+      "title": "AWS Deadline Cloud now tracks automatic download status in the Deadline Cloud Monitor",
+      "confidence": 0.786,
+      "materiality": 0.816,
+      "scope": "GLOBAL",
+      "date": "Fri, 21 Aug 2026 18:00:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_8ede098acbe0",
+      "to": "ent_d73d4a8b6a65",
+      "from_label": "Exclusive Networks",
+      "to_label": "Fortinet",
+      "from_kind": "distributor",
+      "to_kind": "vendor",
+      "relation": "DISTRIBUTED_BY",
+      "event_id": "268916d5e209ea02",
+      "title": "Exclusive Networks se convierte en distribuidor global de Fortinet - Exclusive Networks",
+      "confidence": 0.7,
+      "materiality": 0.807,
+      "scope": "IBERIA",
+      "date": "Thu, 16 Jul 2026 19:53:34 GMT",
+      "sources": [
+        "Exclusive Networks"
       ]
     },
     {
@@ -1428,6 +2180,96 @@
       ]
     },
     {
+      "from": "ent_55357933a731",
+      "to": "ent_78fd5cac8c02",
+      "from_label": "AWS",
+      "to_label": "Cybersecurity",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "c52065c86c4b3e1f",
+      "title": "AWS Glue 5.1 is now available in AWS European Sovereign Cloud Region",
+      "confidence": 0.785,
+      "materiality": 0.801,
+      "scope": "EUROPE",
+      "date": "Wed, 26 Aug 2026 16:26:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_000e793db70c",
+      "from_label": "AWS",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "c52065c86c4b3e1f",
+      "title": "AWS Glue 5.1 is now available in AWS European Sovereign Cloud Region",
+      "confidence": 0.785,
+      "materiality": 0.801,
+      "scope": "EUROPE",
+      "date": "Wed, 26 Aug 2026 16:26:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_000e793db70c",
+      "from_label": "AWS",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "431e158f64cc702b",
+      "title": "IAM Roles Anywhere now provides a Java plugin for the AWS SDK",
+      "confidence": 0.785,
+      "materiality": 0.8,
+      "scope": "EUROPE",
+      "date": "Tue, 25 Aug 2026 13:18:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_1db089a9f84e",
+      "from_label": "AWS",
+      "to_label": "Identity",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "431e158f64cc702b",
+      "title": "IAM Roles Anywhere now provides a Java plugin for the AWS SDK",
+      "confidence": 0.785,
+      "materiality": 0.8,
+      "scope": "EUROPE",
+      "date": "Tue, 25 Aug 2026 13:18:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_20725cb1b8af",
+      "from_label": "AWS",
+      "to_label": "IT Services",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "431e158f64cc702b",
+      "title": "IAM Roles Anywhere now provides a Java plugin for the AWS SDK",
+      "confidence": 0.785,
+      "materiality": 0.8,
+      "scope": "EUROPE",
+      "date": "Tue, 25 Aug 2026 13:18:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
       "from": "ent_6df72c006222",
       "to": "ent_aa913a8a6a37",
       "from_label": "Aena. Presidencia. Consejero Delegado",
@@ -1441,6 +2283,42 @@
       "materiality": 0.799,
       "scope": "ES",
       "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_d60274bc0800",
+      "to": "ent_3db876d60349",
+      "from_label": "CANAL DE ISABEL II, S.A., M.P.",
+      "to_label": "fibratel S.L",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "f20199e2ce15ee76",
+      "title": "España – Infraestructura de red – SUMINISTRO Y MANTENIMIENTO DE EQUIPOS CORE (NEXUS) PARA LA RED CORPORATIVA DE CANAL DE ISABEL II, S.A., M.P.",
+      "confidence": 0.877,
+      "materiality": 0.799,
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_ba3fc06b6a30",
+      "to": "ent_8ddd027af474",
+      "from_label": "Gerencia Regional de Salud de Castilla y León",
+      "to_label": "TECNOLOGÍAS PLEXUS S.L.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "8ab6252ce32df5f4",
+      "title": "España – Mantenimiento de equipos de redes de datos – Suministro, instalación y servicio de mantenimiento y soporte de infraestructuras y servicios inalámbricos (wifi) de la GRS",
+      "confidence": 0.877,
+      "materiality": 0.798,
+      "scope": "ES",
+      "date": "2026-08-28+02:00",
       "sources": [
         "TED EU Procurement"
       ]
@@ -1461,6 +2339,24 @@
       "date": "2026-08-28+02:00",
       "sources": [
         "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_cad160f3d4cd",
+      "to": "ent_2c5478be8285",
+      "from_label": "Babel",
+      "to_label": "Anadat y refuerza su músculo en cloud e infraestructuras",
+      "from_kind": "integrator",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "d07ec1690988378b",
+      "title": "Babel compra Anadat y refuerza su músculo en cloud e infraestructuras - Data Center Dynamics",
+      "confidence": 0.672,
+      "materiality": 0.798,
+      "scope": "ES",
+      "date": "Thu, 05 Mar 2026 08:00:00 GMT",
+      "sources": [
+        "Data Center Dynamics"
       ]
     },
     {
@@ -1500,24 +2396,6 @@
       ]
     },
     {
-      "from": "ent_a10bf3f2331b",
-      "to": "ent_48939c80c1f3",
-      "from_label": "Corporació Catalana de Mitjans Audiovisuals, SA (CCMA, SA)",
-      "to_label": "Datos Media Technologies S.A",
-      "from_kind": "buyer",
-      "to_kind": "supplier",
-      "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "492cc9017b07f8bc",
-      "title": "España – Unidades de memoria de disco magnético – Sistema de almacenamiento de archivo basado en disco",
-      "confidence": 0.877,
-      "materiality": 0.794,
-      "scope": "ES",
-      "date": "2026-08-31+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
       "from": "ent_29f93e113744",
       "to": "ent_e3d1e0ca3bd0",
       "from_label": "Universidade do Minho",
@@ -1531,24 +2409,6 @@
       "materiality": 0.794,
       "scope": "PT",
       "date": "2026-08-31+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_0580be35e61c",
-      "to": "ent_31b6a76f9301",
-      "from_label": "Serviços de Ação Social da Universidade de Trás-os-Montes e Alto Douro",
-      "to_label": "Eurest - Sociedade Europeia de Restaurantes / Eurest - Sociedade Europeia de Restaurantes / Vanibru - Comércio de Produtos Alimentares, Lda / Vanibru - Comércio de Produtos Alimentares, Lda / Mestre Alimentar, Lda / Vanibru - Comércio de Produtos Alimentares, Lda / Mestre Alimentar, Lda / Sogenave - Soc. Geral Abastecimento Naveg. Industria Hoteleira, SA / Mestre Alimentar, Lda / Eurest - Sociedade Europeia de Restaurantes / Vanibru - Comércio de Produtos Alimentares, Lda / Vanibru - Comércio de Produtos Alimentares, Lda / Mestre Alimentar, Lda / Vanibru - Comércio de Produtos Alimentares, Lda / Deltagel - Produtos Alimentares, SA / Distribui - Comércio e Distribuição de Produtos Alimenteres, Lda / Eurest - Sociedade Europeia de Restaurantes / Vanibru - Comércio de Produtos Alimentares, Lda / Silva e Carlos, Lda / Silva e Carlos, Lda / Sogenave - Soc. Geral Abastecimento Naveg. Industria Hoteleira, SA / Vanibru - Comércio de Produtos Alimentares, Lda / Deltagel - Produtos Alimentares, SA / Maria Luz Jesus Monteiro Unipessoal, Lda / Maria Luz Jesus Monteiro Unipessoal, Lda / Sogenave - Soc. Geral Abastecimento Naveg. Industria Hoteleira, SA / Maria Luz Jesus Monteiro Unipessoal, Lda / Sogenave - Soc. Geral Abastecimento Naveg. Industria Hoteleira, SA / Mestre Alimentar, Lda / Eurest - Sociedade Europeia de Restaurantes / Deltagel - Produtos Alimentares, SA / Eurest - Sociedade Europeia de Restaurantes / Vanibru - Comércio de Produtos Alimentares, Lda / Mestre Alimentar, Lda / RealDrink, Lda / Eurest - Sociedade Europeia de Restaurantes / RealDrink, Lda / RealDrink, Lda",
-      "from_kind": "buyer",
-      "to_kind": "supplier",
-      "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "19bf598787dd0b6d",
-      "title": "Portugal – Productos alimenticios diversos – Fornecimento Contínuo de Bens Alimentares",
-      "confidence": 0.877,
-      "materiality": 0.794,
-      "scope": "PT",
-      "date": "2026-08-28+02:00",
       "sources": [
         "TED EU Procurement"
       ]
@@ -1590,6 +2450,42 @@
       ]
     },
     {
+      "from": "ent_c8d4eec720a7",
+      "to": "ent_48939c80c1f3",
+      "from_label": "Ente Público de Radiotelevisión de las Illes Balears",
+      "to_label": "Datos Media Technologies S.A",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "62c72ff02ce7414e",
+      "title": "España – Servicios de almacenamiento de datos – Servicio de soporte técnico de la infraestructura de archivo digital del material audiovisual del EPRTVIB.",
+      "confidence": 0.877,
+      "materiality": 0.793,
+      "scope": "ES",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_0580be35e61c",
+      "to": "ent_31b6a76f9301",
+      "from_label": "Serviços de Ação Social da Universidade de Trás-os-Montes e Alto Douro",
+      "to_label": "Eurest - Sociedade Europeia de Restaurantes / Eurest - Sociedade Europeia de Restaurantes / Vanibru - Comércio de Produtos Alimentares, Lda / Vanibru - Comércio de Produtos Alimentares, Lda / Mestre Alimentar, Lda / Vanibru - Comércio de Produtos Alimentares, Lda / Mestre Alimentar, Lda / Sogenave - Soc. Geral Abastecimento Naveg. Industria Hoteleira, SA / Mestre Alimentar, Lda / Eurest - Sociedade Europeia de Restaurantes / Vanibru - Comércio de Produtos Alimentares, Lda / Vanibru - Comércio de Produtos Alimentares, Lda / Mestre Alimentar, Lda / Vanibru - Comércio de Produtos Alimentares, Lda / Deltagel - Produtos Alimentares, SA / Distribui - Comércio e Distribuição de Produtos Alimenteres, Lda / Eurest - Sociedade Europeia de Restaurantes / Vanibru - Comércio de Produtos Alimentares, Lda / Silva e Carlos, Lda / Silva e Carlos, Lda / Sogenave - Soc. Geral Abastecimento Naveg. Industria Hoteleira, SA / Vanibru - Comércio de Produtos Alimentares, Lda / Deltagel - Produtos Alimentares, SA / Maria Luz Jesus Monteiro Unipessoal, Lda / Maria Luz Jesus Monteiro Unipessoal, Lda / Sogenave - Soc. Geral Abastecimento Naveg. Industria Hoteleira, SA / Maria Luz Jesus Monteiro Unipessoal, Lda / Sogenave - Soc. Geral Abastecimento Naveg. Industria Hoteleira, SA / Mestre Alimentar, Lda / Eurest - Sociedade Europeia de Restaurantes / Deltagel - Produtos Alimentares, SA / Eurest - Sociedade Europeia de Restaurantes / Vanibru - Comércio de Produtos Alimentares, Lda / Mestre Alimentar, Lda / RealDrink, Lda / Eurest - Sociedade Europeia de Restaurantes / RealDrink, Lda / RealDrink, Lda",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "19bf598787dd0b6d",
+      "title": "Portugal – Productos alimenticios diversos – Fornecimento Contínuo de Bens Alimentares",
+      "confidence": 0.877,
+      "materiality": 0.793,
+      "scope": "PT",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
       "from": "ent_aebc050a52d6",
       "to": "ent_785448c90d93",
       "from_label": "Agência para a Integração, Migrações e Asilo, IP",
@@ -1605,6 +2501,25 @@
       "date": "2026-08-27+02:00",
       "sources": [
         "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_5eb6f43b5a92",
+      "to": "ent_68980f3561e0",
+      "from_label": "Nunsys",
+      "to_label": "Kaizen Networks",
+      "from_kind": "integrator",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "ef42822c68ac386b",
+      "title": "Nunsys Group compra Kaizen Networks, especialista en CC.UU. y networking - Redes & Telecom",
+      "confidence": 0.704,
+      "materiality": 0.793,
+      "scope": "ES",
+      "date": "Thu, 27 Nov 2025 08:00:00 GMT",
+      "sources": [
+        "Redes & Telecom",
+        "El Economista"
       ]
     },
     {
@@ -1698,6 +2613,42 @@
       ]
     },
     {
+      "from": "ent_a5a01b8fa531",
+      "to": "ent_169488aadf42",
+      "from_label": "Timestamp",
+      "to_label": "suíça Digital SupplyAI",
+      "from_kind": "integrator",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "edf358b8700d7acb",
+      "title": "Portuguesa Timestamp com 1.200 trabalhadores compra suíça Digital SupplyAI - Jornal de Negócios",
+      "confidence": 0.672,
+      "materiality": 0.781,
+      "scope": "PT",
+      "date": "Tue, 07 Apr 2026 07:00:00 GMT",
+      "sources": [
+        "Jornal de Negócios"
+      ]
+    },
+    {
+      "from": "ent_8c804d7d1311",
+      "to": "ent_bc1793962606",
+      "from_label": "Palo Alto Networks",
+      "to_label": "Koi y así busca asegurar la IA en endpoints",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "0f5a82b222458a72",
+      "title": "Palo Alto Networks adquiere Koi y así busca asegurar la IA en endpoints - ITSitio",
+      "confidence": 0.66,
+      "materiality": 0.78,
+      "scope": "GLOBAL",
+      "date": "Thu, 16 Apr 2026 07:00:00 GMT",
+      "sources": [
+        "ITSitio"
+      ]
+    },
+    {
       "from": "ent_1e53b1926bfa",
       "to": "ent_78fd5cac8c02",
       "from_label": "Westcon-Comstor",
@@ -1713,6 +2664,24 @@
       "date": "Tue, 26 May 2026 07:00:00 GMT",
       "sources": [
         "Interempresas.net"
+      ]
+    },
+    {
+      "from": "ent_cad160f3d4cd",
+      "to": "ent_1e4e9fdec5d2",
+      "from_label": "Babel",
+      "to_label": "Anadat y refuerza su presencia en el mercado español",
+      "from_kind": "integrator",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "3510a117e43c1253",
+      "title": "Babel adquiere Anadat y refuerza su presencia en el mercado español - redseguridad.com",
+      "confidence": 0.7,
+      "materiality": 0.774,
+      "scope": "ES",
+      "date": "Thu, 05 Mar 2026 08:00:00 GMT",
+      "sources": [
+        "redseguridad.com"
       ]
     },
     {
@@ -1734,21 +2703,255 @@
       ]
     },
     {
-      "from": "ent_46d127e1d0ed",
-      "to": "ent_20725cb1b8af",
-      "from_label": "Dirección General de Telecomunicaciones y Digitalización",
-      "to_label": "IT Services",
-      "from_kind": "buyer",
+      "from": "ent_55357933a731",
+      "to": "ent_78fd5cac8c02",
+      "from_label": "AWS",
+      "to_label": "Cybersecurity",
+      "from_kind": "vendor",
       "to_kind": "technology",
-      "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "9722cf6d8cf04937",
-      "title": "España – Mantenimiento y reparación de equipo informático – Mantenimiento del parque informático de la Administración de la Comunidad Foral de Navarra durante el año 2027.",
-      "confidence": 0.875,
-      "materiality": 0.766,
-      "scope": "ES",
-      "date": "2026-08-31+02:00",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "cdad8499f1789853",
+      "title": "Amazon Aurora MySQL 3.13 (compatible with MySQL 8.0.45) is generally available",
+      "confidence": 0.768,
+      "materiality": 0.769,
+      "scope": "GLOBAL",
+      "date": "Fri, 28 Aug 2026 16:00:00 GMT",
       "sources": [
-        "TED EU Procurement"
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_000e793db70c",
+      "from_label": "AWS",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "cdad8499f1789853",
+      "title": "Amazon Aurora MySQL 3.13 (compatible with MySQL 8.0.45) is generally available",
+      "confidence": 0.768,
+      "materiality": 0.769,
+      "scope": "GLOBAL",
+      "date": "Fri, 28 Aug 2026 16:00:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_000e793db70c",
+      "from_label": "AWS",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "6feade1bbe33195e",
+      "title": "AWS Lambda introduces managed runtimes in public preview for Node.js 26 and Python 3.15",
+      "confidence": 0.768,
+      "materiality": 0.768,
+      "scope": "GLOBAL",
+      "date": "Tue, 25 Aug 2026 13:00:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_34a102152608",
+      "from_label": "AWS",
+      "to_label": "Observability",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "6feade1bbe33195e",
+      "title": "AWS Lambda introduces managed runtimes in public preview for Node.js 26 and Python 3.15",
+      "confidence": 0.768,
+      "materiality": 0.768,
+      "scope": "GLOBAL",
+      "date": "Tue, 25 Aug 2026 13:00:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_78fd5cac8c02",
+      "from_label": "AWS",
+      "to_label": "Cybersecurity",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "d5cab0ac5064ab2b",
+      "title": "Amazon RDS for Oracle now supports July 2026 Release Update",
+      "confidence": 0.768,
+      "materiality": 0.768,
+      "scope": "GLOBAL",
+      "date": "Tue, 25 Aug 2026 07:24:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_000e793db70c",
+      "from_label": "AWS",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "d5cab0ac5064ab2b",
+      "title": "Amazon RDS for Oracle now supports July 2026 Release Update",
+      "confidence": 0.768,
+      "materiality": 0.768,
+      "scope": "GLOBAL",
+      "date": "Tue, 25 Aug 2026 07:24:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_000e793db70c",
+      "from_label": "AWS",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "ac4ca0d718076108",
+      "title": "Amazon EVS now supports i7i.metal-48xl Amazon EC2 instance type",
+      "confidence": 0.768,
+      "materiality": 0.768,
+      "scope": "GLOBAL",
+      "date": "Thu, 27 Aug 2026 16:35:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_0e10e164957d",
+      "from_label": "AWS",
+      "to_label": "Data Center",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "ac4ca0d718076108",
+      "title": "Amazon EVS now supports i7i.metal-48xl Amazon EC2 instance type",
+      "confidence": 0.768,
+      "materiality": 0.768,
+      "scope": "GLOBAL",
+      "date": "Thu, 27 Aug 2026 16:35:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_c92be6821474",
+      "to": "ent_e86511938d7d",
+      "from_label": "Ayesa",
+      "to_label": "Ayesa Engineering",
+      "from_kind": "integrator",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "9bf6189cf48398b7",
+      "title": "Colliers adquiere Ayesa Engineering - Ayesa",
+      "confidence": 0.7,
+      "materiality": 0.768,
+      "scope": "ES",
+      "date": "Tue, 03 Feb 2026 08:00:00 GMT",
+      "sources": [
+        "Ayesa"
+      ]
+    },
+    {
+      "from": "ent_c92be6821474",
+      "to": "ent_8ddae14799f2",
+      "from_label": "Ayesa",
+      "to_label": "de Ayesa Ingeniería por 600 M",
+      "from_kind": "integrator",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "dc21cba0f6a78e0b",
+      "title": "La multinacional canadiense Colliers sella la compra de Ayesa Ingeniería por 600 M€ - El Confidencial",
+      "confidence": 0.7,
+      "materiality": 0.768,
+      "scope": "ES",
+      "date": "Tue, 03 Feb 2026 08:00:00 GMT",
+      "sources": [
+        "El Confidencial"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_141a92417f71",
+      "from_label": "AWS",
+      "to_label": "AI",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "6a8780fcb06b8e2e",
+      "title": "AWS ParallelCluster 3.16 adds an on-node diagnostics tool",
+      "confidence": 0.768,
+      "materiality": 0.767,
+      "scope": "GLOBAL",
+      "date": "Mon, 24 Aug 2026 14:00:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_000e793db70c",
+      "from_label": "AWS",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "6a8780fcb06b8e2e",
+      "title": "AWS ParallelCluster 3.16 adds an on-node diagnostics tool",
+      "confidence": 0.768,
+      "materiality": 0.767,
+      "scope": "GLOBAL",
+      "date": "Mon, 24 Aug 2026 14:00:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_20725cb1b8af",
+      "from_label": "AWS",
+      "to_label": "IT Services",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "6a8780fcb06b8e2e",
+      "title": "AWS ParallelCluster 3.16 adds an on-node diagnostics tool",
+      "confidence": 0.768,
+      "materiality": 0.767,
+      "scope": "GLOBAL",
+      "date": "Mon, 24 Aug 2026 14:00:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_9ca85dba9e52",
+      "to": "ent_34b6ca93618d",
+      "from_label": "Proofpoint",
+      "to_label": "Acuvity para ofrecer seguridad y gobernanza de IA en el entor",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "5c1acd8667825540",
+      "title": "Proofpoint adquiere Acuvity para ofrecer seguridad y gobernanza de IA en el entorno de trabajo agéntico - Proofpoint",
+      "confidence": 0.66,
+      "materiality": 0.767,
+      "scope": "GLOBAL",
+      "date": "Thu, 12 Feb 2026 08:00:00 GMT",
+      "sources": [
+        "Proofpoint"
       ]
     },
     {
@@ -1765,6 +2968,97 @@
       "materiality": 0.766,
       "scope": "PT",
       "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_141a92417f71",
+      "from_label": "AWS",
+      "to_label": "AI",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "6c0c8a60036c7a5b",
+      "title": "AWS Neuron 2.32 introduces expanded NKI programming, MXFP8 training kernels, and variable-size collectives for Trn2 and Trn",
+      "confidence": 0.768,
+      "materiality": 0.766,
+      "scope": "GLOBAL",
+      "date": "Fri, 21 Aug 2026 21:11:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_000e793db70c",
+      "from_label": "AWS",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "6c0c8a60036c7a5b",
+      "title": "AWS Neuron 2.32 introduces expanded NKI programming, MXFP8 training kernels, and variable-size collectives for Trn2 and Trn",
+      "confidence": 0.768,
+      "materiality": 0.766,
+      "scope": "GLOBAL",
+      "date": "Fri, 21 Aug 2026 21:11:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_300a29a2fe6e",
+      "to": "ent_141a92417f71",
+      "from_label": "Indra",
+      "to_label": "AI",
+      "from_kind": "integrator",
+      "to_kind": "technology",
+      "relation": "CERTIFIED_CAPABILITY",
+      "event_id": "ee5192d32757395c",
+      "title": "Indra Group se convierte en la primera compañía española que obtiene la certificación de AENOR “Tecnología de IA responsable basada en herramientas Microsoft” | Actualidad - Indra Group",
+      "confidence": 0.693,
+      "materiality": 0.766,
+      "scope": "ES",
+      "date": "Mon, 13 Jul 2026 07:00:00 GMT",
+      "sources": [
+        "Indra Group",
+        "TradingView"
+      ]
+    },
+    {
+      "from": "ent_17c03de27b55",
+      "to": "ent_9e91940ff923",
+      "from_label": "Empresa de Transformación Agraria S.A.,S.M.E., M.P., (TRAGSA)",
+      "to_label": "Networking",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "b55c69af4a3a2614",
+      "title": "España – Mantenimiento y reparación de equipo de tecnología de la información – Renovación del servicio de soporte técnico y mantenimiento de la herramienta de procesamiento, inspección y análisis del contenido del tráfico de red actualmente en uso en el Grupo Tragsa.",
+      "confidence": 0.875,
+      "materiality": 0.765,
+      "scope": "ES",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_17c03de27b55",
+      "to": "ent_20725cb1b8af",
+      "from_label": "Empresa de Transformación Agraria S.A.,S.M.E., M.P., (TRAGSA)",
+      "to_label": "IT Services",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "b55c69af4a3a2614",
+      "title": "España – Mantenimiento y reparación de equipo de tecnología de la información – Renovación del servicio de soporte técnico y mantenimiento de la herramienta de procesamiento, inspección y análisis del contenido del tráfico de red actualmente en uso en el Grupo Tragsa.",
+      "confidence": 0.875,
+      "materiality": 0.765,
+      "scope": "ES",
+      "date": "2026-08-28+02:00",
       "sources": [
         "TED EU Procurement"
       ]
@@ -1951,6 +3245,24 @@
       ]
     },
     {
+      "from": "ent_312ed622edfb",
+      "to": "ent_1c3d75f3a3f6",
+      "from_label": "Telefónica Tech",
+      "to_label": "de los negocios de Telefónica Tech en Hispanoamérica",
+      "from_kind": "integrator",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "b6420329ff07ca4b",
+      "title": "hiberus refuerza su expansión con la compra de los negocios de Telefónica Tech en Hispanoamérica - 20minutos.es",
+      "confidence": 0.7,
+      "materiality": 0.76,
+      "scope": "ES",
+      "date": "Tue, 23 Dec 2025 08:00:00 GMT",
+      "sources": [
+        "20minutos.es"
+      ]
+    },
+    {
       "from": "ent_55357933a731",
       "to": "ent_141a92417f71",
       "from_label": "AWS",
@@ -1987,6 +3299,44 @@
       ]
     },
     {
+      "from": "ent_b81902f73021",
+      "to": "ent_862f07f2b75a",
+      "from_label": "Check Point",
+      "to_label": "Lakera para ofrecer seguridad integral de IA",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "744d63c988c4283f",
+      "title": "Check Point Software adquiere Lakera para ofrecer seguridad integral de IA - La Gran Noticia",
+      "confidence": 0.692,
+      "materiality": 0.756,
+      "scope": "GLOBAL",
+      "date": "Tue, 16 Sep 2025 07:00:00 GMT",
+      "sources": [
+        "La Gran Noticia",
+        "Escudo Digital"
+      ]
+    },
+    {
+      "from": "ent_8c804d7d1311",
+      "to": "ent_952bb2486daf",
+      "from_label": "Palo Alto Networks",
+      "to_label": "de CyberArk",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "d620d527aee5c981",
+      "title": "Palo Alto Networks cierra la compra de CyberArk - redseguridad.com",
+      "confidence": 0.692,
+      "materiality": 0.756,
+      "scope": "GLOBAL",
+      "date": "Mon, 16 Feb 2026 08:00:00 GMT",
+      "sources": [
+        "redseguridad.com",
+        "Interempresas Media"
+      ]
+    },
+    {
       "from": "ent_c92be6821474",
       "to": "ent_1ec1526dc501",
       "from_label": "Ayesa",
@@ -2005,21 +3355,21 @@
       ]
     },
     {
-      "from": "ent_300a29a2fe6e",
-      "to": "ent_141a92417f71",
-      "from_label": "Indra",
-      "to_label": "AI",
+      "from": "ent_5eb6f43b5a92",
+      "to": "ent_465edbb75827",
+      "from_label": "Nunsys",
+      "to_label": "la murciana Gispert Business y completa su tercera adquisició",
       "from_kind": "integrator",
-      "to_kind": "technology",
-      "relation": "CERTIFIED_CAPABILITY",
-      "event_id": "70ead80403be2f75",
-      "title": "Indra, primera firma española en obtener la certificación de Aenor sobre IA responsable con Microsoft - TradingView",
-      "confidence": 0.661,
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "a948882929d34241",
+      "title": "Nunsys compra la murciana Gispert Business y completa su tercera adquisición en la Región - Murcia Plaza",
+      "confidence": 0.672,
       "materiality": 0.753,
       "scope": "ES",
-      "date": "Mon, 13 Jul 2026 07:00:00 GMT",
+      "date": "Wed, 05 Nov 2025 08:00:00 GMT",
       "sources": [
-        "TradingView"
+        "Murcia Plaza"
       ]
     },
     {
@@ -2038,6 +3388,42 @@
       "date": "Mon, 29 Jun 2026 07:00:00 GMT",
       "sources": [
         "itreseller.es"
+      ]
+    },
+    {
+      "from": "ent_5eb6f43b5a92",
+      "to": "ent_a981f7149f72",
+      "from_label": "Nunsys",
+      "to_label": "de Dayfisa e InforTel Comunicaciones",
+      "from_kind": "integrator",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "1e28a680c1da6339",
+      "title": "Nunsys se refuerza en Madrid con la compra de Dayfisa e InforTel Comunicaciones - El Economista",
+      "confidence": 0.7,
+      "materiality": 0.747,
+      "scope": "ES",
+      "date": "Tue, 23 Sep 2025 07:00:00 GMT",
+      "sources": [
+        "El Economista"
+      ]
+    },
+    {
+      "from": "ent_5eb6f43b5a92",
+      "to": "ent_b97ddaf7de75",
+      "from_label": "Nunsys",
+      "to_label": "la tecnológica aragonesa Inycom",
+      "from_kind": "integrator",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "adfea39cee414160",
+      "title": "La firma valenciana Nunsys compra la tecnológica aragonesa Inycom - El Periódico de Aragón",
+      "confidence": 0.672,
+      "materiality": 0.747,
+      "scope": "ES",
+      "date": "Sat, 27 Sep 2025 07:00:00 GMT",
+      "sources": [
+        "El Periódico de Aragón"
       ]
     },
     {
@@ -2074,6 +3460,24 @@
       "date": "Mon, 08 Jun 2026 07:00:00 GMT",
       "sources": [
         "BPS Channel Partner"
+      ]
+    },
+    {
+      "from": "ent_cec06f879afd",
+      "to": "ent_72a81d1ded57",
+      "from_label": "CrowdStrike",
+      "to_label": "CVE-2026-76380",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "fa5b10526b0bc8f6",
+      "title": "CVE-2026-76380 · NVD vulnerability affecting CrowdStrike",
+      "confidence": 0.749,
+      "materiality": 0.742,
+      "scope": "GLOBAL",
+      "date": "2026-08-19T22:17:24.077",
+      "sources": [
+        "NVD"
       ]
     },
     {
@@ -2149,6 +3553,42 @@
       ]
     },
     {
+      "from": "ent_300a29a2fe6e",
+      "to": "ent_141a92417f71",
+      "from_label": "Indra",
+      "to_label": "AI",
+      "from_kind": "integrator",
+      "to_kind": "technology",
+      "relation": "CERTIFIED_CAPABILITY",
+      "event_id": "3d036f5f6056ee68",
+      "title": "Indra Group renueva la certificación ISO 31000 para la gestión de riesgos y amplía su alcance a sus actividades de inteligencia artificial y ciberseguridad | Actualidad - Indra Group",
+      "confidence": 0.661,
+      "materiality": 0.735,
+      "scope": "ES",
+      "date": "Thu, 07 May 2026 07:00:00 GMT",
+      "sources": [
+        "Indra Group"
+      ]
+    },
+    {
+      "from": "ent_300a29a2fe6e",
+      "to": "ent_78fd5cac8c02",
+      "from_label": "Indra",
+      "to_label": "Cybersecurity",
+      "from_kind": "integrator",
+      "to_kind": "technology",
+      "relation": "CERTIFIED_CAPABILITY",
+      "event_id": "3d036f5f6056ee68",
+      "title": "Indra Group renueva la certificación ISO 31000 para la gestión de riesgos y amplía su alcance a sus actividades de inteligencia artificial y ciberseguridad | Actualidad - Indra Group",
+      "confidence": 0.661,
+      "materiality": 0.735,
+      "scope": "ES",
+      "date": "Thu, 07 May 2026 07:00:00 GMT",
+      "sources": [
+        "Indra Group"
+      ]
+    },
+    {
       "from": "ent_cec06f879afd",
       "to": "ent_141a92417f71",
       "from_label": "CrowdStrike",
@@ -2182,6 +3622,60 @@
       "date": "Wed, 05 Aug 2026 07:00:00 GMT",
       "sources": [
         "DiarioBitcoin"
+      ]
+    },
+    {
+      "from": "ent_cec06f879afd",
+      "to": "ent_6c252d549360",
+      "from_label": "CrowdStrike",
+      "to_label": "CVE-2026-40050",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "beacebf875a99612",
+      "title": "CVE-2026-40050 · NVD vulnerability affecting CrowdStrike",
+      "confidence": 0.749,
+      "materiality": 0.732,
+      "scope": "GLOBAL",
+      "date": "2026-04-21T17:16:53.610",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_81643426d28b",
+      "to": "ent_141a92417f71",
+      "from_label": "Inetum Spain",
+      "to_label": "AI",
+      "from_kind": "integrator",
+      "to_kind": "technology",
+      "relation": "LAUNCHED_SERVICE_IN_DOMAIN",
+      "event_id": "819785a8f08a1051",
+      "title": "Capgemini e Inetum lanzan los primeros ERE por IA: 1.173 despidos - Merca2.es",
+      "confidence": 0.631,
+      "materiality": 0.731,
+      "scope": "ES",
+      "date": "Wed, 22 Apr 2026 07:00:00 GMT",
+      "sources": [
+        "Merca2.es"
+      ]
+    },
+    {
+      "from": "ent_8c804d7d1311",
+      "to": "ent_682cabac902c",
+      "from_label": "Palo Alto Networks",
+      "to_label": "Chronosphere por 3.350 millones de dólares",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "1604421642da6b50",
+      "title": "Palo Alto Networks compra Chronosphere por 3.350 millones de dólares - BPS Channel Partner",
+      "confidence": 0.632,
+      "materiality": 0.728,
+      "scope": "GLOBAL",
+      "date": "Thu, 20 Nov 2025 08:00:00 GMT",
+      "sources": [
+        "BPS Channel Partner"
       ]
     },
     {
@@ -2401,6 +3895,60 @@
       ]
     },
     {
+      "from": "ent_55357933a731",
+      "to": "ent_78fd5cac8c02",
+      "from_label": "AWS",
+      "to_label": "Cybersecurity",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "CERTIFIED_CAPABILITY",
+      "event_id": "d289ba43028e43aa",
+      "title": "AWS logra reforzar la seguridad con varias certificaciones en la UE - redseguridad.com",
+      "confidence": 0.591,
+      "materiality": 0.699,
+      "scope": "GLOBAL",
+      "date": "Tue, 31 Mar 2026 07:00:00 GMT",
+      "sources": [
+        "redseguridad.com"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_000e793db70c",
+      "from_label": "AWS",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "CERTIFIED_CAPABILITY",
+      "event_id": "d289ba43028e43aa",
+      "title": "AWS logra reforzar la seguridad con varias certificaciones en la UE - redseguridad.com",
+      "confidence": 0.591,
+      "materiality": 0.699,
+      "scope": "GLOBAL",
+      "date": "Tue, 31 Mar 2026 07:00:00 GMT",
+      "sources": [
+        "redseguridad.com"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_000e793db70c",
+      "from_label": "AWS",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "CERTIFIED_CAPABILITY",
+      "event_id": "b7c7ae038c95f23f",
+      "title": "Certificación ISO - Amazon Web Services (AWS)",
+      "confidence": 0.621,
+      "materiality": 0.692,
+      "scope": "GLOBAL",
+      "date": "Wed, 25 Feb 2026 08:00:00 GMT",
+      "sources": [
+        "Amazon Web Services (AWS)"
+      ]
+    },
+    {
       "from": "ent_300a29a2fe6e",
       "to": "ent_55357933a731",
       "from_label": "Indra",
@@ -2418,6 +3966,186 @@
         "Indra Group",
         "Demócrata",
         "Forbes España"
+      ]
+    },
+    {
+      "from": "ent_cec06f879afd",
+      "to": "ent_e9584ac9a7fa",
+      "from_label": "CrowdStrike",
+      "to_label": "CVE-2025-37728",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "3130a0978b509e2a",
+      "title": "CVE-2025-37728 · NVD vulnerability affecting CrowdStrike",
+      "confidence": 0.749,
+      "materiality": 0.673,
+      "scope": "GLOBAL",
+      "date": "2025-10-07T14:15:36.503",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_9ca85dba9e52",
+      "to": "ent_78fd5cac8c02",
+      "from_label": "Proofpoint",
+      "to_label": "Cybersecurity",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "ANALYST_POSITION_IN",
+      "event_id": "b41b8e05a71ec0a6",
+      "title": "Líder en el Magic Quadrant™ 2025 de Gartner® para soluciones de seguridad del correo electrónico - Proofpoint",
+      "confidence": 0.588,
+      "materiality": 0.671,
+      "scope": "GLOBAL",
+      "date": "Wed, 03 Dec 2025 08:00:00 GMT",
+      "sources": [
+        "Proofpoint"
+      ]
+    },
+    {
+      "from": "ent_62c559b42ecb",
+      "to": "ent_7efca62c7bd4",
+      "from_label": "Zscaler",
+      "to_label": "CVE-2023-28801",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "c36cd8338c20a823",
+      "title": "CVE-2023-28801 · NVD vulnerability affecting Zscaler",
+      "confidence": 0.749,
+      "materiality": 0.66,
+      "scope": "GLOBAL",
+      "date": "2023-08-31T14:15:08.420",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_547cd2ba3a17",
+      "to": "ent_f3872a42be02",
+      "from_label": "F5",
+      "to_label": "CVE-2006-3550",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "b1e1c88180137e38",
+      "title": "CVE-2006-3550 · NVD vulnerability affecting F5",
+      "confidence": 0.749,
+      "materiality": 0.66,
+      "scope": "GLOBAL",
+      "date": "2006-07-13T00:05:00.000",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_547cd2ba3a17",
+      "to": "ent_bb3ac63b321f",
+      "from_label": "F5",
+      "to_label": "CVE-2005-3802",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "c6a5d8cf2fae5704",
+      "title": "CVE-2005-3802 · NVD vulnerability affecting F5",
+      "confidence": 0.749,
+      "materiality": 0.66,
+      "scope": "GLOBAL",
+      "date": "2005-11-24T11:03:00.000",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_547cd2ba3a17",
+      "to": "ent_96d4c1675d96",
+      "from_label": "F5",
+      "to_label": "CVE-2005-2245",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "682bc89e1467a27d",
+      "title": "CVE-2005-2245 · NVD vulnerability affecting F5",
+      "confidence": 0.749,
+      "materiality": 0.66,
+      "scope": "GLOBAL",
+      "date": "2005-07-12T04:00:00.000",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_547cd2ba3a17",
+      "to": "ent_ea8c7442fffc",
+      "from_label": "F5",
+      "to_label": "CVE-2002-1431",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "63dccefa3a3dcec9",
+      "title": "CVE-2002-1431 · NVD vulnerability affecting F5",
+      "confidence": 0.749,
+      "materiality": 0.66,
+      "scope": "GLOBAL",
+      "date": "2003-04-11T04:00:00.000",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_547cd2ba3a17",
+      "to": "ent_1bfd8a785786",
+      "from_label": "F5",
+      "to_label": "CVE-2002-1811",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "eed18b9eb6c654c3",
+      "title": "CVE-2002-1811 · NVD vulnerability affecting F5",
+      "confidence": 0.749,
+      "materiality": 0.66,
+      "scope": "GLOBAL",
+      "date": "2002-12-31T05:00:00.000",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_7af78c911d5b",
+      "to": "ent_a40e9fcde397",
+      "from_label": "Cisco",
+      "to_label": "CVE-1999-0160",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "956fd8c4c9eeb02b",
+      "title": "CVE-1999-0160 · NVD vulnerability affecting Cisco",
+      "confidence": 0.749,
+      "materiality": 0.66,
+      "scope": "GLOBAL",
+      "date": "1997-10-01T04:00:00.000",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_7af78c911d5b",
+      "to": "ent_0f1bdd6d2994",
+      "from_label": "Cisco",
+      "to_label": "CVE-1999-1216",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "e76899c7d9b07c31",
+      "title": "CVE-1999-1216 · NVD vulnerability affecting Cisco",
+      "confidence": 0.749,
+      "materiality": 0.66,
+      "scope": "GLOBAL",
+      "date": "1993-04-22T04:00:00.000",
+      "sources": [
+        "NVD"
       ]
     },
     {
@@ -2439,6 +4167,96 @@
       ]
     },
     {
+      "from": "ent_55357933a731",
+      "to": "ent_000e793db70c",
+      "from_label": "AWS",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "MANAGED_SERVICE_IN_DOMAIN",
+      "event_id": "060300b23f8d070d",
+      "title": "AWS IoT Core now supports native InfluxDB routing for time-series data",
+      "confidence": 0.698,
+      "materiality": 0.652,
+      "scope": "OTHER_REGION",
+      "date": "Tue, 25 Aug 2026 19:42:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_0e10e164957d",
+      "from_label": "AWS",
+      "to_label": "Data Center",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "MANAGED_SERVICE_IN_DOMAIN",
+      "event_id": "060300b23f8d070d",
+      "title": "AWS IoT Core now supports native InfluxDB routing for time-series data",
+      "confidence": 0.698,
+      "materiality": 0.652,
+      "scope": "OTHER_REGION",
+      "date": "Tue, 25 Aug 2026 19:42:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_34a102152608",
+      "from_label": "AWS",
+      "to_label": "Observability",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "MANAGED_SERVICE_IN_DOMAIN",
+      "event_id": "060300b23f8d070d",
+      "title": "AWS IoT Core now supports native InfluxDB routing for time-series data",
+      "confidence": 0.698,
+      "materiality": 0.652,
+      "scope": "OTHER_REGION",
+      "date": "Tue, 25 Aug 2026 19:42:00 GMT",
+      "sources": [
+        "AWS"
+      ]
+    },
+    {
+      "from": "ent_9ca85dba9e52",
+      "to": "ent_78fd5cac8c02",
+      "from_label": "Proofpoint",
+      "to_label": "Cybersecurity",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "CERTIFIED_CAPABILITY",
+      "event_id": "76518d70cd592ba2",
+      "title": "Certificaciones de ciberseguridad - Proofpoint",
+      "confidence": 0.591,
+      "materiality": 0.65,
+      "scope": "GLOBAL",
+      "date": "Thu, 17 Apr 2025 20:17:54 GMT",
+      "sources": [
+        "Proofpoint"
+      ]
+    },
+    {
+      "from": "ent_d73d4a8b6a65",
+      "to": "ent_78fd5cac8c02",
+      "from_label": "Fortinet",
+      "to_label": "Cybersecurity",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "MANAGED_SERVICE_IN_DOMAIN",
+      "event_id": "d16c6ada6d564e02",
+      "title": "Fortinet amplía su servicio gestionado SOC-as-a-Service: Ciberdefensa accesible para todas las organizaciones - Fortinet",
+      "confidence": 0.63,
+      "materiality": 0.648,
+      "scope": "GLOBAL",
+      "date": "Tue, 11 Nov 2025 08:00:00 GMT",
+      "sources": [
+        "Fortinet"
+      ]
+    },
+    {
       "from": "ent_02e043e31473",
       "to": "ent_2c86ff22f2c8",
       "from_label": "NTT DATA Spain",
@@ -2457,6 +4275,294 @@
       ]
     },
     {
+      "from": "ent_62c559b42ecb",
+      "to": "ent_73a74819892d",
+      "from_label": "Zscaler",
+      "to_label": "CVE-2021-26734",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "0703ec0140b29d9d",
+      "title": "CVE-2021-26734 · NVD vulnerability affecting Zscaler",
+      "confidence": 0.749,
+      "materiality": 0.636,
+      "scope": "GLOBAL",
+      "date": "2023-10-23T14:15:08.927",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_62c559b42ecb",
+      "to": "ent_2a93015eb7e6",
+      "from_label": "Zscaler",
+      "to_label": "CVE-2020-11633",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "852986427f075695",
+      "title": "CVE-2020-11633 · NVD vulnerability affecting Zscaler",
+      "confidence": 0.749,
+      "materiality": 0.636,
+      "scope": "GLOBAL",
+      "date": "2021-07-15T18:15:08.643",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_62c559b42ecb",
+      "to": "ent_e3834358b9de",
+      "from_label": "Zscaler",
+      "to_label": "CVE-2020-11635",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "5a5d166f424aab33",
+      "title": "CVE-2020-11635 · NVD vulnerability affecting Zscaler",
+      "confidence": 0.749,
+      "materiality": 0.636,
+      "scope": "GLOBAL",
+      "date": "2021-02-16T20:15:15.487",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_8c804d7d1311",
+      "to": "ent_19d3f682545a",
+      "from_label": "Palo Alto Networks",
+      "to_label": "CVE-2012-6590",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "733785d91cb5d619",
+      "title": "CVE-2012-6590 · NVD vulnerability affecting Palo Alto Networks",
+      "confidence": 0.749,
+      "materiality": 0.636,
+      "scope": "GLOBAL",
+      "date": "2013-08-31T17:55:03.097",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_8c804d7d1311",
+      "to": "ent_1e21056f35d9",
+      "from_label": "Palo Alto Networks",
+      "to_label": "CVE-2012-4043",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "a5c159510a281b51",
+      "title": "CVE-2012-4043 · NVD vulnerability affecting Palo Alto Networks",
+      "confidence": 0.749,
+      "materiality": 0.636,
+      "scope": "GLOBAL",
+      "date": "2012-07-26T19:55:04.183",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_8c804d7d1311",
+      "to": "ent_f3fea78426be",
+      "from_label": "Palo Alto Networks",
+      "to_label": "CVE-2010-0475",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "01ab1e0fefdfd20f",
+      "title": "CVE-2010-0475 · NVD vulnerability affecting Palo Alto Networks",
+      "confidence": 0.749,
+      "materiality": 0.636,
+      "scope": "GLOBAL",
+      "date": "2010-05-14T19:30:01.250",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_547cd2ba3a17",
+      "to": "ent_6fc2c51b9bd4",
+      "from_label": "F5",
+      "to_label": "CVE-2006-5416",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "6b75fb455c5d301b",
+      "title": "CVE-2006-5416 · NVD vulnerability affecting F5",
+      "confidence": 0.749,
+      "materiality": 0.636,
+      "scope": "GLOBAL",
+      "date": "2006-10-20T14:07:00.000",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_547cd2ba3a17",
+      "to": "ent_ec600bee872f",
+      "from_label": "F5",
+      "to_label": "CVE-2006-1357",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "2d74b6408e30d4f3",
+      "title": "CVE-2006-1357 · NVD vulnerability affecting F5",
+      "confidence": 0.749,
+      "materiality": 0.636,
+      "scope": "GLOBAL",
+      "date": "2006-03-22T02:02:00.000",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_547cd2ba3a17",
+      "to": "ent_de075a4bd511",
+      "from_label": "F5",
+      "to_label": "CVE-1999-1550",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "c410a9c4a310fb87",
+      "title": "CVE-1999-1550 · NVD vulnerability affecting F5",
+      "confidence": 0.749,
+      "materiality": 0.636,
+      "scope": "GLOBAL",
+      "date": "1999-11-08T05:00:00.000",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_7af78c911d5b",
+      "to": "ent_5c55b22d6256",
+      "from_label": "Cisco",
+      "to_label": "CVE-1999-1582",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "bc51baa03bbff64f",
+      "title": "CVE-1999-1582 · NVD vulnerability affecting Cisco",
+      "confidence": 0.749,
+      "materiality": 0.636,
+      "scope": "GLOBAL",
+      "date": "1998-07-15T04:00:00.000",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_7af78c911d5b",
+      "to": "ent_959a34b7f9ec",
+      "from_label": "Cisco",
+      "to_label": "CVE-1999-0230",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "69a1ff3827db01ae",
+      "title": "CVE-1999-0230 · NVD vulnerability affecting Cisco",
+      "confidence": 0.749,
+      "materiality": 0.636,
+      "scope": "GLOBAL",
+      "date": "1997-12-15T05:00:00.000",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_7af78c911d5b",
+      "to": "ent_024bd31d0dc4",
+      "from_label": "Cisco",
+      "to_label": "CVE-1999-0161",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "a9177b7a33eab8f8",
+      "title": "CVE-1999-0161 · NVD vulnerability affecting Cisco",
+      "confidence": 0.749,
+      "materiality": 0.636,
+      "scope": "GLOBAL",
+      "date": "1995-07-31T04:00:00.000",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_7af78c911d5b",
+      "to": "ent_2bd06bd87d72",
+      "from_label": "Cisco",
+      "to_label": "CVE-1999-1306",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "7410d2f4d9d2bd06",
+      "title": "CVE-1999-1306 · NVD vulnerability affecting Cisco",
+      "confidence": 0.749,
+      "materiality": 0.636,
+      "scope": "GLOBAL",
+      "date": "1992-12-10T05:00:00.000",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
+      "from": "ent_b81902f73021",
+      "to": "ent_20725cb1b8af",
+      "from_label": "Check Point",
+      "to_label": "IT Services",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "CERTIFIED_CAPABILITY",
+      "event_id": "92d3ded31a1942b1",
+      "title": "Certification Program - Check Point Software - Check Point Software",
+      "confidence": 0.621,
+      "materiality": 0.633,
+      "scope": "GLOBAL",
+      "date": "Mon, 03 Nov 2025 10:42:20 GMT",
+      "sources": [
+        "Check Point Software"
+      ]
+    },
+    {
+      "from": "ent_d73d4a8b6a65",
+      "to": "ent_78fd5cac8c02",
+      "from_label": "Fortinet",
+      "to_label": "Cybersecurity",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "CERTIFIED_CAPABILITY",
+      "event_id": "796c459a25a1b219",
+      "title": "Por qué las certificaciones de Ciberseguridad son ahora un imperativo empresarial - Fortinet",
+      "confidence": 0.591,
+      "materiality": 0.633,
+      "scope": "GLOBAL",
+      "date": "Thu, 19 Mar 2026 07:00:00 GMT",
+      "sources": [
+        "Fortinet"
+      ]
+    },
+    {
+      "from": "ent_b81902f73021",
+      "to": "ent_20725cb1b8af",
+      "from_label": "Check Point",
+      "to_label": "IT Services",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "f1c71b8c67d02aa7",
+      "title": "Check Point Software lanza Quantum Firewall Software R82.10 - HayCanal",
+      "confidence": 0.611,
+      "materiality": 0.627,
+      "scope": "GLOBAL",
+      "date": "Fri, 05 Dec 2025 09:59:35 GMT",
+      "sources": [
+        "HayCanal"
+      ]
+    },
+    {
       "from": "ent_c92be6821474",
       "to": "ent_3755ac6e12e7",
       "from_label": "Ayesa",
@@ -2464,14 +4570,86 @@
       "from_kind": "integrator",
       "to_kind": "external_entity",
       "relation": "AWARDED",
-      "event_id": "009603066bc92d00",
-      "title": "Liferay reconoce a Ayesa, Minsait, Ricoh y VML The Cocktail en sus Premios Partner del Año 2025 - Interempresas.net",
+      "event_id": "a9cce7fe7bc8bda3",
+      "title": "Liferay reconoce a Ayesa, Minsait, Ricoh y VML The Cocktail en sus Premios Partner del Año 2025 - Interempresas Media",
       "confidence": 0.615,
       "materiality": 0.608,
       "scope": "ES",
       "date": "Wed, 04 Feb 2026 08:00:00 GMT",
       "sources": [
-        "Interempresas.net"
+        "Interempresas Media"
+      ]
+    },
+    {
+      "from": "ent_d73d4a8b6a65",
+      "to": "ent_78fd5cac8c02",
+      "from_label": "Fortinet",
+      "to_label": "Cybersecurity",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "CERTIFIED_CAPABILITY",
+      "event_id": "47dd4e9908ea571b",
+      "title": "Fortinet y AvanzaTEC ofrecen certificaciones internacionales en ciberseguridad gratis - mintic.gov.co",
+      "confidence": 0.591,
+      "materiality": 0.604,
+      "scope": "GLOBAL",
+      "date": "Sat, 27 Sep 2025 07:00:00 GMT",
+      "sources": [
+        "mintic.gov.co"
+      ]
+    },
+    {
+      "from": "ent_d73d4a8b6a65",
+      "to": "ent_141a92417f71",
+      "from_label": "Fortinet",
+      "to_label": "AI",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "e6af77e581c90bae",
+      "title": "Fortinet lanza una solución de IA segura para centro de datos con el fin de proteger modelos, datos e infraestructura a gran escala - Fortinet",
+      "confidence": 0.611,
+      "materiality": 0.598,
+      "scope": "GLOBAL",
+      "date": "Wed, 05 Nov 2025 08:00:00 GMT",
+      "sources": [
+        "Fortinet"
+      ]
+    },
+    {
+      "from": "ent_d73d4a8b6a65",
+      "to": "ent_0e10e164957d",
+      "from_label": "Fortinet",
+      "to_label": "Data Center",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "e6af77e581c90bae",
+      "title": "Fortinet lanza una solución de IA segura para centro de datos con el fin de proteger modelos, datos e infraestructura a gran escala - Fortinet",
+      "confidence": 0.611,
+      "materiality": 0.598,
+      "scope": "GLOBAL",
+      "date": "Wed, 05 Nov 2025 08:00:00 GMT",
+      "sources": [
+        "Fortinet"
+      ]
+    },
+    {
+      "from": "ent_5eb6f43b5a92",
+      "to": "ent_1c59424f1b20",
+      "from_label": "Nunsys",
+      "to_label": "Migración Segura y Modernización en los",
+      "from_kind": "integrator",
+      "to_kind": "external_entity",
+      "relation": "AWARDED",
+      "event_id": "94603bb7bc8fb353",
+      "title": "Nunsys, reconocida por Microsoft como Mejor Partner de Migración Segura y Modernización en los Partner of the Year Awards 2025 - Nunsys",
+      "confidence": 0.615,
+      "materiality": 0.596,
+      "scope": "ES",
+      "date": "Sat, 29 Nov 2025 08:14:16 GMT",
+      "sources": [
+        "Nunsys"
       ]
     },
     {
@@ -2547,15 +4725,15 @@
       ]
     },
     {
-      "from": "ent_dbbaa3a611f4",
-      "to": "ent_63683c29818e",
-      "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
-      "to_label": "AXIANSEU II DIGITAL CONSULTING, S.A.",
+      "from": "ent_18d7947372c1",
+      "to": "ent_bc69a1bba1b4",
+      "from_label": "Autoridade Tributária e Aduaneira",
+      "to_label": "Consórcio OPENSOFT Soluções Informáticas, SA",
       "from_kind": "buyer",
       "to_kind": "supplier",
       "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "0ba9c8332b354faf",
-      "title": "Portugal – Servicios informáticos – (DAG) Aquisição de serviços de consultoria para evolução do projeto Portal Profissional “S-CUBO\" para o Pilar 3 – Reforma dos SI Disponibilizados ao Profissional (PRR) (20260052)",
+      "event_id": "8619722afd30105b",
+      "title": "Portugal – Servicios de programación de software y de consultoría – 31/AQ/AT/2026_Aq. serv. “Chave na Mão” para des. à medida dos Sistemas de Informação da AT, no âmbito dos Sistemas da Gestão Declarativa - Componente online, nomeadamente Sistema de Gestão de Documentos de Transporte (SGDT), Sistemas de Certidões e de Comprovativos (SCC, SEC e WSComp), Entrega das Declarações de Liquidação (P2LQ) e Sistema de Gestão de Divergências (SGDIVIRS) para o 2026-27",
       "confidence": 0.877,
       "materiality": 0.51,
       "scope": "PT",
@@ -2574,24 +4752,6 @@
       "relation": "AWARDED_CONTRACT_TO",
       "event_id": "a9528a98512ec282",
       "title": "Portugal – Grupos electrógenos – PRR - Aquisição de Unidades de Alimentação Ininterrupta (UPS) 2 kVA com Banco de Baterias para Autonomia de 12 Horas",
-      "confidence": 0.877,
-      "materiality": 0.51,
-      "scope": "PT",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_18d7947372c1",
-      "to": "ent_bc69a1bba1b4",
-      "from_label": "Autoridade Tributária e Aduaneira",
-      "to_label": "Consórcio OPENSOFT Soluções Informáticas, SA",
-      "from_kind": "buyer",
-      "to_kind": "supplier",
-      "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "8619722afd30105b",
-      "title": "Portugal – Servicios de programación de software y de consultoría – 31/AQ/AT/2026_Aq. serv. “Chave na Mão” para des. à medida dos Sistemas de Informação da AT, no âmbito dos Sistemas da Gestão Declarativa - Componente online, nomeadamente Sistema de Gestão de Documentos de Transporte (SGDT), Sistemas de Certidões e de Comprovativos (SCC, SEC e WSComp), Entrega das Declarações de Liquidação (P2LQ) e Sistema de Gestão de Divergências (SGDIVIRS) para o 2026-27",
       "confidence": 0.877,
       "materiality": 0.51,
       "scope": "PT",
@@ -2655,6 +4815,96 @@
       ]
     },
     {
+      "from": "ent_dbbaa3a611f4",
+      "to": "ent_b241925db81d",
+      "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "to_label": "IQVIA SOLUTIONS PORTUGAL, UNIPESSOAL LDA",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "11141a8430192c3b",
+      "title": "Portugal – Paquetes de software específico de un sector económico – [DAG] Aquisição de Ferramenta para Estratificação da População pelo Risco [20260020]",
+      "confidence": 0.877,
+      "materiality": 0.51,
+      "scope": "PT",
+      "date": "2026-08-26+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_828deb05ded9",
+      "to": "ent_fe0a2e12da79",
+      "from_label": "Secretaria-Geral do Ministério da Administração Interna",
+      "to_label": "NOS – Comunicações, S.A.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "204fc75e739adde6",
+      "title": "Portugal – Servicios de consultoría en sistemas y consultoría técnica – Aquisição de Serviços de Engenharia de Telecomunicações e Serviços de Controlo de Qualidade, para o Serviço 112",
+      "confidence": 0.877,
+      "materiality": 0.51,
+      "scope": "PT",
+      "date": "2026-08-26+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_dbbaa3a611f4",
+      "to": "ent_7942bfd287d4",
+      "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "to_label": "Quickops Consulting, Lda",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "7882a41f5449a9fd",
+      "title": "Portugal – Servicios informáticos – [DAG] Aquisição de serviços de manutenção corretiva, preventiva e evolutiva do WebRHV [20260003]",
+      "confidence": 0.877,
+      "materiality": 0.51,
+      "scope": "PT",
+      "date": "2026-08-26+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_0fe2c488a00a",
+      "to": "ent_3cfdf3f6d328",
+      "from_label": "Instituto de Informática, I.P.",
+      "to_label": "AGRUPAMENTO NORMÁTICA, Serviços de informática, S.A.; WWS - consultoria informática, Lda., representado pela Normática – Serviços de Informática e Organização, S.A. / AGRUPAMENTO NORMÁTICA, Serviços de informática, S.A.; WWS - consultoria informática, Lda., representado pela Normática – Serviços de Informática e Organização, S.A. / AGRUPAMENTO NORMÁTICA, Serviços de informática, S.A.; WWS - consultoria informática, Lda., representado pela Normática – Serviços de Informática e Organização, S.A. / AGRUPAMENTO NORMÁTICA, Serviços de informática, S.A.; WWS - consultoria informática, Lda., representado pela Normática – Serviços de Informática e Organização, S.A. / AGRUPAMENTO NORMÁTICA, Serviços de informática, S.A.; WWS - consultoria informática, Lda., representado pela Normática – Serviços de Informática e Organização, S.A.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "6f7062ce1145c5bc",
+      "title": "Portugal – Máquinas procesadoras de datos (hardware) – Renovação tecnológica e reforço de licenciamento da infraestrutura Oracle (2026-2030)",
+      "confidence": 0.877,
+      "materiality": 0.51,
+      "scope": "PT",
+      "date": "2026-08-25+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_cec06f879afd",
+      "to": "ent_79821ea7080e",
+      "from_label": "CrowdStrike",
+      "to_label": "CVE-2025-1146",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "AFFECTED_BY_VULNERABILITY",
+      "event_id": "e96c5211198d4a7b",
+      "title": "CVE-2025-1146 · NVD vulnerability affecting CrowdStrike",
+      "confidence": 0.662,
+      "materiality": 0.509,
+      "scope": "OTHER_REGION",
+      "date": "2025-02-12T19:15:09.840",
+      "sources": [
+        "NVD"
+      ]
+    },
+    {
       "from": "ent_df0a81368b70",
       "to": "ent_53b9bd03493b",
       "from_label": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
@@ -2673,19 +4923,19 @@
       ]
     },
     {
-      "from": "ent_be37f879e188",
-      "to": "ent_f9621307caf3",
-      "from_label": "Universidade de Évora",
-      "to_label": "BASEDOIS - INFORMÁTICA E TELECOMUNICAÇÕES, LDA / BASEDOIS - INFORMÁTICA E TELECOMUNICAÇÕES, LDA / BASEDOIS - INFORMÁTICA E TELECOMUNICAÇÕES, LDA / BASEDOIS - INFORMÁTICA E TELECOMUNICAÇÕES, LDA / CPCECHO, LDA. / NOVABIT, INFORMÁTICA, UNIPESSOAL, LDA.",
+      "from": "ent_55eb6431c309",
+      "to": "ent_0a0d6029bae8",
+      "from_label": "Escola Secundária Campos Melo",
+      "to_label": "J. Roma, Lda / AREAL EDITORES, S.A / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / Bricantel - Comércio de Material Eléctrico de Bragança S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA,",
       "from_kind": "buyer",
       "to_kind": "supplier",
       "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "8d05e89d7b36d057",
-      "title": "Portugal – Máquinas procesadoras de datos (hardware) – Procedimento n.º 47/DCP-GCE/UE/2025",
+      "event_id": "fce7e26d9f75da43",
+      "title": "Portugal – Equipo y material informático – Aquisição de Equipamento e Mobiliário no âmbito dos Centros Tecnológicos Especializados",
       "confidence": 0.877,
       "materiality": 0.506,
       "scope": "PT",
-      "date": "2026-08-28+02:00",
+      "date": "2026-08-26+02:00",
       "sources": [
         "TED EU Procurement"
       ]
@@ -2745,6 +4995,24 @@
       ]
     },
     {
+      "from": "ent_fe3a05b3475c",
+      "to": "ent_48a811ce1747",
+      "from_label": "Delegación Provincial del Servicio Andaluz de Empleo de Sevilla",
+      "to_label": "ALAMO INDUSTRIAL, S.A.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "72dd9659140d80cf",
+      "title": "España – Servicios de reparación y mantenimiento – CONTRATO DE “SERVICIO DE MANTENIMIENTO INTEGRAL Y GESTIÓN TÉCNICA DE LAS INSTALACIONES DE LOS EDIFICIOS DE LA RED DE OFICINAS Y CENTROS DE LA DIRECCIÓN PROVINCIAL DEL SERVICIO ANDALUZ DE EMPLEO DE SEVILLA.”",
+      "confidence": 0.877,
+      "materiality": 0.495,
+      "scope": "ES",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
       "from": "ent_a07c24767f60",
       "to": "ent_e5326f079e81",
       "from_label": "Serviço de Utilização Comum dos Hospitais",
@@ -2799,6 +5067,24 @@
       ]
     },
     {
+      "from": "ent_46d127e1d0ed",
+      "to": "ent_0a76a3fe7b25",
+      "from_label": "Dirección General de Telecomunicaciones y Digitalización",
+      "to_label": "Technology procurement",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "0a8141839be85b78",
+      "title": "España – Máquinas procesadoras de datos (hardware) – Evolución y ampliación de la plataforma de publicación de la infraestructura servidora del Gobierno de Navarra",
+      "confidence": 0.875,
+      "materiality": 0.488,
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
       "from": "ent_8d83c3c0e813",
       "to": "ent_20725cb1b8af",
       "from_label": "Gobierno Vasco - EUSTAT - Instituto Vasco de Estadística",
@@ -2835,19 +5121,73 @@
       ]
     },
     {
-      "from": "ent_f086e3f5aee7",
+      "from": "ent_130249dfc253",
+      "to": "ent_0a76a3fe7b25",
+      "from_label": "Vicepresidencia Segunda de la Junta de Castilla y León",
+      "to_label": "Technology procurement",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "6c5a5857753b9ee0",
+      "title": "España – Servicios de gestión de instalaciones informáticas – Contratación de los servicios para la Plataforma de Formación FOPCYL de supervisión, mantenimiento, alojamiento, mejoras, asesoramiento, estudios, asistencia técnica y trabajos técnicos para la gestión de actividades formativas de la APCE",
+      "confidence": 0.875,
+      "materiality": 0.488,
+      "scope": "ES",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_c49f9703d4ea",
       "to": "ent_20725cb1b8af",
-      "from_label": "Agência para o Desenvolvimento e Coesão, IP",
+      "from_label": "Santa Casa da Misericórdia de Lisboa",
       "to_label": "IT Services",
       "from_kind": "buyer",
       "to_kind": "technology",
       "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "8a82d50943d5c1bf",
-      "title": "Portugal – Servicios TI: consultoría, desarrollo de software, Internet y apoyo – Aquisição de serviços de implementação e desenvolvimento de solução de Sistema de Informação Geográfica",
+      "event_id": "0637da07d4cd9ec9",
+      "title": "Portugal – Servicios TI: consultoría, desarrollo de software, Internet y apoyo – Subscrição do licenciamento para Framework de desenvolvimento Outsystems",
       "confidence": 0.875,
       "materiality": 0.488,
       "scope": "PT",
-      "date": "2026-08-27+02:00",
+      "date": "2026-08-26+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_dbbaa3a611f4",
+      "to": "ent_0a76a3fe7b25",
+      "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "to_label": "Technology procurement",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "a266292f0d034421",
+      "title": "Portugal – Servicios informáticos – (DAG) Aquisição de serviços de Consultor Sénior em plataformas de ITSM (20260271)",
+      "confidence": 0.875,
+      "materiality": 0.488,
+      "scope": "PT",
+      "date": "2026-08-26+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_159b0ff491f9",
+      "to": "ent_0a76a3fe7b25",
+      "from_label": "Secretaria-Geral do Ministério do Trabalho, Solidariedade e Segurança Social",
+      "to_label": "Technology procurement",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "8f86928f000f3d0e",
+      "title": "Portugal – Servicios de análisis de datos – Aquisição de Serviço de Análise e Verificação no âmbito de projetos financiados pelo Programa Demografia, Qualificações e Inclusão (Pessoas 2030)",
+      "confidence": 0.875,
+      "materiality": 0.488,
+      "scope": "PT",
+      "date": "2026-08-26+02:00",
       "sources": [
         "TED EU Procurement"
       ]
@@ -2866,42 +5206,6 @@
       "materiality": 0.484,
       "scope": "PT",
       "date": "2026-08-31+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_dbbaa3a611f4",
-      "to": "ent_0e10e164957d",
-      "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
-      "to_label": "Data Center",
-      "from_kind": "buyer",
-      "to_kind": "technology",
-      "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "3aadc4ab8cf09b6a",
-      "title": "Portugal – Equipo y material informático – (DAG) Aquisição de Armazenamento SAN para o Polo II do Centro de Dados da SPMS - Pilar 1 - Reforma e Modernização da Rede de Dados da Saúde - PRR (20260320)",
-      "confidence": 0.875,
-      "materiality": 0.484,
-      "scope": "PT",
-      "date": "2026-08-27+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_dbbaa3a611f4",
-      "to": "ent_20725cb1b8af",
-      "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
-      "to_label": "IT Services",
-      "from_kind": "buyer",
-      "to_kind": "technology",
-      "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "3aadc4ab8cf09b6a",
-      "title": "Portugal – Equipo y material informático – (DAG) Aquisição de Armazenamento SAN para o Polo II do Centro de Dados da SPMS - Pilar 1 - Reforma e Modernização da Rede de Dados da Saúde - PRR (20260320)",
-      "confidence": 0.875,
-      "materiality": 0.484,
-      "scope": "PT",
-      "date": "2026-08-27+02:00",
       "sources": [
         "TED EU Procurement"
       ]
@@ -2974,6 +5278,96 @@
       "materiality": 0.473,
       "scope": "ES",
       "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_0412b0ed5d0b",
+      "to": "ent_9e91940ff923",
+      "from_label": "Ajuntament de Sant Feliu de Guíxols",
+      "to_label": "Networking",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "fd73ef28e870ce72",
+      "title": "España – Servicios de gestión de alcantarillados – Contrato para el servicio de mantenimiento, conservación y reposiciones o actuaciones de la red de alcantarillado y pluviales y elementos auxiliares dentro del término municipal de Sant Feliu de Guíxols",
+      "confidence": 0.875,
+      "materiality": 0.473,
+      "scope": "ES",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_5b81a985ccb3",
+      "to": "ent_78fd5cac8c02",
+      "from_label": "Diputación Foral de Álava - Departamento de Movilidad Sostenible e Infraestructuras Viarias",
+      "to_label": "Cybersecurity",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "d967ac29a5ea8787",
+      "title": "España – Servicios de reparación, mantenimiento y servicios asociados relacionados con carreteras y otros equipos – Mejora de la Seguridad Vial en la Red Foral de Carreteras de Álava. Actuaciones preventivas y paliativas (año 2026)",
+      "confidence": 0.875,
+      "materiality": 0.473,
+      "scope": "ES",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_5b81a985ccb3",
+      "to": "ent_9e91940ff923",
+      "from_label": "Diputación Foral de Álava - Departamento de Movilidad Sostenible e Infraestructuras Viarias",
+      "to_label": "Networking",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "d967ac29a5ea8787",
+      "title": "España – Servicios de reparación, mantenimiento y servicios asociados relacionados con carreteras y otros equipos – Mejora de la Seguridad Vial en la Red Foral de Carreteras de Álava. Actuaciones preventivas y paliativas (año 2026)",
+      "confidence": 0.875,
+      "materiality": 0.473,
+      "scope": "ES",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_4828caf55679",
+      "to": "ent_20725cb1b8af",
+      "from_label": "The European Joint Undertaking for ITER and the Development of Fusion Energy ('Fusion for Energy')",
+      "to_label": "IT Services",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "fb5b78f63be86307",
+      "title": "España – Instrumentos de medición – Provision of an Acquisition Channel for Metrology Equipment and Software",
+      "confidence": 0.875,
+      "materiality": 0.473,
+      "scope": "ES",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_f05d57f846ff",
+      "to": "ent_0a76a3fe7b25",
+      "from_label": "Metropolitano de Lisboa, EPE",
+      "to_label": "Technology procurement",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "f1b7e31a0ae27a0a",
+      "title": "Portugal – Servicios de laboratorio – Aquisição de serviços referentes à gestão, execução e acompanhamento dos planos de prevenção e monitorização de legionella (PPML), em instalações do Metropolitano de Lisboa E.P.E.” –Proc. N.º 018/2026",
+      "confidence": 0.875,
+      "materiality": 0.472,
+      "scope": "PT",
+      "date": "2026-08-26+02:00",
       "sources": [
         "TED EU Procurement"
       ]

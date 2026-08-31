@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-31T09:19:12.949933+00:00",
+    "generated_at": "2026-08-31T09:31:35.587786+00:00",
     "candidates": 135
   },
   "priorities": [
@@ -23,14 +23,31 @@
       "next_action": "Investigar primero: Certificaciones/especializaciones, Capacidades tecnológicas, Sectores."
     },
     {
-      "entity": "Okta",
+      "entity": "Nunsys",
       "entity_type": "integrator",
       "entity_tier": "T1",
-      "priority_score": 0.649,
+      "priority_score": 0.57,
       "coverage_score": 33,
       "coverage_target": 85,
       "coverage_gap": 52.0,
-      "westcon_relevance": 60,
+      "westcon_relevance": 58,
+      "gaps": [
+        "Fabricantes",
+        "Certificaciones/especializaciones",
+        "Clientes/casos",
+        "Servicios gestionados"
+      ],
+      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Clientes/casos."
+    },
+    {
+      "entity": "Zscaler",
+      "entity_type": "integrator",
+      "entity_tier": "T1",
+      "priority_score": 0.517,
+      "coverage_score": 33,
+      "coverage_target": 85,
+      "coverage_gap": 52.0,
+      "westcon_relevance": 52,
       "gaps": [
         "Certificaciones/especializaciones",
         "Sectores",
@@ -71,53 +88,20 @@
       "next_action": "Investigar primero: Servicios gestionados, Movimientos de canal."
     },
     {
-      "entity": "NTT DATA Spain",
-      "entity_type": "integrator",
-      "entity_tier": "T1",
-      "priority_score": 0.508,
-      "coverage_score": 50,
-      "coverage_target": 85,
-      "coverage_gap": 35.0,
-      "westcon_relevance": 56,
-      "gaps": [
-        "Fabricantes",
-        "Clientes/casos",
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Fabricantes, Clientes/casos, Servicios gestionados."
-    },
-    {
       "entity": "Telefónica Tech",
       "entity_type": "integrator",
       "entity_tier": "T1",
-      "priority_score": 0.49,
+      "priority_score": 0.487,
       "coverage_score": 50,
       "coverage_target": 85,
       "coverage_gap": 35.0,
-      "westcon_relevance": 91,
+      "westcon_relevance": 94,
       "gaps": [
         "Certificaciones/especializaciones",
         "Clientes/casos",
         "Servicios gestionados"
       ],
       "next_action": "Investigar primero: Certificaciones/especializaciones, Clientes/casos, Servicios gestionados."
-    },
-    {
-      "entity": "Babel",
-      "entity_type": "integrator",
-      "entity_tier": "T1",
-      "priority_score": 0.478,
-      "coverage_score": 33,
-      "coverage_target": 85,
-      "coverage_gap": 52.0,
-      "westcon_relevance": 62,
-      "gaps": [
-        "Fabricantes",
-        "Certificaciones/especializaciones",
-        "Clientes/casos",
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Clientes/casos."
     },
     {
       "entity": "Accenture Spain",
@@ -151,6 +135,42 @@
         "Movimientos de canal"
       ],
       "next_action": "Investigar primero: Servicios gestionados, Movimientos de canal."
+    },
+    {
+      "entity": "NTT DATA Portugal",
+      "entity_type": "integrator",
+      "entity_tier": "T2",
+      "priority_score": 0.462,
+      "coverage_score": 17,
+      "coverage_target": 65,
+      "coverage_gap": 48.0,
+      "westcon_relevance": 51,
+      "gaps": [
+        "Fabricantes",
+        "Certificaciones/especializaciones",
+        "Sectores",
+        "Clientes/casos",
+        "Servicios gestionados"
+      ],
+      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Sectores."
+    },
+    {
+      "entity": "Claranet Portugal",
+      "entity_type": "integrator",
+      "entity_tier": "T2",
+      "priority_score": 0.46,
+      "coverage_score": 17,
+      "coverage_target": 65,
+      "coverage_gap": 48.0,
+      "westcon_relevance": 52,
+      "gaps": [
+        "Fabricantes",
+        "Certificaciones/especializaciones",
+        "Sectores",
+        "Clientes/casos",
+        "Servicios gestionados"
+      ],
+      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Sectores."
     },
     {
       "entity": "Axians",
@@ -189,42 +209,6 @@
       "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Sectores."
     },
     {
-      "entity": "Claranet Portugal",
-      "entity_type": "integrator",
-      "entity_tier": "T2",
-      "priority_score": 0.458,
-      "coverage_score": 17,
-      "coverage_target": 65,
-      "coverage_gap": 48.0,
-      "westcon_relevance": 49,
-      "gaps": [
-        "Fabricantes",
-        "Certificaciones/especializaciones",
-        "Sectores",
-        "Clientes/casos",
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Sectores."
-    },
-    {
-      "entity": "NTT DATA Portugal",
-      "entity_type": "integrator",
-      "entity_tier": "T2",
-      "priority_score": 0.452,
-      "coverage_score": 17,
-      "coverage_target": 65,
-      "coverage_gap": 48.0,
-      "westcon_relevance": 47,
-      "gaps": [
-        "Fabricantes",
-        "Certificaciones/especializaciones",
-        "Sectores",
-        "Clientes/casos",
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Sectores."
-    },
-    {
       "entity": "Bechtle Spain",
       "entity_type": "integrator",
       "entity_tier": "T2",
@@ -232,7 +216,7 @@
       "coverage_score": 17,
       "coverage_target": 65,
       "coverage_gap": 48.0,
-      "westcon_relevance": 41,
+      "westcon_relevance": 44,
       "gaps": [
         "Fabricantes",
         "Certificaciones/especializaciones",
@@ -244,24 +228,6 @@
     },
     {
       "entity": "acens / Telefónica Tech",
-      "entity_type": "integrator",
-      "entity_tier": "T2",
-      "priority_score": 0.445,
-      "coverage_score": 17,
-      "coverage_target": 65,
-      "coverage_gap": 48.0,
-      "westcon_relevance": 35,
-      "gaps": [
-        "Certificaciones/especializaciones",
-        "Capacidades tecnológicas",
-        "Sectores",
-        "Clientes/casos",
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Certificaciones/especializaciones, Capacidades tecnológicas, Sectores."
-    },
-    {
-      "entity": "3Hold Technologies",
       "entity_type": "integrator",
       "entity_tier": "T2",
       "priority_score": 0.445,
@@ -333,6 +299,23 @@
       "next_action": "Investigar primero: Certificaciones/especializaciones, Capacidades tecnológicas, Sectores."
     },
     {
+      "entity": "Babel",
+      "entity_type": "integrator",
+      "entity_tier": "T1",
+      "priority_score": 0.437,
+      "coverage_score": 33,
+      "coverage_target": 85,
+      "coverage_gap": 52.0,
+      "westcon_relevance": 62,
+      "gaps": [
+        "Fabricantes",
+        "Certificaciones/especializaciones",
+        "Clientes/casos",
+        "Servicios gestionados"
+      ],
+      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Clientes/casos."
+    },
+    {
       "entity": "Atos Spain",
       "entity_type": "integrator",
       "entity_tier": "T2",
@@ -381,58 +364,7 @@
       "next_action": "Investigar primero: Servicios gestionados, Movimientos de canal."
     },
     {
-      "entity": "XM Cyber",
-      "entity_type": "distributor",
-      "entity_tier": "T2",
-      "priority_score": 0.408,
-      "coverage_score": 20,
-      "coverage_target": 60,
-      "coverage_gap": 40.0,
-      "westcon_relevance": 34,
-      "gaps": [
-        "Foco tecnológico",
-        "Servicios de valor añadido",
-        "Servicios gestionados",
-        "Movimientos de canal"
-      ],
-      "next_action": "Investigar primero: Foco tecnológico, Servicios de valor añadido, Servicios gestionados."
-    },
-    {
       "entity": "Weblib",
-      "entity_type": "distributor",
-      "entity_tier": "T2",
-      "priority_score": 0.408,
-      "coverage_score": 20,
-      "coverage_target": 60,
-      "coverage_gap": 40.0,
-      "westcon_relevance": 34,
-      "gaps": [
-        "Foco tecnológico",
-        "Servicios de valor añadido",
-        "Servicios gestionados",
-        "Movimientos de canal"
-      ],
-      "next_action": "Investigar primero: Foco tecnológico, Servicios de valor añadido, Servicios gestionados."
-    },
-    {
-      "entity": "Vectra AI",
-      "entity_type": "distributor",
-      "entity_tier": "T2",
-      "priority_score": 0.408,
-      "coverage_score": 20,
-      "coverage_target": 60,
-      "coverage_gap": 40.0,
-      "westcon_relevance": 34,
-      "gaps": [
-        "Foco tecnológico",
-        "Servicios de valor añadido",
-        "Servicios gestionados",
-        "Movimientos de canal"
-      ],
-      "next_action": "Investigar primero: Foco tecnológico, Servicios de valor añadido, Servicios gestionados."
-    },
-    {
-      "entity": "UiPath",
       "entity_type": "distributor",
       "entity_tier": "T2",
       "priority_score": 0.408,
@@ -466,14 +398,14 @@
       "next_action": "Investigar primero: Foco tecnológico, Servicios de valor añadido, Servicios gestionados."
     },
     {
-      "entity": "Stratus Technologies",
+      "entity": "Extreme Networks",
       "entity_type": "distributor",
       "entity_tier": "T2",
-      "priority_score": 0.408,
+      "priority_score": 0.386,
       "coverage_score": 20,
       "coverage_target": 60,
       "coverage_gap": 40.0,
-      "westcon_relevance": 34,
+      "westcon_relevance": 36,
       "gaps": [
         "Foco tecnológico",
         "Servicios de valor añadido",
@@ -483,36 +415,21 @@
       "next_action": "Investigar primero: Foco tecnológico, Servicios de valor añadido, Servicios gestionados."
     },
     {
-      "entity": "Ping Identity",
-      "entity_type": "distributor",
+      "entity": "Okta",
+      "entity_type": "integrator",
       "entity_tier": "T2",
-      "priority_score": 0.408,
-      "coverage_score": 20,
-      "coverage_target": 60,
-      "coverage_gap": 40.0,
-      "westcon_relevance": 34,
+      "priority_score": 0.385,
+      "coverage_score": 33,
+      "coverage_target": 65,
+      "coverage_gap": 32.0,
+      "westcon_relevance": 60,
       "gaps": [
-        "Foco tecnológico",
-        "Servicios de valor añadido",
-        "Servicios gestionados",
-        "Movimientos de canal"
+        "Certificaciones/especializaciones",
+        "Sectores",
+        "Clientes/casos",
+        "Servicios gestionados"
       ],
-      "next_action": "Investigar primero: Foco tecnológico, Servicios de valor añadido, Servicios gestionados."
-    },
-    {
-      "entity": "Microsoft Azure",
-      "entity_type": "distributor",
-      "entity_tier": "T1",
-      "priority_score": 0.389,
-      "coverage_score": 60,
-      "coverage_target": 80,
-      "coverage_gap": 20.0,
-      "westcon_relevance": 51,
-      "gaps": [
-        "Servicios de valor añadido",
-        "Movimientos de canal"
-      ],
-      "next_action": "Investigar primero: Servicios de valor añadido, Movimientos de canal."
+      "next_action": "Investigar primero: Certificaciones/especializaciones, Sectores, Clientes/casos."
     },
     {
       "entity": "Claranet",
@@ -523,23 +440,6 @@
       "coverage_target": 65,
       "coverage_gap": 32.0,
       "westcon_relevance": 38,
-      "gaps": [
-        "Certificaciones/especializaciones",
-        "Sectores",
-        "Clientes/casos",
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Certificaciones/especializaciones, Sectores, Clientes/casos."
-    },
-    {
-      "entity": "Zscaler",
-      "entity_type": "integrator",
-      "entity_tier": "T2",
-      "priority_score": 0.374,
-      "coverage_score": 33,
-      "coverage_target": 65,
-      "coverage_gap": 32.0,
-      "westcon_relevance": 49,
       "gaps": [
         "Certificaciones/especializaciones",
         "Sectores",
@@ -586,7 +486,7 @@
       "entity": "Arrow ECS",
       "entity_type": "distributor",
       "entity_tier": "T2",
-      "priority_score": 0.367,
+      "priority_score": 0.366,
       "coverage_score": 20,
       "coverage_target": 60,
       "coverage_gap": 40.0,
@@ -603,11 +503,11 @@
       "entity": "V-Valley / Esprinet",
       "entity_type": "distributor",
       "entity_tier": "T2",
-      "priority_score": 0.353,
+      "priority_score": 0.35,
       "coverage_score": 20,
       "coverage_target": 60,
       "coverage_gap": 40.0,
-      "westcon_relevance": 29,
+      "westcon_relevance": 32,
       "gaps": [
         "Fabricantes",
         "Servicios de valor añadido",
@@ -615,20 +515,6 @@
         "Movimientos de canal"
       ],
       "next_action": "Investigar primero: Fabricantes, Servicios de valor añadido, Servicios gestionados."
-    },
-    {
-      "entity": "Okta",
-      "entity_type": "distributor",
-      "entity_tier": "T1",
-      "priority_score": 0.339,
-      "coverage_score": 80,
-      "coverage_target": 80,
-      "coverage_gap": 0,
-      "westcon_relevance": 60,
-      "gaps": [
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Servicios gestionados."
     },
     {
       "entity": "Splunk",
@@ -647,35 +533,18 @@
       "next_action": "Investigar primero: Servicios de valor añadido, Servicios gestionados, Movimientos de canal."
     },
     {
-      "entity": "SEIDOR",
-      "entity_type": "integrator",
+      "entity": "Okta",
+      "entity_type": "distributor",
       "entity_tier": "T1",
-      "priority_score": 0.333,
-      "coverage_score": 83,
-      "coverage_target": 85,
-      "coverage_gap": 2.0,
-      "westcon_relevance": 68,
+      "priority_score": 0.329,
+      "coverage_score": 80,
+      "coverage_target": 80,
+      "coverage_gap": 0,
+      "westcon_relevance": 60,
       "gaps": [
-        "Clientes/casos"
-      ],
-      "next_action": "Investigar primero: Clientes/casos."
-    },
-    {
-      "entity": "Palo Alto Networks",
-      "entity_type": "integrator",
-      "entity_tier": "T2",
-      "priority_score": 0.326,
-      "coverage_score": 33,
-      "coverage_target": 65,
-      "coverage_gap": 32.0,
-      "westcon_relevance": 52,
-      "gaps": [
-        "Certificaciones/especializaciones",
-        "Sectores",
-        "Clientes/casos",
         "Servicios gestionados"
       ],
-      "next_action": "Investigar primero: Certificaciones/especializaciones, Sectores, Clientes/casos."
+      "next_action": "Investigar primero: Servicios gestionados."
     },
     {
       "entity": "MCR",
@@ -695,6 +564,38 @@
       "next_action": "Investigar primero: Fabricantes, Servicios de valor añadido, Servicios gestionados."
     },
     {
+      "entity": "XM Cyber",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "priority_score": 0.323,
+      "coverage_score": 40,
+      "coverage_target": 60,
+      "coverage_gap": 20.0,
+      "westcon_relevance": 37,
+      "gaps": [
+        "Servicios de valor añadido",
+        "Servicios gestionados",
+        "Movimientos de canal"
+      ],
+      "next_action": "Investigar primero: Servicios de valor añadido, Servicios gestionados, Movimientos de canal."
+    },
+    {
+      "entity": "UiPath",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "priority_score": 0.323,
+      "coverage_score": 40,
+      "coverage_target": 60,
+      "coverage_gap": 20.0,
+      "westcon_relevance": 37,
+      "gaps": [
+        "Servicios de valor añadido",
+        "Servicios gestionados",
+        "Movimientos de canal"
+      ],
+      "next_action": "Investigar primero: Servicios de valor añadido, Servicios gestionados, Movimientos de canal."
+    },
+    {
       "entity": "Ruckus Networks",
       "entity_type": "distributor",
       "entity_tier": "T2",
@@ -711,31 +612,14 @@
       "next_action": "Investigar primero: Servicios de valor añadido, Servicios gestionados, Movimientos de canal."
     },
     {
-      "entity": "Nunsys",
-      "entity_type": "integrator",
-      "entity_tier": "T2",
-      "priority_score": 0.319,
-      "coverage_score": 33,
-      "coverage_target": 65,
-      "coverage_gap": 32.0,
-      "westcon_relevance": 41,
-      "gaps": [
-        "Fabricantes",
-        "Certificaciones/especializaciones",
-        "Clientes/casos",
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Clientes/casos."
-    },
-    {
-      "entity": "Proofpoint",
+      "entity": "AttackIQ",
       "entity_type": "distributor",
       "entity_tier": "T2",
-      "priority_score": 0.318,
+      "priority_score": 0.31,
       "coverage_score": 40,
       "coverage_target": 60,
       "coverage_gap": 20.0,
-      "westcon_relevance": 41,
+      "westcon_relevance": 39,
       "gaps": [
         "Servicios de valor añadido",
         "Servicios gestionados",
@@ -760,42 +644,26 @@
       "next_action": "Investigar primero: Certificaciones/especializaciones, Clientes/casos, Servicios gestionados."
     },
     {
-      "entity": "Ivanti",
-      "entity_type": "distributor",
+      "entity": "NTT DATA Spain",
+      "entity_type": "integrator",
       "entity_tier": "T2",
-      "priority_score": 0.309,
-      "coverage_score": 40,
-      "coverage_target": 60,
-      "coverage_gap": 20.0,
-      "westcon_relevance": 45,
+      "priority_score": 0.299,
+      "coverage_score": 50,
+      "coverage_target": 65,
+      "coverage_gap": 15.0,
+      "westcon_relevance": 56,
       "gaps": [
-        "Servicios de valor añadido",
-        "Servicios gestionados",
-        "Movimientos de canal"
+        "Fabricantes",
+        "Clientes/casos",
+        "Servicios gestionados"
       ],
-      "next_action": "Investigar primero: Servicios de valor añadido, Servicios gestionados, Movimientos de canal."
-    },
-    {
-      "entity": "Zscaler",
-      "entity_type": "distributor",
-      "entity_tier": "T2",
-      "priority_score": 0.308,
-      "coverage_score": 40,
-      "coverage_target": 60,
-      "coverage_gap": 20.0,
-      "westcon_relevance": 48,
-      "gaps": [
-        "Servicios de valor añadido",
-        "Servicios gestionados",
-        "Movimientos de canal"
-      ],
-      "next_action": "Investigar primero: Servicios de valor añadido, Servicios gestionados, Movimientos de canal."
+      "next_action": "Investigar primero: Fabricantes, Clientes/casos, Servicios gestionados."
     },
     {
       "entity": "SATEC",
       "entity_type": "integrator",
       "entity_tier": "T1",
-      "priority_score": 0.298,
+      "priority_score": 0.297,
       "coverage_score": 83,
       "coverage_target": 85,
       "coverage_gap": 2.0,
@@ -806,20 +674,20 @@
       "next_action": "Investigar primero: Certificaciones/especializaciones."
     },
     {
-      "entity": "Check Point",
-      "entity_type": "integrator",
+      "entity": "Proofpoint",
+      "entity_type": "distributor",
       "entity_tier": "T2",
-      "priority_score": 0.297,
-      "coverage_score": 50,
-      "coverage_target": 65,
-      "coverage_gap": 15.0,
-      "westcon_relevance": 50,
+      "priority_score": 0.295,
+      "coverage_score": 40,
+      "coverage_target": 60,
+      "coverage_gap": 20.0,
+      "westcon_relevance": 46,
       "gaps": [
-        "Certificaciones/especializaciones",
-        "Clientes/casos",
-        "Servicios gestionados"
+        "Servicios de valor añadido",
+        "Servicios gestionados",
+        "Movimientos de canal"
       ],
-      "next_action": "Investigar primero: Certificaciones/especializaciones, Clientes/casos, Servicios gestionados."
+      "next_action": "Investigar primero: Servicios de valor añadido, Servicios gestionados, Movimientos de canal."
     },
     {
       "entity": "SoftwareOne",
@@ -838,6 +706,84 @@
       "next_action": "Investigar primero: Certificaciones/especializaciones, Clientes/casos, Servicios gestionados."
     },
     {
+      "entity": "Ivanti",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "priority_score": 0.293,
+      "coverage_score": 40,
+      "coverage_target": 60,
+      "coverage_gap": 20.0,
+      "westcon_relevance": 50,
+      "gaps": [
+        "Servicios de valor añadido",
+        "Servicios gestionados",
+        "Movimientos de canal"
+      ],
+      "next_action": "Investigar primero: Servicios de valor añadido, Servicios gestionados, Movimientos de canal."
+    },
+    {
+      "entity": "CrowdStrike",
+      "entity_type": "integrator",
+      "entity_tier": "T2",
+      "priority_score": 0.291,
+      "coverage_score": 33,
+      "coverage_target": 65,
+      "coverage_gap": 32.0,
+      "westcon_relevance": 52,
+      "gaps": [
+        "Certificaciones/especializaciones",
+        "Sectores",
+        "Clientes/casos",
+        "Servicios gestionados"
+      ],
+      "next_action": "Investigar primero: Certificaciones/especializaciones, Sectores, Clientes/casos."
+    },
+    {
+      "entity": "NETSCOUT",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "priority_score": 0.287,
+      "coverage_score": 40,
+      "coverage_target": 60,
+      "coverage_gap": 20.0,
+      "westcon_relevance": 48,
+      "gaps": [
+        "Servicios de valor añadido",
+        "Servicios gestionados",
+        "Movimientos de canal"
+      ],
+      "next_action": "Investigar primero: Servicios de valor añadido, Servicios gestionados, Movimientos de canal."
+    },
+    {
+      "entity": "Microsoft Azure",
+      "entity_type": "distributor",
+      "entity_tier": "T1",
+      "priority_score": 0.287,
+      "coverage_score": 60,
+      "coverage_target": 80,
+      "coverage_gap": 20.0,
+      "westcon_relevance": 52,
+      "gaps": [
+        "Servicios de valor añadido",
+        "Movimientos de canal"
+      ],
+      "next_action": "Investigar primero: Servicios de valor añadido, Movimientos de canal."
+    },
+    {
+      "entity": "SEIDOR",
+      "entity_type": "integrator",
+      "entity_tier": "T1",
+      "priority_score": 0.281,
+      "coverage_score": 83,
+      "coverage_target": 85,
+      "coverage_gap": 2.0,
+      "westcon_relevance": 68,
+      "gaps": [
+        "Clientes/casos"
+      ],
+      "next_action": "Investigar primero: Clientes/casos."
+    },
+    {
       "entity": "Nokia",
       "entity_type": "integrator",
       "entity_tier": "T2",
@@ -854,24 +800,26 @@
       "next_action": "Investigar primero: Certificaciones/especializaciones, Clientes/casos, Servicios gestionados."
     },
     {
-      "entity": "Nokia",
-      "entity_type": "distributor",
-      "entity_tier": "T1",
-      "priority_score": 0.27,
-      "coverage_score": 80,
-      "coverage_target": 80,
-      "coverage_gap": 0,
+      "entity": "Check Point",
+      "entity_type": "integrator",
+      "entity_tier": "T2",
+      "priority_score": 0.26,
+      "coverage_score": 50,
+      "coverage_target": 65,
+      "coverage_gap": 15.0,
       "westcon_relevance": 52,
       "gaps": [
+        "Certificaciones/especializaciones",
+        "Clientes/casos",
         "Servicios gestionados"
       ],
-      "next_action": "Investigar primero: Servicios gestionados."
+      "next_action": "Investigar primero: Certificaciones/especializaciones, Clientes/casos, Servicios gestionados."
     },
     {
       "entity": "UST",
       "entity_type": "integrator",
       "entity_tier": "T2",
-      "priority_score": 0.25,
+      "priority_score": 0.247,
       "coverage_score": 67,
       "coverage_target": 65,
       "coverage_gap": 0,
@@ -883,18 +831,20 @@
       "next_action": "Investigar primero: Certificaciones/especializaciones, Servicios gestionados."
     },
     {
-      "entity": "Microsoft Azure",
-      "entity_type": "integrator",
+      "entity": "Zscaler",
+      "entity_type": "distributor",
       "entity_tier": "T2",
-      "priority_score": 0.239,
-      "coverage_score": 83,
-      "coverage_target": 65,
-      "coverage_gap": 0,
-      "westcon_relevance": 51,
+      "priority_score": 0.227,
+      "coverage_score": 40,
+      "coverage_target": 60,
+      "coverage_gap": 20.0,
+      "westcon_relevance": 52,
       "gaps": [
-        "Sectores"
+        "Servicios de valor añadido",
+        "Servicios gestionados",
+        "Movimientos de canal"
       ],
-      "next_action": "Investigar primero: Sectores."
+      "next_action": "Investigar primero: Servicios de valor añadido, Servicios gestionados, Movimientos de canal."
     },
     {
       "entity": "askblue",
@@ -992,25 +942,6 @@
       "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Capacidades tecnológicas."
     },
     {
-      "entity": "Noesis",
-      "entity_type": "integrator",
-      "entity_tier": "T3",
-      "priority_score": 0.225,
-      "coverage_score": 0,
-      "coverage_target": 40,
-      "coverage_gap": 40.0,
-      "westcon_relevance": 24,
-      "gaps": [
-        "Fabricantes",
-        "Certificaciones/especializaciones",
-        "Capacidades tecnológicas",
-        "Sectores",
-        "Clientes/casos",
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Capacidades tecnológicas."
-    },
-    {
       "entity": "NOS Sistemas",
       "entity_type": "integrator",
       "entity_tier": "T3",
@@ -1049,25 +980,6 @@
       "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Capacidades tecnológicas."
     },
     {
-      "entity": "Logicalis Portugal",
-      "entity_type": "integrator",
-      "entity_tier": "T3",
-      "priority_score": 0.225,
-      "coverage_score": 0,
-      "coverage_target": 40,
-      "coverage_gap": 40.0,
-      "westcon_relevance": 24,
-      "gaps": [
-        "Fabricantes",
-        "Certificaciones/especializaciones",
-        "Capacidades tecnológicas",
-        "Sectores",
-        "Clientes/casos",
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Capacidades tecnológicas."
-    },
-    {
       "entity": "Link Consulting",
       "entity_type": "integrator",
       "entity_tier": "T3",
@@ -1087,64 +999,7 @@
       "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Capacidades tecnológicas."
     },
     {
-      "entity": "Inetum Spain",
-      "entity_type": "integrator",
-      "entity_tier": "T3",
-      "priority_score": 0.225,
-      "coverage_score": 0,
-      "coverage_target": 40,
-      "coverage_gap": 40.0,
-      "westcon_relevance": 24,
-      "gaps": [
-        "Fabricantes",
-        "Certificaciones/especializaciones",
-        "Capacidades tecnológicas",
-        "Sectores",
-        "Clientes/casos",
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Capacidades tecnológicas."
-    },
-    {
-      "entity": "Inetum Portugal",
-      "entity_type": "integrator",
-      "entity_tier": "T3",
-      "priority_score": 0.225,
-      "coverage_score": 0,
-      "coverage_target": 40,
-      "coverage_gap": 40.0,
-      "westcon_relevance": 24,
-      "gaps": [
-        "Fabricantes",
-        "Certificaciones/especializaciones",
-        "Capacidades tecnológicas",
-        "Sectores",
-        "Clientes/casos",
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Capacidades tecnológicas."
-    },
-    {
       "entity": "Eviden Spain",
-      "entity_type": "integrator",
-      "entity_tier": "T3",
-      "priority_score": 0.225,
-      "coverage_score": 0,
-      "coverage_target": 40,
-      "coverage_gap": 40.0,
-      "westcon_relevance": 24,
-      "gaps": [
-        "Fabricantes",
-        "Certificaciones/especializaciones",
-        "Capacidades tecnológicas",
-        "Sectores",
-        "Clientes/casos",
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Capacidades tecnológicas."
-    },
-    {
-      "entity": "Devoteam Portugal",
       "entity_type": "integrator",
       "entity_tier": "T3",
       "priority_score": 0.225,
@@ -1220,14 +1075,14 @@
       "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Capacidades tecnológicas."
     },
     {
-      "entity": "Ricoh Spain",
+      "entity": "Inetum Portugal",
       "entity_type": "integrator",
       "entity_tier": "T3",
-      "priority_score": 0.215,
+      "priority_score": 0.221,
       "coverage_score": 0,
       "coverage_target": 40,
       "coverage_gap": 40.0,
-      "westcon_relevance": 26,
+      "westcon_relevance": 25,
       "gaps": [
         "Fabricantes",
         "Certificaciones/especializaciones",
@@ -1237,12 +1092,48 @@
         "Servicios gestionados"
       ],
       "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Capacidades tecnológicas."
+    },
+    {
+      "entity": "Logicalis Portugal",
+      "entity_type": "integrator",
+      "entity_tier": "T3",
+      "priority_score": 0.22,
+      "coverage_score": 0,
+      "coverage_target": 40,
+      "coverage_gap": 40.0,
+      "westcon_relevance": 25,
+      "gaps": [
+        "Fabricantes",
+        "Certificaciones/especializaciones",
+        "Capacidades tecnológicas",
+        "Sectores",
+        "Clientes/casos",
+        "Servicios gestionados"
+      ],
+      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Capacidades tecnológicas."
+    },
+    {
+      "entity": "Palo Alto Networks",
+      "entity_type": "integrator",
+      "entity_tier": "T2",
+      "priority_score": 0.211,
+      "coverage_score": 33,
+      "coverage_target": 65,
+      "coverage_gap": 32.0,
+      "westcon_relevance": 52,
+      "gaps": [
+        "Certificaciones/especializaciones",
+        "Sectores",
+        "Clientes/casos",
+        "Servicios gestionados"
+      ],
+      "next_action": "Investigar primero: Certificaciones/especializaciones, Sectores, Clientes/casos."
     },
     {
       "entity": "Kyndryl Spain",
       "entity_type": "integrator",
       "entity_tier": "T3",
-      "priority_score": 0.215,
+      "priority_score": 0.21,
       "coverage_score": 0,
       "coverage_target": 40,
       "coverage_gap": 40.0,
@@ -1256,40 +1147,6 @@
         "Servicios gestionados"
       ],
       "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Capacidades tecnológicas."
-    },
-    {
-      "entity": "Econocom Spain",
-      "entity_type": "integrator",
-      "entity_tier": "T3",
-      "priority_score": 0.211,
-      "coverage_score": 0,
-      "coverage_target": 40,
-      "coverage_gap": 40.0,
-      "westcon_relevance": 26,
-      "gaps": [
-        "Fabricantes",
-        "Certificaciones/especializaciones",
-        "Capacidades tecnológicas",
-        "Sectores",
-        "Clientes/casos",
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Capacidades tecnológicas."
-    },
-    {
-      "entity": "Check Point",
-      "entity_type": "distributor",
-      "entity_tier": "T2",
-      "priority_score": 0.207,
-      "coverage_score": 60,
-      "coverage_target": 60,
-      "coverage_gap": 0,
-      "westcon_relevance": 50,
-      "gaps": [
-        "Servicios de valor añadido",
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Servicios de valor añadido, Servicios gestionados."
     },
     {
       "entity": "Lidera Network",
@@ -1328,22 +1185,54 @@
       "next_action": "Investigar primero: Fabricantes, Foco tecnológico, Servicios de valor añadido."
     },
     {
-      "entity": "Extreme Networks",
+      "entity": "T-Systems Spain",
+      "entity_type": "integrator",
+      "entity_tier": "T3",
+      "priority_score": 0.201,
+      "coverage_score": 17,
+      "coverage_target": 40,
+      "coverage_gap": 23.0,
+      "westcon_relevance": 38,
+      "gaps": [
+        "Fabricantes",
+        "Certificaciones/especializaciones",
+        "Sectores",
+        "Clientes/casos",
+        "Servicios gestionados"
+      ],
+      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Sectores."
+    },
+    {
+      "entity": "Nokia",
+      "entity_type": "distributor",
+      "entity_tier": "T2",
+      "priority_score": 0.2,
+      "coverage_score": 80,
+      "coverage_target": 60,
+      "coverage_gap": 0,
+      "westcon_relevance": 52,
+      "gaps": [
+        "Servicios gestionados"
+      ],
+      "next_action": "Investigar primero: Servicios gestionados."
+    },
+    {
+      "entity": "Inetum Spain",
       "entity_type": "integrator",
       "entity_tier": "T3",
       "priority_score": 0.2,
       "coverage_score": 17,
       "coverage_target": 40,
       "coverage_gap": 23.0,
-      "westcon_relevance": 34,
+      "westcon_relevance": 37,
       "gaps": [
+        "Fabricantes",
         "Certificaciones/especializaciones",
-        "Capacidades tecnológicas",
         "Sectores",
         "Clientes/casos",
         "Servicios gestionados"
       ],
-      "next_action": "Investigar primero: Certificaciones/especializaciones, Capacidades tecnológicas, Sectores."
+      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Sectores."
     },
     {
       "entity": "EfficientIP",
@@ -1382,14 +1271,70 @@
       "next_action": "Investigar primero: Certificaciones/especializaciones, Capacidades tecnológicas, Sectores."
     },
     {
-      "entity": "AttackIQ",
+      "entity": "Ricoh Spain",
       "entity_type": "integrator",
       "entity_tier": "T3",
-      "priority_score": 0.2,
+      "priority_score": 0.199,
+      "coverage_score": 0,
+      "coverage_target": 40,
+      "coverage_gap": 40.0,
+      "westcon_relevance": 29,
+      "gaps": [
+        "Fabricantes",
+        "Certificaciones/especializaciones",
+        "Capacidades tecnológicas",
+        "Sectores",
+        "Clientes/casos",
+        "Servicios gestionados"
+      ],
+      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Capacidades tecnológicas."
+    },
+    {
+      "entity": "Noesis",
+      "entity_type": "integrator",
+      "entity_tier": "T3",
+      "priority_score": 0.197,
       "coverage_score": 17,
       "coverage_target": 40,
       "coverage_gap": 23.0,
-      "westcon_relevance": 34,
+      "westcon_relevance": 37,
+      "gaps": [
+        "Fabricantes",
+        "Certificaciones/especializaciones",
+        "Sectores",
+        "Clientes/casos",
+        "Servicios gestionados"
+      ],
+      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Sectores."
+    },
+    {
+      "entity": "Econocom Spain",
+      "entity_type": "integrator",
+      "entity_tier": "T3",
+      "priority_score": 0.196,
+      "coverage_score": 0,
+      "coverage_target": 40,
+      "coverage_gap": 40.0,
+      "westcon_relevance": 30,
+      "gaps": [
+        "Fabricantes",
+        "Certificaciones/especializaciones",
+        "Capacidades tecnológicas",
+        "Sectores",
+        "Clientes/casos",
+        "Servicios gestionados"
+      ],
+      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Capacidades tecnológicas."
+    },
+    {
+      "entity": "3Hold Technologies",
+      "entity_type": "integrator",
+      "entity_tier": "T3",
+      "priority_score": 0.196,
+      "coverage_score": 17,
+      "coverage_target": 40,
+      "coverage_gap": 23.0,
+      "westcon_relevance": 35,
       "gaps": [
         "Certificaciones/especializaciones",
         "Capacidades tecnológicas",
@@ -1398,35 +1343,6 @@
         "Servicios gestionados"
       ],
       "next_action": "Investigar primero: Certificaciones/especializaciones, Capacidades tecnológicas, Sectores."
-    },
-    {
-      "entity": "CrowdStrike",
-      "entity_type": "distributor",
-      "entity_tier": "T2",
-      "priority_score": 0.197,
-      "coverage_score": 80,
-      "coverage_target": 60,
-      "coverage_gap": 0,
-      "westcon_relevance": 50,
-      "gaps": [
-        "Servicios gestionados"
-      ],
-      "next_action": "Investigar primero: Servicios gestionados."
-    },
-    {
-      "entity": "Fortinet",
-      "entity_type": "integrator",
-      "entity_tier": "T2",
-      "priority_score": 0.197,
-      "coverage_score": 67,
-      "coverage_target": 65,
-      "coverage_gap": 0,
-      "westcon_relevance": 40,
-      "gaps": [
-        "Sectores",
-        "Clientes/casos"
-      ],
-      "next_action": "Investigar primero: Sectores, Clientes/casos."
     },
     {
       "entity": "Seyrcom",
@@ -1587,22 +1503,6 @@
       "next_action": "Investigar primero: Servicios gestionados."
     },
     {
-      "entity": "Minsait",
-      "entity_type": "integrator",
-      "entity_tier": "T2",
-      "priority_score": 0.189,
-      "coverage_score": 50,
-      "coverage_target": 65,
-      "coverage_gap": 15.0,
-      "westcon_relevance": 40,
-      "gaps": [
-        "Fabricantes",
-        "Certificaciones/especializaciones",
-        "Clientes/casos"
-      ],
-      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Clientes/casos."
-    },
-    {
       "entity": "IBM",
       "entity_type": "integrator",
       "entity_tier": "T1",
@@ -1615,6 +1515,24 @@
         "Certificaciones/especializaciones"
       ],
       "next_action": "Investigar primero: Certificaciones/especializaciones."
+    },
+    {
+      "entity": "Extreme Networks",
+      "entity_type": "integrator",
+      "entity_tier": "T3",
+      "priority_score": 0.188,
+      "coverage_score": 17,
+      "coverage_target": 40,
+      "coverage_gap": 23.0,
+      "westcon_relevance": 36,
+      "gaps": [
+        "Certificaciones/especializaciones",
+        "Capacidades tecnológicas",
+        "Sectores",
+        "Clientes/casos",
+        "Servicios gestionados"
+      ],
+      "next_action": "Investigar primero: Certificaciones/especializaciones, Capacidades tecnológicas, Sectores."
     },
     {
       "entity": "Kyndryl",
@@ -1667,10 +1585,26 @@
       "next_action": "Investigar primero: Certificaciones/especializaciones, Capacidades tecnológicas, Sectores."
     },
     {
-      "entity": "T-Systems Spain",
+      "entity": "Minsait",
+      "entity_type": "integrator",
+      "entity_tier": "T2",
+      "priority_score": 0.184,
+      "coverage_score": 50,
+      "coverage_target": 65,
+      "coverage_gap": 15.0,
+      "westcon_relevance": 40,
+      "gaps": [
+        "Fabricantes",
+        "Certificaciones/especializaciones",
+        "Clientes/casos"
+      ],
+      "next_action": "Investigar primero: Fabricantes, Certificaciones/especializaciones, Clientes/casos."
+    },
+    {
+      "entity": "Devoteam Portugal",
       "entity_type": "integrator",
       "entity_tier": "T3",
-      "priority_score": 0.183,
+      "priority_score": 0.184,
       "coverage_score": 17,
       "coverage_target": 40,
       "coverage_gap": 23.0,
@@ -1719,6 +1653,72 @@
         "Servicios gestionados"
       ],
       "next_action": "Investigar primero: Certificaciones/especializaciones, Capacidades tecnológicas, Sectores."
+    },
+    {
+      "entity": "Italtel",
+      "entity_type": "integrator",
+      "entity_tier": "T3",
+      "priority_score": 0.182,
+      "coverage_score": 17,
+      "coverage_target": 40,
+      "coverage_gap": 23.0,
+      "westcon_relevance": 25,
+      "gaps": [
+        "Certificaciones/especializaciones",
+        "Capacidades tecnológicas",
+        "Sectores",
+        "Clientes/casos",
+        "Servicios gestionados"
+      ],
+      "next_action": "Investigar primero: Certificaciones/especializaciones, Capacidades tecnológicas, Sectores."
+    },
+    {
+      "entity": "CrowdStrike",
+      "entity_type": "distributor",
+      "entity_tier": "T1",
+      "priority_score": 0.181,
+      "coverage_score": 80,
+      "coverage_target": 80,
+      "coverage_gap": 0,
+      "westcon_relevance": 52,
+      "gaps": [
+        "Servicios gestionados"
+      ],
+      "next_action": "Investigar primero: Servicios gestionados."
+    },
+    {
+      "entity": "Vectra AI",
+      "entity_type": "distributor",
+      "entity_tier": "T3",
+      "priority_score": 0.174,
+      "coverage_score": 20,
+      "coverage_target": 35,
+      "coverage_gap": 15.0,
+      "westcon_relevance": 34,
+      "gaps": [
+        "Foco tecnológico",
+        "Servicios de valor añadido",
+        "Servicios gestionados",
+        "Movimientos de canal"
+      ],
+      "next_action": "Investigar primero: Foco tecnológico, Servicios de valor añadido, Servicios gestionados."
+    },
+    {
+      "entity": "Stratus Technologies",
+      "entity_type": "distributor",
+      "entity_tier": "T3",
+      "priority_score": 0.174,
+      "coverage_score": 20,
+      "coverage_target": 35,
+      "coverage_gap": 15.0,
+      "westcon_relevance": 34,
+      "gaps": [
+        "Foco tecnológico",
+        "Servicios de valor añadido",
+        "Servicios gestionados",
+        "Movimientos de canal"
+      ],
+      "next_action": "Investigar primero: Foco tecnológico, Servicios de valor añadido, Servicios gestionados."
     }
   ]
 }

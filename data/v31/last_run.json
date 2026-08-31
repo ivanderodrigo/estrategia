@@ -1,20 +1,20 @@
 {
   "version": "3.1.5",
-  "run_id": "20260831T091656Z",
-  "profile": "daily",
-  "max_runtime": 242,
-  "snapshot": "r20260831T091656Z",
+  "run_id": "20260831T092452Z",
+  "profile": "weekly",
+  "max_runtime": 394,
+  "snapshot": "r20260831T092451Z",
   "legacy": {
-    "returncode": 1,
-    "budget_seconds": 183,
+    "returncode": 2,
+    "budget_seconds": 260,
     "status": "failed"
   },
   "v31": {
-    "new_signals": 91,
-    "total_signals": 142,
-    "research_debt_gaps": 536,
+    "new_signals": 220,
+    "total_signals": 277,
+    "research_debt_gaps": 479,
     "repairs": {
-      "repairs": 6035,
+      "repairs": 4363,
       "changed_files": [
         "v313/intelligence.json",
         "v314/intelligence.json",
@@ -24,49 +24,44 @@
         "v32/events.json",
         "v32/knowledge_graph.json",
         "v33/ecosystem_profiles.json",
-        "v34/entities.json",
-        "v34/historical_intelligence.json",
         "v35/intelligence.json",
-        "v36/intelligence.json",
-        "v37/intelligence.json",
-        "v38/intelligence.json",
-        "v39/intelligence.json"
+        "v36/intelligence.json"
       ]
     },
     "discovery": {
       "entities": 79,
       "gaps": 594,
-      "planned_tasks": 595,
-      "attempted_tasks": 595,
-      "completed_tasks": 594,
-      "new_signals": 91,
-      "current_signals": 64,
-      "historical_context_signals": 27,
-      "covered_gaps": 58,
-      "debt_gaps": 536,
+      "planned_tasks": 1783,
+      "attempted_tasks": 1783,
+      "completed_tasks": 1782,
+      "new_signals": 220,
+      "current_signals": 131,
+      "historical_context_signals": 89,
+      "covered_gaps": 115,
+      "debt_gaps": 479,
       "provider_circuits_open": [
         "gdelt"
       ],
       "providers": {
         "google_news_rss": {
-          "attempted": 594,
-          "successful": 594,
+          "attempted": 1782,
+          "successful": 1782,
           "failed": 0,
-          "raw_rows": 1162,
-          "accepted_rows": 91,
-          "relevance_rejected": 539,
-          "geo_rejected": 94,
-          "stale_rejected": 2,
-          "semantic_rejected": 396,
-          "semantic_reclassified": 52,
-          "current_accepted_rows": 64,
-          "historical_accepted_rows": 27,
+          "raw_rows": 3318,
+          "accepted_rows": 225,
+          "relevance_rejected": 1087,
+          "geo_rejected": 612,
+          "stale_rejected": 133,
+          "semantic_rejected": 1144,
+          "semantic_reclassified": 135,
+          "current_accepted_rows": 133,
+          "historical_accepted_rows": 92,
           "owned_awards_rejected": 0,
           "third_party_cert_rejected": 4,
           "secondary_people_move_rejected": 1,
-          "duplicates": 35,
-          "empty_success": 332,
-          "avg_latency_ms": 274.3
+          "duplicates": 112,
+          "empty_success": 1085,
+          "avg_latency_ms": 231.4
         },
         "gdelt": {
           "attempted": 1,
@@ -86,8 +81,8 @@
           "secondary_people_move_rejected": 0,
           "duplicates": 0,
           "empty_success": 0,
-          "last_error": "gdelt:URLError:timed out",
-          "avg_latency_ms": 4146.0
+          "last_error": "gdelt:URLError:_ssl.c:993: The handshake operation timed out",
+          "avg_latency_ms": 7197.8
         }
       }
     },

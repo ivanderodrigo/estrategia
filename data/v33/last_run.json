@@ -1,81 +1,268 @@
 {
   "version": "3.3.3a",
-  "generated_at": "2026-08-31T09:19:13.485010+00:00",
-  "input_rows": 224,
+  "generated_at": "2026-08-31T09:31:36.271174+00:00",
+  "input_rows": 223,
   "profiles": 139,
-  "consolidated_source_variants": 85,
+  "consolidated_source_variants": 84,
   "groups_with_variants": 77,
-  "name_scope_conflicts_detected": 6,
-  "name_scope_conflicts_resolved": 6,
+  "name_scope_conflicts_detected": 5,
+  "name_scope_conflicts_resolved": 5,
   "unresolved_name_scope_conflicts": 0,
   "distributors": 53,
   "integrators": 86,
   "targeted_evidence": 539,
-  "new_targeted_evidence": 40,
+  "new_targeted_evidence": 0,
   "relationship_rows": 3354,
   "distributor_rows": 2067,
   "vendor_pairs": 741,
   "architectures": 5,
   "targeted_stats": {
-    "planned_queries": 220,
-    "attempted_queries": 220,
-    "evidence_rows": 117,
-    "errors": [],
-    "runtime_seconds": 5.72,
-    "entities_touched": 111,
-    "unique_entities_planned": 111,
+    "planned_queries": 650,
+    "attempted_queries": 462,
+    "evidence_rows": 0,
+    "errors": [
+      {
+        "entity": "Okta",
+        "field": "managed_services",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "Telefónica Tech",
+        "field": "certifications",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "SIA",
+        "field": "certifications",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "Indra",
+        "field": "vendor_pair_verification",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "Indra",
+        "field": "vendor_pair_verification",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "NTT DATA Spain",
+        "field": "managed_services",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Okta",
+        "field": "certifications",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Westcon-Comstor",
+        "field": "managed_services",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Babel",
+        "field": "certifications",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Indra",
+        "field": "vendor_pair_verification",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Logicalis Spain",
+        "field": "certifications",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Comstor",
+        "field": "managed_services",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Ingram Micro",
+        "field": "managed_services",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "IBM",
+        "field": "certifications",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "SATEC",
+        "field": "certifications",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "Indra",
+        "field": "vendor_pair_verification",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Kyndryl",
+        "field": "certifications",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "XM Cyber",
+        "field": "managed_services",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "Axians",
+        "field": "certifications",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "Arrow",
+        "field": "value_added",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "NTT",
+        "field": "managed_services",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "Indra",
+        "field": "vendor_pair_verification",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "SEIDOR",
+        "field": "customers",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Indra",
+        "field": "vendor_pair_verification",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Weblib",
+        "field": "managed_services",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "Atos Spain",
+        "field": "certifications",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Vectra AI",
+        "field": "managed_services",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "VarGroup Iberia",
+        "field": "certifications",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "Nextel Telecomunicaciones",
+        "field": "certifications",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "Matrix Electronica S.L.",
+        "field": "certifications",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "Indra",
+        "field": "vendor_pair_verification",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Indra",
+        "field": "vendor_pair_verification",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "UiPath",
+        "field": "managed_services",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "acens / Telefónica Tech",
+        "field": "certifications",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "3Hold Technologies",
+        "field": "certifications",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Indra",
+        "field": "vendor_pair_verification",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Accenture Spain",
+        "field": "certifications",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Claranet Spain",
+        "field": "certifications",
+        "error": "HTTPError:HTTP Error 503: Service Unavailable"
+      },
+      {
+        "entity": "Claranet Portugal",
+        "field": "certifications",
+        "error": "TimeoutError:The read operation timed out"
+      },
+      {
+        "entity": "Tech Data Portugal",
+        "field": "managed_services",
+        "error": "TimeoutError:The read operation timed out"
+      }
+    ],
+    "runtime_seconds": 282.0,
+    "entities_touched": 124,
+    "unique_entities_planned": 124,
     "planned_by_tier": {
-      "T1": 39,
-      "pair": 55,
-      "T2": 72,
-      "T3": 54
+      "T1": 106,
+      "pair": 162,
+      "T2": 202,
+      "T3": 180
     },
-    "pair_verification_queries": 55,
+    "pair_verification_queries": 116,
     "attempted_by_dimension": {
-      "certifications": 78,
-      "managed_services": 40,
-      "vendor_pair_verification": 55,
-      "customers": 9,
-      "value_added": 8,
-      "verticals": 8,
+      "managed_services": 134,
+      "certifications": 85,
+      "vendor_pair_verification": 116,
+      "value_added": 38,
+      "customers": 60,
+      "verticals": 2,
       "channel_moves": 7,
-      "vendors": 8,
-      "services": 7
+      "vendors": 19,
+      "services": 1
     },
-    "accepted_by_dimension": {
-      "certifications": 44,
-      "managed_services": 24,
-      "vendor_pair_verification": 4,
-      "customers": 18,
-      "value_added": 9,
-      "vendors": 8,
-      "services": 4,
-      "channel_moves": 13,
-      "verticals": 9
-    },
-    "source_grades": {
-      "B": 45,
-      "C": 69,
-      "A": 3
-    }
+    "accepted_by_dimension": {},
+    "source_grades": {}
   },
-  "average_profile_coverage": 31.0,
-  "coverage_delta": 1.2,
+  "average_profile_coverage": 32.1,
+  "coverage_delta": 1.1,
   "average_coverage_target": 54.4,
-  "difference_between_averages": 23.4,
-  "average_coverage_gap": 24.4,
+  "difference_between_averages": 22.3,
+  "average_coverage_gap": 23.3,
   "tier_distribution": {
     "T1": 23,
     "T2": 49,
     "T3": 67
   },
-  "relationship_changes": 7,
-  "uncertainty_resolved": 1,
-  "integrator_confirmed": 27,
-  "integrator_probable": 18,
-  "integrator_whitespace": 41,
-  "distributor_confirmed": 20,
-  "distributor_probable": 55,
+  "relationship_changes": 51,
+  "uncertainty_resolved": 7,
+  "integrator_confirmed": 31,
+  "integrator_probable": 16,
+  "integrator_whitespace": 85,
+  "distributor_confirmed": 23,
+  "distributor_probable": 52,
   "research_priorities": 100,
-  "verification_queue": 114
+  "verification_queue": 120
 }

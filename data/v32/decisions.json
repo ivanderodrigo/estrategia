@@ -1,26 +1,85 @@
 {
   "meta": {
-    "generated_at": "2026-08-31T09:19:05.800414+00:00",
-    "decision_count": 24,
+    "generated_at": "2026-08-31T09:26:51.953163+00:00",
+    "decision_count": 55,
     "impact_counts": {
-      "watch": 14,
-      "opportunity": 10
+      "opportunity": 23,
+      "watch": 32
     },
     "event_type_counts": {
-      "procurement_award": 13,
+      "certification": 1,
+      "procurement_award": 15,
+      "managed_service": 2,
+      "regulatory_change": 1,
+      "security_incident": 3,
+      "product_release": 8,
+      "customer_reference": 1,
       "procurement_notice": 10,
-      "end_of_sale": 1
+      "pricing_licensing": 8,
+      "end_of_sale": 3,
+      "operational_incident": 3
     },
     "priority_counts": {
-      "P2": 1,
-      "P3": 23
+      "P2": 6,
+      "P3": 48,
+      "P4": 1
     },
     "economic_potential_counts": {
-      "MEDIUM": 23,
-      "LOW": 1
+      "MEDIUM": 49,
+      "LOW": 6
     }
   },
   "decisions": [
+    {
+      "decision_id": "d_07adea038088b50a",
+      "impact": "opportunity",
+      "priority": "P2",
+      "priority_score": 0.813,
+      "evidence_priority_score": 0.87,
+      "title": "Amazon EC2 X8i instances are now available in additional regions",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "certification",
+      "technology_domains": [
+        "AI",
+        "Cloud",
+        "Automation"
+      ],
+      "market_scope": "ES",
+      "materiality": 0.853,
+      "confidence": 0.817,
+      "westcon_relevance": 0.95,
+      "strategic_fit": 0.88,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento certification: materialidad 0.85, fit estratégico 0.88, relevancia Westcon/Iberia 0.95, confianza 0.82.",
+      "recommended_action": "Validar capacidad técnica real del partner y oportunidad de activar fabricantes Westcon.",
+      "monetization": "Enablement, formación, nuevas oportunidades y attach de servicios.",
+      "kpi": "certificaciones; partners activos; oportunidades; pipeline atribuido",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-x8i-europe-milan-spain/",
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/ec2-m8i-m8i-flex-canada-west/"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.666,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.888,
+      "margin_potential": 0.778,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.52,
+      "enablement_effort_score": 0.46,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
     {
       "decision_id": "d_3ad6d084fb921f03",
       "impact": "watch",
@@ -63,6 +122,434 @@
       "margin_potential": 0.619,
       "recurrence_potential": 0.36,
       "time_to_revenue_score": 0.38,
+      "enablement_effort_score": 0.46,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_35157a082c63e0c6",
+      "impact": "opportunity",
+      "priority": "P2",
+      "priority_score": 0.788,
+      "evidence_priority_score": 0.826,
+      "title": "Amazon SageMaker HyperPod enhances support for Ray",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "managed_service",
+      "technology_domains": [
+        "AI",
+        "Cloud",
+        "Observability"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.817,
+      "confidence": 0.786,
+      "westcon_relevance": 0.86,
+      "strategic_fit": 0.86,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento managed_service: materialidad 0.82, fit estratégico 0.86, relevancia Westcon/Iberia 0.86, confianza 0.79.",
+      "recommended_action": "Evaluar attach de servicios recurrentes y diferenciación de mayorista/integrador.",
+      "monetization": "MRR/ARR de servicios gestionados, SOC/NOC white-label y consumo recurrente.",
+      "kpi": "MRR/ARR; attach rate; partners consumiendo; margen de servicio",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-sagemaker-hyperpod-ray"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.692,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.863,
+      "margin_potential": 0.775,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.38,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_603b0d18c93c8a11",
+      "impact": "opportunity",
+      "priority": "P2",
+      "priority_score": 0.788,
+      "evidence_priority_score": 0.826,
+      "title": "AWS Deadline Cloud now tracks automatic download status in the Deadline Cloud Monitor",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "managed_service",
+      "technology_domains": [
+        "Cloud"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.816,
+      "confidence": 0.786,
+      "westcon_relevance": 0.86,
+      "strategic_fit": 0.86,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento managed_service: materialidad 0.82, fit estratégico 0.86, relevancia Westcon/Iberia 0.86, confianza 0.79.",
+      "recommended_action": "Evaluar attach de servicios recurrentes y diferenciación de mayorista/integrador.",
+      "monetization": "MRR/ARR de servicios gestionados, SOC/NOC white-label y consumo recurrente.",
+      "kpi": "MRR/ARR; attach rate; partners consumiendo; margen de servicio",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-deadline-cloud-auto-download-status-tracking/"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.692,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.863,
+      "margin_potential": 0.775,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.38,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_8ddd9d27f3a70451",
+      "impact": "opportunity",
+      "priority": "P2",
+      "priority_score": 0.776,
+      "evidence_priority_score": 0.828,
+      "title": "75,000 DDoS-for-Hire Actors Targeted by Law Enforcement",
+      "entity_name": "NETSCOUT",
+      "object_entity": "",
+      "event_type": "regulatory_change",
+      "technology_domains": [],
+      "market_scope": "EUROPE",
+      "materiality": 0.812,
+      "confidence": 0.808,
+      "westcon_relevance": 0.93,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento regulatory_change: materialidad 0.81, fit estratégico 0.76, relevancia Westcon/Iberia 0.93, confianza 0.81.",
+      "recommended_action": "Traducir el cambio a obligación, demanda potencial y oferta comercial.",
+      "monetization": "Assessment de cumplimiento, proyectos de adecuación y managed compliance.",
+      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "NETSCOUT"
+      ],
+      "evidence_urls": [
+        "https://www.netscout.com/blog/75000-ddos-hire-actors-targeted-law-enforcement"
+      ],
+      "sources": [
+        "NETSCOUT"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.643,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.851,
+      "margin_potential": 0.757,
+      "recurrence_potential": 0.7,
+      "time_to_revenue_score": 0.24,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_a9d621831940af6b",
+      "impact": "watch",
+      "priority": "P2",
+      "priority_score": 0.76,
+      "evidence_priority_score": 0.778,
+      "title": "How Bizerba Strengthens Digital Sovereignty with Continuous Exposure Management",
+      "entity_name": "XM Cyber",
+      "object_entity": "",
+      "event_type": "security_incident",
+      "technology_domains": [
+        "Cybersecurity"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.782,
+      "confidence": 0.782,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento security_incident: materialidad 0.78, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.78.",
+      "recommended_action": "Priorizar mitigación, servicios attach y comunicación técnica al canal.",
+      "monetization": "Assessment, hardening, managed security, remediation y renovación tecnológica.",
+      "kpi": "assessments; remediaciones; attach; renovaciones aceleradas",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "XM Cyber"
+      ],
+      "evidence_urls": [
+        "https://xmcyber.com/case-studies/how-bizerba-strengthens-digital-sovereignty-with-continuous-exposure-management/"
+      ],
+      "sources": [
+        "XM Cyber"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.712,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.821,
+      "margin_potential": 0.757,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_c52065c86c4b3e1f",
+      "impact": "opportunity",
+      "priority": "P3",
+      "priority_score": 0.759,
+      "evidence_priority_score": 0.811,
+      "title": "AWS Glue 5.1 is now available in AWS European Sovereign Cloud Region",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "product_release",
+      "technology_domains": [
+        "Cybersecurity",
+        "Cloud"
+      ],
+      "market_scope": "EUROPE",
+      "materiality": 0.801,
+      "confidence": 0.785,
+      "westcon_relevance": 0.85,
+      "strategic_fit": 0.82,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento product_release: materialidad 0.80, fit estratégico 0.82, relevancia Westcon/Iberia 0.85, confianza 0.79.",
+      "recommended_action": "Actualizar enablement, demos, campañas y compatibilidades de portfolio.",
+      "monetization": "Upgrade/migración, demos, PoC, servicios profesionales y renewal pull-through.",
+      "kpi": "PoC; upgrades; pipeline; attach de servicios",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-glue-5-1-european-sovereign-cloud"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.624,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.85,
+      "margin_potential": 0.628,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_431e158f64cc702b",
+      "impact": "opportunity",
+      "priority": "P3",
+      "priority_score": 0.759,
+      "evidence_priority_score": 0.811,
+      "title": "IAM Roles Anywhere now provides a Java plugin for the AWS SDK",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "product_release",
+      "technology_domains": [
+        "Cloud",
+        "Identity",
+        "IT Services"
+      ],
+      "market_scope": "EUROPE",
+      "materiality": 0.8,
+      "confidence": 0.785,
+      "westcon_relevance": 0.85,
+      "strategic_fit": 0.82,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento product_release: materialidad 0.80, fit estratégico 0.82, relevancia Westcon/Iberia 0.85, confianza 0.79.",
+      "recommended_action": "Actualizar enablement, demos, campañas y compatibilidades de portfolio.",
+      "monetization": "Upgrade/migración, demos, PoC, servicios profesionales y renewal pull-through.",
+      "kpi": "PoC; upgrades; pipeline; attach de servicios",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/iam-roles-anywhere-java/"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.624,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.85,
+      "margin_potential": 0.628,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_23e22a0d804ef0ad",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.758,
+      "evidence_priority_score": 0.776,
+      "title": "Analyzing Nova Ransomware: A Rust-Based Encryptor with Multi-Layered Microsoft Defender Evasion Techniques",
+      "entity_name": "AttackIQ",
+      "object_entity": "",
+      "event_type": "security_incident",
+      "technology_domains": [
+        "Cybersecurity"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.776,
+      "confidence": 0.782,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento security_incident: materialidad 0.78, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.78.",
+      "recommended_action": "Priorizar mitigación, servicios attach y comunicación técnica al canal.",
+      "monetization": "Assessment, hardening, managed security, remediation y renovación tecnológica.",
+      "kpi": "assessments; remediaciones; attach; renovaciones aceleradas",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AttackIQ"
+      ],
+      "evidence_urls": [
+        "https://www.attackiq.com/2026/07/31/analyzing-nova-ransomware/"
+      ],
+      "sources": [
+        "AttackIQ"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.712,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.82,
+      "margin_potential": 0.757,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_88c4c8509c16be20",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.757,
+      "evidence_priority_score": 0.774,
+      "title": "Chaos Ransomware: BlackSuit-Linked RaaS Resurgence and Detection Opportunities",
+      "entity_name": "AttackIQ",
+      "object_entity": "",
+      "event_type": "security_incident",
+      "technology_domains": [
+        "Cybersecurity"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.772,
+      "confidence": 0.782,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento security_incident: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.78.",
+      "recommended_action": "Priorizar mitigación, servicios attach y comunicación técnica al canal.",
+      "monetization": "Assessment, hardening, managed security, remediation y renovación tecnológica.",
+      "kpi": "assessments; remediaciones; attach; renovaciones aceleradas",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AttackIQ"
+      ],
+      "evidence_urls": [
+        "https://www.attackiq.com/2026/07/16/chaos-ransomware/"
+      ],
+      "sources": [
+        "AttackIQ"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.712,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.82,
+      "margin_potential": 0.757,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_4caf97e59ef239dc",
+      "impact": "opportunity",
+      "priority": "P3",
+      "priority_score": 0.737,
+      "evidence_priority_score": 0.781,
+      "title": "Amazon Connect Customer now lets managers chat with their data",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "customer_reference",
+      "technology_domains": [
+        "AI",
+        "Cloud",
+        "Automation"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.789,
+      "confidence": 0.786,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento customer_reference: materialidad 0.79, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.79.",
+      "recommended_action": "Usar como prueba de demanda y buscar cuentas/verticales comparables en Iberia.",
+      "monetization": "Campañas por vertical, cross-sell multivendor y servicios de adopción.",
+      "kpi": "cuentas target; oportunidades; conversiones; pipeline por vertical",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-connect-customer-ai-data-analytics"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.623,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.822,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.58,
       "enablement_effort_score": 0.46,
       "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
     },
@@ -117,6 +604,683 @@
       "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
     },
     {
+      "decision_id": "d_343b8e7375a72fc9",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.728,
+      "evidence_priority_score": 0.77,
+      "title": "Amazon CloudWatch agent adds support for journald logs",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "pricing_licensing",
+      "technology_domains": [
+        "Cloud",
+        "Observability"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.769,
+      "confidence": 0.768,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento pricing_licensing: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+      "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+      "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-cloudwatch-agent-journald/"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.62,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.82,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.24,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_818508c03164aa4f",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.727,
+      "evidence_priority_score": 0.769,
+      "title": "AWS Lambda MicroVMs now supports AWS PrivateLink",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "pricing_licensing",
+      "technology_domains": [
+        "Networking",
+        "Cloud"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.768,
+      "confidence": 0.768,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento pricing_licensing: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+      "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+      "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/lambda-microvms-supports-privatelink"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.62,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.82,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.24,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_8236145fa0e74e02",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.727,
+      "evidence_priority_score": 0.769,
+      "title": "Amazon Bedrock AgentCore expands to two new regions",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "pricing_licensing",
+      "technology_domains": [
+        "Cybersecurity",
+        "Cloud",
+        "Observability",
+        "Identity"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.768,
+      "confidence": 0.768,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento pricing_licensing: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+      "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+      "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/bedrock-agentcore-two-new-regions/"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.62,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.82,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.24,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_38b8ee8fa07943b4",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.727,
+      "evidence_priority_score": 0.769,
+      "title": "AWS Backup adds cross-Region and cross-account backup support for Amazon FSx for NetApp ONTAP",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "pricing_licensing",
+      "technology_domains": [
+        "Cloud"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.768,
+      "confidence": 0.768,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento pricing_licensing: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+      "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+      "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-backup-amazon-fsx-netapp-cross-account-region/",
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-backup-cross-region-air-gapped-docdb/"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.62,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.82,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.24,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_87bc39ed42db653c",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.727,
+      "evidence_priority_score": 0.769,
+      "title": "MSK Replicator now supports OAuth 2.0 (SASL/OAUTHBEARER) authentication for replication from external Apache Kafka clusters to Amazon MSK",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "pricing_licensing",
+      "technology_domains": [
+        "Cloud",
+        "Identity"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.767,
+      "confidence": 0.768,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento pricing_licensing: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+      "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+      "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-msk-replicator-OAuth-support"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.62,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.82,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.24,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_b894fbe04875a1af",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.727,
+      "evidence_priority_score": 0.769,
+      "title": "Amazon RDS for MySQL now supports new minor version 8.4.11",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "pricing_licensing",
+      "technology_domains": [
+        "Cloud"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.767,
+      "confidence": 0.768,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento pricing_licensing: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+      "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+      "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-rds-mysql-8411-available/",
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-rds-postgresql-18-6-17-11-16-15-15-19-14-24/"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.62,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.82,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.24,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_08158a39fe7c7c58",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.727,
+      "evidence_priority_score": 0.769,
+      "title": "Amazon Bedrock announces reduced pricing for OpenAI GPT-5.6 Sol",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "pricing_licensing",
+      "technology_domains": [
+        "AI",
+        "Cloud"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.766,
+      "confidence": 0.768,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento pricing_licensing: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+      "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+      "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/bedrock-openai-gpt-56-sol-reduced-pricing/"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.62,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.819,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.24,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_1120ab844aeeb358",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.727,
+      "evidence_priority_score": 0.769,
+      "title": "AWS Glue 6.0 delivers 30% price reduction and Iceberg v3 support",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "pricing_licensing",
+      "technology_domains": [
+        "AI",
+        "Cloud",
+        "Automation"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.766,
+      "confidence": 0.768,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento pricing_licensing: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+      "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+      "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-glue-6-0-price-reduction-iceberg-v3"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.62,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.819,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.24,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_cdad8499f1789853",
+      "impact": "opportunity",
+      "priority": "P3",
+      "priority_score": 0.726,
+      "evidence_priority_score": 0.77,
+      "title": "Amazon Aurora MySQL 3.13 (compatible with MySQL 8.0.45) is generally available",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "product_release",
+      "technology_domains": [
+        "Cybersecurity",
+        "Cloud"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.769,
+      "confidence": 0.768,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento product_release: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+      "recommended_action": "Actualizar enablement, demos, campañas y compatibilidades de portfolio.",
+      "monetization": "Upgrade/migración, demos, PoC, servicios profesionales y renewal pull-through.",
+      "kpi": "PoC; upgrades; pipeline; attach de servicios",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-aurora-mysql-313-available/"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.613,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.82,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_6feade1bbe33195e",
+      "impact": "opportunity",
+      "priority": "P3",
+      "priority_score": 0.725,
+      "evidence_priority_score": 0.769,
+      "title": "AWS Lambda introduces managed runtimes in public preview for Node.js 26 and Python 3.15",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "product_release",
+      "technology_domains": [
+        "Cloud",
+        "Observability"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.768,
+      "confidence": 0.768,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento product_release: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+      "recommended_action": "Actualizar enablement, demos, campañas y compatibilidades de portfolio.",
+      "monetization": "Upgrade/migración, demos, PoC, servicios profesionales y renewal pull-through.",
+      "kpi": "PoC; upgrades; pipeline; attach de servicios",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-lambda-node-js-python-public-preview/"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.613,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.82,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_d5cab0ac5064ab2b",
+      "impact": "opportunity",
+      "priority": "P3",
+      "priority_score": 0.725,
+      "evidence_priority_score": 0.769,
+      "title": "Amazon RDS for Oracle now supports July 2026 Release Update",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "product_release",
+      "technology_domains": [
+        "Cybersecurity",
+        "Cloud"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.768,
+      "confidence": 0.768,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento product_release: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+      "recommended_action": "Actualizar enablement, demos, campañas y compatibilidades de portfolio.",
+      "monetization": "Upgrade/migración, demos, PoC, servicios profesionales y renewal pull-through.",
+      "kpi": "PoC; upgrades; pipeline; attach de servicios",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-rds-oracle-july-2026-release-update",
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-rds-supports-latest-cu-microsoft-sql-server/"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.613,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.82,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_ac4ca0d718076108",
+      "impact": "opportunity",
+      "priority": "P3",
+      "priority_score": 0.725,
+      "evidence_priority_score": 0.769,
+      "title": "Amazon EVS now supports i7i.metal-48xl Amazon EC2 instance type",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "product_release",
+      "technology_domains": [
+        "Cloud",
+        "Data Center"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.768,
+      "confidence": 0.768,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento product_release: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+      "recommended_action": "Actualizar enablement, demos, campañas y compatibilidades de portfolio.",
+      "monetization": "Upgrade/migración, demos, PoC, servicios profesionales y renewal pull-through.",
+      "kpi": "PoC; upgrades; pipeline; attach de servicios",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-evs-i7i-48xl"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.613,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.82,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_6a8780fcb06b8e2e",
+      "impact": "opportunity",
+      "priority": "P3",
+      "priority_score": 0.725,
+      "evidence_priority_score": 0.769,
+      "title": "AWS ParallelCluster 3.16 adds an on-node diagnostics tool",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "product_release",
+      "technology_domains": [
+        "AI",
+        "Cloud",
+        "IT Services"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.767,
+      "confidence": 0.768,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento product_release: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+      "recommended_action": "Actualizar enablement, demos, campañas y compatibilidades de portfolio.",
+      "monetization": "Upgrade/migración, demos, PoC, servicios profesionales y renewal pull-through.",
+      "kpi": "PoC; upgrades; pipeline; attach de servicios",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-parallelcluster/"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.613,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.82,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_6c0c8a60036c7a5b",
+      "impact": "opportunity",
+      "priority": "P3",
+      "priority_score": 0.725,
+      "evidence_priority_score": 0.769,
+      "title": "AWS Neuron 2.32 introduces expanded NKI programming, MXFP8 training kernels, and variable-size collectives for Trn2 and Trn",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "product_release",
+      "technology_domains": [
+        "AI",
+        "Cloud"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.766,
+      "confidence": 0.768,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento product_release: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.77.",
+      "recommended_action": "Actualizar enablement, demos, campañas y compatibilidades de portfolio.",
+      "monetization": "Upgrade/migración, demos, PoC, servicios profesionales y renewal pull-through.",
+      "kpi": "PoC; upgrades; pipeline; attach de servicios",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-announce-neuron-2-32-0"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.613,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.819,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
       "decision_id": "d_831ac1058122a482",
       "impact": "opportunity",
       "priority": "P3",
@@ -162,54 +1326,6 @@
       "economic_potential": "MEDIUM",
       "revenue_potential": 0.74,
       "margin_potential": 0.615,
-      "recurrence_potential": 0.36,
-      "time_to_revenue_score": 0.72,
-      "enablement_effort_score": 0.38,
-      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-    },
-    {
-      "decision_id": "d_9722cf6d8cf04937",
-      "impact": "opportunity",
-      "priority": "P3",
-      "priority_score": 0.721,
-      "evidence_priority_score": 0.758,
-      "title": "España – Mantenimiento y reparación de equipo informático – Mantenimiento del parque informático de la Administración de la Comunidad Foral de Navarra durante el año 2027.",
-      "entity_name": "Iberia Public Procurement Market",
-      "object_entity": "Dirección General de Telecomunicaciones y Digitalización",
-      "event_type": "procurement_notice",
-      "technology_domains": [
-        "IT Services"
-      ],
-      "market_scope": "ES",
-      "materiality": 0.766,
-      "confidence": 0.875,
-      "westcon_relevance": 0.601,
-      "strategic_fit": 0.771,
-      "evidence_grade": "A",
-      "procurement_fit_score": 0.82,
-      "why": "Evento procurement_notice: materialidad 0.77, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.88.",
-      "recommended_action": "Priorizar la licitación tecnológica, identificar comprador, requisitos, fabricantes y partners con capacidad para concurrir.",
-      "monetization": "Pipeline de sector público, identificación temprana de partners, arquitectura, servicios profesionales y soporte.",
-      "kpi": "licitaciones cualificadas; partners mapeados; pipeline público; win-rate",
-      "owner_hint": "Ventas / PSM / Preventa",
-      "horizon": "30–90 días",
-      "evidence_sources": [
-        "TED EU Procurement"
-      ],
-      "evidence_urls": [
-        "https://ted.europa.eu/en/notice/-/detail/597963-2026",
-        "https://ted.europa.eu/en/notice/-/detail/596969-2026"
-      ],
-      "sources": [
-        "TED EU Procurement"
-      ],
-      "source_count": 1,
-      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-      "economic_priority_score": 0.625,
-      "economic_potential": "MEDIUM",
-      "revenue_potential": 0.759,
-      "margin_potential": 0.619,
       "recurrence_potential": 0.36,
       "time_to_revenue_score": 0.72,
       "enablement_effort_score": 0.38,
@@ -356,6 +1472,54 @@
       "recurrence_potential": 0.36,
       "time_to_revenue_score": 0.38,
       "enablement_effort_score": 0.46,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_b55c69af4a3a2614",
+      "impact": "opportunity",
+      "priority": "P3",
+      "priority_score": 0.72,
+      "evidence_priority_score": 0.757,
+      "title": "España – Mantenimiento y reparación de equipo de tecnología de la información – Renovación del servicio de soporte técnico y mantenimiento de la herramienta de procesamiento, inspección y análisis del contenido del tráfico de red actualmente en uso en el Grupo Tragsa.",
+      "entity_name": "Iberia Public Procurement Market",
+      "object_entity": "Empresa de Transformación Agraria S.A.,S.M.E., M.P., (TRAGSA)",
+      "event_type": "procurement_notice",
+      "technology_domains": [
+        "Networking",
+        "IT Services"
+      ],
+      "market_scope": "ES",
+      "materiality": 0.765,
+      "confidence": 0.875,
+      "westcon_relevance": 0.601,
+      "strategic_fit": 0.771,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.82,
+      "why": "Evento procurement_notice: materialidad 0.77, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.88.",
+      "recommended_action": "Priorizar la licitación tecnológica, identificar comprador, requisitos, fabricantes y partners con capacidad para concurrir.",
+      "monetization": "Pipeline de sector público, identificación temprana de partners, arquitectura, servicios profesionales y soporte.",
+      "kpi": "licitaciones cualificadas; partners mapeados; pipeline público; win-rate",
+      "owner_hint": "Ventas / PSM / Preventa",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "TED EU Procurement"
+      ],
+      "evidence_urls": [
+        "https://ted.europa.eu/en/notice/-/detail/595079-2026"
+      ],
+      "sources": [
+        "TED EU Procurement"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.625,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.759,
+      "margin_potential": 0.619,
+      "recurrence_potential": 0.36,
+      "time_to_revenue_score": 0.72,
+      "enablement_effort_score": 0.38,
       "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
     },
     {
@@ -833,6 +1997,100 @@
       "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
     },
     {
+      "decision_id": "d_f20199e2ce15ee76",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.712,
+      "evidence_priority_score": 0.77,
+      "title": "España – Infraestructura de red – SUMINISTRO Y MANTENIMIENTO DE EQUIPOS CORE (NEXUS) PARA LA RED CORPORATIVA DE CANAL DE ISABEL II, S.A., M.P.",
+      "entity_name": "Iberia Public Procurement Market",
+      "object_entity": "fibratel S.L",
+      "event_type": "procurement_award",
+      "technology_domains": [
+        "Networking"
+      ],
+      "market_scope": "ES",
+      "materiality": 0.799,
+      "confidence": 0.877,
+      "westcon_relevance": 0.601,
+      "strategic_fit": 0.771,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.82,
+      "why": "Evento procurement_award: materialidad 0.80, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.88.",
+      "recommended_action": "Mapear comprador, adjudicatario, tecnologías y partners; extraer aprendizaje del contrato adjudicado y cuentas análogas.",
+      "monetization": "Inteligencia de adjudicatarios, réplica de arquitectura, campañas por organismo/vertical y servicios attach.",
+      "kpi": "adjudicatarios mapeados; oportunidades análogas; pipeline influenciado; attach",
+      "owner_hint": "Ventas / PSM / Preventa",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "TED EU Procurement"
+      ],
+      "evidence_urls": [
+        "https://ted.europa.eu/en/notice/-/detail/599668-2026"
+      ],
+      "sources": [
+        "TED EU Procurement"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.563,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.793,
+      "margin_potential": 0.619,
+      "recurrence_potential": 0.36,
+      "time_to_revenue_score": 0.38,
+      "enablement_effort_score": 0.46,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_8ab6252ce32df5f4",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.712,
+      "evidence_priority_score": 0.77,
+      "title": "España – Mantenimiento de equipos de redes de datos – Suministro, instalación y servicio de mantenimiento y soporte de infraestructuras y servicios inalámbricos (wifi) de la GRS",
+      "entity_name": "Iberia Public Procurement Market",
+      "object_entity": "TECNOLOGÍAS PLEXUS S.L.",
+      "event_type": "procurement_award",
+      "technology_domains": [
+        "Networking"
+      ],
+      "market_scope": "ES",
+      "materiality": 0.798,
+      "confidence": 0.877,
+      "westcon_relevance": 0.601,
+      "strategic_fit": 0.771,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.82,
+      "why": "Evento procurement_award: materialidad 0.80, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.88.",
+      "recommended_action": "Mapear comprador, adjudicatario, tecnologías y partners; extraer aprendizaje del contrato adjudicado y cuentas análogas.",
+      "monetization": "Inteligencia de adjudicatarios, réplica de arquitectura, campañas por organismo/vertical y servicios attach.",
+      "kpi": "adjudicatarios mapeados; oportunidades análogas; pipeline influenciado; attach",
+      "owner_hint": "Ventas / PSM / Preventa",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "TED EU Procurement"
+      ],
+      "evidence_urls": [
+        "https://ted.europa.eu/en/notice/-/detail/596294-2026"
+      ],
+      "sources": [
+        "TED EU Procurement"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.563,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.793,
+      "margin_potential": 0.619,
+      "recurrence_potential": 0.36,
+      "time_to_revenue_score": 0.38,
+      "enablement_effort_score": 0.46,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
       "decision_id": "d_71066439c68a50ef",
       "impact": "watch",
       "priority": "P3",
@@ -939,7 +2197,7 @@
         "Cybersecurity"
       ],
       "market_scope": "PT",
-      "materiality": 0.794,
+      "materiality": 0.793,
       "confidence": 0.877,
       "westcon_relevance": 0.595,
       "strategic_fit": 0.749,
@@ -973,6 +2231,54 @@
       "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
     },
     {
+      "decision_id": "d_ad97831cbf21dfc6",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.709,
+      "evidence_priority_score": 0.771,
+      "title": "CVE-2026-21509: Microsoft Office · explotación conocida (CISA KEV)",
+      "entity_name": "Microsoft Azure",
+      "object_entity": "",
+      "event_type": "end_of_sale",
+      "technology_domains": [
+        "Cybersecurity",
+        "Cloud"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.744,
+      "confidence": 0.808,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento end_of_sale: materialidad 0.74, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.81.",
+      "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+      "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "CISA KEV"
+      ],
+      "evidence_urls": [
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      ],
+      "sources": [
+        "CISA KEV"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.551,
+      "economic_potential": "LOW",
+      "revenue_potential": 0.817,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.24,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
       "decision_id": "d_d3942cd7b3576dd8",
       "impact": "watch",
       "priority": "P3",
@@ -1001,51 +2307,6 @@
       ],
       "evidence_urls": [
         "https://ted.europa.eu/en/notice/-/detail/597802-2026"
-      ],
-      "sources": [
-        "TED EU Procurement"
-      ],
-      "source_count": 1,
-      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-      "economic_priority_score": 0.561,
-      "economic_potential": "MEDIUM",
-      "revenue_potential": 0.786,
-      "margin_potential": 0.615,
-      "recurrence_potential": 0.36,
-      "time_to_revenue_score": 0.38,
-      "enablement_effort_score": 0.46,
-      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-    },
-    {
-      "decision_id": "d_492cc9017b07f8bc",
-      "impact": "watch",
-      "priority": "P3",
-      "priority_score": 0.706,
-      "evidence_priority_score": 0.763,
-      "title": "España – Unidades de memoria de disco magnético – Sistema de almacenamiento de archivo basado en disco",
-      "entity_name": "Iberia Public Procurement Market",
-      "object_entity": "Datos Media Technologies S.A",
-      "event_type": "procurement_award",
-      "technology_domains": [],
-      "market_scope": "ES",
-      "materiality": 0.794,
-      "confidence": 0.877,
-      "westcon_relevance": 0.595,
-      "strategic_fit": 0.749,
-      "evidence_grade": "A",
-      "procurement_fit_score": 0.78,
-      "why": "Evento procurement_award: materialidad 0.79, fit estratégico 0.75, relevancia Westcon/Iberia 0.59, confianza 0.88.",
-      "recommended_action": "Mapear comprador, adjudicatario, tecnologías y partners; extraer aprendizaje del contrato adjudicado y cuentas análogas.",
-      "monetization": "Inteligencia de adjudicatarios, réplica de arquitectura, campañas por organismo/vertical y servicios attach.",
-      "kpi": "adjudicatarios mapeados; oportunidades análogas; pipeline influenciado; attach",
-      "owner_hint": "Ventas / PSM / Preventa",
-      "horizon": "30–90 días",
-      "evidence_sources": [
-        "TED EU Procurement"
-      ],
-      "evidence_urls": [
-        "https://ted.europa.eu/en/notice/-/detail/599265-2026"
       ],
       "sources": [
         "TED EU Procurement"
@@ -1108,6 +2369,52 @@
       "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
     },
     {
+      "decision_id": "d_62c72ff02ce7414e",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.706,
+      "evidence_priority_score": 0.763,
+      "title": "España – Servicios de almacenamiento de datos – Servicio de soporte técnico de la infraestructura de archivo digital del material audiovisual del EPRTVIB.",
+      "entity_name": "Iberia Public Procurement Market",
+      "object_entity": "Datos Media Technologies S.A",
+      "event_type": "procurement_award",
+      "technology_domains": [],
+      "market_scope": "ES",
+      "materiality": 0.793,
+      "confidence": 0.877,
+      "westcon_relevance": 0.595,
+      "strategic_fit": 0.749,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.78,
+      "why": "Evento procurement_award: materialidad 0.79, fit estratégico 0.75, relevancia Westcon/Iberia 0.59, confianza 0.88.",
+      "recommended_action": "Mapear comprador, adjudicatario, tecnologías y partners; extraer aprendizaje del contrato adjudicado y cuentas análogas.",
+      "monetization": "Inteligencia de adjudicatarios, réplica de arquitectura, campañas por organismo/vertical y servicios attach.",
+      "kpi": "adjudicatarios mapeados; oportunidades análogas; pipeline influenciado; attach",
+      "owner_hint": "Ventas / PSM / Preventa",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "TED EU Procurement"
+      ],
+      "evidence_urls": [
+        "https://ted.europa.eu/en/notice/-/detail/593869-2026",
+        "https://ted.europa.eu/en/notice/-/detail/599265-2026"
+      ],
+      "sources": [
+        "TED EU Procurement"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.561,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.786,
+      "margin_potential": 0.615,
+      "recurrence_potential": 0.36,
+      "time_to_revenue_score": 0.38,
+      "enablement_effort_score": 0.46,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
       "decision_id": "d_76639adb113c9a88",
       "impact": "watch",
       "priority": "P3",
@@ -1152,6 +2459,192 @@
       "recurrence_potential": 0.36,
       "time_to_revenue_score": 0.38,
       "enablement_effort_score": 0.46,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_c10c5891618d4a61",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.704,
+      "evidence_priority_score": 0.764,
+      "title": "CVE-2010-3962: Microsoft Internet Explorer · explotación conocida (CISA KEV)",
+      "entity_name": "Microsoft Azure",
+      "object_entity": "",
+      "event_type": "end_of_sale",
+      "technology_domains": [
+        "Cloud"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.726,
+      "confidence": 0.808,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento end_of_sale: materialidad 0.73, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.81.",
+      "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+      "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "CISA KEV"
+      ],
+      "evidence_urls": [
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      ],
+      "sources": [
+        "CISA KEV"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.55,
+      "economic_potential": "LOW",
+      "revenue_potential": 0.815,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.24,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_3ccfee9ca7867f87",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.696,
+      "evidence_priority_score": 0.753,
+      "title": "Cyberattack in Poland Causes Heat and Power Outages for 50,000 Residents",
+      "entity_name": "NETSCOUT",
+      "object_entity": "",
+      "event_type": "operational_incident",
+      "technology_domains": [
+        "Cybersecurity"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.74,
+      "confidence": 0.745,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento operational_incident: materialidad 0.74, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.74.",
+      "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+      "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "NETSCOUT"
+      ],
+      "evidence_urls": [
+        "https://www.netscout.com/blog/cyberattack-poland-causes-heat-and-power-outages-50000"
+      ],
+      "sources": [
+        "NETSCOUT"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.551,
+      "economic_potential": "LOW",
+      "revenue_potential": 0.817,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.24,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_4162c944621603a0",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.691,
+      "evidence_priority_score": 0.751,
+      "title": "Six Critical Business Benefits of Real-Time Data Insights",
+      "entity_name": "NETSCOUT",
+      "object_entity": "",
+      "event_type": "operational_incident",
+      "technology_domains": [
+        "Networking"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.733,
+      "confidence": 0.745,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento operational_incident: materialidad 0.73, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.74.",
+      "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+      "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "NETSCOUT"
+      ],
+      "evidence_urls": [
+        "https://www.netscout.com/blog/six-critical-business-benefits-real-time-data-insights"
+      ],
+      "sources": [
+        "NETSCOUT"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.535,
+      "economic_potential": "LOW",
+      "revenue_potential": 0.816,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.36,
+      "time_to_revenue_score": 0.24,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_a63ab7444508f3b3",
+      "impact": "watch",
+      "priority": "P4",
+      "priority_score": 0.653,
+      "evidence_priority_score": 0.706,
+      "title": "Defending Against DDoS Attacks at Scale",
+      "entity_name": "NETSCOUT",
+      "object_entity": "",
+      "event_type": "operational_incident",
+      "technology_domains": [],
+      "market_scope": "GLOBAL",
+      "materiality": 0.685,
+      "confidence": 0.745,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.6,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento operational_incident: materialidad 0.69, fit estratégico 0.60, relevancia Westcon/Iberia 0.78, confianza 0.74.",
+      "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
+      "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
+      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "90–180 días",
+      "evidence_sources": [
+        "NETSCOUT"
+      ],
+      "evidence_urls": [
+        "https://www.netscout.com/blog/defending-against-ddos-attacks-scale"
+      ],
+      "sources": [
+        "NETSCOUT"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.516,
+      "economic_potential": "LOW",
+      "revenue_potential": 0.773,
+      "margin_potential": 0.588,
+      "recurrence_potential": 0.36,
+      "time_to_revenue_score": 0.24,
+      "enablement_effort_score": 0.54,
       "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
     }
   ]

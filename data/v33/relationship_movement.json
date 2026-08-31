@@ -1,91 +1,444 @@
 {
-  "generated_at": "2026-08-31T09:19:12.668844+00:00",
+  "generated_at": "2026-08-31T09:31:35.271607+00:00",
   "integrator": {
-    "comparable_pairs": 3276,
-    "new_pairs": 78,
+    "comparable_pairs": 3354,
+    "new_pairs": 0,
     "removed_pairs": 0,
-    "changed_pairs": 7,
-    "uncertainty_resolved": 1,
+    "changed_pairs": 48,
+    "uncertainty_resolved": 4,
     "transitions": {
-      "INSUFFICIENT_PUBLIC_EVIDENCE→INSUFFICIENT_PUBLIC_EVIDENCE": 3190,
-      "WHITESPACE_RESEARCH_PRIORITY→WHITESPACE_RESEARCH_PRIORITY": 37,
-      "INSUFFICIENT_PUBLIC_EVIDENCE→WHITESPACE_RESEARCH_PRIORITY": 4,
-      "WHITESPACE_RESEARCH_PRIORITY→INSUFFICIENT_PUBLIC_EVIDENCE": 1,
-      "CONFIRMED_RELATION→CONFIRMED_RELATION": 26,
+      "INSUFFICIENT_PUBLIC_EVIDENCE→INSUFFICIENT_PUBLIC_EVIDENCE": 3222,
+      "INSUFFICIENT_PUBLIC_EVIDENCE→WHITESPACE_RESEARCH_PRIORITY": 44,
+      "WHITESPACE_RESEARCH_PRIORITY→WHITESPACE_RESEARCH_PRIORITY": 41,
+      "CONFIRMED_RELATION→CONFIRMED_RELATION": 27,
+      "PROBABLE_RELATION→CONFIRMED_RELATION": 2,
       "PROBABLE_RELATION→PROBABLE_RELATION": 16,
-      "INSUFFICIENT_PUBLIC_EVIDENCE→PROBABLE_RELATION": 1,
-      "PROBABLE_RELATION→CONFIRMED_RELATION": 1
+      "INSUFFICIENT_PUBLIC_EVIDENCE→CONFIRMED_RELATION": 2
     },
     "changes": [
       {
-        "entity": "Ruckus Networks",
-        "vendor": "Ruckus Networks",
+        "entity": "NTT",
+        "vendor": "AWS",
         "from": "PROBABLE_RELATION",
+        "to": "CONFIRMED_RELATION",
+        "priority_score": 91,
+        "relationship_intensity": 53
+      },
+      {
+        "entity": "UST",
+        "vendor": "AWS",
+        "from": "PROBABLE_RELATION",
+        "to": "CONFIRMED_RELATION",
+        "priority_score": 90,
+        "relationship_intensity": 53
+      },
+      {
+        "entity": "Extreme Networks",
+        "vendor": "Extreme Networks",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
         "to": "CONFIRMED_RELATION",
         "priority_score": 88,
         "relationship_intensity": 53
       },
       {
-        "entity": "NTT",
-        "vendor": "AWS",
+        "entity": "AttackIQ",
+        "vendor": "AttackIQ",
         "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
-        "to": "PROBABLE_RELATION",
-        "priority_score": 73,
-        "relationship_intensity": 44
+        "to": "CONFIRMED_RELATION",
+        "priority_score": 88,
+        "relationship_intensity": 53
       },
       {
         "entity": "Indra",
-        "vendor": "CrowdStrike",
+        "vendor": "Ivanti",
         "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
         "to": "WHITESPACE_RESEARCH_PRIORITY",
         "priority_score": 69,
         "relationship_intensity": 0
       },
       {
-        "entity": "SEIDOR",
+        "entity": "Indra",
+        "vendor": "Proofpoint",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 69,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Indra",
+        "vendor": "Splunk",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 69,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Babel",
         "vendor": "CrowdStrike",
         "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
         "to": "WHITESPACE_RESEARCH_PRIORITY",
-        "priority_score": 67,
+        "priority_score": 66,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Babel",
+        "vendor": "F5",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 66,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Babel",
+        "vendor": "Ivanti",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 66,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Babel",
+        "vendor": "Proofpoint",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 66,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Babel",
+        "vendor": "Splunk",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 66,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Nunsys",
+        "vendor": "Cisco",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 66,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Nunsys",
+        "vendor": "CrowdStrike",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 66,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Nunsys",
+        "vendor": "NETSCOUT",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 66,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Nunsys",
+        "vendor": "AWS",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 66,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Nunsys",
+        "vendor": "Microsoft Azure",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 66,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Nunsys",
+        "vendor": "Check Point",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 66,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "SEIDOR",
+        "vendor": "Proofpoint",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 64,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "SEIDOR",
+        "vendor": "UiPath",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 64,
         "relationship_intensity": 0
       },
       {
         "entity": "Accenture Spain",
-        "vendor": "CrowdStrike",
-        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
-        "to": "WHITESPACE_RESEARCH_PRIORITY",
-        "priority_score": 65,
-        "relationship_intensity": 0
-      },
-      {
-        "entity": "Ayesa",
-        "vendor": "CrowdStrike",
+        "vendor": "Proofpoint",
         "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
         "to": "WHITESPACE_RESEARCH_PRIORITY",
         "priority_score": 63,
         "relationship_intensity": 0
       },
       {
-        "entity": "Babel",
+        "entity": "Accenture Spain",
+        "vendor": "UiPath",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 63,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Ayesa",
+        "vendor": "UiPath",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 63,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "SEIDOR",
+        "vendor": "Ivanti",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 62,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "SEIDOR",
+        "vendor": "Splunk",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 62,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Claranet Portugal",
+        "vendor": "Cisco",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 61,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Claranet Portugal",
+        "vendor": "AWS",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 61,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Nunsys",
+        "vendor": "AttackIQ",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 61,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Nunsys",
+        "vendor": "Palo Alto Networks",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 61,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Nunsys",
         "vendor": "Proofpoint",
-        "from": "WHITESPACE_RESEARCH_PRIORITY",
-        "to": "INSUFFICIENT_PUBLIC_EVIDENCE",
-        "priority_score": 20,
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 61,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Nunsys",
+        "vendor": "XM Cyber",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 61,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Nunsys",
+        "vendor": "Zscaler",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 61,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Nunsys",
+        "vendor": "Nokia",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 61,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Telefónica Tech",
+        "vendor": "CrowdStrike",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 60,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Telefónica Tech",
+        "vendor": "Ivanti",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 60,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Telefónica Tech",
+        "vendor": "Palo Alto Networks",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 60,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Telefónica Tech",
+        "vendor": "Splunk",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 60,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Telefónica Tech",
+        "vendor": "Zscaler",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 60,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Telefónica Tech",
+        "vendor": "Nokia",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 60,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Telefónica Tech",
+        "vendor": "AWS",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 60,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Telefónica Tech",
+        "vendor": "Microsoft Azure",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 60,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "NTT DATA Portugal",
+        "vendor": "Cisco",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 56,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "NTT DATA Portugal",
+        "vendor": "AWS",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 56,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "NTT DATA Portugal",
+        "vendor": "Check Point",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 56,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Bechtle Spain",
+        "vendor": "Cisco",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 55,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "Bechtle Spain",
+        "vendor": "AWS",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 55,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "NTT DATA Spain",
+        "vendor": "Cisco",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 53,
+        "relationship_intensity": 0
+      },
+      {
+        "entity": "NTT DATA Spain",
+        "vendor": "AWS",
+        "from": "INSUFFICIENT_PUBLIC_EVIDENCE",
+        "to": "WHITESPACE_RESEARCH_PRIORITY",
+        "priority_score": 53,
         "relationship_intensity": 0
       }
     ]
   },
   "distributor": {
-    "comparable_pairs": 2028,
-    "new_pairs": 39,
+    "comparable_pairs": 2067,
+    "new_pairs": 0,
     "removed_pairs": 0,
-    "changed_pairs": 0,
-    "uncertainty_resolved": 0,
+    "changed_pairs": 3,
+    "uncertainty_resolved": 3,
     "transitions": {
-      "NO_PUBLIC_EVIDENCE→NO_PUBLIC_EVIDENCE": 1954,
-      "PROBABLE_PUBLIC_RELATION→PROBABLE_PUBLIC_RELATION": 54,
-      "CONFIRMED_DISTRIBUTION→CONFIRMED_DISTRIBUTION": 20
+      "NO_PUBLIC_EVIDENCE→NO_PUBLIC_EVIDENCE": 1992,
+      "PROBABLE_PUBLIC_RELATION→PROBABLE_PUBLIC_RELATION": 52,
+      "CONFIRMED_DISTRIBUTION→CONFIRMED_DISTRIBUTION": 20,
+      "PROBABLE_PUBLIC_RELATION→CONFIRMED_DISTRIBUTION": 3
     },
-    "changes": []
+    "changes": [
+      {
+        "entity": "NETSCOUT",
+        "vendor": "NETSCOUT",
+        "from": "PROBABLE_PUBLIC_RELATION",
+        "to": "CONFIRMED_DISTRIBUTION",
+        "priority_score": 36,
+        "relationship_intensity": 59
+      },
+      {
+        "entity": "AttackIQ",
+        "vendor": "AttackIQ",
+        "from": "PROBABLE_PUBLIC_RELATION",
+        "to": "CONFIRMED_DISTRIBUTION",
+        "priority_score": 33,
+        "relationship_intensity": 53
+      },
+      {
+        "entity": "Extreme Networks",
+        "vendor": "Extreme Networks",
+        "from": "PROBABLE_PUBLIC_RELATION",
+        "to": "CONFIRMED_DISTRIBUTION",
+        "priority_score": 32,
+        "relationship_intensity": 53
+      }
+    ]
   }
 }

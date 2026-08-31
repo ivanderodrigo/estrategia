@@ -1,105 +1,109 @@
 {
-  "generated_at": "2026-08-31T09:19:05.803179+00:00",
+  "generated_at": "2026-08-31T09:26:51.958553+00:00",
   "headline_metrics": {
-    "events": 223,
-    "high_materiality_events": 106,
-    "iberia_events": 151,
-    "actionable_decisions": 24,
+    "events": 479,
+    "high_materiality_events": 179,
+    "iberia_events": 249,
+    "actionable_decisions": 55,
     "threats": 0,
-    "opportunities": 10,
-    "watches": 14,
+    "opportunities": 23,
+    "watches": 32,
     "p1": 0,
-    "p2": 1,
+    "p2": 6,
     "high_economic_potential": 0,
-    "medium_economic_potential": 23,
-    "max_economic_priority_score": 0.635,
-    "strong_evidence_decisions": 24
+    "medium_economic_potential": 49,
+    "max_economic_priority_score": 0.712,
+    "strong_evidence_decisions": 55
   },
   "decision_evidence_grades": {
-    "A": 24
+    "A": 55
   },
   "top_event_types": [
     [
+      "financial_performance",
+      76
+    ],
+    [
       "procurement_award",
-      55
+      66
     ],
     [
       "strategy",
-      30
-    ],
-    [
-      "financial_performance",
-      24
-    ],
-    [
-      "procurement_notice",
-      22
+      55
     ],
     [
       "ma_acquisition",
-      21
+      45
+    ],
+    [
+      "procurement_notice",
+      29
     ],
     [
       "customer_reference",
-      13
-    ],
-    [
-      "service_launch",
-      10
-    ],
-    [
-      "award",
-      9
+      28
     ],
     [
       "certification",
-      8
+      25
+    ],
+    [
+      "security_vulnerability",
+      25
+    ],
+    [
+      "award",
+      24
     ],
     [
       "hiring",
-      6
-    ],
-    [
-      "leadership_change",
-      5
+      21
     ],
     [
       "product_release",
-      4
+      15
+    ],
+    [
+      "service_launch",
+      14
     ]
   ],
   "top_technologies": [
     [
       "Cloud",
-      43
-    ],
-    [
-      "IT Services",
-      34
-    ],
-    [
-      "AI",
-      32
+      102
     ],
     [
       "Cybersecurity",
-      27
+      66
+    ],
+    [
+      "AI",
+      54
     ],
     [
       "Networking",
-      24
+      49
     ],
     [
-      "Data Center",
-      9
+      "IT Services",
+      47
     ],
     [
       "Identity",
-      6
+      20
+    ],
+    [
+      "Data Center",
+      18
     ],
     [
       "Observability",
-      1
+      9
+    ],
+    [
+      "Automation",
+      3
     ],
     [
       "SASE/SSE",
@@ -107,14 +111,64 @@
     ]
   ],
   "scope_mix": {
-    "PT": 36,
-    "ES": 100,
-    "IBERIA": 15,
-    "GLOBAL": 66,
-    "EUROPE": 4,
-    "OTHER_REGION": 2
+    "PT": 52,
+    "ES": 165,
+    "GLOBAL": 216,
+    "EUROPE": 8,
+    "IBERIA": 32,
+    "OTHER_REGION": 6
   },
   "top_decisions": [
+    {
+      "decision_id": "d_07adea038088b50a",
+      "impact": "opportunity",
+      "priority": "P2",
+      "priority_score": 0.813,
+      "evidence_priority_score": 0.87,
+      "title": "Amazon EC2 X8i instances are now available in additional regions",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "certification",
+      "technology_domains": [
+        "AI",
+        "Cloud",
+        "Automation"
+      ],
+      "market_scope": "ES",
+      "materiality": 0.853,
+      "confidence": 0.817,
+      "westcon_relevance": 0.95,
+      "strategic_fit": 0.88,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento certification: materialidad 0.85, fit estratégico 0.88, relevancia Westcon/Iberia 0.95, confianza 0.82.",
+      "recommended_action": "Validar capacidad técnica real del partner y oportunidad de activar fabricantes Westcon.",
+      "monetization": "Enablement, formación, nuevas oportunidades y attach de servicios.",
+      "kpi": "certificaciones; partners activos; oportunidades; pipeline atribuido",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-x8i-europe-milan-spain/",
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/ec2-m8i-m8i-flex-canada-west/"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.666,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.888,
+      "margin_potential": 0.778,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.52,
+      "enablement_effort_score": 0.46,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
     {
       "decision_id": "d_3ad6d084fb921f03",
       "impact": "watch",
@@ -157,6 +211,434 @@
       "margin_potential": 0.619,
       "recurrence_potential": 0.36,
       "time_to_revenue_score": 0.38,
+      "enablement_effort_score": 0.46,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_35157a082c63e0c6",
+      "impact": "opportunity",
+      "priority": "P2",
+      "priority_score": 0.788,
+      "evidence_priority_score": 0.826,
+      "title": "Amazon SageMaker HyperPod enhances support for Ray",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "managed_service",
+      "technology_domains": [
+        "AI",
+        "Cloud",
+        "Observability"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.817,
+      "confidence": 0.786,
+      "westcon_relevance": 0.86,
+      "strategic_fit": 0.86,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento managed_service: materialidad 0.82, fit estratégico 0.86, relevancia Westcon/Iberia 0.86, confianza 0.79.",
+      "recommended_action": "Evaluar attach de servicios recurrentes y diferenciación de mayorista/integrador.",
+      "monetization": "MRR/ARR de servicios gestionados, SOC/NOC white-label y consumo recurrente.",
+      "kpi": "MRR/ARR; attach rate; partners consumiendo; margen de servicio",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-sagemaker-hyperpod-ray"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.692,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.863,
+      "margin_potential": 0.775,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.38,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_603b0d18c93c8a11",
+      "impact": "opportunity",
+      "priority": "P2",
+      "priority_score": 0.788,
+      "evidence_priority_score": 0.826,
+      "title": "AWS Deadline Cloud now tracks automatic download status in the Deadline Cloud Monitor",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "managed_service",
+      "technology_domains": [
+        "Cloud"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.816,
+      "confidence": 0.786,
+      "westcon_relevance": 0.86,
+      "strategic_fit": 0.86,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento managed_service: materialidad 0.82, fit estratégico 0.86, relevancia Westcon/Iberia 0.86, confianza 0.79.",
+      "recommended_action": "Evaluar attach de servicios recurrentes y diferenciación de mayorista/integrador.",
+      "monetization": "MRR/ARR de servicios gestionados, SOC/NOC white-label y consumo recurrente.",
+      "kpi": "MRR/ARR; attach rate; partners consumiendo; margen de servicio",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-deadline-cloud-auto-download-status-tracking/"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.692,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.863,
+      "margin_potential": 0.775,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.38,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_8ddd9d27f3a70451",
+      "impact": "opportunity",
+      "priority": "P2",
+      "priority_score": 0.776,
+      "evidence_priority_score": 0.828,
+      "title": "75,000 DDoS-for-Hire Actors Targeted by Law Enforcement",
+      "entity_name": "NETSCOUT",
+      "object_entity": "",
+      "event_type": "regulatory_change",
+      "technology_domains": [],
+      "market_scope": "EUROPE",
+      "materiality": 0.812,
+      "confidence": 0.808,
+      "westcon_relevance": 0.93,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento regulatory_change: materialidad 0.81, fit estratégico 0.76, relevancia Westcon/Iberia 0.93, confianza 0.81.",
+      "recommended_action": "Traducir el cambio a obligación, demanda potencial y oferta comercial.",
+      "monetization": "Assessment de cumplimiento, proyectos de adecuación y managed compliance.",
+      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "NETSCOUT"
+      ],
+      "evidence_urls": [
+        "https://www.netscout.com/blog/75000-ddos-hire-actors-targeted-law-enforcement"
+      ],
+      "sources": [
+        "NETSCOUT"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.643,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.851,
+      "margin_potential": 0.757,
+      "recurrence_potential": 0.7,
+      "time_to_revenue_score": 0.24,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_a9d621831940af6b",
+      "impact": "watch",
+      "priority": "P2",
+      "priority_score": 0.76,
+      "evidence_priority_score": 0.778,
+      "title": "How Bizerba Strengthens Digital Sovereignty with Continuous Exposure Management",
+      "entity_name": "XM Cyber",
+      "object_entity": "",
+      "event_type": "security_incident",
+      "technology_domains": [
+        "Cybersecurity"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.782,
+      "confidence": 0.782,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento security_incident: materialidad 0.78, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.78.",
+      "recommended_action": "Priorizar mitigación, servicios attach y comunicación técnica al canal.",
+      "monetization": "Assessment, hardening, managed security, remediation y renovación tecnológica.",
+      "kpi": "assessments; remediaciones; attach; renovaciones aceleradas",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "XM Cyber"
+      ],
+      "evidence_urls": [
+        "https://xmcyber.com/case-studies/how-bizerba-strengthens-digital-sovereignty-with-continuous-exposure-management/"
+      ],
+      "sources": [
+        "XM Cyber"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.712,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.821,
+      "margin_potential": 0.757,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_c52065c86c4b3e1f",
+      "impact": "opportunity",
+      "priority": "P3",
+      "priority_score": 0.759,
+      "evidence_priority_score": 0.811,
+      "title": "AWS Glue 5.1 is now available in AWS European Sovereign Cloud Region",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "product_release",
+      "technology_domains": [
+        "Cybersecurity",
+        "Cloud"
+      ],
+      "market_scope": "EUROPE",
+      "materiality": 0.801,
+      "confidence": 0.785,
+      "westcon_relevance": 0.85,
+      "strategic_fit": 0.82,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento product_release: materialidad 0.80, fit estratégico 0.82, relevancia Westcon/Iberia 0.85, confianza 0.79.",
+      "recommended_action": "Actualizar enablement, demos, campañas y compatibilidades de portfolio.",
+      "monetization": "Upgrade/migración, demos, PoC, servicios profesionales y renewal pull-through.",
+      "kpi": "PoC; upgrades; pipeline; attach de servicios",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-glue-5-1-european-sovereign-cloud"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.624,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.85,
+      "margin_potential": 0.628,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_431e158f64cc702b",
+      "impact": "opportunity",
+      "priority": "P3",
+      "priority_score": 0.759,
+      "evidence_priority_score": 0.811,
+      "title": "IAM Roles Anywhere now provides a Java plugin for the AWS SDK",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "product_release",
+      "technology_domains": [
+        "Cloud",
+        "Identity",
+        "IT Services"
+      ],
+      "market_scope": "EUROPE",
+      "materiality": 0.8,
+      "confidence": 0.785,
+      "westcon_relevance": 0.85,
+      "strategic_fit": 0.82,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento product_release: materialidad 0.80, fit estratégico 0.82, relevancia Westcon/Iberia 0.85, confianza 0.79.",
+      "recommended_action": "Actualizar enablement, demos, campañas y compatibilidades de portfolio.",
+      "monetization": "Upgrade/migración, demos, PoC, servicios profesionales y renewal pull-through.",
+      "kpi": "PoC; upgrades; pipeline; attach de servicios",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/iam-roles-anywhere-java/"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.624,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.85,
+      "margin_potential": 0.628,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_23e22a0d804ef0ad",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.758,
+      "evidence_priority_score": 0.776,
+      "title": "Analyzing Nova Ransomware: A Rust-Based Encryptor with Multi-Layered Microsoft Defender Evasion Techniques",
+      "entity_name": "AttackIQ",
+      "object_entity": "",
+      "event_type": "security_incident",
+      "technology_domains": [
+        "Cybersecurity"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.776,
+      "confidence": 0.782,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento security_incident: materialidad 0.78, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.78.",
+      "recommended_action": "Priorizar mitigación, servicios attach y comunicación técnica al canal.",
+      "monetization": "Assessment, hardening, managed security, remediation y renovación tecnológica.",
+      "kpi": "assessments; remediaciones; attach; renovaciones aceleradas",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AttackIQ"
+      ],
+      "evidence_urls": [
+        "https://www.attackiq.com/2026/07/31/analyzing-nova-ransomware/"
+      ],
+      "sources": [
+        "AttackIQ"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.712,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.82,
+      "margin_potential": 0.757,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_88c4c8509c16be20",
+      "impact": "watch",
+      "priority": "P3",
+      "priority_score": 0.757,
+      "evidence_priority_score": 0.774,
+      "title": "Chaos Ransomware: BlackSuit-Linked RaaS Resurgence and Detection Opportunities",
+      "entity_name": "AttackIQ",
+      "object_entity": "",
+      "event_type": "security_incident",
+      "technology_domains": [
+        "Cybersecurity"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.772,
+      "confidence": 0.782,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento security_incident: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.78.",
+      "recommended_action": "Priorizar mitigación, servicios attach y comunicación técnica al canal.",
+      "monetization": "Assessment, hardening, managed security, remediation y renovación tecnológica.",
+      "kpi": "assessments; remediaciones; attach; renovaciones aceleradas",
+      "owner_hint": "Preventa / Ingeniería / Servicios",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AttackIQ"
+      ],
+      "evidence_urls": [
+        "https://www.attackiq.com/2026/07/16/chaos-ransomware/"
+      ],
+      "sources": [
+        "AttackIQ"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.712,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.82,
+      "margin_potential": 0.757,
+      "recurrence_potential": 0.78,
+      "time_to_revenue_score": 0.58,
+      "enablement_effort_score": 0.54,
+      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+    },
+    {
+      "decision_id": "d_4caf97e59ef239dc",
+      "impact": "opportunity",
+      "priority": "P3",
+      "priority_score": 0.737,
+      "evidence_priority_score": 0.781,
+      "title": "Amazon Connect Customer now lets managers chat with their data",
+      "entity_name": "AWS",
+      "object_entity": "",
+      "event_type": "customer_reference",
+      "technology_domains": [
+        "AI",
+        "Cloud",
+        "Automation"
+      ],
+      "market_scope": "GLOBAL",
+      "materiality": 0.789,
+      "confidence": 0.786,
+      "westcon_relevance": 0.78,
+      "strategic_fit": 0.76,
+      "evidence_grade": "A",
+      "procurement_fit_score": 0.0,
+      "why": "Evento customer_reference: materialidad 0.79, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.79.",
+      "recommended_action": "Usar como prueba de demanda y buscar cuentas/verticales comparables en Iberia.",
+      "monetization": "Campañas por vertical, cross-sell multivendor y servicios de adopción.",
+      "kpi": "cuentas target; oportunidades; conversiones; pipeline por vertical",
+      "owner_hint": "Estrategia / Vendor Management",
+      "horizon": "30–90 días",
+      "evidence_sources": [
+        "AWS"
+      ],
+      "evidence_urls": [
+        "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-connect-customer-ai-data-analytics"
+      ],
+      "sources": [
+        "AWS"
+      ],
+      "source_count": 1,
+      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+      "economic_priority_score": 0.623,
+      "economic_potential": "MEDIUM",
+      "revenue_potential": 0.822,
+      "margin_potential": 0.617,
+      "recurrence_potential": 0.44,
+      "time_to_revenue_score": 0.58,
       "enablement_effort_score": 0.46,
       "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
     },
@@ -208,485 +690,6 @@
       "recurrence_potential": 0.44,
       "time_to_revenue_score": 0.72,
       "enablement_effort_score": 0.38,
-      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-    },
-    {
-      "decision_id": "d_831ac1058122a482",
-      "impact": "opportunity",
-      "priority": "P3",
-      "priority_score": 0.723,
-      "evidence_priority_score": 0.764,
-      "title": "Servicios de administración de sistemas y soporte al desarrollo para Informática del Ayuntamiento de Madrid (3 lotes)",
-      "entity_name": "Iberia Public Procurement Market",
-      "object_entity": "",
-      "event_type": "procurement_notice",
-      "technology_domains": [
-        "IT Services"
-      ],
-      "market_scope": "ES",
-      "materiality": 0.774,
-      "confidence": 0.907,
-      "westcon_relevance": 0.595,
-      "strategic_fit": 0.749,
-      "evidence_grade": "A",
-      "procurement_fit_score": 0.78,
-      "why": "Evento procurement_notice: materialidad 0.77, fit estratégico 0.75, relevancia Westcon/Iberia 0.59, confianza 0.91.",
-      "recommended_action": "Priorizar la licitación tecnológica, identificar comprador, requisitos, fabricantes y partners con capacidad para concurrir.",
-      "monetization": "Pipeline de sector público, identificación temprana de partners, arquitectura, servicios profesionales y soporte.",
-      "kpi": "licitaciones cualificadas; partners mapeados; pipeline público; win-rate",
-      "owner_hint": "Ventas / PSM / Preventa",
-      "horizon": "30–90 días",
-      "evidence_sources": [
-        "Plataforma Contratación Sector Público",
-        "TED EU Procurement"
-      ],
-      "evidence_urls": [
-        "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=uLhQsk4GxCOFlFRHfEzEaw%3D%3D",
-        "https://ted.europa.eu/en/notice/-/detail/597200-2026",
-        "https://ted.europa.eu/en/notice/-/detail/599461-2026"
-      ],
-      "sources": [
-        "Plataforma Contratación Sector Público",
-        "TED EU Procurement"
-      ],
-      "source_count": 2,
-      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-      "economic_priority_score": 0.619,
-      "economic_potential": "MEDIUM",
-      "revenue_potential": 0.74,
-      "margin_potential": 0.615,
-      "recurrence_potential": 0.36,
-      "time_to_revenue_score": 0.72,
-      "enablement_effort_score": 0.38,
-      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-    },
-    {
-      "decision_id": "d_9722cf6d8cf04937",
-      "impact": "opportunity",
-      "priority": "P3",
-      "priority_score": 0.721,
-      "evidence_priority_score": 0.758,
-      "title": "España – Mantenimiento y reparación de equipo informático – Mantenimiento del parque informático de la Administración de la Comunidad Foral de Navarra durante el año 2027.",
-      "entity_name": "Iberia Public Procurement Market",
-      "object_entity": "Dirección General de Telecomunicaciones y Digitalización",
-      "event_type": "procurement_notice",
-      "technology_domains": [
-        "IT Services"
-      ],
-      "market_scope": "ES",
-      "materiality": 0.766,
-      "confidence": 0.875,
-      "westcon_relevance": 0.601,
-      "strategic_fit": 0.771,
-      "evidence_grade": "A",
-      "procurement_fit_score": 0.82,
-      "why": "Evento procurement_notice: materialidad 0.77, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.88.",
-      "recommended_action": "Priorizar la licitación tecnológica, identificar comprador, requisitos, fabricantes y partners con capacidad para concurrir.",
-      "monetization": "Pipeline de sector público, identificación temprana de partners, arquitectura, servicios profesionales y soporte.",
-      "kpi": "licitaciones cualificadas; partners mapeados; pipeline público; win-rate",
-      "owner_hint": "Ventas / PSM / Preventa",
-      "horizon": "30–90 días",
-      "evidence_sources": [
-        "TED EU Procurement"
-      ],
-      "evidence_urls": [
-        "https://ted.europa.eu/en/notice/-/detail/597963-2026",
-        "https://ted.europa.eu/en/notice/-/detail/596969-2026"
-      ],
-      "sources": [
-        "TED EU Procurement"
-      ],
-      "source_count": 1,
-      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-      "economic_priority_score": 0.625,
-      "economic_potential": "MEDIUM",
-      "revenue_potential": 0.759,
-      "margin_potential": 0.619,
-      "recurrence_potential": 0.36,
-      "time_to_revenue_score": 0.72,
-      "enablement_effort_score": 0.38,
-      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-    },
-    {
-      "decision_id": "d_3856ba11e6e3f0cf",
-      "impact": "opportunity",
-      "priority": "P3",
-      "priority_score": 0.721,
-      "evidence_priority_score": 0.758,
-      "title": "Portugal – Equipo de red – Fornecimento de upgrade à infraestrutura de rede do município",
-      "entity_name": "Iberia Public Procurement Market",
-      "object_entity": "Município de Lagos",
-      "event_type": "procurement_notice",
-      "technology_domains": [
-        "Networking"
-      ],
-      "market_scope": "PT",
-      "materiality": 0.766,
-      "confidence": 0.875,
-      "westcon_relevance": 0.601,
-      "strategic_fit": 0.771,
-      "evidence_grade": "A",
-      "procurement_fit_score": 0.82,
-      "why": "Evento procurement_notice: materialidad 0.77, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.88.",
-      "recommended_action": "Priorizar la licitación tecnológica, identificar comprador, requisitos, fabricantes y partners con capacidad para concurrir.",
-      "monetization": "Pipeline de sector público, identificación temprana de partners, arquitectura, servicios profesionales y soporte.",
-      "kpi": "licitaciones cualificadas; partners mapeados; pipeline público; win-rate",
-      "owner_hint": "Ventas / PSM / Preventa",
-      "horizon": "30–90 días",
-      "evidence_sources": [
-        "TED EU Procurement"
-      ],
-      "evidence_urls": [
-        "https://ted.europa.eu/en/notice/-/detail/597853-2026"
-      ],
-      "sources": [
-        "TED EU Procurement"
-      ],
-      "source_count": 1,
-      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-      "economic_priority_score": 0.625,
-      "economic_potential": "MEDIUM",
-      "revenue_potential": 0.759,
-      "margin_potential": 0.619,
-      "recurrence_potential": 0.36,
-      "time_to_revenue_score": 0.72,
-      "enablement_effort_score": 0.38,
-      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-    },
-    {
-      "decision_id": "d_0269e6efa1da5531",
-      "impact": "watch",
-      "priority": "P3",
-      "priority_score": 0.721,
-      "evidence_priority_score": 0.782,
-      "title": "Servicio de mantenimiento del sistema de posicionamiento para la localización instalado en el Hospital Universitario de Gran Canaria Dr. Negrín",
-      "entity_name": "Iberia Public Procurement Market",
-      "object_entity": "SOPORTES DE COMUNICACIÓN ALTERA, SL",
-      "event_type": "procurement_award",
-      "technology_domains": [],
-      "market_scope": "ES",
-      "materiality": 0.81,
-      "confidence": 0.91,
-      "westcon_relevance": 0.601,
-      "strategic_fit": 0.771,
-      "evidence_grade": "A",
-      "procurement_fit_score": 0.82,
-      "why": "Evento procurement_award: materialidad 0.81, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.91.",
-      "recommended_action": "Mapear comprador, adjudicatario, tecnologías y partners; extraer aprendizaje del contrato adjudicado y cuentas análogas.",
-      "monetization": "Inteligencia de adjudicatarios, réplica de arquitectura, campañas por organismo/vertical y servicios attach.",
-      "kpi": "adjudicatarios mapeados; oportunidades análogas; pipeline influenciado; attach",
-      "owner_hint": "Ventas / PSM / Preventa",
-      "horizon": "30–90 días",
-      "evidence_sources": [
-        "Plataforma Contratación Sector Público",
-        "TED EU Procurement"
-      ],
-      "evidence_urls": [
-        "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=5OsRMaSI2KM4NavIWzMcHA%3D%3D",
-        "https://ted.europa.eu/en/notice/-/detail/599288-2026"
-      ],
-      "sources": [
-        "Plataforma Contratación Sector Público",
-        "TED EU Procurement"
-      ],
-      "source_count": 2,
-      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-      "economic_priority_score": 0.564,
-      "economic_potential": "MEDIUM",
-      "revenue_potential": 0.794,
-      "margin_potential": 0.619,
-      "recurrence_potential": 0.36,
-      "time_to_revenue_score": 0.38,
-      "enablement_effort_score": 0.46,
-      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-    },
-    {
-      "decision_id": "d_4536e9b5bad4c5ea",
-      "impact": "watch",
-      "priority": "P3",
-      "priority_score": 0.721,
-      "evidence_priority_score": 0.782,
-      "title": "Servicio integral del sistema de seguimiento por medios telemáticos del cumplimiento de las medidas cautelares y penas de prohibición de aproximación en materia de violencia de género y de violencia sexual.",
-      "entity_name": "Iberia Public Procurement Market",
-      "object_entity": "Vodafone España, S.A.U.",
-      "event_type": "procurement_award",
-      "technology_domains": [],
-      "market_scope": "ES",
-      "materiality": 0.81,
-      "confidence": 0.91,
-      "westcon_relevance": 0.601,
-      "strategic_fit": 0.771,
-      "evidence_grade": "A",
-      "procurement_fit_score": 0.82,
-      "why": "Evento procurement_award: materialidad 0.81, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.91.",
-      "recommended_action": "Mapear comprador, adjudicatario, tecnologías y partners; extraer aprendizaje del contrato adjudicado y cuentas análogas.",
-      "monetization": "Inteligencia de adjudicatarios, réplica de arquitectura, campañas por organismo/vertical y servicios attach.",
-      "kpi": "adjudicatarios mapeados; oportunidades análogas; pipeline influenciado; attach",
-      "owner_hint": "Ventas / PSM / Preventa",
-      "horizon": "30–90 días",
-      "evidence_sources": [
-        "Plataforma Contratación Sector Público",
-        "TED EU Procurement"
-      ],
-      "evidence_urls": [
-        "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=8wRniISfquz%2Fa9DgO%2BoYKQ%3D%3D",
-        "https://ted.europa.eu/en/notice/-/detail/598114-2026"
-      ],
-      "sources": [
-        "Plataforma Contratación Sector Público",
-        "TED EU Procurement"
-      ],
-      "source_count": 2,
-      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-      "economic_priority_score": 0.564,
-      "economic_potential": "MEDIUM",
-      "revenue_potential": 0.794,
-      "margin_potential": 0.619,
-      "recurrence_potential": 0.36,
-      "time_to_revenue_score": 0.38,
-      "enablement_effort_score": 0.46,
-      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-    },
-    {
-      "decision_id": "d_6a0be5f758169ffb",
-      "impact": "opportunity",
-      "priority": "P3",
-      "priority_score": 0.72,
-      "evidence_priority_score": 0.757,
-      "title": "Portugal – Mantenimiento y reparación de equipo informático – Serviços de manutenção e suporte da plataforma Exadata Database Machine e serviços de manutenção da infraestrutura Oracle, suporte para equipamento Oracle ZFS Storage e assistência pós-venda para soft",
-      "entity_name": "Iberia Public Procurement Market",
-      "object_entity": "Instituto do Turismo de Portugal, IP",
-      "event_type": "procurement_notice",
-      "technology_domains": [
-        "Data Center",
-        "IT Services"
-      ],
-      "market_scope": "PT",
-      "materiality": 0.765,
-      "confidence": 0.875,
-      "westcon_relevance": 0.601,
-      "strategic_fit": 0.771,
-      "evidence_grade": "A",
-      "procurement_fit_score": 0.82,
-      "why": "Evento procurement_notice: materialidad 0.77, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.88.",
-      "recommended_action": "Priorizar la licitación tecnológica, identificar comprador, requisitos, fabricantes y partners con capacidad para concurrir.",
-      "monetization": "Pipeline de sector público, identificación temprana de partners, arquitectura, servicios profesionales y soporte.",
-      "kpi": "licitaciones cualificadas; partners mapeados; pipeline público; win-rate",
-      "owner_hint": "Ventas / PSM / Preventa",
-      "horizon": "30–90 días",
-      "evidence_sources": [
-        "TED EU Procurement"
-      ],
-      "evidence_urls": [
-        "https://ted.europa.eu/en/notice/-/detail/593529-2026"
-      ],
-      "sources": [
-        "TED EU Procurement"
-      ],
-      "source_count": 1,
-      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-      "economic_priority_score": 0.625,
-      "economic_potential": "MEDIUM",
-      "revenue_potential": 0.759,
-      "margin_potential": 0.619,
-      "recurrence_potential": 0.36,
-      "time_to_revenue_score": 0.72,
-      "enablement_effort_score": 0.38,
-      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-    },
-    {
-      "decision_id": "d_024bb7c3cb527541",
-      "impact": "opportunity",
-      "priority": "P3",
-      "priority_score": 0.72,
-      "evidence_priority_score": 0.757,
-      "title": "Portugal – Servicios de mantenimiento de infraestructura de telecomunicaciones – Aquisição de bens e serviços para modernização da infraestrutura de rede e segurança",
-      "entity_name": "Iberia Public Procurement Market",
-      "object_entity": "Serviço de Utilização Comum dos Hospitais",
-      "event_type": "procurement_notice",
-      "technology_domains": [],
-      "market_scope": "PT",
-      "materiality": 0.765,
-      "confidence": 0.875,
-      "westcon_relevance": 0.601,
-      "strategic_fit": 0.771,
-      "evidence_grade": "A",
-      "procurement_fit_score": 0.82,
-      "why": "Evento procurement_notice: materialidad 0.77, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.88.",
-      "recommended_action": "Priorizar la licitación tecnológica, identificar comprador, requisitos, fabricantes y partners con capacidad para concurrir.",
-      "monetization": "Pipeline de sector público, identificación temprana de partners, arquitectura, servicios profesionales y soporte.",
-      "kpi": "licitaciones cualificadas; partners mapeados; pipeline público; win-rate",
-      "owner_hint": "Ventas / PSM / Preventa",
-      "horizon": "30–90 días",
-      "evidence_sources": [
-        "TED EU Procurement"
-      ],
-      "evidence_urls": [
-        "https://ted.europa.eu/en/notice/-/detail/592792-2026"
-      ],
-      "sources": [
-        "TED EU Procurement"
-      ],
-      "source_count": 1,
-      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-      "economic_priority_score": 0.625,
-      "economic_potential": "MEDIUM",
-      "revenue_potential": 0.759,
-      "margin_potential": 0.619,
-      "recurrence_potential": 0.36,
-      "time_to_revenue_score": 0.72,
-      "enablement_effort_score": 0.38,
-      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-    },
-    {
-      "decision_id": "d_d74efab4412294b9",
-      "impact": "watch",
-      "priority": "P3",
-      "priority_score": 0.72,
-      "evidence_priority_score": 0.776,
-      "title": "Contrato Mixto de Servicio del Centro de Operaciones de Seguridad y suministro de licencias antivirus para el Ayuntamiento de Albacete. Expte. 36-2025",
-      "entity_name": "Iberia Public Procurement Market",
-      "object_entity": "Sothis Servicios Tecnológicos",
-      "event_type": "procurement_award",
-      "technology_domains": [
-        "Cybersecurity"
-      ],
-      "market_scope": "ES",
-      "materiality": 0.806,
-      "confidence": 0.91,
-      "westcon_relevance": 0.595,
-      "strategic_fit": 0.749,
-      "evidence_grade": "A",
-      "procurement_fit_score": 0.78,
-      "why": "Evento procurement_award: materialidad 0.81, fit estratégico 0.75, relevancia Westcon/Iberia 0.59, confianza 0.91.",
-      "recommended_action": "Mapear comprador, adjudicatario, tecnologías y partners; extraer aprendizaje del contrato adjudicado y cuentas análogas.",
-      "monetization": "Inteligencia de adjudicatarios, réplica de arquitectura, campañas por organismo/vertical y servicios attach.",
-      "kpi": "adjudicatarios mapeados; oportunidades análogas; pipeline influenciado; attach",
-      "owner_hint": "Ventas / PSM / Preventa",
-      "horizon": "30–90 días",
-      "evidence_sources": [
-        "Plataforma Contratación Sector Público",
-        "TED EU Procurement"
-      ],
-      "evidence_urls": [
-        "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=f1Uso9R70e8%2FbjW6njtWLw%3D%3D",
-        "https://ted.europa.eu/en/notice/-/detail/597179-2026"
-      ],
-      "sources": [
-        "Plataforma Contratación Sector Público",
-        "TED EU Procurement"
-      ],
-      "source_count": 2,
-      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-      "economic_priority_score": 0.577,
-      "economic_potential": "MEDIUM",
-      "revenue_potential": 0.787,
-      "margin_potential": 0.615,
-      "recurrence_potential": 0.44,
-      "time_to_revenue_score": 0.38,
-      "enablement_effort_score": 0.46,
-      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-    },
-    {
-      "decision_id": "d_ca16e26700950197",
-      "impact": "opportunity",
-      "priority": "P3",
-      "priority_score": 0.719,
-      "evidence_priority_score": 0.751,
-      "title": "Bélgica, Luxemburgo, Francia, Letonia, Alemania, Suecia, Grecia, Rumanía, Hungría, Eslovaquia, Países Bajos, Austria, Estonia, Chequia, España – Mobiliario – Fourniture de mobilier pour l'aménagement et l’équipement des espaces de travail et de convivialité de la Commission européenne et autres entités participantes",
-      "entity_name": "Iberia Public Procurement Market",
-      "object_entity": "Commission européenne, OIB - Office for Infrastructure and Logistics in Brussels / Cour des comptes ",
-      "event_type": "procurement_notice",
-      "technology_domains": [
-        "Cybersecurity"
-      ],
-      "market_scope": "ES",
-      "materiality": 0.762,
-      "confidence": 0.875,
-      "westcon_relevance": 0.595,
-      "strategic_fit": 0.749,
-      "evidence_grade": "A",
-      "procurement_fit_score": 0.78,
-      "why": "Evento procurement_notice: materialidad 0.76, fit estratégico 0.75, relevancia Westcon/Iberia 0.59, confianza 0.88.",
-      "recommended_action": "Priorizar la licitación tecnológica, identificar comprador, requisitos, fabricantes y partners con capacidad para concurrir.",
-      "monetization": "Pipeline de sector público, identificación temprana de partners, arquitectura, servicios profesionales y soporte.",
-      "kpi": "licitaciones cualificadas; partners mapeados; pipeline público; win-rate",
-      "owner_hint": "Ventas / PSM / Preventa",
-      "horizon": "30–90 días",
-      "evidence_sources": [
-        "TED EU Procurement"
-      ],
-      "evidence_urls": [
-        "https://ted.europa.eu/en/notice/-/detail/598420-2026"
-      ],
-      "sources": [
-        "TED EU Procurement"
-      ],
-      "source_count": 1,
-      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-      "economic_priority_score": 0.635,
-      "economic_potential": "MEDIUM",
-      "revenue_potential": 0.74,
-      "margin_potential": 0.615,
-      "recurrence_potential": 0.44,
-      "time_to_revenue_score": 0.72,
-      "enablement_effort_score": 0.38,
-      "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-    },
-    {
-      "decision_id": "d_56fcb9683c644ee7",
-      "impact": "watch",
-      "priority": "P3",
-      "priority_score": 0.716,
-      "evidence_priority_score": 0.78,
-      "title": "CVE-2010-0249: Microsoft Internet Explorer · explotación conocida (CISA KEV)",
-      "entity_name": "Microsoft Azure",
-      "object_entity": "",
-      "event_type": "end_of_sale",
-      "technology_domains": [
-        "Cloud"
-      ],
-      "market_scope": "GLOBAL",
-      "materiality": 0.769,
-      "confidence": 0.808,
-      "westcon_relevance": 0.78,
-      "strategic_fit": 0.76,
-      "evidence_grade": "A",
-      "procurement_fit_score": 0.0,
-      "why": "Evento end_of_sale: materialidad 0.77, fit estratégico 0.76, relevancia Westcon/Iberia 0.78, confianza 0.81.",
-      "recommended_action": "Vigilar, corroborar y elevar solo si cambia la materialidad o la proximidad a Iberia.",
-      "monetization": "Validar impacto comercial y convertirlo en campaña, servicio o acción de canal solo si la evidencia lo soporta.",
-      "kpi": "pipeline influenciado; acciones completadas; cambio de confianza/materialidad",
-      "owner_hint": "Estrategia / Vendor Management",
-      "horizon": "30–90 días",
-      "evidence_sources": [
-        "CISA KEV"
-      ],
-      "evidence_urls": [
-        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
-      ],
-      "sources": [
-        "CISA KEV"
-      ],
-      "source_count": 1,
-      "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-      "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-      "economic_priority_score": 0.552,
-      "economic_potential": "LOW",
-      "revenue_potential": 0.82,
-      "margin_potential": 0.617,
-      "recurrence_potential": 0.44,
-      "time_to_revenue_score": 0.24,
-      "enablement_effort_score": 0.54,
       "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
     }
   ]
