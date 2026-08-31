@@ -7,16 +7,16 @@
 <meta name="description" content="Westcon Iberia · Business Intelligence · Fabricantes, mayoristas, integradores, clientes, tendencias y arquitecturas con trazabilidad por campo.">
 <title>Westcon Iberia · Business Intelligence</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/v315/intelligence.css?v=3.15.0">
+<link rel="stylesheet" href="assets/v316/intelligence.css?v=3.16.0">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.13.0/dist/pptxgen.bundle.js"></script>
-<script defer src="assets/v315/intelligence.js?v=3.15.0"></script>
+<script defer src="assets/v316/intelligence.js?v=3.16.0"></script>
 </head>
 <body>
 <header class="appbar">
   <div class="brand">
     <div class="brandmark" aria-hidden="true"><span></span><span></span><span></span></div>
-    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v3.15.0</small></div>
+    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v3.16.0</small></div>
   </div>
   <nav id="tabs" aria-label="Áreas de inteligencia">
     <button class="active" data-view="fabricantes" type="button">Fabricantes</button>
@@ -165,9 +165,9 @@
   <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="confidenceTitle">
     <div class="modal-head"><div><span>AYUDA DE TRAZABILIDAD</span><h2 id="confidenceTitle">Hecho, interpretación y riesgo</h2><p>Cada detalle separa la confianza en la evidencia del hecho, la confianza en la lectura comercial y el riesgo de actuar sin validación adicional.</p></div><button class="modal-close" data-close="confidenceModal" type="button" aria-label="Cerrar">×</button></div>
     <div class="confidence-guide">
-      <div class="confidence-level high"><div><span class="confidence-swatch high"></span><b>Alta · 80–99%</b></div><p>Evidencia oficial/primaria o varias fuentes públicas coherentes y suficientemente corroboradas. Sigue sujeta a revalidación.</p></div>
-      <div class="confidence-level medium"><div><span class="confidence-swatch medium"></span><b>Media · 60–79%</b></div><p>Dato útil, pero parcial: puede depender de una sola fuente, evidencia indirecta, corroboración limitada o información que necesita actualización.</p></div>
-      <div class="confidence-level low"><div><span class="confidence-swatch low"></span><b>Baja · 35–59%</b></div><p>Indicio trazable. Puede proceder de empleo, prensa secundaria, agregadores, una única señal o evidencia antigua. No debe leerse como relación o hecho plenamente confirmado.</p></div>
+      <div class="confidence-level high"><div><span class="confidence-swatch high"></span><b>VERDE · evidencia fuerte</b></div><p>Hecho respaldado por una fuente oficial o primaria vigente, o corroborado por varias fuentes independientes. Las señales derivadas nunca reciben verde.</p></div>
+      <div class="confidence-level medium"><div><span class="confidence-swatch medium"></span><b>AMARILLO · evidencia parcial</b></div><p>Varias fuentes coherentes sin confirmación oficial directa, o una interpretación comercial separada del hecho. Debe validarse antes de actuar.</p></div>
+      <div class="confidence-level low"><div><span class="confidence-swatch low"></span><b>ROJO · señal o indicio</b></div><p>Empleo, prensa secundaria, agregadores, señales derivadas, una fuente incompleta o evidencia antigua. Orienta la investigación, pero no confirma despliegues, contratos ni relaciones.</p></div>
       <div class="confidence-level hidden"><div><span class="confidence-swatch hidden"></span><b>Inferior al 35% · no se publica</b></div><p>Las señales por debajo del umbral permanecen en las tripas y alimentan nuevas búsquedas, pero no se presentan como inteligencia visible.</p></div>
     </div>
     <div id="confidenceDistribution" class="confidence-distribution"></div>
