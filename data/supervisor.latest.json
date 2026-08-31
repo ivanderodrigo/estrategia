@@ -1,23 +1,23 @@
 {
   "version": 2,
-  "runId": "20260827T224540Z",
+  "runId": "20260831T091656Z",
   "profileRequested": "daily",
-  "startedAt": "2026-08-27T22:45:40.781787+00:00",
-  "finishedAt": "2026-08-27T22:46:31.229057+00:00",
-  "elapsedSeconds": 50.45,
-  "outcome": "complete-or-partial-valid",
+  "startedAt": "2026-08-31T09:16:56.136342+00:00",
+  "finishedAt": "2026-08-31T09:17:27.301992+00:00",
+  "elapsedSeconds": 31.17,
+  "outcome": "failed-last-good-preserved",
   "processOutcome": {
     "status": "success",
     "timed_out": false,
     "returncode": 0,
-    "elapsed_seconds": 50.3,
-    "lines": 17,
+    "elapsed_seconds": 31.0,
+    "lines": 19,
     "stream_backend": "thread_queue"
   },
   "exitCode": 0,
   "fallbackUsed": false,
-  "lastGoodRestored": false,
-  "datasetValid": true,
-  "diagnosticLog": "diagnostics/research-20260827T224540Z-daily.log",
-  "validationTail": "OK · foundation validada · 36 vendors base · 28 claims · v3.5 86 fabricantes / 47 integradores / 11 mayoristas / 15 tendencias / 12 arquitecturas"
+  "lastGoodRestored": true,
+  "datasetValid": false,
+  "diagnosticLog": "diagnostics/research-20260831T091656Z-daily.log",
+  "validationTail": "ERROR: Workflow no apunta al supervisor v3.5: .github/workflows/research-daily.yml"
 }

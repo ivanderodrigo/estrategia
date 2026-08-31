@@ -1,54 +1,54 @@
 {
   "version": "3.2.6",
   "profile": "daily",
-  "started_at": "2026-08-27T22:45:40.610832+00:00",
-  "v31_budget": 255,
-  "v32_budget": 175,
+  "started_at": "2026-08-31T09:16:55.916498+00:00",
+  "v31_budget": 242,
+  "v32_budget": 166,
   "v31_rc": 0,
   "foundation": {
-    "v31_status": "published",
-    "legacy_status": "ok",
-    "legacy_returncode": 0
+    "v31_status": "degraded",
+    "legacy_status": "failed",
+    "legacy_returncode": 1
   },
-  "events": 198,
+  "events": 223,
   "unclassified": 0,
-  "candidates": 235,
-  "deduplicated": 37,
-  "decisions": 19,
-  "direct_rows": 107,
-  "direct_raw_rows": 107,
+  "candidates": 265,
+  "deduplicated": 42,
+  "decisions": 24,
+  "direct_rows": 123,
+  "direct_raw_rows": 123,
   "direct_deduplicated_rows": 0,
-  "nodes": 130,
-  "edges": 94,
+  "nodes": 137,
+  "edges": 104,
   "direct_stats": {
     "ted_search": {
       "attempted": 2,
       "successful": 2,
       "failed": 0,
-      "rows": 71,
+      "rows": 77,
       "raw_notices": 360,
-      "technology_notices": 65,
+      "technology_notices": 71,
       "errors": [],
-      "latency_ms": 3580.0
+      "latency_ms": 3249.7
     },
     "placsp_atom": {
       "attempted": 1,
       "successful": 1,
       "failed": 0,
-      "rows": 3,
+      "rows": 13,
       "raw_feed_rows": 80,
-      "technology_rows": 3,
-      "entity_matched_rows": 0,
+      "technology_rows": 12,
+      "entity_matched_rows": 1,
       "url_used": "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3.atom",
       "cached": 0,
       "errors": [],
-      "latency_ms": 11024.2
+      "latency_ms": 32685.5
     },
     "cisa_kev": {
       "attempted": 1,
       "failed": 0,
       "rows": 33,
-      "latency_ms": 337.4
+      "latency_ms": 111.2
     },
     "generic_feeds": {
       "attempted_sources": 18,
@@ -58,21 +58,21 @@
       "failed": 0,
       "rows": 0,
       "per_source": {
+        "cisa": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 403: <HTML><HEAD> <TITLE>Access Denied</TITLE> </HEAD><BODY> <H1>Access Denied</H1>   You don't have permission to access \"http&#58;&#47;&#47;cisa&#46;gov&#47;rss\" on this server.<P> Reference&#32;&#35;18&#46;46c90b17&#46;1788167926&#46;1c0d8baa <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;46c90b17&#46;1788167926&#46;1c0d8baa</P> </BODY> </HTML>",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
         "nvd": {
           "attempts": 2,
           "feed_rows": 0,
           "accepted_rows": 0,
           "working_feed": "",
           "error": "ParseError: syntax error: line 1, column 0",
-          "row_cap": 25,
-          "status": "no_feed"
-        },
-        "cisa": {
-          "attempts": 2,
-          "feed_rows": 0,
-          "accepted_rows": 0,
-          "working_feed": "",
-          "error": "HTTP 403: <HTML><HEAD> <TITLE>Access Denied</TITLE> </HEAD><BODY> <H1>Access Denied</H1>   You don't have permission to access \"http&#58;&#47;&#47;cisa&#46;gov&#47;rss\" on this server.<P> Reference&#32;&#35;18&#46;a5bbce17&#46;1787870840&#46;1f907517 <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;a5bbce17&#46;1787870840&#46;1f907517</P> </BODY> </HTML>",
           "row_cap": 25,
           "status": "no_feed"
         },
@@ -85,15 +85,6 @@
           "row_cap": 25,
           "status": "no_feed"
         },
-        "ccncert": {
-          "attempts": 2,
-          "feed_rows": 0,
-          "accepted_rows": 0,
-          "working_feed": "",
-          "error": "HTTP 403: <html><head><title>Voight-Kampff Browser Test</title><style>#main{margin:auto;width:100%;padding:10px}#content{font-family:sans-serif;max-width:800px;width:100%;text-align:center;margin:auto}.loading{color:#3fa3a5;text-align:center;font-size:6em;font-family:sans;font-weight:bolder}.loading span{opacity:0;animation:blink 1.4s infinite}.loading span:nth-child(1){animation-delay:.2s}.loading span:nth-child(2){animation-delay:.4s}.loading span:nth-child(3){animation-delay:.6s}@keyframes blink{0%{opacity:.1}50%{opacity:1}100%{opacity:.1}}@media screen and (max-width:800px){#content{padding:10px}}</style></head><body><div id=main><div id=content><div class=loading><span>.</span> <span>.</span> <span>.</span></div><h2>Checking Your Browser</h2><p>Please wait, this will only take a moment. You'll be redirected shortly.</div></div><a href=https://statics.transparentedge.eu/btchk01 tabindex=-1 ari",
-          "row_cap": 25,
-          "status": "no_feed"
-        },
         "cve": {
           "attempts": 2,
           "feed_rows": 0,
@@ -103,12 +94,12 @@
           "row_cap": 25,
           "status": "no_feed"
         },
-        "placsp": {
+        "ccncert": {
           "attempts": 2,
           "feed_rows": 0,
           "accepted_rows": 0,
           "working_feed": "",
-          "error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"> <html><head> <title>404 Not Found</title> </head><body> <h1>Not Found</h1> <p>The requested URL was not found on this server.</p> <hr> <address>IBM_HTTP_Server Server at contrataciondelsectorpublico.gob.es Port 80</address> </body></html>",
+          "error": "HTTP 403: <html><head><title>Voight-Kampff Browser Test</title><style>#main{margin:auto;width:100%;padding:10px}#content{font-family:sans-serif;max-width:800px;width:100%;text-align:center;margin:auto}.loading{color:#3fa3a5;text-align:center;font-size:6em;font-family:sans;font-weight:bolder}.loading span{opacity:0;animation:blink 1.4s infinite}.loading span:nth-child(1){animation-delay:.2s}.loading span:nth-child(2){animation-delay:.4s}.loading span:nth-child(3){animation-delay:.6s}@keyframes blink{0%{opacity:.1}50%{opacity:1}100%{opacity:.1}}@media screen and (max-width:800px){#content{padding:10px}}</style></head><body><div id=main><div id=content><div class=loading><span>.</span> <span>.</span> <span>.</span></div><h2>Checking Your Browser</h2><p>Please wait, this will only take a moment. You'll be redirected shortly.</div></div><a href=https://statics.transparentedge.eu/btchk01 tabindex=-1 ari",
           "row_cap": 25,
           "status": "no_feed"
         },
@@ -118,6 +109,15 @@
           "accepted_rows": 0,
           "working_feed": "",
           "error": "HTTP 404: <!DOCTYPE html> <html  lang=\"es\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\">   <head>     <meta charset=\"utf-8\" /> <meta name=\"description\" content=\"Hemos actualizado la página web El contenido que buscas ha cambiado de URL. Revisa los apartados correspondientes. Gracias. Volver a la Home\" /> <link rel=\"canonical\" href=\"https://www.cnmc.es/node/411565\" /> <link rel=\"image_src\" href=\",,,https://www.cnmc.es/sites/default/files/CNMC_Logotipo.png\" /> <meta property=\"og:url\" content=\"https://www.cnmc.es/node/411565\" /> <meta property=\"og:title\" content=\"Hemos actualizado la página web\" /> <meta property=\"og:image\" content=\"https://www.cnmc.es/sites/default/files/CNMC_Logotipo.png\" /> <meta name=\"Generator\" content=\"Drupal 10 (https://www.drupal.org)\" /> <meta name=\"MobileOptimized\" content=\"width\" /> <meta name=\"HandheldFriendly\" content=\"true\" /> <meta name=\"viewport\" content=\"width=device-wi",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "placsp": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"> <html><head> <title>404 Not Found</title> </head><body> <h1>Not Found</h1> <p>The requested URL was not found on this server.</p> <hr> <address>IBM_HTTP_Server Server at contrataciondelsectorpublico.gob.es Port 80</address> </body></html>",
           "row_cap": 25,
           "status": "no_feed"
         },
@@ -189,7 +189,7 @@
           "feed_rows": 0,
           "accepted_rows": 0,
           "working_feed": "",
-          "error": "HTTP 503: <HTML><HEAD> <TITLE>Service Unavailable</TITLE> </HEAD><BODY> <H1>Service Unavailable - Zero size object</H1> The server is temporarily unable to service your request.  Please try again later.<P> Reference&#32;&#35;15&#46;8467cd17&#46;1787870845&#46;1bde4e5 <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;15&#46;8467cd17&#46;1787870845&#46;1bde4e5</P> </BODY></HTML>",
+          "error": "HTTP 503: <HTML><HEAD> <TITLE>Service Unavailable</TITLE> </HEAD><BODY> <H1>Service Unavailable - Zero size object</H1> The server is temporarily unable to service your request.  Please try again later.<P> Reference&#32;&#35;15&#46;72cfdb17&#46;1788167932&#46;1ff09e6a <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;15&#46;72cfdb17&#46;1788167932&#46;1ff09e6a</P> </BODY></HTML>",
           "row_cap": 25,
           "status": "no_feed"
         },
@@ -221,65 +221,65 @@
           "status": "no_feed"
         }
       },
-      "latency_ms": 21889.6
+      "latency_ms": 19424.2
     }
   },
   "briefing": {
-    "generated_at": "2026-08-27T22:47:41.894490+00:00",
+    "generated_at": "2026-08-31T09:19:05.803179+00:00",
     "headline_metrics": {
-      "events": 198,
-      "high_materiality_events": 92,
-      "iberia_events": 135,
-      "actionable_decisions": 19,
+      "events": 223,
+      "high_materiality_events": 106,
+      "iberia_events": 151,
+      "actionable_decisions": 24,
       "threats": 0,
-      "opportunities": 7,
-      "watches": 12,
+      "opportunities": 10,
+      "watches": 14,
       "p1": 0,
-      "p2": 2,
+      "p2": 1,
       "high_economic_potential": 0,
-      "medium_economic_potential": 18,
-      "max_economic_priority_score": 0.641,
-      "strong_evidence_decisions": 19
+      "medium_economic_potential": 23,
+      "max_economic_priority_score": 0.635,
+      "strong_evidence_decisions": 24
     },
     "decision_evidence_grades": {
-      "A": 19
+      "A": 24
     },
     "top_event_types": [
       [
         "procurement_award",
-        45
+        55
       ],
       [
         "strategy",
-        27
+        30
       ],
       [
         "financial_performance",
-        23
+        24
       ],
       [
         "procurement_notice",
-        19
+        22
       ],
       [
         "ma_acquisition",
-        18
+        21
       ],
       [
         "customer_reference",
-        12
-      ],
-      [
-        "award",
-        10
-      ],
-      [
-        "certification",
-        7
+        13
       ],
       [
         "service_launch",
-        7
+        10
+      ],
+      [
+        "award",
+        9
+      ],
+      [
+        "certification",
+        8
       ],
       [
         "hiring",
@@ -297,15 +297,15 @@
     "top_technologies": [
       [
         "Cloud",
-        40
+        43
       ],
       [
         "IT Services",
-        32
+        34
       ],
       [
         "AI",
-        27
+        32
       ],
       [
         "Cybersecurity",
@@ -313,11 +313,11 @@
       ],
       [
         "Networking",
-        22
+        24
       ],
       [
         "Data Center",
-        7
+        9
       ],
       [
         "Identity",
@@ -333,12 +333,12 @@
       ]
     ],
     "scope_mix": {
-      "PT": 33,
-      "ES": 88,
-      "IBERIA": 14,
-      "GLOBAL": 58,
+      "PT": 36,
+      "ES": 100,
+      "IBERIA": 15,
+      "GLOBAL": 66,
       "EUROPE": 4,
-      "OTHER_REGION": 1
+      "OTHER_REGION": 2
     },
     "top_decisions": [
       {
@@ -346,14 +346,14 @@
         "impact": "watch",
         "priority": "P2",
         "priority_score": 0.795,
-        "evidence_priority_score": 0.878,
+        "evidence_priority_score": 0.877,
         "title": "Portugal – Centrales telefónicas – Aquisição de Upgrade à central telefónica do INEM",
         "entity_name": "Timestamp",
         "object_entity": "Timestamp – Sistemas de Informação, S.A.",
         "event_type": "procurement_award",
         "technology_domains": [],
         "market_scope": "PT",
-        "materiality": 0.884,
+        "materiality": 0.883,
         "confidence": 0.877,
         "westcon_relevance": 0.951,
         "strategic_fit": 0.771,
@@ -387,161 +387,117 @@
         "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
       },
       {
-        "decision_id": "d_fe080eeb5f144955",
-        "impact": "watch",
-        "priority": "P2",
-        "priority_score": 0.79,
-        "evidence_priority_score": 0.871,
-        "title": "España – Equipos de radio, televisión, comunicaciones y telecomunicaciones y equipos conexos – Proyecto Para El Refuerzo De La Securización Y Resiliencia De Las Redes Con Comunicaciones 5G Del Ministerio De Defensa (Ministerio De Defensa-Subdirección General De Contratación De Tecnologías De La Información Y De Las Comunicaciones (Tic))",
-        "entity_name": "Nunsys",
-        "object_entity": "Nunsys,S.A.",
-        "event_type": "procurement_award",
-        "technology_domains": [
-          "Networking",
-          "IT Services"
-        ],
-        "market_scope": "ES",
-        "materiality": 0.88,
-        "confidence": 0.877,
-        "westcon_relevance": 0.945,
-        "strategic_fit": 0.749,
-        "evidence_grade": "A",
-        "procurement_fit_score": 0.78,
-        "why": "Evento procurement_award: materialidad 0.88, fit estratégico 0.75, relevancia Westcon/Iberia 0.94, confianza 0.88.",
-        "recommended_action": "Mapear comprador, adjudicatario, tecnologías y partners; extraer aprendizaje del contrato adjudicado y cuentas análogas.",
-        "monetization": "Inteligencia de adjudicatarios, réplica de arquitectura, campañas por organismo/vertical y servicios attach.",
-        "kpi": "adjudicatarios mapeados; oportunidades análogas; pipeline influenciado; attach",
-        "owner_hint": "Ventas / PSM / Preventa",
-        "horizon": "30–90 días",
-        "evidence_sources": [
-          "TED EU Procurement"
-        ],
-        "evidence_urls": [
-          "https://ted.europa.eu/en/notice/-/detail/594274-2026"
-        ],
-        "sources": [
-          "TED EU Procurement"
-        ],
-        "source_count": 1,
-        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-        "economic_priority_score": 0.581,
-        "economic_potential": "MEDIUM",
-        "revenue_potential": 0.858,
-        "margin_potential": 0.615,
-        "recurrence_potential": 0.36,
-        "time_to_revenue_score": 0.38,
-        "enablement_effort_score": 0.46,
-        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-      },
-      {
-        "decision_id": "d_5101b0b118a77314",
+        "decision_id": "d_32a88a5a44349ce3",
         "impact": "opportunity",
         "priority": "P3",
-        "priority_score": 0.725,
-        "evidence_priority_score": 0.758,
-        "title": "España – Paquetes de software de gestión de licencias – Contrato mixto de mantenimiento y soporte del servicio unificado de ofimática, correo electrónico en la nube y herramientas colaborativas de Microsoft, para el Ayuntamiento de Fuenlabrada y sus Organismos Autónomos",
-        "entity_name": "Iberia Public Procurement Market",
-        "object_entity": "Junta de Gobierno Local del Ayuntamiento de Fuenlabrada",
-        "event_type": "procurement_notice",
-        "technology_domains": [
-          "Cloud",
-          "IT Services"
-        ],
-        "market_scope": "ES",
-        "materiality": 0.766,
-        "confidence": 0.875,
-        "westcon_relevance": 0.601,
-        "strategic_fit": 0.771,
-        "evidence_grade": "A",
-        "procurement_fit_score": 0.82,
-        "why": "Evento procurement_notice: materialidad 0.77, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.88.",
-        "recommended_action": "Priorizar la licitación tecnológica, identificar comprador, requisitos, fabricantes y partners con capacidad para concurrir.",
-        "monetization": "Pipeline de sector público, identificación temprana de partners, arquitectura, servicios profesionales y soporte.",
-        "kpi": "licitaciones cualificadas; partners mapeados; pipeline público; win-rate",
-        "owner_hint": "Ventas / PSM / Preventa",
-        "horizon": "30–90 días",
-        "evidence_sources": [
-          "TED EU Procurement"
-        ],
-        "evidence_urls": [
-          "https://ted.europa.eu/en/notice/-/detail/596126-2026"
-        ],
-        "sources": [
-          "TED EU Procurement"
-        ],
-        "source_count": 1,
-        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-        "economic_priority_score": 0.641,
-        "economic_potential": "MEDIUM",
-        "revenue_potential": 0.759,
-        "margin_potential": 0.619,
-        "recurrence_potential": 0.44,
-        "time_to_revenue_score": 0.72,
-        "enablement_effort_score": 0.38,
-        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-      },
-      {
-        "decision_id": "d_58e80818e506c5c6",
-        "impact": "opportunity",
-        "priority": "P3",
-        "priority_score": 0.725,
-        "evidence_priority_score": 0.758,
-        "title": "Contrato mixto de servicios de telecomunicaciones, gestión y mantenimiento de redes, ciberseguridad operativa y \r\nsuministro y reposición de equipos e infraestructuras necesarias del Ayuntamiento de Úbeda",
+        "priority_score": 0.728,
+        "evidence_priority_score": 0.764,
+        "title": "Acuerdo marco de infraestructura y servicios de cloud pública en la Junta de Comunidades de Castilla-La Mancha",
         "entity_name": "Iberia Public Procurement Market",
         "object_entity": "",
         "event_type": "procurement_notice",
         "technology_domains": [
-          "Cybersecurity",
-          "Networking"
+          "Cloud"
         ],
         "market_scope": "ES",
-        "materiality": 0.766,
-        "confidence": 0.875,
-        "westcon_relevance": 0.601,
-        "strategic_fit": 0.771,
+        "materiality": 0.774,
+        "confidence": 0.907,
+        "westcon_relevance": 0.595,
+        "strategic_fit": 0.749,
         "evidence_grade": "A",
-        "procurement_fit_score": 0.82,
-        "why": "Evento procurement_notice: materialidad 0.77, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.88.",
+        "procurement_fit_score": 0.78,
+        "why": "Evento procurement_notice: materialidad 0.77, fit estratégico 0.75, relevancia Westcon/Iberia 0.59, confianza 0.91.",
         "recommended_action": "Priorizar la licitación tecnológica, identificar comprador, requisitos, fabricantes y partners con capacidad para concurrir.",
         "monetization": "Pipeline de sector público, identificación temprana de partners, arquitectura, servicios profesionales y soporte.",
         "kpi": "licitaciones cualificadas; partners mapeados; pipeline público; win-rate",
         "owner_hint": "Ventas / PSM / Preventa",
         "horizon": "30–90 días",
         "evidence_sources": [
-          "Plataforma Contratación Sector Público"
+          "Plataforma Contratación Sector Público",
+          "TED EU Procurement"
         ],
         "evidence_urls": [
-          "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=IJu3cTtEKIbIGlsa0Wad%2Bw%3D%3D"
+          "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=%2FWWHyJAgToCS81gZFETWmA%3D%3D",
+          "https://ted.europa.eu/en/notice/-/detail/597010-2026"
         ],
         "sources": [
-          "Plataforma Contratación Sector Público"
+          "Plataforma Contratación Sector Público",
+          "TED EU Procurement"
         ],
-        "source_count": 1,
+        "source_count": 2,
         "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
         "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-        "economic_priority_score": 0.641,
+        "economic_priority_score": 0.635,
         "economic_potential": "MEDIUM",
-        "revenue_potential": 0.759,
-        "margin_potential": 0.619,
+        "revenue_potential": 0.74,
+        "margin_potential": 0.615,
         "recurrence_potential": 0.44,
         "time_to_revenue_score": 0.72,
         "enablement_effort_score": 0.38,
         "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
       },
       {
-        "decision_id": "d_b55c69af4a3a2614",
+        "decision_id": "d_831ac1058122a482",
+        "impact": "opportunity",
+        "priority": "P3",
+        "priority_score": 0.723,
+        "evidence_priority_score": 0.764,
+        "title": "Servicios de administración de sistemas y soporte al desarrollo para Informática del Ayuntamiento de Madrid (3 lotes)",
+        "entity_name": "Iberia Public Procurement Market",
+        "object_entity": "",
+        "event_type": "procurement_notice",
+        "technology_domains": [
+          "IT Services"
+        ],
+        "market_scope": "ES",
+        "materiality": 0.774,
+        "confidence": 0.907,
+        "westcon_relevance": 0.595,
+        "strategic_fit": 0.749,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.78,
+        "why": "Evento procurement_notice: materialidad 0.77, fit estratégico 0.75, relevancia Westcon/Iberia 0.59, confianza 0.91.",
+        "recommended_action": "Priorizar la licitación tecnológica, identificar comprador, requisitos, fabricantes y partners con capacidad para concurrir.",
+        "monetization": "Pipeline de sector público, identificación temprana de partners, arquitectura, servicios profesionales y soporte.",
+        "kpi": "licitaciones cualificadas; partners mapeados; pipeline público; win-rate",
+        "owner_hint": "Ventas / PSM / Preventa",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "Plataforma Contratación Sector Público",
+          "TED EU Procurement"
+        ],
+        "evidence_urls": [
+          "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=uLhQsk4GxCOFlFRHfEzEaw%3D%3D",
+          "https://ted.europa.eu/en/notice/-/detail/597200-2026",
+          "https://ted.europa.eu/en/notice/-/detail/599461-2026"
+        ],
+        "sources": [
+          "Plataforma Contratación Sector Público",
+          "TED EU Procurement"
+        ],
+        "source_count": 2,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.619,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.74,
+        "margin_potential": 0.615,
+        "recurrence_potential": 0.36,
+        "time_to_revenue_score": 0.72,
+        "enablement_effort_score": 0.38,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      },
+      {
+        "decision_id": "d_9722cf6d8cf04937",
         "impact": "opportunity",
         "priority": "P3",
         "priority_score": 0.721,
         "evidence_priority_score": 0.758,
-        "title": "España – Mantenimiento y reparación de equipo de tecnología de la información – Renovación del servicio de soporte técnico y mantenimiento de la herramienta de procesamiento, inspección y análisis del contenido del tráfico de red actualmente en uso en el Grupo Tragsa.",
+        "title": "España – Mantenimiento y reparación de equipo informático – Mantenimiento del parque informático de la Administración de la Comunidad Foral de Navarra durante el año 2027.",
         "entity_name": "Iberia Public Procurement Market",
-        "object_entity": "Empresa de Transformación Agraria S.A.,S.M.E., M.P., (TRAGSA)",
+        "object_entity": "Dirección General de Telecomunicaciones y Digitalización",
         "event_type": "procurement_notice",
         "technology_domains": [
-          "Networking",
           "IT Services"
         ],
         "market_scope": "ES",
@@ -561,7 +517,8 @@
           "TED EU Procurement"
         ],
         "evidence_urls": [
-          "https://ted.europa.eu/en/notice/-/detail/595079-2026"
+          "https://ted.europa.eu/en/notice/-/detail/597963-2026",
+          "https://ted.europa.eu/en/notice/-/detail/596969-2026"
         ],
         "sources": [
           "TED EU Procurement"
@@ -579,11 +536,154 @@
         "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
       },
       {
-        "decision_id": "d_6a0be5f758169ffb",
+        "decision_id": "d_3856ba11e6e3f0cf",
         "impact": "opportunity",
         "priority": "P3",
         "priority_score": 0.721,
         "evidence_priority_score": 0.758,
+        "title": "Portugal – Equipo de red – Fornecimento de upgrade à infraestrutura de rede do município",
+        "entity_name": "Iberia Public Procurement Market",
+        "object_entity": "Município de Lagos",
+        "event_type": "procurement_notice",
+        "technology_domains": [
+          "Networking"
+        ],
+        "market_scope": "PT",
+        "materiality": 0.766,
+        "confidence": 0.875,
+        "westcon_relevance": 0.601,
+        "strategic_fit": 0.771,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.82,
+        "why": "Evento procurement_notice: materialidad 0.77, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.88.",
+        "recommended_action": "Priorizar la licitación tecnológica, identificar comprador, requisitos, fabricantes y partners con capacidad para concurrir.",
+        "monetization": "Pipeline de sector público, identificación temprana de partners, arquitectura, servicios profesionales y soporte.",
+        "kpi": "licitaciones cualificadas; partners mapeados; pipeline público; win-rate",
+        "owner_hint": "Ventas / PSM / Preventa",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "TED EU Procurement"
+        ],
+        "evidence_urls": [
+          "https://ted.europa.eu/en/notice/-/detail/597853-2026"
+        ],
+        "sources": [
+          "TED EU Procurement"
+        ],
+        "source_count": 1,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.625,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.759,
+        "margin_potential": 0.619,
+        "recurrence_potential": 0.36,
+        "time_to_revenue_score": 0.72,
+        "enablement_effort_score": 0.38,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      },
+      {
+        "decision_id": "d_0269e6efa1da5531",
+        "impact": "watch",
+        "priority": "P3",
+        "priority_score": 0.721,
+        "evidence_priority_score": 0.782,
+        "title": "Servicio de mantenimiento del sistema de posicionamiento para la localización instalado en el Hospital Universitario de Gran Canaria Dr. Negrín",
+        "entity_name": "Iberia Public Procurement Market",
+        "object_entity": "SOPORTES DE COMUNICACIÓN ALTERA, SL",
+        "event_type": "procurement_award",
+        "technology_domains": [],
+        "market_scope": "ES",
+        "materiality": 0.81,
+        "confidence": 0.91,
+        "westcon_relevance": 0.601,
+        "strategic_fit": 0.771,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.82,
+        "why": "Evento procurement_award: materialidad 0.81, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.91.",
+        "recommended_action": "Mapear comprador, adjudicatario, tecnologías y partners; extraer aprendizaje del contrato adjudicado y cuentas análogas.",
+        "monetization": "Inteligencia de adjudicatarios, réplica de arquitectura, campañas por organismo/vertical y servicios attach.",
+        "kpi": "adjudicatarios mapeados; oportunidades análogas; pipeline influenciado; attach",
+        "owner_hint": "Ventas / PSM / Preventa",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "Plataforma Contratación Sector Público",
+          "TED EU Procurement"
+        ],
+        "evidence_urls": [
+          "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=5OsRMaSI2KM4NavIWzMcHA%3D%3D",
+          "https://ted.europa.eu/en/notice/-/detail/599288-2026"
+        ],
+        "sources": [
+          "Plataforma Contratación Sector Público",
+          "TED EU Procurement"
+        ],
+        "source_count": 2,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.564,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.794,
+        "margin_potential": 0.619,
+        "recurrence_potential": 0.36,
+        "time_to_revenue_score": 0.38,
+        "enablement_effort_score": 0.46,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      },
+      {
+        "decision_id": "d_4536e9b5bad4c5ea",
+        "impact": "watch",
+        "priority": "P3",
+        "priority_score": 0.721,
+        "evidence_priority_score": 0.782,
+        "title": "Servicio integral del sistema de seguimiento por medios telemáticos del cumplimiento de las medidas cautelares y penas de prohibición de aproximación en materia de violencia de género y de violencia sexual.",
+        "entity_name": "Iberia Public Procurement Market",
+        "object_entity": "Vodafone España, S.A.U.",
+        "event_type": "procurement_award",
+        "technology_domains": [],
+        "market_scope": "ES",
+        "materiality": 0.81,
+        "confidence": 0.91,
+        "westcon_relevance": 0.601,
+        "strategic_fit": 0.771,
+        "evidence_grade": "A",
+        "procurement_fit_score": 0.82,
+        "why": "Evento procurement_award: materialidad 0.81, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.91.",
+        "recommended_action": "Mapear comprador, adjudicatario, tecnologías y partners; extraer aprendizaje del contrato adjudicado y cuentas análogas.",
+        "monetization": "Inteligencia de adjudicatarios, réplica de arquitectura, campañas por organismo/vertical y servicios attach.",
+        "kpi": "adjudicatarios mapeados; oportunidades análogas; pipeline influenciado; attach",
+        "owner_hint": "Ventas / PSM / Preventa",
+        "horizon": "30–90 días",
+        "evidence_sources": [
+          "Plataforma Contratación Sector Público",
+          "TED EU Procurement"
+        ],
+        "evidence_urls": [
+          "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=8wRniISfquz%2Fa9DgO%2BoYKQ%3D%3D",
+          "https://ted.europa.eu/en/notice/-/detail/598114-2026"
+        ],
+        "sources": [
+          "Plataforma Contratación Sector Público",
+          "TED EU Procurement"
+        ],
+        "source_count": 2,
+        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
+        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
+        "economic_priority_score": 0.564,
+        "economic_potential": "MEDIUM",
+        "revenue_potential": 0.794,
+        "margin_potential": 0.619,
+        "recurrence_potential": 0.36,
+        "time_to_revenue_score": 0.38,
+        "enablement_effort_score": 0.46,
+        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
+      },
+      {
+        "decision_id": "d_6a0be5f758169ffb",
+        "impact": "opportunity",
+        "priority": "P3",
+        "priority_score": 0.72,
+        "evidence_priority_score": 0.757,
         "title": "Portugal – Mantenimiento y reparación de equipo informático – Serviços de manutenção e suporte da plataforma Exadata Database Machine e serviços de manutenção da infraestrutura Oracle, suporte para equipamento Oracle ZFS Storage e assistência pós-venda para soft",
         "entity_name": "Iberia Public Procurement Market",
         "object_entity": "Instituto do Turismo de Portugal, IP",
@@ -593,7 +693,7 @@
           "IT Services"
         ],
         "market_scope": "PT",
-        "materiality": 0.766,
+        "materiality": 0.765,
         "confidence": 0.875,
         "westcon_relevance": 0.601,
         "strategic_fit": 0.771,
@@ -630,15 +730,15 @@
         "decision_id": "d_024bb7c3cb527541",
         "impact": "opportunity",
         "priority": "P3",
-        "priority_score": 0.721,
-        "evidence_priority_score": 0.758,
+        "priority_score": 0.72,
+        "evidence_priority_score": 0.757,
         "title": "Portugal – Servicios de mantenimiento de infraestructura de telecomunicaciones – Aquisição de bens e serviços para modernização da infraestrutura de rede e segurança",
         "entity_name": "Iberia Public Procurement Market",
         "object_entity": "Serviço de Utilização Comum dos Hospitais",
         "event_type": "procurement_notice",
         "technology_domains": [],
         "market_scope": "PT",
-        "materiality": 0.766,
+        "materiality": 0.765,
         "confidence": 0.875,
         "westcon_relevance": 0.601,
         "strategic_fit": 0.771,
@@ -672,83 +772,86 @@
         "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
       },
       {
-        "decision_id": "d_e58a233849e030da",
+        "decision_id": "d_d74efab4412294b9",
         "impact": "watch",
         "priority": "P3",
-        "priority_score": 0.717,
-        "evidence_priority_score": 0.77,
-        "title": "España – Servicios de vigilancia de sistemas de alarma – Servicio de conexión a CRA, custodia de llaves y acuda así como el mantenimiento de las instalaciones de seguridad antiintrusión y circuitos cerrados de televisión (CCTV), en los Edificios Municipales de Sevilla (2Lotes)",
+        "priority_score": 0.72,
+        "evidence_priority_score": 0.776,
+        "title": "Contrato Mixto de Servicio del Centro de Operaciones de Seguridad y suministro de licencias antivirus para el Ayuntamiento de Albacete. Expte. 36-2025",
         "entity_name": "Iberia Public Procurement Market",
-        "object_entity": "Junta de Gobierno del Ayuntamiento de Sevilla",
+        "object_entity": "Sothis Servicios Tecnológicos",
         "event_type": "procurement_award",
         "technology_domains": [
           "Cybersecurity"
         ],
         "market_scope": "ES",
-        "materiality": 0.799,
-        "confidence": 0.877,
-        "westcon_relevance": 0.601,
-        "strategic_fit": 0.771,
+        "materiality": 0.806,
+        "confidence": 0.91,
+        "westcon_relevance": 0.595,
+        "strategic_fit": 0.749,
         "evidence_grade": "A",
-        "procurement_fit_score": 0.82,
-        "why": "Evento procurement_award: materialidad 0.80, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.88.",
+        "procurement_fit_score": 0.78,
+        "why": "Evento procurement_award: materialidad 0.81, fit estratégico 0.75, relevancia Westcon/Iberia 0.59, confianza 0.91.",
         "recommended_action": "Mapear comprador, adjudicatario, tecnologías y partners; extraer aprendizaje del contrato adjudicado y cuentas análogas.",
         "monetization": "Inteligencia de adjudicatarios, réplica de arquitectura, campañas por organismo/vertical y servicios attach.",
         "kpi": "adjudicatarios mapeados; oportunidades análogas; pipeline influenciado; attach",
         "owner_hint": "Ventas / PSM / Preventa",
         "horizon": "30–90 días",
         "evidence_sources": [
+          "Plataforma Contratación Sector Público",
           "TED EU Procurement"
         ],
         "evidence_urls": [
-          "https://ted.europa.eu/en/notice/-/detail/593862-2026"
+          "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=f1Uso9R70e8%2FbjW6njtWLw%3D%3D",
+          "https://ted.europa.eu/en/notice/-/detail/597179-2026"
         ],
         "sources": [
+          "Plataforma Contratación Sector Público",
           "TED EU Procurement"
         ],
-        "source_count": 1,
+        "source_count": 2,
         "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
         "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-        "economic_priority_score": 0.579,
+        "economic_priority_score": 0.577,
         "economic_potential": "MEDIUM",
-        "revenue_potential": 0.793,
-        "margin_potential": 0.619,
+        "revenue_potential": 0.787,
+        "margin_potential": 0.615,
         "recurrence_potential": 0.44,
         "time_to_revenue_score": 0.38,
         "enablement_effort_score": 0.46,
         "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
       },
       {
-        "decision_id": "d_fe51594f36ae077d",
-        "impact": "watch",
+        "decision_id": "d_ca16e26700950197",
+        "impact": "opportunity",
         "priority": "P3",
-        "priority_score": 0.717,
-        "evidence_priority_score": 0.77,
-        "title": "España – Servicios de taxi – Servicio de Transporte No Sanitario desde el ámbito territorial de la Comunidad Autónoma de Aragón",
+        "priority_score": 0.719,
+        "evidence_priority_score": 0.751,
+        "title": "Bélgica, Luxemburgo, Francia, Letonia, Alemania, Suecia, Grecia, Rumanía, Hungría, Eslovaquia, Países Bajos, Austria, Estonia, Chequia, España – Mobiliario – Fourniture de mobilier pour l'aménagement et l’équipement des espaces de travail et de convivialité de la Commission européenne et autres entités participantes",
         "entity_name": "Iberia Public Procurement Market",
-        "object_entity": "Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1",
-        "event_type": "procurement_award",
+        "object_entity": "Commission européenne, OIB - Office for Infrastructure and Logistics in Brussels / Cour des comptes ",
+        "event_type": "procurement_notice",
         "technology_domains": [
           "Cybersecurity"
         ],
         "market_scope": "ES",
-        "materiality": 0.799,
-        "confidence": 0.877,
-        "westcon_relevance": 0.601,
-        "strategic_fit": 0.771,
+        "materiality": 0.762,
+        "confidence": 0.875,
+        "westcon_relevance": 0.595,
+        "strategic_fit": 0.749,
         "evidence_grade": "A",
-        "procurement_fit_score": 0.82,
-        "why": "Evento procurement_award: materialidad 0.80, fit estratégico 0.77, relevancia Westcon/Iberia 0.60, confianza 0.88.",
-        "recommended_action": "Mapear comprador, adjudicatario, tecnologías y partners; extraer aprendizaje del contrato adjudicado y cuentas análogas.",
-        "monetization": "Inteligencia de adjudicatarios, réplica de arquitectura, campañas por organismo/vertical y servicios attach.",
-        "kpi": "adjudicatarios mapeados; oportunidades análogas; pipeline influenciado; attach",
+        "procurement_fit_score": 0.78,
+        "why": "Evento procurement_notice: materialidad 0.76, fit estratégico 0.75, relevancia Westcon/Iberia 0.59, confianza 0.88.",
+        "recommended_action": "Priorizar la licitación tecnológica, identificar comprador, requisitos, fabricantes y partners con capacidad para concurrir.",
+        "monetization": "Pipeline de sector público, identificación temprana de partners, arquitectura, servicios profesionales y soporte.",
+        "kpi": "licitaciones cualificadas; partners mapeados; pipeline público; win-rate",
         "owner_hint": "Ventas / PSM / Preventa",
         "horizon": "30–90 días",
         "evidence_sources": [
           "TED EU Procurement"
         ],
         "evidence_urls": [
-          "https://ted.europa.eu/en/notice/-/detail/596067-2026"
+          "https://ted.europa.eu/en/notice/-/detail/598420-2026"
         ],
         "sources": [
           "TED EU Procurement"
@@ -756,13 +859,13 @@
         "source_count": 1,
         "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
         "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-        "economic_priority_score": 0.579,
+        "economic_priority_score": 0.635,
         "economic_potential": "MEDIUM",
-        "revenue_potential": 0.793,
-        "margin_potential": 0.619,
+        "revenue_potential": 0.74,
+        "margin_potential": 0.615,
         "recurrence_potential": 0.44,
-        "time_to_revenue_score": 0.38,
-        "enablement_effort_score": 0.46,
+        "time_to_revenue_score": 0.72,
+        "enablement_effort_score": 0.38,
         "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
       },
       {
@@ -779,7 +882,7 @@
           "Cloud"
         ],
         "market_scope": "GLOBAL",
-        "materiality": 0.77,
+        "materiality": 0.769,
         "confidence": 0.808,
         "westcon_relevance": 0.78,
         "strategic_fit": 0.76,
@@ -811,124 +914,32 @@
         "time_to_revenue_score": 0.24,
         "enablement_effort_score": 0.54,
         "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-      },
-      {
-        "decision_id": "d_430cd6cfecd25c8c",
-        "impact": "opportunity",
-        "priority": "P3",
-        "priority_score": 0.714,
-        "evidence_priority_score": 0.751,
-        "title": "España – Servicios de análisis de sistemas y de programación – Servicios de gestión y evolución de la plataforma de gestores de base de datos y servidores de aplicaciones del Servicio Gallego de Salud.",
-        "entity_name": "Iberia Public Procurement Market",
-        "object_entity": "Servicio Gallego de Salud",
-        "event_type": "procurement_notice",
-        "technology_domains": [],
-        "market_scope": "ES",
-        "materiality": 0.762,
-        "confidence": 0.875,
-        "westcon_relevance": 0.595,
-        "strategic_fit": 0.749,
-        "evidence_grade": "A",
-        "procurement_fit_score": 0.78,
-        "why": "Evento procurement_notice: materialidad 0.76, fit estratégico 0.75, relevancia Westcon/Iberia 0.59, confianza 0.88.",
-        "recommended_action": "Priorizar la licitación tecnológica, identificar comprador, requisitos, fabricantes y partners con capacidad para concurrir.",
-        "monetization": "Pipeline de sector público, identificación temprana de partners, arquitectura, servicios profesionales y soporte.",
-        "kpi": "licitaciones cualificadas; partners mapeados; pipeline público; win-rate",
-        "owner_hint": "Ventas / PSM / Preventa",
-        "horizon": "30–90 días",
-        "evidence_sources": [
-          "TED EU Procurement"
-        ],
-        "evidence_urls": [
-          "https://ted.europa.eu/en/notice/-/detail/593952-2026"
-        ],
-        "sources": [
-          "TED EU Procurement"
-        ],
-        "source_count": 1,
-        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-        "economic_priority_score": 0.619,
-        "economic_potential": "MEDIUM",
-        "revenue_potential": 0.74,
-        "margin_potential": 0.615,
-        "recurrence_potential": 0.36,
-        "time_to_revenue_score": 0.72,
-        "enablement_effort_score": 0.38,
-        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
-      },
-      {
-        "decision_id": "d_5b5ce18d628db69f",
-        "impact": "opportunity",
-        "priority": "P3",
-        "priority_score": 0.714,
-        "evidence_priority_score": 0.751,
-        "title": "Portugal – Equipo de refrigeración – Aquisição de unidades de refrigeração para datacenter - Azurém 2",
-        "entity_name": "Iberia Public Procurement Market",
-        "object_entity": "Fundação para a Ciência e a Tecnologia, IP",
-        "event_type": "procurement_notice",
-        "technology_domains": [
-          "Data Center"
-        ],
-        "market_scope": "PT",
-        "materiality": 0.762,
-        "confidence": 0.875,
-        "westcon_relevance": 0.595,
-        "strategic_fit": 0.749,
-        "evidence_grade": "A",
-        "procurement_fit_score": 0.78,
-        "why": "Evento procurement_notice: materialidad 0.76, fit estratégico 0.75, relevancia Westcon/Iberia 0.59, confianza 0.88.",
-        "recommended_action": "Priorizar la licitación tecnológica, identificar comprador, requisitos, fabricantes y partners con capacidad para concurrir.",
-        "monetization": "Pipeline de sector público, identificación temprana de partners, arquitectura, servicios profesionales y soporte.",
-        "kpi": "licitaciones cualificadas; partners mapeados; pipeline público; win-rate",
-        "owner_hint": "Ventas / PSM / Preventa",
-        "horizon": "30–90 días",
-        "evidence_sources": [
-          "TED EU Procurement"
-        ],
-        "evidence_urls": [
-          "https://ted.europa.eu/en/notice/-/detail/590991-2026"
-        ],
-        "sources": [
-          "TED EU Procurement"
-        ],
-        "source_count": 1,
-        "counter_evidence": "Buscar evidencia primaria y señales que contradigan alcance, relación o relevancia antes de decisiones de alto impacto.",
-        "change_trigger": "Recalcular si cambia la relación de canal, aparece evidencia Iberia, se confirma una fuente primaria o la materialidad cae por obsolescencia.",
-        "economic_priority_score": 0.619,
-        "economic_potential": "MEDIUM",
-        "revenue_potential": 0.74,
-        "margin_potential": 0.615,
-        "recurrence_potential": 0.36,
-        "time_to_revenue_score": 0.72,
-        "enablement_effort_score": 0.38,
-        "economic_note": "Proxy relativo basado en tipo de evento, fit tecnológico, alcance y recurrencia. No representa euros hasta integrar datos internos de pipeline/margen."
       }
     ]
   },
   "competitive_entities": 13,
-  "competitive_high": 3,
-  "competitive_medium": 5,
-  "whitespace_candidates": 59,
+  "competitive_high": 4,
+  "competitive_medium": 4,
+  "whitespace_candidates": 68,
   "whitespace_shortlist": 25,
   "portfolio_vendors": 12,
   "event_type_counts": {
-    "procurement_award": 45,
-    "ma_acquisition": 18,
+    "procurement_award": 55,
+    "ma_acquisition": 21,
     "distribution_agreement": 3,
+    "service_launch": 10,
     "managed_service": 2,
-    "partnership": 2,
+    "procurement_notice": 22,
+    "partnership": 3,
     "end_of_sale": 1,
-    "customer_reference": 12,
-    "procurement_notice": 19,
-    "certification": 7,
+    "customer_reference": 13,
+    "certification": 8,
     "market_expansion": 2,
-    "service_launch": 7,
     "product_release": 4,
-    "financial_performance": 23,
+    "financial_performance": 24,
     "capability_expansion": 1,
-    "strategy": 27,
-    "award": 10,
+    "strategy": 30,
+    "award": 9,
     "investment": 1,
     "operational_incident": 1,
     "analyst_positioning": 2,
@@ -936,46 +947,46 @@
     "hiring": 6
   },
   "quality_report": {
-    "generated_at": "2026-08-27T22:47:41.904904+00:00",
-    "events": 198,
-    "decisions": 19,
-    "decision_rate": 0.096,
+    "generated_at": "2026-08-31T09:19:05.812682+00:00",
+    "events": 223,
+    "decisions": 24,
+    "decision_rate": 0.108,
     "evidence_grade_counts": {
-      "A": 19
+      "A": 24
     },
     "impact_counts": {
-      "watch": 12,
-      "opportunity": 7
+      "watch": 14,
+      "opportunity": 10
     },
     "priority_counts": {
-      "P2": 2,
-      "P3": 17
+      "P2": 1,
+      "P3": 23
     },
     "top_sources": [
       [
         "TED EU Procurement",
-        17
+        22
       ],
       [
         "Plataforma Contratación Sector Público",
-        1
+        6
       ],
       [
         "CISA KEV",
         1
       ]
     ],
-    "top_source_share": 0.895,
+    "top_source_share": 0.917,
     "competitive_pressure": {
-      "generated_at": "2026-08-27T22:47:41.896833+00:00",
+      "generated_at": "2026-08-31T09:19:05.805170+00:00",
       "entities": 13,
-      "high_pressure": 3,
-      "medium_pressure": 5,
+      "high_pressure": 4,
+      "medium_pressure": 4,
       "alerts": 8
     },
     "whitespace_shortlist": 25
   },
   "status": "published",
-  "finished_at": "2026-08-27T22:47:41.955469+00:00",
-  "runtime_seconds": 121.4
+  "finished_at": "2026-08-31T09:19:06.087517+00:00",
+  "runtime_seconds": 130.3
 }

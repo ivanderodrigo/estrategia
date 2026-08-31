@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated_at": "2026-08-27T22:47:41.883146+00:00",
-    "nodes": 130,
-    "edges": 94
+    "generated_at": "2026-08-31T09:19:05.794559+00:00",
+    "nodes": 137,
+    "edges": 104
   },
   "nodes": [
     {
@@ -10,7 +10,7 @@
       "label": "Timestamp",
       "kind": "integrator",
       "events": 1,
-      "max_materiality": 0.884,
+      "max_materiality": 0.883,
       "degree": 0
     },
     {
@@ -30,40 +30,112 @@
       "degree": 1
     },
     {
-      "id": "ent_5eb6f43b5a92",
-      "label": "Nunsys",
-      "kind": "integrator",
-      "events": 1,
-      "max_materiality": 0.88,
-      "degree": 0
-    },
-    {
-      "id": "ent_867135af49ce",
-      "label": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "kind": "buyer",
-      "events": 0,
-      "max_materiality": 0.0,
+      "id": "ent_0004ce55d3e7",
+      "label": "Okta",
+      "kind": "vendor",
+      "events": 2,
+      "max_materiality": 0.863,
       "degree": 1
     },
     {
-      "id": "ent_71ec293272b0",
-      "label": "Nunsys,S.A.",
+      "id": "ent_d3d04978c1e4",
+      "label": "de Okta y Datadog",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 2
+    },
+    {
+      "id": "ent_8c804d7d1311",
+      "label": "Palo Alto Networks",
+      "kind": "vendor",
+      "events": 7,
+      "max_materiality": 0.863,
+      "degree": 1
+    },
+    {
+      "id": "ent_300a29a2fe6e",
+      "label": "Indra",
+      "kind": "integrator",
+      "events": 17,
+      "max_materiality": 0.827,
+      "degree": 2
+    },
+    {
+      "id": "ent_807631b46fa2",
+      "label": "Instituto Municipal Barcelona Innovación y Tecnología",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 2
+    },
+    {
+      "id": "ent_df561a466c72",
+      "label": "INDRA SOLUCIONES TECNOLOGÍAS DE LA INFORMACION S.L.U.",
       "kind": "supplier",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
     },
     {
-      "id": "ent_8c804d7d1311",
-      "label": "Palo Alto Networks",
-      "kind": "vendor",
-      "events": 6,
-      "max_materiality": 0.864,
+      "id": "ent_cad160f3d4cd",
+      "label": "Babel",
+      "kind": "integrator",
+      "events": 5,
+      "max_materiality": 0.827,
+      "degree": 2
+    },
+    {
+      "id": "ent_fedc84441d3b",
+      "label": "Gerencia de Fraternidad Muprespa - Mútua Colaboradora con la Seguridad Social nº 275",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
       "degree": 1
     },
     {
-      "id": "ent_d3d04978c1e4",
-      "label": "de Okta y Datadog",
+      "id": "ent_5acb0944ee46",
+      "label": "Babel Sistemas de Información, S.L.U.",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_ea2f01df4c11",
+      "label": "Claranet Spain",
+      "kind": "integrator",
+      "events": 2,
+      "max_materiality": 0.827,
+      "degree": 0
+    },
+    {
+      "id": "ent_d25b8909a417",
+      "label": "Município do Funchal",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 2
+    },
+    {
+      "id": "ent_00d056c50081",
+      "label": "Claranet II Solutions S.A.",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 2
+    },
+    {
+      "id": "ent_634c412f9ba5",
+      "label": "Claranet Portugal",
+      "kind": "integrator",
+      "events": 4,
+      "max_materiality": 0.827,
+      "degree": 0
+    },
+    {
+      "id": "ent_fbcca5b79a61",
+      "label": "la división de consultoría de Bosonit y se refuerza en IA y a",
       "kind": "external_entity",
       "events": 0,
       "max_materiality": 0.0,
@@ -74,20 +146,28 @@
       "label": "NTT DATA Spain",
       "kind": "integrator",
       "events": 3,
-      "max_materiality": 0.827,
+      "max_materiality": 0.826,
       "degree": 1
     },
     {
-      "id": "ent_50de54a9237c",
-      "label": "Consellería de Medio Ambiente y Cambio Climático",
+      "id": "ent_cb9f3a85c1d3",
+      "label": "NTT DATA Portugal",
+      "kind": "integrator",
+      "events": 2,
+      "max_materiality": 0.826,
+      "degree": 0
+    },
+    {
+      "id": "ent_dbbaa3a611f4",
+      "label": "Serviços Partilhados do Ministério da Saúde, EPE",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 2
+      "degree": 5
     },
     {
-      "id": "ent_453ba0e3be52",
-      "label": "UTE NTT DATA -SERESCO, PROYECTO SICLE CO2",
+      "id": "ent_64eebfbaa60c",
+      "label": "CLARANET PORTUGAL, S.A.",
       "kind": "supplier",
       "events": 0,
       "max_materiality": 0.0,
@@ -110,99 +190,27 @@
       "degree": 4
     },
     {
-      "id": "ent_cb9f3a85c1d3",
-      "label": "NTT DATA Portugal",
-      "kind": "integrator",
-      "events": 2,
-      "max_materiality": 0.827,
-      "degree": 0
-    },
-    {
-      "id": "ent_cad160f3d4cd",
-      "label": "Babel",
-      "kind": "integrator",
-      "events": 4,
-      "max_materiality": 0.827,
-      "degree": 2
-    },
-    {
-      "id": "ent_522ed5ff5733",
-      "label": "Dirección de la Agencia Estatal de Administración Digital",
-      "kind": "buyer",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 1
-    },
-    {
-      "id": "ent_e3847b34f9d4",
-      "label": "UTE LKS NEXT-BABEL-GETRONICS",
-      "kind": "supplier",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 1
-    },
-    {
-      "id": "ent_ea2f01df4c11",
-      "label": "Claranet Spain",
-      "kind": "integrator",
-      "events": 1,
-      "max_materiality": 0.827,
-      "degree": 0
-    },
-    {
-      "id": "ent_dbbaa3a611f4",
-      "label": "Serviços Partilhados do Ministério da Saúde, EPE",
-      "kind": "buyer",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 5
-    },
-    {
-      "id": "ent_64eebfbaa60c",
-      "label": "CLARANET PORTUGAL, S.A.",
-      "kind": "supplier",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 2
-    },
-    {
-      "id": "ent_634c412f9ba5",
-      "label": "Claranet Portugal",
-      "kind": "integrator",
-      "events": 3,
-      "max_materiality": 0.827,
-      "degree": 0
-    },
-    {
       "id": "ent_1422fa16b6c1",
       "label": "Accenture Spain",
       "kind": "integrator",
-      "events": 6,
-      "max_materiality": 0.827,
-      "degree": 4
+      "events": 7,
+      "max_materiality": 0.826,
+      "degree": 5
     },
     {
       "id": "ent_42afd91e025b",
       "label": "Atos Spain",
       "kind": "integrator",
       "events": 1,
-      "max_materiality": 0.827,
+      "max_materiality": 0.826,
       "degree": 0
-    },
-    {
-      "id": "ent_fbcca5b79a61",
-      "label": "la división de consultoría de Bosonit y se refuerza en IA y a",
-      "kind": "external_entity",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 1
     },
     {
       "id": "ent_822380cfde53",
       "label": "Glintt Global",
       "kind": "integrator",
       "events": 1,
-      "max_materiality": 0.826,
+      "max_materiality": 0.825,
       "degree": 0
     },
     {
@@ -218,7 +226,7 @@
       "label": "Bechtle Spain",
       "kind": "integrator",
       "events": 3,
-      "max_materiality": 0.82,
+      "max_materiality": 0.819,
       "degree": 0
     },
     {
@@ -238,11 +246,19 @@
       "degree": 1
     },
     {
+      "id": "ent_2abf1b46520b",
+      "label": "Iberia Public Procurement Market",
+      "kind": "market",
+      "events": 56,
+      "max_materiality": 0.81,
+      "degree": 0
+    },
+    {
       "id": "ent_8ede098acbe0",
       "label": "Exclusive Networks",
       "kind": "distributor",
       "events": 2,
-      "max_materiality": 0.811,
+      "max_materiality": 0.81,
       "degree": 1
     },
     {
@@ -250,7 +266,7 @@
       "label": "Econocom Spain",
       "kind": "integrator",
       "events": 3,
-      "max_materiality": 0.805,
+      "max_materiality": 0.804,
       "degree": 1
     },
     {
@@ -270,64 +286,16 @@
       "degree": 1
     },
     {
-      "id": "ent_300a29a2fe6e",
-      "label": "Indra",
-      "kind": "integrator",
-      "events": 18,
-      "max_materiality": 0.803,
-      "degree": 2
-    },
-    {
-      "id": "ent_c15589950bc2",
-      "label": "Red Eléctrica de España, S.A.U. (Red Eléctrica)",
+      "id": "ent_6df72c006222",
+      "label": "Aena. Presidencia. Consejero Delegado",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
     },
     {
-      "id": "ent_f580fd10b88d",
-      "label": "Indra Soluc.Tec.de la Inform., SLU",
-      "kind": "supplier",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 1
-    },
-    {
-      "id": "ent_2abf1b46520b",
-      "label": "Iberia Public Procurement Market",
-      "kind": "market",
-      "events": 45,
-      "max_materiality": 0.799,
-      "degree": 0
-    },
-    {
-      "id": "ent_ba3fc06b6a30",
-      "label": "Gerencia Regional de Salud de Castilla y León",
-      "kind": "buyer",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 1
-    },
-    {
-      "id": "ent_8ddd027af474",
-      "label": "TECNOLOGÍAS PLEXUS S.L.",
-      "kind": "supplier",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 1
-    },
-    {
-      "id": "ent_944bbb59feb3",
-      "label": "Dirección General de la Entidad Pública Empresarial RED.ES",
-      "kind": "buyer",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 1
-    },
-    {
-      "id": "ent_ac58dd9b9714",
-      "label": "TELEFONICA SOLUCIONES DE INFORMATICA Y COMUNICACIONES DE ESPAÑA, S.A.U.",
+      "id": "ent_aa913a8a6a37",
+      "label": "ORANGE ESPAGNE SA",
       "kind": "supplier",
       "events": 0,
       "max_materiality": 0.0,
@@ -350,8 +318,32 @@
       "degree": 1
     },
     {
-      "id": "ent_c8d4eec720a7",
-      "label": "Ente Público de Radiotelevisión de las Illes Balears",
+      "id": "ent_c2d135d844a8",
+      "label": "Whalar",
+      "kind": "external_entity",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_0f9010175147",
+      "label": "CONSORCI HOSPITAL CLÍNIC DE BARCELONA (HCB)",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_58a41ddb71a5",
+      "label": "MEDTRONIC IBERICA, S.A.",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_a10bf3f2331b",
+      "label": "Corporació Catalana de Mitjans Audiovisuals, SA (CCMA, SA)",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
@@ -360,6 +352,22 @@
     {
       "id": "ent_48939c80c1f3",
       "label": "Datos Media Technologies S.A",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_29f93e113744",
+      "label": "Universidade do Minho",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_e3d1e0ca3bd0",
+      "label": "VWR International - Material de Laboratório, Soc. Unipessoal, Lda.",
       "kind": "supplier",
       "events": 0,
       "max_materiality": 0.0,
@@ -386,7 +394,7 @@
       "label": "Minsait",
       "kind": "integrator",
       "events": 3,
-      "max_materiality": 0.795,
+      "max_materiality": 0.794,
       "degree": 3
     },
     {
@@ -426,7 +434,7 @@
       "label": "Kyndryl Spain",
       "kind": "integrator",
       "events": 2,
-      "max_materiality": 0.794,
+      "max_materiality": 0.793,
       "degree": 0
     },
     {
@@ -434,7 +442,7 @@
       "label": "Zscaler",
       "kind": "vendor",
       "events": 4,
-      "max_materiality": 0.791,
+      "max_materiality": 0.79,
       "degree": 2
     },
     {
@@ -444,6 +452,30 @@
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
+    },
+    {
+      "id": "ent_55357933a731",
+      "label": "AWS",
+      "kind": "vendor",
+      "events": 12,
+      "max_materiality": 0.789,
+      "degree": 6
+    },
+    {
+      "id": "ent_141a92417f71",
+      "label": "AI",
+      "kind": "technology",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 9
+    },
+    {
+      "id": "ent_000e793db70c",
+      "label": "Cloud",
+      "kind": "technology",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 7
     },
     {
       "id": "ent_324137e04bc4",
@@ -458,7 +490,7 @@
       "label": "Microsoft Azure",
       "kind": "vendor",
       "events": 7,
-      "max_materiality": 0.788,
+      "max_materiality": 0.787,
       "degree": 2
     },
     {
@@ -474,7 +506,7 @@
       "label": "Westcon-Comstor",
       "kind": "distributor",
       "events": 4,
-      "max_materiality": 0.779,
+      "max_materiality": 0.778,
       "degree": 1
     },
     {
@@ -483,7 +515,7 @@
       "kind": "technology",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 5
+      "degree": 6
     },
     {
       "id": "ent_bd2aec06633d",
@@ -497,8 +529,8 @@
       "id": "ent_d61db83635e5",
       "label": "Nokia",
       "kind": "vendor",
-      "events": 6,
-      "max_materiality": 0.773,
+      "events": 7,
+      "max_materiality": 0.772,
       "degree": 3
     },
     {
@@ -506,24 +538,24 @@
       "label": "Cisco",
       "kind": "vendor",
       "events": 12,
-      "max_materiality": 0.772,
+      "max_materiality": 0.771,
       "degree": 4
     },
     {
-      "id": "ent_17c03de27b55",
-      "label": "Empresa de Transformación Agraria S.A.,S.M.E., M.P., (TRAGSA)",
+      "id": "ent_b81902f73021",
+      "label": "Check Point",
+      "kind": "vendor",
+      "events": 6,
+      "max_materiality": 0.771,
+      "degree": 3
+    },
+    {
+      "id": "ent_46d127e1d0ed",
+      "label": "Dirección General de Telecomunicaciones y Digitalización",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 2
-    },
-    {
-      "id": "ent_9e91940ff923",
-      "label": "Networking",
-      "kind": "technology",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 7
+      "degree": 1
     },
     {
       "id": "ent_20725cb1b8af",
@@ -531,23 +563,23 @@
       "kind": "technology",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 7
+      "degree": 8
     },
     {
-      "id": "ent_86031283dbbf",
-      "label": "Junta de Gobierno Local del Ayuntamiento de Fuenlabrada",
+      "id": "ent_3320743fd555",
+      "label": "Município de Lagos",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 2
+      "degree": 1
     },
     {
-      "id": "ent_000e793db70c",
-      "label": "Cloud",
+      "id": "ent_9e91940ff923",
+      "label": "Networking",
       "kind": "technology",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 6
+      "degree": 8
     },
     {
       "id": "ent_80f97b438683",
@@ -563,7 +595,7 @@
       "kind": "technology",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 2
+      "degree": 5
     },
     {
       "id": "ent_a07c24767f60",
@@ -579,31 +611,31 @@
       "kind": "technology",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 7
+      "degree": 3
     },
     {
-      "id": "ent_cb030491157b",
-      "label": "Meta",
-      "kind": "external_entity",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 1
-    },
-    {
-      "id": "ent_d20ffdc33cde",
-      "label": "Servicio Gallego de Salud",
+      "id": "ent_581b5cdbc562",
+      "label": "Commission européenne, OIB - Office for Infrastructure and Logistics in Brussels / Cour des comptes / EDPS - European Data Protection Supervisor / OMBUDSMAN - European Ombudsman / Secrétariat général du Conseil de l'Union européenne / Agence exécutive du Conseil européen de la recherche (ERCEA) / European Climate, Infrastructure and Environment Executive Agency (CINEA) / European Education and Culture Executive Agency (EACEA) / European Innovation Council and SMEs Executive Agency (EISMEA) / European Research Executive Agency (REA) / Health and Digital Executive Agency (HaDEA) / Agency for Support for BEREC (BEREC Office) / Authority for Anti-Money Laundering and Countering the Financing of Terrorism / Chips Joint Undertaking / Circular Bio-based Europe Joint Undertaking / Clean Aviation Joint Undertaking / Europe's Rail Joint Undertaking / European Banking Authority / European Centre for Disease Prevention and Control / European Centre for the Development of Vocational Training / European Cybersecurity Industrial, Technology and Research Competence Centre / European Defence Agency / European Institute of Innovation and Technology / European Insurance and Occupational Pensions Authority / European Labour Authority (ELA) / European Public Prosecutor’s Office / European Schools / European Securities and Markets Authority / European Union Agency for Criminal Justice Cooperation (Eurojust) / European Union Agency for Fundamental Rights / European Union Agency for Railways / European Union Agency for the Operational Management of Large-Scale IT Systems in the Area of Freedom, Security and Justice (eu-LISA) / European Union Agency for the Space Programme / F4E - Fusion for Energy Joint Undertaking / Innovative Health Initiative Joint Undertaking (IHI JU) / Single Resolution Board (SRB) / Smart Networks and Services Joint Undertaking / Translation Centre for the Bodies of the European Union / Committee of the Regions of the European Union / European Economic and Social Committee",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
     },
     {
-      "id": "ent_78eae87d7f0d",
-      "label": "Fundação para a Ciência e a Tecnologia, IP",
+      "id": "ent_ceea4d64b00b",
+      "label": "Fundación Donostia International Physics Center - Fundación Donostia International Physics Center",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
+    },
+    {
+      "id": "ent_3ff110a3a36e",
+      "label": "Estado-Maior do Exército",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 2
     },
     {
       "id": "ent_c92be6821474",
@@ -622,20 +654,20 @@
       "degree": 1
     },
     {
-      "id": "ent_55357933a731",
-      "label": "AWS",
-      "kind": "vendor",
-      "events": 9,
-      "max_materiality": 0.759,
-      "degree": 4
-    },
-    {
-      "id": "ent_141a92417f71",
-      "label": "AI",
-      "kind": "technology",
+      "id": "ent_cb030491157b",
+      "label": "Meta",
+      "kind": "external_entity",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 7
+      "degree": 1
+    },
+    {
+      "id": "ent_78eae87d7f0d",
+      "label": "Fundação para a Ciência e a Tecnologia, IP",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
     },
     {
       "id": "ent_1ec1526dc501",
@@ -649,9 +681,9 @@
       "id": "ent_cec06f879afd",
       "label": "CrowdStrike",
       "kind": "vendor",
-      "events": 4,
-      "max_materiality": 0.755,
-      "degree": 1
+      "events": 7,
+      "max_materiality": 0.754,
+      "degree": 3
     },
     {
       "id": "ent_312ed622edfb",
@@ -666,7 +698,7 @@
       "label": "SATEC",
       "kind": "integrator",
       "events": 1,
-      "max_materiality": 0.744,
+      "max_materiality": 0.743,
       "degree": 2
     },
     {
@@ -674,14 +706,14 @@
       "label": "SEIDOR",
       "kind": "integrator",
       "events": 5,
-      "max_materiality": 0.721,
+      "max_materiality": 0.72,
       "degree": 0
     },
     {
       "id": "ent_d73d4a8b6a65",
       "label": "Fortinet",
       "kind": "vendor",
-      "events": 9,
+      "events": 10,
       "max_materiality": 0.719,
       "degree": 2
     },
@@ -692,14 +724,6 @@
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
-    },
-    {
-      "id": "ent_b81902f73021",
-      "label": "Check Point",
-      "kind": "vendor",
-      "events": 5,
-      "max_materiality": 0.701,
-      "degree": 3
     },
     {
       "id": "ent_f43a4323675a",
@@ -714,7 +738,15 @@
       "label": "T-Systems Spain",
       "kind": "integrator",
       "events": 1,
-      "max_materiality": 0.699,
+      "max_materiality": 0.698,
+      "degree": 0
+    },
+    {
+      "id": "ent_fe2d6b1f84dd",
+      "label": "V-Valley / Esprinet",
+      "kind": "distributor",
+      "events": 3,
+      "max_materiality": 0.692,
       "degree": 0
     },
     {
@@ -722,7 +754,7 @@
       "label": "SCC Spain",
       "kind": "integrator",
       "events": 1,
-      "max_materiality": 0.69,
+      "max_materiality": 0.689,
       "degree": 0
     },
     {
@@ -730,7 +762,7 @@
       "label": "Splunk",
       "kind": "vendor",
       "events": 1,
-      "max_materiality": 0.689,
+      "max_materiality": 0.688,
       "degree": 0
     },
     {
@@ -738,7 +770,7 @@
       "label": "Ivanti",
       "kind": "vendor",
       "events": 2,
-      "max_materiality": 0.687,
+      "max_materiality": 0.686,
       "degree": 0
     },
     {
@@ -746,7 +778,7 @@
       "label": "Proofpoint",
       "kind": "vendor",
       "events": 2,
-      "max_materiality": 0.674,
+      "max_materiality": 0.673,
       "degree": 0
     },
     {
@@ -754,16 +786,8 @@
       "label": "TD SYNNEX",
       "kind": "distributor",
       "events": 4,
-      "max_materiality": 0.672,
+      "max_materiality": 0.671,
       "degree": 1
-    },
-    {
-      "id": "ent_fe2d6b1f84dd",
-      "label": "V-Valley / Esprinet",
-      "kind": "distributor",
-      "events": 2,
-      "max_materiality": 0.658,
-      "degree": 0
     },
     {
       "id": "ent_1ff0672c759e",
@@ -778,7 +802,7 @@
       "label": "Capgemini Spain",
       "kind": "integrator",
       "events": 2,
-      "max_materiality": 0.653,
+      "max_materiality": 0.652,
       "degree": 0
     },
     {
@@ -790,19 +814,11 @@
       "degree": 1
     },
     {
-      "id": "ent_0004ce55d3e7",
-      "label": "Okta",
-      "kind": "vendor",
-      "events": 1,
-      "max_materiality": 0.638,
-      "degree": 0
-    },
-    {
       "id": "ent_cd9c24da4f01",
       "label": "Ricoh Spain",
       "kind": "integrator",
       "events": 1,
-      "max_materiality": 0.624,
+      "max_materiality": 0.623,
       "degree": 0
     },
     {
@@ -826,20 +842,52 @@
       "label": "MCR",
       "kind": "distributor",
       "events": 1,
-      "max_materiality": 0.59,
+      "max_materiality": 0.589,
       "degree": 0
     },
     {
-      "id": "ent_495441483b8e",
-      "label": "IZFE - Sociedad Foral de Servicios Informáticos - IZFE - Sociedad Foral de Servicios Informáticos",
+      "id": "ent_7f4fd6243695",
+      "label": "Presidencia de la Comisión Nacional de los Mercados y la Competencia",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
     },
     {
-      "id": "ent_38833dc2a788",
-      "label": "NOSSAYU SL",
+      "id": "ent_543f0cb92d26",
+      "label": "SOFTTEK DIGITAL SOLUTIONS SLU",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_5dfde092366e",
+      "label": "Ajuntament de Vila-seca",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_706cef9a1d87",
+      "label": "ICOT, S.A.",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_86065192e6f0",
+      "label": "Consultores de Organización y Sistemas, SA",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_63683c29818e",
+      "label": "AXIANSEU II DIGITAL CONSULTING, S.A.",
       "kind": "supplier",
       "events": 0,
       "max_materiality": 0.0,
@@ -851,7 +899,7 @@
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
-      "degree": 2
+      "degree": 1
     },
     {
       "id": "ent_0f50020eedb8",
@@ -902,24 +950,16 @@
       "degree": 1
     },
     {
-      "id": "ent_b241925db81d",
-      "label": "IQVIA SOLUTIONS PORTUGAL, UNIPESSOAL LDA",
-      "kind": "supplier",
+      "id": "ent_df0a81368b70",
+      "label": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
+      "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
     },
     {
-      "id": "ent_fe0a2e12da79",
-      "label": "NOS – Comunicações, S.A.",
-      "kind": "supplier",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 1
-    },
-    {
-      "id": "ent_7942bfd287d4",
-      "label": "Quickops Consulting, Lda",
+      "id": "ent_53b9bd03493b",
+      "label": "VERSIA INFRAESTRUCTURAS TI, S.L.",
       "kind": "supplier",
       "events": 0,
       "max_materiality": 0.0,
@@ -942,16 +982,40 @@
       "degree": 1
     },
     {
-      "id": "ent_55eb6431c309",
-      "label": "Escola Secundária Campos Melo",
+      "id": "ent_6ac5566278e9",
+      "label": "Mancomunitat Escombraries de l'Urgellet",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
     },
     {
-      "id": "ent_0a0d6029bae8",
-      "label": "J. Roma, Lda / AREAL EDITORES, S.A / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / Bricantel - Comércio de Material Eléctrico de Bragança S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA,",
+      "id": "ent_157f00a5267a",
+      "label": "RENTAL RECYCLING TECHNOLOGY S.L.",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_c15589950bc2",
+      "label": "Red Eléctrica de España, S.A.U. (Red Eléctrica)",
+      "kind": "buyer",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 2
+    },
+    {
+      "id": "ent_9d0bbab1d298",
+      "label": "SPARK IBÉRICA, S.A.U.",
+      "kind": "supplier",
+      "events": 0,
+      "max_materiality": 0.0,
+      "degree": 1
+    },
+    {
+      "id": "ent_7c01fafa9754",
+      "label": "MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A.",
       "kind": "supplier",
       "events": 0,
       "max_materiality": 0.0,
@@ -974,72 +1038,64 @@
       "degree": 1
     },
     {
-      "id": "ent_92efc85e3819",
-      "label": "DIPUTACIÓN DE BARCELONA",
+      "id": "ent_a57bad9b8e47",
+      "label": "Departament de la Presidència",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
     },
     {
-      "id": "ent_130249dfc253",
-      "label": "Vicepresidencia Segunda de la Junta de Castilla y León",
+      "id": "ent_8d83c3c0e813",
+      "label": "Gobierno Vasco - EUSTAT - Instituto Vasco de Estadística",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
     },
     {
-      "id": "ent_8a417f0b1606",
-      "label": "Junta de Gobierno de la Diputación Provincial de Jaén",
+      "id": "ent_5fe079ad9978",
+      "label": "Unidade Local de Saúde de Santa Maria, EPE",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
     },
     {
-      "id": "ent_c49f9703d4ea",
-      "label": "Santa Casa da Misericórdia de Lisboa",
+      "id": "ent_f086e3f5aee7",
+      "label": "Agência para o Desenvolvimento e Coesão, IP",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
     },
     {
-      "id": "ent_159b0ff491f9",
-      "label": "Secretaria-Geral do Ministério do Trabalho, Solidariedade e Segurança Social",
+      "id": "ent_98f609bd9933",
+      "label": "REN - Gasodutos, SA",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
     },
     {
-      "id": "ent_5b81a985ccb3",
-      "label": "Diputación Foral de Álava - Departamento de Movilidad Sostenible e Infraestructuras Viarias",
+      "id": "ent_2d82994ca494",
+      "label": "DIRECCIÓN PROVINCIAL DEL SERVICIO ANDALUZ DE EMPLEO EN MÁLAGA",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 2
     },
     {
-      "id": "ent_0412b0ed5d0b",
-      "label": "Ajuntament de Sant Feliu de Guíxols",
+      "id": "ent_5e12bb884c09",
+      "label": "Generalitat de Catalunya, Agencia Catalana del Agua del Departamento de Territorio, Vivienda y Transición Ecológica",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
       "degree": 1
     },
     {
-      "id": "ent_4828caf55679",
-      "label": "The European Joint Undertaking for ITER and the Development of Fusion Energy ('Fusion for Energy')",
-      "kind": "buyer",
-      "events": 0,
-      "max_materiality": 0.0,
-      "degree": 1
-    },
-    {
-      "id": "ent_f05d57f846ff",
-      "label": "Metropolitano de Lisboa, EPE",
+      "id": "ent_32ede0b92e68",
+      "label": "Ferrocarrils de la Generalitat de Catalunya",
       "kind": "buyer",
       "events": 0,
       "max_materiality": 0.0,
@@ -1058,7 +1114,7 @@
       "event_id": "3ad6d084fb921f03",
       "title": "Portugal – Centrales telefónicas – Aquisição de Upgrade à central telefónica do INEM",
       "confidence": 0.877,
-      "materiality": 0.884,
+      "materiality": 0.883,
       "scope": "PT",
       "date": "2026-08-27+02:00",
       "sources": [
@@ -1066,21 +1122,21 @@
       ]
     },
     {
-      "from": "ent_867135af49ce",
-      "to": "ent_71ec293272b0",
-      "from_label": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "to_label": "Nunsys,S.A.",
-      "from_kind": "buyer",
-      "to_kind": "supplier",
-      "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "fe080eeb5f144955",
-      "title": "España – Equipos de radio, televisión, comunicaciones y telecomunicaciones y equipos conexos – Proyecto Para El Refuerzo De La Securización Y Resiliencia De Las Redes Con Comunicaciones 5G Del Ministerio De Defensa (Ministerio De Defensa-Subdirección General De Contratación De Tecnologías De La Información Y De Las Comunicaciones (Tic))",
-      "confidence": 0.877,
-      "materiality": 0.88,
+      "from": "ent_0004ce55d3e7",
+      "to": "ent_d3d04978c1e4",
+      "from_label": "Okta",
+      "to_label": "de Okta y Datadog",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "627c8a2fac1fb03d",
+      "title": "El director ejecutivo de Palo Alto Networks negoció la compra de Okta y Datadog - Investing.com España",
+      "confidence": 0.7,
+      "materiality": 0.863,
       "scope": "ES",
-      "date": "2026-08-28+02:00",
+      "date": "Wed, 26 Aug 2026 14:10:00 GMT",
       "sources": [
-        "TED EU Procurement"
+        "Investing.com España"
       ]
     },
     {
@@ -1094,7 +1150,7 @@
       "event_id": "1e16953845f9adfa",
       "title": "El director ejecutivo de Palo Alto Networks negoció la compra de Okta y Datadog - Investing.com España",
       "confidence": 0.7,
-      "materiality": 0.864,
+      "materiality": 0.863,
       "scope": "ES",
       "date": "Wed, 26 Aug 2026 14:10:00 GMT",
       "sources": [
@@ -1102,163 +1158,73 @@
       ]
     },
     {
-      "from": "ent_50de54a9237c",
-      "to": "ent_453ba0e3be52",
-      "from_label": "Consellería de Medio Ambiente y Cambio Climático",
-      "to_label": "UTE NTT DATA -SERESCO, PROYECTO SICLE CO2",
+      "from": "ent_807631b46fa2",
+      "to": "ent_df561a466c72",
+      "from_label": "Instituto Municipal Barcelona Innovación y Tecnología",
+      "to_label": "INDRA SOLUCIONES TECNOLOGÍAS DE LA INFORMACION S.L.U.",
       "from_kind": "buyer",
       "to_kind": "supplier",
       "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "f9c37e50623e19f1",
-      "title": "España – Servicios TI: consultoría, desarrollo de software, Internet y apoyo – Servicio de desarrollo de una Plataforma Integral de Gestión Activa de Sumideros Naturales de Carbono de Galicia mediante Compra Pública de Tecnología Innovadora (Proyecto SICLE CO2: Soluciones Innovadoras para la Compensación Local de Emisiones de CO2), cofinanciado en un 60% por el Fondo Europeo de Desarrollo Regional (FEDER) en el marco del Programa Plurirregional de España (PPE) 2021-2027.",
+      "event_id": "9620079dee87e888",
+      "title": "España – Mantenimiento de software de tecnología de la información – 26000028",
       "confidence": 0.877,
       "materiality": 0.827,
       "scope": "ES",
-      "date": "2026-08-28+02:00",
+      "date": "2026-08-31+02:00",
       "sources": [
         "TED EU Procurement"
       ]
     },
     {
-      "from": "ent_18d7947372c1",
-      "to": "ent_053edf612d00",
-      "from_label": "Autoridade Tributária e Aduaneira",
-      "to_label": "Consórcio chefiado e representado pela “Accenture, Consultores de Gestão, SA” / ATOS IT Solutions and Services Unipessoal, Lda. / AXIANSEU II DIGITAL CONSULTING, S.A. / Glintt Global, S.A. / NTT Data Portugal, S.A / Opensoft - Soluções Informáticas, S.A.",
+      "from": "ent_fedc84441d3b",
+      "to": "ent_5acb0944ee46",
+      "from_label": "Gerencia de Fraternidad Muprespa - Mútua Colaboradora con la Seguridad Social nº 275",
+      "to_label": "Babel Sistemas de Información, S.L.U.",
       "from_kind": "buyer",
       "to_kind": "supplier",
       "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "28724600d1ec7457",
-      "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
-      "confidence": 0.877,
-      "materiality": 0.827,
-      "scope": "PT",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_50de54a9237c",
-      "to": "ent_453ba0e3be52",
-      "from_label": "Consellería de Medio Ambiente y Cambio Climático",
-      "to_label": "UTE NTT DATA -SERESCO, PROYECTO SICLE CO2",
-      "from_kind": "buyer",
-      "to_kind": "supplier",
-      "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "e22426d443f2c1b2",
-      "title": "España – Servicios TI: consultoría, desarrollo de software, Internet y apoyo – Servicio de desarrollo de una Plataforma Integral de Gestión Activa de Sumideros Naturales de Carbono de Galicia mediante Compra Pública de Tecnología Innovadora (Proyecto SICLE CO2: Soluciones Innovadoras para la Compensación Local de Emisiones de CO2), cofinanciado en un 60% por el Fondo Europeo de Desarrollo Regional (FEDER) en el marco del Programa Plurirregional de España (PPE) 2021-2027.",
+      "event_id": "a7598f850b7a9d08",
+      "title": "España – Servicios de desarrollo de software de Internet e intranet – Contratación de los servicios de diseño y desarrollo web para FRATERNIDAD-MUPRESPA.",
       "confidence": 0.877,
       "materiality": 0.827,
       "scope": "ES",
-      "date": "2026-08-28+02:00",
+      "date": "2026-08-31+02:00",
       "sources": [
         "TED EU Procurement"
       ]
     },
     {
-      "from": "ent_18d7947372c1",
-      "to": "ent_053edf612d00",
-      "from_label": "Autoridade Tributária e Aduaneira",
-      "to_label": "Consórcio chefiado e representado pela “Accenture, Consultores de Gestão, SA” / ATOS IT Solutions and Services Unipessoal, Lda. / AXIANSEU II DIGITAL CONSULTING, S.A. / Glintt Global, S.A. / NTT Data Portugal, S.A / Opensoft - Soluções Informáticas, S.A.",
+      "from": "ent_d25b8909a417",
+      "to": "ent_00d056c50081",
+      "from_label": "Município do Funchal",
+      "to_label": "Claranet II Solutions S.A.",
       "from_kind": "buyer",
       "to_kind": "supplier",
       "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "5bab5fda608ec9fe",
-      "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
+      "event_id": "9792324fdf29cb90",
+      "title": "Portugal – Paquetes de software y sistemas de información – Renovação do Licenciamento de Software Microsoft",
       "confidence": 0.877,
       "materiality": 0.827,
       "scope": "PT",
-      "date": "2026-08-28+02:00",
+      "date": "2026-08-31+02:00",
       "sources": [
         "TED EU Procurement"
       ]
     },
     {
-      "from": "ent_522ed5ff5733",
-      "to": "ent_e3847b34f9d4",
-      "from_label": "Dirección de la Agencia Estatal de Administración Digital",
-      "to_label": "UTE LKS NEXT-BABEL-GETRONICS",
+      "from": "ent_d25b8909a417",
+      "to": "ent_00d056c50081",
+      "from_label": "Município do Funchal",
+      "to_label": "Claranet II Solutions S.A.",
       "from_kind": "buyer",
       "to_kind": "supplier",
       "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "1a42c8ae4045d852",
-      "title": "España – Servicios informáticos – Servicios de desarrollo y mantenimiento de aplicaciones informáticas de la Agencia Estatal de Administración Digital (4782)",
-      "confidence": 0.877,
-      "materiality": 0.827,
-      "scope": "ES",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_dbbaa3a611f4",
-      "to": "ent_64eebfbaa60c",
-      "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
-      "to_label": "CLARANET PORTUGAL, S.A.",
-      "from_kind": "buyer",
-      "to_kind": "supplier",
-      "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "f99f6b2ec659241f",
-      "title": "Portugal – Servicios informáticos – (DAG) Aquisição de Serviços de Suporte e Manutenção Aplicacional da Plataforma EAGENDA 2.0 (20260132)",
+      "event_id": "6ef84f0c2e69ad30",
+      "title": "Portugal – Paquetes de software y sistemas de información – Renovação do Licenciamento de Software Microsoft",
       "confidence": 0.877,
       "materiality": 0.827,
       "scope": "PT",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_dbbaa3a611f4",
-      "to": "ent_64eebfbaa60c",
-      "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
-      "to_label": "CLARANET PORTUGAL, S.A.",
-      "from_kind": "buyer",
-      "to_kind": "supplier",
-      "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "7fac6d1b7db2839c",
-      "title": "Portugal – Servicios informáticos – (DAG) Aquisição de Serviços de Suporte e Manutenção Aplicacional da Plataforma EAGENDA 2.0 (20260132)",
-      "confidence": 0.877,
-      "materiality": 0.827,
-      "scope": "PT",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_18d7947372c1",
-      "to": "ent_053edf612d00",
-      "from_label": "Autoridade Tributária e Aduaneira",
-      "to_label": "Consórcio chefiado e representado pela “Accenture, Consultores de Gestão, SA” / ATOS IT Solutions and Services Unipessoal, Lda. / AXIANSEU II DIGITAL CONSULTING, S.A. / Glintt Global, S.A. / NTT Data Portugal, S.A / Opensoft - Soluções Informáticas, S.A.",
-      "from_kind": "buyer",
-      "to_kind": "supplier",
-      "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "4803b40966b7bcc6",
-      "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
-      "confidence": 0.877,
-      "materiality": 0.827,
-      "scope": "PT",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_18d7947372c1",
-      "to": "ent_053edf612d00",
-      "from_label": "Autoridade Tributária e Aduaneira",
-      "to_label": "Consórcio chefiado e representado pela “Accenture, Consultores de Gestão, SA” / ATOS IT Solutions and Services Unipessoal, Lda. / AXIANSEU II DIGITAL CONSULTING, S.A. / Glintt Global, S.A. / NTT Data Portugal, S.A / Opensoft - Soluções Informáticas, S.A.",
-      "from_kind": "buyer",
-      "to_kind": "supplier",
-      "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "c892fe8477f97a76",
-      "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
-      "confidence": 0.877,
-      "materiality": 0.827,
-      "scope": "PT",
-      "date": "2026-08-28+02:00",
+      "date": "2026-08-31+02:00",
       "sources": [
         "TED EU Procurement"
       ]
@@ -1282,6 +1248,114 @@
       ]
     },
     {
+      "from": "ent_dbbaa3a611f4",
+      "to": "ent_64eebfbaa60c",
+      "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "to_label": "CLARANET PORTUGAL, S.A.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "f99f6b2ec659241f",
+      "title": "Portugal – Servicios informáticos – (DAG) Aquisição de Serviços de Suporte e Manutenção Aplicacional da Plataforma EAGENDA 2.0 (20260132)",
+      "confidence": 0.877,
+      "materiality": 0.826,
+      "scope": "PT",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_dbbaa3a611f4",
+      "to": "ent_64eebfbaa60c",
+      "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "to_label": "CLARANET PORTUGAL, S.A.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "7fac6d1b7db2839c",
+      "title": "Portugal – Servicios informáticos – (DAG) Aquisição de Serviços de Suporte e Manutenção Aplicacional da Plataforma EAGENDA 2.0 (20260132)",
+      "confidence": 0.877,
+      "materiality": 0.826,
+      "scope": "PT",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_18d7947372c1",
+      "to": "ent_053edf612d00",
+      "from_label": "Autoridade Tributária e Aduaneira",
+      "to_label": "Consórcio chefiado e representado pela “Accenture, Consultores de Gestão, SA” / ATOS IT Solutions and Services Unipessoal, Lda. / AXIANSEU II DIGITAL CONSULTING, S.A. / Glintt Global, S.A. / NTT Data Portugal, S.A / Opensoft - Soluções Informáticas, S.A.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "28724600d1ec7457",
+      "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
+      "confidence": 0.877,
+      "materiality": 0.826,
+      "scope": "PT",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_18d7947372c1",
+      "to": "ent_053edf612d00",
+      "from_label": "Autoridade Tributária e Aduaneira",
+      "to_label": "Consórcio chefiado e representado pela “Accenture, Consultores de Gestão, SA” / ATOS IT Solutions and Services Unipessoal, Lda. / AXIANSEU II DIGITAL CONSULTING, S.A. / Glintt Global, S.A. / NTT Data Portugal, S.A / Opensoft - Soluções Informáticas, S.A.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "4803b40966b7bcc6",
+      "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
+      "confidence": 0.877,
+      "materiality": 0.826,
+      "scope": "PT",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_18d7947372c1",
+      "to": "ent_053edf612d00",
+      "from_label": "Autoridade Tributária e Aduaneira",
+      "to_label": "Consórcio chefiado e representado pela “Accenture, Consultores de Gestão, SA” / ATOS IT Solutions and Services Unipessoal, Lda. / AXIANSEU II DIGITAL CONSULTING, S.A. / Glintt Global, S.A. / NTT Data Portugal, S.A / Opensoft - Soluções Informáticas, S.A.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "c892fe8477f97a76",
+      "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
+      "confidence": 0.877,
+      "materiality": 0.826,
+      "scope": "PT",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_18d7947372c1",
+      "to": "ent_053edf612d00",
+      "from_label": "Autoridade Tributária e Aduaneira",
+      "to_label": "Consórcio chefiado e representado pela “Accenture, Consultores de Gestão, SA” / ATOS IT Solutions and Services Unipessoal, Lda. / AXIANSEU II DIGITAL CONSULTING, S.A. / Glintt Global, S.A. / NTT Data Portugal, S.A / Opensoft - Soluções Informáticas, S.A.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "5bab5fda608ec9fe",
+      "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto: Manutenção corretiva, preventiva e evolutiva dos componentes Cadastrais da Autoridade Tributária e Aduaneira – Atividade, Identificação, Veículos e Interfaces com outras Entidades",
+      "confidence": 0.877,
+      "materiality": 0.826,
+      "scope": "PT",
+      "date": "2026-08-28+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
       "from": "ent_18d7947372c1",
       "to": "ent_02ac4aea6632",
       "from_label": "Autoridade Tributária e Aduaneira",
@@ -1292,7 +1366,7 @@
       "event_id": "2c8e7c522f6bac10",
       "title": "Portugal – Servicios de programación de software y de consultoría – Aquisição de serviços de desenvolvimento aplicacional no âmbito da necessidade de implementação do projeto Evolução Funcional da Declaração de Registo (Modelo 62) no âmbito do RIMG no sistema de Registo do Regime de Imposto Mínimo global (SRRIMG)",
       "confidence": 0.877,
-      "materiality": 0.826,
+      "materiality": 0.825,
       "scope": "PT",
       "date": "2026-08-27+02:00",
       "sources": [
@@ -1310,7 +1384,7 @@
       "event_id": "aac746b54dac8add",
       "title": "Portugal – Ordenadores de mesa – Aquisição de equipamento informático diverso para os Departamentos/Serviços/Unidades da UA",
       "confidence": 0.877,
-      "materiality": 0.82,
+      "materiality": 0.819,
       "scope": "PT",
       "date": "2026-08-27+02:00",
       "sources": [
@@ -1328,7 +1402,7 @@
       "event_id": "a5091bc65f398d82",
       "title": "Econocom refuerza su liderazgo en Europa con la compra del 51% de la italiana Bagnetti - Forbes España",
       "confidence": 0.672,
-      "materiality": 0.805,
+      "materiality": 0.804,
       "scope": "ES",
       "date": "Mon, 06 Jul 2026 08:32:05 GMT",
       "sources": [
@@ -1346,7 +1420,7 @@
       "event_id": "904dbcd894768a52",
       "title": "Babel adquiere el negocio de consultoría de Bosonit - MuyCanal",
       "confidence": 0.7,
-      "materiality": 0.804,
+      "materiality": 0.803,
       "scope": "ES",
       "date": "Wed, 01 Jul 2026 07:00:00 GMT",
       "sources": [
@@ -1354,55 +1428,19 @@
       ]
     },
     {
-      "from": "ent_c15589950bc2",
-      "to": "ent_f580fd10b88d",
-      "from_label": "Red Eléctrica de España, S.A.U. (Red Eléctrica)",
-      "to_label": "Indra Soluc.Tec.de la Inform., SLU",
+      "from": "ent_6df72c006222",
+      "to": "ent_aa913a8a6a37",
+      "from_label": "Aena. Presidencia. Consejero Delegado",
+      "to_label": "ORANGE ESPAGNE SA",
       "from_kind": "buyer",
       "to_kind": "supplier",
       "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "bdd622e093db9c99",
-      "title": "España – Servicios de instalación (excepto software) – Servicio de desarrollo y mantenimiento de AGORA en modelo producto",
-      "confidence": 0.877,
-      "materiality": 0.803,
-      "scope": "ES",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_ba3fc06b6a30",
-      "to": "ent_8ddd027af474",
-      "from_label": "Gerencia Regional de Salud de Castilla y León",
-      "to_label": "TECNOLOGÍAS PLEXUS S.L.",
-      "from_kind": "buyer",
-      "to_kind": "supplier",
-      "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "8ab6252ce32df5f4",
-      "title": "España – Mantenimiento de equipos de redes de datos – Suministro, instalación y servicio de mantenimiento y soporte de infraestructuras y servicios inalámbricos (wifi) de la GRS",
+      "event_id": "107e7433d54b3459",
+      "title": "España – Redes – Despliegue De Nueva Red 5G En Modelo Autoprestación",
       "confidence": 0.877,
       "materiality": 0.799,
       "scope": "ES",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_944bbb59feb3",
-      "to": "ent_ac58dd9b9714",
-      "from_label": "Dirección General de la Entidad Pública Empresarial RED.ES",
-      "to_label": "TELEFONICA SOLUCIONES DE INFORMATICA Y COMUNICACIONES DE ESPAÑA, S.A.U.",
-      "from_kind": "buyer",
-      "to_kind": "supplier",
-      "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "cee8264fd6f9e1c8",
-      "title": "España – Servicios de reparación y mantenimiento – Servicio de mantenimiento para el equipamiento l2/l3 de RedIRIS",
-      "confidence": 0.877,
-      "materiality": 0.799,
-      "scope": "ES",
-      "date": "2026-08-28+02:00",
+      "date": "2026-08-31+02:00",
       "sources": [
         "TED EU Procurement"
       ]
@@ -1418,7 +1456,7 @@
       "event_id": "71066439c68a50ef",
       "title": "Portugal – Servicios telefónicos y de transmisión de datos – Serviços de comunicações de dados e voz fixos para a CCDR NORTE, I.P.",
       "confidence": 0.877,
-      "materiality": 0.799,
+      "materiality": 0.798,
       "scope": "PT",
       "date": "2026-08-28+02:00",
       "sources": [
@@ -1426,19 +1464,73 @@
       ]
     },
     {
-      "from": "ent_c8d4eec720a7",
+      "from": "ent_1422fa16b6c1",
+      "to": "ent_c2d135d844a8",
+      "from_label": "Accenture Spain",
+      "to_label": "Whalar",
+      "from_kind": "integrator",
+      "to_kind": "external_entity",
+      "relation": "ACQUIRED_OR_MERGED",
+      "event_id": "79458d6953a103e7",
+      "title": "Accenture compra Whalar , agencia internacional que también opera en España - Revista Anuncios",
+      "confidence": 0.672,
+      "materiality": 0.797,
+      "scope": "ES",
+      "date": "Tue, 09 Jun 2026 07:00:00 GMT",
+      "sources": [
+        "Revista Anuncios"
+      ]
+    },
+    {
+      "from": "ent_0f9010175147",
+      "to": "ent_58a41ddb71a5",
+      "from_label": "CONSORCI HOSPITAL CLÍNIC DE BARCELONA (HCB)",
+      "to_label": "MEDTRONIC IBERICA, S.A.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "d3942cd7b3576dd8",
+      "title": "España – Equipamiento médico – 2025-177 Suministro de sensores para la monitorización de oximetría cerebral/somática con equipamiento y accesorios en régimen de cesión.",
+      "confidence": 0.877,
+      "materiality": 0.794,
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_a10bf3f2331b",
       "to": "ent_48939c80c1f3",
-      "from_label": "Ente Público de Radiotelevisión de las Illes Balears",
+      "from_label": "Corporació Catalana de Mitjans Audiovisuals, SA (CCMA, SA)",
       "to_label": "Datos Media Technologies S.A",
       "from_kind": "buyer",
       "to_kind": "supplier",
       "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "62c72ff02ce7414e",
-      "title": "España – Servicios de almacenamiento de datos – Servicio de soporte técnico de la infraestructura de archivo digital del material audiovisual del EPRTVIB.",
+      "event_id": "492cc9017b07f8bc",
+      "title": "España – Unidades de memoria de disco magnético – Sistema de almacenamiento de archivo basado en disco",
       "confidence": 0.877,
-      "materiality": 0.795,
+      "materiality": 0.794,
       "scope": "ES",
-      "date": "2026-08-28+02:00",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_29f93e113744",
+      "to": "ent_e3d1e0ca3bd0",
+      "from_label": "Universidade do Minho",
+      "to_label": "VWR International - Material de Laboratório, Soc. Unipessoal, Lda.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "7d95b54fe99525c3",
+      "title": "Portugal – Productos consumibles médicos no químicos desechables y productos consumibles hematológicos – AQUISIÇÃO DE MATERIAL E CONSUMÍVEIS DE LABORATÓRIO PARA A UNIVERSIDADE DO MINHO",
+      "confidence": 0.877,
+      "materiality": 0.794,
+      "scope": "PT",
+      "date": "2026-08-31+02:00",
       "sources": [
         "TED EU Procurement"
       ]
@@ -1454,7 +1546,7 @@
       "event_id": "19bf598787dd0b6d",
       "title": "Portugal – Productos alimenticios diversos – Fornecimento Contínuo de Bens Alimentares",
       "confidence": 0.877,
-      "materiality": 0.795,
+      "materiality": 0.794,
       "scope": "PT",
       "date": "2026-08-28+02:00",
       "sources": [
@@ -1472,7 +1564,7 @@
       "event_id": "264a46e5a1c18dfd",
       "title": "Forvis Mazars asesora a Waterland en la compra de Minsait Business Consulting - Capital Riesgo",
       "confidence": 0.7,
-      "materiality": 0.795,
+      "materiality": 0.794,
       "scope": "ES",
       "date": "Sun, 31 May 2026 07:00:00 GMT",
       "sources": [
@@ -1490,7 +1582,7 @@
       "event_id": "1f42a96ffa70c861",
       "title": "Waterland adquiere MBC, la división de consultoría de negocio de Minsait, a Indra Group - Capital Riesgo",
       "confidence": 0.7,
-      "materiality": 0.795,
+      "materiality": 0.794,
       "scope": "ES",
       "date": "Fri, 29 May 2026 07:00:00 GMT",
       "sources": [
@@ -1508,7 +1600,7 @@
       "event_id": "76639adb113c9a88",
       "title": "Portugal – Suministros ininterrumpidos de energía – Melhorias essenciais no Datacenter, com o objetivo de cumprir as normas em vigor e aumentar a sua segurança e fiabilidade",
       "confidence": 0.877,
-      "materiality": 0.794,
+      "materiality": 0.793,
       "scope": "PT",
       "date": "2026-08-27+02:00",
       "sources": [
@@ -1526,11 +1618,47 @@
       "event_id": "1ab645c3dbc35703",
       "title": "Zscaler refuerza con la compra de Symmetry Systems la seguridad de identidades de la IA - Revista Byte TI",
       "confidence": 0.66,
-      "materiality": 0.791,
+      "materiality": 0.79,
       "scope": "GLOBAL",
       "date": "Thu, 28 May 2026 07:00:00 GMT",
       "sources": [
         "Revista Byte TI"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_141a92417f71",
+      "from_label": "AWS",
+      "to_label": "AI",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "LAUNCHED_SERVICE_IN_DOMAIN",
+      "event_id": "f222d8640172c2fc",
+      "title": "AWS Summit 2026 confirma a España como punta de lanza en adopción de IA - Silicon",
+      "confidence": 0.631,
+      "materiality": 0.789,
+      "scope": "ES",
+      "date": "Fri, 05 Jun 2026 07:00:00 GMT",
+      "sources": [
+        "Silicon"
+      ]
+    },
+    {
+      "from": "ent_55357933a731",
+      "to": "ent_000e793db70c",
+      "from_label": "AWS",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "LAUNCHED_SERVICE_IN_DOMAIN",
+      "event_id": "f222d8640172c2fc",
+      "title": "AWS Summit 2026 confirma a España como punta de lanza en adopción de IA - Silicon",
+      "confidence": 0.631,
+      "materiality": 0.789,
+      "scope": "ES",
+      "date": "Fri, 05 Jun 2026 07:00:00 GMT",
+      "sources": [
+        "Silicon"
       ]
     },
     {
@@ -1544,7 +1672,7 @@
       "event_id": "ad46a03367a59a44",
       "title": "El fondo holandés Waterland ultima la compra de Minsait Consulting a Indra - Expansión",
       "confidence": 0.7,
-      "materiality": 0.789,
+      "materiality": 0.788,
       "scope": "ES",
       "date": "Fri, 08 May 2026 07:00:00 GMT",
       "sources": [
@@ -1562,7 +1690,7 @@
       "event_id": "9e205fec827036ab",
       "title": "NTT DATA adquiere WinWire para expandir las capacidades de transformación empresarial de Agentic AI y Microsoft Azure - Unite.AI",
       "confidence": 0.66,
-      "materiality": 0.788,
+      "materiality": 0.787,
       "scope": "GLOBAL",
       "date": "Fri, 15 May 2026 07:00:00 GMT",
       "sources": [
@@ -1580,7 +1708,7 @@
       "event_id": "da5fbb70a97006db",
       "title": "Westcon-Comstor lanza OneSOC, un servicio SOC de marca blanca para sus partners - Interempresas.net",
       "confidence": 0.67,
-      "materiality": 0.779,
+      "materiality": 0.778,
       "scope": "IBERIA",
       "date": "Tue, 26 May 2026 07:00:00 GMT",
       "sources": [
@@ -1598,7 +1726,7 @@
       "event_id": "b3c2895338afa8cc",
       "title": "Accenture acuerda la compra de Ookla - Forbes España",
       "confidence": 0.7,
-      "materiality": 0.774,
+      "materiality": 0.773,
       "scope": "ES",
       "date": "Tue, 03 Mar 2026 08:00:00 GMT",
       "sources": [
@@ -1606,73 +1734,37 @@
       ]
     },
     {
-      "from": "ent_17c03de27b55",
+      "from": "ent_46d127e1d0ed",
+      "to": "ent_20725cb1b8af",
+      "from_label": "Dirección General de Telecomunicaciones y Digitalización",
+      "to_label": "IT Services",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "9722cf6d8cf04937",
+      "title": "España – Mantenimiento y reparación de equipo informático – Mantenimiento del parque informático de la Administración de la Comunidad Foral de Navarra durante el año 2027.",
+      "confidence": 0.875,
+      "materiality": 0.766,
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_3320743fd555",
       "to": "ent_9e91940ff923",
-      "from_label": "Empresa de Transformación Agraria S.A.,S.M.E., M.P., (TRAGSA)",
+      "from_label": "Município de Lagos",
       "to_label": "Networking",
       "from_kind": "buyer",
       "to_kind": "technology",
       "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "b55c69af4a3a2614",
-      "title": "España – Mantenimiento y reparación de equipo de tecnología de la información – Renovación del servicio de soporte técnico y mantenimiento de la herramienta de procesamiento, inspección y análisis del contenido del tráfico de red actualmente en uso en el Grupo Tragsa.",
+      "event_id": "3856ba11e6e3f0cf",
+      "title": "Portugal – Equipo de red – Fornecimento de upgrade à infraestrutura de rede do município",
       "confidence": 0.875,
       "materiality": 0.766,
-      "scope": "ES",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_17c03de27b55",
-      "to": "ent_20725cb1b8af",
-      "from_label": "Empresa de Transformación Agraria S.A.,S.M.E., M.P., (TRAGSA)",
-      "to_label": "IT Services",
-      "from_kind": "buyer",
-      "to_kind": "technology",
-      "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "b55c69af4a3a2614",
-      "title": "España – Mantenimiento y reparación de equipo de tecnología de la información – Renovación del servicio de soporte técnico y mantenimiento de la herramienta de procesamiento, inspección y análisis del contenido del tráfico de red actualmente en uso en el Grupo Tragsa.",
-      "confidence": 0.875,
-      "materiality": 0.766,
-      "scope": "ES",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_86031283dbbf",
-      "to": "ent_000e793db70c",
-      "from_label": "Junta de Gobierno Local del Ayuntamiento de Fuenlabrada",
-      "to_label": "Cloud",
-      "from_kind": "buyer",
-      "to_kind": "technology",
-      "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "5101b0b118a77314",
-      "title": "España – Paquetes de software de gestión de licencias – Contrato mixto de mantenimiento y soporte del servicio unificado de ofimática, correo electrónico en la nube y herramientas colaborativas de Microsoft, para el Ayuntamiento de Fuenlabrada y sus Organismos Autónomos",
-      "confidence": 0.875,
-      "materiality": 0.766,
-      "scope": "ES",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_86031283dbbf",
-      "to": "ent_20725cb1b8af",
-      "from_label": "Junta de Gobierno Local del Ayuntamiento de Fuenlabrada",
-      "to_label": "IT Services",
-      "from_kind": "buyer",
-      "to_kind": "technology",
-      "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "5101b0b118a77314",
-      "title": "España – Paquetes de software de gestión de licencias – Contrato mixto de mantenimiento y soporte del servicio unificado de ofimática, correo electrónico en la nube y herramientas colaborativas de Microsoft, para el Ayuntamiento de Fuenlabrada y sus Organismos Autónomos",
-      "confidence": 0.875,
-      "materiality": 0.766,
-      "scope": "ES",
-      "date": "2026-08-28+02:00",
+      "scope": "PT",
+      "date": "2026-08-31+02:00",
       "sources": [
         "TED EU Procurement"
       ]
@@ -1688,7 +1780,7 @@
       "event_id": "6a0be5f758169ffb",
       "title": "Portugal – Mantenimiento y reparación de equipo informático – Serviços de manutenção e suporte da plataforma Exadata Database Machine e serviços de manutenção da infraestrutura Oracle, suporte para equipamento Oracle ZFS Storage e assistência pós-venda para soft",
       "confidence": 0.875,
-      "materiality": 0.766,
+      "materiality": 0.765,
       "scope": "PT",
       "date": "2026-08-28+02:00",
       "sources": [
@@ -1706,7 +1798,7 @@
       "event_id": "6a0be5f758169ffb",
       "title": "Portugal – Mantenimiento y reparación de equipo informático – Serviços de manutenção e suporte da plataforma Exadata Database Machine e serviços de manutenção da infraestrutura Oracle, suporte para equipamento Oracle ZFS Storage e assistência pós-venda para soft",
       "confidence": 0.875,
-      "materiality": 0.766,
+      "materiality": 0.765,
       "scope": "PT",
       "date": "2026-08-28+02:00",
       "sources": [
@@ -1724,7 +1816,7 @@
       "event_id": "024bb7c3cb527541",
       "title": "Portugal – Servicios de mantenimiento de infraestructura de telecomunicaciones – Aquisição de bens e serviços para modernização da infraestrutura de rede e segurança",
       "confidence": 0.875,
-      "materiality": 0.766,
+      "materiality": 0.765,
       "scope": "PT",
       "date": "2026-08-27+02:00",
       "sources": [
@@ -1732,56 +1824,73 @@
       ]
     },
     {
-      "from": "ent_9fb714bd7273",
-      "to": "ent_cb030491157b",
-      "from_label": "Microsoft Azure",
-      "to_label": "Meta",
-      "from_kind": "vendor",
-      "to_kind": "external_entity",
-      "relation": "CUSTOMER_RELATION",
-      "event_id": "192f93fe60ac6f1f",
-      "title": "Meta se convierte en uno de los principales clientes de IA de Microsoft Azure - Yahoo Finanzas",
-      "confidence": 0.662,
-      "materiality": 0.763,
-      "scope": "GLOBAL",
-      "date": "Thu, 20 Aug 2026 12:29:18 GMT",
-      "sources": [
-        "Yahoo Finanzas",
-        "DiarioBitcoin"
-      ]
-    },
-    {
-      "from": "ent_d20ffdc33cde",
-      "to": "ent_0a76a3fe7b25",
-      "from_label": "Servicio Gallego de Salud",
-      "to_label": "Technology procurement",
+      "from": "ent_581b5cdbc562",
+      "to": "ent_78fd5cac8c02",
+      "from_label": "Commission européenne, OIB - Office for Infrastructure and Logistics in Brussels / Cour des comptes / EDPS - European Data Protection Supervisor / OMBUDSMAN - European Ombudsman / Secrétariat général du Conseil de l'Union européenne / Agence exécutive du Conseil européen de la recherche (ERCEA) / European Climate, Infrastructure and Environment Executive Agency (CINEA) / European Education and Culture Executive Agency (EACEA) / European Innovation Council and SMEs Executive Agency (EISMEA) / European Research Executive Agency (REA) / Health and Digital Executive Agency (HaDEA) / Agency for Support for BEREC (BEREC Office) / Authority for Anti-Money Laundering and Countering the Financing of Terrorism / Chips Joint Undertaking / Circular Bio-based Europe Joint Undertaking / Clean Aviation Joint Undertaking / Europe's Rail Joint Undertaking / European Banking Authority / European Centre for Disease Prevention and Control / European Centre for the Development of Vocational Training / European Cybersecurity Industrial, Technology and Research Competence Centre / European Defence Agency / European Institute of Innovation and Technology / European Insurance and Occupational Pensions Authority / European Labour Authority (ELA) / European Public Prosecutor’s Office / European Schools / European Securities and Markets Authority / European Union Agency for Criminal Justice Cooperation (Eurojust) / European Union Agency for Fundamental Rights / European Union Agency for Railways / European Union Agency for the Operational Management of Large-Scale IT Systems in the Area of Freedom, Security and Justice (eu-LISA) / European Union Agency for the Space Programme / F4E - Fusion for Energy Joint Undertaking / Innovative Health Initiative Joint Undertaking (IHI JU) / Single Resolution Board (SRB) / Smart Networks and Services Joint Undertaking / Translation Centre for the Bodies of the European Union / Committee of the Regions of the European Union / European Economic and Social Committee",
+      "to_label": "Cybersecurity",
       "from_kind": "buyer",
       "to_kind": "technology",
       "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "430cd6cfecd25c8c",
-      "title": "España – Servicios de análisis de sistemas y de programación – Servicios de gestión y evolución de la plataforma de gestores de base de datos y servidores de aplicaciones del Servicio Gallego de Salud.",
+      "event_id": "ca16e26700950197",
+      "title": "Bélgica, Luxemburgo, Francia, Letonia, Alemania, Suecia, Grecia, Rumanía, Hungría, Eslovaquia, Países Bajos, Austria, Estonia, Chequia, España – Mobiliario – Fourniture de mobilier pour l'aménagement et l’équipement des espaces de travail et de convivialité de la Commission européenne et autres entités participantes",
       "confidence": 0.875,
       "materiality": 0.762,
       "scope": "ES",
-      "date": "2026-08-28+02:00",
+      "date": "2026-08-31+02:00",
       "sources": [
         "TED EU Procurement"
       ]
     },
     {
-      "from": "ent_78eae87d7f0d",
+      "from": "ent_ceea4d64b00b",
       "to": "ent_0e10e164957d",
-      "from_label": "Fundação para a Ciência e a Tecnologia, IP",
+      "from_label": "Fundación Donostia International Physics Center - Fundación Donostia International Physics Center",
       "to_label": "Data Center",
       "from_kind": "buyer",
       "to_kind": "technology",
       "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "5b5ce18d628db69f",
-      "title": "Portugal – Equipo de refrigeración – Aquisição de unidades de refrigeração para datacenter - Azurém 2",
+      "event_id": "f353e84fd8972e41",
+      "title": "España – Superordenador – Suministro de un servidor con 8 GPUs NVIDIA B200",
+      "confidence": 0.875,
+      "materiality": 0.762,
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_3ff110a3a36e",
+      "to": "ent_0e10e164957d",
+      "from_label": "Estado-Maior do Exército",
+      "to_label": "Data Center",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "7bdbeeb3317e2feb",
+      "title": "Portugal – Paquetes de software de bases de datos – 4026015488/DA/A0215A/2026-Reforço da infraestrutura de Storage do Exército",
       "confidence": 0.875,
       "materiality": 0.762,
       "scope": "PT",
-      "date": "2026-08-27+02:00",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_3ff110a3a36e",
+      "to": "ent_20725cb1b8af",
+      "from_label": "Estado-Maior do Exército",
+      "to_label": "IT Services",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "7bdbeeb3317e2feb",
+      "title": "Portugal – Paquetes de software de bases de datos – 4026015488/DA/A0215A/2026-Reforço da infraestrutura de Storage do Exército",
+      "confidence": 0.875,
+      "materiality": 0.762,
+      "scope": "PT",
+      "date": "2026-08-31+02:00",
       "sources": [
         "TED EU Procurement"
       ]
@@ -1805,6 +1914,43 @@
       ]
     },
     {
+      "from": "ent_9fb714bd7273",
+      "to": "ent_cb030491157b",
+      "from_label": "Microsoft Azure",
+      "to_label": "Meta",
+      "from_kind": "vendor",
+      "to_kind": "external_entity",
+      "relation": "CUSTOMER_RELATION",
+      "event_id": "192f93fe60ac6f1f",
+      "title": "Meta se convierte en uno de los principales clientes de IA de Microsoft Azure - Yahoo Finanzas",
+      "confidence": 0.662,
+      "materiality": 0.762,
+      "scope": "GLOBAL",
+      "date": "Thu, 20 Aug 2026 12:29:18 GMT",
+      "sources": [
+        "Yahoo Finanzas",
+        "DiarioBitcoin"
+      ]
+    },
+    {
+      "from": "ent_78eae87d7f0d",
+      "to": "ent_0e10e164957d",
+      "from_label": "Fundação para a Ciência e a Tecnologia, IP",
+      "to_label": "Data Center",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "5b5ce18d628db69f",
+      "title": "Portugal – Equipo de refrigeración – Aquisição de unidades de refrigeração para datacenter - Azurém 2",
+      "confidence": 0.875,
+      "materiality": 0.761,
+      "scope": "PT",
+      "date": "2026-08-27+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
       "from": "ent_55357933a731",
       "to": "ent_141a92417f71",
       "from_label": "AWS",
@@ -1815,7 +1961,7 @@
       "event_id": "73f23a5989db2d03",
       "title": "AWS ayuda a medir el impacto de la IA en las organizaciones con la certificación BVR y funciones para la IA agéntica - Europa Press",
       "confidence": 0.638,
-      "materiality": 0.759,
+      "materiality": 0.758,
       "scope": "EUROPE",
       "date": "Fri, 10 Jul 2026 07:00:00 GMT",
       "sources": [
@@ -1833,7 +1979,7 @@
       "event_id": "73f23a5989db2d03",
       "title": "AWS ayuda a medir el impacto de la IA en las organizaciones con la certificación BVR y funciones para la IA agéntica - Europa Press",
       "confidence": 0.638,
-      "materiality": 0.759,
+      "materiality": 0.758,
       "scope": "EUROPE",
       "date": "Fri, 10 Jul 2026 07:00:00 GMT",
       "sources": [
@@ -1851,7 +1997,7 @@
       "event_id": "266d7ef7c54de264",
       "title": "HBX Group aplica IA agéntica a su servicio de atención al cliente de la mano de Ayesa Digital - Estrategia Empresarial",
       "confidence": 0.67,
-      "materiality": 0.757,
+      "materiality": 0.756,
       "scope": "ES",
       "date": "Tue, 16 Jun 2026 09:50:45 GMT",
       "sources": [
@@ -1869,7 +2015,7 @@
       "event_id": "70ead80403be2f75",
       "title": "Indra, primera firma española en obtener la certificación de Aenor sobre IA responsable con Microsoft - TradingView",
       "confidence": 0.661,
-      "materiality": 0.754,
+      "materiality": 0.753,
       "scope": "ES",
       "date": "Mon, 13 Jul 2026 07:00:00 GMT",
       "sources": [
@@ -1887,7 +2033,7 @@
       "event_id": "c0bdc78db4ef97cc",
       "title": "Accenture lanza Accenture Edge para acelerar la adopción de IA en la mediana empresa - itreseller.es",
       "confidence": 0.631,
-      "materiality": 0.75,
+      "materiality": 0.749,
       "scope": "ES",
       "date": "Mon, 29 Jun 2026 07:00:00 GMT",
       "sources": [
@@ -1905,7 +2051,7 @@
       "event_id": "1090a8320545a867",
       "title": "Satec lanza la marca Clober para abordar los negocios de ciberseguridad y cloud - BPS Channel Partner",
       "confidence": 0.631,
-      "materiality": 0.744,
+      "materiality": 0.743,
       "scope": "ES",
       "date": "Mon, 08 Jun 2026 07:00:00 GMT",
       "sources": [
@@ -1923,7 +2069,7 @@
       "event_id": "1090a8320545a867",
       "title": "Satec lanza la marca Clober para abordar los negocios de ciberseguridad y cloud - BPS Channel Partner",
       "confidence": 0.631,
-      "materiality": 0.744,
+      "materiality": 0.743,
       "scope": "ES",
       "date": "Mon, 08 Jun 2026 07:00:00 GMT",
       "sources": [
@@ -1941,7 +2087,7 @@
       "event_id": "0ac818816c87c45c",
       "title": "Accenture y Google Cloud lanzan soluciones de IA para empresas medianas - Investing.com España",
       "confidence": 0.651,
-      "materiality": 0.741,
+      "materiality": 0.74,
       "scope": "ES",
       "date": "Tue, 07 Jul 2026 07:00:00 GMT",
       "sources": [
@@ -1959,7 +2105,7 @@
       "event_id": "0ac818816c87c45c",
       "title": "Accenture y Google Cloud lanzan soluciones de IA para empresas medianas - Investing.com España",
       "confidence": 0.651,
-      "materiality": 0.741,
+      "materiality": 0.74,
       "scope": "ES",
       "date": "Tue, 07 Jul 2026 07:00:00 GMT",
       "sources": [
@@ -1977,7 +2123,7 @@
       "event_id": "1926e1b63346cde6",
       "title": "Telefónica Tech y Google Cloud lanzan en España una nueva propuesta de nube soberana - Demócrata",
       "confidence": 0.631,
-      "materiality": 0.741,
+      "materiality": 0.74,
       "scope": "ES",
       "date": "Thu, 28 May 2026 07:00:00 GMT",
       "sources": [
@@ -1995,11 +2141,47 @@
       "event_id": "e02167d76d6d5542",
       "title": "“El cuidado de una cuenca es algo colectivo”: la certificación AWS de Eco Aguas en Moreno - Visión Sustentable",
       "confidence": 0.621,
-      "materiality": 0.741,
+      "materiality": 0.74,
       "scope": "GLOBAL",
       "date": "Wed, 26 Aug 2026 19:24:18 GMT",
       "sources": [
         "Visión Sustentable"
+      ]
+    },
+    {
+      "from": "ent_cec06f879afd",
+      "to": "ent_141a92417f71",
+      "from_label": "CrowdStrike",
+      "to_label": "AI",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "LAUNCHED_SERVICE_IN_DOMAIN",
+      "event_id": "7581001fddf772f1",
+      "title": "CrowdStrike y AWS lanzan desafío de USD $100.000 para hackear IA - DiarioBitcoin",
+      "confidence": 0.591,
+      "materiality": 0.733,
+      "scope": "GLOBAL",
+      "date": "Wed, 05 Aug 2026 07:00:00 GMT",
+      "sources": [
+        "DiarioBitcoin"
+      ]
+    },
+    {
+      "from": "ent_cec06f879afd",
+      "to": "ent_000e793db70c",
+      "from_label": "CrowdStrike",
+      "to_label": "Cloud",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "LAUNCHED_SERVICE_IN_DOMAIN",
+      "event_id": "7581001fddf772f1",
+      "title": "CrowdStrike y AWS lanzan desafío de USD $100.000 para hackear IA - DiarioBitcoin",
+      "confidence": 0.591,
+      "materiality": 0.733,
+      "scope": "GLOBAL",
+      "date": "Wed, 05 Aug 2026 07:00:00 GMT",
+      "sources": [
+        "DiarioBitcoin"
       ]
     },
     {
@@ -2013,7 +2195,7 @@
       "event_id": "a10f013eadda0d9c",
       "title": "Cisco despliega su gran apuesta agéntica: red, seguridad y operaciones bajo un control unificado - ituser.es",
       "confidence": 0.616,
-      "materiality": 0.724,
+      "materiality": 0.723,
       "scope": "GLOBAL",
       "date": "Thu, 23 Jul 2026 07:00:00 GMT",
       "sources": [
@@ -2031,7 +2213,7 @@
       "event_id": "a10f013eadda0d9c",
       "title": "Cisco despliega su gran apuesta agéntica: red, seguridad y operaciones bajo un control unificado - ituser.es",
       "confidence": 0.616,
-      "materiality": 0.724,
+      "materiality": 0.723,
       "scope": "GLOBAL",
       "date": "Thu, 23 Jul 2026 07:00:00 GMT",
       "sources": [
@@ -2049,7 +2231,7 @@
       "event_id": "a10f013eadda0d9c",
       "title": "Cisco despliega su gran apuesta agéntica: red, seguridad y operaciones bajo un control unificado - ituser.es",
       "confidence": 0.616,
-      "materiality": 0.724,
+      "materiality": 0.723,
       "scope": "GLOBAL",
       "date": "Thu, 23 Jul 2026 07:00:00 GMT",
       "sources": [
@@ -2085,47 +2267,11 @@
       "event_id": "7a330adec1664e14",
       "title": "Sede Santiago Centro inicia su primer Programa de Apresto para la Certificación Internacional CCST Networking de Cisco - portal.inacap.cl",
       "confidence": 0.621,
-      "materiality": 0.719,
+      "materiality": 0.718,
       "scope": "GLOBAL",
       "date": "Tue, 16 Jun 2026 16:04:29 GMT",
       "sources": [
         "portal.inacap.cl"
-      ]
-    },
-    {
-      "from": "ent_d61db83635e5",
-      "to": "ent_141a92417f71",
-      "from_label": "Nokia",
-      "to_label": "AI",
-      "from_kind": "vendor",
-      "to_kind": "technology",
-      "relation": "RELEASED_IN_DOMAIN",
-      "event_id": "26c0017feb6f27d1",
-      "title": "Nokia lanzará la primera plataforma RAN comercial nativa de IA - DPL News",
-      "confidence": 0.611,
-      "materiality": 0.718,
-      "scope": "GLOBAL",
-      "date": "Tue, 21 Jul 2026 07:00:00 GMT",
-      "sources": [
-        "DPL News"
-      ]
-    },
-    {
-      "from": "ent_d61db83635e5",
-      "to": "ent_9e91940ff923",
-      "from_label": "Nokia",
-      "to_label": "Networking",
-      "from_kind": "vendor",
-      "to_kind": "technology",
-      "relation": "RELEASED_IN_DOMAIN",
-      "event_id": "26c0017feb6f27d1",
-      "title": "Nokia lanzará la primera plataforma RAN comercial nativa de IA - DPL News",
-      "confidence": 0.611,
-      "materiality": 0.718,
-      "scope": "GLOBAL",
-      "date": "Tue, 21 Jul 2026 07:00:00 GMT",
-      "sources": [
-        "DPL News"
       ]
     },
     {
@@ -2147,6 +2293,42 @@
       ]
     },
     {
+      "from": "ent_d61db83635e5",
+      "to": "ent_141a92417f71",
+      "from_label": "Nokia",
+      "to_label": "AI",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "26c0017feb6f27d1",
+      "title": "Nokia lanzará la primera plataforma RAN comercial nativa de IA - DPL News",
+      "confidence": 0.611,
+      "materiality": 0.717,
+      "scope": "GLOBAL",
+      "date": "Tue, 21 Jul 2026 07:00:00 GMT",
+      "sources": [
+        "DPL News"
+      ]
+    },
+    {
+      "from": "ent_d61db83635e5",
+      "to": "ent_9e91940ff923",
+      "from_label": "Nokia",
+      "to_label": "Networking",
+      "from_kind": "vendor",
+      "to_kind": "technology",
+      "relation": "RELEASED_IN_DOMAIN",
+      "event_id": "26c0017feb6f27d1",
+      "title": "Nokia lanzará la primera plataforma RAN comercial nativa de IA - DPL News",
+      "confidence": 0.611,
+      "materiality": 0.717,
+      "scope": "GLOBAL",
+      "date": "Tue, 21 Jul 2026 07:00:00 GMT",
+      "sources": [
+        "DPL News"
+      ]
+    },
+    {
       "from": "ent_b81902f73021",
       "to": "ent_141a92417f71",
       "from_label": "Check Point",
@@ -2157,7 +2339,7 @@
       "event_id": "18fe41a2f13892a7",
       "title": "Check Point Software lanza una plataforma de IA autónoma para reinventar la seguridad de red empresarial - Madridiario",
       "confidence": 0.611,
-      "materiality": 0.701,
+      "materiality": 0.7,
       "scope": "GLOBAL",
       "date": "Thu, 21 May 2026 07:00:00 GMT",
       "sources": [
@@ -2175,7 +2357,7 @@
       "event_id": "18fe41a2f13892a7",
       "title": "Check Point Software lanza una plataforma de IA autónoma para reinventar la seguridad de red empresarial - Madridiario",
       "confidence": 0.611,
-      "materiality": 0.701,
+      "materiality": 0.7,
       "scope": "GLOBAL",
       "date": "Thu, 21 May 2026 07:00:00 GMT",
       "sources": [
@@ -2193,7 +2375,7 @@
       "event_id": "18fe41a2f13892a7",
       "title": "Check Point Software lanza una plataforma de IA autónoma para reinventar la seguridad de red empresarial - Madridiario",
       "confidence": 0.611,
-      "materiality": 0.701,
+      "materiality": 0.7,
       "scope": "GLOBAL",
       "date": "Thu, 21 May 2026 07:00:00 GMT",
       "sources": [
@@ -2211,7 +2393,7 @@
       "event_id": "0cc247bf8ad47cfa",
       "title": "Nokia sale del negocio de CPE FWA y adquiere el 11% de Inseego - Mobile World Live",
       "confidence": 0.632,
-      "materiality": 0.7,
+      "materiality": 0.699,
       "scope": "GLOBAL",
       "date": "Thu, 30 Apr 2026 07:00:00 GMT",
       "sources": [
@@ -2226,13 +2408,15 @@
       "from_kind": "integrator",
       "to_kind": "vendor",
       "relation": "AWARDED",
-      "event_id": "de84a06dca799699",
-      "title": "Indra recibe el reconocimiento de AWS como 'Socio del año' en España por su contribución al alza del negocio - Forbes España",
-      "confidence": 0.615,
-      "materiality": 0.66,
+      "event_id": "7c22fc88b5fc87cb",
+      "title": "Indra Group recibe el reconocimiento de AWS como “Partner of the Year” en España y amplía sus capacidades en IA agéntica | Actualidad - Indra Group",
+      "confidence": 0.679,
+      "materiality": 0.684,
       "scope": "ES",
       "date": "Wed, 03 Jun 2026 07:00:00 GMT",
       "sources": [
+        "Indra Group",
+        "Demócrata",
         "Forbes España"
       ]
     },
@@ -2265,7 +2449,7 @@
       "event_id": "56308798c4806da5",
       "title": "La Fundación NTT DATA recibe el premio Beef Awards 2026 de Innovación - El Diario de Madrid",
       "confidence": 0.615,
-      "materiality": 0.642,
+      "materiality": 0.641,
       "scope": "ES",
       "date": "Thu, 25 Jun 2026 07:00:00 GMT",
       "sources": [
@@ -2301,7 +2485,7 @@
       "event_id": "acedcdabc6702971",
       "title": "TD SYNNEX, seleccionada como distribuidor global de Fortinet - ITseller Chile",
       "confidence": 0.572,
-      "materiality": 0.553,
+      "materiality": 0.552,
       "scope": "OTHER_REGION",
       "date": "Wed, 15 Jul 2026 07:00:00 GMT",
       "sources": [
@@ -2309,18 +2493,72 @@
       ]
     },
     {
-      "from": "ent_495441483b8e",
-      "to": "ent_38833dc2a788",
-      "from_label": "IZFE - Sociedad Foral de Servicios Informáticos - IZFE - Sociedad Foral de Servicios Informáticos",
-      "to_label": "NOSSAYU SL",
+      "from": "ent_7f4fd6243695",
+      "to": "ent_543f0cb92d26",
+      "from_label": "Presidencia de la Comisión Nacional de los Mercados y la Competencia",
+      "to_label": "SOFTTEK DIGITAL SOLUTIONS SLU",
       "from_kind": "buyer",
       "to_kind": "supplier",
       "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "3e0754c762c19710",
-      "title": "España – Paquetes de software y sistemas de información – Suministro licencias Windows Server y SQL Server",
+      "event_id": "7bbc137cea8e853a",
+      "title": "España – Servicios de apoyo a sistemas – Servicio de gestión continua de la liquidación de la producción eléctrica a partir de renovables, cogeneración y residuos, facturación en nombre de terceros y garantías de origen y etiquetado.",
       "confidence": 0.877,
       "materiality": 0.511,
       "scope": "ES",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_5dfde092366e",
+      "to": "ent_706cef9a1d87",
+      "from_label": "Ajuntament de Vila-seca",
+      "to_label": "ICOT, S.A.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "1cb3cdae1ed191f2",
+      "title": "España – Servicios profesionales relacionados con la informática – Contratación del servicio de administración de sistemas y el soporte Help Desk a los usuarios de la red del Ayuntamiento de Vila-seca",
+      "confidence": 0.877,
+      "materiality": 0.511,
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_807631b46fa2",
+      "to": "ent_86065192e6f0",
+      "from_label": "Instituto Municipal Barcelona Innovación y Tecnología",
+      "to_label": "Consultores de Organización y Sistemas, SA",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "a38ac93af5657f7d",
+      "title": "España – Mantenimiento de software de tecnología de la información – 26000023",
+      "confidence": 0.877,
+      "materiality": 0.511,
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_dbbaa3a611f4",
+      "to": "ent_63683c29818e",
+      "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "to_label": "AXIANSEU II DIGITAL CONSULTING, S.A.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "0ba9c8332b354faf",
+      "title": "Portugal – Servicios informáticos – (DAG) Aquisição de serviços de consultoria para evolução do projeto Portal Profissional “S-CUBO\" para o Pilar 3 – Reforma dos SI Disponibilizados ao Profissional (PRR) (20260052)",
+      "confidence": 0.877,
+      "materiality": 0.51,
+      "scope": "PT",
       "date": "2026-08-28+02:00",
       "sources": [
         "TED EU Procurement"
@@ -2337,7 +2575,7 @@
       "event_id": "a9528a98512ec282",
       "title": "Portugal – Grupos electrógenos – PRR - Aquisição de Unidades de Alimentação Ininterrupta (UPS) 2 kVA com Banco de Baterias para Autonomia de 12 Horas",
       "confidence": 0.877,
-      "materiality": 0.511,
+      "materiality": 0.51,
       "scope": "PT",
       "date": "2026-08-28+02:00",
       "sources": [
@@ -2355,7 +2593,7 @@
       "event_id": "8619722afd30105b",
       "title": "Portugal – Servicios de programación de software y de consultoría – 31/AQ/AT/2026_Aq. serv. “Chave na Mão” para des. à medida dos Sistemas de Informação da AT, no âmbito dos Sistemas da Gestão Declarativa - Componente online, nomeadamente Sistema de Gestão de Documentos de Transporte (SGDT), Sistemas de Certidões e de Comprovativos (SCC, SEC e WSComp), Entrega das Declarações de Liquidação (P2LQ) e Sistema de Gestão de Divergências (SGDIVIRS) para o 2026-27",
       "confidence": 0.877,
-      "materiality": 0.511,
+      "materiality": 0.51,
       "scope": "PT",
       "date": "2026-08-28+02:00",
       "sources": [
@@ -2373,7 +2611,7 @@
       "event_id": "5b92d2ff38b33b0a",
       "title": "Portugal – Sistemas de bases de datos – TD-AP-C17-i03, “Transição Digital na Segurança Social” – Aquisição de Serviços de Suporte do Hardware Oracle onde residem as Base de Dados do SISS",
       "confidence": 0.877,
-      "materiality": 0.511,
+      "materiality": 0.51,
       "scope": "PT",
       "date": "2026-08-28+02:00",
       "sources": [
@@ -2391,7 +2629,7 @@
       "event_id": "73311b0aff5f6731",
       "title": "Portugal – Paquetes de software de seguridad – Aquisição de Solução de Deteção e Remediação de Vulnerabilidades, com base no Risco, Deteção e Resposta",
       "confidence": 0.877,
-      "materiality": 0.511,
+      "materiality": 0.51,
       "scope": "PT",
       "date": "2026-08-27+02:00",
       "sources": [
@@ -2409,7 +2647,7 @@
       "event_id": "b054128663c43750",
       "title": "Portugal – Paquetes de software y sistemas de información – Renovação do licenciamento Nintex K2 Five, para garantir a usabilidade e evolução do SIGAP em termos tecnológicos e operacionais",
       "confidence": 0.877,
-      "materiality": 0.511,
+      "materiality": 0.51,
       "scope": "PT",
       "date": "2026-08-27+02:00",
       "sources": [
@@ -2417,55 +2655,19 @@
       ]
     },
     {
-      "from": "ent_dbbaa3a611f4",
-      "to": "ent_b241925db81d",
-      "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
-      "to_label": "IQVIA SOLUTIONS PORTUGAL, UNIPESSOAL LDA",
+      "from": "ent_df0a81368b70",
+      "to": "ent_53b9bd03493b",
+      "from_label": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
+      "to_label": "VERSIA INFRAESTRUCTURAS TI, S.L.",
       "from_kind": "buyer",
       "to_kind": "supplier",
       "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "11141a8430192c3b",
-      "title": "Portugal – Paquetes de software específico de un sector económico – [DAG] Aquisição de Ferramenta para Estratificação da População pelo Risco [20260020]",
+      "event_id": "bd3d9558d3c696df",
+      "title": "España – Ordenadores portátiles – Suministro mediante arrendamiento sin opción de compra (Renting) de dispositivos para profesorado del Departamento de Educación",
       "confidence": 0.877,
-      "materiality": 0.511,
-      "scope": "PT",
-      "date": "2026-08-26+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_828deb05ded9",
-      "to": "ent_fe0a2e12da79",
-      "from_label": "Secretaria-Geral do Ministério da Administração Interna",
-      "to_label": "NOS – Comunicações, S.A.",
-      "from_kind": "buyer",
-      "to_kind": "supplier",
-      "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "204fc75e739adde6",
-      "title": "Portugal – Servicios de consultoría en sistemas y consultoría técnica – Aquisição de Serviços de Engenharia de Telecomunicações e Serviços de Controlo de Qualidade, para o Serviço 112",
-      "confidence": 0.877,
-      "materiality": 0.511,
-      "scope": "PT",
-      "date": "2026-08-26+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_dbbaa3a611f4",
-      "to": "ent_7942bfd287d4",
-      "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
-      "to_label": "Quickops Consulting, Lda",
-      "from_kind": "buyer",
-      "to_kind": "supplier",
-      "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "7882a41f5449a9fd",
-      "title": "Portugal – Servicios informáticos – [DAG] Aquisição de serviços de manutenção corretiva, preventiva e evolutiva do WebRHV [20260003]",
-      "confidence": 0.877,
-      "materiality": 0.511,
-      "scope": "PT",
-      "date": "2026-08-26+02:00",
+      "materiality": 0.507,
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
       "sources": [
         "TED EU Procurement"
       ]
@@ -2481,7 +2683,7 @@
       "event_id": "8d05e89d7b36d057",
       "title": "Portugal – Máquinas procesadoras de datos (hardware) – Procedimento n.º 47/DCP-GCE/UE/2025",
       "confidence": 0.877,
-      "materiality": 0.507,
+      "materiality": 0.506,
       "scope": "PT",
       "date": "2026-08-28+02:00",
       "sources": [
@@ -2489,19 +2691,55 @@
       ]
     },
     {
-      "from": "ent_55eb6431c309",
-      "to": "ent_0a0d6029bae8",
-      "from_label": "Escola Secundária Campos Melo",
-      "to_label": "J. Roma, Lda / AREAL EDITORES, S.A / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / Bricantel - Comércio de Material Eléctrico de Bragança S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / MEO - SERVIÇOS DE COMUNICAÇÕES E MULTIMÉDIA, S.A / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA, / BCN - Sistemas de Escritório e Imagem, SA,",
+      "from": "ent_6ac5566278e9",
+      "to": "ent_157f00a5267a",
+      "from_label": "Mancomunitat Escombraries de l'Urgellet",
+      "to_label": "RENTAL RECYCLING TECHNOLOGY S.L.",
       "from_kind": "buyer",
       "to_kind": "supplier",
       "relation": "AWARDED_CONTRACT_TO",
-      "event_id": "fce7e26d9f75da43",
-      "title": "Portugal – Equipo y material informático – Aquisição de Equipamento e Mobiliário no âmbito dos Centros Tecnológicos Especializados",
+      "event_id": "f26f0a4cd478613b",
+      "title": "España – Mezcladores – Suministro de una máquina volteadora de compost para la planta de compostaje de La Seu d'Urgell",
       "confidence": 0.877,
-      "materiality": 0.506,
-      "scope": "PT",
-      "date": "2026-08-26+02:00",
+      "materiality": 0.496,
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_c15589950bc2",
+      "to": "ent_9d0bbab1d298",
+      "from_label": "Red Eléctrica de España, S.A.U. (Red Eléctrica)",
+      "to_label": "SPARK IBÉRICA, S.A.U.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "617cf98cfc3d0725",
+      "title": "España – Trabajos de construcción – MT+OC SE CARDOSO GIS 400/220 kV",
+      "confidence": 0.877,
+      "materiality": 0.496,
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_c15589950bc2",
+      "to": "ent_7c01fafa9754",
+      "from_label": "Red Eléctrica de España, S.A.U. (Red Eléctrica)",
+      "to_label": "MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A. / MONTAJES Y OBRA CIVIL, S.A.",
+      "from_kind": "buyer",
+      "to_kind": "supplier",
+      "relation": "AWARDED_CONTRACT_TO",
+      "event_id": "16cad250aff7a7d8",
+      "title": "España – Trabajos de construcción – DESMANTELAMIENTO EJE 66kV FUERTEVENTURA",
+      "confidence": 0.877,
+      "materiality": 0.496,
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
       "sources": [
         "TED EU Procurement"
       ]
@@ -2517,7 +2755,7 @@
       "event_id": "286fd0474a657e4c",
       "title": "Portugal – Servicios de reparación y mantenimiento – ADCM.PR2026/3124 - Aquisição de serviços de serviços de assistência técnica, manutenção e reparação, bem como aquisição de componentes para equipamentos de Eletromedicina da marca Drager e o Software Drager Infinity Gateway, instalados em diversas unidades hospitalares, de âmbito nacional",
       "confidence": 0.877,
-      "materiality": 0.496,
+      "materiality": 0.495,
       "scope": "PT",
       "date": "2026-08-28+02:00",
       "sources": [
@@ -2535,207 +2773,207 @@
       "event_id": "2453e9ad0e6434b6",
       "title": "España – Servicios de desarrollo de software educativo – Gestión y explotación de la escuela infantil \"La Cometa\"",
       "confidence": 0.875,
-      "materiality": 0.489,
+      "materiality": 0.488,
       "scope": "ES",
-      "date": "2026-08-28+02:00",
+      "date": "2026-08-31+02:00",
       "sources": [
         "TED EU Procurement"
       ]
     },
     {
-      "from": "ent_92efc85e3819",
-      "to": "ent_20725cb1b8af",
-      "from_label": "DIPUTACIÓN DE BARCELONA",
-      "to_label": "IT Services",
-      "from_kind": "buyer",
-      "to_kind": "technology",
-      "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "cc62b2d6aba8eec1",
-      "title": "España – Paquetes de software y sistemas de información – Suscripción de licencias nominales de software Adobe para la Diputación de Barcelona",
-      "confidence": 0.875,
-      "materiality": 0.489,
-      "scope": "ES",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_130249dfc253",
+      "from": "ent_a57bad9b8e47",
       "to": "ent_0a76a3fe7b25",
-      "from_label": "Vicepresidencia Segunda de la Junta de Castilla y León",
+      "from_label": "Departament de la Presidència",
       "to_label": "Technology procurement",
       "from_kind": "buyer",
       "to_kind": "technology",
       "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "6c5a5857753b9ee0",
-      "title": "España – Servicios de gestión de instalaciones informáticas – Contratación de los servicios para la Plataforma de Formación FOPCYL de supervisión, mantenimiento, alojamiento, mejoras, asesoramiento, estudios, asistencia técnica y trabajos técnicos para la gestión de actividades formativas de la APCE",
+      "event_id": "fec0c4c5740dc08d",
+      "title": "España – Servicios de archivo – Servicios de tratamiento y custodia de la documentación semiactiva del Departamento de la Presidencia: 2 lotes (PR-2027-21)",
       "confidence": 0.875,
-      "materiality": 0.489,
+      "materiality": 0.488,
       "scope": "ES",
-      "date": "2026-08-28+02:00",
+      "date": "2026-08-31+02:00",
       "sources": [
         "TED EU Procurement"
       ]
     },
     {
-      "from": "ent_8a417f0b1606",
-      "to": "ent_0a76a3fe7b25",
-      "from_label": "Junta de Gobierno de la Diputación Provincial de Jaén",
-      "to_label": "Technology procurement",
-      "from_kind": "buyer",
-      "to_kind": "technology",
-      "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "82bbbb379534a085",
-      "title": "España – Servicios generales de consultoría en gestión – Contrato de Servicios de consultoría y asistencia técnica a los planes de actuación integrados de la Diputación provincial de Jaén que podrán ser cofinanciados por la Union Europea(convocatoria EDIL, Fondo Europeo para el Desarrollo Regional, Feder 2021-2027",
-      "confidence": 0.875,
-      "materiality": 0.489,
-      "scope": "ES",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_c49f9703d4ea",
+      "from": "ent_8d83c3c0e813",
       "to": "ent_20725cb1b8af",
-      "from_label": "Santa Casa da Misericórdia de Lisboa",
+      "from_label": "Gobierno Vasco - EUSTAT - Instituto Vasco de Estadística",
       "to_label": "IT Services",
       "from_kind": "buyer",
       "to_kind": "technology",
       "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "0637da07d4cd9ec9",
-      "title": "Portugal – Servicios TI: consultoría, desarrollo de software, Internet y apoyo – Subscrição do licenciamento para Framework de desenvolvimento Outsystems",
+      "event_id": "436199b1a3e7f570",
+      "title": "España – Servicios TI: consultoría, desarrollo de software, Internet y apoyo – : Construcción de la interfaz gráfica y la API para componer cuestionarios económicos en INKUDEA.",
+      "confidence": 0.875,
+      "materiality": 0.488,
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_5fe079ad9978",
+      "to": "ent_20725cb1b8af",
+      "from_label": "Unidade Local de Saúde de Santa Maria, EPE",
+      "to_label": "IT Services",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "a327ade50ce66232",
+      "title": "Portugal – Paquetes de software médico – Aquisição de Aplicação Informática para os Blocos Operatórios da Unidade Local de Saúde de Santa Maria E.P.E.",
       "confidence": 0.875,
       "materiality": 0.488,
       "scope": "PT",
-      "date": "2026-08-26+02:00",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_f086e3f5aee7",
+      "to": "ent_20725cb1b8af",
+      "from_label": "Agência para o Desenvolvimento e Coesão, IP",
+      "to_label": "IT Services",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "8a82d50943d5c1bf",
+      "title": "Portugal – Servicios TI: consultoría, desarrollo de software, Internet y apoyo – Aquisição de serviços de implementação e desenvolvimento de solução de Sistema de Informação Geográfica",
+      "confidence": 0.875,
+      "materiality": 0.488,
+      "scope": "PT",
+      "date": "2026-08-27+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_98f609bd9933",
+      "to": "ent_0a76a3fe7b25",
+      "from_label": "REN - Gasodutos, SA",
+      "to_label": "Technology procurement",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "9e69ba1348b1c28e",
+      "title": "Portugal – Máquinas procesadoras de datos (hardware) – PC-2026-000342 - Renovação HW GS REN Gasodutos (Ed.D Sacavém)",
+      "confidence": 0.875,
+      "materiality": 0.484,
+      "scope": "PT",
+      "date": "2026-08-31+02:00",
       "sources": [
         "TED EU Procurement"
       ]
     },
     {
       "from": "ent_dbbaa3a611f4",
-      "to": "ent_0a76a3fe7b25",
+      "to": "ent_0e10e164957d",
       "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
-      "to_label": "Technology procurement",
+      "to_label": "Data Center",
       "from_kind": "buyer",
       "to_kind": "technology",
       "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "a266292f0d034421",
-      "title": "Portugal – Servicios informáticos – (DAG) Aquisição de serviços de Consultor Sénior em plataformas de ITSM (20260271)",
+      "event_id": "3aadc4ab8cf09b6a",
+      "title": "Portugal – Equipo y material informático – (DAG) Aquisição de Armazenamento SAN para o Polo II do Centro de Dados da SPMS - Pilar 1 - Reforma e Modernização da Rede de Dados da Saúde - PRR (20260320)",
       "confidence": 0.875,
-      "materiality": 0.488,
+      "materiality": 0.484,
       "scope": "PT",
-      "date": "2026-08-26+02:00",
+      "date": "2026-08-27+02:00",
       "sources": [
         "TED EU Procurement"
       ]
     },
     {
-      "from": "ent_159b0ff491f9",
-      "to": "ent_0a76a3fe7b25",
-      "from_label": "Secretaria-Geral do Ministério do Trabalho, Solidariedade e Segurança Social",
-      "to_label": "Technology procurement",
-      "from_kind": "buyer",
-      "to_kind": "technology",
-      "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "8f86928f000f3d0e",
-      "title": "Portugal – Servicios de análisis de datos – Aquisição de Serviço de Análise e Verificação no âmbito de projetos financiados pelo Programa Demografia, Qualificações e Inclusão (Pessoas 2030)",
-      "confidence": 0.875,
-      "materiality": 0.488,
-      "scope": "PT",
-      "date": "2026-08-26+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_5b81a985ccb3",
-      "to": "ent_78fd5cac8c02",
-      "from_label": "Diputación Foral de Álava - Departamento de Movilidad Sostenible e Infraestructuras Viarias",
-      "to_label": "Cybersecurity",
-      "from_kind": "buyer",
-      "to_kind": "technology",
-      "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "d967ac29a5ea8787",
-      "title": "España – Servicios de reparación, mantenimiento y servicios asociados relacionados con carreteras y otros equipos – Mejora de la Seguridad Vial en la Red Foral de Carreteras de Álava. Actuaciones preventivas y paliativas (año 2026)",
-      "confidence": 0.875,
-      "materiality": 0.473,
-      "scope": "ES",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_5b81a985ccb3",
-      "to": "ent_9e91940ff923",
-      "from_label": "Diputación Foral de Álava - Departamento de Movilidad Sostenible e Infraestructuras Viarias",
-      "to_label": "Networking",
-      "from_kind": "buyer",
-      "to_kind": "technology",
-      "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "d967ac29a5ea8787",
-      "title": "España – Servicios de reparación, mantenimiento y servicios asociados relacionados con carreteras y otros equipos – Mejora de la Seguridad Vial en la Red Foral de Carreteras de Álava. Actuaciones preventivas y paliativas (año 2026)",
-      "confidence": 0.875,
-      "materiality": 0.473,
-      "scope": "ES",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_0412b0ed5d0b",
-      "to": "ent_9e91940ff923",
-      "from_label": "Ajuntament de Sant Feliu de Guíxols",
-      "to_label": "Networking",
-      "from_kind": "buyer",
-      "to_kind": "technology",
-      "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "fd73ef28e870ce72",
-      "title": "España – Servicios de gestión de alcantarillados – Contrato para el servicio de mantenimiento, conservación y reposiciones o actuaciones de la red de alcantarillado y pluviales y elementos auxiliares dentro del término municipal de Sant Feliu de Guíxols",
-      "confidence": 0.875,
-      "materiality": 0.473,
-      "scope": "ES",
-      "date": "2026-08-28+02:00",
-      "sources": [
-        "TED EU Procurement"
-      ]
-    },
-    {
-      "from": "ent_4828caf55679",
+      "from": "ent_dbbaa3a611f4",
       "to": "ent_20725cb1b8af",
-      "from_label": "The European Joint Undertaking for ITER and the Development of Fusion Energy ('Fusion for Energy')",
+      "from_label": "Serviços Partilhados do Ministério da Saúde, EPE",
       "to_label": "IT Services",
       "from_kind": "buyer",
       "to_kind": "technology",
       "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "fb5b78f63be86307",
-      "title": "España – Instrumentos de medición – Provision of an Acquisition Channel for Metrology Equipment and Software",
+      "event_id": "3aadc4ab8cf09b6a",
+      "title": "Portugal – Equipo y material informático – (DAG) Aquisição de Armazenamento SAN para o Polo II do Centro de Dados da SPMS - Pilar 1 - Reforma e Modernização da Rede de Dados da Saúde - PRR (20260320)",
       "confidence": 0.875,
-      "materiality": 0.473,
-      "scope": "ES",
-      "date": "2026-08-28+02:00",
+      "materiality": 0.484,
+      "scope": "PT",
+      "date": "2026-08-27+02:00",
       "sources": [
         "TED EU Procurement"
       ]
     },
     {
-      "from": "ent_f05d57f846ff",
-      "to": "ent_0a76a3fe7b25",
-      "from_label": "Metropolitano de Lisboa, EPE",
-      "to_label": "Technology procurement",
+      "from": "ent_2d82994ca494",
+      "to": "ent_78fd5cac8c02",
+      "from_label": "DIRECCIÓN PROVINCIAL DEL SERVICIO ANDALUZ DE EMPLEO EN MÁLAGA",
+      "to_label": "Cybersecurity",
       "from_kind": "buyer",
       "to_kind": "technology",
       "relation": "PUBLISHED_TECH_TENDER",
-      "event_id": "f1b7e31a0ae27a0a",
-      "title": "Portugal – Servicios de laboratorio – Aquisição de serviços referentes à gestão, execução e acompanhamento dos planos de prevenção e monitorização de legionella (PPML), em instalações do Metropolitano de Lisboa E.P.E.” –Proc. N.º 018/2026",
+      "event_id": "42d781bc54d679d1",
+      "title": "España – Servicios de seguridad – CONTR_2026_178473 “SERVICIO De VIGILANCIA, MANTENIMIENTO Y GESTIÓN DE ALARMAS PARA LA RED DE CENTROS Y OFICINAS DE EMPLEO Y PARA LA ESCUELA CENTRO ANDALUZ DE FORMACIÓN INTEGRAL DE LAS INDUSTRIAS DEL OCIO DE MIJAS en LA PROVINCIA DE MÁLAGA”",
       "confidence": 0.875,
       "materiality": 0.473,
-      "scope": "PT",
-      "date": "2026-08-26+02:00",
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_2d82994ca494",
+      "to": "ent_9e91940ff923",
+      "from_label": "DIRECCIÓN PROVINCIAL DEL SERVICIO ANDALUZ DE EMPLEO EN MÁLAGA",
+      "to_label": "Networking",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "42d781bc54d679d1",
+      "title": "España – Servicios de seguridad – CONTR_2026_178473 “SERVICIO De VIGILANCIA, MANTENIMIENTO Y GESTIÓN DE ALARMAS PARA LA RED DE CENTROS Y OFICINAS DE EMPLEO Y PARA LA ESCUELA CENTRO ANDALUZ DE FORMACIÓN INTEGRAL DE LAS INDUSTRIAS DEL OCIO DE MIJAS en LA PROVINCIA DE MÁLAGA”",
+      "confidence": 0.875,
+      "materiality": 0.473,
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_5e12bb884c09",
+      "to": "ent_9e91940ff923",
+      "from_label": "Generalitat de Catalunya, Agencia Catalana del Agua del Departamento de Territorio, Vivienda y Transición Ecológica",
+      "to_label": "Networking",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "b332789edb2cdd39",
+      "title": "España – Servicios de ingeniería – SERVICIOS DE ASISTENCIA TECNICA A LA UNIDAD DE REDES DE CONTROL EN EL AMBITO DE LAS INFRAESTRUCTURAS INCLUIDAS EN LA RED DE CONTROL AUTOMATICA DE LA AGENCIA CATALANA DEL AGUA",
+      "confidence": 0.875,
+      "materiality": 0.473,
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
+      "sources": [
+        "TED EU Procurement"
+      ]
+    },
+    {
+      "from": "ent_32ede0b92e68",
+      "to": "ent_9e91940ff923",
+      "from_label": "Ferrocarrils de la Generalitat de Catalunya",
+      "to_label": "Networking",
+      "from_kind": "buyer",
+      "to_kind": "technology",
+      "relation": "PUBLISHED_TECH_TENDER",
+      "event_id": "9334285ddbbecee7",
+      "title": "España – Servicios de diseño gráfico – Acuerdo marco para la homologación de empresas para la prestación de servicios de rotulación, instalación de señalización y singularització de espacios para estaciones, dependencias y oficinas, material móvil y vehículos corporativos dentro del ámbito de la red ferroviaria y de turismo y montaña de Ferrocarriles de la Generalitat de Cataluña (Ref. AM15/26)",
+      "confidence": 0.875,
+      "materiality": 0.473,
+      "scope": "ES",
+      "date": "2026-08-31+02:00",
       "sources": [
         "TED EU Procurement"
       ]

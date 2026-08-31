@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generated_at": "2026-08-27T22:47:41.905829+00:00",
+    "generated_at": "2026-08-31T09:19:05.813388+00:00",
     "registered_sources": 151,
-    "direct_source_rows": 107,
-    "direct_raw_rows": 107,
+    "direct_source_rows": 123,
+    "direct_raw_rows": 123,
     "direct_deduplicated_rows": 0
   },
   "direct_connectors": {
@@ -11,30 +11,30 @@
       "attempted": 2,
       "successful": 2,
       "failed": 0,
-      "rows": 71,
+      "rows": 77,
       "raw_notices": 360,
-      "technology_notices": 65,
+      "technology_notices": 71,
       "errors": [],
-      "latency_ms": 3580.0
+      "latency_ms": 3249.7
     },
     "placsp_atom": {
       "attempted": 1,
       "successful": 1,
       "failed": 0,
-      "rows": 3,
+      "rows": 13,
       "raw_feed_rows": 80,
-      "technology_rows": 3,
-      "entity_matched_rows": 0,
+      "technology_rows": 12,
+      "entity_matched_rows": 1,
       "url_used": "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3.atom",
       "cached": 0,
       "errors": [],
-      "latency_ms": 11024.2
+      "latency_ms": 32685.5
     },
     "cisa_kev": {
       "attempted": 1,
       "failed": 0,
       "rows": 33,
-      "latency_ms": 337.4
+      "latency_ms": 111.2
     },
     "generic_feeds": {
       "attempted_sources": 18,
@@ -44,21 +44,21 @@
       "failed": 0,
       "rows": 0,
       "per_source": {
+        "cisa": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 403: <HTML><HEAD> <TITLE>Access Denied</TITLE> </HEAD><BODY> <H1>Access Denied</H1>   You don't have permission to access \"http&#58;&#47;&#47;cisa&#46;gov&#47;rss\" on this server.<P> Reference&#32;&#35;18&#46;46c90b17&#46;1788167926&#46;1c0d8baa <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;46c90b17&#46;1788167926&#46;1c0d8baa</P> </BODY> </HTML>",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
         "nvd": {
           "attempts": 2,
           "feed_rows": 0,
           "accepted_rows": 0,
           "working_feed": "",
           "error": "ParseError: syntax error: line 1, column 0",
-          "row_cap": 25,
-          "status": "no_feed"
-        },
-        "cisa": {
-          "attempts": 2,
-          "feed_rows": 0,
-          "accepted_rows": 0,
-          "working_feed": "",
-          "error": "HTTP 403: <HTML><HEAD> <TITLE>Access Denied</TITLE> </HEAD><BODY> <H1>Access Denied</H1>   You don't have permission to access \"http&#58;&#47;&#47;cisa&#46;gov&#47;rss\" on this server.<P> Reference&#32;&#35;18&#46;a5bbce17&#46;1787870840&#46;1f907517 <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;a5bbce17&#46;1787870840&#46;1f907517</P> </BODY> </HTML>",
           "row_cap": 25,
           "status": "no_feed"
         },
@@ -71,15 +71,6 @@
           "row_cap": 25,
           "status": "no_feed"
         },
-        "ccncert": {
-          "attempts": 2,
-          "feed_rows": 0,
-          "accepted_rows": 0,
-          "working_feed": "",
-          "error": "HTTP 403: <html><head><title>Voight-Kampff Browser Test</title><style>#main{margin:auto;width:100%;padding:10px}#content{font-family:sans-serif;max-width:800px;width:100%;text-align:center;margin:auto}.loading{color:#3fa3a5;text-align:center;font-size:6em;font-family:sans;font-weight:bolder}.loading span{opacity:0;animation:blink 1.4s infinite}.loading span:nth-child(1){animation-delay:.2s}.loading span:nth-child(2){animation-delay:.4s}.loading span:nth-child(3){animation-delay:.6s}@keyframes blink{0%{opacity:.1}50%{opacity:1}100%{opacity:.1}}@media screen and (max-width:800px){#content{padding:10px}}</style></head><body><div id=main><div id=content><div class=loading><span>.</span> <span>.</span> <span>.</span></div><h2>Checking Your Browser</h2><p>Please wait, this will only take a moment. You'll be redirected shortly.</div></div><a href=https://statics.transparentedge.eu/btchk01 tabindex=-1 ari",
-          "row_cap": 25,
-          "status": "no_feed"
-        },
         "cve": {
           "attempts": 2,
           "feed_rows": 0,
@@ -89,12 +80,12 @@
           "row_cap": 25,
           "status": "no_feed"
         },
-        "placsp": {
+        "ccncert": {
           "attempts": 2,
           "feed_rows": 0,
           "accepted_rows": 0,
           "working_feed": "",
-          "error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"> <html><head> <title>404 Not Found</title> </head><body> <h1>Not Found</h1> <p>The requested URL was not found on this server.</p> <hr> <address>IBM_HTTP_Server Server at contrataciondelsectorpublico.gob.es Port 80</address> </body></html>",
+          "error": "HTTP 403: <html><head><title>Voight-Kampff Browser Test</title><style>#main{margin:auto;width:100%;padding:10px}#content{font-family:sans-serif;max-width:800px;width:100%;text-align:center;margin:auto}.loading{color:#3fa3a5;text-align:center;font-size:6em;font-family:sans;font-weight:bolder}.loading span{opacity:0;animation:blink 1.4s infinite}.loading span:nth-child(1){animation-delay:.2s}.loading span:nth-child(2){animation-delay:.4s}.loading span:nth-child(3){animation-delay:.6s}@keyframes blink{0%{opacity:.1}50%{opacity:1}100%{opacity:.1}}@media screen and (max-width:800px){#content{padding:10px}}</style></head><body><div id=main><div id=content><div class=loading><span>.</span> <span>.</span> <span>.</span></div><h2>Checking Your Browser</h2><p>Please wait, this will only take a moment. You'll be redirected shortly.</div></div><a href=https://statics.transparentedge.eu/btchk01 tabindex=-1 ari",
           "row_cap": 25,
           "status": "no_feed"
         },
@@ -104,6 +95,15 @@
           "accepted_rows": 0,
           "working_feed": "",
           "error": "HTTP 404: <!DOCTYPE html> <html  lang=\"es\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\">   <head>     <meta charset=\"utf-8\" /> <meta name=\"description\" content=\"Hemos actualizado la página web El contenido que buscas ha cambiado de URL. Revisa los apartados correspondientes. Gracias. Volver a la Home\" /> <link rel=\"canonical\" href=\"https://www.cnmc.es/node/411565\" /> <link rel=\"image_src\" href=\",,,https://www.cnmc.es/sites/default/files/CNMC_Logotipo.png\" /> <meta property=\"og:url\" content=\"https://www.cnmc.es/node/411565\" /> <meta property=\"og:title\" content=\"Hemos actualizado la página web\" /> <meta property=\"og:image\" content=\"https://www.cnmc.es/sites/default/files/CNMC_Logotipo.png\" /> <meta name=\"Generator\" content=\"Drupal 10 (https://www.drupal.org)\" /> <meta name=\"MobileOptimized\" content=\"width\" /> <meta name=\"HandheldFriendly\" content=\"true\" /> <meta name=\"viewport\" content=\"width=device-wi",
+          "row_cap": 25,
+          "status": "no_feed"
+        },
+        "placsp": {
+          "attempts": 2,
+          "feed_rows": 0,
+          "accepted_rows": 0,
+          "working_feed": "",
+          "error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"> <html><head> <title>404 Not Found</title> </head><body> <h1>Not Found</h1> <p>The requested URL was not found on this server.</p> <hr> <address>IBM_HTTP_Server Server at contrataciondelsectorpublico.gob.es Port 80</address> </body></html>",
           "row_cap": 25,
           "status": "no_feed"
         },
@@ -175,7 +175,7 @@
           "feed_rows": 0,
           "accepted_rows": 0,
           "working_feed": "",
-          "error": "HTTP 503: <HTML><HEAD> <TITLE>Service Unavailable</TITLE> </HEAD><BODY> <H1>Service Unavailable - Zero size object</H1> The server is temporarily unable to service your request.  Please try again later.<P> Reference&#32;&#35;15&#46;8467cd17&#46;1787870845&#46;1bde4e5 <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;15&#46;8467cd17&#46;1787870845&#46;1bde4e5</P> </BODY></HTML>",
+          "error": "HTTP 503: <HTML><HEAD> <TITLE>Service Unavailable</TITLE> </HEAD><BODY> <H1>Service Unavailable - Zero size object</H1> The server is temporarily unable to service your request.  Please try again later.<P> Reference&#32;&#35;15&#46;72cfdb17&#46;1788167932&#46;1ff09e6a <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;15&#46;72cfdb17&#46;1788167932&#46;1ff09e6a</P> </BODY></HTML>",
           "row_cap": 25,
           "status": "no_feed"
         },
@@ -207,7 +207,7 @@
           "status": "no_feed"
         }
       },
-      "latency_ms": 21889.6
+      "latency_ms": 19424.2
     }
   },
   "sources": {
@@ -215,30 +215,30 @@
       "attempted": 2,
       "successful": 2,
       "failed": 0,
-      "rows": 71,
+      "rows": 77,
       "raw_notices": 360,
-      "technology_notices": 65,
+      "technology_notices": 71,
       "errors": [],
-      "latency_ms": 3580.0
+      "latency_ms": 3249.7
     },
     "placsp_atom": {
       "attempted": 1,
       "successful": 1,
       "failed": 0,
-      "rows": 3,
+      "rows": 13,
       "raw_feed_rows": 80,
-      "technology_rows": 3,
-      "entity_matched_rows": 0,
+      "technology_rows": 12,
+      "entity_matched_rows": 1,
       "url_used": "https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3.atom",
       "cached": 0,
       "errors": [],
-      "latency_ms": 11024.2
+      "latency_ms": 32685.5
     },
     "cisa_kev": {
       "attempted": 1,
       "failed": 0,
       "rows": 33,
-      "latency_ms": 337.4
+      "latency_ms": 111.2
     },
     "generic_feeds": {
       "attempted_sources": 18,
@@ -247,7 +247,16 @@
       "no_feed_sources": 17,
       "failed": 0,
       "rows": 0,
-      "latency_ms": 21889.6
+      "latency_ms": 19424.2
+    },
+    "feed:cisa": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 403: <HTML><HEAD> <TITLE>Access Denied</TITLE> </HEAD><BODY> <H1>Access Denied</H1>   You don't have permission to access \"http&#58;&#47;&#47;cisa&#46;gov&#47;rss\" on this server.<P> Reference&#32;&#35;18&#46;46c90b17&#46;1788167926&#46;1c0d8baa <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;46c90b17&#46;1788167926&#46;1c0d8baa</P> </BODY> </HTML>",
+      "row_cap": 25,
+      "status": "no_feed"
     },
     "feed:nvd": {
       "attempts": 2,
@@ -255,15 +264,6 @@
       "accepted_rows": 0,
       "working_feed": "",
       "error": "ParseError: syntax error: line 1, column 0",
-      "row_cap": 25,
-      "status": "no_feed"
-    },
-    "feed:cisa": {
-      "attempts": 2,
-      "feed_rows": 0,
-      "accepted_rows": 0,
-      "working_feed": "",
-      "error": "HTTP 403: <HTML><HEAD> <TITLE>Access Denied</TITLE> </HEAD><BODY> <H1>Access Denied</H1>   You don't have permission to access \"http&#58;&#47;&#47;cisa&#46;gov&#47;rss\" on this server.<P> Reference&#32;&#35;18&#46;a5bbce17&#46;1787870840&#46;1f907517 <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;a5bbce17&#46;1787870840&#46;1f907517</P> </BODY> </HTML>",
       "row_cap": 25,
       "status": "no_feed"
     },
@@ -276,15 +276,6 @@
       "row_cap": 25,
       "status": "no_feed"
     },
-    "feed:ccncert": {
-      "attempts": 2,
-      "feed_rows": 0,
-      "accepted_rows": 0,
-      "working_feed": "",
-      "error": "HTTP 403: <html><head><title>Voight-Kampff Browser Test</title><style>#main{margin:auto;width:100%;padding:10px}#content{font-family:sans-serif;max-width:800px;width:100%;text-align:center;margin:auto}.loading{color:#3fa3a5;text-align:center;font-size:6em;font-family:sans;font-weight:bolder}.loading span{opacity:0;animation:blink 1.4s infinite}.loading span:nth-child(1){animation-delay:.2s}.loading span:nth-child(2){animation-delay:.4s}.loading span:nth-child(3){animation-delay:.6s}@keyframes blink{0%{opacity:.1}50%{opacity:1}100%{opacity:.1}}@media screen and (max-width:800px){#content{padding:10px}}</style></head><body><div id=main><div id=content><div class=loading><span>.</span> <span>.</span> <span>.</span></div><h2>Checking Your Browser</h2><p>Please wait, this will only take a moment. You'll be redirected shortly.</div></div><a href=https://statics.transparentedge.eu/btchk01 tabindex=-1 ari",
-      "row_cap": 25,
-      "status": "no_feed"
-    },
     "feed:cve": {
       "attempts": 2,
       "feed_rows": 0,
@@ -294,12 +285,12 @@
       "row_cap": 25,
       "status": "no_feed"
     },
-    "feed:placsp": {
+    "feed:ccncert": {
       "attempts": 2,
       "feed_rows": 0,
       "accepted_rows": 0,
       "working_feed": "",
-      "error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"> <html><head> <title>404 Not Found</title> </head><body> <h1>Not Found</h1> <p>The requested URL was not found on this server.</p> <hr> <address>IBM_HTTP_Server Server at contrataciondelsectorpublico.gob.es Port 80</address> </body></html>",
+      "error": "HTTP 403: <html><head><title>Voight-Kampff Browser Test</title><style>#main{margin:auto;width:100%;padding:10px}#content{font-family:sans-serif;max-width:800px;width:100%;text-align:center;margin:auto}.loading{color:#3fa3a5;text-align:center;font-size:6em;font-family:sans;font-weight:bolder}.loading span{opacity:0;animation:blink 1.4s infinite}.loading span:nth-child(1){animation-delay:.2s}.loading span:nth-child(2){animation-delay:.4s}.loading span:nth-child(3){animation-delay:.6s}@keyframes blink{0%{opacity:.1}50%{opacity:1}100%{opacity:.1}}@media screen and (max-width:800px){#content{padding:10px}}</style></head><body><div id=main><div id=content><div class=loading><span>.</span> <span>.</span> <span>.</span></div><h2>Checking Your Browser</h2><p>Please wait, this will only take a moment. You'll be redirected shortly.</div></div><a href=https://statics.transparentedge.eu/btchk01 tabindex=-1 ari",
       "row_cap": 25,
       "status": "no_feed"
     },
@@ -309,6 +300,15 @@
       "accepted_rows": 0,
       "working_feed": "",
       "error": "HTTP 404: <!DOCTYPE html> <html  lang=\"es\" dir=\"ltr\" prefix=\"og: https://ogp.me/ns#\">   <head>     <meta charset=\"utf-8\" /> <meta name=\"description\" content=\"Hemos actualizado la página web El contenido que buscas ha cambiado de URL. Revisa los apartados correspondientes. Gracias. Volver a la Home\" /> <link rel=\"canonical\" href=\"https://www.cnmc.es/node/411565\" /> <link rel=\"image_src\" href=\",,,https://www.cnmc.es/sites/default/files/CNMC_Logotipo.png\" /> <meta property=\"og:url\" content=\"https://www.cnmc.es/node/411565\" /> <meta property=\"og:title\" content=\"Hemos actualizado la página web\" /> <meta property=\"og:image\" content=\"https://www.cnmc.es/sites/default/files/CNMC_Logotipo.png\" /> <meta name=\"Generator\" content=\"Drupal 10 (https://www.drupal.org)\" /> <meta name=\"MobileOptimized\" content=\"width\" /> <meta name=\"HandheldFriendly\" content=\"true\" /> <meta name=\"viewport\" content=\"width=device-wi",
+      "row_cap": 25,
+      "status": "no_feed"
+    },
+    "feed:placsp": {
+      "attempts": 2,
+      "feed_rows": 0,
+      "accepted_rows": 0,
+      "working_feed": "",
+      "error": "HTTP 404: <!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"> <html><head> <title>404 Not Found</title> </head><body> <h1>Not Found</h1> <p>The requested URL was not found on this server.</p> <hr> <address>IBM_HTTP_Server Server at contrataciondelsectorpublico.gob.es Port 80</address> </body></html>",
       "row_cap": 25,
       "status": "no_feed"
     },
@@ -380,7 +380,7 @@
       "feed_rows": 0,
       "accepted_rows": 0,
       "working_feed": "",
-      "error": "HTTP 503: <HTML><HEAD> <TITLE>Service Unavailable</TITLE> </HEAD><BODY> <H1>Service Unavailable - Zero size object</H1> The server is temporarily unable to service your request.  Please try again later.<P> Reference&#32;&#35;15&#46;8467cd17&#46;1787870845&#46;1bde4e5 <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;15&#46;8467cd17&#46;1787870845&#46;1bde4e5</P> </BODY></HTML>",
+      "error": "HTTP 503: <HTML><HEAD> <TITLE>Service Unavailable</TITLE> </HEAD><BODY> <H1>Service Unavailable - Zero size object</H1> The server is temporarily unable to service your request.  Please try again later.<P> Reference&#32;&#35;15&#46;72cfdb17&#46;1788167932&#46;1ff09e6a <P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;15&#46;72cfdb17&#46;1788167932&#46;1ff09e6a</P> </BODY></HTML>",
       "row_cap": 25,
       "status": "no_feed"
     },

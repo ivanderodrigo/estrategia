@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-08-27T22:47:50.138428+00:00",
+    "generated_at": "2026-08-31T09:19:12.948990+00:00",
     "style": "Original analyst-style layered diagrams; no proprietary Gartner artwork is reproduced."
   },
   "architectures": [
@@ -22,14 +22,14 @@
               "evidence_strength": 0.76
             },
             {
+              "vendor": "Check Point",
+              "domain": "Identity",
+              "evidence_strength": 0.7
+            },
+            {
               "vendor": "Splunk",
               "domain": "Identity",
               "evidence_strength": 0.69
-            },
-            {
-              "vendor": "Check Point",
-              "domain": "Identity",
-              "evidence_strength": 0.68
             },
             {
               "vendor": "Cisco",
@@ -69,7 +69,7 @@
             {
               "vendor": "Check Point",
               "domain": "Networking",
-              "evidence_strength": 0.68
+              "evidence_strength": 0.7
             },
             {
               "vendor": "Cisco",
@@ -108,14 +108,14 @@
               "evidence_strength": 0.73
             },
             {
-              "vendor": "Splunk",
+              "vendor": "Check Point",
               "domain": "Cybersecurity",
-              "evidence_strength": 0.69
+              "evidence_strength": 0.7
             },
             {
-              "vendor": "Check Point",
+              "vendor": "Splunk",
               "domain": "Identity",
-              "evidence_strength": 0.68
+              "evidence_strength": 0.69
             },
             {
               "vendor": "Cisco",
@@ -194,24 +194,31 @@
         },
         {
           "integrator": "Palo Alto Networks",
-          "score": 0.865,
+          "score": 0.871,
           "capability": 52,
           "relevance": 52,
           "evidence_grade": "B"
         },
         {
           "integrator": "Check Point",
-          "score": 0.835,
-          "capability": 48,
+          "score": 0.84,
+          "capability": 49,
           "relevance": 50,
           "evidence_grade": "C"
         },
         {
           "integrator": "SEIDOR",
-          "score": 0.828,
+          "score": 0.825,
           "capability": 58,
           "relevance": 68,
           "evidence_grade": "B"
+        },
+        {
+          "integrator": "IBM",
+          "score": 0.813,
+          "capability": 59,
+          "relevance": 62,
+          "evidence_grade": "A"
         },
         {
           "integrator": "Indra",
@@ -221,15 +228,8 @@
           "evidence_grade": "A"
         },
         {
-          "integrator": "IBM",
-          "score": 0.812,
-          "capability": 59,
-          "relevance": 62,
-          "evidence_grade": "A"
-        },
-        {
           "integrator": "Kyndryl",
-          "score": 0.781,
+          "score": 0.78,
           "capability": 54,
           "relevance": 52,
           "evidence_grade": "A"
@@ -288,9 +288,9 @@
               "evidence_strength": 0.73
             },
             {
-              "vendor": "Splunk",
+              "vendor": "Check Point",
               "domain": "Cybersecurity",
-              "evidence_strength": 0.69
+              "evidence_strength": 0.7
             },
             {
               "vendor": "Nokia",
@@ -298,7 +298,7 @@
               "evidence_strength": 0.74
             },
             {
-              "vendor": "Check Point",
+              "vendor": "Cisco",
               "domain": "Networking",
               "evidence_strength": 0.68
             }
@@ -348,9 +348,9 @@
               "evidence_strength": 0.73
             },
             {
-              "vendor": "Splunk",
+              "vendor": "Check Point",
               "domain": "Cybersecurity",
-              "evidence_strength": 0.69
+              "evidence_strength": 0.7
             },
             {
               "vendor": "Nokia",
@@ -402,7 +402,7 @@
         "Automation services"
       ],
       "evidence_strength": 0.92,
-      "vendor_count": 7,
+      "vendor_count": 6,
       "integrator_count": 8,
       "top_integrators": [
         {
@@ -414,23 +414,23 @@
         },
         {
           "integrator": "SEIDOR",
-          "score": 0.928,
+          "score": 0.925,
           "capability": 58,
           "relevance": 68,
           "evidence_grade": "B"
+        },
+        {
+          "integrator": "IBM",
+          "score": 0.913,
+          "capability": 59,
+          "relevance": 62,
+          "evidence_grade": "A"
         },
         {
           "integrator": "Indra",
           "score": 0.912,
           "capability": 84,
           "relevance": 80,
-          "evidence_grade": "A"
-        },
-        {
-          "integrator": "IBM",
-          "score": 0.912,
-          "capability": 59,
-          "relevance": 62,
           "evidence_grade": "A"
         },
         {
@@ -441,25 +441,25 @@
           "evidence_grade": "A"
         },
         {
-          "integrator": "Nunsys",
+          "integrator": "Palo Alto Networks",
           "score": 0.871,
           "capability": 52,
-          "relevance": 46,
+          "relevance": 52,
           "evidence_grade": "B"
         },
         {
           "integrator": "Microsoft Azure",
-          "score": 0.869,
+          "score": 0.87,
           "capability": 59,
           "relevance": 51,
           "evidence_grade": "C"
         },
         {
-          "integrator": "Palo Alto Networks",
-          "score": 0.865,
-          "capability": 52,
-          "relevance": 52,
-          "evidence_grade": "B"
+          "integrator": "Check Point",
+          "score": 0.84,
+          "capability": 49,
+          "relevance": 50,
+          "evidence_grade": "C"
         }
       ],
       "layer_coverage": 1.0,
@@ -533,7 +533,7 @@
             {
               "vendor": "Check Point",
               "domain": "Networking",
-              "evidence_strength": 0.68
+              "evidence_strength": 0.7
             },
             {
               "vendor": "Cisco",
@@ -566,14 +566,14 @@
               "evidence_strength": 0.73
             },
             {
-              "vendor": "Splunk",
+              "vendor": "Check Point",
               "domain": "Cybersecurity",
-              "evidence_strength": 0.69
+              "evidence_strength": 0.7
             },
             {
-              "vendor": "Check Point",
+              "vendor": "Splunk",
               "domain": "Identity",
-              "evidence_strength": 0.68
+              "evidence_strength": 0.69
             },
             {
               "vendor": "Cisco",
@@ -651,24 +651,31 @@
         },
         {
           "integrator": "Palo Alto Networks",
-          "score": 0.965,
+          "score": 0.971,
           "capability": 52,
           "relevance": 52,
           "evidence_grade": "B"
         },
         {
           "integrator": "Check Point",
-          "score": 0.935,
-          "capability": 48,
+          "score": 0.94,
+          "capability": 49,
           "relevance": 50,
           "evidence_grade": "C"
         },
         {
           "integrator": "SEIDOR",
-          "score": 0.928,
+          "score": 0.925,
           "capability": 58,
           "relevance": 68,
           "evidence_grade": "B"
+        },
+        {
+          "integrator": "IBM",
+          "score": 0.913,
+          "capability": 59,
+          "relevance": 62,
+          "evidence_grade": "A"
         },
         {
           "integrator": "Indra",
@@ -678,15 +685,8 @@
           "evidence_grade": "A"
         },
         {
-          "integrator": "IBM",
-          "score": 0.912,
-          "capability": 59,
-          "relevance": 62,
-          "evidence_grade": "A"
-        },
-        {
           "integrator": "Kyndryl",
-          "score": 0.881,
+          "score": 0.88,
           "capability": 54,
           "relevance": 52,
           "evidence_grade": "A"
@@ -740,7 +740,7 @@
             {
               "vendor": "Check Point",
               "domain": "Networking",
-              "evidence_strength": 0.68
+              "evidence_strength": 0.7
             },
             {
               "vendor": "Cisco",
@@ -770,7 +770,7 @@
             {
               "vendor": "Check Point",
               "domain": "Networking",
-              "evidence_strength": 0.68
+              "evidence_strength": 0.7
             },
             {
               "vendor": "Cisco",
@@ -808,14 +808,14 @@
               "evidence_strength": 0.73
             },
             {
-              "vendor": "Splunk",
+              "vendor": "Check Point",
               "domain": "Cybersecurity",
-              "evidence_strength": 0.69
+              "evidence_strength": 0.7
             },
             {
-              "vendor": "Check Point",
+              "vendor": "Splunk",
               "domain": "Identity",
-              "evidence_strength": 0.68
+              "evidence_strength": 0.69
             },
             {
               "vendor": "Cisco",
@@ -864,7 +864,7 @@
         },
         {
           "integrator": "Palo Alto Networks",
-          "score": 0.765,
+          "score": 0.771,
           "capability": 52,
           "relevance": 52,
           "evidence_grade": "B"
@@ -878,7 +878,7 @@
         },
         {
           "integrator": "Kyndryl",
-          "score": 0.681,
+          "score": 0.68,
           "capability": 54,
           "relevance": 52,
           "evidence_grade": "A"
@@ -892,15 +892,15 @@
         },
         {
           "integrator": "Okta",
-          "score": 0.638,
+          "score": 0.643,
           "capability": 41,
           "relevance": 60,
           "evidence_grade": "C"
         },
         {
           "integrator": "Check Point",
-          "score": 0.635,
-          "capability": 48,
+          "score": 0.64,
+          "capability": 49,
           "relevance": 50,
           "evidence_grade": "C"
         },
@@ -946,14 +946,14 @@
               "evidence_strength": 0.76
             },
             {
+              "vendor": "Check Point",
+              "domain": "Identity",
+              "evidence_strength": 0.7
+            },
+            {
               "vendor": "Splunk",
               "domain": "Identity",
               "evidence_strength": 0.69
-            },
-            {
-              "vendor": "Check Point",
-              "domain": "Identity",
-              "evidence_strength": 0.68
             },
             {
               "vendor": "Cisco",
@@ -986,9 +986,9 @@
               "evidence_strength": 0.73
             },
             {
-              "vendor": "Splunk",
+              "vendor": "Check Point",
               "domain": "Cybersecurity",
-              "evidence_strength": 0.69
+              "evidence_strength": 0.7
             }
           ],
           "coverage_score": 0.89
@@ -1046,9 +1046,9 @@
               "evidence_strength": 0.73
             },
             {
-              "vendor": "Splunk",
+              "vendor": "Check Point",
               "domain": "Cybersecurity",
-              "evidence_strength": 0.69
+              "evidence_strength": 0.7
             }
           ],
           "coverage_score": 0.89
@@ -1077,24 +1077,31 @@
         },
         {
           "integrator": "Palo Alto Networks",
-          "score": 0.765,
+          "score": 0.771,
           "capability": 52,
           "relevance": 52,
           "evidence_grade": "B"
         },
         {
           "integrator": "Check Point",
-          "score": 0.735,
-          "capability": 48,
+          "score": 0.74,
+          "capability": 49,
           "relevance": 50,
           "evidence_grade": "C"
         },
         {
           "integrator": "SEIDOR",
-          "score": 0.728,
+          "score": 0.725,
           "capability": 58,
           "relevance": 68,
           "evidence_grade": "B"
+        },
+        {
+          "integrator": "IBM",
+          "score": 0.713,
+          "capability": 59,
+          "relevance": 62,
+          "evidence_grade": "A"
         },
         {
           "integrator": "Indra",
@@ -1104,24 +1111,17 @@
           "evidence_grade": "A"
         },
         {
-          "integrator": "IBM",
-          "score": 0.712,
-          "capability": 59,
+          "integrator": "Babel",
+          "score": 0.693,
+          "capability": 48,
           "relevance": 62,
-          "evidence_grade": "A"
+          "evidence_grade": "B"
         },
         {
           "integrator": "Kyndryl",
-          "score": 0.681,
+          "score": 0.68,
           "capability": 54,
           "relevance": 52,
-          "evidence_grade": "A"
-        },
-        {
-          "integrator": "Telefónica",
-          "score": 0.675,
-          "capability": 76,
-          "relevance": 72,
           "evidence_grade": "A"
         }
       ],

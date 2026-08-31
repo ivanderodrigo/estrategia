@@ -1,77 +1,84 @@
 {
   "version": 2,
-  "runId": "20260827T224540Z-2233",
+  "runId": "20260831T091656Z-2260",
   "profile": "daily",
-  "startedAt": "2026-08-27T22:45:40.960594+00:00",
-  "finishedAt": "2026-08-27T22:46:31.031597+00:00",
+  "startedAt": "2026-08-31T09:16:56.290515+00:00",
+  "finishedAt": "2026-08-31T09:17:27.111583+00:00",
   "outcome": "partial-recoverable",
-  "maxRuntimeSeconds": 193,
-  "elapsedSeconds": 50.07,
+  "maxRuntimeSeconds": 183,
+  "elapsedSeconds": 30.82,
   "stopReason": "",
   "stages": [
     {
       "name": "adaptive-discovery",
-      "status": "completed",
-      "startedAt": "2026-08-27T22:45:41.659290+00:00",
-      "durationSeconds": 48.56,
-      "finishedAt": "2026-08-27T22:46:30.222209+00:00",
-      "signals": 125,
-      "plannedTasks": 137,
+      "status": "partial",
+      "startedAt": "2026-08-31T09:16:57.347963+00:00",
+      "durationSeconds": 28.61,
+      "finishedAt": "2026-08-31T09:17:25.958572+00:00",
+      "signals": 54,
+      "plannedTasks": 377,
       "processedTasks": 24,
-      "completedTasks": 144,
-      "pendingTasks": 0,
-      "partialRun": false,
-      "resumedTasks": 98,
+      "completedTasks": 24,
+      "pendingTasks": 353,
+      "partialRun": true,
+      "resumedTasks": 0,
       "circuits": {},
-      "learningStrategies": 70
+      "learningStrategies": 85
+    },
+    {
+      "name": "official-partner-portal-seeds",
+      "status": "deferred",
+      "startedAt": "2026-08-31T09:17:25.958605+00:00",
+      "durationSeconds": 0.0,
+      "finishedAt": "2026-08-31T09:17:25.958621+00:00"
     },
     {
       "name": "official-vendor-crawl",
       "status": "deferred",
-      "startedAt": "2026-08-27T22:46:30.222243+00:00",
+      "startedAt": "2026-08-31T09:17:25.958633+00:00",
       "durationSeconds": 0.0,
-      "finishedAt": "2026-08-27T22:46:30.222264+00:00"
+      "finishedAt": "2026-08-31T09:17:25.958643+00:00"
     },
     {
       "name": "commoncrawl-revalidation",
       "status": "deferred",
-      "startedAt": "2026-08-27T22:46:30.222278+00:00",
+      "startedAt": "2026-08-31T09:17:25.958653+00:00",
       "durationSeconds": 0.0,
-      "finishedAt": "2026-08-27T22:46:30.222292+00:00"
+      "finishedAt": "2026-08-31T09:17:25.958668+00:00"
     },
     {
       "name": "ecosystem-official-crawl",
       "status": "deferred",
-      "startedAt": "2026-08-27T22:46:30.222302+00:00",
+      "startedAt": "2026-08-31T09:17:25.958678+00:00",
       "durationSeconds": 0.0,
-      "finishedAt": "2026-08-27T22:46:30.222314+00:00"
+      "finishedAt": "2026-08-31T09:17:25.958689+00:00"
     },
     {
       "name": "analyst-public-crawl",
       "status": "deferred",
-      "startedAt": "2026-08-27T22:46:30.222324+00:00",
+      "startedAt": "2026-08-31T09:17:25.958700+00:00",
       "durationSeconds": 0.0,
-      "finishedAt": "2026-08-27T22:46:30.222335+00:00"
+      "finishedAt": "2026-08-31T09:17:25.958711+00:00"
     },
     {
       "name": "public-procurement",
       "status": "deferred",
-      "startedAt": "2026-08-27T22:46:30.222346+00:00",
+      "startedAt": "2026-08-31T09:17:25.958720+00:00",
       "durationSeconds": 0.0,
-      "finishedAt": "2026-08-27T22:46:30.222357+00:00"
+      "finishedAt": "2026-08-31T09:17:25.958732+00:00"
     },
     {
       "name": "corroborate-and-publish",
       "status": "completed",
-      "startedAt": "2026-08-27T22:46:30.222367+00:00",
-      "durationSeconds": 0.8,
-      "finishedAt": "2026-08-27T22:46:31.019026+00:00",
-      "evidence": 204,
-      "changes": 6
+      "startedAt": "2026-08-31T09:17:25.958743+00:00",
+      "durationSeconds": 1.14,
+      "finishedAt": "2026-08-31T09:17:27.099317+00:00",
+      "evidence": 257,
+      "changes": 0
     }
   ],
   "errorCount": 0,
   "errorsFile": "data/research_errors.json",
-  "evidenceCount": 204,
-  "pendingTasks": 0
+  "evidenceCount": 257,
+  "pendingTasks": 353
 }

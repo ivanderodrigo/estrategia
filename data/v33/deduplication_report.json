@@ -1,14 +1,14 @@
 {
   "summary": {
-    "input_rows": 215,
-    "canonical_companies": 136,
-    "consolidated_source_variants": 79,
-    "groups_with_variants": 76,
-    "scope_variants_preserved": 79,
-    "country_operations_preserved": 70,
+    "input_rows": 224,
+    "canonical_companies": 139,
+    "consolidated_source_variants": 85,
+    "groups_with_variants": 77,
+    "scope_variants_preserved": 85,
+    "country_operations_preserved": 76,
     "ambiguous_merges": 0,
-    "name_scope_conflicts_detected": 1,
-    "name_scope_conflicts_resolved": 1,
+    "name_scope_conflicts_detected": 6,
+    "name_scope_conflicts_resolved": 6,
     "unresolved_name_scope_conflicts": 0
   },
   "groups": [
@@ -40,7 +40,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 3,
+          "source_row_index": 4,
           "scope_conflict_with_name": false
         }
       ],
@@ -77,7 +77,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 13,
+          "source_row_index": 15,
           "scope_conflict_with_name": false
         }
       ],
@@ -114,7 +114,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 5,
+          "source_row_index": 6,
           "scope_conflict_with_name": false
         }
       ],
@@ -143,7 +143,7 @@
           "scope": "IBERIA",
           "country": "IBERIA",
           "market_scope": null,
-          "source_row_index": 4,
+          "source_row_index": 3,
           "scope_conflict_with_name": false
         },
         {
@@ -151,7 +151,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 6,
+          "source_row_index": 7,
           "scope_conflict_with_name": false
         }
       ],
@@ -188,7 +188,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 12,
+          "source_row_index": 14,
           "scope_conflict_with_name": false
         }
       ],
@@ -217,7 +217,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 11,
+          "source_row_index": 12,
           "scope_conflict_with_name": false
         },
         {
@@ -225,7 +225,7 @@
           "scope": "IBERIA",
           "country": "IBERIA",
           "market_scope": null,
-          "source_row_index": 59,
+          "source_row_index": 60,
           "scope_conflict_with_name": false
         }
       ],
@@ -254,7 +254,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 32,
+          "source_row_index": 38,
           "scope_conflict_with_name": false
         },
         {
@@ -262,7 +262,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 58,
+          "source_row_index": 59,
           "scope_conflict_with_name": false
         }
       ],
@@ -291,7 +291,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 40,
+          "source_row_index": 45,
           "scope_conflict_with_name": false
         },
         {
@@ -299,7 +299,7 @@
           "scope": "IBERIA",
           "country": "IBERIA",
           "market_scope": null,
-          "source_row_index": 60,
+          "source_row_index": 61,
           "scope_conflict_with_name": false
         }
       ],
@@ -328,7 +328,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 55,
+          "source_row_index": 56,
           "scope_conflict_with_name": false
         },
         {
@@ -336,7 +336,7 @@
           "scope": "IBERIA",
           "country": "IBERIA",
           "market_scope": null,
-          "source_row_index": 61,
+          "source_row_index": 62,
           "scope_conflict_with_name": false
         }
       ],
@@ -365,7 +365,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 56,
+          "source_row_index": 57,
           "scope_conflict_with_name": false
         },
         {
@@ -373,12 +373,97 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 57,
+          "source_row_index": 58,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
         "DMI Computer"
+      ],
+      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
+    },
+    {
+      "entity_type": "integrator",
+      "canonical_name": "Glintt Global",
+      "normalized_name": "glintt global",
+      "input_rows": 2,
+      "consolidated_variants": 1,
+      "scope_variants": [
+        "PT",
+        "GLOBAL"
+      ],
+      "selected_scope": "PT",
+      "explicit_name_scope": null,
+      "conflicting_scopes": [],
+      "name_scope_conflict_resolved": false,
+      "operations_preserved": [
+        {
+          "name": "Glintt Global",
+          "scope": "PT",
+          "country": "PT",
+          "market_scope": null,
+          "source_row_index": 0,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "Glintt Global",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
+          "market_scope": null,
+          "source_row_index": 51,
+          "scope_conflict_with_name": false
+        }
+      ],
+      "aliases": [
+        "Glintt Global"
+      ],
+      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
+    },
+    {
+      "entity_type": "integrator",
+      "canonical_name": "Claranet Spain",
+      "normalized_name": "claranet spain",
+      "input_rows": 3,
+      "consolidated_variants": 2,
+      "scope_variants": [
+        "PT",
+        "GLOBAL",
+        "ES"
+      ],
+      "selected_scope": "ES",
+      "explicit_name_scope": "ES",
+      "conflicting_scopes": [
+        "PT"
+      ],
+      "name_scope_conflict_resolved": true,
+      "operations_preserved": [
+        {
+          "name": "Claranet Spain",
+          "scope": "PT",
+          "country": "PT",
+          "market_scope": null,
+          "source_row_index": 1,
+          "scope_conflict_with_name": true
+        },
+        {
+          "name": "Claranet Spain",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
+          "market_scope": null,
+          "source_row_index": 39,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "Claranet Spain",
+          "scope": "ES",
+          "country": "ES",
+          "market_scope": null,
+          "source_row_index": 157,
+          "scope_conflict_with_name": false
+        }
+      ],
+      "aliases": [
+        "Claranet Spain"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
@@ -402,11 +487,96 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 0,
+          "source_row_index": 2,
           "scope_conflict_with_name": false
         },
         {
           "name": "Timestamp",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
+          "market_scope": null,
+          "source_row_index": 34,
+          "scope_conflict_with_name": false
+        }
+      ],
+      "aliases": [
+        "Timestamp"
+      ],
+      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
+    },
+    {
+      "entity_type": "integrator",
+      "canonical_name": "Nunsys",
+      "normalized_name": "nunsys",
+      "input_rows": 2,
+      "consolidated_variants": 1,
+      "scope_variants": [
+        "ES",
+        "GLOBAL"
+      ],
+      "selected_scope": "ES",
+      "explicit_name_scope": null,
+      "conflicting_scopes": [],
+      "name_scope_conflict_resolved": false,
+      "operations_preserved": [
+        {
+          "name": "Nunsys",
+          "scope": "ES",
+          "country": "ES",
+          "market_scope": null,
+          "source_row_index": 3,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "Nunsys",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
+          "market_scope": null,
+          "source_row_index": 33,
+          "scope_conflict_with_name": false
+        }
+      ],
+      "aliases": [
+        "Nunsys"
+      ],
+      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
+    },
+    {
+      "entity_type": "integrator",
+      "canonical_name": "NTT DATA Spain",
+      "normalized_name": "ntt data spain",
+      "input_rows": 3,
+      "consolidated_variants": 2,
+      "scope_variants": [
+        "PT",
+        "ES",
+        "GLOBAL"
+      ],
+      "selected_scope": "ES",
+      "explicit_name_scope": "ES",
+      "conflicting_scopes": [
+        "PT"
+      ],
+      "name_scope_conflict_resolved": true,
+      "operations_preserved": [
+        {
+          "name": "NTT DATA Spain",
+          "scope": "PT",
+          "country": "PT",
+          "market_scope": null,
+          "source_row_index": 4,
+          "scope_conflict_with_name": true
+        },
+        {
+          "name": "NTT DATA Spain",
+          "scope": "ES",
+          "country": "ES",
+          "market_scope": null,
+          "source_row_index": 10,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "NTT DATA Spain",
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
@@ -415,7 +585,55 @@
         }
       ],
       "aliases": [
-        "Timestamp"
+        "NTT DATA Spain"
+      ],
+      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
+    },
+    {
+      "entity_type": "integrator",
+      "canonical_name": "NTT DATA Portugal",
+      "normalized_name": "ntt data portugal",
+      "input_rows": 3,
+      "consolidated_variants": 2,
+      "scope_variants": [
+        "PT",
+        "ES",
+        "GLOBAL"
+      ],
+      "selected_scope": "PT",
+      "explicit_name_scope": "PT",
+      "conflicting_scopes": [
+        "ES"
+      ],
+      "name_scope_conflict_resolved": true,
+      "operations_preserved": [
+        {
+          "name": "NTT DATA Portugal",
+          "scope": "PT",
+          "country": "PT",
+          "market_scope": null,
+          "source_row_index": 5,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "NTT DATA Portugal",
+          "scope": "ES",
+          "country": "ES",
+          "market_scope": null,
+          "source_row_index": 6,
+          "scope_conflict_with_name": true
+        },
+        {
+          "name": "NTT DATA Portugal",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
+          "market_scope": null,
+          "source_row_index": 24,
+          "scope_conflict_with_name": false
+        }
+      ],
+      "aliases": [
+        "NTT DATA Portugal"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
@@ -442,7 +660,7 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 1,
+          "source_row_index": 7,
           "scope_conflict_with_name": true
         },
         {
@@ -450,7 +668,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 12,
+          "source_row_index": 17,
           "scope_conflict_with_name": false
         },
         {
@@ -458,7 +676,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 31,
+          "source_row_index": 42,
           "scope_conflict_with_name": false
         }
       ],
@@ -469,45 +687,104 @@
     },
     {
       "entity_type": "integrator",
-      "canonical_name": "Ricoh Spain",
-      "normalized_name": "ricoh spain",
-      "input_rows": 2,
-      "consolidated_variants": 1,
+      "canonical_name": "Atos Spain",
+      "normalized_name": "atos spain",
+      "input_rows": 3,
+      "consolidated_variants": 2,
       "scope_variants": [
+        "PT",
+        "GLOBAL",
+        "ES"
+      ],
+      "selected_scope": "ES",
+      "explicit_name_scope": "ES",
+      "conflicting_scopes": [
+        "PT"
+      ],
+      "name_scope_conflict_resolved": true,
+      "operations_preserved": [
+        {
+          "name": "Atos Spain",
+          "scope": "PT",
+          "country": "PT",
+          "market_scope": null,
+          "source_row_index": 8,
+          "scope_conflict_with_name": true
+        },
+        {
+          "name": "Atos Spain",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
+          "market_scope": null,
+          "source_row_index": 31,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "Atos Spain",
+          "scope": "ES",
+          "country": "ES",
+          "market_scope": null,
+          "source_row_index": 160,
+          "scope_conflict_with_name": false
+        }
+      ],
+      "aliases": [
+        "Atos Spain"
+      ],
+      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
+    },
+    {
+      "entity_type": "integrator",
+      "canonical_name": "Accenture Spain",
+      "normalized_name": "accenture spain",
+      "input_rows": 3,
+      "consolidated_variants": 2,
+      "scope_variants": [
+        "PT",
         "ES",
         "GLOBAL"
       ],
       "selected_scope": "ES",
       "explicit_name_scope": "ES",
-      "conflicting_scopes": [],
-      "name_scope_conflict_resolved": false,
+      "conflicting_scopes": [
+        "PT"
+      ],
+      "name_scope_conflict_resolved": true,
       "operations_preserved": [
         {
-          "name": "Ricoh Spain",
+          "name": "Accenture Spain",
+          "scope": "PT",
+          "country": "PT",
+          "market_scope": null,
+          "source_row_index": 9,
+          "scope_conflict_with_name": true
+        },
+        {
+          "name": "Accenture Spain",
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 2,
+          "source_row_index": 21,
           "scope_conflict_with_name": false
         },
         {
-          "name": "Ricoh Spain",
+          "name": "Accenture Spain",
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 32,
+          "source_row_index": 47,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
-        "Ricoh Spain"
+        "Accenture Spain"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
     {
       "entity_type": "integrator",
-      "canonical_name": "Xpand IT",
-      "normalized_name": "xpand it",
+      "canonical_name": "Claranet Portugal",
+      "normalized_name": "claranet portugal",
       "input_rows": 2,
       "consolidated_variants": 1,
       "scope_variants": [
@@ -515,73 +792,36 @@
         "GLOBAL"
       ],
       "selected_scope": "PT",
-      "explicit_name_scope": null,
+      "explicit_name_scope": "PT",
       "conflicting_scopes": [],
       "name_scope_conflict_resolved": false,
       "operations_preserved": [
         {
-          "name": "Xpand IT",
+          "name": "Claranet Portugal",
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 3,
+          "source_row_index": 11,
           "scope_conflict_with_name": false
         },
         {
-          "name": "Xpand IT",
+          "name": "Claranet Portugal",
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 19,
+          "source_row_index": 61,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
-        "Xpand IT"
+        "Claranet Portugal"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
     {
       "entity_type": "integrator",
-      "canonical_name": "Glintt Global",
-      "normalized_name": "glintt global",
-      "input_rows": 2,
-      "consolidated_variants": 1,
-      "scope_variants": [
-        "PT",
-        "GLOBAL"
-      ],
-      "selected_scope": "PT",
-      "explicit_name_scope": null,
-      "conflicting_scopes": [],
-      "name_scope_conflict_resolved": false,
-      "operations_preserved": [
-        {
-          "name": "Glintt Global",
-          "scope": "PT",
-          "country": "PT",
-          "market_scope": null,
-          "source_row_index": 4,
-          "scope_conflict_with_name": false
-        },
-        {
-          "name": "Glintt Global",
-          "scope": "GLOBAL",
-          "country": "GLOBAL",
-          "market_scope": null,
-          "source_row_index": 24,
-          "scope_conflict_with_name": false
-        }
-      ],
-      "aliases": [
-        "Glintt Global"
-      ],
-      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
-    },
-    {
-      "entity_type": "integrator",
-      "canonical_name": "Nunsys",
-      "normalized_name": "nunsys",
+      "canonical_name": "Babel",
+      "normalized_name": "babel",
       "input_rows": 2,
       "consolidated_variants": 1,
       "scope_variants": [
@@ -594,24 +834,24 @@
       "name_scope_conflict_resolved": false,
       "operations_preserved": [
         {
-          "name": "Nunsys",
+          "name": "Babel",
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 5,
+          "source_row_index": 12,
           "scope_conflict_with_name": false
         },
         {
-          "name": "Nunsys",
+          "name": "Babel",
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 21,
+          "source_row_index": 40,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
-        "Nunsys"
+        "Babel"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
@@ -635,7 +875,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 6,
+          "source_row_index": 13,
           "scope_conflict_with_name": false
         },
         {
@@ -643,7 +883,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 81,
+          "source_row_index": 96,
           "scope_conflict_with_name": false
         }
       ],
@@ -672,7 +912,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 7,
+          "source_row_index": 14,
           "scope_conflict_with_name": false
         },
         {
@@ -680,7 +920,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 93,
+          "source_row_index": 106,
           "scope_conflict_with_name": false
         }
       ],
@@ -709,7 +949,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 8,
+          "source_row_index": 15,
           "scope_conflict_with_name": false
         },
         {
@@ -717,86 +957,12 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 96,
+          "source_row_index": 108,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
         "Matrix Electronica S.L."
-      ],
-      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
-    },
-    {
-      "entity_type": "integrator",
-      "canonical_name": "SEIDOR",
-      "normalized_name": "seidor",
-      "input_rows": 2,
-      "consolidated_variants": 1,
-      "scope_variants": [
-        "ES",
-        "GLOBAL"
-      ],
-      "selected_scope": "ES",
-      "explicit_name_scope": null,
-      "conflicting_scopes": [],
-      "name_scope_conflict_resolved": false,
-      "operations_preserved": [
-        {
-          "name": "SEIDOR",
-          "scope": "ES",
-          "country": "ES",
-          "market_scope": null,
-          "source_row_index": 9,
-          "scope_conflict_with_name": false
-        },
-        {
-          "name": "SEIDOR",
-          "scope": "GLOBAL",
-          "country": "GLOBAL",
-          "market_scope": null,
-          "source_row_index": 28,
-          "scope_conflict_with_name": false
-        }
-      ],
-      "aliases": [
-        "SEIDOR"
-      ],
-      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
-    },
-    {
-      "entity_type": "integrator",
-      "canonical_name": "Econocom Spain",
-      "normalized_name": "econocom spain",
-      "input_rows": 2,
-      "consolidated_variants": 1,
-      "scope_variants": [
-        "ES",
-        "GLOBAL"
-      ],
-      "selected_scope": "ES",
-      "explicit_name_scope": "ES",
-      "conflicting_scopes": [],
-      "name_scope_conflict_resolved": false,
-      "operations_preserved": [
-        {
-          "name": "Econocom Spain",
-          "scope": "ES",
-          "country": "ES",
-          "market_scope": null,
-          "source_row_index": 10,
-          "scope_conflict_with_name": false
-        },
-        {
-          "name": "Econocom Spain",
-          "scope": "GLOBAL",
-          "country": "GLOBAL",
-          "market_scope": null,
-          "source_row_index": 45,
-          "scope_conflict_with_name": false
-        }
-      ],
-      "aliases": [
-        "Econocom Spain"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
@@ -820,7 +986,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 11,
+          "source_row_index": 16,
           "scope_conflict_with_name": false
         },
         {
@@ -828,7 +994,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 63,
+          "source_row_index": 73,
           "scope_conflict_with_name": false
         }
       ],
@@ -857,7 +1023,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 13,
+          "source_row_index": 18,
           "scope_conflict_with_name": false
         },
         {
@@ -865,7 +1031,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 59,
+          "source_row_index": 70,
           "scope_conflict_with_name": false
         }
       ],
@@ -876,8 +1042,8 @@
     },
     {
       "entity_type": "integrator",
-      "canonical_name": "NTT DATA Spain",
-      "normalized_name": "ntt data spain",
+      "canonical_name": "Ricoh Spain",
+      "normalized_name": "ricoh spain",
       "input_rows": 2,
       "consolidated_variants": 1,
       "scope_variants": [
@@ -890,135 +1056,24 @@
       "name_scope_conflict_resolved": false,
       "operations_preserved": [
         {
-          "name": "NTT DATA Spain",
+          "name": "Ricoh Spain",
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 14,
+          "source_row_index": 19,
           "scope_conflict_with_name": false
         },
         {
-          "name": "NTT DATA Spain",
+          "name": "Ricoh Spain",
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 35,
+          "source_row_index": 75,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
-        "NTT DATA Spain"
-      ],
-      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
-    },
-    {
-      "entity_type": "integrator",
-      "canonical_name": "Babel",
-      "normalized_name": "babel",
-      "input_rows": 2,
-      "consolidated_variants": 1,
-      "scope_variants": [
-        "ES",
-        "GLOBAL"
-      ],
-      "selected_scope": "ES",
-      "explicit_name_scope": null,
-      "conflicting_scopes": [],
-      "name_scope_conflict_resolved": false,
-      "operations_preserved": [
-        {
-          "name": "Babel",
-          "scope": "ES",
-          "country": "ES",
-          "market_scope": null,
-          "source_row_index": 15,
-          "scope_conflict_with_name": false
-        },
-        {
-          "name": "Babel",
-          "scope": "GLOBAL",
-          "country": "GLOBAL",
-          "market_scope": null,
-          "source_row_index": 34,
-          "scope_conflict_with_name": false
-        }
-      ],
-      "aliases": [
-        "Babel"
-      ],
-      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
-    },
-    {
-      "entity_type": "integrator",
-      "canonical_name": "Accenture Spain",
-      "normalized_name": "accenture spain",
-      "input_rows": 2,
-      "consolidated_variants": 1,
-      "scope_variants": [
-        "ES",
-        "GLOBAL"
-      ],
-      "selected_scope": "ES",
-      "explicit_name_scope": "ES",
-      "conflicting_scopes": [],
-      "name_scope_conflict_resolved": false,
-      "operations_preserved": [
-        {
-          "name": "Accenture Spain",
-          "scope": "ES",
-          "country": "ES",
-          "market_scope": null,
-          "source_row_index": 16,
-          "scope_conflict_with_name": false
-        },
-        {
-          "name": "Accenture Spain",
-          "scope": "GLOBAL",
-          "country": "GLOBAL",
-          "market_scope": null,
-          "source_row_index": 57,
-          "scope_conflict_with_name": false
-        }
-      ],
-      "aliases": [
-        "Accenture Spain"
-      ],
-      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
-    },
-    {
-      "entity_type": "integrator",
-      "canonical_name": "Kyndryl Spain",
-      "normalized_name": "kyndryl spain",
-      "input_rows": 2,
-      "consolidated_variants": 1,
-      "scope_variants": [
-        "ES",
-        "GLOBAL"
-      ],
-      "selected_scope": "ES",
-      "explicit_name_scope": "ES",
-      "conflicting_scopes": [],
-      "name_scope_conflict_resolved": false,
-      "operations_preserved": [
-        {
-          "name": "Kyndryl Spain",
-          "scope": "ES",
-          "country": "ES",
-          "market_scope": null,
-          "source_row_index": 17,
-          "scope_conflict_with_name": false
-        },
-        {
-          "name": "Kyndryl Spain",
-          "scope": "GLOBAL",
-          "country": "GLOBAL",
-          "market_scope": null,
-          "source_row_index": 61,
-          "scope_conflict_with_name": false
-        }
-      ],
-      "aliases": [
-        "Kyndryl Spain"
+        "Ricoh Spain"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
@@ -1042,7 +1097,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 18,
+          "source_row_index": 20,
           "scope_conflict_with_name": false
         },
         {
@@ -1050,12 +1105,86 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 22,
+          "source_row_index": 28,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
         "Indra"
+      ],
+      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
+    },
+    {
+      "entity_type": "integrator",
+      "canonical_name": "Kyndryl Spain",
+      "normalized_name": "kyndryl spain",
+      "input_rows": 2,
+      "consolidated_variants": 1,
+      "scope_variants": [
+        "ES",
+        "GLOBAL"
+      ],
+      "selected_scope": "ES",
+      "explicit_name_scope": "ES",
+      "conflicting_scopes": [],
+      "name_scope_conflict_resolved": false,
+      "operations_preserved": [
+        {
+          "name": "Kyndryl Spain",
+          "scope": "ES",
+          "country": "ES",
+          "market_scope": null,
+          "source_row_index": 22,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "Kyndryl Spain",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
+          "market_scope": null,
+          "source_row_index": 72,
+          "scope_conflict_with_name": false
+        }
+      ],
+      "aliases": [
+        "Kyndryl Spain"
+      ],
+      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
+    },
+    {
+      "entity_type": "integrator",
+      "canonical_name": "SEIDOR",
+      "normalized_name": "seidor",
+      "input_rows": 2,
+      "consolidated_variants": 1,
+      "scope_variants": [
+        "ES",
+        "GLOBAL"
+      ],
+      "selected_scope": "ES",
+      "explicit_name_scope": null,
+      "conflicting_scopes": [],
+      "name_scope_conflict_resolved": false,
+      "operations_preserved": [
+        {
+          "name": "SEIDOR",
+          "scope": "ES",
+          "country": "ES",
+          "market_scope": null,
+          "source_row_index": 23,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "SEIDOR",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
+          "market_scope": null,
+          "source_row_index": 45,
+          "scope_conflict_with_name": false
+        }
+      ],
+      "aliases": [
+        "SEIDOR"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
@@ -1079,7 +1208,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 20,
+          "source_row_index": 25,
           "scope_conflict_with_name": false
         },
         {
@@ -1087,7 +1216,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 43,
+          "source_row_index": 53,
           "scope_conflict_with_name": false
         }
       ],
@@ -1116,7 +1245,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 23,
+          "source_row_index": 29,
           "scope_conflict_with_name": false
         },
         {
@@ -1124,12 +1253,95 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 68,
+          "source_row_index": 82,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
         "Telefónica"
+      ],
+      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
+    },
+    {
+      "entity_type": "integrator",
+      "canonical_name": "Econocom Spain",
+      "normalized_name": "econocom spain",
+      "input_rows": 2,
+      "consolidated_variants": 1,
+      "scope_variants": [
+        "ES",
+        "GLOBAL"
+      ],
+      "selected_scope": "ES",
+      "explicit_name_scope": "ES",
+      "conflicting_scopes": [],
+      "name_scope_conflict_resolved": false,
+      "operations_preserved": [
+        {
+          "name": "Econocom Spain",
+          "scope": "ES",
+          "country": "ES",
+          "market_scope": null,
+          "source_row_index": 30,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "Econocom Spain",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
+          "market_scope": null,
+          "source_row_index": 77,
+          "scope_conflict_with_name": false
+        }
+      ],
+      "aliases": [
+        "Econocom Spain"
+      ],
+      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
+    },
+    {
+      "entity_type": "integrator",
+      "canonical_name": "SIA",
+      "normalized_name": "sia",
+      "input_rows": 3,
+      "consolidated_variants": 2,
+      "scope_variants": [
+        "GLOBAL",
+        "PT",
+        "IBERIA"
+      ],
+      "selected_scope": "IBERIA",
+      "explicit_name_scope": null,
+      "conflicting_scopes": [],
+      "name_scope_conflict_resolved": false,
+      "operations_preserved": [
+        {
+          "name": "SIA",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
+          "market_scope": null,
+          "source_row_index": 32,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "SIA",
+          "scope": "PT",
+          "country": "PT",
+          "market_scope": null,
+          "source_row_index": 79,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "SIA",
+          "scope": "IBERIA",
+          "country": "IBERIA",
+          "market_scope": null,
+          "source_row_index": 140,
+          "scope_conflict_with_name": false
+        }
+      ],
+      "aliases": [
+        "SIA"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
@@ -1153,7 +1365,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 25,
+          "source_row_index": 35,
           "scope_conflict_with_name": false
         },
         {
@@ -1161,7 +1373,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 40,
+          "source_row_index": 50,
           "scope_conflict_with_name": false
         }
       ],
@@ -1190,7 +1402,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 26,
+          "source_row_index": 36,
           "scope_conflict_with_name": false
         },
         {
@@ -1198,7 +1410,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 29,
+          "source_row_index": 37,
           "scope_conflict_with_name": false
         }
       ],
@@ -1227,7 +1439,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 30,
+          "source_row_index": 38,
           "scope_conflict_with_name": false
         },
         {
@@ -1235,12 +1447,86 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 36,
+          "source_row_index": 46,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
         "SoftwareOne"
+      ],
+      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
+    },
+    {
+      "entity_type": "integrator",
+      "canonical_name": "IBM",
+      "normalized_name": "ibm",
+      "input_rows": 2,
+      "consolidated_variants": 1,
+      "scope_variants": [
+        "GLOBAL",
+        "PT"
+      ],
+      "selected_scope": "PT",
+      "explicit_name_scope": null,
+      "conflicting_scopes": [],
+      "name_scope_conflict_resolved": false,
+      "operations_preserved": [
+        {
+          "name": "IBM",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
+          "market_scope": null,
+          "source_row_index": 41,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "IBM",
+          "scope": "PT",
+          "country": "PT",
+          "market_scope": null,
+          "source_row_index": 80,
+          "scope_conflict_with_name": false
+        }
+      ],
+      "aliases": [
+        "IBM"
+      ],
+      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
+    },
+    {
+      "entity_type": "integrator",
+      "canonical_name": "NTT",
+      "normalized_name": "ntt",
+      "input_rows": 2,
+      "consolidated_variants": 1,
+      "scope_variants": [
+        "GLOBAL",
+        "ES"
+      ],
+      "selected_scope": "ES",
+      "explicit_name_scope": null,
+      "conflicting_scopes": [],
+      "name_scope_conflict_resolved": false,
+      "operations_preserved": [
+        {
+          "name": "NTT",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
+          "market_scope": null,
+          "source_row_index": 43,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "NTT",
+          "scope": "ES",
+          "country": "ES",
+          "market_scope": null,
+          "source_row_index": 55,
+          "scope_conflict_with_name": false
+        }
+      ],
+      "aliases": [
+        "NTT"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
@@ -1264,7 +1550,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 33,
+          "source_row_index": 44,
           "scope_conflict_with_name": false
         },
         {
@@ -1272,7 +1558,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 48,
+          "source_row_index": 56,
           "scope_conflict_with_name": false
         }
       ],
@@ -1301,7 +1587,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 37,
+          "source_row_index": 48,
           "scope_conflict_with_name": false
         },
         {
@@ -1309,95 +1595,12 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 39,
+          "source_row_index": 49,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
         "Ayesa"
-      ],
-      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
-    },
-    {
-      "entity_type": "integrator",
-      "canonical_name": "SIA",
-      "normalized_name": "sia",
-      "input_rows": 3,
-      "consolidated_variants": 2,
-      "scope_variants": [
-        "GLOBAL",
-        "PT",
-        "IBERIA"
-      ],
-      "selected_scope": "IBERIA",
-      "explicit_name_scope": null,
-      "conflicting_scopes": [],
-      "name_scope_conflict_resolved": false,
-      "operations_preserved": [
-        {
-          "name": "SIA",
-          "scope": "GLOBAL",
-          "country": "GLOBAL",
-          "market_scope": null,
-          "source_row_index": 38,
-          "scope_conflict_with_name": false
-        },
-        {
-          "name": "SIA",
-          "scope": "PT",
-          "country": "PT",
-          "market_scope": null,
-          "source_row_index": 64,
-          "scope_conflict_with_name": false
-        },
-        {
-          "name": "SIA",
-          "scope": "IBERIA",
-          "country": "IBERIA",
-          "market_scope": null,
-          "source_row_index": 132,
-          "scope_conflict_with_name": false
-        }
-      ],
-      "aliases": [
-        "SIA"
-      ],
-      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
-    },
-    {
-      "entity_type": "integrator",
-      "canonical_name": "NTT",
-      "normalized_name": "ntt",
-      "input_rows": 2,
-      "consolidated_variants": 1,
-      "scope_variants": [
-        "GLOBAL",
-        "ES"
-      ],
-      "selected_scope": "ES",
-      "explicit_name_scope": null,
-      "conflicting_scopes": [],
-      "name_scope_conflict_resolved": false,
-      "operations_preserved": [
-        {
-          "name": "NTT",
-          "scope": "GLOBAL",
-          "country": "GLOBAL",
-          "market_scope": null,
-          "source_row_index": 41,
-          "scope_conflict_with_name": false
-        },
-        {
-          "name": "NTT",
-          "scope": "ES",
-          "country": "ES",
-          "market_scope": null,
-          "source_row_index": 47,
-          "scope_conflict_with_name": false
-        }
-      ],
-      "aliases": [
-        "NTT"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
@@ -1421,7 +1624,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 42,
+          "source_row_index": 52,
           "scope_conflict_with_name": false
         },
         {
@@ -1429,86 +1632,12 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 49,
+          "source_row_index": 57,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
         "IKUSI"
-      ],
-      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
-    },
-    {
-      "entity_type": "integrator",
-      "canonical_name": "IBM",
-      "normalized_name": "ibm",
-      "input_rows": 2,
-      "consolidated_variants": 1,
-      "scope_variants": [
-        "GLOBAL",
-        "PT"
-      ],
-      "selected_scope": "PT",
-      "explicit_name_scope": null,
-      "conflicting_scopes": [],
-      "name_scope_conflict_resolved": false,
-      "operations_preserved": [
-        {
-          "name": "IBM",
-          "scope": "GLOBAL",
-          "country": "GLOBAL",
-          "market_scope": null,
-          "source_row_index": 44,
-          "scope_conflict_with_name": false
-        },
-        {
-          "name": "IBM",
-          "scope": "PT",
-          "country": "PT",
-          "market_scope": null,
-          "source_row_index": 65,
-          "scope_conflict_with_name": false
-        }
-      ],
-      "aliases": [
-        "IBM"
-      ],
-      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
-    },
-    {
-      "entity_type": "integrator",
-      "canonical_name": "Logicalis",
-      "normalized_name": "logicalis",
-      "input_rows": 2,
-      "consolidated_variants": 1,
-      "scope_variants": [
-        "GLOBAL",
-        "ES"
-      ],
-      "selected_scope": "ES",
-      "explicit_name_scope": null,
-      "conflicting_scopes": [],
-      "name_scope_conflict_resolved": false,
-      "operations_preserved": [
-        {
-          "name": "Logicalis",
-          "scope": "GLOBAL",
-          "country": "GLOBAL",
-          "market_scope": null,
-          "source_row_index": 46,
-          "scope_conflict_with_name": false
-        },
-        {
-          "name": "Logicalis",
-          "scope": "ES",
-          "country": "ES",
-          "market_scope": null,
-          "source_row_index": 72,
-          "scope_conflict_with_name": false
-        }
-      ],
-      "aliases": [
-        "Logicalis"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
@@ -1532,7 +1661,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 50,
+          "source_row_index": 58,
           "scope_conflict_with_name": false
         },
         {
@@ -1540,12 +1669,49 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 58,
+          "source_row_index": 68,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
         "Telefónica Tech"
+      ],
+      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
+    },
+    {
+      "entity_type": "integrator",
+      "canonical_name": "Logicalis",
+      "normalized_name": "logicalis",
+      "input_rows": 2,
+      "consolidated_variants": 1,
+      "scope_variants": [
+        "GLOBAL",
+        "ES"
+      ],
+      "selected_scope": "ES",
+      "explicit_name_scope": null,
+      "conflicting_scopes": [],
+      "name_scope_conflict_resolved": false,
+      "operations_preserved": [
+        {
+          "name": "Logicalis",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
+          "market_scope": null,
+          "source_row_index": 60,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "Logicalis",
+          "scope": "ES",
+          "country": "ES",
+          "market_scope": null,
+          "source_row_index": 87,
+          "scope_conflict_with_name": false
+        }
+      ],
+      "aliases": [
+        "Logicalis"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
@@ -1569,7 +1735,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 52,
+          "source_row_index": 63,
           "scope_conflict_with_name": false
         },
         {
@@ -1577,7 +1743,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 78,
+          "source_row_index": 93,
           "scope_conflict_with_name": false
         }
       ],
@@ -1606,7 +1772,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 53,
+          "source_row_index": 64,
           "scope_conflict_with_name": false
         },
         {
@@ -1614,7 +1780,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 76,
+          "source_row_index": 91,
           "scope_conflict_with_name": false
         }
       ],
@@ -1643,7 +1809,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 54,
+          "source_row_index": 65,
           "scope_conflict_with_name": false
         },
         {
@@ -1651,49 +1817,12 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 125,
+          "source_row_index": 134,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
         "3Hold Technologies"
-      ],
-      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
-    },
-    {
-      "entity_type": "integrator",
-      "canonical_name": "Atos Spain",
-      "normalized_name": "atos spain",
-      "input_rows": 2,
-      "consolidated_variants": 1,
-      "scope_variants": [
-        "GLOBAL",
-        "ES"
-      ],
-      "selected_scope": "ES",
-      "explicit_name_scope": "ES",
-      "conflicting_scopes": [],
-      "name_scope_conflict_resolved": false,
-      "operations_preserved": [
-        {
-          "name": "Atos Spain",
-          "scope": "GLOBAL",
-          "country": "GLOBAL",
-          "market_scope": null,
-          "source_row_index": 55,
-          "scope_conflict_with_name": false
-        },
-        {
-          "name": "Atos Spain",
-          "scope": "ES",
-          "country": "ES",
-          "market_scope": null,
-          "source_row_index": 152,
-          "scope_conflict_with_name": false
-        }
-      ],
-      "aliases": [
-        "Atos Spain"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
@@ -1718,7 +1847,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 56,
+          "source_row_index": 67,
           "scope_conflict_with_name": false
         },
         {
@@ -1726,7 +1855,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 74,
+          "source_row_index": 89,
           "scope_conflict_with_name": false
         },
         {
@@ -1734,7 +1863,7 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 75,
+          "source_row_index": 90,
           "scope_conflict_with_name": false
         }
       ],
@@ -1745,87 +1874,13 @@
     },
     {
       "entity_type": "integrator",
-      "canonical_name": "NTT DATA Portugal",
-      "normalized_name": "ntt data portugal",
-      "input_rows": 2,
-      "consolidated_variants": 1,
-      "scope_variants": [
-        "GLOBAL",
-        "PT"
-      ],
-      "selected_scope": "PT",
-      "explicit_name_scope": "PT",
-      "conflicting_scopes": [],
-      "name_scope_conflict_resolved": false,
-      "operations_preserved": [
-        {
-          "name": "NTT DATA Portugal",
-          "scope": "GLOBAL",
-          "country": "GLOBAL",
-          "market_scope": null,
-          "source_row_index": 60,
-          "scope_conflict_with_name": false
-        },
-        {
-          "name": "NTT DATA Portugal",
-          "scope": "PT",
-          "country": "PT",
-          "market_scope": null,
-          "source_row_index": 139,
-          "scope_conflict_with_name": false
-        }
-      ],
-      "aliases": [
-        "NTT DATA Portugal"
-      ],
-      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
-    },
-    {
-      "entity_type": "integrator",
-      "canonical_name": "Claranet Portugal",
-      "normalized_name": "claranet portugal",
-      "input_rows": 2,
-      "consolidated_variants": 1,
-      "scope_variants": [
-        "PT",
-        "GLOBAL"
-      ],
-      "selected_scope": "PT",
-      "explicit_name_scope": "PT",
-      "conflicting_scopes": [],
-      "name_scope_conflict_resolved": false,
-      "operations_preserved": [
-        {
-          "name": "Claranet Portugal",
-          "scope": "PT",
-          "country": "PT",
-          "market_scope": null,
-          "source_row_index": 62,
-          "scope_conflict_with_name": false
-        },
-        {
-          "name": "Claranet Portugal",
-          "scope": "GLOBAL",
-          "country": "GLOBAL",
-          "market_scope": null,
-          "source_row_index": 126,
-          "scope_conflict_with_name": false
-        }
-      ],
-      "aliases": [
-        "Claranet Portugal"
-      ],
-      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
-    },
-    {
-      "entity_type": "integrator",
       "canonical_name": "Zscaler",
       "normalized_name": "zscaler",
       "input_rows": 2,
       "consolidated_variants": 1,
       "scope_variants": [
-        "PT",
-        "GLOBAL"
+        "GLOBAL",
+        "PT"
       ],
       "selected_scope": "PT",
       "explicit_name_scope": null,
@@ -1834,18 +1889,18 @@
       "operations_preserved": [
         {
           "name": "Zscaler",
-          "scope": "PT",
-          "country": "PT",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 66,
+          "source_row_index": 76,
           "scope_conflict_with_name": false
         },
         {
           "name": "Zscaler",
-          "scope": "GLOBAL",
-          "country": "GLOBAL",
+          "scope": "PT",
+          "country": "PT",
           "market_scope": null,
-          "source_row_index": 79,
+          "source_row_index": 81,
           "scope_conflict_with_name": false
         }
       ],
@@ -1874,7 +1929,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 69,
+          "source_row_index": 83,
           "scope_conflict_with_name": false
         },
         {
@@ -1882,12 +1937,49 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 83,
+          "source_row_index": 99,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
         "Seyrcom"
+      ],
+      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
+    },
+    {
+      "entity_type": "integrator",
+      "canonical_name": "SentinelOne",
+      "normalized_name": "sentinelone",
+      "input_rows": 2,
+      "consolidated_variants": 1,
+      "scope_variants": [
+        "PT",
+        "GLOBAL"
+      ],
+      "selected_scope": "PT",
+      "explicit_name_scope": null,
+      "conflicting_scopes": [],
+      "name_scope_conflict_resolved": false,
+      "operations_preserved": [
+        {
+          "name": "SentinelOne",
+          "scope": "PT",
+          "country": "PT",
+          "market_scope": null,
+          "source_row_index": 84,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "SentinelOne",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
+          "market_scope": null,
+          "source_row_index": 100,
+          "scope_conflict_with_name": false
+        }
+      ],
+      "aliases": [
+        "SentinelOne"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
@@ -1911,7 +2003,7 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 70,
+          "source_row_index": 85,
           "scope_conflict_with_name": false
         },
         {
@@ -1919,7 +2011,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 88,
+          "source_row_index": 103,
           "scope_conflict_with_name": false
         }
       ],
@@ -1948,7 +2040,7 @@
           "scope": "IBERIA",
           "country": "IBERIA",
           "market_scope": null,
-          "source_row_index": 71,
+          "source_row_index": 86,
           "scope_conflict_with_name": false
         },
         {
@@ -1956,7 +2048,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 105,
+          "source_row_index": 117,
           "scope_conflict_with_name": false
         }
       ],
@@ -1985,7 +2077,7 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 73,
+          "source_row_index": 88,
           "scope_conflict_with_name": false
         },
         {
@@ -1993,7 +2085,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 101,
+          "source_row_index": 113,
           "scope_conflict_with_name": false
         }
       ],
@@ -2022,7 +2114,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 77,
+          "source_row_index": 92,
           "scope_conflict_with_name": false
         },
         {
@@ -2030,12 +2122,49 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 134,
+          "source_row_index": 142,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
         "askblue"
+      ],
+      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
+    },
+    {
+      "entity_type": "integrator",
+      "canonical_name": "Xpand IT",
+      "normalized_name": "xpand it",
+      "input_rows": 2,
+      "consolidated_variants": 1,
+      "scope_variants": [
+        "GLOBAL",
+        "PT"
+      ],
+      "selected_scope": "PT",
+      "explicit_name_scope": null,
+      "conflicting_scopes": [],
+      "name_scope_conflict_resolved": false,
+      "operations_preserved": [
+        {
+          "name": "Xpand IT",
+          "scope": "GLOBAL",
+          "country": "GLOBAL",
+          "market_scope": null,
+          "source_row_index": 94,
+          "scope_conflict_with_name": false
+        },
+        {
+          "name": "Xpand IT",
+          "scope": "PT",
+          "country": "PT",
+          "market_scope": null,
+          "source_row_index": 143,
+          "scope_conflict_with_name": false
+        }
+      ],
+      "aliases": [
+        "Xpand IT"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
@@ -2059,7 +2188,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 80,
+          "source_row_index": 95,
           "scope_conflict_with_name": false
         },
         {
@@ -2067,7 +2196,7 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 135,
+          "source_row_index": 144,
           "scope_conflict_with_name": false
         }
       ],
@@ -2096,7 +2225,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 82,
+          "source_row_index": 98,
           "scope_conflict_with_name": false
         },
         {
@@ -2104,7 +2233,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 127,
+          "source_row_index": 135,
           "scope_conflict_with_name": false
         }
       ],
@@ -2133,7 +2262,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 84,
+          "source_row_index": 101,
           "scope_conflict_with_name": false
         },
         {
@@ -2141,7 +2270,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 136,
+          "source_row_index": 145,
           "scope_conflict_with_name": false
         }
       ],
@@ -2170,7 +2299,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 89,
+          "source_row_index": 104,
           "scope_conflict_with_name": false
         },
         {
@@ -2178,7 +2307,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 137,
+          "source_row_index": 146,
           "scope_conflict_with_name": false
         }
       ],
@@ -2207,7 +2336,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 92,
+          "source_row_index": 105,
           "scope_conflict_with_name": false
         },
         {
@@ -2215,7 +2344,7 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 138,
+          "source_row_index": 147,
           "scope_conflict_with_name": false
         }
       ],
@@ -2244,7 +2373,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 94,
+          "source_row_index": 107,
           "scope_conflict_with_name": false
         },
         {
@@ -2252,7 +2381,7 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 140,
+          "source_row_index": 148,
           "scope_conflict_with_name": false
         }
       ],
@@ -2281,7 +2410,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 97,
+          "source_row_index": 109,
           "scope_conflict_with_name": false
         },
         {
@@ -2289,7 +2418,7 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 141,
+          "source_row_index": 149,
           "scope_conflict_with_name": false
         }
       ],
@@ -2318,7 +2447,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 98,
+          "source_row_index": 110,
           "scope_conflict_with_name": false
         },
         {
@@ -2326,7 +2455,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 128,
+          "source_row_index": 136,
           "scope_conflict_with_name": false
         }
       ],
@@ -2355,7 +2484,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 99,
+          "source_row_index": 111,
           "scope_conflict_with_name": false
         },
         {
@@ -2363,7 +2492,7 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 142,
+          "source_row_index": 150,
           "scope_conflict_with_name": false
         }
       ],
@@ -2392,7 +2521,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 100,
+          "source_row_index": 112,
           "scope_conflict_with_name": false
         },
         {
@@ -2400,7 +2529,7 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 143,
+          "source_row_index": 151,
           "scope_conflict_with_name": false
         }
       ],
@@ -2429,7 +2558,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 103,
+          "source_row_index": 115,
           "scope_conflict_with_name": false
         },
         {
@@ -2437,7 +2566,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 144,
+          "source_row_index": 152,
           "scope_conflict_with_name": false
         }
       ],
@@ -2466,7 +2595,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 104,
+          "source_row_index": 116,
           "scope_conflict_with_name": false
         },
         {
@@ -2474,7 +2603,7 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 145,
+          "source_row_index": 153,
           "scope_conflict_with_name": false
         }
       ],
@@ -2503,7 +2632,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 106,
+          "source_row_index": 119,
           "scope_conflict_with_name": false
         },
         {
@@ -2511,7 +2640,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 130,
+          "source_row_index": 138,
           "scope_conflict_with_name": false
         }
       ],
@@ -2540,7 +2669,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 109,
+          "source_row_index": 121,
           "scope_conflict_with_name": false
         },
         {
@@ -2548,7 +2677,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 146,
+          "source_row_index": 154,
           "scope_conflict_with_name": false
         }
       ],
@@ -2577,7 +2706,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 111,
+          "source_row_index": 123,
           "scope_conflict_with_name": false
         },
         {
@@ -2585,7 +2714,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 131,
+          "source_row_index": 139,
           "scope_conflict_with_name": false
         }
       ],
@@ -2614,7 +2743,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 112,
+          "source_row_index": 124,
           "scope_conflict_with_name": false
         },
         {
@@ -2622,7 +2751,7 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 147,
+          "source_row_index": 155,
           "scope_conflict_with_name": false
         }
       ],
@@ -2651,7 +2780,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 113,
+          "source_row_index": 125,
           "scope_conflict_with_name": false
         },
         {
@@ -2659,7 +2788,7 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 133,
+          "source_row_index": 141,
           "scope_conflict_with_name": false
         }
       ],
@@ -2688,7 +2817,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 115,
+          "source_row_index": 127,
           "scope_conflict_with_name": false
         },
         {
@@ -2696,49 +2825,12 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 148,
+          "source_row_index": 156,
           "scope_conflict_with_name": false
         }
       ],
       "aliases": [
         "Computacenter Spain"
-      ],
-      "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
-    },
-    {
-      "entity_type": "integrator",
-      "canonical_name": "Claranet Spain",
-      "normalized_name": "claranet spain",
-      "input_rows": 2,
-      "consolidated_variants": 1,
-      "scope_variants": [
-        "GLOBAL",
-        "ES"
-      ],
-      "selected_scope": "ES",
-      "explicit_name_scope": "ES",
-      "conflicting_scopes": [],
-      "name_scope_conflict_resolved": false,
-      "operations_preserved": [
-        {
-          "name": "Claranet Spain",
-          "scope": "GLOBAL",
-          "country": "GLOBAL",
-          "market_scope": null,
-          "source_row_index": 116,
-          "scope_conflict_with_name": false
-        },
-        {
-          "name": "Claranet Spain",
-          "scope": "ES",
-          "country": "ES",
-          "market_scope": null,
-          "source_row_index": 149,
-          "scope_conflict_with_name": false
-        }
-      ],
-      "aliases": [
-        "Claranet Spain"
       ],
       "reason": "Mismo tipo de entidad + nombre normalizado exactamente igual; se consolida el perfil de compañía y se preservan las variantes de ámbito. Si el nombre contiene un país explícito, ese país prevalece sobre ámbitos contradictorios inferidos de fuentes, que permanecen trazados como anomalía."
     },
@@ -2762,7 +2854,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 118,
+          "source_row_index": 128,
           "scope_conflict_with_name": false
         },
         {
@@ -2770,7 +2862,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 150,
+          "source_row_index": 158,
           "scope_conflict_with_name": false
         }
       ],
@@ -2799,7 +2891,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 119,
+          "source_row_index": 129,
           "scope_conflict_with_name": false
         },
         {
@@ -2807,7 +2899,7 @@
           "scope": "PT",
           "country": "PT",
           "market_scope": null,
-          "source_row_index": 151,
+          "source_row_index": 159,
           "scope_conflict_with_name": false
         }
       ],
@@ -2836,7 +2928,7 @@
           "scope": "GLOBAL",
           "country": "GLOBAL",
           "market_scope": null,
-          "source_row_index": 120,
+          "source_row_index": 130,
           "scope_conflict_with_name": false
         },
         {
@@ -2844,7 +2936,7 @@
           "scope": "ES",
           "country": "ES",
           "market_scope": null,
-          "source_row_index": 129,
+          "source_row_index": 137,
           "scope_conflict_with_name": false
         }
       ],
