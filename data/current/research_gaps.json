@@ -1,8 +1,8 @@
 {
-  "version": "4.0.2",
-  "generated_at": "2026-09-01T13:35:16.671125+00:00",
+  "version": "4.0.3",
+  "generated_at": "2026-09-01T15:15:02.761825+00:00",
   "definition": "Todo campo declarado cuenta. Un valor solo cierra el gap con evidencia tipada suficiente; la procedencia histórica no resuelta conserva el dato, pero mantiene el gap abierto.",
-  "total_gaps": 2197,
+  "total_gaps": 2196,
   "critical_gaps": 1250,
   "high_priority_gaps": 1250,
   "by_section": {
@@ -12,7 +12,7 @@
     "clients_public": 1037,
     "clients_private": 130,
     "trends": 63,
-    "architectures": 19
+    "architectures": 18
   },
   "critical_by_section": {
     "manufacturers": 51,
@@ -66,11 +66,11 @@
     "clients_private.westcon_area": 5,
     "clients_private.westcon_fit": 5,
     "trends.iberia_context": 5,
-    "architectures.vendors": 4,
     "architectures.context": 3,
     "architectures.analyst_basis": 3,
     "architectures.principles": 3,
     "architectures.layers": 3,
+    "architectures.vendors": 3,
     "architectures.limits": 3,
     "manufacturers.integrators": 2,
     "trends.domain": 2,
@@ -86,7 +86,7 @@
     "distributors.services": 1
   },
   "research_states": {
-    "Por investigar": 2197
+    "Por investigar": 2196
   },
   "coverage": {
     "manufacturers": {
@@ -135,7 +135,7 @@
       "expected_fields": 72,
       "populated_fields": 72,
       "value_completeness_pct": 100.0,
-      "open_gaps": 19,
+      "open_gaps": 18,
       "critical_gaps": 0
     }
   },
@@ -26402,27 +26402,6 @@
       "research_state": "Por investigar",
       "priority": 1,
       "reason": "valor pendiente",
-      "attempts_completed": 0,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 0,
-      "next_pass": 1,
-      "next_due_at": null,
-      "last_attempt_at": null,
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia suficiente: web pública o documento tipado. LEGACY_UNRESOLVED conserva el dato pero mantiene el gap abierto; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker"
-    },
-    {
-      "id": "architectures:ai security:vendors",
-      "section": "architectures",
-      "entity": "AI Security",
-      "entity_id": "ai-security",
-      "field": "vendors",
-      "country_context": "ES / PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "evidencia o trazabilidad insuficiente",
       "attempts_completed": 0,
       "accepted_evidences": 0,
       "consecutive_no_yield": 0,

@@ -1,3 +1,4 @@
+// App v4.0.3
 (() => {
   'use strict';
   const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, dragCol:null, resize:null, traceSource:null, helpSource:null};
@@ -184,15 +185,18 @@
     const fresh=ev.freshness_status?`vigencia: ${ev.freshness_status}${Number.isFinite(Number(ev.age_days))?` · ${ev.age_days} días`:''}`:'';
     const provenance=ev.provenance_origin||ev.source_type||ev.type;
     const doc=ev.document?`documento: ${ev.document}${ev.slide?` · slide ${ev.slide}`:''}`:'';
-    const meta=[ev.date,provenance,ev.country||ev.scope,ev.method,ev.source_grade,doc,fresh].filter(Boolean).map(esc).join(' · ');
+    const archive=ev.historical_archive?`snapshot: ${ev.historical_archive}${ev.historical_version?` · v${ev.historical_version}`:''}`:'';
+    const histPath=ev.historical_path?`ruta histórica: ${ev.historical_path}`:'';
+    const match=ev.match_mode?`match: ${ev.match_mode}`:'';
+    const meta=[ev.date,provenance,ev.country||ev.scope,ev.method,ev.source_grade,doc,archive,histPath,match,fresh].filter(Boolean).map(esc).join(' · ');
     return `<div class="source-item"><div class="source-confidence ${esc(band||'low')}"><b>${confidencePct(score)}%</b><span>dato</span></div><div><b>${source}</b><span>${title}</span>${ev.description?`<p>${esc(ev.description)}</p>`:''}${meta?`<small>${meta}</small>`:''}${ev.revalidation?`<small>${esc(ev.revalidation)}</small>`:''}${ev.note?`<small>${esc(ev.note)}</small>`:''}${ev.url?`<a href="${esc(ev.url)}" target="_blank" rel="noopener">Abrir fuente ↗</a>`:''}</div></div>`;
   }
   function deriveConfidenceFactors(field,item,band,evidence){
     const stored=item?.confidence_factors||field?.confidence_factors; if(Array.isArray(stored)&&stored.length)return stored;
     const factors=[], independent=new Set(evidence.map(ev=>norm(ev.source||ev.url||ev.title)).filter(Boolean)).size;
     const blobs=evidence.map(ev=>norm([ev.type,ev.method,ev.source,ev.source_type,ev.source_grade,ev.url].join(' ')));
-    const official=blobs.filter(b=>/(official|primary|partner-locator|partner-directory|user-provided|vendor-own|integrator-own|westcon-document|historical-recovered|curated)/.test(b)).length;
-    const indirect=blobs.filter(b=>/(job|career|vacan|aggregator|semantic|discovery|secondary)/.test(b)).length;
+    const official=blobs.filter(b=>/(official|primary|partner-locator|partner-directory|user-provided|vendor-own|integrator-own|westcon-document|historical-recovered|archive-recovered|curated)/.test(b)).length;
+    const indirect=blobs.filter(b=>/(job|career|vacan|aggregator|semantic|discovery|secondary|corroboration|discovery-only)/.test(b)).length;
     const stale=evidence.filter(ev=>ev.freshness_status==='stale').length, aging=evidence.filter(ev=>ev.freshness_status==='aging').length;
     factors.push(independent>=2?`Corroboración: ${independent} fuentes/evidencias independientes.`:'Corroboración limitada: solo una fuente/evidencia independiente.');
     factors.push(official?`Calidad: ${official} evidencia(s) oficial(es) o primaria(s).`:'Calidad: todavía no hay evidencia oficial/primaria directa enlazada.');

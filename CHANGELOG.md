@@ -1,3 +1,13 @@
+## 4.0.3 — Provenance Archaeology
+
+- Reconstrucción aditiva de fuentes desde ZIPs históricos locales del proyecto.
+- Coincidencia conservadora entidad + campo + valor/item exacto; nunca importa valores antiguos.
+- Registro persistente `archive_provenance_registry.json` para reutilizar la arqueología en GitHub Actions.
+- Lineage por dato: primera aparición, última versión con evidencia atómica y versiones de recuperación.
+- Clasificación de evidencias UNKNOWN mediante antiguos Source Intelligence Registries cuando coincide la URL exacta.
+- PPTX históricos se usan solo como corroboración contextual y nunca cierran gaps.
+- Knowledge Guard v4.0.2 permanece activo: Tendencias, Arquitecturas y capacidades de fabricantes no pueden degradarse silenciosamente.
+
 # Changelog
 
 ## 4.0.2 — Typed Provenance + Non-Destructive Intelligence

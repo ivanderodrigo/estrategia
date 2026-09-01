@@ -15,6 +15,11 @@ from .enrichment import (
     project_graph_to_views,
 )
 from .gaps import build_gaps
+from .archive_provenance import (
+    apply_archive_provenance,
+    archive_registry_summary,
+    load_archive_registry,
+)
 from .client_intelligence import derive_client_intelligence
 from .knowledge_provenance import (
     apply_westcon_document_provenance,
@@ -66,8 +71,10 @@ def _sync_source_catalog(data: dict[str, Any]) -> None:
 def run() -> dict[str, Any]:
     data = read_json("data/current/intelligence.json")
     knowledge_baseline = load_knowledge_baseline()
+    archive_registry = load_archive_registry()
     restore_protected_knowledge(data, knowledge_baseline)
     apply_westcon_document_provenance(data)
+    archive_apply_start = apply_archive_provenance(data, archive_registry)
     mark_legacy_unresolved(data)
     research_state = read_json("data/current/research_state.json", {})
     if not isinstance(research_state, dict):
@@ -117,6 +124,7 @@ def run() -> dict[str, Any]:
     # delete stable Trends, Architectures or non-relational manufacturer knowledge.
     restore_protected_knowledge(data, knowledge_baseline)
     apply_westcon_document_provenance(data)
+    archive_apply_final = apply_archive_provenance(data, archive_registry)
     mark_legacy_unresolved(data)
     sync_document_sources(data)
     normalize_fields(data)
@@ -181,6 +189,8 @@ def run() -> dict[str, Any]:
         },
         "quality_score": quality["score"],
         "provenance": provenance_summary(data),
+        "archive_provenance": archive_registry_summary(archive_registry),
+        "archive_apply": archive_apply_final,
     }
 
     internal_data = json_bytes(data, pretty=False)
@@ -207,6 +217,13 @@ def run() -> dict[str, Any]:
             "official_evidences": metrics["official_evidences"],
             "traceable_fields": metrics["traceable_fields"],
             "provenance": provenance_summary(data),
+            "archive_provenance": archive_registry_summary(archive_registry),
+        }),
+        "data/current/provenance_report.json": json_bytes({
+            "version": VERSION,
+            "summary": provenance_summary(data),
+            "archive_registry": archive_registry_summary(archive_registry),
+            "archive_apply": archive_apply_final,
         }),
         "data/current/quality_report.json": json_bytes(quality),
         "data/current/last_run.json": json_bytes(last_run),

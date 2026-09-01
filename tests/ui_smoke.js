@@ -5,7 +5,7 @@ const css = fs.readFileSync('assets/app/intelligence.css', 'utf8');
 
 for (const token of [
   'data/public/manifest.json', 'ensureSection', 'ensureViewData', 'clients_public',
-  'clients_private', 'reorderColumn', 'columnChooser', 'currentColumnWidth', 'App v4.0.2',
+  'clients_private', 'reorderColumn', 'columnChooser', 'currentColumnWidth', 'App v4.0.3',
   'atomic-evidence-missing', 'el sistema no muestra fuentes de otros elementos',
 ]) {
   if (!js.includes(token)) throw new Error(`missing JS capability: ${token}`);
@@ -21,4 +21,4 @@ for (const token of [
   if (!css.includes(token)) throw new Error(`sticky table regression: ${token}`);
 }
 
-console.log('UI smoke v4.0.2 PASS');
+console.log('UI smoke v4.0.3 PASS');

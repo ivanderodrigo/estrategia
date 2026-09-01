@@ -1,4 +1,4 @@
-"""Typed provenance and non-destructive knowledge protection for v4.0.2."""
+"""Typed provenance and non-destructive knowledge protection for v4.0.3."""
 from __future__ import annotations
 
 import json
@@ -106,7 +106,8 @@ def typed_evidence_sufficient(evidence: Mapping[str, Any]) -> bool:
     if not isinstance(evidence, Mapping):
         return False
     kind = provenance_kind(evidence)
-    if kind == "LEGACY_UNRESOLVED":
+    # Contextual archive/report corroboration is useful provenance but cannot close a gap.
+    if kind in {"LEGACY_UNRESOLVED", "ARCHIVE_CORROBORATION", "REPORT_CORROBORATION", "DISCOVERY_ONLY"}:
         return False
     common = all(str(evidence.get(key) or "").strip() for key in ("source", "title", "date", "description"))
     if not common:

@@ -24,8 +24,11 @@ def error(message: str) -> None:
 
 required = (
     "engine/pipeline.py", "engine/provenance.py", "engine/research/web_intelligence.py",
-    "engine/research/ted.py", "config/current/research_policy.json",
+    "engine/research/ted.py", "engine/archive_provenance.py",
+    "config/current/research_policy.json", "config/current/archive_provenance_registry.json",
     "data/current/intelligence.json", "data/current/research_state.json",
+    "data/current/provenance_report.json", "data/current/archive_provenance_report.json",
+    "data/current/provenance_lineage.json",
     "data/current/quality_report.json", "data/public/manifest.json",
     "assets/app/intelligence.js", "assets/app/intelligence.css", "tests/ui_smoke.js",
 )

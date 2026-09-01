@@ -6,6 +6,7 @@ import unittest
 from pathlib import Path
 
 from engine.provenance import evidence_for_relationship
+from engine.archive_provenance import apply_archive_provenance, archive_registry_summary
 from engine.knowledge_provenance import build_knowledge_baseline, restore_protected_knowledge, typed_evidence_sufficient
 from engine.research.security import UnsafeUrl, validate_public_url
 from engine.research.state import ResearchState
@@ -27,7 +28,7 @@ class ReleaseIntegrity(unittest.TestCase):
         cls.manifest = read_json("data/public/manifest.json")
 
     def test_one_canonical_version(self) -> None:
-        self.assertEqual(VERSION, "4.0.2")
+        self.assertEqual(VERSION, "4.0.3")
         self.assertEqual(self.data["meta"]["version"], VERSION)
         self.assertEqual(self.graph["version"], VERSION)
         self.assertEqual(self.gaps["version"], VERSION)
@@ -131,6 +132,55 @@ class EngineBehaviour(unittest.TestCase):
         }
         restore_protected_knowledge(damaged, baseline)
         self.assertEqual(damaged["trends"][0]["fields"]["drivers"]["value"], ["A", "B"])
+
+    def test_archive_registry_never_changes_current_values(self) -> None:
+        data = {
+            "manufacturers": [{"name": "Vendor X", "fields": {
+                "capabilities": {
+                    "value": ["A", "B"],
+                    "items": [
+                        {"value": "A", "evidence": [{
+                            "source": "Histórico del proyecto Westcon Decision Intelligence",
+                            "title": "pendiente", "date": "2026-09-01", "description": "pendiente",
+                            "source_type": "legacy-unresolved", "provenance_origin": "LEGACY_UNRESOLVED",
+                        }]},
+                        {"value": "B", "evidence": []},
+                    ],
+                    "evidence": [],
+                }
+            }}],
+            "distributors": [], "integrators": [], "clients_public": [], "clients_private": [],
+            "trends": [], "architectures": [],
+        }
+        registry = {
+            "matches": [{
+                "section": "manufacturers", "entity": "Vendor X", "field": "capabilities",
+                "value_hash": "0", "item_value_hash": None, "evidence": [],
+            }],
+            "url_classifications": {}, "stats": {},
+        }
+        before = json.dumps(data["manufacturers"][0]["fields"]["capabilities"]["value"], ensure_ascii=False)
+        apply_archive_provenance(data, registry)
+        after = json.dumps(data["manufacturers"][0]["fields"]["capabilities"]["value"], ensure_ascii=False)
+        self.assertEqual(before, after)
+
+    def test_archive_corroboration_cannot_close_gap(self) -> None:
+        evidence = {
+            "source": "Informe histórico", "title": "v3.9", "url": "https://example.com/source",
+            "date": "2026-08-28", "description": "Coincide entidad y valor en informe histórico.",
+            "provenance_origin": "REPORT_CORROBORATION",
+        }
+        self.assertFalse(typed_evidence_sufficient(evidence))
+
+    def test_archive_registry_summary_is_stable(self) -> None:
+        summary = archive_registry_summary({
+            "policy": "exact", "generated_at": "x",
+            "stats": {"archives_scanned": 3},
+            "matches": [{"evidence": [{"provenance_origin": "ARCHIVE_RECOVERED"}]}],
+            "url_classifications": {"https://example.com": {"provenance_origin": "PUBLIC_PRIMARY"}},
+        })
+        self.assertEqual(summary["archives_scanned"], 3)
+        self.assertEqual(summary["archive_atomic_evidences"], 1)
 
     def test_url_guard_rejects_ssrf_targets(self) -> None:
         for url in (
