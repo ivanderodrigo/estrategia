@@ -6,6 +6,7 @@ import unittest
 from pathlib import Path
 
 from engine.provenance import evidence_for_relationship
+from engine.knowledge_provenance import build_knowledge_baseline, restore_protected_knowledge, typed_evidence_sufficient
 from engine.research.security import UnsafeUrl, validate_public_url
 from engine.research.state import ResearchState
 from engine.research.ted import parse_notice, upsert_notices
@@ -26,7 +27,7 @@ class ReleaseIntegrity(unittest.TestCase):
         cls.manifest = read_json("data/public/manifest.json")
 
     def test_one_canonical_version(self) -> None:
-        self.assertEqual(VERSION, "4.0.0")
+        self.assertEqual(VERSION, "4.0.2")
         self.assertEqual(self.data["meta"]["version"], VERSION)
         self.assertEqual(self.graph["version"], VERSION)
         self.assertEqual(self.gaps["version"], VERSION)
@@ -102,6 +103,35 @@ class EngineBehaviour(unittest.TestCase):
         unrelated = {"source": "Ingram Micro", "title": "Ingram Micro ↔ UiPath", "url": "https://example.com/other"}
         self.assertEqual(evidence_for_relationship([unrelated, broad, exact], "1Password", "Ingram Micro"), [exact])
 
+    def test_westcon_document_is_valid_typed_provenance(self) -> None:
+        evidence = {
+            "source": "Westcon Comstor España",
+            "title": "Presentación Corporativa FY2027 · slide 44",
+            "date": "FY2027",
+            "description": "Capacidades de fabricante documentadas por Westcon.",
+            "source_type": "westcon-document",
+            "document": "Westcon_Comstor_Espana_FY27_completa.pptx",
+            "provenance_origin": "WESTCON_DOCUMENT",
+        }
+        self.assertTrue(typed_evidence_sufficient(evidence))
+        legacy = dict(evidence, source_type="legacy-unresolved", provenance_origin="LEGACY_UNRESOLVED")
+        self.assertFalse(typed_evidence_sufficient(legacy))
+
+    def test_knowledge_guard_restores_trend_content(self) -> None:
+        original = {
+            "trends": [{"id": "t1", "name": "Trend", "fields": {"drivers": {"value": ["A", "B"], "items": []}}}],
+            "architectures": [],
+            "manufacturers": [],
+        }
+        baseline = build_knowledge_baseline(original)
+        damaged = {
+            "trends": [{"id": "t1", "name": "Trend", "fields": {"drivers": {"value": ["A"], "items": []}}}],
+            "architectures": [],
+            "manufacturers": [],
+        }
+        restore_protected_knowledge(damaged, baseline)
+        self.assertEqual(damaged["trends"][0]["fields"]["drivers"]["value"], ["A", "B"])
+
     def test_url_guard_rejects_ssrf_targets(self) -> None:
         for url in (
             "http://localhost/admin", "http://127.0.0.1/", "http://169.254.169.254/latest",
@@ -112,7 +142,8 @@ class EngineBehaviour(unittest.TestCase):
         self.assertEqual(validate_public_url("https://example.com/path", resolve_dns=False), "https://example.com/path")
 
     def test_state_backoff_and_circuit_breaker(self) -> None:
-        state = ResearchState({})
+        state = ResearchState({"version": "4.0.0"})
+        self.assertEqual(state.raw["version"], VERSION)
         state.record_gap("g1", accepted=0)
         self.assertEqual(state.gap("g1")["attempts"], 1)
         self.assertEqual(state.gap("g1")["consecutive_no_yield"], 1)

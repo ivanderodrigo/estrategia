@@ -9,6 +9,7 @@ from typing import Any, Mapping
 from urllib.parse import urlparse
 
 from .settings import SECTIONS, VERSION
+from .knowledge_provenance import typed_evidence_sufficient
 
 
 PLACEHOLDERS = {
@@ -37,7 +38,9 @@ def evidence_rows(field: Mapping[str, Any]) -> list[Mapping[str, Any]]:
 
 
 def complete_evidence(evidence: Mapping[str, Any]) -> bool:
-    return all(str(evidence.get(key) or "").strip() for key in ("source", "title", "url", "date", "description"))
+    # A public URL is valid evidence, but a typed primary Westcon/user document is too.
+    # LEGACY_UNRESOLVED is visible provenance but never sufficient to close a gap.
+    return typed_evidence_sufficient(evidence)
 
 
 def evidence_sufficient(field: Mapping[str, Any]) -> bool:
@@ -124,8 +127,8 @@ def build_gaps(
                     "last_attempt_at": history.get("last_attempt_at"),
                     "last_error": history.get("last_error") or "",
                     "close_policy": (
-                        "Solo cerrar con valor y evidencia pública suficiente. "
-                        "Cero resultados mantiene el gap; una señal no se convierte en hecho."
+                        "Solo cerrar con valor y evidencia suficiente: web pública o documento tipado. "
+                        "LEGACY_UNRESOLVED conserva el dato pero mantiene el gap abierto; una señal no se convierte en hecho."
                     ),
                     "strategy_profile": "adaptive-source-cascade",
                     "retry_policy": "persistent-backoff-with-circuit-breaker",
@@ -148,8 +151,8 @@ def build_gaps(
         "version": version,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "definition": (
-            "Todo campo declarado cuenta. Un valor solo cierra el gap con evidencia pública "
-            "suficiente; la prioridad no altera ni oculta el total."
+            "Todo campo declarado cuenta. Un valor solo cierra el gap con evidencia tipada suficiente; "
+            "la procedencia histórica no resuelta conserva el dato, pero mantiene el gap abierto."
         ),
         "total_gaps": len(gaps),
         "critical_gaps": sum(critical.values()),

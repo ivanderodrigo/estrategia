@@ -1,5 +1,15 @@
 # Changelog
 
+## 4.0.2 — Typed Provenance + Non-Destructive Intelligence
+
+- Preserva Tendencias, Arquitecturas y capacidades no relacionales de fabricantes ante ejecuciones posteriores.
+- Reconstruye procedencia buscando evidencias exactas en snapshots históricos del repositorio Git.
+- Trata documentación Westcon aportada como fuente primaria documental válida, aunque no tenga URL pública.
+- Conserva datos sin origen reconstruido como `LEGACY_UNRESOLVED`; siguen visibles en rojo y mantienen el gap abierto.
+- Client Intelligence aditivo: `Área Westcon` y `Fabricantes Westcon relacionados` sin borrar conocimiento anterior.
+- Amplía investigación de clientes públicos/privados y descubrimiento conservador de sitios oficiales.
+- Corrige migración/persistencia de `research_state` entre releases.
+
 ## 4.0.0 — reconstrucción canónica
 
 ### Núcleo

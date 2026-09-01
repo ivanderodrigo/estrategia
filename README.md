@@ -1,4 +1,4 @@
-# Westcon Iberia Decision Intelligence — v4.0.0
+# Westcon Iberia Decision Intelligence — v4.0.2
 
 Plataforma de inteligencia de negocio para el canal IT de España y Portugal. Su principio de diseño es: **hipersofisticada por dentro; extremadamente sencilla por fuera**.
 
@@ -14,6 +14,8 @@ La v4 sustituye la evolución acumulativa anterior por una arquitectura canónic
 - `assets/app/`: un único frontend ejecutivo.
 
 ## Garantías v4
+- Typed Provenance: fuentes web, documentos Westcon y procedencia histórica se distinguen sin destruir conocimiento.
+- Knowledge Guard: Tendencias, Arquitecturas y capacidades no relacionales de fabricantes no pueden desaparecer silenciosamente.
 
 - Una relación visible tiene evidencia del elemento concreto; nunca hereda las fuentes de sus vecinos.
 - Un HTTP 200 solo significa transporte correcto: el éxito se mide en evidencia aceptada, datos enriquecidos, entidades nuevas y gaps cerrados.

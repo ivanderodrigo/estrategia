@@ -23,6 +23,7 @@ from ..model import canonical
 from ..settings import RESEARCH_POLICY, RESEARCH_PROFILES, VERSION
 from ..storage import atomic_write_json, prune_json_mapping, read_json
 from .documents import Document, Link, parse_document, sitemap_urls
+from .client_discovery import discover_official_site
 from .extractors import Candidate, extract_candidates
 from .planner import plan
 from .security import UnsafeUrl, validate_public_url
@@ -331,6 +332,7 @@ def run(profile: str = "daily", max_runtime: int = 600, max_tasks: int | None = 
         "cache_hits": 0,
         "circuit_skips": 0,
         "unsafe_url_rejections": 0,
+        "official_sites_discovered": 0,
         "stop_reason": "complete",
         "families": defaultdict(lambda: defaultdict(int)),
         "results": [],
@@ -362,6 +364,13 @@ def run(profile: str = "daily", max_runtime: int = 600, max_tasks: int | None = 
         if not row:
             continue
         seeds = seeds_for(row, target["fields"])
+        if not seeds and target["section"] in {"clients_private", "clients_public"}:
+            remaining = min(float(profile_config.request_timeout_s), deadline - time.monotonic() - 2)
+            if remaining >= 3.0:
+                discovered = discover_official_site(fetcher.session, target["entity"], timeout_s=remaining)
+                if discovered:
+                    seeds = [discovered]
+                    stats["official_sites_discovered"] += 1
         if not seeds:
             for gap_id in target["gap_ids"]:
                 research_state.record_gap(gap_id, accepted=0, error="no-seed-source")

@@ -8,11 +8,11 @@ from ..settings import RESEARCH_PROFILES
 
 
 SECTION_WEIGHT = {
-    "integrators": 1.55,
-    "distributors": 1.45,
-    "clients_private": 1.30,
-    "manufacturers": 1.25,
-    "clients_public": 1.15,
+    "clients_public": 1.70,
+    "clients_private": 1.65,
+    "integrators": 1.50,
+    "distributors": 1.40,
+    "manufacturers": 1.30,
     "trends": 1.05,
     "architectures": 1.00,
 }
@@ -26,8 +26,10 @@ FIELD_WEIGHT = {
     "specializations": 1.25,
     "public_cases": 1.22,
     "verticals": 1.18,
-    "technology_signals": 1.18,
-    "hiring_signals": 1.12,
+    "westcon_fit": 1.75,
+    "westcon_area": 1.70,
+    "technology_signals": 1.58,
+    "hiring_signals": 1.34,
     "job_profiles": 1.10,
     "job_vendors": 1.08,
     "revenue": 1.06,
@@ -47,6 +49,8 @@ FAMILY_BY_FIELD = {
     "job_vendors": "careers",
     "hiring_signals": "careers",
     "technology_signals": "technology",
+    "westcon_area": "technology",
+    "westcon_fit": "technology",
     "revenue": "financial",
     "estimated_amount": "procurement",
     "renewal_window": "signals",

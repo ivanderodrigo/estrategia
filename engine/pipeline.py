@@ -15,6 +15,15 @@ from .enrichment import (
     project_graph_to_views,
 )
 from .gaps import build_gaps
+from .client_intelligence import derive_client_intelligence
+from .knowledge_provenance import (
+    apply_westcon_document_provenance,
+    load_knowledge_baseline,
+    mark_legacy_unresolved,
+    provenance_summary,
+    restore_protected_knowledge,
+    sync_document_sources,
+)
 from .graph import build_graph
 from .metrics import calculate
 from .publication import public_payloads
@@ -56,7 +65,14 @@ def _sync_source_catalog(data: dict[str, Any]) -> None:
 
 def run() -> dict[str, Any]:
     data = read_json("data/current/intelligence.json")
+    knowledge_baseline = load_knowledge_baseline()
+    restore_protected_knowledge(data, knowledge_baseline)
+    apply_westcon_document_provenance(data)
+    mark_legacy_unresolved(data)
     research_state = read_json("data/current/research_state.json", {})
+    if not isinstance(research_state, dict):
+        research_state = {}
+    research_state["version"] = VERSION
     ledger = read_json("data/current/research_ledger.json", {})
     now = datetime.now(timezone.utc).isoformat()
 
@@ -95,7 +111,16 @@ def run() -> dict[str, Any]:
     graph = build_graph(data)
     project_graph_to_views(data, graph)
     derive_overlap_fields(data)
+    # Client Intelligence is additive and cannot erase canonical knowledge.
+    derive_client_intelligence(data)
+    # Knowledge Guard: a research/build pass may enrich or update, but never silently
+    # delete stable Trends, Architectures or non-relational manufacturer knowledge.
+    restore_protected_knowledge(data, knowledge_baseline)
+    apply_westcon_document_provenance(data)
+    mark_legacy_unresolved(data)
+    sync_document_sources(data)
     normalize_fields(data)
+    _sync_source_catalog(data)
     gaps = build_gaps(data, VERSION, research_state)
     metrics = calculate(data, gaps, graph)
 
@@ -155,6 +180,7 @@ def run() -> dict[str, Any]:
             "circuit_skips": ledger.get("circuit_skips", 0),
         },
         "quality_score": quality["score"],
+        "provenance": provenance_summary(data),
     }
 
     internal_data = json_bytes(data, pretty=False)
@@ -169,6 +195,7 @@ def run() -> dict[str, Any]:
 
     files = {
         "data/current/intelligence.json": internal_data,
+        "data/current/research_state.json": json_bytes(research_state),
         "data/current/relationship_graph.json": json_bytes(graph),
         "data/current/research_gaps.json": json_bytes(gaps),
         "data/current/metrics_before_after.json": json_bytes(compare),
@@ -179,6 +206,7 @@ def run() -> dict[str, Any]:
             "domains_unique": metrics["domains_unique"],
             "official_evidences": metrics["official_evidences"],
             "traceable_fields": metrics["traceable_fields"],
+            "provenance": provenance_summary(data),
         }),
         "data/current/quality_report.json": json_bytes(quality),
         "data/current/last_run.json": json_bytes(last_run),

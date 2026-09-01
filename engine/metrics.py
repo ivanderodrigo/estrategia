@@ -3,6 +3,7 @@ from __future__ import annotations
 from urllib.parse import urlparse
 
 from .settings import SECTIONS
+from .knowledge_provenance import provenance_kind, typed_evidence_sufficient
 
 
 def calculate(data, gaps, graph):
@@ -23,10 +24,12 @@ def calculate(data, gaps, graph):
                         continue
                     url = str(ev.get("url") or "")
                     key = (url, str(ev.get("title") or ""), str(ev.get("source") or ""), str(ev.get("date") or ""))
-                    if any(key):
-                        evidence_keys.add(key); valid += 1
-                    if ev.get("official") is True or str(ev.get("source_grade") or "").startswith("A"):
-                        official_keys.add(key)
+                    if any(key) and provenance_kind(ev) != "LEGACY_UNRESOLVED":
+                        evidence_keys.add(key)
+                    if typed_evidence_sufficient(ev):
+                        valid += 1
+                        if ev.get("official") is True or str(ev.get("source_grade") or "").startswith("A"):
+                            official_keys.add(key)
                     if url.startswith(("http://", "https://")):
                         source_urls.add(url)
                     host = urlparse(url).netloc.lower().removeprefix("www.")
