@@ -9,6 +9,7 @@ import time
 from pathlib import Path
 from typing import Any, Mapping
 from urllib.parse import urlparse
+import xml.etree.ElementTree as ET
 
 import requests
 
@@ -190,12 +191,6 @@ def relationship_revalidation_debt(state_gaps: Mapping[str, Any] | None = None) 
     return debt
 
 
-def _plain_text(raw: str) -> str:
-    raw = re.sub(r"(?is)<script.*?</script>|<style.*?</style>", " ", raw)
-    raw = re.sub(r"(?s)<[^>]+>", " ", raw)
-    return re.sub(r"\s+", " ", html.unescape(raw)).strip()
-
-
 def _canon(value: Any) -> str:
     text = str(value or "").casefold()
     text = text.translate(str.maketrans("áéíóúüñç", "aeiouunc"))
@@ -203,19 +198,161 @@ def _canon(value: Any) -> str:
 
 
 def _target_match(target: Any, text: str) -> bool:
+    """Strict explicit-text match. No ontology inference is allowed here."""
     wanted = _canon(target)
     hay = _canon(text)
     if not wanted:
         return False
     if len(wanted) <= 4:
         return bool(re.search(rf"(?<![a-z0-9]){re.escape(wanted)}(?![a-z0-9])", hay))
-    return wanted in hay
+    return bool(re.search(rf"(?<![a-z0-9]){re.escape(wanted)}(?![a-z0-9])", hay))
+
+
+_TED_NOTICE_RE = re.compile(r"/notice/(?:-/detail/)?(?P<number>\d{5,}-\d{4})(?:/.*)?$", re.I)
+
+
+def ted_publication_number(url: str) -> str:
+    parsed = urlparse(str(url or "").strip())
+    if parsed.netloc.casefold() not in {"ted.europa.eu", "www.ted.europa.eu"}:
+        return ""
+    match = _TED_NOTICE_RE.search(parsed.path.rstrip("/"))
+    return match.group("number") if match else ""
+
+
+def ted_xml_url(url: str) -> str:
+    number = ted_publication_number(url)
+    if not number:
+        return str(url or "")
+    return f"https://ted.europa.eu/en/notice/{number}/xml"
+
+
+def _local_name(tag: str) -> str:
+    return tag.rsplit("}", 1)[-1]
+
+
+def _parse_ted_xml(raw: str) -> dict[str, Any]:
+    """Extract only procurement-content text useful for strict revalidation."""
+    root = ET.fromstring(raw)
+    text_tags = {"Title", "Description", "Note"}
+    titles: list[str] = []
+    descriptions: list[str] = []
+    notes: list[str] = []
+    cpv_codes: list[str] = []
+
+    for elem in root.iter():
+        name = _local_name(elem.tag)
+        text = (elem.text or "").strip()
+        if not text:
+            continue
+        if name == "Title":
+            titles.append(text)
+        elif name == "Description":
+            descriptions.append(text)
+        elif name == "Note":
+            notes.append(text)
+        elif name == "ItemClassificationCode":
+            cpv_codes.append(text)
+
+    def dedupe(values: list[str]) -> list[str]:
+        out: list[str] = []
+        seen = set()
+        for value in values:
+            key = value.casefold()
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append(value)
+        return out
+
+    titles = dedupe(titles)
+    descriptions = dedupe(descriptions)
+    notes = dedupe(notes)
+    cpv_codes = dedupe(cpv_codes)
+
+    searchable = " ".join(titles + descriptions + notes)
+    return {
+        "searchable_text": searchable,
+        "titles": titles[:12],
+        "descriptions": descriptions[:12],
+        "notes": notes[:8],
+        "cpv_codes": cpv_codes[:40],
+    }
+
+
+def _context_for_target(target: Any, parsed: Mapping[str, Any]) -> str:
+    wanted = _canon(target)
+    for value in (
+        list(parsed.get("titles") or [])
+        + list(parsed.get("descriptions") or [])
+        + list(parsed.get("notes") or [])
+    ):
+        canon = _canon(value)
+        if wanted and wanted in canon:
+            return str(value)[:500]
+    return ""
+
+
+def _fetch_seed(seed: Mapping[str, Any], headers: Mapping[str, str]) -> dict[str, Any]:
+    original_url = str(seed.get("url") or "").strip()
+    fetch_url = ted_xml_url(original_url)
+    is_ted = bool(ted_publication_number(original_url))
+
+    request_headers = dict(headers)
+    if is_ted:
+        request_headers["Accept"] = "application/xml,text/xml,*/*"
+
+    response = requests.get(
+        fetch_url,
+        headers=request_headers,
+        timeout=25,
+        allow_redirects=True,
+    )
+    response.raise_for_status()
+
+    content_type = str(response.headers.get("Content-Type") or "")
+    raw = response.text
+
+    if is_ted:
+        if "xml" not in content_type.casefold() and not raw.lstrip().startswith("<?xml"):
+            raise ValueError(
+                f"TED no devolvió XML ({content_type or 'content-type vacío'})"
+            )
+        parsed = _parse_ted_xml(raw)
+        return {
+            "original_url": original_url,
+            "fetch_url": fetch_url,
+            "final_url": response.url,
+            "status_code": response.status_code,
+            "content_type": content_type,
+            "source_format": "ted-xml",
+            "publication_number": ted_publication_number(original_url),
+            **parsed,
+        }
+
+    # Generic public source fallback: explicit text only, no script execution.
+    plain = re.sub(r"(?is)<script.*?</script>|<style.*?</style>", " ", raw)
+    plain = re.sub(r"(?s)<[^>]+>", " ", plain)
+    plain = re.sub(r"\s+", " ", html.unescape(plain)).strip()
+    return {
+        "original_url": original_url,
+        "fetch_url": fetch_url,
+        "final_url": response.url,
+        "status_code": response.status_code,
+        "content_type": content_type,
+        "source_format": "public-web",
+        "publication_number": "",
+        "searchable_text": plain,
+        "titles": [],
+        "descriptions": [],
+        "notes": [],
+        "cpv_codes": [],
+    }
 
 
 def revalidate_registry(max_runtime: int = 300, max_items: int | None = None) -> dict[str, Any]:
     registry = load_registry()
     start = time.monotonic()
-    checked = supported = failed = 0
+    checked = supported = not_explicit = errors_count = fetched = 0
     headers = {
         "User-Agent": "Westcon-Iberia-Decision-Intelligence/4.0.5 (+open-source revalidation)"
     }
@@ -230,28 +367,51 @@ def revalidate_registry(max_runtime: int = 300, max_items: int | None = None) ->
     for row in pending:
         if time.monotonic() - start >= max_runtime:
             break
+
         checked += 1
         target = row.get("entity_b")
         matched = False
-        errors = []
+        row_errors: list[str] = []
+        source_seen = False
+
         for seed in row.get("revalidation_seeds") or []:
             url = str(seed.get("url") or "")
             if not url.startswith(("http://", "https://")):
                 continue
+
             try:
-                response = requests.get(url, headers=headers, timeout=20, allow_redirects=True)
-                response.raise_for_status()
-                body = _plain_text(response.text)
-                if _target_match(target, body):
+                result = _fetch_seed(seed, headers)
+                source_seen = True
+                fetched += 1
+
+                row["last_fetch_status"] = result.get("status_code")
+                row["last_fetch_url"] = result.get("final_url")
+                row["last_source_format"] = result.get("source_format")
+                row["last_content_type"] = result.get("content_type")
+                row["last_publication_number"] = result.get("publication_number")
+                row["last_cpv_codes"] = result.get("cpv_codes") or []
+                row["last_titles"] = result.get("titles") or []
+                row["last_descriptions"] = result.get("descriptions") or []
+
+                searchable = str(result.get("searchable_text") or "")
+                if _target_match(target, searchable):
+                    context = _context_for_target(target, result)
                     evidence = {
                         "source": seed.get("source_name") or urlparse(url).netloc,
-                        "title": f"Revalidación actual de {target}",
-                        "url": response.url,
+                        "title": (
+                            (result.get("titles") or [None])[0]
+                            or f"Revalidación actual de {target}"
+                        ),
+                        "url": result.get("final_url") or result.get("fetch_url") or url,
                         "date": time.strftime("%Y-%m-%d"),
                         "description": (
-                            f"Fuente abierta actual reconsultada; contiene el objetivo "
-                            f"de relación '{target}'."
+                            f"Fuente abierta actual reconsultada y coincidencia explícita "
+                            f"del objetivo de relación '{target}'."
                         ),
+                        "quote_context": context,
+                        "publication_number": result.get("publication_number") or "",
+                        "cpv_codes": result.get("cpv_codes") or [],
+                        "source_format": result.get("source_format"),
                         "source_type": (
                             "official-procurement-notice-revalidated"
                             if seed.get("official")
@@ -259,28 +419,51 @@ def revalidate_registry(max_runtime: int = 300, max_items: int | None = None) ->
                         ),
                         "source_grade": "A" if seed.get("official") else "B",
                         "official": bool(seed.get("official")),
-                        "provenance_origin": "PUBLIC_PRIMARY" if seed.get("official") else "PUBLIC_SECONDARY",
+                        "provenance_origin": (
+                            "PUBLIC_PRIMARY"
+                            if seed.get("official")
+                            else "PUBLIC_SECONDARY"
+                        ),
                         "intelligence_tier": "A2" if seed.get("official") else "C",
                         "source_role": (
                             "Fuente primaria externa"
                             if seed.get("official")
                             else "Fuente abierta secundaria"
                         ),
+                        "validation_method": "explicit-target-match",
                     }
                     row["revalidation_status"] = "supported-by-current-open-source"
                     row["revalidated_evidence"] = [evidence]
-                    row["last_checked_at"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+                    row["last_result"] = "explicit-target-match"
+                    row["last_checked_at"] = time.strftime(
+                        "%Y-%m-%dT%H:%M:%SZ", time.gmtime()
+                    )
                     row["last_error"] = ""
                     supported += 1
                     matched = True
                     break
+
+                # The official source was fetched successfully, but the exact historical
+                # technology assertion is not explicit. Preserve H; do not infer/promote.
+                row["last_result"] = "source-refetched-target-not-explicit"
+                row["last_checked_at"] = time.strftime(
+                    "%Y-%m-%dT%H:%M:%SZ", time.gmtime()
+                )
+                row["last_error"] = ""
+
             except Exception as exc:
-                errors.append(f"{url}: {exc}")
+                row_errors.append(f"{url}: {exc}")
 
         if not matched:
-            row["last_checked_at"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
-            row["last_error"] = " | ".join(errors)[:1000]
-            failed += 1
+            if source_seen:
+                not_explicit += 1
+            else:
+                errors_count += 1
+                row["last_result"] = "fetch-error"
+                row["last_checked_at"] = time.strftime(
+                    "%Y-%m-%dT%H:%M:%SZ", time.gmtime()
+                )
+                row["last_error"] = " | ".join(row_errors)[:1500]
 
     registry["candidates_total"] = len(registry.get("candidates") or [])
     registry["supported_current_open"] = sum(
@@ -290,12 +473,22 @@ def revalidate_registry(max_runtime: int = 300, max_items: int | None = None) ->
     registry["search_required"] = (
         registry["candidates_total"] - registry["supported_current_open"]
     )
+    registry["last_run_summary"] = {
+        "checked": checked,
+        "fetched": fetched,
+        "supported": supported,
+        "target_not_explicit": not_explicit,
+        "fetch_errors": errors_count,
+        "completed_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+    }
     save_registry(registry)
 
     return {
         "checked": checked,
+        "fetched": fetched,
         "supported": supported,
-        "not_yet_supported": failed,
+        "target_not_explicit": not_explicit,
+        "fetch_errors": errors_count,
         "supported_total": registry["supported_current_open"],
         "search_required": registry["search_required"],
     }
