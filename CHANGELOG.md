@@ -1,3 +1,13 @@
+## 4.0.5 — Source Intelligence Rationalization
+
+- Racionaliza fuentes en A1, A2, B, C y H.
+- Ninguna H cierra por sí sola un gap.
+- Toda H sin fuente abierta actual genera revalidación persistente.
+- Re-fetch de URLs históricas y ampliación a web oficial/catálogo.
+- Match atómico de valor para no adjudicar fuentes genéricas a items.
+- La presentación FY27 permanece como A1 y coexiste con investigación externa.
+- La UI separa fuentes actuales de histórico/linaje.
+
 ## 4.0.4 — Document Provenance Repair
 
 - Corrige la regresión que ocultaba la presentación corporativa Westcon cuando un campo ya tenía evidencia pública.

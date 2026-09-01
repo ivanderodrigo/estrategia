@@ -24,7 +24,7 @@ from ..settings import RESEARCH_POLICY, RESEARCH_PROFILES, VERSION
 from ..storage import atomic_write_json, prune_json_mapping, read_json
 from .documents import Document, Link, parse_document, sitemap_urls
 from .client_discovery import discover_official_site
-from .extractors import Candidate, extract_candidates
+from .extractors import Candidate, evidence_snippet, extract_candidates
 from .planner import plan
 from .security import UnsafeUrl, validate_public_url
 from .sources import PATH_FAMILY_HINTS, SourceSeed, family_from_url, relevant_families, seeds_for
@@ -205,6 +205,132 @@ class Fetcher:
             return None, False, 0, f"{type(exc).__name__}: {exc}"[:240]
 
 
+ANALYST_SOURCE_NAMES = (
+    "gartner", "forrester", "idc", "omdia", "canalys", "isg", "gigaom", "451 research",
+)
+
+
+def _merge_source_seeds(*groups: list[SourceSeed]) -> list[SourceSeed]:
+    output = []
+    seen = set()
+    for group in groups:
+        for seed in group:
+            key = (seed.url, seed.family)
+            if key in seen:
+                continue
+            seen.add(key)
+            output.append(seed)
+    return output
+
+
+def _revalidation_source_seeds(target: dict[str, Any]) -> list[SourceSeed]:
+    output = []
+    fallback_family = next(iter(target.get("families") or []), "official")
+    for raw in target.get("revalidation_seeds") or []:
+        if not isinstance(raw, dict):
+            continue
+        url = str(raw.get("url") or "").strip()
+        if not url.startswith(("http://", "https://")):
+            continue
+        official = bool(raw.get("official"))
+        output.append(SourceSeed(
+            url=url,
+            family=family_from_url(url, fallback_family),
+            official=official,
+            source_grade="A" if official else str(raw.get("source_grade") or "B"),
+            source_type="official-domain-revalidated" if official else "public-web-revalidated",
+            source_name=str(raw.get("source_name") or target.get("entity") or "Fuente pública"),
+        ))
+    return output
+
+
+def _catalog_source_seeds(data: dict[str, Any], section: str, fields: list[str], limit: int = 14) -> list[SourceSeed]:
+    wanted = relevant_families(fields)
+    output = []
+    for raw in data.get("source_catalog") or []:
+        if not isinstance(raw, dict):
+            continue
+        url = str(raw.get("url") or "").strip()
+        if not url.startswith(("http://", "https://")):
+            continue
+        dims = raw.get("dimensions") or []
+        if isinstance(dims, str):
+            dims = [dims]
+        name = str(raw.get("name") or "")
+        cls = str(raw.get("class") or raw.get("source_type") or "")
+        blob = f"{name} {cls} {url}".casefold()
+        analyst = any(token in blob for token in ANALYST_SOURCE_NAMES)
+        family = "analyst" if analyst else family_from_url(url, "official")
+        if family not in wanted and not (section in {"trends", "architectures"} and analyst):
+            continue
+        if dims and section not in dims and not analyst:
+            continue
+        official = "official" in cls.casefold()
+        output.append(SourceSeed(
+            url=url,
+            family=family,
+            official=official,
+            source_grade="B" if analyst else ("A" if official else "B"),
+            source_type="analyst-open-source" if analyst else ("official-domain" if official else "public-web"),
+            source_name=name or "Fuente pública",
+        ))
+        if len(output) >= limit:
+            break
+    return output
+
+
+def _target_match(value: Any, text: str) -> bool:
+    wanted = canonical(value)
+    hay = canonical(text)
+    if not wanted or len(wanted) > 180:
+        return False
+    if len(wanted) <= 4:
+        return bool(re.search(rf"(?<![a-z0-9]){re.escape(wanted)}(?![a-z0-9])", hay))
+    return wanted in hay
+
+
+def _exact_historical_candidate(document: Document, wanted: list[Any], official: bool) -> Candidate | None:
+    matched = [value for value in wanted if _target_match(value, document.text)]
+    if not matched:
+        return None
+    labels = [str(value) for value in matched]
+    return Candidate(
+        tuple(labels),
+        "fact",
+        0.90 if official else 0.76,
+        evidence_snippet(document.text, labels),
+        tuple(labels),
+    )
+
+
+def _focus_candidates(candidates: dict[str, Candidate], target: dict[str, Any], document: Document, official: bool) -> dict[str, Candidate]:
+    target_map = target.get("target_values") or {}
+    if not isinstance(target_map, dict) or not target_map:
+        return candidates
+    historical = "historical-revalidation" in set(target.get("gap_kinds") or [])
+    output = dict(candidates)
+    for field_id, wanted in target_map.items():
+        if not wanted:
+            continue
+        exact = _exact_historical_candidate(document, list(wanted), official)
+        if exact is not None:
+            output[field_id] = exact
+            continue
+        candidate = output.get(field_id)
+        if candidate is None:
+            continue
+        wanted_keys = {canonical(value) for value in wanted}
+        filtered = tuple(value for value in candidate.values if canonical(value) in wanted_keys)
+        if filtered:
+            output[field_id] = Candidate(
+                filtered, candidate.claim_type, candidate.confidence,
+                candidate.snippet, candidate.matched_terms,
+            )
+        elif historical:
+            output.pop(field_id, None)
+    return output
+
+
 def _evidence(seed: SourceSeed, document: Document, field_id: str, candidate: Candidate, entity: str, scope: str) -> list[dict[str, Any]]:
     return [{
         "source": seed.source_name or entity,
@@ -223,6 +349,7 @@ def _evidence(seed: SourceSeed, document: Document, field_id: str, candidate: Ca
         "content_digest": document.content_digest,
         "matched_terms": list(candidate.matched_terms),
         "field": field_id,
+        "revalidation": "historical-source-refetched" if "revalidated" in seed.source_type else "",
     }]
 
 
@@ -363,8 +490,22 @@ def run(profile: str = "daily", max_runtime: int = 600, max_tasks: int | None = 
         row = index.get((target["section"], canonical(target["entity"])))
         if not row:
             continue
-        seeds = seeds_for(row, target["fields"])
-        if not seeds and target["section"] in {"clients_private", "clients_public"}:
+        seeds = _merge_source_seeds(
+            _revalidation_source_seeds(target),
+            seeds_for(row, target["fields"]),
+            _catalog_source_seeds(data, target["section"], target["fields"]),
+        )
+        needs_official_discovery = (
+            target["section"] not in {"trends", "architectures"}
+            and (
+                not seeds
+                or (
+                    "historical-revalidation" in set(target.get("gap_kinds") or [])
+                    and not any(seed.official for seed in seeds)
+                )
+            )
+        )
+        if needs_official_discovery:
             remaining = min(float(profile_config.request_timeout_s), deadline - time.monotonic() - 2)
             if remaining >= 3.0:
                 discovered = discover_official_site(fetcher.session, target["entity"], timeout_s=remaining)
@@ -415,6 +556,9 @@ def run(profile: str = "daily", max_runtime: int = 600, max_tasks: int | None = 
                 document,
                 vendor_names,
                 official=seed.official,
+            )
+            candidates = _focus_candidates(
+                candidates, target, document, seed.official
             )
             relevant = bool(candidates)
             if relevant:

@@ -1,4 +1,4 @@
-"""Typed provenance and non-destructive knowledge protection for v4.0.4."""
+"""Typed provenance and non-destructive knowledge protection for v4.0.5."""
 from __future__ import annotations
 
 import json
@@ -21,6 +21,13 @@ DOCUMENT_SOURCE_TYPES = {
     "westcon-document", "internal-document", "user-provided", "curated", "curated-westcon",
 }
 LEGACY_SOURCE_TYPE = "legacy-unresolved"
+HISTORICAL_PROVENANCE_KINDS = {
+    "HISTORICAL_RECOVERED",
+    "ARCHIVE_RECOVERED",
+    "ARCHIVE_CORROBORATION",
+    "REPORT_CORROBORATION",
+    "LEGACY_UNRESOLVED",
+}
 
 CORPORATE_DOCUMENT = {
     "id": "westcon-corporate-fy27",
@@ -107,7 +114,7 @@ def typed_evidence_sufficient(evidence: Mapping[str, Any]) -> bool:
         return False
     kind = provenance_kind(evidence)
     # Contextual archive/report corroboration is useful provenance but cannot close a gap.
-    if kind in {"LEGACY_UNRESOLVED", "ARCHIVE_CORROBORATION", "REPORT_CORROBORATION", "DISCOVERY_ONLY"}:
+    if kind in HISTORICAL_PROVENANCE_KINDS | {"DISCOVERY_ONLY"}:
         return False
     common = all(str(evidence.get(key) or "").strip() for key in ("source", "title", "date", "description"))
     if not common:

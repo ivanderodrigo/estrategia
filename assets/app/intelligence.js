@@ -1,4 +1,4 @@
-// App v4.0.4
+// App v4.0.5
 (() => {
   'use strict';
   const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, dragCol:null, resize:null, traceSource:null, helpSource:null};
@@ -183,14 +183,17 @@
   function sourceItem(ev, score, band){
     const title=esc(ev.title||ev.source||'Evidencia'), source=esc(ev.source||'Fuente pública');
     const provenance=String(ev.provenance_origin||'').toUpperCase();
+    const tier=String(ev.intelligence_tier||'');
+    const role=ev.source_role||({A1:'Fuente directa Westcon',A2:'Fuente primaria externa',B:'Inteligencia especializada',C:'Fuente abierta secundaria',D:'Curación interna',H:'Histórico en revalidación'})[tier]||'Fuente';
     const isWestconDoc=provenance==='WESTCON_DOCUMENT'||String(ev.source_type||'').toLowerCase().includes('westcon-document');
+    const isHistorical=tier==='H'||/HISTORICAL|ARCHIVE|REPORT_CORROBORATION|LEGACY_UNRESOLVED/.test(provenance);
     const fresh=ev.freshness_status?`Vigencia: ${ev.freshness_status}${Number.isFinite(Number(ev.age_days))?` · ${ev.age_days} días`:''}`:'';
     const doc=ev.document?`Documento: ${ev.document}${ev.slide?` · slide ${ev.slide}`:''}`:'';
-    const origin=provenance?`Procedencia: ${provenance}`:'';
     const atomic=ev.atomic&&ev.item_value?`Dato documentado: ${ev.item_value}`:'';
-    const meta=[isWestconDoc?'Tipo: Documento Westcon':(ev.type||ev.source_type),ev.date,ev.country||ev.scope,ev.method,ev.source_grade,doc,origin,atomic,fresh].filter(Boolean).map(esc).join(' · ');
+    const revalidation=isHistorical?(ev.revalidation_status==='supported-by-current-open-source'?'Histórico ya corroborado por fuente abierta actual':'Histórico pendiente de búsqueda/revalidación'):(ev.revalidation?`Revalidación: ${ev.revalidation}`:'');
+    const meta=[`Clase: ${role}`,isWestconDoc?'Tipo: Documento Westcon':(ev.type||ev.source_type),ev.date,ev.country||ev.scope,doc,atomic,fresh].filter(Boolean).map(esc).join(' · ');
     const noLink=isWestconDoc&&!ev.url?'<small class="source-document-note">Documento aportado al proyecto · sin URL pública</small>':'';
-    return `<div class="source-item ${isWestconDoc?'westcon-document-source':''}"><div class="source-confidence ${esc(band||'low')}"><b>${confidencePct(score)}%</b><span>dato</span></div><div><b>${source}</b><span>${title}</span>${ev.description?`<p>${esc(ev.description)}</p>`:''}${meta?`<small>${meta}</small>`:''}${noLink}${ev.revalidation?`<small>${esc(ev.revalidation)}</small>`:''}${ev.note?`<small>${esc(ev.note)}</small>`:''}${ev.url?`<a href="${esc(ev.url)}" target="_blank" rel="noopener">Abrir fuente ↗</a>`:''}</div></div>`;
+    return `<div class="source-item ${isWestconDoc?'westcon-document-source':''} ${isHistorical?'historical-source':''}"><div class="source-confidence ${esc(isHistorical?'low':(band||'low'))}"><b>${isHistorical?'H':confidencePct(score)+'%'}</b><span>${isHistorical?'linaje':'dato'}</span></div><div><b>${source}</b><span>${title}</span>${ev.description?`<p>${esc(ev.description)}</p>`:''}${meta?`<small>${meta}</small>`:''}${revalidation?`<small>${esc(revalidation)}</small>`:''}${noLink}${ev.url?`<a href="${esc(ev.url)}" target="_blank" rel="noopener">Abrir fuente ↗</a>`:''}</div></div>`;
   }
 
   function deriveConfidenceFactors(field,item,band,evidence){
@@ -210,7 +213,11 @@
   }
 
   function traceable(field, inner, item=null){
-    const evidence=(item===null?(field?.evidence||[]):(item?.evidence||[])).slice(0,8);
+    const allEvidence=(item===null?(field?.evidence||[]):(item?.evidence||[]));
+    const isHistorical=ev=>String(ev?.intelligence_tier||'')==='H'||/HISTORICAL|ARCHIVE|REPORT_CORROBORATION|LEGACY_UNRESOLVED/.test(String(ev?.provenance_origin||'').toUpperCase());
+    const currentEvidence=allEvidence.filter(ev=>!isHistorical(ev));
+    const historicalEvidence=allEvidence.filter(isHistorical);
+    const evidence=currentEvidence.slice(0,8);
     const score=item?.confidence ?? field?.confidence ?? 0.66;
     const band=item?.confidence_band || field?.confidence_band || (score>=.8?'high':score>=.6?'medium':'low');
     const reason=item?.confidence_reason || field?.confidence_reason || '';
@@ -223,9 +230,11 @@
     const levelLabel=bandLabel(band);
     const factors=deriveConfidenceFactors(field,item,band,evidence);
     const why=(band==='medium'||band==='low'||factors.length)?`<div class="confidence-why"><b>Por qué tiene este nivel</b><ul>${factors.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
-    const sources=evidence.length?evidence.map(ev=>sourceItem(ev,factScore,band)).join(''):'<p class="atomic-evidence-missing">No hay una evidencia específica vinculada a este elemento; el sistema no muestra fuentes de otros elementos del campo.</p>';
-    return `<div class="traceable" tabindex="0"><div class="trace-value">${inner}</div><span class="trace-mark confidence-dot ${esc(band)}" title="${esc(levelLabel)} · ${confidencePct(factScore)}%">i</span><div class="trace-popover"><strong>TRAZABILIDAD DEL DATO</strong><div class="claim-kind">${esc(claimLabel)} · ${esc(levelLabel)}</div><div class="confidence-three"><span><b>${confidencePct(factScore)}%</b>Hecho</span><span><b>${confidencePct(interpretationScore)}%</b>Interpretación</span><span><b>${esc(actionRisk)}</b>Riesgo de acción</span></div>${reason?`<p class="confidence-explain">${esc(reason)}</p>`:''}${why}${qualifier?`<span class="qualifier">${esc(qualifier)}</span>`:''}<div class="trace-source-heading">Fuentes que sostienen este dato</div>${sources}<button type="button" class="confidence-help-link" data-confidence-help>¿Cómo se calcula e interpreta la confianza?</button></div></div>`;
+    const sources=evidence.length?evidence.map(ev=>sourceItem(ev,factScore,band)).join(''):'<p class="atomic-evidence-missing">No hay todavía una fuente actual específica vinculada a este elemento; el sistema no muestra fuentes de otros elementos del campo.</p>';
+    const historical=historicalEvidence.length?`<details class="historical-evidence"><summary>Histórico / linaje (${historicalEvidence.length})</summary><p class="qualifier">El histórico no acredita el dato por sí solo. El motor mantiene búsquedas abiertas hasta localizar una fuente actual para este mismo elemento.</p>${historicalEvidence.slice(0,8).map(ev=>sourceItem(ev,factScore,'low')).join('')}</details>`:'';
+    return `<div class="traceable" tabindex="0"><div class="trace-value">${inner}</div><span class="trace-mark confidence-dot ${esc(band)}" title="${esc(levelLabel)} · ${confidencePct(factScore)}%">i</span><div class="trace-popover"><strong>TRAZABILIDAD DEL DATO</strong><div class="claim-kind">${esc(claimLabel)} · ${esc(levelLabel)}</div><div class="confidence-three"><span><b>${confidencePct(factScore)}%</b>Hecho</span><span><b>${confidencePct(interpretationScore)}%</b>Interpretación</span><span><b>${esc(actionRisk)}</b>Riesgo de acción</span></div>${reason?`<p class="confidence-explain">${esc(reason)}</p>`:''}${why}${qualifier?`<span class="qualifier">${esc(qualifier)}</span>`:''}<div class="trace-source-heading">Fuentes actuales que sostienen este dato</div>${sources}${historical}<button type="button" class="confidence-help-link" data-confidence-help>¿Cómo se calcula e interpreta la confianza?</button></div></div>`;
   }
+
   function itemFor(field,value,index){
     const items=field?.items||[], wanted=norm(typeof value==='object'?JSON.stringify(value):value);
     return items.find(x=>norm(typeof x?.value==='object'?JSON.stringify(x.value):x?.value)===wanted)

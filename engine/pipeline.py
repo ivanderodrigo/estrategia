@@ -33,6 +33,7 @@ from .graph import build_graph
 from .metrics import calculate
 from .publication import public_payloads
 from .quality import audit
+from .source_rationalization import rationalize_sources
 from .settings import SECTIONS, VERSION
 from .storage import atomic_write_many, json_bytes, read_json
 
@@ -91,7 +92,7 @@ def run() -> dict[str, Any]:
         "version": VERSION,
         "pipeline": [
             "source-registry", "health-check", "discover", "fetch", "extract",
-            "validate", "item-provenance", "graph", "gap", "learn", "publish",
+            "validate", "source-rationalize", "historical-revalidate", "item-provenance", "graph", "gap", "learn", "publish",
         ],
         "success_definition": (
             "Una descarga correcta no equivale a inteligencia: se miden evidencias nuevas, "
@@ -130,6 +131,7 @@ def run() -> dict[str, Any]:
     # v4.0.4: bind Westcon documentary provenance to FINAL normalized items.
     document_apply_final = apply_westcon_document_provenance(data)
     _sync_source_catalog(data)
+    source_rationalization = rationalize_sources(data)
     gaps = build_gaps(data, VERSION, research_state)
     metrics = calculate(data, gaps, graph)
 
@@ -193,6 +195,11 @@ def run() -> dict[str, Any]:
         "archive_provenance": archive_registry_summary(archive_registry),
         "archive_apply": archive_apply_final,
         "document_apply": document_apply_final,
+        "source_intelligence": {
+            "historical_total": source_rationalization.get("historical_total", 0),
+            "historical_supported_current_open": source_rationalization.get("historical_supported_current_open", 0),
+            "historical_search_required": source_rationalization.get("historical_search_required", 0),
+        },
     }
 
     internal_data = json_bytes(data, pretty=False)
@@ -220,6 +227,7 @@ def run() -> dict[str, Any]:
             "traceable_fields": metrics["traceable_fields"],
             "provenance": provenance_summary(data),
             "archive_provenance": archive_registry_summary(archive_registry),
+            "source_intelligence": source_rationalization,
         }),
         "data/current/provenance_report.json": json_bytes({
             "version": VERSION,
@@ -227,7 +235,9 @@ def run() -> dict[str, Any]:
             "archive_registry": archive_registry_summary(archive_registry),
             "archive_apply": archive_apply_final,
             "document_apply": document_apply_final,
+            "source_intelligence": source_rationalization,
         }),
+        "data/current/source_rationalization_v405.json": json_bytes(source_rationalization),
         "data/current/quality_report.json": json_bytes(quality),
         "data/current/last_run.json": json_bytes(last_run),
     }
