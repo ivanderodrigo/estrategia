@@ -1,4 +1,4 @@
-// App v4.0.3
+// App v4.0.4
 (() => {
   'use strict';
   const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, dragCol:null, resize:null, traceSource:null, helpSource:null};
@@ -181,22 +181,24 @@
   function confidencePct(x){const n=Number(x??0);return Math.round((n<=1?n*100:n));}
   function bandLabel(b){return b==='high'?'VERDE · evidencia fuerte':b==='medium'?'AMARILLO · evidencia parcial':'ROJO · señal o indicio';}
   function sourceItem(ev, score, band){
-    const title=esc(ev.title||ev.source||'Evidencia'), source=esc(ev.source||'Fuente / procedencia');
-    const fresh=ev.freshness_status?`vigencia: ${ev.freshness_status}${Number.isFinite(Number(ev.age_days))?` · ${ev.age_days} días`:''}`:'';
-    const provenance=ev.provenance_origin||ev.source_type||ev.type;
-    const doc=ev.document?`documento: ${ev.document}${ev.slide?` · slide ${ev.slide}`:''}`:'';
-    const archive=ev.historical_archive?`snapshot: ${ev.historical_archive}${ev.historical_version?` · v${ev.historical_version}`:''}`:'';
-    const histPath=ev.historical_path?`ruta histórica: ${ev.historical_path}`:'';
-    const match=ev.match_mode?`match: ${ev.match_mode}`:'';
-    const meta=[ev.date,provenance,ev.country||ev.scope,ev.method,ev.source_grade,doc,archive,histPath,match,fresh].filter(Boolean).map(esc).join(' · ');
-    return `<div class="source-item"><div class="source-confidence ${esc(band||'low')}"><b>${confidencePct(score)}%</b><span>dato</span></div><div><b>${source}</b><span>${title}</span>${ev.description?`<p>${esc(ev.description)}</p>`:''}${meta?`<small>${meta}</small>`:''}${ev.revalidation?`<small>${esc(ev.revalidation)}</small>`:''}${ev.note?`<small>${esc(ev.note)}</small>`:''}${ev.url?`<a href="${esc(ev.url)}" target="_blank" rel="noopener">Abrir fuente ↗</a>`:''}</div></div>`;
+    const title=esc(ev.title||ev.source||'Evidencia'), source=esc(ev.source||'Fuente pública');
+    const provenance=String(ev.provenance_origin||'').toUpperCase();
+    const isWestconDoc=provenance==='WESTCON_DOCUMENT'||String(ev.source_type||'').toLowerCase().includes('westcon-document');
+    const fresh=ev.freshness_status?`Vigencia: ${ev.freshness_status}${Number.isFinite(Number(ev.age_days))?` · ${ev.age_days} días`:''}`:'';
+    const doc=ev.document?`Documento: ${ev.document}${ev.slide?` · slide ${ev.slide}`:''}`:'';
+    const origin=provenance?`Procedencia: ${provenance}`:'';
+    const atomic=ev.atomic&&ev.item_value?`Dato documentado: ${ev.item_value}`:'';
+    const meta=[isWestconDoc?'Tipo: Documento Westcon':(ev.type||ev.source_type),ev.date,ev.country||ev.scope,ev.method,ev.source_grade,doc,origin,atomic,fresh].filter(Boolean).map(esc).join(' · ');
+    const noLink=isWestconDoc&&!ev.url?'<small class="source-document-note">Documento aportado al proyecto · sin URL pública</small>':'';
+    return `<div class="source-item ${isWestconDoc?'westcon-document-source':''}"><div class="source-confidence ${esc(band||'low')}"><b>${confidencePct(score)}%</b><span>dato</span></div><div><b>${source}</b><span>${title}</span>${ev.description?`<p>${esc(ev.description)}</p>`:''}${meta?`<small>${meta}</small>`:''}${noLink}${ev.revalidation?`<small>${esc(ev.revalidation)}</small>`:''}${ev.note?`<small>${esc(ev.note)}</small>`:''}${ev.url?`<a href="${esc(ev.url)}" target="_blank" rel="noopener">Abrir fuente ↗</a>`:''}</div></div>`;
   }
+
   function deriveConfidenceFactors(field,item,band,evidence){
     const stored=item?.confidence_factors||field?.confidence_factors; if(Array.isArray(stored)&&stored.length)return stored;
     const factors=[], independent=new Set(evidence.map(ev=>norm(ev.source||ev.url||ev.title)).filter(Boolean)).size;
-    const blobs=evidence.map(ev=>norm([ev.type,ev.method,ev.source,ev.source_type,ev.source_grade,ev.url].join(' ')));
-    const official=blobs.filter(b=>/(official|primary|partner-locator|partner-directory|user-provided|vendor-own|integrator-own|westcon-document|historical-recovered|archive-recovered|curated)/.test(b)).length;
-    const indirect=blobs.filter(b=>/(job|career|vacan|aggregator|semantic|discovery|secondary|corroboration|discovery-only)/.test(b)).length;
+    const blobs=evidence.map(ev=>norm([ev.type,ev.method,ev.source,ev.source_type,ev.source_grade,ev.provenance_origin,ev.url].join(' ')));
+    const official=blobs.filter(b=>/(official|primary|partner-locator|partner-directory|user-provided|vendor-own|integrator-own|westcon-document|a-westcon|document-provenance)/.test(b)).length;
+    const indirect=blobs.filter(b=>/(job|career|vacan|aggregator|semantic|discovery|secondary)/.test(b)).length;
     const stale=evidence.filter(ev=>ev.freshness_status==='stale').length, aging=evidence.filter(ev=>ev.freshness_status==='aging').length;
     factors.push(independent>=2?`Corroboración: ${independent} fuentes/evidencias independientes.`:'Corroboración limitada: solo una fuente/evidencia independiente.');
     factors.push(official?`Calidad: ${official} evidencia(s) oficial(es) o primaria(s).`:'Calidad: todavía no hay evidencia oficial/primaria directa enlazada.');
@@ -206,6 +208,7 @@
     if(band==='low')factors.push('Para subir: corroborar el indicio con fuente oficial/directa o varias evidencias independientes actuales.');
     return factors;
   }
+
   function traceable(field, inner, item=null){
     const evidence=(item===null?(field?.evidence||[]):(item?.evidence||[])).slice(0,8);
     const score=item?.confidence ?? field?.confidence ?? 0.66;
@@ -458,13 +461,14 @@
   function uniqueEvidence(rows, limit=80){
     const map=new Map();
     rows.forEach(r=>{
-      [...(r.evidence||[]),...Object.values(r.fields||{}).flatMap(f=>f.evidence||[])].forEach(ev=>{
-        const k=ev.url||`${ev.source}|${ev.title}`;
+      [...(r.evidence||[]),...Object.values(r.fields||{}).flatMap(f=>[...(f.evidence||[]),...(f.items||[]).flatMap(it=>it?.evidence||[])])].forEach(ev=>{
+        const k=ev.url||`${ev.provenance_origin||''}|${ev.document||''}|${ev.slide||''}|${ev.field||''}|${ev.item_value||''}|${ev.source}|${ev.title}`;
         if(!map.has(k)) map.set(k,ev);
       });
     });
     return [...map.values()].slice(0,limit);
   }
+
   function rowEvidenceCount(row){ return uniqueEvidence([row],999).length; }
   function shortText(v,max=165){ const t=valueText(v).replace(/\s+/g,' ').trim(); return t.length>max?`${t.slice(0,max-1)}…`:t; }
   function compactValue(v,maxItems=5,maxChars=175){

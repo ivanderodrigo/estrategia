@@ -1,4 +1,4 @@
-"""Typed provenance and non-destructive knowledge protection for v4.0.3."""
+"""Typed provenance and non-destructive knowledge protection for v4.0.4."""
 from __future__ import annotations
 
 import json
@@ -431,8 +431,14 @@ def _slide_for_vendor(name: str) -> int | None:
     return None
 
 
-def _document_evidence(vendor_name: str, slide: int) -> dict[str, Any]:
-    return {
+def _document_evidence(
+    vendor_name: str,
+    slide: int,
+    *,
+    field_id: str | None = None,
+    item_value: Any = None,
+) -> dict[str, Any]:
+    evidence = {
         "source": "Westcon Comstor España",
         "title": f"{CORPORATE_DOCUMENT['title']} · slide {slide}",
         "url": "",
@@ -447,17 +453,85 @@ def _document_evidence(vendor_name: str, slide: int) -> dict[str, Any]:
         "official": True,
         "classification": "internal-document",
         "freshness_status": "current",
-        "method": "document-provenance",
+        "method": "document-provenance-atomic-v404",
         "document_id": CORPORATE_DOCUMENT["id"],
         "document": CORPORATE_DOCUMENT["filename"],
         "slide": slide,
         "provenance_origin": "WESTCON_DOCUMENT",
     }
+    if field_id:
+        evidence["field"] = field_id
+    if item_value not in (None, ""):
+        evidence["item_value"] = deepcopy(item_value)
+        evidence["atomic"] = True
+        evidence["description"] = (
+            f"Documento corporativo Westcon FY2027 que respalda de forma específica la capacidad "
+            f"«{item_value}» de {vendor_name}. Se conserva junto con cualquier evidencia pública existente."
+        )
+    return evidence
+
+
+def _drop_legacy_placeholders(rows: Iterable[Mapping[str, Any]]) -> tuple[list[dict[str, Any]], int]:
+    kept: list[dict[str, Any]] = []
+    removed = 0
+    for row in rows:
+        if not isinstance(row, Mapping):
+            continue
+        if provenance_kind(row) == "LEGACY_UNRESOLVED":
+            removed += 1
+            continue
+        kept.append(dict(row))
+    return kept, removed
+
+
+def _promote_document_supported_claim(target: dict[str, Any]) -> None:
+    current = float(target.get("confidence") or 0.0)
+    score = max(current, 0.92)
+    target["confidence"] = score
+    target["confidence_band"] = "high"
+    target["claim_type"] = target.get("claim_type") or "fact"
+    target["assertion_status"] = "CONFIRMADO"
+    target["fact_confidence"] = max(float(target.get("fact_confidence") or 0.0), score)
+    target["interpretation_confidence"] = max(float(target.get("interpretation_confidence") or 0.0), 0.88)
+    target["action_risk"] = "bajo"
+    target["evidence_level"] = "strong"
+    target["evidence_color"] = "green"
+    target["confidence_reason"] = (
+        "Verde: capacidad respaldada de forma explícita por documentación corporativa Westcon FY2027. "
+        "La evidencia documental puede coexistir con fuentes públicas del fabricante."
+    )
+    target["qualifier"] = (
+        "Capacidad documentada por Westcon; la presentación es una fuente primaria documental "
+        "y no sustituye otras evidencias públicas."
+    )
+
+
+def _baseline_capabilities() -> dict[str, set[str]]:
+    output: dict[str, set[str]] = {}
+    baseline = load_knowledge_baseline()
+    manufacturers = (((baseline.get("protected") or {}).get("manufacturers")) or [])
+    for row in manufacturers:
+        if not isinstance(row, Mapping):
+            continue
+        key = canonical(row.get("name"))
+        field = ((row.get("fields") or {}).get("capabilities") or {})
+        value = field.get("value") if isinstance(field, Mapping) else None
+        values = value if isinstance(value, list) else ([value] if _has_value(value) else [])
+        if key and values:
+            output[key] = {_value_key(item) for item in values}
+    return output
 
 
 def apply_westcon_document_provenance(data: dict[str, Any]) -> dict[str, int]:
-    """Attach the supplied corporate deck only where it directly supports vendor capabilities."""
-    stats = {"manufacturer_fields_documented": 0, "manufacturer_rows_documented": 0}
+    """v4.0.4: additive + atomic documentary provenance for manufacturer capabilities."""
+    stats = {
+        "manufacturer_fields_documented": 0,
+        "manufacturer_rows_documented": 0,
+        "manufacturer_capability_items_documented": 0,
+        "capability_items_with_public_and_document": 0,
+        "legacy_placeholders_removed": 0,
+    }
+    baseline_caps = _baseline_capabilities()
     supported_fields = {"domain", "capabilities", "services", "specializations", "verticals"}
     for row in data.get("manufacturers") or []:
         if not isinstance(row, dict):
@@ -466,20 +540,77 @@ def apply_westcon_document_provenance(data: dict[str, Any]) -> dict[str, int]:
         slide = _slide_for_vendor(name)
         if slide is None:
             continue
-        evidence = _document_evidence(name, slide)
-        if not real_evidence(row.get("evidence") or []):
-            row["evidence"] = dedupe_evidence(list(row.get("evidence") or []) + [evidence])
+        row_ev = _document_evidence(name, slide)
+        before_row = len(row.get("evidence") or [])
+        row["evidence"] = dedupe_evidence(list(row.get("evidence") or []) + [row_ev])
+        if len(row["evidence"]) > before_row:
             stats["manufacturer_rows_documented"] += 1
+        fields = row.get("fields") or {}
         for field_id in supported_fields:
-            field = ((row.get("fields") or {}).get(field_id) or {})
+            field = fields.get(field_id) or {}
             if not isinstance(field, dict) or not _has_value(field.get("value")):
                 continue
-            if any(typed_evidence_sufficient(ev) for ev in field.get("evidence") or [] if isinstance(ev, Mapping)):
+            must_coexist = field_id in {"domain", "capabilities"}
+            if must_coexist or not any(
+                typed_evidence_sufficient(ev)
+                for ev in field.get("evidence") or []
+                if isinstance(ev, Mapping)
+            ):
+                clean, removed = _drop_legacy_placeholders(field.get("evidence") or [])
+                stats["legacy_placeholders_removed"] += removed
+                field_ev = _document_evidence(name, slide, field_id=field_id)
+                before = len(clean)
+                field["evidence"] = dedupe_evidence(clean + [field_ev])
+                if len(field["evidence"]) > before:
+                    stats["manufacturer_fields_documented"] += 1
+            if field_id != "capabilities":
                 continue
-            field["evidence"] = dedupe_evidence(list(field.get("evidence") or []) + [evidence])
-            stats["manufacturer_fields_documented"] += 1
+            values = field.get("value")
+            values = values if isinstance(values, list) else [values]
+            items = [item for item in field.get("items") or [] if isinstance(item, dict)]
+            item_index = {_value_key(item.get("value")): item for item in items if _has_value(item.get("value"))}
+            for value in values:
+                key = _value_key(value)
+                if key not in item_index:
+                    item = {"value": deepcopy(value), "evidence": []}
+                    items.append(item)
+                    item_index[key] = item
+            field["items"] = items
+            vendor_key = canonical(name)
+            allowed = baseline_caps.get(vendor_key)
+            if not allowed:
+                allowed = {_value_key(value) for value in values if _has_value(value)}
+            documented = 0
+            for value in values:
+                value_key = _value_key(value)
+                if value_key not in allowed:
+                    continue
+                item = item_index[value_key]
+                old_evidence = [
+                    ev for ev in item.get("evidence") or []
+                    if isinstance(ev, Mapping) and provenance_kind(ev) != "LEGACY_UNRESOLVED"
+                ]
+                removed = len(item.get("evidence") or []) - len(old_evidence)
+                stats["legacy_placeholders_removed"] += max(0, removed)
+                had_public = any(
+                    provenance_kind(ev) in {"PUBLIC_PRIMARY", "PUBLIC_SECONDARY"}
+                    for ev in old_evidence
+                )
+                item_ev = _document_evidence(name, slide, field_id="capabilities", item_value=value)
+                before = len(old_evidence)
+                item["evidence"] = dedupe_evidence(old_evidence + [item_ev])
+                if len(item["evidence"]) > before:
+                    stats["manufacturer_capability_items_documented"] += 1
+                if had_public:
+                    stats["capability_items_with_public_and_document"] += 1
+                _promote_document_supported_claim(item)
+                documented += 1
+            if documented and documented == len(values):
+                clean, removed = _drop_legacy_placeholders(field.get("evidence") or [])
+                stats["legacy_placeholders_removed"] += removed
+                field["evidence"] = dedupe_evidence(clean + [_document_evidence(name, slide, field_id="capabilities")])
+                _promote_document_supported_claim(field)
     return stats
-
 
 def _legacy_evidence(section: str, row: Mapping[str, Any], field_id: str, value: Any = None) -> dict[str, Any]:
     suffix = f" · elemento: {value}" if value not in (None, "") else ""

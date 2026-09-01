@@ -123,11 +123,12 @@ def run() -> dict[str, Any]:
     # Knowledge Guard: a research/build pass may enrich or update, but never silently
     # delete stable Trends, Architectures or non-relational manufacturer knowledge.
     restore_protected_knowledge(data, knowledge_baseline)
-    apply_westcon_document_provenance(data)
     archive_apply_final = apply_archive_provenance(data, archive_registry)
     mark_legacy_unresolved(data)
     sync_document_sources(data)
     normalize_fields(data)
+    # v4.0.4: bind Westcon documentary provenance to FINAL normalized items.
+    document_apply_final = apply_westcon_document_provenance(data)
     _sync_source_catalog(data)
     gaps = build_gaps(data, VERSION, research_state)
     metrics = calculate(data, gaps, graph)
@@ -191,6 +192,7 @@ def run() -> dict[str, Any]:
         "provenance": provenance_summary(data),
         "archive_provenance": archive_registry_summary(archive_registry),
         "archive_apply": archive_apply_final,
+        "document_apply": document_apply_final,
     }
 
     internal_data = json_bytes(data, pretty=False)
@@ -224,6 +226,7 @@ def run() -> dict[str, Any]:
             "summary": provenance_summary(data),
             "archive_registry": archive_registry_summary(archive_registry),
             "archive_apply": archive_apply_final,
+            "document_apply": document_apply_final,
         }),
         "data/current/quality_report.json": json_bytes(quality),
         "data/current/last_run.json": json_bytes(last_run),

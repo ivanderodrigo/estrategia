@@ -32,31 +32,64 @@ def _complete_evidence(ev: dict[str, Any]) -> dict[str, Any] | None:
     if not isinstance(ev, dict):
         return None
     out = deepcopy(ev)
-    if not str(out.get("url") or "").startswith("http"):
+    url = str(out.get("url") or "").strip()
+    origin = str(out.get("provenance_origin") or "").strip().upper()
+    source_type = str(out.get("source_type") or out.get("type") or "").strip().casefold()
+
+    document_kind = (
+        origin == "WESTCON_DOCUMENT"
+        or source_type in {"westcon-document", "internal-document", "user-provided", "curated-westcon"}
+    )
+    typed_non_web = origin in {
+        "WESTCON_DOCUMENT", "CURATED", "HISTORICAL_RECOVERED",
+        "ARCHIVE_RECOVERED", "REPORT_CORROBORATION", "ARCHIVE_CORROBORATION",
+        "LEGACY_UNRESOLVED",
+    }
+    has_public_url = url.startswith(("http://", "https://"))
+    has_document_identity = bool(str(out.get("document") or out.get("document_id") or "").strip())
+
+    if not has_public_url and not (document_kind and has_document_identity) and not typed_non_web:
         return None
-    out.setdefault("source", out.get("title") or "Fuente pública")
-    out.setdefault("title", out.get("source") or "Evidencia pública")
+
+    out.setdefault("source", out.get("title") or ("Westcon Comstor España" if document_kind else "Evidencia trazable"))
+    out.setdefault("title", out.get("source") or "Evidencia")
     out.setdefault("date", "2026-09-01")
-    out.setdefault("description", "Evidencia pública asociada al campo mostrado.")
-    out.setdefault("scope", "GLOBAL")
-    out.setdefault("source_grade", "A" if out.get("official") else "B")
-    out.setdefault("source_type", "official-domain" if out.get("official") else "public-web")
-    out.setdefault("classification", "public")
+    out.setdefault("description", "Evidencia asociada al campo mostrado.")
+    out.setdefault("scope", "ES" if document_kind else "GLOBAL")
     out.setdefault("retrieved_at", "2026-09-01")
     out.setdefault("freshness_status", "current")
+
+    if document_kind:
+        out.setdefault("source_grade", "A-WESTCON")
+        out.setdefault("source_type", "westcon-document")
+        out.setdefault("classification", "internal-document")
+        out.setdefault("official", True)
+        out.setdefault("provenance_origin", "WESTCON_DOCUMENT")
+    else:
+        out.setdefault("source_grade", "A" if out.get("official") else "B")
+        out.setdefault("source_type", "official-domain" if out.get("official") else "public-web")
+        out.setdefault("classification", "public" if has_public_url else "typed-provenance")
     return out
 
-
 def _dedupe_evidence(rows: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
-    seen: dict[tuple[str, str, str], dict[str, Any]] = {}
+    seen: dict[tuple[str, ...], dict[str, Any]] = {}
     for row in rows:
         ev = _complete_evidence(row)
         if not ev:
             continue
-        key = (str(ev.get("url")), str(ev.get("title")), str(ev.get("scope")))
+        key = (
+            str(ev.get("url") or ""),
+            str(ev.get("title") or ""),
+            str(ev.get("scope") or ""),
+            str(ev.get("provenance_origin") or ev.get("source_type") or ""),
+            str(ev.get("document_id") or ev.get("document") or ""),
+            str(ev.get("slide") or ""),
+            str(ev.get("field") or ""),
+            str(ev.get("item_value") or ""),
+            str(ev.get("historical_commit") or ev.get("archive_version") or ""),
+        )
         seen[key] = ev
     return list(seen.values())
-
 
 def _merge_values(old: Any, new: Any) -> Any:
     if old in (None, "", [], {}):

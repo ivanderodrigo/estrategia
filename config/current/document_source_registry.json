@@ -1,6 +1,6 @@
 {
-  "version": "4.0.2",
-  "policy": "typed-provenance",
+  "version": "4.0.4",
+  "policy": "typed-provenance-atomic-document",
   "documents": [
     {
       "id": "westcon-corporate-fy27",
@@ -8,7 +8,9 @@
       "filename": "Westcon_Comstor_Espana_FY27_completa.pptx",
       "type": "WESTCON_DOCUMENT",
       "scope": "ES",
-      "notes": "Portfolio, taxonomías, capacidades de fabricantes, preventa, servicios, 3D Labs, assessments, FLEX, Intelligent Demand y lifecycle."
+      "notes": "Portfolio, taxonomías y capacidades de fabricantes. En v4.0.4 la presentación se conserva como WESTCON_DOCUMENT también a nivel atómico de cada capacidad soportada.",
+      "atomic_usage": "manufacturer capabilities: field + item",
+      "coexistence_policy": "additive; never suppress because public evidence exists"
     },
     {
       "id": "westcon-verticals-fy27",

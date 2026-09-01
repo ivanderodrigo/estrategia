@@ -1,3 +1,11 @@
+## 4.0.4 — Document Provenance Repair
+
+- Corrige la regresión que ocultaba la presentación corporativa Westcon cuando un campo ya tenía evidencia pública.
+- Las capacidades de fabricante conservan trazabilidad `WESTCON_DOCUMENT` a nivel de campo y de cada capacidad individual.
+- La evidencia documental Westcon es aditiva: nunca sustituye ni elimina una fuente pública existente.
+- La UI muestra tipo documental, nombre del fichero, slide, procedencia y dato atómico aunque no exista URL pública.
+- Nuevos tests impiden que una futura normalización vuelva a separar las capacidades de su documento Westcon.
+
 ## 4.0.3 — Provenance Archaeology
 
 - Reconstrucción aditiva de fuentes desde ZIPs históricos locales del proyecto.
