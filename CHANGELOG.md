@@ -1,3 +1,11 @@
+# v4.0.1 — Client Evidence Hardening
+
+- Ningún dato sustantivo sin URL pública vinculada se publica como claim interactivo.
+- Listas simples exigen evidencia atómica por elemento; lo no sustentado vuelve a `Por investigar`.
+- Clientes públicos y privados ganan `Área Westcon` y mapeo de fabricantes Westcon sustentado por evidencia.
+- Mayor prioridad de investigación para clientes, más rutas tecnológicas y descubrimiento conservador de web oficial.
+- Se corrige la normalización que podía vaciar evidencias explícitas en listas no relacionales.
+
 # Changelog
 
 ## 4.0.0 — reconstrucción canónica

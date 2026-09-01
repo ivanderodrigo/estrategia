@@ -1,4 +1,4 @@
-# Westcon Iberia Decision Intelligence — v4.0.0
+# Westcon Iberia Decision Intelligence — v4.0.1
 
 Plataforma de inteligencia de negocio para el canal IT de España y Portugal. Su principio de diseño es: **hipersofisticada por dentro; extremadamente sencilla por fuera**.
 

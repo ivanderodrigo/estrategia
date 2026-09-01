@@ -154,10 +154,13 @@ def extract_candidates(
         if family == "careers":
             add("job_profiles", jobs, job_terms, "signal", 0.58)
             add("job_vendors", vendors, vendor_terms, "signal", 0.56)
-    elif section == "clients_private":
-        if family in {"careers", "technology", "services", "official"}:
+    elif section in {"clients_private", "clients_public"}:
+        if family in {"careers", "technology", "services", "official", "procurement", "news"}:
             add("technology_signals", capabilities, cap_terms, "signal", 0.57)
-        if family == "careers":
+            # Vendor names come only from the live Westcon manufacturer roster supplied
+            # to this extractor. A hit is still an interpretation until corroborated.
+            add("westcon_fit", vendors, vendor_terms, "interpretation", 0.70 if official else 0.62)
+        if section == "clients_private" and family == "careers":
             add("hiring_signals", jobs, job_terms, "signal", 0.57)
     elif section == "manufacturers" and family in {"services", "official", "technology"}:
         add("capabilities", capabilities, cap_terms)

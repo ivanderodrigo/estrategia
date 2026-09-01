@@ -23,6 +23,7 @@ from ..model import canonical
 from ..settings import RESEARCH_POLICY, RESEARCH_PROFILES, VERSION
 from ..storage import atomic_write_json, prune_json_mapping, read_json
 from .documents import Document, Link, parse_document, sitemap_urls
+from .client_discovery import discover_official_site
 from .extractors import Candidate, extract_candidates
 from .planner import plan
 from .security import UnsafeUrl, validate_public_url
@@ -331,6 +332,7 @@ def run(profile: str = "daily", max_runtime: int = 600, max_tasks: int | None = 
         "cache_hits": 0,
         "circuit_skips": 0,
         "unsafe_url_rejections": 0,
+        "official_sites_discovered": 0,
         "stop_reason": "complete",
         "families": defaultdict(lambda: defaultdict(int)),
         "results": [],
@@ -362,6 +364,13 @@ def run(profile: str = "daily", max_runtime: int = 600, max_tasks: int | None = 
         if not row:
             continue
         seeds = seeds_for(row, target["fields"])
+        if not seeds and target["section"] in {"clients_private", "clients_public"}:
+            remaining = min(float(profile_config.request_timeout_s), deadline - time.monotonic() - 2)
+            if remaining >= 3.0:
+                discovered = discover_official_site(fetcher.session, target["entity"], timeout_s=remaining)
+                if discovered:
+                    seeds = [discovered]
+                    stats["official_sites_discovered"] += 1
         if not seeds:
             for gap_id in target["gap_ids"]:
                 research_state.record_gap(gap_id, accepted=0, error="no-seed-source")
@@ -399,6 +408,24 @@ def run(profile: str = "daily", max_runtime: int = 600, max_tasks: int | None = 
             stats["fetch_successes"] += 1
             family_stats["fetch_successes"] += 1
             pages += 1
+            if target["section"] in {"clients_private", "clients_public"} and seed.official and seed.source_type == "official-domain-discovery":
+                row_evidence = row.setdefault("evidence", [])
+                if not any(str(ev.get("url") or "") == document.url for ev in row_evidence if isinstance(ev, dict)):
+                    row_evidence.append({
+                        "source": target["entity"],
+                        "title": document.title or f"Sitio oficial · {target['entity']}",
+                        "url": document.url,
+                        "date": _now_date(),
+                        "description": "Sitio oficial usado como semilla de investigación; no sustenta por sí solo ningún campo de inteligencia.",
+                        "scope": scope or "GLOBAL",
+                        "source_grade": "A",
+                        "source_type": "official-domain",
+                        "official": True,
+                        "classification": "public",
+                        "retrieved_at": _now_date(),
+                        "freshness_status": "current",
+                        "method": "official-site-discovery",
+                    })
             pages_since_checkpoint += 1
             candidates = extract_candidates(
                 target["section"],
@@ -427,10 +454,11 @@ def run(profile: str = "daily", max_runtime: int = 600, max_tasks: int | None = 
                     "evidence": evidence,
                     "confidence": candidate.confidence,
                     "claim_type": candidate.claim_type,
-                    "assertion_status": "SEÑAL" if candidate.claim_type == "signal" else "CONFIRMADO" if candidate.confidence >= 0.8 else "PROBABLE",
+                    "assertion_status": "SEÑAL" if candidate.claim_type == "signal" else "DERIVADO" if candidate.claim_type == "interpretation" else "CONFIRMADO" if candidate.confidence >= 0.8 else "PROBABLE",
                     "qualifier": (
-                        "Extracción automática conservadora con fragmento y huella del documento. "
-                        "Las señales de empleo no prueban por sí solas una relación comercial o un despliegue."
+                        "Mapeo de fabricante Westcon por mención explícita en la fuente del cliente; no prueba compra, uso o adjudicación."
+                        if candidate.claim_type == "interpretation" and field_id == "westcon_fit"
+                        else "Extracción automática conservadora con fragmento y huella del documento. Las señales no prueban por sí solas una relación comercial o un despliegue."
                     ),
                 })
                 new_field = row["fields"][field_id]

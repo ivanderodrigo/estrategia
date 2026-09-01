@@ -52,6 +52,8 @@ def audit(data: dict[str, Any], graph: dict[str, Any], gaps: dict[str, Any]) -> 
         "manufacturers": {"distributors", "integrators"},
         "distributors": {"vendor_relations", "westcon_overlap", "competitor_vendor_overlap"},
         "integrators": {"vendor_relations", "westcon_overlap", "competitor_vendor_overlap"},
+        "clients_public": {"westcon_area", "westcon_fit"},
+        "clients_private": {"westcon_area", "westcon_fit"},
     }
     for section, field_ids in atomic_fields.items():
         for row in data.get(section) or []:

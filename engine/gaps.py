@@ -46,6 +46,20 @@ def evidence_sufficient(field: Mapping[str, Any]) -> bool:
     rows = [row for row in evidence_rows(field) if complete_evidence(row)]
     if not rows:
         return False
+    value = field.get("value")
+    # For simple list fields, field-wide evidence cannot close the gap for every chip.
+    # Each visible value needs its own evidence. This keeps unsupported legacy values
+    # active as "Por investigar" until research really substantiates them.
+    if isinstance(value, list) and value and all(not isinstance(item, (dict, list)) for item in value):
+        items = {
+            norm(item.get("value")): item
+            for item in field.get("items") or []
+            if isinstance(item, Mapping) and norm(item.get("value"))
+        }
+        for raw in value:
+            item = items.get(norm(raw))
+            if not item or not any(complete_evidence(ev) for ev in item.get("evidence") or [] if isinstance(ev, Mapping)):
+                return False
     claim_type = str(field.get("claim_type") or "fact")
     if claim_type in {"signal", "interpretation"} and not field.get("assertion_status"):
         return False
