@@ -15,7 +15,6 @@ from .enrichment import (
     project_graph_to_views,
 )
 from .gaps import build_gaps
-from .client_intelligence import derive_client_intelligence
 from .graph import build_graph
 from .metrics import calculate
 from .publication import public_payloads
@@ -58,9 +57,6 @@ def _sync_source_catalog(data: dict[str, Any]) -> None:
 def run() -> dict[str, Any]:
     data = read_json("data/current/intelligence.json")
     research_state = read_json("data/current/research_state.json", {})
-    if not isinstance(research_state, dict):
-        research_state = {}
-    research_state["version"] = VERSION
     ledger = read_json("data/current/research_ledger.json", {})
     now = datetime.now(timezone.utc).isoformat()
 
@@ -99,9 +95,6 @@ def run() -> dict[str, Any]:
     graph = build_graph(data)
     project_graph_to_views(data, graph)
     derive_overlap_fields(data)
-    # Client area/vendor fit is derived only after the canonical ecosystem graph has
-    # converged, and only from traceable client + portfolio capability evidence.
-    derive_client_intelligence(data)
     normalize_fields(data)
     gaps = build_gaps(data, VERSION, research_state)
     metrics = calculate(data, gaps, graph)
@@ -176,7 +169,6 @@ def run() -> dict[str, Any]:
 
     files = {
         "data/current/intelligence.json": internal_data,
-        "data/current/research_state.json": json_bytes(research_state),
         "data/current/relationship_graph.json": json_bytes(graph),
         "data/current/research_gaps.json": json_bytes(gaps),
         "data/current/metrics_before_after.json": json_bytes(compare),

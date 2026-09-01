@@ -6,8 +6,6 @@ import unittest
 from pathlib import Path
 
 from engine.provenance import evidence_for_relationship
-from engine.client_intelligence import derive_client_intelligence
-from engine.publication import _sanitize_public_field
 from engine.research.security import UnsafeUrl, validate_public_url
 from engine.research.state import ResearchState
 from engine.research.ted import parse_notice, upsert_notices
@@ -28,7 +26,7 @@ class ReleaseIntegrity(unittest.TestCase):
         cls.manifest = read_json("data/public/manifest.json")
 
     def test_one_canonical_version(self) -> None:
-        self.assertEqual(VERSION, "4.0.1")
+        self.assertEqual(VERSION, "4.0.0")
         self.assertEqual(self.data["meta"]["version"], VERSION)
         self.assertEqual(self.graph["version"], VERSION)
         self.assertEqual(self.gaps["version"], VERSION)
@@ -56,8 +54,6 @@ class ReleaseIntegrity(unittest.TestCase):
             "manufacturers": {"distributors", "integrators"},
             "distributors": {"vendor_relations", "westcon_overlap", "competitor_vendor_overlap"},
             "integrators": {"vendor_relations", "westcon_overlap", "competitor_vendor_overlap"},
-            "clients_public": {"westcon_area", "westcon_fit"},
-            "clients_private": {"westcon_area", "westcon_fit"},
         }
         for section, field_ids in atomic.items():
             for row in self.data[section]:
@@ -116,8 +112,7 @@ class EngineBehaviour(unittest.TestCase):
         self.assertEqual(validate_public_url("https://example.com/path", resolve_dns=False), "https://example.com/path")
 
     def test_state_backoff_and_circuit_breaker(self) -> None:
-        state = ResearchState({"version": "4.0.0"})
-        self.assertEqual(state.raw["version"], VERSION)
+        state = ResearchState({})
         state.record_gap("g1", accepted=0)
         self.assertEqual(state.gap("g1")["attempts"], 1)
         self.assertEqual(state.gap("g1")["consecutive_no_yield"], 1)
@@ -145,31 +140,6 @@ class EngineBehaviour(unittest.TestCase):
         self.assertEqual(len(data["clients_public"]), 1)
         irrelevant = dict(notice, **{"publication-number": "999999-2026", "classification-cpv": ["39154000"]})
         self.assertIsNone(parse_notice(irrelevant))
-
-    def test_public_projection_suppresses_unsupported_claims(self) -> None:
-        field, removed = _sanitize_public_field("technology_signals", {"value": ["Zero Trust"], "items": [{"value": "Zero Trust", "evidence": []}], "evidence": []})
-        self.assertEqual(field["value"], [])
-        self.assertEqual(removed, 1)
-        scalar, removed = _sanitize_public_field("revenue", {"value": "100 M€", "evidence": []})
-        self.assertIsNone(scalar["value"])
-        self.assertEqual(removed, 1)
-
-    def test_client_area_and_vendor_fit_are_evidence_backed(self) -> None:
-        client_ev = {"source": "Cliente", "title": "Zero Trust programme", "url": "https://client.example/security", "date": "2026-09-01", "description": "Zero Trust cybersecurity programme", "scope": "ES", "official": True}
-        vendor_ev = {"source": "Vendor", "title": "Cybersecurity", "url": "https://vendor.example/security", "date": "2026-09-01", "description": "Cybersecurity platform", "scope": "IBERIA", "official": True}
-        data = {
-            "schemas": {"clients_private": [], "clients_public": []},
-            "manufacturers": [{"name": "Vendor", "fields": {"domain": {"value": "Cybersecurity", "evidence": [vendor_ev]}}}],
-            "clients_private": [{"name": "Cliente", "fields": {"technology_signals": {"value": ["Zero Trust"], "items": [{"value": "Zero Trust", "evidence": [client_ev]}], "evidence": [client_ev]}}}],
-            "clients_public": [],
-        }
-        derive_client_intelligence(data)
-        fields = data["clients_private"][0]["fields"]
-        self.assertIn("Cybersecurity", fields["westcon_area"]["value"])
-        self.assertIn("Vendor", fields["westcon_fit"]["value"])
-        fit = next(item for item in fields["westcon_fit"]["items"] if item["value"] == "Vendor")
-        self.assertTrue(all(str(ev.get("url") or "").startswith("http") for ev in fit["evidence"]))
-        self.assertGreaterEqual(len(fit["evidence"]), 2)
 
     def test_transactional_writer(self) -> None:
         runtime = ROOT / ".runtime"

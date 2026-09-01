@@ -247,10 +247,6 @@ def normalize_fields(data: dict[str, Any]) -> dict[str, Any]:
                 items = []
                 item_seen = set()
                 field_evidence = _dedupe_evidence(field.get("evidence") or [])
-                relation_field = field_id in {
-                    "vendor_relations", "distributors", "integrators",
-                    "westcon_overlap", "competitor_vendor_overlap",
-                }
                 for old in field.get("items") or []:
                     if not isinstance(old, dict):
                         continue
@@ -263,35 +259,25 @@ def normalize_fields(data: dict[str, Any]) -> dict[str, Any]:
                     item_seen.add(k)
                     x = deepcopy(old); x["value"] = iv
                     existing = _dedupe_evidence(x.get("evidence") or [])
-                    if relation_field:
-                        specific = evidence_for_relationship(existing, row.get("name"), iv)
-                        # A single source already attached to this exact relation is atomic
-                        # even when its title is terse. Never copy a whole line-card to every item.
-                        if not specific and len(existing) == 1:
-                            specific = existing
-                        if not specific:
-                            specific = evidence_for_relationship(field_evidence, row.get("name"), iv)
-                        if not specific and len(out) == 1 and len(field_evidence) == 1:
-                            specific = field_evidence
-                    else:
-                        # Non-relational lists (client signals, areas, services, etc.) keep
-                        # only evidence explicitly attached to that item. The old v4 path
-                        # accidentally ran relationship filtering over every list field.
+                    specific = evidence_for_relationship(existing, row.get("name"), iv)
+                    # A single source already attached to this exact item is an atomic
+                    # assertion even when its title is terse. Multiple legacy sources must
+                    # be scope-filtered because old releases copied whole-field provenance.
+                    if not specific and len(existing) == 1:
                         specific = existing
+                    if not specific:
+                        specific = evidence_for_relationship(field_evidence, row.get("name"), iv)
+                    if not specific and len(out) == 1 and len(field_evidence) == 1:
+                        specific = field_evidence
                     x["evidence"] = _dedupe_evidence(specific)
                     items.append(x)
                 for missing_value in out:
                     missing_key = canonical(missing_value)
                     if missing_key in item_seen:
                         continue
-                    if relation_field:
-                        specific = evidence_for_relationship(field_evidence, row.get("name"), missing_value)
-                        if not specific and len(out) == 1 and len(field_evidence) == 1:
-                            specific = field_evidence
-                    else:
-                        # A multi-value field-wide source is not silently promoted to
-                        # atomic evidence for an individual item.
-                        specific = field_evidence if len(out) == 1 and len(field_evidence) == 1 else []
+                    specific = evidence_for_relationship(field_evidence, row.get("name"), missing_value)
+                    if not specific and len(out) == 1 and len(field_evidence) == 1:
+                        specific = field_evidence
                     items.append({"value": missing_value, "evidence": _dedupe_evidence(specific)})
                 if items: field["items"] = items
                 elif "items" in field: field.pop("items", None)

@@ -23,7 +23,7 @@ def error(message: str) -> None:
 
 
 required = (
-    "engine/pipeline.py", "engine/provenance.py", "engine/client_intelligence.py", "engine/research/web_intelligence.py",
+    "engine/pipeline.py", "engine/provenance.py", "engine/research/web_intelligence.py",
     "engine/research/ted.py", "config/current/research_policy.json",
     "data/current/intelligence.json", "data/current/research_state.json",
     "data/current/quality_report.json", "data/public/manifest.json",
@@ -92,8 +92,6 @@ atomic_fields = {
     "manufacturers": {"distributors", "integrators"},
     "distributors": {"vendor_relations", "westcon_overlap", "competitor_vendor_overlap"},
     "integrators": {"vendor_relations", "westcon_overlap", "competitor_vendor_overlap"},
-    "clients_public": {"westcon_area", "westcon_fit"},
-    "clients_private": {"westcon_area", "westcon_fit"},
 }
 for section, field_ids in atomic_fields.items():
     for row in data.get(section) or []:

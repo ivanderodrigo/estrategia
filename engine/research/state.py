@@ -16,7 +16,7 @@ def now_iso() -> str:
 class ResearchState:
     def __init__(self, raw: dict[str, Any] | None = None):
         self.raw = raw or {}
-        self.raw["version"] = VERSION
+        self.raw.setdefault("version", VERSION)
         self.raw.setdefault("gaps", {})
         self.raw.setdefault("domains", {})
 
