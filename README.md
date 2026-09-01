@@ -1,39 +1,26 @@
-# WESTCON IBERIA DECISION INTELLIGENCE — v3.20.0 Production Candidate
+# Westcon Iberia Decision Intelligence — v4.0.0
 
-Plataforma de inteligencia de negocio para España y Portugal. Principio rector: **hipersofisticada por dentro; extremadamente sencilla por fuera**.
+Plataforma de inteligencia de negocio para el canal IT de España y Portugal. Su principio de diseño es: **hipersofisticada por dentro; extremadamente sencilla por fuera**.
 
-## Arquitectura canónica
+La v4 sustituye la evolución acumulativa anterior por una arquitectura canónica, transaccional y auditable. Mantiene una única web ejecutiva, pero incorpora por dentro grafo de relaciones, trazabilidad por dato, memoria de investigación, planificación adaptativa, fuente pública estructurada TED, control de calidad y publicación segura.
 
-- `engine/`: modelo, entity resolution, enriquecimiento, grafo, gaps, métricas, calidad, publicación y research.
-- `engine/research/`: planificación adaptativa y crawler web orientado a evidencia.
-- `config/current/`: configuración/curación vigente y seed canónico de relaciones.
-- `data/current/`: verdad interna; no se publica en GitHub Pages.
-- `data/public/`: proyección pública compacta por secciones, cargada bajo demanda.
-- `assets/app/`: único frontend.
+## Estructura
 
-No existe una cadena runtime `vXXX`. Git conserva el histórico; producción solo depende de la arquitectura canónica actual.
+- `engine/`: dominio, enriquecimiento, grafo, gaps, métricas, calidad y publicación.
+- `engine/research/`: planificación, seguridad de red, descubrimiento, extracción, aprendizaje y fuentes estructuradas.
+- `config/current/`: política y curación vigentes; no hay cadenas runtime por versión.
+- `data/current/`: verdad interna y estado acumulativo; nunca se publica en Pages.
+- `data/public/`: proyección mínima que consume el navegador por carga diferida.
+- `assets/app/`: un único frontend ejecutivo.
 
-## Qué cambia en v3.20
+## Garantías v4
 
-1. Research de **todas las áreas**, priorizando Integradores y Mayoristas por deuda y yield.
-2. HTTP 200 deja de significar «éxito de investigación». Se separan fetch, relevancia, candidatos, evidencia aceptada, campos enriquecidos y gaps cerrados.
-3. Checkpoint + aislamiento en subproceso: el supervisor puede cortar un crawler atascado sin perder checkpoints ni impedir build/validación.
-4. Grafo como fuente de verdad, normalización de relaciones y propagación bidireccional.
-5. Nueva proyección `data/public/`: el navegador ya no descarga ni expone el dataset interno.
-6. Carga de secciones bajo demanda, manteniendo el mismo frontend ejecutivo.
-7. Quality gate de datos + validación YAML real de GitHub Actions.
-8. Workflows con `checkout@v5`, cache pip y mutex único para evitar publicaciones concurrentes.
-9. Publicación automática segura: identidad de bot y rechazo de snapshots obsoletos si `main` cambia durante la investigación.
-
-## Métricas v3.19 → v3.20
-
-- Gaps: **1450 → 1398 (-52)**.
-- Integradores: **737 → 687**.
-- Relaciones canónicas: **1209 → 1251**.
-- Fabricante×Integrador confirmadas: **285 → 299**.
-- Fabricante×Mayorista confirmadas: **733 → 761**.
-- Evidencias únicas: **1184 → 1218**.
-- Calidad estructural: **100/100**, 0 errores.
+- Una relación visible tiene evidencia del elemento concreto; nunca hereda las fuentes de sus vecinos.
+- Un HTTP 200 solo significa transporte correcto: el éxito se mide en evidencia aceptada, datos enriquecidos, entidades nuevas y gaps cerrados.
+- Escrituras atómicas, lock interproceso, checkpoints, backoff, circuit breaker y watchdog con terminación controlada.
+- Rechazo de SSRF, redirecciones a red privada, respuestas sin límite y URLs con credenciales o puertos no web.
+- Investigación diaria, profunda semanal y exhaustiva mensual mediante un único workflow endurecido y sin ejecuciones concurrentes.
+- La cabecera de las tablas y la columna Entidad permanecen fijas durante el desplazamiento.
 
 ## Validación local
 
@@ -42,8 +29,9 @@ pip install -r requirements.txt
 python -m unittest discover -s tests -p "test_*.py" -v
 python scripts/validate_workflows.py
 python scripts/validate.py
+python scripts/security_audit.py
 node --check assets/app/intelligence.js
-node tests/ui_smoke_v320.js
+node tests/ui_smoke.js
 ```
 
 ## Research manual
@@ -54,4 +42,6 @@ python scripts/research_supervisor.py --profile deep --max-runtime 1800 --fallba
 python scripts/research_supervisor.py --profile exhaustive --max-runtime 3300 --fallback-runtime 300
 ```
 
-Los workflows programados publican únicamente inteligencia canónica validada. Una fuente caída no detiene el ciclo completo.
+Los workflows solo publican un snapshot que haya superado todas las puertas de calidad. Una fuente caída queda aislada y la investigación continúa con su siguiente ruta.
+
+Consulta [Arquitectura](docs/ARCHITECTURE.md), [Operación](docs/OPERATIONS.md) y [Auditoría de la v4](docs/RELEASE_V4.md).

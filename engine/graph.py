@@ -1,68 +1,213 @@
+"""Canonical evidence graph with item-level provenance."""
+
 from __future__ import annotations
-from datetime import datetime,timezone
-from pathlib import Path
-import json,re
-from .model import canonical,stable_id,values
+
+import re
+from datetime import datetime, timezone
+from typing import Any
+
 from .entity_resolution import resolve
-ROOT=Path(__file__).resolve().parents[1]
+from .model import canonical, stable_id, values
+from .provenance import evidence_for_relationship
+from .settings import VERSION
+from .storage import read_json
 
-def _evidence(field):
-    out=list(field.get('evidence') or [])
-    for item in field.get('items') or []: out.extend(item.get('evidence') or [])
-    seen={}
-    for e in out:
-        key=(e.get('url'),e.get('title'),e.get('scope'));seen[key]=e
-    return list(seen.values())
 
-def _target(name):
-    s=str(name or '').strip()
-    return re.split(r'\s+·\s+(?:Confirmada|Probable|Señal|Evidencia|ES|PT|IBERIA)',s,1,flags=re.I)[0].strip()
+def _target(name: Any) -> str:
+    text = str(name or "").strip()
+    return re.split(
+        r"\s+·\s+(?:Confirmada|Probable|Señal|Evidencia|ES|PT|IBERIA)",
+        text,
+        maxsplit=1,
+        flags=re.I,
+    )[0].strip()
 
-def _scopes(country):
-    s=str(country or 'GLOBAL').upper().replace('+','/').replace(',','/')
-    out=[]
-    for part in re.split(r'[/; ]+',s):
-        if part in {'ES','PT','IBERIA','GLOBAL'} and part not in out:out.append(part)
-    return out or ['GLOBAL']
 
-def build_graph(data):
-    entities={};rels={}
-    def ent(kind,name,country=''):
-        name=resolve(_target(name));key=(kind,canonical(name))
-        if key not in entities:entities[key]={'id':stable_id(kind,name),'canonical_name':name,'entity_type':kind,'country':country,'aliases':[],'historical_names':[]}
+def _scopes(country: Any) -> list[str]:
+    raw = str(country or "GLOBAL").upper().replace("+", "/").replace(",", "/")
+    result = []
+    for part in re.split(r"[/; ]+", raw):
+        if part in {"ES", "PT", "IBERIA", "GLOBAL"} and part not in result:
+            result.append(part)
+    return result or ["GLOBAL"]
+
+
+def _clean_evidence(rows: Any) -> list[dict[str, Any]]:
+    output: dict[tuple[str, str, str], dict[str, Any]] = {}
+    for row in rows or []:
+        if not isinstance(row, dict) or not row.get("url") or not row.get("source"):
+            continue
+        key = (str(row.get("url")), str(row.get("title") or ""), str(row.get("scope") or ""))
+        output[key] = row
+    return list(output.values())
+
+
+def _item_evidence(field: dict[str, Any], value: Any) -> list[dict[str, Any]]:
+    key = canonical(_target(value))
+    for item in field.get("items") or []:
+        if isinstance(item, dict) and canonical(_target(item.get("value"))) == key:
+            return _clean_evidence(item.get("evidence") or [])
+    field_values = values(field.get("value"))
+    return _clean_evidence(field.get("evidence") or []) if len(field_values) == 1 else []
+
+
+def build_graph(data: dict[str, Any]) -> dict[str, Any]:
+    entities: dict[tuple[str, str], dict[str, Any]] = {}
+    relationships: dict[tuple[str, str, str], dict[str, Any]] = {}
+
+    def entity(kind: str, name: Any, country: Any = "") -> dict[str, Any]:
+        canonical_name = resolve(_target(name))
+        key = (kind, canonical(canonical_name))
+        if key not in entities:
+            entities[key] = {
+                "id": stable_id(kind, canonical_name),
+                "canonical_name": canonical_name,
+                "entity_type": kind,
+                "country": country,
+                "aliases": [],
+                "historical_names": [],
+            }
         return entities[key]
-    def add(ak,a,rel,bk,b,country,evidence,status='CONFIRMADO',confidence=.84,derived=False,validity='current'):
-        a=resolve(_target(a));b=resolve(_target(b))
-        if not a or not b or canonical(a)==canonical(b):return
-        ae=ent(ak,a,country);be=ent(bk,b,country);key=(ae['id'],rel,be['id'])
-        clean=[e for e in (evidence or []) if e.get('url') and e.get('source')]
-        if not clean:return
-        if status=='CONFIRMED':status='CONFIRMADO'
-        scopes=_scopes(country)
-        if key not in rels:
-            rels[key]={'id':'rel_'+stable_id('r','|'.join(key))[5:],'entity_a_id':ae['id'],'entity_a':a,'relation':rel,'entity_b_id':be['id'],'entity_b':b,'countries':scopes,'country':' + '.join(scopes),'evidence':clean,'source':clean[0].get('source'),'date':max([str(e.get('date') or '') for e in clean]),'confidence':confidence,'status':status,'validity':validity or 'current','derived':derived}
-        else:
-            item=rels[key]
-            item['countries']=list(dict.fromkeys(item.get('countries',[])+scopes));item['country']=' + '.join(item['countries'])
-            have={(e.get('url'),e.get('title'),e.get('scope')) for e in item['evidence']}
-            item['evidence'] += [e for e in clean if (e.get('url'),e.get('title'),e.get('scope')) not in have]
-            item['confidence']=max(float(item.get('confidence') or 0),float(confidence or 0))
-            if status=='CONFIRMADO':item['status']='CONFIRMADO'
-            item['derived']=bool(item.get('derived')) and bool(derived)
-    seed_path=ROOT/'config/current/relationship_seed.json'
-    if seed_path.exists():
-        for r in json.loads(seed_path.read_text(encoding='utf-8')).get('relationships',[]):
-            rel=r.get('relation');kinds={'distributes':('distributor','manufacturer'),'partners_with':('integrator','manufacturer'),'technology_signal':('client','technology')}.get(rel)
-            if kinds:add(kinds[0],r.get('entity_a'),rel,kinds[1],r.get('entity_b'),r.get('country'),r.get('evidence'),r.get('status','CONFIRMADO'),r.get('confidence',.84),r.get('derived',False),r.get('validity','current'))
-    for section,kind in [('distributors','distributor'),('integrators','integrator')]:
-        for row in data.get(section,[]):
-            f=(row.get('fields') or {}).get('vendor_relations') or {};e=_evidence(f);scope=str(((row.get('fields') or {}).get('scope') or {}).get('value') or 'IBERIA')
-            for raw in values(f.get('value')):
-                name=_target(raw)
-                if not name or any(x in canonical(name) for x in ['mas de','catalogo','fabricantes visibles','ver catalogo','marcas nacionales','hardware y software de marcas']):continue
-                add(kind,row['name'],'distributes' if kind=='distributor' else 'partners_with','manufacturer',name,scope,e,'CONFIRMADO',.88)
-    for section in ['clients_public','clients_private']:
-        for row in data.get(section,[]):
-            f=(row.get('fields') or {}).get('technology_signals') or {};e=_evidence(f);scope=str(((row.get('fields') or {}).get('scope') or {}).get('value') or 'IBERIA')
-            for tech in values(f.get('value')):add('client',row['name'],'technology_signal','technology',str(tech),scope,e,'SEÑAL',.48,True)
-    return {'version':'3.20.0','generated_at':datetime.now(timezone.utc).isoformat(),'entities':sorted(entities.values(),key=lambda x:(x['entity_type'],x['canonical_name'])),'relationships':list(rels.values()),'model':{'truth_source':'canonical relation graph','bidirectional_projection':True,'canonical_entity_ids':True,'single_edge_multi_scope':True,'weak_signals_do_not_promote':True,'baseline_migrated_once':True}}
+
+    def add(
+        source_kind: str,
+        source_name: Any,
+        relation: str,
+        target_kind: str,
+        target_name: Any,
+        country: Any,
+        evidence: Any,
+        status: str = "CONFIRMADO",
+        confidence: float = 0.84,
+        derived: bool = False,
+        validity: str = "current",
+    ) -> None:
+        source_name = resolve(_target(source_name))
+        target_name = resolve(_target(target_name))
+        if not source_name or not target_name or canonical(source_name) == canonical(target_name):
+            return
+        clean = _clean_evidence(evidence)
+        if relation in {"distributes", "partners_with"}:
+            clean = evidence_for_relationship(clean, source_name, target_name)
+        if not clean:
+            return
+        source = entity(source_kind, source_name, country)
+        target = entity(target_kind, target_name, country)
+        key = (source["id"], relation, target["id"])
+        scopes = _scopes(country)
+        status = "CONFIRMADO" if status == "CONFIRMED" else status
+        if key not in relationships:
+            relationships[key] = {
+                "id": "rel_" + stable_id("relation", "|".join(key))[5:],
+                "entity_a_id": source["id"],
+                "entity_a": source_name,
+                "relation": relation,
+                "entity_b_id": target["id"],
+                "entity_b": target_name,
+                "countries": scopes,
+                "country": " + ".join(scopes),
+                "evidence": clean,
+                "source": clean[0].get("source"),
+                "date": max(str(row.get("date") or "") for row in clean),
+                "confidence": confidence,
+                "status": status,
+                "validity": validity or "current",
+                "derived": derived,
+            }
+            return
+        item = relationships[key]
+        item["countries"] = list(dict.fromkeys((item.get("countries") or []) + scopes))
+        item["country"] = " + ".join(item["countries"])
+        item["evidence"] = _clean_evidence((item.get("evidence") or []) + clean)
+        item["confidence"] = max(float(item.get("confidence") or 0), float(confidence or 0))
+        if status == "CONFIRMADO":
+            item["status"] = status
+        item["derived"] = bool(item.get("derived")) and bool(derived)
+
+    seed = read_json("config/current/relationship_seed.json", {"relationships": []})
+    relation_kinds = {
+        "distributes": ("distributor", "manufacturer"),
+        "partners_with": ("integrator", "manufacturer"),
+        "technology_signal": ("client", "technology"),
+    }
+    for relation in seed.get("relationships") or []:
+        kinds = relation_kinds.get(relation.get("relation"))
+        if not kinds:
+            continue
+        add(
+            kinds[0],
+            relation.get("entity_a"),
+            relation.get("relation"),
+            kinds[1],
+            relation.get("entity_b"),
+            relation.get("country"),
+            relation.get("evidence"),
+            relation.get("status", "CONFIRMADO"),
+            relation.get("confidence", 0.84),
+            relation.get("derived", False),
+            relation.get("validity", "current"),
+        )
+
+    for section, kind, relation_name in (
+        ("distributors", "distributor", "distributes"),
+        ("integrators", "integrator", "partners_with"),
+    ):
+        for row in data.get(section) or []:
+            field = (row.get("fields") or {}).get("vendor_relations") or {}
+            scope = str(((row.get("fields") or {}).get("scope") or {}).get("value") or "IBERIA")
+            for raw in values(field.get("value")):
+                name = _target(raw)
+                if not name or any(
+                    phrase in canonical(name)
+                    for phrase in (
+                        "mas de", "catalogo", "fabricantes visibles", "ver catalogo",
+                        "marcas nacionales", "hardware y software de marcas",
+                    )
+                ):
+                    continue
+                add(
+                    kind,
+                    row.get("name"),
+                    relation_name,
+                    "manufacturer",
+                    name,
+                    scope,
+                    _item_evidence(field, raw),
+                    "CONFIRMADO",
+                    0.88,
+                )
+
+    for section in ("clients_public", "clients_private"):
+        for row in data.get(section) or []:
+            field = (row.get("fields") or {}).get("technology_signals") or {}
+            scope = str(((row.get("fields") or {}).get("scope") or {}).get("value") or "IBERIA")
+            for technology in values(field.get("value")):
+                add(
+                    "client",
+                    row.get("name"),
+                    "technology_signal",
+                    "technology",
+                    technology,
+                    scope,
+                    _item_evidence(field, technology),
+                    "SEÑAL",
+                    0.48,
+                    True,
+                    "needs-corroboration",
+                )
+
+    return {
+        "version": VERSION,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "entities": sorted(entities.values(), key=lambda row: (row["entity_type"], row["canonical_name"])),
+        "relationships": list(relationships.values()),
+        "model": {
+            "truth_source": "canonical relation graph",
+            "item_level_evidence": True,
+            "bidirectional_projection": True,
+            "canonical_entity_ids": True,
+            "single_edge_multi_scope": True,
+            "weak_signals_do_not_promote": True,
+            "baseline_migrated_once": True,
+        },
+    }

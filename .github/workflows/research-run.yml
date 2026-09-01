@@ -1,0 +1,86 @@
+name: Reusable Intelligence Research
+
+on:
+  workflow_call:
+    inputs:
+      profile:
+        required: true
+        type: string
+      max_runtime:
+        required: true
+        type: number
+      fallback_runtime:
+        required: true
+        type: number
+      timeout_minutes:
+        required: true
+        type: number
+      commit_message:
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: westcon-intelligence-research
+  cancel-in-progress: false
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: ${{ inputs.timeout_minutes }}
+    env:
+      PYTHONHASHSEED: "0"
+      PYTHONUTF8: "1"
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+      - name: Install runtime
+        run: python -m pip install -r requirements.txt
+      - name: Canonical preflight
+        run: |
+          python -m compileall -q engine scripts tests
+          python -m unittest discover -s tests -p "test_*.py" -v
+          python scripts/validate_workflows.py
+          python scripts/security_audit.py
+          python scripts/validate.py
+          node --check assets/app/intelligence.js
+          node tests/ui_smoke.js
+      - name: Research with watchdog
+        run: >-
+          python scripts/research_supervisor.py
+          --profile "${{ inputs.profile }}"
+          --max-runtime "${{ inputs.max_runtime }}"
+          --fallback-runtime "${{ inputs.fallback_runtime }}"
+      - name: Validate generated snapshot
+        run: |
+          python scripts/validate.py
+          python -m unittest discover -s tests -p "test_*.py" -v
+          node tests/ui_smoke.js
+      - name: Upload diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-diagnostics-${{ inputs.profile }}-${{ github.run_id }}
+          path: |
+            data/current/supervisor.json
+            data/current/run_history.json
+            data/current/research_ledger.json
+            data/current/quality_report.json
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Publish validated intelligence
+        run: >-
+          python scripts/publish_research_update.py
+          --message "${{ inputs.commit_message }}"
+          --attempts 3

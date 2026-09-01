@@ -1,27 +1,38 @@
-# CHANGELOG — v3.20.0 Production Candidate
+# Changelog
 
-## Arquitectura
-- Research generalizado y orientado a yield (`planner.py` + `web_intelligence.py`).
-- Nueva capa `enrichment.py`, auditor `quality.py` y proyección `publication.py`.
-- `relationship_seed.json` reemplaza nombres de migración históricos dentro del runtime actual.
-- Curación vigente separada en `curated_distributors.json` y `curated_intelligence.json`.
-- Retirado el crawler específico `distributor_web.py` y los tests v3.19 del runtime actual.
+## 4.0.0 — reconstrucción canónica
 
-## Inteligencia
-- Gaps totales: 1450 → 1398.
-- Integradores: 737 → 687 gaps.
-- Relaciones canónicas: 1209 → 1251.
-- Fabricante×Integrador: 285 → 299 confirmadas.
-- Fabricante×Mayorista: 733 → 761 confirmadas.
-- Nuevas evidencias oficiales verificadas para VASS, NTT DATA, Minsait, Orange Cyberdefense, Econocom, Bechtle, Warpcom, Timestamp, S21sec, Integrity360, Capgemini, Atos y SEIDOR, entre otras.
+### Núcleo
 
-## Frontend
-- Misma experiencia visual; datasets públicos por sección cargados bajo demanda.
-- El navegador deja de consumir `data/current/intelligence.json`.
-- Exportaciones cargan todas las secciones solo cuando son necesarias.
+- Versión única leída desde `VERSION`; eliminadas constantes y referencias de continuidad duplicadas.
+- Persistencia JSON atómica y publicación transaccional de datos internos y públicos.
+- Lock interproceso compatible con Linux, macOS y Windows.
+- Grafo canónico de evidencia con proyección bidireccional y aristas deduplicadas.
+- Política de procedencia común para migración, grafo, controles de calidad y UI.
 
-## Operación
-- Workflows YAML validados de verdad con PyYAML.
-- `actions/checkout@v5`, cache pip y lock único de research.
-- Supervisor con hard timeout por subproceso y checkpoint durable.
-- Publisher con identidad `github-actions[bot]` y protección contra snapshots stale.
+### Investigación autónoma
+
+- Planificación adaptativa por prioridad, tipo de gap, rendimiento histórico y fecha de siguiente intento.
+- Estado persistente por gap y por dominio, backoff exponencial, circuit breaker y cola de descubrimiento acotada.
+- Cascada de rutas oficiales y extracción conservadora con fragmento, términos coincidentes y digest del contenido.
+- Conector estructurado a TED para nuevas oportunidades públicas ES/PT.
+- Supervisor con heartbeat, presupuesto de tiempo, terminación de árbol de procesos, fallback y diagnóstico durable.
+- Workflows diaria, semanal y mensual sobre un runner común, mutex global, tests antes/después y publicación protegida frente a snapshots obsoletos.
+
+### Seguridad y calidad
+
+- Protección SSRF previa y posterior a redirecciones, DNS público, puertos estándar y tamaño máximo de respuesta.
+- Auditoría local de secretos y patrones inseguros; Dependabot para Python y GitHub Actions.
+- Quality gate de trazabilidad atómica: una relación sin fuente específica no se muestra como confirmada.
+- Los gaps se conservan aunque una búsqueda no produzca resultados; los intentos ya no se reinician al reconstruir.
+
+### Interfaz
+
+- Cabecera completa y columna Entidad fijas en tablas con desplazamiento vertical/horizontal.
+- El popup de un elemento de lista usa coincidencia exacta; se elimina el fallback por posición o por campo completo.
+- `1Password → Ingram Micro` muestra únicamente la evidencia de esa relación.
+
+### Limpieza
+
+- Eliminados el guard programado inerte, tests con versión incrustada, cachés Python y documentación de releases contradictorias.
+- Conservado un solo conjunto de documentación operativa y arquitectónica.

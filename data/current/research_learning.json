@@ -1,43 +1,6 @@
 {
-  "version": "3.20.0",
-  "strategies": {
-    "official_linecard": {
-      "yield": "very_high",
-      "use": "distributor_manufacturer"
-    },
-    "manufacturer_partner_locator": {
-      "yield": "very_high",
-      "use": "manufacturer_integrator"
-    },
-    "job_posting": {
-      "yield": "medium",
-      "use": "technology/capability signal only"
-    },
-    "public_procurement": {
-      "yield": "high",
-      "use": "client_technology_integrator"
-    }
-  },
-  "families": {
-    "integrators:careers": {
-      "attempts": 7,
-      "fetch_successes": 0,
-      "pages_relevant": 0,
-      "candidate_evidence": 0,
-      "accepted_evidence": 0,
-      "fetch_success_rate": 0.0,
-      "evidence_yield": 0.0
-    },
-    "integrators:cases": {
-      "attempts": 1,
-      "fetch_successes": 0,
-      "pages_relevant": 0,
-      "candidate_evidence": 0,
-      "accepted_evidence": 0,
-      "fetch_success_rate": 0.0,
-      "evidence_yield": 0.0
-    }
-  },
-  "updated_at": "2026-08-31T23:26:50.554227+00:00",
-  "policy": "Prioritize evidence yield and gap closure; HTTP 200 is transport success only."
+  "version": "4.0.0",
+  "updated_at": "2026-09-01T00:00:00+00:00",
+  "policy": "Prioritize accepted evidence and gap closure; transport success is never intelligence success.",
+  "families": {}
 }

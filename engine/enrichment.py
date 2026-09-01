@@ -1,23 +1,17 @@
 from __future__ import annotations
 
-import json
 from copy import deepcopy
-from pathlib import Path
 from typing import Any, Iterable
 
 from .model import canonical, values
 from .entity_resolution import resolve
-
-ROOT = Path(__file__).resolve().parents[1]
-VERSION = "3.20.0"
+from .provenance import evidence_for_relationship
+from .settings import SECTIONS, VERSION
+from .storage import read_json
 
 
 def _load(rel: str, default: Any) -> Any:
-    p = ROOT / rel
-    try:
-        return json.loads(p.read_text(encoding="utf-8"))
-    except Exception:
-        return deepcopy(default)
+    return deepcopy(read_json(rel, default))
 
 
 def _band(score: float) -> str:
@@ -73,7 +67,7 @@ def _merge_values(old: Any, new: Any) -> Any:
         merged = []
         seen = set()
         for raw in values(old) + values(new):
-            key = canonical(raw if not isinstance(raw, dict) else json.dumps(raw, sort_keys=True, ensure_ascii=False))
+            key = canonical(raw)
             if key and key not in seen:
                 seen.add(key)
                 merged.append(deepcopy(raw))
@@ -112,8 +106,12 @@ def _decorate(field: dict[str, Any], *, confidence: float | None = None, claim_t
 
 def merge_field(field: dict[str, Any] | None, spec: dict[str, Any]) -> dict[str, Any]:
     out = deepcopy(field or {})
+    old_values = values(out.get("value"))
+    new_values = values(spec.get("value"))
+    old_evidence = _dedupe_evidence(out.get("evidence") or [])
+    new_evidence = _dedupe_evidence(spec.get("evidence") or [])
     out["value"] = _merge_values(out.get("value"), spec.get("value"))
-    out["evidence"] = _dedupe_evidence((out.get("evidence") or []) + (spec.get("evidence") or []))
+    out["evidence"] = _dedupe_evidence(old_evidence + new_evidence)
     _decorate(
         out,
         confidence=spec.get("confidence"),
@@ -122,25 +120,94 @@ def merge_field(field: dict[str, Any] | None, spec: dict[str, Any]) -> dict[str,
         qualifier=spec.get("qualifier"),
     )
     if isinstance(out.get("value"), list):
-        evidence = out.get("evidence") or []
         previous = {canonical(x.get("value")): x for x in out.get("items") or [] if isinstance(x, dict)}
+        if len(old_values) == 1 and canonical(old_values[0]) not in previous:
+            previous[canonical(old_values[0])] = {"value": old_values[0], "evidence": old_evidence}
+        supplied = {
+            canonical(item.get("value")): item
+            for item in spec.get("items") or []
+            if isinstance(item, dict) and canonical(item.get("value"))
+        }
+        new_keys = {canonical(value) for value in new_values}
         items = []
         for value in out["value"]:
-            item = deepcopy(previous.get(canonical(value), {"value": value}))
+            key = canonical(value)
+            item = deepcopy(previous.get(key, {"value": value}))
             item["value"] = value
-            item["evidence"] = _dedupe_evidence((item.get("evidence") or []) + evidence)
+            item_spec = supplied.get(key) or {}
+            evidence_to_add = item_spec.get("evidence") or (new_evidence if key in new_keys else [])
+            item["evidence"] = _dedupe_evidence((item.get("evidence") or []) + evidence_to_add)
             _decorate(
                 item,
-                confidence=spec.get("confidence"),
-                claim_type=spec.get("claim_type"),
-                assertion_status=spec.get("assertion_status"),
-                qualifier=spec.get("qualifier"),
+                confidence=item_spec.get("confidence", spec.get("confidence")),
+                claim_type=item_spec.get("claim_type", spec.get("claim_type")),
+                assertion_status=item_spec.get("assertion_status", spec.get("assertion_status")),
+                qualifier=item_spec.get("qualifier", spec.get("qualifier")),
             )
             items.append(item)
         out["items"] = items
     return out
 
 
+def itemized_field(
+    rows: Iterable[dict[str, Any]],
+    *,
+    confidence: float,
+    claim_type: str,
+    assertion_status: str,
+    qualifier: str = "",
+) -> dict[str, Any]:
+    """Build a list field whose evidence remains attached to each value."""
+
+    merged: dict[str, dict[str, Any]] = {}
+    order: list[str] = []
+    for raw in rows:
+        value = str(raw.get("value") or "").strip()
+        key = canonical(value)
+        if not key:
+            continue
+        if key not in merged:
+            merged[key] = {
+                "value": value,
+                "evidence": [],
+                "confidence": raw.get("confidence", confidence),
+                "claim_type": raw.get("claim_type", claim_type),
+                "assertion_status": raw.get("assertion_status", assertion_status),
+                "qualifier": raw.get("qualifier", qualifier),
+            }
+            order.append(key)
+        merged[key]["evidence"] = _dedupe_evidence(
+            (merged[key].get("evidence") or []) + (raw.get("evidence") or [])
+        )
+
+    items = []
+    for key in order:
+        item = merged[key]
+        _decorate(
+            item,
+            confidence=item.get("confidence"),
+            claim_type=item.get("claim_type"),
+            assertion_status=item.get("assertion_status"),
+            qualifier=item.get("qualifier"),
+        )
+        items.append(item)
+    evidence = _dedupe_evidence(
+        evidence
+        for item in items
+        for evidence in item.get("evidence") or []
+    )
+    field = {
+        "value": [item["value"] for item in items],
+        "items": items,
+        "evidence": evidence,
+    }
+    return _decorate(
+        field,
+        confidence=confidence,
+        claim_type=claim_type,
+        assertion_status=assertion_status,
+        qualifier=qualifier,
+    )
 
 
 def normalize_fields(data: dict[str, Any]) -> dict[str, Any]:
@@ -149,7 +216,7 @@ def normalize_fields(data: dict[str, Any]) -> dict[str, Any]:
     Relation display values intentionally drop old scope/status suffixes: scope and confidence
     live in evidence/graph metadata, not in the entity name.
     """
-    for section in ("manufacturers", "distributors", "integrators", "clients_public", "clients_private", "trends", "architectures"):
+    for section in SECTIONS:
         for row in data.get(section) or []:
             for field_id, field in (row.get("fields") or {}).items():
                 value = field.get("value")
@@ -161,14 +228,25 @@ def normalize_fields(data: dict[str, Any]) -> dict[str, Any]:
                     item = deepcopy(raw)
                     if field_id in {"vendor_relations", "distributors", "integrators"} and isinstance(item, str):
                         item = resolve(item.split(" · ", 1)[0].strip())
-                    key = canonical(item if not isinstance(item, dict) else json.dumps(item, sort_keys=True, ensure_ascii=False))
+                    item_key = canonical(item)
+                    if field_id in {"vendor_relations", "distributors", "integrators"} and item_key == canonical(row.get("name")):
+                        continue
+                    if field_id in {"vendor_relations", "distributors", "integrators", "westcon_overlap", "competitor_vendor_overlap"} and any(
+                        phrase in item_key
+                        for phrase in (
+                            "sin coincidencias", "sin otros fabricantes", "sin fabricantes",
+                            "no equivale", "line card puede no ser", "linecard completo por validar",
+                            "mas de marcas", "marcas nacionales", "hardware y software de marcas",
+                        )
+                    ):
+                        continue
+                    key = canonical(item)
                     if key and key not in seen:
                         seen.add(key); out.append(item)
                 field["value"] = out
-                # Keep item-specific evidence only when it adds information beyond field-level provenance.
-                field_keys = {(e.get("url"), e.get("title"), e.get("scope")) for e in field.get("evidence") or [] if isinstance(e, dict)}
                 items = []
                 item_seen = set()
+                field_evidence = _dedupe_evidence(field.get("evidence") or [])
                 for old in field.get("items") or []:
                     if not isinstance(old, dict):
                         continue
@@ -180,10 +258,27 @@ def normalize_fields(data: dict[str, Any]) -> dict[str, Any]:
                         continue
                     item_seen.add(k)
                     x = deepcopy(old); x["value"] = iv
-                    specific = [e for e in x.get("evidence") or [] if isinstance(e, dict) and (e.get("url"),e.get("title"),e.get("scope")) not in field_keys]
-                    if specific: x["evidence"] = _dedupe_evidence(specific)
-                    else: x.pop("evidence", None)
+                    existing = _dedupe_evidence(x.get("evidence") or [])
+                    specific = evidence_for_relationship(existing, row.get("name"), iv)
+                    # A single source already attached to this exact item is an atomic
+                    # assertion even when its title is terse. Multiple legacy sources must
+                    # be scope-filtered because old releases copied whole-field provenance.
+                    if not specific and len(existing) == 1:
+                        specific = existing
+                    if not specific:
+                        specific = evidence_for_relationship(field_evidence, row.get("name"), iv)
+                    if not specific and len(out) == 1 and len(field_evidence) == 1:
+                        specific = field_evidence
+                    x["evidence"] = _dedupe_evidence(specific)
                     items.append(x)
+                for missing_value in out:
+                    missing_key = canonical(missing_value)
+                    if missing_key in item_seen:
+                        continue
+                    specific = evidence_for_relationship(field_evidence, row.get("name"), missing_value)
+                    if not specific and len(out) == 1 and len(field_evidence) == 1:
+                        specific = field_evidence
+                    items.append({"value": missing_value, "evidence": _dedupe_evidence(specific)})
                 if items: field["items"] = items
                 elif "items" in field: field.pop("items", None)
     return data
@@ -234,9 +329,12 @@ def _manufacturer_map(data: dict[str, Any]) -> dict[str, str]:
                 result[canonical(part)] = name
     aliases = _load("config/current/entity_aliases.json", {})
     if isinstance(aliases, dict):
-        for alias, target in aliases.items():
-            if canonical(target) in result:
-                result[canonical(alias)] = result[canonical(target)]
+        for target, alias_rows in aliases.items():
+            mapped = result.get(canonical(target))
+            if not mapped:
+                continue
+            for alias in alias_rows if isinstance(alias_rows, list) else [alias_rows]:
+                result[canonical(alias)] = mapped
     return result
 
 
@@ -261,43 +359,48 @@ def derive_overlap_fields(data: dict[str, Any]) -> dict[str, Any]:
             names = _relation_names(vendor_field)
             if not names:
                 continue
-            overlap = []
-            non_westcon = []
+            relation_items = {
+                canonical(item.get("value")): item
+                for item in vendor_field.get("items") or []
+                if isinstance(item, dict)
+            }
+            overlap: list[dict[str, Any]] = []
+            non_westcon: list[dict[str, Any]] = []
             for name in names:
                 mapped = westcon.get(canonical(name))
+                source_item = relation_items.get(canonical(name)) or {}
+                atomic_evidence = source_item.get("evidence") or []
                 if mapped:
-                    if mapped not in overlap:
-                        overlap.append(mapped)
-                elif name not in non_westcon:
-                    non_westcon.append(name)
-            evidence = _dedupe_evidence(vendor_field.get("evidence") or [])
+                    overlap.append({"value": mapped, "evidence": atomic_evidence})
+                else:
+                    non_westcon.append({"value": name, "evidence": atomic_evidence})
             confidence = min(0.88, float(vendor_field.get("confidence") or 0.82))
             if overlap:
-                fields["westcon_overlap"] = merge_field(fields.get("westcon_overlap"), {
-                    "value": overlap,
-                    "evidence": evidence,
-                    "confidence": confidence,
-                    "claim_type": "interpretation",
-                    "assertion_status": "DERIVADO",
-                    "qualifier": "Intersección calculada automáticamente entre relaciones de fabricante evidenciadas y el portfolio Westcon Iberia; no añade una relación nueva.",
-                })
+                fields["westcon_overlap"] = itemized_field(
+                    overlap,
+                    confidence=confidence,
+                    claim_type="interpretation",
+                    assertion_status="DERIVADO",
+                    qualifier="Intersección calculada entre relaciones evidenciadas y portfolio Westcon; cada fabricante conserva su evidencia de origen.",
+                )
             if non_westcon:
-                fields["competitor_vendor_overlap"] = merge_field(fields.get("competitor_vendor_overlap"), {
-                    "value": non_westcon,
-                    "evidence": evidence,
-                    "confidence": max(0.62, confidence - 0.08),
-                    "claim_type": "interpretation",
-                    "assertion_status": "DERIVADO",
-                    "qualifier": "Fabricantes observados fuera del portfolio Westcon actual. 'Posible competencia' describe solape de canal, no equivalencia funcional ni amenaza comercial demostrada.",
-                })
+                fields["competitor_vendor_overlap"] = itemized_field(
+                    non_westcon,
+                    confidence=max(0.62, confidence - 0.08),
+                    claim_type="interpretation",
+                    assertion_status="DERIVADO",
+                    qualifier="Fabricantes observados fuera del portfolio actual; el solape de canal no prueba equivalencia funcional ni amenaza comercial.",
+                )
     return data
 
 
 def project_graph_to_views(data: dict[str, Any], graph: dict[str, Any]) -> dict[str, Any]:
     manufacturers = {canonical(r.get("name")): r for r in data.get("manufacturers") or []}
     integrators = {canonical(r.get("name")): r for r in data.get("integrators") or []}
+    distributors = {canonical(r.get("name")): r for r in data.get("distributors") or []}
     grouped_manufacturer: dict[tuple[str, str], list[dict[str, Any]]] = {}
     integrator_scope: dict[str, list[dict[str, Any]]] = {}
+    distributor_scope: dict[str, list[dict[str, Any]]] = {}
     for rel in graph.get("relationships") or []:
         relation = rel.get("relation")
         if relation not in {"distributes", "partners_with"} or rel.get("status") != "CONFIRMADO":
@@ -308,27 +411,47 @@ def project_graph_to_views(data: dict[str, Any], graph: dict[str, Any]) -> dict[
             grouped_manufacturer.setdefault(key, []).append(rel)
         if relation == "partners_with":
             integrator_scope.setdefault(canonical(rel.get("entity_a")), []).append(rel)
+        elif relation == "distributes":
+            distributor_scope.setdefault(canonical(rel.get("entity_a")), []).append(rel)
 
     for (manu_key, field_id), rels in grouped_manufacturer.items():
         row = manufacturers.get(manu_key)
         if not row:
             continue
-        vals = [str(r.get("entity_a") or "") for r in rels if r.get("entity_a")]
-        evidence = _dedupe_evidence(e for r in rels for e in (r.get("evidence") or []))
-        row.setdefault("fields", {})[field_id] = merge_field(row.get("fields", {}).get(field_id), {
-            "value": vals,
-            "evidence": evidence,
-            "confidence": 0.86,
-            "claim_type": "fact",
-            "assertion_status": "CONFIRMADO",
-            "qualifier": "Vista proyectada desde el grafo canónico de relaciones; la evidencia se mantiene en la relación de origen.",
-        })
+        row.setdefault("fields", {})[field_id] = itemized_field(
+            (
+                {
+                    "value": relation.get("entity_a"),
+                    "evidence": relation.get("evidence") or [],
+                    "confidence": relation.get("confidence", 0.86),
+                }
+                for relation in rels
+            ),
+            confidence=0.86,
+            claim_type="fact",
+            assertion_status="CONFIRMADO",
+            qualifier="Vista proyectada desde el grafo canónico; cada entidad conserva solo la evidencia de su relación.",
+        )
 
     for key, rels in integrator_scope.items():
         row = integrators.get(key)
         if not row:
             continue
         fields = row.setdefault("fields", {})
+        fields["vendor_relations"] = itemized_field(
+            (
+                {
+                    "value": relation.get("entity_b"),
+                    "evidence": relation.get("evidence") or [],
+                    "confidence": relation.get("confidence", 0.86),
+                }
+                for relation in rels
+            ),
+            confidence=0.86,
+            claim_type="fact",
+            assertion_status="CONFIRMADO",
+            qualifier="Relaciones proyectadas desde el grafo; la trazabilidad se conserva por fabricante.",
+        )
         evidence = _dedupe_evidence(e for r in rels for e in (r.get("evidence") or []))
         countries = []
         for rel in rels:
@@ -352,6 +475,25 @@ def project_graph_to_views(data: dict[str, Any], graph: dict[str, Any]) -> dict[
                 "claim_type": "fact",
                 "assertion_status": "CONFIRMADO",
             })
+
+    for key, rels in distributor_scope.items():
+        row = distributors.get(key)
+        if not row:
+            continue
+        row.setdefault("fields", {})["vendor_relations"] = itemized_field(
+            (
+                {
+                    "value": relation.get("entity_b"),
+                    "evidence": relation.get("evidence") or [],
+                    "confidence": relation.get("confidence", 0.88),
+                }
+                for relation in rels
+            ),
+            confidence=0.88,
+            claim_type="fact",
+            assertion_status="CONFIRMADO",
+            qualifier="Linecard proyectado desde el grafo; cada fabricante abre únicamente sus evidencias aplicables.",
+        )
     return data
 
 

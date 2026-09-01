@@ -6,9 +6,7 @@ from typing import Any
 from urllib.parse import urlparse
 
 from .model import canonical
-
-VERSION = "3.20.0"
-SECTIONS = ("manufacturers", "distributors", "integrators", "clients_public", "clients_private", "trends", "architectures")
+from .settings import SECTIONS, VERSION
 
 
 def audit(data: dict[str, Any], graph: dict[str, Any], gaps: dict[str, Any]) -> dict[str, Any]:
@@ -49,6 +47,31 @@ def audit(data: dict[str, Any], graph: dict[str, Any], gaps: dict[str, Any]) -> 
                 if len(keys) != len(set(keys)):
                     errors.append(f"Fabricante repetido en {section}/{row.get('name')}")
 
+    # Every list relation shown in the UI must carry provenance per individual value.
+    atomic_fields = {
+        "manufacturers": {"distributors", "integrators"},
+        "distributors": {"vendor_relations", "westcon_overlap", "competitor_vendor_overlap"},
+        "integrators": {"vendor_relations", "westcon_overlap", "competitor_vendor_overlap"},
+    }
+    for section, field_ids in atomic_fields.items():
+        for row in data.get(section) or []:
+            for field_id in field_ids:
+                field = ((row.get("fields") or {}).get(field_id) or {})
+                value = field.get("value")
+                if not isinstance(value, list) or not value:
+                    continue
+                items = {
+                    canonical(item.get("value")): item
+                    for item in field.get("items") or []
+                    if isinstance(item, dict)
+                }
+                for raw in value:
+                    item = items.get(canonical(raw))
+                    if not item:
+                        errors.append(f"Trazabilidad atómica ausente: {section}/{row.get('name')}/{field_id}/{raw}")
+                    elif not item.get("evidence"):
+                        errors.append(f"Evidencia atómica vacía: {section}/{row.get('name')}/{field_id}/{raw}")
+
     # Graph invariants.
     relation_keys = []
     for rel in graph.get("relationships") or []:
@@ -82,6 +105,8 @@ def audit(data: dict[str, Any], graph: dict[str, Any], gaps: dict[str, Any]) -> 
 
     if any(g.get("research_state") != "Por investigar" for g in gaps.get("gaps") or []):
         errors.append("Un gap abierto tiene un estado distinto de 'Por investigar'.")
+    if any(int(g.get("attempts_completed") or 0) < 0 for g in gaps.get("gaps") or []):
+        errors.append("Un gap contiene un contador de intentos inválido.")
 
     domains = set()
     for section in SECTIONS:

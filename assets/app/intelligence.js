@@ -200,7 +200,7 @@
     return factors;
   }
   function traceable(field, inner, item=null){
-    const evidence=(item?.evidence||field?.evidence||[]).slice(0,8);
+    const evidence=(item===null?(field?.evidence||[]):(item?.evidence||[])).slice(0,8);
     const score=item?.confidence ?? field?.confidence ?? 0.66;
     const band=item?.confidence_band || field?.confidence_band || (score>=.8?'high':score>=.6?'medium':'low');
     const reason=item?.confidence_reason || field?.confidence_reason || '';
@@ -213,10 +213,13 @@
     const levelLabel=bandLabel(band);
     const factors=deriveConfidenceFactors(field,item,band,evidence);
     const why=(band==='medium'||band==='low'||factors.length)?`<div class="confidence-why"><b>Por qué tiene este nivel</b><ul>${factors.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
-    return `<div class="traceable" tabindex="0"><div class="trace-value">${inner}</div><span class="trace-mark confidence-dot ${esc(band)}" title="${esc(levelLabel)} · ${confidencePct(factScore)}%">i</span><div class="trace-popover"><strong>TRAZABILIDAD DEL DATO</strong><div class="claim-kind">${esc(claimLabel)} · ${esc(levelLabel)}</div><div class="confidence-three"><span><b>${confidencePct(factScore)}%</b>Hecho</span><span><b>${confidencePct(interpretationScore)}%</b>Interpretación</span><span><b>${esc(actionRisk)}</b>Riesgo de acción</span></div>${reason?`<p class="confidence-explain">${esc(reason)}</p>`:''}${why}${qualifier?`<span class="qualifier">${esc(qualifier)}</span>`:''}<div class="trace-source-heading">Fuentes que sostienen este dato</div>${evidence.map(ev=>sourceItem(ev,factScore,band)).join('')}<button type="button" class="confidence-help-link" data-confidence-help>¿Cómo se calcula e interpreta la confianza?</button></div></div>`;
+    const sources=evidence.length?evidence.map(ev=>sourceItem(ev,factScore,band)).join(''):'<p class="atomic-evidence-missing">No hay una evidencia específica vinculada a este elemento; el sistema no muestra fuentes de otros elementos del campo.</p>';
+    return `<div class="traceable" tabindex="0"><div class="trace-value">${inner}</div><span class="trace-mark confidence-dot ${esc(band)}" title="${esc(levelLabel)} · ${confidencePct(factScore)}%">i</span><div class="trace-popover"><strong>TRAZABILIDAD DEL DATO</strong><div class="claim-kind">${esc(claimLabel)} · ${esc(levelLabel)}</div><div class="confidence-three"><span><b>${confidencePct(factScore)}%</b>Hecho</span><span><b>${confidencePct(interpretationScore)}%</b>Interpretación</span><span><b>${esc(actionRisk)}</b>Riesgo de acción</span></div>${reason?`<p class="confidence-explain">${esc(reason)}</p>`:''}${why}${qualifier?`<span class="qualifier">${esc(qualifier)}</span>`:''}<div class="trace-source-heading">Fuentes que sostienen este dato</div>${sources}<button type="button" class="confidence-help-link" data-confidence-help>¿Cómo se calcula e interpreta la confianza?</button></div></div>`;
   }
   function itemFor(field,value,index){
-    const items=field?.items||[]; return items[index]||items.find(x=>String(x.value)===String(value))||null;
+    const items=field?.items||[], wanted=norm(typeof value==='object'?JSON.stringify(value):value);
+    return items.find(x=>norm(typeof x?.value==='object'?JSON.stringify(x.value):x?.value)===wanted)
+      ||{value,evidence:[],confidence:field?.confidence,confidence_band:field?.confidence_band,claim_type:field?.claim_type};
   }
   function tagHtml(field,value,index,extra=''){
     const item=itemFor(field,value,index), score=item?.confidence??field?.confidence??.66, band=item?.confidence_band||field?.confidence_band||(score>=.8?'high':score>=.6?'medium':'low');
@@ -478,7 +481,7 @@
     return `<span>${esc(shortText(v,190))}</span>`;
   }
   function reportBrand(){return `<div class="r-brand"><span class="r-mark"><i></i><i></i><i></i></span><b>WESTCON IBERIA</b><small>BUSINESS INTELLIGENCE</small></div>`;}
-  function reportFooter(label){return `<footer class="r-footer"><span>${esc(label)}</span><span>v${esc(state.data.meta.version||'3.17.0')} · ${esc(state.data.meta.scope||'Iberia')} · inteligencia trazable</span></footer>`;}
+  function reportFooter(label){return `<footer class="r-footer"><span>${esc(label)}</span><span>v${esc(state.data.meta.version||'4.0.0')} · ${esc(state.data.meta.scope||'Iberia')} · inteligencia trazable</span></footer>`;}
   function numericAmountMillions(value){
     const raw=valueText(value).replace(/\s/g,'').replace(',','.');const m=raw.match(/(\d+(?:\.\d+)?)([mk])?€/i)||raw.match(/(\d+(?:\.\d+)?)([mk])?/i);if(!m)return 0;let n=Number(m[1])||0;const unit=(m[2]||'').toLowerCase();if(unit==='k')n/=1000;else if(unit!=='m'&&n>1000)n/=1e6;return n;
   }
@@ -503,7 +506,7 @@
       ['manufacturers','Fabricantes',state.data.manufacturers.length],['distributors','Mayoristas',state.data.distributors.length],['integrators','Integradores',state.data.integrators.length],['clients','Clientes',((state.data.clients_public||[]).length+(state.data.clients_private||[]).length)],['trends','Tendencias',state.data.trends.length],['architectures','Arquitecturas',state.data.architectures.length]
     ].filter(x=>modules.has(x[0]));
     return `<section class="report-page report-cover">
-      <div class="r-cover-top">${reportBrand()}<span class="r-version">v${esc(state.data.meta.version||'3.17.0')}</span></div>
+      <div class="r-cover-top">${reportBrand()}<span class="r-version">v${esc(state.data.meta.version||'4.0.0')}</span></div>
       <div class="r-cover-main"><div class="r-kicker">INTELIGENCIA DE NEGOCIO · ESPAÑA + PORTUGAL</div><h1>${esc(title)}</h1><p>Informe ejecutivo construido desde la evidencia trazable: primero síntesis y hallazgos, después detalle y fuentes.</p></div>
       <div class="r-kpis">${stats.map((x,i)=>`<div style="--accent:#${[exportTheme.cyan,exportTheme.orange,exportTheme.pink,exportTheme.blue,exportTheme.green][i%5]}"><b>${esc(x[2])}</b><span>${esc(x[1])}</span></div>`).join('')}<div style="--accent:#${exportTheme.cyan}"><b>${esc(state.data.meta.source_count||0)}</b><span>fuentes / familias</span></div></div>
       <div class="r-cover-note"><b>Generado</b><span>${esc(state.data.meta.generated_at||'')}</span></div>
@@ -566,7 +569,7 @@
     pdf.setFont('helvetica','bold');pdf.setFontSize(10);pdfTextColor(pdf,base);pdf.text('WESTCON IBERIA',21,13);
     pdf.setFont('helvetica','normal');pdf.setFontSize(6);pdfTextColor(pdf,sub);pdf.text('BUSINESS INTELLIGENCE',21,17);
   }
-  function pdfFooter(pdf,label,dark=false){const w=pdf.internal.pageSize.getWidth(),h=pdf.internal.pageSize.getHeight();pdfStroke(pdf,dark?'315267':exportTheme.line);pdf.setLineWidth(.25);pdf.line(12,h-11,w-12,h-11);pdf.setFontSize(6);pdf.setFont('helvetica','normal');pdfTextColor(pdf,dark?'AFC1CA':exportTheme.muted);pdf.text(label,12,h-6);pdf.text(`v${state.data.meta.version||'3.17.0'} · ${state.data.meta.scope||'Iberia'} · inteligencia trazable`,w-12,h-6,{align:'right'});}
+  function pdfFooter(pdf,label,dark=false){const w=pdf.internal.pageSize.getWidth(),h=pdf.internal.pageSize.getHeight();pdfStroke(pdf,dark?'315267':exportTheme.line);pdf.setLineWidth(.25);pdf.line(12,h-11,w-12,h-11);pdf.setFontSize(6);pdf.setFont('helvetica','normal');pdfTextColor(pdf,dark?'AFC1CA':exportTheme.muted);pdf.text(label,12,h-6);pdf.text(`v${state.data.meta.version||'4.0.0'} · ${state.data.meta.scope||'Iberia'} · inteligencia trazable`,w-12,h-6,{align:'right'});}
   function pdfPageTitle(pdf,title,subtitle='',accent=exportTheme.cyan){pdfBrand(pdf,false);pdfFill(pdf,accent);pdf.rect(12,25,2,15,'F');pdf.setFont('helvetica','bold');pdf.setFontSize(22);pdfTextColor(pdf,exportTheme.navy);pdf.text(title,18,34);pdf.setFont('helvetica','normal');pdf.setFontSize(8);pdfTextColor(pdf,exportTheme.muted);const lines=pdf.splitTextToSize(subtitle,250);pdf.text(lines,18,41);}
   function pdfKpi(pdf,x,y,w,label,value,accent){pdfFill(pdf,exportTheme.white);pdfStroke(pdf,exportTheme.line);pdf.roundedRect(x,y,w,24,3,3,'FD');pdfFill(pdf,accent);pdf.rect(x,y,2,24,'F');pdf.setFont('helvetica','bold');pdf.setFontSize(17);pdfTextColor(pdf,exportTheme.navy);pdf.text(String(value),x+6,y+10);pdf.setFont('helvetica','normal');pdf.setFontSize(6.5);pdfTextColor(pdf,exportTheme.muted);pdf.text(label.toUpperCase(),x+6,y+17);}
   function pdfListCard(pdf,x,y,w,h,title,items,accent){pdfFill(pdf,exportTheme.white);pdfStroke(pdf,exportTheme.line);pdf.roundedRect(x,y,w,h,3,3,'FD');pdfFill(pdf,accent);pdf.rect(x,y,w,1.5,'F');pdf.setFont('helvetica','bold');pdf.setFontSize(9);pdfTextColor(pdf,exportTheme.navy);pdf.text(title,x+5,y+8);let yy=y+15;pdf.setFont('helvetica','normal');pdf.setFontSize(6.4);for(const item of items.slice(0,5)){pdfFill(pdf,accent);pdf.circle(x+6,yy-1.4,1.3,'F');pdf.setFont('helvetica','bold');pdfTextColor(pdf,exportTheme.ink);const titleLines=pdf.splitTextToSize(String(item.title||''),w-16).slice(0,2);pdf.text(titleLines,x+10,yy);yy+=titleLines.length*3.2;pdf.setFont('helvetica','normal');pdfTextColor(pdf,exportTheme.muted);const metaLines=pdf.splitTextToSize(String(item.meta||''),w-16).slice(0,2);pdf.text(metaLines,x+10,yy);yy+=metaLines.length*3.1+3;if(yy>y+h-5)break;}}
@@ -577,7 +580,7 @@
   async function exportPdf(){
     const modules=selectedModules();if(!modules.size){toast('Selecciona al menos un área');return;}if(!window.jspdf?.jsPDF){toast('El motor PDF no está disponible');return;}
     const title=$('#reportTitle')?.value.trim()||'Westcon Iberia · Business Intelligence';closeModal('exportModal');toast('Generando PDF ejecutivo…');
-    try{const pdf=new window.jspdf.jsPDF({orientation:'landscape',unit:'mm',format:'a4',compress:true});pdf.setProperties({title,subject:'Westcon Iberia Business Intelligence',author:'Westcon Iberia'});pdfAddCover(pdf,title,modules);pdfAddExecutive(pdf);const selected=[];for(const [key,rows] of exportSections(modules)){if(!rows?.length)continue;selected.push(...rows);pdfAddDomain(pdf,key,rows);}pdfAddMethodology(pdf,selected);pdf.save('Westcon_Iberia_Business_Intelligence_v3.20.0.pdf');toast('PDF ejecutivo generado');}catch(err){console.error(err);toast('No se pudo generar el PDF');}
+    try{const pdf=new window.jspdf.jsPDF({orientation:'landscape',unit:'mm',format:'a4',compress:true});pdf.setProperties({title,subject:'Westcon Iberia Business Intelligence',author:'Westcon Iberia'});pdfAddCover(pdf,title,modules);pdfAddExecutive(pdf);const selected=[];for(const [key,rows] of exportSections(modules)){if(!rows?.length)continue;selected.push(...rows);pdfAddDomain(pdf,key,rows);}pdfAddMethodology(pdf,selected);pdf.save(`Westcon_Iberia_Business_Intelligence_v${state.data.meta.version||'4.0.0'}.pdf`);toast('PDF ejecutivo generado');}catch(err){console.error(err);toast('No se pudo generar el PDF');}
   }
   function pptCompact(v,max=115){return compactValue(v,4,max);}
   function pptEvidenceNames(row,max=2){const names=[];for(const ev of uniqueEvidence([row],12)){const n=ev.source||ev.title;if(n&&!names.includes(n))names.push(n);if(names.length>=max)break;}return names;}
@@ -591,7 +594,7 @@
     const line=dark?'315267':'D9E3E8', color=dark?'AFC1CA':'647986';
     slide.addShape(pptx.ShapeType.line,{x:.55,y:7.05,w:12.2,h:0,line:{color:line,pt:.7}});
     slide.addText(label,{x:.55,y:7.1,w:4.8,h:.14,fontFace:'Aptos',fontSize:6.6,color,margin:0});
-    slide.addText(`v${state.data.meta.version||'3.17.0'} · ${state.data.meta.scope||'Iberia'} · trazabilidad en la aplicación`,{x:7.0,y:7.1,w:5.75,h:.14,fontFace:'Aptos',fontSize:6.6,color,align:'right',margin:0});
+    slide.addText(`v${state.data.meta.version||'4.0.0'} · ${state.data.meta.scope||'Iberia'} · trazabilidad en la aplicación`,{x:7.0,y:7.1,w:5.75,h:.14,fontFace:'Aptos',fontSize:6.6,color,align:'right',margin:0});
   }
   function pptAddSlideTitle(slide,pptx,title,sub='',accent=exportTheme.cyan){
     pptAddBrand(slide,pptx,false); slide.addShape(pptx.ShapeType.rect,{x:.55,y:.92,w:.08,h:.63,fill:{color:accent},line:{color:accent}});
@@ -747,12 +750,12 @@
       order.forEach(([key,rows,schema])=>{if(!rows?.length)return;pptAddDomainDivider(pptx,key,rows.length);if(key==='trends'||key==='architectures')pptAddDetailSlides(pptx,key,rows,schema);else pptAddEntitySlides(pptx,key,rows,schema);});
       pptAddSources(pptx,selectedRows);
     }
-    await pptx.writeFile({fileName:'Westcon_Iberia_Business_Intelligence_v3.20.0.pptx'});closeModal('exportModal');toast(appendix?'PowerPoint ejecutivo + anexo generado':'PowerPoint ejecutivo generado');
+    await pptx.writeFile({fileName:`Westcon_Iberia_Business_Intelligence_v${state.data.meta.version||'4.0.0'}.pptx`});closeModal('exportModal');toast(appendix?'PowerPoint ejecutivo + anexo generado':'PowerPoint ejecutivo generado');
   }
 
   function renderAll(){
     populateIntegratorVendorFilter(); renderActiveView(); renderSourceCatalog(); renderUpdateStatus(); renderConfidenceGuide();
-    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v3.20.0 · dataset v${meta.version||'3.20.0'} · ${meta.source_count||0} fuentes/familias · ${meta.scope||'Iberia'}`;
+    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v4.0.0 · dataset v${meta.version||'4.0.0'} · ${meta.source_count||0} fuentes/familias · ${meta.scope||'Iberia'}`;
   }
 
   load().catch(err => { console.error(err); const main=document.querySelector('main'); if(main) main.innerHTML=`<div class="fatal"><h1>No se pudo cargar la inteligencia</h1><p>${esc(err.message)}</p></div>`; });

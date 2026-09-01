@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from urllib.parse import urlparse
 
-SECTIONS = ["manufacturers", "distributors", "integrators", "clients_public", "clients_private", "trends", "architectures"]
+from .settings import SECTIONS
 
 
 def calculate(data, gaps, graph):
@@ -46,6 +46,8 @@ def calculate(data, gaps, graph):
         "integrators": len(data.get("integrators", [])),
         "clients_public": len(data.get("clients_public", [])),
         "clients_private": len(data.get("clients_private", [])),
+        "trends": len(data.get("trends", [])),
+        "architectures": len(data.get("architectures", [])),
         "sources": len(source_urls),
         "domains_unique": len(domains),
         "evidences": len(evidence_keys),

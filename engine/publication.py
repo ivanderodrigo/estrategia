@@ -1,14 +1,11 @@
 from __future__ import annotations
 
 import hashlib
-import json
 from copy import deepcopy
-from pathlib import Path
 from typing import Any
 
-ROOT = Path(__file__).resolve().parents[1]
-VERSION = "3.20.0"
-SECTIONS = ("manufacturers", "distributors", "integrators", "clients_public", "clients_private", "trends", "architectures")
+from .settings import SECTIONS, VERSION
+from .storage import atomic_write_many, json_bytes
 
 
 def _evidence_key(ev: dict[str, Any]) -> str:
@@ -56,23 +53,24 @@ def _confidence_distribution(data: dict[str, Any]) -> dict[str, int]:
     return counts
 
 
-def build_public(data: dict[str, Any], last_run: dict[str, Any] | None = None) -> dict[str, Any]:
-    public_root = ROOT / "data/public"
-    sections_root = public_root / "sections"
-    sections_root.mkdir(parents=True, exist_ok=True)
-
+def public_payloads(
+    data: dict[str, Any],
+    last_run: dict[str, Any] | None = None,
+) -> tuple[dict[str, bytes], dict[str, Any]]:
+    files: dict[str, bytes] = {}
     section_meta = {}
     for section in SECTIONS:
         registry: dict[str, dict[str, Any]] = {}
         rows = _compact_object(data.get(section) or [], registry)
         payload = {"version": VERSION, "section": section, "rows": rows, "evidence": registry}
-        path = sections_root / f"{section}.json"
-        path.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        relative = f"data/public/sections/{section}.json"
+        encoded = json_bytes(payload, pretty=False)
+        files[relative] = encoded
         section_meta[section] = {
-            "file": f"data/public/sections/{section}.json",
+            "file": relative,
             "rows": len(rows),
             "evidence": len(registry),
-            "bytes": path.stat().st_size,
+            "bytes": len(encoded),
         }
 
     meta = deepcopy(data.get("meta") or {})
@@ -91,8 +89,14 @@ def build_public(data: dict[str, Any], last_run: dict[str, Any] | None = None) -
         "confidence_distribution": _confidence_distribution(data),
         "sections": section_meta,
     }
-    (public_root / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    files["data/public/manifest.json"] = json_bytes(manifest, pretty=False)
     run = deepcopy(last_run or {})
     run["version"] = VERSION
-    (public_root / "last_run.json").write_text(json.dumps(run, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    files["data/public/last_run.json"] = json_bytes(run, pretty=False)
+    return files, manifest
+
+
+def build_public(data: dict[str, Any], last_run: dict[str, Any] | None = None) -> dict[str, Any]:
+    files, manifest = public_payloads(data, last_run)
+    atomic_write_many(files)
     return manifest

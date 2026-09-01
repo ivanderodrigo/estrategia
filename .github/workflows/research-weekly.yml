@@ -1,36 +1,19 @@
 name: Westcon Intelligence Weekly
+
 on:
   schedule:
-    - cron: '29 4 * * 0'
+    - cron: "29 4 * * 0"
   workflow_dispatch:
+
 permissions:
   contents: write
-concurrency:
-  group: westcon-intelligence-research
-  cancel-in-progress: false
+
 jobs:
   research:
-    runs-on: ubuntu-latest
-    timeout-minutes: 65
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
-        with:
-          python-version: '3.12'
-          cache: pip
-      - run: pip install -r requirements.txt
-      - name: Canonical preflight
-        run: |
-          python -m py_compile engine/*.py engine/research/*.py scripts/*.py
-          python -m unittest discover -s tests -p "test_*.py" -v
-          python scripts/validate_workflows.py
-          python scripts/validate.py
-          node --check assets/app/intelligence.js
-          node tests/ui_smoke_v320.js
-      - name: Research deep
-        run: python scripts/research_supervisor.py --profile deep --max-runtime 1800 --fallback-runtime 240
-      - name: Validate output
-        run: python scripts/validate.py
-      - name: Publish canonical intelligence only
-        run: >-
-          python scripts/publish_research_update.py --message "chore: inteligencia estratégica semanal" --attempts 3
+    uses: ./.github/workflows/research-run.yml
+    with:
+      profile: deep
+      max_runtime: 1800
+      fallback_runtime: 240
+      timeout_minutes: 50
+      commit_message: "chore: inteligencia estratégica semanal"

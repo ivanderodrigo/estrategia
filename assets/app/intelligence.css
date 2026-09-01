@@ -48,11 +48,15 @@ th[data-col]{cursor:pointer;user-select:none}th[data-col]:active{cursor:grabbing
 /* v3.8 · legibilidad de tablas, filas compactas y gráficos sin solapamientos */
 .intelligence-table{overflow:auto;scrollbar-gutter:stable both-edges}
 table.data-table{width:max-content;min-width:100%;table-layout:auto}
+table.data-table{border-collapse:separate;border-spacing:0}
+table.data-table thead{position:sticky;top:0;z-index:20}
+table.data-table thead th{position:sticky;top:0;z-index:21;box-shadow:0 1px 0 #315267}
 table.data-table th,table.data-table td{min-width:var(--col-min,170px);max-width:var(--col-max,360px)}
 table.data-table .name-col{--col-min:190px;--col-max:230px;position:sticky;left:0}
-table.data-table th.name-col{z-index:8;background:var(--navy2)}
+table.data-table th.name-col{z-index:24;background:var(--navy2)}
 table.data-table td.name-col{z-index:3;background:#fff;box-shadow:5px 0 9px rgba(8,35,53,.045)}
 table.data-table tbody tr:hover td.name-col{background:#f7fafb}
+.atomic-evidence-missing{margin:8px 0;padding:9px;border:1px solid rgba(255,255,255,.18);border-radius:7px;color:#c5d6df;font-size:10px;line-height:1.4}
 .col-scope{--col-min:145px;--col-max:190px}.col-domain{--col-min:180px;--col-max:235px}
 .col-capabilities{--col-min:270px;--col-max:340px}.col-competitors{--col-min:300px;--col-max:370px}
 .col-distributors{--col-min:290px;--col-max:360px}.col-integrators{--col-min:320px;--col-max:390px}
