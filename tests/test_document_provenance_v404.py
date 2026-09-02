@@ -129,7 +129,7 @@ class DocumentProvenanceV404(unittest.TestCase):
 
     def test_document_registry_is_current(self) -> None:
         registry = json.loads((ROOT / "config/current/document_source_registry.json").read_text(encoding="utf-8-sig"))
-        self.assertEqual(registry.get("version"), "4.0.5")
+        self.assertEqual(registry.get("version"), "4.0.6")
         self.assertEqual(registry.get("policy"), "typed-provenance-atomic-document")
         docs = {row.get("filename") for row in registry.get("documents") or []}
         self.assertIn(DOC, docs)

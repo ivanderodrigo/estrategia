@@ -29,11 +29,19 @@ def _historical(ev: Mapping[str, Any]) -> bool:
     return str(ev.get("provenance_origin") or "").upper() in HISTORICAL_KINDS
 
 
-def _current_open(ev: Mapping[str, Any]) -> bool:
+def _current_public(ev: Mapping[str, Any]) -> bool:
     return (
         not _historical(ev)
         and str(ev.get("url") or "").startswith(("http://", "https://"))
     )
+
+
+def _westcon_document(ev: Mapping[str, Any]) -> bool:
+    return str(ev.get("provenance_origin") or "").upper() == "WESTCON_DOCUMENT"
+
+
+def _current_support(ev: Mapping[str, Any]) -> bool:
+    return _westcon_document(ev) or _current_public(ev)
 
 
 def relation_key(rel: Mapping[str, Any]) -> str:
@@ -76,7 +84,7 @@ def build_registry(
             continue
         evidence = [ev for ev in rel.get("evidence") or [] if isinstance(ev, Mapping)]
         historical = [ev for ev in evidence if _historical(ev)]
-        current = [ev for ev in evidence if _current_open(ev)]
+        current = [ev for ev in evidence if _current_support(ev)]
         if not historical or current:
             continue
         key = relation_key(rel)
@@ -122,7 +130,7 @@ def build_registry(
         })
 
     return {
-        "version": "4.0.5",
+        "version": "4.0.6",
         "policy": (
             "Las relaciones H se conservan como deuda de revalidación. "
             "No cuentan como acreditadas hasta tener fuente abierta actual."
@@ -137,7 +145,7 @@ def build_registry(
 
 def load_registry() -> dict[str, Any]:
     if not REGISTRY_PATH.exists():
-        return {"version": "4.0.5", "candidates_total": 0, "supported_current_open": 0, "search_required": 0, "candidates": []}
+        return {"version": "4.0.6", "candidates_total": 0, "supported_current_open": 0, "search_required": 0, "candidates": []}
     return json.loads(REGISTRY_PATH.read_text(encoding="utf-8-sig"))
 
 

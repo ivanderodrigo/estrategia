@@ -307,7 +307,10 @@ def _focus_candidates(candidates: dict[str, Candidate], target: dict[str, Any], 
     target_map = target.get("target_values") or {}
     if not isinstance(target_map, dict) or not target_map:
         return candidates
-    historical = "historical-revalidation" in set(target.get("gap_kinds") or [])
+    historical = bool(
+        {"historical-revalidation", "evidence-support"}
+        & set(target.get("gap_kinds") or [])
+    )
     output = dict(candidates)
     for field_id, wanted in target_map.items():
         if not wanted:
@@ -500,7 +503,7 @@ def run(profile: str = "daily", max_runtime: int = 600, max_tasks: int | None = 
             and (
                 not seeds
                 or (
-                    "historical-revalidation" in set(target.get("gap_kinds") or [])
+                    bool({"historical-revalidation", "evidence-support"} & set(target.get("gap_kinds") or []))
                     and not any(seed.official for seed in seeds)
                 )
             )

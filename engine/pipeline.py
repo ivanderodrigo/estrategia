@@ -199,6 +199,11 @@ def run() -> dict[str, Any]:
             "historical_total": source_rationalization.get("historical_total", 0),
             "historical_supported_current_open": source_rationalization.get("historical_supported_current_open", 0),
             "historical_search_required": source_rationalization.get("historical_search_required", 0),
+            "historical_supported_westcon": source_rationalization.get("historical_supported_westcon", 0),
+            "historical_supported_public": source_rationalization.get("historical_supported_public", 0),
+            "historical_supported_westcon_and_public": source_rationalization.get("historical_supported_westcon_and_public", 0),
+            "targets_supported": source_rationalization.get("targets_supported", 0),
+            "targets_search_required": source_rationalization.get("targets_search_required", 0),
         },
     }
 
@@ -237,7 +242,7 @@ def run() -> dict[str, Any]:
             "document_apply": document_apply_final,
             "source_intelligence": source_rationalization,
         }),
-        "data/current/source_rationalization_v405.json": json_bytes(source_rationalization),
+        "data/current/source_rationalization_v406.json": json_bytes(source_rationalization),
         "data/current/quality_report.json": json_bytes(quality),
         "data/current/last_run.json": json_bytes(last_run),
     }

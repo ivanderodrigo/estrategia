@@ -1,4 +1,4 @@
-// App v4.0.5
+// App v4.0.6
 (() => {
   'use strict';
   const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, dragCol:null, resize:null, traceSource:null, helpSource:null};

@@ -1,4 +1,4 @@
-"""Typed provenance and non-destructive knowledge protection for v4.0.5."""
+"""Typed provenance and non-destructive knowledge protection for v4.0.6."""
 from __future__ import annotations
 
 import json

@@ -1,3 +1,11 @@
+## 4.0.6 — Evidence Preservation & Public Verification
+
+- Ningún dato existente se elimina por falta de URL.
+- WESTCON_DOCUMENT (A1) o una fuente pública actual sustentan el dato.
+- Si falta A1, el dato se conserva y entra en investigación pública.
+- H, curación e inferencia se mantienen como linaje/contexto.
+- La investigación busca sostener el mismo dato, no sustituirlo automáticamente.
+
 ## 4.0.5 — Source Intelligence Rationalization
 
 - Racionaliza fuentes en A1, A2, B, C y H.

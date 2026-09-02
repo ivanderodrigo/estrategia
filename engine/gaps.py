@@ -76,17 +76,72 @@ HISTORICAL_KINDS = {
     "REPORT_CORROBORATION", "LEGACY_UNRESOLVED",
 }
 
+DERIVED_SUPPORT_FIELDS = {
+    ("clients_public", "westcon_fit"): {
+        "claim_class": "DERIVED_FACT",
+        "rule": "client signals/needs ∩ supported Westcon portfolio/capabilities",
+        "dependency_fields": ["technology_signals"],
+    },
+    ("clients_private", "westcon_fit"): {
+        "claim_class": "DERIVED_FACT",
+        "rule": "client signals/needs ∩ supported Westcon portfolio/capabilities",
+        "dependency_fields": ["technology_signals"],
+    },
+    ("clients_public", "westcon_area"): {
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": ["technology_signals"],
+    },
+    ("clients_private", "westcon_area"): {
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": ["technology_signals"],
+    },
+    ("trends", "westcon_vendors"): {
+        "claim_class": "DERIVED_FACT",
+        "rule": "supported trend/vendor evidence ∩ supported Westcon portfolio",
+        "dependency_fields": ["market_players"],
+    },
+}
+
+
+def _claim_policy(section: str, field_id: str) -> dict[str, Any]:
+    value = DERIVED_SUPPORT_FIELDS.get((section, field_id))
+    if value:
+        return {
+            "claim_class": value["claim_class"],
+            "rule": value["rule"],
+            "dependency_fields": list(value["dependency_fields"]),
+            "gap_kind": "derivation-support",
+            "research_mode": "derive-from-supported-inputs",
+        }
+    return {
+        "claim_class": "EXTERNAL_FACT",
+        "rule": "direct support required",
+        "dependency_fields": [],
+        "gap_kind": "evidence-support",
+        "research_mode": "public-source-verification",
+    }
+
 
 def _historical_rows(rows: list[Mapping[str, Any]]) -> list[Mapping[str, Any]]:
     return [row for row in rows if provenance_kind(row) in HISTORICAL_KINDS]
 
 
-def _current_open_rows(rows: list[Mapping[str, Any]]) -> list[Mapping[str, Any]]:
+def _westcon_document_rows(rows: list[Mapping[str, Any]]) -> list[Mapping[str, Any]]:
+    return [row for row in rows if provenance_kind(row) == "WESTCON_DOCUMENT"]
+
+
+def _current_public_rows(rows: list[Mapping[str, Any]]) -> list[Mapping[str, Any]]:
     return [
         row for row in rows
         if provenance_kind(row) not in HISTORICAL_KINDS
         and str(row.get("url") or "").startswith(("http://", "https://"))
     ]
+
+
+def _support_rows(rows: list[Mapping[str, Any]]) -> list[Mapping[str, Any]]:
+    return _westcon_document_rows(rows) + _current_public_rows(rows)
 
 
 def _target_values(value: Any) -> list[Any]:
@@ -112,50 +167,94 @@ def _revalidation_seeds(rows: list[Mapping[str, Any]]) -> list[dict[str, Any]]:
     return output
 
 
-def _append_historical_revalidation_gaps(
+def _append_support_gaps(
     public: Mapping[str, Any],
     gaps: list[dict[str, Any]],
     missing: Counter[tuple[str, str]],
     critical: Counter[str],
     states: Counter[str],
     state_gaps: Mapping[str, Any],
-) -> int:
-    added = 0
+) -> tuple[int, int, int]:
+    evidence_added = 0
+    derivation_added = 0
+    historical_added = 0
     existing = {str(gap.get("id") or "") for gap in gaps}
+
     for section in SECTIONS:
+        schema_rows = (public.get("schemas") or {}).get(section, [])
         schema = {
             column.get("id"): column
-            for column in (public.get("schemas") or {}).get(section, [])
+            for column in schema_rows
             if column.get("id")
         }
+
         for row in public.get(section) or []:
             fields = row.get("fields") or {}
-            for field_id, column in schema.items():
+            # IMPORTANT r3: union(schema, actual populated fields).
+            # This fixes orphan claims such as TD SYNNEX verticals that existed
+            # in intelligence but were absent from the section schema.
+            field_ids = list(dict.fromkeys(
+                list(schema.keys()) + list(fields.keys())
+            ))
+
+            for field_id in field_ids:
                 field = fields.get(field_id) or {}
                 if not isinstance(field, Mapping) or not has_value(field.get("value")):
                     continue
-                item_rows = [item for item in field.get("items") or [] if isinstance(item, Mapping)]
+
+                column = schema.get(field_id) or {
+                    "id": field_id,
+                    "label": field_id,
+                    "decision_required": False,
+                }
+                policy = _claim_policy(section, field_id)
                 targets = []
-                for item in item_rows:
-                    rows = [ev for ev in item.get("evidence") or [] if isinstance(ev, Mapping)]
-                    historical = _historical_rows(rows)
-                    if historical and not _current_open_rows(rows):
-                        targets.append(("item", item.get("value"), historical))
-                field_rows = [ev for ev in field.get("evidence") or [] if isinstance(ev, Mapping)]
-                field_historical = _historical_rows(field_rows)
-                if field_historical and not _current_open_rows(field_rows) and not targets:
-                    targets.append(("field", field.get("value"), field_historical))
+                items = [
+                    item for item in field.get("items") or []
+                    if isinstance(item, Mapping)
+                ]
+
+                if items:
+                    for item in items:
+                        if not has_value(item.get("value")):
+                            continue
+                        rows = [
+                            ev for ev in item.get("evidence") or []
+                            if isinstance(ev, Mapping)
+                        ]
+                        if _support_rows(rows):
+                            continue
+                        targets.append(("item", item.get("value"), _historical_rows(rows)))
+                else:
+                    rows = [
+                        ev for ev in field.get("evidence") or []
+                        if isinstance(ev, Mapping)
+                    ]
+                    if not _support_rows(rows):
+                        targets.append(("field", field.get("value"), _historical_rows(rows)))
 
                 for level, value, historical in targets:
                     signature = hashlib.sha1(
-                        json.dumps(value, ensure_ascii=False, sort_keys=True, default=str).encode("utf-8")
+                        json.dumps(
+                            value,
+                            ensure_ascii=False,
+                            sort_keys=True,
+                            default=str,
+                        ).encode("utf-8")
                     ).hexdigest()[:12]
-                    gap_id = f"{section}:{norm(row.get('name'))}:{field_id}:h:{signature}"
+                    gap_id = (
+                        f"{section}:{norm(row.get('name'))}:{field_id}:"
+                        f"{policy['gap_kind']}:{signature}"
+                    )
                     if gap_id in existing:
                         continue
                     existing.add(gap_id)
+
                     history = state_gaps.get(gap_id) or {}
                     priority = 1 if column.get("decision_required") else 2
+                    has_historical = bool(historical)
+                    is_derived = policy["gap_kind"] == "derivation-support"
+
                     gaps.append({
                         "id": gap_id,
                         "section": section,
@@ -165,11 +264,29 @@ def _append_historical_revalidation_gaps(
                         "country_context": _scope(row),
                         "research_state": "Por investigar",
                         "priority": priority,
-                        "reason": "procedencia histórica pendiente de revalidación con fuente abierta actual",
-                        "gap_kind": "historical-revalidation",
+                        "reason": (
+                            "conclusión interna preservada; requiere derivación trazable "
+                            "desde inputs sustentados"
+                            if is_derived else
+                            "hecho externo preservado sin soporte A1 Westcon ni fuente pública actual"
+                        ),
+                        "gap_kind": policy["gap_kind"],
+                        "claim_class": policy["claim_class"],
+                        "research_mode": policy["research_mode"],
+                        "support_requirement": (
+                            "TRACEABLE_DERIVATION_FROM_SUPPORTED_INPUTS"
+                            if is_derived else
+                            "WESTCON_DOCUMENT_OR_CURRENT_PUBLIC"
+                        ),
                         "target_level": level,
                         "target_values": _target_values(value),
-                        "revalidation_seeds": _revalidation_seeds(historical),
+                        "preserve_value": True,
+                        "historical_lineage_present": has_historical,
+                        "revalidation_seeds": (
+                            [] if is_derived else _revalidation_seeds(historical)
+                        ),
+                        "derivation_rule": policy["rule"],
+                        "dependency_fields": policy["dependency_fields"],
                         "attempts_completed": int(history.get("attempts") or 0),
                         "accepted_evidences": int(history.get("accepted") or 0),
                         "consecutive_no_yield": int(history.get("consecutive_no_yield") or 0),
@@ -178,18 +295,29 @@ def _append_historical_revalidation_gaps(
                         "last_attempt_at": history.get("last_attempt_at"),
                         "last_error": history.get("last_error") or "",
                         "close_policy": (
-                            "Una H solo se considera sustentada cuando una búsqueda actual encuentra "
-                            "una fuente abierta pública para el mismo dato."
+                            "Conservar el valor y cerrarlo solo cuando exista una derivación "
+                            "reproducible desde inputs con soporte final."
+                            if is_derived else
+                            "Conservar el valor y cerrarlo cuando el mismo dato quede sustentado "
+                            "por WESTCON_DOCUMENT o una fuente pública actual."
                         ),
-                        "strategy_profile": "historical-open-source-revalidation",
+                        "strategy_profile": (
+                            "traceable-derived-support"
+                            if is_derived else
+                            "evidence-support-public-verification"
+                        ),
                         "retry_policy": "persistent-backoff-with-circuit-breaker",
                     })
                     states["Por investigar"] += 1
                     missing[(section, field_id)] += 1
                     critical[section] += int(priority == 1)
-                    added += 1
-    return added
+                    historical_added += int(has_historical)
+                    if is_derived:
+                        derivation_added += 1
+                    else:
+                        evidence_added += 1
 
+    return evidence_added, derivation_added, historical_added
 
 def _scope(row: Mapping[str, Any]) -> str:
     value = (((row.get("fields") or {}).get("scope") or {}).get("value"))
@@ -258,7 +386,7 @@ def build_gaps(
                 }
                 gaps.append(gap)
 
-    historical_revalidation_gaps = _append_historical_revalidation_gaps(
+    evidence_support_gaps, derivation_support_gaps, historical_revalidation_gaps = _append_support_gaps(
         public, gaps, missing, critical, states, state_gaps
     )
     gaps.sort(key=lambda item: (item["priority"], item["section"], norm(item["entity"]), item["field"]))
@@ -282,6 +410,10 @@ def build_gaps(
         ),
         "total_gaps": len(gaps),
         "historical_revalidation_gaps": historical_revalidation_gaps,
+        "evidence_support_gaps": evidence_support_gaps,
+        "derivation_support_gaps": derivation_support_gaps,
+        "support_model": "DIRECT_OR_TRACEABLE_DERIVATION",
+        "support_rule": "WESTCON_DOCUMENT_OR_CURRENT_PUBLIC",
         "critical_gaps": sum(critical.values()),
         "high_priority_gaps": sum(critical.values()),
         "by_section": by_section,
