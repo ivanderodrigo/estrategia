@@ -185,8 +185,7 @@ class Fetcher:
                     chunks.append(chunk)
                 body = b"".join(chunks)
                 digest = hashlib.sha256(body).hexdigest()
-                encoding = response.encoding or "utf-8"
-                raw = body.decode(encoding, errors="replace")
+                raw = _decode_http_body(body, response)
                 document = parse_document(raw, response.url, digest)
                 self.cache[key] = {
                     "ok": True,
@@ -244,39 +243,221 @@ def _revalidation_source_seeds(target: dict[str, Any]) -> list[SourceSeed]:
     return output
 
 
-def _catalog_source_seeds(data: dict[str, Any], section: str, fields: list[str], limit: int = 14) -> list[SourceSeed]:
+def _dimension_matches(section: str, dims: list[str]) -> bool:
+    if not dims:
+        return True
+    wanted = {canonical(value) for value in dims if value}
+    aliases = {
+        "clients_public": {"clients public", "clients", "public clients", "procurement"},
+        "clients_private": {"clients private", "clients", "private clients"},
+        "manufacturers": {"manufacturers", "vendors"},
+        "distributors": {"distributors", "distribution"},
+        "integrators": {"integrators", "system integrators", "partners"},
+        "trends": {"trends", "market", "analyst"},
+        "architectures": {"architectures", "technology", "analyst"},
+    }
+    return bool(wanted & aliases.get(section, {canonical(section)}))
+
+
+
+def _host_entity_owned(url: str, entity: str) -> bool:
+    # Safe hostname/entity matching:
+    # - short names (SIA/IBM/EY) need exact hostname-label token match;
+    # - long anchors may occur inside compound labels;
+    # - joined multi-token entity names such as 'Grupo ICA' -> 'grupoica'
+    #   are accepted only when the joined token is at least 5 characters.
+    hostname = (urlparse(url).hostname or "").casefold()
+    labels = [
+        canonical(label)
+        for label in hostname.split(".")
+        if label and label.casefold() != "www"
+    ]
+    label_words = {
+        word
+        for label in labels
+        for word in label.split()
+        if word
+    }
+
+    anchors = _entity_anchor_tokens(entity)
+    for anchor in anchors[:4]:
+        if anchor in label_words:
+            return True
+        if len(anchor) >= 4 and any(anchor in label for label in labels):
+            return True
+
+    entity_tokens = [
+        token
+        for token in canonical(entity).split()
+        if token
+    ]
+    joined = "".join(entity_tokens)
+    if len(entity_tokens) >= 2 and len(joined) >= 5:
+        if any(joined == label or joined in label for label in labels):
+            return True
+
+    return False
+def _seed_binding(
+    url: str,
+    entity: str,
+    *,
+    source_type: str = "",
+    source_name: str = "",
+) -> str:
+    path = canonical(urlparse(url).path)
+
+    if _host_entity_owned(url, entity):
+        return "entity-owned"
+
+    blob = canonical(f"{source_type} {source_name} {path}")
+    relationship_hints = {
+        "partner", "partners", "alliance", "alliances", "locator",
+        "directory", "reseller", "resellers", "distributor", "distributors",
+        "integrator", "integrators", "system integrator", "msp", "mssp",
+        "service provider", "award", "awards", "customer case", "case study",
+        "customer success", "strategic agreement",
+    }
+    if any(hint in blob for hint in relationship_hints):
+        return "relationship-source"
+
+    if "revalidated" in canonical(source_type):
+        return "relationship-source"
+
+    return "discovery-only"
+
+
+def _filter_entity_seeds(
+    seeds: list[SourceSeed],
+    entity: str,
+    section: str,
+) -> list[SourceSeed]:
+    if section in {"trends", "architectures"}:
+        return seeds
+
+    output = []
+    for seed in seeds:
+        binding = _seed_binding(
+            seed.url,
+            entity,
+            source_type=seed.source_type,
+            source_name=seed.source_name,
+        )
+        if binding in {"entity-owned", "relationship-source"}:
+            output.append(seed)
+    return output
+
+
+def _catalog_source_seeds(
+    data: dict[str, Any],
+    section: str,
+    fields: list[str],
+    entity: str,
+    limit: int = 14,
+) -> list[SourceSeed]:
     wanted = relevant_families(fields)
     output = []
+
     for raw in data.get("source_catalog") or []:
         if not isinstance(raw, dict):
             continue
+
         url = str(raw.get("url") or "").strip()
         if not url.startswith(("http://", "https://")):
             continue
+
         dims = raw.get("dimensions") or []
         if isinstance(dims, str):
             dims = [dims]
+
         name = str(raw.get("name") or "")
         cls = str(raw.get("class") or raw.get("source_type") or "")
         blob = f"{name} {cls} {url}".casefold()
         analyst = any(token in blob for token in ANALYST_SOURCE_NAMES)
         family = "analyst" if analyst else family_from_url(url, "official")
-        if family not in wanted and not (section in {"trends", "architectures"} and analyst):
+
+        if family not in wanted and not (
+            section in {"trends", "architectures"} and analyst
+        ):
             continue
-        if dims and section not in dims and not analyst:
+        if not _dimension_matches(section, list(dims)) and not analyst:
             continue
-        official = "official" in cls.casefold()
+
+        binding = _seed_binding(
+            url,
+            entity,
+            source_type=cls,
+            source_name=name,
+        )
+
+        if (
+            section not in {"trends", "architectures"}
+            and binding == "discovery-only"
+        ):
+            continue
+
+        official = "official" in cls.casefold() or "vendor-" in cls.casefold()
         output.append(SourceSeed(
             url=url,
             family=family,
             official=official,
             source_grade="B" if analyst else ("A" if official else "B"),
-            source_type="analyst-open-source" if analyst else ("official-domain" if official else "public-web"),
+            source_type=cls or ("analyst-open-source" if analyst else "public-web"),
             source_name=name or "Fuente pública",
         ))
+
         if len(output) >= limit:
             break
+
     return output
+
+
+def _decode_http_body(body: bytes, response: Any) -> str:
+    if body.startswith(b"\xef\xbb\xbf"):
+        return body.decode("utf-8-sig", errors="strict")
+    if body.startswith((b"\xff\xfe", b"\xfe\xff")):
+        return body.decode("utf-16", errors="strict")
+
+    headers = getattr(response, "headers", {}) or {}
+    content_type = str(headers.get("Content-Type") or "")
+    match = re.search(
+        r"charset\s*=\s*[\"']?([^;\s\"']+)",
+        content_type,
+        flags=re.I,
+    )
+    explicit = match.group(1).strip() if match else ""
+
+    tried = set()
+
+    def attempt(encoding: str):
+        key = str(encoding or "").strip().casefold()
+        if not key or key in tried:
+            return None
+        tried.add(key)
+        try:
+            return body.decode(encoding, errors="strict")
+        except (UnicodeDecodeError, LookupError):
+            return None
+
+    if explicit:
+        decoded = attempt(explicit)
+        if decoded is not None:
+            return decoded
+
+    decoded = attempt("utf-8")
+    if decoded is not None:
+        return decoded
+
+    response_encoding = str(getattr(response, "encoding", "") or "")
+    decoded = attempt(response_encoding)
+    if decoded is not None:
+        return decoded
+
+    for fallback in ("cp1252", "latin-1"):
+        decoded = attempt(fallback)
+        if decoded is not None:
+            return decoded
+
+    return body.decode("utf-8", errors="replace")
 
 
 def _target_match(value: Any, text: str) -> bool:
@@ -289,8 +470,312 @@ def _target_match(value: Any, text: str) -> bool:
     return wanted in hay
 
 
-def _exact_historical_candidate(document: Document, wanted: list[Any], official: bool) -> Candidate | None:
-    matched = [value for value in wanted if _target_match(value, document.text)]
+def _entity_anchor_tokens(entity: str) -> list[str]:
+    value = canonical(entity)
+    if not value:
+        return []
+    stop = {
+        "sociedad", "servicios", "service", "services", "empresa",
+        "grupo", "group", "corporation", "corporacion", "general",
+        "direccion", "direcao", "consejeria", "ministerio",
+        "ayuntamiento", "municipio", "fundacion", "instituto", "agencia",
+        "entidade", "entidad", "publica", "publico", "public", "sa", "sl",
+        "spa", "ltd", "limited", "inc", "gmbh", "epe", "ip",
+    }
+    tokens = [
+        token for token in re.findall(r"[a-z0-9]+", value)
+        if token not in stop and (len(token) >= 4 or len(value) <= 4)
+    ]
+    return sorted(set(tokens), key=lambda x: (-len(x), x))
+
+
+def _term_positions(term: str, text: str) -> list[int]:
+    if not term:
+        return []
+    if len(term) <= 4:
+        pattern = rf"(?<![a-z0-9]){re.escape(term)}(?![a-z0-9])"
+    else:
+        pattern = re.escape(term)
+    return [m.start() for m in re.finditer(pattern, text)]
+
+
+def _semantic_window(text: str, left: int, right: int, radius: int = 260) -> str:
+    lo = max(0, min(left, right) - radius)
+    hi = min(len(text), max(left, right) + radius)
+    return text[lo:hi]
+
+
+def _near_taxonomy_heading(
+    body: str,
+    target_positions: list[int],
+    headings: tuple[str, ...],
+    *,
+    before: int = 360,
+    after: int = 100,
+) -> bool:
+    for pos in target_positions:
+        lo = max(0, pos - before)
+        hi = min(len(body), pos + after)
+        window = body[lo:hi]
+        if any(heading in window for heading in headings):
+            return True
+    return False
+
+
+def _field_context_ok(
+    field_id: str,
+    window: str,
+    *,
+    entity_owned: bool,
+) -> bool:
+    field = str(field_id or "").casefold()
+
+    if field in {"hiring_signals", "job_profiles", "job_vendors"}:
+        cues = (
+            "job", "jobs", "career", "careers", "vacan", "position",
+            "role", "hiring", "empleo", "empleos", "puesto", "puestos",
+            "oferta", "ofertas", "talento", "contrat", "recruit",
+        )
+        return entity_owned or any(cue in window for cue in cues)
+
+    if field in {"capabilities", "services"}:
+        cues = (
+            "we offer", "we provide", "we deliver",
+            "our services", "our solutions", "our capabilities",
+            "offers", "provides", "delivers",
+            "ofrecemos", "ofrece", "proporciona", "prestamos",
+            "nuestros servicios", "nuestras soluciones",
+            "servicios", "solutions", "capabilities",
+            "managed services", "consulting services",
+        )
+        return any(cue in window for cue in cues)
+
+    if field == "specializations":
+        cues = (
+            "specialist", "specialized", "specialised", "specialization",
+            "specialisation", "expertise", "certified", "certification",
+            "especialista", "especializado", "especializada",
+            "especializacion", "especialización", "experiencia",
+            "competencia", "acreditacion", "acreditación",
+        )
+        return any(cue in window for cue in cues)
+
+    if field == "verticals":
+        cues = (
+            "industries", "industry", "sectors", "sector",
+            "sectores", "industrias", "markets", "mercados",
+            "verticals", "verticales",
+        )
+        return any(cue in window for cue in cues)
+
+    if field in {"competitors", "competitor_vendor_overlap"}:
+        cues = (
+            "competitor", "competitors", "competition", "alternative",
+            "alternatives", "versus", " vs ", "compare", "comparison",
+            "competidor", "competidores", "alternativa", "comparativa",
+        )
+        return any(cue in window for cue in cues)
+
+    if field in {"technology_signals", "westcon_area"}:
+        cues = (
+            "technology", "cloud", "security", "network", "data center",
+            "datacenter", "observability", "identity", "automation", "ai",
+            "tecnologia", "tecnología", "nube", "seguridad", "red",
+            "infraestructura", "licitacion", "licitación", "contrato",
+            "project", "proyecto", "deploy", "desplieg",
+        )
+        return entity_owned or any(cue in window for cue in cues)
+
+    if field == "public_cases":
+        cues = (
+            "case study", "customer story", "customer success",
+            "caso de exito", "caso de éxito", "cliente",
+            "project", "proyecto", "deploy", "desplieg",
+        )
+        return any(cue in window for cue in cues)
+
+    cues = (
+        " is ", " are ", " has ", " have ", " offers ", " provides ",
+        " partner ", " uses ", " deploys ", " selected ", " announced ",
+        " es ", " son ", " ofrece ", " dispone ", " utiliza ",
+        " despliega ", " seleccion", " anuncio", " anunció",
+    )
+    padded = f" {window} "
+    return any(cue in padded for cue in cues)
+
+
+def _explicit_self_identification(
+    entity: str,
+    target: str,
+    body: str,
+) -> bool:
+    entity_key = canonical(entity)
+    anchors = _entity_anchor_tokens(entity)
+    subject_terms = [entity_key] + anchors[:3]
+
+    target_variants = {target}
+    if target == "service provider":
+        target_variants.update({
+            "managed service provider",
+            "managed security service provider",
+            "solution provider",
+            "mssp",
+            "msp",
+        })
+
+    copulas = (
+        " is a ", " is an ", " are a ", " are an ",
+        " es un ", " es una ", " somos ", " se define como ",
+        " acts as ", " operates as ", " recognized as ", " recognised as ",
+    )
+
+    for subject in subject_terms:
+        if not subject:
+            continue
+        for spos in _term_positions(subject, body):
+            lo = max(0, spos - 120)
+            hi = min(len(body), spos + 500)
+            window = f" {body[lo:hi]} "
+            if not any(copula in window for copula in copulas):
+                continue
+            if any(_target_match(variant, window) for variant in target_variants):
+                return True
+
+    return False
+
+
+def _subject_value_match(
+    entity: str,
+    value: Any,
+    document: Document,
+    field_id: str = "",
+) -> bool:
+    target = canonical(value)
+    if not target or not _target_match(value, document.text):
+        return False
+
+    title = canonical(document.title or "")
+    body = canonical(document.text or "")
+    entity_key = canonical(entity)
+    anchors = _entity_anchor_tokens(entity)
+    entity_owned = _host_entity_owned(document.url, entity)
+
+    target_positions = _term_positions(target, body)
+    if not target_positions:
+        return False
+
+    field = str(field_id or "").casefold()
+
+    if field in {"hiring_signals", "job_profiles", "job_vendors"}:
+        if entity_owned and entity_key and entity_key in title:
+            return True
+
+    if entity_owned:
+        if field in {"services", "capabilities"}:
+            headings = (
+                "services", "servicios", "solutions", "soluciones",
+                "capabilities", "capacidades", "portfolio", "oferta",
+            )
+            if _near_taxonomy_heading(body, target_positions, headings):
+                if target != "service provider":
+                    return True
+
+        if field == "verticals":
+            headings = (
+                "industries", "sectors", "sectores", "industrias",
+                "markets", "mercados", "verticals", "verticales",
+            )
+            if _near_taxonomy_heading(body, target_positions, headings):
+                return True
+
+        if field == "specializations":
+            headings = (
+                "specializations", "specialisations", "especializaciones",
+                "expertise", "certifications", "certificaciones",
+                "competencias",
+            )
+            if _near_taxonomy_heading(body, target_positions, headings):
+                return True
+
+    anchor_terms = []
+    if entity_key:
+        anchor_terms.append(entity_key)
+    anchor_terms.extend(anchors[:4])
+
+    anchor_positions = []
+    for anchor in anchor_terms:
+        anchor_positions.extend(_term_positions(anchor, body))
+
+    identity_targets = {
+        "service provider", "managed service provider", "msp", "mssp",
+        "reseller", "distributor", "integrator", "system integrator",
+    }
+    if field in {"capabilities", "services", "specializations"} and target in identity_targets:
+        if _explicit_self_identification(entity, target, body):
+            return True
+        if entity_owned:
+            first_person = (
+                "we are a service provider", "we are an msp", "we are an mssp",
+                "somos un proveedor de servicios",
+                "somos proveedor de servicios",
+            )
+            if any(phrase in body for phrase in first_person):
+                return True
+        return False
+
+    for a in anchor_positions:
+        for t in target_positions:
+            if abs(a - t) > 700:
+                continue
+            window = _semantic_window(body, a, t, radius=220)
+            if _field_context_ok(
+                field_id,
+                window,
+                entity_owned=entity_owned,
+            ):
+                return True
+
+    if entity_owned and target in title and entity_key in title:
+        if _field_context_ok(
+            field_id,
+            title,
+            entity_owned=True,
+        ):
+            return True
+
+    if not field_id:
+        for a in anchor_positions:
+            for t in target_positions:
+                if abs(a - t) <= 700:
+                    window = _semantic_window(body, a, t, radius=220)
+                    if any(cue in window for cue in (
+                        "partner", "integrator", "integrates", "integra",
+                        "delivers", "provides", "offers", "uses",
+                        "authorized", "authorised",
+                    )):
+                        return True
+        if entity_owned and entity_key in title:
+            return True
+
+    return False
+
+
+def _exact_historical_candidate(
+    document: Document,
+    wanted: list[Any],
+    official: bool,
+    entity: str,
+    field_id: str,
+) -> Candidate | None:
+    matched = [
+        value for value in wanted
+        if _subject_value_match(
+            entity,
+            value,
+            document,
+            field_id=field_id,
+        )
+    ]
     if not matched:
         return None
     labels = [str(value) for value in matched]
@@ -303,40 +788,71 @@ def _exact_historical_candidate(document: Document, wanted: list[Any], official:
     )
 
 
-def _focus_candidates(candidates: dict[str, Candidate], target: dict[str, Any], document: Document, official: bool) -> dict[str, Candidate]:
+def _focus_candidates(
+    candidates: dict[str, Candidate],
+    target: dict[str, Any],
+    document: Document,
+    official: bool,
+) -> dict[str, Candidate]:
     target_map = target.get("target_values") or {}
     if not isinstance(target_map, dict) or not target_map:
         return candidates
-    historical = bool(
+
+    strict_claim_support = bool(
         {"historical-revalidation", "evidence-support"}
         & set(target.get("gap_kinds") or [])
     )
     output = dict(candidates)
+
     for field_id, wanted in target_map.items():
         if not wanted:
             continue
-        exact = _exact_historical_candidate(document, list(wanted), official)
-        if exact is not None:
-            output[field_id] = exact
+
+        if strict_claim_support:
+            exact = _exact_historical_candidate(
+                document,
+                list(wanted),
+                official,
+                str(target.get("entity") or ""),
+                field_id,
+            )
+            if exact is not None:
+                output[field_id] = exact
+            else:
+                output.pop(field_id, None)
             continue
+
         candidate = output.get(field_id)
         if candidate is None:
             continue
         wanted_keys = {canonical(value) for value in wanted}
-        filtered = tuple(value for value in candidate.values if canonical(value) in wanted_keys)
+        filtered = tuple(
+            value for value in candidate.values
+            if canonical(value) in wanted_keys
+        )
         if filtered:
             output[field_id] = Candidate(
-                filtered, candidate.claim_type, candidate.confidence,
-                candidate.snippet, candidate.matched_terms,
+                filtered,
+                candidate.claim_type,
+                candidate.confidence,
+                candidate.snippet,
+                candidate.matched_terms,
             )
-        elif historical:
-            output.pop(field_id, None)
+
     return output
 
 
 def _evidence(seed: SourceSeed, document: Document, field_id: str, candidate: Candidate, entity: str, scope: str) -> list[dict[str, Any]]:
     return [{
-        "source": seed.source_name or entity,
+        "source": urlparse(document.url).netloc.removeprefix("www.") or seed.source_name or entity,
+        "source_catalog_name": seed.source_name or "",
+        "researched_entity": entity,
+        "source_binding": _seed_binding(
+            document.url,
+            entity,
+            source_type=seed.source_type,
+            source_name=seed.source_name,
+        ),
         "title": document.title or f"Página pública · {seed.family}",
         "url": document.url,
         "date": _now_date(),
@@ -427,7 +943,13 @@ def _checkpoint(
     atomic_write_json("data/current/research_ledger.json", ledger)
 
 
-def run(profile: str = "daily", max_runtime: int = 600, max_tasks: int | None = None) -> dict[str, Any]:
+def run(
+    profile: str = "daily",
+    max_runtime: int = 600,
+    max_tasks: int | None = None,
+    *,
+    include_gap_kinds: set[str] | None = None,
+) -> dict[str, Any]:
     profile_config = RESEARCH_PROFILES[profile]
     started = time.monotonic()
     deadline = started + max(20, int(max_runtime))
@@ -440,7 +962,14 @@ def run(profile: str = "daily", max_runtime: int = 600, max_tasks: int | None = 
     discovery = discovery_raw.get("candidates") if isinstance(discovery_raw, dict) else {}
     if not isinstance(discovery, dict):
         discovery = {}
-    targets = plan(gaps, learning, profile, state=research_state, max_tasks=max_tasks)
+    targets = plan(
+        gaps,
+        learning,
+        profile,
+        state=research_state,
+        max_tasks=max_tasks,
+        include_gap_kinds=include_gap_kinds,
+    )
     index = _row_index(data)
     vendor_names = _vendor_names(data)
     active_gap_ids = {str(gap.get("id")) for gap in gaps.get("gaps") or [] if gap.get("id")}
@@ -472,7 +1001,7 @@ def run(profile: str = "daily", max_runtime: int = 600, max_tasks: int | None = 
     next_heartbeat = started + 25
 
     # Structured public procurement is both higher precision and a genuine growth path.
-    if deadline - time.monotonic() > profile_config.request_timeout_s + 3:
+    if include_gap_kinds is None and deadline - time.monotonic() > profile_config.request_timeout_s + 3:
         try:
             notices = fetch_notices(
                 fetcher.session,
@@ -487,6 +1016,8 @@ def run(profile: str = "daily", max_runtime: int = 600, max_tasks: int | None = 
             stats["structured_ted_status"] = f"degraded:{type(exc).__name__}"
 
     for target in targets:
+        if "derivation-support" in set(target.get("gap_kinds") or []):
+            continue
         if time.monotonic() >= deadline - 4:
             stats["stop_reason"] = "deadline"
             break
@@ -496,7 +1027,12 @@ def run(profile: str = "daily", max_runtime: int = 600, max_tasks: int | None = 
         seeds = _merge_source_seeds(
             _revalidation_source_seeds(target),
             seeds_for(row, target["fields"]),
-            _catalog_source_seeds(data, target["section"], target["fields"]),
+            _catalog_source_seeds(data, target["section"], target["fields"], target["entity"]),
+        )
+        seeds = _filter_entity_seeds(
+            seeds,
+            target["entity"],
+            target["section"],
         )
         needs_official_discovery = (
             target["section"] not in {"trends", "architectures"}
@@ -601,7 +1137,8 @@ def run(profile: str = "daily", max_runtime: int = 600, max_tasks: int | None = 
                     family_stats["accepted_evidence"] += 1
 
             fetcher.state.record_domain(document.url, ok=True, relevant=relevant, accepted=accepted_here, status=status)
-            _record_external_candidates(discovery, document, entity=target["entity"], family=seed.family)
+            if include_gap_kinds is None:
+                _record_external_candidates(discovery, document, entity=target["entity"], family=seed.family)
             stats["results"].append({
                 "section": target["section"],
                 "entity": target["entity"],

@@ -157,8 +157,7 @@ def extract_candidates(
     elif section in {"clients_private", "clients_public"}:
         if family in {"careers", "technology", "services", "official", "procurement", "news"}:
             add("technology_signals", capabilities, cap_terms, "signal", 0.57)
-            add("westcon_fit", vendors, vendor_terms, "interpretation", 0.70 if official else 0.62)
-        if section == "clients_private" and family == "careers":
+            # r6: westcon_fit is internal/derived; public pages support\n            # inputs, not the fit conclusion itself.\n        if section == "clients_private" and family == "careers":
             add("hiring_signals", jobs, job_terms, "signal", 0.57)
     elif section == "manufacturers" and family in {"services", "official", "technology"}:
         add("capabilities", capabilities, cap_terms)

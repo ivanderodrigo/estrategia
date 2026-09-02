@@ -17,6 +17,8 @@ SECTION_WEIGHT = {
     "architectures": 1.00,
 }
 
+WEB_EXCLUDED_GAP_KINDS = {"derivation-support"}
+
 FIELD_WEIGHT = {
     "vendor_relations": 1.45,
     "westcon_overlap": 1.40,
@@ -83,6 +85,7 @@ def plan(
     *,
     state: Any = None,
     max_tasks: int | None = None,
+    include_gap_kinds: set[str] | None = None,
 ) -> list[dict[str, Any]]:
     profile_config = RESEARCH_PROFILES[profile]
     limit = max_tasks or profile_config.entity_limit
@@ -94,6 +97,11 @@ def plan(
         field = str(gap.get("field") or "")
         gap_id = str(gap.get("id") or "")
         if not section or not entity or not field or not gap_id:
+            continue
+        kind = str(gap.get("gap_kind") or "standard")
+        if kind in WEB_EXCLUDED_GAP_KINDS:
+            continue
+        if include_gap_kinds is not None and kind not in include_gap_kinds:
             continue
         if state is not None and not state.gap_due(gap_id, profile=profile):
             continue
@@ -116,7 +124,6 @@ def plan(
         if gap_id not in item["gap_ids"]:
             item["gap_ids"].append(gap_id)
         item["families"].add(family)
-        kind = str(gap.get("gap_kind") or "standard")
         item["gap_kinds"].add(kind)
         wanted = item["target_values"].setdefault(field, [])
         for value in gap.get("target_values") or []:

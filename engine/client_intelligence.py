@@ -360,5 +360,4 @@ def derive_client_intelligence(data: dict[str, Any]) -> dict[str, Any]:
                     fit_rows, confidence=0.66, claim_type="interpretation", assertion_status="DERIVADO",
                     qualifier="Mapa funcional; no equivale a implantación, adjudicación ni relación comercial.",
                 )
-                fields["westcon_fit"] = merge_field(fields.get("westcon_fit"), derived)
-    return data
+                # r6 safety freeze: preserve pre-existing westcon_fit exactly.\n                # New fit requires a dedicated traceable derivation engine.\n                if isinstance(existing_fit, Mapping) and existing_fit:\n                    fields["westcon_fit"] = dict(existing_fit)\n    return data
