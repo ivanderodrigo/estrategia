@@ -1,23 +1,23 @@
 {
   "version": "4.0.6",
-  "sources": 1897,
-  "domains_unique": 391,
-  "official_evidences": 2173,
-  "traceable_fields": 5167,
+  "sources": 1950,
+  "domains_unique": 395,
+  "official_evidences": 2228,
+  "traceable_fields": 5540,
   "provenance": {
     "policy": "typed-provenance-non-destructive",
     "types": {
       "WESTCON_DOCUMENT": 1640,
       "HISTORICAL_RECOVERED": 1024,
-      "LEGACY_UNRESOLVED": 3218,
+      "LEGACY_UNRESOLVED": 3223,
       "ARCHIVE_RECOVERED": 340,
-      "PUBLIC_PRIMARY": 19303,
-      "PUBLIC_SECONDARY": 4975,
+      "PUBLIC_PRIMARY": 19834,
+      "PUBLIC_SECONDARY": 4978,
       "REPORT_CORROBORATION": 74,
       "UNKNOWN": 132
     },
     "legacy_unresolved_fields": 0,
-    "legacy_unresolved_items": 3107,
+    "legacy_unresolved_items": 3112,
     "documents_are_valid_primary_sources": true,
     "legacy_unresolved_remains_research_gap": true
   },
@@ -37,30 +37,30 @@
     "model_revision": "r3",
     "policy": "Hechos externos: A1 Westcon o fuente pública actual. Conclusiones internas/derivadas: inputs sustentados + regla trazable. Todo valor se conserva mientras se resuelve su soporte.",
     "support_rule": "WESTCON_DOCUMENT_OR_CURRENT_PUBLIC_OR_TRACEABLE_DERIVATION",
-    "targets_total": 13254,
-    "targets_direct_supported": 10089,
+    "targets_total": 13709,
+    "targets_direct_supported": 10529,
     "targets_supported_westcon_only": 181,
-    "targets_supported_public_only": 9908,
+    "targets_supported_public_only": 10348,
     "targets_supported_westcon_and_public": 0,
     "claim_classes": {
-      "EXTERNAL_FACT": 11468,
+      "EXTERNAL_FACT": 11890,
       "DERIVED_FACT": 1410,
-      "INTERNAL_CLASSIFICATION": 376
+      "INTERNAL_CLASSIFICATION": 409
     },
-    "support_pending_occurrences": 3165,
-    "support_pending_unique_claims": 3031,
+    "support_pending_occurrences": 3180,
+    "support_pending_unique_claims": 3046,
     "duplicate_pending_occurrences": 134,
-    "external_search_required_occurrences": 1666,
-    "external_search_required_unique": 1666,
-    "derived_support_required_occurrences": 1499,
-    "derived_support_required_unique": 1365,
-    "historical_total": 3924,
+    "external_search_required_occurrences": 1671,
+    "external_search_required_unique": 1671,
+    "derived_support_required_occurrences": 1509,
+    "derived_support_required_unique": 1375,
+    "historical_total": 3929,
     "historical_supported_westcon": 694,
     "historical_supported_public": 16,
     "historical_supported_westcon_and_public": 0,
-    "historical_search_required": 3214,
-    "targets_supported": 10089,
-    "targets_search_required": 3165,
+    "historical_search_required": 3219,
+    "targets_supported": 10529,
+    "targets_search_required": 3180,
     "unsupported_targets": [
       {
         "section": "manufacturers",
@@ -7865,20 +7865,6 @@
         "entity": "OVERTI",
         "field": "capabilities",
         "level": "item",
-        "value": "Integración",
-        "claim_class": "EXTERNAL_FACT",
-        "research_mode": "public-source-verification",
-        "derivation_rule": "direct support required",
-        "dependency_fields": [],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "integrators",
-        "entity": "OVERTI",
-        "field": "capabilities",
-        "level": "item",
         "value": "IT Service Management",
         "claim_class": "EXTERNAL_FACT",
         "research_mode": "public-source-verification",
@@ -11880,6 +11866,52 @@
       },
       {
         "section": "clients_public",
+        "entity": "Aena. Consejo de Administración",
+        "field": "technology_signals",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "EXTERNAL_FACT",
+        "research_mode": "public-source-verification",
+        "derivation_rule": "direct support required",
+        "dependency_fields": [],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "evidence-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Aena. Consejo de Administración",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Aena. Consejo de Administración",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Autoridade Tributária e Aduaneira",
         "field": "westcon_fit",
         "level": "item",
@@ -14053,6 +14085,38 @@
       {
         "section": "clients_public",
         "entity": "Aena. Presidencia. Consejero Delegado",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Aena. Presidencia. Consejero Delegado",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Aena. Presidencia. Consejero Delegado",
         "field": "westcon_fit",
         "level": "item",
         "value": "Certes Networks",
@@ -14208,6 +14272,20 @@
         ],
         "support_basis": "SEARCH_REQUIRED",
         "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Aena. Presidencia. Consejero Delegado",
+        "field": "technology_signals",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "EXTERNAL_FACT",
+        "research_mode": "public-source-verification",
+        "derivation_rule": "direct support required",
+        "dependency_fields": [],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "evidence-support",
         "preserve_value": true
       },
       {
@@ -16740,6 +16818,52 @@
       },
       {
         "section": "clients_public",
+        "entity": "Centre de Telecomunicacions i Tecnologies de la Informació de la Generalitat de Catalunya",
+        "field": "technology_signals",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "EXTERNAL_FACT",
+        "research_mode": "public-source-verification",
+        "derivation_rule": "direct support required",
+        "dependency_fields": [],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "evidence-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Centre de Telecomunicacions i Tecnologies de la Informació de la Generalitat de Catalunya",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Centre de Telecomunicacions i Tecnologies de la Informació de la Generalitat de Catalunya",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Autoridad Portuaria de Sevilla",
         "field": "westcon_fit",
         "level": "item",
@@ -18523,6 +18647,112 @@
         "claim_class": "DERIVED_FACT",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "client signals/needs ∩ supported Westcon portfolio/capabilities",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "technology_signals",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "EXTERNAL_FACT",
+        "research_mode": "public-source-verification",
+        "derivation_rule": "direct support required",
+        "dependency_fields": [],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "evidence-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "technology_signals",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "EXTERNAL_FACT",
+        "research_mode": "public-source-verification",
+        "derivation_rule": "direct support required",
+        "dependency_fields": [],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "evidence-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "technology_signals",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "EXTERNAL_FACT",
+        "research_mode": "public-source-verification",
+        "derivation_rule": "direct support required",
+        "dependency_fields": [],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "evidence-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
         "dependency_fields": [
           "technology_signals"
         ],
@@ -60888,20 +61118,6 @@
         "entity": "OVERTI",
         "field": "capabilities",
         "level": "item",
-        "value": "Integración",
-        "claim_class": "EXTERNAL_FACT",
-        "research_mode": "public-source-verification",
-        "derivation_rule": "direct support required",
-        "dependency_fields": [],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "integrators",
-        "entity": "OVERTI",
-        "field": "capabilities",
-        "level": "item",
         "value": "IT Service Management",
         "claim_class": "EXTERNAL_FACT",
         "research_mode": "public-source-verification",
@@ -64743,6 +64959,52 @@
       },
       {
         "section": "clients_public",
+        "entity": "Aena. Consejo de Administración",
+        "field": "technology_signals",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "EXTERNAL_FACT",
+        "research_mode": "public-source-verification",
+        "derivation_rule": "direct support required",
+        "dependency_fields": [],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "evidence-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Aena. Consejo de Administración",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Aena. Consejo de Administración",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Autoridade Tributária e Aduaneira",
         "field": "westcon_fit",
         "level": "item",
@@ -66852,6 +67114,38 @@
       {
         "section": "clients_public",
         "entity": "Aena. Presidencia. Consejero Delegado",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Aena. Presidencia. Consejero Delegado",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Aena. Presidencia. Consejero Delegado",
         "field": "westcon_fit",
         "level": "item",
         "value": "Certes Networks",
@@ -67007,6 +67301,20 @@
         ],
         "support_basis": "SEARCH_REQUIRED",
         "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Aena. Presidencia. Consejero Delegado",
+        "field": "technology_signals",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "EXTERNAL_FACT",
+        "research_mode": "public-source-verification",
+        "derivation_rule": "direct support required",
+        "dependency_fields": [],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "evidence-support",
         "preserve_value": true
       },
       {
@@ -69011,6 +69319,52 @@
       },
       {
         "section": "clients_public",
+        "entity": "Centre de Telecomunicacions i Tecnologies de la Informació de la Generalitat de Catalunya",
+        "field": "technology_signals",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "EXTERNAL_FACT",
+        "research_mode": "public-source-verification",
+        "derivation_rule": "direct support required",
+        "dependency_fields": [],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "evidence-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Centre de Telecomunicacions i Tecnologies de la Informació de la Generalitat de Catalunya",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Centre de Telecomunicacions i Tecnologies de la Informació de la Generalitat de Catalunya",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Autoridad Portuaria de Sevilla",
         "field": "westcon_fit",
         "level": "item",
@@ -70490,6 +70844,112 @@
         "claim_class": "DERIVED_FACT",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "client signals/needs ∩ supported Westcon portfolio/capabilities",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "technology_signals",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "EXTERNAL_FACT",
+        "research_mode": "public-source-verification",
+        "derivation_rule": "direct support required",
+        "dependency_fields": [],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "evidence-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "technology_signals",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "EXTERNAL_FACT",
+        "research_mode": "public-source-verification",
+        "derivation_rule": "direct support required",
+        "dependency_fields": [],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "evidence-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "technology_signals",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "EXTERNAL_FACT",
+        "research_mode": "public-source-verification",
+        "derivation_rule": "direct support required",
+        "dependency_fields": [],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "evidence-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
         "dependency_fields": [
           "technology_signals"
         ],

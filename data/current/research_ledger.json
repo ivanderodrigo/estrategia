@@ -1,716 +1,38 @@
 {
   "version": "4.0.6",
   "profile": "daily",
-  "started_at": "2026-09-02T07:39:16.439782+00:00",
-  "planned_entities": 25,
-  "fetch_attempts": 93,
-  "fetch_successes": 89,
-  "pages_relevant": 45,
-  "candidate_evidences": 12,
-  "accepted_evidences": 8,
-  "fields_enriched": 8,
-  "values_added": 0,
-  "entities_added": 0,
-  "cache_hits": 21,
-  "circuit_skips": 32,
+  "started_at": "2026-09-02T09:39:22.167899+00:00",
+  "planned_entities": 120,
+  "fetch_attempts": 209,
+  "fetch_successes": 195,
+  "pages_relevant": 140,
+  "candidate_evidences": 24,
+  "accepted_evidences": 23,
+  "fields_enriched": 23,
+  "values_added": 10,
+  "entities_added": 39,
+  "cache_hits": 87,
+  "circuit_skips": 382,
   "unsafe_url_rejections": 0,
-  "official_sites_discovered": 9,
-  "stop_reason": "complete",
-  "elapsed_s": 98.13,
-  "finished_at": "2026-09-02T07:40:53.841841+00:00",
+  "official_sites_discovered": 7,
+  "stop_reason": "deadline",
+  "structured_notices": 80,
+  "elapsed_s": 638.92,
+  "finished_at": "2026-09-02T09:50:00.684870+00:00",
   "results": [
     {
-      "section": "clients_private",
-      "entity": "Banco Santander",
-      "url": "https://www.santander.com/es/home",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/home_es.html",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/ai",
-      "family": "technology",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.caixabank.com/ai",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.caixabank.com/careers",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.caixabank.com/carreiras",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/ciberseguridad",
-      "family": "technology",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.caixabank.com/ciberseguridad",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/cloud",
-      "family": "technology",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.caixabank.com/cloud",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/connectivity",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/cybersecurity",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/data",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/digital",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/es/actualidad/noticias/caixabank-invierte-1-368-millones-en-tecnologia-y-desarrollo-durante-2024-un-8-3-mas-que-el-ano-anterior",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/ict",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/innovacion",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/innovation",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/inovacao",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/it",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/networking",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/redes",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/security",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/seguranca",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/seguridad",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/services",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/servicios",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/servicos",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/sitemap.xml",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/soluciones",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/solucoes",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/solutions",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/technology",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/tecnologia",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/transformacao-digital",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/transformacion-digital",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "EDP",
-      "url": "https://edp.com/en/careers/inside-edp/diversity-and-inclusion",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "EDP",
-      "url": "https://edp.com/en/careers/inside-edp/diversity-and-inclusion/shementors",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "EDP",
-      "url": "https://edp.com/en/careers/inside-edp/meet-our-teams",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "EDP",
-      "url": "https://edp.com/en/careers/job-opportunities/start-your-career/student-ambassadors",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "EDP",
-      "url": "https://edp.com/en/careers/rebels-for-change",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Galp Energia",
-      "url": "https://www.galp.com/es/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Iberdrola",
-      "url": "https://www.iberdrola.com/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Jerónimo Martins",
-      "url": "https://www.jeronimomartins.com/pt/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "NOS",
-      "url": "https://www.nos.pt/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Repsol",
-      "url": "https://www.repsol.com/es/index.cshtml",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Sonae",
-      "url": "https://sonae.pt/en/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 247
-    },
-    {
-      "section": "clients_private",
-      "entity": "Telefónica",
-      "url": "https://www.telefonica.com/es/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Inditex",
-      "url": "https://www.inditex.com/itxcomweb/es/es/home",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Inditex",
-      "url": "https://www.inditex.com/itxcomweb/es/es/talento/vida-en-inditex",
-      "family": "careers",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Inditex",
-      "url": "https://www.inditex.com/itxcomweb/es/es/talento/equipos",
-      "family": "careers",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Inditex",
-      "url": "https://www.inditex.com/itxcomweb/es/en/talent/life-at-inditex",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Inditex",
-      "url": "https://www.inditex.com/itxcomweb/es/en/talent/teams",
-      "family": "careers",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/careers",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/carreiras",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/talento/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/emprego",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/jobs",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/robots.txt",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/sitemap.xml",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/talent",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/talento/unete-a-nuestro-equipo/",
-      "family": "careers",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
       "section": "integrators",
-      "entity": "Grupo ICA",
-      "url": "https://efficientip.com/industry-alliances/",
-      "family": "cases",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Grupo ICA",
-      "url": "https://efficientip.com/industry/telco-service-providers/",
-      "family": "cases",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Grupo ICA",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "family": "cases",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Grupo ICA",
-      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Grupo ICA",
-      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Indra",
-      "url": "https://consent.google.com/ml?continue=https://news.google.com/&gl=ES&hl=es&cm=2&pc=n&src=1&escs=ATu9isGXZUi7wkCCdtSdKhNJ9lljzLSXz0jXS0Z9jwr0VLPdc0a7fz01Mjm6ebD_hDmEQ4HkbD-ksXRvhWUt2z91XiZjgNnGiTIw",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Indra",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "family": "cases",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Indra",
+      "entity": "OVERTI",
       "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
       "family": "official",
       "cached": true,
       "relevant": true,
-      "accepted": 1,
+      "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "Indra",
+      "entity": "OVERTI",
       "url": "https://www.ingecom.net/alianzas-tecnologicas/",
       "family": "partners",
       "cached": true,
@@ -720,9 +42,47 @@
     },
     {
       "section": "integrators",
-      "entity": "Indra",
+      "entity": "OVERTI",
       "url": "https://jobs.atos.net/",
       "family": "official",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Econocom Spain",
+      "url": "https://www.econocom.es/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Econocom Spain",
+      "url": "https://www.econocom.es/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.econocom.es/cloud",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Econocom Spain",
+      "url": "https://www.econocom.es/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.econocom.es/cybersecurity",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Econocom Spain",
+      "url": "https://www.econocom.es/robots.txt",
+      "family": "official",
       "cached": false,
       "relevant": false,
       "accepted": 0,
@@ -730,8 +90,75 @@
     },
     {
       "section": "integrators",
-      "entity": "Seyrcom",
-      "url": "https://www.ruckusnetworks.com:443/partners/",
+      "entity": "Econocom Spain",
+      "url": "https://www.econocom.es/services",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.econocom.es/services",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Econocom Spain",
+      "url": "https://www.econocom.es/infraestructura",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Econocom Spain",
+      "url": "https://www.econocom.es/servicios-y-proyectos-infraestructura",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Econocom Spain",
+      "url": "https://www.econocom.es/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.econocom.es/servicos",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Econocom Spain",
+      "url": "https://www.econocom.es/sitemap.xml",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "SoftwareOne",
+      "url": "https://www.firemon.com/partners/find-a-partner",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "SoftwareOne",
+      "url": "https://www.softwareone.com/es-es/softwareone-cloud-services/aws",
+      "family": "services",
+      "status": 0,
+      "error": "RetryError: HTTPSConnectionPool(host='www.softwareone.com', port=443): Max retries exceeded with url: /es-es/softwareone-cloud-services/aws (Caused by ResponseError('too many 429 error responses'))",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "SoftwareOne",
+      "url": "https://www.uipath.com/partners",
       "family": "partners",
       "cached": false,
       "relevant": true,
@@ -740,18 +167,8 @@
     },
     {
       "section": "integrators",
-      "entity": "Seyrcom",
-      "url": "https://www.ruckusnetworks.com/resources/case-studies/mahou-san-miguel/",
-      "family": "cases",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Seyrcom",
-      "url": "https://es.ruckusnetworks.com/alliance-partners/?filter1Category=&filter2Category=&filter3Category=&filter4Category=&desiredPage=2",
+      "entity": "SoftwareOne",
+      "url": "https://www.uipath.com/partners/become-a-partner",
       "family": "partners",
       "cached": false,
       "relevant": true,
@@ -760,119 +177,1002 @@
     },
     {
       "section": "integrators",
-      "entity": "Seyrcom",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "family": "cases",
-      "cached": true,
+      "entity": "SoftwareOne",
+      "url": "https://www.uipath.com/partners/become-a-partner/business",
+      "family": "partners",
+      "cached": false,
       "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "Seyrcom",
+      "entity": "SoftwareOne",
+      "url": "https://www.uipath.com/partners/become-a-partner/technology",
+      "family": "partners",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "url": "https://vasscompany.com/en/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "url": "https://vasscompany.com/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://vasscompany.com/cloud",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "url": "https://vasscompany.com/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://vasscompany.com/cybersecurity",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "url": "https://vasscompany.com/robots.txt",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "url": "https://vasscompany.com/services",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://vasscompany.com/services",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "url": "https://vasscompany.com/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://vasscompany.com/servicios",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "url": "https://vasscompany.com/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://vasscompany.com/servicos",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "url": "https://vasscompany.com/sitemap.xml",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "url": "https://vasscompany.com/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://vasscompany.com/soluciones",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "url": "https://vasscompany.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://vasscompany.com/solucoes",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "url": "https://vasscompany.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://vasscompany.com/solutions",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "url": "https://vasscompany.com/spain/es/what-we-do/solutions/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
       "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
       "family": "official",
       "cached": true,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "SIA",
-      "url": "https://es.vectra.ai/about/news/vectra-ai-honors-partner-community-with-2022-partner-of-the-year-awards",
-      "family": "partners",
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/",
+      "family": "official",
       "cached": false,
       "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "SIA",
-      "url": "https://es.vectra.ai/partners",
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/alianzas",
       "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://aseminfor.es/alianzas",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://aseminfor.es/careers",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://aseminfor.es/carreiras",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://aseminfor.es/empleo",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://aseminfor.es/emprego",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://www.channelpartner.es/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.channelpartner.es/partners",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
+      "family": "official",
       "cached": false,
       "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "SIA",
-      "url": "https://www.vectra.ai/partners",
-      "family": "partners",
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://www.itchannel.pt/directorio",
+      "family": "official",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.itchannel.pt/directorio",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://www.itchannel.pt/directorio/distribuidores/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-espana-por-facturacion/",
+      "family": "official",
       "cached": false,
       "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "SIA",
-      "url": "https://www.zscaler.com/partners/technology",
-      "family": "partners",
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://www.arrow.com/globalecs/es/",
+      "family": "official",
       "cached": false,
       "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "SIA",
-      "url": "https://www.fortinet.com/tw/partners/partnerships/alliance-partners?p_function=Operational%20Technology",
-      "family": "partners",
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://www.eetgroup.com/pt-pt/eet/as-nossas-areas-de-negocio",
+      "family": "official",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.eetgroup.com/pt-pt/eet/as-nossas-areas-de-negocio",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://www.esprinet.com/es/oferta/",
+      "family": "official",
       "cached": false,
       "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "Abenet Soluciones",
-      "url": "https://www.ruckusnetworks.com:443/partners/",
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.channelpartner.es/partners",
       "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.channelpartner.es/partners",
+      "accepted": 0
     },
     {
-      "section": "integrators",
-      "entity": "Abenet Soluciones",
-      "url": "https://www.ruckusnetworks.com/resources/case-studies/andreu-world/",
-      "family": "cases",
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/",
+      "family": "official",
       "cached": false,
       "relevant": true,
-      "accepted": 2,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Abenet Soluciones",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "family": "cases",
-      "cached": true,
-      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "Abenet Soluciones",
-      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mhermida.com/alianzas",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mhermida.com/careers",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mhermida.com/carreiras",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mhermida.com/empleo",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mhermida.com/emprego",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
       "family": "official",
       "cached": true,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "Abenet Soluciones",
-      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.mhermida.com/assets/documentos/Dossier_corporativo_MHERMIDA_SOLUCIONES_2026.pdf",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.itchannel.pt/directorio",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.itchannel.pt/directorio/distribuidores/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-espana-por-facturacion/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.arrow.com/globalecs/es/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.eetgroup.com/pt-pt/eet/as-nossas-areas-de-negocio",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "url": "https://www.esprinet.com/es/oferta/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/jobs",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/alianzas",
       "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://empleo.visiotechsecurity.com/alianzas",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://empleo.visiotechsecurity.com/careers",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://empleo.visiotechsecurity.com/carreiras",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://empleo.visiotechsecurity.com/empleo",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://empleo.visiotechsecurity.com/emprego",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/jobs/comercial-interno-a-grandes-cuentas-y-proyectos?displayed_form=true",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://empleo.visiotechsecurity.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.itchannel.pt/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/es/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.visiotechsecurity.com/es/alianzas",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.visiotechsecurity.com/es/careers",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.visiotechsecurity.com/es/carreiras",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.visiotechsecurity.com/es/empleo",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.visiotechsecurity.com/es/emprego",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/es/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.visiotechsecurity.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.itchannel.pt/directorio/distribuidores/30",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.itchannel.pt/directorio",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.itchannel.pt/directorio/distribuidores/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-espana-por-facturacion/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "url": "https://www.arrow.com/globalecs/es/",
+      "family": "official",
       "cached": true,
       "relevant": true,
       "accepted": 0,
@@ -880,7 +1180,36 @@
     },
     {
       "section": "integrators",
-      "entity": "IBM",
+      "entity": "HPE",
+      "url": "https://www.audiocodes.com/partners",
+      "family": "partners",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "HPE",
+      "url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/global",
+      "family": "partners",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "HPE",
+      "url": "https://www.channelpartner.es/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.channelpartner.es/partners",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "HPE",
       "url": "https://www.checkpoint.com/es/partners/global-systems-integrators/",
       "family": "partners",
       "cached": false,
@@ -890,18 +1219,8 @@
     },
     {
       "section": "integrators",
-      "entity": "IBM",
-      "url": "https://www.nokia.com/partners/si-consulting/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "IBM",
-      "url": "https://www.uipath.com/partners/service-partners/23",
+      "entity": "HPE",
+      "url": "https://www.checkpoint.com/partners/channel/",
       "family": "partners",
       "cached": false,
       "relevant": true,
@@ -910,113 +1229,17 @@
     },
     {
       "section": "integrators",
-      "entity": "IBM",
-      "url": "https://consent.google.com/ml?continue=https://news.google.com/rss/articles/CBMi0gFBVV95cUxQcFg1WndXeFphbmhLNjhFOUdoZFJGNHpJRmhkR1MwREQ1Y3RuangwLVczb2xEM3l4YjF4aFZHOHZqa0RBSEhjX2daZ0UzVGxzMlRydml3M2xsUDJXcW4yRy1xczZiT0FmZTdQNldQNlhtUVZVRzlsRU8xeEtLbjBaaGgwTUduUm1ES1RRUjRWaF93UWU0MzdhNmpMVUNXWDlJY3h3LU16RkJXN3lNMmZCNWZzeE1rTElIMFlHSE0waEMxNzdrVWFld2QxRlE2S2RmTVE?oc%3D5&gl=ES&hl=es&cm=2&pc=n&src=1&escs=ATu9isH7CFLUa5BUT92kXteP_6inTMSo0n-zjiIjiOvrWzNzke-ea_zRrGFIqQgkbV8EJ5pgpIxIaHWa-DKTDJ1qzWV7rhGkxsKB",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "IBM",
-      "url": "https://consent.google.com/ml?continue=https://news.google.com/rss/articles/CBMijwJBVV95cUxNZElMZXR6MnRjQldiSFg3TmFTQjNjcFVmMm9wT2ZnMXlRb3VrbjVlMXE4OFRfdUljNFRjUXROLUpPQ08td0ZVSllGbkY2LTVLY1hsQXgzaVRWT2wxYV90X0VDb251NVlGS29GYXFoNnNlOGpxUVVSQjVhUzJ5QjZlaHVsd3ppM0ZjS195YklLem5zRHdRWmhrTVNRbERBcmtMcWozd0t6djBlNVhZeHpHQi1qWDhzamtHa3FMOW9GQXJZeERqcWN2VUpQWjNDNnVmV1dZaC1obnMwa2s1eWQ4bGR5eGV4MWljS25uVnY4b1I4cVpWb0UwU1h3SDRwVG1uMnZIQUxyWWdKR29DUVRN?oc%3D5&gl=ES&hl=es&cm=2&pc=n&src=1&escs=ATu9isEJI6aeCe0WTNvk0pGnfF8aZHi3JfXmvIlAAxNeHiXlNCkcy6rlmM48MIjJTBB9qvxJVowGOdZLstocUjeT_Bo0ybNxjIs3",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/global/en.html",
+      "entity": "HPE",
+      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
       "family": "official",
-      "cached": false,
+      "cached": true,
       "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.inetum.com/case-studies",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.inetum.com/casos",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/global/en.html",
-      "family": "cases",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/global/en.html",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.inetum.com/customers",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.inetum.com/cybersecurity",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/es/es/services.html",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 3,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/global/en.html",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Infosys",
+      "entity": "Computacenter",
       "url": "https://www.channelpartner.es/partners",
       "family": "partners",
       "status": 0,
@@ -1025,8 +1248,8 @@
     },
     {
       "section": "integrators",
-      "entity": "Infosys",
-      "url": "https://www.nokia.com/customer-success/google-cloud-partners-with-nokia-to-accelerate-ai-value-creation-and-unlock-new-business/",
+      "entity": "Computacenter",
+      "url": "https://www.firemon.com/partners",
       "family": "partners",
       "cached": false,
       "relevant": true,
@@ -1035,172 +1258,9 @@
     },
     {
       "section": "integrators",
-      "entity": "Infosys",
-      "url": "https://www.nokia.com/customer-success/nokia-and-cinia-partner-to-secure-finlands-critical-infrastructure-with-advanced-ddos-protection/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Infosys",
-      "url": "https://www.nokia.com/customer-success/vtt-sandvik-and-nokia-partner-for-safe-autonomous-underground-mining-supported-by-5g-and-edge-intelligence/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Infosys",
-      "url": "https://www.nokia.com/partners/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Infosys",
-      "url": "https://www.nokia.com/partners/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/",
+      "entity": "Computacenter",
+      "url": "https://www.firemon.com/partners/find-a-partner",
       "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/alianzas",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.integrity360.com/alianzas",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.integrity360.com/cloud",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.integrity360.com/cybersecurity",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/es/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/es/partners",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.integrity360.com/fabricantes",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/line-card",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.integrity360.com/line-card",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/managed-cyber-services",
-      "family": "services",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.integrity360.com/marcas",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.integrity360.com/parceiros",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/partners",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Ayesa",
-      "url": "https://partners.amazonaws.com/partners/001E000001KaIpOIAV/Ayesa",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Ayesa",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "family": "cases",
       "cached": true,
       "relevant": true,
       "accepted": 0,
@@ -1208,57 +1268,157 @@
     },
     {
       "section": "integrators",
-      "entity": "Ayesa",
+      "entity": "Computacenter",
+      "url": "https://www.zscaler.com/blogs/partner/emea-executive-partner-summit-2026-recap-partnering-impact",
+      "family": "partners",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Computacenter",
+      "url": "https://www.zscaler.com/partners",
+      "family": "partners",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Computacenter",
       "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
       "family": "official",
       "cached": true,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "Ayesa",
-      "url": "https://jobs.atos.net/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Ayesa",
-      "url": "https://aws.amazon.com/es/blogs/apn/",
+      "entity": "Orange Cyberdefense",
+      "url": "https://jobs.orangecyberdefense.com/",
       "family": "official",
       "cached": false,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "BiMind",
-      "url": "https://bimind.es/it-security/ivanti/",
-      "family": "technology",
+      "entity": "Orange Cyberdefense",
+      "url": "https://jobs.orangecyberdefense.com/alianzas",
+      "family": "partners",
       "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://bimind.es/it-security/ivanti/",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://jobs.orangecyberdefense.com/alianzas",
       "accepted": 0
     },
     {
       "section": "integrators",
-      "entity": "BiMind",
-      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
+      "entity": "Orange Cyberdefense",
+      "url": "https://jobs.orangecyberdefense.com/connect",
       "family": "official",
-      "cached": true,
-      "relevant": false,
+      "cached": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "BiMind",
-      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
+      "entity": "Orange Cyberdefense",
+      "url": "https://jobs.orangecyberdefense.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://jobs.orangecyberdefense.com/fabricantes",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://jobs.orangecyberdefense.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://jobs.orangecyberdefense.com/line-card",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://jobs.orangecyberdefense.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://jobs.orangecyberdefense.com/marcas",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://jobs.orangecyberdefense.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://jobs.orangecyberdefense.com/parceiros",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://jobs.orangecyberdefense.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://jobs.orangecyberdefense.com/partners",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://jobs.orangecyberdefense.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://jobs.orangecyberdefense.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://jobs.orangecyberdefense.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://jobs.orangecyberdefense.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.channelpartner.es/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.channelpartner.es/partners",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.firemon.com/partners",
       "family": "partners",
       "cached": true,
       "relevant": true,
@@ -1267,65 +1427,280 @@
     },
     {
       "section": "integrators",
-      "entity": "BiMind",
-      "url": "https://jobs.atos.net/",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.orangecyberdefense.com/",
       "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "BiMind",
-      "url": "https://www.devoteam.com/es/expert-view/que-hace-devoteam-servicios-partners-capacidades-ia/",
-      "family": "partners",
       "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.devoteam.com/es/expert-view/que-hace-devoteam-servicios-partners-capacidades-ia/",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.orangecyberdefense.com/",
       "accepted": 0
     },
     {
       "section": "integrators",
-      "entity": "BiMind",
-      "url": "https://aws.amazon.com/es/blogs/apn/",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.orangecyberdefense.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.orangecyberdefense.com/es/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.orangecyberdefense.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.orangecyberdefense.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.orangecyberdefense.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.orangecyberdefense.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.orangecyberdefense.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.orangecyberdefense.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.orangecyberdefense.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.orangecyberdefense.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.orangecyberdefense.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.zscaler.com/partners",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
       "family": "official",
       "cached": true,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "BiMind",
-      "url": "https://www.channelpartner.es/",
+      "entity": "Warpcom",
+      "url": "https://warpcom.com/",
       "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "ESED",
-      "url": "https://www.attackiq.com/wp-content/uploads/2022/06/esed-case-study.pdf",
-      "family": "cases",
       "status": 200,
-      "error": "unsupported-content-type:application/pdf",
+      "error": "response-too-large",
       "accepted": 0
     },
     {
       "section": "integrators",
-      "entity": "ESED",
+      "entity": "Warpcom",
+      "url": "https://warpcom.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Warpcom",
+      "url": "https://warpcom.com/es/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Warpcom",
+      "url": "https://warpcom.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Warpcom",
+      "url": "https://warpcom.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Warpcom",
+      "url": "https://warpcom.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Warpcom",
+      "url": "https://warpcom.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Warpcom",
+      "url": "https://warpcom.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Warpcom",
+      "url": "https://warpcom.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Warpcom",
+      "url": "https://warpcom.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Warpcom",
+      "url": "https://warpcom.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Warpcom",
+      "url": "https://warpcom.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Warpcom",
+      "url": "https://warpcom.com/es/socios/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Warpcom",
+      "url": "https://warpcom.com/es/casos-practicos/",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Warpcom",
+      "url": "https://warpcom.com/oportunidades-em-aberto/",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Warpcom",
       "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
       "family": "official",
       "cached": true,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "ESED",
+      "entity": "Warpcom",
       "url": "https://www.ingecom.net/alianzas-tecnologicas/",
       "family": "partners",
       "cached": true,
@@ -1335,17 +1710,17 @@
     },
     {
       "section": "integrators",
-      "entity": "ESED",
+      "entity": "Warpcom",
       "url": "https://jobs.atos.net/",
       "family": "official",
       "cached": true,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "ESED",
+      "entity": "Warpcom",
       "url": "https://www.devoteam.com/es/expert-view/que-hace-devoteam-servicios-partners-capacidades-ia/",
       "family": "partners",
       "status": 0,
@@ -1354,72 +1729,1134 @@
     },
     {
       "section": "integrators",
-      "entity": "ESED",
+      "entity": "Warpcom",
       "url": "https://aws.amazon.com/es/blogs/apn/",
       "family": "official",
       "cached": true,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "ESED",
+      "entity": "Warpcom",
       "url": "https://www.channelpartner.es/",
       "family": "official",
       "cached": true,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "Glintt Global",
-      "url": "https://consent.google.com/ml?continue=https://news.google.com/rss/articles/CBMiwgFBVV95cUxNSzlYRExyZ3ZpRHhLd1dkcjNQWmdVMkllUXhlNm5URUNSWE1EaHNSN1pKbW1sR2NpcVdxV1JxWFpKZzVmVDZ2cERWS01kUlZoRmVSMjh4NGNTbEtkS2Nvcno1Y0F1dVoybEs3cnVRczVLRnQ2dWhFajZjVWZkNkxoSEFXYU9DcmdjNk1FaDgxSl9EZ19iU2tUY1B6Z1dyRG9KR0dvdW5qQTd6bTJCVEk1cFZTQ2JwWWw4b05CS1lmWDV0QdIBvAFBVV95cUxPdjNheGdFS1ZjYURRYXhvc3ZGU0NuOEt6X0E3czRSblAxMXRDc2FrZWYtbmFQNmlsN3BHRFRNRVlqY3dlaE9kUTNlNWRfb3dZVGZzZEJMc0ZLb1l0cGpSQTVJdjJnTWZQQTg0VjI1RFo4ZThrMVhEVWJwaDJzZG9oNGcwX3dnYWR6RGlpLXVBOElnUDRMczZDTEFkTERNblV6MzcwR1pRaF9aakUxUWpHOXp2UUVXRHNpNVdMQQ?oc%3D5&gl=ES&hl=es&cm=2&pc=n&src=1&escs=ATu9isGO68QDw3WTveckR3fbn_veFMW8FeE_-yAUP-SJFnc49OzdZoBHo7ZQbFawHItXuQDvtDeMA9_sUnj14ZjPY_4al4v_hW0U",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "entity": "Arbentia",
+      "url": "https://news.microsoft.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://news.microsoft.com/partners",
+      "accepted": 0
     },
     {
       "section": "integrators",
-      "entity": "Glintt Global",
-      "url": "https://www.glinttglobal.com/pt/glintt-global-fmul-campus-torres-vedras/",
+      "entity": "Arbentia",
+      "url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Arbentia",
+      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
       "family": "official",
-      "cached": false,
-      "relevant": false,
+      "cached": true,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "Glintt Global",
-      "url": "https://www.glinttglobal.com/pt/laboratorio-de-simulacao-farmacia/",
+      "entity": "Arbentia",
+      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Arbentia",
+      "url": "https://jobs.atos.net/",
       "family": "official",
-      "cached": false,
-      "relevant": false,
+      "cached": true,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "Glintt Global",
-      "url": "https://www.glinttglobal.com/pt/lucro-glintt-global-cresce-53-para-77-milhoes/",
+      "entity": "Arbentia",
+      "url": "https://www.devoteam.com/es/expert-view/que-hace-devoteam-servicios-partners-capacidades-ia/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Arbentia",
+      "url": "https://aws.amazon.com/es/blogs/apn/",
       "family": "official",
-      "cached": false,
-      "relevant": false,
+      "cached": true,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "Glintt Global",
-      "url": "https://partners.amazonaws.com/partners/0010L00001sghliQAA/GLINTT%20GLOBAL",
+      "entity": "Arbentia",
+      "url": "https://www.channelpartner.es/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Axazure",
+      "url": "https://news.microsoft.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Axazure",
+      "url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Axazure",
+      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Axazure",
+      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Axazure",
+      "url": "https://jobs.atos.net/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Axazure",
+      "url": "https://www.devoteam.com/es/expert-view/que-hace-devoteam-servicios-partners-capacidades-ia/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Axazure",
+      "url": "https://aws.amazon.com/es/blogs/apn/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Axazure",
+      "url": "https://www.channelpartner.es/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Crayon Spain",
+      "url": "https://www.crayon.com/globalassets/spain/aws/ola/crayon_ebook_optimice_coste_licencia.pdf",
+      "family": "technology",
+      "status": 200,
+      "error": "unsupported-content-type:application/pdf",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Crayon Spain",
+      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Crayon Spain",
+      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Crayon Spain",
+      "url": "https://jobs.atos.net/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Crayon Spain",
+      "url": "https://www.devoteam.com/es/expert-view/que-hace-devoteam-servicios-partners-capacidades-ia/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Crayon Spain",
+      "url": "https://aws.amazon.com/es/blogs/apn/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Crayon Spain",
+      "url": "https://www.channelpartner.es/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "url": "https://investor.extremenetworks.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://investor.extremenetworks.com/partners/",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "url": "https://www.extremenetworks.com/about-extreme-networks/company/newsroom",
       "family": "partners",
       "cached": false,
       "relevant": true,
       "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "url": "https://jobs.atos.net/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "url": "https://www.devoteam.com/es/expert-view/que-hace-devoteam-servicios-partners-capacidades-ia/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "url": "https://aws.amazon.com/es/blogs/apn/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "ENCAMINA",
+      "url": "https://news.microsoft.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "ENCAMINA",
+      "url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "ENCAMINA",
+      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "ENCAMINA",
+      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "ENCAMINA",
+      "url": "https://jobs.atos.net/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "ENCAMINA",
+      "url": "https://www.devoteam.com/es/expert-view/que-hace-devoteam-servicios-partners-capacidades-ia/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "ENCAMINA",
+      "url": "https://aws.amazon.com/es/blogs/apn/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "ENCAMINA",
+      "url": "https://www.channelpartner.es/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Infoavan",
+      "url": "https://news.microsoft.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Infoavan",
+      "url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Infoavan",
+      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Infoavan",
+      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Infoavan",
+      "url": "https://jobs.atos.net/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Infoavan",
+      "url": "https://www.devoteam.com/es/expert-view/que-hace-devoteam-servicios-partners-capacidades-ia/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Infoavan",
+      "url": "https://aws.amazon.com/es/blogs/apn/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Infoavan",
+      "url": "https://www.channelpartner.es/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Insight",
+      "url": "https://news.microsoft.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Insight",
+      "url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Insight",
+      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Insight",
+      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Insight",
+      "url": "https://jobs.atos.net/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Insight",
+      "url": "https://www.devoteam.com/es/expert-view/que-hace-devoteam-servicios-partners-capacidades-ia/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Insight",
+      "url": "https://aws.amazon.com/es/blogs/apn/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Insight",
+      "url": "https://www.channelpartner.es/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "url": "https://news.microsoft.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "url": "https://jobs.atos.net/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "url": "https://www.devoteam.com/es/expert-view/que-hace-devoteam-servicios-partners-capacidades-ia/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "url": "https://aws.amazon.com/es/blogs/apn/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "url": "https://www.channelpartner.es/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Tokiota",
+      "url": "https://news.microsoft.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Tokiota",
+      "url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Tokiota",
+      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Tokiota",
+      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Tokiota",
+      "url": "https://jobs.atos.net/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Tokiota",
+      "url": "https://www.devoteam.com/es/expert-view/que-hace-devoteam-servicios-partners-capacidades-ia/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "integrators",
+      "entity": "Tokiota",
+      "url": "https://aws.amazon.com/es/blogs/apn/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Tokiota",
+      "url": "https://www.channelpartner.es/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Autoridade Nacional de Comunicações",
+      "url": "https://anacom.pt/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Autoridade Nacional de Comunicações",
+      "url": "https://www.anacom.pt/tarifarios/PaginaInicial.do?channel=graphic",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Banco de España",
+      "url": "https://www.metromadrid.es/es/linea/linea-2#estacion-206",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Dirección de Suma Gestión Tributaria. Diputación de Alicante",
+      "url": "https://ted.europa.eu/en/notice/-/detail/583069-2026",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
+      "url": "https://ted.europa.eu/en/notice/-/detail/583047-2026",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
+      "url": "https://ted.europa.eu/en/notice/-/detail/582384-2026",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
+      "url": "https://contrataciondelestado.es/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
+      "url": "https://contrataciondelestado.es/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
+      "url": "https://contrataciondelestado.es/wps/portal/plataforma/inicio/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zinYItLBydDB0NDIxDLQwczQIDnS1dDIwMLI31C7IdFQFQSibi/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Ferrocarrils de la Generalitat de Catalunya",
+      "url": "https://www.fgc.cat/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Secretaria-Geral do Ministério da Administração Interna",
+      "url": "https://ted.europa.eu/en/notice/-/detail/596073-2026",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "SERVICIO ANDALUZ DE SALUD. SERVICIOS CENTRALES",
+      "url": "https://ted.europa.eu/en/notice/-/detail/583355-2026",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "SERVICIO DE SALUD DEL PRINCIPADO DE ASTURIAS",
+      "url": "http://www.asturias.es/portal/site/astursalud/menuitem.461040ff6bd06c3bee65750268414ea0/?vgnextoid=b1ee15b3fb010110VgnVCM1000008614e40aRCRD",
+      "family": "official",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error:  for url: https://www.asturias.es:443/portal/site/astursalud/menuitem.461040ff6bd06c3bee65750268414ea0/?vgnextoid=b1ee15b3fb010110VgnVCM1000008614e40aRCRD",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "url": "https://ted.europa.eu/en/notice/-/detail/581447-2026",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "url": "https://ted.europa.eu/en/notice/-/detail/596271-2026",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "url": "https://ted.europa.eu/en/notice/-/detail/595417-2026",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "url": "https://ted.europa.eu/en/notice/-/detail/595191-2026",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "Aena. Consejo de Administración",
+      "url": "https://www.aena.es/es/corporativa/innovacion/estrategia.html",
+      "family": "technology",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Aena. Consejo de Administración",
+      "url": "https://www.aena.es/es/corporativa/sobre-aena/seguridad-de-la-informacion.html",
+      "family": "technology",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Aena. Consejo de Administración",
+      "url": "https://www.aena.es/es/corporativa/filiales-de-aena/sociedad-concesionaria-de-airm/regimen-juridico.html",
+      "family": "technology",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Aena. Consejo de Administración",
+      "url": "https://www.aena.es/es/corporativa/filiales-de-aena/sociedad-concesionaria-de-airm/objeto-y-funciones.html",
+      "family": "technology",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Aena. Consejo de Administración",
+      "url": "https://www.aena.es/es/corporativa/filiales-de-aena/sociedad-concesionaria-de-airm/consejo-de-administracion-y-director-general.html",
+      "family": "technology",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Aena. Presidencia. Consejero Delegado",
+      "url": "https://www.aena.es/es/corporativa/innovacion/estrategia.html",
+      "family": "technology",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Aena. Presidencia. Consejero Delegado",
+      "url": "https://www.aena.es/es/corporativa/sobre-aena/seguridad-de-la-informacion.html",
+      "family": "technology",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Aena. Presidencia. Consejero Delegado",
+      "url": "https://www.aena.es/es/corporativa/filiales-de-aena/sociedad-concesionaria-de-airm/regimen-juridico.html",
+      "family": "technology",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Aena. Presidencia. Consejero Delegado",
+      "url": "https://www.aena.es/es/corporativa/filiales-de-aena/sociedad-concesionaria-de-airm/objeto-y-funciones.html",
+      "family": "technology",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Aena. Presidencia. Consejero Delegado",
+      "url": "https://www.aena.es/es/corporativa/filiales-de-aena/sociedad-concesionaria-de-airm/consejo-de-administracion-y-director-general.html",
+      "family": "technology",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agencia para la Modernización Tecnológica de Galicia",
+      "url": "https://amtega.xunta.gal/gl",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agencia para la Modernización Tecnológica de Galicia",
+      "url": "https://amtega.xunta.gal/gl/listado-portais",
+      "family": "technology",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agencia para la Modernización Tecnológica de Galicia",
+      "url": "https://amtega.xunta.gal/gl/tematica/servizos-dixitais",
+      "family": "technology",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agencia para la Modernización Tecnológica de Galicia",
+      "url": "https://amtega.xunta.gal/gl/tematica/competencias-dixitais",
+      "family": "technology",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agencia para la Modernización Tecnológica de Galicia",
+      "url": "https://amtega.xunta.gal/gl/tematica/ciberseguridade",
+      "family": "technology",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agência para a Reforma Tecnológica do Estado, IP",
+      "url": "https://contrataciondelestado.es/",
+      "family": "official",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agência para a Reforma Tecnológica do Estado, IP",
+      "url": "https://contrataciondelestado.es/",
+      "family": "official",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agência para a Reforma Tecnológica do Estado, IP",
+      "url": "https://contrataciondelestado.es/wps/portal/plataforma/inicio/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zinYItLBydDB0NDIxDLQwczQIDnS1dDIwMLI31C7IdFQFQSibi/",
+      "family": "official",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agência para a Reforma Tecnológica do Estado, IP",
+      "url": "https://contrataciondelestado.es/wps/portal/plataforma/datos_abiertos/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLfxMLRydDB0N_M0tXQwCjd0sTcz8AgJCLMz1C7IdFQEVbuag/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Banco de Portugal",
+      "url": "https://www.bportugal.pt/publicacoes",
+      "family": "official",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.bportugal.pt/publicacoes",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Centre de Telecomunicacions i Tecnologies de la Informació de la Generalitat de Catalunya",
+      "url": "https://ctti.gencat.cat/ca/Inici",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Centre de Telecomunicacions i Tecnologies de la Informació de la Generalitat de Catalunya",
+      "url": "https://ctti.gencat.cat/ca/espai-etic",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Centre de Telecomunicacions i Tecnologies de la Informació de la Generalitat de Catalunya",
+      "url": "https://ctti.gencat.cat/ca/espai-etic/sistema-intern-d-alertes--sia-",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Centre de Telecomunicacions i Tecnologies de la Informació de la Generalitat de Catalunya",
+      "url": "https://ctti.gencat.cat/ca/espai-etic/governanca-etica",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Centre de Telecomunicacions i Tecnologies de la Informació de la Generalitat de Catalunya",
+      "url": "https://ctti.gencat.cat/ca/espai-etic/comite-detica",
+      "family": "technology",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consejería de Educación de la Junta de Castilla y León",
+      "url": "https://www.jcyl.es/web/jcyl/Portada/es/Plantilla100DirectorioPortada/1248366924958/0/1284181175622/DirectorioPadre",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
       "status": 200
     }
   ]

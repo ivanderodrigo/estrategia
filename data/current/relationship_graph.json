@@ -1,6 +1,6 @@
 {
   "version": "4.0.6",
-  "generated_at": "2026-09-02T07:41:11.092345+00:00",
+  "generated_at": "2026-09-02T09:50:08.377966+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -83,6 +83,14 @@
       "historical_names": []
     },
     {
+      "id": "clie_f7b1544320203309",
+      "canonical_name": "Agencia para la Modernización Tecnológica de Galicia",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "clie_05450f7f712291d5",
       "canonical_name": "Amadeus IT Group",
       "entity_type": "client",
@@ -95,6 +103,14 @@
       "canonical_name": "ArcelorMittal",
       "entity_type": "client",
       "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_3a16f6cefa2332a8",
+      "canonical_name": "Autoridade Nacional de Comunicações",
+      "entity_type": "client",
+      "country": "PT",
       "aliases": [],
       "historical_names": []
     },
@@ -221,6 +237,14 @@
     {
       "id": "clie_bc808763e52471c5",
       "canonical_name": "Centro de Documentación Judicial",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_cc3555d59b44e04b",
+      "canonical_name": "Consejería de Educación de la Junta de Castilla y León",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -6190,7 +6214,7 @@
       "id": "tech_70574f8129932ee1",
       "canonical_name": "Identity & Access",
       "entity_type": "technology",
-      "country": "ES",
+      "country": "PT",
       "aliases": [],
       "historical_names": []
     },
@@ -67225,6 +67249,187 @@
       ],
       "source": "TED · Tenders Electronic Daily",
       "date": "2026",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_e1b8ce32e45dccc6",
+      "entity_a_id": "clie_3a16f6cefa2332a8",
+      "entity_a": "Autoridade Nacional de Comunicações",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "anacom.pt",
+          "source_catalog_name": "Autoridade Nacional de Comunicações",
+          "researched_entity": "Autoridade Nacional de Comunicações",
+          "source_binding": "discovery-only",
+          "title": "ANACOM - Autoridade Nacional de Comunicações",
+          "url": "https://anacom.pt/",
+          "date": "2026-09-02",
+          "description": "…s Regime RED e CEM Segurança das comunicações Taxa Municipal de Direitos de Passagem (TMDP) Informação ao utilizador Serviços postais Serviços postais Acesso à atividade e registo Acesso a redes e infraestruturas Serviço universal Sistemas e modelos de custeio Regulamento Cross-Border Serviços digitais Serviços digitais Regulamento Conceitos Cronologia Autoridade…",
+          "scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-09-02",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "8091a11723904a72325ab07c3434fd2e68b9d897ad4ae6f2a55a646915ae0531",
+          "matched_terms": [
+            "redes",
+            "iam"
+          ],
+          "field": "technology_signals",
+          "revalidation": ""
+        }
+      ],
+      "source": "anacom.pt",
+      "date": "2026-09-02",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_64c8460f34194e58",
+      "entity_a_id": "clie_3a16f6cefa2332a8",
+      "entity_a": "Autoridade Nacional de Comunicações",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_70574f8129932ee1",
+      "entity_b": "Identity & Access",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "anacom.pt",
+          "source_catalog_name": "Autoridade Nacional de Comunicações",
+          "researched_entity": "Autoridade Nacional de Comunicações",
+          "source_binding": "discovery-only",
+          "title": "ANACOM - Autoridade Nacional de Comunicações",
+          "url": "https://anacom.pt/",
+          "date": "2026-09-02",
+          "description": "…s Regime RED e CEM Segurança das comunicações Taxa Municipal de Direitos de Passagem (TMDP) Informação ao utilizador Serviços postais Serviços postais Acesso à atividade e registo Acesso a redes e infraestruturas Serviço universal Sistemas e modelos de custeio Regulamento Cross-Border Serviços digitais Serviços digitais Regulamento Conceitos Cronologia Autoridade…",
+          "scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-09-02",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "8091a11723904a72325ab07c3434fd2e68b9d897ad4ae6f2a55a646915ae0531",
+          "matched_terms": [
+            "redes",
+            "iam"
+          ],
+          "field": "technology_signals",
+          "revalidation": ""
+        }
+      ],
+      "source": "anacom.pt",
+      "date": "2026-09-02",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_064c2fef16b2204b",
+      "entity_a_id": "clie_cc3555d59b44e04b",
+      "entity_a": "Consejería de Educación de la Junta de Castilla y León",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "jcyl.es",
+          "source_catalog_name": "Consejería de Educación de la Junta de Castilla y León",
+          "researched_entity": "Consejería de Educación de la Junta de Castilla y León",
+          "source_binding": "discovery-only",
+          "title": "Consejería de Educación | Junta de Castilla y León",
+          "url": "https://www.jcyl.es/web/jcyl/Portada/es/Plantilla100DirectorioPortada/1248366924958/0/1284181175622/DirectorioPadre",
+          "date": "2026-09-02",
+          "description": "…s Sede electrónica Contratación administrativa Boletín Oficial Suscripciones a noticias y boletines Atención al Ciudadano - 012 Oficina Virtual de Impuestos Autonómicos Televisión Directorio Guía de navegación Redes sociales Pie de página Guía de navegación Direcciones y teléfonos Atención al ciudadano Aviso Legal Protección de datos Política de cookies Accesibil…",
+          "scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-09-02",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "8dddfb3117724cbd2ebe8e177c6a530c80c23800db156cd2ae2381d94ec6be85",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "revalidation": ""
+        }
+      ],
+      "source": "jcyl.es",
+      "date": "2026-09-02",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_51ca85bd980d899c",
+      "entity_a_id": "clie_f7b1544320203309",
+      "entity_a": "Agencia para la Modernización Tecnológica de Galicia",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_000e793db70c5930",
+      "entity_b": "Cloud",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "amtega.xunta.gal",
+          "source_catalog_name": "Agencia para la Modernización Tecnológica de Galicia",
+          "researched_entity": "Agencia para la Modernización Tecnológica de Galicia",
+          "source_binding": "discovery-only",
+          "title": "Servizos dixitais | Amtega",
+          "url": "https://amtega.xunta.gal/gl/tematica/servizos-dixitais",
+          "date": "2026-09-02",
+          "description": "…o, capacitado e dotado de servizos dixitais para avanzar no desenvolvemento e aplicación, dende unha posición de vangarda, de tecnoloxías innovadoras, como a intelixencia artificial, o internet das cousas, o blockchain, os servizos na nube, os vehículos aéreos non tripulados ou a xestión intelixente do dato. O resultado será un territorio intelixente , dotado de…",
+          "scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-09-02",
+          "freshness_status": "current",
+          "method": "web-evidence:technology",
+          "content_digest": "20b13578621c38f536ad7af6a2ed7dbf7452f6fc574a192e018cc5708df6b3ce",
+          "matched_terms": [
+            "nube",
+            "ciberseguridad",
+            "redes",
+            "iam"
+          ],
+          "field": "technology_signals",
+          "revalidation": ""
+        }
+      ],
+      "source": "amtega.xunta.gal",
+      "date": "2026-09-02",
       "confidence": 0.48,
       "status": "SEÑAL",
       "validity": "needs-corroboration",
