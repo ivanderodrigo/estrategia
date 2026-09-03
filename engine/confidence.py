@@ -111,8 +111,8 @@ def profile(rows: Iterable[Mapping[str, Any]], claim_type: str = "fact") -> dict
     if contradictions:
         factors.append(f"Contradicciones detectadas: {contradictions}; reducen explícitamente la confianza.")
     if not weighted:
-        missing = "Vincular una fuente pública actual o documentación Westcon específica para este dato."
-    elif counts["westcon_document"] or counts["public_primary"]:
+        missing = "Vincular una fuente pública actual, específica y atribuible para este dato."
+    elif counts["public_primary"]:
         missing = "Revalidar cuando envejezca y resolver cualquier contradicción futura."
     else:
         missing = "Añadir una fuente primaria/oficial clara o corroboración independiente actual."

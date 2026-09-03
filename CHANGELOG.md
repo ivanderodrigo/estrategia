@@ -1,3 +1,21 @@
+
+## 4.2.1
+- Añade scoring contextual de oportunidades públicas sin cuotas artificiales.
+- Usa importe, estado, fecha/hito, necesidad, señales tecnológicas y actores identificados para priorizar gaps de contratación.
+- Enruta `clients_public` tecnológicos a fuentes de procurement (TED/PLACSP/BASE/portal oficial) antes que a páginas tecnológicas genéricas.
+- Evita fusionar expedientes distintos del mismo organismo: el planner agrupa por `entity_id` cuando existe.
+- Elimina mensajes residuales que sugerían documentación Westcon como evidencia acreditativa; queda solo como research seed.
+## 4.2.0 — Research Intelligence & Scalable Data
+
+- Sustituye el monolito `data/current/intelligence.json` cercano a 100 MiB por un puntero pequeño y shards JSON deterministas con objetivo 8 MiB y gate máximo 25 MiB.
+- Mantiene compatibilidad transparente a través de `engine.storage`; research, pipeline y publicación continúan trabajando sobre el dataset canónico completo.
+- Añade hash semántico global, SHA-256 por shard, auditoría de integridad y migración round-trip sin pérdida.
+- Prioriza cada gap P0–P3 por valor de negocio × investigabilidad, con explicación, familia de fuente y query hints.
+- Introduce `business_weighted_coverage_pct` para medir cobertura útil y no penalizar simplemente el crecimiento del universo investigado.
+- El planner incorpora fairness por sección para evitar que los clientes públicos monopolicen los runs acotados, sin hard caps cuando sobra capacidad.
+- Amplía rutas oficiales por partner locator, line card, alianzas, servicios, casos, empleo, investor relations, procurement y tecnología.
+- PPT, portfolio e histórico permanecen como research seeds internos; solo evidencia pública actual acredita hechos externos visibles.
+
 ## 4.1.0 — Business Intelligence Analysis & Accrediting Sources
 
 - La UI solo presenta evidencia pública actual y documentación oficial Westcon aportada; H/archivo/linaje quedan internos.

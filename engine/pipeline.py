@@ -51,6 +51,7 @@ from .preservation import (
 from .source_rationalization import rationalize_sources
 from .settings import SECTIONS, VERSION
 from .storage import atomic_write_many, json_bytes, read_json
+from .intelligence_store import cleanup_stale_shards, intelligence_files
 
 
 def _sync_source_catalog(data: dict[str, Any]) -> None:
@@ -197,6 +198,9 @@ def run() -> dict[str, Any]:
         "claims_pending": int(source_rationalization.get("support_pending_unique_claims") or 0),
         "public_validation_pending": int(gaps.get("public_validation_gaps") or 0),
         "unknown_research_gaps": int(gaps.get("unknown_research_gaps") or 0),
+        "business_weighted_coverage_pct": float((gaps.get("business_priority") or {}).get("business_weighted_coverage_pct") or 0),
+        "priority_gaps_p0": int(((gaps.get("business_priority") or {}).get("tiers") or {}).get("P0") or 0),
+        "priority_gaps_p1": int(((gaps.get("business_priority") or {}).get("tiers") or {}).get("P1") or 0),
     })
 
     baseline = read_json("config/current/release_baseline_metrics.json")
@@ -261,6 +265,8 @@ def run() -> dict[str, Any]:
     meta["source_count"] = metrics["sources"]
     meta["quality_score"] = quality["score"]
 
+    internal_files, internal_store = intelligence_files(data)
+
     last_run = {
         "version": VERSION,
         "generated_at": now,
@@ -295,6 +301,13 @@ def run() -> dict[str, Any]:
         "schema": schema_stats,
         "confidence_model": confidence_stats,
         "knowledge_preservation": preservation,
+        "gap_priority": gaps.get("business_priority") or {},
+        "intelligence_storage": {
+            "format": internal_store.get("format"),
+            "logical_bytes": internal_store.get("logical_bytes"),
+            "shards": internal_store.get("shards"),
+            "largest_shard_bytes": internal_store.get("largest_shard_bytes"),
+        },
         "source_intelligence": {
             "historical_total": source_rationalization.get("historical_total", 0),
             "historical_supported_current_open": source_rationalization.get("historical_supported_current_open", 0),
@@ -311,18 +324,20 @@ def run() -> dict[str, Any]:
         },
     }
 
-    internal_data = json_bytes(data, pretty=False)
     public_files, manifest = public_payloads(data, last_run)
     compare["public_projection"] = {
         "manifest_bytes": len(public_files["data/public/manifest.json"]),
         "sections_bytes": sum(
             metadata["bytes"] for metadata in manifest["sections"].values()
         ),
-        "internal_intelligence_bytes": len(internal_data),
+        "internal_intelligence_bytes": internal_store["logical_bytes"],
+        "internal_storage_bytes": sum(len(value) for value in internal_files.values()),
+        "internal_storage_shards": internal_store["shards"],
+        "internal_largest_shard_bytes": internal_store["largest_shard_bytes"],
+        "internal_stub_bytes": internal_store["stub_bytes"],
     }
 
     files = {
-        "data/current/intelligence.json": internal_data,
         "data/current/research_state.json": json_bytes(research_state),
         "data/current/relationship_graph.json": json_bytes(graph),
         "data/current/research_gaps.json": json_bytes(gaps),
@@ -352,7 +367,9 @@ def run() -> dict[str, Any]:
         "data/current/last_run.json": json_bytes(last_run),
     }
     files.update(public_files)
+    files.update(internal_files)
     atomic_write_many(files)
+    cleanup_stale_shards(internal_store["active_files"])
     return compare
 
 

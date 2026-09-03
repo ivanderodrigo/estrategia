@@ -28,7 +28,7 @@ class ReleaseIntegrity(unittest.TestCase):
         cls.manifest = read_json("data/public/manifest.json")
 
     def test_one_canonical_version(self) -> None:
-        self.assertEqual(VERSION, "4.1.0")
+        self.assertEqual(VERSION, "4.2.1")
         self.assertEqual(self.data["meta"]["version"], VERSION)
         self.assertEqual(self.graph["version"], VERSION)
         self.assertEqual(self.gaps["version"], VERSION)
@@ -83,7 +83,7 @@ class ReleaseIntegrity(unittest.TestCase):
         allowed = {"Por investigar", "Pendiente de validación pública"}
         self.assertTrue(all(gap["research_state"] in allowed for gap in self.gaps["gaps"]))
         self.assertTrue(all("attempts_completed" in gap and "next_due_at" in gap for gap in self.gaps["gaps"]))
-        self.assertEqual(self.gaps["engine"]["strategy_profile"], "adaptive-source-cascade")
+        self.assertEqual(self.gaps["engine"]["strategy_profile"], "business-value-x-researchability")
         self.assertEqual(self.gaps.get("support_rule"), "CURRENT_PUBLIC_ONLY")
 
     def test_public_site_exposes_only_projected_sections(self) -> None:

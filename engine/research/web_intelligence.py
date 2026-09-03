@@ -1026,7 +1026,7 @@ def run(
             continue
         seeds = _merge_source_seeds(
             _revalidation_source_seeds(target),
-            seeds_for(row, target["fields"]),
+            seeds_for(row, target["fields"], target=target),
             _catalog_source_seeds(data, target["section"], target["fields"], target["entity"]),
         )
         seeds = _filter_entity_seeds(
@@ -1060,7 +1060,7 @@ def run(
         seen: set[str] = set()
         pages = 0
         accepted_by_field: defaultdict[str, int] = defaultdict(int)
-        wanted_families = relevant_families(target["fields"])
+        wanted_families = relevant_families(target["fields"]) | set(target.get("source_families") or [])
         scope = str(((row.get("fields") or {}).get("scope") or {}).get("value") or "GLOBAL")
 
         while queue and pages < profile_config.pages_per_entity and time.monotonic() < deadline - 3:

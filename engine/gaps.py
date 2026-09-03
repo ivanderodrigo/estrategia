@@ -11,6 +11,7 @@ from typing import Any, Mapping
 from urllib.parse import urlparse
 
 from .settings import SECTIONS, VERSION
+from .gap_intelligence import enrich_gap_report
 from .knowledge_provenance import accrediting_evidence, provenance_kind, typed_evidence_sufficient
 from .relationship_revalidation import relationship_revalidation_debt
 
@@ -584,7 +585,12 @@ def build_gaps(
     research_seed_registry_gaps = _append_registry_validation_gaps(
         public, gaps, missing, critical, states, state_gaps
     )
-    gaps.sort(key=lambda item: (item["priority"], item["section"], norm(item["entity"]), item["field"]))
+    business_priority = enrich_gap_report(gaps, public)
+    gaps.sort(key=lambda item: (
+        {"P0": 0, "P1": 1, "P2": 2, "P3": 3}.get(str(item.get("priority_tier") or "P3"), 3),
+        -float(item.get("priority_score") or 0),
+        item["priority"], item["section"], norm(item["entity"]), item["field"]
+    ))
     by_section = {section: sum(1 for gap in gaps if gap["section"] == section) for section in SECTIONS}
     coverage = {
         section: {
@@ -612,6 +618,7 @@ def build_gaps(
         "support_rule": "CURRENT_PUBLIC_ONLY",
         "public_validation_gaps": sum(1 for gap in gaps if gap.get("gap_kind") == "public-validation"),
         "unknown_research_gaps": sum(1 for gap in gaps if gap.get("research_state") == "Por investigar"),
+        "business_priority": business_priority,
         "critical_gaps": sum(critical.values()),
         "high_priority_gaps": sum(critical.values()),
         "by_section": by_section,
@@ -620,7 +627,8 @@ def build_gaps(
         "research_states": dict(states),
         "coverage": coverage,
         "engine": {
-            "strategy_profile": "adaptive-source-cascade",
+            "strategy_profile": "business-value-x-researchability",
+            "priority_model": "P0-P3 with source playbooks and section fairness",
             "plan_storage": "normalized and generated on demand",
             "languages": ["es", "pt", "en"],
             "profiles": ["daily", "deep", "exhaustive"],

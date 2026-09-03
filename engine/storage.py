@@ -158,3 +158,28 @@ def prune_json_mapping(mapping: dict[str, Any], *, limit: int, timestamp_key: st
         reverse=True,
     )
     return dict(list(ordered)[:limit])
+
+# v4.2 transparent canonical-intelligence store
+# Existing code keeps using read_json/atomic_write_json. Only the canonical intelligence
+# path is routed to bounded shards; all other storage semantics remain untouched.
+_v420_base_read_json = read_json
+_v420_base_atomic_write_json = atomic_write_json
+
+
+def _v420_intelligence_path(path) -> bool:
+    value = str(path).replace("\\", "/").lstrip("./")
+    return value == "data/current/intelligence.json"
+
+
+def read_json(path, default=None):
+    if _v420_intelligence_path(path):
+        from .intelligence_store import load_intelligence
+        return load_intelligence(default)
+    return _v420_base_read_json(path, default)
+
+
+def atomic_write_json(path, data, pretty=True):
+    if _v420_intelligence_path(path):
+        from .intelligence_store import write_intelligence
+        return write_intelligence(data)
+    return _v420_base_atomic_write_json(path, data, pretty=pretty)

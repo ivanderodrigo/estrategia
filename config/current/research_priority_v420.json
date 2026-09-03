@@ -1,0 +1,41 @@
+{
+  "version": "4.2.1",
+  "model": "business-value-x-researchability-opportunity-v2",
+  "principle": "Priorizar inteligencia que cambie decisiones de negocio, incorporando contexto real de oportunidad pública sin usar cuotas artificiales.",
+  "tiers": {
+    "P0": "alto valor y alta investigabilidad; ejecutar primero",
+    "P1": "alto valor o validación pública con buena ruta de fuente",
+    "P2": "cobertura útil pero no decisiva",
+    "P3": "completitud de bajo valor o baja probabilidad de rendimiento inmediato"
+  },
+  "section_max_share_first_pass": {
+    "integrators": 0.32,
+    "distributors": 0.24,
+    "manufacturers": 0.2,
+    "clients_private": 0.18,
+    "clients_public": 0.22,
+    "trends": 0.14,
+    "architectures": 0.08
+  },
+  "public_opportunity_context": {
+    "enabled": true,
+    "signals": ["notice_id", "source_portal", "request_or_need", "technology_signals", "identified_vendors", "identified_integrators", "estimated_amount", "procurement_stage", "milestone_date", "westcon_fit"],
+    "max_multiplier": 1.55,
+    "source_family": "procurement",
+    "principle": "Un expediente sube de prioridad por importe, ventana temporal, estado y afinidad tecnológica observables; nunca por una cuota fija de clientes públicos."
+  },
+  "source_families": [
+    "partners",
+    "procurement",
+    "careers",
+    "financial",
+    "services",
+    "cases",
+    "technology",
+    "analyst",
+    "news",
+    "official"
+  ],
+  "public_validation_boost": true,
+  "historical_seed_role": "research hint only; never accrediting evidence"
+}
