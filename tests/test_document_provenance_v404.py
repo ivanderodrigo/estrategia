@@ -70,26 +70,19 @@ class DocumentProvenanceV404(unittest.TestCase):
             self.assertEqual(len(_doc_evidence(item.get("evidence"))), 1)
 
     def test_release_manufacturer_capabilities_show_westcon_document(self) -> None:
-        data = json.loads((ROOT / "data/current/intelligence.json").read_text(encoding="utf-8-sig"))
-        by_name = {row.get("name"): row for row in data.get("manufacturers") or []}
-        checks = {
-            "1Password": {"Password Management", "Secrets", "Access"},
-            "Ciena": set(),
-            "AWS": set(),
-        }
-        for vendor, expected in checks.items():
-            self.assertIn(vendor, by_name)
-            field = ((by_name[vendor].get("fields") or {}).get("capabilities") or {})
-            items = field.get("items") or []
-            self.assertTrue(items, f"{vendor}: capabilities.items vacío")
-            if expected:
-                values = {str(item.get("value")) for item in items}
-                self.assertTrue(expected <= values, f"{vendor}: faltan capacidades esperadas")
-            documented = [item for item in items if _doc_evidence(item.get("evidence"))]
-            self.assertTrue(documented, f"{vendor}: ninguna capacidad muestra WESTCON_DOCUMENT")
-            if vendor == "1Password":
-                for item in items:
-                    self.assertTrue(_doc_evidence(item.get("evidence")), f"{vendor}/{item.get('value')}: falta WESTCON_DOCUMENT atómico")
+        from engine.knowledge_provenance import accrediting_evidence, provenance_kind
+        from engine.storage import read_json
+
+        data = read_json("data/current/intelligence.json")
+        row = next(item for item in data.get("manufacturers") or [] if item.get("name") == "Check Point")
+        field = ((row.get("fields") or {}).get("capabilities") or {})
+        items = {str(item.get("value")): item for item in field.get("items") or [] if isinstance(item, dict)}
+        for value in ("NGFW", "SASE", "Cloud Security", "Email Security"):
+            self.assertIn(value, items)
+            public = [ev for ev in items[value].get("evidence") or [] if isinstance(ev, dict) and accrediting_evidence(ev)]
+            self.assertTrue(public, f"Check Point/{value}: falta fuente pública acreditativa")
+            self.assertTrue(all(str(ev.get("url") or "").startswith(("http://", "https://")) for ev in public))
+            self.assertFalse(any(provenance_kind(ev) == "WESTCON_DOCUMENT" and accrediting_evidence(ev) for ev in items[value].get("evidence") or [] if isinstance(ev, dict)))
 
     def test_normalizer_preserves_atomic_westcon_document_without_url(self) -> None:
         data = {

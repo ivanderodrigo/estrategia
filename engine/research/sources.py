@@ -21,10 +21,11 @@ class SourceSeed:
 
 ROUTES = {
     "official": ("/", "/sitemap.xml", "/robots.txt"),
-    "partners": ("/partners", "/parceiros", "/alianzas", "/vendors", "/fabricantes", "/marcas", "/portfolio", "/line-card", "/sitemap.xml"),
+    "partners": ("/partners", "/partner-locator", "/partner-directory", "/find-a-partner", "/parceiros", "/alianzas", "/alliances", "/vendors", "/fabricantes", "/marcas", "/portfolio", "/line-card", "/linecard", "/technology-partners", "/sitemap.xml"),
+    "certifications": ("/certifications", "/certificaciones", "/certificacoes", "/specializations", "/especializaciones", "/competencies", "/badges", "/partner-levels", "/sitemap.xml"),
     "services": ("/services", "/servicios", "/servicos", "/solutions", "/soluciones", "/solucoes", "/cybersecurity", "/cloud", "/sitemap.xml"),
-    "cases": ("/customers", "/clientes", "/case-studies", "/casos", "/projects", "/proyectos", "/industrias", "/sitemap.xml"),
-    "careers": ("/careers", "/jobs", "/empleo", "/talent", "/carreiras", "/emprego", "/sitemap.xml"),
+    "cases": ("/customers", "/customer-stories", "/clientes", "/case-studies", "/success-stories", "/casos", "/casos-de-exito", "/projects", "/proyectos", "/industrias", "/verticals", "/sitemap.xml"),
+    "careers": ("/careers", "/jobs", "/job-search", "/vacancies", "/empleo", "/ofertas-de-empleo", "/talent", "/carreiras", "/emprego", "/vagas", "/sitemap.xml"),
     "technology": (
         "/technology", "/tecnologia", "/digital", "/transformacion-digital", "/transformacao-digital",
         "/solutions", "/soluciones", "/solucoes", "/services", "/servicios", "/servicos",
@@ -32,22 +33,30 @@ ROUTES = {
         "/networking", "/redes", "/connectivity", "/cloud", "/data", "/ai",
         "/innovation", "/innovacion", "/inovacao", "/it", "/ict", "/sitemap.xml",
     ),
-    "financial": ("/investors", "/investor-relations", "/annual-report", "/resultados", "/relatorio-e-contas", "/sitemap.xml"),
+    "financial": ("/investors", "/investor-relations", "/annual-report", "/annual-reports", "/financial-results", "/resultados", "/relatorio-e-contas", "/contas", "/sitemap.xml"),
+    "marketplace": ("/marketplace", "/cloud-marketplace", "/platform", "/catalog", "/subscription", "/subscriptions", "/sitemap.xml"),
+    "training": ("/training", "/academy", "/education", "/formacion", "/formacao", "/certification", "/sitemap.xml"),
+    "marketing": ("/marketing-services", "/demand-generation", "/campaigns", "/marketing", "/sitemap.xml"),
     "news": ("/news", "/noticias", "/insights", "/press", "/actualidad", "/feed", "/rss", "/sitemap.xml"),
     "analyst": ("/analyst", "/reports", "/resources", "/research", "/sitemap.xml"),
     "signals": ("/news", "/careers", "/projects", "/sitemap.xml"),
-    "procurement": ("/contratacion", "/procurement", "/concursos", "/sitemap.xml"),
+    "procurement": ("/contratacion", "/perfil-del-contratante", "/licitaciones", "/procurement", "/contracts", "/tenders", "/concursos", "/contratos-publicos", "/sitemap.xml"),
 }
 
 PATH_FAMILY_HINTS = {
     "partners": ("partner", "vendor", "fabric", "marca", "portfolio", "line-card", "parceir", "alian"),
+    "certifications": ("certif", "specializ", "especializ", "competenc", "badge", "partner-level"),
     "careers": ("career", "job", "emple", "emprego", "talent", "oportun"),
     "cases": ("case", "caso", "customer", "client", "project", "industr", "sector"),
     "services": ("service", "servic", "solu", "cyber", "cloud", "network"),
     "technology": ("technolog", "tecnolog", "digital", "cyber", "security", "segur", "network", "red", "cloud", "data", "ai", "automat", "observab", "identity", "identid", "innovation", "inovacao", "innovacion"),
     "financial": ("invest", "annual", "result", "relatorio", "report"),
+    "marketplace": ("marketplace", "catalog", "subscription", "cloud-platform"),
+    "training": ("training", "academy", "education", "formacion", "formacao", "certification"),
+    "marketing": ("marketing", "demand", "campaign"),
     "news": ("news", "press", "notic", "insight", "feed", "rss"),
     "analyst": ("analyst", "research", "report", "resource"),
+    "procurement": ("contrat", "licit", "tender", "procurement", "concurso"),
 }
 
 

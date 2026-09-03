@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "profiles": {
     "daily": {
       "entity_limit": 120,
@@ -31,10 +31,21 @@
   },
   "source_cascade": [
     "existing_evidence",
+    "historical_claim_exact_revalidation",
     "official_routes",
+    "official_partner_locators_and_directories",
+    "official_certifications_and_partner_levels",
+    "official_cases_and_customer_stories",
+    "official_investor_relations_and_annual_reports",
+    "official_careers_and_job_portals",
+    "official_marketplaces_and_service_catalogues",
     "sitemap",
     "relevant_internal_links",
+    "spain_official_procurement",
+    "portugal_official_procurement",
     "ted_search_api",
+    "public_analyst_material",
+    "sector_associations_and_channel_press",
     "corroborated_external_candidates"
   ],
   "languages": [
@@ -52,5 +63,12 @@
   "job_signal_policy": "technology in job posting is SIGNAL only; never partnership confirmation",
   "no_public_evidence_policy": "a gap remains open and retains attempt history",
   "entity_growth_policy": "structured TED notices promote automatically; unstructured external entities require corroboration before promotion",
-  "atomic_provenance_policy": "each list value carries only its own evidence"
+  "atomic_provenance_policy": "each list value carries only its own evidence",
+  "discovery_evidence_separation": "discovery sources route the next step but cannot close a claim until an accrediting source supports the same subject and value",
+  "historical_priority": "claims with historical lineage and no Westcon document or current public evidence receive an explicit priority multiplier",
+  "public_procurement": {
+    "spain": ["Plataforma de Contratación del Sector Público", "BOE", "official contracting profiles"],
+    "portugal": ["BASE", "Diário da República", "official contracting profiles"],
+    "europe": ["TED"]
+  }
 }

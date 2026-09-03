@@ -28,7 +28,7 @@ class ReleaseIntegrity(unittest.TestCase):
         cls.manifest = read_json("data/public/manifest.json")
 
     def test_one_canonical_version(self) -> None:
-        self.assertEqual(VERSION, "4.0.6")
+        self.assertEqual(VERSION, "4.1.0")
         self.assertEqual(self.data["meta"]["version"], VERSION)
         self.assertEqual(self.graph["version"], VERSION)
         self.assertEqual(self.gaps["version"], VERSION)
@@ -80,9 +80,11 @@ class ReleaseIntegrity(unittest.TestCase):
 
     def test_strict_gaps_keep_learning_state(self) -> None:
         self.assertEqual(self.gaps["total_gaps"], len(self.gaps["gaps"]))
-        self.assertTrue(all(gap["research_state"] == "Por investigar" for gap in self.gaps["gaps"]))
+        allowed = {"Por investigar", "Pendiente de validación pública"}
+        self.assertTrue(all(gap["research_state"] in allowed for gap in self.gaps["gaps"]))
         self.assertTrue(all("attempts_completed" in gap and "next_due_at" in gap for gap in self.gaps["gaps"]))
         self.assertEqual(self.gaps["engine"]["strategy_profile"], "adaptive-source-cascade")
+        self.assertEqual(self.gaps.get("support_rule"), "CURRENT_PUBLIC_ONLY")
 
     def test_public_site_exposes_only_projected_sections(self) -> None:
         self.assertEqual(set(self.manifest["sections"]), set(SECTIONS))
@@ -105,6 +107,8 @@ class EngineBehaviour(unittest.TestCase):
         self.assertEqual(evidence_for_relationship([unrelated, broad, exact], "1Password", "Ingram Micro"), [exact])
 
     def test_westcon_document_is_valid_typed_provenance(self) -> None:
+        from engine.knowledge_provenance import convert_internal_lineage_to_research_seeds, provenance_kind
+
         evidence = {
             "source": "Westcon Comstor España",
             "title": "Presentación Corporativa FY2027 · slide 44",
@@ -114,9 +118,13 @@ class EngineBehaviour(unittest.TestCase):
             "document": "Westcon_Comstor_Espana_FY27_completa.pptx",
             "provenance_origin": "WESTCON_DOCUMENT",
         }
-        self.assertTrue(typed_evidence_sufficient(evidence))
-        legacy = dict(evidence, source_type="legacy-unresolved", provenance_origin="LEGACY_UNRESOLVED")
-        self.assertFalse(typed_evidence_sufficient(legacy))
+        self.assertFalse(typed_evidence_sufficient(evidence))
+        data = {"manufacturers": [{"fields": {"capabilities": {"value": ["SASE"], "items": [{"value": "SASE", "evidence": [evidence]}]}}}]}
+        convert_internal_lineage_to_research_seeds(data)
+        seed = data["manufacturers"][0]["fields"]["capabilities"]["items"][0]["evidence"][0]
+        self.assertEqual(provenance_kind(seed), "RESEARCH_SEED")
+        self.assertEqual(seed.get("source_binding"), "discovery-only")
+        self.assertFalse(typed_evidence_sufficient(seed))
 
     def test_knowledge_guard_restores_trend_content(self) -> None:
         original = {

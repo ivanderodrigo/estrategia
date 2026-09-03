@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from copy import deepcopy
 from datetime import datetime, timezone
 from typing import Any
 
@@ -14,15 +15,20 @@ from .enrichment import (
     normalize_fields,
     project_graph_to_views,
 )
-from .gaps import build_gaps
+from .gaps import build_gaps, validate_gap_state_contract
 from .archive_provenance import (
     apply_archive_provenance,
     archive_registry_summary,
     load_archive_registry,
 )
 from .client_intelligence import derive_client_intelligence
+from .business_schema import apply_business_schema
+from .confidence import apply_confidence_model
 from .knowledge_provenance import (
     apply_westcon_document_provenance,
+    apply_public_evidence_migrations,
+    convert_internal_lineage_to_research_seeds,
+    seed_from_knowledge_baseline,
     load_knowledge_baseline,
     mark_legacy_unresolved,
     provenance_summary,
@@ -33,6 +39,15 @@ from .graph import build_graph
 from .metrics import calculate
 from .publication import public_payloads
 from .quality import audit
+from .preservation import (
+    audit as audit_preservation,
+    dedupe_manufacturer_lists,
+    restore_accredited_support,
+    restore_preserved_relations,
+    restore_research_seed_support,
+    sync_research_seed_registry,
+    snapshot as preservation_snapshot,
+)
 from .source_rationalization import rationalize_sources
 from .settings import SECTIONS, VERSION
 from .storage import atomic_write_many, json_bytes, read_json
@@ -71,7 +86,17 @@ def _sync_source_catalog(data: dict[str, Any]) -> None:
 
 def run() -> dict[str, Any]:
     data = read_json("data/current/intelligence.json")
+    existing_graph = read_json("data/current/relationship_graph.json", {})
+    # Preserve the exact post-research input as the reconciliation source. Canonical build
+    # steps may normalize ids/fields, but must not detach valid support from surviving facts.
+    preservation_source = deepcopy(data)
     knowledge_baseline = load_knowledge_baseline()
+    # HF7: internal/PPT lineage is research memory, never accrediting support. Convert and
+    # seed the snapshot copy first so the Preservation Gate protects clues without treating them as proof.
+    seed_snapshot_stats = convert_internal_lineage_to_research_seeds(preservation_source)
+    baseline_seed_snapshot_stats = seed_from_knowledge_baseline(preservation_source, knowledge_baseline)
+    seed_registry_snapshot = sync_research_seed_registry(preservation_source)
+    preservation_before = preservation_snapshot(preservation_source, existing_graph)
     archive_registry = load_archive_registry()
     restore_protected_knowledge(data, knowledge_baseline)
     apply_westcon_document_provenance(data)
@@ -106,6 +131,7 @@ def run() -> dict[str, Any]:
     apply_curated_distributors(data)
     apply_curated(data)
     normalize_fields(data)
+    schema_stats = apply_business_schema(data)
 
     # First graph pass recovers the canonical relation seed and newly researched atomic items.
     graph = build_graph(data)
@@ -128,12 +154,50 @@ def run() -> dict[str, Any]:
     mark_legacy_unresolved(data)
     sync_document_sources(data)
     normalize_fields(data)
-    # v4.0.4: bind Westcon documentary provenance to FINAL normalized items.
+    # Bind documentary lineage to final normalized items, then immediately demote it to
+    # non-accrediting research memory. Public web evidence is the only external accreditation.
     document_apply_final = apply_westcon_document_provenance(data)
+    internal_seed_migration = convert_internal_lineage_to_research_seeds(data)
+    baseline_seed_migration = seed_from_knowledge_baseline(data, knowledge_baseline)
+    public_evidence_migration = apply_public_evidence_migrations(
+        data, read_json("config/current/public_evidence_migrations.json", {})
+    )
+
+    # HF4 reconciliation: canonicalization is allowed to reshape representation, never to
+    # detach accredited evidence from a knowledge item that still exists. Reattach the exact
+    # pre-build support first, then preserve graph relations across deterministic id re-keying.
+    support_reconciliation = restore_accredited_support(data, preservation_source)
+    relation_reconciliation = restore_preserved_relations(graph, existing_graph, data)
+    # Re-project relation-owned comparison views after graph reconciliation. These fields are
+    # build-owned and explicitly excluded from immutable-fact preservation.
+    project_graph_to_views(data, graph)
+    derive_overlap_fields(data)
+    manufacturer_deduplication = dedupe_manufacturer_lists(data)
+    # HF8: reattach non-accrediting clues to surviving exact claims where possible, then
+    # persist every clue in an internal registry that is independent from table projection.
+    research_seed_reconciliation = restore_research_seed_support(data, preservation_source)
+    research_seed_registry = sync_research_seed_registry(data, preservation_source)
+    # Re-run the public bootstrap after dedup so claim-specific public support stays attached
+    # to the final atomic item. Internal lineage remains present only as a research seed.
+    public_evidence_migration_final = apply_public_evidence_migrations(
+        data, read_json("config/current/public_evidence_migrations.json", {})
+    )
     _sync_source_catalog(data)
+    confidence_stats = apply_confidence_model(data)
     source_rationalization = rationalize_sources(data)
     gaps = build_gaps(data, VERSION, research_state)
     metrics = calculate(data, gaps, graph)
+    metrics.update({
+        "evidence_support_pending": int(gaps.get("evidence_support_gaps") or 0),
+        "derivation_support_pending": int(gaps.get("derivation_support_gaps") or 0),
+        "historical_revalidation_pending": int(gaps.get("historical_revalidation_gaps") or 0),
+        "claims_publicly_accredited": int(source_rationalization.get("targets_supported_public_only") or 0),
+        "claims_westcon_supported": 0,
+        "claims_westcon_and_public": 0,
+        "claims_pending": int(source_rationalization.get("support_pending_unique_claims") or 0),
+        "public_validation_pending": int(gaps.get("public_validation_gaps") or 0),
+        "unknown_research_gaps": int(gaps.get("unknown_research_gaps") or 0),
+    })
 
     baseline = read_json("config/current/release_baseline_metrics.json")
     before = baseline["before"]
@@ -158,7 +222,40 @@ def run() -> dict[str, Any]:
         ),
     }
 
-    quality = audit(data, graph, gaps)
+    preservation_after = preservation_snapshot(data, graph)
+    preservation = audit_preservation(
+        preservation_before,
+        preservation_after,
+        read_json("config/current/preservation_exceptions.json", {}),
+    )
+    preservation["reconciliation"] = {
+        "accredited_support": support_reconciliation,
+        "relations": relation_reconciliation,
+        "manufacturer_deduplication": manufacturer_deduplication,
+        "internal_seed_snapshot": seed_snapshot_stats,
+        "baseline_seed_snapshot": baseline_seed_snapshot_stats,
+        "seed_registry_snapshot": seed_registry_snapshot,
+        "internal_seed_migration": internal_seed_migration,
+        "baseline_seed_migration": baseline_seed_migration,
+        "research_seed_reconciliation": research_seed_reconciliation,
+        "research_seed_registry": research_seed_registry,
+        "public_evidence_migration": public_evidence_migration,
+        "public_evidence_migration_final": public_evidence_migration_final,
+    }
+    # The legacy quality module only knows one open-state label ("Por investigar"). HF8
+    # validates the richer state contract itself, then feeds a label-compatible copy to that
+    # legacy invariant. The persisted gap report keeps the real differentiated states.
+    gap_state_errors = validate_gap_state_contract(gaps)
+    legacy_quality_gaps = deepcopy(gaps)
+    for gap in legacy_quality_gaps.get("gaps") or []:
+        if isinstance(gap, dict) and gap.get("research_state") == "Pendiente de validación pública":
+            gap["research_state"] = "Por investigar"
+    quality = audit(data, graph, legacy_quality_gaps)
+    if gap_state_errors:
+        quality["errors"].extend("HF8 gap-state contract: " + error for error in gap_state_errors)
+    if preservation["errors"]:
+        quality["errors"].extend("Preservation gate: " + error for error in preservation["errors"])
+        quality["score"] = max(0, 100 - len(quality["errors"]) * 8 - min(20, len(quality.get("warnings") or [])))
     if quality["errors"]:
         raise ValueError("Quality gate failed: " + "; ".join(quality["errors"][:5]))
     meta["source_count"] = metrics["sources"]
@@ -195,6 +292,9 @@ def run() -> dict[str, Any]:
         "archive_provenance": archive_registry_summary(archive_registry),
         "archive_apply": archive_apply_final,
         "document_apply": document_apply_final,
+        "schema": schema_stats,
+        "confidence_model": confidence_stats,
+        "knowledge_preservation": preservation,
         "source_intelligence": {
             "historical_total": source_rationalization.get("historical_total", 0),
             "historical_supported_current_open": source_rationalization.get("historical_supported_current_open", 0),
@@ -204,6 +304,10 @@ def run() -> dict[str, Any]:
             "historical_supported_westcon_and_public": source_rationalization.get("historical_supported_westcon_and_public", 0),
             "targets_supported": source_rationalization.get("targets_supported", 0),
             "targets_search_required": source_rationalization.get("targets_search_required", 0),
+            "claims_publicly_accredited": metrics["claims_publicly_accredited"],
+            "claims_westcon_supported": metrics["claims_westcon_supported"],
+            "claims_westcon_and_public": metrics["claims_westcon_and_public"],
+            "claims_pending": metrics["claims_pending"],
         },
     }
 
@@ -242,7 +346,8 @@ def run() -> dict[str, Any]:
             "document_apply": document_apply_final,
             "source_intelligence": source_rationalization,
         }),
-        "data/current/source_rationalization_v406.json": json_bytes(source_rationalization),
+        "data/current/source_rationalization.json": json_bytes(source_rationalization),
+        "data/current/knowledge_preservation_v410.json": json_bytes(preservation),
         "data/current/quality_report.json": json_bytes(quality),
         "data/current/last_run.json": json_bytes(last_run),
     }

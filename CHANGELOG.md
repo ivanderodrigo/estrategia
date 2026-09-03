@@ -1,3 +1,17 @@
+## 4.1.0 — Business Intelligence Analysis & Accrediting Sources
+
+- La UI solo presenta evidencia pública actual y documentación oficial Westcon aportada; H/archivo/linaje quedan internos.
+- Unificación documental por identidad + slide y coexistencia Westcon/pública en un mismo claim.
+- Discovery-only deja de poder acreditar un dato o cerrar un gap.
+- Esquemas BI aditivos y tipados para fabricantes, integradores, mayoristas y clientes.
+- Selector de columnas profesional con búsqueda, estados accesibles, esenciales, reset y persistencia.
+- Constructor de filtros genérico con AND/OR, grupos, operadores tipados, guardado, URL state y contador inmediato.
+- Informes construidos sobre el subconjunto exacto en imprimible/PDF, CSV y PowerPoint.
+- Confianza explicable por calidad, actualidad, evidencia primaria, corroboración y contradicciones.
+- Investigación pública ampliada y prioridad específica para claims conservados con solo linaje histórico.
+- Gate de preservación para entidades, valores, evidencia, relaciones, tendencias, arquitecturas, fabricantes y capacidades documentadas.
+- 76 tests Python más smoke UI y test Node de filtros/informes.
+
 ## 4.0.6 — Evidence Preservation & Public Verification
 
 - Ningún dato existente se elimina por falta de URL.

@@ -1,44 +1,44 @@
 {
-  "version": "4.0.6",
-  "generated_at": "2026-09-02T07:40:55.683456+00:00",
-  "finished_at": "2026-09-02T07:40:55.683456+00:00",
-  "profile": "daily",
+  "version": "4.1.0",
+  "generated_at": "2026-09-03T08:48:49.364515+00:00",
+  "finished_at": "2026-09-03T08:48:49.364515+00:00",
+  "profile": "deep",
   "status": "published",
-  "sources": 1838,
-  "traceable_fields": 5167,
-  "research_gaps": 5228,
-  "critical_gaps": 3119,
+  "sources": 2004,
+  "traceable_fields": 5842,
+  "research_gaps": 8703,
+  "critical_gaps": 1569,
   "manufacturers": 36,
   "distributors": 58,
   "integrators": 130,
-  "clients": 310,
+  "clients": 349,
   "trends": 15,
   "architectures": 12,
   "research_quality": {
-    "fetch_attempts": 93,
-    "fetch_successes": 89,
-    "pages_relevant": 45,
-    "accepted_evidences": 8,
-    "fields_enriched": 8,
-    "values_added": 0,
-    "entities_added": 0,
-    "circuit_skips": 32
+    "fetch_attempts": 1227,
+    "fetch_successes": 2882,
+    "pages_relevant": 2070,
+    "accepted_evidences": 3138,
+    "fields_enriched": 3138,
+    "values_added": 3325,
+    "entities_added": 39,
+    "circuit_skips": 8034
   },
   "quality_score": 100,
   "provenance": {
     "policy": "typed-provenance-non-destructive",
     "types": {
-      "WESTCON_DOCUMENT": 1640,
-      "HISTORICAL_RECOVERED": 1024,
-      "LEGACY_UNRESOLVED": 3218,
-      "ARCHIVE_RECOVERED": 340,
-      "PUBLIC_PRIMARY": 19303,
-      "PUBLIC_SECONDARY": 4975,
-      "REPORT_CORROBORATION": 74,
+      "RESEARCH_SEED": 15768,
+      "HISTORICAL_RECOVERED": 1236,
+      "LEGACY_UNRESOLVED": 4536,
+      "ARCHIVE_RECOVERED": 2300,
+      "PUBLIC_PRIMARY": 38820,
+      "PUBLIC_SECONDARY": 16931,
+      "REPORT_CORROBORATION": 106,
       "UNKNOWN": 132
     },
     "legacy_unresolved_fields": 0,
-    "legacy_unresolved_items": 3107,
+    "legacy_unresolved_items": 56,
     "documents_are_valid_primary_sources": true,
     "legacy_unresolved_remains_research_gap": true
   },
@@ -55,27 +55,231 @@
   },
   "archive_apply": {
     "field_evidence_added": 0,
-    "item_evidence_added": 4582,
-    "legacy_resolved": 134,
+    "item_evidence_added": 4276,
+    "legacy_resolved": 31,
     "unknown_classified": 0,
     "registry_matches_checked": 947,
-    "value_guard_skips": 16
+    "value_guard_skips": 85
   },
   "document_apply": {
     "manufacturer_fields_documented": 0,
     "manufacturer_rows_documented": 0,
     "manufacturer_capability_items_documented": 0,
-    "capability_items_with_public_and_document": 0,
-    "legacy_placeholders_removed": 0
+    "capability_items_with_public_and_document": 1,
+    "legacy_placeholders_removed": 165
+  },
+  "schema": {
+    "columns_added": 0,
+    "columns_updated": 140,
+    "sections": 5
+  },
+  "confidence_model": {
+    "fields": 5975,
+    "items": 15034,
+    "without_accrediting_evidence": 426
+  },
+  "knowledge_preservation": {
+    "version": "4.1.0",
+    "hotfix": "v4.1.0-HF8-public-evidence-memory",
+    "status": "PASS",
+    "policy": "preserve entities, external set-valued facts, accredited claim support, semantic graph relations and internal/historical research clues; public web evidence is the only external accreditation; reconcile detached support/id re-keying before audit; audit build-owned evidence as derived telemetry; allow accredited scalar supersession and build-owned recalculation",
+    "errors": [],
+    "before": {
+      "entities": {
+        "manufacturers": 36,
+        "distributors": 57,
+        "integrators": 130,
+        "clients_public": 298,
+        "clients_private": 51,
+        "trends": 15,
+        "architectures": 12
+      },
+      "values": 11686,
+      "evidences": 11470,
+      "relations": 1353,
+      "research_seed_claims": 3689,
+      "derived_values": 5265,
+      "derived_evidence_support": 5265
+    },
+    "after": {
+      "entities": {
+        "manufacturers": 36,
+        "distributors": 57,
+        "integrators": 130,
+        "clients_public": 298,
+        "clients_private": 51,
+        "trends": 15,
+        "architectures": 12
+      },
+      "values": 11686,
+      "evidences": 11470,
+      "relations": 2019,
+      "research_seed_claims": 4879,
+      "derived_values": 6280,
+      "derived_evidence_support": 6280
+    },
+    "semantic_changes": {
+      "accredited_scalar_supersessions": [],
+      "raw_evidence_sources_replaced_or_removed": [
+        "00b08626f2967ace356f0d15601d78215ecb6ae1",
+        "04995f115f296d04c0484598236c50a7806e705b",
+        "136d254b8ad87c5975a13c089349ac724b8ad6b0",
+        "2119013256b88a6db08623d93db8f230aee1aef2",
+        "275c3f0936a913596c51ae45452a651ac956933c",
+        "2766132c4affd24c29eb8337871db54beb1f3b3f",
+        "2da0f7b9b6a316f9c451d64e51d16da864639978",
+        "31afe836f65bd1377c3825e5feb15ec2eeca2dce",
+        "32604704ccbe6fe06d16fce5eabdcef159ff8b9b",
+        "37ea89df65264785ef18ddd09716151f2dbfdf07",
+        "46e4b971b6f873b6de5d39bd0de2b6369f7ce4fd",
+        "478c7df81d8ab20160db595f242d67b2523fdf45",
+        "491772354a3579c9e6b2e856b08fd36924c4596b",
+        "57446a593c2d55563115262e827b1d7af48f3dec",
+        "576ccea928447f976c2be39aea6adcfc3c36187c",
+        "58e537a3ded6c5b1ab60677537f86c695dba86ac",
+        "5deb4a42f21185b5565e9ff2f6807de111cce88b",
+        "6366a7e83e7dd2641a91389c9e2759d76d8d74a5",
+        "67c008a521032dfdd06d0b33329b6e34c26cfaf8",
+        "733fca4ef8c13ce568babda5eaf212fb43773ee1",
+        "75154f8f594aaf384ebdc8d630e093a4b4b9ef3f",
+        "792830ae330bacaeef50211c0d911f4003f11f04",
+        "7aaafd73887b8bc7ba55a03b40c296dce65afc4e",
+        "7b8326c1f6bbe0613a39a061bc4c7848fae49bde",
+        "7cd8963f8bb78f38c0da05f877609dbdbf158f63",
+        "7dcd3e6c81e58cb4fc9e8724f635a34a61ac8125",
+        "83eb2500c74a98ef155216acfde1a86025d57c31",
+        "84cd8ce07acfd9199e0773779909b1f3d23cbe46",
+        "874f736b3cdbd437538caf82c9c9532078e25834",
+        "8da95bc37fdec5b73f60e89f896ab7a560278f1c",
+        "8f6a26df80b1baaeef56e38a69b14ae43f08a773",
+        "90075a794d70a38aca13ca9c0944a8d54cb2d88b",
+        "911f706f5022c92eff0a60c83c3cc9a278cee080",
+        "925634b8fd09b0d783d01ee55ca4f355e349dc65",
+        "97ae67d83a3125ac1f64782cc398b17580274593",
+        "9abdf295959411dc7a4cb5316be7f4a02b0ce666",
+        "9bb5d8b1aa4e7881fa583984bbd586f28608634e",
+        "a0b442d66ec70a05b4754bd54ea229b835b662ef",
+        "a0b5c4b15b9451e7083a655ebf4340739c1482e6",
+        "a2278e92adb02193cf28d83b76283b05f7977fb1",
+        "a9798c77489f3280f1ae37a9273baed633eede32",
+        "adfbc7cd45eb740ad25a96c76ce0f2cafcd952cf",
+        "ae20991e09f25c9a177770010a0be26a835e627b",
+        "b44f204f34e691e0e508b5eff88f996ac7b872ab",
+        "b56bd567783d5cb447dee32379e8a72a275405ef",
+        "b6477d11557e23f3dc2b0afd1db50330eb8c9368",
+        "bd2c6d5273368a47efba8fc15ce50bd55816cff1",
+        "bd93eca46c4e8a27a5263da35fa691a6af03cac7",
+        "c35c11464e1e8f18a4726354b7db158497fb4b8f",
+        "c954a2fb157329e19ef02c12deb4310f780f40d9",
+        "c960dad2204e88d4902324ed932f0cc28bc445a6",
+        "ca2081f1b29ca8bc77c916d12f6f884a01e9fdc2",
+        "d4e9d1e13c4b197f8be54ae876a79cd0af48ccc2",
+        "de0caafbeb7a023c6d9e629193d4f0f013550835",
+        "df3270ff6ba36e9d7b42fbc4ddb392eb4d8f95e8",
+        "e33b47bd5c88ba6b19651b4c35d849ee3338f23a",
+        "e4cbe657003f8bce86ffb6d30f0e2cafeb326ea6",
+        "e8e64e89f86f3b94de821f12b69ddcc2491f4a4f",
+        "ebac554ccaa5978296ff0dfddcbcaa43abe9e628",
+        "f24c0afe14bd0cf6c27709bcddf5d2805b2cf8a4",
+        "f28bfdcf7965811ad1bd4580c432b2ff69f827f0",
+        "f49ea7f979c70fb3022209721246c8f544cda0dc",
+        "f59bed5a87d6f465e6562d7e826de6e89061b06f",
+        "fb5d439527e9735a4b3b4464b1e31786a5bf9cc9",
+        "fcc0bea25ef762154797e992bb10f18afa854760",
+        "fcd566bdec51f1d75b19cd3b7402e35554fa7250"
+      ],
+      "derived_values_before": 5265,
+      "derived_values_after": 6280,
+      "derived_evidence_support_before": 5265,
+      "derived_evidence_support_after": 6280
+    },
+    "missing": {
+      "entities": [],
+      "values": [],
+      "evidences": [],
+      "relations": [],
+      "research_seed_claims": [],
+      "floor_failures": []
+    },
+    "reconciliation": {
+      "accredited_support": {
+        "field_evidence_restored": 1,
+        "item_evidence_restored": 24436,
+        "moved_item_support_restored": 22,
+        "claims_examined": 5957,
+        "total_evidence_restored": 24437
+      },
+      "relations": {
+        "relations_restored": 9,
+        "relations_skipped_unresolved_endpoints": 0,
+        "relations_after": 2019
+      },
+      "manufacturer_deduplication": {
+        "fields_examined": 731,
+        "duplicates_removed": 4,
+        "evidence_merged": 0,
+        "qualified_variants_merged": 4
+      },
+      "internal_seed_snapshot": {
+        "document_rows_converted": 1975,
+        "historical_rows_marked": 4656
+      },
+      "baseline_seed_snapshot": {
+        "baseline_claims_seen": 1206,
+        "seed_rows_added": 198,
+        "unmatched_values": 56
+      },
+      "seed_registry_snapshot": {
+        "registry_claims": 3689,
+        "source_claims_preserved": 0
+      },
+      "internal_seed_migration": {
+        "document_rows_converted": 1990,
+        "historical_rows_marked": 5944
+      },
+      "baseline_seed_migration": {
+        "baseline_claims_seen": 1206,
+        "seed_rows_added": 198,
+        "unmatched_values": 56
+      },
+      "research_seed_reconciliation": {
+        "claims_examined": 5957,
+        "field_seed_rows_restored": 0,
+        "item_seed_rows_restored": 16668,
+        "moved_item_seed_rows_restored": 0,
+        "linecard_seed_rows_restored": 0,
+        "total_seed_rows_restored": 16668
+      },
+      "research_seed_registry": {
+        "registry_claims": 4879,
+        "source_claims_preserved": 3689
+      },
+      "public_evidence_migration": {
+        "configured": 4,
+        "matched": 4,
+        "evidence_added": 4,
+        "unmatched": 0
+      },
+      "public_evidence_migration_final": {
+        "configured": 4,
+        "matched": 4,
+        "evidence_added": 0,
+        "unmatched": 0
+      }
+    }
   },
   "source_intelligence": {
-    "historical_total": 3924,
+    "historical_total": 21578,
     "historical_supported_current_open": 0,
-    "historical_search_required": 3214,
-    "historical_supported_westcon": 694,
-    "historical_supported_public": 16,
+    "historical_search_required": 650,
+    "historical_supported_westcon": 0,
+    "historical_supported_public": 20928,
     "historical_supported_westcon_and_public": 0,
-    "targets_supported": 10089,
-    "targets_search_required": 3165
+    "targets_supported": 17713,
+    "targets_search_required": 293,
+    "claims_publicly_accredited": 17713,
+    "claims_westcon_supported": 0,
+    "claims_westcon_and_public": 0,
+    "claims_pending": 293
   }
 }

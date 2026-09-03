@@ -35,6 +35,25 @@ FIELD_WEIGHT = {
     "job_profiles": 1.10,
     "job_vendors": 1.08,
     "revenue": 1.06,
+    "market_share": 1.18,
+    "market_position": 1.16,
+    "products_platforms": 1.20,
+    "partner_program": 1.15,
+    "partner_levels": 1.18,
+    "channel_model": 1.12,
+    "cloud_marketplace": 1.13,
+    "subscription_recurrence": 1.10,
+    "employee_count": 1.04,
+    "known_customers": 1.18,
+    "public_contracts": 1.32,
+    "alliances": 1.15,
+    "acquisitions": 1.12,
+    "growth_areas": 1.14,
+    "identified_vendors": 1.24,
+    "identified_integrators": 1.26,
+    "strategic_programs": 1.20,
+    "investment_signals": 1.18,
+    "evidenced_needs": 1.28,
 }
 
 FAMILY_BY_FIELD = {
@@ -54,6 +73,46 @@ FAMILY_BY_FIELD = {
     "westcon_area": "technology",
     "westcon_fit": "technology",
     "revenue": "financial",
+    "employee_count": "financial",
+    "organization_size": "financial",
+    "market_share": "analyst",
+    "market_position": "analyst",
+    "products_platforms": "technology",
+    "subcategories": "technology",
+    "use_cases": "cases",
+    "partner_program": "partners",
+    "partner_levels": "partners",
+    "channel_model": "partners",
+    "certifications": "certifications",
+    "cloud_marketplace": "marketplace",
+    "subscription_recurrence": "financial",
+    "managed_services": "services",
+    "msp_mssp": "services",
+    "technology_domains": "technology",
+    "known_customers": "cases",
+    "public_contracts": "procurement",
+    "alliances": "partners",
+    "acquisitions": "news",
+    "growth_areas": "news",
+    "geographic_presence": "official",
+    "training": "training",
+    "financing": "financial",
+    "logistics": "services",
+    "marketplace": "marketplace",
+    "lifecycle_services": "services",
+    "demand_generation": "marketing",
+    "presales_capability": "services",
+    "technical_capability": "services",
+    "local_presence": "official",
+    "identified_vendors": "technology",
+    "identified_integrators": "cases",
+    "known_architectures": "technology",
+    "strategic_programs": "news",
+    "technology_partners": "partners",
+    "investment_signals": "financial",
+    "evidenced_needs": "technology",
+    "contracts": "procurement",
+    "public_projects": "procurement",
     "estimated_amount": "procurement",
     "renewal_window": "signals",
     "analyst_signals": "analyst",
@@ -137,6 +196,10 @@ def plan(
             score *= 1.18
         if kind in {"historical-revalidation", "historical-relationship-revalidation"}:
             score *= 1.55
+        if gap.get("historical_lineage_present") and kind in {"evidence-support", "public-validation"}:
+            # HF7: a concrete internal/historical clue is high-value research debt because
+            # the target value is already known; public research only needs to validate it.
+            score *= 1.75
         score *= _learning_yield(learning, section, family)
         if state is not None:
             misses = int(state.gap(gap_id).get("consecutive_no_yield") or 0)

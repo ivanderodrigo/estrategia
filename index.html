@@ -7,16 +7,18 @@
 <meta name="description" content="Westcon Iberia · Business Intelligence · Fabricantes, mayoristas, integradores, clientes, tendencias y arquitecturas con trazabilidad por campo.">
 <title>Westcon Iberia · Business Intelligence</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/app/intelligence.css?v=4.0.3">
+<link rel="stylesheet" href="assets/app/intelligence.css?v=4.1.0">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.13.0/dist/pptxgen.bundle.js"></script>
-<script defer src="assets/app/intelligence.js?v=4.0.3"></script>
+<script defer src="assets/app/filter_engine.js?v=4.1.0"></script>
+<script defer src="assets/app/report_engine.js?v=4.1.0"></script>
+<script defer src="assets/app/intelligence.js?v=4.1.0"></script>
 </head>
 <body>
 <header class="appbar">
   <div class="brand">
     <div class="brandmark" aria-hidden="true"><span></span><span></span><span></span></div>
-    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v4.0.6</small></div>
+    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v4.1.0</small></div>
   </div>
   <nav id="tabs" aria-label="Áreas de inteligencia">
     <button class="active" data-view="fabricantes" type="button">Fabricantes</button>
@@ -147,10 +149,27 @@
 
 <div id="sourceModal" class="modal" aria-hidden="true">
   <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="sourceTitle">
-    <div class="modal-head"><div><span>FUENTES Y PROCEDENCIA</span><h2 id="sourceTitle">De dónde procede la información</h2><p>Consulta fuentes web, documentos Westcon aportados, evidencias históricas recuperadas y procedencia pendiente de reconstrucción. Cada dato conserva su origen concreto o indica explícitamente que sigue en investigación.</p></div><button class="modal-close" data-close="sourceModal" type="button" aria-label="Cerrar">×</button></div>
+    <div class="modal-head"><div><span>FUENTES ACTUALES</span><h2 id="sourceTitle">Qué acredita la información visible</h2><p>Consulta documentación oficial Westcon aportada, fuentes públicas primarias y fuentes públicas secundarias o de analistas. El histórico se conserva internamente como memoria de investigación, pero no se presenta como evidencia final.</p></div><button class="modal-close" data-close="sourceModal" type="button" aria-label="Cerrar">×</button></div>
     <div class="source-summary" id="sourceSummary"></div>
     <input id="sourceSearch" class="modal-search" type="search" placeholder="Buscar Gartner, empleo, partner locator, contratación, clientes, arquitectura…">
     <div id="sourceCatalog" class="source-catalog"></div>
+  </div>
+</div>
+
+<div id="filteredReportModal" class="modal" aria-hidden="true">
+  <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="filteredReportTitle">
+    <div class="modal-head"><div><span>INFORME FILTRADO</span><h2 id="filteredReportTitle">Generar informe con el subconjunto actual</h2><p>El informe utilizará exactamente las filas que cumplen el filtro dinámico de la tabla seleccionada.</p></div><button class="modal-close" data-close="filteredReportModal" type="button" aria-label="Cerrar">×</button></div>
+    <label class="report-title">Título<input id="filteredReportName" value="Westcon Iberia · Informe filtrado"></label>
+    <div class="filtered-report-options">
+      <label><input id="filteredReportSummary" type="checkbox" checked> Resumen ejecutivo derivado de los datos</label>
+      <label><input id="filteredReportDetail" type="checkbox" checked> Tabla de detalle</label>
+      <label><input id="filteredReportSources" type="checkbox" checked> Fuentes trazables</label>
+      <label><input id="filteredReportConfidence" type="checkbox" checked> Confianza</label>
+      <label><input id="filteredReportVerified" type="checkbox" checked> Fecha de verificación</label>
+    </div>
+    <div class="report-column-head"><b>Campos y orden</b><span>Usa las flechas para ordenar.</span></div>
+    <div id="filteredReportColumns" class="report-column-list"></div>
+    <div class="export-actions"><button id="filteredReportCsv" class="ghost dark" type="button">CSV para Excel</button><button id="filteredReportPptx" class="ghost dark" type="button">PowerPoint</button><button id="filteredReportPrint" class="primary" type="button">Vista imprimible / PDF</button></div>
   </div>
 </div>
 
@@ -207,5 +226,6 @@
 </div>
 
 <section id="reportSheet" class="report-sheet" aria-hidden="true"></section>
+<section id="filteredReportSheet" class="filtered-report-sheet" aria-hidden="true"></section>
 </body>
 </html>

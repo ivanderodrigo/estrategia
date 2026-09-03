@@ -1,1426 +1,2787 @@
 {
-  "version": "4.0.6",
-  "profile": "daily",
-  "started_at": "2026-09-02T07:39:16.439782+00:00",
-  "planned_entities": 25,
-  "fetch_attempts": 93,
-  "fetch_successes": 89,
-  "pages_relevant": 45,
-  "candidate_evidences": 12,
-  "accepted_evidences": 8,
-  "fields_enriched": 8,
-  "values_added": 0,
-  "entities_added": 0,
-  "cache_hits": 21,
-  "circuit_skips": 32,
-  "unsafe_url_rejections": 0,
-  "official_sites_discovered": 9,
-  "stop_reason": "complete",
-  "elapsed_s": 98.13,
-  "finished_at": "2026-09-02T07:40:53.841841+00:00",
+  "version": "4.1.0",
+  "profile": "deep",
+  "started_at": "2026-09-02T09:56:40.741988+00:00",
+  "planned_entities": 474,
+  "fetch_attempts": 1227,
+  "fetch_successes": 2882,
+  "pages_relevant": 2070,
+  "candidate_evidences": 3534,
+  "accepted_evidences": 3138,
+  "fields_enriched": 3138,
+  "values_added": 3325,
+  "entities_added": 39,
+  "cache_hits": 2194,
+  "circuit_skips": 8034,
+  "unsafe_url_rejections": 7,
+  "official_sites_discovered": 0,
+  "stop_reason": "deadline",
+  "structured_notices": 150,
+  "elapsed_s": 1342.02,
+  "finished_at": "2026-09-02T10:19:01.691782+00:00",
   "results": [
     {
-      "section": "clients_private",
-      "entity": "Banco Santander",
-      "url": "https://www.santander.com/es/home",
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/certificacoes",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/certifications",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/ciberseguridad",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/cloud-marketplace",
+      "family": "marketplace",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/competencies",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/connectivity",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/data",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/digital",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/especializaciones",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/financial-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/ict",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/innovacion",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/innovation",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/inovacao",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/it",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/job-search",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/linecard",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/marketplace",
+      "family": "marketplace",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/networking",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/ofertas-de-empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/partner-directory",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/partner-levels",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/europe-middle-east-africa?page=3",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/global",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/global/ntt-ltd",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/partners/locators/solution-partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/platform",
+      "family": "marketplace",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/redes",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/relatorio-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/reports",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/research",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/resources",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/resultados",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/robots.txt",
       "family": "official",
-      "cached": false,
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/security",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/seguranca",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/seguridad",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/sitemap.xml",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/specializations",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/subscription",
+      "family": "marketplace",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/subscriptions",
+      "family": "marketplace",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/technology",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/technology-partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/tecnologia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/transformacao-digital",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/transformacion-digital",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/vagas",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.audiocodes.com/verticals",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.orange-business.com/en",
+      "family": "partners",
+      "cached": true,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/home_es.html",
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.orange-business.com/en/press/5g-steel-first-enhanced-mobile-broadband-use-cases-decarbonize-steel-industry-and-work",
+      "family": "cases",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.orange-business.com/en",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.orange-business.com/en",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.orange-business.com/en",
+      "family": "certifications",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.orange-business.com/en",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AudioCodes",
+      "url": "https://www.orange-business.com/en/about-us/partners",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://itancia.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://itancia.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://itancia.com/partner-directory",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://itancia.com/partner-levels",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://itancia.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://itancia.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://itancia.com/technology-partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://services.ingrammicro.com/?lang=es-ES",
       "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/ai",
-      "family": "technology",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.caixabank.com/ai",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.caixabank.com/careers",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.caixabank.com/carreiras",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/ciberseguridad",
-      "family": "technology",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.caixabank.com/ciberseguridad",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/cloud",
-      "family": "technology",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.caixabank.com/cloud",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/connectivity",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/cybersecurity",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/data",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/digital",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/es/actualidad/noticias/caixabank-invierte-1-368-millones-en-tecnologia-y-desarrollo-durante-2024-un-8-3-mas-que-el-ano-anterior",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/ict",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/innovacion",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/innovation",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/inovacao",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/it",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/networking",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/redes",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/security",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/seguranca",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/seguridad",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/services",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/servicios",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/servicos",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/sitemap.xml",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/soluciones",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/solucoes",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/solutions",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/technology",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/tecnologia",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/transformacao-digital",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "CaixaBank",
-      "url": "https://www.caixabank.com/transformacion-digital",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "EDP",
-      "url": "https://edp.com/en/careers/inside-edp/diversity-and-inclusion",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "EDP",
-      "url": "https://edp.com/en/careers/inside-edp/diversity-and-inclusion/shementors",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "EDP",
-      "url": "https://edp.com/en/careers/inside-edp/meet-our-teams",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "EDP",
-      "url": "https://edp.com/en/careers/job-opportunities/start-your-career/student-ambassadors",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "EDP",
-      "url": "https://edp.com/en/careers/rebels-for-change",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Galp Energia",
-      "url": "https://www.galp.com/es/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Iberdrola",
-      "url": "https://www.iberdrola.com/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Jerónimo Martins",
-      "url": "https://www.jeronimomartins.com/pt/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "NOS",
-      "url": "https://www.nos.pt/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Repsol",
-      "url": "https://www.repsol.com/es/index.cshtml",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Sonae",
-      "url": "https://sonae.pt/en/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 247
-    },
-    {
-      "section": "clients_private",
-      "entity": "Telefónica",
-      "url": "https://www.telefonica.com/es/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Inditex",
-      "url": "https://www.inditex.com/itxcomweb/es/es/home",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Inditex",
-      "url": "https://www.inditex.com/itxcomweb/es/es/talento/vida-en-inditex",
-      "family": "careers",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Inditex",
-      "url": "https://www.inditex.com/itxcomweb/es/es/talento/equipos",
-      "family": "careers",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Inditex",
-      "url": "https://www.inditex.com/itxcomweb/es/en/talent/life-at-inditex",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Inditex",
-      "url": "https://www.inditex.com/itxcomweb/es/en/talent/teams",
-      "family": "careers",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/careers",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/carreiras",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/talento/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/emprego",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/jobs",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/robots.txt",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/sitemap.xml",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/talent",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Mapfre",
-      "url": "https://www.mapfre.com/talento/unete-a-nuestro-equipo/",
-      "family": "careers",
       "cached": false,
       "relevant": true,
       "accepted": 1,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "Grupo ICA",
-      "url": "https://efficientip.com/industry-alliances/",
-      "family": "cases",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Grupo ICA",
-      "url": "https://efficientip.com/industry/telco-service-providers/",
-      "family": "cases",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Grupo ICA",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "family": "cases",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Grupo ICA",
-      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Grupo ICA",
-      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Indra",
-      "url": "https://consent.google.com/ml?continue=https://news.google.com/&gl=ES&hl=es&cm=2&pc=n&src=1&escs=ATu9isGXZUi7wkCCdtSdKhNJ9lljzLSXz0jXS0Z9jwr0VLPdc0a7fz01Mjm6ebD_hDmEQ4HkbD-ksXRvhWUt2z91XiZjgNnGiTIw",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Indra",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "family": "cases",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Indra",
-      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Indra",
-      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
-      "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Indra",
-      "url": "https://jobs.atos.net/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Seyrcom",
-      "url": "https://www.ruckusnetworks.com:443/partners/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Seyrcom",
-      "url": "https://www.ruckusnetworks.com/resources/case-studies/mahou-san-miguel/",
-      "family": "cases",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Seyrcom",
-      "url": "https://es.ruckusnetworks.com/alliance-partners/?filter1Category=&filter2Category=&filter3Category=&filter4Category=&desiredPage=2",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Seyrcom",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "family": "cases",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Seyrcom",
-      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "SIA",
-      "url": "https://es.vectra.ai/about/news/vectra-ai-honors-partner-community-with-2022-partner-of-the-year-awards",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "SIA",
-      "url": "https://es.vectra.ai/partners",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "SIA",
-      "url": "https://www.vectra.ai/partners",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "SIA",
-      "url": "https://www.zscaler.com/partners/technology",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "SIA",
-      "url": "https://www.fortinet.com/tw/partners/partnerships/alliance-partners?p_function=Operational%20Technology",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Abenet Soluciones",
-      "url": "https://www.ruckusnetworks.com:443/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Abenet Soluciones",
-      "url": "https://www.ruckusnetworks.com/resources/case-studies/andreu-world/",
-      "family": "cases",
-      "cached": false,
-      "relevant": true,
-      "accepted": 2,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Abenet Soluciones",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "family": "cases",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Abenet Soluciones",
-      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Abenet Soluciones",
-      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
-      "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "IBM",
-      "url": "https://www.checkpoint.com/es/partners/global-systems-integrators/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "IBM",
-      "url": "https://www.nokia.com/partners/si-consulting/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "IBM",
-      "url": "https://www.uipath.com/partners/service-partners/23",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "IBM",
-      "url": "https://consent.google.com/ml?continue=https://news.google.com/rss/articles/CBMi0gFBVV95cUxQcFg1WndXeFphbmhLNjhFOUdoZFJGNHpJRmhkR1MwREQ1Y3RuangwLVczb2xEM3l4YjF4aFZHOHZqa0RBSEhjX2daZ0UzVGxzMlRydml3M2xsUDJXcW4yRy1xczZiT0FmZTdQNldQNlhtUVZVRzlsRU8xeEtLbjBaaGgwTUduUm1ES1RRUjRWaF93UWU0MzdhNmpMVUNXWDlJY3h3LU16RkJXN3lNMmZCNWZzeE1rTElIMFlHSE0waEMxNzdrVWFld2QxRlE2S2RmTVE?oc%3D5&gl=ES&hl=es&cm=2&pc=n&src=1&escs=ATu9isH7CFLUa5BUT92kXteP_6inTMSo0n-zjiIjiOvrWzNzke-ea_zRrGFIqQgkbV8EJ5pgpIxIaHWa-DKTDJ1qzWV7rhGkxsKB",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "IBM",
-      "url": "https://consent.google.com/ml?continue=https://news.google.com/rss/articles/CBMijwJBVV95cUxNZElMZXR6MnRjQldiSFg3TmFTQjNjcFVmMm9wT2ZnMXlRb3VrbjVlMXE4OFRfdUljNFRjUXROLUpPQ08td0ZVSllGbkY2LTVLY1hsQXgzaVRWT2wxYV90X0VDb251NVlGS29GYXFoNnNlOGpxUVVSQjVhUzJ5QjZlaHVsd3ppM0ZjS195YklLem5zRHdRWmhrTVNRbERBcmtMcWozd0t6djBlNVhZeHpHQi1qWDhzamtHa3FMOW9GQXJZeERqcWN2VUpQWjNDNnVmV1dZaC1obnMwa2s1eWQ4bGR5eGV4MWljS25uVnY4b1I4cVpWb0UwU1h3SDRwVG1uMnZIQUxyWWdKR29DUVRN?oc%3D5&gl=ES&hl=es&cm=2&pc=n&src=1&escs=ATu9isEJI6aeCe0WTNvk0pGnfF8aZHi3JfXmvIlAAxNeHiXlNCkcy6rlmM48MIjJTBB9qvxJVowGOdZLstocUjeT_Bo0ybNxjIs3",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/global/en.html",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.inetum.com/case-studies",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.inetum.com/casos",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/global/en.html",
-      "family": "cases",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/global/en.html",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.inetum.com/customers",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.inetum.com/cybersecurity",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/es/es/services.html",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 3,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/global/en.html",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Infosys",
-      "url": "https://www.channelpartner.es/partners",
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://services.ingrammicro.com/alliances",
       "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.channelpartner.es/partners",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://services.ingrammicro.com/alliances",
       "accepted": 0
     },
     {
-      "section": "integrators",
-      "entity": "Infosys",
-      "url": "https://www.nokia.com/customer-success/google-cloud-partners-with-nokia-to-accelerate-ai-value-creation-and-unlock-new-business/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Infosys",
-      "url": "https://www.nokia.com/customer-success/nokia-and-cinia-partner-to-secure-finlands-critical-infrastructure-with-advanced-ddos-protection/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Infosys",
-      "url": "https://www.nokia.com/customer-success/vtt-sandvik-and-nokia-partner-for-safe-autonomous-underground-mining-supported-by-5g-and-edge-intelligence/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Infosys",
-      "url": "https://www.nokia.com/partners/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Infosys",
-      "url": "https://www.nokia.com/partners/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/alianzas",
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://services.ingrammicro.com/find-a-partner",
       "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.integrity360.com/alianzas",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://services.ingrammicro.com/find-a-partner",
       "accepted": 0
     },
     {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.integrity360.com/cloud",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.integrity360.com/cybersecurity",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/es/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/es/partners",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/fabricantes",
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://services.ingrammicro.com/partner-directory",
       "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.integrity360.com/fabricantes",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://services.ingrammicro.com/partner-directory",
       "accepted": 0
     },
     {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/line-card",
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://services.ingrammicro.com/partner-levels",
+      "family": "certifications",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://services.ingrammicro.com/partner-levels",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://services.ingrammicro.com/partner-locator",
       "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.integrity360.com/line-card",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://services.ingrammicro.com/partner-locator",
       "accepted": 0
     },
     {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/managed-cyber-services",
-      "family": "services",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.integrity360.com/marcas",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.integrity360.com/parceiros",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Integrity360",
-      "url": "https://www.integrity360.com/partners",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Ayesa",
-      "url": "https://partners.amazonaws.com/partners/001E000001KaIpOIAV/Ayesa",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Ayesa",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "family": "cases",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Ayesa",
-      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Ayesa",
-      "url": "https://jobs.atos.net/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Ayesa",
-      "url": "https://aws.amazon.com/es/blogs/apn/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "BiMind",
-      "url": "https://bimind.es/it-security/ivanti/",
-      "family": "technology",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://bimind.es/it-security/ivanti/",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "BiMind",
-      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "BiMind",
-      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
-      "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "BiMind",
-      "url": "https://jobs.atos.net/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "BiMind",
-      "url": "https://www.devoteam.com/es/expert-view/que-hace-devoteam-servicios-partners-capacidades-ia/",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.devoteam.com/es/expert-view/que-hace-devoteam-servicios-partners-capacidades-ia/",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "BiMind",
-      "url": "https://aws.amazon.com/es/blogs/apn/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "BiMind",
-      "url": "https://www.channelpartner.es/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "ESED",
-      "url": "https://www.attackiq.com/wp-content/uploads/2022/06/esed-case-study.pdf",
-      "family": "cases",
-      "status": 200,
-      "error": "unsupported-content-type:application/pdf",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "ESED",
-      "url": "https://www.channelpartner.es/negocio/ranking-de-integradores-y-consultoras-ti-en-espana/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "ESED",
-      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
-      "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "ESED",
-      "url": "https://jobs.atos.net/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "ESED",
-      "url": "https://www.devoteam.com/es/expert-view/que-hace-devoteam-servicios-partners-capacidades-ia/",
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://services.ingrammicro.com/partners",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "integrators",
-      "entity": "ESED",
-      "url": "https://aws.amazon.com/es/blogs/apn/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "ESED",
-      "url": "https://www.channelpartner.es/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Glintt Global",
-      "url": "https://consent.google.com/ml?continue=https://news.google.com/rss/articles/CBMiwgFBVV95cUxNSzlYRExyZ3ZpRHhLd1dkcjNQWmdVMkllUXhlNm5URUNSWE1EaHNSN1pKbW1sR2NpcVdxV1JxWFpKZzVmVDZ2cERWS01kUlZoRmVSMjh4NGNTbEtkS2Nvcno1Y0F1dVoybEs3cnVRczVLRnQ2dWhFajZjVWZkNkxoSEFXYU9DcmdjNk1FaDgxSl9EZ19iU2tUY1B6Z1dyRG9KR0dvdW5qQTd6bTJCVEk1cFZTQ2JwWWw4b05CS1lmWDV0QdIBvAFBVV95cUxPdjNheGdFS1ZjYURRYXhvc3ZGU0NuOEt6X0E3czRSblAxMXRDc2FrZWYtbmFQNmlsN3BHRFRNRVlqY3dlaE9kUTNlNWRfb3dZVGZzZEJMc0ZLb1l0cGpSQTVJdjJnTWZQQTg0VjI1RFo4ZThrMVhEVWJwaDJzZG9oNGcwX3dnYWR6RGlpLXVBOElnUDRMczZDTEFkTERNblV6MzcwR1pRaF9aakUxUWpHOXp2UUVXRHNpNVdMQQ?oc%3D5&gl=ES&hl=es&cm=2&pc=n&src=1&escs=ATu9isGO68QDw3WTveckR3fbn_veFMW8FeE_-yAUP-SJFnc49OzdZoBHo7ZQbFawHItXuQDvtDeMA9_sUnj14ZjPY_4al4v_hW0U",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Glintt Global",
-      "url": "https://www.glinttglobal.com/pt/glintt-global-fmul-campus-torres-vedras/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Glintt Global",
-      "url": "https://www.glinttglobal.com/pt/laboratorio-de-simulacao-farmacia/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Glintt Global",
-      "url": "https://www.glinttglobal.com/pt/lucro-glintt-global-cresce-53-para-77-milhoes/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Glintt Global",
-      "url": "https://partners.amazonaws.com/partners/0010L00001sghliQAA/GLINTT%20GLOBAL",
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://services.ingrammicro.com/technology-partners",
       "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.extremenetworks.com/alliances",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.extremenetworks.com/find-a-partner",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.extremenetworks.com/partner-directory",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.extremenetworks.com/partner-levels",
+      "family": "certifications",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.extremenetworks.com/partner-locator",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.extremenetworks.com/partners",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.extremenetworks.com/technology-partners",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.avaya.com/en/documents/cs-torrestir-smb15164en.pdf",
+      "family": "official",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.avaya.com/en/documents/cs-torrestir-smb15164en.pdf",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.nunsys.com/personas/nosotros/partners/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.timestampgroup.com/en/partners/avaya-en",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.channelpartner.es",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.levelblue.com/technology-partners",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://certesnetworks.com/partners/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.ciena.com/partners/locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://cradlepoint.com/partners/for-customers/find-a-partner/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.zscaler.com/es/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://cradlepoint.com/partners/for-partners/resell-partners/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://cradlepoint.com/partners/for-partners/service-provider-partners/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://weblib.com/partners/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://itcm.es/soluciones/gestion-de-accesos/",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://telefonicatech.com/actualidad/redes-privadas-5g-nokia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.muycanal.com/2023/01/31/efficientip-dns-partners",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-recognizes-2025-european-partner-award-winners/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.extremenetworks.com/partners/partner-locator",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.extremenetworks.com/about-extreme-networks/company/how-to-buy",
+      "family": "services",
       "cached": false,
       "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.extremenetworks.com/about-extreme-networks/why-extreme-networks",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://academy.tdsynnex.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://academy.tdsynnex.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://academy.tdsynnex.com/partner-directory",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://academy.tdsynnex.com/partner-levels",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://academy.tdsynnex.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://academy.tdsynnex.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://academy.tdsynnex.com/technology-partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/es/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/es/ai/",
+      "family": "technology",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error:  for url: https://aws.amazon.com/es/alianzas/",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error:  for url: https://aws.amazon.com/es/alliances/",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/analyst",
+      "family": "analyst",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error:  for url: https://aws.amazon.com/es/analyst/",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/annual-report",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error:  for url: https://aws.amazon.com/es/annual-report/",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/annual-reports",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error:  for url: https://aws.amazon.com/es/annual-reports/",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/badges",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/blogs/apn/announcing-the-regional-2024-aws-partners-of-the-year-for-europe-middle-east-and-africa/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/blogs/apn/announcing-the-regional-2025-aws-partners-of-the-year-for-europe-middle-east-and-africa/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/blogs/apn/announcing-the-regional-2026-aws-partners-of-the-year-for-europe-middle-east-and-africa/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/casos-de-exito",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/catalog",
+      "family": "marketplace",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/certificaciones",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/certificacoes",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/certifications",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/ciberseguridad",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/cloud-marketplace",
+      "family": "marketplace",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/competencies",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/connectivity",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/data",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/digital",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/especializaciones",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/financial-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/ict",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/innovacion",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/innovation",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/inovacao",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/it",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/job-search",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/linecard",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/marketplace",
+      "family": "marketplace",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/networking",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/ofertas-de-empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/partner-directory",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/partner-levels",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/platform",
+      "family": "marketplace",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/redes",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/relatorio-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/reports",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/research",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/resources",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/resultados",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/security",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/seguranca",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/seguridad",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/sitemap.xml",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/specializations",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/subscription",
+      "family": "marketplace",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/subscriptions",
+      "family": "marketplace",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/technology",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/technology-partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/tecnologia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/transformacao-digital",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/transformacion-digital",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/vagas",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/verticals",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://careers.capgemini.com/alliances",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
       "accepted": 0,
       "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://careers.capgemini.com/find-a-partner",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://careers.capgemini.com/partner-directory",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://careers.capgemini.com/partner-levels",
+      "family": "certifications",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://careers.capgemini.com/partner-locator",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://careers.capgemini.com/partners",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://careers.capgemini.com/technology-partners",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://hub.tdsynnex.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://hub.tdsynnex.com/es/aws/dsor/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://hub.tdsynnex.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://hub.tdsynnex.com/partner-directory",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://hub.tdsynnex.com/partner-levels",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://hub.tdsynnex.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://hub.tdsynnex.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://hub.tdsynnex.com/technology-partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://jobs.atos.net/alliances",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://jobs.atos.net/find-a-partner",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://jobs.atos.net/partner-directory",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://jobs.atos.net/partner-levels",
+      "family": "certifications",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://jobs.atos.net/partner-locator",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://jobs.atos.net/partners",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://jobs.atos.net/technology-partners",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/resources/aemet-protect-dns-dhcp-ipam-systems-and-guarantee-network-visibility/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://www.ingecom.net/efficientip-se-suma-al-portfolio-de-soluciones-de-ingecom/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://www.muycanal.com/2023/01/31/efficientip-dns-partners",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://www.channelpartner.es",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://www.levelblue.com/technology-partners",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://certesnetworks.com/partners/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://www.ciena.com/partners/locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://cradlepoint.com/partners/for-customers/find-a-partner/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://www.zscaler.com/es/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://cradlepoint.com/partners/for-partners/resell-partners/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://cradlepoint.com/partners/for-partners/service-provider-partners/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://weblib.com/partners/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://itcm.es/soluciones/gestion-de-accesos/",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://telefonicatech.com/actualidad/redes-privadas-5g-nokia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-recognizes-2025-european-partner-award-winners/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/resources/2025-ema-radar-for-ddi-efficientip-named-value-leader/",
+      "family": "analyst",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/careers/",
+      "family": "careers",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/products/ddi-observability-center/",
+      "family": "technology",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/products/dns-cloud/",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/products/cloud-observer/",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/products/network-object-manager/",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/blog/idc-2023-network-automation-report-why-ddi-is-an-obvious-starting-point/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/products/dns-client-query-filtering/",
+      "family": "cases",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/blog/elevate-dns-threat-intelligence-for-proactive-network-security/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/solutions/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/solutions/zero-trust-security/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://partners.amazonaws.com/alliances",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://partners.amazonaws.com/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://partners.amazonaws.com/partner-directory",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://partners.amazonaws.com/partner-levels",
+      "family": "certifications",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://partners.amazonaws.com/partner-locator",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://partners.amazonaws.com/partners",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://partners.amazonaws.com/partners/001E000000Rp5HiIAJ/Tata%20Consultancy%20Services%20%28TCS%29",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://partners.amazonaws.com/technology-partners",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.exclusive-networks.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.exclusive-networks.com/ecosystem/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.exclusive-networks.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.exclusive-networks.com/partner-directory",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.exclusive-networks.com/partner-levels",
+      "family": "certifications",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.exclusive-networks.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.exclusive-networks.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.exclusive-networks.com/technology-partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.f5.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.f5.com/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.f5.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.f5.com/find-a-partner",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.f5.com/partner-directory",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.f5.com/partner-directory",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.f5.com/partner-levels",
+      "family": "certifications",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.f5.com/partner-levels",
+      "accepted": 0
     }
   ]
 }

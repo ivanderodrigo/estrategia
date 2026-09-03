@@ -1,4 +1,4 @@
-"""Relationship-level historical provenance revalidation for v4.0.5 source-r5."""
+"""Relationship-level historical provenance revalidation for v4.1.0."""
 from __future__ import annotations
 
 import hashlib
@@ -12,6 +12,8 @@ from urllib.parse import urlparse
 import xml.etree.ElementTree as ET
 
 import requests
+
+from .settings import VERSION
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / "config/current/relationship_revalidation_registry.json"
@@ -130,7 +132,7 @@ def build_registry(
         })
 
     return {
-        "version": "4.0.6",
+        "version": VERSION,
         "policy": (
             "Las relaciones H se conservan como deuda de revalidación. "
             "No cuentan como acreditadas hasta tener fuente abierta actual."
@@ -145,7 +147,7 @@ def build_registry(
 
 def load_registry() -> dict[str, Any]:
     if not REGISTRY_PATH.exists():
-        return {"version": "4.0.6", "candidates_total": 0, "supported_current_open": 0, "search_required": 0, "candidates": []}
+        return {"version": VERSION, "candidates_total": 0, "supported_current_open": 0, "search_required": 0, "candidates": []}
     return json.loads(REGISTRY_PATH.read_text(encoding="utf-8-sig"))
 
 

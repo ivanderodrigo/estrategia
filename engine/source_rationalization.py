@@ -1,7 +1,8 @@
-"""Claim/evidence support model for Westcon Decision Intelligence v4.0.6 r3.
+"""Claim/evidence support model for Westcon Decision Intelligence v4.1.0 r4.
 
 Policy:
-- External facts require atomic WESTCON_DOCUMENT (A1) or current public evidence.
+- External facts require current public evidence.
+- Westcon deck/portfolio and historical lineage are research hints only.
 - Derived/internal Westcon conclusions are not searched literally on the web.
   They require traceable derivation from supported inputs.
 - Historical/curated/inferred knowledge is preserved while support is pending.
@@ -12,8 +13,8 @@ from collections import Counter
 from typing import Any, Iterable, Mapping
 import json
 
-from .knowledge_provenance import provenance_kind
-from .settings import SECTIONS
+from .knowledge_provenance import accrediting_evidence, discovery_only, provenance_kind
+from .settings import SECTIONS, VERSION
 
 HISTORICAL_KINDS = {
     "HISTORICAL_RECOVERED",
@@ -58,8 +59,15 @@ DERIVED_FIELDS: dict[tuple[str, str], dict[str, Any]] = {
 }
 
 
-def claim_policy(section: str, field: str) -> dict[str, Any]:
+def claim_policy(section: str, field: str, column: Mapping[str, Any] | None = None) -> dict[str, Any]:
     policy = DERIVED_FIELDS.get((str(section), str(field)))
+    declared_class = str((column or {}).get("claim_class") or "")
+    if policy is None and declared_class in {"DERIVED_FACT", "INTERNAL_CLASSIFICATION"}:
+        policy = {
+            "claim_class": declared_class,
+            "rule": str((column or {}).get("derivation_rule") or "derived from supported canonical inputs"),
+            "dependency_fields": list((column or {}).get("dependency_fields") or []),
+        }
     if policy:
         return {
             "claim_class": policy["claim_class"],
@@ -90,21 +98,15 @@ def is_westcon_document(ev: Mapping[str, Any]) -> bool:
 def is_current_public(ev: Mapping[str, Any]) -> bool:
     return (
         not is_historical(ev)
+        and not discovery_only(ev)
+        and accrediting_evidence(ev)
         and _url(ev).startswith(("http://", "https://"))
     )
 
 
 def support_basis(rows: Iterable[Mapping[str, Any]]) -> str:
     evidence = [row for row in rows if isinstance(row, Mapping)]
-    has_a1 = any(is_westcon_document(ev) for ev in evidence)
-    has_public = any(is_current_public(ev) for ev in evidence)
-    if has_a1 and has_public:
-        return "WESTCON_AND_PUBLIC"
-    if has_a1:
-        return "WESTCON_DOCUMENT"
-    if has_public:
-        return "CURRENT_PUBLIC"
-    return "SEARCH_REQUIRED"
+    return "CURRENT_PUBLIC" if any(is_current_public(ev) for ev in evidence) else "SEARCH_REQUIRED"
 
 
 def _analyst(ev: Mapping[str, Any]) -> bool:
@@ -117,8 +119,8 @@ def _analyst(ev: Mapping[str, Any]) -> bool:
 
 def source_tier(ev: Mapping[str, Any]) -> str:
     kind = provenance_kind(ev)
-    if kind == "WESTCON_DOCUMENT":
-        return "A1"
+    if kind in {"WESTCON_DOCUMENT", "RESEARCH_SEED"}:
+        return "H"
     if is_historical(ev):
         return "H"
     if is_current_public(ev) and _analyst(ev):
@@ -136,7 +138,7 @@ def source_tier(ev: Mapping[str, Any]) -> str:
 
 def source_role(tier: str) -> str:
     return {
-        "A1": "Fuente directa Westcon",
+        "A1": "Reservado",
         "A2": "Fuente primaria externa",
         "B": "Inteligencia especializada",
         "C": "Fuente pública secundaria",
@@ -161,9 +163,6 @@ def _annotate(rows: Iterable[dict[str, Any]], basis: str) -> Counter[str]:
             if basis == "WESTCON_AND_PUBLIC":
                 ev["revalidation_status"] = "supported-by-westcon-and-public"
                 stats["historical_supported_westcon_and_public"] += 1
-            elif basis == "WESTCON_DOCUMENT":
-                ev["revalidation_status"] = "supported-by-westcon-document"
-                stats["historical_supported_westcon"] += 1
             elif basis == "CURRENT_PUBLIC":
                 ev["revalidation_status"] = "supported-by-current-public"
                 stats["historical_supported_public"] += 1
@@ -196,6 +195,11 @@ def rationalize_sources(data: dict[str, Any]) -> dict[str, Any]:
     unique_unresolved: dict[str, dict[str, Any]] = {}
 
     for section in SECTIONS:
+        schema = {
+            str(column.get("id")): column
+            for column in (data.get("schemas") or {}).get(section, [])
+            if isinstance(column, Mapping) and column.get("id")
+        }
         for row in data.get(section) or []:
             if not isinstance(row, dict):
                 continue
@@ -211,7 +215,7 @@ def rationalize_sources(data: dict[str, Any]) -> dict[str, Any]:
                 if not isinstance(field, dict):
                     continue
 
-                policy = claim_policy(section, field_id)
+                policy = claim_policy(section, field_id, schema.get(str(field_id)))
                 items = [
                     item for item in field.get("items") or []
                     if isinstance(item, dict)
@@ -287,14 +291,14 @@ def rationalize_sources(data: dict[str, Any]) -> dict[str, Any]:
     derived_unique = len(unique_unresolved) - external_unique
 
     return {
-        "version": "4.0.6",
-        "model_revision": "r3",
+        "version": VERSION,
+        "model_revision": "r5-public-evidence-only",
         "policy": (
-            "Hechos externos: A1 Westcon o fuente pública actual. "
+            "Hechos externos: fuente pública actual. PPT/portfolio/histórico: pistas internas no acreditativas. "
             "Conclusiones internas/derivadas: inputs sustentados + regla trazable. "
             "Todo valor se conserva mientras se resuelve su soporte."
         ),
-        "support_rule": "WESTCON_DOCUMENT_OR_CURRENT_PUBLIC_OR_TRACEABLE_DERIVATION",
+        "support_rule": "CURRENT_PUBLIC_OR_TRACEABLE_DERIVATION",
         "targets_total": target_stats["targets_total"],
         "targets_direct_supported": target_stats["targets_direct_supported"],
         "targets_supported_westcon_only": target_stats["supported_WESTCON_DOCUMENT"],

@@ -1,7 +1,7 @@
-// App v4.0.6
+// App v4.1.0
 (() => {
   'use strict';
-  const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, dragCol:null, resize:null, traceSource:null, helpSource:null};
+  const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -75,6 +75,9 @@
     $('#sourceSearch')?.addEventListener('input', renderSourceCatalog);
     $('#exportPdf')?.addEventListener('click', async()=>{await ensureAllData();await exportPdf();});
     $('#exportPptx')?.addEventListener('click', async()=>{await ensureAllData();await exportPptx();});
+    $('#filteredReportPrint')?.addEventListener('click', generateFilteredPrintReport);
+    $('#filteredReportCsv')?.addEventListener('click', generateFilteredCsv);
+    $('#filteredReportPptx')?.addEventListener('click', generateFilteredPptx);
     $('#textSmaller')?.addEventListener('click', () => changeTextScale(-0.1));
     $('#textLarger')?.addEventListener('click', () => changeTextScale(0.1));
     $('#textReset')?.addEventListener('click', resetTextScale);
@@ -105,8 +108,22 @@
     document.addEventListener('dragstart', e=>{ if(e.target.closest('.col-resizer')){e.preventDefault();return;} const th=e.target.closest('th[data-col]'); if(th){state.dragCol=th.dataset.col; e.dataTransfer.effectAllowed='move';}});
     document.addEventListener('dragover', e=>{if(e.target.closest('th[data-col]')) e.preventDefault();});
     document.addEventListener('drop', e=>{ const th=e.target.closest('th[data-col]'); if(!th||!state.dragCol)return; e.preventDefault(); reorderColumn(th.closest('table')?.dataset.view,state.dragCol,th.dataset.col); state.dragCol=null;});
-    document.addEventListener('change', e=>{const cb=e.target.closest('[data-col-toggle]');if(cb)setColumnVisible(cb.dataset.view,cb.dataset.colToggle,cb.checked);});
-    document.addEventListener('click', e=>{const b=e.target.closest('[data-table-reset]');if(b){resetTablePrefs(b.dataset.tableReset);e.preventDefault();}});
+    document.addEventListener('change', e=>{
+      const cb=e.target.closest('[data-col-toggle]');if(cb)setColumnVisible(cb.dataset.view,cb.dataset.colToggle,cb.checked);
+      if(e.target.matches('[data-column-search]'))filterColumnMenu(e.target);
+      if(e.target.closest('[data-filter-control]'))handleFilterControl(e.target,true);
+    });
+    document.addEventListener('input', e=>{
+      if(e.target.matches('[data-column-search]'))filterColumnMenu(e.target);
+      if(e.target.closest('[data-filter-value]'))handleFilterControl(e.target,false);
+    });
+    document.addEventListener('toggle',e=>{const panel=e.target.closest?.('[data-analysis-panel]');if(panel)state.analysisOpen[panel.dataset.analysisPanel]=panel.open;},true);
+    document.addEventListener('click', e=>{
+      const b=e.target.closest('[data-table-reset]');if(b){resetTablePrefs(b.dataset.tableReset);e.preventDefault();return;}
+      const action=e.target.closest('[data-column-action]');if(action){handleColumnAction(action);e.preventDefault();return;}
+      const filterAction=e.target.closest('[data-filter-action]');if(filterAction){handleFilterAction(filterAction);e.preventDefault();return;}
+      const reportAction=e.target.closest('[data-report-action]');if(reportAction){handleReportColumnAction(reportAction);e.preventDefault();return;}
+    });
     document.addEventListener('pointerdown', e=>{const h=e.target.closest('.col-resizer');if(!h)return;const th=h.closest('th[data-col]'),table=th?.closest('table');if(!th||!table)return;e.preventDefault();state.resize={view:table.dataset.view,col:th.dataset.col,startX:e.clientX,startW:th.getBoundingClientRect().width};document.body.classList.add('resizing-cols');});
     document.addEventListener('pointermove', e=>{if(!state.resize)return;const w=Math.max(110,Math.min(520,state.resize.startW+(e.clientX-state.resize.startX)));setColumnWidth(state.resize.view,state.resize.col,w,false);});
     document.addEventListener('pointerup', ()=>{if(state.resize){setColumnWidth(state.resize.view,state.resize.col,currentColumnWidth(state.resize.view,state.resize.col),true);state.resize=null;document.body.classList.remove('resizing-cols');}});
@@ -184,16 +201,15 @@
     const title=esc(ev.title||ev.source||'Evidencia'), source=esc(ev.source||'Fuente pública');
     const provenance=String(ev.provenance_origin||'').toUpperCase();
     const tier=String(ev.intelligence_tier||'');
-    const role=ev.source_role||({A1:'Fuente directa Westcon',A2:'Fuente primaria externa',B:'Inteligencia especializada',C:'Fuente abierta secundaria',D:'Curación interna',H:'Histórico en revalidación'})[tier]||'Fuente';
+    const role=ev.source_role||({A1:'Fuente documental Westcon',A2:'Fuente pública primaria',B:'Analista / fuente especializada',C:'Fuente pública secundaria'})[tier]||'Fuente acreditativa';
     const isWestconDoc=provenance==='WESTCON_DOCUMENT'||String(ev.source_type||'').toLowerCase().includes('westcon-document');
-    const isHistorical=tier==='H'||/HISTORICAL|ARCHIVE|REPORT_CORROBORATION|LEGACY_UNRESOLVED/.test(provenance);
     const fresh=ev.freshness_status?`Vigencia: ${ev.freshness_status}${Number.isFinite(Number(ev.age_days))?` · ${ev.age_days} días`:''}`:'';
     const doc=ev.document?`Documento: ${ev.document}${ev.slide?` · slide ${ev.slide}`:''}`:'';
     const atomic=ev.atomic&&ev.item_value?`Dato documentado: ${ev.item_value}`:'';
-    const revalidation=isHistorical?(ev.revalidation_status==='supported-by-current-open-source'?'Histórico ya corroborado por fuente abierta actual':'Histórico pendiente de búsqueda/revalidación'):(ev.revalidation?`Revalidación: ${ev.revalidation}`:'');
+    const revalidation=ev.revalidation?`Revalidación: ${ev.revalidation}`:'';
     const meta=[`Clase: ${role}`,isWestconDoc?'Tipo: Documento Westcon':(ev.type||ev.source_type),ev.date,ev.country||ev.scope,doc,atomic,fresh].filter(Boolean).map(esc).join(' · ');
     const noLink=isWestconDoc&&!ev.url?'<small class="source-document-note">Documento aportado al proyecto · sin URL pública</small>':'';
-    return `<div class="source-item ${isWestconDoc?'westcon-document-source':''} ${isHistorical?'historical-source':''}"><div class="source-confidence ${esc(isHistorical?'low':(band||'low'))}"><b>${isHistorical?'H':confidencePct(score)+'%'}</b><span>${isHistorical?'linaje':'dato'}</span></div><div><b>${source}</b><span>${title}</span>${ev.description?`<p>${esc(ev.description)}</p>`:''}${meta?`<small>${meta}</small>`:''}${revalidation?`<small>${esc(revalidation)}</small>`:''}${noLink}${ev.url?`<a href="${esc(ev.url)}" target="_blank" rel="noopener">Abrir fuente ↗</a>`:''}</div></div>`;
+    return `<div class="source-item ${isWestconDoc?'westcon-document-source':''}"><div class="source-confidence ${esc(band||'low')}"><b>${confidencePct(score)}%</b><span>dato</span></div><div><b>${source}</b><span>${title}</span>${ev.description?`<p>${esc(ev.description)}</p>`:''}${meta?`<small>${meta}</small>`:''}${revalidation?`<small>${esc(revalidation)}</small>`:''}${noLink}${ev.url?`<a href="${esc(ev.url)}" target="_blank" rel="noopener">Abrir fuente ↗</a>`:''}</div></div>`;
   }
 
   function deriveConfidenceFactors(field,item,band,evidence){
@@ -216,7 +232,6 @@
     const allEvidence=(item===null?(field?.evidence||[]):(item?.evidence||[]));
     const isHistorical=ev=>String(ev?.intelligence_tier||'')==='H'||/HISTORICAL|ARCHIVE|REPORT_CORROBORATION|LEGACY_UNRESOLVED/.test(String(ev?.provenance_origin||'').toUpperCase());
     const currentEvidence=allEvidence.filter(ev=>!isHistorical(ev));
-    const historicalEvidence=allEvidence.filter(isHistorical);
     const evidence=currentEvidence.slice(0,8);
     const score=item?.confidence ?? field?.confidence ?? 0.66;
     const band=item?.confidence_band || field?.confidence_band || (score>=.8?'high':score>=.6?'medium':'low');
@@ -230,9 +245,9 @@
     const levelLabel=bandLabel(band);
     const factors=deriveConfidenceFactors(field,item,band,evidence);
     const why=(band==='medium'||band==='low'||factors.length)?`<div class="confidence-why"><b>Por qué tiene este nivel</b><ul>${factors.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
-    const sources=evidence.length?evidence.map(ev=>sourceItem(ev,factScore,band)).join(''):'<p class="atomic-evidence-missing">No hay todavía una fuente actual específica vinculada a este elemento; el sistema no muestra fuentes de otros elementos del campo.</p>';
-    const historical=historicalEvidence.length?`<details class="historical-evidence"><summary>Histórico / linaje (${historicalEvidence.length})</summary><p class="qualifier">El histórico no acredita el dato por sí solo. El motor mantiene búsquedas abiertas hasta localizar una fuente actual para este mismo elemento.</p>${historicalEvidence.slice(0,8).map(ev=>sourceItem(ev,factScore,'low')).join('')}</details>`:'';
-    return `<div class="traceable" tabindex="0"><div class="trace-value">${inner}</div><span class="trace-mark confidence-dot ${esc(band)}" title="${esc(levelLabel)} · ${confidencePct(factScore)}%">i</span><div class="trace-popover"><strong>TRAZABILIDAD DEL DATO</strong><div class="claim-kind">${esc(claimLabel)} · ${esc(levelLabel)}</div><div class="confidence-three"><span><b>${confidencePct(factScore)}%</b>Hecho</span><span><b>${confidencePct(interpretationScore)}%</b>Interpretación</span><span><b>${esc(actionRisk)}</b>Riesgo de acción</span></div>${reason?`<p class="confidence-explain">${esc(reason)}</p>`:''}${why}${qualifier?`<span class="qualifier">${esc(qualifier)}</span>`:''}<div class="trace-source-heading">Fuentes actuales que sostienen este dato</div>${sources}${historical}<button type="button" class="confidence-help-link" data-confidence-help>¿Cómo se calcula e interpreta la confianza?</button></div></div>`;
+    const sources=evidence.length?evidence.map(ev=>sourceItem(ev,factScore,band)).join(''):'<p class="atomic-evidence-missing">Pendiente de verificación: no existe todavía una fuente pública actual o documentación Westcon específica para este elemento; el sistema no muestra fuentes de otros elementos del campo.</p>';
+    const pending=evidence.length?'':'<span class="pending-verification">Pendiente de verificación</span>';
+    return `<div class="traceable ${evidence.length?'':'pending-source'}" tabindex="0"><div class="trace-value">${inner}${pending}</div><span class="trace-mark confidence-dot ${esc(evidence.length?band:'low')}" title="${esc(evidence.length?levelLabel:'Pendiente de verificación')}">i</span><div class="trace-popover"><strong>TRAZABILIDAD DEL DATO</strong><div class="claim-kind">${esc(claimLabel)} · ${esc(evidence.length?levelLabel:'Pendiente de verificación')}</div><div class="confidence-three"><span><b>${confidencePct(factScore)}%</b>Hecho</span><span><b>${confidencePct(interpretationScore)}%</b>Interpretación</span><span><b>${esc(actionRisk)}</b>Riesgo de acción</span></div>${reason?`<p class="confidence-explain">${esc(reason)}</p>`:''}${why}${qualifier?`<span class="qualifier">${esc(qualifier)}</span>`:''}<div class="trace-source-heading">Fuentes actuales que sostienen este dato</div>${sources}<button type="button" class="confidence-help-link" data-confidence-help>¿Cómo se calcula e interpreta la confianza?</button></div></div>`;
   }
 
   function itemFor(field,value,index){
@@ -271,35 +286,121 @@
     }
     return traceable(field,compactScalar(value,context==='table'?110:300));
   }
+  function allRowEvidence(row){
+    const rows=[...(row?.evidence||[])];Object.values(row?.fields||{}).forEach(f=>{rows.push(...(f?.evidence||[]));(f?.items||[]).forEach(it=>rows.push(...(it?.evidence||[])));});
+    const map=new Map();rows.forEach(ev=>{if(!ev)return;const k=ev.url||`${ev.document_id||ev.document||''}|${ev.slide||''}|${ev.field||''}|${ev.item_value||''}`;if(k&&!map.has(k))map.set(k,ev);});return [...map.values()];
+  }
+  function rowConfidence(row){
+    const fields=Object.values(row?.fields||{}).filter(f=>hasValue(f?.value)),scores=fields.map(f=>Number(f.confidence)).filter(Number.isFinite),score=scores.length?scores.reduce((a,b)=>a+b,0)/scores.length:.38;
+    return {score,band:score>=.8?'high':score>=.6?'medium':'low'};
+  }
+  function virtualField(row,col){
+    const evidence=allRowEvidence(row),confidence=rowConfidence(row);
+    if(col.id==='confidence')return {value:confidence.band,confidence:confidence.score,confidence_band:confidence.band,evidence,claim_type:'interpretation',qualifier:'Síntesis de los campos poblados de la fila; ponderada previamente por calidad y actualidad de sus evidencias.'};
+    if(col.id==='last_verified'){
+      const dates=evidence.map(ev=>ev.retrieved_at||ev.date).filter(Boolean).map(v=>({raw:v,time:new Date(v).getTime()})).filter(x=>Number.isFinite(x.time)).sort((a,b)=>b.time-a.time);
+      return {value:dates[0]?.raw||'',confidence:confidence.score,confidence_band:confidence.band,evidence,claim_type:'fact'};
+    }
+    if(col.id==='source_summary'){
+      const names=[...new Set(evidence.map(ev=>ev.source||ev.title).filter(Boolean))];return {value:names,confidence:confidence.score,confidence_band:confidence.band,evidence,claim_type:'fact'};
+    }
+    return null;
+  }
+  function fieldFor(row,col){return col?.virtual?virtualField(row,col):(row?.fields?.[col?.id]||null);}
+  function filterAccessor(row,fieldId,column){if(fieldId==='entity')return row?.name||'';const col=column||{id:fieldId};return fieldFor(row,col)?.value;}
   function loadTablePref(view,key,fallback){try{return JSON.parse(localStorage.getItem(`westcon-table-${key}-${view}`)||'null')??fallback}catch(_){return fallback}}
-  function hiddenCols(view){if(!state.columnHidden[view])state.columnHidden[view]=loadTablePref(view,'hidden',[]);return state.columnHidden[view];}
+  function hiddenCols(view){
+    if(!state.columnHidden[view]){const schema=state.data?.schemas?.[view]||[],defaults=schema.filter(c=>c.default_visible===false&&!c.essential).map(c=>c.id);state.columnHidden[view]=loadTablePref(view,'hidden',defaults);}
+    return state.columnHidden[view];
+  }
   function widthMap(view){if(!state.columnWidths[view])state.columnWidths[view]=loadTablePref(view,'widths',{});return state.columnWidths[view];}
   function currentColumnWidth(view,col){return Number(widthMap(view)[col]||180);}
   function setColumnWidth(view,col,w,persist=true){widthMap(view)[col]=Math.round(w);document.querySelectorAll(`table[data-view="${view}"] .col-${CSS.escape(col)}`).forEach(el=>{el.style.width=`${Math.round(w)}px`;el.style.minWidth=`${Math.round(w)}px`;});if(persist)localStorage.setItem(`westcon-table-widths-${view}`,JSON.stringify(widthMap(view)));}
-  function setColumnVisible(view,col,visible){let h=hiddenCols(view).filter(x=>x!==col);if(!visible)h.push(col);state.columnHidden[view]=h;localStorage.setItem(`westcon-table-hidden-${view}`,JSON.stringify(h));renderCurrent(view);}
+  function setColumnVisible(view,col,visible){const spec=(state.data.schemas[view]||[]).find(c=>c.id===col);if(spec?.essential&&!visible)return;let h=hiddenCols(view).filter(x=>x!==col);if(!visible)h.push(col);state.columnHidden[view]=h;localStorage.setItem(`westcon-table-hidden-${view}`,JSON.stringify(h));renderCurrent(view);}
   function resetTablePrefs(view){delete state.columnOrder[view];delete state.columnHidden[view];delete state.columnWidths[view];delete state.sort[view];['cols','table-hidden','table-widths'].forEach(k=>localStorage.removeItem(k==='cols'?`westcon-cols-${view}`:`westcon-${k}-${view}`));renderCurrent(view);toast('Orden de columnas restaurado');}
   function headerCell(col, view){
     const sort=state.sort[view], arrow=sort?.col===col.id?(sort.dir===1?' ↑':' ↓'):'',w=currentColumnWidth(view,col.id);
     return `<th draggable="true" data-col="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${w}px;min-width:${w}px" title="Arrastrar para mover · clic para ordenar"><span class="drag-grip">⋮⋮</span><span class="help-wrap"><span>${esc(col.label)}${arrow}</span>${col.clarify?`<button class="help-icon" type="button" aria-label="Aclaración de ${esc(col.label)}">?</button><span class="help-tip">${esc(col.help||'')}</span>`:''}</span><span class="col-resizer" title="Redimensionar" aria-hidden="true"></span></th>`;
   }
   function activeColumns(schema, rows, view){
-    let cols=schema.filter(col=>col.hidden!==true&&!hiddenCols(view).includes(col.id));
+    let cols=schema.filter(col=>col.hidden!==true&&(col.essential||!hiddenCols(view).includes(col.id))&&rows.some(row=>hasValue(fieldFor(row,col)?.value)));
     const order=state.columnOrder[view]||JSON.parse(localStorage.getItem(`westcon-cols-${view}`)||'null');
     if(order){state.columnOrder[view]=order; cols.sort((a,b)=>{let ai=order.indexOf(a.id),bi=order.indexOf(b.id);if(ai<0)ai=999;if(bi<0)bi=999;return ai-bi;});}
     return cols;
   }
-  function columnChooser(schema,view){const hidden=hiddenCols(view);return `<div class="table-controls"><details><summary>Columnas</summary><div class="column-menu">${schema.filter(c=>c.hidden!==true).map(c=>`<label><input type="checkbox" data-col-toggle data-view="${esc(view)}" data-col-toggle="${esc(c.id)}" ${hidden.includes(c.id)?'':'checked'}> ${esc(c.label)}</label>`).join('')}</div></details><button type="button" data-table-reset="${esc(view)}">Restaurar</button></div>`;}
+  function columnAvailable(col,rows){return rows.some(row=>hasValue(fieldFor(row,col)?.value));}
+  function columnChooser(schema,view,rows){
+    const hidden=hiddenCols(view),items=schema.filter(c=>c.hidden!==true).map(c=>{const available=columnAvailable(c,rows),locked=Boolean(c.essential);return `<label class="column-option ${available?'':'empty-column'}" data-column-option data-search="${esc(norm(c.label))}"><input type="checkbox" data-col-toggle data-view="${esc(view)}" data-col-toggle="${esc(c.id)}" ${hidden.includes(c.id)&&!locked?'':'checked'} ${locked||!available?'disabled':''}><span>${esc(c.label)}</span>${locked?'<small>Esencial</small>':available?'':'<small>Sin datos</small>'}</label>`;}).join('');
+    return `<div class="table-controls"><details class="column-picker"><summary>Columnas</summary><div class="column-menu"><div class="column-menu-head"><b>Columnas visibles</b><span>La selección se conserva en este navegador.</span></div><input type="search" data-column-search placeholder="Buscar columna…" aria-label="Buscar columna"><div class="column-actions"><button type="button" data-column-action="all" data-view="${esc(view)}">Seleccionar todas</button><button type="button" data-column-action="none" data-view="${esc(view)}">Solo esenciales</button><button type="button" data-column-action="reset" data-view="${esc(view)}">Restablecer</button></div><div class="column-options">${items}</div></div></details><button type="button" data-table-reset="${esc(view)}">Restablecer tabla</button></div>`;
+  }
+  function filterColumnMenu(input){const q=norm(input.value);input.closest('.column-menu')?.querySelectorAll('[data-column-option]').forEach(row=>row.hidden=q&&!row.dataset.search.includes(q));}
+  function handleColumnAction(button){const view=button.dataset.view,action=button.dataset.columnAction,schema=state.data.schemas[view]||[],rows=state.baseRows[view]||state.data[view]||[];if(action==='reset'){resetTablePrefs(view);return;}const hidden=schema.filter(c=>!c.essential&&(action==='none'||!columnAvailable(c,rows))).map(c=>c.id);state.columnHidden[view]=hidden;localStorage.setItem(`westcon-table-hidden-${view}`,JSON.stringify(hidden));renderCurrent(view);}
+  const filterId=prefix=>`${prefix}${Date.now().toString(36)}${Math.random().toString(36).slice(2,7)}`;
+  function analysisSchema(schema){return [{id:'entity',label:'Entidad',type:'text',virtual:true,essential:true},...schema.filter(c=>c.hidden!==true)];}
+  function filterStorageKey(view){return `westcon-analysis-current-${view}`;}
+  function savedFilterKey(view){return `westcon-analysis-saved-${view}`;}
+  function encodeFilter(tree){try{return btoa(unescape(encodeURIComponent(window.WestconFilters.serialize(tree)))).replace(/=+$/,'').replace(/\+/g,'-').replace(/\//g,'_')}catch(_){return '';}}
+  function decodeFilter(raw){try{const b64=raw.replace(/-/g,'+').replace(/_/g,'/');return window.WestconFilters.deserialize(decodeURIComponent(escape(atob(b64))))}catch(_){return null;}}
+  function getFilterTree(view){
+    if(state.filters[view])return state.filters[view];let tree=null;
+    const params=new URLSearchParams(location.search);if(params.get('analysisView')===view&&params.get('analysis'))tree=decodeFilter(params.get('analysis'));
+    if(!tree)tree=window.WestconFilters.deserialize(sessionStorage.getItem(filterStorageKey(view))||'');state.filters[view]=tree;return tree;
+  }
+  function filterHasRules(tree){return (tree?.groups||[]).some(g=>(g.rules||[]).some(r=>r.field&&r.operator));}
+  function persistFilter(view){
+    const tree=getFilterTree(view);sessionStorage.setItem(filterStorageKey(view),window.WestconFilters.serialize(tree));const url=new URL(location.href);
+    if(filterHasRules(tree)){url.searchParams.set('analysisView',view);url.searchParams.set('analysis',encodeFilter(tree));}else{url.searchParams.delete('analysisView');url.searchParams.delete('analysis');}
+    history.replaceState(null,'',url);
+  }
+  function savedFilters(view){try{return JSON.parse(localStorage.getItem(savedFilterKey(view))||'{}')}catch(_){return {}}}
+  function applyDynamicFilters(view,rows,schema){const result=window.WestconFilters.apply(rows,getFilterTree(view),analysisSchema(schema),filterAccessor);state.baseRows[view]=rows;state.filteredRows[view]=result;return result;}
+  function filterValueControl(view,group,rule,column){
+    const base=`data-filter-control data-filter-value data-view="${esc(view)}" data-group="${esc(group.id)}" data-rule="${esc(rule.id)}"`,op=rule.operator,type=column?.type||'text';
+    if(type==='boolean'||type==='confidence'||['empty','not_empty'].includes(op))return '';
+    const inputType=type==='number'?'number':type==='date'&&!['last_n_days','last_n_months'].includes(op)?'date':'text',placeholder=type==='list'?'Valor(es), separados por coma':op?.startsWith('last_n_')?'N':'Valor';
+    const second=['between'].includes(op)?`<input ${base} data-part="value2" type="${inputType}" value="${esc(rule.value2||'')}" placeholder="Hasta">`:'';
+    return `<input ${base} data-part="value" type="${inputType}" value="${esc(rule.value||'')}" placeholder="${placeholder}">${second}`;
+  }
+  function filterRuleHtml(view,group,rule,schema){
+    const column=schema.find(c=>c.id===rule.field)||schema[0],ops=window.WestconFilters.operatorsFor(column);if(!ops.some(([id])=>id===rule.operator))rule.operator=ops[0][0];
+    return `<div class="filter-rule"><select data-filter-control data-view="${esc(view)}" data-group="${esc(group.id)}" data-rule="${esc(rule.id)}" data-part="field" aria-label="Campo">${schema.map(c=>`<option value="${esc(c.id)}" ${c.id===rule.field?'selected':''}>${esc(c.label)}</option>`).join('')}</select><select data-filter-control data-view="${esc(view)}" data-group="${esc(group.id)}" data-rule="${esc(rule.id)}" data-part="operator" aria-label="Operador">${ops.map(([id,label])=>`<option value="${id}" ${id===rule.operator?'selected':''}>${esc(label)}</option>`).join('')}</select><div class="filter-rule-values">${filterValueControl(view,group,rule,column)}</div><button type="button" class="filter-remove" data-filter-action="remove-rule" data-view="${esc(view)}" data-group="${esc(group.id)}" data-rule="${esc(rule.id)}" aria-label="Eliminar condición">×</button></div>`;
+  }
+  function filterGroupHtml(view,group,schema,index,total){
+    return `<div class="filter-group"><div class="filter-group-head"><div><b>Grupo ${index+1}</b><select data-filter-control data-view="${esc(view)}" data-group="${esc(group.id)}" data-part="group-logic" aria-label="Lógica del grupo"><option value="AND" ${group.logic!=='OR'?'selected':''}>Cumplir todas (AND)</option><option value="OR" ${group.logic==='OR'?'selected':''}>Cumplir alguna (OR)</option></select></div>${total>1?`<button type="button" data-filter-action="remove-group" data-view="${esc(view)}" data-group="${esc(group.id)}">Eliminar grupo</button>`:''}</div><div class="filter-rules">${(group.rules||[]).map(rule=>filterRuleHtml(view,group,rule,schema)).join('')||'<p class="filter-empty">Añade una condición para empezar.</p>'}</div><button type="button" class="filter-add" data-filter-action="add-rule" data-view="${esc(view)}" data-group="${esc(group.id)}">+ Añadir condición</button></div>`;
+  }
+  function analysisPanel(view,schema,baseRows,resultRows){
+    const tree=getFilterTree(view),fullSchema=analysisSchema(schema),saved=savedFilters(view),open=state.analysisOpen[view]||filterHasRules(tree),savedOptions=Object.keys(saved).sort((a,b)=>a.localeCompare(b,'es')).map(name=>`<option value="${esc(name)}">${esc(name)}</option>`).join('');
+    return `<details class="analysis-panel" data-analysis-panel="${esc(view)}" ${open?'open':''}><summary><span><b>Analizar estos datos</b><small>Filtros dinámicos e informe del subconjunto</small></span><strong>${resultRows.length} resultados</strong></summary><div class="analysis-body"><div class="analysis-top"><label>Lógica entre grupos<select data-filter-control data-view="${esc(view)}" data-part="tree-logic"><option value="AND" ${tree.logic!=='OR'?'selected':''}>AND · todos los grupos</option><option value="OR" ${tree.logic==='OR'?'selected':''}>OR · cualquier grupo</option></select></label><div class="filter-persistence"><input data-filter-save-name data-view="${esc(view)}" placeholder="Nombre del filtro"><button type="button" data-filter-action="save" data-view="${esc(view)}">Guardar</button><select data-filter-saved-select data-view="${esc(view)}"><option value="">Filtros guardados…</option>${savedOptions}</select><button type="button" data-filter-action="load" data-view="${esc(view)}">Recuperar</button></div></div><div class="filter-groups">${tree.groups.map((g,i)=>filterGroupHtml(view,g,fullSchema,i,tree.groups.length)).join('')}</div><div class="analysis-actions"><div><button type="button" data-filter-action="add-group" data-view="${esc(view)}">+ Añadir grupo</button><button type="button" data-filter-action="clear" data-view="${esc(view)}">Limpiar filtros</button></div><span><b>${resultRows.length}</b> de ${baseRows.length} registros</span><button type="button" class="primary" data-filter-action="report" data-view="${esc(view)}" ${resultRows.length?'':'disabled'}>Generar informe</button></div></div></details>`;
+  }
+  function findRule(view,groupId,ruleId){const tree=getFilterTree(view),group=tree.groups.find(g=>g.id===groupId),rule=group?.rules?.find(r=>r.id===ruleId);return {tree,group,rule};}
+  function handleFilterControl(target,immediate){
+    const view=target.dataset.view;if(!view)return;const part=target.dataset.part,{tree,group,rule}=findRule(view,target.dataset.group,target.dataset.rule);
+    if(part==='tree-logic')tree.logic=target.value;else if(part==='group-logic'&&group)group.logic=target.value;else if(rule){rule[part]=target.value;if(part==='field'){const schema=analysisSchema(state.data.schemas[view]||[]),col=schema.find(c=>c.id===target.value);rule.operator=window.WestconFilters.operatorsFor(col)[0][0];rule.value='';rule.value2='';}}
+    persistFilter(view);scheduleFilterRender(view,target,immediate?0:240);
+  }
+  function scheduleFilterRender(view,target,delay){clearTimeout(state.filterTimers[view]);const focus={group:target.dataset.group,rule:target.dataset.rule,part:target.dataset.part,start:target.selectionStart,end:target.selectionEnd};state.filterTimers[view]=setTimeout(()=>{renderCurrent(view);const selector=`[data-filter-control][data-view="${CSS.escape(view)}"][data-group="${CSS.escape(focus.group||'')}"][data-rule="${CSS.escape(focus.rule||'')}"][data-part="${CSS.escape(focus.part||'')}"]`;const next=document.querySelector(selector);if(next){next.focus();if(typeof next.setSelectionRange==='function'&&focus.start!=null)next.setSelectionRange(focus.start,focus.end);}},delay);}
+  function handleFilterAction(button){
+    const view=button.dataset.view,action=button.dataset.filterAction,tree=getFilterTree(view),group=tree.groups.find(g=>g.id===button.dataset.group);
+    if(action==='add-rule'){const schema=analysisSchema(state.data.schemas[view]||[]),first=schema[0];group.rules.push({id:filterId('r'),field:first.id,operator:window.WestconFilters.operatorsFor(first)[0][0],value:'',value2:''});}
+    if(action==='remove-rule'&&group)group.rules=group.rules.filter(r=>r.id!==button.dataset.rule);
+    if(action==='add-group')tree.groups.push({id:filterId('g'),logic:'AND',rules:[]});
+    if(action==='remove-group')tree.groups=tree.groups.filter(g=>g.id!==button.dataset.group);
+    if(action==='clear')state.filters[view]=window.WestconFilters.create();
+    if(action==='save'){const input=document.querySelector(`[data-filter-save-name][data-view="${CSS.escape(view)}"]`),name=input?.value.trim();if(!name){toast('Escribe un nombre para el filtro');return;}const saved=savedFilters(view);saved[name]=getFilterTree(view);localStorage.setItem(savedFilterKey(view),JSON.stringify(saved));toast(`Filtro «${name}» guardado`);}
+    if(action==='load'){const select=document.querySelector(`[data-filter-saved-select][data-view="${CSS.escape(view)}"]`),name=select?.value,saved=savedFilters(view);if(!name||!saved[name]){toast('Selecciona un filtro guardado');return;}state.filters[view]=window.WestconFilters.deserialize(saved[name]);toast(`Filtro «${name}» recuperado`);}
+    if(action==='report'){openFilteredReport(view);return;}
+    persistFilter(view);state.analysisOpen[view]=true;renderCurrent(view);
+  }
   function missingMarkup(col){
     return '<span class="research-gap critical-gap" title="El motor mantiene este campo como tarea activa">Por investigar</span>';
   }
-  function sortedRows(rows,view){const s=state.sort[view];if(!s)return rows;return [...rows].sort((a,b)=>valueText(a.fields?.[s.col]?.value??a.name).localeCompare(valueText(b.fields?.[s.col]?.value??b.name),'es',{numeric:true})*s.dir);}
+  function sortedRows(rows,view){const s=state.sort[view];if(!s)return rows;const col=(state.data.schemas[view]||[]).find(c=>c.id===s.col)||{id:s.col};return [...rows].sort((a,b)=>valueText(filterAccessor(a,s.col,col)??a.name).localeCompare(valueText(filterAccessor(b,s.col,col)??b.name),'es',{numeric:true})*s.dir);}
   function toggleSort(view,col){if(!view)return;const cur=state.sort[view];state.sort[view]={col,dir:cur?.col===col?-cur.dir:1};renderCurrent(view);}
   function reorderColumn(view,from,to){if(!view||from===to)return;const schema=state.data.schemas[view]||[];let order=(state.columnOrder[view]||schema.map(x=>x.id)).filter(x=>schema.some(c=>c.id===x));const a=order.indexOf(from),b=order.indexOf(to);if(a<0||b<0)return;order.splice(b,0,order.splice(a,1)[0]);state.columnOrder[view]=order;localStorage.setItem(`westcon-cols-${view}`,JSON.stringify(order));renderCurrent(view);}
   function renderCurrent(view){({manufacturers:renderManufacturers,integrators:renderIntegrators,distributors:renderDistributors,clients_public:renderClients,clients_private:renderClients}[view]||(()=>{}))();}
-  function tableHtml(rows, schema, emptyText, view){
-    if(!rows.length)return `<div class="empty-state">${esc(emptyText)}</div>`;
-    const cols=activeColumns(schema,rows,view), ordered=sortedRows(rows,view);
-    return `${columnChooser(schema,view)}<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>`)}</td>${cols.map(col=>{const f=row.fields?.[col.id];return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table'):missingMarkup(col)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`;
+  function tableHtml(rows, schema, emptyText, view, baseRows=rows){
+    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table'):missingMarkup(col)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
+    return `<div class="table-shell">${columnChooser(schema,view,baseRows)}<div class="table-scroll">${body}</div></div>${analysisPanel(view,schema,baseRows,rows)}`;
   }
   function scopeMatch(row, scope){
     if(scope==='all') return true;
@@ -311,26 +412,27 @@
   function renderManufacturers(){
     const q=norm($('#manufacturerSearch')?.value);
     const all=state.data.manufacturers||[];
-    const rows=all.filter(r=>!q||rowBlob(r).includes(q));
-    $('#manufacturerTable').innerHTML=tableHtml(rows,state.data.schemas.manufacturers,'No hay fabricantes con esos filtros.','manufacturers');
+    const base=all.filter(r=>!q||rowBlob(r).includes(q)),rows=applyDynamicFilters('manufacturers',base,state.data.schemas.manufacturers);state.headerCriteria.manufacturers=q?`Búsqueda general: ${$('#manufacturerSearch').value}`:'Sin filtros de cabecera';
+    $('#manufacturerTable').innerHTML=tableHtml(rows,state.data.schemas.manufacturers,'No hay fabricantes con esos filtros.','manufacturers',base);
     setCount('#manufacturerCount',rows.length,all.length,'fabricantes');
   }
   function renderIntegrators(){
     const q=norm($('#integratorSearch')?.value), scope=$('#integratorScope')?.value||'all', vendor=$('#integratorVendor')?.value||'all';
     const all=state.data.integrators||[];
-    const rows=all.filter(r=>{
+    const base=all.filter(r=>{
       const vendorText=norm(valueText(r.fields?.vendor_relations?.value||''));
       const vendorOk=vendor==='all'||vendorText.includes(norm(vendor));
       return (!q||rowBlob(r).includes(q))&&scopeMatch(r,scope)&&vendorOk;
     });
-    $('#integratorTable').innerHTML=tableHtml(rows,state.data.schemas.integrators,'No hay partners/integradores con esos filtros.','integrators');
+    const rows=applyDynamicFilters('integrators',base,state.data.schemas.integrators);state.headerCriteria.integrators=[q&&`Búsqueda: ${$('#integratorSearch').value}`,scope!=='all'&&`País: ${scope}`,vendor!=='all'&&`Fabricante: ${vendor}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';
+    $('#integratorTable').innerHTML=tableHtml(rows,state.data.schemas.integrators,'No hay partners/integradores con esos filtros.','integrators',base);
     setCount('#integratorCount',rows.length,all.length,'partners / integradores');
   }
   function renderDistributors(){
     const q=norm($('#distributorSearch')?.value), scope=$('#distributorScope')?.value||'all';
     const all=state.data.distributors||[];
-    const rows=all.filter(r=>(!q||rowBlob(r).includes(q))&&scopeMatch(r,scope));
-    $('#distributorTable').innerHTML=tableHtml(rows,state.data.schemas.distributors,'No hay mayoristas con esos filtros.','distributors');
+    const base=all.filter(r=>(!q||rowBlob(r).includes(q))&&scopeMatch(r,scope)),rows=applyDynamicFilters('distributors',base,state.data.schemas.distributors);state.headerCriteria.distributors=[q&&`Búsqueda: ${$('#distributorSearch').value}`,scope!=='all'&&`País: ${scope}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';
+    $('#distributorTable').innerHTML=tableHtml(rows,state.data.schemas.distributors,'No hay mayoristas con esos filtros.','distributors',base);
     setCount('#distributorCount',rows.length,all.length,'mayoristas competidores');
   }
   function renderClients(){
@@ -338,13 +440,58 @@
     const privateQ=norm($('#privateClientSearch')?.value), privateScope=$('#privateClientScope')?.value||'all';
     const publicAll=state.data.clients_public||[];
     const privateAll=state.data.clients_private||[];
-    const publicRows=publicAll.filter(r=>(!publicQ||rowBlob(r).includes(publicQ))&&scopeMatch(r,publicScope));
-    const privateRows=privateAll.filter(r=>(!privateQ||rowBlob(r).includes(privateQ))&&scopeMatch(r,privateScope));
-    $('#publicClientTable').innerHTML=tableHtml(publicRows,state.data.schemas.clients_public,'No hay oportunidades públicas con esos filtros.','clients_public');
-    $('#privateClientTable').innerHTML=tableHtml(privateRows,state.data.schemas.clients_private,'No hay grandes cuentas privadas con esos filtros.','clients_private');
+    const publicBase=publicAll.filter(r=>(!publicQ||rowBlob(r).includes(publicQ))&&scopeMatch(r,publicScope));
+    const privateBase=privateAll.filter(r=>(!privateQ||rowBlob(r).includes(privateQ))&&scopeMatch(r,privateScope));
+    const publicRows=applyDynamicFilters('clients_public',publicBase,state.data.schemas.clients_public),privateRows=applyDynamicFilters('clients_private',privateBase,state.data.schemas.clients_private);state.headerCriteria.clients_public=[publicQ&&`Búsqueda: ${$('#publicClientSearch').value}`,publicScope!=='all'&&`País: ${publicScope}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';state.headerCriteria.clients_private=[privateQ&&`Búsqueda: ${$('#privateClientSearch').value}`,privateScope!=='all'&&`País: ${privateScope}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';
+    $('#publicClientTable').innerHTML=tableHtml(publicRows,state.data.schemas.clients_public,'No hay oportunidades públicas con esos filtros.','clients_public',publicBase);
+    $('#privateClientTable').innerHTML=tableHtml(privateRows,state.data.schemas.clients_private,'No hay grandes cuentas privadas con esos filtros.','clients_private',privateBase);
     setCount('#publicClientCount',publicRows.length,publicAll.length,'oportunidades públicas');
     setCount('#privateClientCount',privateRows.length,privateAll.length,'grandes cuentas privadas');
     setCount('#clientCount',publicRows.length+privateRows.length,publicAll.length+privateAll.length,'clientes / oportunidades');
+  }
+
+  function reportAvailableColumns(view){const schema=state.data.schemas[view]||[],rows=state.baseRows[view]||[];return schema.filter(c=>c.hidden!==true&&columnAvailable(c,rows));}
+  function openFilteredReport(view){
+    state.reportView=view;const rows=state.filteredRows[view]||[];if(!rows.length){toast('El filtro actual no devuelve registros');return;}
+    const schema=reportAvailableColumns(view),active=activeColumns(state.data.schemas[view]||[],state.baseRows[view]||[],view).map(c=>c.id),ordered=[...active,...schema.map(c=>c.id).filter(id=>!active.includes(id))];
+    $('#filteredReportColumns').innerHTML=ordered.map(id=>{const c=schema.find(x=>x.id===id);if(!c)return '';return `<div class="report-column-row" data-report-column="${esc(id)}"><label><input type="checkbox" ${active.includes(id)?'checked':''}> <span>${esc(c.label)}</span></label><div><button type="button" data-report-action="up" aria-label="Subir">↑</button><button type="button" data-report-action="down" aria-label="Bajar">↓</button></div></div>`;}).join('');
+    $('#filteredReportName').value=`Westcon Iberia · ${domainCopy[view]?.label||'Informe'} · ${rows.length} resultados`;openModal('filteredReportModal');
+  }
+  function handleReportColumnAction(button){const row=button.closest('[data-report-column]');if(!row)return;const action=button.dataset.reportAction;if(action==='up'&&row.previousElementSibling)row.parentNode.insertBefore(row,row.previousElementSibling);if(action==='down'&&row.nextElementSibling)row.parentNode.insertBefore(row.nextElementSibling,row);}
+  function selectedFilteredReportColumns(view){const ids=$$('#filteredReportColumns [data-report-column]').filter(row=>row.querySelector('input')?.checked).map(row=>row.dataset.reportColumn),schema=state.data.schemas[view]||[];if($('#filteredReportConfidence')?.checked&&!ids.includes('confidence')&&schema.some(c=>c.id==='confidence'))ids.push('confidence');if($('#filteredReportVerified')?.checked&&!ids.includes('last_verified')&&schema.some(c=>c.id==='last_verified'))ids.push('last_verified');return ids;}
+  function filteredReportModel(){
+    const view=state.reportView;if(!view)return null;const schema=state.data.schemas[view]||[],columns=selectedFilteredReportColumns(view),title=$('#filteredReportName')?.value.trim()||'Westcon Iberia · Informe filtrado';
+    const model=window.WestconReports.build({rows:state.baseRows[view]||[],tree:getFilterTree(view),schema:analysisSchema(schema),columns,accessor:filterAccessor,title});model.view=view;model.headerCriteria=state.headerCriteria[view]||'Sin filtros de cabecera';return model;
+  }
+  function reportCellValue(row,col){const value=filterAccessor(row,col.id,col);return hasValue(value)?valueText(value):'Por investigar';}
+  function derivedSummary(model){
+    const candidates=model.columns.filter(c=>!c.virtual).slice(0,5),blocks=[];
+    for(const col of candidates){const counts=new Map();for(const row of model.rows)for(const value of (Array.isArray(filterAccessor(row,col.id,col))?filterAccessor(row,col.id,col):[filterAccessor(row,col.id,col)])){if(!hasValue(value))continue;const key=String(value);counts.set(key,(counts.get(key)||0)+1);}const top=[...counts.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'es')).slice(0,4);if(top.length)blocks.push(`<div><b>${esc(col.label)}</b><ul>${top.map(([v,n])=>`<li>${esc(v)} · ${n}</li>`).join('')}</ul></div>`);}return blocks.join('')||'<p>No hay campos seleccionados con valores suficientes para resumir.</p>';
+  }
+  function reportCriteriaHtml(model){return `<ul><li>${esc(model.headerCriteria)}</li><li>${esc(model.criteria)}</li></ul>`;}
+  function filteredReportHtml(model){
+    const detail=$('#filteredReportDetail')?.checked,summary=$('#filteredReportSummary')?.checked,includeSources=$('#filteredReportSources')?.checked,bands={high:0,medium:0,low:0};model.rows.forEach(r=>bands[rowConfidence(r).band]++);
+    const table=detail?`<div class="filtered-report-table-wrap"><table><thead><tr><th>Entidad</th>${model.columns.map(c=>`<th>${esc(c.label)}</th>`).join('')}</tr></thead><tbody>${model.rows.map(row=>`<tr><td><b>${esc(row.name)}</b></td>${model.columns.map(c=>`<td>${esc(reportCellValue(row,c))}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:'';
+    const sources=includeSources?`<section><h2>Fuentes trazables</h2>${model.sources.length?`<ol class="filtered-source-list">${model.sources.map(ev=>`<li><b>${esc(ev.source||ev.title||'Fuente')}</b> · ${esc(ev.title||'')} · ${esc(ev.date||'sin fecha')}${ev.url?` · <span>${esc(ev.url)}</span>`:ev.document?` · ${esc(ev.document)}${ev.slide?` · slide ${esc(ev.slide)}`:''}`:''}</li>`).join('')}</ol>`:'<p>No hay fuentes acreditativas en el subconjunto.</p>'}</section>`:'';
+    const confidence=$('#filteredReportConfidence')?.checked?`<section><h2>Confianza</h2><p>Distribución por entidad: alta ${bands.high}, media ${bands.medium}, baja ${bands.low}. El nivel se calcula por la mejor evidencia relevante, calidad, actualidad, corroboración y contradicciones; no por el número bruto de URLs.</p></section>`:'';
+    return `<header><div><span>WESTCON IBERIA · DECISION INTELLIGENCE</span><h1>${esc(model.title)}</h1></div><b>v${esc(state.data.meta.version||'4.1.0')}</b></header><section class="filtered-report-meta"><div><b>Generado</b><span>${esc(localDateTime(model.generatedAt))}</span></div><div><b>Entidades</b><span>${model.entityCount}</span></div><div><b>Pendientes</b><span>${model.pending}</span></div></section><section><h2>Criterios de filtrado</h2>${reportCriteriaHtml(model)}</section>${summary?`<section><h2>Resumen ejecutivo derivado</h2><p>Resumen descriptivo calculado exclusivamente a partir de las ${model.entityCount} filas filtradas.</p><div class="filtered-summary">${derivedSummary(model)}</div></section>`:''}${model.pending?`<section class="filtered-warning"><h2>Advertencia de cobertura</h2><p>${model.pending} celdas incluidas están vacías o no tienen evidencia acreditativa vinculada. Se mantienen como «Por investigar» o «Pendiente de verificación».</p></section>`:''}${table}${confidence}${sources}<footer>Westcon Iberia · informe filtrado · ${esc(model.criteria)}</footer>`;
+  }
+  function generateFilteredPrintReport(){const model=filteredReportModel();if(!model||!model.rows.length){toast('No hay resultados para el informe');return;}const sheet=$('#filteredReportSheet');sheet.innerHTML=filteredReportHtml(model);sheet.setAttribute('aria-hidden','false');sheet.classList.add('ready');closeModal('filteredReportModal');document.body.classList.add('filtered-report-print');requestAnimationFrame(()=>{window.print();document.body.classList.remove('filtered-report-print');});}
+  function csvEscape(value){const text=String(value??'').replace(/\r?\n/g,' ');return `"${text.replace(/"/g,'""')}"`;}
+  function generateFilteredCsv(){
+    const model=filteredReportModel();if(!model||!model.rows.length){toast('No hay resultados para exportar');return;}const includeSources=$('#filteredReportSources')?.checked,headers=['Entidad',...model.columns.map(c=>c.label),...(includeSources?['Fuentes']:[])],lines=[headers.map(csvEscape).join(';')];
+    for(const row of model.rows){const rowSources=window.WestconReports.uniqueEvidence([row]).map(ev=>ev.url||`${ev.document||ev.source}${ev.slide?` · slide ${ev.slide}`:''}`).join(' | '),cells=[row.name,...model.columns.map(c=>reportCellValue(row,c)),...(includeSources?[rowSources]:[])];lines.push(cells.map(csvEscape).join(';'));}
+    const blob=new Blob(['\ufeff'+lines.join('\r\n')],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`Westcon_Iberia_${model.view}_${model.entityCount}_resultados.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('CSV generado con el subconjunto filtrado');
+  }
+  async function generateFilteredPptx(){
+    const model=filteredReportModel();if(!model||!model.rows.length){toast('No hay resultados para exportar');return;}if(!window.PptxGenJS){toast('PptxGenJS no está disponible');return;}
+    const pptx=new window.PptxGenJS();pptx.layout='LAYOUT_WIDE';pptx.author='Westcon Iberia';pptx.company='Westcon Iberia';pptx.subject='Informe filtrado y trazable';pptx.title=model.title;pptx.lang='es-ES';
+    const addHead=(slide,label)=>{slide.addText('WESTCON IBERIA · DECISION INTELLIGENCE',{x:.55,y:.28,w:8.7,h:.22,fontFace:'Aptos',fontSize:7.5,bold:true,color:'148495',charSpacing:1.2,margin:0});slide.addText(label,{x:.55,y:.58,w:12.15,h:.36,fontFace:'Aptos Display',fontSize:19,bold:true,color:'142B3B',margin:0});slide.addShape(pptx.ShapeType.line,{x:.55,y:1.04,w:12.2,h:0,line:{color:'F09E0D',pt:2.4}});};
+    let slide=pptx.addSlide();slide.background={color:'082335'};slide.addText('WESTCON IBERIA · INFORME FILTRADO',{x:.68,y:.55,w:8,h:.3,fontFace:'Aptos',fontSize:9,bold:true,color:'12C7C0',charSpacing:1.3,margin:0});slide.addText(model.title,{x:.68,y:1.35,w:11.6,h:1.25,fontFace:'Aptos Display',fontSize:30,bold:true,color:'FFFFFF',fit:'shrink',margin:0});slide.addText(`${model.entityCount} entidades · ${model.pending} celdas pendientes`,{x:.7,y:3.05,w:6.8,h:.35,fontFace:'Aptos',fontSize:13,color:'D2E0E6',margin:0});slide.addText(`Generado: ${localDateTime(model.generatedAt)}\nFiltros de cabecera: ${model.headerCriteria}\nFiltro dinámico: ${model.criteria}`,{x:.7,y:3.72,w:11.4,h:1.15,fontFace:'Aptos',fontSize:10,color:'C6D7DF',breakLine:false,margin:0,fit:'shrink'});slide.addText('El contenido procede exclusivamente del subconjunto filtrado.',{x:.7,y:6.55,w:8.5,h:.22,fontFace:'Aptos',fontSize:8,bold:true,color:'F09E0D',margin:0});
+    const columnGroups=[];for(let i=0;i<model.columns.length;i+=4)columnGroups.push(model.columns.slice(i,i+4));if(!columnGroups.length)columnGroups.push([]);
+    for(const columns of columnGroups){for(let start=0;start<model.rows.length;start+=11){const page=model.rows.slice(start,start+11),s=pptx.addSlide();s.background={color:'F3F6F8'};addHead(s,`${model.title} · detalle`);const tableRows=[['Entidad',...columns.map(c=>c.label)],...page.map(row=>[row.name,...columns.map(c=>reportCellValue(row,c))])];s.addTable(tableRows,{x:.55,y:1.25,w:12.2,h:5.65,border:{type:'solid',pt:.5,color:'CBD9E0'},fill:'FFFFFF',color:'203D4C',fontFace:'Aptos',fontSize:7.2,margin:.055,breakLine:false,autoFit:false,bold:false,rowH:.42,colW:[2.25,...columns.map(()=>columns.length?9.95/columns.length:9.95)],headerRows:1,fill:'FFFFFF'});s.addText(`${start+1}–${Math.min(start+page.length,model.rows.length)} de ${model.rows.length} · ${model.criteria}`,{x:.55,y:7.15,w:12.2,h:.17,fontFace:'Aptos',fontSize:5.5,color:'6B7F89',margin:0,fit:'shrink'});}}
+    if($('#filteredReportSources')?.checked){const sources=model.sources;for(let start=0;start<sources.length;start+=10){const page=sources.slice(start,start+10),s=pptx.addSlide();s.background={color:'F3F6F8'};addHead(s,'Fuentes trazables del subconjunto');const lines=page.map((ev,i)=>({text:`${start+i+1}. ${ev.source||ev.title||'Fuente'} · ${ev.title||''}\n${ev.url||`${ev.document||''}${ev.slide?` · slide ${ev.slide}`:''}`}`,options:{bullet:false,breakLine:true}}));s.addText(lines,{x:.7,y:1.35,w:11.85,h:5.65,fontFace:'Aptos',fontSize:8,color:'284858',breakLine:false,margin:.04,fit:'shrink',paraSpaceAfterPt:7});}}
+    await pptx.writeFile({fileName:`Westcon_Iberia_${model.view}_${model.entityCount}_resultados_v4.1.0.pptx`});closeModal('filteredReportModal');toast('PowerPoint generado con el subconjunto filtrado');
   }
 
   function cardField(col,f,context='card'){if(!f||!hasValue(f.value))return '';const help=col.clarify?`<span class="help-wrap card-help"><span>${esc(col.label)}</span><button class="help-icon" type="button" aria-label="Aclaración de ${esc(col.label)}">?</button><span class="help-tip">${esc(col.help||'')}</span></span>`:esc(col.label);return `<div class="card-field"><label>${help}</label>${renderValue(f,null,context)}</div>`;}
@@ -775,7 +922,7 @@
 
   function renderAll(){
     populateIntegratorVendorFilter(); renderActiveView(); renderSourceCatalog(); renderUpdateStatus(); renderConfidenceGuide();
-    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v4.0.2 · dataset v${meta.version||'4.0.0'} · ${meta.source_count||0} fuentes/familias · ${meta.scope||'Iberia'}`;
+    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v4.1.0 · dataset v${meta.version||'4.1.0'} · ${meta.source_count||0} fuentes acreditativas/familias · ${meta.scope||'Iberia'}`;
   }
 
   load().catch(err => { console.error(err); const main=document.querySelector('main'); if(main) main.innerHTML=`<div class="fatal"><h1>No se pudo cargar la inteligencia</h1><p>${esc(err.message)}</p></div>`; });

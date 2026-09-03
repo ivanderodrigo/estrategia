@@ -144,8 +144,24 @@ def extract_candidates(
         if family in {"services", "official"}:
             add("capabilities", capabilities, cap_terms)
             add("services", services, service_terms)
+            add("technology_domains", capabilities, cap_terms, "interpretation", 0.68 if official else 0.60)
+            if "Managed Services" in capabilities or "Servicios gestionados" in services:
+                add("managed_services", ["Sí"], ["managed services"], confidence=base_fact)
+            if section == "integrators" and "MSSP" in capabilities:
+                add("msp_mssp", ["Sí"], ["mssp", "managed security service"], confidence=base_fact)
             if section == "distributors":
                 add("differential_capabilities", services, service_terms)
+                capability_columns = {
+                    "training": ("Formación",),
+                    "financing": ("Financiación",),
+                    "logistics": ("Logística",),
+                    "marketplace": ("Marketplace / plataforma cloud",),
+                    "managed_services": ("Servicios gestionados",),
+                }
+                for field_id, labels in capability_columns.items():
+                    present = [label for label in labels if label in services]
+                    if present:
+                        add(field_id, ["Sí"], present, confidence=base_fact)
         if family == "cases":
             add("verticals", verticals, vertical_terms)
             title = document.title.strip()
@@ -157,6 +173,8 @@ def extract_candidates(
     elif section in {"clients_private", "clients_public"}:
         if family in {"careers", "technology", "services", "official", "procurement", "news"}:
             add("technology_signals", capabilities, cap_terms, "signal", 0.57)
+            add("technology_domains", capabilities, cap_terms, "interpretation", 0.57)
+            add("identified_vendors", vendors, vendor_terms, "signal", 0.57)
             # r6: westcon_fit is internal/derived; public pages support\n            # inputs, not the fit conclusion itself.\n        if section == "clients_private" and family == "careers":
             add("hiring_signals", jobs, job_terms, "signal", 0.57)
     elif section == "manufacturers" and family in {"services", "official", "technology"}:

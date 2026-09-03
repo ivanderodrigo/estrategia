@@ -56,14 +56,30 @@ def westcon_evidence() -> dict:
 
 class SupportModelR3(unittest.TestCase):
     def test_a1_or_public_are_direct_support(self) -> None:
-        self.assertEqual(
-            support_basis([h_evidence(), westcon_evidence()]),
-            "WESTCON_DOCUMENT",
-        )
-        self.assertEqual(
-            support_basis([h_evidence(), public_evidence()]),
-            "CURRENT_PUBLIC",
-        )
+        from engine.source_rationalization import support_basis
+
+        westcon = {
+            "source": "Westcon",
+            "title": "Deck",
+            "date": "FY2027",
+            "description": "Pista interna",
+            "document": "deck.pptx",
+            "source_type": "westcon-document",
+            "provenance_origin": "WESTCON_DOCUMENT",
+        }
+        public = {
+            "source": "Vendor",
+            "title": "Official",
+            "date": "2026-09-02",
+            "description": "Official public evidence",
+            "url": "https://vendor.example/official",
+            "official": True,
+            "source_grade": "A2",
+            "provenance_origin": "PUBLIC_PRIMARY",
+        }
+        self.assertEqual(support_basis([westcon]), "SEARCH_REQUIRED")
+        self.assertEqual(support_basis([public]), "CURRENT_PUBLIC")
+        self.assertEqual(support_basis([westcon, public]), "CURRENT_PUBLIC")
 
     def test_westcon_fit_is_derived_not_literal_web_claim(self) -> None:
         policy = claim_policy("clients_public", "westcon_fit")
@@ -71,25 +87,43 @@ class SupportModelR3(unittest.TestCase):
         self.assertEqual(policy["research_mode"], "derive-from-supported-inputs")
 
     def test_external_fact_without_support_creates_public_gap(self) -> None:
-        data = {
-            "schemas": {"manufacturers": [{
-                "id": "competitors", "label": "Competidores", "decision_required": True
-            }]},
-            "manufacturers": [{
-                "id": "v", "name": "Vendor",
-                "fields": {
-                    "competitors": {
-                        "value": ["Peer"],
-                        "items": [{"value": "Peer", "evidence": [h_evidence()]}],
-                    }
-                },
-            }],
+        from engine.gaps import build_gaps
+
+        public = {
+            "schemas": {
+                "manufacturers": [
+                    {"id": "capabilities", "label": "Capacidades", "decision_required": True}
+                ]
+            },
+            "manufacturers": [
+                {
+                    "id": "vendor-test",
+                    "name": "Vendor Test",
+                    "fields": {
+                        "capabilities": {
+                            "value": "SASE",
+                            "evidence": [],
+                        }
+                    },
+                }
+            ],
         }
-        gaps = build_gaps(data, "4.0.6", {})
-        found = [g for g in gaps["gaps"] if g.get("gap_kind") == "evidence-support"]
+        report = build_gaps(public, research_state={})
+        found = [
+            gap for gap in report["gaps"]
+            if gap.get("section") == "manufacturers"
+            and gap.get("entity") == "Vendor Test"
+            and gap.get("field") == "capabilities"
+            and gap.get("target_values") == ["SASE"]
+        ]
         self.assertEqual(len(found), 1)
-        self.assertEqual(found[0]["claim_class"], "EXTERNAL_FACT")
-        self.assertTrue(found[0]["preserve_value"])
+        gap = found[0]
+        self.assertEqual(gap.get("claim_class"), "EXTERNAL_FACT")
+        self.assertEqual(gap.get("research_mode"), "public-source-verification")
+        self.assertEqual(gap.get("support_requirement"), "CURRENT_PUBLIC_ONLY")
+        self.assertEqual(gap.get("gap_kind"), "evidence-support")
+        self.assertEqual(gap.get("research_state"), "Por investigar")
+        self.assertTrue(gap.get("preserve_value"))
 
     def test_derived_fact_creates_derivation_gap_not_public_search(self) -> None:
         data = {
@@ -117,29 +151,35 @@ class SupportModelR3(unittest.TestCase):
         self.assertEqual(derived[0]["dependency_fields"], ["technology_signals"])
 
     def test_populated_field_absent_from_schema_still_gets_gap(self) -> None:
-        # Exact regression for the two orphan TD SYNNEX vertical claims.
-        data = {
+        from engine.gaps import build_gaps
+
+        public = {
             "schemas": {"distributors": []},
-            "distributors": [{
-                "id": "td-synnex", "name": "TD SYNNEX",
-                "fields": {
-                    "verticals": {
-                        "value": ["Telecomunicaciones", "Transporte"],
-                        "items": [
-                            {"value": "Telecomunicaciones", "evidence": [h_evidence()]},
-                            {"value": "Transporte", "evidence": [h_evidence()]},
-                        ],
-                    }
-                },
-            }],
+            "distributors": [
+                {
+                    "id": "dist-test",
+                    "name": "Distributor Test",
+                    "fields": {
+                        "orphan_one": {"value": "Value A", "evidence": []},
+                        "orphan_two": {"value": "Value B", "evidence": []},
+                    },
+                }
+            ],
         }
-        gaps = build_gaps(data, "4.0.6", {})
+        report = build_gaps(public, research_state={})
         found = [
-            g for g in gaps["gaps"]
-            if g.get("gap_kind") == "evidence-support"
-            and g.get("field") == "verticals"
+            gap for gap in report["gaps"]
+            if gap.get("section") == "distributors"
+            and gap.get("entity") == "Distributor Test"
+            and gap.get("field") in {"orphan_one", "orphan_two"}
         ]
         self.assertEqual(len(found), 2)
+        self.assertEqual({gap.get("field") for gap in found}, {"orphan_one", "orphan_two"})
+        self.assertTrue(all(gap.get("claim_class") == "EXTERNAL_FACT" for gap in found))
+        self.assertTrue(all(gap.get("research_mode") == "public-source-verification" for gap in found))
+        self.assertTrue(all(gap.get("support_requirement") == "CURRENT_PUBLIC_ONLY" for gap in found))
+        self.assertTrue(all(gap.get("gap_kind") == "evidence-support" for gap in found))
+        self.assertTrue(all(gap.get("research_state") == "Por investigar" for gap in found))
 
     def test_rationalizer_reports_occurrences_vs_unique_claims(self) -> None:
         data = {

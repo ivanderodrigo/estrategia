@@ -23,7 +23,11 @@ jobs:
         run: python scripts/validate.py
       - name: Security audit
         run: python scripts/security_audit.py
+      - name: v4.1 source and preservation audit
+        run: python scripts/audit_release_v410.py
       - name: Frontend syntax
         run: node --check assets/app/intelligence.js
       - name: Frontend smoke
         run: node tests/ui_smoke.js
+      - name: Filter builder and exact-subset report
+        run: node tests/filter_builder_v410.js

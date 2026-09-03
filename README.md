@@ -1,4 +1,4 @@
-# Westcon Iberia Decision Intelligence — v4.0.6
+# Westcon Iberia Decision Intelligence — v4.1.0
 
 Plataforma de inteligencia de negocio para el canal IT de España y Portugal. Su principio de diseño es: **hipersofisticada por dentro; extremadamente sencilla por fuera**.
 
@@ -13,9 +13,13 @@ La v4 sustituye la evolución acumulativa anterior por una arquitectura canónic
 - `data/public/`: proyección mínima que consume el navegador por carga diferida.
 - `assets/app/`: un único frontend ejecutivo.
 
-## Garantías v4
+## Garantías v4.1
 - Typed Provenance: fuentes web, documentos Westcon y procedencia histórica se distinguen sin destruir conocimiento.
 - Knowledge Guard: Tendencias, Arquitecturas y capacidades no relacionales de fabricantes no pueden desaparecer silenciosamente.
+- Preservation Gate: entidades, valores poblados, evidencia válida, relaciones y capacidades Westcon documentadas se comparan antes/después de cada build.
+- Fuentes simples para el usuario: solo documentación Westcon aportada y evidencia pública actual acreditan una celda; el linaje H queda interno.
+- Esquema BI aditivo, columnas vacías ocultas, selector profesional y filtros dinámicos tipados con AND/OR.
+- Informes del subconjunto exacto en PDF/imprimible, CSV para Excel y PowerPoint.
 
 - Una relación visible tiene evidencia del elemento concreto; nunca hereda las fuentes de sus vecinos.
 - Un HTTP 200 solo significa transporte correcto: el éxito se mide en evidencia aceptada, datos enriquecidos, entidades nuevas y gaps cerrados.
@@ -34,6 +38,8 @@ python scripts/validate.py
 python scripts/security_audit.py
 node --check assets/app/intelligence.js
 node tests/ui_smoke.js
+node tests/filter_builder_v410.js
+python scripts/audit_release_v410.py
 ```
 
 ## Research manual
@@ -46,4 +52,4 @@ python scripts/research_supervisor.py --profile exhaustive --max-runtime 3300 --
 
 Los workflows solo publican un snapshot que haya superado todas las puertas de calidad. Una fuente caída queda aislada y la investigación continúa con su siguiente ruta.
 
-Consulta [Arquitectura](docs/ARCHITECTURE.md), [Operación](docs/OPERATIONS.md) y [Auditoría de la v4](docs/RELEASE_V4.md).
+Consulta [Arquitectura](docs/ARCHITECTURE.md), [Operación](docs/OPERATIONS.md), [Release v4.1](docs/RELEASE_V4_1.md), [Instalación](docs/INSTALL_V410.md) y [Métricas](docs/METRICS_V410.json).

@@ -14,6 +14,8 @@ python scripts/security_audit.py
 python scripts/validate.py
 node --check assets/app/intelligence.js
 node tests/ui_smoke.js
+node tests/filter_builder_v410.js
+python scripts/audit_release_v410.py
 ```
 
 ## Calendario automático
@@ -45,6 +47,7 @@ El supervisor reserva tiempo para el build aunque el crawler agote su presupuest
 - Fuente caída: se registra por dominio, se aplica backoff y continúa la cascada.
 - Proceso bloqueado: el watchdog termina el grupo de procesos y conserva el último checkpoint válido.
 - Build inválido: el quality gate impide publicar.
+- Pérdida de conocimiento: el preservation gate falla y no escribe el snapshot.
 - Rama remota avanzada: el publisher aborta para no sobreescribir datos nuevos; el siguiente ciclo parte del estado actualizado.
 - Escritura interrumpida: la transacción restaura los ficheros previos.
 

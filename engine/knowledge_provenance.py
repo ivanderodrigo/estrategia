@@ -1,4 +1,4 @@
-"""Typed provenance and non-destructive knowledge protection for v4.0.6."""
+"""Typed provenance and non-destructive knowledge protection for v4.1.0."""
 from __future__ import annotations
 
 import json
@@ -21,12 +21,17 @@ DOCUMENT_SOURCE_TYPES = {
     "westcon-document", "internal-document", "user-provided", "curated", "curated-westcon",
 }
 LEGACY_SOURCE_TYPE = "legacy-unresolved"
+INTERNAL_RESEARCH_SEED_KINDS = {"RESEARCH_SEED", "WESTCON_DOCUMENT"}
 HISTORICAL_PROVENANCE_KINDS = {
     "HISTORICAL_RECOVERED",
     "ARCHIVE_RECOVERED",
     "ARCHIVE_CORROBORATION",
     "REPORT_CORROBORATION",
     "LEGACY_UNRESOLVED",
+}
+DISCOVERY_SOURCE_MARKERS = {
+    "discovery-candidate", "discovery-only", "candidate", "search-result",
+    "unverified-discovery", "corroborated-candidate",
 }
 
 CORPORATE_DOCUMENT = {
@@ -108,13 +113,25 @@ def provenance_kind(evidence: Mapping[str, Any]) -> str:
     return "UNKNOWN"
 
 
+def discovery_only(evidence: Mapping[str, Any]) -> bool:
+    """Discovery can route research but can never accredit a visible claim."""
+    if provenance_kind(evidence) in INTERNAL_RESEARCH_SEED_KINDS:
+        return True
+    binding = str(evidence.get("source_binding") or "").strip().casefold()
+    if binding == "discovery-only":
+        return True
+    source_type = str(evidence.get("source_type") or evidence.get("type") or "").strip().casefold()
+    classification = str(evidence.get("classification") or "").strip().casefold()
+    return source_type in DISCOVERY_SOURCE_MARKERS or classification in DISCOVERY_SOURCE_MARKERS
+
+
 def typed_evidence_sufficient(evidence: Mapping[str, Any]) -> bool:
     """Return True when evidence can close a gap under the typed provenance policy."""
     if not isinstance(evidence, Mapping):
         return False
     kind = provenance_kind(evidence)
     # Contextual archive/report corroboration is useful provenance but cannot close a gap.
-    if kind in HISTORICAL_PROVENANCE_KINDS | {"DISCOVERY_ONLY"}:
+    if kind in HISTORICAL_PROVENANCE_KINDS | INTERNAL_RESEARCH_SEED_KINDS | {"DISCOVERY_ONLY"} or discovery_only(evidence):
         return False
     common = all(str(evidence.get(key) or "").strip() for key in ("source", "title", "date", "description"))
     if not common:
@@ -124,8 +141,15 @@ def typed_evidence_sufficient(evidence: Mapping[str, Any]) -> bool:
         return True
     source_type = str(evidence.get("source_type") or evidence.get("type") or "").casefold()
     if kind == "WESTCON_DOCUMENT" or source_type in DOCUMENT_SOURCE_TYPES:
-        return bool(str(evidence.get("document") or evidence.get("document_id") or "").strip())
+        return False
     return False
+
+
+def accrediting_evidence(evidence: Mapping[str, Any]) -> bool:
+    """Evidence allowed in the normal user-facing source UI."""
+    if not typed_evidence_sufficient(evidence):
+        return False
+    return provenance_kind(evidence) in {"PUBLIC_PRIMARY", "PUBLIC_SECONDARY"}
 
 
 def real_evidence(rows: Iterable[Mapping[str, Any]]) -> list[dict[str, Any]]:
@@ -686,6 +710,177 @@ def mark_legacy_unresolved(data: dict[str, Any]) -> dict[str, int]:
                         stats["items_marked"] += 1
     return stats
 
+
+
+def convert_internal_lineage_to_research_seeds(data: dict[str, Any]) -> dict[str, int]:
+    """Keep PPT/internal lineage as non-accrediting research memory.
+
+    No row is deleted. WESTCON_DOCUMENT is converted to RESEARCH_SEED so the
+    claim/value and documentary clue survive future research, while public UI and
+    support gates can only be closed by public evidence. Historical/archive rows
+    remain historical and are explicitly discovery-only.
+    """
+    stats = {"document_rows_converted": 0, "historical_rows_marked": 0}
+
+    def visit(obj: Any) -> None:
+        if isinstance(obj, list):
+            for item in obj:
+                visit(item)
+            return
+        if not isinstance(obj, dict):
+            return
+        evidence = obj.get("evidence")
+        if isinstance(evidence, list):
+            for ev in evidence:
+                if not isinstance(ev, dict):
+                    continue
+                kind = provenance_kind(ev)
+                if kind == "WESTCON_DOCUMENT":
+                    ev["original_provenance_origin"] = "WESTCON_DOCUMENT"
+                    ev["provenance_origin"] = "RESEARCH_SEED"
+                    ev["source_binding"] = "discovery-only"
+                    ev["classification"] = "research-seed"
+                    ev["source_role"] = "Pista interna de investigación; no acreditativa"
+                    ev["accrediting"] = False
+                    stats["document_rows_converted"] += 1
+                elif kind in HISTORICAL_PROVENANCE_KINDS:
+                    ev["source_binding"] = "discovery-only"
+                    ev["source_role"] = "Linaje histórico; pista de investigación"
+                    ev["accrediting"] = False
+                    stats["historical_rows_marked"] += 1
+        for value in obj.values():
+            if isinstance(value, (dict, list)):
+                visit(value)
+
+    visit(data)
+    return stats
+
+
+
+def seed_from_knowledge_baseline(data: dict[str, Any], baseline: Mapping[str, Any] | None) -> dict[str, int]:
+    """Ensure preserved baseline knowledge remains usable as a non-accrediting research clue.
+
+    This does not claim the baseline is a public source and does not create missing values.
+    It only attaches a RESEARCH_SEED marker to an exact value that still exists.
+    """
+    stats = {"baseline_claims_seen": 0, "seed_rows_added": 0, "unmatched_values": 0}
+    protected = (baseline or {}).get("protected") or {}
+    sections = tuple(protected.keys())
+
+    def semantic(value: Any) -> str:
+        return canonical(value) if isinstance(value, str) else _value_key(value)
+
+    for section in sections:
+        current_rows = [row for row in data.get(section) or [] if isinstance(row, dict)]
+        current_index = {}
+        for row in current_rows:
+            for token in (row.get("id"), row.get("name")):
+                key = canonical(token or "")
+                if key:
+                    current_index[key] = row
+        for base_row in protected.get(section) or []:
+            if not isinstance(base_row, Mapping):
+                continue
+            current = None
+            for token in (base_row.get("id"), base_row.get("name")):
+                current = current_index.get(canonical(token or ""))
+                if current is not None:
+                    break
+            if current is None:
+                continue
+            for field_id, base_field in (base_row.get("fields") or {}).items():
+                if not isinstance(base_field, Mapping):
+                    continue
+                raw = base_field.get("value")
+                base_values = raw if isinstance(raw, list) else ([] if raw in (None, "", [], {}) else [raw])
+                if not base_values:
+                    continue
+                current_field = ((current.get("fields") or {}).get(field_id) or {})
+                if not isinstance(current_field, dict):
+                    continue
+                current_raw = current_field.get("value")
+                current_values = current_raw if isinstance(current_raw, list) else ([] if current_raw in (None, "", [], {}) else [current_raw])
+                items = [item for item in current_field.get("items") or [] if isinstance(item, dict)]
+                for value in base_values:
+                    stats["baseline_claims_seen"] += 1
+                    actual = next((candidate for candidate in current_values if semantic(candidate) == semantic(value)), None)
+                    if actual is None:
+                        stats["unmatched_values"] += 1
+                        continue
+                    target = next((item for item in items if semantic(item.get("value")) == semantic(value)), None)
+                    if target is None:
+                        target = {"value": deepcopy(actual), "evidence": []}
+                        current_field.setdefault("items", []).append(target)
+                        items.append(target)
+                    evidence = [ev for ev in target.get("evidence") or [] if isinstance(ev, Mapping)]
+                    if any(provenance_kind(ev) in INTERNAL_RESEARCH_SEED_KINDS | HISTORICAL_PROVENANCE_KINDS for ev in evidence):
+                        continue
+                    seed = {
+                        "source": "Memoria interna Westcon Decision Intelligence",
+                        "title": "Pista preservada del baseline de conocimiento",
+                        "date": str((baseline or {}).get("captured_at") or (baseline or {}).get("version") or "baseline"),
+                        "description": "Valor conocido previamente; se conserva solo como pista para localizar y validar una fuente pública actual.",
+                        "source_type": "research-seed",
+                        "provenance_origin": "RESEARCH_SEED",
+                        "source_binding": "discovery-only",
+                        "classification": "research-seed",
+                        "seed_origin": "knowledge_baseline",
+                        "accrediting": False,
+                    }
+                    target["evidence"] = dedupe_evidence(list(target.get("evidence") or []) + [seed])
+                    stats["seed_rows_added"] += 1
+    return stats
+
+def apply_public_evidence_migrations(data: dict[str, Any], migrations: Mapping[str, Any] | None) -> dict[str, int]:
+    """Attach curated *public* primary evidence to exact known claims.
+
+    Migrations are intentionally claim-specific (section + entity + field + value) and
+    never create new values. They are a bootstrap bridge from internal research memory
+    to public accreditation; normal research can later add/replace stronger public sources.
+    """
+    stats = {"configured": 0, "matched": 0, "evidence_added": 0, "unmatched": 0}
+    rows = list((migrations or {}).get("claims") or [])
+    stats["configured"] = len(rows)
+    for rule in rows:
+        if not isinstance(rule, Mapping):
+            continue
+        section = str(rule.get("section") or "")
+        entity = canonical(rule.get("entity") or "")
+        field_id = str(rule.get("field") or "")
+        wanted = canonical(rule.get("value") or "")
+        evidence = rule.get("evidence") or {}
+        matched = False
+        for row in data.get(section) or []:
+            if not isinstance(row, dict) or canonical(row.get("name") or row.get("id") or "") != entity:
+                continue
+            field = ((row.get("fields") or {}).get(field_id) or {})
+            if not isinstance(field, dict):
+                continue
+            raw = field.get("value")
+            values = raw if isinstance(raw, list) else ([] if raw in (None, "", [], {}) else [raw])
+            actual = next((value for value in values if canonical(value) == wanted), None)
+            if actual is None:
+                continue
+            items = [item for item in field.get("items") or [] if isinstance(item, dict)]
+            target = next((item for item in items if canonical(item.get("value") or "") == wanted), None)
+            if target is None:
+                target = {"value": deepcopy(actual), "evidence": []}
+                field.setdefault("items", []).append(target)
+            ev = deepcopy(dict(evidence))
+            ev.setdefault("official", True)
+            ev.setdefault("source_grade", "A2")
+            ev.setdefault("source_type", "official-vendor-web")
+            ev["provenance_origin"] = "PUBLIC_PRIMARY"
+            ev["source_binding"] = "claim-specific"
+            before = len(target.get("evidence") or [])
+            target["evidence"] = dedupe_evidence(list(target.get("evidence") or []) + [ev])
+            stats["evidence_added"] += max(0, len(target["evidence"]) - before)
+            stats["matched"] += 1
+            matched = True
+            break
+        if not matched:
+            stats["unmatched"] += 1
+    return stats
 
 def provenance_summary(data: Mapping[str, Any]) -> dict[str, Any]:
     counts: dict[str, int] = {}

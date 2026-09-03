@@ -1,6 +1,6 @@
 {
-  "version": "4.0.0",
-  "updated_at": 1788263869.968489,
+  "version": "4.1.0",
+  "updated_at": 1788344394.337368,
   "runs": [
     {
       "version": "4.0.0",
@@ -75,6 +75,39 @@
       ],
       "elapsed_s": 2770.05,
       "finished_at": 1788263869.9669962
+    },
+    {
+      "version": "4.1.0",
+      "profile": "deep",
+      "started_at": 1788342999.3722835,
+      "requested_max_runtime_s": 1800,
+      "effective_max_runtime_s": 1800,
+      "budgets": {
+        "research_s": 1335,
+        "fallback_s": 240,
+        "build_reserve_s": 225
+      },
+      "stages": [
+        {
+          "research": "ok",
+          "fetch_attempts": 1227,
+          "fetch_successes": 2882,
+          "pages_relevant": 2070,
+          "candidate_evidences": 3534,
+          "accepted_evidences": 3138,
+          "fields_enriched": 3138,
+          "values_added": 3325,
+          "entities_added": 39,
+          "stop_reason": "deadline",
+          "error": ""
+        },
+        {
+          "build": "failed",
+          "error": "ValueError: Quality gate failed: Preservation gate: Valores poblados desaparecidos sin excepción: 254; Preservation gate: Relaciones válidas desaparecidas sin excepción: 9; Preservation gate: Evidencias válidas desaparecidas sin excepción: 97"
+        }
+      ],
+      "elapsed_s": 1394.96,
+      "finished_at": 1788344394.3309884
     }
   ]
 }
