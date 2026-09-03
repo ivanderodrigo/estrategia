@@ -1,3 +1,12 @@
+# Changelog
+
+## 4.2.2
+- Evidencia Westcon vigente: la presentación corporativa FY2027 acredita de forma atómica la pertenencia al portfolio España y las capacidades que aparecen explícitamente en sus slides.
+- Portugal: mismo portfolio FY2027 de España más Check Point. Se corrige la antigua pista que añadía también Proofpoint como excepción portuguesa.
+- Histórico/PPT antiguos siguen siendo RESEARCH_SEED y no acreditan. La nueva clase CURRENT solo admite claims propiedad de Westcon (portfolio/capacidades/servicios).
+- UI: etiquetas de capacidades y campos multi-valor en bloques separados, ancho completo, área de clic mayor e icono de trazabilidad no solapado.
+- Control negativo: ADC no se acredita desde FY2027 porque el término no aparece explícitamente en la presentación suministrada.
+
 
 ## 4.2.1
 - Añade scoring contextual de oportunidades públicas sin cuotas artificiales.

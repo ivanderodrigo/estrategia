@@ -152,9 +152,18 @@ def _current_public_rows(rows: list[Mapping[str, Any]]) -> list[Mapping[str, Any
     ]
 
 
+def _current_westcon_rows(rows: list[Mapping[str, Any]]) -> list[Mapping[str, Any]]:
+    return [
+        row for row in rows
+        if provenance_kind(row) in {"WESTCON_DOCUMENT_CURRENT", "WESTCON_FIRST_PARTY_CURRENT"}
+        and accrediting_evidence(row)
+    ]
+
+
 def _support_rows(rows: list[Mapping[str, Any]]) -> list[Mapping[str, Any]]:
-    # HF7: external facts are accredited only by current public evidence.
-    return _current_public_rows(rows)
+    # v4.2.2: public evidence accredits external facts; current first-party Westcon
+    # evidence may additionally accredit Westcon-owned portfolio/capability facts.
+    return _current_public_rows(rows) + _current_westcon_rows(rows)
 
 
 def _target_values(value: Any) -> list[Any]:

@@ -1,5 +1,5 @@
 {
-  "version": "4.2.1",
+  "version": "4.2.2",
   "hotfix": "v4.1.0-HF8-public-evidence-memory",
   "status": "PASS",
   "policy": "preserve entities, external set-valued facts, accredited claim support, semantic graph relations and internal/historical research clues; public web evidence is the only external accreditation; reconcile detached support/id re-keying before audit; audit build-owned evidence as derived telemetry; allow accredited scalar supersession and build-owned recalculation",
@@ -23,7 +23,7 @@
   },
   "after": {
     "entities": {
-      "manufacturers": 36,
+      "manufacturers": 37,
       "distributors": 57,
       "integrators": 130,
       "clients_public": 298,
@@ -31,15 +31,20 @@
       "trends": 15,
       "architectures": 12
     },
-    "values": 11686,
-    "evidences": 11470,
+    "values": 11880,
+    "evidences": 11810,
     "relations": 2019,
-    "research_seed_claims": 4882,
+    "research_seed_claims": 4997,
     "derived_values": 6280,
     "derived_evidence_support": 6280
   },
   "semantic_changes": {
-    "accredited_scalar_supersessions": [],
+    "accredited_scalar_supersessions": [
+      "manufacturers:mfr cisco:domain:[\"text\",\"multi domain\"]",
+      "manufacturers:mfr netscout:domain:[\"text\",\"cybersecurity\"]",
+      "manufacturers:mfr proofpoint:scope:[\"text\",\"pt\"]",
+      "manufacturers:mfr stratus penguin solutions:domain:[\"text\",\"edge ai infrastructure\"]"
+    ],
     "raw_evidence_sources_replaced_or_removed": [],
     "derived_values_before": 6280,
     "derived_values_after": 6280,
@@ -57,10 +62,10 @@
   "reconciliation": {
     "accredited_support": {
       "field_evidence_restored": 0,
-      "item_evidence_restored": 23710,
+      "item_evidence_restored": 23711,
       "moved_item_support_restored": 3,
       "claims_examined": 5975,
-      "total_evidence_restored": 23710
+      "total_evidence_restored": 23711
     },
     "relations": {
       "relations_restored": 0,
@@ -75,7 +80,7 @@
     },
     "internal_seed_snapshot": {
       "document_rows_converted": 0,
-      "historical_rows_marked": 8499
+      "historical_rows_marked": 8502
     },
     "baseline_seed_snapshot": {
       "baseline_claims_seen": 1206,
@@ -88,7 +93,7 @@
     },
     "internal_seed_migration": {
       "document_rows_converted": 775,
-      "historical_rows_marked": 5715
+      "historical_rows_marked": 5716
     },
     "baseline_seed_migration": {
       "baseline_claims_seen": 1206,
@@ -98,10 +103,10 @@
     "research_seed_reconciliation": {
       "claims_examined": 5975,
       "field_seed_rows_restored": 0,
-      "item_seed_rows_restored": 16854,
+      "item_seed_rows_restored": 16853,
       "moved_item_seed_rows_restored": 0,
       "linecard_seed_rows_restored": 0,
-      "total_seed_rows_restored": 16854
+      "total_seed_rows_restored": 16853
     },
     "research_seed_registry": {
       "registry_claims": 4882,

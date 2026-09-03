@@ -22,6 +22,13 @@ DOCUMENT_SOURCE_TYPES = {
 }
 LEGACY_SOURCE_TYPE = "legacy-unresolved"
 INTERNAL_RESEARCH_SEED_KINDS = {"RESEARCH_SEED", "WESTCON_DOCUMENT"}
+CURRENT_WESTCON_EVIDENCE_KINDS = {"WESTCON_DOCUMENT_CURRENT", "WESTCON_FIRST_PARTY_CURRENT"}
+CURRENT_WESTCON_CLAIM_SCOPES = {"portfolio-membership", "portfolio-and-capability", "westcon-services"}
+CURRENT_WESTCON_ALLOWED_FIELDS_BY_SCOPE = {
+    "portfolio-membership": {"portfolio", "scope", "westcon_spain", "westcon_portugal"},
+    "portfolio-and-capability": {"portfolio", "scope", "westcon_spain", "domain", "capabilities"},
+    "westcon-services": {"services", "capabilities", "westcon_services"},
+}
 HISTORICAL_PROVENANCE_KINDS = {
     "HISTORICAL_RECOVERED",
     "ARCHIVE_RECOVERED",
@@ -136,6 +143,13 @@ def typed_evidence_sufficient(evidence: Mapping[str, Any]) -> bool:
     common = all(str(evidence.get(key) or "").strip() for key in ("source", "title", "date", "description"))
     if not common:
         return False
+    if kind in CURRENT_WESTCON_EVIDENCE_KINDS:
+        scope = str(evidence.get("westcon_claim_scope") or "").strip().casefold()
+        if evidence.get("accrediting") is not True or scope not in CURRENT_WESTCON_CLAIM_SCOPES:
+            return False
+        field = str(evidence.get("field") or "").strip()
+        allowed = CURRENT_WESTCON_ALLOWED_FIELDS_BY_SCOPE.get(scope) or set()
+        return bool(field and field in allowed)
     url = str(evidence.get("url") or "").strip()
     if url.startswith(("http://", "https://")):
         return True
@@ -149,7 +163,7 @@ def accrediting_evidence(evidence: Mapping[str, Any]) -> bool:
     """Evidence allowed in the normal user-facing source UI."""
     if not typed_evidence_sufficient(evidence):
         return False
-    return provenance_kind(evidence) in {"PUBLIC_PRIMARY", "PUBLIC_SECONDARY"}
+    return provenance_kind(evidence) in {"PUBLIC_PRIMARY", "PUBLIC_SECONDARY"} | CURRENT_WESTCON_EVIDENCE_KINDS
 
 
 def real_evidence(rows: Iterable[Mapping[str, Any]]) -> list[dict[str, Any]]:

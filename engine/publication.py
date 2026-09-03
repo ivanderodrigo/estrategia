@@ -10,8 +10,8 @@ from .storage import atomic_write_many, json_bytes
 
 
 def _evidence_key(ev: dict[str, Any]) -> str:
-    if provenance_kind(ev) == "WESTCON_DOCUMENT":
-        raw = "|".join(str(ev.get(k) or "") for k in ("document_id", "document", "slide", "field", "item_value"))
+    if provenance_kind(ev) in {"WESTCON_DOCUMENT", "WESTCON_DOCUMENT_CURRENT", "WESTCON_FIRST_PARTY_CURRENT"}:
+        raw = "|".join(str(ev.get(k) or "") for k in ("document_id", "statement_id", "document", "slide", "field", "item_value"))
     else:
         raw = "|".join(str(ev.get(k) or "") for k in ("url", "field", "item_value", "scope"))
     return "ev_" + hashlib.sha1(raw.encode("utf-8")).hexdigest()[:16]
@@ -32,7 +32,18 @@ def _public_evidence(ev: dict[str, Any]) -> dict[str, Any] | None:
     if not accrediting_evidence(ev):
         return None
     out = deepcopy(ev)
-    if provenance_kind(out) == "WESTCON_DOCUMENT":
+    kind = provenance_kind(out)
+    if kind in {"WESTCON_DOCUMENT_CURRENT", "WESTCON_FIRST_PARTY_CURRENT"}:
+        if out.get("document_id"):
+            out["document_id"] = _document_identity(out)
+            out.setdefault("document", "Westcon_Comstor_Espana_FY27_completa.pptx")
+            out["source"] = "Westcon Comstor España · documentación FY2027 vigente"
+            out["source_role"] = "Fuente documental Westcon vigente"
+        else:
+            out["source"] = out.get("source") or "Westcon Iberia · regla operativa vigente"
+            out["source_role"] = "Fuente Westcon vigente"
+        out["intelligence_tier"] = "A1"
+    elif kind == "WESTCON_DOCUMENT":
         # Old "Portfolio" and "Presentation" labels may refer to the same supplied deck.
         # One document identity prevents them appearing as independent sources.
         out["document_id"] = _document_identity(out)
@@ -126,7 +137,20 @@ def _public_source_catalog(data: dict[str, Any]) -> list[dict[str, Any]]:
         if public is None:
             continue
         kind = provenance_kind(public)
-        if kind == "WESTCON_DOCUMENT":
+        if kind in {"WESTCON_DOCUMENT_CURRENT", "WESTCON_FIRST_PARTY_CURRENT"}:
+            identity = public.get("document_id") or public.get("statement_id") or public.get("source")
+            key = f"westcon-current:{identity}"
+            item = output.setdefault(key, {
+                "document_id": public.get("document_id"),
+                "statement_id": public.get("statement_id"),
+                "name": public.get("source") or "Fuente Westcon vigente",
+                "class": public.get("source_role") or "Fuente Westcon vigente",
+                "scope": [],
+                "dimensions": [],
+                "url": str(public.get("url") or ""),
+                "document": public.get("document"),
+            })
+        elif kind == "WESTCON_DOCUMENT":
             document_id = _document_identity(public)
             key = f"doc:{document_id}"
             item = output.setdefault(key, {

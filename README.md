@@ -1,4 +1,4 @@
-# Westcon Iberia Decision Intelligence — v4.2.1
+# Westcon Iberia Decision Intelligence — v4.2.2
 
 Plataforma de inteligencia de negocio para el canal IT de España y Portugal. Su principio de diseño es: **hipersofisticada por dentro; extremadamente sencilla por fuera**.
 
@@ -14,10 +14,10 @@ La v4 sustituye la evolución acumulativa anterior por una arquitectura canónic
 - `assets/app/`: un único frontend ejecutivo.
 
 ## Garantías v4.2
-- Public Evidence Contract: solo evidencia pública actual y acreditativa sustenta hechos externos visibles; PPT, portfolio e histórico permanecen como memoria interna de investigación.
+- Evidence Contract: los hechos externos requieren evidencia pública actual; la documentación/regla Westcon vigente puede acreditar únicamente hechos propios de Westcon sobre portfolio, capacidades y servicios; el histórico permanece como memoria de investigación.
 - Knowledge Guard: Tendencias, Arquitecturas y capacidades no relacionales de fabricantes no pueden desaparecer silenciosamente.
 - Preservation Gate: entidades, valores poblados, soporte público, relaciones y research seeds se comparan semánticamente antes/después de cada build.
-- Fuentes simples para el usuario: solo evidencia pública actual acredita una celda; documentación interna, PPT, portfolio y linaje histórico nunca aparecen como prueba pública.
+- Fuentes simples para el usuario: evidencia pública actual para hechos externos y evidencia Westcon vigente/atómica para hechos propios; documentos históricos, PPT antiguos y linaje nunca acreditan.
 - Esquema BI aditivo, columnas vacías ocultas, selector profesional y filtros dinámicos tipados con AND/OR.
 - Informes del subconjunto exacto en PDF/imprimible, CSV para Excel y PowerPoint.
 
@@ -62,4 +62,9 @@ Consulta [Arquitectura](docs/ARCHITECTURE.md), [Operación](docs/OPERATIONS.md),
 
 La prioridad de clientes públicos ya no depende solo del tipo de campo. El motor incorpora contexto observable del expediente (importe, estado, hito temporal, necesidad, tecnología y actores identificados), enruta esos huecos a contratación pública y mantiene separados expedientes distintos de un mismo organismo mediante `entity_id`. No se reserva una cuota artificial de P0/P1.
 
-La documentación Westcon/histórica sigue siendo únicamente memoria de investigación; la acreditación externa exige fuente pública actual.
+La documentación Westcon histórica sigue siendo únicamente memoria de investigación; la acreditación de hechos externos exige fuente pública actual.
+## Evidencia Westcon vigente (v4.2.2)
+
+La acreditación distingue tres clases: (1) fuentes públicas actuales para hechos externos; (2) documentación/reglas Westcon **vigentes y atómicas** para hechos que Westcon conoce de primera mano sobre su propio portfolio, capacidades y servicios; y (3) histórico/PPT antiguos como pistas `RESEARCH_SEED` no acreditativas. La presentación corporativa FY2027 suministrada al proyecto documenta el portfolio de España. Para Portugal se aplica la regla operativa vigente aportada al proyecto: **mismo portfolio de España + Check Point**.
+
+La UI presenta cada etiqueta multi-valor como una unidad separada y pulsable para evitar solapes de valor, confianza, estado e icono de trazabilidad.

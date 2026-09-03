@@ -25,8 +25,8 @@ def _band(score: float) -> str:
 
 def _evidence_identity(ev: Mapping[str, Any]) -> str:
     kind = provenance_kind(ev)
-    if kind == "WESTCON_DOCUMENT":
-        return f"document:{ev.get('document_id') or ev.get('document') or ev.get('source')}"
+    if kind in {"WESTCON_DOCUMENT", "WESTCON_DOCUMENT_CURRENT", "WESTCON_FIRST_PARTY_CURRENT"}:
+        return f"westcon:{ev.get('document_id') or ev.get('statement_id') or ev.get('document') or ev.get('source')}"
     host = urlparse(str(ev.get("url") or "")).netloc.casefold().removeprefix("www.")
     return host or str(ev.get("source") or ev.get("title") or "").casefold()
 
@@ -54,6 +54,8 @@ def _strength(ev: Mapping[str, Any]) -> tuple[float, str]:
     kind = provenance_kind(ev)
     if kind in {"WESTCON_DOCUMENT", "RESEARCH_SEED"}:
         return 0.0, "research_seed"
+    if kind in {"WESTCON_DOCUMENT_CURRENT", "WESTCON_FIRST_PARTY_CURRENT"}:
+        return 0.90, "westcon_current"
     if kind == "PUBLIC_PRIMARY":
         return 0.88, "public_primary"
     if _is_analyst(ev):
@@ -103,6 +105,7 @@ def profile(rows: Iterable[Mapping[str, Any]], claim_type: str = "fact") -> dict
         f"Evidencias acreditativas relevantes: {len(weighted)}; fuentes independientes: {len(independent)}.",
         (
             "Calidad: "
+            f"{counts['westcon_current']} Westcon vigente(s), "
             f"{counts['public_primary']} primaria(s) pública(s), "
             f"{counts['analyst']} analista(s) y {counts['public_secondary']} secundaria(s)."
         ),
@@ -112,8 +115,8 @@ def profile(rows: Iterable[Mapping[str, Any]], claim_type: str = "fact") -> dict
         factors.append(f"Contradicciones detectadas: {contradictions}; reducen explícitamente la confianza.")
     if not weighted:
         missing = "Vincular una fuente pública actual, específica y atribuible para este dato."
-    elif counts["public_primary"]:
-        missing = "Revalidar cuando envejezca y resolver cualquier contradicción futura."
+    elif counts["public_primary"] or counts["westcon_current"]:
+        missing = "Revalidar cuando envejezca o cambie el portfolio/documentación vigente y resolver cualquier contradicción futura."
     else:
         missing = "Añadir una fuente primaria/oficial clara o corroboración independiente actual."
     factors.append(f"Para subir la confianza: {missing}")
@@ -125,7 +128,8 @@ def profile(rows: Iterable[Mapping[str, Any]], claim_type: str = "fact") -> dict
         "details": {
             "relevant_evidence": len(weighted),
             "independent_sources": len(independent),
-            "westcon_documents": counts["westcon_document"],
+            "westcon_documents": counts["westcon_current"],
+            "westcon_current": counts["westcon_current"],
             "public_primary": counts["public_primary"],
             "analyst": counts["analyst"],
             "public_secondary": counts["public_secondary"],
@@ -170,11 +174,13 @@ def apply_confidence_model(data: dict[str, Any]) -> dict[str, int]:
                 for item in field.get("items") or []:
                     if not isinstance(item, dict) or item.get("value") in (None, "", [], {}):
                         continue
-                    _apply_target(item, field_rows)
+                    # Atomic item confidence must never inherit evidence from sibling values
+                    # through the aggregate field. A tag is high-confidence only when that
+                    # exact item has its own accrediting support.
+                    _apply_target(item)
                     stats["items"] += 1
                     stats["without_accrediting_evidence"] += int(item["confidence_details"]["relevant_evidence"] == 0)
                 _apply_target(field)
                 stats["fields"] += 1
                 stats["without_accrediting_evidence"] += int(field["confidence_details"]["relevant_evidence"] == 0)
     return stats
-

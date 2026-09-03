@@ -28,7 +28,7 @@ class ReleaseIntegrity(unittest.TestCase):
         cls.manifest = read_json("data/public/manifest.json")
 
     def test_one_canonical_version(self) -> None:
-        self.assertEqual(VERSION, "4.2.1")
+        self.assertEqual(VERSION, "4.2.2")
         self.assertEqual(self.data["meta"]["version"], VERSION)
         self.assertEqual(self.graph["version"], VERSION)
         self.assertEqual(self.gaps["version"], VERSION)

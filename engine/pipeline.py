@@ -38,6 +38,7 @@ from .knowledge_provenance import (
 from .graph import build_graph
 from .metrics import calculate
 from .publication import public_payloads
+from .westcon_current_evidence import apply_westcon_current_evidence
 from .quality import audit
 from .preservation import (
     audit as audit_preservation,
@@ -183,6 +184,9 @@ def run() -> dict[str, Any]:
     public_evidence_migration_final = apply_public_evidence_migrations(
         data, read_json("config/current/public_evidence_migrations.json", {})
     )
+    westcon_current_evidence = apply_westcon_current_evidence(
+        data, read_json("config/current/westcon_fy27_document_facts.json", {})
+    )
     _sync_source_catalog(data)
     confidence_stats = apply_confidence_model(data)
     source_rationalization = rationalize_sources(data)
@@ -193,8 +197,8 @@ def run() -> dict[str, Any]:
         "derivation_support_pending": int(gaps.get("derivation_support_gaps") or 0),
         "historical_revalidation_pending": int(gaps.get("historical_revalidation_gaps") or 0),
         "claims_publicly_accredited": int(source_rationalization.get("targets_supported_public_only") or 0),
-        "claims_westcon_supported": 0,
-        "claims_westcon_and_public": 0,
+        "claims_westcon_supported": int(source_rationalization.get("targets_supported_westcon_only") or 0),
+        "claims_westcon_and_public": int(source_rationalization.get("targets_supported_westcon_and_public") or 0),
         "claims_pending": int(source_rationalization.get("support_pending_unique_claims") or 0),
         "public_validation_pending": int(gaps.get("public_validation_gaps") or 0),
         "unknown_research_gaps": int(gaps.get("unknown_research_gaps") or 0),
@@ -298,6 +302,7 @@ def run() -> dict[str, Any]:
         "archive_provenance": archive_registry_summary(archive_registry),
         "archive_apply": archive_apply_final,
         "document_apply": document_apply_final,
+        "westcon_current_evidence": westcon_current_evidence,
         "schema": schema_stats,
         "confidence_model": confidence_stats,
         "knowledge_preservation": preservation,
@@ -359,6 +364,7 @@ def run() -> dict[str, Any]:
             "archive_registry": archive_registry_summary(archive_registry),
             "archive_apply": archive_apply_final,
             "document_apply": document_apply_final,
+            "westcon_current_evidence": westcon_current_evidence,
             "source_intelligence": source_rationalization,
         }),
         "data/current/source_rationalization.json": json_bytes(source_rationalization),

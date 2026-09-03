@@ -69,9 +69,18 @@ for record in registry:
 state_errors = validate_gap_state_contract(gaps)
 errors.extend(f"gap-state: {error}" for error in state_errors)
 
-public_catalog_blob = json.dumps(manifest.get("source_catalog") or [], ensure_ascii=False)
-if "WESTCON_DOCUMENT" in public_catalog_blob or "Westcon_Comstor_Espana_FY27_completa.pptx" in public_catalog_blob:
-    errors.append("internal Westcon document leaked into public source catalogue")
+# Historical/internal Westcon material must remain hidden. v4.2.2 deliberately allows
+# only *current, claim-scoped* Westcon first-party evidence in the public source catalogue.
+for source in manifest.get("source_catalog") or []:
+    if not isinstance(source, dict):
+        continue
+    source_class = str(source.get("class") or "")
+    if source_class in {"WESTCON_DOCUMENT", "Fuente documental Westcon"}:
+        errors.append("historical/internal Westcon document leaked into public source catalogue")
+    if source_class in {"Fuente documental Westcon vigente", "Fuente Westcon vigente"} and not (
+        source.get("document_id") or source.get("statement_id")
+    ):
+        errors.append("current Westcon source catalogue entry lacks stable document/statement identity")
 if gaps.get("support_rule") != "CURRENT_PUBLIC_ONLY":
     errors.append(f"unexpected support_rule={gaps.get('support_rule')}")
 if preservation.get("status") != "PASS":

@@ -19,7 +19,10 @@ BASELINE_ACCEPTED_PUBLIC_EVIDENCES = 8
 PUBLIC_SOURCE_ROLES = {
     "Fuente pública primaria",
     "Fuente pública secundaria / analista",
+    "Fuente documental Westcon vigente",
+    "Fuente Westcon vigente",
 }
+CURRENT_WESTCON_ORIGINS = {"WESTCON_DOCUMENT_CURRENT", "WESTCON_FIRST_PARTY_CURRENT"}
 BLOCKED_ORIGINS = {
     "WESTCON_DOCUMENT",
     "RESEARCH_SEED",
@@ -78,8 +81,11 @@ def evaluate_release_contract(
                 errors.append(f"internal/historical evidence exposed as accreditation: {info['file']}")
             if role not in PUBLIC_SOURCE_ROLES:
                 errors.append(f"invalid visible source role: {role or '<missing>'}")
-            if not url.startswith(("http://", "https://")):
-                errors.append(f"visible accrediting evidence has no public URL: {info['file']}")
+            is_current_westcon = origin in CURRENT_WESTCON_ORIGINS
+            if not url.startswith(("http://", "https://")) and not (
+                is_current_westcon and (evidence.get("document_id") or evidence.get("statement_id"))
+            ):
+                errors.append(f"visible accrediting evidence has no public URL or current Westcon identity: {info['file']}")
 
     source_catalog = manifest.get("source_catalog") or []
     for source in source_catalog:
@@ -90,8 +96,11 @@ def evaluate_release_contract(
         url = str(source.get("url") or "").strip()
         if source_class not in PUBLIC_SOURCE_ROLES:
             errors.append(f"non-public accrediting catalog class: {source_class or '<missing>'}")
-        if not url.startswith(("http://", "https://")):
-            errors.append(f"public source catalogue entry has no public URL: {source.get('name') or '<unnamed>'}")
+        westcon_catalog = source_class in {"Fuente documental Westcon vigente", "Fuente Westcon vigente"}
+        if not url.startswith(("http://", "https://")) and not (
+            westcon_catalog and (source.get("document_id") or source.get("statement_id"))
+        ):
+            errors.append(f"public source catalogue entry has no public URL/current Westcon identity: {source.get('name') or '<unnamed>'}")
 
     if preservation.get("status") != "PASS" or preservation.get("errors"):
         errors.append("knowledge preservation gate did not pass")

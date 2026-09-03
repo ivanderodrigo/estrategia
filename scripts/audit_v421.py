@@ -39,8 +39,8 @@ def main() -> int:
     manufacturer = {row.get('id'): row for row in manufacturer_rows if isinstance(row, dict)}
     for field in ('westcon_spain', 'westcon_portugal'):
         help_text = str((manufacturer.get(field) or {}).get('help') or '').casefold()
-        if 'fuente pública' not in help_text or 'pista' not in help_text:
-            errors.append(f'{field} help does not expose the public-only accreditation contract')
+        if 'fuente pública' not in help_text or 'westcon vigente' not in help_text or 'pista' not in help_text:
+            errors.append(f'{field} help does not expose the v4.2.2 current-public/current-Westcon-owned contract')
 
     print('v4.2.1 opportunity-aware research audit:', 'PASS' if not errors else 'FAIL')
     print(' - model:', model)

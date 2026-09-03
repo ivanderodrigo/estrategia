@@ -5,7 +5,7 @@ const css = fs.readFileSync('assets/app/intelligence.css', 'utf8');
 
 for (const token of [
   'data/public/manifest.json', 'ensureSection', 'ensureViewData', 'clients_public',
-  'clients_private', 'reorderColumn', 'columnChooser', 'currentColumnWidth', 'App v4.1.0',
+  'clients_private', 'reorderColumn', 'columnChooser', 'currentColumnWidth', 'App v4.2.2',
   'atomic-evidence-missing', 'el sistema no muestra fuentes de otros elementos',
   'analysisPanel', 'WestconFilters.apply', 'sessionStorage', 'savedFilters',
   'openFilteredReport', 'WestconReports.build', 'generateFilteredCsv', 'window.print',
@@ -31,4 +31,4 @@ for (const token of [
   if (!css.includes(token)) throw new Error(`sticky table regression: ${token}`);
 }
 
-console.log('UI smoke v4.1.0 PASS');
+console.log('UI smoke v4.2.2 PASS');

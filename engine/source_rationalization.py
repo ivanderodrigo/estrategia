@@ -1,8 +1,9 @@
-"""Claim/evidence support model for Westcon Decision Intelligence v4.1.0 r4.
+"""Claim/evidence support model for Westcon Decision Intelligence v4.2.2.
 
 Policy:
 - External facts require current public evidence.
-- Westcon deck/portfolio and historical lineage are research hints only.
+- Current, claim-scoped Westcon first-party material may accredit Westcon-owned portfolio/capability/service facts.
+- Historical Westcon deck/portfolio and recovered lineage are research hints only.
 - Derived/internal Westcon conclusions are not searched literally on the web.
   They require traceable derivation from supported inputs.
 - Historical/curated/inferred knowledge is preserved while support is pending.
@@ -104,9 +105,25 @@ def is_current_public(ev: Mapping[str, Any]) -> bool:
     )
 
 
+def is_current_westcon(ev: Mapping[str, Any]) -> bool:
+    return (
+        provenance_kind(ev) in {"WESTCON_DOCUMENT_CURRENT", "WESTCON_FIRST_PARTY_CURRENT"}
+        and not discovery_only(ev)
+        and accrediting_evidence(ev)
+    )
+
+
 def support_basis(rows: Iterable[Mapping[str, Any]]) -> str:
     evidence = [row for row in rows if isinstance(row, Mapping)]
-    return "CURRENT_PUBLIC" if any(is_current_public(ev) for ev in evidence) else "SEARCH_REQUIRED"
+    has_public = any(is_current_public(ev) for ev in evidence)
+    has_westcon = any(is_current_westcon(ev) for ev in evidence)
+    if has_public and has_westcon:
+        return "WESTCON_AND_PUBLIC"
+    if has_westcon:
+        return "WESTCON_DOCUMENT_CURRENT"
+    if has_public:
+        return "CURRENT_PUBLIC"
+    return "SEARCH_REQUIRED"
 
 
 def _analyst(ev: Mapping[str, Any]) -> bool:
@@ -119,6 +136,8 @@ def _analyst(ev: Mapping[str, Any]) -> bool:
 
 def source_tier(ev: Mapping[str, Any]) -> str:
     kind = provenance_kind(ev)
+    if kind in {"WESTCON_DOCUMENT_CURRENT", "WESTCON_FIRST_PARTY_CURRENT"}:
+        return "A1"
     if kind in {"WESTCON_DOCUMENT", "RESEARCH_SEED"}:
         return "H"
     if is_historical(ev):
@@ -138,7 +157,7 @@ def source_tier(ev: Mapping[str, Any]) -> str:
 
 def source_role(tier: str) -> str:
     return {
-        "A1": "Reservado",
+        "A1": "Fuente Westcon vigente",
         "A2": "Fuente primaria externa",
         "B": "Inteligencia especializada",
         "C": "Fuente pública secundaria",
@@ -166,6 +185,9 @@ def _annotate(rows: Iterable[dict[str, Any]], basis: str) -> Counter[str]:
             elif basis == "CURRENT_PUBLIC":
                 ev["revalidation_status"] = "supported-by-current-public"
                 stats["historical_supported_public"] += 1
+            elif basis == "WESTCON_DOCUMENT_CURRENT":
+                ev["revalidation_status"] = "supported-by-current-westcon"
+                stats["historical_supported_westcon"] += 1
             else:
                 ev["revalidation_status"] = "support-pending"
                 stats["historical_search_required"] += 1
@@ -292,16 +314,16 @@ def rationalize_sources(data: dict[str, Any]) -> dict[str, Any]:
 
     return {
         "version": VERSION,
-        "model_revision": "r5-public-evidence-only",
+        "model_revision": "r6-public-plus-current-westcon-first-party",
         "policy": (
-            "Hechos externos: fuente pública actual. PPT/portfolio/histórico: pistas internas no acreditativas. "
-            "Conclusiones internas/derivadas: inputs sustentados + regla trazable. "
-            "Todo valor se conserva mientras se resuelve su soporte."
+            "Hechos externos: fuente pública actual. Hechos propiedad de Westcon sobre portfolio/capacidades: "
+            "documentación o regla Westcon vigente y atómica. Histórico: pista no acreditativa. "
+            "Conclusiones internas/derivadas: inputs sustentados + regla trazable."
         ),
-        "support_rule": "CURRENT_PUBLIC_OR_TRACEABLE_DERIVATION",
+        "support_rule": "CURRENT_PUBLIC_OR_CURRENT_WESTCON_OWNED_OR_TRACEABLE_DERIVATION",
         "targets_total": target_stats["targets_total"],
         "targets_direct_supported": target_stats["targets_direct_supported"],
-        "targets_supported_westcon_only": target_stats["supported_WESTCON_DOCUMENT"],
+        "targets_supported_westcon_only": target_stats["supported_WESTCON_DOCUMENT_CURRENT"],
         "targets_supported_public_only": target_stats["supported_CURRENT_PUBLIC"],
         "targets_supported_westcon_and_public": target_stats["supported_WESTCON_AND_PUBLIC"],
         "claim_classes": {
