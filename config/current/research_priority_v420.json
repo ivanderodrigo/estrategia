@@ -1,7 +1,7 @@
 {
-  "version": "4.2.1",
+  "version": "4.3.0",
   "model": "business-value-x-researchability-opportunity-v2",
-  "principle": "Priorizar inteligencia que cambie decisiones de negocio, incorporando contexto real de oportunidad pública sin usar cuotas artificiales.",
+  "principle": "Priorizar inteligencia que cambie decisiones de negocio, cerrar deuda valiosa antes de ampliar cobertura y hacer crecer el universo solo con señales estructuradas y presupuestos explícitos.",
   "tiers": {
     "P0": "alto valor y alta investigabilidad; ejecutar primero",
     "P1": "alto valor o validación pública con buena ruta de fuente",
@@ -19,7 +19,18 @@
   },
   "public_opportunity_context": {
     "enabled": true,
-    "signals": ["notice_id", "source_portal", "request_or_need", "technology_signals", "identified_vendors", "identified_integrators", "estimated_amount", "procurement_stage", "milestone_date", "westcon_fit"],
+    "signals": [
+      "notice_id",
+      "source_portal",
+      "request_or_need",
+      "technology_signals",
+      "identified_vendors",
+      "identified_integrators",
+      "estimated_amount",
+      "procurement_stage",
+      "milestone_date",
+      "westcon_fit"
+    ],
     "max_multiplier": 1.55,
     "source_family": "procurement",
     "principle": "Un expediente sube de prioridad por importe, ventana temporal, estado y afinidad tecnológica observables; nunca por una cuota fija de clientes públicos."
@@ -37,5 +48,14 @@
     "official"
   ],
   "public_validation_boost": true,
-  "historical_seed_role": "research hint only; never accrediting evidence"
+  "historical_seed_role": "research hint only; never accrediting evidence",
+  "controlled_growth": {
+    "structured_entity_budget": {
+      "daily": 24,
+      "deep": 100,
+      "exhaustive": 220
+    },
+    "low_context_public_tier_ceiling": "P2",
+    "learning_signal": "accepted evidence per attempted page, relevance and transport success"
+  }
 }

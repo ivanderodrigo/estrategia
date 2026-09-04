@@ -363,6 +363,16 @@ def annotate_gap(gap: dict[str, Any], public: Mapping[str, Any]) -> None:
     raw = business * researchability * exact_claim * opportunity_multiplier
     # 3.5 is intentionally above normal raw scores; P0 is reserved for genuinely valuable, researchable debt.
     score = round(min(100.0, raw / 3.5 * 100), 1)
+    # v4.3 controlled-growth guard: a newly discovered public buyer with little
+    # opportunity context must not become high-priority merely because the schema
+    # contains valuable fields. Exact public-validation debt is exempt.
+    low_context_public = (
+        section == "clients_public"
+        and gap.get("gap_kind") != "public-validation"
+        and opportunity_multiplier <= 1.05
+    )
+    if low_context_public:
+        score = min(score, 57.9)  # P2 ceiling; no artificial section quota.
     family = family_for(field, section)
     playbook = PLAYBOOKS.get(family, PLAYBOOKS["official"])
     gap["business_value_score"] = round(min(100.0, business / 3.0 * 100), 1)
@@ -417,6 +427,17 @@ def enrich_gap_report(gaps: list[dict[str, Any]], public: Mapping[str, Any]) -> 
     weighted_coverage = round(max(0.0, 100.0 * (1.0 - open_weight / max(1.0, expected_weight))), 2)
     p0p1 = [gap for gap in gaps if gap.get("priority_tier") in {"P0", "P1"}]
     public_p0p1 = sum(1 for gap in p0p1 if gap.get("section") == "clients_public")
+    low_context_public = [
+        gap for gap in gaps
+        if gap.get("section") == "clients_public"
+        and float(gap.get("opportunity_context_multiplier") or 1.0) <= 1.05
+    ]
+    context_rich_public = [
+        gap for gap in gaps
+        if gap.get("section") == "clients_public"
+        and float(gap.get("opportunity_context_multiplier") or 1.0) > 1.15
+    ]
+    low_context_public_high = [gap for gap in low_context_public if gap.get("priority_tier") in {"P0", "P1"}]
     return {
         "model": "business-value-x-researchability-opportunity-v2",
         "tiers": {tier: tier_counts.get(tier, 0) for tier in ("P0", "P1", "P2", "P3")},
@@ -427,4 +448,8 @@ def enrich_gap_report(gaps: list[dict[str, Any]], public: Mapping[str, Any]) -> 
         "source_families": dict(family_counts.most_common()),
         "by_section_tier": {section: dict(counts) for section, counts in by_section_tier.items()},
         "clients_public_share_of_p0_p1_pct": round(public_p0p1 * 100 / max(1, len(p0p1)), 2),
+        "low_context_public_gaps": len(low_context_public),
+        "low_context_public_p0_p1": len(low_context_public_high),
+        "context_rich_public_gaps": len(context_rich_public),
+        "controlled_growth_policy": "bounded-structured-growth-v1",
     }

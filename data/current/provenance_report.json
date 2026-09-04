@@ -1,16 +1,16 @@
 {
-  "version": "4.2.2",
+  "version": "4.3.0",
   "summary": {
     "policy": "typed-provenance-non-destructive",
     "types": {
-      "RESEARCH_SEED": 16081,
-      "HISTORICAL_RECOVERED": 991,
-      "LEGACY_UNRESOLVED": 4860,
+      "RESEARCH_SEED": 16312,
+      "HISTORICAL_RECOVERED": 1102,
       "ARCHIVE_RECOVERED": 2300,
       "WESTCON_DOCUMENT_CURRENT": 492,
       "WESTCON_FIRST_PARTY_CURRENT": 75,
-      "PUBLIC_PRIMARY": 38833,
-      "PUBLIC_SECONDARY": 16965,
+      "LEGACY_UNRESOLVED": 4965,
+      "PUBLIC_PRIMARY": 38837,
+      "PUBLIC_SECONDARY": 16978,
       "REPORT_CORROBORATION": 106,
       "UNKNOWN": 132
     },
@@ -32,38 +32,38 @@
   },
   "archive_apply": {
     "field_evidence_added": 0,
-    "item_evidence_added": 4170,
-    "legacy_resolved": 34,
+    "item_evidence_added": 3630,
+    "legacy_resolved": 69,
     "unknown_classified": 0,
     "registry_matches_checked": 947,
-    "value_guard_skips": 85
+    "value_guard_skips": 154
   },
   "document_apply": {
     "manufacturer_fields_documented": 0,
     "manufacturer_rows_documented": 0,
     "manufacturer_capability_items_documented": 0,
     "capability_items_with_public_and_document": 8,
-    "legacy_placeholders_removed": 158
+    "legacy_placeholders_removed": 108
   },
   "westcon_current_evidence": {
     "portfolio_spain_rows": 36,
     "portfolio_portugal_rows": 37,
-    "rows_created": 1,
-    "capability_values_added": 118,
-    "capability_items_documented": 192,
+    "rows_created": 0,
+    "capability_values_added": 0,
+    "capability_items_documented": 0,
     "portfolio_fields_documented": 144,
-    "legacy_clues_corrected": 78
+    "legacy_clues_corrected": 0
   },
   "source_intelligence": {
-    "version": "4.2.2",
+    "version": "4.3.0",
     "model_revision": "r6-public-plus-current-westcon-first-party",
     "policy": "Hechos externos: fuente pública actual. Hechos propiedad de Westcon sobre portfolio/capacidades: documentación o regla Westcon vigente y atómica. Histórico: pista no acreditativa. Conclusiones internas/derivadas: inputs sustentados + regla trazable.",
     "support_rule": "CURRENT_PUBLIC_OR_CURRENT_WESTCON_OWNED_OR_TRACEABLE_DERIVATION",
     "targets_total": 18256,
     "targets_direct_supported": 17972,
-    "targets_supported_westcon_only": 237,
+    "targets_supported_westcon_only": 231,
     "targets_supported_public_only": 17704,
-    "targets_supported_westcon_and_public": 31,
+    "targets_supported_westcon_and_public": 37,
     "claim_classes": {
       "EXTERNAL_FACT": 16295,
       "DERIVED_FACT": 1537,
@@ -76,10 +76,10 @@
     "external_search_required_unique": 275,
     "derived_support_required_occurrences": 9,
     "derived_support_required_unique": 9,
-    "historical_total": 22040,
-    "historical_supported_westcon": 234,
+    "historical_total": 22487,
+    "historical_supported_westcon": 663,
     "historical_supported_public": 20994,
-    "historical_supported_westcon_and_public": 161,
+    "historical_supported_westcon_and_public": 179,
     "historical_search_required": 651,
     "targets_supported": 17972,
     "targets_search_required": 284,

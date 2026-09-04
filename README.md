@@ -68,3 +68,7 @@ La documentación Westcon histórica sigue siendo únicamente memoria de investi
 La acreditación distingue tres clases: (1) fuentes públicas actuales para hechos externos; (2) documentación/reglas Westcon **vigentes y atómicas** para hechos que Westcon conoce de primera mano sobre su propio portfolio, capacidades y servicios; y (3) histórico/PPT antiguos como pistas `RESEARCH_SEED` no acreditativas. La presentación corporativa FY2027 suministrada al proyecto documenta el portfolio de España. Para Portugal se aplica la regla operativa vigente aportada al proyecto: **mismo portfolio de España + Check Point**.
 
 La UI presenta cada etiqueta multi-valor como una unidad separada y pulsable para evitar solapes de valor, confianza, estado e icono de trazabilidad.
+
+
+## v4.3.0 — Research ROI & Controlled Growth
+La investigación prioriza rendimiento por intento y limita el crecimiento estructurado por perfil para evitar que nuevas entidades generen más deuda de la que la plataforma puede resolver.

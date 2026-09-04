@@ -1003,13 +1003,21 @@ def run(
     # Structured public procurement is both higher precision and a genuine growth path.
     if include_gap_kinds is None and deadline - time.monotonic() > profile_config.request_timeout_s + 3:
         try:
+            structured_growth_defaults = {"daily": 24, "deep": 100, "exhaustive": 220}
+            structured_growth_limits = RESEARCH_POLICY.get("structured_growth_limits") or {}
+            structured_growth_budget = max(
+                0, int(structured_growth_limits.get(profile, structured_growth_defaults[profile]))
+            )
+            stats["structured_entity_budget"] = structured_growth_budget
             notices = fetch_notices(
                 fetcher.session,
                 lookback_days=profile_config.ted_lookback_days,
                 timeout_s=profile_config.request_timeout_s,
-                limit={"daily": 80, "deep": 150, "exhaustive": 250}[profile],
+                limit=structured_growth_budget,
             )
-            stats["entities_added"] += upsert_notices(data, notices)
+            structured_added = upsert_notices(data, notices)
+            stats["entities_added"] += structured_added
+            stats["structured_entities_added"] = structured_added
             stats["structured_notices"] = len(notices)
             index = _row_index(data)
         except requests.RequestException as exc:
@@ -1195,6 +1203,18 @@ def run(
     learning["updated_at"] = now_iso()
     learning["policy"] = "Prioritize accepted evidence and gap closure; transport success is never intelligence success."
     stats["families"] = families_output
+    stats["accepted_evidence_per_fetch_attempt"] = round(
+        stats["accepted_evidences"] / max(1, stats["fetch_attempts"]), 4
+    )
+    stats["candidate_acceptance_rate"] = round(
+        stats["accepted_evidences"] / max(1, stats["candidate_evidences"]), 4
+    )
+    stats["values_per_accepted_evidence"] = round(
+        stats["values_added"] / max(1, stats["accepted_evidences"]), 4
+    )
+    stats["growth_pressure_ratio"] = round(
+        stats["entities_added"] / max(1, stats["values_added"]), 4
+    )
     stats["elapsed_s"] = round(time.monotonic() - started, 2)
     stats["finished_at"] = now_iso()
     cache = prune_json_mapping(cache, limit=1_600, timestamp_key="ts")

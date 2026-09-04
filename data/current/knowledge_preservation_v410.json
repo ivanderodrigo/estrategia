@@ -1,12 +1,12 @@
 {
-  "version": "4.2.2",
+  "version": "4.3.0",
   "hotfix": "v4.1.0-HF8-public-evidence-memory",
   "status": "PASS",
   "policy": "preserve entities, external set-valued facts, accredited claim support, semantic graph relations and internal/historical research clues; public web evidence is the only external accreditation; reconcile detached support/id re-keying before audit; audit build-owned evidence as derived telemetry; allow accredited scalar supersession and build-owned recalculation",
   "errors": [],
   "before": {
     "entities": {
-      "manufacturers": 36,
+      "manufacturers": 37,
       "distributors": 57,
       "integrators": 130,
       "clients_public": 298,
@@ -14,10 +14,11 @@
       "trends": 15,
       "architectures": 12
     },
-    "values": 11686,
-    "evidences": 11470,
-    "relations": 2019,
-    "research_seed_claims": 4882,
+    "values": 11880,
+    "evidences": 11810,
+    "relations": 1755,
+    "provisional_relations": 265,
+    "research_seed_claims": 4997,
     "derived_values": 6280,
     "derived_evidence_support": 6280
   },
@@ -33,20 +34,18 @@
     },
     "values": 11880,
     "evidences": 11810,
-    "relations": 2019,
-    "research_seed_claims": 4997,
+    "relations": 1755,
+    "provisional_relations": 264,
+    "research_seed_claims": 5005,
     "derived_values": 6280,
     "derived_evidence_support": 6280
   },
   "semantic_changes": {
-    "accredited_scalar_supersessions": [
-      "manufacturers:mfr cisco:domain:[\"text\",\"multi domain\"]",
-      "manufacturers:mfr netscout:domain:[\"text\",\"cybersecurity\"]",
-      "manufacturers:mfr proofpoint:scope:[\"text\",\"pt\"]",
-      "manufacturers:mfr stratus penguin solutions:domain:[\"text\",\"edge ai infrastructure\"]"
-    ],
+    "accredited_scalar_supersessions": [],
     "raw_evidence_sources_replaced_or_removed": [],
     "derived_values_before": 6280,
+    "provisional_relationship_signals_before": 265,
+    "provisional_relationship_signals_after": 264,
     "derived_values_after": 6280,
     "derived_evidence_support_before": 6280,
     "derived_evidence_support_after": 6280
@@ -62,14 +61,15 @@
   "reconciliation": {
     "accredited_support": {
       "field_evidence_restored": 0,
-      "item_evidence_restored": 23711,
+      "item_evidence_restored": 24112,
       "moved_item_support_restored": 3,
-      "claims_examined": 5975,
-      "total_evidence_restored": 23711
+      "claims_examined": 6052,
+      "total_evidence_restored": 24112
     },
     "relations": {
       "relations_restored": 0,
       "relations_skipped_unresolved_endpoints": 0,
+      "relations_skipped_provisional": 265,
       "relations_after": 2019
     },
     "manufacturer_deduplication": {
@@ -80,37 +80,37 @@
     },
     "internal_seed_snapshot": {
       "document_rows_converted": 0,
-      "historical_rows_marked": 8502
+      "historical_rows_marked": 8257
     },
     "baseline_seed_snapshot": {
       "baseline_claims_seen": 1206,
       "seed_rows_added": 0,
-      "unmatched_values": 56
+      "unmatched_values": 60
     },
     "seed_registry_snapshot": {
-      "registry_claims": 4882,
+      "registry_claims": 4997,
       "source_claims_preserved": 0
     },
     "internal_seed_migration": {
-      "document_rows_converted": 775,
-      "historical_rows_marked": 5716
+      "document_rows_converted": 785,
+      "historical_rows_marked": 5540
     },
     "baseline_seed_migration": {
       "baseline_claims_seen": 1206,
       "seed_rows_added": 55,
-      "unmatched_values": 56
+      "unmatched_values": 60
     },
     "research_seed_reconciliation": {
-      "claims_examined": 5975,
-      "field_seed_rows_restored": 0,
-      "item_seed_rows_restored": 16853,
+      "claims_examined": 6052,
+      "field_seed_rows_restored": 35,
+      "item_seed_rows_restored": 17187,
       "moved_item_seed_rows_restored": 0,
       "linecard_seed_rows_restored": 0,
-      "total_seed_rows_restored": 16853
+      "total_seed_rows_restored": 17222
     },
     "research_seed_registry": {
-      "registry_claims": 4882,
-      "source_claims_preserved": 4882
+      "registry_claims": 5005,
+      "source_claims_preserved": 4997
     },
     "public_evidence_migration": {
       "configured": 4,

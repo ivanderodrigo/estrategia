@@ -126,8 +126,9 @@ def main() -> int:
     index_html=(ROOT/'index.html').read_text(encoding='utf-8')
     for marker in ('v4.2.2 · ergonomic atomic tags','grid-template-columns:minmax(0,1fr)','min-width:230px!important'):
         if marker not in css: errors.append(f'UI ergonomic marker missing: {marker}')
-    if '4.2.2' not in index_html or '4.2.2' not in js:
-        errors.append('frontend version is not 4.2.2')
+    current_version = (ROOT / 'VERSION').read_text(encoding='utf-8').strip()
+    if current_version not in index_html or current_version not in js:
+        errors.append(f'frontend version is not current VERSION={current_version}')
 
     gaps=load('data/current/research_gaps.json')
     summary={

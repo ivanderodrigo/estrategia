@@ -62,13 +62,41 @@
   },
   "job_signal_policy": "technology in job posting is SIGNAL only; never partnership confirmation",
   "no_public_evidence_policy": "a gap remains open and retains attempt history",
-  "entity_growth_policy": "structured TED notices promote automatically; unstructured external entities require corroboration before promotion",
+  "entity_growth_policy": "structured TED growth is bounded per research profile; unstructured external entities remain candidates until corroborated",
   "atomic_provenance_policy": "each list value carries only its own evidence",
   "discovery_evidence_separation": "discovery sources route the next step but cannot close a claim until an accrediting source supports the same subject and value",
   "historical_priority": "claims with historical lineage and no Westcon document or current public evidence receive an explicit priority multiplier",
   "public_procurement": {
-    "spain": ["Plataforma de Contratación del Sector Público", "BOE", "official contracting profiles"],
-    "portugal": ["BASE", "Diário da República", "official contracting profiles"],
-    "europe": ["TED"]
+    "spain": [
+      "Plataforma de Contratación del Sector Público",
+      "BOE",
+      "official contracting profiles"
+    ],
+    "portugal": [
+      "BASE",
+      "Diário da República",
+      "official contracting profiles"
+    ],
+    "europe": [
+      "TED"
+    ]
+  },
+  "structured_growth_limits": {
+    "daily": 24,
+    "deep": 100,
+    "exhaustive": 220
+  },
+  "research_roi_policy": {
+    "enabled": true,
+    "principle": "close valuable debt before expanding breadth; transport success is not intelligence success",
+    "primary_metrics": [
+      "accepted_evidence_per_fetch_attempt",
+      "candidate_acceptance_rate",
+      "values_per_accepted_evidence",
+      "structured_entities_added",
+      "low_context_public_gaps",
+      "public_validation_gaps"
+    ],
+    "low_context_public_tier_ceiling": "P2"
   }
 }

@@ -15,8 +15,9 @@ class TagErgonomicsV422(unittest.TestCase):
     def test_frontend_identity_is_current(self):
         html=(ROOT/'index.html').read_text(encoding='utf-8')
         js=(ROOT/'assets/app/intelligence.js').read_text(encoding='utf-8')
-        self.assertIn('4.2.2',html)
-        self.assertIn('4.2.2',js)
+        version=(ROOT/'VERSION').read_text(encoding='utf-8').strip()
+        self.assertIn(version,html)
+        self.assertIn(version,js)
 
 
 if __name__=='__main__':

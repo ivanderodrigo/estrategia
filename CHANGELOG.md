@@ -123,3 +123,10 @@
 
 - Eliminados el guard programado inerte, tests con versión incrustada, cachés Python y documentación de releases contradictorias.
 - Conservado un solo conjunto de documentación operativa y arquitectónica.
+
+## 4.3.0 — Research ROI & Controlled Growth
+- Limita el crecimiento estructurado TED por perfil: 24 / 100 / 220.
+- El planner aprende por evidencia aceptada por intento, no por mero transporte HTTP.
+- Los clientes públicos sin contexto de oportunidad no pueden escalar artificialmente a P0/P1.
+- Añade KPIs de ROI de investigación y presión de crecimiento.
+- Mantiene como regresiones obligatorias FY27, Portugal=España+Check Point, evidencia atómica y preservación.

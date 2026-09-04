@@ -114,6 +114,26 @@ def _ensure_capabilities(row: dict[str, Any], capabilities: list[str], document:
         value = [] if not _has_value(value) else [value]
     items = [dict(x) for x in (field.get("items") or []) if isinstance(x, Mapping)]
 
+    # v4.3.0 · current Westcon capability atomicity guard
+    # Aggregate capability evidence may list every documented item, but an atomic
+    # item may retain current-Westcon evidence only when that item is documented
+    # for this manufacturer and evidence.item_value matches it exactly.
+    documented_keys = {_norm_capability(capability) for capability in capabilities}
+    for item in items:
+        item_key = _norm_capability(item.get("value"))
+        clean_evidence: list[dict[str, Any]] = []
+        for raw_ev in item.get("evidence") or []:
+            if not isinstance(raw_ev, Mapping):
+                continue
+            ev = dict(raw_ev)
+            origin = str(ev.get("provenance_origin") or "")
+            if origin in CURRENT_KINDS and str(ev.get("field") or "") == "capabilities":
+                evidence_key = _norm_capability(ev.get("item_value"))
+                if item_key not in documented_keys or evidence_key != item_key:
+                    continue
+            clean_evidence.append(ev)
+        item["evidence"] = _dedupe_evidence(clean_evidence)
+
     value_index = {_norm_capability(v): i for i, v in enumerate(value)}
     item_index = {_norm_capability(item.get("value")): item for item in items if _has_value(item.get("value"))}
     added = 0

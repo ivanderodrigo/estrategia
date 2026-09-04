@@ -146,6 +146,22 @@ def _resolve_endpoint(value: Any, lookup: Mapping[str, tuple[str, str]]) -> tupl
     return raw, raw
 
 
+
+def _relationship_is_hard_protected(rel: Mapping[str, Any]) -> bool:
+    # Relations remain hard-protected by default. Explicitly provisional
+    # or low-confidence derived signals are recalculable telemetry.
+    validity = str(rel.get("validity") or "").strip().casefold().replace("_", "-")
+    status = str(rel.get("status") or "").strip().casefold()
+    try:
+        confidence = float(rel.get("confidence") or 0.0)
+    except (TypeError, ValueError):
+        confidence = 0.0
+    if validity in {"needs-corroboration", "needs corroboration", "provisional", "candidate"}:
+        return False
+    if bool(rel.get("derived")) and status in {"señal", "senal", "signal"} and confidence < 0.65:
+        return False
+    return True
+
 def _relation_key(rel: Mapping[str, Any], lookup: Mapping[str, tuple[str, str]] | None = None) -> str:
     lookup = lookup or {}
     left_raw = rel.get("entity_a") or rel.get("entity_a_id") or ""
@@ -815,8 +831,12 @@ def restore_preserved_relations(current_graph: dict[str, Any], baseline_graph: M
     seen = {_relation_key(rel, lookup) for rel in relationships}
     restored = 0
     skipped_unresolved = 0
+    skipped_provisional = 0
     for raw in baseline_graph.get("relationships") or []:
         if not isinstance(raw, Mapping):
+            continue
+        if not _relationship_is_hard_protected(raw):
+            skipped_provisional += 1
             continue
         key = _relation_key(raw, lookup)
         if key in seen:
@@ -838,6 +858,7 @@ def restore_preserved_relations(current_graph: dict[str, Any], baseline_graph: M
     return {
         "relations_restored": restored,
         "relations_skipped_unresolved_endpoints": skipped_unresolved,
+        "relations_skipped_provisional": skipped_provisional,
         "relations_after": len(relationships),
     }
 
@@ -933,11 +954,16 @@ def snapshot(data: Mapping[str, Any], graph: Mapping[str, Any] | None = None) ->
             research_seed_claims.add(claim_key)
 
     relations = set()
+    provisional_relations = set()
     relation_lookup = _entity_lookup(data)
     for rel in (graph or {}).get("relationships") or []:
         if not isinstance(rel, Mapping):
             continue
-        relations.add(_relation_key(rel, relation_lookup))
+        key = _relation_key(rel, relation_lookup)
+        if _relationship_is_hard_protected(rel):
+            relations.add(key)
+        else:
+            provisional_relations.add(key)
 
     return {
         "version": VERSION,
@@ -950,6 +976,7 @@ def snapshot(data: Mapping[str, Any], graph: Mapping[str, Any] | None = None) ->
         "evidence_sources": sorted(evidence_sources),
         "derived_evidences": sorted(derived_evidences),
         "relations": sorted(relations),
+        "provisional_relations": sorted(provisional_relations),
         "research_seed_claims": sorted(research_seed_claims),
     }
 
@@ -1057,6 +1084,7 @@ def audit(before: Mapping[str, Any], after: Mapping[str, Any], exceptions: Mappi
             "values": sum(len(rows) for rows in (before.get("values") or {}).values()),
             "evidences": len(before.get("evidences") or []),
             "relations": len(before.get("relations") or []),
+            "provisional_relations": len(before.get("provisional_relations") or []),
             "research_seed_claims": len(before.get("research_seed_claims") or []),
             "derived_values": before_derived,
             "derived_evidence_support": before_derived_evidence,
@@ -1066,6 +1094,7 @@ def audit(before: Mapping[str, Any], after: Mapping[str, Any], exceptions: Mappi
             "values": sum(len(rows) for rows in (after.get("values") or {}).values()),
             "evidences": len(after.get("evidences") or []),
             "relations": len(after.get("relations") or []),
+            "provisional_relations": len(after.get("provisional_relations") or []),
             "research_seed_claims": len(after.get("research_seed_claims") or []),
             "derived_values": after_derived,
             "derived_evidence_support": after_derived_evidence,
@@ -1074,6 +1103,8 @@ def audit(before: Mapping[str, Any], after: Mapping[str, Any], exceptions: Mappi
             "accredited_scalar_supersessions": superseded_values[:200],
             "raw_evidence_sources_replaced_or_removed": replaced_evidence_sources[:200],
             "derived_values_before": before_derived,
+            "provisional_relationship_signals_before": len(before.get("provisional_relations") or []),
+            "provisional_relationship_signals_after": len(after.get("provisional_relations") or []),
             "derived_values_after": after_derived,
             "derived_evidence_support_before": before_derived_evidence,
             "derived_evidence_support_after": after_derived_evidence,

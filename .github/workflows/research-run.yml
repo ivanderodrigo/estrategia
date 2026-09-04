@@ -57,6 +57,7 @@ jobs:
           python scripts/audit_release_v410.py
           python -m scripts.audit_v421
           python -m scripts.audit_v422
+          python -m scripts.audit_v430
           node --check assets/app/intelligence.js
           node tests/ui_smoke.js
           node tests/filter_builder_v410.js
@@ -72,6 +73,7 @@ jobs:
           python scripts/audit_release_v410.py
           python -m scripts.audit_v421
           python -m scripts.audit_v422
+          python -m scripts.audit_v430
           python -m unittest discover -s tests -p "test_*.py" -v
           node tests/ui_smoke.js
           node tests/filter_builder_v410.js
