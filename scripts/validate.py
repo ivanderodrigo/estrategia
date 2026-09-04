@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -67,8 +68,21 @@ if quality.get("errors") or int(quality.get("score") or 0) < 95:
     error(f"quality audit failed: {(quality.get('errors') or [])[:3]}")
 if gaps.get("total_gaps") != len(gaps.get("gaps") or []):
     error("gap total is inconsistent")
-if any(item.get("research_state") != "Por investigar" for item in gaps.get("gaps") or []):
-    error("open gap has an invalid state")
+RESEARCH_STATE = "Por investigar"
+PUBLIC_VALIDATION_STATE = "Pendiente de validaci\u00f3n p\u00fablica"
+
+def _normalized_state(value):
+    return unicodedata.normalize("NFC", str(value or "")).strip()
+
+for item in gaps.get("gaps") or []:
+    state = _normalized_state(item.get("research_state"))
+    gap_kind = str(item.get("gap_kind") or "").strip()
+
+    if gap_kind == "public-validation":
+        if state != PUBLIC_VALIDATION_STATE:
+            error("public-validation gap has an invalid state")
+    elif state != RESEARCH_STATE:
+        error("open gap has an invalid state")
 if set(manifest.get("sections") or {}) != set(SECTIONS):
     error("public manifest sections are invalid")
 

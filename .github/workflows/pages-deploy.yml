@@ -2,7 +2,7 @@ name: Deploy Pages
 on:
   push:
     branches: [main]
-    paths: ["index.html","404.html","assets/**","data/public/**"]
+    paths: ["index.html","404.html","assets/**","data/public/**","scripts/validate.py","scripts/validate_workflows.py",".github/workflows/pages-deploy.yml"]
   workflow_dispatch:
 permissions:
   contents: read
