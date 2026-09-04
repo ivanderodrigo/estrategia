@@ -23,7 +23,7 @@ class WorkflowIntegrity(unittest.TestCase):
 
     def test_daily_weekly_and_monthly_call_one_hardened_runner(self) -> None:
         expected = {
-            "daily": ("daily", "17 5 * * *"),
+            "daily": ("daily", "17 5 * * 1-5"),
             "weekly": ("deep", "29 4 * * 0"),
             "monthly": ("exhaustive", "41 3 1 * *"),
         }
