@@ -2,8 +2,12 @@ name: Westcon Intelligence Daily
 
 on:
   schedule:
-    - cron: "17 5 * * *"
+    - cron: "17 5 * * 1-5"
   workflow_dispatch:
+
+concurrency:
+  group: westcon-intelligence-research
+  cancel-in-progress: false
 
 permissions:
   contents: write
