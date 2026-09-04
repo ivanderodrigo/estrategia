@@ -124,6 +124,14 @@
 - Eliminados el guard programado inerte, tests con versión incrustada, cachés Python y documentación de releases contradictorias.
 - Conservado un solo conjunto de documentación operativa y arquitectónica.
 
+## App 4.3.1 — Column selector hotfix
+
+- Corrige el selector de columnas de las tablas: una columna seleccionada vuelve a mostrarse inmediatamente.
+- Elimina el atributo HTML `data-col-toggle` duplicado que impedía identificar correctamente la columna seleccionada.
+- Añade una regresión automática de UI para evitar que el defecto reaparezca.
+- Actualiza la identidad y los cache-busters del frontend a App v4.3.1.
+- El dataset y el motor de inteligencia permanecen en la versión canónica 4.3.0; no se modifica ni regenera información.
+
 ## 4.3.0 — Research ROI & Controlled Growth
 - Limita el crecimiento estructurado TED por perfil: 24 / 100 / 220.
 - El planner aprende por evidencia aceptada por intento, no por mero transporte HTTP.

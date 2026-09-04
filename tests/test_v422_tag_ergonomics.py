@@ -16,8 +16,12 @@ class TagErgonomicsV422(unittest.TestCase):
         html=(ROOT/'index.html').read_text(encoding='utf-8')
         js=(ROOT/'assets/app/intelligence.js').read_text(encoding='utf-8')
         version=(ROOT/'VERSION').read_text(encoding='utf-8').strip()
-        self.assertIn(version,html)
-        self.assertIn(version,js)
+        self.assertEqual(version, "4.3.0")
+        self.assertIn("Business Intelligence", html)
+        self.assertIn("v4.3.1", html)
+        self.assertIn("intelligence.js?v=4.3.1", html)
+        self.assertIn("App v4.3.1", js)
+        self.assertIn("meta.version||'4.3.0'", js)
 
 
 if __name__=='__main__':

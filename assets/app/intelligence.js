@@ -1,4 +1,4 @@
-// App v4.3.0
+// App v4.3.1
 (() => {
   'use strict';
   const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
@@ -330,7 +330,7 @@
   }
   function columnAvailable(col,rows){return rows.some(row=>hasValue(fieldFor(row,col)?.value));}
   function columnChooser(schema,view,rows){
-    const hidden=hiddenCols(view),items=schema.filter(c=>c.hidden!==true).map(c=>{const available=columnAvailable(c,rows),locked=Boolean(c.essential);return `<label class="column-option ${available?'':'empty-column'}" data-column-option data-search="${esc(norm(c.label))}"><input type="checkbox" data-col-toggle data-view="${esc(view)}" data-col-toggle="${esc(c.id)}" ${hidden.includes(c.id)&&!locked?'':'checked'} ${locked||!available?'disabled':''}><span>${esc(c.label)}</span>${locked?'<small>Esencial</small>':available?'':'<small>Sin datos</small>'}</label>`;}).join('');
+    const hidden=hiddenCols(view),items=schema.filter(c=>c.hidden!==true).map(c=>{const available=columnAvailable(c,rows),locked=Boolean(c.essential);return `<label class="column-option ${available?'':'empty-column'}" data-column-option data-search="${esc(norm(c.label))}"><input type="checkbox" data-view="${esc(view)}" data-col-toggle="${esc(c.id)}" ${hidden.includes(c.id)&&!locked?'':'checked'} ${locked||!available?'disabled':''}><span>${esc(c.label)}</span>${locked?'<small>Esencial</small>':available?'':'<small>Sin datos</small>'}</label>`;}).join('');
     return `<div class="table-controls"><details class="column-picker"><summary>Columnas</summary><div class="column-menu"><div class="column-menu-head"><b>Columnas visibles</b><span>La selección se conserva en este navegador.</span></div><input type="search" data-column-search placeholder="Buscar columna…" aria-label="Buscar columna"><div class="column-actions"><button type="button" data-column-action="all" data-view="${esc(view)}">Seleccionar todas</button><button type="button" data-column-action="none" data-view="${esc(view)}">Solo esenciales</button><button type="button" data-column-action="reset" data-view="${esc(view)}">Restablecer</button></div><div class="column-options">${items}</div></div></details><button type="button" data-table-reset="${esc(view)}">Restablecer tabla</button></div>`;
   }
   function filterColumnMenu(input){const q=norm(input.value);input.closest('.column-menu')?.querySelectorAll('[data-column-option]').forEach(row=>row.hidden=q&&!row.dataset.search.includes(q));}
@@ -491,7 +491,7 @@
     const columnGroups=[];for(let i=0;i<model.columns.length;i+=4)columnGroups.push(model.columns.slice(i,i+4));if(!columnGroups.length)columnGroups.push([]);
     for(const columns of columnGroups){for(let start=0;start<model.rows.length;start+=11){const page=model.rows.slice(start,start+11),s=pptx.addSlide();s.background={color:'F3F6F8'};addHead(s,`${model.title} · detalle`);const tableRows=[['Entidad',...columns.map(c=>c.label)],...page.map(row=>[row.name,...columns.map(c=>reportCellValue(row,c))])];s.addTable(tableRows,{x:.55,y:1.25,w:12.2,h:5.65,border:{type:'solid',pt:.5,color:'CBD9E0'},fill:'FFFFFF',color:'203D4C',fontFace:'Aptos',fontSize:7.2,margin:.055,breakLine:false,autoFit:false,bold:false,rowH:.42,colW:[2.25,...columns.map(()=>columns.length?9.95/columns.length:9.95)],headerRows:1,fill:'FFFFFF'});s.addText(`${start+1}–${Math.min(start+page.length,model.rows.length)} de ${model.rows.length} · ${model.criteria}`,{x:.55,y:7.15,w:12.2,h:.17,fontFace:'Aptos',fontSize:5.5,color:'6B7F89',margin:0,fit:'shrink'});}}
     if($('#filteredReportSources')?.checked){const sources=model.sources;for(let start=0;start<sources.length;start+=10){const page=sources.slice(start,start+10),s=pptx.addSlide();s.background={color:'F3F6F8'};addHead(s,'Fuentes trazables del subconjunto');const lines=page.map((ev,i)=>({text:`${start+i+1}. ${ev.source||ev.title||'Fuente'} · ${ev.title||''}\n${ev.url||`${ev.document||''}${ev.slide?` · slide ${ev.slide}`:''}`}`,options:{bullet:false,breakLine:true}}));s.addText(lines,{x:.7,y:1.35,w:11.85,h:5.65,fontFace:'Aptos',fontSize:8,color:'284858',breakLine:false,margin:.04,fit:'shrink',paraSpaceAfterPt:7});}}
-    await pptx.writeFile({fileName:`Westcon_Iberia_${model.view}_${model.entityCount}_resultados_v4.3.0.pptx`});closeModal('filteredReportModal');toast('PowerPoint generado con el subconjunto filtrado');
+    await pptx.writeFile({fileName:`Westcon_Iberia_${model.view}_${model.entityCount}_resultados_v4.3.1.pptx`});closeModal('filteredReportModal');toast('PowerPoint generado con el subconjunto filtrado');
   }
 
   function cardField(col,f,context='card'){if(!f||!hasValue(f.value))return '';const help=col.clarify?`<span class="help-wrap card-help"><span>${esc(col.label)}</span><button class="help-icon" type="button" aria-label="Aclaración de ${esc(col.label)}">?</button><span class="help-tip">${esc(col.help||'')}</span></span>`:esc(col.label);return `<div class="card-field"><label>${help}</label>${renderValue(f,null,context)}</div>`;}
@@ -922,7 +922,7 @@
 
   function renderAll(){
     populateIntegratorVendorFilter(); renderActiveView(); renderSourceCatalog(); renderUpdateStatus(); renderConfidenceGuide();
-    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v4.3.0 · dataset v${meta.version||'4.3.0'} · ${meta.source_count||0} fuentes acreditativas/familias · ${meta.scope||'Iberia'}`;
+    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v4.3.1 · dataset v${meta.version||'4.3.0'} · ${meta.source_count||0} fuentes acreditativas/familias · ${meta.scope||'Iberia'}`;
   }
 
   load().catch(err => { console.error(err); const main=document.querySelector('main'); if(main) main.innerHTML=`<div class="fatal"><h1>No se pudo cargar la inteligencia</h1><p>${esc(err.message)}</p></div>`; });
