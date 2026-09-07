@@ -127,8 +127,48 @@ def main() -> int:
     for marker in ('v4.2.2 · ergonomic atomic tags','grid-template-columns:minmax(0,1fr)','min-width:230px!important'):
         if marker not in css: errors.append(f'UI ergonomic marker missing: {marker}')
     current_version = (ROOT / 'VERSION').read_text(encoding='utf-8').strip()
-    if current_version not in index_html or current_version not in js:
-        errors.append(f'frontend version is not current VERSION={current_version}')
+
+    # App/UI and canonical dataset may have independent patch versions.
+    # VERSION remains the canonical intelligence/dataset version.
+    first_js_line = js.splitlines()[0].strip() if js.splitlines() else ''
+    app_prefix = '// App v'
+    app_version = (
+        first_js_line[len(app_prefix):].strip()
+        if first_js_line.startswith(app_prefix)
+        else ''
+    )
+
+    if not app_version:
+        errors.append('frontend App version marker missing')
+    else:
+        html_app_marker = 'Business Intelligence \u00b7 v' + app_version
+
+        if html_app_marker not in index_html:
+            errors.append(
+                f'frontend HTML identity is not App v{app_version}'
+            )
+
+        for asset in (
+            'assets/app/intelligence.css',
+            'assets/app/filter_engine.js',
+            'assets/app/report_engine.js',
+            'assets/app/intelligence.js',
+        ):
+            marker = f'{asset}?v={app_version}'
+            if marker not in index_html:
+                errors.append(
+                    f'frontend cache-buster mismatch for {asset}: '
+                    f'expected v{app_version}'
+                )
+
+    dataset_marker = (
+        "dataset v${meta.version||'" + current_version + "'}"
+    )
+
+    if dataset_marker not in js:
+        errors.append(
+            f'frontend dataset fallback is not current VERSION={current_version}'
+        )
 
     gaps=load('data/current/research_gaps.json')
     summary={
