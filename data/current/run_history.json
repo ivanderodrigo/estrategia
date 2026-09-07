@@ -1,6 +1,6 @@
 {
-  "version": "4.2.2",
-  "updated_at": 1788509124.7669878,
+  "version": "4.3.0",
+  "updated_at": 1788772476.9636347,
   "runs": [
     {
       "version": "4.0.0",
@@ -145,6 +145,43 @@
       ],
       "elapsed_s": 716.43,
       "finished_at": 1788509124.7655194
+    },
+    {
+      "version": "4.3.0",
+      "profile": "deep",
+      "started_at": 1788771078.347544,
+      "requested_max_runtime_s": 1800,
+      "effective_max_runtime_s": 1800,
+      "budgets": {
+        "research_s": 1335,
+        "fallback_s": 240,
+        "build_reserve_s": 225
+      },
+      "stages": [
+        {
+          "research": "ok",
+          "fetch_attempts": 777,
+          "fetch_successes": 1979,
+          "pages_relevant": 1134,
+          "candidate_evidences": 1728,
+          "accepted_evidences": 885,
+          "fields_enriched": 885,
+          "values_added": 611,
+          "entities_added": 100,
+          "stop_reason": "deadline",
+          "error": ""
+        },
+        {
+          "build": "ok",
+          "gaps": 10045,
+          "gaps_closed_vs_release_baseline": -8647,
+          "distributor_gaps": 833,
+          "integrator_gaps": 1510,
+          "quality_score": 100
+        }
+      ],
+      "elapsed_s": 1398.61,
+      "finished_at": 1788772476.9625247
     }
   ]
 }
