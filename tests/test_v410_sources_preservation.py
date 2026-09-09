@@ -110,8 +110,23 @@ class KnowledgePreservationGate(unittest.TestCase):
     def test_existing_public_acceptances_are_monotonic(self) -> None:
         ledger = read_json("data/current/research_ledger.json")
         accepted = int(ledger.get("accepted_evidences") or 0)
+        stored_results = [
+            row for row in (ledger.get("results") or [])
+            if isinstance(row, dict)
+        ]
+        stored_accepted_rows = sum(int(row.get("accepted") or 0) for row in stored_results)
+        if "accepted_result_rows_total" in ledger:
+            accepted_rows = int(ledger.get("accepted_result_rows_total") or 0)
+            self.assertEqual(accepted_rows, accepted)
+        elif len(stored_results) >= 300:
+            # Legacy ledgers keep only the last 300 diagnostic rows, so
+            # accepted_evidences is the only complete run total available.
+            accepted_rows = accepted
+        else:
+            accepted_rows = stored_accepted_rows
+            self.assertEqual(accepted_rows, accepted)
         self.assertGreaterEqual(accepted, 8)
-        self.assertGreaterEqual(sum(int(row.get("accepted") or 0) for row in ledger.get("results") or []), 8)
+        self.assertGreaterEqual(accepted_rows, 8)
 
 
 if __name__ == "__main__":
