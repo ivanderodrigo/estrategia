@@ -939,7 +939,15 @@ def _checkpoint(
         "candidates": discovery,
     })
     ledger = {key: value for key, value in stats.items() if key not in {"results", "families"}}
-    ledger["results"] = stats["results"][-300:]
+    # Keep full-run aggregates before retaining only a bounded diagnostic window.
+    # Release gates must never infer the run total from the last 300 rows.
+    result_rows = [row for row in stats["results"] if isinstance(row, dict)]
+    ledger["result_rows_total"] = len(result_rows)
+    ledger["accepted_result_rows_total"] = sum(
+        int(row.get("accepted") or 0) for row in result_rows
+    )
+    ledger["results_truncated"] = len(result_rows) > 300
+    ledger["results"] = result_rows[-300:]
     atomic_write_json("data/current/research_ledger.json", ledger)
 
 

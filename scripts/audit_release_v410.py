@@ -129,11 +129,36 @@ def evaluate_release_contract(
             errors.append(f"preserved entity count regressed for {section}: {old}->{new}")
 
     accepted = _int(ledger.get("accepted_evidences"))
-    accepted_rows = sum(
-        _int(row.get("accepted"))
-        for row in (ledger.get("results") or [])
+    stored_results = [
+        row for row in (ledger.get("results") or [])
         if isinstance(row, Mapping)
-    )
+    ]
+    stored_accepted_rows = sum(_int(row.get("accepted")) for row in stored_results)
+
+    # v4.3.1-HF1: results[] is intentionally only a bounded diagnostic tail.
+    # New ledgers carry a full-run aggregate; legacy ledgers with a full 300-row
+    # window may already be truncated, so accepted_evidences is the only complete
+    # total available for that historical file.
+    if "accepted_result_rows_total" in ledger:
+        accepted_rows = _int(ledger.get("accepted_result_rows_total"))
+        accepted_rows_source = "full-run aggregate"
+        if accepted_rows != accepted:
+            errors.append(
+                f"accepted evidence aggregate mismatch: ledger={accepted}, "
+                f"result_rows={accepted_rows}"
+            )
+    elif len(stored_results) >= 300:
+        accepted_rows = accepted
+        accepted_rows_source = "legacy ledger fallback (300-row window may be truncated)"
+    else:
+        accepted_rows = stored_accepted_rows
+        accepted_rows_source = "legacy complete result rows"
+        if accepted_rows != accepted:
+            errors.append(
+                f"accepted evidence legacy-row mismatch: ledger={accepted}, "
+                f"result_rows={accepted_rows}"
+            )
+
     if accepted < BASELINE_ACCEPTED_PUBLIC_EVIDENCES:
         errors.append(
             f"accepted public evidence ledger regressed below v4.1.0 floor: "
@@ -154,6 +179,7 @@ def evaluate_release_contract(
         "after": dict(after),
         "accepted_evidences": accepted,
         "accepted_result_rows": accepted_rows,
+        "accepted_result_rows_source": accepted_rows_source,
         "baseline_floor": BASELINE_ACCEPTED_PUBLIC_EVIDENCES,
     }
     return errors, stats
@@ -185,6 +211,10 @@ def main(root: Path = ROOT) -> int:
     print(
         " - accepted research evidences: "
         f"{stats['accepted_evidences']} (v4.1.0 floor >= {stats['baseline_floor']})"
+    )
+    print(
+        " - accepted public evidence result rows: "
+        f"{stats['accepted_result_rows']} ({stats['accepted_result_rows_source']})"
     )
     for error in errors:
         print(" - ERROR:", error)
