@@ -352,12 +352,12 @@
     return `<th draggable="true" data-col="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${w}px;min-width:${w}px" title="Arrastrar para mover · clic para ordenar"><span class="drag-grip">⋮⋮</span><span class="help-wrap"><span>${esc(col.label)}${arrow}</span>${col.clarify?`<button class="help-icon" type="button" aria-label="Aclaración de ${esc(col.label)}">?</button><span class="help-tip">${esc(col.help||'')}</span>`:''}</span><span class="col-resizer" title="Redimensionar" aria-hidden="true"></span></th>`;
   }
   function activeColumns(schema, rows, view){
-    let cols=schema.filter(col=>col.hidden!==true&&(col.essential||!hiddenCols(view).includes(col.id))&&rows.some(row=>hasValue(fieldFor(row,col)?.value)));
+    let cols=schema.filter(col=>col.hidden!==true&&(col.essential||!hiddenCols(view).includes(col.id))&&(col.show_when_empty===true||rows.some(row=>hasValue(fieldFor(row,col)?.value))));
     const order=state.columnOrder[view]||JSON.parse(localStorage.getItem(`westcon-cols-${view}`)||'null');
     if(order){state.columnOrder[view]=order; cols.sort((a,b)=>{let ai=order.indexOf(a.id),bi=order.indexOf(b.id);if(ai<0)ai=999;if(bi<0)bi=999;return ai-bi;});}
     return cols;
   }
-  function columnAvailable(col,rows){return rows.some(row=>hasValue(fieldFor(row,col)?.value));}
+  function columnAvailable(col,rows){return col?.show_when_empty===true||rows.some(row=>hasValue(fieldFor(row,col)?.value));}
   function columnChooser(schema,view,rows){
     const hidden=hiddenCols(view),items=schema.filter(c=>c.hidden!==true).map(c=>{const available=columnAvailable(c,rows),locked=Boolean(c.essential);return `<label class="column-option ${available?'':'empty-column'}" data-column-option data-search="${esc(norm(c.label))}"><input type="checkbox" data-view="${esc(view)}" data-col-toggle="${esc(c.id)}" ${hidden.includes(c.id)&&!locked?'':'checked'} ${locked||!available?'disabled':''}><span>${esc(c.label)}</span>${locked?'<small>Esencial</small>':available?'':'<small>Sin datos</small>'}</label>`;}).join('');
     return `<div class="table-controls"><details class="column-picker"><summary>Columnas</summary><div class="column-menu"><div class="column-menu-head"><b>Columnas visibles</b><span>La selección se conserva en este navegador.</span></div><input type="search" data-column-search placeholder="Buscar columna…" aria-label="Buscar columna"><div class="column-actions"><button type="button" data-column-action="all" data-view="${esc(view)}">Seleccionar todas</button><button type="button" data-column-action="none" data-view="${esc(view)}">Solo esenciales</button><button type="button" data-column-action="reset" data-view="${esc(view)}">Restablecer</button></div><div class="column-options">${items}</div></div></details><button type="button" data-table-reset="${esc(view)}">Restablecer tabla</button></div>`;

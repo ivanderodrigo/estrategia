@@ -46,6 +46,14 @@ GENERIC_LINK_LABELS = {
     "click here", "contact", "contacto", "privacy", "legal", "cookies", "login",
 }
 
+FINANCIAL_LINK_HINTS = (
+    "investor", "investors", "investor relations", "financial", "financials",
+    "annual report", "annual reports", "earnings", "results", "quarterly",
+    "reports and filings", "filings", "revenue", "net sales",
+    "resultados", "resultados financieros", "informacion financiera",
+    "informação financeira", "relatorio", "relatório", "contas",
+)
+
 
 def _now_date() -> str:
     return datetime.now(timezone.utc).date().isoformat()
@@ -79,6 +87,15 @@ def _field_values(field: dict[str, Any] | None) -> set[str]:
     rows = value if isinstance(value, list) else ([] if value in (None, "", {}, []) else [value])
     return {canonical(item) for item in rows if canonical(item)}
 
+
+def _count_populated_rows(data: dict[str, Any], section: str, field_id: str) -> int:
+    total = 0
+    for row in data.get(section) or []:
+        field = (row.get("fields") or {}).get(field_id) or {}
+        value = field.get("value")
+        if value not in (None, "", [], {}):
+            total += 1
+    return total
 
 def _field_evidence_keys(field: dict[str, Any] | None) -> set[tuple[str, str, str]]:
     return {
@@ -410,6 +427,24 @@ def _catalog_source_seeds(
 
     return output
 
+
+def _financial_entry_seed(seeds: list[SourceSeed], entity: str) -> SourceSeed | None:
+    """Start financial discovery from one already trusted entity-owned official host."""
+    for seed in seeds:
+        if not seed.official or not _host_entity_owned(seed.url, entity):
+            continue
+        parsed = urlparse(seed.url)
+        if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+            continue
+        return SourceSeed(
+            f"{parsed.scheme}://{parsed.netloc}/",
+            "financial",
+            True,
+            "A",
+            "official-financial-entry",
+            seed.source_name or entity,
+        )
+    return None
 
 def _decode_http_body(body: bytes, response: Any) -> str:
     if body.startswith(b"\xef\xbb\xbf"):
@@ -897,6 +932,32 @@ def _link_is_relevant(link: Link, families: set[str]) -> bool:
     )
 
 
+def _financial_link_is_relevant(link: Link) -> bool:
+    parsed = urlparse(link.url)
+    path = canonical(parsed.path)
+    label = canonical(link.label or "")
+    blob = f"{path} {label}"
+    if parsed.path.casefold().endswith((".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp", ".zip")):
+        return False
+    return any(canonical(hint) in blob for hint in FINANCIAL_LINK_HINTS)
+
+
+def _trusted_external_financial_link(
+    link: Link,
+    document: Document,
+    *,
+    entity: str,
+    seed: SourceSeed,
+) -> bool:
+    if not seed.official:
+        return False
+    if not _host_entity_owned(document.url, entity):
+        return False
+    target_host = (urlparse(link.url).hostname or "").casefold().removeprefix("www.")
+    if not target_host or target_host in IGNORED_EXTERNAL_HOSTS:
+        return False
+    return _financial_link_is_relevant(link)
+
 def _record_external_candidates(
     queue: dict[str, Any],
     document: Document,
@@ -1013,6 +1074,9 @@ def run(
         "circuit_skips": 0,
         "unsafe_url_rejections": 0,
         "official_sites_discovered": 0,
+        "financial_links_discovered": 0,
+        "manufacturer_revenue_rows_before": _count_populated_rows(data, "manufacturers", "revenue"),
+        "manufacturer_revenue_acceptances": 0,
         "stop_reason": "complete",
         "families": defaultdict(lambda: defaultdict(int)),
         "results": [],
@@ -1063,6 +1127,18 @@ def run(
             target["entity"],
             target["section"],
         )
+        if (
+            "revenue" in (target.get("fields") or [])
+            and target["section"] in {"manufacturers", "distributors"}
+        ):
+            financial_entry = _financial_entry_seed(seeds, target["entity"])
+            financial_seeds = [seed for seed in seeds if seed.family == "financial"]
+            other_seeds = [seed for seed in seeds if seed.family != "financial"]
+            seeds = _merge_source_seeds(
+                [financial_entry] if financial_entry else [],
+                financial_seeds,
+                other_seeds,
+            )
         needs_official_discovery = (
             target["section"] not in {"trends", "architectures"}
             and (
@@ -1086,7 +1162,7 @@ def run(
             continue
 
         queue = list(seeds)
-        seen: set[str] = set()
+        seen: set[tuple[str, str]] = set()
         pages = 0
         accepted_by_field: defaultdict[str, int] = defaultdict(int)
         wanted_families = relevant_families(target["fields"]) | set(target.get("source_families") or [])
@@ -1094,9 +1170,10 @@ def run(
 
         while queue and pages < profile_config.pages_per_entity and time.monotonic() < deadline - 3:
             seed = queue.pop(0)
-            if seed.url in seen:
+            seed_key = (seed.url, seed.family)
+            if seed_key in seen:
                 continue
-            seen.add(seed.url)
+            seen.add(seed_key)
             document, cached, status, error = fetcher.fetch(seed)
             family_stats = stats["families"][f"{target['section']}:{seed.family}"]
             family_stats["attempts"] += 1
@@ -1164,6 +1241,8 @@ def run(
                     stats["fields_enriched"] += 1
                     stats["values_added"] += values_added
                     family_stats["accepted_evidence"] += 1
+                    if target["section"] == "manufacturers" and field_id == "revenue":
+                        stats["manufacturer_revenue_acceptances"] += 1
 
             fetcher.state.record_domain(document.url, ok=True, relevant=relevant, accepted=accepted_here, status=status)
             if include_gap_kinds is None:
@@ -1179,22 +1258,54 @@ def run(
                 "status": status,
             })
 
-            # Sitemaps and relevant same-domain links replace invented 48-query claims with real discovery.
+            # Sitemaps and real links drive discovery. Financial research additionally starts from
+            # the trusted official page and can follow an explicit Investor Relations/results link
+            # even when that official link moves to an investor subdomain or dedicated corporate host.
             discovered_urls = sitemap_urls(document.text) if seed.url.casefold().endswith(("sitemap.xml", "sitemap_index.xml")) else []
             for url in discovered_urls[:250]:
                 family = family_from_url(url)
-                if family in wanted_families and url not in seen:
+                if family in wanted_families and (url, family) not in seen:
                     queue.append(SourceSeed(url, family, seed.official, seed.source_grade, seed.source_type, seed.source_name))
-            if profile != "daily" or relevant:
+            follow_links = (
+                profile != "daily"
+                or relevant
+                or (seed.family == "financial" and "revenue" in (target.get("fields") or []))
+            )
+            if follow_links:
                 for link in document.links:
-                    family = family_from_url(link.url)
+                    hinted_financial = "financial" in wanted_families and _financial_link_is_relevant(link)
+                    family = "financial" if hinted_financial else family_from_url(link.url)
+                    same_host = _same_host(link.url, document.url)
+                    trusted_external_financial = (
+                        hinted_financial
+                        and _trusted_external_financial_link(
+                            link,
+                            document,
+                            entity=target["entity"],
+                            seed=seed,
+                        )
+                    )
                     if (
-                        _same_host(link.url, document.url)
+                        (same_host or trusted_external_financial)
                         and family in wanted_families
-                        and _link_is_relevant(link, wanted_families)
-                        and link.url not in seen
+                        and (hinted_financial or _link_is_relevant(link, wanted_families))
+                        and (link.url, family) not in seen
                     ):
-                        queue.append(SourceSeed(link.url, family, seed.official, seed.source_grade, seed.source_type, seed.source_name))
+                        linked_type = (
+                            "official-linked-financial"
+                            if trusted_external_financial and not same_host
+                            else seed.source_type
+                        )
+                        queue.append(SourceSeed(
+                            link.url,
+                            family,
+                            seed.official,
+                            seed.source_grade,
+                            linked_type,
+                            seed.source_name,
+                        ))
+                        if hinted_financial:
+                            stats["financial_links_discovered"] += 1
 
             if pages_since_checkpoint >= profile_config.checkpoint_every:
                 _checkpoint(data, cache, research_state, discovery, stats, active_gap_ids)
@@ -1235,6 +1346,13 @@ def run(
     )
     stats["growth_pressure_ratio"] = round(
         stats["entities_added"] / max(1, stats["values_added"]), 4
+    )
+    stats["manufacturer_revenue_rows_after"] = _count_populated_rows(
+        data, "manufacturers", "revenue"
+    )
+    stats["manufacturer_revenue_rows_added"] = max(
+        0,
+        stats["manufacturer_revenue_rows_after"] - stats["manufacturer_revenue_rows_before"],
     )
     stats["elapsed_s"] = round(time.monotonic() - started, 2)
     stats["finished_at"] = now_iso()

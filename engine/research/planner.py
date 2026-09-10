@@ -142,6 +142,48 @@ def _family_for(section: str, field: str, gap: dict[str, Any]) -> str:
     return FAMILY_BY_FIELD.get(field, "official")
 
 
+def _task_key(item: dict[str, Any]) -> tuple[str, str]:
+    return (
+        str(item.get("section") or ""),
+        str(item.get("task_entity_key") or item.get("entity_id") or item.get("entity") or ""),
+    )
+
+
+def _with_manufacturer_revenue_reserve(
+    items: list[dict[str, Any]],
+    limit: int,
+    profile: str,
+) -> list[dict[str, Any]]:
+    """Reserve bounded capacity for manufacturer revenue without starving other BI domains."""
+    if limit <= 0:
+        return []
+    reserve_defaults = {"daily": 8, "deep": 24, "exhaustive": 37}
+    requested = min(limit, int(reserve_defaults.get(profile, 8)))
+    revenue = [
+        item for item in items
+        if item.get("section") == "manufacturers" and "revenue" in (item.get("fields") or [])
+    ]
+    preferred = revenue[:requested]
+    selected = list(preferred)
+    seen = {_task_key(item) for item in selected}
+    for item in _balanced_limit(items, limit):
+        key = _task_key(item)
+        if key in seen:
+            continue
+        selected.append(item)
+        seen.add(key)
+        if len(selected) >= limit:
+            return selected[:limit]
+    for item in items:
+        key = _task_key(item)
+        if key in seen:
+            continue
+        selected.append(item)
+        seen.add(key)
+        if len(selected) >= limit:
+            break
+    return selected[:limit]
+
 def plan(
     gaps: dict[str, Any],
     learning: dict[str, Any],
@@ -267,4 +309,6 @@ def plan(
             value["entity"].casefold(),
         )
     )
+    if include_gap_kinds is None:
+        return _with_manufacturer_revenue_reserve(output, int(limit), profile)
     return _balanced_limit(output, int(limit))

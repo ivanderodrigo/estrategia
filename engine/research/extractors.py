@@ -182,7 +182,7 @@ def extract_candidates(
         )
 
     if section in {"integrators", "distributors"}:
-        if section == "distributors" and family == "financial":
+        if section == "distributors" and family in {"financial", "official"}:
             add("revenue", revenues, revenue_terms, confidence=0.90 if official else 0.74)
         if family == "partners":
             add("vendor_relations", vendors, vendor_terms)
@@ -223,7 +223,7 @@ def extract_candidates(
             # r6: westcon_fit is internal/derived; public pages support\n            # inputs, not the fit conclusion itself.\n        if section == "clients_private" and family == "careers":
             add("hiring_signals", jobs, job_terms, "signal", 0.57)
     elif section == "manufacturers":
-        if family == "financial":
+        if family in {"financial", "official"}:
             add("revenue", revenues, revenue_terms, confidence=0.92 if official else 0.76)
         if family in {"services", "official", "technology"}:
             add("capabilities", capabilities, cap_terms)
