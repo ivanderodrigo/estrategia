@@ -96,6 +96,48 @@ def vendors_in_text(text: str, vendor_names: Iterable[str]) -> tuple[list[str], 
     return list(dict.fromkeys(found))[:100], matched[:100]
 
 
+
+REVENUE_LABELS = (
+    "revenue", "net sales", "annual sales", "turnover",
+    "facturación", "facturacion", "ingresos", "ventas",
+    "faturação", "faturacao", "receita", "volume de negócios", "volume de negocios",
+)
+REVENUE_MONEY_RE = re.compile(
+    r"(?:US\$|€|£|\$|USD|EUR|GBP)\s*\d[\d.,]*(?:\s*(?:million|billion|millions|billions|mn|bn|millones|mil millones|milhões|milhoes|mil milhões|mil milhoes|biliões|bilioes))?"
+    r"|\d[\d.,]*\s*(?:million|billion|millions|billions|mn|bn|millones|mil millones|milhões|milhoes|mil milhões|mil milhoes|biliões|bilioes)(?:\s*(?:USD|EUR|GBP|euros?|dollars?|dólares?|dolares?|libras?))?",
+    re.I,
+)
+
+
+def revenue_observations(text: str) -> tuple[list[str], list[str]]:
+    compact = re.sub(r"\s+", " ", text or "").strip()
+    if not compact:
+        return [], []
+    segments = re.split(r"(?<=[.!?;])\s+|\s+[•●]\s+", compact)
+    values: list[str] = []
+    terms: list[str] = []
+    seen: set[str] = set()
+    for segment in segments:
+        lowered = canonical(segment)
+        label = next((term for term in REVENUE_LABELS if canonical(term) in lowered), None)
+        if not label or not REVENUE_MONEY_RE.search(segment):
+            continue
+        value = segment.strip(" ,;:-")
+        if len(value) > 260:
+            pos = lowered.find(canonical(label))
+            start = max(0, pos - 70)
+            value = value[start:start + 250].strip(" ,;:-")
+        key = canonical(value)
+        if len(value) < 12 or key in seen:
+            continue
+        seen.add(key)
+        values.append(value)
+        terms.append(label)
+        if len(values) >= 3:
+            break
+    return values, terms
+
+
 def evidence_snippet(text: str, terms: Iterable[str], *, radius: int = 180) -> str:
     compact = re.sub(r"\s+", " ", text).strip()
     lowered = canonical(compact)
@@ -126,6 +168,7 @@ def extract_candidates(
     jobs, job_terms = _matches(text, JOB_PROFILE_TERMS)
     verticals, vertical_terms = _matches(text, VERTICAL_TERMS)
     vendors, vendor_terms = vendors_in_text(text, vendor_names)
+    revenues, revenue_terms = revenue_observations(text)
 
     def add(field: str, values: list[str], terms: list[str], claim: str = "fact", confidence: float | None = None) -> None:
         if not values:
@@ -139,6 +182,8 @@ def extract_candidates(
         )
 
     if section in {"integrators", "distributors"}:
+        if section == "distributors" and family == "financial":
+            add("revenue", revenues, revenue_terms, confidence=0.90 if official else 0.74)
         if family == "partners":
             add("vendor_relations", vendors, vendor_terms)
         if family in {"services", "official"}:
@@ -177,8 +222,11 @@ def extract_candidates(
             add("identified_vendors", vendors, vendor_terms, "signal", 0.57)
             # r6: westcon_fit is internal/derived; public pages support\n            # inputs, not the fit conclusion itself.\n        if section == "clients_private" and family == "careers":
             add("hiring_signals", jobs, job_terms, "signal", 0.57)
-    elif section == "manufacturers" and family in {"services", "official", "technology"}:
-        add("capabilities", capabilities, cap_terms)
+    elif section == "manufacturers":
+        if family == "financial":
+            add("revenue", revenues, revenue_terms, confidence=0.92 if official else 0.76)
+        if family in {"services", "official", "technology"}:
+            add("capabilities", capabilities, cap_terms)
     elif section == "trends":
         if family in {"analyst", "news", "official", "technology"}:
             add("market_players", vendors, vendor_terms, confidence=0.68 if not official else 0.80)

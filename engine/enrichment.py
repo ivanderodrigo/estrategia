@@ -383,15 +383,49 @@ def _relation_names(field: dict[str, Any]) -> list[str]:
     return list(dict.fromkeys(result))
 
 
+def _manufacturer_competition_map(data: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    # Map each evidenced competitor/peer to the Westcon manufacturers it competes with.
+    result: dict[str, dict[str, Any]] = {}
+    for row in data.get("manufacturers") or []:
+        manufacturer = str(row.get("name") or "").strip()
+        if not manufacturer:
+            continue
+        field = (row.get("fields") or {}).get("competitors") or {}
+        item_by_key = {
+            canonical(item.get("value")): item
+            for item in field.get("items") or []
+            if isinstance(item, dict) and item.get("value")
+        }
+        for competitor in _relation_names(field):
+            key = canonical(competitor)
+            if not key:
+                continue
+            item = item_by_key.get(key) or {}
+            bucket = result.setdefault(key, {"manufacturers": [], "evidence": []})
+            if manufacturer not in bucket["manufacturers"]:
+                bucket["manufacturers"].append(manufacturer)
+            bucket["evidence"] = _dedupe_evidence(
+                (bucket.get("evidence") or []) + (item.get("evidence") or field.get("evidence") or [])
+            )
+    return result
+
+
 def derive_overlap_fields(data: dict[str, Any]) -> dict[str, Any]:
     westcon = _manufacturer_map(data)
+    competition = _manufacturer_competition_map(data)
     for section in ("distributors", "integrators"):
         for row in data.get(section) or []:
             fields = row.setdefault("fields", {})
             vendor_field = fields.get("vendor_relations") or {}
+
+            if section == "distributors":
+                fields.pop("westcon_overlap", None)
+                fields.pop("competitor_vendor_overlap", None)
+
             names = _relation_names(vendor_field)
             if not names:
                 continue
+
             relation_items = {
                 canonical(item.get("value")): item
                 for item in vendor_field.get("items") or []
@@ -399,14 +433,31 @@ def derive_overlap_fields(data: dict[str, Any]) -> dict[str, Any]:
             }
             overlap: list[dict[str, Any]] = []
             non_westcon: list[dict[str, Any]] = []
+            mapped_competitors: list[dict[str, Any]] = []
+
             for name in names:
                 mapped = westcon.get(canonical(name))
                 source_item = relation_items.get(canonical(name)) or {}
                 atomic_evidence = source_item.get("evidence") or []
                 if mapped:
                     overlap.append({"value": mapped, "evidence": atomic_evidence})
+                    continue
+
+                if section == "distributors":
+                    competitive = competition.get(canonical(name)) or {}
+                    targets = list(competitive.get("manufacturers") or [])
+                    if targets:
+                        mapped_competitors.append({
+                            "value": name,
+                            "evidence": _dedupe_evidence(
+                                atomic_evidence + list(competitive.get("evidence") or [])
+                            ),
+                            "competes_with_westcon": targets,
+                            "competition_mapping_status": "EVIDENCIADO",
+                        })
                 else:
                     non_westcon.append({"value": name, "evidence": atomic_evidence})
+
             confidence = min(0.88, float(vendor_field.get("confidence") or 0.82))
             if overlap:
                 fields["westcon_overlap"] = itemized_field(
@@ -416,7 +467,31 @@ def derive_overlap_fields(data: dict[str, Any]) -> dict[str, Any]:
                     assertion_status="DERIVADO",
                     qualifier="Intersección calculada entre relaciones evidenciadas y portfolio Westcon; cada fabricante conserva su evidencia de origen.",
                 )
-            if non_westcon:
+
+            if section == "distributors" and mapped_competitors:
+                derived = itemized_field(
+                    mapped_competitors,
+                    confidence=max(0.64, confidence - 0.06),
+                    claim_type="interpretation",
+                    assertion_status="DERIVADO",
+                    qualifier=(
+                        "Competencia mapeada a partir de relaciones de line card acreditadas y "
+                        "competidores/peers sustentados de fabricantes Westcon; no se infiere por "
+                        "mera coincidencia de categoría."
+                    ),
+                )
+                meta = {
+                    canonical(item["value"]): item
+                    for item in mapped_competitors
+                    if item.get("value")
+                }
+                for item in derived.get("items") or []:
+                    extra = meta.get(canonical(item.get("value"))) or {}
+                    item["competes_with_westcon"] = list(extra.get("competes_with_westcon") or [])
+                    item["competition_mapping_status"] = extra.get("competition_mapping_status") or "EVIDENCIADO"
+                fields["competitor_vendor_overlap"] = derived
+
+            elif section == "integrators" and non_westcon:
                 fields["competitor_vendor_overlap"] = itemized_field(
                     non_westcon,
                     confidence=max(0.62, confidence - 0.08),

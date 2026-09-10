@@ -32,6 +32,17 @@
   }
   async function ensureViewData(view){for(const section of (VIEW_SECTIONS[view]||[])) await ensureSection(section);}
   async function ensureAllData(){for(const section of PUBLIC_SECTIONS) await ensureSection(section);}
+  function migrateBusinessTablePrefs(){
+    const revision='westcon-table-pref-revision-v431-hf3';
+    if(localStorage.getItem(revision)==='1')return;
+    for(const view of ['manufacturers','distributors']){
+      localStorage.removeItem(`westcon-cols-${view}`);
+      localStorage.removeItem(`westcon-table-hidden-${view}`);
+      delete state.columnOrder[view];
+      delete state.columnHidden[view];
+    }
+    localStorage.setItem(revision,'1');
+  }
   function renderActiveView(){
     ({fabricantes:renderManufacturers,mayoristas:renderDistributors,integradores:renderIntegrators,clientes:renderClients,tendencias:renderTrends,arquitecturas:renderArchitectures}[state.view]||(()=>{}))();
   }
@@ -43,6 +54,7 @@
     if(!res.ok) throw new Error(`No se pudo cargar data/public/manifest.json (${res.status})`);
     state.manifest = await res.json();
     state.data={meta:state.manifest.meta||{},schemas:state.manifest.schemas||{},source_catalog:state.manifest.source_catalog||{}};
+    migrateBusinessTablePrefs();
     for(const section of PUBLIC_SECTIONS) state.data[section]=[];
     if(runRes?.ok){ try{ state.lastRun = await runRes.json(); }catch(_){ state.lastRun=null; } }
     await ensureViewData(state.view);
@@ -237,6 +249,8 @@
     const band=item?.confidence_band || field?.confidence_band || (score>=.8?'high':score>=.6?'medium':'low');
     const reason=item?.confidence_reason || field?.confidence_reason || '';
     const qualifier=item?.qualifier||field?.qualifier;
+    const competitionTargets=Array.isArray(item?.competes_with_westcon)?item.competes_with_westcon.filter(Boolean):[];
+    const competitionInfo=item?.competition_mapping_status==='EVIDENCIADO'&&competitionTargets.length?`<div class="confidence-why"><b>Fabricantes Westcon con los que compite</b><p>${esc(competitionTargets.join(' · '))}</p></div>`:'';
     const claim=item?.claim_type||field?.claim_type||'fact';
     const factScore=item?.fact_confidence??field?.fact_confidence??score;
     const interpretationScore=item?.interpretation_confidence??field?.interpretation_confidence??Math.min(score,.7);
@@ -247,7 +261,7 @@
     const why=(band==='medium'||band==='low'||factors.length)?`<div class="confidence-why"><b>Por qué tiene este nivel</b><ul>${factors.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
     const sources=evidence.length?evidence.map(ev=>sourceItem(ev,factScore,band)).join(''):'<p class="atomic-evidence-missing">Pendiente de verificación: no existe todavía una fuente pública actual o documentación Westcon específica para este elemento; el sistema no muestra fuentes de otros elementos del campo.</p>';
     const pending=evidence.length?'':'<span class="pending-verification">Pendiente de verificación</span>';
-    return `<div class="traceable ${evidence.length?'':'pending-source'}" tabindex="0"><div class="trace-value">${inner}${pending}</div><span class="trace-mark confidence-dot ${esc(evidence.length?band:'low')}" title="${esc(evidence.length?levelLabel:'Pendiente de verificación')}">i</span><div class="trace-popover"><strong>TRAZABILIDAD DEL DATO</strong><div class="claim-kind">${esc(claimLabel)} · ${esc(evidence.length?levelLabel:'Pendiente de verificación')}</div><div class="confidence-three"><span><b>${confidencePct(factScore)}%</b>Hecho</span><span><b>${confidencePct(interpretationScore)}%</b>Interpretación</span><span><b>${esc(actionRisk)}</b>Riesgo de acción</span></div>${reason?`<p class="confidence-explain">${esc(reason)}</p>`:''}${why}${qualifier?`<span class="qualifier">${esc(qualifier)}</span>`:''}<div class="trace-source-heading">Fuentes actuales que sostienen este dato</div>${sources}<button type="button" class="confidence-help-link" data-confidence-help>¿Cómo se calcula e interpreta la confianza?</button></div></div>`;
+    return `<div class="traceable ${evidence.length?'':'pending-source'}" tabindex="0"><div class="trace-value">${inner}${pending}</div><span class="trace-mark confidence-dot ${esc(evidence.length?band:'low')}" title="${esc(evidence.length?levelLabel:'Pendiente de verificación')}">i</span><div class="trace-popover"><strong>TRAZABILIDAD DEL DATO</strong><div class="claim-kind">${esc(claimLabel)} · ${esc(evidence.length?levelLabel:'Pendiente de verificación')}</div><div class="confidence-three"><span><b>${confidencePct(factScore)}%</b>Hecho</span><span><b>${confidencePct(interpretationScore)}%</b>Interpretación</span><span><b>${esc(actionRisk)}</b>Riesgo de acción</span></div>${reason?`<p class="confidence-explain">${esc(reason)}</p>`:''}${why}${competitionInfo}${qualifier?`<span class="qualifier">${esc(qualifier)}</span>`:''}<div class="trace-source-heading">Fuentes actuales que sostienen este dato</div>${sources}<button type="button" class="confidence-help-link" data-confidence-help>¿Cómo se calcula e interpreta la confianza?</button></div></div>`;
   }
 
   function itemFor(field,value,index){
@@ -306,7 +320,22 @@
     }
     return null;
   }
-  function fieldFor(row,col){return col?.virtual?virtualField(row,col):(row?.fields?.[col?.id]||null);}
+  function linecardRemainderField(row){
+    const base=row?.fields?.vendor_relations;if(!base)return null;
+    const raw=Array.isArray(base.value)?base.value:(hasValue(base.value)?[base.value]:[]);
+    const excluded=new Set([
+      ...((row?.fields?.westcon_overlap?.value)||[]),
+      ...((row?.fields?.competitor_vendor_overlap?.value)||[])
+    ].map(v=>norm(typeof v==='object'?JSON.stringify(v):v)));
+    const value=raw.filter(v=>!excluded.has(norm(typeof v==='object'?JSON.stringify(v):v)));
+    const wanted=new Set(value.map(v=>norm(typeof v==='object'?JSON.stringify(v):v)));
+    const items=(base.items||[]).filter(it=>wanted.has(norm(typeof it?.value==='object'?JSON.stringify(it.value):it?.value)));
+    return {...base,value,items};
+  }
+  function fieldFor(row,col){
+    if(col?.ui_remainder_of_linecard)return linecardRemainderField(row);
+    return col?.virtual?virtualField(row,col):(row?.fields?.[col?.id]||null);
+  }
   function filterAccessor(row,fieldId,column){if(fieldId==='entity')return row?.name||'';const col=column||{id:fieldId};return fieldFor(row,col)?.value;}
   function loadTablePref(view,key,fallback){try{return JSON.parse(localStorage.getItem(`westcon-table-${key}-${view}`)||'null')??fallback}catch(_){return fallback}}
   function hiddenCols(view){

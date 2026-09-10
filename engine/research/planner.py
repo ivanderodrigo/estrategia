@@ -61,7 +61,7 @@ FIELD_WEIGHT = {
     "hiring_signals": 1.12,
     "job_profiles": 1.10,
     "job_vendors": 1.14,
-    "revenue": 1.06,
+    "revenue": 1.20,
 }
 
 # Prevent a single large section (currently public clients) from consuming every

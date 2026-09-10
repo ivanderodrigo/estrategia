@@ -538,6 +538,14 @@ def _field_context_ok(
         )
         return entity_owned or any(cue in window for cue in cues)
 
+    if field == "revenue":
+        cues = (
+            "revenue", "net sales", "annual sales", "turnover",
+            "facturacion", "facturación", "ingresos", "ventas",
+            "faturacao", "faturação", "receita",
+            "volume de negocios", "volume de negócios",
+        )
+        return any(cue in window for cue in cues)
     if field in {"capabilities", "services"}:
         cues = (
             "we offer", "we provide", "we deliver",
@@ -671,6 +679,11 @@ def _subject_value_match(
             return True
 
     if entity_owned:
+        if field == "revenue":
+            for pos in target_positions:
+                window = _semantic_window(body, pos, pos, radius=240)
+                if _field_context_ok("revenue", window, entity_owned=True):
+                    return True
         if field in {"services", "capabilities"}:
             headings = (
                 "services", "servicios", "solutions", "soluciones",
