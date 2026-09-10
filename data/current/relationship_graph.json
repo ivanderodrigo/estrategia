@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-09-10T08:38:59.107553+00:00",
+  "generated_at": "2026-09-10T10:12:55.115452+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -531,6 +531,14 @@
       "historical_names": []
     },
     {
+      "id": "clie_dff6f01722f0521c",
+      "canonical_name": "Semapa",
+      "entity_type": "client",
+      "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "clie_599196e2013b11d3",
       "canonical_name": "Servicio público de salud",
       "entity_type": "client",
@@ -583,14 +591,6 @@
       "canonical_name": "ALSO",
       "entity_type": "distributor",
       "country": "ES + PT",
-      "aliases": [],
-      "historical_names": []
-    },
-    {
-      "id": "dist_ba13c6066753f312",
-      "canonical_name": "Aicox Soluciones",
-      "entity_type": "distributor",
-      "country": "ES",
       "aliases": [],
       "historical_names": []
     },
@@ -903,14 +903,6 @@
       "canonical_name": "TD SYNNEX",
       "entity_type": "distributor",
       "country": "EU",
-      "aliases": [],
-      "historical_names": []
-    },
-    {
-      "id": "dist_dcf6770118111f2a",
-      "canonical_name": "Tempel",
-      "entity_type": "distributor",
-      "country": "ES",
       "aliases": [],
       "historical_names": []
     },
@@ -41118,52 +41110,6 @@
       "derived": true
     },
     {
-      "id": "rel_cad2a66d85ba4fba",
-      "entity_a_id": "dist_ba13c6066753f312",
-      "entity_a": "Aicox Soluciones",
-      "relation": "distributes",
-      "entity_b_id": "manu_7c1468d12e969956",
-      "entity_b": "Ruckus Networks",
-      "countries": [
-        "ES"
-      ],
-      "country": "ES",
-      "evidence": [
-        {
-          "source": "infinigate.com",
-          "source_catalog_name": "Infinigate",
-          "researched_entity": "Aicox Soluciones",
-          "source_binding": "relationship-source",
-          "title": "Fabricantes - Infinigate | Spain",
-          "url": "https://www.infinigate.com/es/vendors/",
-          "date": "2026-09-10",
-          "description": "…ents security company Saber más Progress Monitoring of networks, servers, and applications. Saber más ProLabs Challenging OEM dominance with superior products and services Saber más Riverbed The Digital Performance Company Saber más RUCKUS Networks RUCKUS es una marca líder en soluciones de redes empresariales de alto rendimiento, diseñada para entornos exigentes y alta de…",
-          "scope": "ES",
-          "source_grade": "A",
-          "source_type": "distributor-official",
-          "official": true,
-          "classification": "public",
-          "retrieved_at": "2026-09-10",
-          "freshness_status": "current",
-          "method": "web-evidence:partners",
-          "content_digest": "84a88068628e1fe5d08ce8d128f81a0082526c365d6958c70ee6bc62ca995cb3",
-          "matched_terms": [
-            "Ruckus Networks",
-            "NETSCOUT",
-            "Nokia"
-          ],
-          "field": "vendor_relations",
-          "revalidation": ""
-        }
-      ],
-      "source": "infinigate.com",
-      "date": "2026-09-10",
-      "confidence": 0.88,
-      "status": "CONFIRMADO",
-      "validity": "current",
-      "derived": false
-    },
-    {
       "id": "rel_4d94525982eee973",
       "entity_a_id": "dist_7b152ae32ace38c8",
       "entity_a": "Ajoomal",
@@ -61249,52 +61195,6 @@
       ],
       "source": "TBA Informática",
       "date": "2026-08-31",
-      "confidence": 0.88,
-      "status": "CONFIRMADO",
-      "validity": "current",
-      "derived": false
-    },
-    {
-      "id": "rel_88664fbb4b3ebc71",
-      "entity_a_id": "dist_dcf6770118111f2a",
-      "entity_a": "Tempel",
-      "relation": "distributes",
-      "entity_b_id": "manu_7c1468d12e969956",
-      "entity_b": "Ruckus Networks",
-      "countries": [
-        "ES"
-      ],
-      "country": "ES",
-      "evidence": [
-        {
-          "source": "infinigate.com",
-          "source_catalog_name": "Infinigate",
-          "researched_entity": "Tempel",
-          "source_binding": "relationship-source",
-          "title": "Fabricantes - Infinigate | Spain",
-          "url": "https://www.infinigate.com/es/vendors/",
-          "date": "2026-09-10",
-          "description": "…ents security company Saber más Progress Monitoring of networks, servers, and applications. Saber más ProLabs Challenging OEM dominance with superior products and services Saber más Riverbed The Digital Performance Company Saber más RUCKUS Networks RUCKUS es una marca líder en soluciones de redes empresariales de alto rendimiento, diseñada para entornos exigentes y alta de…",
-          "scope": "ES",
-          "source_grade": "A",
-          "source_type": "distributor-official",
-          "official": true,
-          "classification": "public",
-          "retrieved_at": "2026-09-10",
-          "freshness_status": "current",
-          "method": "web-evidence:partners",
-          "content_digest": "84a88068628e1fe5d08ce8d128f81a0082526c365d6958c70ee6bc62ca995cb3",
-          "matched_terms": [
-            "Ruckus Networks",
-            "NETSCOUT",
-            "Nokia"
-          ],
-          "field": "vendor_relations",
-          "revalidation": ""
-        }
-      ],
-      "source": "infinigate.com",
-      "date": "2026-09-10",
       "confidence": 0.88,
       "status": "CONFIRMADO",
       "validity": "current",
@@ -110124,6 +110024,142 @@
       "status": "SEÑAL",
       "validity": "needs-corroboration",
       "derived": true
+    },
+    {
+      "id": "rel_f96a151883d73c2a",
+      "entity_a_id": "clie_dff6f01722f0521c",
+      "entity_a": "Semapa",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "semapa.pt",
+          "source_catalog_name": "Semapa",
+          "researched_entity": "Semapa",
+          "source_binding": "entity-owned",
+          "title": "Página pública · official",
+          "url": "https://www.semapa.pt/",
+          "date": "2026-09-10",
+          "description": "…sobre eventos, parcerias ou outras iniciativas que nos levam por um caminho melhor. Saiba mais Política de Privacidade Termos de Utilização Política de Cookies Contacte-nos Copyright © 2026 Grupo Semapa. All rights reserved. CONSULTE AS NOSSAS REDES SOCIAIS",
+          "scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-09-10",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "9ab2f3ac055d4154936d19b85bb3e1b5b8f902ca915caccbd4e7593ac8d85058",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "revalidation": ""
+        }
+      ],
+      "source": "semapa.pt",
+      "date": "2026-09-10",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_cad2a66d85ba4fba",
+      "entity_a_id": "dist-v313-001",
+      "entity_a": "Aicox Soluciones",
+      "relation": "distributes",
+      "entity_b_id": "mfr-ruckus-networks",
+      "entity_b": "Ruckus Networks",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "infinigate.com",
+          "source_catalog_name": "Infinigate",
+          "researched_entity": "Aicox Soluciones",
+          "source_binding": "relationship-source",
+          "title": "Fabricantes - Infinigate | Spain",
+          "url": "https://www.infinigate.com/es/vendors/",
+          "date": "2026-09-10",
+          "description": "…ents security company Saber más Progress Monitoring of networks, servers, and applications. Saber más ProLabs Challenging OEM dominance with superior products and services Saber más Riverbed The Digital Performance Company Saber más RUCKUS Networks RUCKUS es una marca líder en soluciones de redes empresariales de alto rendimiento, diseñada para entornos exigentes y alta de…",
+          "scope": "ES",
+          "source_grade": "A",
+          "source_type": "distributor-official",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-09-10",
+          "freshness_status": "current",
+          "method": "web-evidence:partners",
+          "content_digest": "84a88068628e1fe5d08ce8d128f81a0082526c365d6958c70ee6bc62ca995cb3",
+          "matched_terms": [
+            "Ruckus Networks",
+            "NETSCOUT",
+            "Nokia"
+          ],
+          "field": "vendor_relations",
+          "revalidation": ""
+        }
+      ],
+      "source": "infinigate.com",
+      "date": "2026-09-10",
+      "confidence": 0.88,
+      "status": "CONFIRMADO",
+      "validity": "current",
+      "derived": false
+    },
+    {
+      "id": "rel_88664fbb4b3ebc71",
+      "entity_a_id": "dist-v313-049",
+      "entity_a": "Tempel",
+      "relation": "distributes",
+      "entity_b_id": "mfr-ruckus-networks",
+      "entity_b": "Ruckus Networks",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "infinigate.com",
+          "source_catalog_name": "Infinigate",
+          "researched_entity": "Tempel",
+          "source_binding": "relationship-source",
+          "title": "Fabricantes - Infinigate | Spain",
+          "url": "https://www.infinigate.com/es/vendors/",
+          "date": "2026-09-10",
+          "description": "…ents security company Saber más Progress Monitoring of networks, servers, and applications. Saber más ProLabs Challenging OEM dominance with superior products and services Saber más Riverbed The Digital Performance Company Saber más RUCKUS Networks RUCKUS es una marca líder en soluciones de redes empresariales de alto rendimiento, diseñada para entornos exigentes y alta de…",
+          "scope": "ES",
+          "source_grade": "A",
+          "source_type": "distributor-official",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-09-10",
+          "freshness_status": "current",
+          "method": "web-evidence:partners",
+          "content_digest": "84a88068628e1fe5d08ce8d128f81a0082526c365d6958c70ee6bc62ca995cb3",
+          "matched_terms": [
+            "Ruckus Networks",
+            "NETSCOUT",
+            "Nokia"
+          ],
+          "field": "vendor_relations",
+          "revalidation": ""
+        }
+      ],
+      "source": "infinigate.com",
+      "date": "2026-09-10",
+      "confidence": 0.88,
+      "status": "CONFIRMADO",
+      "validity": "current",
+      "derived": false
     },
     {
       "id": "rel_6674508f936d1fb5",

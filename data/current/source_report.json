@@ -1,9 +1,9 @@
 {
   "version": "4.3.0",
-  "sources": 2093,
-  "domains_unique": 394,
-  "official_evidences": 2243,
-  "traceable_fields": 6314,
+  "sources": 2097,
+  "domains_unique": 396,
+  "official_evidences": 2245,
+  "traceable_fields": 6236,
   "provenance": {
     "policy": "typed-provenance-non-destructive",
     "types": {
@@ -12,9 +12,9 @@
       "ARCHIVE_RECOVERED": 2300,
       "WESTCON_DOCUMENT_CURRENT": 492,
       "WESTCON_FIRST_PARTY_CURRENT": 75,
-      "LEGACY_UNRESOLVED": 5434,
-      "PUBLIC_PRIMARY": 39061,
-      "PUBLIC_SECONDARY": 17253,
+      "LEGACY_UNRESOLVED": 5408,
+      "PUBLIC_PRIMARY": 38836,
+      "PUBLIC_SECONDARY": 17275,
       "REPORT_CORROBORATION": 114,
       "UNKNOWN": 132
     },
@@ -39,30 +39,30 @@
     "model_revision": "r6-public-plus-current-westcon-first-party",
     "policy": "Hechos externos: fuente pública actual. Hechos propiedad de Westcon sobre portfolio/capacidades: documentación o regla Westcon vigente y atómica. Histórico: pista no acreditativa. Conclusiones internas/derivadas: inputs sustentados + regla trazable.",
     "support_rule": "CURRENT_PUBLIC_OR_CURRENT_WESTCON_OWNED_OR_TRACEABLE_DERIVATION",
-    "targets_total": 18115,
-    "targets_direct_supported": 17831,
+    "targets_total": 18040,
+    "targets_direct_supported": 17755,
     "targets_supported_westcon_only": 231,
-    "targets_supported_public_only": 17563,
+    "targets_supported_public_only": 17487,
     "targets_supported_westcon_and_public": 37,
     "claim_classes": {
-      "EXTERNAL_FACT": 16139,
+      "EXTERNAL_FACT": 16060,
       "DERIVED_FACT": 1537,
-      "INTERNAL_CLASSIFICATION": 439
+      "INTERNAL_CLASSIFICATION": 443
     },
-    "support_pending_occurrences": 284,
-    "support_pending_unique_claims": 284,
+    "support_pending_occurrences": 285,
+    "support_pending_unique_claims": 285,
     "duplicate_pending_occurrences": 0,
     "external_search_required_occurrences": 275,
     "external_search_required_unique": 275,
-    "derived_support_required_occurrences": 9,
-    "derived_support_required_unique": 9,
-    "historical_total": 22751,
+    "derived_support_required_occurrences": 10,
+    "derived_support_required_unique": 10,
+    "historical_total": 22725,
     "historical_supported_westcon": 670,
-    "historical_supported_public": 21251,
+    "historical_supported_public": 21225,
     "historical_supported_westcon_and_public": 179,
     "historical_search_required": 651,
-    "targets_supported": 17831,
-    "targets_search_required": 284,
+    "targets_supported": 17755,
+    "targets_search_required": 285,
     "unsupported_targets": [
       {
         "section": "manufacturers",
@@ -2260,6 +2260,22 @@
         "dependency_fields": [],
         "support_basis": "SEARCH_REQUIRED",
         "expected_gap_kind": "evidence-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Município de Lagos",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
         "preserve_value": true
       },
       {
@@ -12351,6 +12367,22 @@
         "dependency_fields": [],
         "support_basis": "SEARCH_REQUIRED",
         "expected_gap_kind": "evidence-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Município de Lagos",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
         "preserve_value": true
       },
       {
