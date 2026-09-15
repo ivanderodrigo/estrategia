@@ -1,61 +1,79 @@
 {
   "version": "4.3.0",
   "profile": "daily",
-  "started_at": "2026-09-14T10:38:15.030852+00:00",
+  "started_at": "2026-09-15T10:04:20.693600+00:00",
   "planned_entities": 120,
-  "fetch_attempts": 324,
-  "fetch_successes": 257,
-  "pages_relevant": 207,
-  "candidate_evidences": 224,
-  "accepted_evidences": 224,
-  "fields_enriched": 224,
-  "values_added": 155,
+  "fetch_attempts": 222,
+  "fetch_successes": 159,
+  "pages_relevant": 130,
+  "candidate_evidences": 149,
+  "accepted_evidences": 147,
+  "fields_enriched": 147,
+  "values_added": 78,
   "entities_added": 24,
-  "cache_hits": 127,
-  "circuit_skips": 1814,
+  "cache_hits": 70,
+  "circuit_skips": 1320,
   "unsafe_url_rejections": 0,
-  "official_sites_discovered": 5,
-  "financial_links_discovered": 31,
+  "official_sites_discovered": 4,
+  "financial_links_discovered": 48,
   "manufacturer_revenue_rows_before": 0,
-  "manufacturer_revenue_acceptances": 6,
+  "manufacturer_revenue_acceptances": 4,
   "stop_reason": "deadline",
   "structured_entity_budget": 24,
   "structured_entities_added": 24,
   "structured_notices": 24,
-  "accepted_evidence_per_fetch_attempt": 0.6914,
-  "candidate_acceptance_rate": 1.0,
-  "values_per_accepted_evidence": 0.692,
-  "growth_pressure_ratio": 0.1548,
-  "manufacturer_revenue_rows_after": 6,
-  "manufacturer_revenue_rows_added": 6,
-  "elapsed_s": 627.34,
-  "finished_at": "2026-09-14T10:48:41.356496+00:00",
-  "result_rows_total": 2265,
-  "accepted_result_rows_total": 224,
+  "accepted_evidence_per_fetch_attempt": 0.6622,
+  "candidate_acceptance_rate": 0.9866,
+  "values_per_accepted_evidence": 0.5306,
+  "growth_pressure_ratio": 0.3077,
+  "manufacturer_revenue_rows_after": 4,
+  "manufacturer_revenue_rows_added": 4,
+  "elapsed_s": 638.5,
+  "finished_at": "2026-09-15T10:14:58.207165+00:00",
+  "result_rows_total": 1612,
+  "accepted_result_rows_total": 147,
   "results_truncated": true,
   "results": [
     {
       "section": "distributors",
-      "entity": "Dualinfor Hito Innovation",
-      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
-      "family": "official",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/architecture",
+      "family": "technology",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://aseminfor.es/architecture",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/architectures",
+      "family": "technology",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://aseminfor.es/architectures",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/careers",
+      "family": "careers",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Dualinfor Hito Innovation",
-      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-espana-por-facturacion/",
-      "family": "official",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/carreiras",
+      "family": "careers",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Dualinfor Hito Innovation",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/case-studies",
       "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
@@ -63,220 +81,8 @@
     },
     {
       "section": "distributors",
-      "entity": "Dualinfor Hito Innovation",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 4,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Dualinfor Hito Innovation",
-      "url": "https://www.arrow.com/globalecs/es/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 4,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Dualinfor Hito Innovation",
-      "url": "https://www.arrow.com/es/services.html",
-      "family": "services",
-      "status": 0,
-      "error": "ConnectionError: HTTPSConnectionPool(host='www.arrow.com', port=443): Max retries exceeded with url: /es/services.html (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.arrow.com', port=443): Read timed out. (read timeout=7.0)\"))",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Dualinfor Hito Innovation",
-      "url": "https://www.eetgroup.com/pt-pt/eet/as-nossas-areas-de-negocio",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Dualinfor Hito Innovation",
-      "url": "https://www.esprinet.com/es/oferta/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Dualinfor Hito Innovation",
-      "url": "https://www.globomatik.com/servicios-destacados",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Dualinfor Hito Innovation",
-      "url": "https://www.infinigate.com/es/vendors/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Dualinfor Hito Innovation",
-      "url": "https://www.also.com/ec/cms5/es_2610/2610/also-cloud-marketplace/hazte-partner-de-also/index.jsp",
-      "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.eetgroup.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.eetgroup.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.eetgroup.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.eetgroup.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.eetgroup.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.itchannel.pt/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.itchannel.pt/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.itchannel.pt/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.itchannel.pt/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.itchannel.pt/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.itchannel.pt/directorio/distribuidores/10",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.itchannel.pt/directorio",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.itchannel.pt/directorio/distribuidores/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-espana-por-facturacion/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/casos",
       "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
@@ -284,57 +90,71 @@
     },
     {
       "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 4,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.arrow.com/globalecs/es/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 4,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.arrow.com/es/services.html",
-      "family": "services",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/clientes",
+      "family": "cases",
       "status": 0,
-      "error": "ConnectionError: HTTPSConnectionPool(host='www.arrow.com', port=443): Max retries exceeded with url: /es/services.html (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.arrow.com', port=443): Read timed out. (read timeout=7.0)\"))",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.esprinet.com/es/oferta/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.globomatik.com/servicios-destacados",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/cloud",
       "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.infinigate.com/es/vendors/",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/fabricantes",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
@@ -342,252 +162,448 @@
     },
     {
       "section": "distributors",
-      "entity": "EET Portugal",
-      "url": "https://www.also.com/ec/cms5/es_2610/2610/also-cloud-marketplace/hazte-partner-de-also/index.jsp",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/find-a-partner",
       "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/about-us/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.ingecom.net/about-us/investors",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/about/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.ingecom.net/about/investors",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/annual-report",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.ingecom.net/annual-report",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/annual-reports",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.ingecom.net/annual-reports",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/company/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.ingecom.net/company/investor-relations",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/company/investors",
-      "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/earnings",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/industrias",
+      "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/filings",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/industries",
+      "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/financial-information",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/insights",
+      "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/financial-results",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/jobs",
+      "family": "careers",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/financials",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/line-card",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/informacao-financeira",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/managed-services",
+      "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/informacion-financiera",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/marcas",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/investor",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/networking",
+      "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/investor-relations",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/news",
+      "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/investors",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/noticias",
+      "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/quarterly-results",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/open-positions",
+      "family": "careers",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/relatorio-e-contas",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/parceiros",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/relatorios-e-contas",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/partner",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/reports",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/partner-locator",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/reports-and-filings",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/partners",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/resultados",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/platform",
+      "family": "technology",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/resultados-financieros",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/portfolio",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/results",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/press",
+      "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/sitemap.xml",
-      "family": "financial",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/press-releases",
+      "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/products",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/services",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/sitemap.xml",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/solutions",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/technologies",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/technology",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/tecnologia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "url": "https://aseminfor.es/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
       "url": "https://www.also.com/alliances",
       "family": "partners",
       "status": 0,
@@ -596,7 +612,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
+      "entity": "Aseminfor",
       "url": "https://www.also.com/ec/cms5/es_2610/2610/also-spain-technology/hazte-cliente-de-also/index.jsp",
       "family": "cases",
       "cached": true,
@@ -606,7 +622,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
+      "entity": "Aseminfor",
       "url": "https://www.also.com/ec/cms5/es_2610/2610/fabricantes/acelera-pyme/index.jsp",
       "family": "partners",
       "cached": true,
@@ -616,7 +632,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
+      "entity": "Aseminfor",
       "url": "https://www.also.com/ec/cms5/es_2610/2610/fabricantes/acronis/index.jsp",
       "family": "partners",
       "cached": true,
@@ -626,7 +642,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Ingecom Ignition",
+      "entity": "Aseminfor",
       "url": "https://www.also.com/ec/cms5/es_2610/2610/fabricantes/adobe/adobe-vip-marketplace/index.jsp",
       "family": "partners",
       "cached": true,
@@ -636,7 +652,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.itchannel.pt/alliances",
       "family": "partners",
       "status": 0,
@@ -645,7 +661,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.itchannel.pt/find-a-partner",
       "family": "partners",
       "status": 0,
@@ -654,7 +670,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.itchannel.pt/partner",
       "family": "partners",
       "status": 0,
@@ -663,7 +679,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.itchannel.pt/partner-locator",
       "family": "partners",
       "status": 0,
@@ -672,7 +688,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.itchannel.pt/partners",
       "family": "partners",
       "status": 0,
@@ -681,144 +697,8 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/en/home",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 3,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/actualidad",
-      "family": "news",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.jarltech.com/actualidad",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/alianzas",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.jarltech.com/alianzas",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.jarltech.com/alliances",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.jarltech.com/careers",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.jarltech.com/carreiras",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/es/microsites",
+      "entity": "CloudIT",
+      "url": "https://www.itchannel.pt/directorio/distribuidores/10",
       "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
@@ -826,394 +706,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/feed",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/line-card",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/portfolio",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/press",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/sitemap.xml",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.jarltech.com/vendors",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
-      "url": "https://www.itchannel.pt/directorio/distribuidores/20",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.itchannel.pt/directorio",
       "family": "official",
       "status": 0,
@@ -1222,7 +715,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.itchannel.pt/directorio/distribuidores/",
       "family": "official",
       "status": 0,
@@ -1231,7 +724,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
       "family": "official",
       "status": 0,
@@ -1240,7 +733,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-espana-por-facturacion/",
       "family": "official",
       "status": 0,
@@ -1249,7 +742,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
       "family": "cases",
       "status": 0,
@@ -1258,7 +751,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
       "family": "services",
       "cached": true,
@@ -1268,7 +761,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.arrow.com/globalecs/es/",
       "family": "official",
       "cached": true,
@@ -1278,7 +771,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.arrow.com/es/services.html",
       "family": "services",
       "status": 0,
@@ -1287,7 +780,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.eetgroup.com/pt-pt/eet/as-nossas-areas-de-negocio",
       "family": "official",
       "status": 0,
@@ -1296,7 +789,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.esprinet.com/es/oferta/",
       "family": "official",
       "cached": true,
@@ -1306,7 +799,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Jarltech",
+      "entity": "CloudIT",
       "url": "https://www.globomatik.com/servicios-destacados",
       "family": "services",
       "cached": true,
@@ -1316,351 +809,8 @@
     },
     {
       "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/actualidad",
-      "family": "news",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://lusomatrix.pt/actualidad",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/alianzas",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://lusomatrix.pt/alianzas",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://lusomatrix.pt/alliances",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://lusomatrix.pt/careers",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://lusomatrix.pt/carreiras",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/feed",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/line-card",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/portfolio",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/press",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/robots.txt",
+      "entity": "CloudIT",
+      "url": "https://www.infortisa.com/",
       "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
@@ -1668,1005 +818,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/sitemap.xml",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/sobre-nos/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://lusomatrix.pt/vendors",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.itchannel.pt/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.itchannel.pt/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.itchannel.pt/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.itchannel.pt/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.itchannel.pt/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.itchannel.pt/directorio/distribuidores/20",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.itchannel.pt/directorio",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.itchannel.pt/directorio/distribuidores/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-espana-por-facturacion/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 4,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.arrow.com/globalecs/es/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 4,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.arrow.com/es/services.html",
-      "family": "services",
-      "status": 0,
-      "error": "ConnectionError: HTTPSConnectionPool(host='www.arrow.com', port=443): Max retries exceeded with url: /es/services.html (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.arrow.com', port=443): Read timed out. (read timeout=7.0)\"))",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.eetgroup.com/pt-pt/eet/as-nossas-areas-de-negocio",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.esprinet.com/es/oferta/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Lusomatrix",
-      "url": "https://www.globomatik.com/servicios-destacados",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.channelpartner.es/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.channelpartner.es/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.channelpartner.es/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.channelpartner.es/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.channelpartner.es/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/",
-      "family": "official",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.megasur.es/",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/actualidad",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/alianzas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/feed",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/line-card",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/portfolio",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/press",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/sitemap.xml",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.megasur.es/vendors",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.itchannel.pt/directorio",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.itchannel.pt/directorio/distribuidores/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-espana-por-facturacion/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 4,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.arrow.com/globalecs/es/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 4,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.arrow.com/es/services.html",
-      "family": "services",
-      "status": 0,
-      "error": "ConnectionError: HTTPSConnectionPool(host='www.arrow.com', port=443): Max retries exceeded with url: /es/services.html (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.arrow.com', port=443): Read timed out. (read timeout=7.0)\"))",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.eetgroup.com/pt-pt/eet/as-nossas-areas-de-negocio",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.esprinet.com/es/oferta/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.globomatik.com/servicios-destacados",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
-      "url": "https://www.infinigate.com/es/vendors/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Megasur",
+      "entity": "CloudIT",
       "url": "https://www.also.com/ec/cms5/es_2610/2610/also-cloud-marketplace/hazte-partner-de-also/index.jsp",
       "family": "partners",
       "cached": true,
@@ -2676,7 +828,440 @@
     },
     {
       "section": "distributors",
-      "entity": "Minitel",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://dssi.pt/actualidad",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://dssi.pt/alianzas",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://dssi.pt/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://dssi.pt/case-studies",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://dssi.pt/casos",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
       "url": "https://www.itchannel.pt/alliances",
       "family": "partners",
       "status": 0,
@@ -2685,7 +1270,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Minitel",
+      "entity": "DSSI",
       "url": "https://www.itchannel.pt/find-a-partner",
       "family": "partners",
       "status": 0,
@@ -2694,7 +1279,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Minitel",
+      "entity": "DSSI",
       "url": "https://www.itchannel.pt/partner",
       "family": "partners",
       "status": 0,
@@ -2703,7 +1288,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Minitel",
+      "entity": "DSSI",
       "url": "https://www.itchannel.pt/partner-locator",
       "family": "partners",
       "status": 0,
@@ -2712,7 +1297,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Minitel",
+      "entity": "DSSI",
       "url": "https://www.itchannel.pt/partners",
       "family": "partners",
       "status": 0,
@@ -2721,48 +1306,1453 @@
     },
     {
       "section": "distributors",
-      "entity": "Minitel",
-      "url": "https://www.minitel.pt/",
+      "entity": "DSSI",
+      "url": "https://www.itchannel.pt/directorio/distribuidores/10",
       "family": "official",
-      "cached": false,
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/email-marketing/",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://www.itchannel.pt/directorio",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://www.itchannel.pt/directorio/distribuidores/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-espana-por-facturacion/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 4,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://www.arrow.com/globalecs/es/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 4,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://www.arrow.com/es/services.html",
+      "family": "services",
+      "status": 0,
+      "error": "ConnectionError: HTTPSConnectionPool(host='www.arrow.com', port=443): Max retries exceeded with url: /es/services.html (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.arrow.com', port=443): Read timed out. (read timeout=7.0)\"))",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://www.eetgroup.com/pt-pt/eet/as-nossas-areas-de-negocio",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://www.esprinet.com/es/oferta/",
+      "family": "official",
+      "cached": true,
       "relevant": true,
       "accepted": 1,
       "status": 200
     },
     {
       "section": "distributors",
-      "entity": "Minitel",
-      "url": "https://www.minitel.pt/actualidad",
+      "entity": "DSSI",
+      "url": "https://www.globomatik.com/servicios-destacados",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.channelpartner.es/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.channelpartner.es/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.channelpartner.es/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.channelpartner.es/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.channelpartner.es/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/actualidad",
       "family": "news",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.minitel.pt/actualidad/",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.globomatik.com/actualidad",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Minitel",
-      "url": "https://www.minitel.pt/alianzas",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/alianzas",
       "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.minitel.pt/alianzas/",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.globomatik.com/alianzas",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Minitel",
-      "url": "https://www.minitel.pt/alliances",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/alliances",
       "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.minitel.pt/alliances/",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.globomatik.com/alliances",
       "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Minitel",
-      "url": "https://www.minitel.pt/careers",
-      "family": "careers",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/case-studies",
+      "family": "cases",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.minitel.pt/careers/",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.globomatik.com/case-studies",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.globomatik.com/casos",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/servicios-destacados",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/trabaja-con-nosotros",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-espana-por-facturacion/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.itchannel.pt/directorio",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.itchannel.pt/directorio/distribuidores/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 4,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.arrow.com/globalecs/es/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 4,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.arrow.com/es/services.html",
+      "family": "services",
+      "status": 0,
+      "error": "ConnectionError: HTTPSConnectionPool(host='www.arrow.com', port=443): Max retries exceeded with url: /es/services.html (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.arrow.com', port=443): Read timed out. (read timeout=7.0)\"))",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.eetgroup.com/pt-pt/eet/as-nossas-areas-de-negocio",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.esprinet.com/es/oferta/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.infortisa.com/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/customer/account/login",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/customer/account/login/referer/aHR0cHM6Ly93d3cuZ2xvYm9tYXRpay5jb20v",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/customer/account/forgotpassword",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/ordenadores/software/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/ordenadores/portatiles-por-marca",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/ordenadores/portatiles-por-marca/portatiles-acer",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/ordenadores/portatiles-por-marca/portatiles-apple",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/ordenadores/portatiles-por-marca/portatiles-asus",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/ordenadores/portatiles-por-marca/portatiles-dell",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/ordenadores/portatiles-por-marca/portatiles-dynabook",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/ordenadores/portatiles-por-marca/portatiles-hp",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/ordenadores/portatiles-por-marca/portatiles-lenovo",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/ordenadores/portatiles-por-marca/portatiles-medion-1",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/ordenadores/portatiles-por-marca/portatiles-microsoft-1",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/ordenadores/portatiles-por-marca/portatiles-msi",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/ordenadores/portatiles-por-marca/portatiles-samsung",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.globomatik.com/tpv-pos/tpv-1/soluciones-tpv",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Globomatik",
+      "url": "https://www.also.com/ec/cms5/es_2610/2610/also-cloud-marketplace/hazte-partner-de-also/index.jsp",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/",
+      "family": "official",
+      "status": 0,
+      "error": "ConnectionError: HTTPSConnectionPool(host='www.inforfoco.pt', port=443): Max retries exceeded with url: / (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.inforfoco.pt', port=443): Read timed out. (read timeout=7.0)\"))",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/sobreNos.php",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.itchannel.pt/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.itchannel.pt/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.itchannel.pt/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.itchannel.pt/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.itchannel.pt/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.itchannel.pt/directorio/distribuidores/20",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.itchannel.pt/directorio",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.itchannel.pt/directorio/distribuidores/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-espana-por-facturacion/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 4,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.arrow.com/globalecs/es/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 4,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.arrow.com/es/services.html",
+      "family": "services",
+      "status": 0,
+      "error": "ConnectionError: HTTPSConnectionPool(host='www.arrow.com', port=443): Max retries exceeded with url: /es/services.html (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.arrow.com', port=443): Read timed out. (read timeout=4.0899712",
       "accepted": 0
     }
   ]
