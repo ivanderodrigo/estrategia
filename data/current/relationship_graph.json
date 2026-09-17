@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-09-16T10:08:06.053756+00:00",
+  "generated_at": "2026-09-17T10:10:20.810921+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -453,6 +453,14 @@
     {
       "id": "clie_48dab39efcf601a1",
       "canonical_name": "Mota-Engil",
+      "entity_type": "client",
+      "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_3b1b22390cb9e48b",
+      "canonical_name": "Município de Braga",
       "entity_type": "client",
       "country": "PT",
       "aliases": [],
@@ -6302,7 +6310,7 @@
       "id": "tech_70574f8129932ee1",
       "canonical_name": "Identity & Access",
       "entity_type": "technology",
-      "country": "ES",
+      "country": "PT",
       "aliases": [],
       "historical_names": []
     },
@@ -105715,6 +105723,51 @@
       ],
       "source": "TED · Tenders Electronic Daily",
       "date": "2026",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_73a51ad308e9cac6",
+      "entity_a_id": "clie_3b1b22390cb9e48b",
+      "entity_a": "Município de Braga",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_70574f8129932ee1",
+      "entity_b": "Identity & Access",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "cm-braga.pt",
+          "source_catalog_name": "Município de Braga",
+          "researched_entity": "Município de Braga",
+          "source_binding": "entity-owned",
+          "title": "Ayuntamiento de Braga | Notícias | Braga elegida como la Ciudad Europea del Deporte en 2018",
+          "url": "https://www.cm-braga.pt/es/0201/home/noticias/item/item-1-5195",
+          "date": "2026-09-17",
+          "description": "…Municipal Contactos Asamblea Municipal Parroquias civiles Empresas Empresas Municipales Empresas Afiliadas Cooperación Institucional Presentación Acuerdos de Cooperación Hermanamientos Redes Heráldica Vivir Ciudad Estrategia Innovación Presentación Plano Estratégico para el Desarrollo Ambiente Presentación Espacios Verdes Playas Fluviales Cultura y Patrimonio Pr…",
+          "scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-09-17",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "507fda84cbbc321e376518d0aea02a0687e8d4a309d533518da0ecddee243e0c",
+          "matched_terms": [
+            "redes",
+            "iam"
+          ],
+          "field": "technology_signals",
+          "revalidation": ""
+        }
+      ],
+      "source": "cm-braga.pt",
+      "date": "2026-09-17",
       "confidence": 0.48,
       "status": "SEÑAL",
       "validity": "needs-corroboration",
