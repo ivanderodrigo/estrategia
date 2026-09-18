@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-09-17T10:10:20.810921+00:00",
+  "generated_at": "2026-09-18T09:56:57.382540+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -459,14 +459,6 @@
       "historical_names": []
     },
     {
-      "id": "clie_3b1b22390cb9e48b",
-      "canonical_name": "Município de Braga",
-      "entity_type": "client",
-      "country": "PT",
-      "aliases": [],
-      "historical_names": []
-    },
-    {
       "id": "clie_008870b44681c0d6",
       "canonical_name": "NOS",
       "entity_type": "client",
@@ -887,6 +879,14 @@
       "canonical_name": "OptiVisus",
       "entity_type": "distributor",
       "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "dist_317913c9e942a7f0",
+      "canonical_name": "SCE",
+      "entity_type": "distributor",
+      "country": "ES",
       "aliases": [],
       "historical_names": []
     },
@@ -6310,7 +6310,7 @@
       "id": "tech_70574f8129932ee1",
       "canonical_name": "Identity & Access",
       "entity_type": "technology",
-      "country": "PT",
+      "country": "ES",
       "aliases": [],
       "historical_names": []
     },
@@ -59761,6 +59761,52 @@
       "derived": false
     },
     {
+      "id": "rel_76b038ef5f1f90f7",
+      "entity_a_id": "dist_317913c9e942a7f0",
+      "entity_a": "SCE",
+      "relation": "distributes",
+      "entity_b_id": "manu_7c1468d12e969956",
+      "entity_b": "Ruckus Networks",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "infinigate.com",
+          "source_catalog_name": "Infinigate",
+          "researched_entity": "SCE",
+          "source_binding": "relationship-source",
+          "title": "Fabricantes - Infinigate | Spain",
+          "url": "https://www.infinigate.com/es/vendors/",
+          "date": "2026-09-18",
+          "description": "…ents security company Saber más Progress Monitoring of networks, servers, and applications. Saber más ProLabs Challenging OEM dominance with superior products and services Saber más Riverbed The Digital Performance Company Saber más RUCKUS Networks RUCKUS es una marca líder en soluciones de redes empresariales de alto rendimiento, diseñada para entornos exigentes y alta de…",
+          "scope": "ES",
+          "source_grade": "A",
+          "source_type": "distributor-official",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-09-18",
+          "freshness_status": "current",
+          "method": "web-evidence:partners",
+          "content_digest": "66657192c34c817bb65c2ccdf5f01782002bc99fe0936e3a1346f6de3a9904a9",
+          "matched_terms": [
+            "Ruckus Networks",
+            "NETSCOUT",
+            "Nokia"
+          ],
+          "field": "vendor_relations",
+          "revalidation": ""
+        }
+      ],
+      "source": "infinigate.com",
+      "date": "2026-09-18",
+      "confidence": 0.88,
+      "status": "CONFIRMADO",
+      "validity": "current",
+      "derived": false
+    },
+    {
       "id": "rel_83fc84b19d50ff58",
       "entity_a_id": "dist_db4814d95f195b57",
       "entity_a": "NEXUS Solutions",
@@ -105723,51 +105769,6 @@
       ],
       "source": "TED · Tenders Electronic Daily",
       "date": "2026",
-      "confidence": 0.48,
-      "status": "SEÑAL",
-      "validity": "needs-corroboration",
-      "derived": true
-    },
-    {
-      "id": "rel_73a51ad308e9cac6",
-      "entity_a_id": "clie_3b1b22390cb9e48b",
-      "entity_a": "Município de Braga",
-      "relation": "technology_signal",
-      "entity_b_id": "tech_70574f8129932ee1",
-      "entity_b": "Identity & Access",
-      "countries": [
-        "PT"
-      ],
-      "country": "PT",
-      "evidence": [
-        {
-          "source": "cm-braga.pt",
-          "source_catalog_name": "Município de Braga",
-          "researched_entity": "Município de Braga",
-          "source_binding": "entity-owned",
-          "title": "Ayuntamiento de Braga | Notícias | Braga elegida como la Ciudad Europea del Deporte en 2018",
-          "url": "https://www.cm-braga.pt/es/0201/home/noticias/item/item-1-5195",
-          "date": "2026-09-17",
-          "description": "…Municipal Contactos Asamblea Municipal Parroquias civiles Empresas Empresas Municipales Empresas Afiliadas Cooperación Institucional Presentación Acuerdos de Cooperación Hermanamientos Redes Heráldica Vivir Ciudad Estrategia Innovación Presentación Plano Estratégico para el Desarrollo Ambiente Presentación Espacios Verdes Playas Fluviales Cultura y Patrimonio Pr…",
-          "scope": "PT",
-          "source_grade": "A",
-          "source_type": "official-domain-discovery",
-          "official": true,
-          "classification": "public",
-          "retrieved_at": "2026-09-17",
-          "freshness_status": "current",
-          "method": "web-evidence:news",
-          "content_digest": "507fda84cbbc321e376518d0aea02a0687e8d4a309d533518da0ecddee243e0c",
-          "matched_terms": [
-            "redes",
-            "iam"
-          ],
-          "field": "technology_signals",
-          "revalidation": ""
-        }
-      ],
-      "source": "cm-braga.pt",
-      "date": "2026-09-17",
       "confidence": 0.48,
       "status": "SEÑAL",
       "validity": "needs-corroboration",
