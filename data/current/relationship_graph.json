@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-09-18T09:56:57.382540+00:00",
+  "generated_at": "2026-09-20T09:47:24.851355+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -459,6 +459,22 @@
       "historical_names": []
     },
     {
+      "id": "clie_3b1b22390cb9e48b",
+      "canonical_name": "Município de Braga",
+      "entity_type": "client",
+      "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_a00c8cee3ebb2ffc",
+      "canonical_name": "Município de Lagos",
+      "entity_type": "client",
+      "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "clie_008870b44681c0d6",
       "canonical_name": "NOS",
       "entity_type": "client",
@@ -879,14 +895,6 @@
       "canonical_name": "OptiVisus",
       "entity_type": "distributor",
       "country": "PT",
-      "aliases": [],
-      "historical_names": []
-    },
-    {
-      "id": "dist_317913c9e942a7f0",
-      "canonical_name": "SCE",
-      "entity_type": "distributor",
-      "country": "ES",
       "aliases": [],
       "historical_names": []
     },
@@ -6310,7 +6318,7 @@
       "id": "tech_70574f8129932ee1",
       "canonical_name": "Identity & Access",
       "entity_type": "technology",
-      "country": "ES",
+      "country": "PT",
       "aliases": [],
       "historical_names": []
     },
@@ -59761,52 +59769,6 @@
       "derived": false
     },
     {
-      "id": "rel_76b038ef5f1f90f7",
-      "entity_a_id": "dist_317913c9e942a7f0",
-      "entity_a": "SCE",
-      "relation": "distributes",
-      "entity_b_id": "manu_7c1468d12e969956",
-      "entity_b": "Ruckus Networks",
-      "countries": [
-        "ES"
-      ],
-      "country": "ES",
-      "evidence": [
-        {
-          "source": "infinigate.com",
-          "source_catalog_name": "Infinigate",
-          "researched_entity": "SCE",
-          "source_binding": "relationship-source",
-          "title": "Fabricantes - Infinigate | Spain",
-          "url": "https://www.infinigate.com/es/vendors/",
-          "date": "2026-09-18",
-          "description": "…ents security company Saber más Progress Monitoring of networks, servers, and applications. Saber más ProLabs Challenging OEM dominance with superior products and services Saber más Riverbed The Digital Performance Company Saber más RUCKUS Networks RUCKUS es una marca líder en soluciones de redes empresariales de alto rendimiento, diseñada para entornos exigentes y alta de…",
-          "scope": "ES",
-          "source_grade": "A",
-          "source_type": "distributor-official",
-          "official": true,
-          "classification": "public",
-          "retrieved_at": "2026-09-18",
-          "freshness_status": "current",
-          "method": "web-evidence:partners",
-          "content_digest": "66657192c34c817bb65c2ccdf5f01782002bc99fe0936e3a1346f6de3a9904a9",
-          "matched_terms": [
-            "Ruckus Networks",
-            "NETSCOUT",
-            "Nokia"
-          ],
-          "field": "vendor_relations",
-          "revalidation": ""
-        }
-      ],
-      "source": "infinigate.com",
-      "date": "2026-09-18",
-      "confidence": 0.88,
-      "status": "CONFIRMADO",
-      "validity": "current",
-      "derived": false
-    },
-    {
       "id": "rel_83fc84b19d50ff58",
       "entity_a_id": "dist_db4814d95f195b57",
       "entity_a": "NEXUS Solutions",
@@ -76092,22 +76054,22 @@
       "evidence": [
         {
           "source": "ingecom.net",
-          "source_catalog_name": "Ingecom Ignition · alianzas tecnológicas",
+          "source_catalog_name": "ingecom.net",
           "researched_entity": "Colt Technology Services",
           "source_binding": "relationship-source",
           "title": "Alianzas tecnológicas - INGECOM IGNITION",
           "url": "https://www.ingecom.net/alianzas-tecnologicas/",
-          "date": "2026-09-02",
+          "date": "2026-09-20",
           "description": "…Operational Technology (OT) IoMT MSP & MSSP Cybersecurity Solutions Ciberinteligencia Inteligencia de amenazas Formación Fabricantes Akamai-Guardicore AlgoSec Allot Axonius BeyondTrust Bitdefender Claroty Corero CrowdStrike Cymulate Delinea Enthec ExtraHop Forcepoint Forescout Garland Technology HackRocks Kela Libracyber Mimecast Netwrix Rapid7 Sealpath Silverfort Thre…",
           "scope": "GLOBAL",
           "source_grade": "A",
           "source_type": "distributor-official",
           "official": true,
           "classification": "public",
-          "retrieved_at": "2026-09-02",
+          "retrieved_at": "2026-09-20",
           "freshness_status": "current",
           "method": "web-evidence:partners",
-          "content_digest": "cd1568d3edab1238ea296846e697221519869a895f9d638a3399cec47be27677",
+          "content_digest": "b43e17160d34e8f6139da29a3793d1e2b30ce56bb66736626cb02f5ddaed1d4d",
           "matched_terms": [
             "CrowdStrike",
             "XM Cyber",
@@ -76115,9 +76077,7 @@
             "Akamai"
           ],
           "field": "vendor_relations",
-          "revalidation": "",
-          "intelligence_tier": "A2",
-          "source_role": "Fuente primaria externa"
+          "revalidation": ""
         },
         {
           "source": "1password.com",
@@ -76148,7 +76108,7 @@
         }
       ],
       "source": "ingecom.net",
-      "date": "2026-09-02",
+      "date": "2026-09-20",
       "confidence": 0.88,
       "status": "CONFIRMADO",
       "validity": "current",
@@ -76168,22 +76128,22 @@
       "evidence": [
         {
           "source": "ingecom.net",
-          "source_catalog_name": "Ingecom Ignition · alianzas tecnológicas",
+          "source_catalog_name": "ingecom.net",
           "researched_entity": "Colt Technology Services",
           "source_binding": "relationship-source",
           "title": "Alianzas tecnológicas - INGECOM IGNITION",
           "url": "https://www.ingecom.net/alianzas-tecnologicas/",
-          "date": "2026-09-02",
+          "date": "2026-09-20",
           "description": "…Operational Technology (OT) IoMT MSP & MSSP Cybersecurity Solutions Ciberinteligencia Inteligencia de amenazas Formación Fabricantes Akamai-Guardicore AlgoSec Allot Axonius BeyondTrust Bitdefender Claroty Corero CrowdStrike Cymulate Delinea Enthec ExtraHop Forcepoint Forescout Garland Technology HackRocks Kela Libracyber Mimecast Netwrix Rapid7 Sealpath Silverfort Thre…",
           "scope": "GLOBAL",
           "source_grade": "A",
           "source_type": "distributor-official",
           "official": true,
           "classification": "public",
-          "retrieved_at": "2026-09-02",
+          "retrieved_at": "2026-09-20",
           "freshness_status": "current",
           "method": "web-evidence:partners",
-          "content_digest": "cd1568d3edab1238ea296846e697221519869a895f9d638a3399cec47be27677",
+          "content_digest": "b43e17160d34e8f6139da29a3793d1e2b30ce56bb66736626cb02f5ddaed1d4d",
           "matched_terms": [
             "CrowdStrike",
             "XM Cyber",
@@ -76191,13 +76151,11 @@
             "Akamai"
           ],
           "field": "vendor_relations",
-          "revalidation": "",
-          "intelligence_tier": "A2",
-          "source_role": "Fuente primaria externa"
+          "revalidation": ""
         }
       ],
       "source": "ingecom.net",
-      "date": "2026-09-02",
+      "date": "2026-09-20",
       "confidence": 0.88,
       "status": "CONFIRMADO",
       "validity": "current",
@@ -76217,22 +76175,22 @@
       "evidence": [
         {
           "source": "ingecom.net",
-          "source_catalog_name": "Ingecom Ignition · alianzas tecnológicas",
+          "source_catalog_name": "ingecom.net",
           "researched_entity": "Colt Technology Services",
           "source_binding": "relationship-source",
           "title": "Alianzas tecnológicas - INGECOM IGNITION",
           "url": "https://www.ingecom.net/alianzas-tecnologicas/",
-          "date": "2026-09-02",
+          "date": "2026-09-20",
           "description": "…Operational Technology (OT) IoMT MSP & MSSP Cybersecurity Solutions Ciberinteligencia Inteligencia de amenazas Formación Fabricantes Akamai-Guardicore AlgoSec Allot Axonius BeyondTrust Bitdefender Claroty Corero CrowdStrike Cymulate Delinea Enthec ExtraHop Forcepoint Forescout Garland Technology HackRocks Kela Libracyber Mimecast Netwrix Rapid7 Sealpath Silverfort Thre…",
           "scope": "GLOBAL",
           "source_grade": "A",
           "source_type": "distributor-official",
           "official": true,
           "classification": "public",
-          "retrieved_at": "2026-09-02",
+          "retrieved_at": "2026-09-20",
           "freshness_status": "current",
           "method": "web-evidence:partners",
-          "content_digest": "cd1568d3edab1238ea296846e697221519869a895f9d638a3399cec47be27677",
+          "content_digest": "b43e17160d34e8f6139da29a3793d1e2b30ce56bb66736626cb02f5ddaed1d4d",
           "matched_terms": [
             "CrowdStrike",
             "XM Cyber",
@@ -76240,9 +76198,7 @@
             "Akamai"
           ],
           "field": "vendor_relations",
-          "revalidation": "",
-          "intelligence_tier": "A2",
-          "source_role": "Fuente primaria externa"
+          "revalidation": ""
         },
         {
           "source": "akamai.com",
@@ -76272,7 +76228,7 @@
         }
       ],
       "source": "ingecom.net",
-      "date": "2026-09-02",
+      "date": "2026-09-20",
       "confidence": 0.88,
       "status": "CONFIRMADO",
       "validity": "current",
@@ -81195,28 +81151,26 @@
           "source_binding": "relationship-source",
           "title": "Vectra AI Socios globales - Encuentre un socio tecnológico de seguridad",
           "url": "https://es.vectra.ai/partners",
-          "date": "2026-09-02",
-          "description": "Vectra AI Socios globales - Encuentre un socio tecnológico de seguridad Asóciese con el líder mundialmente reconocido y galardonado en NDR. Explore nuestro programa MSSP > Lee el artículo d…",
+          "date": "2026-09-20",
+          "description": "Vectra AI Socios globales - Encuentre un socio tecnológico de seguridad Presentamos Ascent, el nuevo programa de socios de Vectra AI . Más información sobre el lanzamiento Plataforma La Pla…",
           "scope": "ES",
           "source_grade": "A",
           "source_type": "official-domain",
           "official": true,
           "classification": "public",
-          "retrieved_at": "2026-09-02",
+          "retrieved_at": "2026-09-20",
           "freshness_status": "current",
           "method": "web-evidence:partners",
-          "content_digest": "b0b0e2cf8eb0f341522ef6d01fd263d05648fc05fba4cbfda2896eeba1897f9b",
+          "content_digest": "36d203ae11b5c49ceb7df549b6741606be25053a34843496298ebe5c3919660d",
           "matched_terms": [
             "Vectra AI"
           ],
           "field": "vendor_relations",
-          "revalidation": "",
-          "intelligence_tier": "A2",
-          "source_role": "Fuente primaria externa"
+          "revalidation": ""
         }
       ],
       "source": "es.vectra.ai",
-      "date": "2026-09-02",
+      "date": "2026-09-20",
       "confidence": 0.88,
       "status": "CONFIRMADO",
       "validity": "current",
@@ -97948,28 +97902,26 @@
           "source_binding": "relationship-source",
           "title": "Vectra AI Socios globales - Encuentre un socio tecnológico de seguridad",
           "url": "https://es.vectra.ai/partners",
-          "date": "2026-09-02",
-          "description": "Vectra AI Socios globales - Encuentre un socio tecnológico de seguridad Asóciese con el líder mundialmente reconocido y galardonado en NDR. Explore nuestro programa MSSP > Lee el artículo d…",
+          "date": "2026-09-20",
+          "description": "Vectra AI Socios globales - Encuentre un socio tecnológico de seguridad Presentamos Ascent, el nuevo programa de socios de Vectra AI . Más información sobre el lanzamiento Plataforma La Pla…",
           "scope": "IBERIA / PT",
           "source_grade": "A",
           "source_type": "official-domain",
           "official": true,
           "classification": "public",
-          "retrieved_at": "2026-09-02",
+          "retrieved_at": "2026-09-20",
           "freshness_status": "current",
           "method": "web-evidence:partners",
-          "content_digest": "b0b0e2cf8eb0f341522ef6d01fd263d05648fc05fba4cbfda2896eeba1897f9b",
+          "content_digest": "36d203ae11b5c49ceb7df549b6741606be25053a34843496298ebe5c3919660d",
           "matched_terms": [
             "Vectra AI"
           ],
           "field": "vendor_relations",
-          "revalidation": "",
-          "intelligence_tier": "A2",
-          "source_role": "Fuente primaria externa"
+          "revalidation": ""
         }
       ],
       "source": "es.vectra.ai",
-      "date": "2026-09-02",
+      "date": "2026-09-20",
       "confidence": 0.88,
       "status": "CONFIRMADO",
       "validity": "current",
@@ -98113,50 +98065,6 @@
       ],
       "source": "checkpoint.com",
       "date": "2026-09-02",
-      "confidence": 0.88,
-      "status": "CONFIRMADO",
-      "validity": "current",
-      "derived": false
-    },
-    {
-      "id": "rel_d9118ba173ce9a29",
-      "entity_a_id": "inte_36b77bcc5ed010ea",
-      "entity_a": "SIA",
-      "relation": "partners_with",
-      "entity_b_id": "manu_9fb714bd727322a2",
-      "entity_b": "Microsoft Azure",
-      "countries": [
-        "IBERIA",
-        "PT"
-      ],
-      "country": "IBERIA + PT",
-      "evidence": [
-        {
-          "source": "SIA",
-          "title": "Fortinet 開放式生態系統合作夥伴",
-          "url": "https://www.fortinet.com/tw/partners/partnerships/alliance-partners?p_function=Operational%20Technology",
-          "date": "2026-09-01",
-          "description": "…about Cloud Security » 安全營運 安全和風險管理 統一 AI Service Organization Controls 交鑰匙解決方案 安全資訊與事件管理（SIEM） 安全協調、自動化與回應（SOAR） 託管式資安營運中心服務（SOCaaS） 資安 AI 端點防護 統一端點 整合式代理程式 端點偵測與回應(EDR) 資料保護 資料外洩防治服務 身分管理 FortiAuthenticator FortiIdentity Cloud 雲端平台 FortiToken FortiPAM 網路偵測 網路偵測與回應（NDR） 誘捕技術 沙盤 Email 與辦公安全防護組合 電子郵件安全 辦公安全防護組合 持續性威脅曝險管理（CTEM） 威脅曝險管理 服務 資安事件回應服務 作業系統 FortiOS Learn more abou…",
-          "scope": "IBERIA / PT",
-          "source_grade": "C",
-          "source_type": "public-web",
-          "official": false,
-          "classification": "public",
-          "retrieved_at": "2026-09-01",
-          "freshness_status": "current",
-          "method": "web-evidence:partners",
-          "content_digest": "66e267766a109945d8060000b431f4283c0a558bd1e0042da057e49a2f90e8e8",
-          "matched_terms": [
-            "Microsoft Azure",
-            "AWS"
-          ],
-          "field": "vendor_relations",
-          "intelligence_tier": "C",
-          "source_role": "Fuente pública secundaria"
-        }
-      ],
-      "source": "SIA",
-      "date": "2026-09-01",
       "confidence": 0.88,
       "status": "CONFIRMADO",
       "validity": "current",
@@ -105739,6 +105647,51 @@
       "derived": false
     },
     {
+      "id": "rel_5c4035d1861213be",
+      "entity_a_id": "clie_a00c8cee3ebb2ffc",
+      "entity_a": "Município de Lagos",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "cm-lagos.pt",
+          "source_catalog_name": "Município de Lagos",
+          "researched_entity": "Município de Lagos",
+          "source_binding": "entity-owned",
+          "title": "Lagos adere à Semana Europeia da Mobilidade 2026 - Notícias - Município - Câmara Municipal de Lagos: Município de Lagos",
+          "url": "https://www.cm-lagos.pt/municipio/noticias/16016-lagos-adere-%C3%A0-semana-europeia-da-mobilidade-2026",
+          "date": "2026-09-20",
+          "description": "…encorajar a adoção de comportamentos compatíveis com o desenvolvimento sustentável; consciencializar para a escolha de modos de transporte com menor impacto ambiental; criar condições para que os cidadãos se desloquem a pé, utilizem a bicicleta e os transportes públicos, em vez do automóvel privado; e proporcionar-lhes uma oportunidade para redescobrirem a sua t…",
+          "scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-09-20",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "b1cb090932c517f221a7414ebee3f7b47184e88d2f849ded450a3317cfd439e8",
+          "matched_terms": [
+            "redes",
+            "iam"
+          ],
+          "field": "technology_signals",
+          "revalidation": ""
+        }
+      ],
+      "source": "cm-lagos.pt",
+      "date": "2026-09-20",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
       "id": "rel_eefb6bd8c8afadaa",
       "entity_a_id": "clie_c5f1b1bc7d32f328",
       "entity_a": "Dirección General de la Entidad Pública Empresarial RED.ES",
@@ -105769,6 +105722,51 @@
       ],
       "source": "TED · Tenders Electronic Daily",
       "date": "2026",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_73a51ad308e9cac6",
+      "entity_a_id": "clie_3b1b22390cb9e48b",
+      "entity_a": "Município de Braga",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_70574f8129932ee1",
+      "entity_b": "Identity & Access",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "cm-braga.pt",
+          "source_catalog_name": "Município de Braga",
+          "researched_entity": "Município de Braga",
+          "source_binding": "entity-owned",
+          "title": "Ayuntamiento de Braga | Notícias | Braga elegida como la Ciudad Europea del Deporte en 2018",
+          "url": "https://www.cm-braga.pt/es/0201/home/noticias/item/item-1-5195",
+          "date": "2026-09-20",
+          "description": "…Municipal Contactos Asamblea Municipal Parroquias civiles Empresas Empresas Municipales Empresas Afiliadas Cooperación Institucional Presentación Acuerdos de Cooperación Hermanamientos Redes Heráldica Vivir Ciudad Estrategia Innovación Presentación Plano Estratégico para el Desarrollo Ambiente Presentación Espacios Verdes Playas Fluviales Cultura y Patrimonio Pr…",
+          "scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-09-20",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "93b0546df48d8905eace3fede9f36b8c6fd4b0663d06ff87f3794e6bab36893c",
+          "matched_terms": [
+            "redes",
+            "iam"
+          ],
+          "field": "technology_signals",
+          "revalidation": ""
+        }
+      ],
+      "source": "cm-braga.pt",
+      "date": "2026-09-20",
       "confidence": 0.48,
       "status": "SEÑAL",
       "validity": "needs-corroboration",
@@ -110070,6 +110068,96 @@
       "status": "SEÑAL",
       "validity": "needs-corroboration",
       "derived": true
+    },
+    {
+      "id": "rel_76b038ef5f1f90f7",
+      "entity_a_id": "dist-v313-045",
+      "entity_a": "SCE",
+      "relation": "distributes",
+      "entity_b_id": "mfr-ruckus-networks",
+      "entity_b": "Ruckus Networks",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "infinigate.com",
+          "source_catalog_name": "Infinigate",
+          "researched_entity": "SCE",
+          "source_binding": "relationship-source",
+          "title": "Fabricantes - Infinigate | Spain",
+          "url": "https://www.infinigate.com/es/vendors/",
+          "date": "2026-09-18",
+          "description": "…ents security company Saber más Progress Monitoring of networks, servers, and applications. Saber más ProLabs Challenging OEM dominance with superior products and services Saber más Riverbed The Digital Performance Company Saber más RUCKUS Networks RUCKUS es una marca líder en soluciones de redes empresariales de alto rendimiento, diseñada para entornos exigentes y alta de…",
+          "scope": "ES",
+          "source_grade": "A",
+          "source_type": "distributor-official",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-09-18",
+          "freshness_status": "current",
+          "method": "web-evidence:partners",
+          "content_digest": "66657192c34c817bb65c2ccdf5f01782002bc99fe0936e3a1346f6de3a9904a9",
+          "matched_terms": [
+            "Ruckus Networks",
+            "NETSCOUT",
+            "Nokia"
+          ],
+          "field": "vendor_relations",
+          "revalidation": ""
+        }
+      ],
+      "source": "infinigate.com",
+      "date": "2026-09-18",
+      "confidence": 0.88,
+      "status": "CONFIRMADO",
+      "validity": "current",
+      "derived": false
+    },
+    {
+      "id": "rel_d9118ba173ce9a29",
+      "entity_a_id": "entity_16f0bf4a1c72e15641",
+      "entity_a": "SIA",
+      "relation": "partners_with",
+      "entity_b_id": "mfr-microsoft-azure",
+      "entity_b": "Microsoft Azure",
+      "countries": [
+        "IBERIA",
+        "PT"
+      ],
+      "country": "IBERIA + PT",
+      "evidence": [
+        {
+          "source": "SIA",
+          "title": "Fortinet 開放式生態系統合作夥伴",
+          "url": "https://www.fortinet.com/tw/partners/partnerships/alliance-partners?p_function=Operational%20Technology",
+          "date": "2026-09-01",
+          "description": "…about Cloud Security » 安全營運 安全和風險管理 統一 AI Service Organization Controls 交鑰匙解決方案 安全資訊與事件管理（SIEM） 安全協調、自動化與回應（SOAR） 託管式資安營運中心服務（SOCaaS） 資安 AI 端點防護 統一端點 整合式代理程式 端點偵測與回應(EDR) 資料保護 資料外洩防治服務 身分管理 FortiAuthenticator FortiIdentity Cloud 雲端平台 FortiToken FortiPAM 網路偵測 網路偵測與回應（NDR） 誘捕技術 沙盤 Email 與辦公安全防護組合 電子郵件安全 辦公安全防護組合 持續性威脅曝險管理（CTEM） 威脅曝險管理 服務 資安事件回應服務 作業系統 FortiOS Learn more abou…",
+          "scope": "IBERIA / PT",
+          "source_grade": "C",
+          "source_type": "public-web",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-09-01",
+          "freshness_status": "current",
+          "method": "web-evidence:partners",
+          "content_digest": "66e267766a109945d8060000b431f4283c0a558bd1e0042da057e49a2f90e8e8",
+          "matched_terms": [
+            "Microsoft Azure",
+            "AWS"
+          ],
+          "field": "vendor_relations",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
+        }
+      ],
+      "source": "SIA",
+      "date": "2026-09-01",
+      "confidence": 0.88,
+      "status": "CONFIRMADO",
+      "validity": "current",
+      "derived": false
     },
     {
       "id": "rel_cad2a66d85ba4fba",
