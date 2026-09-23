@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-09-22T10:08:16.989207+00:00",
+  "generated_at": "2026-09-23T10:09:55.708122+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -459,14 +459,6 @@
       "historical_names": []
     },
     {
-      "id": "clie_3b1b22390cb9e48b",
-      "canonical_name": "Município de Braga",
-      "entity_type": "client",
-      "country": "PT",
-      "aliases": [],
-      "historical_names": []
-    },
-    {
       "id": "clie_008870b44681c0d6",
       "canonical_name": "NOS",
       "entity_type": "client",
@@ -535,6 +527,14 @@
       "canonical_name": "Sacyr",
       "entity_type": "client",
       "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_dff6f01722f0521c",
+      "canonical_name": "Semapa",
+      "entity_type": "client",
+      "country": "PT",
       "aliases": [],
       "historical_names": []
     },
@@ -6310,7 +6310,7 @@
       "id": "tech_70574f8129932ee1",
       "canonical_name": "Identity & Access",
       "entity_type": "technology",
-      "country": "PT",
+      "country": "ES",
       "aliases": [],
       "historical_names": []
     },
@@ -105729,51 +105729,6 @@
       "derived": true
     },
     {
-      "id": "rel_73a51ad308e9cac6",
-      "entity_a_id": "clie_3b1b22390cb9e48b",
-      "entity_a": "Município de Braga",
-      "relation": "technology_signal",
-      "entity_b_id": "tech_70574f8129932ee1",
-      "entity_b": "Identity & Access",
-      "countries": [
-        "PT"
-      ],
-      "country": "PT",
-      "evidence": [
-        {
-          "source": "cm-braga.pt",
-          "source_catalog_name": "Município de Braga",
-          "researched_entity": "Município de Braga",
-          "source_binding": "entity-owned",
-          "title": "Ayuntamiento de Braga | Notícias | Braga elegida como la Ciudad Europea del Deporte en 2018",
-          "url": "https://www.cm-braga.pt/es/0201/home/noticias/item/item-1-5195",
-          "date": "2026-09-22",
-          "description": "…Municipal Contactos Asamblea Municipal Parroquias civiles Empresas Empresas Municipales Empresas Afiliadas Cooperación Institucional Presentación Acuerdos de Cooperación Hermanamientos Redes Heráldica Vivir Ciudad Estrategia Innovación Presentación Plano Estratégico para el Desarrollo Ambiente Presentación Espacios Verdes Playas Fluviales Cultura y Patrimonio Pr…",
-          "scope": "PT",
-          "source_grade": "A",
-          "source_type": "official-domain-discovery",
-          "official": true,
-          "classification": "public",
-          "retrieved_at": "2026-09-22",
-          "freshness_status": "current",
-          "method": "web-evidence:news",
-          "content_digest": "b506153979dd3cdbd910cd91db846ec2416e7c85974eb43b5552d5e9545af481",
-          "matched_terms": [
-            "redes",
-            "iam"
-          ],
-          "field": "technology_signals",
-          "revalidation": ""
-        }
-      ],
-      "source": "cm-braga.pt",
-      "date": "2026-09-22",
-      "confidence": 0.48,
-      "status": "SEÑAL",
-      "validity": "needs-corroboration",
-      "derived": true
-    },
-    {
       "id": "rel_08e8c33dd7f7804c",
       "entity_a_id": "clie_257c699509389edc",
       "entity_a": "ACS",
@@ -110065,6 +110020,50 @@
       ],
       "source": "NOS",
       "date": "2026-09-01",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_f96a151883d73c2a",
+      "entity_a_id": "clie_dff6f01722f0521c",
+      "entity_a": "Semapa",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "semapa.pt",
+          "source_catalog_name": "Semapa",
+          "researched_entity": "Semapa",
+          "source_binding": "entity-owned",
+          "title": "Página pública · official",
+          "url": "https://www.semapa.pt/",
+          "date": "2026-09-23",
+          "description": "…sobre eventos, parcerias ou outras iniciativas que nos levam por um caminho melhor. Saiba mais Política de Privacidade Termos de Utilização Política de Cookies Contacte-nos Copyright © 2026 Grupo Semapa. All rights reserved. CONSULTE AS NOSSAS REDES SOCIAIS",
+          "scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-09-23",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "5dfd5381b3d38c434e3b163bc6a484312916562912713aabf12acd2be3c535af",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "revalidation": ""
+        }
+      ],
+      "source": "semapa.pt",
+      "date": "2026-09-23",
       "confidence": 0.48,
       "status": "SEÑAL",
       "validity": "needs-corroboration",
