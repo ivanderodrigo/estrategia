@@ -24,7 +24,13 @@ from ..settings import RESEARCH_POLICY, RESEARCH_PROFILES, VERSION
 from ..storage import atomic_write_json, prune_json_mapping, read_json
 from .documents import Document, Link, parse_document, sitemap_urls
 from .client_discovery import discover_official_site
-from .extractors import Candidate, evidence_snippet, extract_candidates
+from .extractors import (
+    Candidate,
+    evidence_snippet,
+    extract_candidates,
+    manufacturer_revenue_value_is_strict,
+    revenue_value_is_strict,
+)
 from .planner import plan
 from .security import UnsafeUrl, validate_public_url
 from .sources import PATH_FAMILY_HINTS, SourceSeed, family_from_url, relevant_families, seeds_for
@@ -565,6 +571,20 @@ def _field_context_ok(
 ) -> bool:
     field = str(field_id or "").casefold()
 
+    if field == "revenue":
+        if not revenue_value_is_strict(str(value or "")):
+            return False
+        if entity_owned:
+            return True
+        # On third-party pages the entity must be locally attached to the same
+        # financial observation; a distant menu/header mention is not enough.
+        revenue_anchors = [entity_key, *anchors[:4]]
+        for tpos in target_positions:
+            window = _semantic_window(body, tpos, tpos, radius=190)
+            if any(anchor and _target_match(anchor, window) for anchor in revenue_anchors):
+                return True
+        return False
+
     if field in {"hiring_signals", "job_profiles", "job_vendors"}:
         cues = (
             "job", "jobs", "career", "careers", "vacan", "position",
@@ -842,15 +862,44 @@ def _focus_candidates(
     document: Document,
     official: bool,
 ) -> dict[str, Candidate]:
+    output = dict(candidates)
+
+    revenue_candidate = output.get("revenue")
+    if revenue_candidate is not None:
+        validator = (
+            manufacturer_revenue_value_is_strict
+            if target.get("section") == "manufacturers"
+            else revenue_value_is_strict
+        )
+        filtered_revenue = tuple(
+            value for value in revenue_candidate.values
+            if validator(str(value))
+            and _subject_value_match(
+                str(target.get("entity") or ""),
+                value,
+                document,
+                field_id="revenue",
+            )
+        )
+        if filtered_revenue:
+            output["revenue"] = Candidate(
+                filtered_revenue,
+                revenue_candidate.claim_type,
+                revenue_candidate.confidence,
+                revenue_candidate.snippet,
+                revenue_candidate.matched_terms,
+            )
+        else:
+            output.pop("revenue", None)
+
     target_map = target.get("target_values") or {}
     if not isinstance(target_map, dict) or not target_map:
-        return candidates
+        return output
 
     strict_claim_support = bool(
         {"historical-revalidation", "evidence-support"}
         & set(target.get("gap_kinds") or [])
     )
-    output = dict(candidates)
 
     for field_id, wanted in target_map.items():
         if not wanted:
@@ -1227,6 +1276,10 @@ def run(
                     "claim_type": candidate.claim_type,
                     "assertion_status": "SEÑAL" if candidate.claim_type == "signal" else "CONFIRMADO" if candidate.confidence >= 0.8 else "PROBABLE",
                     "qualifier": (
+                        "Facturación: concepto financiero, importe/moneda y periodo deben aparecer juntos; "
+                        "en fabricantes se rechazan cifras de canal, región, segmento, mercado o terceros. "
+                        if field_id == "revenue"
+                        else
                         "Extracción automática conservadora con fragmento y huella del documento. "
                         "Las señales de empleo no prueban por sí solas una relación comercial o un despliegue."
                     ),

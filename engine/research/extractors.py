@@ -97,44 +97,183 @@ def vendors_in_text(text: str, vendor_names: Iterable[str]) -> tuple[list[str], 
 
 
 
+# HF5 strict revenue evidence
 REVENUE_LABELS = (
+    "total revenue", "consolidated revenue", "group revenue", "company revenue",
     "revenue", "net sales", "annual sales", "turnover",
-    "facturación", "facturacion", "ingresos", "ventas",
-    "faturação", "faturacao", "receita", "volume de negócios", "volume de negocios",
+    "facturación total", "facturacion total", "facturación", "facturacion",
+    "importe neto de la cifra de negocios", "cifra de negocios",
+    "ingresos totales", "ingresos anuales", "ingresos",
+    "ventas netas", "ventas anuales", "ventas totales", "ventas",
+    "faturação total", "faturacao total", "faturação", "faturacao",
+    "receita total", "receita anual", "receita",
+    "volume de negócios", "volume de negocios",
+    "vendas líquidas", "vendas liquidas", "vendas anuais", "vendas totais",
 )
+
+_REVENUE_CUE_PATTERN = (
+    r"\b(?:total\s+|annual\s+|consolidated\s+|group\s+|company\s+)?revenues?\b"
+    r"|\bnet\s+sales\b|\bannual\s+sales\b|\bturnover\b"
+    r"|\bimporte\s+neto\s+de\s+la\s+cifra\s+de\s+negocios\b"
+    r"|\bcifra\s+de\s+negocios\b|\bfacturaci[oó]n(?:\s+total)?\b"
+    r"|\bingresos(?:\s+(?:totales|anuales))?\b"
+    r"|\bventas(?:\s+(?:netas|anuales|totales))?\b"
+    r"|\bfatura[cç][aã]o(?:\s+total)?\b|\breceita(?:\s+(?:total|anual))?\b"
+    r"|\bvolume\s+de\s+neg[oó]cios\b|\bvendas(?:\s+(?:l[ií]quidas|anuais|totais))?\b"
+)
+REVENUE_CUE_RE = re.compile(_REVENUE_CUE_PATTERN, re.I)
+
+_REVENUE_NUMBER = r"(?:\d{1,3}(?:[.\s]\d{3})*(?:[.,]\d+)?|\d+(?:[.,]\d+)?)"
+_REVENUE_SCALE = (
+    r"(?:mil\s+millones|mil\s+milh[oõ]es|millions|million|billions|billion|"
+    r"millones|mill[oó]n|milh[oõ]es|milh[aã]o|bili[oõ]es|bili[aã]o|mn|bn|m|k)"
+)
+_REVENUE_CURRENCY = r"(?:euros?|dollars?|d[oó]lares?|libras?|US\$|USD|EUR|GBP|€|£|\$)"
 REVENUE_MONEY_RE = re.compile(
-    r"(?:US\$|€|£|\$|USD|EUR|GBP)\s*\d[\d.,]*(?:\s*(?:million|billion|millions|billions|mn|bn|millones|mil millones|milhões|milhoes|mil milhões|mil milhoes|biliões|bilioes))?"
-    r"|\d[\d.,]*\s*(?:million|billion|millions|billions|mn|bn|millones|mil millones|milhões|milhoes|mil milhões|mil milhoes|biliões|bilioes)(?:\s*(?:USD|EUR|GBP|euros?|dollars?|dólares?|dolares?|libras?))?",
+    rf"(?:{_REVENUE_CURRENCY}\s*{_REVENUE_NUMBER}(?:\s*{_REVENUE_SCALE})?"
+    rf"|{_REVENUE_NUMBER}(?:\s*{_REVENUE_SCALE})?\s*(?:de\s+)?{_REVENUE_CURRENCY})",
+    re.I,
+)
+REVENUE_YEAR_RE = re.compile(r"\b(?:FY\s*)?20\d{2}\b", re.I)
+
+_MANUFACTURER_PARTIAL_SCOPE_RE = re.compile(
+    r"\b(?:channel|canal|partner|partners|spain|españa|portugal|iberia|emea|"
+    r"europe|europa|segment|division|business\s+unit|unidad\s+de\s+negocio|"
+    r"market|mercado|industry|industria)\b",
+    re.I,
+)
+_MANUFACTURER_TOTAL_RE = re.compile(
+    r"\b(?:total\s+revenue|consolidated\s+revenue|group\s+revenue|company\s+revenue|"
+    r"net\s+sales|facturaci[oó]n\s+total|ingresos\s+totales|ventas\s+netas|"
+    r"fatura[cç][aã]o\s+total|receita\s+total|vendas\s+l[ií]quidas)\b",
     re.I,
 )
 
 
-def revenue_observations(text: str) -> tuple[list[str], list[str]]:
+def _revenue_components(value: str) -> tuple[re.Match[str] | None, re.Match[str] | None, re.Match[str] | None]:
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    cue = REVENUE_CUE_RE.search(text)
+    money = REVENUE_MONEY_RE.search(text)
+    year = REVENUE_YEAR_RE.search(text)
+    return cue, money, year
+
+
+def revenue_value_is_strict(value: str) -> bool:
+    # Concept + amount/currency + period must belong to one compact observation.
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    if not text or len(text) > 240:
+        return False
+    cue, money, year = _revenue_components(text)
+    if not cue or not money or not year:
+        return False
+    distance = max(0, max(cue.start(), money.start()) - min(cue.end(), money.end()))
+    if distance > 150:
+        return False
+    core_left = min(cue.start(), money.start())
+    core_right = max(cue.end(), money.end())
+    if year.end() < core_left - 100 or year.start() > core_right + 100:
+        return False
+    return True
+
+
+def manufacturer_revenue_value_is_strict(value: str) -> bool:
+    # Manufacturer revenue means company/group scale, not channel/region/segment revenue.
+    if not revenue_value_is_strict(value):
+        return False
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    if _MANUFACTURER_PARTIAL_SCOPE_RE.search(text) and not _MANUFACTURER_TOTAL_RE.search(text):
+        return False
+    return True
+
+
+def _compact_revenue_observation(
+    text: str,
+    cue: re.Match[str],
+    money: re.Match[str],
+    year: re.Match[str],
+) -> str:
+    left = min(cue.start(), money.start(), year.start())
+    right = max(cue.end(), money.end(), year.end())
+    start = max(0, left - 55)
+    end = min(len(text), right + 55)
+
+    for marker in (". ", "; ", " • ", " | ", "\n"):
+        pos = text.rfind(marker, start, left)
+        if pos >= 0:
+            start = max(start, pos + len(marker))
+    next_positions = [
+        pos for marker in (". ", "; ", " • ", " | ", "\n")
+        for pos in [text.find(marker, right, end)]
+        if pos >= 0
+    ]
+    if next_positions:
+        end = min(end, min(next_positions) + 1)
+
+    value = text[start:end].strip(" ,;:|-")
+    if len(value) > 220:
+        start = max(0, left - 24)
+        end = min(len(text), right + 24)
+        value = text[start:end].strip(" ,;:|-")
+    return value
+
+
+def revenue_observations(text: str, *, global_only: bool = False) -> tuple[list[str], list[str]]:
     compact = re.sub(r"\s+", " ", text or "").strip()
     if not compact:
         return [], []
-    segments = re.split(r"(?<=[.!?;])\s+|\s+[•●]\s+", compact)
+
     values: list[str] = []
     terms: list[str] = []
     seen: set[str] = set()
-    for segment in segments:
-        lowered = canonical(segment)
-        label = next((term for term in REVENUE_LABELS if canonical(term) in lowered), None)
-        if not label or not REVENUE_MONEY_RE.search(segment):
+
+    for cue in REVENUE_CUE_RE.finditer(compact):
+        window_start = max(0, cue.start() - 120)
+        window_end = min(len(compact), cue.end() + 190)
+        local = compact[window_start:window_end]
+
+        money_matches = list(REVENUE_MONEY_RE.finditer(local))
+        year_matches = list(REVENUE_YEAR_RE.finditer(local))
+        if not money_matches or not year_matches:
             continue
-        value = segment.strip(" ,;:-")
-        if len(value) > 260:
-            pos = lowered.find(canonical(label))
-            start = max(0, pos - 70)
-            value = value[start:start + 250].strip(" ,;:-")
+
+        cue_abs = cue.start()
+        money_local = min(
+            money_matches,
+            key=lambda m: abs((window_start + m.start()) - cue_abs),
+        )
+        money_start = window_start + money_local.start()
+        money_end = window_start + money_local.end()
+        money = REVENUE_MONEY_RE.search(compact, money_start, money_end)
+        if money is None:
+            continue
+
+        year_local = min(
+            year_matches,
+            key=lambda m: min(
+                abs((window_start + m.start()) - cue.start()),
+                abs((window_start + m.start()) - money.start()),
+            ),
+        )
+        year_start = window_start + year_local.start()
+        year_end = window_start + year_local.end()
+        year = REVENUE_YEAR_RE.search(compact, year_start, year_end)
+        if year is None:
+            continue
+
+        value = _compact_revenue_observation(compact, cue, money, year)
+        validator = manufacturer_revenue_value_is_strict if global_only else revenue_value_is_strict
+        if not validator(value):
+            continue
+
         key = canonical(value)
-        if len(value) < 12 or key in seen:
+        if key in seen:
             continue
         seen.add(key)
         values.append(value)
-        terms.append(label)
+        terms.append(cue.group(0))
         if len(values) >= 3:
             break
+
     return values, terms
 
 
@@ -168,7 +307,7 @@ def extract_candidates(
     jobs, job_terms = _matches(text, JOB_PROFILE_TERMS)
     verticals, vertical_terms = _matches(text, VERTICAL_TERMS)
     vendors, vendor_terms = vendors_in_text(text, vendor_names)
-    revenues, revenue_terms = revenue_observations(text)
+    revenues, revenue_terms = revenue_observations(text, global_only=(section == "manufacturers"))
 
     def add(field: str, values: list[str], terms: list[str], claim: str = "fact", confidence: float | None = None) -> None:
         if not values:

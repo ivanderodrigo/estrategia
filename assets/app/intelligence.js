@@ -14,6 +14,31 @@
 
   const PUBLIC_SECTIONS=['manufacturers','distributors','integrators','clients_public','clients_private','trends','architectures'];
   const VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors'],integradores:['integrators','manufacturers'],clientes:['clients_public','clients_private'],tendencias:['trends','manufacturers'],arquitecturas:['architectures']};
+  const CRITERIA_VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors'],integradores:['integrators'],clientes:['clients_public','clients_private'],tendencias:['trends'],arquitecturas:['architectures']};
+  const CRITERIA_SECTION_LABELS={manufacturers:'Fabricantes',distributors:'Mayoristas',integrators:'Integradores',clients_public:'Clientes públicos',clients_private:'Clientes privados',trends:'Tendencias',architectures:'Arquitecturas'};
+  const RESEARCH_CRITERIA_PLAYBOOKS={
+    partners:{families:['partners','cases','careers','official'],sources:['vendor partner locator','entity line card / alliances','official case study','careers'],rationale:'Las relaciones de canal se acreditan mejor en directorios oficiales del fabricante y páginas de alianzas del partner.'},
+    procurement:{families:['procurement','official','news'],sources:['TED','PLACSP','BASE.gov.pt','portal oficial del comprador'],rationale:'Importes, adjudicatarios, fechas y necesidades priorizan contratación pública estructurada y portales oficiales.'},
+    cases:{families:['cases','official','partners'],sources:['official case study','customer story','success story'],rationale:'Casos y clientes requieren atribución explícita de entidad, tecnología y relación en una fuente pública.'},
+    careers:{families:['careers','technology','official'],sources:['career portal','vacante oficial','perfil técnico público'],rationale:'Las ofertas de empleo se usan como señal de tecnologías, perfiles y áreas de inversión activas.'},
+    financial:{families:['financial','official','news'],sources:['annual report','investor relations','registro / cuentas públicas','nota oficial'],rationale:'Facturación y escala exigen entidad, importe, moneda y periodo claramente identificados.'},
+    services:{families:['services','cases','official'],sources:['service catalogue','solution page','case study'],rationale:'Capacidades y servicios deben proceder de catálogos o páginas de solución de la propia entidad.'},
+    analyst:{families:['analyst','news','official'],sources:['analyst report','market report','official market material'],rationale:'Métricas y posición de mercado requieren contexto, periodo, geografía y metodología.'},
+    technology:{families:['technology','services','cases','official'],sources:['product / technology page','architecture page','case study'],rationale:'Tecnologías y plataformas se validan mejor en páginas técnicas y casos de uso explícitos.'},
+    news:{families:['news','official','cases'],sources:['press release','official news','reliable trade press'],rationale:'Movimientos recientes necesitan fuentes fechadas y atribuibles.'},
+    official:{families:['official','services','news'],sources:['official website','official documentation'],rationale:'Se prioriza una fuente primaria explícita antes de recurrir a fuentes secundarias.'}
+  };
+  const RESEARCH_FAMILY_BY_FIELD={
+    vendor_relations:'partners',westcon_overlap:'partners',competitor_vendor_overlap:'partners',competitors:'partners',integrators:'partners',distributors:'partners',specializations:'partners',
+    services:'services',capabilities:'services',differential_capabilities:'services',managed_services:'services',msp_mssp:'services',
+    public_cases:'cases',known_customers:'cases',verticals:'cases',job_profiles:'careers',job_vendors:'careers',hiring_signals:'careers',
+    revenue:'financial',market_share:'analyst',market_position:'analyst',
+    estimated_amount:'procurement',procurement_stage:'procurement',milestone_date:'procurement',notice_id:'procurement',request_or_need:'procurement',identified_integrators:'procurement',
+    technology_signals:'technology',identified_vendors:'technology',known_architectures:'technology',strategic_programs:'technology',
+    investment_signals:'news',public_projects:'news',contracts:'news',analyst_signals:'analyst',trend_market_metrics:'analyst',adjacent_market_metrics:'analyst',
+    market_players:'analyst',analyst_basis:'analyst',recent_signals:'news',iberia_context:'news',layers:'technology',vendors:'technology'
+  };
+  const PUBLIC_PROCUREMENT_CRITERIA_FIELDS=new Set(['notice_id','request_or_need','technology_signals','identified_vendors','identified_integrators','known_architectures','technology_domains','estimated_amount','milestone_date','procurement_stage','source_portal','cpv_codes','evidenced_needs','opportunity_area']);
   function hydrateEvidence(obj, registry){
     if(Array.isArray(obj)) return obj.map(x=>hydrateEvidence(x,registry));
     if(!obj || typeof obj!=='object') return obj;
@@ -80,11 +105,13 @@
     $('#dataStatusBtn')?.addEventListener('click', () => { closeUtilityMenu(); openModal('updateModal'); });
     $('#confidenceHelpBtn')?.addEventListener('click', () => { closeUtilityMenu(); openModal('confidenceModal'); });
     $('#btnSources')?.addEventListener('click', () => { closeUtilityMenu(); openModal('sourceModal'); });
+    $('#btnResearchCriteria')?.addEventListener('click', () => { closeUtilityMenu(); renderResearchCriteria(); openModal('criteriaModal'); });
     $('#btnExport')?.addEventListener('click', () => { closeUtilityMenu(); openModal('exportModal'); });
     $$('[data-close]').forEach(btn => btn.addEventListener('click', () => closeModal(btn.dataset.close)));
     $$('.modal').forEach(modal => modal.addEventListener('click', e => { if(e.target===modal) closeModal(modal.id); }));
     document.addEventListener('keydown', e => { if(e.key==='Escape'){ $$('.modal.open').forEach(m=>closeModal(m.id)); closeUtilityMenu(); hideTracePortal(); hideHelpPortal(); } });
     $('#sourceSearch')?.addEventListener('input', renderSourceCatalog);
+    $('#criteriaSearch')?.addEventListener('input', renderResearchCriteria);
     $('#exportPdf')?.addEventListener('click', async()=>{await ensureAllData();await exportPdf();});
     $('#exportPptx')?.addEventListener('click', async()=>{await ensureAllData();await exportPptx();});
     $('#filteredReportPrint')?.addEventListener('click', generateFilteredPrintReport);
@@ -332,9 +359,31 @@
     const items=(base.items||[]).filter(it=>wanted.has(norm(typeof it?.value==='object'?JSON.stringify(it.value):it?.value)));
     return {...base,value,items};
   }
+  function plausibleRevenueValue(value,globalOnly=false){
+    const raw=String(value??'').replace(/\s+/g,' ').trim(),n=norm(raw);
+    if(!raw||raw.length>240||!/\d/.test(raw)||!/\b(?:fy\s*)?20\d{2}\b/i.test(raw))return false;
+    const currency=/(?:€|£|\$|\b(?:usd|eur|gbp)\b|\beuros?\b|\bdollars?\b|\bdolares?\b|\blibras?\b)/i.test(raw);
+    const cue=/(?:\b(?:total |annual |consolidated |group |company )?revenues?\b|\bnet sales\b|\bannual sales\b|\bturnover\b|\bfacturacion\b|\bcifra de negocios\b|\bingresos\b|\bventas\b|\bfaturacao\b|\breceita\b|\bvolume de negocios\b|\bvendas\b)/.test(n);
+    if(!currency||!cue)return false;
+    if(globalOnly){
+      const partial=/(?:\bchannel\b|\bcanal\b|\bpartners?\b|\bspain\b|\bespana\b|\bportugal\b|\biberia\b|\bemea\b|\beurope\b|\beuropa\b|\bsegment\b|\bdivision\b|\bbusiness unit\b|\bunidad de negocio\b|\bmarket\b|\bmercado\b|\bindustry\b|\bindustria\b)/.test(n);
+      const total=/(?:\btotal revenue\b|\bconsolidated revenue\b|\bgroup revenue\b|\bcompany revenue\b|\bnet sales\b|\bfacturacion total\b|\bingresos totales\b|\bventas netas\b|\bfaturacao total\b|\breceita total\b|\bvendas liquidas\b)/.test(n);
+      if(partial&&!total)return false;
+    }
+    return true;
+  }
+  function strictRevenueField(field,col){
+    if(!field)return null;
+    const isList=Array.isArray(field.value),values=isList?field.value:[field.value],globalOnly=col?.revenue_scope==='global';
+    const kept=values.filter(v=>plausibleRevenueValue(v,globalOnly));
+    const keys=new Set(kept.map(v=>norm(typeof v==='object'?JSON.stringify(v):v)));
+    const items=(field.items||[]).filter(it=>keys.has(norm(typeof it?.value==='object'?JSON.stringify(it.value):it?.value)));
+    return {...field,value:isList?kept:(kept[0]??''),items};
+  }
   function fieldFor(row,col){
     if(col?.ui_remainder_of_linecard)return linecardRemainderField(row);
-    return col?.virtual?virtualField(row,col):(row?.fields?.[col?.id]||null);
+    const base=col?.virtual?virtualField(row,col):(row?.fields?.[col?.id]||null);
+    return col?.id==='revenue'?strictRevenueField(base,col):base;
   }
   function filterAccessor(row,fieldId,column){if(fieldId==='entity')return row?.name||'';const col=column||{id:fieldId};return fieldFor(row,col)?.value;}
   function loadTablePref(view,key,fallback){try{return JSON.parse(localStorage.getItem(`westcon-table-${key}-${view}`)||'null')??fallback}catch(_){return fallback}}
@@ -527,7 +576,7 @@
   function cardGrid(rows, schema, forceAll=false, context='card'){
     const cols=forceAll?schema:activeColumns(schema,rows,'cards');
     const cardClass=context==='trend'?'intel-card trend-card':'intel-card';
-    return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable({value:row.name,evidence:row.evidence||[],confidence:.9,confidence_band:'high'},`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>cardField(c,row.fields?.[c.id],context)||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c)}</div>`).join('')}</article>`).join('');
+    return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable({value:row.name,evidence:row.evidence||[],confidence:.9,confidence_band:'high'},`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>cardField(c,fieldFor(row,c),context)||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c)}</div>`).join('')}</article>`).join('');
   }
   function renderTrends(){
     const q=norm($('#trendSearch')?.value), all=state.data.trends||[], rows=all.filter(r=>!q||rowBlob(r).includes(q));
@@ -617,6 +666,50 @@
     const classes=new Set(all.map(s=>s.class).filter(Boolean)); const dims=new Set(all.flatMap(s=>s.dimensions||[]));
     $('#sourceSummary').innerHTML=`<div><b>${all.length}</b><span>fuentes / familias</span></div><div><b>${classes.size}</b><span>clases de fuente</span></div><div><b>${dims.size}</b><span>dimensiones de inteligencia</span></div><div><b>ES + PT</b><span>foco geográfico</span></div>`;
     $('#sourceCatalog').innerHTML=rows.slice(0,220).map(s=>`<div class="source-row"><b>${esc(s.name)}</b><small>${esc(s.class||'fuente / procedencia')} · ${(s.scope||[]).map(esc).join(' / ')}</small><div class="dims">${(s.dimensions||[]).slice(0,7).map(d=>`<span class="tag">${esc(d)}</span>`).join('')}</div>${s.url&&!String(s.url).startsWith('dynamic://')?`<a href="${esc(s.url)}" target="_blank" rel="noopener">Abrir ↗</a>`:(String(s.class||'').includes('Westcon') || String(s.class||'').startsWith('WESTCON_DOCUMENT')?'<small>Documento Westcon · sin URL pública necesaria</small>':'<small>Enrutado dinámicamente por entidad</small>')}</div>`).join('') || '<div class="empty-state">Sin coincidencias.</div>';
+  }
+
+  function criteriaFamilyFor(section,field){
+    if(section==='clients_public'&&PUBLIC_PROCUREMENT_CRITERIA_FIELDS.has(field))return 'procurement';
+    return RESEARCH_FAMILY_BY_FIELD[field]||'official';
+  }
+  function criteriaQueries(family,col){
+    const field=String(col?.id||'').replace(/_/g,' '),entity='{Entidad}';
+    if(family==='partners')return [`"${entity}" partners vendors`,`"${entity}" alianzas fabricantes`];
+    if(family==='procurement')return [`"${entity}" contratación tecnología`,`"${entity}" concurso adjudicación`];
+    if(family==='careers')return [`"${entity}" careers ${field}`,`"${entity}" empleo tecnología`];
+    if(family==='financial')return [`"${entity}" annual report revenue`,`"${entity}" facturación resultados`];
+    if(family==='services'||family==='technology')return [`"${entity}" ${field}`,`"${entity}" solutions services`];
+    if(family==='analyst')return [`"${entity}" market share report`,`"${entity}" analyst report`];
+    return [`"${entity}" ${field}`];
+  }
+  function criteriaAcceptance(section,col,family){
+    const claim=String(col?.claim_class||'').toUpperCase();
+    if(col?.virtual)return 'Campo calculado en la aplicación a partir de evidencias ya publicadas; no se investiga como hecho independiente.';
+    if(claim.includes('DERIVED')||claim.includes('INTERNAL'))return 'Dato derivado o clasificación interna: se calcula desde hechos soportados; no se publica como si fuera una afirmación externa literal.';
+    if(col?.id==='revenue'&&section==='manufacturers')return 'Solo facturación/ingresos totales del fabricante o grupo. Deben coexistir concepto financiero + importe/moneda + año. Se rechazan canal, región, segmento, mercado y terceros.';
+    if(col?.id==='revenue')return 'Debe coexistir concepto financiero + importe/moneda + año y quedar atribuible a la entidad. El ámbito geográfico se conserva explícitamente.';
+    if(family==='partners')return 'La relación debe quedar explícita entre las entidades; una simple mención o una página de tercero sin contexto no basta.';
+    if(family==='procurement')return 'Se prioriza el registro/expediente público con comprador, fecha, importe/estado o necesidad claramente identificables.';
+    if(family==='analyst')return 'La métrica debe conservar periodo, geografía, unidad y contexto metodológico suficiente.';
+    return 'El valor debe estar explícitamente atribuido a la entidad/campo y conservar evidencia trazable; las señales débiles no se convierten en confirmación.';
+  }
+  function renderResearchCriteria(){
+    const catalog=$('#criteriaCatalog'),summary=$('#criteriaSummary');if(!catalog||!summary||!state.data)return;
+    const q=norm($('#criteriaSearch')?.value),sections=CRITERIA_VIEW_SECTIONS[state.view]||[];
+    const rows=[];
+    for(const section of sections){
+      for(const col of (state.data.schemas?.[section]||[]).filter(c=>c.hidden!==true)){
+        const family=criteriaFamilyFor(section,col),play=RESEARCH_CRITERIA_PLAYBOOKS[family]||RESEARCH_CRITERIA_PLAYBOOKS.official;
+        const queries=criteriaQueries(family,col),acceptance=criteriaAcceptance(section,col,family);
+        const status=col.essential?'Esencial':col.default_visible===false?'Opcional':'Visible por defecto';
+        const haystack=norm([CRITERIA_SECTION_LABELS[section],col.label,col.id,family,play.families.join(' '),play.sources.join(' '),play.rationale,queries.join(' '),acceptance].join(' '));
+        if(q&&!haystack.includes(q))continue;
+        rows.push({section,col,family,play,queries,acceptance,status});
+      }
+    }
+    const families=new Set(rows.map(r=>r.family));
+    summary.innerHTML=`<div><b>${rows.length}</b><span>columnas del área actual</span></div><div><b>${families.size}</b><span>familias de investigación</span></div><div><b>${esc((CRITERIA_VIEW_SECTIONS[state.view]||[]).map(s=>CRITERIA_SECTION_LABELS[s]).join(' + '))}</b><span>ámbito mostrado</span></div><div><b>Dinámico</b><span>prioridad según huecos y presupuesto</span></div>`;
+    catalog.innerHTML=rows.map(r=>`<div class="source-row"><b>${esc(r.col.label)}</b><small>${esc(CRITERIA_SECTION_LABELS[r.section])} · familia ${esc(r.family)} · ${esc(r.status)}</small><div class="dims">${r.play.sources.slice(0,6).map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div><small><strong>Criterio:</strong> ${esc(r.play.rationale)}</small><small><strong>Búsquedas tipo:</strong> ${r.queries.map(esc).join(' · ')}</small><small><strong>Aceptación:</strong> ${esc(r.acceptance)}</small></div>`).join('')||'<div class="empty-state">Sin coincidencias.</div>';
   }
 
   function selectedModules(){ return new Set($$('.export-modules input:checked').map(x=>x.value)); }
@@ -717,7 +810,7 @@
       n++; pages.push(`<section class="report-page r-section-page" style="--accent:#${info.accent}">
         <div class="r-page-head"><div>${reportBrand()}<div class="r-eyebrow">${esc(info.eyebrow)}</div><h2>${esc(info.label)}</h2><p>${esc(info.desc)}</p></div><div class="r-page-count"><b>${esc(rows.length)}</b><span>entidades</span></div></div>
         <div class="r-page-meta"><span>Bloque ${ci+1}/${Math.max(1,colGroups.length)}</span><span>Página ${n}/${total}</span><span>Resumen visual; detalle completo en la aplicación</span></div>
-        <div class="r-table-wrap"><table class="r-table"><thead><tr><th class="r-entity">Entidad</th>${cg.map(c=>`<th>${esc(c.label)}</th>`).join('')}</tr></thead><tbody>${rg.map(r=>`<tr><td class="r-entity"><b>${esc(r.name)}</b><small>${rowEvidenceCount(r)} fuentes</small></td>${cg.map(c=>{const f=r.fields?.[c.id];return `<td>${f&&hasValue(f.value)?reportValueHtml(f):''}</td>`}).join('')}</tr>`).join('')}</tbody></table></div>
+        <div class="r-table-wrap"><table class="r-table"><thead><tr><th class="r-entity">Entidad</th>${cg.map(c=>`<th>${esc(c.label)}</th>`).join('')}</tr></thead><tbody>${rg.map(r=>`<tr><td class="r-entity"><b>${esc(r.name)}</b><small>${rowEvidenceCount(r)} fuentes</small></td>${cg.map(c=>{const f=fieldFor(r,c);return `<td>${f&&hasValue(f.value)?reportValueHtml(f):''}</td>`}).join('')}</tr>`).join('')}</tbody></table></div>
         ${reportFooter(info.label)}
       </section>`);
     })); return pages.join('');
@@ -726,7 +819,7 @@
     const info=domainCopy[key], cols=activeColumns(schema,[row]);
     return `<section class="report-page r-section-page r-card-page" style="--accent:#${info.accent}">
       <div class="r-page-head"><div>${reportBrand()}<div class="r-eyebrow">${esc(info.eyebrow)}</div><h2>${esc(row.name)}</h2><p>${esc(info.desc)}</p></div><div class="r-page-count"><b>${index+1}</b><span>de ${total}</span></div></div>
-      <div class="r-intel-card"><div class="r-card-title"><h3>${esc(row.name)}</h3><span>${rowEvidenceCount(row)} fuentes</span></div><div class="r-card-fields">${cols.map(c=>{const f=row.fields?.[c.id];return `<div class="r-card-field"><label>${esc(c.label)}</label><div>${reportValueHtml(f)}</div></div>`}).join('')}</div></div>
+      <div class="r-intel-card"><div class="r-card-title"><h3>${esc(row.name)}</h3><span>${rowEvidenceCount(row)} fuentes</span></div><div class="r-card-fields">${cols.map(c=>{const f=fieldFor(row,c);return `<div class="r-card-field"><label>${esc(c.label)}</label><div>${reportValueHtml(f)}</div></div>`}).join('')}</div></div>
       ${reportFooter(info.label)}
     </section>`;
   }
@@ -826,7 +919,7 @@
     slide.addShape(pptx.ShapeType.roundRect,{x:x+w-.88,y:y+.17,w:.7,h:.27,rectRadius:.05,fill:{color:'EDF3F5'},line:{color:'EDF3F5'}});
     slide.addText(`${rowEvidenceCount(row)} src`,{x:x+w-.84,y:y+.225,w:.62,h:.13,fontFace:'Aptos',fontSize:5.7,bold:true,color:'42606F',align:'center',margin:0});
     const cols=activeColumns(schema,[row]).filter(c=>c.id!=='scope').slice(0,3); let yy=y+.58;
-    cols.forEach(c=>{const f=row.fields?.[c.id];slide.addText(c.label.toUpperCase(),{x:x+.16,y:yy,w:1.35,h:.13,fontFace:'Aptos',fontSize:5.5,bold:true,color:exportTheme.muted,margin:0,charSpacing:.4});if(!(Array.isArray(f?.value)&&pptAddConfidenceChips(slide,pptx,f,x+1.52,yy-.015,w-1.7,2)))slide.addText(pptCompact(f?.value,92),{x:x+1.52,y:yy-.01,w:w-1.7,h:.28,fontFace:'Aptos',fontSize:7.2,color:exportTheme.ink,margin:0,fit:'shrink',valign:'top'});yy+=.31;});
+    cols.forEach(c=>{const f=fieldFor(row,c);slide.addText(c.label.toUpperCase(),{x:x+.16,y:yy,w:1.35,h:.13,fontFace:'Aptos',fontSize:5.5,bold:true,color:exportTheme.muted,margin:0,charSpacing:.4});if(!(Array.isArray(f?.value)&&pptAddConfidenceChips(slide,pptx,f,x+1.52,yy-.015,w-1.7,2)))slide.addText(pptCompact(f?.value,92),{x:x+1.52,y:yy-.01,w:w-1.7,h:.28,fontFace:'Aptos',fontSize:7.2,color:exportTheme.ink,margin:0,fit:'shrink',valign:'top'});yy+=.31;});
     const src=pptEvidenceNames(row,2); if(src.length)slide.addText(`Fuentes: ${src.join(' · ')}`,{x:x+.16,y:y+h-.25,w:w-.32,h:.13,fontFace:'Aptos',fontSize:5.6,color:'758994',italic:true,margin:0,fit:'shrink'});
   }
   function pptAddEntitySlides(pptx,key,rows,schema){
@@ -838,7 +931,7 @@
     slide.addText(row.name,{x:x+.25,y:y+.2,w:w-1.45,h:.32,fontFace:'Aptos Display',fontSize:15,bold:true,color:exportTheme.navy,margin:0,fit:'shrink'});
     slide.addText(`${rowEvidenceCount(row)} fuentes`,{x:x+w-1.15,y:y+.23,w:.92,h:.17,fontFace:'Aptos',fontSize:6.4,bold:true,color:exportTheme.muted,align:'right',margin:0});
     const cols=activeColumns(schema,[row]).slice(0,8), left=cols.slice(0,4), right=cols.slice(4,8);
-    const draw=(list,xx,ww)=>{let yy=y+.72;list.forEach(c=>{const f=row.fields?.[c.id];slide.addText(c.label.toUpperCase(),{x:xx,y:yy,w:ww,h:.13,fontFace:'Aptos',fontSize:5.8,bold:true,color:exportTheme.muted,margin:0,charSpacing:.45});if(!(Array.isArray(f?.value)&&pptAddConfidenceChips(slide,pptx,f,xx,yy+.19,ww,5)))slide.addText(pptCompact(f?.value,255),{x:xx,y:yy+.17,w:ww,h:.72,fontFace:'Aptos',fontSize:7.7,color:exportTheme.ink,margin:0,fit:'shrink',valign:'top'});yy+=1.02;});};
+    const draw=(list,xx,ww)=>{let yy=y+.72;list.forEach(c=>{const f=fieldFor(row,c);slide.addText(c.label.toUpperCase(),{x:xx,y:yy,w:ww,h:.13,fontFace:'Aptos',fontSize:5.8,bold:true,color:exportTheme.muted,margin:0,charSpacing:.45});if(!(Array.isArray(f?.value)&&pptAddConfidenceChips(slide,pptx,f,xx,yy+.19,ww,5)))slide.addText(pptCompact(f?.value,255),{x:xx,y:yy+.17,w:ww,h:.72,fontFace:'Aptos',fontSize:7.7,color:exportTheme.ink,margin:0,fit:'shrink',valign:'top'});yy+=1.02;});};
     draw(left,x+.25,(w-.7)/2);draw(right,x+w/2+.1,(w-.7)/2);
     const src=pptEvidenceNames(row,3); if(src.length)slide.addText(`Fuentes: ${src.join(' · ')}`,{x:x+.25,y:y+h-.28,w:w-.5,h:.13,fontFace:'Aptos',fontSize:5.8,color:'758994',italic:true,margin:0,fit:'shrink'});
   }

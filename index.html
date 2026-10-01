@@ -12,7 +12,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.13.0/dist/pptxgen.bundle.js"></script>
 <script defer src="assets/app/filter_engine.js?v=4.3.1"></script>
 <script defer src="assets/app/report_engine.js?v=4.3.1"></script>
-<script defer src="assets/app/intelligence.js?v=4.3.1"></script>
+<script defer src="assets/app/intelligence.js?v=4.3.1-hf5"></script>
 </head>
 <body>
 <header class="appbar">
@@ -35,6 +35,7 @@
       <button id="dataStatusBtn" class="utility-item" type="button"><span class="data-status-dot"></span><span id="dataStatusLabel">Datos · cargando…</span></button>
       <button id="confidenceHelpBtn" class="utility-item" type="button"><span class="confidence-mini high"></span><span class="confidence-mini medium"></span><span class="confidence-mini low"></span><span>Confianza</span></button>
       <button id="btnSources" class="utility-item" type="button">Fuentes</button>
+      <button id="btnResearchCriteria" class="utility-item" type="button">Criterios de búsqueda</button>
       <button id="btnExport" class="utility-item primary-menu" type="button">Generar informe / PPT</button>
       <div class="utility-text-size" role="group" aria-label="Tamaño del texto">
         <span>Tamaño de texto</span>
@@ -156,6 +157,14 @@
   </div>
 </div>
 
+<div id="criteriaModal" class="modal" aria-hidden="true">
+  <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="criteriaTitle">
+    <div class="modal-head"><div><span>METODOLOGÍA DE INVESTIGACIÓN</span><h2 id="criteriaTitle">Criterio de búsqueda por columna</h2><p>Muestra el enrutado que utiliza el motor para cada campo de la página actual: familias de fuente, fuentes preferidas, ejemplos de consulta y regla de aceptación. La ejecución concreta depende de los huecos abiertos, la prioridad y el presupuesto del ciclo.</p></div><button class="modal-close" data-close="criteriaModal" type="button" aria-label="Cerrar">×</button></div>
+    <div class="source-summary" id="criteriaSummary"></div>
+    <input id="criteriaSearch" class="modal-search" type="search" placeholder="Buscar columna, familia, fuente o criterio…">
+    <div id="criteriaCatalog" class="source-catalog"></div>
+  </div>
+</div>
 <div id="filteredReportModal" class="modal" aria-hidden="true">
   <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="filteredReportTitle">
     <div class="modal-head"><div><span>INFORME FILTRADO</span><h2 id="filteredReportTitle">Generar informe con el subconjunto actual</h2><p>El informe utilizará exactamente las filas que cumplen el filtro dinámico de la tabla seleccionada.</p></div><button class="modal-close" data-close="filteredReportModal" type="button" aria-label="Cerrar">×</button></div>
