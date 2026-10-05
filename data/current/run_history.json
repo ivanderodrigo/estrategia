@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "updated_at": 1791110721.7990274,
+  "updated_at": 1791202666.5001268,
   "runs": [
     {
       "version": "4.0.0",
@@ -1091,6 +1091,43 @@
       ],
       "elapsed_s": 145.17,
       "finished_at": 1791110721.797421
+    },
+    {
+      "version": "4.3.0",
+      "profile": "daily",
+      "started_at": 1791202576.372183,
+      "requested_max_runtime_s": 720,
+      "effective_max_runtime_s": 720,
+      "budgets": {
+        "research_s": 630,
+        "fallback_s": 0,
+        "build_reserve_s": 90
+      },
+      "stages": [
+        {
+          "research": "degraded",
+          "fetch_attempts": 0,
+          "fetch_successes": 0,
+          "pages_relevant": 0,
+          "candidate_evidences": 0,
+          "accepted_evidences": 0,
+          "fields_enriched": 0,
+          "values_added": 0,
+          "entities_added": 0,
+          "stop_reason": null,
+          "error": "        ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/estrategia/estrategia/engine/research/web_intelligence.py\", line 740, in _subject_value_match\n    if _field_context_ok(\"revenue\", window, entity_owned=True):\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/estrategia/estrategia/engine/research/web_intelligence.py\", line 575, in _field_context_ok\n    if not revenue_value_is_strict(str(value or \"\")):\n                                       ^^^^^\nNameError: name 'value' is not defined. Did you mean: 'False'?"
+        },
+        {
+          "build": "ok",
+          "gaps": 8707,
+          "gaps_closed_vs_release_baseline": -7309,
+          "distributor_gaps": 855,
+          "integrator_gaps": 1657,
+          "quality_score": 100
+        }
+      ],
+      "elapsed_s": 90.12,
+      "finished_at": 1791202666.4968443
     }
   ]
 }
