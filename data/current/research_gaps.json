@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-10-06T12:02:57.501564+00:00",
+  "generated_at": "2026-10-07T11:48:23.511165+00:00",
   "definition": "Todo campo declarado cuenta. Los hechos externos solo cierran con evidencia pública actual. PPT, portfolio e histórico se conservan como pistas internas y generan deuda de validación pública, no acreditación.",
   "total_gaps": 8707,
   "historical_revalidation_gaps": 284,
@@ -16,8 +16,8 @@
     "tiers": {
       "P0": 21,
       "P1": 54,
-      "P2": 1811,
-      "P3": 6821
+      "P2": 1810,
+      "P3": 6822
     },
     "actionable_high_value_gaps": 75,
     "weighted_expected_debt": 23496.72,
@@ -53,8 +53,8 @@
         "P1": 12
       },
       "clients_public": {
-        "P3": 3672,
-        "P2": 827,
+        "P3": 3673,
+        "P2": 826,
         "P1": 9
       },
       "clients_private": {
@@ -16187,63 +16187,6 @@
         "query_hints": [
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" contratación tecnología",
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" concurso adjudicación"
-        ]
-      },
-      "priority_reason": "valor=72.8/100; investigabilidad=48.2/100; contexto_oportunidad=x1.31; familia óptima=procurement; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:technology_signals",
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
-      "entity_id": "clie_bbefe2ef78b24511",
-      "field": "technology_signals",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 1,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-28T09:44:01.227322+00:00",
-      "last_attempt_at": "2026-09-20T09:44:01.227305+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 72.8,
-      "researchability_score": 48.2,
-      "priority_score": 53.2,
-      "priority_tier": "P2",
-      "opportunity_context_multiplier": 1.31,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" contratación tecnología",
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" concurso adjudicación"
         ]
       },
       "priority_reason": "valor=72.8/100; investigabilidad=48.2/100; contexto_oportunidad=x1.31; familia óptima=procurement; estado=Por investigar"
@@ -34733,6 +34676,62 @@
         "query_hints": [
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" contratación tecnología",
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" concurso adjudicación"
+        ]
+      },
+      "priority_reason": "valor=72.8/100; investigabilidad=48.2/100; contexto_oportunidad=x1.17; familia óptima=procurement; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:technology_signals",
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
+      "entity_id": "clie_bbefe2ef78b24511",
+      "field": "technology_signals",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 1,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-28T09:44:01.227322+00:00",
+      "last_attempt_at": "2026-09-20T09:44:01.227305+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 72.8,
+      "researchability_score": 48.2,
+      "priority_score": 47.5,
+      "priority_tier": "P2",
+      "opportunity_context_multiplier": 1.17,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "importe conocido"
+      ],
+      "source_family": "procurement",
+      "source_strategy": {
+        "preferred_families": [
+          "procurement",
+          "official",
+          "news"
+        ],
+        "source_types": [
+          "TED",
+          "PLACSP",
+          "BASE.gov.pt",
+          "portal oficial del comprador"
+        ],
+        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
+        "query_hints": [
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" contratación tecnología",
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" concurso adjudicación"
         ]
       },
       "priority_reason": "valor=72.8/100; investigabilidad=48.2/100; contexto_oportunidad=x1.17; familia óptima=procurement; estado=Por investigar"
@@ -65715,63 +65714,6 @@
       "priority_reason": "valor=58.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.31; familia óptima=procurement; estado=Por investigar"
     },
     {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:identified_vendors",
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
-      "entity_id": "clie_bbefe2ef78b24511",
-      "field": "identified_vendors",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-28T09:44:01.227333+00:00",
-      "last_attempt_at": "2026-09-20T09:44:01.227330+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 58.3,
-      "researchability_score": 48.2,
-      "priority_score": 42.6,
-      "priority_tier": "P2",
-      "opportunity_context_multiplier": 1.31,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" contratación tecnología",
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" concurso adjudicación"
-        ]
-      },
-      "priority_reason": "valor=58.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.31; familia óptima=procurement; estado=Por investigar"
-    },
-    {
       "id": "clients_public:organismo autónomo informática del ayuntamiento de madrid:identified_vendors",
       "section": "clients_public",
       "entity": "Organismo Autónomo Informática del Ayuntamiento de Madrid",
@@ -75836,63 +75778,6 @@
         "query_hints": [
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" contratación tecnología",
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" concurso adjudicación"
-        ]
-      },
-      "priority_reason": "valor=56.7/100; investigabilidad=48.2/100; contexto_oportunidad=x1.31; familia óptima=procurement; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:identified_integrators",
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
-      "entity_id": "clie_bbefe2ef78b24511",
-      "field": "identified_integrators",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-28T09:44:01.227338+00:00",
-      "last_attempt_at": "2026-09-20T09:44:01.227336+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 56.7,
-      "researchability_score": 48.2,
-      "priority_score": 41.4,
-      "priority_tier": "P2",
-      "opportunity_context_multiplier": 1.31,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" contratación tecnología",
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" concurso adjudicación"
         ]
       },
       "priority_reason": "valor=56.7/100; investigabilidad=48.2/100; contexto_oportunidad=x1.31; familia óptima=procurement; estado=Por investigar"
@@ -109790,6 +109675,62 @@
       "priority_reason": "valor=51.7/100; investigabilidad=48.2/100; contexto_oportunidad=x1.32; familia óptima=procurement; estado=Por investigar"
     },
     {
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:identified_vendors",
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
+      "entity_id": "clie_bbefe2ef78b24511",
+      "field": "identified_vendors",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-28T09:44:01.227333+00:00",
+      "last_attempt_at": "2026-09-20T09:44:01.227330+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 58.3,
+      "researchability_score": 48.2,
+      "priority_score": 38.1,
+      "priority_tier": "P2",
+      "opportunity_context_multiplier": 1.17,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "importe conocido"
+      ],
+      "source_family": "procurement",
+      "source_strategy": {
+        "preferred_families": [
+          "procurement",
+          "official",
+          "news"
+        ],
+        "source_types": [
+          "TED",
+          "PLACSP",
+          "BASE.gov.pt",
+          "portal oficial del comprador"
+        ],
+        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
+        "query_hints": [
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" contratación tecnología",
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" concurso adjudicación"
+        ]
+      },
+      "priority_reason": "valor=58.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.17; familia óptima=procurement; estado=Por investigar"
+    },
+    {
       "id": "clients_public:município do funchal:known_architectures",
       "section": "clients_public",
       "entity": "Município do Funchal",
@@ -110404,63 +110345,6 @@
         "query_hints": [
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" contratación tecnología",
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" concurso adjudicación"
-        ]
-      },
-      "priority_reason": "valor=51.7/100; investigabilidad=48.2/100; contexto_oportunidad=x1.31; familia óptima=procurement; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:known_architectures",
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
-      "entity_id": "clie_bbefe2ef78b24511",
-      "field": "known_architectures",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-28T09:44:01.227344+00:00",
-      "last_attempt_at": "2026-09-20T09:44:01.227342+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 51.7,
-      "researchability_score": 48.2,
-      "priority_score": 37.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.31,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" contratación tecnología",
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" concurso adjudicación"
         ]
       },
       "priority_reason": "valor=51.7/100; investigabilidad=48.2/100; contexto_oportunidad=x1.31; familia óptima=procurement; estado=Por investigar"
@@ -122660,63 +122544,6 @@
       "priority_reason": "valor=39.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.41; familia óptima=official; estado=Por investigar"
     },
     {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:opportunity_area",
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
-      "entity_id": "clie_bbefe2ef78b24511",
-      "field": "opportunity_area",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 1,
-      "reason": "valor pendiente",
-      "gap_kind": "derivation-support",
-      "claim_class": "INTERNAL_CLASSIFICATION",
-      "research_mode": "derive-from-supported-inputs",
-      "derivation_rule": "derived from supported canonical inputs",
-      "dependency_fields": [],
-      "attempts_completed": 0,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 0,
-      "next_pass": 1,
-      "next_due_at": null,
-      "last_attempt_at": null,
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 39.3,
-      "researchability_score": 62.2,
-      "priority_score": 37.1,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.31,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" contratación tecnología",
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" concurso adjudicación"
-        ]
-      },
-      "priority_reason": "valor=39.3/100; investigabilidad=62.2/100; contexto_oportunidad=x1.31; familia óptima=procurement; estado=Por investigar"
-    },
-    {
       "id": "clients_public:organismo autónomo informática del ayuntamiento de madrid:opportunity_area",
       "section": "clients_public",
       "entity": "Organismo Autónomo Informática del Ayuntamiento de Madrid",
@@ -123835,6 +123662,62 @@
         ]
       },
       "priority_reason": "valor=51.7/100; investigabilidad=52.9/100; contexto_oportunidad=x1.17; familia óptima=procurement; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:identified_integrators",
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
+      "entity_id": "clie_bbefe2ef78b24511",
+      "field": "identified_integrators",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-28T09:44:01.227338+00:00",
+      "last_attempt_at": "2026-09-20T09:44:01.227336+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 56.7,
+      "researchability_score": 48.2,
+      "priority_score": 37.0,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.17,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "importe conocido"
+      ],
+      "source_family": "procurement",
+      "source_strategy": {
+        "preferred_families": [
+          "procurement",
+          "official",
+          "news"
+        ],
+        "source_types": [
+          "TED",
+          "PLACSP",
+          "BASE.gov.pt",
+          "portal oficial del comprador"
+        ],
+        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
+        "query_hints": [
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" contratación tecnología",
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" concurso adjudicación"
+        ]
+      },
+      "priority_reason": "valor=56.7/100; investigabilidad=48.2/100; contexto_oportunidad=x1.17; familia óptima=procurement; estado=Por investigar"
     },
     {
       "id": "clients_public:junta de gobierno del ayuntamiento de granada:known_architectures",
@@ -161721,118 +161604,6 @@
       "priority_reason": "valor=39.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.31; familia óptima=official; estado=Por investigar"
     },
     {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:westcon_area",
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
-      "entity_id": "clie_bbefe2ef78b24511",
-      "field": "westcon_area",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 1,
-      "reason": "valor pendiente",
-      "gap_kind": "derivation-support",
-      "claim_class": "INTERNAL_CLASSIFICATION",
-      "research_mode": "derive-from-supported-inputs",
-      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-      "dependency_fields": [
-        "technology_signals"
-      ],
-      "attempts_completed": 0,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 0,
-      "next_pass": 1,
-      "next_due_at": null,
-      "last_attempt_at": null,
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 39.3,
-      "researchability_score": 57.8,
-      "priority_score": 34.4,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.31,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
-      ],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" westcon area"
-        ]
-      },
-      "priority_reason": "valor=39.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.31; familia óptima=official; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:westcon_fit",
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
-      "entity_id": "clie_bbefe2ef78b24511",
-      "field": "westcon_fit",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 1,
-      "reason": "valor pendiente",
-      "gap_kind": "derivation-support",
-      "claim_class": "DERIVED_FACT",
-      "research_mode": "derive-from-supported-inputs",
-      "derivation_rule": "client signals/needs ∩ supported Westcon portfolio/capabilities",
-      "dependency_fields": [
-        "technology_signals"
-      ],
-      "attempts_completed": 0,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 0,
-      "next_pass": 1,
-      "next_due_at": null,
-      "last_attempt_at": null,
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 39.3,
-      "researchability_score": 57.8,
-      "priority_score": 34.4,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.31,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
-      ],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" westcon fit"
-        ]
-      },
-      "priority_reason": "valor=39.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.31; familia óptima=official; estado=Por investigar"
-    },
-    {
       "id": "clients_public:organismo autónomo informática del ayuntamiento de madrid:westcon_area",
       "section": "clients_public",
       "entity": "Organismo Autónomo Informática del Ayuntamiento de Madrid",
@@ -170387,6 +170158,62 @@
         "query_hints": [
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" contratación tecnología",
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" concurso adjudicación"
+        ]
+      },
+      "priority_reason": "valor=51.7/100; investigabilidad=48.2/100; contexto_oportunidad=x1.17; familia óptima=procurement; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:known_architectures",
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
+      "entity_id": "clie_bbefe2ef78b24511",
+      "field": "known_architectures",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-28T09:44:01.227344+00:00",
+      "last_attempt_at": "2026-09-20T09:44:01.227342+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 51.7,
+      "researchability_score": 48.2,
+      "priority_score": 33.7,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.17,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "importe conocido"
+      ],
+      "source_family": "procurement",
+      "source_strategy": {
+        "preferred_families": [
+          "procurement",
+          "official",
+          "news"
+        ],
+        "source_types": [
+          "TED",
+          "PLACSP",
+          "BASE.gov.pt",
+          "portal oficial del comprador"
+        ],
+        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
+        "query_hints": [
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" contratación tecnología",
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" concurso adjudicación"
         ]
       },
       "priority_reason": "valor=51.7/100; investigabilidad=48.2/100; contexto_oportunidad=x1.17; familia óptima=procurement; estado=Por investigar"
@@ -189020,6 +188847,62 @@
       "priority_reason": "valor=39.3/100; investigabilidad=62.2/100; contexto_oportunidad=x1.17; familia óptima=procurement; estado=Por investigar"
     },
     {
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:opportunity_area",
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
+      "entity_id": "clie_bbefe2ef78b24511",
+      "field": "opportunity_area",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 1,
+      "reason": "valor pendiente",
+      "gap_kind": "derivation-support",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "derived from supported canonical inputs",
+      "dependency_fields": [],
+      "attempts_completed": 0,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 0,
+      "next_pass": 1,
+      "next_due_at": null,
+      "last_attempt_at": null,
+      "last_error": "",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 39.3,
+      "researchability_score": 62.2,
+      "priority_score": 33.1,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.17,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "importe conocido"
+      ],
+      "source_family": "procurement",
+      "source_strategy": {
+        "preferred_families": [
+          "procurement",
+          "official",
+          "news"
+        ],
+        "source_types": [
+          "TED",
+          "PLACSP",
+          "BASE.gov.pt",
+          "portal oficial del comprador"
+        ],
+        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
+        "query_hints": [
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" contratación tecnología",
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" concurso adjudicación"
+        ]
+      },
+      "priority_reason": "valor=39.3/100; investigabilidad=62.2/100; contexto_oportunidad=x1.17; familia óptima=procurement; estado=Por investigar"
+    },
+    {
       "id": "clients_public:junta de gobierno del ayuntamiento de granada:opportunity_area",
       "section": "clients_public",
       "entity": "Junta de Gobierno del Ayuntamiento de Granada",
@@ -192063,63 +191946,6 @@
         "query_hints": [
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" strategic programs",
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" solutions services"
-        ]
-      },
-      "priority_reason": "valor=45.0/100; investigabilidad=48.2/100; contexto_oportunidad=x1.31; familia óptima=technology; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:strategic_programs",
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
-      "entity_id": "clie_bbefe2ef78b24511",
-      "field": "strategic_programs",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-28T09:44:01.227349+00:00",
-      "last_attempt_at": "2026-09-20T09:44:01.227347+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 45.0,
-      "researchability_score": 48.2,
-      "priority_score": 32.9,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.31,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
-      ],
-      "source_family": "technology",
-      "source_strategy": {
-        "preferred_families": [
-          "technology",
-          "services",
-          "cases",
-          "official"
-        ],
-        "source_types": [
-          "product / technology page",
-          "architecture page",
-          "case study"
-        ],
-        "rationale": "Tecnologías y plataformas se validan mejor en páginas técnicas y casos de uso explícitos.",
-        "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" strategic programs",
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" solutions services"
         ]
       },
       "priority_reason": "valor=45.0/100; investigabilidad=48.2/100; contexto_oportunidad=x1.31; familia óptima=technology; estado=Por investigar"
@@ -229367,6 +229193,116 @@
       "priority_reason": "valor=39.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.17; familia óptima=official; estado=Por investigar"
     },
     {
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:westcon_area",
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
+      "entity_id": "clie_bbefe2ef78b24511",
+      "field": "westcon_area",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 1,
+      "reason": "valor pendiente",
+      "gap_kind": "derivation-support",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "attempts_completed": 0,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 0,
+      "next_pass": 1,
+      "next_due_at": null,
+      "last_attempt_at": null,
+      "last_error": "",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 39.3,
+      "researchability_score": 57.8,
+      "priority_score": 30.8,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.17,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "importe conocido"
+      ],
+      "source_family": "official",
+      "source_strategy": {
+        "preferred_families": [
+          "official",
+          "services",
+          "news"
+        ],
+        "source_types": [
+          "official website",
+          "official documentation"
+        ],
+        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
+        "query_hints": [
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" westcon area"
+        ]
+      },
+      "priority_reason": "valor=39.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.17; familia óptima=official; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:westcon_fit",
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
+      "entity_id": "clie_bbefe2ef78b24511",
+      "field": "westcon_fit",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 1,
+      "reason": "valor pendiente",
+      "gap_kind": "derivation-support",
+      "claim_class": "DERIVED_FACT",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "client signals/needs ∩ supported Westcon portfolio/capabilities",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "attempts_completed": 0,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 0,
+      "next_pass": 1,
+      "next_due_at": null,
+      "last_attempt_at": null,
+      "last_error": "",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 39.3,
+      "researchability_score": 57.8,
+      "priority_score": 30.8,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.17,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "importe conocido"
+      ],
+      "source_family": "official",
+      "source_strategy": {
+        "preferred_families": [
+          "official",
+          "services",
+          "news"
+        ],
+        "source_types": [
+          "official website",
+          "official documentation"
+        ],
+        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
+        "query_hints": [
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" westcon fit"
+        ]
+      },
+      "priority_reason": "valor=39.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.17; familia óptima=official; estado=Por investigar"
+    },
+    {
       "id": "clients_public:junta de gobierno del ayuntamiento de granada:westcon_area",
       "section": "clients_public",
       "entity": "Junta de Gobierno del Ayuntamiento de Granada",
@@ -248606,11 +248542,11 @@
       "priority_reason": "valor=33.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.32; familia óptima=official; estado=Por investigar"
     },
     {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:investment_signals",
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:strategic_programs",
       "section": "clients_public",
       "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
       "entity_id": "clie_bbefe2ef78b24511",
-      "field": "investment_signals",
+      "field": "strategic_programs",
       "country_context": "ES",
       "research_state": "Por investigar",
       "priority": 2,
@@ -248624,41 +248560,42 @@
       "accepted_evidences": 0,
       "consecutive_no_yield": 3,
       "next_pass": 4,
-      "next_due_at": "2026-09-28T09:44:01.227354+00:00",
-      "last_attempt_at": "2026-09-20T09:44:01.227352+00:00",
+      "next_due_at": "2026-09-28T09:44:01.227349+00:00",
+      "last_attempt_at": "2026-09-20T09:44:01.227347+00:00",
       "last_error": "no-seed-source",
       "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
       "strategy_profile": "adaptive-source-cascade",
       "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 43.3,
-      "researchability_score": 44.8,
+      "business_value_score": 45.0,
+      "researchability_score": 48.2,
       "priority_score": 29.4,
       "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.31,
+      "opportunity_context_multiplier": 1.17,
       "opportunity_context": [
         "expediente/portal oficial identificado",
         "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
+        "importe conocido"
       ],
-      "source_family": "news",
+      "source_family": "technology",
       "source_strategy": {
         "preferred_families": [
-          "news",
-          "official",
-          "cases"
+          "technology",
+          "services",
+          "cases",
+          "official"
         ],
         "source_types": [
-          "press release",
-          "official news",
-          "reliable trade press"
+          "product / technology page",
+          "architecture page",
+          "case study"
         ],
-        "rationale": "Movimientos recientes necesitan fuentes fechadas y atribuibles.",
+        "rationale": "Tecnologías y plataformas se validan mejor en páginas técnicas y casos de uso explícitos.",
         "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" investment signals"
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" strategic programs",
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" solutions services"
         ]
       },
-      "priority_reason": "valor=43.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.31; familia óptima=news; estado=Por investigar"
+      "priority_reason": "valor=45.0/100; investigabilidad=48.2/100; contexto_oportunidad=x1.17; familia óptima=technology; estado=Por investigar"
     },
     {
       "id": "clients_public:município do funchal:opportunity_notes",
@@ -257177,114 +257114,6 @@
         "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
         "query_hints": [
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" renewal window"
-        ]
-      },
-      "priority_reason": "valor=33.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.31; familia óptima=official; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:opportunity_notes",
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
-      "entity_id": "clie_bbefe2ef78b24511",
-      "field": "opportunity_notes",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "derivation-support",
-      "claim_class": "DERIVED_FACT",
-      "research_mode": "derive-from-supported-inputs",
-      "derivation_rule": "derived from supported canonical inputs",
-      "dependency_fields": [],
-      "attempts_completed": 0,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 0,
-      "next_pass": 1,
-      "next_due_at": null,
-      "last_attempt_at": null,
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 33.3,
-      "researchability_score": 57.8,
-      "priority_score": 29.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.31,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
-      ],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" opportunity notes"
-        ]
-      },
-      "priority_reason": "valor=33.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.31; familia óptima=official; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:renewal_window",
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
-      "entity_id": "clie_bbefe2ef78b24511",
-      "field": "renewal_window",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "derivation-support",
-      "claim_class": "DERIVED_FACT",
-      "research_mode": "derive-from-supported-inputs",
-      "derivation_rule": "derived from supported canonical inputs",
-      "dependency_fields": [],
-      "attempts_completed": 0,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 0,
-      "next_pass": 1,
-      "next_due_at": null,
-      "last_attempt_at": null,
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 33.3,
-      "researchability_score": 57.8,
-      "priority_score": 29.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.31,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
-      ],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" renewal window"
         ]
       },
       "priority_reason": "valor=33.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.31; familia óptima=official; estado=Por investigar"
@@ -287442,62 +287271,6 @@
         "query_hints": [
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" careers hiring signals",
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" empleo tecnología"
-        ]
-      },
-      "priority_reason": "valor=38.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.31; familia óptima=careers; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:hiring_signals",
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
-      "entity_id": "clie_bbefe2ef78b24511",
-      "field": "hiring_signals",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-28T09:44:01.227359+00:00",
-      "last_attempt_at": "2026-09-20T09:44:01.227357+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 38.3,
-      "researchability_score": 48.2,
-      "priority_score": 28.0,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.31,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
-      ],
-      "source_family": "careers",
-      "source_strategy": {
-        "preferred_families": [
-          "careers",
-          "technology",
-          "official"
-        ],
-        "source_types": [
-          "career portal",
-          "vacante oficial",
-          "perfil técnico público"
-        ],
-        "rationale": "Las ofertas de empleo son una señal directa de tecnologías, perfiles y áreas de inversión activas.",
-        "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" careers hiring signals",
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" empleo tecnología"
         ]
       },
       "priority_reason": "valor=38.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.31; familia óptima=careers; estado=Por investigar"
@@ -327677,6 +327450,60 @@
       "priority_reason": "valor=38.3/100; investigabilidad=43.6/100; contexto_oportunidad=x1.36; familia óptima=careers; estado=Por investigar"
     },
     {
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:investment_signals",
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
+      "entity_id": "clie_bbefe2ef78b24511",
+      "field": "investment_signals",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-28T09:44:01.227354+00:00",
+      "last_attempt_at": "2026-09-20T09:44:01.227352+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 43.3,
+      "researchability_score": 44.8,
+      "priority_score": 26.3,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.17,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "importe conocido"
+      ],
+      "source_family": "news",
+      "source_strategy": {
+        "preferred_families": [
+          "news",
+          "official",
+          "cases"
+        ],
+        "source_types": [
+          "press release",
+          "official news",
+          "reliable trade press"
+        ],
+        "rationale": "Movimientos recientes necesitan fuentes fechadas y atribuibles.",
+        "query_hints": [
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" investment signals"
+        ]
+      },
+      "priority_reason": "valor=43.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.17; familia óptima=news; estado=Por investigar"
+    },
+    {
       "id": "clients_public:junta de gobierno local del ayuntamiento de fuenlabrada:technology_partners",
       "section": "clients_public",
       "entity": "Junta de Gobierno Local del Ayuntamiento de Fuenlabrada",
@@ -333779,6 +333606,112 @@
         ]
       },
       "priority_reason": "valor=38.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.22; familia óptima=careers; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:opportunity_notes",
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
+      "entity_id": "clie_bbefe2ef78b24511",
+      "field": "opportunity_notes",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "derivation-support",
+      "claim_class": "DERIVED_FACT",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "derived from supported canonical inputs",
+      "dependency_fields": [],
+      "attempts_completed": 0,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 0,
+      "next_pass": 1,
+      "next_due_at": null,
+      "last_attempt_at": null,
+      "last_error": "",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 33.3,
+      "researchability_score": 57.8,
+      "priority_score": 26.1,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.17,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "importe conocido"
+      ],
+      "source_family": "official",
+      "source_strategy": {
+        "preferred_families": [
+          "official",
+          "services",
+          "news"
+        ],
+        "source_types": [
+          "official website",
+          "official documentation"
+        ],
+        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
+        "query_hints": [
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" opportunity notes"
+        ]
+      },
+      "priority_reason": "valor=33.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.17; familia óptima=official; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:renewal_window",
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
+      "entity_id": "clie_bbefe2ef78b24511",
+      "field": "renewal_window",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "derivation-support",
+      "claim_class": "DERIVED_FACT",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "derived from supported canonical inputs",
+      "dependency_fields": [],
+      "attempts_completed": 0,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 0,
+      "next_pass": 1,
+      "next_due_at": null,
+      "last_attempt_at": null,
+      "last_error": "",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 33.3,
+      "researchability_score": 57.8,
+      "priority_score": 26.1,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.17,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "importe conocido"
+      ],
+      "source_family": "official",
+      "source_strategy": {
+        "preferred_families": [
+          "official",
+          "services",
+          "news"
+        ],
+        "source_types": [
+          "official website",
+          "official documentation"
+        ],
+        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
+        "query_hints": [
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" renewal window"
+        ]
+      },
+      "priority_reason": "valor=33.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.17; familia óptima=official; estado=Por investigar"
     },
     {
       "id": "clients_public:junta de gobierno del ayuntamiento de granada:opportunity_notes",
@@ -349473,6 +349406,61 @@
       "priority_reason": "valor=38.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.17; familia óptima=careers; estado=Por investigar"
     },
     {
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:hiring_signals",
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
+      "entity_id": "clie_bbefe2ef78b24511",
+      "field": "hiring_signals",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-28T09:44:01.227359+00:00",
+      "last_attempt_at": "2026-09-20T09:44:01.227357+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 38.3,
+      "researchability_score": 48.2,
+      "priority_score": 25.0,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.17,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "importe conocido"
+      ],
+      "source_family": "careers",
+      "source_strategy": {
+        "preferred_families": [
+          "careers",
+          "technology",
+          "official"
+        ],
+        "source_types": [
+          "career portal",
+          "vacante oficial",
+          "perfil técnico público"
+        ],
+        "rationale": "Las ofertas de empleo son una señal directa de tecnologías, perfiles y áreas de inversión activas.",
+        "query_hints": [
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" careers hiring signals",
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" empleo tecnología"
+        ]
+      },
+      "priority_reason": "valor=38.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.17; familia óptima=careers; estado=Por investigar"
+    },
+    {
       "id": "clients_public:serviços partilhados do ministério da saúde, epe:hiring_signals",
       "section": "clients_public",
       "entity": "Serviços Partilhados do Ministério da Saúde, EPE",
@@ -357898,120 +357886,6 @@
         ]
       },
       "priority_reason": "valor=33.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.41; familia óptima=official; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:evidenced_needs",
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
-      "entity_id": "clie_bbefe2ef78b24511",
-      "field": "evidenced_needs",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-28T09:44:01.227364+00:00",
-      "last_attempt_at": "2026-09-20T09:44:01.227362+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 33.3,
-      "researchability_score": 48.2,
-      "priority_score": 24.4,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.31,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" contratación tecnología",
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" concurso adjudicación"
-        ]
-      },
-      "priority_reason": "valor=33.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.31; familia óptima=procurement; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:technology_domains",
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
-      "entity_id": "clie_bbefe2ef78b24511",
-      "field": "technology_domains",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-28T09:44:01.227369+00:00",
-      "last_attempt_at": "2026-09-20T09:44:01.227367+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 33.3,
-      "researchability_score": 48.2,
-      "priority_score": 24.4,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.31,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" contratación tecnología",
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" concurso adjudicación"
-        ]
-      },
-      "priority_reason": "valor=33.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.31; familia óptima=procurement; estado=Por investigar"
     },
     {
       "id": "clients_public:organismo autónomo informática del ayuntamiento de madrid:evidenced_needs",
@@ -413264,60 +413138,6 @@
       "priority_reason": "valor=33.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.31; familia óptima=official; estado=Por investigar"
     },
     {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:technology_partners",
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
-      "entity_id": "clie_bbefe2ef78b24511",
-      "field": "technology_partners",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-28T09:44:01.227375+00:00",
-      "last_attempt_at": "2026-09-20T09:44:01.227373+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 33.3,
-      "researchability_score": 44.8,
-      "priority_score": 22.6,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.31,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
-      ],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" technology partners"
-        ]
-      },
-      "priority_reason": "valor=33.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.31; familia óptima=official; estado=Por investigar"
-    },
-    {
       "id": "clients_public:organismo autónomo informática del ayuntamiento de madrid:technology_partners",
       "section": "clients_public",
       "entity": "Organismo Autónomo Informática del Ayuntamiento de Madrid",
@@ -419865,6 +419685,118 @@
         "query_hints": [
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" contratación tecnología",
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" concurso adjudicación"
+        ]
+      },
+      "priority_reason": "valor=33.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.17; familia óptima=procurement; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:evidenced_needs",
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
+      "entity_id": "clie_bbefe2ef78b24511",
+      "field": "evidenced_needs",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-28T09:44:01.227364+00:00",
+      "last_attempt_at": "2026-09-20T09:44:01.227362+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 33.3,
+      "researchability_score": 48.2,
+      "priority_score": 21.8,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.17,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "importe conocido"
+      ],
+      "source_family": "procurement",
+      "source_strategy": {
+        "preferred_families": [
+          "procurement",
+          "official",
+          "news"
+        ],
+        "source_types": [
+          "TED",
+          "PLACSP",
+          "BASE.gov.pt",
+          "portal oficial del comprador"
+        ],
+        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
+        "query_hints": [
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" contratación tecnología",
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" concurso adjudicación"
+        ]
+      },
+      "priority_reason": "valor=33.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.17; familia óptima=procurement; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:technology_domains",
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
+      "entity_id": "clie_bbefe2ef78b24511",
+      "field": "technology_domains",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-28T09:44:01.227369+00:00",
+      "last_attempt_at": "2026-09-20T09:44:01.227367+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 33.3,
+      "researchability_score": 48.2,
+      "priority_score": 21.8,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.17,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "importe conocido"
+      ],
+      "source_family": "procurement",
+      "source_strategy": {
+        "preferred_families": [
+          "procurement",
+          "official",
+          "news"
+        ],
+        "source_types": [
+          "TED",
+          "PLACSP",
+          "BASE.gov.pt",
+          "portal oficial del comprador"
+        ],
+        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
+        "query_hints": [
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" contratación tecnología",
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" concurso adjudicación"
         ]
       },
       "priority_reason": "valor=33.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.17; familia óptima=procurement; estado=Por investigar"
@@ -443270,6 +443202,59 @@
       "priority_reason": "valor=33.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.17; familia óptima=official; estado=Por investigar"
     },
     {
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:technology_partners",
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
+      "entity_id": "clie_bbefe2ef78b24511",
+      "field": "technology_partners",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-28T09:44:01.227375+00:00",
+      "last_attempt_at": "2026-09-20T09:44:01.227373+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 33.3,
+      "researchability_score": 44.8,
+      "priority_score": 20.2,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.17,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "importe conocido"
+      ],
+      "source_family": "official",
+      "source_strategy": {
+        "preferred_families": [
+          "official",
+          "services",
+          "news"
+        ],
+        "source_types": [
+          "official website",
+          "official documentation"
+        ],
+        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
+        "query_hints": [
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" technology partners"
+        ]
+      },
+      "priority_reason": "valor=33.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.17; familia óptima=official; estado=Por investigar"
+    },
+    {
       "id": "clients_public:serviços partilhados do ministério da saúde, epe:technology_partners",
       "section": "clients_public",
       "entity": "Serviços Partilhados do Ministério da Saúde, EPE",
@@ -456729,60 +456714,6 @@
       "priority_reason": "valor=23.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.31; familia óptima=official; estado=Por investigar"
     },
     {
-      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:organization_size",
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
-      "entity_id": "clie_bbefe2ef78b24511",
-      "field": "organization_size",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-28T09:44:01.227380+00:00",
-      "last_attempt_at": "2026-09-20T09:44:01.227378+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 23.3,
-      "researchability_score": 44.8,
-      "priority_score": 15.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.31,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "importe conocido",
-        "hito <= 120 días"
-      ],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" organization size"
-        ]
-      },
-      "priority_reason": "valor=23.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.31; familia óptima=official; estado=Por investigar"
-    },
-    {
       "id": "clients_public:organismo autónomo informática del ayuntamiento de madrid:organization_size",
       "section": "clients_public",
       "entity": "Organismo Autónomo Informática del Ayuntamiento de Madrid",
@@ -465033,6 +464964,59 @@
         "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
         "query_hints": [
           "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" organization size"
+        ]
+      },
+      "priority_reason": "valor=23.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.17; familia óptima=official; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:junta de gobierno del ayuntamiento de catarroja:organization_size",
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Catarroja",
+      "entity_id": "clie_bbefe2ef78b24511",
+      "field": "organization_size",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-28T09:44:01.227380+00:00",
+      "last_attempt_at": "2026-09-20T09:44:01.227378+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 23.3,
+      "researchability_score": 44.8,
+      "priority_score": 14.1,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.17,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "importe conocido"
+      ],
+      "source_family": "official",
+      "source_strategy": {
+        "preferred_families": [
+          "official",
+          "services",
+          "news"
+        ],
+        "source_types": [
+          "official website",
+          "official documentation"
+        ],
+        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
+        "query_hints": [
+          "\"Junta de Gobierno del Ayuntamiento de Catarroja\" organization size"
         ]
       },
       "priority_reason": "valor=23.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.17; familia óptima=official; estado=Por investigar"
