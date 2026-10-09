@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-10-08T12:02:50.945234+00:00",
+  "generated_at": "2026-10-09T11:55:07.171479+00:00",
   "definition": "Todo campo declarado cuenta. Los hechos externos solo cierran con evidencia pública actual. PPT, portfolio e histórico se conservan como pistas internas y generan deuda de validación pública, no acreditación.",
   "total_gaps": 8707,
   "historical_revalidation_gaps": 284,
@@ -16,8 +16,8 @@
     "tiers": {
       "P0": 21,
       "P1": 54,
-      "P2": 1802,
-      "P3": 6830
+      "P2": 1801,
+      "P3": 6831
     },
     "actionable_high_value_gaps": 75,
     "weighted_expected_debt": 23496.72,
@@ -53,8 +53,8 @@
         "P1": 12
       },
       "clients_public": {
-        "P3": 3681,
-        "P2": 818,
+        "P3": 3682,
+        "P2": 817,
         "P1": 9
       },
       "clients_private": {
@@ -39714,64 +39714,6 @@
       "priority_reason": "valor=56.7/100; investigabilidad=52.9/100; contexto_oportunidad=x1.34; familia óptima=procurement; estado=Por investigar"
     },
     {
-      "id": "clients_public:diputación de barcelona:identified_vendors",
-      "section": "clients_public",
-      "entity": "DIPUTACIÓN DE BARCELONA",
-      "entity_id": "pub-v313-002",
-      "field": "identified_vendors",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-25T10:02:44.034169+00:00",
-      "last_attempt_at": "2026-09-17T10:02:44.034164+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 58.3,
-      "researchability_score": 48.2,
-      "priority_score": 46.5,
-      "priority_tier": "P2",
-      "opportunity_context_multiplier": 1.43,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "señal tecnológica existente",
-        "importe >= 250 k€",
-        "hito <= 120 días"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"DIPUTACIÓN DE BARCELONA\" contratación tecnología",
-          "\"DIPUTACIÓN DE BARCELONA\" concurso adjudicación"
-        ]
-      },
-      "priority_reason": "valor=58.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.43; familia óptima=procurement; estado=Por investigar"
-    },
-    {
       "id": "clients_public:vicepresidencia segunda de la junta de castilla y león:identified_integrators",
       "section": "clients_public",
       "entity": "Vicepresidencia Segunda de la Junta de Castilla y León",
@@ -43574,64 +43516,6 @@
         ]
       },
       "priority_reason": "valor=56.7/100; investigabilidad=57.6/100; contexto_oportunidad=x1.2; familia óptima=procurement; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:diputación de barcelona:identified_integrators",
-      "section": "clients_public",
-      "entity": "DIPUTACIÓN DE BARCELONA",
-      "entity_id": "pub-v313-002",
-      "field": "identified_integrators",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-25T10:02:44.034177+00:00",
-      "last_attempt_at": "2026-09-17T10:02:44.034174+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 56.7,
-      "researchability_score": 48.2,
-      "priority_score": 45.2,
-      "priority_tier": "P2",
-      "opportunity_context_multiplier": 1.43,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "señal tecnológica existente",
-        "importe >= 250 k€",
-        "hito <= 120 días"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"DIPUTACIÓN DE BARCELONA\" contratación tecnología",
-          "\"DIPUTACIÓN DE BARCELONA\" concurso adjudicación"
-        ]
-      },
-      "priority_reason": "valor=56.7/100; investigabilidad=48.2/100; contexto_oportunidad=x1.43; familia óptima=procurement; estado=Por investigar"
     },
     {
       "id": "architectures:ai security:layers:public-validation:db3029a229da",
@@ -68939,6 +68823,63 @@
       "priority_reason": "valor=58.3/100; investigabilidad=52.9/100; contexto_oportunidad=x1.18; familia óptima=procurement; estado=Por investigar"
     },
     {
+      "id": "clients_public:diputación de barcelona:identified_vendors",
+      "section": "clients_public",
+      "entity": "DIPUTACIÓN DE BARCELONA",
+      "entity_id": "pub-v313-002",
+      "field": "identified_vendors",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-25T10:02:44.034169+00:00",
+      "last_attempt_at": "2026-09-17T10:02:44.034164+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 58.3,
+      "researchability_score": 48.2,
+      "priority_score": 42.0,
+      "priority_tier": "P2",
+      "opportunity_context_multiplier": 1.29,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "señal tecnológica existente",
+        "importe >= 250 k€"
+      ],
+      "source_family": "procurement",
+      "source_strategy": {
+        "preferred_families": [
+          "procurement",
+          "official",
+          "news"
+        ],
+        "source_types": [
+          "TED",
+          "PLACSP",
+          "BASE.gov.pt",
+          "portal oficial del comprador"
+        ],
+        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
+        "query_hints": [
+          "\"DIPUTACIÓN DE BARCELONA\" contratación tecnología",
+          "\"DIPUTACIÓN DE BARCELONA\" concurso adjudicación"
+        ]
+      },
+      "priority_reason": "valor=58.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.29; familia óptima=procurement; estado=Por investigar"
+    },
+    {
       "id": "clients_public:european maritime safety agency:identified_vendors",
       "section": "clients_public",
       "entity": "European Maritime Safety Agency",
@@ -79445,64 +79386,6 @@
       "priority_reason": "valor=58.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.27; familia óptima=procurement; estado=Por investigar"
     },
     {
-      "id": "clients_public:diputación de barcelona:known_architectures",
-      "section": "clients_public",
-      "entity": "DIPUTACIÓN DE BARCELONA",
-      "entity_id": "pub-v313-002",
-      "field": "known_architectures",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-25T10:02:44.034184+00:00",
-      "last_attempt_at": "2026-09-17T10:02:44.034181+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 51.7,
-      "researchability_score": 48.2,
-      "priority_score": 41.2,
-      "priority_tier": "P2",
-      "opportunity_context_multiplier": 1.43,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "señal tecnológica existente",
-        "importe >= 250 k€",
-        "hito <= 120 días"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"DIPUTACIÓN DE BARCELONA\" contratación tecnología",
-          "\"DIPUTACIÓN DE BARCELONA\" concurso adjudicación"
-        ]
-      },
-      "priority_reason": "valor=51.7/100; investigabilidad=48.2/100; contexto_oportunidad=x1.43; familia óptima=procurement; estado=Por investigar"
-    },
-    {
       "id": "integrators:3hold technologies:revenue",
       "section": "integrators",
       "entity": "3Hold Technologies",
@@ -80762,6 +80645,63 @@
         ]
       },
       "priority_reason": "valor=56.7/100; investigabilidad=52.9/100; contexto_oportunidad=x1.18; familia óptima=procurement; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:diputación de barcelona:identified_integrators",
+      "section": "clients_public",
+      "entity": "DIPUTACIÓN DE BARCELONA",
+      "entity_id": "pub-v313-002",
+      "field": "identified_integrators",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-25T10:02:44.034177+00:00",
+      "last_attempt_at": "2026-09-17T10:02:44.034174+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 56.7,
+      "researchability_score": 48.2,
+      "priority_score": 40.8,
+      "priority_tier": "P2",
+      "opportunity_context_multiplier": 1.29,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "señal tecnológica existente",
+        "importe >= 250 k€"
+      ],
+      "source_family": "procurement",
+      "source_strategy": {
+        "preferred_families": [
+          "procurement",
+          "official",
+          "news"
+        ],
+        "source_types": [
+          "TED",
+          "PLACSP",
+          "BASE.gov.pt",
+          "portal oficial del comprador"
+        ],
+        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
+        "query_hints": [
+          "\"DIPUTACIÓN DE BARCELONA\" contratación tecnología",
+          "\"DIPUTACIÓN DE BARCELONA\" concurso adjudicación"
+        ]
+      },
+      "priority_reason": "valor=56.7/100; investigabilidad=48.2/100; contexto_oportunidad=x1.29; familia óptima=procurement; estado=Por investigar"
     },
     {
       "id": "clients_public:european maritime safety agency:identified_integrators",
@@ -114690,120 +114630,6 @@
       "priority_reason": "valor=56.7/100; investigabilidad=43.6/100; contexto_oportunidad=x1.32; familia óptima=procurement; estado=Por investigar"
     },
     {
-      "id": "clients_public:diputación de barcelona:westcon_area",
-      "section": "clients_public",
-      "entity": "DIPUTACIÓN DE BARCELONA",
-      "entity_id": "pub-v313-002",
-      "field": "westcon_area",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 1,
-      "reason": "valor pendiente",
-      "gap_kind": "derivation-support",
-      "claim_class": "INTERNAL_CLASSIFICATION",
-      "research_mode": "derive-from-supported-inputs",
-      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-      "dependency_fields": [
-        "technology_signals"
-      ],
-      "attempts_completed": 0,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 0,
-      "next_pass": 1,
-      "next_due_at": null,
-      "last_attempt_at": null,
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 39.3,
-      "researchability_score": 57.8,
-      "priority_score": 37.6,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.43,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "señal tecnológica existente",
-        "importe >= 250 k€",
-        "hito <= 120 días"
-      ],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"DIPUTACIÓN DE BARCELONA\" westcon area"
-        ]
-      },
-      "priority_reason": "valor=39.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.43; familia óptima=official; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:diputación de barcelona:westcon_fit",
-      "section": "clients_public",
-      "entity": "DIPUTACIÓN DE BARCELONA",
-      "entity_id": "pub-v313-002",
-      "field": "westcon_fit",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 1,
-      "reason": "valor pendiente",
-      "gap_kind": "derivation-support",
-      "claim_class": "DERIVED_FACT",
-      "research_mode": "derive-from-supported-inputs",
-      "derivation_rule": "client signals/needs ∩ supported Westcon portfolio/capabilities",
-      "dependency_fields": [
-        "technology_signals"
-      ],
-      "attempts_completed": 0,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 0,
-      "next_pass": 1,
-      "next_due_at": null,
-      "last_attempt_at": null,
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 39.3,
-      "researchability_score": 57.8,
-      "priority_score": 37.6,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.43,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "señal tecnológica existente",
-        "importe >= 250 k€",
-        "hito <= 120 días"
-      ],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"DIPUTACIÓN DE BARCELONA\" westcon fit"
-        ]
-      },
-      "priority_reason": "valor=39.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.43; familia óptima=official; estado=Por investigar"
-    },
-    {
       "id": "clients_private:acciona:contracts",
       "section": "clients_private",
       "entity": "Acciona",
@@ -121409,6 +121235,63 @@
         ]
       },
       "priority_reason": "valor=60.8/100; investigabilidad=52.9/100; contexto_oportunidad=x1.0; familia óptima=technology; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:diputación de barcelona:known_architectures",
+      "section": "clients_public",
+      "entity": "DIPUTACIÓN DE BARCELONA",
+      "entity_id": "pub-v313-002",
+      "field": "known_architectures",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-25T10:02:44.034184+00:00",
+      "last_attempt_at": "2026-09-17T10:02:44.034181+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 51.7,
+      "researchability_score": 48.2,
+      "priority_score": 37.2,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.29,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "señal tecnológica existente",
+        "importe >= 250 k€"
+      ],
+      "source_family": "procurement",
+      "source_strategy": {
+        "preferred_families": [
+          "procurement",
+          "official",
+          "news"
+        ],
+        "source_types": [
+          "TED",
+          "PLACSP",
+          "BASE.gov.pt",
+          "portal oficial del comprador"
+        ],
+        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
+        "query_hints": [
+          "\"DIPUTACIÓN DE BARCELONA\" contratación tecnología",
+          "\"DIPUTACIÓN DE BARCELONA\" concurso adjudicación"
+        ]
+      },
+      "priority_reason": "valor=51.7/100; investigabilidad=48.2/100; contexto_oportunidad=x1.29; familia óptima=procurement; estado=Por investigar"
     },
     {
       "id": "clients_public:european maritime safety agency:known_architectures",
@@ -141428,64 +141311,6 @@
         ]
       },
       "priority_reason": "valor=58.3/100; investigabilidad=43.6/100; contexto_oportunidad=x1.22; familia óptima=procurement; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:diputación de barcelona:strategic_programs",
-      "section": "clients_public",
-      "entity": "DIPUTACIÓN DE BARCELONA",
-      "entity_id": "pub-v313-002",
-      "field": "strategic_programs",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-25T10:02:44.034191+00:00",
-      "last_attempt_at": "2026-09-17T10:02:44.034188+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 45.0,
-      "researchability_score": 48.2,
-      "priority_score": 35.9,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.43,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "señal tecnológica existente",
-        "importe >= 250 k€",
-        "hito <= 120 días"
-      ],
-      "source_family": "technology",
-      "source_strategy": {
-        "preferred_families": [
-          "technology",
-          "services",
-          "cases",
-          "official"
-        ],
-        "source_types": [
-          "product / technology page",
-          "architecture page",
-          "case study"
-        ],
-        "rationale": "Tecnologías y plataformas se validan mejor en páginas técnicas y casos de uso explícitos.",
-        "query_hints": [
-          "\"DIPUTACIÓN DE BARCELONA\" strategic programs",
-          "\"DIPUTACIÓN DE BARCELONA\" solutions services"
-        ]
-      },
-      "priority_reason": "valor=45.0/100; investigabilidad=48.2/100; contexto_oportunidad=x1.43; familia óptima=technology; estado=Por investigar"
     },
     {
       "id": "clients_public:dirección de suma gestión tributaria. diputación de alicante:identified_vendors",
@@ -165149,6 +164974,118 @@
         ]
       },
       "priority_reason": "valor=45.0/100; investigabilidad=43.6/100; contexto_oportunidad=x1.5; familia óptima=technology; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:diputación de barcelona:westcon_area",
+      "section": "clients_public",
+      "entity": "DIPUTACIÓN DE BARCELONA",
+      "entity_id": "pub-v313-002",
+      "field": "westcon_area",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 1,
+      "reason": "valor pendiente",
+      "gap_kind": "derivation-support",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "attempts_completed": 0,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 0,
+      "next_pass": 1,
+      "next_due_at": null,
+      "last_attempt_at": null,
+      "last_error": "",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 39.3,
+      "researchability_score": 57.8,
+      "priority_score": 33.9,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.29,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "señal tecnológica existente",
+        "importe >= 250 k€"
+      ],
+      "source_family": "official",
+      "source_strategy": {
+        "preferred_families": [
+          "official",
+          "services",
+          "news"
+        ],
+        "source_types": [
+          "official website",
+          "official documentation"
+        ],
+        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
+        "query_hints": [
+          "\"DIPUTACIÓN DE BARCELONA\" westcon area"
+        ]
+      },
+      "priority_reason": "valor=39.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.29; familia óptima=official; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:diputación de barcelona:westcon_fit",
+      "section": "clients_public",
+      "entity": "DIPUTACIÓN DE BARCELONA",
+      "entity_id": "pub-v313-002",
+      "field": "westcon_fit",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 1,
+      "reason": "valor pendiente",
+      "gap_kind": "derivation-support",
+      "claim_class": "DERIVED_FACT",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "client signals/needs ∩ supported Westcon portfolio/capabilities",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "attempts_completed": 0,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 0,
+      "next_pass": 1,
+      "next_due_at": null,
+      "last_attempt_at": null,
+      "last_error": "",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 39.3,
+      "researchability_score": 57.8,
+      "priority_score": 33.9,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.29,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "señal tecnológica existente",
+        "importe >= 250 k€"
+      ],
+      "source_family": "official",
+      "source_strategy": {
+        "preferred_families": [
+          "official",
+          "services",
+          "news"
+        ],
+        "source_types": [
+          "official website",
+          "official documentation"
+        ],
+        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
+        "query_hints": [
+          "\"DIPUTACIÓN DE BARCELONA\" westcon fit"
+        ]
+      },
+      "priority_reason": "valor=39.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.29; familia óptima=official; estado=Por investigar"
     },
     {
       "id": "clients_public:servicio andaluz de salud. servicios centrales:westcon_area",
@@ -195108,6 +195045,63 @@
       "priority_reason": "valor=64.6/100; investigabilidad=43.6/100; contexto_oportunidad=x1.0; familia óptima=careers; estado=Por investigar"
     },
     {
+      "id": "clients_public:diputación de barcelona:strategic_programs",
+      "section": "clients_public",
+      "entity": "DIPUTACIÓN DE BARCELONA",
+      "entity_id": "pub-v313-002",
+      "field": "strategic_programs",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-25T10:02:44.034191+00:00",
+      "last_attempt_at": "2026-09-17T10:02:44.034188+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 45.0,
+      "researchability_score": 48.2,
+      "priority_score": 32.4,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.29,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "señal tecnológica existente",
+        "importe >= 250 k€"
+      ],
+      "source_family": "technology",
+      "source_strategy": {
+        "preferred_families": [
+          "technology",
+          "services",
+          "cases",
+          "official"
+        ],
+        "source_types": [
+          "product / technology page",
+          "architecture page",
+          "case study"
+        ],
+        "rationale": "Tecnologías y plataformas se validan mejor en páginas técnicas y casos de uso explícitos.",
+        "query_hints": [
+          "\"DIPUTACIÓN DE BARCELONA\" strategic programs",
+          "\"DIPUTACIÓN DE BARCELONA\" solutions services"
+        ]
+      },
+      "priority_reason": "valor=45.0/100; investigabilidad=48.2/100; contexto_oportunidad=x1.29; familia óptima=technology; estado=Por investigar"
+    },
+    {
       "id": "clients_public:dirección general de racionalización y centralización de la contratación-junta de contratación centralizada:identified_integrators",
       "section": "clients_public",
       "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
@@ -205062,62 +205056,6 @@
       "priority_reason": "valor=39.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.22; familia óptima=official; estado=Por investigar"
     },
     {
-      "id": "clients_public:diputación de barcelona:investment_signals",
-      "section": "clients_public",
-      "entity": "DIPUTACIÓN DE BARCELONA",
-      "entity_id": "pub-v313-002",
-      "field": "investment_signals",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-25T10:02:44.034198+00:00",
-      "last_attempt_at": "2026-09-17T10:02:44.034195+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 43.3,
-      "researchability_score": 44.8,
-      "priority_score": 32.1,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.43,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "señal tecnológica existente",
-        "importe >= 250 k€",
-        "hito <= 120 días"
-      ],
-      "source_family": "news",
-      "source_strategy": {
-        "preferred_families": [
-          "news",
-          "official",
-          "cases"
-        ],
-        "source_types": [
-          "press release",
-          "official news",
-          "reliable trade press"
-        ],
-        "rationale": "Movimientos recientes necesitan fuentes fechadas y atribuibles.",
-        "query_hints": [
-          "\"DIPUTACIÓN DE BARCELONA\" investment signals"
-        ]
-      },
-      "priority_reason": "valor=43.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.43; familia óptima=news; estado=Por investigar"
-    },
-    {
       "id": "distributors:also:job_profiles",
       "section": "distributors",
       "entity": "ALSO",
@@ -208450,61 +208388,6 @@
         ]
       },
       "priority_reason": "valor=45.0/100; investigabilidad=48.2/100; contexto_oportunidad=x1.27; familia óptima=technology; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:diputación de barcelona:renewal_window",
-      "section": "clients_public",
-      "entity": "DIPUTACIÓN DE BARCELONA",
-      "entity_id": "pub-v313-002",
-      "field": "renewal_window",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "derivation-support",
-      "claim_class": "DERIVED_FACT",
-      "research_mode": "derive-from-supported-inputs",
-      "derivation_rule": "derived from supported canonical inputs",
-      "dependency_fields": [],
-      "attempts_completed": 0,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 0,
-      "next_pass": 1,
-      "next_due_at": null,
-      "last_attempt_at": null,
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 33.3,
-      "researchability_score": 57.8,
-      "priority_score": 31.9,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.43,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "señal tecnológica existente",
-        "importe >= 250 k€",
-        "hito <= 120 días"
-      ],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"DIPUTACIÓN DE BARCELONA\" renewal window"
-        ]
-      },
-      "priority_reason": "valor=33.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.43; familia óptima=official; estado=Por investigar"
     },
     {
       "id": "clients_public:diputación de barcelona:strategic_programs",
@@ -230843,63 +230726,6 @@
         ]
       },
       "priority_reason": "valor=45.0/100; investigabilidad=48.2/100; contexto_oportunidad=x1.22; familia óptima=technology; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:diputación de barcelona:hiring_signals",
-      "section": "clients_public",
-      "entity": "DIPUTACIÓN DE BARCELONA",
-      "entity_id": "pub-v313-002",
-      "field": "hiring_signals",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-25T10:02:44.034204+00:00",
-      "last_attempt_at": "2026-09-17T10:02:44.034202+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 38.3,
-      "researchability_score": 48.2,
-      "priority_score": 30.6,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.43,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "señal tecnológica existente",
-        "importe >= 250 k€",
-        "hito <= 120 días"
-      ],
-      "source_family": "careers",
-      "source_strategy": {
-        "preferred_families": [
-          "careers",
-          "technology",
-          "official"
-        ],
-        "source_types": [
-          "career portal",
-          "vacante oficial",
-          "perfil técnico público"
-        ],
-        "rationale": "Las ofertas de empleo son una señal directa de tecnologías, perfiles y áreas de inversión activas.",
-        "query_hints": [
-          "\"DIPUTACIÓN DE BARCELONA\" careers hiring signals",
-          "\"DIPUTACIÓN DE BARCELONA\" empleo tecnología"
-        ]
-      },
-      "priority_reason": "valor=38.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.43; familia óptima=careers; estado=Por investigar"
     },
     {
       "id": "clients_public:diputación de barcelona:strategic_programs",
@@ -258237,6 +258063,61 @@
       "priority_reason": "valor=35.0/100; investigabilidad=57.6/100; contexto_oportunidad=x1.25; familia óptima=procurement; estado=Por investigar"
     },
     {
+      "id": "clients_public:diputación de barcelona:investment_signals",
+      "section": "clients_public",
+      "entity": "DIPUTACIÓN DE BARCELONA",
+      "entity_id": "pub-v313-002",
+      "field": "investment_signals",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-25T10:02:44.034198+00:00",
+      "last_attempt_at": "2026-09-17T10:02:44.034195+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 43.3,
+      "researchability_score": 44.8,
+      "priority_score": 29.0,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.29,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "señal tecnológica existente",
+        "importe >= 250 k€"
+      ],
+      "source_family": "news",
+      "source_strategy": {
+        "preferred_families": [
+          "news",
+          "official",
+          "cases"
+        ],
+        "source_types": [
+          "press release",
+          "official news",
+          "reliable trade press"
+        ],
+        "rationale": "Movimientos recientes necesitan fuentes fechadas y atribuibles.",
+        "query_hints": [
+          "\"DIPUTACIÓN DE BARCELONA\" investment signals"
+        ]
+      },
+      "priority_reason": "valor=43.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.29; familia óptima=news; estado=Por investigar"
+    },
+    {
       "id": "clients_public:european maritime safety agency:investment_signals",
       "section": "clients_public",
       "entity": "European Maritime Safety Agency",
@@ -263999,6 +263880,60 @@
         ]
       },
       "priority_reason": "valor=38.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.34; familia óptima=careers; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:diputación de barcelona:renewal_window",
+      "section": "clients_public",
+      "entity": "DIPUTACIÓN DE BARCELONA",
+      "entity_id": "pub-v313-002",
+      "field": "renewal_window",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "derivation-support",
+      "claim_class": "DERIVED_FACT",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "derived from supported canonical inputs",
+      "dependency_fields": [],
+      "attempts_completed": 0,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 0,
+      "next_pass": 1,
+      "next_due_at": null,
+      "last_attempt_at": null,
+      "last_error": "",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 33.3,
+      "researchability_score": 57.8,
+      "priority_score": 28.7,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.29,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "señal tecnológica existente",
+        "importe >= 250 k€"
+      ],
+      "source_family": "official",
+      "source_strategy": {
+        "preferred_families": [
+          "official",
+          "services",
+          "news"
+        ],
+        "source_types": [
+          "official website",
+          "official documentation"
+        ],
+        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
+        "query_hints": [
+          "\"DIPUTACIÓN DE BARCELONA\" renewal window"
+        ]
+      },
+      "priority_reason": "valor=33.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.29; familia óptima=official; estado=Por investigar"
     },
     {
       "id": "clients_public:dirección general de la entidad pública empresarial red.es:hiring_signals",
@@ -293044,6 +292979,62 @@
         ]
       },
       "priority_reason": "valor=38.3/100; investigabilidad=52.9/100; contexto_oportunidad=x1.18; familia óptima=careers; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:diputación de barcelona:hiring_signals",
+      "section": "clients_public",
+      "entity": "DIPUTACIÓN DE BARCELONA",
+      "entity_id": "pub-v313-002",
+      "field": "hiring_signals",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-25T10:02:44.034204+00:00",
+      "last_attempt_at": "2026-09-17T10:02:44.034202+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 38.3,
+      "researchability_score": 48.2,
+      "priority_score": 27.6,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.29,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "señal tecnológica existente",
+        "importe >= 250 k€"
+      ],
+      "source_family": "careers",
+      "source_strategy": {
+        "preferred_families": [
+          "careers",
+          "technology",
+          "official"
+        ],
+        "source_types": [
+          "career portal",
+          "vacante oficial",
+          "perfil técnico público"
+        ],
+        "rationale": "Las ofertas de empleo son una señal directa de tecnologías, perfiles y áreas de inversión activas.",
+        "query_hints": [
+          "\"DIPUTACIÓN DE BARCELONA\" careers hiring signals",
+          "\"DIPUTACIÓN DE BARCELONA\" empleo tecnología"
+        ]
+      },
+      "priority_reason": "valor=38.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.29; familia óptima=careers; estado=Por investigar"
     },
     {
       "id": "clients_public:european maritime safety agency:cpv_codes",
@@ -325780,122 +325771,6 @@
       "priority_reason": "valor=43.3/100; investigabilidad=40.4/100; contexto_oportunidad=x1.31; familia óptima=news; estado=Por investigar"
     },
     {
-      "id": "clients_public:diputación de barcelona:evidenced_needs",
-      "section": "clients_public",
-      "entity": "DIPUTACIÓN DE BARCELONA",
-      "entity_id": "pub-v313-002",
-      "field": "evidenced_needs",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-25T10:02:44.034210+00:00",
-      "last_attempt_at": "2026-09-17T10:02:44.034208+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 33.3,
-      "researchability_score": 48.2,
-      "priority_score": 26.6,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.43,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "señal tecnológica existente",
-        "importe >= 250 k€",
-        "hito <= 120 días"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"DIPUTACIÓN DE BARCELONA\" contratación tecnología",
-          "\"DIPUTACIÓN DE BARCELONA\" concurso adjudicación"
-        ]
-      },
-      "priority_reason": "valor=33.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.43; familia óptima=procurement; estado=Por investigar"
-    },
-    {
-      "id": "clients_public:diputación de barcelona:technology_domains",
-      "section": "clients_public",
-      "entity": "DIPUTACIÓN DE BARCELONA",
-      "entity_id": "pub-v313-002",
-      "field": "technology_domains",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-25T10:02:44.034216+00:00",
-      "last_attempt_at": "2026-09-17T10:02:44.034214+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 33.3,
-      "researchability_score": 48.2,
-      "priority_score": 26.6,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.43,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "señal tecnológica existente",
-        "importe >= 250 k€",
-        "hito <= 120 días"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"DIPUTACIÓN DE BARCELONA\" contratación tecnología",
-          "\"DIPUTACIÓN DE BARCELONA\" concurso adjudicación"
-        ]
-      },
-      "priority_reason": "valor=33.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.43; familia óptima=procurement; estado=Por investigar"
-    },
-    {
       "id": "clients_public:dirección económico-financiera de enaire:investment_signals",
       "section": "clients_public",
       "entity": "Dirección Económico-Financiera de ENAIRE",
@@ -353317,61 +353192,6 @@
       "priority_reason": "valor=43.3/100; investigabilidad=40.4/100; contexto_oportunidad=x1.22; familia óptima=news; estado=Por investigar"
     },
     {
-      "id": "clients_public:diputación de barcelona:technology_partners",
-      "section": "clients_public",
-      "entity": "DIPUTACIÓN DE BARCELONA",
-      "entity_id": "pub-v313-002",
-      "field": "technology_partners",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-25T10:02:44.034222+00:00",
-      "last_attempt_at": "2026-09-17T10:02:44.034219+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 33.3,
-      "researchability_score": 44.8,
-      "priority_score": 24.7,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.43,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "señal tecnológica existente",
-        "importe >= 250 k€",
-        "hito <= 120 días"
-      ],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"DIPUTACIÓN DE BARCELONA\" technology partners"
-        ]
-      },
-      "priority_reason": "valor=33.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.43; familia óptima=official; estado=Por investigar"
-    },
-    {
       "id": "clients_public:dirección de suma gestión tributaria. diputación de alicante:investment_signals",
       "section": "clients_public",
       "entity": "Dirección de Suma Gestión Tributaria. Diputación de Alicante",
@@ -378645,6 +378465,120 @@
         ]
       },
       "priority_reason": "valor=53.7/100; investigabilidad=38.9/100; contexto_oportunidad=x1.0; familia óptima=careers; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:diputación de barcelona:evidenced_needs",
+      "section": "clients_public",
+      "entity": "DIPUTACIÓN DE BARCELONA",
+      "entity_id": "pub-v313-002",
+      "field": "evidenced_needs",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-25T10:02:44.034210+00:00",
+      "last_attempt_at": "2026-09-17T10:02:44.034208+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 33.3,
+      "researchability_score": 48.2,
+      "priority_score": 24.0,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.29,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "señal tecnológica existente",
+        "importe >= 250 k€"
+      ],
+      "source_family": "procurement",
+      "source_strategy": {
+        "preferred_families": [
+          "procurement",
+          "official",
+          "news"
+        ],
+        "source_types": [
+          "TED",
+          "PLACSP",
+          "BASE.gov.pt",
+          "portal oficial del comprador"
+        ],
+        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
+        "query_hints": [
+          "\"DIPUTACIÓN DE BARCELONA\" contratación tecnología",
+          "\"DIPUTACIÓN DE BARCELONA\" concurso adjudicación"
+        ]
+      },
+      "priority_reason": "valor=33.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.29; familia óptima=procurement; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:diputación de barcelona:technology_domains",
+      "section": "clients_public",
+      "entity": "DIPUTACIÓN DE BARCELONA",
+      "entity_id": "pub-v313-002",
+      "field": "technology_domains",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-25T10:02:44.034216+00:00",
+      "last_attempt_at": "2026-09-17T10:02:44.034214+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 33.3,
+      "researchability_score": 48.2,
+      "priority_score": 24.0,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.29,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "señal tecnológica existente",
+        "importe >= 250 k€"
+      ],
+      "source_family": "procurement",
+      "source_strategy": {
+        "preferred_families": [
+          "procurement",
+          "official",
+          "news"
+        ],
+        "source_types": [
+          "TED",
+          "PLACSP",
+          "BASE.gov.pt",
+          "portal oficial del comprador"
+        ],
+        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
+        "query_hints": [
+          "\"DIPUTACIÓN DE BARCELONA\" contratación tecnología",
+          "\"DIPUTACIÓN DE BARCELONA\" concurso adjudicación"
+        ]
+      },
+      "priority_reason": "valor=33.3/100; investigabilidad=48.2/100; contexto_oportunidad=x1.29; familia óptima=procurement; estado=Por investigar"
     },
     {
       "id": "clients_public:european maritime safety agency:evidenced_needs",
@@ -413529,6 +413463,60 @@
         ]
       },
       "priority_reason": "valor=33.3/100; investigabilidad=49.1/100; contexto_oportunidad=x1.18; familia óptima=official; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:diputación de barcelona:technology_partners",
+      "section": "clients_public",
+      "entity": "DIPUTACIÓN DE BARCELONA",
+      "entity_id": "pub-v313-002",
+      "field": "technology_partners",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-25T10:02:44.034222+00:00",
+      "last_attempt_at": "2026-09-17T10:02:44.034219+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 33.3,
+      "researchability_score": 44.8,
+      "priority_score": 22.3,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.29,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "señal tecnológica existente",
+        "importe >= 250 k€"
+      ],
+      "source_family": "official",
+      "source_strategy": {
+        "preferred_families": [
+          "official",
+          "services",
+          "news"
+        ],
+        "source_types": [
+          "official website",
+          "official documentation"
+        ],
+        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
+        "query_hints": [
+          "\"DIPUTACIÓN DE BARCELONA\" technology partners"
+        ]
+      },
+      "priority_reason": "valor=33.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.29; familia óptima=official; estado=Por investigar"
     },
     {
       "id": "clients_public:dirección general de racionalización y centralización de la contratación-junta de contratación centralizada:hiring_signals",
@@ -452804,61 +452792,6 @@
       "priority_reason": "valor=33.3/100; investigabilidad=34.2/100; contexto_oportunidad=x1.31; familia óptima=procurement; estado=Por investigar"
     },
     {
-      "id": "clients_public:diputación de barcelona:organization_size",
-      "section": "clients_public",
-      "entity": "DIPUTACIÓN DE BARCELONA",
-      "entity_id": "pub-v313-002",
-      "field": "organization_size",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-09-25T10:02:44.034228+00:00",
-      "last_attempt_at": "2026-09-17T10:02:44.034225+00:00",
-      "last_error": "no-seed-source",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 23.3,
-      "researchability_score": 44.8,
-      "priority_score": 17.3,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.43,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "señal tecnológica existente",
-        "importe >= 250 k€",
-        "hito <= 120 días"
-      ],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"DIPUTACIÓN DE BARCELONA\" organization size"
-        ]
-      },
-      "priority_reason": "valor=23.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.43; familia óptima=official; estado=Por investigar"
-    },
-    {
       "id": "clients_public:ministerio de asuntos exteriores, ue y cooperación:organization_size",
       "section": "clients_public",
       "entity": "Ministerio de Asuntos Exteriores, UE y Cooperación",
@@ -456931,6 +456864,60 @@
         ]
       },
       "priority_reason": "valor=23.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.31; familia óptima=official; estado=Por investigar"
+    },
+    {
+      "id": "clients_public:diputación de barcelona:organization_size",
+      "section": "clients_public",
+      "entity": "DIPUTACIÓN DE BARCELONA",
+      "entity_id": "pub-v313-002",
+      "field": "organization_size",
+      "country_context": "ES",
+      "research_state": "Por investigar",
+      "priority": 2,
+      "reason": "valor pendiente",
+      "gap_kind": "standard",
+      "claim_class": "EXTERNAL_FACT",
+      "research_mode": "public-source-verification",
+      "derivation_rule": "direct support required",
+      "dependency_fields": [],
+      "attempts_completed": 3,
+      "accepted_evidences": 0,
+      "consecutive_no_yield": 3,
+      "next_pass": 4,
+      "next_due_at": "2026-09-25T10:02:44.034228+00:00",
+      "last_attempt_at": "2026-09-17T10:02:44.034225+00:00",
+      "last_error": "no-seed-source",
+      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
+      "strategy_profile": "adaptive-source-cascade",
+      "retry_policy": "persistent-backoff-with-circuit-breaker",
+      "business_value_score": 23.3,
+      "researchability_score": 44.8,
+      "priority_score": 15.6,
+      "priority_tier": "P3",
+      "opportunity_context_multiplier": 1.29,
+      "opportunity_context": [
+        "expediente/portal oficial identificado",
+        "necesidad tecnológica descrita",
+        "señal tecnológica existente",
+        "importe >= 250 k€"
+      ],
+      "source_family": "official",
+      "source_strategy": {
+        "preferred_families": [
+          "official",
+          "services",
+          "news"
+        ],
+        "source_types": [
+          "official website",
+          "official documentation"
+        ],
+        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
+        "query_hints": [
+          "\"DIPUTACIÓN DE BARCELONA\" organization size"
+        ]
+      },
+      "priority_reason": "valor=23.3/100; investigabilidad=44.8/100; contexto_oportunidad=x1.29; familia óptima=official; estado=Por investigar"
     },
     {
       "id": "clients_public:director gerente de fremap:organization_size",
