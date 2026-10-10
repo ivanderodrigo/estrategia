@@ -1,3 +1,4 @@
+# HF6_EVIDENCE_DERIVED_SCOPE
 """Canonical evidence graph with item-level provenance."""
 
 from __future__ import annotations
@@ -8,7 +9,7 @@ from typing import Any
 
 from .entity_resolution import resolve
 from .model import canonical, stable_id, values
-from .provenance import evidence_for_relationship
+from .provenance import evidence_for_relationship, evidence_scopes
 from .settings import VERSION
 from .storage import read_json
 
@@ -91,10 +92,15 @@ def build_graph(data: dict[str, Any]) -> dict[str, Any]:
             clean = evidence_for_relationship(clean, source_name, target_name)
         if not clean:
             return
-        source = entity(source_kind, source_name, country)
-        target = entity(target_kind, target_name, country)
+        scopes = (
+            evidence_scopes(clean)
+            if relation in {"distributes", "partners_with"}
+            else _scopes(country)
+        )
+        scope_label = " + ".join(scopes)
+        source = entity(source_kind, source_name, scope_label)
+        target = entity(target_kind, target_name, scope_label)
         key = (source["id"], relation, target["id"])
-        scopes = _scopes(country)
         status = "CONFIRMADO" if status == "CONFIRMED" else status
         if key not in relationships:
             relationships[key] = {
@@ -171,7 +177,7 @@ def build_graph(data: dict[str, Any]) -> dict[str, Any]:
                     relation_name,
                     "manufacturer",
                     name,
-                    scope,
+                    "GLOBAL",
                     _item_evidence(field, raw),
                     "CONFIRMADO",
                     0.88,

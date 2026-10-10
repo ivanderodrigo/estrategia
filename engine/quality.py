@@ -1,3 +1,4 @@
+# HF6_CROSS_ITEM_GATE
 from __future__ import annotations
 
 from collections import Counter
@@ -6,6 +7,7 @@ from typing import Any
 from urllib.parse import urlparse
 
 from .model import canonical
+from .provenance import evidence_for_item, evidence_for_relationship
 from .settings import SECTIONS, VERSION
 
 
@@ -71,7 +73,38 @@ def audit(data: dict[str, Any], graph: dict[str, Any], gaps: dict[str, Any]) -> 
                         errors.append(f"Trazabilidad atómica ausente: {section}/{row.get('name')}/{field_id}/{raw}")
                     elif not item.get("evidence"):
                         errors.append(f"Evidencia atómica vacía: {section}/{row.get('name')}/{field_id}/{raw}")
+                    elif not evidence_for_relationship(
+                        item.get("evidence") or [], row.get("name"), raw
+                    ):
+                        errors.append(
+                            f"Evidencia atómica mal asociada: {section}/{row.get('name')}/{field_id}/{raw}"
+                        )
 
+    # New web evidence is atomic across every list-valued field, not only channel relations.
+    for section in SECTIONS:
+        for row in data.get(section) or []:
+            for field_id, field in (row.get("fields") or {}).items():
+                if not isinstance(field.get("value"), list):
+                    continue
+                for item in field.get("items") or []:
+                    if not isinstance(item, dict):
+                        continue
+                    raw = item.get("value")
+                    for ev in item.get("evidence") or []:
+                        if not isinstance(ev, dict):
+                            continue
+                        if ev.get("atomic") and ev.get("item_value") not in (None, ""):
+                            if canonical(ev.get("item_value")) != canonical(raw):
+                                errors.append(
+                                    f"Metadata atómica cruzada: {section}/{row.get('name')}/{field_id}/{raw}"
+                                )
+                        if str(ev.get("method") or "").startswith("web-evidence:"):
+                            if not evidence_for_item(
+                                [ev], row.get("name"), raw, field_id=field_id
+                            ):
+                                errors.append(
+                                    f"Evidencia web mal asociada: {section}/{row.get('name')}/{field_id}/{raw}"
+                                )
     # Graph invariants.
     relation_keys = []
     for rel in graph.get("relationships") or []:
@@ -80,6 +113,10 @@ def audit(data: dict[str, Any], graph: dict[str, Any], gaps: dict[str, Any]) -> 
         if not evidence:
             errors.append(f"Relación sin evidencia: {rel.get('id')}")
             continue
+        if rel.get("relation") in {"distributes", "partners_with"} and not evidence_for_relationship(
+            evidence, rel.get("entity_a"), rel.get("entity_b")
+        ):
+            errors.append(f"Relación con evidencia mal asociada: {rel.get('id')}")
         for ev in evidence:
             url = str(ev.get("url") or "")
             if not url.startswith(("http://", "https://")):

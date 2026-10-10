@@ -1,3 +1,4 @@
+# HF6_SEMANTIC_RELATION_PRESERVATION
 """Semantic non-destructive knowledge gate for canonical builds.
 
 v4.1.0-HF6 keeps the HF4/HF5 semantic-preservation model, restores documentary support only to surviving baseline capabilities, and aligns release tests with the current evidence contract:
@@ -21,6 +22,7 @@ from urllib.parse import urlsplit, urlunsplit
 
 from .knowledge_provenance import provenance_kind, typed_evidence_sufficient
 from .model import canonical
+from .provenance import evidence_for_item, evidence_for_relationship
 from .settings import SECTIONS, VERSION
 
 # These are projections/calculations owned by the build. Their source of truth is the graph,
@@ -148,8 +150,7 @@ def _resolve_endpoint(value: Any, lookup: Mapping[str, tuple[str, str]]) -> tupl
 
 
 def _relationship_is_hard_protected(rel: Mapping[str, Any]) -> bool:
-    # Relations remain hard-protected by default. Explicitly provisional
-    # or low-confidence derived signals are recalculable telemetry.
+    # Invalid endpoint provenance is recalculable telemetry, never protected knowledge.
     validity = str(rel.get("validity") or "").strip().casefold().replace("_", "-")
     status = str(rel.get("status") or "").strip().casefold()
     try:
@@ -160,6 +161,13 @@ def _relationship_is_hard_protected(rel: Mapping[str, Any]) -> bool:
         return False
     if bool(rel.get("derived")) and status in {"señal", "senal", "signal"} and confidence < 0.65:
         return False
+    if str(rel.get("relation") or "") in {"distributes", "partners_with"}:
+        if not evidence_for_relationship(
+            rel.get("evidence") or [],
+            rel.get("entity_a") or rel.get("entity_a_id"),
+            rel.get("entity_b") or rel.get("entity_b_id"),
+        ):
+            return False
     return True
 
 def _relation_key(rel: Mapping[str, Any], lookup: Mapping[str, tuple[str, str]] | None = None) -> str:
@@ -533,7 +541,19 @@ def restore_accredited_support(current: dict[str, Any], baseline: Mapping[str, A
                     field_support = _supported_rows(before_field)
                     for value in raw:
                         before_item = item_map.get(_semantic_scalar(value), {})
-                        support = _supported_rows(before_item) or field_support
+                        support = evidence_for_item(
+                            _supported_rows(before_item),
+                            before_row.get("name"),
+                            value,
+                            field_id=str(field_id),
+                        )
+                        if not support:
+                            support = evidence_for_item(
+                                field_support,
+                                before_row.get("name"),
+                                value,
+                                field_id=str(field_id),
+                            )
                         if not support:
                             continue
                         target_field, target_item, target_field_id = _find_list_target(after_row, str(field_id), value)

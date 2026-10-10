@@ -1,3 +1,4 @@
+# HF6_ATOMIC_RELATION_VIEWS
 from __future__ import annotations
 
 from copy import deepcopy
@@ -5,7 +6,7 @@ from typing import Any, Iterable
 
 from .model import canonical, values
 from .entity_resolution import resolve
-from .provenance import evidence_for_relationship
+from .provenance import evidence_for_item, evidence_for_relationship
 from .settings import SECTIONS, VERSION
 from .storage import read_json
 
@@ -167,8 +168,13 @@ def merge_field(field: dict[str, Any] | None, spec: dict[str, Any]) -> dict[str,
             key = canonical(value)
             item = deepcopy(previous.get(key, {"value": value}))
             item["value"] = value
+            has_supplied_item = key in supplied
             item_spec = supplied.get(key) or {}
-            evidence_to_add = item_spec.get("evidence") or (new_evidence if key in new_keys else [])
+            evidence_to_add = (
+                item_spec.get("evidence") or []
+                if has_supplied_item
+                else (new_evidence if key in new_keys else [])
+            )
             item["evidence"] = _dedupe_evidence((item.get("evidence") or []) + evidence_to_add)
             _decorate(
                 item,
@@ -292,25 +298,49 @@ def normalize_fields(data: dict[str, Any]) -> dict[str, Any]:
                     item_seen.add(k)
                     x = deepcopy(old); x["value"] = iv
                     existing = _dedupe_evidence(x.get("evidence") or [])
-                    specific = evidence_for_relationship(existing, row.get("name"), iv)
-                    # A single source already attached to this exact item is an atomic
-                    # assertion even when its title is terse. Multiple legacy sources must
-                    # be scope-filtered because old releases copied whole-field provenance.
-                    if not specific and len(existing) == 1:
-                        specific = existing
+                    relation_field = field_id in {
+                        "vendor_relations", "distributors", "integrators",
+                        "westcon_overlap", "competitor_vendor_overlap",
+                    }
+                    if relation_field:
+                        specific = evidence_for_relationship(existing, row.get("name"), iv)
+                    else:
+                        specific = evidence_for_item(
+                            existing, row.get("name"), iv, field_id=field_id
+                        )
                     if not specific:
-                        specific = evidence_for_relationship(field_evidence, row.get("name"), iv)
-                    if not specific and len(out) == 1 and len(field_evidence) == 1:
-                        specific = field_evidence
+                        if relation_field:
+                            specific = evidence_for_relationship(
+                                field_evidence, row.get("name"), iv
+                            )
+                        else:
+                            specific = evidence_for_item(
+                                field_evidence,
+                                row.get("name"),
+                                iv,
+                                field_id=field_id,
+                            )
                     x["evidence"] = _dedupe_evidence(specific)
                     items.append(x)
                 for missing_value in out:
                     missing_key = canonical(missing_value)
                     if missing_key in item_seen:
                         continue
-                    specific = evidence_for_relationship(field_evidence, row.get("name"), missing_value)
-                    if not specific and len(out) == 1 and len(field_evidence) == 1:
-                        specific = field_evidence
+                    relation_field = field_id in {
+                        "vendor_relations", "distributors", "integrators",
+                        "westcon_overlap", "competitor_vendor_overlap",
+                    }
+                    if relation_field:
+                        specific = evidence_for_relationship(
+                            field_evidence, row.get("name"), missing_value
+                        )
+                    else:
+                        specific = evidence_for_item(
+                            field_evidence,
+                            row.get("name"),
+                            missing_value,
+                            field_id=field_id,
+                        )
                     items.append({"value": missing_value, "evidence": _dedupe_evidence(specific)})
                 if items: field["items"] = items
                 elif "items" in field: field.pop("items", None)
@@ -506,6 +536,17 @@ def project_graph_to_views(data: dict[str, Any], graph: dict[str, Any]) -> dict[
     manufacturers = {canonical(r.get("name")): r for r in data.get("manufacturers") or []}
     integrators = {canonical(r.get("name")): r for r in data.get("integrators") or []}
     distributors = {canonical(r.get("name")): r for r in data.get("distributors") or []}
+    # HF6: these relation views are build-owned. Clear stale projections first.
+    for row in manufacturers.values():
+        fields = row.setdefault("fields", {})
+        fields.pop("distributors", None)
+        fields.pop("integrators", None)
+    for collection in (integrators, distributors):
+        for row in collection.values():
+            fields = row.setdefault("fields", {})
+            fields.pop("vendor_relations", None)
+            fields.pop("westcon_overlap", None)
+            fields.pop("competitor_vendor_overlap", None)
     grouped_manufacturer: dict[tuple[str, str], list[dict[str, Any]]] = {}
     integrator_scope: dict[str, list[dict[str, Any]]] = {}
     distributor_scope: dict[str, list[dict[str, Any]]] = {}
@@ -514,8 +555,12 @@ def project_graph_to_views(data: dict[str, Any], graph: dict[str, Any]) -> dict[
         if relation not in {"distributes", "partners_with"} or rel.get("status") != "CONFIRMADO":
             continue
         manu = manufacturers.get(canonical(rel.get("entity_b")))
-        if manu:
-            key = (canonical(rel.get("entity_b")), "distributors" if relation == "distributes" else "integrators")
+        countries = {str(scope).upper() for scope in (rel.get("countries") or [])}
+        if manu and countries & {"ES", "PT", "IBERIA"}:
+            key = (
+                canonical(rel.get("entity_b")),
+                "distributors" if relation == "distributes" else "integrators",
+            )
             grouped_manufacturer.setdefault(key, []).append(rel)
         if relation == "partners_with":
             integrator_scope.setdefault(canonical(rel.get("entity_a")), []).append(rel)

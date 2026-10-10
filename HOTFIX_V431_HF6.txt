@@ -1,0 +1,12 @@
+Westcon Decision Intelligence v4.3.1-HF6-R3
+- Every researched list value receives its own local snippet and atomic evidence metadata.
+- Broad catalogue/directory evidence cannot support a neighbouring item with only one endpoint.
+- The legacy single-evidence semantic bypass is removed.
+- merge_field never substitutes field-wide evidence when an explicit item record was supplied.
+- Channel graph edges require endpoint-specific evidence.
+- Relationship geography is derived from evidence, never inherited from entity row scope.
+- Manufacturer Iberia distributor/integrator projections only use ES/PT/IBERIA-evidenced edges.
+- Relation projections are cleared before rebuild so stale associations disappear.
+- Preservation does not hard-protect or restore semantically invalid channel edges.
+- Quality gate blocks bad item associations, bad graph edges and crossed atomic web metadata.
+- Claim-specific public migrations carry exact researched_entity/item_value/field metadata.

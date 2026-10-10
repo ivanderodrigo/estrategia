@@ -1,3 +1,4 @@
+# HF6_CLAIM_SPECIFIC_METADATA
 """Typed provenance and non-destructive knowledge protection for v4.1.0."""
 from __future__ import annotations
 
@@ -886,6 +887,14 @@ def apply_public_evidence_migrations(data: dict[str, Any], migrations: Mapping[s
             ev.setdefault("source_type", "official-vendor-web")
             ev["provenance_origin"] = "PUBLIC_PRIMARY"
             ev["source_binding"] = "claim-specific"
+            ev["researched_entity"] = row.get("name") or row.get("id") or ""
+            ev["field"] = field_id
+            ev["item_value"] = deepcopy(actual)
+            ev["item_key"] = canonical(actual)
+            ev["atomic"] = True
+            ev["scope_provenance"] = (
+                "claim-specific" if ev.get("scope") else "unspecified"
+            )
             before = len(target.get("evidence") or [])
             target["evidence"] = dedupe_evidence(list(target.get("evidence") or []) + [ev])
             stats["evidence_added"] += max(0, len(target["evidence"]) - before)

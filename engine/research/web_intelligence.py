@@ -1,3 +1,4 @@
+# HF6_ATOMIC_ITEM_PROVENANCE
 """Incremental public-web intelligence runner with durable learning."""
 
 from __future__ import annotations
@@ -20,6 +21,7 @@ from urllib3.util.retry import Retry
 
 from ..enrichment import merge_field
 from ..model import canonical
+from ..provenance import infer_scope_from_text
 from ..settings import RESEARCH_POLICY, RESEARCH_PROFILES, VERSION
 from ..storage import atomic_write_json, prune_json_mapping, read_json
 from .documents import Document, Link, parse_document, sitemap_urls
@@ -862,8 +864,10 @@ def _focus_candidates(
     document: Document,
     official: bool,
 ) -> dict[str, Candidate]:
+    """Keep values and matched terms aligned; never retain a non-matching neighbour."""
     output = dict(candidates)
 
+    # Preserve HF5 revenue quality even on runs without target_values.
     revenue_candidate = output.get("revenue")
     if revenue_candidate is not None:
         validator = (
@@ -871,23 +875,29 @@ def _focus_candidates(
             if target.get("section") == "manufacturers"
             else revenue_value_is_strict
         )
-        filtered_revenue = tuple(
-            value for value in revenue_candidate.values
-            if validator(str(value))
-            and _subject_value_match(
+        kept_values: list[Any] = []
+        kept_terms: list[str] = []
+        for index, value in enumerate(revenue_candidate.values):
+            term = (
+                revenue_candidate.matched_terms[index]
+                if index < len(revenue_candidate.matched_terms)
+                else str(value)
+            )
+            if validator(str(value)) and _subject_value_match(
                 str(target.get("entity") or ""),
                 value,
                 document,
                 field_id="revenue",
-            )
-        )
-        if filtered_revenue:
+            ):
+                kept_values.append(value)
+                kept_terms.append(term)
+        if kept_values:
             output["revenue"] = Candidate(
-                filtered_revenue,
+                tuple(kept_values),
                 revenue_candidate.claim_type,
                 revenue_candidate.confidence,
-                revenue_candidate.snippet,
-                revenue_candidate.matched_terms,
+                evidence_snippet(document.text, kept_terms),
+                tuple(kept_terms),
             )
         else:
             output.pop("revenue", None)
@@ -900,7 +910,6 @@ def _focus_candidates(
         {"historical-revalidation", "evidence-support"}
         & set(target.get("gap_kinds") or [])
     )
-
     for field_id, wanted in target_map.items():
         if not wanted:
             continue
@@ -923,38 +932,67 @@ def _focus_candidates(
         if candidate is None:
             continue
         wanted_keys = {canonical(value) for value in wanted}
-        filtered = tuple(
-            value for value in candidate.values
-            if canonical(value) in wanted_keys
-        )
-        if filtered:
+        pairs = []
+        for index, value in enumerate(candidate.values):
+            if canonical(value) not in wanted_keys:
+                continue
+            term = (
+                candidate.matched_terms[index]
+                if index < len(candidate.matched_terms)
+                else str(value)
+            )
+            pairs.append((value, term))
+        if pairs:
+            kept_values = tuple(value for value, _term in pairs)
+            kept_terms = tuple(term for _value, term in pairs)
             output[field_id] = Candidate(
-                filtered,
+                kept_values,
                 candidate.claim_type,
                 candidate.confidence,
-                candidate.snippet,
-                candidate.matched_terms,
+                evidence_snippet(document.text, kept_terms),
+                kept_terms,
             )
-
+        else:
+            output.pop(field_id, None)
     return output
 
-
-def _evidence(seed: SourceSeed, document: Document, field_id: str, candidate: Candidate, entity: str, scope: str) -> list[dict[str, Any]]:
+def _evidence(
+    seed: SourceSeed,
+    document: Document,
+    field_id: str,
+    candidate: Candidate,
+    entity: str,
+    scope: str,
+    *,
+    item_value: Any | None = None,
+    snippet: str | None = None,
+    matched_terms: list[str] | tuple[str, ...] | None = None,
+) -> list[dict[str, Any]]:
+    description = snippet if snippet is not None else candidate.snippet
+    explicit_scope = infer_scope_from_text(
+        " ".join((document.title or "", description or "", document.url or ""))
+    )
     return [{
         "source": urlparse(document.url).netloc.removeprefix("www.") or seed.source_name or entity,
         "source_catalog_name": seed.source_name or "",
         "researched_entity": entity,
-        "source_binding": _seed_binding(
-            document.url,
-            entity,
-            source_type=seed.source_type,
-            source_name=seed.source_name,
+        "source_binding": (
+            "atomic-item"
+            if item_value is not None
+            else _seed_binding(
+                document.url,
+                entity,
+                source_type=seed.source_type,
+                source_name=seed.source_name,
+            )
         ),
         "title": document.title or f"Página pública · {seed.family}",
         "url": document.url,
         "date": _now_date(),
-        "description": candidate.snippet,
-        "scope": scope or "GLOBAL",
+        "description": description,
+        "scope": explicit_scope,
+        "scope_provenance": "explicit-text" if explicit_scope != "GLOBAL" else "unspecified",
+        "research_target_scope": scope or "GLOBAL",
         "source_grade": "A" if seed.official else seed.source_grade or "B",
         "source_type": seed.source_type,
         "official": seed.official,
@@ -963,11 +1001,57 @@ def _evidence(seed: SourceSeed, document: Document, field_id: str, candidate: Ca
         "freshness_status": "current",
         "method": f"web-evidence:{seed.family}",
         "content_digest": document.content_digest,
-        "matched_terms": list(candidate.matched_terms),
+        "matched_terms": list(matched_terms if matched_terms is not None else candidate.matched_terms),
         "field": field_id,
+        "item_value": item_value if item_value is not None else "",
+        "item_key": canonical(item_value) if item_value is not None else "",
+        "atomic": item_value is not None,
         "revalidation": "historical-source-refetched" if "revalidated" in seed.source_type else "",
     }]
 
+
+def _candidate_items(
+    seed: SourceSeed,
+    document: Document,
+    field_id: str,
+    candidate: Candidate,
+    entity: str,
+    target_scope: str,
+) -> list[dict[str, Any]]:
+    """Create one local evidence object per extracted value."""
+    items: list[dict[str, Any]] = []
+    for index, value in enumerate(candidate.values):
+        term = (
+            candidate.matched_terms[index]
+            if index < len(candidate.matched_terms)
+            else str(value)
+        )
+        snippet = evidence_snippet(document.text, (term, str(value)), radius=140)
+        evidence = _evidence(
+            seed,
+            document,
+            field_id,
+            candidate,
+            entity,
+            target_scope,
+            item_value=value,
+            snippet=snippet,
+            matched_terms=(term,),
+        )
+        items.append({
+            "value": value,
+            "evidence": evidence,
+            "confidence": candidate.confidence,
+            "claim_type": candidate.claim_type,
+            "assertion_status": (
+                "SEÑAL"
+                if candidate.claim_type == "signal"
+                else "CONFIRMADO"
+                if candidate.confidence >= 0.8
+                else "PROBABLE"
+            ),
+        })
+    return items
 
 def _same_host(url_a: str, url_b: str) -> bool:
     return urlparse(url_a).netloc.casefold().removeprefix("www.") == urlparse(url_b).netloc.casefold().removeprefix("www.")
@@ -1268,9 +1352,17 @@ def run(
                 old_field = row.get("fields", {}).get(field_id)
                 before_values = _field_values(old_field)
                 before_evidence = _field_evidence_keys(old_field)
-                evidence = _evidence(seed, document, field_id, candidate, target["entity"], scope)
+                items = _candidate_items(
+                    seed, document, field_id, candidate, target["entity"], scope
+                )
+                evidence = [
+                    ev
+                    for item in items
+                    for ev in (item.get("evidence") or [])
+                ]
                 row.setdefault("fields", {})[field_id] = merge_field(old_field, {
                     "value": list(candidate.values),
+                    "items": items,
                     "evidence": evidence,
                     "confidence": candidate.confidence,
                     "claim_type": candidate.claim_type,
