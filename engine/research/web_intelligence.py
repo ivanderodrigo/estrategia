@@ -1,3 +1,4 @@
+# HF6_R5_REVENUE_RUNTIME
 # HF6_ATOMIC_ITEM_PROVENANCE
 """Incremental public-web intelligence runner with durable learning."""
 
@@ -573,19 +574,6 @@ def _field_context_ok(
 ) -> bool:
     field = str(field_id or "").casefold()
 
-    if field == "revenue":
-        if not revenue_value_is_strict(str(value or "")):
-            return False
-        if entity_owned:
-            return True
-        # On third-party pages the entity must be locally attached to the same
-        # financial observation; a distant menu/header mention is not enough.
-        revenue_anchors = [entity_key, *anchors[:4]]
-        for tpos in target_positions:
-            window = _semantic_window(body, tpos, tpos, radius=190)
-            if any(anchor and _target_match(anchor, window) for anchor in revenue_anchors):
-                return True
-        return False
 
     if field in {"hiring_signals", "job_profiles", "job_vendors"}:
         cues = (
@@ -730,6 +718,11 @@ def _subject_value_match(
         return False
 
     field = str(field_id or "").casefold()
+
+    # Revenue value validity belongs here: this function owns `value`.
+    # _field_context_ok() is only a local textual-context classifier.
+    if field == "revenue" and not revenue_value_is_strict(str(value or "")):
+        return False
 
     if field in {"hiring_signals", "job_profiles", "job_vendors"}:
         if entity_owned and entity_key and entity_key in title:

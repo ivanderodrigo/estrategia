@@ -1,3 +1,4 @@
+# HF6_R5_BUILD_OWNED_SUPPORT
 # HF6_SEMANTIC_RELATION_PRESERVATION
 """Semantic non-destructive knowledge gate for canonical builds.
 
@@ -527,6 +528,10 @@ def restore_accredited_support(current: dict[str, Any], baseline: Mapping[str, A
             after_fields = after_row.get("fields") or {}
             for field_id, before_field in before_fields.items():
                 if not isinstance(before_field, Mapping):
+                    continue
+                # Build-owned relation/comparison views are recalculated from the
+                # strict graph. Never resurrect yesterday's accredited support.
+                if _build_owned_field(current, section, str(field_id)):
                     continue
                 raw = before_field.get("value")
                 if raw in (None, "", [], {}):

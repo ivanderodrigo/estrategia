@@ -1,0 +1,6 @@
+Westcon Decision Intelligence v4.3.1-HF6-R5
+- Surgical removal of the invalid duplicate revenue block in _field_context_ok.
+- Existing non-revenue context logic is preserved byte-for-byte.
+- Strict revenue value validation lives in _subject_value_match where value is defined.
+- restore_accredited_support skips build-owned relation/comparison views.
+- restore_research_seed_support and Westcon documentary lineage remain untouched.
