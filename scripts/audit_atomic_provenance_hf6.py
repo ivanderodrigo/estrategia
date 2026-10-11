@@ -1,3 +1,4 @@
+# HF6_R6_PROJECTED_RELATION_AUDIT
 from __future__ import annotations
 
 import argparse
@@ -53,12 +54,22 @@ def main() -> int:
                     if not item:
                         continue
                     evidence = item.get("evidence") or []
-                    if field_id in RELATION_FIELDS.get(section, set()):
+                    relation_view = field_id in RELATION_FIELDS.get(section, set())
+                    if relation_view:
                         if evidence and not evidence_for_relationship(evidence, owner, value):
                             bad_items.append((section, owner, field_id, value))
                     for ev in evidence:
                         if str(ev.get("method") or "").startswith("web-evidence:"):
-                            if not evidence_for_item([ev], owner, value, field_id=field_id):
+                            # Projected relationship views may invert the extraction
+                            # direction and field name. Validate both endpoints rather
+                            # than requiring the extraction field to equal the UI field.
+                            if relation_view:
+                                valid = bool(evidence_for_relationship([ev], owner, value))
+                            else:
+                                valid = bool(evidence_for_item(
+                                    [ev], owner, value, field_id=field_id
+                                ))
+                            if not valid:
                                 web_cross.append(
                                     (section, owner, field_id, value, ev.get("title") or ev.get("source"))
                                 )

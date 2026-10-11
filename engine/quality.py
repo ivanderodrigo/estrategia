@@ -1,3 +1,4 @@
+# HF6_R6_PROJECTED_RELATION_QA
 # HF6_CROSS_ITEM_GATE
 from __future__ import annotations
 
@@ -93,15 +94,33 @@ def audit(data: dict[str, Any], graph: dict[str, Any], gaps: dict[str, Any]) -> 
                     for ev in item.get("evidence") or []:
                         if not isinstance(ev, dict):
                             continue
+                        relation_view = field_id in atomic_fields.get(section, set())
                         if ev.get("atomic") and ev.get("item_value") not in (None, ""):
-                            if canonical(ev.get("item_value")) != canonical(raw):
+                            # A relationship may be projected in the inverse UI direction:
+                            # e.g. Integrator/vendor_relations/Vendor becomes
+                            # Vendor/integrators/Integrator. The extraction metadata keeps
+                            # its original orientation, so endpoint binding—not item_value
+                            # equality—is the invariant for relationship views.
+                            if relation_view:
+                                metadata_valid = bool(evidence_for_relationship(
+                                    [ev], row.get("name"), raw
+                                ))
+                            else:
+                                metadata_valid = canonical(ev.get("item_value")) == canonical(raw)
+                            if not metadata_valid:
                                 errors.append(
                                     f"Metadata atómica cruzada: {section}/{row.get('name')}/{field_id}/{raw}"
                                 )
                         if str(ev.get("method") or "").startswith("web-evidence:"):
-                            if not evidence_for_item(
-                                [ev], row.get("name"), raw, field_id=field_id
-                            ):
+                            if relation_view:
+                                web_valid = bool(evidence_for_relationship(
+                                    [ev], row.get("name"), raw
+                                ))
+                            else:
+                                web_valid = bool(evidence_for_item(
+                                    [ev], row.get("name"), raw, field_id=field_id
+                                ))
+                            if not web_valid:
                                 errors.append(
                                     f"Evidencia web mal asociada: {section}/{row.get('name')}/{field_id}/{raw}"
                                 )
