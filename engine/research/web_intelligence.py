@@ -1,3 +1,4 @@
+# HF6_R12_R2_ENTITY_BOUND_RESEARCH
 # HF6_R5_REVENUE_RUNTIME
 # HF6_ATOMIC_ITEM_PROVENANCE
 """Incremental public-web intelligence runner with durable learning."""
@@ -331,26 +332,33 @@ def _seed_binding(
     source_name: str = "",
 ) -> str:
     path = canonical(urlparse(url).path)
-
     if _host_entity_owned(url, entity):
         return "entity-owned"
 
-    blob = canonical(f"{source_type} {source_name} {path}")
-    relationship_hints = {
+    path_relationship_hints = {
         "partner", "partners", "alliance", "alliances", "locator",
         "directory", "reseller", "resellers", "distributor", "distributors",
         "integrator", "integrators", "system integrator", "msp", "mssp",
         "service provider", "award", "awards", "customer case", "case study",
         "customer success", "strategic agreement",
     }
-    if any(hint in blob for hint in relationship_hints):
-        return "relationship-source"
+    relationship_source_type_hints = {
+        "partner directory", "partners directory", "vendor partner directory",
+        "partner locator", "reseller locator", "distributor locator",
+        "integrator locator", "alliance directory", "alliances directory",
+        "customer case", "customer success", "case study",
+        "strategic agreement",
+    }
+    source_type_key = canonical(source_type)
 
-    if "revalidated" in canonical(source_type):
+    if any(hint in path for hint in path_relationship_hints):
+        return "relationship-source"
+    if any(hint in source_type_key for hint in relationship_source_type_hints):
+        return "relationship-source"
+    if "revalidated" in source_type_key:
         return "relationship-source"
 
     return "discovery-only"
-
 
 def _filter_entity_seeds(
     seeds: list[SourceSeed],
@@ -598,7 +606,8 @@ def _field_context_ok(
             "offers", "provides", "delivers",
             "ofrecemos", "ofrece", "proporciona", "prestamos",
             "nuestros servicios", "nuestras soluciones",
-            "servicios", "solutions", "capabilities",
+            "servicios", "servicos", "solutions", "solucoes", "capabilities",
+            "nossos servicos", "nossas solucoes",
             "managed services", "consulting services",
         )
         return any(cue in window for cue in cues)
@@ -736,8 +745,8 @@ def _subject_value_match(
                     return True
         if field in {"services", "capabilities"}:
             headings = (
-                "services", "servicios", "solutions", "soluciones",
-                "capabilities", "capacidades", "portfolio", "oferta",
+                "services", "servicios", "servicos", "solutions", "soluciones",
+                "solucoes", "capabilities", "capacidades", "portfolio", "oferta",
             )
             if _near_taxonomy_heading(body, target_positions, headings):
                 if target != "service provider":
@@ -851,16 +860,95 @@ def _exact_historical_candidate(
     )
 
 
+SEMANTICALLY_BOUND_WEB_FIELDS = {
+    "capabilities": "capabilities",
+    "services": "services",
+    "technology_domains": "capabilities",
+    "differential_capabilities": "services",
+    "specializations": "specializations",
+    "verticals": "verticals",
+    "vendor_relations": "vendor_relations",
+    "identified_vendors": "identified_vendors",
+    "job_vendors": "job_vendors",
+    "technology_signals": "technology_signals",
+    "job_profiles": "job_profiles",
+    "hiring_signals": "hiring_signals",
+}
+
+
+def _semantic_candidate_filter(
+    candidates: dict[str, Candidate],
+    target: dict[str, Any],
+    document: Document,
+) -> dict[str, Candidate]:
+    entity = str(target.get("entity") or "")
+    entity_owned = _host_entity_owned(document.url, entity)
+    output: dict[str, Candidate] = {}
+
+    direct_owned_observations = {
+        "vendor_relations", "identified_vendors", "job_vendors",
+        "technology_signals", "job_profiles", "hiring_signals",
+    }
+
+    for field_id, candidate in candidates.items():
+        semantic_field = SEMANTICALLY_BOUND_WEB_FIELDS.get(field_id)
+        if not semantic_field:
+            output[field_id] = candidate
+            continue
+
+        kept_values: list[Any] = []
+        kept_terms: list[str] = []
+
+        for index, value in enumerate(candidate.values):
+            term = (
+                candidate.matched_terms[index]
+                if index < len(candidate.matched_terms)
+                else str(value)
+            )
+            probe = term or str(value)
+
+            if (
+                entity_owned
+                and semantic_field in direct_owned_observations
+                and _target_match(probe, document.text)
+            ):
+                valid = True
+            else:
+                valid = _subject_value_match(
+                    entity,
+                    probe,
+                    document,
+                    field_id=semantic_field,
+                )
+
+            if not valid:
+                continue
+
+            kept_values.append(value)
+            kept_terms.append(term)
+
+        if not kept_values:
+            continue
+
+        output[field_id] = Candidate(
+            tuple(kept_values),
+            candidate.claim_type,
+            candidate.confidence,
+            evidence_snippet(document.text, kept_terms),
+            tuple(kept_terms),
+        )
+
+    return output
+
+
 def _focus_candidates(
     candidates: dict[str, Candidate],
     target: dict[str, Any],
     document: Document,
     official: bool,
 ) -> dict[str, Candidate]:
-    """Keep values and matched terms aligned; never retain a non-matching neighbour."""
-    output = dict(candidates)
+    output = _semantic_candidate_filter(dict(candidates), target, document)
 
-    # Preserve HF5 revenue quality even on runs without target_values.
     revenue_candidate = output.get("revenue")
     if revenue_candidate is not None:
         validator = (
@@ -906,7 +994,6 @@ def _focus_candidates(
     for field_id, wanted in target_map.items():
         if not wanted:
             continue
-
         if strict_claim_support:
             exact = _exact_historical_candidate(
                 document,
@@ -935,6 +1022,7 @@ def _focus_candidates(
                 else str(value)
             )
             pairs.append((value, term))
+
         if pairs:
             kept_values = tuple(value for value, _term in pairs)
             kept_terms = tuple(term for _value, term in pairs)
@@ -947,6 +1035,7 @@ def _focus_candidates(
             )
         else:
             output.pop(field_id, None)
+
     return output
 
 def _evidence(
