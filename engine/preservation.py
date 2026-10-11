@@ -1,3 +1,4 @@
+# HF6_R7_SANITIZE_RESTORED_RELATIONS
 # HF6_R5_BUILD_OWNED_SUPPORT
 # HF6_SEMANTIC_RELATION_PRESERVATION
 """Semantic non-destructive knowledge gate for canonical builds.
@@ -857,6 +858,7 @@ def restore_preserved_relations(current_graph: dict[str, Any], baseline_graph: M
     restored = 0
     skipped_unresolved = 0
     skipped_provisional = 0
+    endpoint_evidence_rows_pruned = 0
     for raw in baseline_graph.get("relationships") or []:
         if not isinstance(raw, Mapping):
             continue
@@ -876,14 +878,43 @@ def restore_preserved_relations(current_graph: dict[str, Any], baseline_graph: M
         rel = deepcopy(dict(raw))
         rel["entity_a_id"], rel["entity_a"] = left
         rel["entity_b_id"], rel["entity_b"] = right
+
+        # A historical graph edge is protected as a semantic relationship, not
+        # as a container for every evidence row accumulated in the past. Keep
+        # only rows that bind the two resolved endpoints before projection.
+        if str(rel.get("relation") or "") in {"distributes", "partners_with"}:
+            before_rows = [
+                ev for ev in (rel.get("evidence") or [])
+                if isinstance(ev, Mapping)
+            ]
+            exact_rows = evidence_for_relationship(
+                before_rows, rel.get("entity_a"), rel.get("entity_b")
+            )
+            if not exact_rows:
+                skipped_provisional += 1
+                continue
+            rel["evidence"] = _dedupe_evidence(exact_rows)
+            endpoint_evidence_rows_pruned += max(
+                0, len(before_rows) - len(rel["evidence"])
+            )
+            if rel["evidence"]:
+                rel["source"] = rel["evidence"][0].get("source")
+                rel["date"] = max(
+                    str(ev.get("date") or "") for ev in rel["evidence"]
+                )
+
+        sanitized_key = _relation_key(rel, lookup)
+        if sanitized_key in seen:
+            continue
         relationships.append(rel)
-        seen.add(key)
+        seen.add(sanitized_key)
         restored += 1
     current_graph["relationships"] = relationships
     return {
         "relations_restored": restored,
         "relations_skipped_unresolved_endpoints": skipped_unresolved,
         "relations_skipped_provisional": skipped_provisional,
+        "endpoint_evidence_rows_pruned": endpoint_evidence_rows_pruned,
         "relations_after": len(relationships),
     }
 

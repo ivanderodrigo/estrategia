@@ -1,3 +1,4 @@
+# HF6_R7_RELATION_CHAIN_QA
 # HF6_R6_PROJECTED_RELATION_QA
 # HF6_CROSS_ITEM_GATE
 from __future__ import annotations
@@ -10,6 +11,25 @@ from urllib.parse import urlparse
 from .model import canonical
 from .provenance import evidence_for_item, evidence_for_relationship
 from .settings import SECTIONS, VERSION
+
+
+def _relationship_view_evidence_valid(
+    evidence: dict[str, Any],
+    section: str,
+    field_id: str,
+    row: dict[str, Any],
+    item: dict[str, Any],
+) -> bool:
+    """Validate one evidence row against a direct or derived relationship view."""
+    owner = row.get("name")
+    value = item.get("value")
+    if evidence_for_relationship([evidence], owner, value):
+        return True
+    if section == "distributors" and field_id == "competitor_vendor_overlap":
+        for target in item.get("competes_with_westcon") or []:
+            if evidence_for_relationship([evidence], target, value):
+                return True
+    return False
 
 
 def audit(data: dict[str, Any], graph: dict[str, Any], gaps: dict[str, Any]) -> dict[str, Any]:
@@ -102,9 +122,9 @@ def audit(data: dict[str, Any], graph: dict[str, Any], gaps: dict[str, Any]) -> 
                             # its original orientation, so endpoint binding—not item_value
                             # equality—is the invariant for relationship views.
                             if relation_view:
-                                metadata_valid = bool(evidence_for_relationship(
-                                    [ev], row.get("name"), raw
-                                ))
+                                metadata_valid = _relationship_view_evidence_valid(
+                                    ev, section, field_id, row, item
+                                )
                             else:
                                 metadata_valid = canonical(ev.get("item_value")) == canonical(raw)
                             if not metadata_valid:
@@ -113,9 +133,9 @@ def audit(data: dict[str, Any], graph: dict[str, Any], gaps: dict[str, Any]) -> 
                                 )
                         if str(ev.get("method") or "").startswith("web-evidence:"):
                             if relation_view:
-                                web_valid = bool(evidence_for_relationship(
-                                    [ev], row.get("name"), raw
-                                ))
+                                web_valid = _relationship_view_evidence_valid(
+                                    ev, section, field_id, row, item
+                                )
                             else:
                                 web_valid = bool(evidence_for_item(
                                     [ev], row.get("name"), raw, field_id=field_id

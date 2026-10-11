@@ -1,3 +1,4 @@
+# HF6_R7_RELATION_CHAIN_AUDIT
 # HF6_R6_PROJECTED_RELATION_AUDIT
 from __future__ import annotations
 
@@ -21,6 +22,17 @@ RELATION_FIELDS = {
     "distributors": {"vendor_relations", "westcon_overlap", "competitor_vendor_overlap"},
     "integrators": {"vendor_relations", "westcon_overlap", "competitor_vendor_overlap"},
 }
+
+
+def _relationship_view_evidence_valid(evidence, section, field_id, owner, item) -> bool:
+    value = item.get("value")
+    if evidence_for_relationship([evidence], owner, value):
+        return True
+    if section == "distributors" and field_id == "competitor_vendor_overlap":
+        for target in item.get("competes_with_westcon") or []:
+            if evidence_for_relationship([evidence], target, value):
+                return True
+    return False
 
 
 def main() -> int:
@@ -64,7 +76,9 @@ def main() -> int:
                             # direction and field name. Validate both endpoints rather
                             # than requiring the extraction field to equal the UI field.
                             if relation_view:
-                                valid = bool(evidence_for_relationship([ev], owner, value))
+                                valid = _relationship_view_evidence_valid(
+                                    ev, section, field_id, owner, item
+                                )
                             else:
                                 valid = bool(evidence_for_item(
                                     [ev], owner, value, field_id=field_id
