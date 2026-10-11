@@ -1,3 +1,4 @@
+# HF6_R11_R3_METADATA_IS_NOT_SOURCE_TEXT
 """Atomic provenance policy.
 
 A list item may only show evidence that supports that exact item. Relationship
@@ -45,12 +46,17 @@ def _matches_entity(raw: Any, entity: Any) -> bool:
 
 
 def _evidence_blob(evidence: dict[str, Any]) -> str:
+    """Return only text actually present in source-facing evidence.
+
+    ``researched_entity`` and ``item_value`` are extraction metadata. Exact
+    metadata binding is evaluated separately by ``evidence_for_item`` and must
+    never manufacture a textual endpoint match.
+    """
     return canonical(
         " ".join(
             str(evidence.get(key) or "")
             for key in (
                 "source", "source_catalog_name", "title", "description", "url",
-                "researched_entity", "item_value",
             )
         )
     )

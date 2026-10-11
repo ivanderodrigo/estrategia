@@ -1,3 +1,5 @@
+# HF6_R11_R3_GRAPH_NATIVE_PRESERVATION
+# HF6_R8_CANONICAL_EDGE_IDENTITY
 # HF6_R7_SANITIZE_RESTORED_RELATIONS
 # HF6_R5_BUILD_OWNED_SUPPORT
 # HF6_SEMANTIC_RELATION_PRESERVATION
@@ -24,7 +26,7 @@ from urllib.parse import urlsplit, urlunsplit
 
 from .knowledge_provenance import provenance_kind, typed_evidence_sufficient
 from .model import canonical
-from .provenance import evidence_for_item, evidence_for_relationship
+from .provenance import evidence_for_item, evidence_for_relationship, evidence_scopes
 from .settings import SECTIONS, VERSION
 
 # These are projections/calculations owned by the build. Their source of truth is the graph,
@@ -151,6 +153,59 @@ def _resolve_endpoint(value: Any, lookup: Mapping[str, tuple[str, str]]) -> tupl
 
 
 
+def _graph_entity_lookup(graph: Mapping[str, Any]) -> dict[str, tuple[str, str, Mapping[str, Any]]]:
+    """Resolve graph-native ids/names/aliases without conflating them with table ids."""
+    lookup: dict[str, tuple[str, str, Mapping[str, Any]]] = {}
+    for raw in graph.get("entities") or []:
+        if not isinstance(raw, Mapping):
+            continue
+        entity_id = str(raw.get("id") or "").strip()
+        name = str(raw.get("canonical_name") or raw.get("name") or entity_id).strip()
+        if not entity_id and not name:
+            continue
+        tokens = [entity_id, name]
+        tokens.extend(str(x) for x in (raw.get("aliases") or []) if str(x or "").strip())
+        tokens.extend(str(x) for x in (raw.get("historical_names") or []) if str(x or "").strip())
+        payload = (entity_id or name, name or entity_id, raw)
+        for token in tokens:
+            key = canonical(token)
+            if key:
+                lookup[key] = payload
+    return lookup
+
+
+def _register_graph_entity(
+    current_graph: dict[str, Any],
+    lookup: dict[str, tuple[str, str, Mapping[str, Any]]],
+    raw: Mapping[str, Any],
+) -> tuple[str, str]:
+    """Materialize a baseline graph node only for a valid protected edge."""
+    entity_id = str(raw.get("id") or "").strip()
+    name = str(raw.get("canonical_name") or raw.get("name") or entity_id).strip()
+
+    for token in (entity_id, name):
+        existing = lookup.get(canonical(token))
+        if existing:
+            return existing[0], existing[1]
+
+    clone = deepcopy(dict(raw))
+    clone["id"] = entity_id or name
+    clone["canonical_name"] = name or entity_id
+    current_graph.setdefault("entities", []).append(clone)
+
+    payload = (str(clone["id"]), str(clone["canonical_name"]), clone)
+    for token in (
+        clone.get("id"),
+        clone.get("canonical_name"),
+        *(clone.get("aliases") or []),
+        *(clone.get("historical_names") or []),
+    ):
+        key = canonical(token)
+        if key:
+            lookup[key] = payload
+    return payload[0], payload[1]
+
+
 def _relationship_is_hard_protected(rel: Mapping[str, Any]) -> bool:
     # Invalid endpoint provenance is recalculable telemetry, never protected knowledge.
     validity = str(rel.get("validity") or "").strip().casefold().replace("_", "-")
@@ -173,17 +228,17 @@ def _relationship_is_hard_protected(rel: Mapping[str, Any]) -> bool:
     return True
 
 def _relation_key(rel: Mapping[str, Any], lookup: Mapping[str, tuple[str, str]] | None = None) -> str:
+    """Semantic edge identity shared with graph and quality.
+
+    Geography is evidence-derived metadata on the edge, not edge identity.
+    """
     lookup = lookup or {}
     left_raw = rel.get("entity_a") or rel.get("entity_a_id") or ""
     right_raw = rel.get("entity_b") or rel.get("entity_b_id") or ""
     _, left_name = _resolve_endpoint(left_raw, lookup)
     _, right_name = _resolve_endpoint(right_raw, lookup)
     relation = canonical(rel.get("relation") or "")
-    countries = sorted(canonical(x) for x in (rel.get("countries") or []) if str(x or "").strip())
-    country = canonical(rel.get("country") or "")
-    geo = countries or ([country] if country else [])
-    return _value_key([canonical(left_name), relation, canonical(right_name), geo])
-
+    return _value_key([canonical(left_name), relation, canonical(right_name)])
 
 def _dedupe_evidence(rows: Iterable[Mapping[str, Any]]) -> list[dict[str, Any]]:
     result: list[dict[str, Any]] = []
@@ -847,41 +902,114 @@ def restore_documented_capability_support(data: dict[str, Any], preservation_sou
     return stats
 
 def restore_preserved_relations(current_graph: dict[str, Any], baseline_graph: Mapping[str, Any], data: Mapping[str, Any]) -> dict[str, Any]:
-    """Carry forward graph relations across deterministic id re-keying/rebuilds.
+    """Carry forward valid protected graph relations across deterministic rebuilds.
 
-    A relation is restored only when both endpoints still resolve to entities in the current
-    intelligence dataset. Missing entities therefore remain a hard preservation failure.
+    Current graph-native ids win. A valid graph-only endpoint may be restored
+    from the baseline graph registry. For legacy/unit-test cases where neither
+    graph contains an endpoint node but the canonical table entity still exists,
+    the original R7 table-identity fallback is retained.
     """
-    lookup = _entity_lookup(data)
-    relationships = [rel for rel in (current_graph.get("relationships") or []) if isinstance(rel, dict)]
-    seen = {_relation_key(rel, lookup) for rel in relationships}
+    data_lookup = _entity_lookup(data)
+    current_lookup = _graph_entity_lookup(current_graph)
+    baseline_lookup = _graph_entity_lookup(baseline_graph)
+
+    key_lookup = dict(data_lookup)
+    for graph_lookup in (baseline_lookup, current_lookup):
+        for token, (entity_id, name, _raw) in graph_lookup.items():
+            key_lookup[token] = (entity_id, name)
+
+    relationships = [
+        rel for rel in (current_graph.get("relationships") or [])
+        if isinstance(rel, dict)
+    ]
+    seen = {_relation_key(rel, key_lookup) for rel in relationships}
+
     restored = 0
     skipped_unresolved = 0
     skipped_provisional = 0
     endpoint_evidence_rows_pruned = 0
+    graph_entities_restored = 0
+    table_endpoint_fallbacks = 0
+
+    def resolve_graph_endpoint(name_token: Any, id_token: Any) -> tuple[str, str] | None:
+        nonlocal graph_entities_restored, table_endpoint_fallbacks
+        candidates = [name_token, id_token]
+
+        for token in candidates:
+            found = current_lookup.get(canonical(token))
+            if found:
+                return found[0], found[1]
+
+        for token in candidates:
+            table = data_lookup.get(canonical(token))
+            if not table:
+                continue
+            for table_token in (table[1], table[0]):
+                found = current_lookup.get(canonical(table_token))
+                if found:
+                    return found[0], found[1]
+
+        for token in candidates:
+            found = baseline_lookup.get(canonical(token))
+            if found:
+                before_count = len(current_graph.get("entities") or [])
+                resolved = _register_graph_entity(current_graph, current_lookup, found[2])
+                graph_entities_restored += max(
+                    0, len(current_graph.get("entities") or []) - before_count
+                )
+                return resolved
+
+        for token in candidates:
+            table = data_lookup.get(canonical(token))
+            if not table:
+                continue
+            for table_token in (table[1], table[0]):
+                found = baseline_lookup.get(canonical(table_token))
+                if found:
+                    before_count = len(current_graph.get("entities") or [])
+                    resolved = _register_graph_entity(current_graph, current_lookup, found[2])
+                    graph_entities_restored += max(
+                        0, len(current_graph.get("entities") or []) - before_count
+                    )
+                    return resolved
+
+        # R7-compatible last resort: both graph registries lack the endpoint,
+        # but the canonical intelligence table still contains it.
+        for token in candidates:
+            table = data_lookup.get(canonical(token))
+            if table:
+                table_endpoint_fallbacks += 1
+                return table
+
+        return None
+
     for raw in baseline_graph.get("relationships") or []:
         if not isinstance(raw, Mapping):
             continue
         if not _relationship_is_hard_protected(raw):
             skipped_provisional += 1
             continue
-        key = _relation_key(raw, lookup)
+
+        key = _relation_key(raw, key_lookup)
         if key in seen:
             continue
-        left_token = raw.get("entity_a") or raw.get("entity_a_id") or ""
-        right_token = raw.get("entity_b") or raw.get("entity_b_id") or ""
-        left = lookup.get(canonical(left_token))
-        right = lookup.get(canonical(right_token))
+
+        left = resolve_graph_endpoint(
+            raw.get("entity_a") or "",
+            raw.get("entity_a_id") or "",
+        )
+        right = resolve_graph_endpoint(
+            raw.get("entity_b") or "",
+            raw.get("entity_b_id") or "",
+        )
         if not left or not right:
             skipped_unresolved += 1
             continue
+
         rel = deepcopy(dict(raw))
         rel["entity_a_id"], rel["entity_a"] = left
         rel["entity_b_id"], rel["entity_b"] = right
 
-        # A historical graph edge is protected as a semantic relationship, not
-        # as a container for every evidence row accumulated in the past. Keep
-        # only rows that bind the two resolved endpoints before projection.
         if str(rel.get("relation") or "") in {"distributes", "partners_with"}:
             before_rows = [
                 ev for ev in (rel.get("evidence") or [])
@@ -893,31 +1021,40 @@ def restore_preserved_relations(current_graph: dict[str, Any], baseline_graph: M
             if not exact_rows:
                 skipped_provisional += 1
                 continue
+
             rel["evidence"] = _dedupe_evidence(exact_rows)
             endpoint_evidence_rows_pruned += max(
                 0, len(before_rows) - len(rel["evidence"])
             )
+
             if rel["evidence"]:
                 rel["source"] = rel["evidence"][0].get("source")
                 rel["date"] = max(
                     str(ev.get("date") or "") for ev in rel["evidence"]
                 )
+                scopes = evidence_scopes(rel["evidence"])
+                if scopes:
+                    rel["countries"] = scopes
+                    rel["country"] = " + ".join(scopes)
 
-        sanitized_key = _relation_key(rel, lookup)
+        sanitized_key = _relation_key(rel, key_lookup)
         if sanitized_key in seen:
             continue
+
         relationships.append(rel)
         seen.add(sanitized_key)
         restored += 1
+
     current_graph["relationships"] = relationships
     return {
         "relations_restored": restored,
         "relations_skipped_unresolved_endpoints": skipped_unresolved,
         "relations_skipped_provisional": skipped_provisional,
         "endpoint_evidence_rows_pruned": endpoint_evidence_rows_pruned,
+        "graph_entities_restored": graph_entities_restored,
+        "table_endpoint_fallbacks": table_endpoint_fallbacks,
         "relations_after": len(relationships),
     }
-
 
 def snapshot(data: Mapping[str, Any], graph: Mapping[str, Any] | None = None) -> dict[str, Any]:
     entities: dict[str, set[str]] = defaultdict(set)
