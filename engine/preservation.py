@@ -1,3 +1,4 @@
+# HF6_R13_R3_STRICT_LIST_SUPPORT_SNAPSHOT
 # HF6_R11_R3_GRAPH_NATIVE_PRESERVATION
 # HF6_R8_CANONICAL_EDGE_IDENTITY
 # HF6_R7_SANITIZE_RESTORED_RELATIONS
@@ -1104,7 +1105,22 @@ def snapshot(data: Mapping[str, Any], graph: Mapping[str, Any] | None = None) ->
 
                     item = item_index.get(normalized, {})
                     item_supported_rows = list(_target_evidence(item)) if item else []
-                    support_rows = item_supported_rows or field_supported_rows
+                    if is_list:
+                        support_rows = evidence_for_item(
+                            item_supported_rows,
+                            row.get("name"),
+                            value,
+                            field_id=str(field_id),
+                        )
+                        if not support_rows:
+                            support_rows = evidence_for_item(
+                                field_supported_rows,
+                                row.get("name"),
+                                value,
+                                field_id=str(field_id),
+                            )
+                    else:
+                        support_rows = item_supported_rows or field_supported_rows
                     if support_rows:
                         support_key = _claim_support_key(
                             section,

@@ -1,0 +1,7 @@
+Westcon Decision Intelligence v4.3.1-HF6-R13-R3
+- list aggregate evidence is rebuilt from exact surviving item evidence.
+- preservation protects list support only with exact owner/field/value binding.
+- build runs one final normalize_fields() after late reconciliation/migrations.
+- invalid evidence is removed without deleting the knowledge value itself.
+- targeted preservation fixtures satisfy the real typed-evidence contract.
+- installer performs no web research and no canonical data rewrite.

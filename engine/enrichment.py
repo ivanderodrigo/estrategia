@@ -1,3 +1,4 @@
+# HF6_R13_R3_FINAL_ATOMIC_SANITATION
 # HF6_ATOMIC_RELATION_VIEWS
 from __future__ import annotations
 
@@ -342,8 +343,19 @@ def normalize_fields(data: dict[str, Any]) -> dict[str, Any]:
                             field_id=field_id,
                         )
                     items.append({"value": missing_value, "evidence": _dedupe_evidence(specific)})
-                if items: field["items"] = items
-                elif "items" in field: field.pop("items", None)
+                if items:
+                    field["items"] = items
+                    # HF6-R13-R3: aggregate list evidence is only the union of
+                    # evidence that survived exact owner/field/value binding.
+                    field["evidence"] = _dedupe_evidence(
+                        ev
+                        for item in items
+                        for ev in (item.get("evidence") or [])
+                    )
+                else:
+                    if "items" in field:
+                        field.pop("items", None)
+                    field["evidence"] = []
     return data
 
 

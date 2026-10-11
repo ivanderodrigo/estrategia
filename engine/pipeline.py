@@ -1,3 +1,4 @@
+# HF6_R13_R3_FINAL_NORMALIZE_BEFORE_QUALITY
 """Canonical build pipeline with transactional publication."""
 
 from __future__ import annotations
@@ -187,6 +188,9 @@ def run() -> dict[str, Any]:
     westcon_current_evidence = apply_westcon_current_evidence(
         data, read_json("config/current/westcon_fy27_document_facts.json", {})
     )
+    # HF6-R13-R3: late reconciliation/migrations may have reattached legacy
+    # list evidence. Enforce exact atomic binding before confidence and quality.
+    normalize_fields(data)
     _sync_source_catalog(data)
     confidence_stats = apply_confidence_model(data)
     source_rationalization = rationalize_sources(data)
