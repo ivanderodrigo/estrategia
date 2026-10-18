@@ -175,9 +175,33 @@ def audit(data: dict[str, Any], graph: dict[str, Any], gaps: dict[str, Any]) -> 
                     continue
                 if isinstance(value, str) and value.strip() in {"-", "—", "--"}:
                     errors.append(f"Guion usado como pendiente: {section}/{row.get('name')}/{field_id}")
-                ev = field.get("evidence") or []
-                if not ev and field.get("claim_type") == "fact":
-                    warnings.append(f"Dato factual sin evidencia directa: {section}/{row.get('name')}/{field_id}")
+                # HF6-R17: list-valued facts use atomic item provenance. The gap engine
+                # already evaluates item evidence individually; the quality audit must not
+                # flag a supported list merely because its redundant field-level aggregate
+                # evidence is empty after strict normalization.
+                if field.get("claim_type") == "fact":
+                    item_rows = [
+                        item for item in field.get("items") or []
+                        if isinstance(item, dict)
+                    ]
+                    if isinstance(value, list) and item_rows:
+                        item_map = {
+                            canonical(item.get("value")): item
+                            for item in item_rows
+                            if canonical(item.get("value"))
+                        }
+                        for raw in value:
+                            item = item_map.get(canonical(raw))
+                            if not item or not (item.get("evidence") or []):
+                                warnings.append(
+                                    f"Dato factual sin evidencia directa: "
+                                    f"{section}/{row.get('name')}/{field_id}/{raw}"
+                                )
+                    elif not (field.get("evidence") or []):
+                        warnings.append(
+                            f"Dato factual sin evidencia directa: "
+                            f"{section}/{row.get('name')}/{field_id}"
+                        )
 
     if any(g.get("research_state") != "Por investigar" for g in gaps.get("gaps") or []):
         errors.append("Un gap abierto tiene un estado distinto de 'Por investigar'.")

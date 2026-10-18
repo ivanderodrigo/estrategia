@@ -1,0 +1,18 @@
+Westcon Decision Intelligence v4.3.1-HF6-R17
+Quality audit / atomic provenance alignment
+
+Root cause fixed:
+- engine.gaps evaluates provenance for list-valued facts at item level.
+- engine.quality was checking only field-level evidence, so strict normalization could leave
+  valid atomic item evidence while quality.py emitted false 'Dato factual sin evidencia directa'
+  warnings for the whole field.
+- validate.py then blocked any report below score 95, so >5 false warnings stopped the Daily
+  even with quality errors = [].
+
+R17 does NOT lower the validation threshold and does NOT suppress genuine unsupported facts.
+It changes only the warning test:
+- list-valued fact with item records -> each item must carry evidence;
+- unsupported/missing list items still warn individually;
+- scalar facts without evidence still warn exactly as before.
+
+No research workflow is run by this installer.
