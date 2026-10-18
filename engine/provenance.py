@@ -84,7 +84,15 @@ def evidence_for_item(
     *,
     field_id: str = "",
 ) -> list[dict[str, Any]]:
-    """Keep only evidence that supports this exact owner / field / value."""
+    """Keep only evidence that supports this exact owner / field / value.
+
+    HF6-R16 invariant:
+    for non-relationship/list-item validation (``field_id`` supplied), an
+    explicit atomic ``item_value`` is authoritative metadata and must match the
+    target value exactly. It may never be overridden by fuzzy/source-text
+    matching. Relationship projections continue to use endpoint semantics
+    because ``evidence_for_relationship`` calls this function without field_id.
+    """
     owner_aliases = entity_aliases(owner)
     value_aliases = entity_aliases(value)
     chosen: list[dict[str, Any]] = []
@@ -93,31 +101,68 @@ def evidence_for_item(
         if not isinstance(evidence, dict):
             continue
 
-        binding = str(evidence.get("source_binding") or "").strip().casefold()
+        binding = str(
+            evidence.get("source_binding") or ""
+        ).strip().casefold()
         ev_field = str(evidence.get("field") or "")
+
         if field_id and ev_field and ev_field != field_id:
             continue
 
         item_value = evidence.get("item_value")
         researched_entity = evidence.get("researched_entity")
-        item_match = bool(item_value) and _matches_entity(item_value, value)
-        owner_meta_match = bool(researched_entity) and _matches_entity(researched_entity, owner)
+        item_match = bool(item_value) and _matches_entity(
+            item_value,
+            value,
+        )
+        owner_meta_match = bool(researched_entity) and _matches_entity(
+            researched_entity,
+            owner,
+        )
+
+        # Quality requires exact metadata for atomic non-relationship items.
+        # Enforce the same invariant at the provenance selector so a stale or
+        # neighbouring atomic item can never be rescued by source-text overlap.
+        if (
+            field_id
+            and evidence.get("atomic") is True
+            and item_value not in (None, "", [], {})
+            and canonical(item_value) != canonical(value)
+        ):
+            continue
 
         # Typed Westcon/internal documentary lineage is deliberately non-public,
         # but an already-atomic field/item association must survive normalization.
-        # This preserves traceability without allowing it to accredit web claims.
-        origin = str(evidence.get("provenance_origin") or "").strip().upper()
-        source_type = str(evidence.get("source_type") or evidence.get("type") or "").strip().casefold()
+        origin = str(
+            evidence.get("provenance_origin") or ""
+        ).strip().upper()
+        source_type = str(
+            evidence.get("source_type")
+            or evidence.get("type")
+            or ""
+        ).strip().casefold()
+
         typed_document_atomic = (
             bool(field_id)
             and item_match
             and evidence.get("atomic") is True
             and (not ev_field or ev_field == field_id)
             and (
-                origin in {"WESTCON_DOCUMENT", "WESTCON_DOCUMENT_CURRENT", "WESTCON_FIRST_PARTY_CURRENT"}
-                or source_type in {"westcon-document", "internal-document", "user-provided", "curated-westcon"}
+                origin in {
+                    "WESTCON_DOCUMENT",
+                    "WESTCON_DOCUMENT_CURRENT",
+                    "WESTCON_FIRST_PARTY_CURRENT",
+                }
+                or source_type in {
+                    "westcon-document",
+                    "westcon-document-current",
+                    "internal-document",
+                    "user-provided",
+                    "curated-westcon",
+                }
             )
         )
+
         if typed_document_atomic:
             chosen.append(evidence)
             continue
@@ -130,6 +175,7 @@ def evidence_for_item(
         if item_match and owner_meta_match:
             chosen.append(evidence)
             continue
+
         if (
             item_match
             and binding in ACCREDITING_ATOMIC_BINDINGS
@@ -139,8 +185,14 @@ def evidence_for_item(
             continue
 
         blob = _evidence_blob(evidence)
-        owner_match = any(_mentioned(blob, alias) for alias in owner_aliases)
-        value_match = any(_mentioned(blob, alias) for alias in value_aliases)
+        owner_match = any(
+            _mentioned(blob, alias)
+            for alias in owner_aliases
+        )
+        value_match = any(
+            _mentioned(blob, alias)
+            for alias in value_aliases
+        )
 
         if owner_match and value_match:
             chosen.append(evidence)
@@ -152,7 +204,6 @@ def evidence_for_item(
             chosen.append(evidence)
 
     return _dedupe(chosen)
-
 
 def evidence_for_relationship(
     evidence_rows: Iterable[dict[str, Any]], owner: Any, value: Any

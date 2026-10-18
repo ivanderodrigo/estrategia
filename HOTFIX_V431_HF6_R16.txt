@@ -1,0 +1,15 @@
+﻿Westcon Decision Intelligence v4.3.1-HF6-R16
+
+Confirmed root cause:
+- evidence_for_item() accepts typed atomic Westcon documentary support;
+- enrichment._dedupe_evidence() calls _complete_evidence(), which was deleting
+  184 of 247 supported manufacturer capability claims;
+- atomic item metadata was also allowed to fall through to fuzzy text matching,
+  while quality.py requires exact item_value equality for non-relationship views.
+
+R16:
+- preserves structurally complete typed atomic Westcon documentary evidence
+  without imposing public URL completeness;
+- keeps ordinary/public evidence on the existing _complete_evidence path;
+- enforces exact atomic item_value for field-bound non-relationship evidence;
+- leaves relationship endpoint semantics unchanged.

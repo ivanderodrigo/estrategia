@@ -74,11 +74,62 @@ def _complete_evidence(ev: dict[str, Any]) -> dict[str, Any] | None:
     return out
 
 def _dedupe_evidence(rows: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Complete and deduplicate evidence without deleting valid atomic Westcon documents.
+
+    HF6-R16:
+    ``_complete_evidence`` is still authoritative for ordinary/public evidence.
+    Already-typed atomic Westcon documentary evidence is a separate provenance
+    class: it is intentionally allowed to be non-public/no-URL and must survive
+    normalization when its atomic metadata is structurally complete.
+    """
     seen: dict[tuple[str, ...], dict[str, Any]] = {}
+
     for row in rows:
-        ev = _complete_evidence(row)
+        if not isinstance(row, dict):
+            continue
+
+        origin = str(row.get("provenance_origin") or "").strip().upper()
+        source_type = str(
+            row.get("source_type") or row.get("type") or ""
+        ).strip().casefold()
+
+        typed_atomic_document = (
+            row.get("atomic") is True
+            and row.get("accrediting") is not False
+            and bool(str(row.get("field") or "").strip())
+            and row.get("item_value") not in (None, "", [], {})
+            and bool(str(row.get("source") or "").strip())
+            and bool(
+                str(row.get("title") or "").strip()
+                or str(row.get("description") or "").strip()
+            )
+            and (
+                origin in {
+                    "WESTCON_DOCUMENT",
+                    "WESTCON_DOCUMENT_CURRENT",
+                    "WESTCON_FIRST_PARTY_CURRENT",
+                }
+                or source_type in {
+                    "westcon-document",
+                    "westcon-document-current",
+                    "internal-document",
+                    "user-provided",
+                    "curated-westcon",
+                }
+            )
+        )
+
+        if typed_atomic_document:
+            # Do not force public-web completeness (notably URL) onto a typed
+            # first-party document. Preserve the row exactly; downstream
+            # provenance/quality logic still validates field/item binding.
+            ev = deepcopy(row)
+        else:
+            ev = _complete_evidence(row)
+
         if not ev:
             continue
+
         key = (
             str(ev.get("url") or ""),
             str(ev.get("title") or ""),
@@ -91,6 +142,7 @@ def _dedupe_evidence(rows: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
             str(ev.get("historical_commit") or ev.get("archive_version") or ""),
         )
         seen[key] = ev
+
     return list(seen.values())
 
 def _merge_values(old: Any, new: Any) -> Any:
