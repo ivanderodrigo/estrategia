@@ -163,7 +163,29 @@ def audit(data: dict[str, Any], graph: dict[str, Any], gaps: dict[str, Any]) -> 
     if len(relation_keys) != len(set(relation_keys)):
         errors.append("El grafo contiene aristas canónicas duplicadas.")
 
-    # Public facts must have some provenance; open gaps remain explicitly active.
+    # HF6-R18: missing provenance that is already represented by an explicit,
+    # matching open research gap is coverage debt, not an integrity defect.
+    # Quality warnings are reserved for unsupported facts that escaped the gap model.
+    tracked_field_gaps: set[tuple[str, str, str]] = set()
+    tracked_item_gaps: set[tuple[str, str, str, str]] = set()
+    for gap in gaps.get("gaps") or []:
+        if not isinstance(gap, dict):
+            continue
+        gap_section = str(gap.get("section") or "")
+        gap_entity = canonical(gap.get("entity"))
+        gap_field = str(gap.get("field") or "")
+        if not gap_section or not gap_entity or not gap_field:
+            continue
+        base = (gap_section, gap_entity, gap_field)
+        if str(gap.get("target_level") or "field") == "item":
+            for target in gap.get("target_values") or []:
+                target_key = canonical(target)
+                if target_key:
+                    tracked_item_gaps.add(base + (target_key,))
+        else:
+            tracked_field_gaps.add(base)
+
+    # Public facts must have provenance OR an explicit matching research gap.
     for section in SECTIONS:
         schema = {c.get("id") for c in (data.get("schemas") or {}).get(section, []) if c.get("id")}
         for row in data.get(section) or []:
@@ -175,11 +197,11 @@ def audit(data: dict[str, Any], graph: dict[str, Any], gaps: dict[str, Any]) -> 
                     continue
                 if isinstance(value, str) and value.strip() in {"-", "—", "--"}:
                     errors.append(f"Guion usado como pendiente: {section}/{row.get('name')}/{field_id}")
-                # HF6-R17: list-valued facts use atomic item provenance. The gap engine
-                # already evaluates item evidence individually; the quality audit must not
-                # flag a supported list merely because its redundant field-level aggregate
-                # evidence is empty after strict normalization.
+                # HF6-R18: atomic support and explicit gap accounting are complementary.
+                # A missing-evidence fact is a quality warning only if the gap engine failed
+                # to represent that same debt explicitly.
                 if field.get("claim_type") == "fact":
+                    claim_key = (section, canonical(row.get("name")), str(field_id))
                     item_rows = [
                         item for item in field.get("items") or []
                         if isinstance(item, dict)
@@ -193,15 +215,18 @@ def audit(data: dict[str, Any], graph: dict[str, Any], gaps: dict[str, Any]) -> 
                         for raw in value:
                             item = item_map.get(canonical(raw))
                             if not item or not (item.get("evidence") or []):
-                                warnings.append(
-                                    f"Dato factual sin evidencia directa: "
-                                    f"{section}/{row.get('name')}/{field_id}/{raw}"
-                                )
+                                gap_key = claim_key + (canonical(raw),)
+                                if gap_key not in tracked_item_gaps:
+                                    warnings.append(
+                                        f"Dato factual sin evidencia directa: "
+                                        f"{section}/{row.get('name')}/{field_id}/{raw}"
+                                    )
                     elif not (field.get("evidence") or []):
-                        warnings.append(
-                            f"Dato factual sin evidencia directa: "
-                            f"{section}/{row.get('name')}/{field_id}"
-                        )
+                        if claim_key not in tracked_field_gaps:
+                            warnings.append(
+                                f"Dato factual sin evidencia directa: "
+                                f"{section}/{row.get('name')}/{field_id}"
+                            )
 
     if any(g.get("research_state") != "Por investigar" for g in gaps.get("gaps") or []):
         errors.append("Un gap abierto tiene un estado distinto de 'Por investigar'.")

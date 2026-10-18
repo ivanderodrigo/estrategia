@@ -1,0 +1,20 @@
+Westcon Decision Intelligence v4.3.1-HF6-R18
+Gap-aware quality accounting
+
+Root cause:
+The system has two distinct concepts:
+1. integrity defects: unsupported or malformed facts that escaped the control model;
+2. research/coverage debt: facts deliberately preserved while an explicit research gap remains open.
+
+After strict atomic provenance was introduced, engine.quality penalised both concepts identically.
+As a result, normal open research debt drove quality_score to the hard floor of 80 while
+quality errors remained empty. scripts/validate.py then rejected the Daily because score < 95.
+
+R18 keeps the 95 threshold and all hard gates. It does NOT suppress genuine unsupported facts.
+A missing-evidence fact is exempt from a quality warning only when research_gaps.json contains
+an exact matching open gap for the same section/entity/field and, for atomic items, the same item.
+Wrong or absent gaps do not suppress the warning.
+
+The installer also performs an end-to-end canonical rebuild in a disposable Git worktree and runs
+scripts/validate.py against the rebuilt result before allowing the patch to remain installed.
+No Daily/Weekly/Monthly web research is run.
