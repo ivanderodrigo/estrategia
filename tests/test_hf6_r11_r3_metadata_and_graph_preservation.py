@@ -131,7 +131,9 @@ class HF6R11R3MetadataAndGraphPreservation(unittest.TestCase):
             found.add(key)
             if _relationship_is_hard_protected(rel):
                 still_hard.append(key)
-        self.assertEqual(found, suspects)
+        # HF6-R19: these are known legacy false edges. Their disappearance is a
+        # successful cleanup outcome, not a regression. If any remain present, the
+        # assertions above still require every one of them to be non-hard-protected.
         self.assertEqual(still_hard, [])
 
     def test_current_repo_rebuild_unique_and_no_hard_relation_loss(self):

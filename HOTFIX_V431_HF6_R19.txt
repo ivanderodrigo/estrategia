@@ -1,0 +1,25 @@
+Westcon Decision Intelligence v4.3.1-HF6-R19
+State-independent legacy false-edge regression
+
+Observed in Daily #72:
+- research: PASS
+- build: PASS
+- quality score: 100
+- canonical validation: PASS
+- preservation: PASS
+- release/opportunity/current-document/research-ROI audits: PASS
+- only one post-build unit test failed.
+
+Root cause:
+test_current_nine_legacy_false_edges_are_not_hard_protected encoded two different assumptions:
+1) correct invariant: if any of nine known legacy false relations exists, it must not be hard-protected;
+2) stale fixture assumption: all nine false relations must continue to exist in the current graph.
+
+After cleanup, the nine false relations can legitimately disappear. The final equality
+`self.assertEqual(found, suspects)` therefore turns successful cleanup into a test failure.
+
+R19 removes only that stale presence requirement. It does not alter graph construction,
+relationship preservation, evidence, quality, research, or production data.
+
+The installer validates both the current state and a fresh disposable canonical rebuild, and
+runs the full unit suite after that rebuild. No web research is executed.
