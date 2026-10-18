@@ -1,330 +1,43 @@
 {
   "version": "4.3.0",
-  "profile": "deep",
-  "started_at": "2026-10-04T10:42:58.057492+00:00",
-  "planned_entities": 520,
-  "fetch_attempts": 63,
-  "fetch_successes": 60,
-  "pages_relevant": 34,
-  "candidate_evidences": 34,
-  "accepted_evidences": 31,
-  "fields_enriched": 31,
-  "values_added": 26,
-  "entities_added": 100,
-  "cache_hits": 15,
-  "circuit_skips": 301,
+  "profile": "daily",
+  "started_at": "2026-10-18T16:29:32.529098+00:00",
+  "planned_entities": 120,
+  "fetch_attempts": 492,
+  "fetch_successes": 482,
+  "pages_relevant": 46,
+  "candidate_evidences": 41,
+  "accepted_evidences": 33,
+  "fields_enriched": 33,
+  "values_added": 24,
+  "entities_added": 24,
+  "cache_hits": 336,
+  "circuit_skips": 4368,
   "unsafe_url_rejections": 0,
-  "official_sites_discovered": 0,
-  "financial_links_discovered": 47,
+  "official_sites_discovered": 8,
+  "financial_links_discovered": 111,
   "manufacturer_revenue_rows_before": 0,
-  "manufacturer_revenue_acceptances": 0,
-  "stop_reason": "complete",
-  "structured_entity_budget": 100,
-  "structured_entities_added": 100,
-  "structured_notices": 100,
-  "result_rows_total": 379,
-  "accepted_result_rows_total": 31,
+  "manufacturer_revenue_acceptances": 1,
+  "stop_reason": "deadline",
+  "structured_entity_budget": 24,
+  "structured_entities_added": 24,
+  "structured_notices": 24,
+  "accepted_evidence_per_fetch_attempt": 0.0671,
+  "candidate_acceptance_rate": 0.8049,
+  "values_per_accepted_evidence": 0.7273,
+  "growth_pressure_ratio": 1.0,
+  "manufacturer_revenue_rows_after": 1,
+  "manufacturer_revenue_rows_added": 1,
+  "elapsed_s": 627.42,
+  "finished_at": "2026-10-18T16:39:58.857862+00:00",
+  "result_rows_total": 5196,
+  "accepted_result_rows_total": 33,
   "results_truncated": true,
   "results": [
     {
       "section": "manufacturers",
-      "entity": "Ericsson Cradlepoint",
-      "url": "https://cradlepoint.ericsson.com/resources/private-5g/idc-marketscape-european-enterprise-private-5g-solutions-2025/",
-      "family": "services",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ericsson Cradlepoint",
-      "url": "https://www.orange-business.com/en/expertise/evolution-platform-the-network-as-a-service",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ericsson Cradlepoint",
-      "url": "https://www.orange-business.com/en/business-needs/scalable-responsive-secure-digital-infrastructure/sase-secure-access-service-edge",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ericsson Cradlepoint",
-      "url": "https://www.orange-business.com/en/business-needs/scalable-responsive-secure-digital-infrastructure/cloud-networking",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/about-us/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.f5.com/about-us/investors",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/about/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.f5.com/about/investors",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/annual-report",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.f5.com/annual-report",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/annual-reports",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.f5.com/annual-reports",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://investors.f5.com/overview/default.aspx",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/company/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.f5.com/company/investors",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/earnings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/financial-information",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/financial-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/financials",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/informacao-financeira",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/informacion-financiera",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/investor",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/quarterly-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/relatorio-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/relatorios-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/reports-and-filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/resultados",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/resultados-financieros",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/sitemap.xml",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.arrow.com/globalecs/es/productos/f5-networks/",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/actualidad",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/rss",
       "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
@@ -332,35 +45,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/cloud",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/security",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
@@ -368,26 +54,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/cybersecurity",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/services",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
@@ -395,309 +63,17 @@
     },
     {
       "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/es_es/company/blog/f5-distributed-cloud-services-sees-tremendous-momentum-stopping-20-billion-malicious-attacks",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/feed",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/press",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://community.f5.com/t/devcentrals-featured-member-for-july-sebastian-sierra-dominguez/70046",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/case-studies/telefonica-tech-protects-customer-apps-with-managed-services-powered-by-f5",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.arrow.com/globalecs/es/productos/",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/services",
       "family": "technology",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.exclusive-networks.com/ecosystem/vendors",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/es_es/go/partner/consulting-partners",
-      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.channelpartner.es/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://itcm.es/soluciones/gestion-de-accesos/",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/servicios",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
@@ -705,7 +81,424 @@
     },
     {
       "section": "manufacturers",
-      "entity": "F5",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/sitemap.xml",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/sitemap.xml",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/solutions",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/technologies",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/technology",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/tecnologia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/company/security-breach",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/security-operations-platforms",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/services/cyber-advisory",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/services/data-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/services/email-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/services/exposure-management",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/services/incident-readiness-and-response",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/services/managed-cloud-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/services/managed-network-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/services/threat-detection-investigation-and-response-tdir",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/solutions/government",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.zscaler.com/partners/technology",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.levelblue.com/technology-partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://certesnetworks.com/partners/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.ciena.com/partners/locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://cradlepoint.com/partners/for-customers/find-a-partner/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://www.zscaler.com/es/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://cradlepoint.com/partners/for-partners/resell-partners/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://cradlepoint.com/partners/for-partners/service-provider-partners/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "url": "https://weblib.com/partners/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ciena",
       "url": "https://telefonicatech.com/actualidad/redes-privadas-5g-nokia",
       "family": "official",
       "status": 0,
@@ -714,9 +507,9 @@
     },
     {
       "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.pingidentity.com/en/lp/p/accenture.html",
-      "family": "official",
+      "entity": "Ciena",
+      "url": "https://www.muycanal.com/2023/01/31/efficientip-dns-partners",
+      "family": "partners",
       "cached": true,
       "relevant": false,
       "accepted": 0,
@@ -724,1935 +517,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://regionalevents.okta.com/identitysummitmadrid2025",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.softwareone.com/es-es/softwareone-cloud-services/aws",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.crayon.com/globalassets/spain/aws/ola/crayon_ebook_optimice_coste_licencia.pdf",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.es.logicalis.com/es/reconocimientos",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.bechtle.com/es/soluciones-de-it/networking/software-defined-networking",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://warpcom.com/es/socios/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.integrity360.com/es/ctem-as-a-service",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.linkedin.com/posts/manuel-angel-becerra-alonso-a15250a4_esta-semana-hemos-acudido-al-netscout-arbor-activity-6501501503050649600-4AFI",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.overti.es/ivanti/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/ai-infrastructure",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/ai-security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/web-app-and-api-protection",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/post-quantum-cryptography-readiness",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/zero-trust-architecture",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/network-security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/application-delivery-and-traffic-management",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/edge-distribution",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/networking-for-kubernetes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/banking-and-financial-services",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/ecommerce",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/healthcare",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/public-sector",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/service-providers",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/f5-solutions-for-technology",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/products/big-ip-services/zero-trust-access",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/products/network-firewall",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/products/big-ip-services/ssl-orchestrator",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/products/distributed-cloud-services/client-side-defense",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/products/distributed-cloud-services/web-app-scanning",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/products/f5-insight",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/products/telecom-networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/products/hybrid-multicloud-management",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/products/distributed-cloud-services/cdn",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/products/distributed-cloud-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/products/enterprise-networking-hardware-systems",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/products/distributed-cloud-services/platform-overview",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/products/big-ip-services/virtual-editions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/products/distributed-cloud-services/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/resources/analyst-reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/resources/solution-profiles",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/resources/reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://investors.f5.com/overview/default.aspx",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/company/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/company/news/awards",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/company/news/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/go/contact/request-f5-professional-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/go/contact/contact-f5-distributed-cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/solution-discovery-tool",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/go/report/gartner-emerging-market-quadrant-for-ai-application-security",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/go/report/f5-named-leader-in-idc-marketscape-enterprise-waap-platforms-2026",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/solutions/use-cases/virtual-patching",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/case-studies/rackspace-boosts-private-cloud-agility-with-virtualization",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/case-studies/docusign-delivers-reliable-contract-management-for-1-billion-users",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/case-studies/a-financial-services-firm-ensures-reliable-ai-data-delivery",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/case-studies/a-public-safety-agency-secures-ai-data-delivery-with-f5",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/go/report/secureiqlab-cloud-waap-v5-cyberrisk-validation-comparative-report",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/go/report/gartner-report-adc-opportunities-in-the-age-of-ai",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/go/report/gartner-market-guide-for-cloud-web-application-and-api-protection",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/go/report/2025-gigaom-radar-for-application-and-api-security",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/resources/demos/accelerate-hardened-release-updates-with-f5-insight-for-big-ip",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/resources/demos/explore-ai-powered-virtual-patching-with-f5-distributed-cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/resources/reports/state-of-application-strategy-report",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/company/news/press-releases/f5-positioned-as-market-shaper-in-the-gartner-emerging-market-quadrant-for-ai-application",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/company/news/press-releases/secure-high-performance-digital-workspaces",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/company/news/press-releases/bot-defense-device-intelligence-agentic-ai-detection",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/company/news/press-releases/f5-workforce-ai-security",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/company/news/press-releases/f5-leader-2026-idc-marketscape-waap",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://www.f5.com/company/policies/privacy-notice",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "F5",
-      "url": "https://investors.f5.com/news/default.aspx",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.infinigate.com/es/about/",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.linkedin.com/posts/manuel-angel-becerra-alonso-a15250a4_esta-semana-hemos-acudido-al-netscout-arbor-activity-6501501503050649600-4AFI",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.netscout.com/blog/future-telecom-operations-powered-autonomy-scale",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.netscout.com/blog/how-machines-are-taking-over-network-traffic",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.netscout.com/blog/why-cdns-alone-are-not-sufficient-modern-ddos-protection",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.netscout.com/blog/compelling-need-ai-ready-smart-data",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.netscout.com/blog/cyberattack-poland-causes-heat-and-power-outages-50000",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.netscout.com/blog/data-overload-network-intelligence",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.netscout.com/blog/future-observability-isnt-more-data-its-smarter-data",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.netscout.com/blog/getting-beyond-noise-data-really-thinks",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.netscout.com/blog/how-ai-reshaping-radio-access-network",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.netscout.com/blog/how-it-and-executives-view-business-impact-network-disruptions",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.netscout.com/blog/netscout-earns-top-recognition-2026-ddos-mitigation",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.netscout.com/blog/observability-ai-ready-data-helps-reduce-time-solve-problems",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.netscout.com/blog/six-critical-business-benefits-real-time-data-insights",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "url": "https://www.netscout.com/blog/what-keeping-it-leaders-and-teams-night-right-now",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/about-us/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/about-us/investors",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/about/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/about/investors",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/annual-report",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/annual-report",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/annual-reports",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/annual-reports",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/company/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/company/investor-relations",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/company/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/earnings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/financial-information",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/financial-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/financials",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/informacao-financeira",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/informacion-financiera",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/investor",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/quarterly-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/relatorio-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/relatorios-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/reports-and-filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/resultados",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/resultados-financieros",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/sitemap.xml",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/about-us/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.ruckusnetworks.com:443/about-us/investors/",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/about/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/annual-report",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/annual-reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/company/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/company/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/earnings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/financial-information",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/financial-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/financials",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/informacao-financeira",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/informacion-financiera",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/investor",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/quarterly-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/relatorio-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/relatorios-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/reports-and-filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/resultados",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/resultados-financieros",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/sitemap.xml",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://blog.wifidom.com/home/",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/actualidad",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/feed",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/press",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.infinigate.com/es/about/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/actualidad",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/feed",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/press",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/resources/case-studies/andreu-world/",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/resources/case-studies/mahou-san-miguel/",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.ruckusnetworks.com/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://es.ruckusnetworks.com/resources/case-studies/mahou-san-miguel/",
-      "family": "cases",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.exclusive-networks.com/ecosystem/vendors",
+      "entity": "Ciena",
+      "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-recognizes-2025-european-partner-award-winners/",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
@@ -2660,48 +526,370 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.infinigate.com/es/vendors/",
+      "entity": "Ciena",
+      "url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
       "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.infinigate.com/es/vendors/netscout/",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.v-valley.com/es/vendor/ruckus/",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.channelpartner.es/",
-      "family": "official",
       "cached": true,
-      "relevant": true,
-      "accepted": 1,
+      "relevant": false,
+      "accepted": 0,
       "status": 200
     },
     {
       "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://itcm.es/soluciones/gestion-de-accesos/",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/about-us/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.fortanix.com/about-us/investors",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/about/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.fortanix.com/about/investors",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/annual-report",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.fortanix.com/annual-report",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/annual-reports",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.fortanix.com/annual-reports",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/company/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.fortanix.com/company/investor-relations",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/company/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/earnings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/filings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/financial-information",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/financial-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/financials",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/informacao-financeira",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/informacion-financiera",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/investor",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/quarterly-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/relatorio-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/relatorios-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/reports",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/reports-and-filings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/resultados",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/resultados-financieros",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/sitemap.xml",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/ai",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/analyst",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/architecture",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/architectures",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/cloud",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
@@ -2709,7 +897,640 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Ruckus Networks",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/company/pr/2025/10/ntt-data-and-fortanix-announce-global-partnership-to-strengthen-security-in-the-ai-and-post-quantum-era",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/market",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/platform",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/products",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/reports",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/research",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/resources",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/services",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/sitemap.xml",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/sitemap.xml",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/solutions",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/technologies",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/technology",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/tecnologia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.fortanix.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.levelblue.com/technology-partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://certesnetworks.com/partners/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.ciena.com/partners/locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://cradlepoint.com/partners/for-customers/find-a-partner/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://www.zscaler.com/es/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://cradlepoint.com/partners/for-partners/resell-partners/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://cradlepoint.com/partners/for-partners/service-provider-partners/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "url": "https://weblib.com/partners/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
       "url": "https://telefonicatech.com/actualidad/redes-privadas-5g-nokia",
       "family": "official",
       "status": 0,
@@ -2718,9 +1539,9 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.pingidentity.com/en/lp/p/accenture.html",
-      "family": "official",
+      "entity": "Fortanix",
+      "url": "https://www.muycanal.com/2023/01/31/efficientip-dns-partners",
+      "family": "partners",
       "cached": true,
       "relevant": false,
       "accepted": 0,
@@ -2728,9 +1549,1063 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://regionalevents.okta.com/identitysummitmadrid2025",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/about-us/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.menlosecurity.com/about-us/investors",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/about/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.menlosecurity.com/about/investors",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/annual-report",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.menlosecurity.com/annual-report",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/annual-reports",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.menlosecurity.com/annual-reports",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/company/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.menlosecurity.com/company/investor-relations",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/company/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/earnings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/filings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/financial-information",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/financial-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/financials",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/informacao-financeira",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/informacion-financiera",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/investor",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/quarterly-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/relatorio-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/relatorios-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/reports",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/reports-and-filings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/resultados",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/resultados-financieros",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/sitemap.xml",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/company/security-breach",
       "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/security-operations-platforms",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/services/cyber-advisory",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/services/data-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/services/email-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/services/exposure-management",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/services/managed-cloud-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/services/managed-network-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/services/threat-detection-investigation-and-response-tdir",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/solutions/government",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/about/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/about/partners/technology-partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/analyst",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/architecture",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/architectures",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/market",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/platform",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/products",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/reports",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/research",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/resources",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/services",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/sitemap.xml",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/sitemap.xml",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/solutions",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/technologies",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/technology",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/tecnologia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/technology-partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
+      "family": "partners",
       "cached": true,
       "relevant": false,
       "accepted": 0,
@@ -2738,17 +2613,73 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.softwareone.com/es-es/softwareone-cloud-services/aws",
-      "family": "services",
+      "entity": "Menlo Security",
+      "url": "https://certesnetworks.com/partners/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.ciena.com/partners/locator",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.crayon.com/globalassets/spain/aws/ola/crayon_ebook_optimice_coste_licencia.pdf",
+      "entity": "Menlo Security",
+      "url": "https://cradlepoint.com/partners/for-customers/find-a-partner/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.zscaler.com/es/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://cradlepoint.com/partners/for-partners/resell-partners/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://cradlepoint.com/partners/for-partners/service-provider-partners/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://weblib.com/partners/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://telefonicatech.com/actualidad/redes-privadas-5g-nokia",
       "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
@@ -2756,23 +2687,69 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.es.logicalis.com/es/reconocimientos",
-      "family": "official",
+      "entity": "Menlo Security",
+      "url": "https://www.muycanal.com/2023/01/31/efficientip-dns-partners",
+      "family": "partners",
       "cached": true,
-      "relevant": true,
-      "accepted": 1,
+      "relevant": false,
+      "accepted": 0,
       "status": 200
     },
     {
       "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "url": "https://www.bechtle.com/es/soluciones-de-it/networking/software-defined-networking",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
+      "entity": "Weblib",
+      "url": "https://weblib.com/",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
       "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://ucopia.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://ucopia.com/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/resellers-solution-wifi-ucopia/",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://ucopia.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://ucopia.com/find-a-partner",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://ucopia.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://ucopia.com/partner",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://ucopia.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://ucopia.com/partner-locator",
+      "accepted": 0
     }
   ]
 }
