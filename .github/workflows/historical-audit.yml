@@ -2,12 +2,16 @@ name: Historical audit
 on:
   push:
     branches: [audit/historical-knowledge-exhaustive-20261023]
+    paths:
+      - scripts/audit_historical_claims.py
+      - .github/workflows/historical-audit.yml
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   report:
     runs-on: ubuntu-latest
+    timeout-minutes: 18
     steps:
       - uses: actions/checkout@v5
         with:
@@ -15,9 +19,24 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - run: python -m scripts.audit_historical_claims
+      - name: Compare historical versions without data promotion
+        run: python -m scripts.audit_historical_claims
+      - name: Publish read-only historical index to audit branch
+        run: |
+          mkdir -p data/public/historical
+          cp historical_audit/candidate_index.json data/public/historical/candidate_index.json
+          cp historical_audit/summary.json data/public/historical/summary.json
+          cp historical_audit/historical_candidates.csv data/public/historical/historical_candidates.csv
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/public/historical/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: archive read-only historical claims for review"
+            git push origin HEAD:audit/historical-knowledge-exhaustive-20261023
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: historical-audit-report
           path: historical_audit/
+          retention-days: 30
