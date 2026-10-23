@@ -20,6 +20,23 @@ th:last-child,td:last-child{text-align:right}
 li{margin:.6rem 0;line-height:1.5}a{color:#006484}
 @media(max-width:800px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}}
 @media(max-width:470px){.cards{grid-template-columns:1fr}th,td{padding:.55rem;font-size:.89rem}}
+
+.explorer-controls{display:flex;flex-wrap:wrap;gap:.7rem;margin:1rem 0}
+.explorer-controls input,.explorer-controls select{font:inherit;padding:.68rem;border:1px solid #9db6c4;border-radius:8px;background:#fff;color:#142c3b;min-width:170px}
+.explorer-controls input{flex:2;min-width:230px}
+#historyMatches{font-weight:650;margin:.7rem 0}
+#historicalResult{overflow-x:auto}
+.historical-table{font-size:.92rem;table-layout:fixed}
+.historical-table th:nth-child(1){width:21%}
+.historical-table th:nth-child(2){width:16%}
+.historical-table th:nth-child(3){width:38%}
+.historical-table th:nth-child(4){width:25%}
+.historical-table td{overflow-wrap:anywhere;vertical-align:top;line-height:1.5}
+.history-source{display:block;margin:.25rem 0}
+.history-meta{font-size:.8rem;color:#506d79}
+.history-paging{display:flex;align-items:center;gap:1rem;margin:1.2rem 0}
+.history-paging button{font:inherit;border:1px solid #8bb3c4;border-radius:8px;background:white;color:#164456;padding:.55rem 1rem;cursor:pointer}
+.history-paging button:disabled{opacity:.4;cursor:not-allowed}
 </style></head><body>
 <header><a href="./">← Volver al observatorio</a><p>WESTCON IBERIA · INTELIGENCIA CON MEMORIA</p></header>
 <main><h1>Memoria histórica del conocimiento</h1>
@@ -39,6 +56,19 @@ li{margin:.6rem 0;line-height:1.5}a{color:#006484}
 <tr><td>Relaciones históricas de canal: revisar la relación y su fuente atómica</td><td>82</td></tr>
 <tr><td>Otros campos históricos para revisión concreta</td><td>4</td></tr>
 <tr><th>Total</th><th>674</th></tr></tbody></table>
+<section class="panel" id="historyExplorer">
+<h2>Explorar los 674 antecedentes</h2>
+<p>Los resultados son diferencias históricas pendientes de evaluación; no son relaciones comerciales actuales confirmadas. Puedes buscar por empresa, tecnología, campo o contenido y abrir las fuentes que constaban en la versión original.</p>
+<div class="explorer-controls">
+<input id="historyQuery" type="search" placeholder="Empresa, relación, campo, tecnología…" aria-label="Buscar afirmaciones históricas">
+<select id="historySection" aria-label="Filtrar categoría"><option value="">Todas las categorías</option><option value="manufacturers">Fabricantes</option><option value="distributors">Mayoristas</option><option value="integrators">Integradores</option><option value="clients_public">Contratación pública</option><option value="architectures">Arquitecturas</option></select>
+<select id="historyGroup" aria-label="Filtrar tipo de diferencia"><option value="">Todos los tipos</option><option value="relation">Relaciones de canal</option><option value="projection">Vistas calculadas</option><option value="procurement">Contratación pública</option><option value="structure">Estructuras de arquitectura</option><option value="specific">Otros campos</option></select>
+</div>
+<p id="historyMatches" role="status">Cargando inventario…</p>
+<div id="historicalResult" aria-live="polite"></div>
+<div class="history-paging"><button id="historyPrev" type="button" disabled>← Anterior</button><span id="historyPosition"></span><button id="historyNext" type="button" disabled>Siguiente →</button></div>
+<p><a href="data/public/historical/historical_candidates.csv" download>Descargar inventario completo en CSV</a> · <a href="data/public/historical/summary.json">Metodología y recuentos (JSON)</a></p>
+</section>
 <h2>Cómo debe usarse el histórico</h2>
 <div class="grid">
 <div class="panel"><h3>Conservar lo que sabemos</h3><p>Una adjudicación de 2023 permanece documentada como hecho de 2023. Una relación de canal que constaba en una fuente antigua se conserva como antecedente fechado. No se elimina silenciosamente.</p></div>
@@ -51,4 +81,61 @@ li{margin:.6rem 0;line-height:1.5}a{color:#006484}
 <p><a href="https://github.com/ivanderodrigo/estrategia/actions/runs/39991049447">Consultar ejecución y artefacto de auditoría histórica ↗</a></p>
 <p><a href="https://github.com/ivanderodrigo/estrategia/blob/audit/historical-knowledge-exhaustive-20261023/scripts/audit_historical_claims.py">Consultar código de comparación ↗</a></p>
 <p><small>Auditoría de hitos seleccionados, no revisión exhaustiva de todas las revisiones ni corroboración individual de fuentes. Cifras relativas al dataset comparado, no a una actualización en tiempo real.</small></p>
-</main></body></html>
+</main><script>
+(()=>{'use strict';
+const $=s=>document.querySelector(s);
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
+let all=[],page=0;const PAGE=20;
+function group(x){
+  if(x.section==='clients_public')return 'procurement';
+  if(x.section==='architectures')return 'structure';
+  if(['competitor_vendor_overlap','westcon_overlap'].includes(x.field))return 'projection';
+  if(['integrators','distributors','vendor_relations'].includes(x.field))return 'relation';
+  return 'specific';
+}
+function label(x){return ({relation:'Relación de canal',projection:'Vista derivada',procurement:'Expediente histórico',structure:'Estructura de arquitectura',specific:'Campo histórico'})[group(x)]}
+function excerpt(x){
+  let val=x.value;
+  try {const obj=JSON.parse(val);val=typeof obj==='string'?obj:JSON.stringify(obj);} catch(_){}
+  return val.length>180?val.slice(0,177)+'…':val;
+}
+function matches(){
+ const q=$('#historyQuery').value.toLocaleLowerCase('es').trim();
+ const section=$('#historySection').value,kind=$('#historyGroup').value;
+ return all.filter(x=>(!section||x.section===section)&&(!kind||group(x)===kind)
+   &&(!q||[x.entity,x.field,x.value,...(x.urls||[])].join(' ').toLocaleLowerCase('es').includes(q)));
+}
+function render(){
+ const found=matches(),pages=Math.max(1,Math.ceil(found.length/PAGE));page=Math.min(page,pages-1);
+ $('#historyMatches').textContent=found.length.toLocaleString('es-ES')+' antecedentes encontrados; ninguno se considera acreditado como vigente sin nueva validación.';
+ $('#historyPosition').textContent='Página '+(page+1)+' de '+pages;
+ $('#historyPrev').disabled=page===0;$('#historyNext').disabled=page>=pages-1;
+ const portion=found.slice(page*PAGE,(page+1)*PAGE);
+ if(!portion.length){$('#historicalResult').textContent='No hay coincidencias para los filtros.';return}
+ $('#historicalResult').innerHTML='<table class="historical-table"><thead><tr><th>Entidad</th><th>Campo / categoría</th><th>Dato histórico</th><th>Fuentes y versiones</th></tr></thead><tbody>'+
+ portion.map(x=>{
+   const src=(x.urls||[]).filter(url=>/^https?:\/\//i.test(url)).slice(0,5)
+    .map((u,i)=>'<a class="history-source" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">Fuente histórica '+(i+1)+' ↗</a>').join('');
+   return '<tr><td><strong>'+esc(x.entity)+'</strong></td><td>'+esc(x.field)+'<div class="history-meta">'+esc(label(x))+'</div></td>'+
+   '<td>'+esc(excerpt(x))+'</td><td>'+src+
+   '<div class="history-meta">Visto entre revisiones '+esc(x.first_revision)+' y '+esc(x.last_revision)+'</div>'+
+   '<div class="history-meta">Estado: candidato histórico sin revalidación actual</div></td></tr>';
+ }).join('')+'</tbody></table>';
+}
+async function init(){
+ try{
+ const res=await fetch('data/public/historical/candidate_index.json',{cache:'no-store'});
+ if(!res.ok)throw new Error('HTTP '+res.status);
+ const data=await res.json();
+ if(!Array.isArray(data.candidates)||data.candidates.length!==data.candidate_count)throw new Error('Inventario incompleto');
+ all=data.candidates;render();
+ }catch(e){$('#historyMatches').textContent='No se pudo cargar el inventario ('+e.message+'). Utiliza la exportación CSV o el artefacto de GitHub.';}
+}
+for(const selector of ['#historyQuery','#historySection','#historyGroup']){
+ $(selector).addEventListener('input',()=>{page=0;render()});
+}
+$('#historyPrev').addEventListener('click',()=>{if(page>0){page--;render()}});
+$('#historyNext').addEventListener('click',()=>{if((page+1)*PAGE<matches().length){page++;render()}});
+init();
+})();
+</script></body></html>
