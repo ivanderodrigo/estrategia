@@ -23,6 +23,16 @@ class HistoricalResearchRoutingTest(unittest.TestCase):
         derived={**GAP,"gap_kind":"derivation-support"}
         self.assertEqual(historical_revalidation_seeds(derived,{"gap-1":RECORD}),[])
 
+    def test_planner_includes_bounded_untrusted_history_urls(self):
+        from unittest.mock import patch
+        report = {"gaps":[{**GAP, "priority_score": 85, "research_state":"Por investigar"}]}
+        with patch("engine.research.historical_leads.history_by_gap",return_value={"gap-1": RECORD}):
+            work = plan(report, {"families":{}}, "daily", max_tasks=1)
+        self.assertEqual(len(work), 1)
+        history=[x for x in work[0]["revalidation_seeds"] if x.get("historical_lead")]
+        self.assertEqual(len(history),2)
+        self.assertFalse(any(x["official"] for x in history))
+
     def test_ssrf_style_links_are_excluded(self):
         self.assertFalse(usable_historical_url("http://example.org/path"))
         self.assertFalse(usable_historical_url("https://localhost/path"))
