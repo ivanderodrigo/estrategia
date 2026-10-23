@@ -1,0 +1,15 @@
+# Westcon Decision Intelligence — HF6 R20
+
+## Candidate promotion gate
+
+This hotfix makes the research boundary explicit: extracted candidates are not canonical facts. A value is promoted to `data/current/intelligence.json` only when its evidence is typed/accrediting and passes the exact entity/field/value provenance binding used by normalization, preservation and QA.
+
+Rejected values are retained as bounded diagnostics in `data/current/research_ledger.json` under `candidate_rejections`, with counters for seen/promoted/rejected values. The canonical Preservation Gate is not relaxed.
+
+Files changed by the installer:
+- `engine/research/web_intelligence.py`
+- `engine/pipeline.py` (telemetry only)
+- `tests/test_hf6_r20_candidate_promotion.py`
+- `HOTFIX_V431_HF6_R20.txt`
+
+The installer creates a rollback copy below `.westcon-update-rollback/`.

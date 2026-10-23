@@ -1,3 +1,4 @@
+# HF6_R20_CANDIDATE_PROMOTION_GATE
 # HF6_R12_R2_ENTITY_BOUND_RESEARCH
 # HF6_R5_REVENUE_RUNTIME
 # HF6_ATOMIC_ITEM_PROVENANCE
@@ -22,8 +23,9 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 from ..enrichment import merge_field
+from ..knowledge_provenance import typed_evidence_sufficient
 from ..model import canonical
-from ..provenance import infer_scope_from_text
+from ..provenance import evidence_for_item, evidence_for_relationship, infer_scope_from_text
 from ..settings import RESEARCH_POLICY, RESEARCH_PROFILES, VERSION
 from ..storage import atomic_write_json, prune_json_mapping, read_json
 from .documents import Document, Link, parse_document, sitemap_urls
@@ -1135,6 +1137,86 @@ def _candidate_items(
         })
     return items
 
+_RELATION_PROMOTION_FIELDS = frozenset({
+    "vendor_relations", "distributors", "integrators",
+    "westcon_overlap", "competitor_vendor_overlap",
+})
+
+
+def _promotable_candidate_items(
+    items: list[dict[str, Any]],
+    *,
+    entity: str,
+    field_id: str,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Separate extracted candidates from facts that may enter canonical data.
+
+    A candidate is promotable only when it has typed accrediting evidence and that
+    evidence survives the same exact owner/field/value binding used later by
+    normalization, preservation and quality. Rejected candidates remain research
+    telemetry; they never mutate ``intelligence.json``.
+    """
+    promoted: list[dict[str, Any]] = []
+    rejected: list[dict[str, Any]] = []
+    relation_field = field_id in _RELATION_PROMOTION_FIELDS
+
+    for raw in items:
+        if not isinstance(raw, dict):
+            continue
+        value = raw.get("value")
+        evidence_rows = [
+            ev for ev in (raw.get("evidence") or [])
+            if isinstance(ev, dict)
+        ]
+        # Research-generated evidence carries authoritative atomic metadata.
+        # Do not allow fuzzy source-text matching to repair a malformed candidate
+        # before it reaches canonical state.
+        exact_rows = [
+            ev for ev in evidence_rows
+            if ev.get("atomic") is True
+            and canonical(ev.get("item_value")) == canonical(value)
+            and canonical(ev.get("researched_entity")) == canonical(entity)
+            and (not str(ev.get("field") or "") or str(ev.get("field")) == field_id)
+        ]
+        if not exact_rows:
+            rejected.append({
+                "value": value,
+                "reason": "research-binding-metadata-failed",
+            })
+            continue
+        sufficient = [
+            ev for ev in exact_rows
+            if typed_evidence_sufficient(ev)
+        ]
+        if not sufficient:
+            rejected.append({
+                "value": value,
+                "reason": "typed-evidence-insufficient",
+            })
+            continue
+
+        if relation_field:
+            bound = evidence_for_relationship(sufficient, entity, value)
+        else:
+            bound = evidence_for_item(
+                sufficient,
+                entity,
+                value,
+                field_id=field_id,
+            )
+        if not bound:
+            rejected.append({
+                "value": value,
+                "reason": "atomic-binding-failed",
+            })
+            continue
+
+        item = dict(raw)
+        item["evidence"] = bound
+        promoted.append(item)
+
+    return promoted, rejected
+
 def _same_host(url_a: str, url_b: str) -> bool:
     return urlparse(url_a).netloc.casefold().removeprefix("www.") == urlparse(url_b).netloc.casefold().removeprefix("www.")
 
@@ -1227,9 +1309,13 @@ def _checkpoint(
         "updated_at": now_iso(),
         "candidates": discovery,
     })
-    ledger = {key: value for key, value in stats.items() if key not in {"results", "families"}}
-    # Keep full-run aggregates before retaining only a bounded diagnostic window.
-    # Release gates must never infer the run total from the last 300 rows.
+    ledger = {
+        key: value
+        for key, value in stats.items()
+        if key not in {"results", "families", "candidate_rejections"}
+    }
+    # Keep full-run aggregates before retaining only bounded diagnostic windows.
+    # Release gates must never infer the run total from the last diagnostic rows.
     result_rows = [row for row in stats["results"] if isinstance(row, dict)]
     ledger["result_rows_total"] = len(result_rows)
     ledger["accepted_result_rows_total"] = sum(
@@ -1237,6 +1323,13 @@ def _checkpoint(
     )
     ledger["results_truncated"] = len(result_rows) > 300
     ledger["results"] = result_rows[-300:]
+    rejected_rows = [
+        row for row in stats.get("candidate_rejections") or []
+        if isinstance(row, dict)
+    ]
+    ledger["candidate_rejection_rows_total"] = len(rejected_rows)
+    ledger["candidate_rejections_truncated"] = len(rejected_rows) > 500
+    ledger["candidate_rejections"] = rejected_rows[-500:]
     atomic_write_json("data/current/research_ledger.json", ledger)
 
 
@@ -1281,6 +1374,11 @@ def run(
         "fetch_successes": 0,
         "pages_relevant": 0,
         "candidate_evidences": 0,
+        "candidate_values_seen": 0,
+        "candidate_values_promoted": 0,
+        "candidate_values_rejected": 0,
+        "candidate_fields_rejected": 0,
+        "candidate_rejections": [],
         "accepted_evidences": 0,
         "fields_enriched": 0,
         "values_added": 0,
@@ -1434,16 +1532,39 @@ def run(
                 old_field = row.get("fields", {}).get(field_id)
                 before_values = _field_values(old_field)
                 before_evidence = _field_evidence_keys(old_field)
-                items = _candidate_items(
+                raw_items = _candidate_items(
                     seed, document, field_id, candidate, target["entity"], scope
                 )
+                stats["candidate_values_seen"] += len(raw_items)
+                items, rejected = _promotable_candidate_items(
+                    raw_items,
+                    entity=target["entity"],
+                    field_id=field_id,
+                )
+                stats["candidate_values_promoted"] += len(items)
+                stats["candidate_values_rejected"] += len(rejected)
+                if rejected:
+                    family_stats["candidate_rejected"] += len(rejected)
+                    for decision in rejected:
+                        stats["candidate_rejections"].append({
+                            "section": target["section"],
+                            "entity": target["entity"],
+                            "field": field_id,
+                            "value": decision.get("value"),
+                            "reason": decision.get("reason"),
+                            "url": document.url,
+                            "family": seed.family,
+                        })
+                if not items:
+                    stats["candidate_fields_rejected"] += 1
+                    continue
                 evidence = [
                     ev
                     for item in items
                     for ev in (item.get("evidence") or [])
                 ]
                 row.setdefault("fields", {})[field_id] = merge_field(old_field, {
-                    "value": list(candidate.values),
+                    "value": [item.get("value") for item in items],
                     "items": items,
                     "evidence": evidence,
                     "confidence": candidate.confidence,
@@ -1552,7 +1673,10 @@ def run(
     families_output = {}
     for key, row_stats in stats["families"].items():
         current = (learning.setdefault("families", {}).setdefault(key, {}))
-        for metric in ("attempts", "fetch_successes", "pages_relevant", "candidate_evidence", "accepted_evidence"):
+        for metric in (
+            "attempts", "fetch_successes", "pages_relevant",
+            "candidate_evidence", "accepted_evidence", "candidate_rejected",
+        ):
             current[metric] = int(current.get(metric) or 0) + int(row_stats.get(metric) or 0)
         current["fetch_success_rate"] = round(current["fetch_successes"] / max(1, current["attempts"]), 4)
         current["evidence_yield"] = round(current["accepted_evidence"] / max(1, current["pages_relevant"]), 4)
@@ -1567,6 +1691,9 @@ def run(
     )
     stats["candidate_acceptance_rate"] = round(
         stats["accepted_evidences"] / max(1, stats["candidate_evidences"]), 4
+    )
+    stats["candidate_value_promotion_rate"] = round(
+        stats["candidate_values_promoted"] / max(1, stats["candidate_values_seen"]), 4
     )
     stats["values_per_accepted_evidence"] = round(
         stats["values_added"] / max(1, stats["accepted_evidences"]), 4
@@ -1600,4 +1727,7 @@ if __name__ == "__main__":
     except Exception as exc:
         print(f"research fatal: {type(exc).__name__}: {exc}", file=sys.stderr, flush=True)
         raise
-    print(json.dumps({key: value for key, value in result.items() if key != "results"}, ensure_ascii=False))
+    print(json.dumps({
+        key: value for key, value in result.items()
+        if key not in {"results", "candidate_rejections"}
+    }, ensure_ascii=False))

@@ -1,3 +1,4 @@
+# HF6_R20_RESEARCH_PROMOTION_TELEMETRY
 # HF6_R13_R3_FINAL_NORMALIZE_BEFORE_QUALITY
 """Canonical build pipeline with transactional publication."""
 
@@ -295,6 +296,11 @@ def run() -> dict[str, Any]:
             "fetch_attempts": ledger.get("fetch_attempts", 0),
             "fetch_successes": ledger.get("fetch_successes", 0),
             "pages_relevant": ledger.get("pages_relevant", 0),
+            "candidate_values_seen": ledger.get("candidate_values_seen", 0),
+            "candidate_values_promoted": ledger.get("candidate_values_promoted", 0),
+            "candidate_values_rejected": ledger.get("candidate_values_rejected", 0),
+            "candidate_fields_rejected": ledger.get("candidate_fields_rejected", 0),
+            "candidate_value_promotion_rate": ledger.get("candidate_value_promotion_rate", 0),
             "accepted_evidences": ledger.get("accepted_evidences", 0),
             "fields_enriched": ledger.get("fields_enriched", 0),
             "values_added": ledger.get("values_added", 0),
