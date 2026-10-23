@@ -19,7 +19,6 @@ class HistoricalExplorerTest(unittest.TestCase):
         self.assertIn('href="memoria-historica.html"', home)
         self.assertIn("candidate_index.json", page)
         self.assertIn("HISTÓRICO", page.upper())
-        self.assertIn("no se consideran", page.lower()) if False else None
         self.assertIn("sin revalidación actual", page)
         self.assertIn('rel="noopener noreferrer"', page)
 
