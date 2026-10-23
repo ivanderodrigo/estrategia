@@ -27,6 +27,9 @@ jobs:
           cp historical_audit/candidate_index.json data/public/historical/candidate_index.json
           cp historical_audit/summary.json data/public/historical/summary.json
           cp historical_audit/historical_candidates.csv data/public/historical/historical_candidates.csv
+          cp historical_audit/gap_matches.json data/public/historical/gap_matches.json
+          cp historical_audit/gap_summary.json data/public/historical/gap_summary.json
+          cp historical_audit/gap_matches.csv data/public/historical/gap_matches.csv
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/public/historical/
