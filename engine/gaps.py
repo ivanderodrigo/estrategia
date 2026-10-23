@@ -595,6 +595,8 @@ def build_gaps(
     research_seed_registry_gaps = _append_registry_validation_gaps(
         public, gaps, missing, critical, states, state_gaps
     )
+    from .historical_gap_context import enrich_from_history
+    historical_lookup = enrich_from_history(gaps)
     business_priority = enrich_gap_report(gaps, public)
     public_status_summary = annotate_public_states(gaps)
     gaps.sort(key=lambda item: (
@@ -622,6 +624,7 @@ def build_gaps(
         ),
         "total_gaps": len(gaps),
         "public_status_summary": public_status_summary,
+        "historical_lookup": historical_lookup,
         "historical_revalidation_gaps": historical_revalidation_gaps,
         "research_seed_registry_gaps": research_seed_registry_gaps,
         "evidence_support_gaps": evidence_support_gaps,
