@@ -116,7 +116,9 @@ def main():
             "historical_assertions":len(selected),"urls_found":len(source_links),
             "source_urls":source_links[:5],"historical_samples":sample,
             "status":"HISTORICAL_RESEARCH_LEAD_NOT_VERIFIED"})
-    gap_summary={"version":1,"total_current_research_tasks":len(open_gaps),
+    publication=read_json("data/current/last_run.json", {})
+    gap_summary={"version":1,"dataset_published_at":publication.get("generated_at"),
+        "total_current_research_tasks":len(open_gaps),
         "tasks_with_historical_antecedents":len(matched_gaps),
         "tasks_without_exact_name_field_history":len(open_gaps)-len(matched_gaps),
         "by_match_level":dict(match_counts),
