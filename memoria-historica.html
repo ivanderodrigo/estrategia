@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Auditoría de memoria histórica de Westcon Decision Intelligence: trazabilidad, discrepancias y recuperación sin falsear la vigencia.">
+<title>Memoria histórica · Observatorio Westcon Iberia</title>
+<style>
+:root{font:16px system-ui,sans-serif;color:#142c3b;background:#f5f8fa}
+*{box-sizing:border-box}body{margin:0}header{background:#082b3f;color:#fff;padding:1rem clamp(1rem,5vw,4rem)}
+header a{color:#bce9f5}main{max-width:1180px;margin:auto;padding:2rem 1rem 5rem}
+h1{font-size:clamp(1.7rem,4vw,2.8rem);line-height:1.16}h2{margin-top:2.3rem}
+.lead{font-size:1.12rem;line-height:1.65;max-width:80ch}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.card,.panel{background:white;border:1px solid #dbe6eb;border-radius:12px;padding:1.2rem}
+.card b{display:block;font-size:2rem;margin:.5rem 0;font-variant-numeric:tabular-nums}
+.card small{display:block;line-height:1.4;color:#547080}
+table{border-collapse:collapse;width:100%;background:white}
+th,td{padding:.85rem;border-bottom:1px solid #d8e4e9;text-align:left}
+th:last-child,td:last-child{text-align:right}
+.notice{border-left:5px solid #1c7d9b;background:#e9f4f8;padding:1rem 1.2rem;line-height:1.6;margin:1.5rem 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+li{margin:.6rem 0;line-height:1.5}a{color:#006484}
+@media(max-width:800px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}}
+@media(max-width:470px){.cards{grid-template-columns:1fr}th,td{padding:.55rem;font-size:.89rem}}
+</style></head><body>
+<header><a href="./">← Volver al observatorio</a><p>WESTCON IBERIA · INTELIGENCIA CON MEMORIA</p></header>
+<main><h1>Memoria histórica del conocimiento</h1>
+<p class="lead">Auditoría de 17 hitos históricos del repositorio, desde agosto a septiembre de 2026, comparados con los datos vigentes en el momento del análisis. Las diferencias identificadas no se convierten automáticamente en verdades actuales.</p>
+<section class="cards" aria-label="Resumen de auditoría">
+<div class="card">Afirmaciones históricas<b>18.818</b><small>Distintas en los hitos comparados</small></div>
+<div class="card">Coinciden con datos actuales<b>18.144</b><small>Coincidencia de identidad y valor, no revalidación de fuente</small></div>
+<div class="card">Candidatas a revisión<b>674</b><small>Diferencias, no pérdidas probadas</small></div>
+<div class="card">Con URL en histórico<b>670</b><small>URL conservada ≠ evidencia vigente suficiente</small></div>
+</section>
+<div class="notice"><strong>Lectura esencial.</strong> Los 674 casos son diferencias entre versiones; no deben descontarse directamente de los pendientes del motor. Un dato histórico puede estar acreditado para una fecha concreta sin estar verificado como actual en 2026. Esta auditoría es solo lectura y no ha alterado el portfolio, los valores publicados ni los controles de integridad.</div>
+<h2>Clasificación técnica de las 674 diferencias</h2>
+<table><thead><tr><th>Grupo de análisis</th><th>Casos</th></tr></thead><tbody>
+<tr><td>Contratación pública histórica: revisar expediente y periodo</td><td>232</td></tr>
+<tr><td>Vistas de relaciones calculadas: verificar el grafo de origen y alias</td><td>244</td></tr>
+<tr><td>Arquitecturas: posibles cambios de serialización/estructura</td><td>112</td></tr>
+<tr><td>Relaciones históricas de canal: revisar la relación y su fuente atómica</td><td>82</td></tr>
+<tr><td>Otros campos históricos para revisión concreta</td><td>4</td></tr>
+<tr><th>Total</th><th>674</th></tr></tbody></table>
+<h2>Cómo debe usarse el histórico</h2>
+<div class="grid">
+<div class="panel"><h3>Conservar lo que sabemos</h3><p>Una adjudicación de 2023 permanece documentada como hecho de 2023. Una relación de canal que constaba en una fuente antigua se conserva como antecedente fechado. No se elimina silenciosamente.</p></div>
+<div class="panel"><h3>No confundir historial con actualidad</h3><p>Una relación en 2022 no acredita automáticamente que siga vigente en 2026. Tampoco una página general de partners acredita por sí misma cada relación individual.</p></div>
+<div class="panel"><h3>Reutilizar antes de investigar</h3><p>Primero se consulta el registro de afirmaciones, las fuentes históricas y el ámbito geográfico. Después se busca únicamente la incertidumbre relevante: vigencia, cambio de entidad, nueva fuente o contradicción.</p></div>
+<div class="panel"><h3>Auditar sin alterar producción</h3><p>Las coincidencias y discrepancias se separan de la aceptación de evidencias. Ninguna reparación de este inventario debe desactivar el Preservation Gate ni declarar verificado un dato por su sola presencia en versiones antiguas.</p></div>
+</div>
+<h2>Estado y trazabilidad</h2>
+<p>El inventario CSV completo de candidatos y el resumen JSON fueron generados en una ejecución independiente de GitHub Actions. La auditoría es reproducible a partir del historial y no modifica <code>main</code>.</p>
+<p><a href="https://github.com/ivanderodrigo/estrategia/actions/runs/39991049447">Consultar ejecución y artefacto de auditoría histórica ↗</a></p>
+<p><a href="https://github.com/ivanderodrigo/estrategia/blob/audit/historical-knowledge-exhaustive-20261023/scripts/audit_historical_claims.py">Consultar código de comparación ↗</a></p>
+<p><small>Auditoría de hitos seleccionados, no revisión exhaustiva de todas las revisiones ni corroboración individual de fuentes. Cifras relativas al dataset comparado, no a una actualización en tiempo real.</small></p>
+</main></body></html>
