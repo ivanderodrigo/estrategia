@@ -280,9 +280,13 @@ def run() -> dict[str, Any]:
     if quality["errors"]:
         # HF6 R21: persist the exact failed comparison before aborting publication.
         # These are diagnostic-only files, not a committed canonical snapshot.
+        from .preservation_forensics import trace_missing_evidences
         atomic_write_many({
             "data/current/knowledge_preservation_failure.json": json_bytes(preservation),
             "data/current/quality_failure.json": json_bytes(quality),
+            "data/current/preservation_claim_trace.json": json_bytes(
+                trace_missing_evidences(preservation_source, data, preservation)
+            ),
         })
         raise ValueError("Quality gate failed: " + "; ".join(quality["errors"][:5]))
     meta["source_count"] = metrics["sources"]
