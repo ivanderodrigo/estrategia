@@ -42,5 +42,16 @@ def enrich_from_history(gaps: list[dict[str, Any]], index_path: Path = INDEX) ->
         total += len(leads)
         gap["historical_research_leads"] = leads
         gap["historical_lookup_status"] = "prior-evidence-to-review"
+        # Old URLs are only fetch targets; every result requires fresh verification.
+        if gap.get("gap_kind") != "derivation-support":
+            existing = list(gap.get("revalidation_seeds") or [])
+            seen = {str(item.get("url") or "") for item in existing if isinstance(item, Mapping)}
+            for lead in leads:
+                for url in lead["source_urls"]:
+                    if url not in seen:
+                        existing.append({"url": url, "official": False, "source_grade": "B",
+                                         "source_name": "Historical source, verify again"})
+                        seen.add(url)
+            gap["revalidation_seeds"] = existing[:30]
         # Research state, scoring, accepted values and quality gates remain untouched.
     return {"index_available":1,"matched_gaps":matched,"historical_leads":total}
