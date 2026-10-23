@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#082335">
 <meta name="description" content="Westcon Iberia · Business Intelligence · Fabricantes, mayoristas, integradores, clientes, tendencias y arquitecturas con trazabilidad por campo.">
-<title>Westcon Iberia · Business Intelligence</title>
+<title>Westcon Iberia · Observatorio Tecnológico y Comercial</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/app/intelligence.css?v=4.3.1">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -21,7 +21,8 @@
     <div><b>WESTCON IBERIA</b><small>Business Intelligence · v4.3.1</small></div>
   </div>
   <nav id="tabs" aria-label="Áreas de inteligencia">
-    <button class="active" data-view="fabricantes" type="button">Fabricantes</button>
+    <button class="active" data-view="observatorio" type="button">Hoy en Westcon</button>
+    <button data-view="fabricantes" type="button">Fabricantes</button>
     <button data-view="mayoristas" type="button">Mayoristas</button>
     <button data-view="integradores" type="button">Integradores</button>
     <button data-view="clientes" type="button">Clientes</button>
@@ -46,7 +47,13 @@
 </header>
 
 <main>
-  <section id="fabricantes" class="view active">
+  <section id="observatorio" class="view active">
+    <div class="page-head">
+      <div><div class="eyebrow">OBSERVATORIO TECNOLÓGICO Y COMERCIAL</div><h1>Hoy en Westcon Iberia</h1><p>Lectura ejecutiva del conocimiento acreditado, evolución de la investigación y áreas donde profundizar. Las señales y los huecos no son oportunidades comerciales confirmadas.</p></div>
+    </div>
+    <div id="observatorioBody" class="observatorio-body" aria-live="polite"></div>
+  </section>
+  <section id="fabricantes" class="view">
     <div class="page-head">
       <div><div class="eyebrow">FABRICANTES</div><h1>Portfolio, competencia y ecosistema de canal.</h1><p>Visión comparativa de los fabricantes del portfolio Westcon Iberia: posicionamiento, competidores, mayoristas alternativos, integradores, señales de mercado y principales áreas tecnológicas. La tabla permite identificar rápidamente presión competitiva, fortaleza de ecosistema y oportunidades de profundización.</p></div>
       <div class="view-count" id="manufacturerCount"></div>
