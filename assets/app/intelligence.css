@@ -279,3 +279,27 @@ body{min-width:0}
 .appbar{position:sticky!important;top:0!important;left:0!important;right:0!important;width:100%!important;max-width:100vw!important;margin-left:0!important;margin-right:0!important}
 main,.view,.page-head,.toolbar,.table-shell,.intelligence-table{min-width:0;max-width:100%}
 .table-scroll{width:100%;max-width:100%;overflow-x:auto!important;overflow-y:auto;overscroll-behavior:contain}
+
+/* Observatorio ejecutivo: una visión útil, no un listado de huecos. */
+.observatorio-body{display:grid;gap:1.25rem}
+.observatorio-ribbon{padding:1rem 1.2rem;background:var(--surface,#f2f7f9);border:1px solid var(--border,#d4e2e9);border-radius:12px;line-height:1.6}
+.observatorio-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.observatorio-card{border:1px solid var(--border,#d7e4e9);border-radius:12px;padding:1.05rem;background:var(--card,#fff);display:flex;flex-direction:column;gap:.45rem;min-width:0}
+.observatorio-card span{font-size:.9rem;font-weight:600}
+.observatorio-card strong{font-size:clamp(1.5rem,2.5vw,2rem);font-variant-numeric:tabular-nums}
+.observatorio-card small{line-height:1.5;opacity:.8}
+.observatorio-panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.observatorio-panel{border:1px solid var(--border,#d7e4e9);border-radius:12px;padding:1.25rem;min-width:0}
+.observatorio-panel h2{margin:0 0 .5rem;font-size:1.15rem}
+.observatorio-panel p{line-height:1.6}
+.observatorio-kpis-small{grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
+.observatorio-kpis-small .observatorio-card{padding:.7rem}
+.observatorio-kpis-small .observatorio-card strong{font-size:1.4rem}
+.observatorio-debt{border-collapse:collapse;width:100%;margin:1rem 0}
+.observatorio-debt td{padding:.55rem .25rem;border-bottom:1px solid var(--border,#d7e4e9)}
+.observatorio-debt td:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.observatorio-links{display:flex;flex-wrap:wrap;gap:.65rem}
+.observatorio-links button{padding:.7rem 1rem;border-radius:8px;border:1px solid var(--border,#d7e4e9);background:transparent;color:inherit;cursor:pointer}
+.observatorio-links button:hover,.observatorio-links button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+@media(max-width:1000px){.observatorio-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.observatorio-panels{grid-template-columns:1fr}}
+@media(max-width:550px){.observatorio-kpis,.observatorio-kpis-small{grid-template-columns:1fr 1fr}.observatorio-panel{padding:.9rem}}
