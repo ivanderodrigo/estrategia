@@ -12,6 +12,7 @@ from urllib.parse import urlparse
 
 from .settings import SECTIONS, VERSION
 from .gap_intelligence import enrich_gap_report
+from .gap_status import annotate_public_states
 from .knowledge_provenance import accrediting_evidence, provenance_kind, typed_evidence_sufficient
 from .relationship_revalidation import relationship_revalidation_debt
 
@@ -595,6 +596,7 @@ def build_gaps(
         public, gaps, missing, critical, states, state_gaps
     )
     business_priority = enrich_gap_report(gaps, public)
+    public_status_summary = annotate_public_states(gaps)
     gaps.sort(key=lambda item: (
         {"P0": 0, "P1": 1, "P2": 2, "P3": 3}.get(str(item.get("priority_tier") or "P3"), 3),
         -float(item.get("priority_score") or 0),
@@ -619,6 +621,7 @@ def build_gaps(
             "PPT, portfolio e histórico se conservan como pistas internas y generan deuda de validación pública, no acreditación."
         ),
         "total_gaps": len(gaps),
+        "public_status_summary": public_status_summary,
         "historical_revalidation_gaps": historical_revalidation_gaps,
         "research_seed_registry_gaps": research_seed_registry_gaps,
         "evidence_support_gaps": evidence_support_gaps,
