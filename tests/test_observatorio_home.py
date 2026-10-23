@@ -18,7 +18,6 @@ class ObservatorioHomeTest(unittest.TestCase):
         js = (ROOT / "assets/app/intelligence.js").read_text(encoding="utf-8")
         self.assertIn("Esta puntuación NO equivale a cobertura", js)
         self.assertIn("Pueden corroborar valores existentes", js)
-        self.assertIn("No se ha", js) if False else None
 
 
 if __name__ == "__main__":
