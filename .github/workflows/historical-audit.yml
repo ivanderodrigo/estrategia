@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - run: python scripts/audit_historical_claims.py
+      - run: python -m scripts.audit_historical_claims
       - uses: actions/upload-artifact@v4
         if: always()
         with:
