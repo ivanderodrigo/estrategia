@@ -335,6 +335,7 @@ def run() -> dict[str, Any]:
         "confidence_model": confidence_stats,
         "knowledge_preservation": preservation,
         "gap_priority": gaps.get("business_priority") or {},
+        "gap_status_summary": gaps.get("public_status_summary") or {},
         "intelligence_storage": {
             "format": internal_store.get("format"),
             "logical_bytes": internal_store.get("logical_bytes"),
