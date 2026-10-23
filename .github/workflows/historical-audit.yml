@@ -1,0 +1,23 @@
+name: Historical audit
+on:
+  push:
+    branches: [audit/historical-knowledge-exhaustive-20261023]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python scripts/audit_historical_claims.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: historical-audit-report
+          path: historical_audit/
