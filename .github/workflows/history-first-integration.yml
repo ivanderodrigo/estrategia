@@ -1,0 +1,37 @@
+name: History-first Daily integration
+on:
+  push:
+    branches: [feature/history-first-evidence-research]
+    paths:
+      - 'engine/research/**'
+      - 'tests/test_historical_research_routing.py'
+      - '.github/workflows/history-first-integration.yml'
+permissions:
+  contents: read
+jobs:
+  research-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Reproduce full Daily on branch without publication
+        run: python scripts/research_supervisor.py --profile daily --max-runtime 720 --fallback-runtime 0
+      - name: Validate generated snapshot
+        run: |
+          python scripts/validate.py
+          python scripts/validate_workflows.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: history-first-daily-diagnostics
+          retention-days: 7
+          path: |
+            data/current/research_ledger.json
+            data/current/quality_failure.json
+            data/current/knowledge_preservation_failure.json
+            data/current/last_run.json
