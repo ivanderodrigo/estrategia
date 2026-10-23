@@ -1,2727 +1,52 @@
 {
   "version": "4.3.0",
   "profile": "daily",
-  "started_at": "2026-10-18T16:29:32.529098+00:00",
+  "started_at": "2026-10-23T15:05:12.669176+00:00",
   "planned_entities": 120,
-  "fetch_attempts": 492,
-  "fetch_successes": 482,
-  "pages_relevant": 46,
-  "candidate_evidences": 41,
-  "accepted_evidences": 33,
-  "fields_enriched": 33,
-  "values_added": 24,
+  "fetch_attempts": 453,
+  "fetch_successes": 454,
+  "pages_relevant": 74,
+  "candidate_evidences": 126,
+  "candidate_values_seen": 222,
+  "candidate_values_promoted": 222,
+  "candidate_values_rejected": 0,
+  "candidate_fields_rejected": 0,
+  "accepted_evidences": 101,
+  "fields_enriched": 101,
+  "values_added": 8,
   "entities_added": 24,
-  "cache_hits": 336,
-  "circuit_skips": 4368,
-  "unsafe_url_rejections": 0,
-  "official_sites_discovered": 8,
-  "financial_links_discovered": 111,
+  "cache_hits": 335,
+  "circuit_skips": 5625,
+  "unsafe_url_rejections": 5,
+  "official_sites_discovered": 1,
+  "financial_links_discovered": 31,
   "manufacturer_revenue_rows_before": 0,
-  "manufacturer_revenue_acceptances": 1,
-  "stop_reason": "deadline",
+  "manufacturer_revenue_acceptances": 0,
+  "stop_reason": "complete",
   "structured_entity_budget": 24,
   "structured_entities_added": 24,
   "structured_notices": 24,
-  "accepted_evidence_per_fetch_attempt": 0.0671,
-  "candidate_acceptance_rate": 0.8049,
-  "values_per_accepted_evidence": 0.7273,
-  "growth_pressure_ratio": 1.0,
-  "manufacturer_revenue_rows_after": 1,
-  "manufacturer_revenue_rows_added": 1,
-  "elapsed_s": 627.42,
-  "finished_at": "2026-10-18T16:39:58.857862+00:00",
-  "result_rows_total": 5196,
-  "accepted_result_rows_total": 33,
+  "accepted_evidence_per_fetch_attempt": 0.223,
+  "candidate_acceptance_rate": 0.8016,
+  "candidate_value_promotion_rate": 1.0,
+  "values_per_accepted_evidence": 0.0792,
+  "growth_pressure_ratio": 3.0,
+  "manufacturer_revenue_rows_after": 0,
+  "manufacturer_revenue_rows_added": 0,
+  "elapsed_s": 520.95,
+  "finished_at": "2026-10-23T15:13:52.200780+00:00",
+  "result_rows_total": 6418,
+  "accepted_result_rows_total": 101,
   "results_truncated": true,
   "results": [
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/services",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/sitemap.xml",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/sitemap.xml",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/sitemap.xml",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/solutions",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/technologies",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/technology",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/tecnologia",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/vendors",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/company/security-breach",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/security-operations-platforms",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/services/cyber-advisory",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/services/data-security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/services/email-security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/services/exposure-management",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/services/incident-readiness-and-response",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/services/managed-cloud-security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/services/managed-network-security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/services/threat-detection-investigation-and-response-tdir",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/solutions/government",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.zscaler.com/partners/technology",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.levelblue.com/technology-partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://certesnetworks.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.ciena.com/partners/locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://cradlepoint.com/partners/for-customers/find-a-partner/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.zscaler.com/es/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://cradlepoint.com/partners/for-partners/resell-partners/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://cradlepoint.com/partners/for-partners/service-provider-partners/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://weblib.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://telefonicatech.com/actualidad/redes-privadas-5g-nokia",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.muycanal.com/2023/01/31/efficientip-dns-partners",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-recognizes-2025-european-partner-award-winners/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/about-us/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.fortanix.com/about-us/investors",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/about/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.fortanix.com/about/investors",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/annual-report",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.fortanix.com/annual-report",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/annual-reports",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.fortanix.com/annual-reports",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/company/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.fortanix.com/company/investor-relations",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/company/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/earnings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/financial-information",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/financial-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/financials",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/informacao-financeira",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/informacion-financiera",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/investor",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/quarterly-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/relatorio-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/relatorios-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/reports-and-filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/resultados",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/resultados-financieros",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/sitemap.xml",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/actualidad",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/ai",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/alianzas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/analyst",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/architecture",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/architectures",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/company/pr/2025/10/ntt-data-and-fortanix-announce-global-partnership-to-strengthen-security-in-the-ai-and-post-quantum-era",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/feed",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/line-card",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/market",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/platform",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/portfolio",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/press",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/products",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/reports",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/research",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/resources",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/services",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/sitemap.xml",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/sitemap.xml",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/sitemap.xml",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/solutions",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/technologies",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/technology",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/tecnologia",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.fortanix.com/vendors",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.levelblue.com/technology-partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://certesnetworks.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.ciena.com/partners/locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://cradlepoint.com/partners/for-customers/find-a-partner/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.zscaler.com/es/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://cradlepoint.com/partners/for-partners/resell-partners/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://cradlepoint.com/partners/for-partners/service-provider-partners/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://weblib.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://telefonicatech.com/actualidad/redes-privadas-5g-nokia",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "url": "https://www.muycanal.com/2023/01/31/efficientip-dns-partners",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/about-us/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.menlosecurity.com/about-us/investors",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/about/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.menlosecurity.com/about/investors",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/annual-report",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.menlosecurity.com/annual-report",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/annual-reports",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.menlosecurity.com/annual-reports",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/company/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.menlosecurity.com/company/investor-relations",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/company/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/earnings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/financial-information",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/financial-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/financials",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/informacao-financeira",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/informacion-financiera",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/investor",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/quarterly-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/relatorio-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/relatorios-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/reports-and-filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/resultados",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/resultados-financieros",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/sitemap.xml",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/company/security-breach",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/security-operations-platforms",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/services/cyber-advisory",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/services/data-security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/services/email-security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/services/exposure-management",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/services/managed-cloud-security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/services/managed-network-security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/services/threat-detection-investigation-and-response-tdir",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/solutions/government",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/about/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/about/partners/technology-partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/actualidad",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/alianzas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/analyst",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/architecture",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/architectures",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/feed",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/line-card",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/market",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/platform",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/portfolio",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/press",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/products",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/reports",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/research",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/resources",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/services",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/sitemap.xml",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/sitemap.xml",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/sitemap.xml",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/solutions",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/technologies",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/technology",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/tecnologia",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.menlosecurity.com/vendors",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.levelblue.com/technology-partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://certesnetworks.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.ciena.com/partners/locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://cradlepoint.com/partners/for-customers/find-a-partner/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.zscaler.com/es/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://cradlepoint.com/partners/for-partners/resell-partners/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://cradlepoint.com/partners/for-partners/service-provider-partners/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://weblib.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://telefonicatech.com/actualidad/redes-privadas-5g-nokia",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "url": "https://www.muycanal.com/2023/01/31/efficientip-dns-partners",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://weblib.com/",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://ucopia.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://ucopia.com/alliances",
-      "accepted": 0
-    },
     {
       "section": "manufacturers",
       "entity": "Weblib",
       "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/resellers-solution-wifi-ucopia/",
       "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
       "status": 200
     },
     {
@@ -2750,6 +75,2695 @@
       "status": 0,
       "error": "HTTPError: 404 Client Error: Not Found for url: https://ucopia.com/partner-locator",
       "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://ucopia.com/systeme-partenaires-ucopia-weblib-groupe/",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/company/security-breach",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/services/cyber-advisory",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/services/data-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/services/email-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/services/exposure-management",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/services/incident-readiness-and-response",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/services/managed-cloud-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/services/managed-network-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/services/threat-detection-investigation-and-response-tdir",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/solutions/government",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/security-operations-platforms",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/technology-partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://certesnetworks.com/partners/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/company/security-breach",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/services/cyber-advisory",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/services/data-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/services/email-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/services/exposure-management",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/services/incident-readiness-and-response",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/services/managed-cloud-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/services/managed-network-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/services/threat-detection-investigation-and-response-tdir",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/solutions/government",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/security-operations-platforms",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.levelblue.com/technology-partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://certesnetworks.com/partners/",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.ciena.com/partners/locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://cradlepoint.ericsson.com/partners/find-a-partner/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://www.zscaler.com/es/partners",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Certes Networks",
+      "url": "https://cradlepoint.ericsson.com/partners/for-partners/resell-partners/",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://cradlepoint.com/actualidad",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/partners/network-operators/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://www.orange-business.com/alliances",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://www.orange-business.com/find-a-partner",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://www.orange-business.com/partner",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://www.orange-business.com/partner-locator",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/about-us/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.acciona.com/about-us/investors",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/about/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.acciona.com/about/investors",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/actualidad",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/actualidad",
+      "family": "official",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/adjudicaciones",
+      "family": "procurement",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.acciona.com/adjudicaciones",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/annual-report",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.acciona.com/annual-report",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/annual-reports",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.acciona.com/annual-reports",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/architecture",
+      "family": "technology",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.acciona.com/architecture",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/architectures",
+      "family": "technology",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.acciona.com/architectures",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/company/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/company/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/concursos",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/content/dam/acciona-global/documentos/juntas-generales/2026/11-ana-annual-corporate-governance-report-2025.pdf",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/contracts",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/contratacion",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/contratacion-publica",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/earnings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/filings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/financial-information",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/financial-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/financials",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/informacao-financeira",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/informacion-financiera",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/investor",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/licitacoes",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/platform",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/procurement",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/products",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/quarterly-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/relatorio-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/relatorios-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/reports",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/reports-and-filings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/resultados",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/resultados-financieros",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/services",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/sitemap.xml",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/sitemap.xml",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/sitemap.xml",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/solutions",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/technologies",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/technology",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/tecnologia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/tenders",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona Energía",
+      "url": "https://www.acciona.com/content/dam/acciona-global/documentos/juntas-generales/2026/11-ana-annual-corporate-governance-report-2025.pdf",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona Energía",
+      "url": "https://www.acciona.com/actualidad",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/es/pasajeros/pasajeros.html",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/about-us/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.aena.es/about-us/investors",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/about/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.aena.es/about/investors",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.aena.es/actualidad",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/adjudicaciones",
+      "family": "procurement",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.aena.es/adjudicaciones",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/annual-report",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.aena.es/annual-report",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/annual-reports",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/architecture",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/architectures",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/company/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/company/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/concursos",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/contracts",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/contratacion",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/contratacion-publica",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/earnings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/es/corporativa/sobre-aena/seguridad-de-la-informacion.html",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/es/pasajeros/pasajeros.html",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/filings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/financial-information",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/financial-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/financials",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/informacao-financeira",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/informacion-financiera",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/investor",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/licitacoes",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/platform",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/procurement",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/products",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/quarterly-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/relatorio-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/relatorios-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/reports",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/reports-and-filings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/resultados",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/resultados-financieros",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/services",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/sitemap.xml",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/sitemap.xml",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/sitemap.xml",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/solutions",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/technologies",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/technology",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/tecnologia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/tenders",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/es/landing/convocatoria-empleo-aena",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/es/corporativa/innovacion/estrategia.html",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/en",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/about-us/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://amadeus.com/about-us/investors",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/about/investors",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/actualidad",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/adjudicaciones",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/annual-report",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "ArcelorMittal",
+      "url": "https://corporate.arcelormittal.com/",
+      "family": "official",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://corporate.arcelormittal.com/",
+      "accepted": 0
     }
-  ]
+  ],
+  "candidate_rejection_rows_total": 0,
+  "candidate_rejections_truncated": false,
+  "candidate_rejections": []
 }

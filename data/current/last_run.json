@@ -1,13 +1,13 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-10-18T16:40:13.903448+00:00",
-  "finished_at": "2026-10-18T16:40:13.903448+00:00",
+  "generated_at": "2026-10-23T15:14:09.138260+00:00",
+  "finished_at": "2026-10-23T15:14:09.138260+00:00",
   "profile": "daily",
   "status": "published",
-  "sources": 2047,
-  "traceable_fields": 4377,
-  "research_gaps": 17900,
-  "critical_gaps": 6646,
+  "sources": 2040,
+  "traceable_fields": 4388,
+  "research_gaps": 17795,
+  "critical_gaps": 6584,
   "manufacturers": 37,
   "distributors": 58,
   "integrators": 130,
@@ -15,27 +15,32 @@
   "trends": 15,
   "architectures": 12,
   "research_quality": {
-    "fetch_attempts": 492,
-    "fetch_successes": 482,
-    "pages_relevant": 46,
-    "accepted_evidences": 33,
-    "fields_enriched": 33,
-    "values_added": 24,
+    "fetch_attempts": 453,
+    "fetch_successes": 454,
+    "pages_relevant": 74,
+    "candidate_values_seen": 222,
+    "candidate_values_promoted": 222,
+    "candidate_values_rejected": 0,
+    "candidate_fields_rejected": 0,
+    "candidate_value_promotion_rate": 1.0,
+    "accepted_evidences": 101,
+    "fields_enriched": 101,
+    "values_added": 8,
     "entities_added": 24,
-    "circuit_skips": 4368
+    "circuit_skips": 5625
   },
   "quality_score": 100,
   "provenance": {
     "policy": "typed-provenance-non-destructive",
     "types": {
-      "RESEARCH_SEED": 326,
-      "HISTORICAL_RECOVERED": 72,
+      "RESEARCH_SEED": 323,
+      "HISTORICAL_RECOVERED": 71,
       "ARCHIVE_RECOVERED": 39,
-      "WESTCON_DOCUMENT_CURRENT": 492,
+      "WESTCON_DOCUMENT_CURRENT": 493,
       "WESTCON_FIRST_PARTY_CURRENT": 75,
-      "LEGACY_UNRESOLVED": 181,
-      "PUBLIC_SECONDARY": 2180,
-      "PUBLIC_PRIMARY": 8075
+      "LEGACY_UNRESOLVED": 180,
+      "PUBLIC_SECONDARY": 2236,
+      "PUBLIC_PRIMARY": 8316
     },
     "legacy_unresolved_fields": 0,
     "legacy_unresolved_items": 0,
@@ -56,17 +61,17 @@
   "archive_apply": {
     "field_evidence_added": 228,
     "item_evidence_added": 3752,
-    "legacy_resolved": 68,
+    "legacy_resolved": 69,
     "unknown_classified": 0,
     "registry_matches_checked": 947,
     "value_guard_skips": 154
   },
   "document_apply": {
-    "manufacturer_fields_documented": 0,
+    "manufacturer_fields_documented": 1,
     "manufacturer_rows_documented": 0,
     "manufacturer_capability_items_documented": 0,
-    "capability_items_with_public_and_document": 8,
-    "legacy_placeholders_removed": 294
+    "capability_items_with_public_and_document": 13,
+    "legacy_placeholders_removed": 263
   },
   "westcon_current_evidence": {
     "portfolio_spain_rows": 36,
@@ -83,9 +88,9 @@
     "sections": 5
   },
   "confidence_model": {
-    "fields": 6166,
-    "items": 11648,
-    "without_accrediting_evidence": 11087
+    "fields": 6149,
+    "items": 11637,
+    "without_accrediting_evidence": 10936
   },
   "knowledge_preservation": {
     "version": "4.3.0",
@@ -103,13 +108,13 @@
         "trends": 15,
         "architectures": 12
       },
-      "values": 12137,
-      "evidences": 4719,
-      "relations": 379,
-      "provisional_relations": 1687,
+      "values": 12130,
+      "evidences": 4823,
+      "relations": 384,
+      "provisional_relations": 256,
       "research_seed_claims": 5005,
-      "derived_values": 6280,
-      "derived_evidence_support": 1078
+      "derived_values": 6281,
+      "derived_evidence_support": 1081
     },
     "after": {
       "entities": {
@@ -121,25 +126,25 @@
         "trends": 15,
         "architectures": 12
       },
-      "values": 12137,
-      "evidences": 4719,
-      "relations": 384,
-      "provisional_relations": 256,
-      "research_seed_claims": 10285,
-      "derived_values": 2710,
-      "derived_evidence_support": 930
+      "values": 12130,
+      "evidences": 4823,
+      "relations": 387,
+      "provisional_relations": 249,
+      "research_seed_claims": 10291,
+      "derived_values": 2705,
+      "derived_evidence_support": 933
     },
     "semantic_changes": {
       "accredited_scalar_supersessions": [],
       "raw_evidence_sources_replaced_or_removed": [
         "7c3a856cee4d65989294889119c5967a10f15c69"
       ],
-      "derived_values_before": 6280,
-      "provisional_relationship_signals_before": 1687,
-      "provisional_relationship_signals_after": 256,
-      "derived_values_after": 2710,
-      "derived_evidence_support_before": 1078,
-      "derived_evidence_support_after": 930
+      "derived_values_before": 6281,
+      "provisional_relationship_signals_before": 256,
+      "provisional_relationship_signals_after": 249,
+      "derived_values_after": 2705,
+      "derived_evidence_support_before": 1081,
+      "derived_evidence_support_after": 933
     },
     "missing": {
       "entities": [],
@@ -152,22 +157,29 @@
     "reconciliation": {
       "accredited_support": {
         "field_evidence_restored": 0,
-        "item_evidence_restored": 84,
-        "moved_item_support_restored": 1,
-        "claims_examined": 5344,
-        "total_evidence_restored": 84
+        "item_evidence_restored": 79,
+        "moved_item_support_restored": 0,
+        "claims_examined": 5330,
+        "total_evidence_restored": 79
+      },
+      "accredited_support_final": {
+        "field_evidence_restored": 0,
+        "item_evidence_restored": 0,
+        "moved_item_support_restored": 0,
+        "claims_examined": 5330,
+        "total_evidence_restored": 0
       },
       "relations": {
         "relations_restored": 2,
         "relations_skipped_unresolved_endpoints": 0,
-        "relations_skipped_provisional": 1687,
-        "endpoint_evidence_rows_pruned": 1,
+        "relations_skipped_provisional": 256,
+        "endpoint_evidence_rows_pruned": 0,
         "graph_entities_restored": 0,
         "table_endpoint_fallbacks": 0,
-        "relations_after": 640
+        "relations_after": 636
       },
       "manufacturer_deduplication": {
-        "fields_examined": 496,
+        "fields_examined": 498,
         "duplicates_removed": 0,
         "evidence_merged": 0,
         "qualified_variants_merged": 0
@@ -186,24 +198,24 @@
         "source_claims_preserved": 0
       },
       "internal_seed_migration": {
-        "document_rows_converted": 610,
-        "historical_rows_marked": 18076
+        "document_rows_converted": 609,
+        "historical_rows_marked": 17883
       },
       "baseline_seed_migration": {
         "baseline_claims_seen": 1206,
-        "seed_rows_added": 56,
+        "seed_rows_added": 57,
         "unmatched_values": 60
       },
       "research_seed_reconciliation": {
-        "claims_examined": 6286,
+        "claims_examined": 6272,
         "field_seed_rows_restored": 35,
-        "item_seed_rows_restored": 17490,
+        "item_seed_rows_restored": 17408,
         "moved_item_seed_rows_restored": 0,
         "linecard_seed_rows_restored": 0,
-        "total_seed_rows_restored": 17525
+        "total_seed_rows_restored": 17443
       },
       "research_seed_registry": {
-        "registry_claims": 10285,
+        "registry_claims": 10291,
         "source_claims_preserved": 5005
       },
       "public_evidence_migration": {
@@ -223,57 +235,57 @@
   "gap_priority": {
     "model": "business-value-x-researchability-opportunity-v2",
     "tiers": {
-      "P0": 1310,
-      "P1": 2665,
-      "P2": 4906,
-      "P3": 9019
+      "P0": 972,
+      "P1": 2727,
+      "P2": 4668,
+      "P3": 9428
     },
-    "actionable_high_value_gaps": 3975,
+    "actionable_high_value_gaps": 3699,
     "weighted_expected_debt": 24296.93,
-    "weighted_open_debt": 17786.46,
-    "business_weighted_coverage_pct": 26.8,
+    "weighted_open_debt": 17798.83,
+    "business_weighted_coverage_pct": 26.74,
     "source_families": {
-      "official": 6967,
-      "services": 3138,
-      "procurement": 3071,
-      "partners": 1072,
+      "official": 6949,
+      "procurement": 3090,
+      "services": 3061,
+      "partners": 1042,
       "technology": 816,
       "careers": 810,
       "cases": 791,
       "news": 580,
       "analyst": 398,
-      "financial": 257
+      "financial": 258
     },
     "by_section_tier": {
       "manufacturers": {
-        "P2": 137,
-        "P3": 805,
-        "P1": 278,
-        "P0": 26
+        "P2": 130,
+        "P3": 812,
+        "P1": 256,
+        "P0": 21
       },
       "distributors": {
-        "P3": 817,
-        "P1": 1028,
-        "P2": 288,
-        "P0": 48
+        "P3": 829,
+        "P1": 836,
+        "P2": 425,
+        "P0": 24
       },
       "integrators": {
-        "P3": 1334,
-        "P2": 1716,
-        "P0": 1212,
-        "P1": 1113
+        "P3": 1595,
+        "P2": 1474,
+        "P1": 1374,
+        "P0": 909
       },
       "clients_public": {
-        "P3": 5022,
-        "P1": 88,
-        "P2": 1379,
+        "P3": 5144,
+        "P1": 97,
+        "P2": 1261,
         "P0": 1
       },
       "clients_private": {
-        "P3": 420,
-        "P2": 1038,
-        "P1": 158,
-        "P0": 23
+        "P3": 427,
+        "P2": 1030,
+        "P1": 164,
+        "P0": 17
       },
       "trends": {
         "P2": 348,
@@ -283,30 +295,30 @@
         "P3": 258
       }
     },
-    "clients_public_share_of_p0_p1_pct": 2.24,
+    "clients_public_share_of_p0_p1_pct": 2.65,
     "low_context_public_gaps": 0,
     "low_context_public_p0_p1": 0,
-    "context_rich_public_gaps": 6153,
+    "context_rich_public_gaps": 6184,
     "controlled_growth_policy": "bounded-structured-growth-v1"
   },
   "intelligence_storage": {
     "format": "westcon-sharded-v1",
-    "logical_bytes": 67019084,
+    "logical_bytes": 67162616,
     "shards": 17,
-    "largest_shard_bytes": 8388470
+    "largest_shard_bytes": 8388221
   },
   "source_intelligence": {
-    "historical_total": 399,
+    "historical_total": 397,
     "historical_supported_current_open": 0,
-    "historical_search_required": 326,
+    "historical_search_required": 319,
     "historical_supported_westcon": 48,
-    "historical_supported_public": 0,
+    "historical_supported_public": 5,
     "historical_supported_westcon_and_public": 25,
-    "targets_supported": 5589,
-    "targets_search_required": 9298,
-    "claims_publicly_accredited": 5321,
+    "targets_supported": 5700,
+    "targets_search_required": 9175,
+    "claims_publicly_accredited": 5431,
     "claims_westcon_supported": 257,
-    "claims_westcon_and_public": 11,
-    "claims_pending": 9015
+    "claims_westcon_and_public": 12,
+    "claims_pending": 8893
   }
 }
