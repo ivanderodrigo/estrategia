@@ -56,6 +56,23 @@ def main():
             candidates.append([*key,v["first"],v["last"],max(v["confidence"]),typ,";".join(sorted(v["sources"])),";".join(sorted(v["documents"]))])
     with (out/"historical_candidates.csv").open("w",encoding="utf-8-sig",newline="") as f:
         w=csv.writer(f);w.writerow(("section","entity","field","value_json","first","last","max_legacy_confidence","source_type","urls","documents"));w.writerows(sorted(candidates))
+    # Lightweight public exploration index. Claims are HISTORICAL CANDIDATES,
+    # not validated facts and never written into canonical intelligence.
+    public_index=[]
+    for section,entity,field,value_json,first,last,confidence,typ,urls,documents in sorted(candidates):
+        public_index.append({
+            "section":section,"entity":entity,"field":field,
+            "value":value_json[:500],"first_revision":first,"last_revision":last,
+            "legacy_confidence":confidence,"source_type":typ,
+            "urls":urls.split(";")[:5] if urls else [],
+            "documents":documents.split(";")[:5] if documents else [],
+            "status":"HISTORICAL_CANDIDATE_NOT_REVALIDATED"
+        })
+    (out/"candidate_index.json").write_text(
+        json.dumps({"version":1,"status":"read-only-historical",
+          "source_revision_count":len(REVS),"candidate_count":len(public_index),
+          "candidates":public_index},ensure_ascii=False,separators=(",",":")),
+        encoding="utf-8")
     summary={"snapshots":snapshots,"revisions":REVS,"historical_claims":len(older),"current_claims":len(current),"counts":dict(count),
              "note":"READ ONLY. Historical URLs and confidence are not verified current claims. Name-key ambiguities require review."}
     (out/"summary.json").write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding="utf-8")
