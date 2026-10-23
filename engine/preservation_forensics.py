@@ -78,9 +78,36 @@ def trace_missing_evidences(
         str(fingerprint)
         for fingerprint in (preservation_audit.get("missing") or {}).get("evidences") or []
     }
+    before_claims = _find(before_data, fingerprints)
+    after_claims = _find(after_data, fingerprints)
+    counterparts = []
+    for claim in before_claims:
+        for section in SECTIONS:
+            if section != claim["section"]:
+                continue
+            for row in after_data.get(section) or []:
+                if not isinstance(row, Mapping):
+                    continue
+                if preservation._entity_key(section, row) != claim["entity_key"]:
+                    continue
+                field = (row.get("fields") or {}).get(claim["field"])
+                if isinstance(field, Mapping):
+                    counterparts.append({
+                        "section": section,
+                        "entity": row.get("name"),
+                        "field": claim["field"],
+                        "value": field.get("value"),
+                        "value_type": type(field.get("value")).__name__,
+                        "field_evidence_count": len(field.get("evidence") or []),
+                        "items": [{
+                            "value": x.get("value"),
+                            "evidence_count": len(x.get("evidence") or []),
+                        } for x in (field.get("items") or []) if isinstance(x, Mapping)][:12],
+                    })
     return {
+        "after_same_field": counterparts,
         "missing_fingerprints": sorted(fingerprints),
-        "before_claims": _find(before_data, fingerprints),
-        "after_claims": _find(after_data, fingerprints),
+        "before_claims": before_claims,
+        "after_claims": after_claims,
         "note": "Claim identity is section/entity/field/value for lists and section/entity/field for scalars. This trace does not change the preservation verdict.",
     }
