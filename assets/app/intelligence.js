@@ -128,7 +128,7 @@
   }
 
   function bind(){
-    $('#tabs [data-view]').forEach(btn => btn.addEventListener('click', () => switchView(btn.dataset.view)));
+    $$('#tabs [data-view]').forEach(btn => btn.addEventListener('click', () => switchView(btn.dataset.view)));
     $('#observatorioBody')?.addEventListener('click', e => {const target=e.target.closest('[data-observatorio-jump]');if(target)switchView(target.dataset.observatorioJump);});
     $('#utilityMenuToggle')?.addEventListener('click', e => { e.stopPropagation(); toggleUtilityMenu(); });
     $('#manufacturerSearch')?.addEventListener('input', renderManufacturers);
