@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-10-23T15:14:20.997846+00:00",
+  "generated_at": "2026-10-23T16:05:32.130945+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -451,6 +451,30 @@
       "historical_names": []
     },
     {
+      "id": "clie_3b1b22390cb9e48b",
+      "canonical_name": "Município de Braga",
+      "entity_type": "client",
+      "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_6815d1017ae3f182",
+      "canonical_name": "Município de Gondomar",
+      "entity_type": "client",
+      "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_dc62c81ac4e5960e",
+      "canonical_name": "NATURGY ENERGY GROUP",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "clie_008870b44681c0d6",
       "canonical_name": "NOS",
       "entity_type": "client",
@@ -611,6 +635,14 @@
       "historical_names": []
     },
     {
+      "id": "dist_3bb6c0bb4e1a2fef",
+      "canonical_name": "EET Portugal",
+      "entity_type": "distributor",
+      "country": "GLOBAL",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "dist_59de75b133edd687",
       "canonical_name": "Esprinet / V-Valley",
       "entity_type": "distributor",
@@ -669,6 +701,14 @@
     {
       "id": "dist_0eca491548cf119b",
       "canonical_name": "Ingram Micro",
+      "entity_type": "distributor",
+      "country": "GLOBAL",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "dist_5bfd891a3cf6a327",
+      "canonical_name": "Lidera Networks",
       "entity_type": "distributor",
       "country": "GLOBAL",
       "aliases": [],
@@ -1263,14 +1303,6 @@
       "canonical_name": "Kiw",
       "entity_type": "integrator",
       "country": "ES",
-      "aliases": [],
-      "historical_names": []
-    },
-    {
-      "id": "inte_5de63401f0fac815",
-      "canonical_name": "Kudelski Security",
-      "entity_type": "integrator",
-      "country": "GLOBAL",
       "aliases": [],
       "historical_names": []
     },
@@ -2691,6 +2723,14 @@
       "historical_names": []
     },
     {
+      "id": "tech_70574f8129932ee1",
+      "canonical_name": "Identity & Access",
+      "entity_type": "technology",
+      "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "tech_e0f6b696b4801d8a",
       "canonical_name": "Industrial cyber",
       "entity_type": "technology",
@@ -3343,6 +3383,14 @@
       "canonical_name": "telecomunicações",
       "entity_type": "technology",
       "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "inte_5de63401f0fac815",
+      "canonical_name": "Kudelski Security",
+      "entity_type": "integrator",
+      "country": "GLOBAL",
       "aliases": [],
       "historical_names": []
     }
@@ -23097,6 +23145,55 @@
       "derived": false
     },
     {
+      "id": "rel_76cbc8bf7dc6f702",
+      "entity_a_id": "dist_3bb6c0bb4e1a2fef",
+      "entity_a": "EET Portugal",
+      "relation": "distributes",
+      "entity_b_id": "manu_cec06f879afd1765",
+      "entity_b": "CrowdStrike",
+      "countries": [
+        "GLOBAL"
+      ],
+      "country": "GLOBAL",
+      "evidence": [
+        {
+          "source": "crowdstrike.com",
+          "source_catalog_name": "Ignition Technology",
+          "researched_entity": "EET Portugal",
+          "source_binding": "atomic-item",
+          "title": "Ignition Technology Partnership Expands to Meet European Demand",
+          "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-ignition-technology-expand-partnership/",
+          "date": "2026-10-23",
+          "description": "Ignition Technology Partnership Expands to Meet European Demand Skip to Main Content CrowdStrike Protects Customers from Threats Delivered via PHP2Shell Read blog Experienced a breach? Blog Contact us Careers Latest Innovations Platform…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "B",
+          "source_type": "industry",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:partners",
+          "content_digest": "e41d87ba2efa5bf9520a4f792a0bbbe3b0cd5f86b3b64125767c554abad0a0b1",
+          "matched_terms": [
+            "CrowdStrike"
+          ],
+          "field": "vendor_relations",
+          "item_value": "CrowdStrike",
+          "item_key": "crowdstrike",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "crowdstrike.com",
+      "date": "2026-10-23",
+      "confidence": 0.88,
+      "status": "CONFIRMADO",
+      "validity": "current",
+      "derived": false
+    },
+    {
       "id": "rel_372646c19bb8f78f",
       "entity_a_id": "dist_067e33cf39f90a6e",
       "entity_a": "Factis",
@@ -23837,6 +23934,55 @@
       ],
       "source": "ingecom.net",
       "date": "2026-09-02",
+      "confidence": 0.88,
+      "status": "CONFIRMADO",
+      "validity": "current",
+      "derived": false
+    },
+    {
+      "id": "rel_d10285881595a84f",
+      "entity_a_id": "dist_5bfd891a3cf6a327",
+      "entity_a": "Lidera Networks",
+      "relation": "distributes",
+      "entity_b_id": "manu_cec06f879afd1765",
+      "entity_b": "CrowdStrike",
+      "countries": [
+        "GLOBAL"
+      ],
+      "country": "GLOBAL",
+      "evidence": [
+        {
+          "source": "crowdstrike.com",
+          "source_catalog_name": "Ignition Technology",
+          "researched_entity": "Lidera Networks",
+          "source_binding": "atomic-item",
+          "title": "Ignition Technology Partnership Expands to Meet European Demand",
+          "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-ignition-technology-expand-partnership/",
+          "date": "2026-10-23",
+          "description": "Ignition Technology Partnership Expands to Meet European Demand Skip to Main Content CrowdStrike Protects Customers from Threats Delivered via PHP2Shell Read blog Experienced a breach? Blog Contact us Careers Latest Innovations Platform…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "B",
+          "source_type": "industry",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:partners",
+          "content_digest": "e41d87ba2efa5bf9520a4f792a0bbbe3b0cd5f86b3b64125767c554abad0a0b1",
+          "matched_terms": [
+            "CrowdStrike"
+          ],
+          "field": "vendor_relations",
+          "item_value": "CrowdStrike",
+          "item_key": "crowdstrike",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "crowdstrike.com",
+      "date": "2026-10-23",
       "confidence": 0.88,
       "status": "CONFIRMADO",
       "validity": "current",
@@ -26148,182 +26294,6 @@
       ],
       "source": "Integrity360",
       "date": "2026-09-01",
-      "confidence": 0.88,
-      "status": "CONFIRMADO",
-      "validity": "current",
-      "derived": false
-    },
-    {
-      "id": "rel_2ac4b1146dc582f0",
-      "entity_a_id": "inte_5de63401f0fac815",
-      "entity_a": "Kudelski Security",
-      "relation": "partners_with",
-      "entity_b_id": "manu_4f036e1228e33c21",
-      "entity_b": "AttackIQ",
-      "countries": [
-        "GLOBAL"
-      ],
-      "country": "GLOBAL",
-      "evidence": [
-        {
-          "source": "attackiq.com",
-          "source_catalog_name": "Kudelski Security",
-          "researched_entity": "Kudelski Security",
-          "source_binding": "atomic-item",
-          "title": "AttackIQ Partner Champion Training",
-          "url": "https://www.attackiq.com/lp/partner-champion-training/",
-          "date": "2026-10-23",
-          "description": "AttackIQ Partner Champion Training Skip to content CTEM Platform Platform Overview Explore the power of the AttackIQ platform AVA Agentic OS The Age…",
-          "scope": "GLOBAL",
-          "scope_provenance": "unspecified",
-          "research_target_scope": "GLOBAL",
-          "source_grade": "A",
-          "source_type": "official-domain",
-          "official": true,
-          "classification": "public",
-          "retrieved_at": "2026-10-23",
-          "freshness_status": "current",
-          "method": "web-evidence:partners",
-          "content_digest": "9efb982de3dfa09e35ed56009d1d07c0b8eadc60a79739bc88ff4a1f70eca77f",
-          "matched_terms": [
-            "AttackIQ"
-          ],
-          "field": "vendor_relations",
-          "item_value": "AttackIQ",
-          "item_key": "attackiq",
-          "atomic": true,
-          "revalidation": ""
-        },
-        {
-          "source": "attackiq.com",
-          "source_catalog_name": "attackiq.com",
-          "researched_entity": "Kudelski Security",
-          "source_binding": "atomic-item",
-          "title": "AttackIQ Preactive Partner Program",
-          "url": "https://www.attackiq.com/partners/",
-          "date": "2026-10-23",
-          "description": "AttackIQ Preactive Partner Program Skip to content CTEM Platform Platform Overview Explore the power of the AttackIQ platform AVA Agentic OS The Age…",
-          "scope": "GLOBAL",
-          "scope_provenance": "unspecified",
-          "research_target_scope": "GLOBAL",
-          "source_grade": "A",
-          "source_type": "vendor-official",
-          "official": true,
-          "classification": "public",
-          "retrieved_at": "2026-10-23",
-          "freshness_status": "current",
-          "method": "web-evidence:partners",
-          "content_digest": "08150227eb2153d7a6ea967a7b77a264c62a23a1487f6a0a817102e81cda5ef8",
-          "matched_terms": [
-            "AttackIQ"
-          ],
-          "field": "vendor_relations",
-          "item_value": "AttackIQ",
-          "item_key": "attackiq",
-          "atomic": true,
-          "revalidation": ""
-        }
-      ],
-      "source": "attackiq.com",
-      "date": "2026-10-23",
-      "confidence": 0.88,
-      "status": "CONFIRMADO",
-      "validity": "current",
-      "derived": false
-    },
-    {
-      "id": "rel_14ee760fa056429c",
-      "entity_a_id": "inte_5de63401f0fac815",
-      "entity_a": "Kudelski Security",
-      "relation": "partners_with",
-      "entity_b_id": "manu_b81902f7302152cb",
-      "entity_b": "Check Point",
-      "countries": [
-        "GLOBAL"
-      ],
-      "country": "GLOBAL",
-      "evidence": [
-        {
-          "source": "checkpoint.com",
-          "source_catalog_name": "Kudelski Security",
-          "researched_entity": "Kudelski Security",
-          "source_binding": "atomic-item",
-          "title": "Check Point Software",
-          "url": "https://www.checkpoint.com/alliances/",
-          "date": "2026-10-23",
-          "description": "Check Point Software Products Hybrid Mesh Network Security Data Center & Branch Firewalls Next-generation Firewalls AI Factory Firewalls SMB Firewalls…",
-          "scope": "GLOBAL",
-          "scope_provenance": "unspecified",
-          "research_target_scope": "GLOBAL",
-          "source_grade": "A",
-          "source_type": "official-domain",
-          "official": true,
-          "classification": "public",
-          "retrieved_at": "2026-10-23",
-          "freshness_status": "current",
-          "method": "web-evidence:partners",
-          "content_digest": "77076b3db4c137ee4fa67b8ab1f39d91068bfc741e4aab762ee9a10e9a83ad0f",
-          "matched_terms": [
-            "Check Point"
-          ],
-          "field": "vendor_relations",
-          "item_value": "Check Point",
-          "item_key": "check point",
-          "atomic": true,
-          "revalidation": ""
-        }
-      ],
-      "source": "checkpoint.com",
-      "date": "2026-10-23",
-      "confidence": 0.88,
-      "status": "CONFIRMADO",
-      "validity": "current",
-      "derived": false
-    },
-    {
-      "id": "rel_558a3dc05ada018d",
-      "entity_a_id": "inte_5de63401f0fac815",
-      "entity_a": "Kudelski Security",
-      "relation": "partners_with",
-      "entity_b_id": "manu_55357933a7310d2d",
-      "entity_b": "AWS",
-      "countries": [
-        "GLOBAL"
-      ],
-      "country": "GLOBAL",
-      "evidence": [
-        {
-          "source": "checkpoint.com",
-          "source_catalog_name": "Kudelski Security",
-          "researched_entity": "Kudelski Security",
-          "source_binding": "atomic-item",
-          "title": "Check Point Software",
-          "url": "https://www.checkpoint.com/alliances/",
-          "date": "2026-10-23",
-          "description": "…ents & Webinars 2026 Cyber Security Report Download report Partners Partner Program Become a Partner Find a Partner Channel Partners Technology Partners MSP Partners AWS Cloud Google Cloud Azure Cloud Partner Portal Check Point is 100% Channel. Grow Your Business with Us! Sign Up No…",
-          "scope": "GLOBAL",
-          "scope_provenance": "unspecified",
-          "research_target_scope": "GLOBAL",
-          "source_grade": "A",
-          "source_type": "official-domain",
-          "official": true,
-          "classification": "public",
-          "retrieved_at": "2026-10-23",
-          "freshness_status": "current",
-          "method": "web-evidence:partners",
-          "content_digest": "77076b3db4c137ee4fa67b8ab1f39d91068bfc741e4aab762ee9a10e9a83ad0f",
-          "matched_terms": [
-            "AWS"
-          ],
-          "field": "vendor_relations",
-          "item_value": "AWS",
-          "item_key": "aws",
-          "atomic": true,
-          "revalidation": ""
-        }
-      ],
-      "source": "checkpoint.com",
-      "date": "2026-10-23",
       "confidence": 0.88,
       "status": "CONFIRMADO",
       "validity": "current",
@@ -28910,6 +28880,269 @@
       "status": "CONFIRMADO",
       "validity": "current",
       "derived": false
+    },
+    {
+      "id": "rel_0f1de6ba7ed58520",
+      "entity_a_id": "clie_dc62c81ac4e5960e",
+      "entity_a": "NATURGY ENERGY GROUP",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "naturgy.com",
+          "source_catalog_name": "NATURGY ENERGY GROUP",
+          "researched_entity": "NATURGY ENERGY GROUP",
+          "source_binding": "atomic-item",
+          "title": "Inicio - Naturgy",
+          "url": "https://www.naturgy.com/",
+          "date": "2026-10-23",
+          "description": "…ta las 24 h del 23 de marzo) Asistencia virtual (1 hora antes de la Junta) Plan estratégico 2025-2027 10:00h CET Más información Webcast (diferido) Ejemplo Encuentra cientos de consejos en nuestras redes sociales y empieza a ahorrar energía . Más información Texto para poner detalle.…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "1bdc04f76d5acece7d429f166105cf193eaa117a58e0f847652588c31b7390a2",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "naturgy.com",
+      "date": "2026-10-23",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_95b81de3d15f6b0a",
+      "entity_a_id": "clie_6815d1017ae3f182",
+      "entity_a": "Município de Gondomar",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_70574f8129932ee1",
+      "entity_b": "Identity & Access",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "cm-gondomar.pt",
+          "source_catalog_name": "Município de Gondomar",
+          "researched_entity": "Município de Gondomar",
+          "source_binding": "atomic-item",
+          "title": "Câmara Municipal de Gondomar",
+          "url": "https://www.cm-gondomar.pt/",
+          "date": "2026-10-23",
+          "description": "…am dos Cuidadores Informais Rede de Autarquias Participativas Rede de Cidades e Vilas que Caminham Rede Europeia de Cidades Autênticas Rede Nacional de Municípios Amigos da Juventude Rede Portuguesa de Municípios Saudáveis Identidade Gráfica Planos e Estratégias Avisos, Editais e Comunica…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "0c8cf69dcbd7e893d6a07fbc1a4ca08fea322884882c3a190546338878abd0d6",
+          "matched_terms": [
+            "identidad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Identity & Access",
+          "item_key": "identity access",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "cm-gondomar.pt",
+      "date": "2026-10-23",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_8ef43228c882a2f7",
+      "entity_a_id": "clie_3b1b22390cb9e48b",
+      "entity_a": "Município de Braga",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "cm-braga.pt",
+          "source_catalog_name": "Município de Braga",
+          "researched_entity": "Município de Braga",
+          "source_binding": "atomic-item",
+          "title": "Ayuntamiento de Braga",
+          "url": "https://www.cm-braga.pt/es",
+          "date": "2026-10-23",
+          "description": "…oquias civiles Empresas Empresas Municipales Empresas Afiliadas Cooperación Institucional Presentación Acuerdos de Cooperación Hermanamientos Redes Heráldica Vivir Ciudad Estrategia Innovación Presentación Plano Estratégico para el Desarrollo Ambiente Presentación Espacios Verdes Play…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "cd3c15f5604d1722ad898ccbe2993c89860837ef5e1a0f24d533ca39c38cb0d4",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "cm-braga.pt",
+          "source_catalog_name": "Município de Braga",
+          "researched_entity": "Município de Braga",
+          "source_binding": "atomic-item",
+          "title": "Ayuntamiento de Braga | Comunicación | Noticias",
+          "url": "https://www.cm-braga.pt/es/0201/comunicacao/noticias",
+          "date": "2026-10-23",
+          "description": "…Parroquias civiles Empresas Empresas Municipales Empresas Afiliadas Cooperación Institucional Presentación Acuerdos de Cooperación Hermanamientos Redes Heráldica Vivir Ciudad Estrategia Innovación Presentación Plano Estratégico para el Desarrollo Ambiente Presentación Espacios Verdes…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "9cd4f3d63e89ba45e7656c09a7c265df5c12def42efb2728517c7b298d47d4e9",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "cm-braga.pt",
+          "source_catalog_name": "Município de Braga",
+          "researched_entity": "Município de Braga",
+          "source_binding": "atomic-item",
+          "title": "Ayuntamiento de Braga | Notícias | Festival Semibreve 2017",
+          "url": "https://www.cm-braga.pt/es/0201/home/noticias/item/item-3-6444",
+          "date": "2026-10-23",
+          "description": "…Parroquias civiles Empresas Empresas Municipales Empresas Afiliadas Cooperación Institucional Presentación Acuerdos de Cooperación Hermanamientos Redes Heráldica Vivir Ciudad Estrategia Innovación Presentación Plano Estratégico para el Desarrollo Ambiente Presentación Espacios Verdes…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "058c3e35e882e1eb99c60d1eca47a45a0d8fdc22adb24c2cae1d4d55e261c1e1",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "cm-braga.pt",
+          "source_catalog_name": "Município de Braga",
+          "researched_entity": "Município de Braga",
+          "source_binding": "atomic-item",
+          "title": "Ayuntamiento de Braga | Notícias | Braga elegida como la Ciudad Europea del Deporte en 2018",
+          "url": "https://www.cm-braga.pt/es/0201/home/noticias/item/item-1-5195",
+          "date": "2026-10-23",
+          "description": "…Parroquias civiles Empresas Empresas Municipales Empresas Afiliadas Cooperación Institucional Presentación Acuerdos de Cooperación Hermanamientos Redes Heráldica Vivir Ciudad Estrategia Innovación Presentación Plano Estratégico para el Desarrollo Ambiente Presentación Espacios Verdes…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "055ddf8dd33dcf3175dc3e3733e5c3228c06e5318bd562ea3c12ed4cfface88f",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "cm-braga.pt",
+          "source_catalog_name": "Município de Braga",
+          "researched_entity": "Município de Braga",
+          "source_binding": "atomic-item",
+          "title": "Ayuntamiento de Braga | Notícias | Braga fue la ciudad elegida para organizar la XIII edición de los Juegos del Eje Atlántico en 2019",
+          "url": "https://www.cm-braga.pt/es/0201/home/noticias/item/item-1-4638",
+          "date": "2026-10-23",
+          "description": "…Parroquias civiles Empresas Empresas Municipales Empresas Afiliadas Cooperación Institucional Presentación Acuerdos de Cooperación Hermanamientos Redes Heráldica Vivir Ciudad Estrategia Innovación Presentación Plano Estratégico para el Desarrollo Ambiente Presentación Espacios Verdes…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "f266c83329b9a622ff03bd056116b7a578f67d2a03be704c1a7506ca19c1d0d6",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "cm-braga.pt",
+      "date": "2026-10-23",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
     },
     {
       "id": "rel_08e8c33dd7f7804c",
@@ -32461,6 +32694,182 @@
       "status": "SEÑAL",
       "validity": "needs-corroboration",
       "derived": true
+    },
+    {
+      "id": "rel_2ac4b1146dc582f0",
+      "entity_a_id": "inte_5de63401f0fac815",
+      "entity_a": "Kudelski Security",
+      "relation": "partners_with",
+      "entity_b_id": "manu_4f036e1228e33c21",
+      "entity_b": "AttackIQ",
+      "countries": [
+        "GLOBAL"
+      ],
+      "country": "GLOBAL",
+      "evidence": [
+        {
+          "source": "attackiq.com",
+          "source_catalog_name": "Kudelski Security",
+          "researched_entity": "Kudelski Security",
+          "source_binding": "atomic-item",
+          "title": "AttackIQ Partner Champion Training",
+          "url": "https://www.attackiq.com/lp/partner-champion-training/",
+          "date": "2026-10-23",
+          "description": "AttackIQ Partner Champion Training Skip to content CTEM Platform Platform Overview Explore the power of the AttackIQ platform AVA Agentic OS The Age…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "GLOBAL",
+          "source_grade": "A",
+          "source_type": "official-domain",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:partners",
+          "content_digest": "9efb982de3dfa09e35ed56009d1d07c0b8eadc60a79739bc88ff4a1f70eca77f",
+          "matched_terms": [
+            "AttackIQ"
+          ],
+          "field": "vendor_relations",
+          "item_value": "AttackIQ",
+          "item_key": "attackiq",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "attackiq.com",
+          "source_catalog_name": "attackiq.com",
+          "researched_entity": "Kudelski Security",
+          "source_binding": "atomic-item",
+          "title": "AttackIQ Preactive Partner Program",
+          "url": "https://www.attackiq.com/partners/",
+          "date": "2026-10-23",
+          "description": "AttackIQ Preactive Partner Program Skip to content CTEM Platform Platform Overview Explore the power of the AttackIQ platform AVA Agentic OS The Age…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "GLOBAL",
+          "source_grade": "A",
+          "source_type": "vendor-official",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:partners",
+          "content_digest": "08150227eb2153d7a6ea967a7b77a264c62a23a1487f6a0a817102e81cda5ef8",
+          "matched_terms": [
+            "AttackIQ"
+          ],
+          "field": "vendor_relations",
+          "item_value": "AttackIQ",
+          "item_key": "attackiq",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "attackiq.com",
+      "date": "2026-10-23",
+      "confidence": 0.88,
+      "status": "CONFIRMADO",
+      "validity": "current",
+      "derived": false
+    },
+    {
+      "id": "rel_14ee760fa056429c",
+      "entity_a_id": "inte_5de63401f0fac815",
+      "entity_a": "Kudelski Security",
+      "relation": "partners_with",
+      "entity_b_id": "manu_b81902f7302152cb",
+      "entity_b": "Check Point",
+      "countries": [
+        "GLOBAL"
+      ],
+      "country": "GLOBAL",
+      "evidence": [
+        {
+          "source": "checkpoint.com",
+          "source_catalog_name": "Kudelski Security",
+          "researched_entity": "Kudelski Security",
+          "source_binding": "atomic-item",
+          "title": "Check Point Software",
+          "url": "https://www.checkpoint.com/alliances/",
+          "date": "2026-10-23",
+          "description": "Check Point Software Products Hybrid Mesh Network Security Data Center & Branch Firewalls Next-generation Firewalls AI Factory Firewalls SMB Firewalls…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "GLOBAL",
+          "source_grade": "A",
+          "source_type": "official-domain",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:partners",
+          "content_digest": "77076b3db4c137ee4fa67b8ab1f39d91068bfc741e4aab762ee9a10e9a83ad0f",
+          "matched_terms": [
+            "Check Point"
+          ],
+          "field": "vendor_relations",
+          "item_value": "Check Point",
+          "item_key": "check point",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "checkpoint.com",
+      "date": "2026-10-23",
+      "confidence": 0.88,
+      "status": "CONFIRMADO",
+      "validity": "current",
+      "derived": false
+    },
+    {
+      "id": "rel_558a3dc05ada018d",
+      "entity_a_id": "inte_5de63401f0fac815",
+      "entity_a": "Kudelski Security",
+      "relation": "partners_with",
+      "entity_b_id": "manu_55357933a7310d2d",
+      "entity_b": "AWS",
+      "countries": [
+        "GLOBAL"
+      ],
+      "country": "GLOBAL",
+      "evidence": [
+        {
+          "source": "checkpoint.com",
+          "source_catalog_name": "Kudelski Security",
+          "researched_entity": "Kudelski Security",
+          "source_binding": "atomic-item",
+          "title": "Check Point Software",
+          "url": "https://www.checkpoint.com/alliances/",
+          "date": "2026-10-23",
+          "description": "…ents & Webinars 2026 Cyber Security Report Download report Partners Partner Program Become a Partner Find a Partner Channel Partners Technology Partners MSP Partners AWS Cloud Google Cloud Azure Cloud Partner Portal Check Point is 100% Channel. Grow Your Business with Us! Sign Up No…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "GLOBAL",
+          "source_grade": "A",
+          "source_type": "official-domain",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:partners",
+          "content_digest": "77076b3db4c137ee4fa67b8ab1f39d91068bfc741e4aab762ee9a10e9a83ad0f",
+          "matched_terms": [
+            "AWS"
+          ],
+          "field": "vendor_relations",
+          "item_value": "AWS",
+          "item_key": "aws",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "checkpoint.com",
+      "date": "2026-10-23",
+      "confidence": 0.88,
+      "status": "CONFIRMADO",
+      "validity": "current",
+      "derived": false
     },
     {
       "id": "rel_08fd77d2e30271f1",
