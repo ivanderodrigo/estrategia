@@ -37,6 +37,18 @@ li{margin:.6rem 0;line-height:1.5}a{color:#006484}
 .history-paging{display:flex;align-items:center;gap:1rem;margin:1.2rem 0}
 .history-paging button{font:inherit;border:1px solid #8bb3c4;border-radius:8px;background:white;color:#164456;padding:.55rem 1rem;cursor:pointer}
 .history-paging button:disabled{opacity:.4;cursor:not-allowed}
+
+.gap-help{font-size:.91rem;line-height:1.6;color:#365568}
+.gap-controls{display:flex;flex-wrap:wrap;gap:.6rem;margin:.9rem 0}
+.gap-controls input,.gap-controls select{padding:.6rem;font:inherit;border:1px solid #aac0cc;border-radius:8px;max-width:100%}
+.gap-controls input{flex:2;min-width:210px}
+.gap-results{overflow-x:auto}
+.gap-pagination{display:flex;gap:1rem;align-items:center;padding:1rem 0}
+.gap-pagination button,#loadGapHistory{border:1px solid #276c89;color:#12445a;background:white;padding:.6rem 1rem;border-radius:8px;cursor:pointer;font:inherit}
+.gap-pagination button:disabled{opacity:.4;cursor:not-allowed}
+.gap-results table{font-size:.91rem;table-layout:fixed}
+.gap-results th:nth-child(1){width:25%}.gap-results th:nth-child(2){width:20%}.gap-results th:nth-child(3){width:30%}.gap-results th:nth-child(4){width:25%}
+.gap-results td{overflow-wrap:anywhere;vertical-align:top}
 </style></head><body>
 <header><a href="./">← Volver al observatorio</a><p>WESTCON IBERIA · INTELIGENCIA CON MEMORIA</p></header>
 <main><h1>Memoria histórica del conocimiento</h1>
@@ -56,6 +68,23 @@ li{margin:.6rem 0;line-height:1.5}a{color:#006484}
 <tr><td>Relaciones históricas de canal: revisar la relación y su fuente atómica</td><td>82</td></tr>
 <tr><td>Otros campos históricos para revisión concreta</td><td>4</td></tr>
 <tr><th>Total</th><th>674</th></tr></tbody></table>
+<section class="panel" id="historicalGapBacklog">
+<h2>¿Cuántos pendientes tienen historia?</h2>
+<p id="gapHistorySummary" role="status">Cargando cruce de tareas de investigación con el histórico…</p>
+<p class="gap-help">Una coincidencia significa que existe un antecedente documental o una URL en un snapshot anterior; <strong>no cierra una tarea de investigación ni certifica que siga vigente.</strong> Para contratación pública, las coincidencias por nombre del comprador no identifican necesariamente el mismo expediente.</p>
+<button id="loadGapHistory" type="button">Consultar pendientes con antecedentes →</button>
+<div id="gapExplorer" hidden>
+<div class="gap-controls">
+<input id="gapSearch" type="search" placeholder="Empresa, dato, campo, fuente…" aria-label="Buscar tareas con antecedente">
+<select id="gapSection" aria-label="Área"><option value="">Todas las áreas</option><option value="manufacturers">Fabricantes</option><option value="integrators">Integradores</option><option value="distributors">Mayoristas</option><option value="clients_public">Contratación pública</option><option value="clients_private">Cuentas privadas</option><option value="trends">Tendencias</option><option value="architectures">Arquitecturas</option></select>
+<select id="gapLevel" aria-label="Coincidencia"><option value="">Todas las coincidencias</option><option value="exact-value-history">Mismo valor histórico</option><option value="field-only-history">Solo mismo campo</option><option value="other-historical-value">Otro valor histórico</option></select>
+</div>
+<p id="gapCount" role="status"></p>
+<div id="gapResultTable" class="gap-results"></div>
+<div class="gap-pagination"><button id="gapPrev" type="button">← Anterior</button><span id="gapPosition"></span><button id="gapNext" type="button">Siguiente →</button></div>
+</div>
+<p><a href="data/public/historical/gap_matches.csv" download>Descargar cruce completo con los pendientes (CSV)</a> · <a href="data/public/historical/gap_summary.json">Ver cifras y fecha del análisis (JSON)</a></p>
+</section>
 <section class="panel" id="historyExplorer">
 <h2>Explorar los 674 antecedentes</h2>
 <p>Los resultados son diferencias históricas pendientes de evaluación; no son relaciones comerciales actuales confirmadas. Puedes buscar por empresa, tecnología, campo o contenido y abrir las fuentes que constaban en la versión original.</p>
@@ -136,6 +165,64 @@ for(const selector of ['#historyQuery','#historySection','#historyGroup']){
 }
 $('#historyPrev').addEventListener('click',()=>{if(page>0){page--;render()}});
 $('#historyNext').addEventListener('click',()=>{if((page+1)*PAGE<matches().length){page++;render()}});
+
+let relatedGaps=[],relatedPage=0;const GAP_PAGE=20;
+function gapLabel(s){return ({'exact-value-history':'Mismo valor histórico','field-only-history':'Antecedente del campo','other-historical-value':'Otro valor antiguo'})[s]||s}
+function filteredGaps(){
+  const q=$('#gapSearch').value.toLocaleLowerCase('es').trim(),section=$('#gapSection').value,level=$('#gapLevel').value;
+  return relatedGaps.filter(x=>(!section||x.section===section)&&(!level||x.match_level===level)
+    &&(!q||[x.entity,x.field,x.gap_kind,x.research_state,...(x.source_urls||[]),...(x.historical_samples||[]).map(v=>v.value)].join(' ').toLocaleLowerCase('es').includes(q)));
+}
+function renderGaps(){
+  const selected=filteredGaps(),pages=Math.max(1,Math.ceil(selected.length/GAP_PAGE));relatedPage=Math.min(relatedPage,pages-1);
+  $('#gapCount').textContent=selected.length.toLocaleString('es-ES')+' tareas con coincidencia histórica según los filtros; ninguna se considera validada como actual.';
+  $('#gapPosition').textContent='Página '+(relatedPage+1)+' de '+pages;
+  $('#gapPrev').disabled=relatedPage===0;$('#gapNext').disabled=relatedPage>=pages-1;
+  const part=selected.slice(relatedPage*GAP_PAGE,(relatedPage+1)*GAP_PAGE);
+  if(!part.length){$('#gapResultTable').textContent='No hay tareas que coincidan con estos criterios.';return;}
+  $('#gapResultTable').innerHTML='<table><thead><tr><th>Entidad</th><th>Campo / prioridad</th><th>Antecedente y nivel</th><th>Fuentes conservadas</th></tr></thead><tbody>'+
+    part.map(x=>{
+      const sample=(x.historical_samples||[])[0]||{};
+      const value=(sample.value||'').slice(0,145);
+      const links=(x.source_urls||[]).filter(u=>/^https?:\/\//i.test(u)).slice(0,3)
+        .map((u,i)=>'<a class="history-source" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">Referencia histórica '+(i+1)+' ↗</a>').join('');
+      return '<tr><td><strong>'+esc(x.entity)+'</strong><div class="history-meta">'+esc(x.section)+'</div></td>'+
+      '<td>'+esc(x.field)+'<div class="history-meta">'+esc(x.priority_tier||'')+'</div></td>'+
+      '<td>'+esc(gapLabel(x.match_level))+'<div class="history-meta">'+esc(value)+'</div>'+
+      (x.identity_scope==='buyer-name-only-not-notice'?'<div class="history-meta">Comprador: expediente no identificado</div>':'')+'</td>'+
+      '<td>'+links+'<div class="history-meta">'+esc(x.urls_found)+' URL(s) históricas; sin comprobación de vigencia</div></td></tr>';
+    }).join('')+'</tbody></table>';
+}
+async function gapSummary(){
+  try{
+    const res=await fetch('data/public/historical/gap_summary.json',{cache:'no-store'});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    const s=await res.json(),date=s.dataset_published_at?new Date(s.dataset_published_at).toLocaleDateString('es-ES'):'fecha no registrada';
+    $('#gapHistorySummary').textContent=
+       s.tasks_with_historical_antecedents.toLocaleString('es-ES')+' de '+s.total_current_research_tasks.toLocaleString('es-ES')+
+       ' tareas tenían antecedentes históricos; '+(s.by_match_level?.['exact-value-history']||0).toLocaleString('es-ES')+
+       ' tenían coincidencia literal del valor y '+(s.by_match_level?.gaps_with_historical_urls||0).toLocaleString('es-ES')+
+       ' al menos una URL histórica. Snapshot del '+date+'. No equivale a información actual verificada.';
+  }catch(e){$('#gapHistorySummary').textContent='No se pudo consultar el cruce: '+e.message}
+}
+$('#loadGapHistory').addEventListener('click',async()=>{
+  if(relatedGaps.length){$('#gapExplorer').hidden=!$('#gapExplorer').hidden;return;}
+  const btn=$('#loadGapHistory');btn.disabled=true;btn.textContent='Cargando tareas…';
+  try{
+    const res=await fetch('data/public/historical/gap_matches.json',{cache:'no-store'});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    const d=await res.json();
+    if(!Array.isArray(d.matches)||d.matches.length!==d.summary.tasks_with_historical_antecedents)throw new Error('Inventario parcial');
+    relatedGaps=d.matches;$('#gapExplorer').hidden=false;btn.textContent='Mostrar / ocultar tareas';renderGaps();
+  }catch(e){btn.textContent='Volver a intentar';$('#gapCount').textContent='Error de carga: '+e.message}
+  finally{btn.disabled=false}
+});
+for(const selector of ['#gapSearch','#gapSection','#gapLevel']){
+ $(selector).addEventListener('input',()=>{relatedPage=0;renderGaps()});
+}
+$('#gapPrev').addEventListener('click',()=>{if(relatedPage>0){relatedPage--;renderGaps()}});
+$('#gapNext').addEventListener('click',()=>{if((relatedPage+1)*GAP_PAGE<filteredGaps().length){relatedPage++;renderGaps()}});
+gapSummary();
 init();
 })();
 </script></body></html>

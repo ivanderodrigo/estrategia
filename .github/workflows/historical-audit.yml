@@ -1,7 +1,7 @@
 name: Historical audit
 on:
   push:
-    branches: [audit/historical-knowledge-exhaustive-20261023]
+    branches: [feature/historical-gap-reconciliation]
     paths:
       - scripts/audit_historical_claims.py
       - .github/workflows/historical-audit.yml
@@ -27,12 +27,15 @@ jobs:
           cp historical_audit/candidate_index.json data/public/historical/candidate_index.json
           cp historical_audit/summary.json data/public/historical/summary.json
           cp historical_audit/historical_candidates.csv data/public/historical/historical_candidates.csv
+          cp historical_audit/gap_matches.json data/public/historical/gap_matches.json
+          cp historical_audit/gap_summary.json data/public/historical/gap_summary.json
+          cp historical_audit/gap_matches.csv data/public/historical/gap_matches.csv
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/public/historical/
           if ! git diff --cached --quiet; then
             git commit -m "chore: archive read-only historical claims for review"
-            git push origin HEAD:audit/historical-knowledge-exhaustive-20261023
+            git push origin HEAD:feature/historical-gap-reconciliation
           fi
       - uses: actions/upload-artifact@v4
         if: always()
