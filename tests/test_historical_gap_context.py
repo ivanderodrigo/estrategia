@@ -11,7 +11,7 @@ class HistoricalGapBridge(unittest.TestCase):
             {"section":"integrators","entity":"Example Partner","field":"services","value":"{\"value\": \"Support\"}","urls":["https://example.org/archive"],"first_revision":"abc","last_revision":"def","status":"HISTORICAL_CANDIDATE_NOT_REVALIDATED"},
             {"section":"integrators","entity":"Other Partner","field":"services","value":"{\"value\": \"Other\"}","urls":[],"status":"HISTORICAL_CANDIDATE_NOT_REVALIDATED"},
         ]}
-        gaps=[{"section":"integrators","entity":"Example Partner","field":"services","research_state":"Por investigar","priority":1},
+        gaps=[{"section":"integrators","entity":"Example Partner","field":"services","research_state":"Por investigar","priority":1,"revalidation_seeds":[]},
               {"section":"integrators","entity":"Example Partner","field":"specializations","research_state":"Por investigar"}]
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/"index.json"
@@ -21,6 +21,8 @@ class HistoricalGapBridge(unittest.TestCase):
         self.assertEqual(len(gaps[0]["historical_research_leads"]),1)
         self.assertEqual(gaps[0]["research_state"],"Por investigar")
         self.assertEqual(gaps[0]["priority"],1)
+        self.assertEqual(gaps[0]["revalidation_seeds"][0]["url"],"https://example.org/archive")
+        self.assertFalse(gaps[0]["revalidation_seeds"][0]["official"])
         self.assertNotIn("historical_research_leads",gaps[1])
         self.assertEqual(gaps[0]["historical_research_leads"][0]["review_status"],"HISTORICAL_ONLY_NOT_CURRENTLY_ACCREDITED")
 
