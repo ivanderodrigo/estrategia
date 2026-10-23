@@ -1,50 +1,51 @@
-"""Daily #81 regression: final restoration may not bypass atomic evidence validation."""
+"""Daily #81 regression: restoration cannot cross web evidence field binding."""
 import unittest
 
 from engine.enrichment import normalize_fields
 from engine.preservation import restore_accredited_support
-from engine.quality import audit
 
 
-def _row():
+def _field():
     return {
-        "name": "V-Valley Advanced Solutions Portugal",
-        "fields": {
-            "services": {
-                "value": ["Soporte"],
-                "items": [{"value": "Soporte", "evidence": []}],
-                "evidence": [],
-            },
-            "differential_capabilities": {
-                "value": ["Soporte"],
-                "items": [{"value": "Soporte", "evidence": []}],
-                "evidence": [],
-            },
-        },
+        "value": ["Soporte"],
+        "items": [{"value": "Soporte", "evidence": []}],
+        "evidence": [],
     }
 
 
 class Daily81EvidenceBinding(unittest.TestCase):
-    def test_invalid_recovered_web_evidence_is_removed_by_final_normalization(self):
-        bad = {
+    def test_moved_support_with_old_field_metadata_is_filtered(self):
+        # A legitimate source field can disappear during a migration while the
+        # generic value survives in another field. Restoration's unique-value
+        # fallback must not confer the old source on the new field.
+        owner = "V-Valley Advanced Solutions Portugal"
+        source = {
             "url": "https://example.org/soporte",
-            "source": "Example",
+            "source": owner,
             "title": "Soporte",
             "description": "Soporte",
             "method": "web-evidence:extracted",
             "source_binding": "claim-specific",
+            "accrediting": True,
             "atomic": True,
-            "researched_entity": "V-Valley Advanced Solutions Portugal",
+            "researched_entity": owner,
             "field": "services",
-            "item_value": "Other value",
+            "item_value": "Soporte",
         }
-        before = {"distributors": [_row()]}
-        before["distributors"][0]["fields"]["services"]["items"][0]["evidence"] = [bad]
-        before["distributors"][0]["fields"]["services"]["evidence"] = [bad]
-        current = {"distributors": [_row()]}
-        restore_accredited_support(current, before)
+        old_field = _field()
+        old_field["items"][0]["evidence"] = [source]
+        old_field["evidence"] = [source]
+        before = {"distributors": [{"name": owner, "fields": {"services": old_field}}]}
+        new_field = _field()
+        current = {"distributors": [{"name": owner, "fields": {
+            "differential_capabilities": new_field,
+        }}]}
+        stats = restore_accredited_support(current, before)
+        self.assertEqual(stats["moved_item_support_restored"], 1)
+        item = current["distributors"][0]["fields"]["differential_capabilities"]["items"][0]
+        self.assertEqual(len(item["evidence"]), 1)
         normalize_fields(current)
-        item = current["distributors"][0]["fields"]["services"]["items"][0]
+        item = current["distributors"][0]["fields"]["differential_capabilities"]["items"][0]
         self.assertEqual(item["evidence"], [])
 
     def test_final_normalization_follows_final_restoration_in_pipeline(self):
