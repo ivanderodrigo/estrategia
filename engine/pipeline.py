@@ -189,9 +189,12 @@ def run() -> dict[str, Any]:
     westcon_current_evidence = apply_westcon_current_evidence(
         data, read_json("config/current/westcon_fy27_document_facts.json", {})
     )
-    # HF6-R13-R3: late reconciliation/migrations may have reattached legacy
-    # list evidence. Enforce exact atomic binding before confidence and quality.
+    # HF6-R13-R3: enforce exact atomic binding after late migrations.
     normalize_fields(data)
+    # HF6 R23: restore only evidence for surviving exact claims after the LAST
+    # normalizer. This uses the existing strict entity/item reconciliation;
+    # it never recreates values or weakens the preservation gate.
+    final_support_reconciliation = restore_accredited_support(data, preservation_source)
     _sync_source_catalog(data)
     confidence_stats = apply_confidence_model(data)
     source_rationalization = rationalize_sources(data)
@@ -243,6 +246,7 @@ def run() -> dict[str, Any]:
     )
     preservation["reconciliation"] = {
         "accredited_support": support_reconciliation,
+        "accredited_support_final": final_support_reconciliation,
         "relations": relation_reconciliation,
         "manufacturer_deduplication": manufacturer_deduplication,
         "internal_seed_snapshot": seed_snapshot_stats,
