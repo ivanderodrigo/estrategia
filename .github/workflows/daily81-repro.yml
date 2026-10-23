@@ -15,7 +15,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: daily81-isolated-${{ github.ref }}
+  group: daily81-isolated-${{ github.sha }}
   cancel-in-progress: false
 
 jobs:
