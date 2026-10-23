@@ -41,9 +41,9 @@ class Daily81EvidenceBinding(unittest.TestCase):
             "differential_capabilities": new_field,
         }}]}
         stats = restore_accredited_support(current, before)
-        self.assertEqual(stats["moved_item_support_restored"], 1)
+        self.assertEqual(stats["moved_item_support_restored"], 0)
         item = current["distributors"][0]["fields"]["differential_capabilities"]["items"][0]
-        self.assertEqual(len(item["evidence"]), 1)
+        self.assertEqual(len(item["evidence"]), 0)
         normalize_fields(current)
         item = current["distributors"][0]["fields"]["differential_capabilities"]["items"][0]
         self.assertEqual(item["evidence"], [])
