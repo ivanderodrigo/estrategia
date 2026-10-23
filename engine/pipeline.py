@@ -270,6 +270,12 @@ def run() -> dict[str, Any]:
         quality["errors"].extend("Preservation gate: " + error for error in preservation["errors"])
         quality["score"] = max(0, 100 - len(quality["errors"]) * 8 - min(20, len(quality.get("warnings") or [])))
     if quality["errors"]:
+        # HF6 R21: persist the exact failed comparison before aborting publication.
+        # These are diagnostic-only files, not a committed canonical snapshot.
+        atomic_write_many({
+            "data/current/knowledge_preservation_failure.json": json_bytes(preservation),
+            "data/current/quality_failure.json": json_bytes(quality),
+        })
         raise ValueError("Quality gate failed: " + "; ".join(quality["errors"][:5]))
     meta["source_count"] = metrics["sources"]
     meta["quality_score"] = quality["score"]
