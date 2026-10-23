@@ -1394,6 +1394,18 @@ def run(
         "families": defaultdict(lambda: defaultdict(int)),
         "results": [],
     }
+    # Measure the actual contribution of archived source leads independently from
+    # HTTP successes or candidate promotions. These counters do not close gaps.
+    stats["historical_lead_targets_planned"] = sum(
+        bool(any(seed.get("historical_lead") for seed in t.get("revalidation_seeds") or []
+                 if isinstance(seed, dict))) for t in targets
+    )
+    stats["historical_lead_urls_planned"] = sum(
+        sum(bool(seed.get("historical_lead")) for seed in t.get("revalidation_seeds") or []
+            if isinstance(seed, dict)) for t in targets
+    )
+    stats["historical_lead_urls_attempted"] = 0
+    stats["historical_lead_evidences_accepted"] = 0
     fetcher = Fetcher(profile=profile, deadline=deadline, cache=cache, state=research_state, stats=stats)
     pages_since_checkpoint = 0
     next_heartbeat = started + 25
@@ -1474,6 +1486,10 @@ def run(
                 research_state.record_gap(gap_id, accepted=0, error="no-seed-source")
             continue
 
+        archived_urls = {
+            str(item.get("url") or "") for item in target.get("revalidation_seeds") or []
+            if isinstance(item, dict) and item.get("historical_lead")
+        }
         queue = list(seeds)
         seen: set[tuple[str, str]] = set()
         pages = 0
@@ -1487,6 +1503,9 @@ def run(
             if seed_key in seen:
                 continue
             seen.add(seed_key)
+            from_history = seed.url in archived_urls
+            if from_history:
+                stats["historical_lead_urls_attempted"] += 1
             document, cached, status, error = fetcher.fetch(seed)
             family_stats = stats["families"][f"{target['section']}:{seed.family}"]
             family_stats["attempts"] += 1
@@ -1586,6 +1605,8 @@ def run(
                     accepted_here += 1
                     accepted_by_field[field_id] += 1
                     stats["accepted_evidences"] += 1
+                    if from_history:
+                        stats["historical_lead_evidences_accepted"] += 1
                     stats["fields_enriched"] += 1
                     stats["values_added"] += values_added
                     family_stats["accepted_evidence"] += 1
