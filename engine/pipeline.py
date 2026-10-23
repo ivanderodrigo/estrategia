@@ -195,6 +195,10 @@ def run() -> dict[str, Any]:
     # normalizer. This uses the existing strict entity/item reconciliation;
     # it never recreates values or weakens the preservation gate.
     final_support_reconciliation = restore_accredited_support(data, preservation_source)
+    # A restoration must pass the same strict atomic binding rules as Research.
+    # In particular, it must not reintroduce web rows discarded by the final
+    # normalizer (e.g. generic 'Soporte' on unrelated V-Valley fields).
+    normalize_fields(data)
     _sync_source_catalog(data)
     confidence_stats = apply_confidence_model(data)
     source_rationalization = rationalize_sources(data)
