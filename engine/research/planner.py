@@ -201,6 +201,8 @@ def plan(
     # It may contain exact public URLs that need revalidation and was part of the
     # pre-v4.2 routing contract.
     research_rows = list(gaps.get("gaps") or []) + list(gaps.get("relationship_revalidation_debt") or [])
+    from .historical_leads import historical_revalidation_seeds, history_by_gap
+    historical_index = history_by_gap()
 
     for gap in research_rows:
         section = str(gap.get("section") or "")
@@ -270,7 +272,7 @@ def plan(
             for seed in item["revalidation_seeds"]
             if isinstance(seed, dict)
         }
-        for seed in gap.get("revalidation_seeds") or []:
+        for seed in list(gap.get("revalidation_seeds") or []) + historical_revalidation_seeds(gap, historical_index):
             if isinstance(seed, dict) and seed.get("url") and str(seed.get("url")) not in seen_seed_urls:
                 item["revalidation_seeds"].append(dict(seed))
                 seen_seed_urls.add(str(seed.get("url")))
