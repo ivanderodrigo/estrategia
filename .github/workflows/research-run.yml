@@ -89,6 +89,7 @@ jobs:
             data/current/quality_report.json
             data/current/knowledge_preservation_failure.json
             data/current/quality_failure.json
+            data/current/preservation_claim_trace.json
           if-no-files-found: warn
           retention-days: 14
       - name: Publish validated intelligence

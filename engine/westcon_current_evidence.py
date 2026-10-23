@@ -103,6 +103,36 @@ def _attach_scalar(row: dict[str, Any], field_id: str, value: Any, evidence: Map
     target["evidence"] = _dedupe_evidence(list(target.get("evidence") or []) + [evidence])
 
 
+def _attach_portfolio_domain(row: dict[str, Any], value: Any, evidence: Mapping[str, Any]) -> None:
+    """Accredit the FY27 domain without collapsing previously researched atomic lists.
+
+    Research can represent 'domain' as a multi-valued, item-supported field.
+    Replacing that list with a scalar silently discards its atomic accreditation,
+    even when the same value survives. Preserve both representation and support.
+    """
+    field = (row.get("fields") or {}).get("domain")
+    if not isinstance(field, dict) or not isinstance(field.get("value"), list):
+        _attach_scalar(row, "domain", value, evidence)
+        return
+    values = field["value"]
+    matching = next((existing for existing in values if canonical(existing) == canonical(value)), None)
+    actual = matching if matching is not None else deepcopy(value)
+    if matching is None:
+        values.append(actual)
+    items = [dict(item) for item in (field.get("items") or []) if isinstance(item, Mapping)]
+    item = next((item for item in items if canonical(item.get("value")) == canonical(actual)), None)
+    if item is None:
+        item = {"value": actual, "evidence": []}
+        items.append(item)
+    specific_evidence = dict(evidence)
+    specific_evidence["field"] = "domain"
+    specific_evidence["item_value"] = actual
+    specific_evidence["atomic"] = True
+    item["evidence"] = _dedupe_evidence(list(item.get("evidence") or []) + [specific_evidence])
+    field["items"] = items
+    field["evidence"] = _dedupe_evidence(list(field.get("evidence") or []) + [specific_evidence])
+
+
 def _ensure_capabilities(row: dict[str, Any], capabilities: list[str], document: Mapping[str, Any], slides: list[int]) -> tuple[int, int]:
     fields = row.setdefault("fields", {})
     field = fields.get("capabilities")
@@ -241,7 +271,7 @@ def apply_westcon_current_evidence(data: dict[str, Any], config: Mapping[str, An
             list(row["fields"]["scope"].get("evidence") or []) + [_rule_evidence(portugal_rule, field="scope", value="ES + PT")]
         )
         if fact.get("domain"):
-            _attach_scalar(row, "domain", fact["domain"], _document_evidence(document, field="domain", value=fact["domain"], slides=slides))
+            _attach_portfolio_domain(row, fact["domain"], _document_evidence(document, field="domain", value=fact["domain"], slides=slides))
         added, supported = _ensure_capabilities(row, [str(x) for x in (fact.get("capabilities") or [])], document, slides)
         stats["capability_values_added"] += added
         stats["capability_items_documented"] += supported

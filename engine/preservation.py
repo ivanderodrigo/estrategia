@@ -621,6 +621,15 @@ def restore_accredited_support(current: dict[str, Any], baseline: Mapping[str, A
                         target_field, target_item, target_field_id = _find_list_target(after_row, str(field_id), value)
                         if not isinstance(target_item, dict):
                             continue
+                        # A generic value can survive in a *different* field. Any
+                        # recovered evidence must also accredit its FINAL field;
+                        # do not transfer services/Soporte to capabilities/Soporte.
+                        support = evidence_for_item(
+                            support, after_row.get("name"), value,
+                            field_id=target_field_id,
+                        )
+                        if not support:
+                            continue
                         added = _merge_supported_evidence(target_item, support)
                         stats["item_evidence_restored"] += added
                         if added and target_field_id != str(field_id):
