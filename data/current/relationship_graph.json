@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-10-23T16:05:32.130945+00:00",
+  "generated_at": "2026-10-23T18:06:36.770959+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -77,6 +77,14 @@
     {
       "id": "clie_840edc8235f4c88f",
       "canonical_name": "Agencia Española de Medicamentos y Productos Sanitarios",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_f7b1544320203309",
+      "canonical_name": "Agencia para la Modernización Tecnológica de Galicia",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -221,6 +229,14 @@
     {
       "id": "clie_bc808763e52471c5",
       "canonical_name": "Centro de Documentación Judicial",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_cc3555d59b44e04b",
+      "canonical_name": "Consejería de Educación de la Junta de Castilla y León",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -451,30 +467,6 @@
       "historical_names": []
     },
     {
-      "id": "clie_3b1b22390cb9e48b",
-      "canonical_name": "Município de Braga",
-      "entity_type": "client",
-      "country": "PT",
-      "aliases": [],
-      "historical_names": []
-    },
-    {
-      "id": "clie_6815d1017ae3f182",
-      "canonical_name": "Município de Gondomar",
-      "entity_type": "client",
-      "country": "PT",
-      "aliases": [],
-      "historical_names": []
-    },
-    {
-      "id": "clie_dc62c81ac4e5960e",
-      "canonical_name": "NATURGY ENERGY GROUP",
-      "entity_type": "client",
-      "country": "ES",
-      "aliases": [],
-      "historical_names": []
-    },
-    {
       "id": "clie_008870b44681c0d6",
       "canonical_name": "NOS",
       "entity_type": "client",
@@ -543,6 +535,14 @@
       "canonical_name": "Sacyr",
       "entity_type": "client",
       "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_dff6f01722f0521c",
+      "canonical_name": "Semapa",
+      "entity_type": "client",
+      "country": "PT",
       "aliases": [],
       "historical_names": []
     },
@@ -635,14 +635,6 @@
       "historical_names": []
     },
     {
-      "id": "dist_3bb6c0bb4e1a2fef",
-      "canonical_name": "EET Portugal",
-      "entity_type": "distributor",
-      "country": "GLOBAL",
-      "aliases": [],
-      "historical_names": []
-    },
-    {
       "id": "dist_59de75b133edd687",
       "canonical_name": "Esprinet / V-Valley",
       "entity_type": "distributor",
@@ -701,14 +693,6 @@
     {
       "id": "dist_0eca491548cf119b",
       "canonical_name": "Ingram Micro",
-      "entity_type": "distributor",
-      "country": "GLOBAL",
-      "aliases": [],
-      "historical_names": []
-    },
-    {
-      "id": "dist_5bfd891a3cf6a327",
-      "canonical_name": "Lidera Networks",
       "entity_type": "distributor",
       "country": "GLOBAL",
       "aliases": [],
@@ -2726,7 +2710,7 @@
       "id": "tech_70574f8129932ee1",
       "canonical_name": "Identity & Access",
       "entity_type": "technology",
-      "country": "PT",
+      "country": "ES",
       "aliases": [],
       "historical_names": []
     },
@@ -3383,6 +3367,22 @@
       "canonical_name": "telecomunicações",
       "entity_type": "technology",
       "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "dist_3bb6c0bb4e1a2fef",
+      "canonical_name": "EET Portugal",
+      "entity_type": "distributor",
+      "country": "GLOBAL",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "dist_5bfd891a3cf6a327",
+      "canonical_name": "Lidera Networks",
+      "entity_type": "distributor",
+      "country": "GLOBAL",
       "aliases": [],
       "historical_names": []
     },
@@ -23145,55 +23145,6 @@
       "derived": false
     },
     {
-      "id": "rel_76cbc8bf7dc6f702",
-      "entity_a_id": "dist_3bb6c0bb4e1a2fef",
-      "entity_a": "EET Portugal",
-      "relation": "distributes",
-      "entity_b_id": "manu_cec06f879afd1765",
-      "entity_b": "CrowdStrike",
-      "countries": [
-        "GLOBAL"
-      ],
-      "country": "GLOBAL",
-      "evidence": [
-        {
-          "source": "crowdstrike.com",
-          "source_catalog_name": "Ignition Technology",
-          "researched_entity": "EET Portugal",
-          "source_binding": "atomic-item",
-          "title": "Ignition Technology Partnership Expands to Meet European Demand",
-          "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-ignition-technology-expand-partnership/",
-          "date": "2026-10-23",
-          "description": "Ignition Technology Partnership Expands to Meet European Demand Skip to Main Content CrowdStrike Protects Customers from Threats Delivered via PHP2Shell Read blog Experienced a breach? Blog Contact us Careers Latest Innovations Platform…",
-          "scope": "GLOBAL",
-          "scope_provenance": "unspecified",
-          "research_target_scope": "PT",
-          "source_grade": "B",
-          "source_type": "industry",
-          "official": false,
-          "classification": "public",
-          "retrieved_at": "2026-10-23",
-          "freshness_status": "current",
-          "method": "web-evidence:partners",
-          "content_digest": "e41d87ba2efa5bf9520a4f792a0bbbe3b0cd5f86b3b64125767c554abad0a0b1",
-          "matched_terms": [
-            "CrowdStrike"
-          ],
-          "field": "vendor_relations",
-          "item_value": "CrowdStrike",
-          "item_key": "crowdstrike",
-          "atomic": true,
-          "revalidation": ""
-        }
-      ],
-      "source": "crowdstrike.com",
-      "date": "2026-10-23",
-      "confidence": 0.88,
-      "status": "CONFIRMADO",
-      "validity": "current",
-      "derived": false
-    },
-    {
       "id": "rel_372646c19bb8f78f",
       "entity_a_id": "dist_067e33cf39f90a6e",
       "entity_a": "Factis",
@@ -23934,55 +23885,6 @@
       ],
       "source": "ingecom.net",
       "date": "2026-09-02",
-      "confidence": 0.88,
-      "status": "CONFIRMADO",
-      "validity": "current",
-      "derived": false
-    },
-    {
-      "id": "rel_d10285881595a84f",
-      "entity_a_id": "dist_5bfd891a3cf6a327",
-      "entity_a": "Lidera Networks",
-      "relation": "distributes",
-      "entity_b_id": "manu_cec06f879afd1765",
-      "entity_b": "CrowdStrike",
-      "countries": [
-        "GLOBAL"
-      ],
-      "country": "GLOBAL",
-      "evidence": [
-        {
-          "source": "crowdstrike.com",
-          "source_catalog_name": "Ignition Technology",
-          "researched_entity": "Lidera Networks",
-          "source_binding": "atomic-item",
-          "title": "Ignition Technology Partnership Expands to Meet European Demand",
-          "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-ignition-technology-expand-partnership/",
-          "date": "2026-10-23",
-          "description": "Ignition Technology Partnership Expands to Meet European Demand Skip to Main Content CrowdStrike Protects Customers from Threats Delivered via PHP2Shell Read blog Experienced a breach? Blog Contact us Careers Latest Innovations Platform…",
-          "scope": "GLOBAL",
-          "scope_provenance": "unspecified",
-          "research_target_scope": "PT",
-          "source_grade": "B",
-          "source_type": "industry",
-          "official": false,
-          "classification": "public",
-          "retrieved_at": "2026-10-23",
-          "freshness_status": "current",
-          "method": "web-evidence:partners",
-          "content_digest": "e41d87ba2efa5bf9520a4f792a0bbbe3b0cd5f86b3b64125767c554abad0a0b1",
-          "matched_terms": [
-            "CrowdStrike"
-          ],
-          "field": "vendor_relations",
-          "item_value": "CrowdStrike",
-          "item_key": "crowdstrike",
-          "atomic": true,
-          "revalidation": ""
-        }
-      ],
-      "source": "crowdstrike.com",
-      "date": "2026-10-23",
       "confidence": 0.88,
       "status": "CONFIRMADO",
       "validity": "current",
@@ -28882,9 +28784,9 @@
       "derived": false
     },
     {
-      "id": "rel_0f1de6ba7ed58520",
-      "entity_a_id": "clie_dc62c81ac4e5960e",
-      "entity_a": "NATURGY ENERGY GROUP",
+      "id": "rel_064c2fef16b2204b",
+      "entity_a_id": "clie_cc3555d59b44e04b",
+      "entity_a": "Consejería de Educación de la Junta de Castilla y León",
       "relation": "technology_signal",
       "entity_b_id": "tech_9e91940ff9231ef9",
       "entity_b": "Networking",
@@ -28894,14 +28796,14 @@
       "country": "ES",
       "evidence": [
         {
-          "source": "naturgy.com",
-          "source_catalog_name": "NATURGY ENERGY GROUP",
-          "researched_entity": "NATURGY ENERGY GROUP",
+          "source": "jcyl.es",
+          "source_catalog_name": "Consejería de Educación de la Junta de Castilla y León",
+          "researched_entity": "Consejería de Educación de la Junta de Castilla y León",
           "source_binding": "atomic-item",
-          "title": "Inicio - Naturgy",
-          "url": "https://www.naturgy.com/",
+          "title": "Consejería de Educación | Junta de Castilla y León",
+          "url": "https://www.jcyl.es/web/jcyl/Portada/es/Plantilla100DirectorioPortada/1248366924958/0/1284181175622/DirectorioPadre",
           "date": "2026-10-23",
-          "description": "…ta las 24 h del 23 de marzo) Asistencia virtual (1 hora antes de la Junta) Plan estratégico 2025-2027 10:00h CET Más información Webcast (diferido) Ejemplo Encuentra cientos de consejos en nuestras redes sociales y empieza a ahorrar energía . Más información Texto para poner detalle.…",
+          "description": "…rativa Boletín Oficial Suscripciones a noticias y boletines Atención al Ciudadano - 012 Oficina Virtual de Impuestos Autonómicos Televisión Directorio Guía de navegación Redes sociales Pie de página Guía de navegación Direcciones y teléfonos Atención al ciudadano Aviso Legal Protecció…",
           "scope": "GLOBAL",
           "scope_provenance": "unspecified",
           "research_target_scope": "ES",
@@ -28912,7 +28814,7 @@
           "retrieved_at": "2026-10-23",
           "freshness_status": "current",
           "method": "web-evidence:official",
-          "content_digest": "1bdc04f76d5acece7d429f166105cf193eaa117a58e0f847652588c31b7390a2",
+          "content_digest": "8dddfb3117724cbd2ebe8e177c6a530c80c23800db156cd2ae2381d94ec6be85",
           "matched_terms": [
             "redes"
           ],
@@ -28923,7 +28825,7 @@
           "revalidation": ""
         }
       ],
-      "source": "naturgy.com",
+      "source": "jcyl.es",
       "date": "2026-10-23",
       "confidence": 0.48,
       "status": "SEÑAL",
@@ -28931,29 +28833,29 @@
       "derived": true
     },
     {
-      "id": "rel_95b81de3d15f6b0a",
-      "entity_a_id": "clie_6815d1017ae3f182",
-      "entity_a": "Município de Gondomar",
+      "id": "rel_9564a26723377c48",
+      "entity_a_id": "clie_f7b1544320203309",
+      "entity_a": "Agencia para la Modernización Tecnológica de Galicia",
       "relation": "technology_signal",
-      "entity_b_id": "tech_70574f8129932ee1",
-      "entity_b": "Identity & Access",
+      "entity_b_id": "tech_78fd5cac8c025bab",
+      "entity_b": "Cybersecurity",
       "countries": [
-        "PT"
+        "ES"
       ],
-      "country": "PT",
+      "country": "ES",
       "evidence": [
         {
-          "source": "cm-gondomar.pt",
-          "source_catalog_name": "Município de Gondomar",
-          "researched_entity": "Município de Gondomar",
+          "source": "amtega.xunta.gal",
+          "source_catalog_name": "Agencia para la Modernización Tecnológica de Galicia",
+          "researched_entity": "Agencia para la Modernización Tecnológica de Galicia",
           "source_binding": "atomic-item",
-          "title": "Câmara Municipal de Gondomar",
-          "url": "https://www.cm-gondomar.pt/",
+          "title": "Inicio | Amtega",
+          "url": "https://amtega.xunta.gal/gl",
           "date": "2026-10-23",
-          "description": "…am dos Cuidadores Informais Rede de Autarquias Participativas Rede de Cidades e Vilas que Caminham Rede Europeia de Cidades Autênticas Rede Nacional de Municípios Amigos da Juventude Rede Portuguesa de Municípios Saudáveis Identidade Gráfica Planos e Estratégias Avisos, Editais e Comunica…",
+          "description": "…ontacto Temáticas Goberno e Administración intelixente Servizos dixitais Ecosistema dixital de Galicia Planificación Estratéxica Competencias dixitais Ciberseguridade Financiamento Europeo Estratexias e plans Transparencia e goberno aberto Perfil de contratante Transparencia e goberno aberto A…",
           "scope": "GLOBAL",
           "scope_provenance": "unspecified",
-          "research_target_scope": "PT",
+          "research_target_scope": "ES",
           "source_grade": "A",
           "source_type": "official-domain-discovery",
           "official": true,
@@ -28961,7 +28863,357 @@
           "retrieved_at": "2026-10-23",
           "freshness_status": "current",
           "method": "web-evidence:official",
-          "content_digest": "0c8cf69dcbd7e893d6a07fbc1a4ca08fea322884882c3a190546338878abd0d6",
+          "content_digest": "0bbb525361f36ad5bb2c43ed25bbc5507b1270edd657be7a2e9491dfdaa95bfb",
+          "matched_terms": [
+            "ciberseguridad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cybersecurity",
+          "item_key": "cybersecurity",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "amtega.xunta.gal",
+          "source_catalog_name": "Agencia para la Modernización Tecnológica de Galicia",
+          "researched_entity": "Agencia para la Modernización Tecnológica de Galicia",
+          "source_binding": "atomic-item",
+          "title": "Perfil do contratante | Amtega",
+          "url": "https://amtega.xunta.gal/gl/transparencia-e-goberno-aberto/perfil-do-contratante",
+          "date": "2026-10-23",
+          "description": "…ontacto Temáticas Goberno e Administración intelixente Servizos dixitais Ecosistema dixital de Galicia Planificación Estratéxica Competencias dixitais Ciberseguridade Financiamento Europeo Estratexias e plans Transparencia e goberno aberto Perfil de contratante Transparencia e goberno aberto A…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:procurement",
+          "content_digest": "89036ca37bce0d69bd0d98dd34ff604ebeba4d1288cc92d9b163b34c4e1f0ed5",
+          "matched_terms": [
+            "ciberseguridad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cybersecurity",
+          "item_key": "cybersecurity",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "amtega.xunta.gal",
+          "source_catalog_name": "Agencia para la Modernización Tecnológica de Galicia",
+          "researched_entity": "Agencia para la Modernización Tecnológica de Galicia",
+          "source_binding": "atomic-item",
+          "title": "Perfil de contratante | Amtega",
+          "url": "https://amtega.xunta.gal/es/perfil-de-contratante",
+          "date": "2026-10-23",
+          "description": "…cto Temáticas Gobierno y administración inteligente Servicios digitales Ecosistema digital de Galicia Planificación Estratégica Competencias digitales Ciberseguridad Financiamiento Europeo Estrategias y planes Transparencia y gobierno abierto Perfil de contratante Transparencia y gobierno abie…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:procurement",
+          "content_digest": "38b46579df62636517af576305223ed6af5adc1c2d1fff9d9dca4a9fa3b51aac",
+          "matched_terms": [
+            "ciberseguridad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cybersecurity",
+          "item_key": "cybersecurity",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "amtega.xunta.gal",
+          "source_catalog_name": "Agencia para la Modernización Tecnológica de Galicia",
+          "researched_entity": "Agencia para la Modernización Tecnológica de Galicia",
+          "source_binding": "atomic-item",
+          "title": "Actualidad | Amtega",
+          "url": "https://amtega.xunta.gal/es/noticias",
+          "date": "2026-10-23",
+          "description": "…cto Temáticas Gobierno y administración inteligente Servicios digitales Ecosistema digital de Galicia Planificación Estratégica Competencias digitales Ciberseguridad Financiamiento Europeo Estrategias y planes Transparencia y gobierno abierto Perfil de contratante Transparencia y gobierno abie…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "bdf4552495b07dcf3bd0a3ed0f4b127002723f0f3e5435f8d9209d5aec98f41e",
+          "matched_terms": [
+            "ciberseguridad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cybersecurity",
+          "item_key": "cybersecurity",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "amtega.xunta.gal",
+          "source_catalog_name": "Agencia para la Modernización Tecnológica de Galicia",
+          "researched_entity": "Agencia para la Modernización Tecnológica de Galicia",
+          "source_binding": "atomic-item",
+          "title": "El VI Encuentro CIBER.gal, que se celebrará del 4 a 6 de noviembre en la Cidade da Cultura, abrió el plazo de inscripción | Amtega",
+          "url": "https://amtega.xunta.gal/es/noticia/el-vi-encuentro-cibergal-que-se-celebrara-del-4-6-de-noviembre-en-la-cidade-da-cultura",
+          "date": "2026-10-23",
+          "description": "…tacto Temáticas Gobierno y administración inteligente Servicios digitales Ecosistema digital de Galicia Planificación Estratégica Competencias digitales Ciberseguridad Financiamiento Europeo Estrategias y planes Transparencia y gobierno abierto Perfil de contratante Transparencia y gobierno ab…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "66646dca0898b16ffa7fd085db7a1a67255f58a04b408b15ea158eede97e29fd",
+          "matched_terms": [
+            "ciberseguridad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cybersecurity",
+          "item_key": "cybersecurity",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "amtega.xunta.gal",
+      "date": "2026-10-23",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_fb1d287ea91bafc1",
+      "entity_a_id": "clie_f7b1544320203309",
+      "entity_a": "Agencia para la Modernización Tecnológica de Galicia",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "amtega.xunta.gal",
+          "source_catalog_name": "Agencia para la Modernización Tecnológica de Galicia",
+          "researched_entity": "Agencia para la Modernización Tecnológica de Galicia",
+          "source_binding": "atomic-item",
+          "title": "Inicio | Amtega",
+          "url": "https://amtega.xunta.gal/gl",
+          "date": "2026-10-23",
+          "description": "…a galega 21 Set 2026 LinkedIn: para Empresa Ver todos os eventos Iniciativas destacadas Subvencións á dixitalización Guía IA nas AAPP Operadores Bono social Despregamento de redes de telefonía móbil Axudas para empresas illadas Estudo marco ético IA Abalar Stellae 5.0 Fibra óptica en…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "0bbb525361f36ad5bb2c43ed25bbc5507b1270edd657be7a2e9491dfdaa95bfb",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "amtega.xunta.gal",
+          "source_catalog_name": "Agencia para la Modernización Tecnológica de Galicia",
+          "researched_entity": "Agencia para la Modernización Tecnológica de Galicia",
+          "source_binding": "atomic-item",
+          "title": "Actualidad | Amtega",
+          "url": "https://amtega.xunta.gal/es/noticias",
+          "date": "2026-10-23",
+          "description": "…ta de Ciberseguridad Apertura de convocatorias y ayudas Educación Estadísticas Fomento de talento STEM Juventud Lanzamiento de iniciativas/actividades Networking y colaboraciones Prestación de servicios Tecnologías disruptivas Buscar Limpar filtros Una de cada cuatro empresas gallegas con…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "bdf4552495b07dcf3bd0a3ed0f4b127002723f0f3e5435f8d9209d5aec98f41e",
+          "matched_terms": [
+            "networking"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "amtega.xunta.gal",
+          "source_catalog_name": "Agencia para la Modernización Tecnológica de Galicia",
+          "researched_entity": "Agencia para la Modernización Tecnológica de Galicia",
+          "source_binding": "atomic-item",
+          "title": "El VI Encuentro CIBER.gal, que se celebrará del 4 a 6 de noviembre en la Cidade da Cultura, abrió el plazo de inscripción | Amtega",
+          "url": "https://amtega.xunta.gal/es/noticia/el-vi-encuentro-cibergal-que-se-celebrara-del-4-6-de-noviembre-en-la-cidade-da-cultura",
+          "date": "2026-10-23",
+          "description": "…es dinámicas para escolares, organizados por S2 Grupo, y una competición de retos Capture The Flag (CTF), impulsada por Gradiant. A lo largo de las jornadas, los asistentes presenciales podrán disfrutar de momentos de networking con café, aperitivos y sorteos, en un ambiente pensado para f…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "66646dca0898b16ffa7fd085db7a1a67255f58a04b408b15ea158eede97e29fd",
+          "matched_terms": [
+            "networking"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "amtega.xunta.gal",
+      "date": "2026-10-23",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_e9970e8cd3086350",
+      "entity_a_id": "clie_f7b1544320203309",
+      "entity_a": "Agencia para la Modernización Tecnológica de Galicia",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_e767adbaaec3b48b",
+      "entity_b": "AI / Data",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "amtega.xunta.gal",
+          "source_catalog_name": "Agencia para la Modernización Tecnológica de Galicia",
+          "researched_entity": "Agencia para la Modernización Tecnológica de Galicia",
+          "source_binding": "atomic-item",
+          "title": "Actualidad | Amtega",
+          "url": "https://amtega.xunta.gal/es/noticias",
+          "date": "2026-10-23",
+          "description": "…s Prestación de servicios Tecnologías disruptivas Buscar Limpar filtros Una de cada cuatro empresas gallegas con diez o más personas empleadas utiliza inteligencia artificial 22/10/2026 La Inteligencia artificial se consolida entre las tecnologías empleadas por las empresas gallegas de mayor tamaño. La…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "bdf4552495b07dcf3bd0a3ed0f4b127002723f0f3e5435f8d9209d5aec98f41e",
+          "matched_terms": [
+            "inteligencia artificial"
+          ],
+          "field": "technology_signals",
+          "item_value": "AI / Data",
+          "item_key": "ai data",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "amtega.xunta.gal",
+          "source_catalog_name": "Agencia para la Modernización Tecnológica de Galicia",
+          "researched_entity": "Agencia para la Modernización Tecnológica de Galicia",
+          "source_binding": "atomic-item",
+          "title": "El VI Encuentro CIBER.gal, que se celebrará del 4 a 6 de noviembre en la Cidade da Cultura, abrió el plazo de inscripción | Amtega",
+          "url": "https://amtega.xunta.gal/es/noticia/el-vi-encuentro-cibergal-que-se-celebrara-del-4-6-de-noviembre-en-la-cidade-da-cultura",
+          "date": "2026-10-23",
+          "description": "…e desarrollará a lo largo de tres jornadas y combinará conferencias, mesas redondas, actividades divulgativas y propuestas La relación de la ciberseguridad con la inteligencia artificial, la aplicación de la directiva europea, la identidad digital, la soberanía tecnológica y la computación cuántica cen…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "66646dca0898b16ffa7fd085db7a1a67255f58a04b408b15ea158eede97e29fd",
+          "matched_terms": [
+            "inteligencia artificial"
+          ],
+          "field": "technology_signals",
+          "item_value": "AI / Data",
+          "item_key": "ai data",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "amtega.xunta.gal",
+      "date": "2026-10-23",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_a2d36c0879173604",
+      "entity_a_id": "clie_f7b1544320203309",
+      "entity_a": "Agencia para la Modernización Tecnológica de Galicia",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_70574f8129932ee1",
+      "entity_b": "Identity & Access",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "amtega.xunta.gal",
+          "source_catalog_name": "Agencia para la Modernización Tecnológica de Galicia",
+          "researched_entity": "Agencia para la Modernización Tecnológica de Galicia",
+          "source_binding": "atomic-item",
+          "title": "El VI Encuentro CIBER.gal, que se celebrará del 4 a 6 de noviembre en la Cidade da Cultura, abrió el plazo de inscripción | Amtega",
+          "url": "https://amtega.xunta.gal/es/noticia/el-vi-encuentro-cibergal-que-se-celebrara-del-4-6-de-noviembre-en-la-cidade-da-cultura",
+          "date": "2026-10-23",
+          "description": "…as, mesas redondas, actividades divulgativas y propuestas La relación de la ciberseguridad con la inteligencia artificial, la aplicación de la directiva europea, la identidad digital, la soberanía tecnológica y la computación cuántica centrarán buena parte de los contenidos profesionales…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "66646dca0898b16ffa7fd085db7a1a67255f58a04b408b15ea158eede97e29fd",
           "matched_terms": [
             "identidad"
           ],
@@ -28972,172 +29224,7 @@
           "revalidation": ""
         }
       ],
-      "source": "cm-gondomar.pt",
-      "date": "2026-10-23",
-      "confidence": 0.48,
-      "status": "SEÑAL",
-      "validity": "needs-corroboration",
-      "derived": true
-    },
-    {
-      "id": "rel_8ef43228c882a2f7",
-      "entity_a_id": "clie_3b1b22390cb9e48b",
-      "entity_a": "Município de Braga",
-      "relation": "technology_signal",
-      "entity_b_id": "tech_9e91940ff9231ef9",
-      "entity_b": "Networking",
-      "countries": [
-        "PT"
-      ],
-      "country": "PT",
-      "evidence": [
-        {
-          "source": "cm-braga.pt",
-          "source_catalog_name": "Município de Braga",
-          "researched_entity": "Município de Braga",
-          "source_binding": "atomic-item",
-          "title": "Ayuntamiento de Braga",
-          "url": "https://www.cm-braga.pt/es",
-          "date": "2026-10-23",
-          "description": "…oquias civiles Empresas Empresas Municipales Empresas Afiliadas Cooperación Institucional Presentación Acuerdos de Cooperación Hermanamientos Redes Heráldica Vivir Ciudad Estrategia Innovación Presentación Plano Estratégico para el Desarrollo Ambiente Presentación Espacios Verdes Play…",
-          "scope": "GLOBAL",
-          "scope_provenance": "unspecified",
-          "research_target_scope": "PT",
-          "source_grade": "A",
-          "source_type": "official-domain-discovery",
-          "official": true,
-          "classification": "public",
-          "retrieved_at": "2026-10-23",
-          "freshness_status": "current",
-          "method": "web-evidence:official",
-          "content_digest": "cd3c15f5604d1722ad898ccbe2993c89860837ef5e1a0f24d533ca39c38cb0d4",
-          "matched_terms": [
-            "redes"
-          ],
-          "field": "technology_signals",
-          "item_value": "Networking",
-          "item_key": "networking",
-          "atomic": true,
-          "revalidation": ""
-        },
-        {
-          "source": "cm-braga.pt",
-          "source_catalog_name": "Município de Braga",
-          "researched_entity": "Município de Braga",
-          "source_binding": "atomic-item",
-          "title": "Ayuntamiento de Braga | Comunicación | Noticias",
-          "url": "https://www.cm-braga.pt/es/0201/comunicacao/noticias",
-          "date": "2026-10-23",
-          "description": "…Parroquias civiles Empresas Empresas Municipales Empresas Afiliadas Cooperación Institucional Presentación Acuerdos de Cooperación Hermanamientos Redes Heráldica Vivir Ciudad Estrategia Innovación Presentación Plano Estratégico para el Desarrollo Ambiente Presentación Espacios Verdes…",
-          "scope": "GLOBAL",
-          "scope_provenance": "unspecified",
-          "research_target_scope": "PT",
-          "source_grade": "A",
-          "source_type": "official-domain-discovery",
-          "official": true,
-          "classification": "public",
-          "retrieved_at": "2026-10-23",
-          "freshness_status": "current",
-          "method": "web-evidence:news",
-          "content_digest": "9cd4f3d63e89ba45e7656c09a7c265df5c12def42efb2728517c7b298d47d4e9",
-          "matched_terms": [
-            "redes"
-          ],
-          "field": "technology_signals",
-          "item_value": "Networking",
-          "item_key": "networking",
-          "atomic": true,
-          "revalidation": ""
-        },
-        {
-          "source": "cm-braga.pt",
-          "source_catalog_name": "Município de Braga",
-          "researched_entity": "Município de Braga",
-          "source_binding": "atomic-item",
-          "title": "Ayuntamiento de Braga | Notícias | Festival Semibreve 2017",
-          "url": "https://www.cm-braga.pt/es/0201/home/noticias/item/item-3-6444",
-          "date": "2026-10-23",
-          "description": "…Parroquias civiles Empresas Empresas Municipales Empresas Afiliadas Cooperación Institucional Presentación Acuerdos de Cooperación Hermanamientos Redes Heráldica Vivir Ciudad Estrategia Innovación Presentación Plano Estratégico para el Desarrollo Ambiente Presentación Espacios Verdes…",
-          "scope": "GLOBAL",
-          "scope_provenance": "unspecified",
-          "research_target_scope": "PT",
-          "source_grade": "A",
-          "source_type": "official-domain-discovery",
-          "official": true,
-          "classification": "public",
-          "retrieved_at": "2026-10-23",
-          "freshness_status": "current",
-          "method": "web-evidence:news",
-          "content_digest": "058c3e35e882e1eb99c60d1eca47a45a0d8fdc22adb24c2cae1d4d55e261c1e1",
-          "matched_terms": [
-            "redes"
-          ],
-          "field": "technology_signals",
-          "item_value": "Networking",
-          "item_key": "networking",
-          "atomic": true,
-          "revalidation": ""
-        },
-        {
-          "source": "cm-braga.pt",
-          "source_catalog_name": "Município de Braga",
-          "researched_entity": "Município de Braga",
-          "source_binding": "atomic-item",
-          "title": "Ayuntamiento de Braga | Notícias | Braga elegida como la Ciudad Europea del Deporte en 2018",
-          "url": "https://www.cm-braga.pt/es/0201/home/noticias/item/item-1-5195",
-          "date": "2026-10-23",
-          "description": "…Parroquias civiles Empresas Empresas Municipales Empresas Afiliadas Cooperación Institucional Presentación Acuerdos de Cooperación Hermanamientos Redes Heráldica Vivir Ciudad Estrategia Innovación Presentación Plano Estratégico para el Desarrollo Ambiente Presentación Espacios Verdes…",
-          "scope": "GLOBAL",
-          "scope_provenance": "unspecified",
-          "research_target_scope": "PT",
-          "source_grade": "A",
-          "source_type": "official-domain-discovery",
-          "official": true,
-          "classification": "public",
-          "retrieved_at": "2026-10-23",
-          "freshness_status": "current",
-          "method": "web-evidence:news",
-          "content_digest": "055ddf8dd33dcf3175dc3e3733e5c3228c06e5318bd562ea3c12ed4cfface88f",
-          "matched_terms": [
-            "redes"
-          ],
-          "field": "technology_signals",
-          "item_value": "Networking",
-          "item_key": "networking",
-          "atomic": true,
-          "revalidation": ""
-        },
-        {
-          "source": "cm-braga.pt",
-          "source_catalog_name": "Município de Braga",
-          "researched_entity": "Município de Braga",
-          "source_binding": "atomic-item",
-          "title": "Ayuntamiento de Braga | Notícias | Braga fue la ciudad elegida para organizar la XIII edición de los Juegos del Eje Atlántico en 2019",
-          "url": "https://www.cm-braga.pt/es/0201/home/noticias/item/item-1-4638",
-          "date": "2026-10-23",
-          "description": "…Parroquias civiles Empresas Empresas Municipales Empresas Afiliadas Cooperación Institucional Presentación Acuerdos de Cooperación Hermanamientos Redes Heráldica Vivir Ciudad Estrategia Innovación Presentación Plano Estratégico para el Desarrollo Ambiente Presentación Espacios Verdes…",
-          "scope": "GLOBAL",
-          "scope_provenance": "unspecified",
-          "research_target_scope": "PT",
-          "source_grade": "A",
-          "source_type": "official-domain-discovery",
-          "official": true,
-          "classification": "public",
-          "retrieved_at": "2026-10-23",
-          "freshness_status": "current",
-          "method": "web-evidence:news",
-          "content_digest": "f266c83329b9a622ff03bd056116b7a578f67d2a03be704c1a7506ca19c1d0d6",
-          "matched_terms": [
-            "redes"
-          ],
-          "field": "technology_signals",
-          "item_value": "Networking",
-          "item_key": "networking",
-          "atomic": true,
-          "revalidation": ""
-        }
-      ],
-      "source": "cm-braga.pt",
+      "source": "amtega.xunta.gal",
       "date": "2026-10-23",
       "confidence": 0.48,
       "status": "SEÑAL",
@@ -30145,6 +30232,55 @@
       ],
       "source": "Cellnex",
       "date": "2026-09-01",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_fd482919425b8c31",
+      "entity_a_id": "clie_69c6121d4cecfdf2",
+      "entity_a": "Cellnex",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_0e10e164957d4cad",
+      "entity_b": "Data Center",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "cellnex.com",
+          "source_catalog_name": "Cellnex",
+          "researched_entity": "Cellnex",
+          "source_binding": "atomic-item",
+          "title": "Telecommunications Infrastructure Connecting Europe’s Future - Cellnex",
+          "url": "https://www.cellnex.com/",
+          "date": "2026-10-23",
+          "description": "…of the service. See more USE CASES Delivering connectivity over 120Km across land and sea Welsh Mountains (United Kingdom) Telecom Infrastructure Services 3 Metre-wide dishes at height 01 /03 SEE USE CASES USE CASES Seamless connectivity for up to 4,700 daily users at the Tour Alto buildin…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:financial",
+          "content_digest": "ee3beafcf3138874aa9fdb004eced075743074b1725b3235107e8d048aa9e351",
+          "matched_terms": [
+            "Data Center"
+          ],
+          "field": "technology_signals",
+          "item_value": "Data Center",
+          "item_key": "data center",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "cellnex.com",
+      "date": "2026-10-23",
       "confidence": 0.48,
       "status": "SEÑAL",
       "validity": "needs-corroboration",
@@ -32694,6 +32830,153 @@
       "status": "SEÑAL",
       "validity": "needs-corroboration",
       "derived": true
+    },
+    {
+      "id": "rel_f96a151883d73c2a",
+      "entity_a_id": "clie_dff6f01722f0521c",
+      "entity_a": "Semapa",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "semapa.pt",
+          "source_catalog_name": "Semapa",
+          "researched_entity": "Semapa",
+          "source_binding": "atomic-item",
+          "title": "Página pública · official",
+          "url": "https://www.semapa.pt/",
+          "date": "2026-10-23",
+          "description": "…iativas que nos levam por um caminho melhor. Saiba mais Política de Privacidade Termos de Utilização Política de Cookies Contacte-nos Copyright © 2026 Grupo Semapa. All rights reserved. CONSULTE AS NOSSAS REDES SOCIAIS",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "fad32b53d0f9d1b77d2563baa90a52a8cb341800fc582a267b26f47b7112cb0d",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "semapa.pt",
+      "date": "2026-10-23",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_76cbc8bf7dc6f702",
+      "entity_a_id": "dist_3bb6c0bb4e1a2fef",
+      "entity_a": "EET Portugal",
+      "relation": "distributes",
+      "entity_b_id": "manu_cec06f879afd1765",
+      "entity_b": "CrowdStrike",
+      "countries": [
+        "GLOBAL"
+      ],
+      "country": "GLOBAL",
+      "evidence": [
+        {
+          "source": "crowdstrike.com",
+          "source_catalog_name": "Ignition Technology",
+          "researched_entity": "EET Portugal",
+          "source_binding": "atomic-item",
+          "title": "Ignition Technology Partnership Expands to Meet European Demand",
+          "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-ignition-technology-expand-partnership/",
+          "date": "2026-10-23",
+          "description": "Ignition Technology Partnership Expands to Meet European Demand Skip to Main Content CrowdStrike Protects Customers from Threats Delivered via PHP2Shell Read blog Experienced a breach? Blog Contact us Careers Latest Innovations Platform…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "B",
+          "source_type": "industry",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:partners",
+          "content_digest": "e41d87ba2efa5bf9520a4f792a0bbbe3b0cd5f86b3b64125767c554abad0a0b1",
+          "matched_terms": [
+            "CrowdStrike"
+          ],
+          "field": "vendor_relations",
+          "item_value": "CrowdStrike",
+          "item_key": "crowdstrike",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "crowdstrike.com",
+      "date": "2026-10-23",
+      "confidence": 0.88,
+      "status": "CONFIRMADO",
+      "validity": "current",
+      "derived": false
+    },
+    {
+      "id": "rel_d10285881595a84f",
+      "entity_a_id": "dist_5bfd891a3cf6a327",
+      "entity_a": "Lidera Networks",
+      "relation": "distributes",
+      "entity_b_id": "manu_cec06f879afd1765",
+      "entity_b": "CrowdStrike",
+      "countries": [
+        "GLOBAL"
+      ],
+      "country": "GLOBAL",
+      "evidence": [
+        {
+          "source": "crowdstrike.com",
+          "source_catalog_name": "Ignition Technology",
+          "researched_entity": "Lidera Networks",
+          "source_binding": "atomic-item",
+          "title": "Ignition Technology Partnership Expands to Meet European Demand",
+          "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-ignition-technology-expand-partnership/",
+          "date": "2026-10-23",
+          "description": "Ignition Technology Partnership Expands to Meet European Demand Skip to Main Content CrowdStrike Protects Customers from Threats Delivered via PHP2Shell Read blog Experienced a breach? Blog Contact us Careers Latest Innovations Platform…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "B",
+          "source_type": "industry",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-23",
+          "freshness_status": "current",
+          "method": "web-evidence:partners",
+          "content_digest": "e41d87ba2efa5bf9520a4f792a0bbbe3b0cd5f86b3b64125767c554abad0a0b1",
+          "matched_terms": [
+            "CrowdStrike"
+          ],
+          "field": "vendor_relations",
+          "item_value": "CrowdStrike",
+          "item_key": "crowdstrike",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "crowdstrike.com",
+      "date": "2026-10-23",
+      "confidence": 0.88,
+      "status": "CONFIRMADO",
+      "validity": "current",
+      "derived": false
     },
     {
       "id": "rel_2ac4b1146dc582f0",
