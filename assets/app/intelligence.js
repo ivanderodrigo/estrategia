@@ -1,7 +1,7 @@
 // App v4.3.1
 (() => {
   'use strict';
-  const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
+  const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'observatorio', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -68,8 +68,48 @@
     }
     localStorage.setItem(revision,'1');
   }
+  function renderObservatorio(){
+    const el=$('#observatorioBody');if(!el)return;
+    const run=state.lastRun||{},q=run.research_quality||{},g=run.gap_status_summary||{},debt=g.by_status||{};
+    const priorities=run.gap_priority?.tiers||{};
+    const valid=run.status==='published';
+    const count=(v)=>Number.isFinite(Number(v))?Number(v).toLocaleString('es-ES'):'—';
+    const counts=state.manifest?.counts||{};
+    const stat=(title,value,note)=>'<article class="observatorio-card"><span>'+esc(title)+'</span><strong>'+esc(count(value))+'</strong><small>'+esc(note)+'</small></article>';
+    const statusLabels=[
+      ['not-researched','Sin investigación registrada'],
+      ['not-found','Búsqueda sin resultado suficiente'],
+      ['historical-validation','Pistas históricas por validar'],
+      ['insufficient-support','Evidencias insuficientes'],
+      ['derivation-pending','Cálculos pendientes'],
+      ['source-unavailable','Problemas con fuentes']
+    ];
+    const rows=statusLabels.filter(([key])=>Number(debt[key]||0)>0).map(([key,label])=>'<tr><td>'+esc(label)+'</td><td>'+esc(count(debt[key]))+'</td></tr>').join('');
+    const nav=[['fabricantes','Fabricantes'],['mayoristas','Mayoristas'],['integradores','Partners e integradores'],['clientes','Clientes y oportunidades'],['tendencias','Tendencias'],['arquitecturas','Arquitecturas']];
+    el.innerHTML=
+      '<div class="observatorio-ribbon">'+(valid?'Última publicación validada: ':'Última publicación no confirmada: ')+esc(localDateTime(run.finished_at||state.data?.meta?.generated_at||''))+
+      ' · Calidad de integridad: '+esc(run.quality_score??'no disponible')+'/100. Esta puntuación NO equivale a cobertura del mercado.</div>'+
+      '<div class="observatorio-kpis">'+
+      stat('Fabricantes Westcon',run.manufacturers??counts.manufacturers,'Entidades monitorizadas')+
+      stat('Integradores',run.integrators??counts.integrators,'Fichas de ecosistema')+
+      stat('Mayoristas',run.distributors??counts.distributors,'Comparación competitiva')+
+      stat('Clientes',run.clients??(Number(counts.clients_public||0)+Number(counts.clients_private||0)),'Cuentas y contratación')+
+      '</div>'+
+      '<div class="observatorio-panels">'+
+      '<section class="observatorio-panel"><h2>Qué aportó la última investigación</h2><p>Los hallazgos no equivalen automáticamente a oportunidades de venta.</p>'+
+      '<div class="observatorio-kpis observatorio-kpis-small">'+
+      stat('Valores añadidos',q.values_added,'Nuevos datos')+
+      stat('Evidencias aceptadas',q.accepted_evidences,'Pueden corroborar valores existentes')+
+      stat('Entidades añadidas',q.entities_added,'Requieren contexto comercial')+
+      '</div></section>'+
+      '<section class="observatorio-panel"><h2>Qué sigue pendiente</h2><p>'+esc(count(run.research_gaps))+' tareas abiertas; no son '+esc(count(run.research_gaps))+' casillas vacías. Un campo puede generar varias verificaciones.</p>'+
+      (rows?'<table class="observatorio-debt"><tbody>'+rows+'</tbody></table>':'<p>El desglose por estados estará disponible tras la próxima publicación del motor actualizado.</p>')+
+      '<p>Prioridad elevada (P0 + P1): '+esc(count(Number(priorities.P0||0)+Number(priorities.P1||0)))+' tareas, sujetas a relevancia y acreditación.</p></section></div>'+
+      '<div class="observatorio-panel"><h2>Explorar el observatorio</h2><p>Consulta la información con sus fuentes y fechas antes de convertir una señal en una propuesta comercial.</p>'+
+      '<div class="observatorio-links">'+nav.map(([id,label])=>'<button type="button" data-observatorio-jump="'+esc(id)+'">'+esc(label)+' →</button>').join('')+'</div></div>';
+  }
   function renderActiveView(){
-    ({fabricantes:renderManufacturers,mayoristas:renderDistributors,integradores:renderIntegrators,clientes:renderClients,tendencias:renderTrends,arquitecturas:renderArchitectures}[state.view]||(()=>{}))();
+    ({observatorio:renderObservatorio,fabricantes:renderManufacturers,mayoristas:renderDistributors,integradores:renderIntegrators,clientes:renderClients,tendencias:renderTrends,arquitecturas:renderArchitectures}[state.view]||(()=>{}))();
   }
   async function load(){
     const [res, runRes] = await Promise.all([
@@ -88,7 +128,8 @@
   }
 
   function bind(){
-    $$('#tabs [data-view]').forEach(btn => btn.addEventListener('click', () => switchView(btn.dataset.view)));
+    $('#tabs [data-view]').forEach(btn => btn.addEventListener('click', () => switchView(btn.dataset.view)));
+    $('#observatorioBody')?.addEventListener('click', e => {const target=e.target.closest('[data-observatorio-jump]');if(target)switchView(target.dataset.observatorioJump);});
     $('#utilityMenuToggle')?.addEventListener('click', e => { e.stopPropagation(); toggleUtilityMenu(); });
     $('#manufacturerSearch')?.addEventListener('input', renderManufacturers);
     $('#integratorSearch')?.addEventListener('input', renderIntegrators);
