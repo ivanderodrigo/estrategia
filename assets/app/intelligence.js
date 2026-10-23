@@ -1,7 +1,7 @@
 // App v4.3.1
 (() => {
   'use strict';
-  const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'observatorio', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
+  const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'observatorio', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -75,6 +75,7 @@
     const valid=run.status==='published';
     const count=(v)=>Number.isFinite(Number(v))?Number(v).toLocaleString('es-ES'):'—';
     const counts=state.manifest?.counts||{};
+    const historical=state.historyGapSummary||null;
     const stat=(title,value,note)=>'<article class="observatorio-card"><span>'+esc(title)+'</span><strong>'+esc(count(value))+'</strong><small>'+esc(note)+'</small></article>';
     const statusLabels=[
       ['not-researched','Sin investigación registrada'],
@@ -105,6 +106,13 @@
       '<section class="observatorio-panel"><h2>Qué sigue pendiente</h2><p>'+esc(count(run.research_gaps))+' tareas abiertas; no son '+esc(count(run.research_gaps))+' casillas vacías. Un campo puede generar varias verificaciones.</p>'+
       (rows?'<table class="observatorio-debt"><tbody>'+rows+'</tbody></table>':'<p>El desglose por estados estará disponible tras la próxima publicación del motor actualizado.</p>')+
       '<p>Prioridad elevada (P0 + P1): '+esc(count(Number(priorities.P0||0)+Number(priorities.P1||0)))+' tareas, sujetas a relevancia y acreditación.</p></section></div>'+
+      '<div class="observatorio-panel"><h2>Inteligencia con memoria histórica</h2>'+
+      (historical?'<p><strong>'+esc(count(historical.tasks_with_historical_antecedents))+'</strong> de <strong>'+esc(count(historical.total_current_research_tasks))+
+      '</strong> tareas tenían antecedentes documentados en el snapshot del '+esc(String(historical.dataset_published_at||'').slice(0,10))+'. '+esc(count(historical.by_match_level?.['exact-value-history']||0))+
+      ' coincidían además en el valor histórico. Son pistas para la revalidación, <strong>no hechos actuales confirmados</strong>.</p>':
+      '<p>El resumen de antecedentes históricos todavía no está disponible.</p>')+
+      '<p>El nuevo motor consulta primero las URLs históricas exactas, las verifica nuevamente y conserva tanto los hallazgos como sus fuentes.</p>'+
+      '<p><a href="memoria-historica.html">Explorar memoria histórica y fuentes ↗</a></p></div>'+
       '<div class="observatorio-panel"><h2>Explorar el observatorio</h2><p>Consulta la información con sus fuentes y fechas antes de convertir una señal en una propuesta comercial.</p>'+
       '<div class="observatorio-links">'+nav.map(([id,label])=>'<button type="button" data-observatorio-jump="'+esc(id)+'">'+esc(label)+' →</button>').join('')+'</div></div>';
   }
@@ -112,9 +120,10 @@
     ({observatorio:renderObservatorio,fabricantes:renderManufacturers,mayoristas:renderDistributors,integradores:renderIntegrators,clientes:renderClients,tendencias:renderTrends,arquitecturas:renderArchitectures}[state.view]||(()=>{}))();
   }
   async function load(){
-    const [res, runRes] = await Promise.all([
+    const [res, runRes, historyRes] = await Promise.all([
       fetch('data/public/manifest.json', {cache:'no-store'}),
-      fetch('data/public/last_run.json', {cache:'no-store'}).catch(()=>null)
+      fetch('data/public/last_run.json', {cache:'no-store'}).catch(()=>null),
+      fetch('data/public/historical/gap_summary.json', {cache:'no-store'}).catch(()=>null)
     ]);
     if(!res.ok) throw new Error(`No se pudo cargar data/public/manifest.json (${res.status})`);
     state.manifest = await res.json();
@@ -122,6 +131,7 @@
     migrateBusinessTablePrefs();
     for(const section of PUBLIC_SECTIONS) state.data[section]=[];
     if(runRes?.ok){ try{ state.lastRun = await runRes.json(); }catch(_){ state.lastRun=null; } }
+    if(historyRes?.ok){ try{state.historyGapSummary=await historyRes.json();}catch(_){state.historyGapSummary=null;} }
     await ensureViewData(state.view);
     bind();
     renderAll();
