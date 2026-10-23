@@ -1,0 +1,55 @@
+name: Daily 81 isolated integration regression
+
+on:
+  push:
+    branches:
+      - fix/daily81-evidence-integrity
+    paths:
+      - '.github/workflows/daily81-repro.yml'
+      - 'engine/**'
+      - 'tests/**'
+      - '.github/workflows/research-run.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily81-isolated-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  isolated-research-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    env:
+      PYTHONHASHSEED: "0"
+      PYTHONUTF8: "1"
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install runtime
+        run: python -m pip install -r requirements.txt
+      - name: Exercise real Daily research and build without publication
+        run: python scripts/research_supervisor.py --profile daily --max-runtime 720 --fallback-runtime 0
+      - name: Validate non-published result
+        run: |
+          python scripts/validate.py
+          python scripts/validate_workflows.py
+      - name: Upload failure analysis
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily81-isolated-diagnostics-${{ github.run_id }}
+          path: |
+            data/current/supervisor.json
+            data/current/research_ledger.json
+            data/current/knowledge_preservation_failure.json
+            data/current/quality_failure.json
+            data/current/preservation_claim_trace.json
+          if-no-files-found: warn
+          retention-days: 7
