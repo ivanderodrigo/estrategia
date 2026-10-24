@@ -313,6 +313,18 @@ def normalize_fields(data: dict[str, Any]) -> dict[str, Any]:
             for field_id, field in (row.get("fields") or {}).items():
                 value = field.get("value")
                 if not isinstance(value, list):
+                    # Legacy scalar wrappers represent the same claim, not a sibling.
+                    # Reconcile only exact owner/field/value-bound support. Never
+                    # broadcast aggregate evidence across multi-valued fields.
+                    for target in field.get("items") or []:
+                        if isinstance(target, dict) and target.get("value") == value:
+                            specific = evidence_for_item(
+                                field.get("evidence") or [], row.get("name"),
+                                value, field_id=field_id,
+                            )
+                            target["evidence"] = _dedupe_evidence(
+                                list(target.get("evidence") or []) + specific
+                            )
                     continue
                 out = []
                 seen = set()

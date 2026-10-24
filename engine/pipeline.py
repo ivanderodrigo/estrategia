@@ -90,6 +90,8 @@ def _sync_source_catalog(data: dict[str, Any]) -> None:
 
 def run() -> dict[str, Any]:
     data = read_json("data/current/intelligence.json")
+    from .public_recovery import recover_newer_public
+    recover_newer_public(data)
     existing_graph = read_json("data/current/relationship_graph.json", {})
     # Preserve the exact post-research input as the reconciliation source. Canonical build
     # steps may normalize ids/fields, but must not detach valid support from surviving facts.

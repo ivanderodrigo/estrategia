@@ -13,7 +13,7 @@
   const toast = msg => { const el=$('#toast'); if(!el) return; el.textContent=msg; el.classList.add('show'); clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove('show'),2600); };
 
   const PUBLIC_SECTIONS=['manufacturers','distributors','integrators','clients_public','clients_private','trends','architectures'];
-  const VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors'],integradores:['integrators','manufacturers'],clientes:['clients_public','clients_private'],tendencias:['trends','manufacturers'],arquitecturas:['architectures']};
+  const VIEW_SECTIONS={observatorio:PUBLIC_SECTIONS,fabricantes:['manufacturers'],mayoristas:['distributors'],integradores:['integrators','manufacturers'],clientes:['clients_public','clients_private'],tendencias:['trends','manufacturers'],arquitecturas:['architectures']};
   const CRITERIA_VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors'],integradores:['integrators'],clientes:['clients_public','clients_private'],tendencias:['trends'],arquitecturas:['architectures']};
   const CRITERIA_SECTION_LABELS={manufacturers:'Fabricantes',distributors:'Mayoristas',integrators:'Integradores',clients_public:'Clientes públicos',clients_private:'Clientes privados',trends:'Tendencias',architectures:'Arquitecturas'};
   const RESEARCH_CRITERIA_PLAYBOOKS={
@@ -68,6 +68,35 @@
     }
     localStorage.setItem(revision,'1');
   }
+  function observatoryWatch(){try{const x=JSON.parse(localStorage.getItem('westcon-observatory-watch')||'[]');return Array.isArray(x)?x.filter(v=>typeof v==='string'):[];}catch(_){return [];}}
+  function renderDecisionDesk(){
+    const host=$('#decisionDesk');if(!host||!window.WestconObservatory)return;
+    const O=window.WestconObservatory;
+    const sectionOptions=Object.entries(O.sections).map(([k,v])=>`<option value="${k}">${esc(v)}</option>`).join('');
+    host.innerHTML=`<section class="decision-desk"><div class="desk-heading"><div><div class="eyebrow">DE LA EVIDENCIA A LA ACCIÓN</div><h2>Tu mesa de observación</h2><p>Busca necesidades, tecnologías y actores. Cada dato conserva su fuente; las próximas acciones son propuestas de trabajo.</p></div><button type="button" id="deskExport">Descargar briefing</button></div><div class="desk-filters"><label>Buscar en el conocimiento acreditado<input id="deskSearch" type="search" placeholder="Ej.: SASE, Extreme, sanidad…"></label><label>Ámbito<select id="deskScope"><option value="">España y Portugal / otros</option><option>ES</option><option>PT</option></select></label><label>Tipo de entidad<select id="deskSection"><option value="">Todos</option>${sectionOptions}</select></label></div><div class="desk-toggles"><label><input type="checkbox" id="deskUpcoming"> Hitos publicados en los próximos 90 días</label><label><input type="checkbox" id="deskWatched"> Solo mi seguimiento</label><span>Seguimiento guardado en este navegador</span></div><p id="deskCount" role="status"></p><div id="deskCards" class="desk-cards"></div><button type="button" id="deskMore" hidden>Mostrar más</button><details class="desk-method"><summary>Cómo se selecciona esta información</summary><p>Se incluyen valores con evidencia acreditativa publicada. Las listas exigen una fuente del valor exacto. Se ordenan primero los hitos futuros de contratación sin estado de cierre explícito y después las fichas con comprobaciones más recientes. Un hito publicado puede no ser un plazo de presentación: confirma su significado y vigencia en el expediente. La fecha de comprobación no es la fecha de una noticia. Las pistas históricas permanecen en las tablas y en la memoria histórica.</p></details></section>`;
+    state.deskRows=O.build(state.data);state.deskLimit=12;
+    for(const id of ['deskSearch','deskScope','deskSection','deskUpcoming','deskWatched'])$('#'+id).addEventListener(id==='deskSearch'?'input':'change',()=>{state.deskLimit=12;renderDeskCards();});
+    $('#deskMore').addEventListener('click',()=>{state.deskLimit+=12;renderDeskCards();});
+    $('#deskExport').addEventListener('click',exportDeskBrief);
+    $('#deskCards').addEventListener('click',e=>{const b=e.target.closest('[data-watch-id]');if(!b)return;const ids=observatoryWatch(),id=b.dataset.watchId,ix=ids.indexOf(id);if(ix<0)ids.push(id);else ids.splice(ix,1);try{localStorage.setItem('westcon-observatory-watch',JSON.stringify(ids));renderDeskCards();}catch(_){toast('No se pudo guardar el seguimiento en este navegador.');}});
+    renderDeskCards();
+  }
+  function deskSelection(){return window.WestconObservatory.select(state.deskRows||[],{query:$('#deskSearch')?.value,scope:$('#deskScope')?.value,section:$('#deskSection')?.value,upcomingOnly:$('#deskUpcoming')?.checked,watchedOnly:$('#deskWatched')?.checked,watched:observatoryWatch()});}
+  function deskAction(r){return r.section==='clients_public'?(r.closed?'Revisar adjudicación y ciclo de renovación con el partner.':'Revisar pliego, alcance, fechas y encaje con el partner antes de cualificar.'):(r.section==='manufacturers'?'Seleccionar una capacidad acreditada y preparar un caso de uso con preventa.':r.section==='integrators'?'Cruzar especialización acreditada con el portfolio y preparar una reunión de desarrollo.':r.section==='distributors'?'Comparar servicios documentados y concretar una propuesta de diferenciación.':r.section==='clients_private'?'Validar la necesidad con el partner y preparar preguntas para la cuenta.':'Evaluar aplicación a una cuenta y definir una prueba con criterio de éxito.');}
+  function deskFactHtml(f){const O=window.WestconObservatory;const ev=[...f.evidence].sort((a,b)=>Number(Boolean(O.safeUrl(b.url)))-Number(Boolean(O.safeUrl(a.url))))[0];const url=O.safeUrl(ev?.url);const source=ev?.source||ev?.title||'Fuente documental';return `<li><span>${esc(f.label)}</span><strong>${esc(f.value)}</strong>${url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(source)} ↗</a>`:`<small title="${esc(ev?.title||'')}">${esc(source)} · ${esc(ev?.document||ev?.date||'documentación vigente')}</small>`}</li>`;}
+  function renderDeskCards(){
+    const rows=deskSelection(),watched=observatoryWatch();state.deskSelected=rows;
+    $('#deskCount').textContent=`${rows.length.toLocaleString('es-ES')} fichas con datos acreditados · ${rows.filter(r=>r.upcoming).length} con hito próximo · ${watched.length} en seguimiento`;
+    $('#deskCards').innerHTML=rows.slice(0,state.deskLimit).map(r=>{const chosen=r.facts.slice(0,5),rest=r.facts.slice(5);return `<article class="desk-card"><div class="desk-card-top"><span>${esc(r.label)} · ${esc(r.scope)}</span><button type="button" data-watch-id="${esc(r.id)}" aria-pressed="${watched.includes(r.id)}" aria-label="${watched.includes(r.id)?'Dejar de seguir':'Seguir'} ${esc(r.name)}">${watched.includes(r.id)?'★ Siguiendo':'☆ Seguir'}</button></div><h3>${esc(r.name)}</h3><p class="desk-date">${r.upcoming?'Hito próximo · ':r.closed?'Estado de cierre publicado · ':''}${r.checked?'Comprobación más reciente: '+new Date(r.checked).toLocaleDateString('es-ES',{timeZone:'UTC'}):'Sin fecha de comprobación normalizada'}</p><ul class="desk-facts">${chosen.map(deskFactHtml).join('')}</ul>${rest.length?`<details><summary>Ver los ${rest.length} datos restantes</summary><ul class="desk-facts">${rest.map(deskFactHtml).join('')}</ul></details>`:''}<div class="desk-action"><b>Próxima acción propuesta</b><p>${esc(deskAction(r))}</p></div></article>`;}).join('')||'<div class="desk-empty"><h3>No hay resultados con estos filtros</h3><p>Prueba con otro término o amplía el ámbito. El conocimiento histórico sigue disponible en las tablas y en la memoria histórica.</p></div>';
+    $('#deskMore').hidden=rows.length<=state.deskLimit;
+  }
+  function exportDeskBrief(){
+    const O=window.WestconObservatory,rows=deskSelection();if(!rows.length){toast('No hay fichas para exportar con estos filtros.');return;}
+    const lines=['# Briefing · Observatorio Westcon Iberia','Generado: '+new Date().toLocaleString('es-ES'),'Publicación de datos: '+(state.lastRun?.finished_at||'sin fecha'),'Búsqueda: '+($('#deskSearch')?.value||'Todas')+' · Ámbito: '+($('#deskScope')?.value||'Todos')+' · Tipo: '+($('#deskSection')?.selectedOptions?.[0]?.text||'Todos'),'Hitos próximos: '+($('#deskUpcoming')?.checked?'sí':'no')+' · Solo seguimiento: '+($('#deskWatched')?.checked?'sí':'no'),'Las acciones son propuestas; los hitos y el estado deben confirmarse en el expediente.',''];
+    for(const r of rows){lines.push('## '+r.name,r.label+' · '+r.scope);for(const f of r.facts){lines.push('- '+f.label+': '+f.value);for(const ev of f.evidence)lines.push('  Fuente: '+(ev.source||ev.title||'Documental')+' · '+(O.safeUrl(ev.url)||ev.document||ev.document_id||'Westcon vigente'));}lines.push('Próxima acción propuesta: '+deskAction(r),'');}
+    const blob=new Blob([lines.join('\n')],{type:'text/markdown;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='westcon-briefing-'+new Date().toISOString().slice(0,10)+'.md';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+
   function renderObservatorio(){
     const el=$('#observatorioBody');if(!el)return;
     const run=state.lastRun||{},q=run.research_quality||{},g=run.gap_status_summary||{},debt=g.by_status||{};
@@ -88,7 +117,7 @@
     const rows=statusLabels.filter(([key])=>Number(debt[key]||0)>0).map(([key,label])=>'<tr><td>'+esc(label)+'</td><td>'+esc(count(debt[key]))+'</td></tr>').join('');
     const nav=[['fabricantes','Fabricantes'],['mayoristas','Mayoristas'],['integradores','Partners e integradores'],['clientes','Clientes y oportunidades'],['tendencias','Tendencias'],['arquitecturas','Arquitecturas']];
     el.innerHTML=
-      '<div class="observatorio-ribbon">'+(valid?'Última publicación validada: ':'Última publicación no confirmada: ')+esc(localDateTime(run.finished_at||state.data?.meta?.generated_at||''))+
+      '<div id="decisionDesk"></div><details class="observatorio-audit"><summary>Estado de los datos y de la investigación</summary><div class="observatorio-ribbon">'+(valid?'Última publicación validada: ':'Última publicación no confirmada: ')+esc(localDateTime(run.finished_at||state.data?.meta?.generated_at||''))+
       ' · Calidad de integridad: '+esc(run.quality_score??'no disponible')+'/100. Esta puntuación NO equivale a cobertura del mercado.</div>'+
       '<div class="observatorio-kpis">'+
       stat('Fabricantes Westcon',run.manufacturers??counts.manufacturers,'Entidades monitorizadas')+
@@ -114,7 +143,8 @@
       '<p>El nuevo motor consulta primero las URLs históricas exactas, las verifica nuevamente y conserva tanto los hallazgos como sus fuentes.</p>'+
       '<p><a href="memoria-historica.html">Explorar memoria histórica y fuentes ↗</a></p></div>'+
       '<div class="observatorio-panel"><h2>Explorar el observatorio</h2><p>Consulta la información con sus fuentes y fechas antes de convertir una señal en una propuesta comercial.</p>'+
-      '<div class="observatorio-links">'+nav.map(([id,label])=>'<button type="button" data-observatorio-jump="'+esc(id)+'">'+esc(label)+' →</button>').join('')+'</div></div>';
+      '<div class="observatorio-links">'+nav.map(([id,label])=>'<button type="button" data-observatorio-jump="'+esc(id)+'">'+esc(label)+' →</button>').join('')+'</div></div></details>';
+    renderDecisionDesk();
   }
   function renderActiveView(){
     ({observatorio:renderObservatorio,fabricantes:renderManufacturers,mayoristas:renderDistributors,integradores:renderIntegrators,clientes:renderClients,tendencias:renderTrends,arquitecturas:renderArchitectures}[state.view]||(()=>{}))();

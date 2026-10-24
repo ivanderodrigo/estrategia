@@ -1344,6 +1344,8 @@ def run(
     started = time.monotonic()
     deadline = started + max(20, int(max_runtime))
     data = read_json("data/current/intelligence.json")
+    from ..public_recovery import recover_newer_public
+    recover_newer_public(data)
     gaps = read_json("data/current/research_gaps.json")
     learning = read_json("data/current/research_learning.json", {"version": VERSION, "families": {}})
     cache = read_json("data/current/research_cache.json", {})

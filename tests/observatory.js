@@ -1,0 +1,14 @@
+const assert=require('assert');const O=require('../assets/app/observatory.js');
+const ev={intelligence_tier:'A2',url:'https://example.org/evidence',date:'2026-10-24'};
+const fact=value=>({value,evidence:[ev]});
+const data={manufacturers:[{id:'v',name:'Vendor',fields:{scope:fact('ES + PT'),capabilities:{value:['SASE','Unverified'],evidence:[ev],items:[{value:'SASE',evidence:[ev]},{value:'Unverified',evidence:[]}]}}}],clients_public:[{id:'c',name:'Buyer',fields:{milestone_date:fact('2026-11-27+01:00'),request_or_need:fact('Network'),procurement_stage:fact('Anuncio publicado')}}]};
+const rows=O.build(data,Date.parse('2026-10-24'));
+assert.equal(rows.length,2);assert.equal(rows[0].facts.length,1);assert.equal(rows[1].upcoming,true);
+assert.equal(O.select(rows,{query:'Unverified'}).length,0);assert.equal(O.select(rows,{query:'SASE',scope:'PT'}).length,1);
+assert.equal(O.select(rows,{watchedOnly:true,watched:['manufacturers:v']}).length,1);
+assert.equal(O.select(rows,{upcomingOnly:true}).length,1);
+data.clients_public[0].fields.procurement_stage=fact('Adjudicado');assert.equal(O.build(data,Date.parse('2026-10-24'))[1].upcoming,false);
+assert.equal(O.safeUrl('javascript:alert(1)'),'');assert.equal(O.safeUrl('https://u:p@example.org'),'');
+assert.equal(O.support({intelligence_tier:'A2',accrediting:false}),false);
+assert.equal(O.support({provenance_origin:'RESEARCH_SEED'}),false);
+console.log('Observatory semantic tests PASS');

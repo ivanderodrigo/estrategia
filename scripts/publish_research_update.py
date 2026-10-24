@@ -14,6 +14,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ALLOWED = [
     "data/current/intelligence.json",
+    "data/current/intelligence_store",
+    "data/current/knowledge_preservation_v410.json",
+    "data/current/provenance_report.json",
+    "data/current/source_rationalization.json",
     "data/current/last_run.json",
     "data/current/relationship_graph.json",
     "data/current/research_gaps.json",
@@ -70,7 +74,7 @@ def main() -> int:
         return 0
 
     existing = [path for path in ALLOWED if (ROOT / path).exists()]
-    run(["git", "add", "--", *existing])
+    run(["git", "add", "-A", "--", *existing])
     if run(["git", "diff", "--cached", "--quiet"], check=False).returncode == 0:
         print("No canonical intelligence changes to publish")
         return 0
