@@ -20,6 +20,10 @@ function build(data,now=Date.now()){
  const result=[];
  for(const [section,label] of Object.entries(sections))for(const row of data[section]||[]){
   const entries=Object.keys(fields).flatMap(k=>facts(row.fields?.[k],k));if(!entries.length)continue;
+  // Procurement discovery also contains unrelated purchases. Keep those in the
+  // full dataset, but surface only explicit technology context in the desk.
+  const technologyContext=normalize(entries.filter(f=>['request_or_need','technology_signals'].includes(f.key)).map(f=>f.value).join(' '));
+  if(section==='clients_public'&&!/\b(network|networking|redes|rede|informatica|informatico|informaticos|software|hardware|cloud|nube|nuvem|ciberseguridad|ciberseguranca|cybersecurity|firewall|switch|switches|wifi|wi-fi|telecomunicaciones|telecomunicacoes|servidores|servidor|datacenter|data center|tecnologia de la informacion|tecnologias da informacao)\b/.test(technologyContext))continue;
   const scope=facts(row.fields?.scope,'scope').map(x=>x.value).join(' ')||'Sin ámbito acreditado';
   const milestone=entries.find(x=>x.key==='milestone_date');const deadline=dateValue(milestone?.value);
   const stages=entries.filter(x=>x.key==='procurement_stage').map(x=>normalize(x.value)).join(' ');
