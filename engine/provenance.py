@@ -209,7 +209,18 @@ def evidence_for_relationship(
     evidence_rows: Iterable[dict[str, Any]], owner: Any, value: Any
 ) -> list[dict[str, Any]]:
     """Strict endpoint binding shared by normalisation, graph, preservation and QA."""
-    return evidence_for_item(evidence_rows, owner, value)
+    rows = list(evidence_rows)
+    direct = evidence_for_item(rows, owner, value)
+    # The same documented edge appears in the partner and manufacturer views.
+    # Reversing the display must not discard an exact, atomic endpoint binding.
+    # Do not reverse generic entity-owned pages or unbound catalogue evidence.
+    inverse = [ev for ev in rows if isinstance(ev, dict)
+               and ev.get("atomic") is True
+               and ev.get("accrediting") is not False
+               and str(ev.get("source_binding") or "").casefold() in ACCREDITING_ATOMIC_BINDINGS
+               and _matches_entity(ev.get("researched_entity"), value)
+               and canonical(ev.get("item_value")) == canonical(owner)]
+    return _dedupe(direct + inverse)
 
 
 def infer_scope_from_text(text: Any) -> str:

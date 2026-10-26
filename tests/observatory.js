@@ -12,3 +12,4 @@ assert.equal(O.safeUrl('javascript:alert(1)'),'');assert.equal(O.safeUrl('https:
 assert.equal(O.support({intelligence_tier:'A2',accrediting:false}),false);
 assert.equal(O.support({provenance_origin:'RESEARCH_SEED'}),false);
 console.log('Observatory semantic tests PASS');
+require('./commercial.js');

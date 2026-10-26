@@ -117,7 +117,7 @@
     const rows=statusLabels.filter(([key])=>Number(debt[key]||0)>0).map(([key,label])=>'<tr><td>'+esc(label)+'</td><td>'+esc(count(debt[key]))+'</td></tr>').join('');
     const nav=[['fabricantes','Fabricantes'],['mayoristas','Mayoristas'],['integradores','Partners e integradores'],['clientes','Clientes y oportunidades'],['tendencias','Tendencias'],['arquitecturas','Arquitecturas']];
     el.innerHTML=
-      '<div id="decisionDesk"></div><details class="observatorio-audit"><summary>Estado de los datos y de la investigación</summary><div class="observatorio-ribbon">'+(valid?'Última publicación validada: ':'Última publicación no confirmada: ')+esc(localDateTime(run.finished_at||state.data?.meta?.generated_at||''))+
+      '<div id="commercialDesk"></div><details class="observatorio-audit"><summary>Explorar todas las fichas acreditadas</summary><div id="decisionDesk"></div></details><details class="observatorio-audit"><summary>Estado de los datos y de la investigación</summary><div class="observatorio-ribbon">'+(valid?'Última publicación validada: ':'Última publicación no confirmada: ')+esc(localDateTime(run.finished_at||state.data?.meta?.generated_at||''))+
       ' · Calidad de integridad: '+esc(run.quality_score??'no disponible')+'/100. Esta puntuación NO equivale a cobertura del mercado.</div>'+
       '<div class="observatorio-kpis">'+
       stat('Fabricantes Westcon',run.manufacturers??counts.manufacturers,'Entidades monitorizadas')+
@@ -145,6 +145,7 @@
       '<div class="observatorio-panel"><h2>Explorar el observatorio</h2><p>Consulta la información con sus fuentes y fechas antes de convertir una señal en una propuesta comercial.</p>'+
       '<div class="observatorio-links">'+nav.map(([id,label])=>'<button type="button" data-observatorio-jump="'+esc(id)+'">'+esc(label)+' →</button>').join('')+'</div></div></details>';
     renderDecisionDesk();
+    window.WestconCommercial?.mount($('#commercialDesk'),state.deskRows||[]);
   }
   function renderActiveView(){
     ({observatorio:renderObservatorio,fabricantes:renderManufacturers,mayoristas:renderDistributors,integradores:renderIntegrators,clientes:renderClients,tendencias:renderTrends,arquitecturas:renderArchitectures}[state.view]||(()=>{}))();

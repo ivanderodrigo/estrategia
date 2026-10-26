@@ -152,11 +152,13 @@ class Fetcher:
             "Accept-Language": "es,pt;q=0.9,en;q=0.8",
             "Accept": "text/html,application/xhtml+xml,application/xml,text/xml,text/plain;q=0.8,*/*;q=0.2",
         })
+        # ResearchState handles backoff across sources/runs. HTTP-level retries
+        # can sleep on Retry-After beyond the supervisor deadline and lose work.
         retry = Retry(
-            total=self.profile.retries,
-            connect=self.profile.retries,
-            read=self.profile.retries,
-            status=self.profile.retries,
+            total=0,
+            connect=0,
+            read=0,
+            status=0,
             backoff_factor=0.55,
             status_forcelist=(408, 425, 429, 500, 502, 503, 504),
             allowed_methods=frozenset({"GET", "HEAD", "POST"}),
@@ -205,6 +207,8 @@ class Fetcher:
                 chunks: list[bytes] = []
                 total = 0
                 for chunk in response.iter_content(65_536):
+                    if time.monotonic() >= self.deadline - 1:
+                        return None, False, status, "deadline"
                     if not chunk:
                         continue
                     total += len(chunk)
