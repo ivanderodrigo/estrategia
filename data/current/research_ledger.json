@@ -1,2047 +1,585 @@
 {
   "version": "4.3.0",
   "profile": "daily",
-  "started_at": "2026-10-23T17:56:32.186939+00:00",
+  "started_at": "2026-10-26T11:07:02.935974+00:00",
   "planned_entities": 120,
-  "fetch_attempts": 323,
-  "fetch_successes": 409,
-  "pages_relevant": 123,
-  "candidate_evidences": 154,
-  "candidate_values_seen": 259,
-  "candidate_values_promoted": 259,
+  "fetch_attempts": 473,
+  "fetch_successes": 470,
+  "pages_relevant": 191,
+  "candidate_evidences": 269,
+  "candidate_values_seen": 443,
+  "candidate_values_promoted": 443,
   "candidate_values_rejected": 0,
   "candidate_fields_rejected": 0,
-  "accepted_evidences": 134,
-  "fields_enriched": 134,
-  "values_added": 20,
+  "accepted_evidences": 199,
+  "fields_enriched": 199,
+  "values_added": 25,
   "entities_added": 24,
-  "cache_hits": 205,
-  "circuit_skips": 1390,
-  "unsafe_url_rejections": 2,
-  "official_sites_discovered": 18,
-  "financial_links_discovered": 141,
+  "cache_hits": 232,
+  "circuit_skips": 1850,
+  "unsafe_url_rejections": 0,
+  "official_sites_discovered": 8,
+  "financial_links_discovered": 126,
   "manufacturer_revenue_rows_before": 0,
-  "manufacturer_revenue_acceptances": 0,
+  "manufacturer_revenue_acceptances": 1,
   "stop_reason": "complete",
-  "historical_lead_targets_planned": 82,
-  "historical_lead_urls_planned": 348,
-  "historical_lead_urls_attempted": 341,
-  "historical_lead_evidences_accepted": 100,
+  "historical_lead_targets_planned": 94,
+  "historical_lead_urls_planned": 407,
+  "historical_lead_urls_attempted": 389,
+  "historical_lead_evidences_accepted": 136,
   "structured_entity_budget": 24,
   "structured_entities_added": 24,
   "structured_notices": 24,
-  "accepted_evidence_per_fetch_attempt": 0.4149,
-  "candidate_acceptance_rate": 0.8701,
+  "accepted_evidence_per_fetch_attempt": 0.4207,
+  "candidate_acceptance_rate": 0.7398,
   "candidate_value_promotion_rate": 1.0,
-  "values_per_accepted_evidence": 0.1493,
-  "growth_pressure_ratio": 1.2,
-  "manufacturer_revenue_rows_after": 0,
-  "manufacturer_revenue_rows_added": 0,
-  "elapsed_s": 580.61,
-  "finished_at": "2026-10-23T18:06:11.455453+00:00",
-  "result_rows_total": 1920,
-  "accepted_result_rows_total": 134,
+  "values_per_accepted_evidence": 0.1256,
+  "growth_pressure_ratio": 0.96,
+  "manufacturer_revenue_rows_after": 1,
+  "manufacturer_revenue_rows_added": 1,
+  "elapsed_s": 565.87,
+  "finished_at": "2026-10-26T11:16:21.929827+00:00",
+  "result_rows_total": 2555,
+  "accepted_result_rows_total": 199,
   "results_truncated": true,
   "results": [
     {
-      "section": "architectures",
-      "entity": "Modern SOC / SecOps",
-      "url": "https://www.idc.com/resource-center/blog/european-ciso-priorities-in-2026-ai-agents-platformization-and-sovereignty/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Modern SOC / SecOps",
-      "url": "https://www.forrester.com/technology/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Modern SOC / SecOps",
-      "url": "https://www.gartner.com/en/information-technology",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Modern SOC / SecOps",
-      "url": "https://www.idc.com/eu/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Modern SOC / SecOps",
-      "url": "https://www.gartner.com/reviews/product/1password/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Modern SOC / SecOps",
-      "url": "https://www.gartner.com/reviews/product/the-anomali-platform/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Modern SOC / SecOps",
-      "url": "https://www.gartner.com/reviews/product/attackiq-platform/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Modern SOC / SecOps",
-      "url": "https://www.gartner.com/reviews/product/avaya-aura-ucaas/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Modern SOC / SecOps",
-      "url": "https://www.gartner.com/reviews/product/ciena-blue-planet-inventory-bpi/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Modern SOC / SecOps",
-      "url": "https://www.gartner.com/reviews/product/efficientip-solidserver-ddi/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Modern SOC / SecOps",
-      "url": "https://www.gartner.com/reviews/market/enterprise-sbc",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Modern SOC / SecOps",
-      "url": "https://www.gartner.com/reviews/product/ericsson-netcloud-service?marketSeoName=sd-wan",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Modern SOC / SecOps",
-      "url": "https://www.gartner.com/reviews/product/firemon-policy-manager/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Modern SOC / SecOps",
-      "url": "https://www.gartner.com/reviews/product/fortanix-data-security-manager/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Modern SOC / SecOps",
-      "url": "https://www.gartner.com/reviews/market/managed-security-services",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.gartner.com/en/documents/7713557",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
-      "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.forrester.com/technology/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.gartner.com/en/information-technology",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.idc.com/eu/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.gartner.com/reviews/product/1password/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.gartner.com/reviews/product/the-anomali-platform/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.gartner.com/reviews/product/attackiq-platform/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.gartner.com/reviews/product/avaya-aura-ucaas/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.gartner.com/reviews/product/ciena-blue-planet-inventory-bpi/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.gartner.com/reviews/product/efficientip-solidserver-ddi/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.gartner.com/reviews/market/enterprise-sbc",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.gartner.com/reviews/product/ericsson-netcloud-service?marketSeoName=sd-wan",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.gartner.com/reviews/product/firemon-policy-manager/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.gartner.com/reviews/product/fortanix-data-security-manager/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.gartner.com/reviews/market/managed-security-services",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.forrester.com/technology/data-ai-leaders/",
-      "family": "technology",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "NaaS / Managed Networking",
-      "url": "https://www.forrester.com/technology/security-risk/",
-      "family": "technology",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.gartner.com/en/documents/7860081",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
-      "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.forrester.com/technology/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.gartner.com/en/information-technology",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.idc.com/eu/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.gartner.com/reviews/product/1password/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.gartner.com/reviews/product/the-anomali-platform/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.gartner.com/reviews/product/attackiq-platform/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.gartner.com/reviews/product/avaya-aura-ucaas/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.gartner.com/reviews/product/ciena-blue-planet-inventory-bpi/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.gartner.com/reviews/product/efficientip-solidserver-ddi/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.gartner.com/reviews/market/enterprise-sbc",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.gartner.com/reviews/product/ericsson-netcloud-service?marketSeoName=sd-wan",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.gartner.com/reviews/product/firemon-policy-manager/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.gartner.com/reviews/product/fortanix-data-security-manager/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.gartner.com/reviews/market/managed-security-services",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.forrester.com/technology/data-ai-leaders/",
-      "family": "technology",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Network Platform / AIOps",
-      "url": "https://www.forrester.com/technology/security-risk/",
-      "family": "technology",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "OT / CPS Security",
-      "url": "https://www.gartner.com/en/documents/7540249",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "OT / CPS Security",
-      "url": "https://www.forrester.com/technology/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "OT / CPS Security",
-      "url": "https://www.gartner.com/en/information-technology",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "OT / CPS Security",
-      "url": "https://www.idc.com/eu/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "OT / CPS Security",
-      "url": "https://www.gartner.com/reviews/product/1password/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "OT / CPS Security",
-      "url": "https://www.gartner.com/reviews/product/the-anomali-platform/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "OT / CPS Security",
-      "url": "https://www.gartner.com/reviews/product/attackiq-platform/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "OT / CPS Security",
-      "url": "https://www.gartner.com/reviews/product/avaya-aura-ucaas/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "OT / CPS Security",
-      "url": "https://www.gartner.com/reviews/product/ciena-blue-planet-inventory-bpi/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "OT / CPS Security",
-      "url": "https://www.gartner.com/reviews/product/efficientip-solidserver-ddi/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "OT / CPS Security",
-      "url": "https://www.gartner.com/reviews/market/enterprise-sbc",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "OT / CPS Security",
-      "url": "https://www.gartner.com/reviews/product/ericsson-netcloud-service?marketSeoName=sd-wan",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "OT / CPS Security",
-      "url": "https://www.gartner.com/reviews/product/firemon-policy-manager/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "OT / CPS Security",
-      "url": "https://www.gartner.com/reviews/product/fortanix-data-security-manager/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "OT / CPS Security",
-      "url": "https://www.gartner.com/reviews/market/managed-security-services",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/8049333",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.uipath.com/platform/agentic-automation/foundation",
-      "family": "technology",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.forrester.com/technology/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/information-technology",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.idc.com/eu/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/reviews/product/1password/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/reviews/product/the-anomali-platform/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/reviews/product/attackiq-platform/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/reviews/product/avaya-aura-ucaas/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/reviews/product/ciena-blue-planet-inventory-bpi/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/reviews/product/efficientip-solidserver-ddi/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/reviews/market/enterprise-sbc",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/reviews/product/ericsson-netcloud-service?marketSeoName=sd-wan",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/reviews/product/firemon-policy-manager/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/reviews/product/fortanix-data-security-manager/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/reviews/market/managed-security-services",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
-      "family": "services",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.forrester.com/report/the-digital-employee-experience-management-dexm-solutions-landscape-q2-2026/RES196987",
-      "family": "services",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/en/documents/8114397",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.forrester.com/technology/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/en/information-technology",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.idc.com/eu/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/1password/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/the-anomali-platform/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/attackiq-platform/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/avaya-aura-ucaas/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/ciena-blue-planet-inventory-bpi/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/efficientip-solidserver-ddi/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/market/enterprise-sbc",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/ericsson-netcloud-service?marketSeoName=sd-wan",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/firemon-policy-manager/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/fortanix-data-security-manager/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/market/managed-security-services",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/articles/hype-cycle-for-agentic-ai",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/7455226",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-07-20-gartner-forecasts-worldwide-ai-platforms-and-models-market-to-grow-63-percent-in-2026",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.idc.com/resource-center/blog/emea-it-market-2026-q2-updates-5-key-takeaways-on-ai-it-spending-and-market-trends/",
-      "family": "analyst",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/8049333",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/articles/hype-cycle-for-agentic-ai",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/7455226",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/8049333",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/8142929",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.bing.com/news",
-      "family": "news",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://news.google.com/home?hl=es-419&gl=US&ceid=US:es-419",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.forrester.com/technology/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/information-technology",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.idc.com/eu/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "AI-ready Data Center / Fabric / Edge",
-      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-05-19-gartner-forecasts-worldwide-ai-spending-to-grow-47-percent-in-2026",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "AI-ready Data Center / Fabric / Edge",
-      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-06-23-gartner-predicts-neocloud-providers-will-capture-20-percent-of-the-267-billion-dollar-ai-cloud-market-by-2030",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.also.com/ec/cms5/es_2610/2610/services/digital-services/also-cloud-marketplace/index.jsp",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "AI-ready Data Center / Fabric / Edge",
-      "url": "https://www.forrester.com/blogs/europes-2026-tech-spend-exceeds-e1-5-trillion-driven-by-ai-cloud-and-sovereignty/",
-      "family": "services",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "AI-ready Data Center / Fabric / Edge",
-      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-05-12-gartner-predicts-40-percent-of-organizations-deploying-ai-will-use-ai-observability-to-monitor-model-performance-by-2028",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "AI-ready Data Center / Fabric / Edge",
-      "url": "https://www.gartner.com/en/documents/6808434",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/",
       "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "AI-ready Data Center / Fabric / Edge",
-      "url": "https://www.gartner.com/en/documents/8084665",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "AI-ready Data Center / Fabric / Edge",
-      "url": "https://www.gartner.com/en/documents/6808434",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "AI-ready Data Center / Fabric / Edge",
-      "url": "https://www.gartner.com/en/documents/8084665",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "AI-ready Data Center / Fabric / Edge",
-      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-07-20-gartner-forecasts-worldwide-ai-platforms-and-models-market-to-grow-63-percent-in-2026",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "AI-ready Data Center / Fabric / Edge",
-      "url": "https://www.idc.com/resource-center/blog/emea-it-market-2026-q2-updates-5-key-takeaways-on-ai-it-spending-and-market-trends/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "AI-ready Data Center / Fabric / Edge",
-      "url": "https://www.bing.com/news",
-      "family": "news",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "AI-ready Data Center / Fabric / Edge",
-      "url": "https://news.google.com/home?hl=es-419&gl=US&ceid=US:es-419",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "AI-ready Data Center / Fabric / Edge",
-      "url": "https://www.forrester.com/technology/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Data Security / DSPM / Crypto Agility",
-      "url": "https://www.gartner.com/en/documents/8105497",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Data Security / DSPM / Crypto Agility",
-      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-01-21-gartner-predicts-by-2028-50-percent-of-organizations-will-adopt-zero-trust-data-governance-as-unverified-ai-generated-data-grows",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Data Security / DSPM / Crypto Agility",
-      "url": "https://investor.forrester.com/news-releases/news-release-details/forrester-global-sovereignty-forecast-despite-rising/",
-      "family": "news",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://investor.forrester.com/news-releases/news-release-details/forrester-global-sovereignty-forecast-despite-rising/",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Data Security / DSPM / Crypto Agility",
-      "url": "http://www.databreachtoday.asia/anti-fraud-c-310/p-2",
-      "family": "official",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.databreachtoday.asia/anti-fraud-c-310/p-2",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Data Security / DSPM / Crypto Agility",
-      "url": "http://www.databreachtoday.eu/incident-response-c-40/p-5",
-      "family": "official",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.databreachtoday.eu/incident-response-c-40/p-5",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Data Security / DSPM / Crypto Agility",
-      "url": "https://www.exclusive-networks.com/pt",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Data Security / DSPM / Crypto Agility",
-      "url": "https://www.gartner.com/en/documents/8105497",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Data Security / DSPM / Crypto Agility",
-      "url": "https://www.gartner.com/reviews/market/cloud-web-application-and-api-protection/vendor/f5/alternatives",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Data Security / DSPM / Crypto Agility",
-      "url": "https://www.bing.com/news",
-      "family": "news",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Data Security / DSPM / Crypto Agility",
-      "url": "https://news.google.com/home?hl=es-419&gl=US&ceid=US:es-419",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Data Security / DSPM / Crypto Agility",
-      "url": "https://www.forrester.com/technology/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Data Security / DSPM / Crypto Agility",
-      "url": "https://www.gartner.com/en/information-technology",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Data Security / DSPM / Crypto Agility",
-      "url": "https://www.idc.com/eu/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Lifecycle, Support & Professional Services",
-      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
-      "family": "services",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Lifecycle, Support & Professional Services",
-      "url": "https://www.idc.com/resource-center/blog/how-service-provider-selection-criteria-have-shifted-what-we-learned-and-what-comes-next/",
-      "family": "services",
       "cached": false,
       "relevant": true,
       "accepted": 1,
       "status": 200
     },
     {
-      "section": "trends",
-      "entity": "Lifecycle, Support & Professional Services",
-      "url": "https://www.gartner.com/en/documents/7713557",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/",
       "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Lifecycle, Support & Professional Services",
-      "url": "https://cdn.ihs.com/www2/a/stg/media/js/companyList2.txt",
-      "family": "analyst",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://cdn.ihs.com/www2/a/stg/media/js/companyList2.txt",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Lifecycle, Support & Professional Services",
-      "url": "https://cdn.ihsmarkit.com/www2/a/stg/media/js/companyList2.txt",
-      "family": "analyst",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://cdn.ihsmarkit.com/www2/a/stg/media/js/companyList2.txt",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Lifecycle, Support & Professional Services",
-      "url": "https://cdn.ihs.com/www2/a/stg/media/js/companyList2.txt",
-      "family": "official",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://cdn.ihs.com/www2/a/stg/media/js/companyList2.txt",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Lifecycle, Support & Professional Services",
-      "url": "https://cdn.ihsmarkit.com/www2/a/stg/media/js/companyList2.txt",
-      "family": "official",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://cdn.ihsmarkit.com/www2/a/stg/media/js/companyList2.txt",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Lifecycle, Support & Professional Services",
-      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBIdTZJZF9pdGxnZkFzUHJOTXJtMERRRzFNck9VQVBsVWFvRkt2NjYweEc1QjR3cFF0N0VKMzdGN3VoU09tZ01hUGw5ZDNrVGluSWNRcnBLMnZPOHhVck9kMnEwbw?oc=5&hl=es-419&gl=US&ceid=US:es-419",
-      "family": "news",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Lifecycle, Support & Professional Services",
-      "url": "https://news.google.com/rss/articles/CBMijgJBVV95cUxPZ3RnaThYLXR6My1TaDRVSGdSVFp2a2dDYlVfWU83SnlUTV9ENnIwQ2ZYcVJ3QWc0cjJOUHUwbnRDZkh0ZWxtS3U0RUx1Y0FDbTkweTB5TUdfSlhBcDhPYWQ4ME56Z2MxSXhVMVl0N3prQ3lNODJ6SVVwdC1kYXNXNHB0cDVnVWpXajA2WVBrX1hQbDJ1V0VjU09LVUpRTWlMZ0VuM1llMUJZNVE5cEVVT2dBQ2FxZ0JTRWVyaGxfRy1UbmNjTWJFLVRRME44cVg5WFQtNFZ2T1VLOWpxb0g0SkNlM2xveUE5QUJ6dUVQbE5DV1RqalNVNS1GejZ1NGlMeGpaVHNBVmV4NUtqeXc?oc=5&hl=es-419&gl=US&ceid=US:es-419",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Lifecycle, Support & Professional Services",
-      "url": "https://news.google.com/rss/articles/CBMinAJBVV95cUxQSkpkT0xhOElhcEJ3azFlM0h1MTgxQXV2dkpOQXROdW5feUQ4ZlhfZzlWSHBqcldhcXRsTTlpV2szdmhKVDREcXd5WXpqY1lVSUc2VGZtdmdyYlpzc0lfOVRGU0ktVm9ETGJUMndSU0hBZWJjeHFwYUZ3U3VrbkpHQjRRUjZQYlRYU2tFV0FSb3cxNXFHWUlKM0g4Ul9udzZVTExzWXAtYTJfMWpsdE9raXRyR3p1Wm9UZG8zOFhwNGVRTTVHNUVXRUdGS2xCbW41cWE3SEN1d3ZYalZiM1hWWWdfdU1vb0Rnem41V2I4dkt1N0ktSXZwV0hQaVVEWFBOQ3JHcVJYRExsWS1jMEVkWkNycDIwTlN4d3libA?oc=5&hl=es-419&gl=US&ceid=US:es-419",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/en/documents/8114397",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-05-12-gartner-predicts-40-percent-of-organizations-deploying-ai-will-use-ai-observability-to-monitor-model-performance-by-2028",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/en/documents/7865681",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/en/documents/7865681",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/en/documents/8114397",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.bing.com/news",
-      "family": "news",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://news.google.com/home?hl=es-419&gl=US&ceid=US:es-419",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.forrester.com/technology/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/en/information-technology",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.idc.com/eu/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/1password/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/the-anomali-platform/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/attackiq-platform/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/avaya-aura-ucaas/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/ciena-blue-planet-inventory-bpi/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/efficientip-solidserver-ddi/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/market/enterprise-sbc",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/ericsson-netcloud-service?marketSeoName=sd-wan",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Observability / Digital Experience",
-      "url": "https://www.gartner.com/reviews/product/firemon-policy-manager/alternatives",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "OT / XIoT Security & Resilience",
-      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-02-12-gartner-predicts-that-by-2028-misconfigured-ai-will-shut-down-national-critical-infrastructure-in-a-g20-country",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "OT / XIoT Security & Resilience",
-      "url": "https://www.gartner.com/en/documents/7540249",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "OT / XIoT Security & Resilience",
-      "url": "https://academy.westconcomstor.com/es/catalog/search",
-      "family": "analyst",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://academy.westconcomstor.com/es/catalog/search",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "OT / XIoT Security & Resilience",
-      "url": "https://www.exclusive-networks.com/pt",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "OT / XIoT Security & Resilience",
-      "url": "https://www.exclusive-networks.com/pt",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "OT / XIoT Security & Resilience",
-      "url": "http://www.sarviskids.net/gg.html",
-      "family": "official",
-      "status": 0,
-      "error": "unsafe-url: Host does not resolve exclusively to public addresses",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "OT / XIoT Security & Resilience",
-      "url": "http://www.sarviskids.net/qsnz.html",
-      "family": "official",
-      "status": 0,
-      "error": "unsafe-url: Host does not resolve exclusively to public addresses",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "OT / XIoT Security & Resilience",
-      "url": "https://academy.westconcomstor.com/es/catalog/search",
-      "family": "official",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://academy.westconcomstor.com/es/catalog/search",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "OT / XIoT Security & Resilience",
-      "url": "https://www.securityfocus.com/bid",
-      "family": "official",
-      "status": 0,
-      "error": "ConnectionError: HTTPSConnectionPool(host='www.securityfocus.com', port=443): Max retries exceeded with url: /bid (Caused by NewConnectionError(\"HTTPSConnection(host='www.securityfocus.com', port=443): Failed to establish a new connection: ",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "OT / XIoT Security & Resilience",
-      "url": "https://www.gartner.com/en/documents/7540249",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "OT / XIoT Security & Resilience",
-      "url": "https://www.business-humanrights.org/en/latest-news/",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "OT / XIoT Security & Resilience",
-      "url": "https://www.fortinet.com/tw/products/next-generation-firewall",
-      "family": "technology",
       "cached": false,
       "relevant": true,
-      "accepted": 1,
+      "accepted": 2,
       "status": 200
     },
     {
-      "section": "trends",
-      "entity": "OT / XIoT Security & Resilience",
-      "url": "https://www.bing.com/news",
-      "family": "news",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.also.com/ec/cms5/es_2610/2610/also-spain-technology/hazte-cliente-de-also/index.jsp",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.esprinet.com/es/oferta/",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/",
+      "family": "official",
       "cached": true,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7647529",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://blog.wifidom.com/actualidad",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://blog.wifidom.com/alianzas",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://blog.wifidom.com/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/analyst",
       "family": "analyst",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://blog.wifidom.com/analyst",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://blog.wifidom.com/case-studies",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/casos",
+      "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7408930",
-      "family": "analyst",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/clientes",
+      "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-02-05-gartner-identifies-the-top-cybersecurity-trends-for-2026",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/cloud",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7865681",
-      "family": "analyst",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/customer-stories",
+      "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7913209",
-      "family": "analyst",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/customers",
+      "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7298830",
-      "family": "analyst",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/cybersecurity",
+      "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7298830",
-      "family": "official",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/fabricantes",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7408930",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7647529",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7865681",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7913209",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-04-09-gartner-predicts-25-percent-of-all-enterprise-gen-ai-applications-will-experience-at-least-five-minor-security-incidents-per-year-by-2028",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/feed",
       "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.idc.com/resource-center/blog/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.idc.com/resource-center/blog/european-ciso-priorities-in-2026-ai-agents-platformization-and-sovereignty/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.bing.com/news",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/insights",
       "family": "news",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://news.google.com/home?hl=es-419&gl=US&ceid=US:es-419",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.forrester.com/technology/",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/market",
       "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Nokia",
-      "url": "https://news-blogs.cisco.com/alliances",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/parceiros",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Nokia",
-      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/partner",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Nokia",
-      "url": "https://news-blogs.cisco.com/find-a-partner",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/partner-locator",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Nokia",
-      "url": "https://news-blogs.cisco.com/partner",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/partners",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Nokia",
-      "url": "https://news-blogs.cisco.com/partner-locator",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/portfolio",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Nokia",
-      "url": "https://news-blogs.cisco.com/partners",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/reports",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/research",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/resources",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/sitemap.xml",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Nokia",
-      "url": "https://partners.amazonaws.com/alliances",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/sitemap.xml",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Nokia",
-      "url": "https://partners.amazonaws.com/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Nokia",
-      "url": "https://partners.amazonaws.com/partner",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Nokia",
-      "url": "https://partners.amazonaws.com/partner-locator",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Nokia",
-      "url": "https://partners.amazonaws.com/partners",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://telefonicatech.com/alliances",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/vendors",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://telefonicatech.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://telefonicatech.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://telefonicatech.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://telefonicatech.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://telefonicatech.com/somostech/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
+      "section": "distributors",
+      "entity": "Wifidom",
       "url": "https://www.also.com/alliances",
       "family": "partners",
       "status": 0,
@@ -2049,8 +587,8 @@
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
+      "section": "distributors",
+      "entity": "Wifidom",
       "url": "https://www.also.com/find-a-partner",
       "family": "partners",
       "status": 0,
@@ -2058,8 +596,8 @@
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
+      "section": "distributors",
+      "entity": "Wifidom",
       "url": "https://www.also.com/partner",
       "family": "partners",
       "status": 0,
@@ -2067,8 +605,8 @@
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
+      "section": "distributors",
+      "entity": "Wifidom",
       "url": "https://www.also.com/partner-locator",
       "family": "partners",
       "status": 0,
@@ -2076,8 +614,8 @@
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
+      "section": "distributors",
+      "entity": "Wifidom",
       "url": "https://www.also.com/partners",
       "family": "partners",
       "status": 0,
@@ -2085,551 +623,1555 @@
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.exclusive-networks.com/alliances",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.esprinet.com/alliances",
       "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/alliances",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.exclusive-networks.com/find-a-partner",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.esprinet.com/find-a-partner",
       "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/find-a-partner",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.exclusive-networks.com/partner",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.esprinet.com/partner",
       "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/partner",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.exclusive-networks.com/partner-locator",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.esprinet.com/partner-locator",
       "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/partner-locator",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.exclusive-networks.com/ecosystem/partners",
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.esprinet.com/partners",
       "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.globomatik.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.globomatik.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.globomatik.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.globomatik.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.globomatik.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.wifidom.com/actualidad",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.wifidom.com/alianzas",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.wifidom.com/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/analyst",
+      "family": "analyst",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.wifidom.com/analyst",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.wifidom.com/case-studies",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/fabricantes/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/market",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/reports",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/research",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/resources",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/sitemap.xml",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://blog.wifidom.com/home/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.wifidom.com/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Wifidom",
+      "url": "https://www.idc.com/resource-center/blog/how-service-provider-selection-criteria-have-shifted-what-we-learned-and-what-comes-next/",
+      "family": "analyst",
       "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/us",
+      "section": "clients_private",
+      "entity": "Inditex",
+      "url": "https://www.inditex.com/itxcomweb/us/es/home",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/talento/unete-a-nuestro-equipo/",
+      "family": "careers",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/about-us/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/about-us/investors",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/about/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/about/investors",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/espacio-de-comunicacion/blog-mapfre/",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/adjudicaciones",
+      "family": "procurement",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/adjudicaciones",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/annual-report",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/annual-report",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/annual-reports",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/annual-reports",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/architecture",
+      "family": "technology",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/architecture",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/architectures",
+      "family": "technology",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mapfre.com/architectures",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/company/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/company/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/concursos",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/contracts",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/contratacion",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/contratacion-publica",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/earnings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/filings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/financial-information",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/financial-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/financials",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/informacao-financeira",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/informacion-financiera",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/investor",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/licitacoes",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/platform",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/procurement",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/products",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/quarterly-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/relatorio-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/relatorios-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/reports",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/reports-and-filings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/resultados",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/resultados-financieros",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/services",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/sitemap.xml",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/sitemap.xml",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/sitemap.xml",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/solutions",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/technologies",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/technology",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/tecnologia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/tenders",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/talento/",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/talento/que-esperamos-de-ti/",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/talento/plan-de-universidades/",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/mapfreeconomics/vision-experta-del-sector-asegurador/",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/pt-br/talento/junte-se-a-nossa-equipe/",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/en/talent/join-our-team/",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/talento/unete-a-nuestro-equipo/stem-data",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/talento/unete-a-nuestro-equipo/administracion-finanzas/",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/talento/unete-a-nuestro-equipo/negocio-asegurador/",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/talento/unete-a-nuestro-equipo/negocio-digital/",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/talento/unete-a-nuestro-equipo/comercial/",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Mapfre",
+      "url": "https://www.mapfre.com/talento/unete-a-nuestro-equipo/operaciones-contact-center/",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Puig Brands",
+      "url": "https://www.puig.com/en/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Telefónica",
+      "url": "https://www.telefonica.com/es/",
       "family": "official",
       "cached": false,
       "relevant": true,
-      "accepted": 0,
+      "accepted": 1,
       "status": 200
     },
     {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/alianzas",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.proofpoint.com/alianzas",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.proofpoint.com/alliances",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/us/company/careers",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.proofpoint.com/carreiras",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.proofpoint.com/case-studies",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.proofpoint.com/casos",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.proofpoint.com/clientes",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/us/customer-stories",
-      "family": "cases",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.proofpoint.com/customers",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.proofpoint.com/empleo",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.proofpoint.com/emprego",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.proofpoint.com/fabricantes",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.proofpoint.com/find-a-partner",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/line-card",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/portfolio",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/sitemap.xml",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/us/global-system-integrator-gsi-and-global-managed-service-provider-msp-partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.proofpoint.com/vendors",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "url": "https://www.muycanal.com/2023/01/31/efficientip-dns-partners",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "HIBERUS",
-      "url": "https://aws.amazon.com/es/blogs/apn/announcing-the-regional-2026-aws-partners-of-the-year-for-europe-middle-east-and-africa/",
-      "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 2,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "HIBERUS",
-      "url": "https://aws.amazon.com/es/",
-      "family": "cases",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "HIBERUS",
-      "url": "https://aws.amazon.com/es/blogs/apn/",
-      "family": "cases",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "HIBERUS",
-      "url": "https://jobs.atos.net/",
-      "family": "cases",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "HIBERUS",
-      "url": "https://1password.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "HIBERUS",
-      "url": "https://1password.com/es/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "HIBERUS",
-      "url": "https://1password.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "HIBERUS",
-      "url": "https://1password.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "HIBERUS",
-      "url": "https://1password.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "HIBERUS",
-      "url": "https://1password.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "HIBERUS",
-      "url": "https://aws.amazon.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error:  for url: https://aws.amazon.com/es/alliances/",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "HIBERUS",
-      "url": "https://aws.amazon.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error:  for url: https://aws.amazon.com/es/find-a-partner/",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "HIBERUS",
-      "url": "https://aws.amazon.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error:  for url: https://aws.amazon.com/es/partner/",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "HIBERUS",
-      "url": "https://aws.amazon.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error:  for url: https://aws.amazon.com/es/partner-locator/",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "HIBERUS",
-      "url": "https://aws.amazon.com/es/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://jobs.atos.net/",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/es/es/services.html",
+      "section": "clients_private",
+      "entity": "Telefónica",
+      "url": "https://www.telefonica.com/es/sostenibilidad-innovacion/innovacion/quantum-safe-networks/",
       "family": "services",
       "cached": false,
       "relevant": true,
@@ -2637,29 +2179,57 @@
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/?lang=es",
-      "family": "partners",
-      "cached": true,
+      "section": "clients_private",
+      "entity": "Telefónica",
+      "url": "https://www.telefonica.com/es/servicios/",
+      "family": "services",
+      "cached": false,
       "relevant": true,
       "accepted": 1,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://partners.amazonaws.com/partners/001E000000uf5EGIAY/",
-      "family": "partners",
+      "section": "clients_private",
+      "entity": "Telefónica",
+      "url": "https://www.telefonica.com/es/servicios/empresas/",
+      "family": "services",
       "cached": false,
-      "relevant": false,
-      "accepted": 0,
+      "relevant": true,
+      "accepted": 1,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "Inetum Spain",
-      "url": "https://www.inetum.com/global/en.html",
+      "section": "clients_private",
+      "entity": "Telefónica",
+      "url": "https://www.telefonica.com/es/servicios/empresas/pymes/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Iberdrola",
+      "url": "https://www.iberdrola.com",
+      "family": "official",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.iberdrola.com/",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/content/dam/amadeuswebevo/brand/amadeus/photos/sections/resources/global-report/pdfs/en/chapter-3-technology-amadeus-global-report-2024.pdf",
+      "family": "financial",
+      "status": 200,
+      "error": "unsupported-content-type:application/pdf",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/en",
       "family": "careers",
       "cached": false,
       "relevant": true,
@@ -2667,9 +2237,29 @@
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "Minsait",
-      "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxNZmE5aTVDQWVYM2lyNy1hUXZ0N3F3bllzM2U0aFdNbEZDaVhVdHdvb3RVNjNjdVVhQkFrTUpMRERjY29ZUElHZTFSdmlrVHZKQVVPSGNNZE9oQnRxdjdVbjNDcUc2eDdoZWsxMWptNzhlOFZJbTZ5aU9VVGg2VHJCUnhMSEQ2UFgyWHRiX1l1R0otZVBUTUEtRXhHcmpWNGNjUVBLSFlxb1I1NE8zWDVncW9rSG84azBzWHdreGNYcFRhbmpKZjRkYm5aRTAxX3RTZHB6QktnNnNQdGlkNExZOW5tajZBelJncU9J0gH_AUFVX3lxTE9GamI4S2dXekt0MV9VbjZHaHdMc2JITVQ4NVdKUS1fZ3F1WG4zcW1EclkzU1Z5WG1VUHk2UlU0dFRjM085dGh1dzY5M0xKZW1vUnRtaWVFdnItWTFvVXFEWEpJZ3RlZVdiNmd2cGg1LXRmN3NWMlFGUzVtUVRVeXVnbGNDZnZibmxFX2ZxbnZGUVl3Vm5OckhLU1h6MzVKblAtMVVXUFlLRm1FUWtDbFlVTURsMFlYeklfa21Lbl9WR1p5OUYwRjk3WC1EOXg3QXdDVFNLVW44S3lVdVpPRWc1S29jVDlYQk5pUnNIaDhTdDdmTHBLMzM0b1ZjVFZKMA?oc=5&hl=es-419&gl=US&ceid=US:es-419",
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://www.bolsasymercados.es/es/sobre-bme/empleo/empleados.html",
+      "family": "careers",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/en",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/actualidad",
       "family": "news",
       "cached": false,
       "relevant": false,
@@ -2677,157 +2267,508 @@
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "Minsait",
-      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPZTU2ckRPaEZJOEVibGlCRzNSLTR0ZGdMN0t5U1FRcXptU1V3QmdJYzdlLURfb1BsZHJrUkxoaHF3b2dwTVRtWVI0OGRJSDJhcktNak5TX2o5a1JrQ0o3WFBTZDdqeF9BNzZYdGoyTG1acWtNSC1YRjlFd2d0ZGJMd9IBgAFBVV95cUxPVUV3VDNpdnc3M0hLZzBFZVVuSjB3QV9rQ2hIdkNmdmdvTDByNkZWT0prQVZCak9IN2l6eXIxM1BzazdSNUpLcHVmM2VVQS16ckgzaTM0b2Z0T3R6Wm1NMWs1eV9hV0s4bVppZUdGdVEzaGY1cThfY0ZQMHE3QkxveQ?oc=5&hl=es-419&gl=US&ceid=US:es-419",
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/architecture",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.bolsasymercados.es/es/sobre-bme/empleo/empleados.html",
+      "family": "careers",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/actualidad",
+      "family": "careers",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/actualidad",
       "family": "news",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acciona",
+      "url": "https://www.acciona.com/actualidad",
+      "family": "official",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/es/corporativa/sobre-aena/seguridad-de-la-informacion.html",
+      "family": "careers",
       "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "Minsait",
-      "url": "https://aws.amazon.com/es/blogs/apn/announcing-the-regional-2024-aws-partners-of-the-year-for-europe-middle-east-and-africa/",
-      "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Minsait",
-      "url": "https://partners.amazonaws.com/partners/001E000001eOCc1IAG/Indra%20Sistemas",
-      "family": "partners",
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/es/pasajeros/pasajeros.html",
+      "family": "careers",
       "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "Minsait",
-      "url": "https://validate.perfdrive.com/?ssa=1a2261ea-e141-44e2-8e23-4b16a255449a&ssb=12248246714&ssc=https%3A%2F%2Fwww.minsait.com%2Fes%2Findustrias%2Ftelecomunicaciones&ssi=ad9bc700-dhje-4fef-bf89-82dc191cd7d1&ssk=botmanager_support@radware.com&ssm=08909129392319844135549448370304&ssn=6d99ce4ed0798f1dfa34a50fa157ca37c59271680e84-a1f2-4225-abf390&sso=a5a04db8-2a6869c2768e508712215a803409864dde7e676c74e2baa0&ssp=31045474491788081830178829070746535&ssq=88318386144313899474358569104831350749804&ssr=NTcuMTU0LjYuMTA=&sst=Westcon-Iberia-Decision-Intelligence/4.0.0%20(public%20research;%20bounded;%20respectful;%20contact=repository-owner)&ssu=&ssv=&ssw=&ssx=eyJfX3V6bWYiOiI3ZjkwMDA3MTY4MGU4NC1hMWYyLTQyMjUtYWRiOC0yYTY4NjljMjc2OGUyLTE3ODgwNTg1Njk1NDAyMDI4NzQxMzMtMDAzM2IxMjcwMjA0OTk3MjMzODEzIiwicmQiOiJtaW5zYWl0LmNvbSIsInV6bXgiOiI3ZmMwMDAwNDdmY2RjZi02N2Y2LTRjZjMtYmVhNS03NTg5ZGM0ZDU2N2UyLTE3ODgwNTg1Njk1NDAyMDI4NzQxMzMtMDAzODE3Y2ZjYzc5YTQ4YzMwNjEzIn0=",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 400 Client Error: Bad Request for url: https://validate.perfdrive.com/?ssa=1a2261ea-e141-44e2-8e23-4b16a255449a&ssb=12248246714&ssc=https%3A%2F%2Fwww.minsait.com%2Fes%2Findustrias%2Ftelecomunicaciones&ssi=ad9bc700-dhje-4fef-bf89-",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Minsait",
-      "url": "https://www.minsait.com/es/industrias",
-      "family": "cases",
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/es/pasajeros/pasajeros.html",
+      "family": "official",
       "cached": false,
-      "relevant": true,
-      "accepted": 2,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Vester Business, S.L",
-      "url": "https://aws.amazon.com/es/blogs/apn/",
-      "family": "careers",
-      "cached": true,
-      "relevant": true,
-      "accepted": 2,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Vester Business, S.L",
-      "url": "https://jobs.atos.net/",
-      "family": "careers",
-      "cached": true,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "Vester Business, S.L",
-      "url": "https://partner.stratus.com/directory/search?f0=Markets+Served&f0v0=Spain",
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.aena.es/actualidad",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/architecture",
+      "family": "technology",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.aena.es/architecture",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/architectures",
+      "family": "technology",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.aena.es/architectures",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/careers",
       "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.aena.es/careers",
+      "accepted": 0
     },
     {
-      "section": "integrators",
-      "entity": "Vester Business, S.L",
-      "url": "https://www.itreseller.es/",
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/carreiras",
       "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.aena.es/carreiras",
+      "accepted": 0
     },
     {
-      "section": "integrators",
-      "entity": "Vester Business, S.L",
-      "url": "https://1password.com/alliances",
-      "family": "partners",
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/cloud",
+      "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "integrators",
-      "entity": "Vester Business, S.L",
-      "url": "https://1password.com/es/partners",
-      "family": "partners",
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/cybersecurity",
+      "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "integrators",
-      "entity": "Vester Business, S.L",
-      "url": "https://1password.com/find-a-partner",
-      "family": "partners",
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/empleo",
+      "family": "careers",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "integrators",
-      "entity": "Vester Business, S.L",
-      "url": "https://1password.com/partner",
-      "family": "partners",
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/emprego",
+      "family": "careers",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "integrators",
-      "entity": "Vester Business, S.L",
-      "url": "https://1password.com/partner-locator",
-      "family": "partners",
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/es/corporativa/sobre-aena/seguridad-de-la-informacion.html",
+      "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "integrators",
-      "entity": "Vester Business, S.L",
-      "url": "https://1password.com/partners",
-      "family": "partners",
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/es/pasajeros/pasajeros.html",
+      "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "integrators",
-      "entity": "Vester Business, S.L",
-      "url": "https://partner.stratus.com/alliances",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/platform",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/products",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/services",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/sitemap.xml",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/solutions",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/technologies",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/technology",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/tecnologia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/es/landing/convocatoria-empleo-aena",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Aena",
+      "url": "https://www.aena.es/es/corporativa/innovacion/estrategia.html",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     }
   ],
   "candidate_rejection_rows_total": 0,
