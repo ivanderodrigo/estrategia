@@ -1,62 +1,206 @@
 {
   "version": "4.3.0",
   "profile": "daily",
-  "started_at": "2026-10-28T11:20:18.410114+00:00",
+  "started_at": "2026-10-29T11:31:28.790929+00:00",
   "planned_entities": 120,
-  "fetch_attempts": 474,
-  "fetch_successes": 475,
-  "pages_relevant": 175,
-  "candidate_evidences": 68,
-  "candidate_values_seen": 82,
-  "candidate_values_promoted": 82,
+  "fetch_attempts": 373,
+  "fetch_successes": 406,
+  "pages_relevant": 121,
+  "candidate_evidences": 103,
+  "candidate_values_seen": 130,
+  "candidate_values_promoted": 130,
   "candidate_values_rejected": 0,
   "candidate_fields_rejected": 0,
-  "accepted_evidences": 50,
-  "fields_enriched": 50,
-  "values_added": 23,
+  "accepted_evidences": 92,
+  "fields_enriched": 92,
+  "values_added": 19,
   "entities_added": 24,
-  "cache_hits": 217,
-  "circuit_skips": 1684,
-  "unsafe_url_rejections": 0,
-  "official_sites_discovered": 5,
-  "financial_links_discovered": 26,
+  "cache_hits": 191,
+  "circuit_skips": 1480,
+  "unsafe_url_rejections": 4,
+  "official_sites_discovered": 10,
+  "financial_links_discovered": 27,
   "manufacturer_revenue_rows_before": 1,
   "manufacturer_revenue_acceptances": 0,
   "stop_reason": "complete",
-  "historical_lead_targets_planned": 87,
-  "historical_lead_urls_planned": 314,
-  "historical_lead_urls_attempted": 307,
-  "historical_lead_evidences_accepted": 11,
+  "historical_lead_targets_planned": 74,
+  "historical_lead_urls_planned": 270,
+  "historical_lead_urls_attempted": 275,
+  "historical_lead_evidences_accepted": 36,
   "structured_entity_budget": 24,
   "structured_entities_added": 24,
   "structured_notices": 24,
-  "accepted_evidence_per_fetch_attempt": 0.1055,
-  "candidate_acceptance_rate": 0.7353,
+  "accepted_evidence_per_fetch_attempt": 0.2466,
+  "candidate_acceptance_rate": 0.8932,
   "candidate_value_promotion_rate": 1.0,
-  "values_per_accepted_evidence": 0.46,
-  "growth_pressure_ratio": 1.0435,
+  "values_per_accepted_evidence": 0.2065,
+  "growth_pressure_ratio": 1.2632,
   "manufacturer_revenue_rows_after": 1,
   "manufacturer_revenue_rows_added": 0,
-  "elapsed_s": 557.93,
-  "finished_at": "2026-10-28T11:29:35.052541+00:00",
-  "result_rows_total": 2375,
-  "accepted_result_rows_total": 50,
+  "elapsed_s": 457.8,
+  "finished_at": "2026-10-29T11:39:05.312240+00:00",
+  "result_rows_total": 2048,
+  "accepted_result_rows_total": 92,
   "results_truncated": true,
   "results": [
     {
-      "section": "clients_private",
-      "entity": "BBVA",
-      "url": "https://www.frontiersofknowledgeawards-fbbva.es/",
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://es.extremenetworks.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://es.extremenetworks.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/overview/default.aspx",
       "family": "official",
       "cached": false,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://www.levelblue.com/company/security-breach",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://investor.extremenetworks.com/actualidad/",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://investor.extremenetworks.com/alianzas/",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://investor.extremenetworks.com/alliances/",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/analyst",
+      "family": "analyst",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://investor.extremenetworks.com/analyst/",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://investor.extremenetworks.com/careers/",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/feed",
       "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
@@ -64,82 +208,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://www.levelblue.com/security-operations-platforms",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://www.g2.com/products/ucopia/competitors/alternatives",
-      "family": "technology",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.g2.com/products/ucopia/competitors/alternatives",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://ucopia.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://ucopia.com/alliances",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/resellers-solution-wifi-ucopia/",
-      "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://ucopia.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://ucopia.com/find-a-partner",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://ucopia.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://ucopia.com/partner",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://ucopia.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://ucopia.com/partner-locator",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://ucopia.com/systeme-partenaires-ucopia-weblib-groupe/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://www.levelblue.com/technology-partners",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/find-a-partner",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
@@ -147,28 +217,44 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
-      "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
       "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://certesnetworks.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
       "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://www.ciena.com/partners/locator",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/line-card",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
@@ -176,8 +262,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://cradlepoint.com/partners/for-customers/find-a-partner/",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/marcas",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
@@ -185,341 +271,757 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Weblib",
-      "url": "https://www.zscaler.com/es/partners",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Certes Networks",
-      "url": "https://www.levelblue.com/company/security-breach",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Certes Networks",
-      "url": "https://www.levelblue.com/security-operations-platforms",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Certes Networks",
-      "url": "https://www.gartner.com/reviews/market/it-security/compare/certes-networks-vs-watchguard",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Certes Networks",
-      "url": "https://www.levelblue.com/technology-partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Certes Networks",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Certes Networks",
-      "url": "https://certesnetworks.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Certes Networks",
-      "url": "https://www.ciena.com/partners/locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Certes Networks",
-      "url": "https://cradlepoint.com/partners/for-customers/find-a-partner/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Certes Networks",
-      "url": "https://www.zscaler.com/es/partners",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Certes Networks",
-      "url": "https://cradlepoint.com/partners/for-partners/resell-partners/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Certes Networks",
-      "url": "https://cradlepoint.com/partners/for-partners/service-provider-partners/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Certes Networks",
-      "url": "https://weblib.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Certes Networks",
-      "url": "https://telefonicatech.com/actualidad/redes-privadas-5g-nokia",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Certes Networks",
-      "url": "https://www.muycanal.com/2023/01/31/efficientip-dns-partners",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "White Hat",
-      "url": "https://www.whitehat.pt/",
-      "family": "analyst",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "White Hat",
-      "url": "https://www.itchannel.pt/directorio/distribuidores/40",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/market",
       "family": "analyst",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "White Hat",
-      "url": "https://www.itchannel.pt/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "White Hat",
-      "url": "https://www.itchannel.pt/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "White Hat",
-      "url": "https://www.itchannel.pt/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "White Hat",
-      "url": "https://www.itchannel.pt/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "White Hat",
-      "url": "https://www.itchannel.pt/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "White Hat",
-      "url": "https://www.whitehat.pt/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "White Hat",
-      "url": "https://www.whitehat.pt/#contacto",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "White Hat",
-      "url": "https://www.whitehat.pt/#fabricantes",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "White Hat",
-      "url": "https://www.whitehat.pt/actualidad",
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/news",
       "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Arrow ECS",
-      "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQUWY0SkhBTlp4ZzVIVEp1eHJyWWVLNjBPTTJ1a0dOdFVVM0dYZlEzWEExVHp5Rngtd0g1X2g1MHE0TUlzM0t5dDlfdUkyb3dKc25LQl9kckdMM3lacEJBOTlMLTBpT0UySkM2bFpvM1ZPVTNTMkxoTG1HV2JoZThDLUhfNzh5MVNmN1BiZ1FFZUpVNHV1bTNqUm1uV1Q5SXFRakhPNFRKTmROY2N2WXJQNmg5aHpNa3g3bkpaNlRCQjAwZFFoSG5PSklmXy1RQ0lLSi16TmF0OTM4VjFtc1VtSkRDWG40aW9UakJaR0pCb2g?oc=5&hl=es-419&gl=US&ceid=US:es-419",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Arrow ECS",
-      "url": "https://www.arrow.com/es/services.html",
-      "family": "services",
-      "status": 0,
-      "error": "ConnectionError: HTTPSConnectionPool(host='www.arrow.com', port=443): Max retries exceeded with url: /es/services.html (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.arrow.com', port=443): Read timed out. (read timeout=7.0)\"))",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Arrow ECS",
-      "url": "https://www.arrow.com/globalecs/es/arrow-channel-advisor/arrow-amplia-su-acuerdo-de-distribucion-con-palo-alto-networks-a-espana-y-portugal/",
-      "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Arrow ECS",
-      "url": "https://www.also.com/ec/cms5/es_2610/2610/also-spain-technology/hazte-cliente-de-also/index.jsp",
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/projects",
       "family": "cases",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Arrow ECS",
-      "url": "https://www.esprinet.com/es/oferta/",
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/proyectos",
       "family": "cases",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Arrow ECS",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Arrow ECS",
-      "url": "https://www.globomatik.com/servicios-destacados",
-      "family": "services",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "IREO",
-      "url": "https://www.itreseller.es/distribucion/2020/02/ireo-se-convierte-en-mayorista-para-espana-y-portugal-de-ping-identity",
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/reports",
       "family": "analyst",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "IREO",
-      "url": "https://www.ireo.com/",
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/research",
       "family": "analyst",
-      "cached": false,
-      "relevant": false,
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/resources",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/sitemap.xml",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "distributors",
-      "entity": "IREO",
-      "url": "https://www.ireo.com/actualidad",
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/actualidad",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/alianzas",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/analyst",
+      "family": "analyst",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/analyst",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/careers",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/es/ecosistema/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/market",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/pt/vendors/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/reports",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/research",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/resources",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/sitemap.xml",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.exclusive-networks.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.extremenetworks.com/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Extreme Networks",
+      "url": "https://www.extremenetworks.com/actualidad",
       "family": "news",
       "cached": false,
       "relevant": false,
@@ -527,1275 +1029,35 @@
       "status": 200
     },
     {
-      "section": "distributors",
-      "entity": "IREO",
-      "url": "https://www.ireo.com/alianzas",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "IREO",
-      "url": "https://www.ireo.com/alliances",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/",
-      "family": "careers",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/alianzas",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.distr-it.pt/alianzas",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.distr-it.pt/alliances",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.distr-it.pt/careers",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.distr-it.pt/carreiras",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.distr-it.pt/case-studies",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/line-card",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/portfolio",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/sitemap.xml",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.distr-it.pt/vendors",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.itchannel.pt/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.itchannel.pt/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.itchannel.pt/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.itchannel.pt/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.itchannel.pt/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Distr-IT",
-      "url": "https://www.tdsynnex.com/eu/es/es/partnerfirst.html",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/assets/documentos/Dossier_corporativo_MHERMIDA_SOLUCIONES_2026.pdf",
-      "family": "services",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.mhermida.com/assets/documentos/Dossier_corporativo_MHERMIDA_SOLUCIONES_2026.pdf",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.esprinet.com/es/oferta/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.channelpartner.es/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.channelpartner.es/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.channelpartner.es/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.channelpartner.es/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.channelpartner.es/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/alianzas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/line-card",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/portfolio",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/sitemap.xml",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.mhermida.com/vendors",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://www.tdsynnex.com/eu/es/es/partnerfirst.html",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "M. Hermida",
-      "url": "https://weblib.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://hub.tdsynnex.com/es/aws/dsor/",
-      "family": "cases",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://www.itchannel.pt/news/distribuicao",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPUGxCcWc4TlhGMWRway1IdzFwVTJFVmZUTXEzTUJCbXhRM1FoWnFsVktuNVdUSjRXa3l4djV4dnMyYzVTZXd0SHVuVlZlMGhjaGlPZHF4VXR5Y1NXUUVqWl9WYkNfaU9ta0Fya1Fla2VrdTBGZTRyOWdCVVNmd0p4UkVOc19zR3hYaU9CMHJ3MXhsS2IwZFhEanVKN3BLRmF0YTViQUJHY3cwNDl3SkJ6dkRuWUZwaXdERi03ZGpxTFlZcEI0b0VaS1c1U2VsSm5nclE?oc=5&hl=es-419&gl=US&ceid=US:es-419",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOb2FkNzRGM2o2RFhRMlhxUDhaQkxnZFRDZG05RmVnUk92ZUp3azdIaTQwbElQS3kzTnE3RHJMZTBKYURRRElEN1E1Sk9KUXpVcmZwSGlpZkdhTWdVNjUyUHFVU3ZJYktXbm5wR0IzWWRqUWhmWWVTREZaYktQYlZGMDRSZ3hMbVJpLW1tTWVrakxKajN2MjVEQXNRMnp4RGtOT2UteFBwVWZvVlRfUWRENThTTTNQV2ZKM1BNRDVvWFRNOW85M0xKX1BXRlJVU1o0VTVZ?oc=5&hl=es-419&gl=US&ceid=US:es-419",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://hub.tdsynnex.com/es/aws/dsor/",
-      "family": "careers",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/",
-      "family": "official",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.gartner.com/en/documents/7540249",
+      "family": "analyst",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/alianzas",
-      "family": "partners",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.gartner.com/en/documents/7913209",
+      "family": "analyst",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
       "url": "https://academy.tdsynnex.com/alliances",
       "family": "partners",
       "status": 0,
-      "error": "domain-circuit-open",
+      "error": "HTTPError: 404 Client Error:  for url: https://academy.tdsynnex.com/alliances",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
       "url": "https://academy.tdsynnex.com/find-a-partner",
       "family": "partners",
       "status": 0,
@@ -1803,89 +1065,8 @@
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/line-card",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
       "url": "https://academy.tdsynnex.com/partner",
       "family": "partners",
       "status": 0,
@@ -1893,8 +1074,8 @@
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
       "url": "https://academy.tdsynnex.com/partner-locator",
       "family": "partners",
       "status": 0,
@@ -1902,8 +1083,8 @@
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
       "url": "https://academy.tdsynnex.com/partners",
       "family": "partners",
       "status": 0,
@@ -1911,825 +1092,630 @@
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/portfolio",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://news.tdsynnex.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://news.tdsynnex.com/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://news.tdsynnex.com/find-a-partner",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/projects",
-      "family": "cases",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://news.tdsynnex.com/partner",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/proyectos",
-      "family": "cases",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://news.tdsynnex.com/partner-locator",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/robots.txt",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://news.tdsynnex.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://vasscompany.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://vasscompany.com/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://vasscompany.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://vasscompany.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://vasscompany.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://vasscompany.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://vasscompany.com/spain/es/what-we-do/partners/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.arrow.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "ConnectionError: HTTPSConnectionPool(host='www.arrow.com', port=443): Max retries exceeded with url: /alliances (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.arrow.com', port=443): Read timed out. (read timeout=7.0)\"))",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.arrow.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.arrow.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.arrow.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.arrow.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/",
       "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/security",
-      "family": "services",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/actualidad",
+      "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/sitemap.xml",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/alianzas",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/vendors",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/alliances",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://hub.tdsynnex.com/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "url": "https://www.linkedin.com/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "url": "https://www.linkedin.com/jobs/consulting-jobs-phoenix-az?trk=homepage-basic_suggested-search",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "url": "https://www.linkedin.com/jobs/engineering-jobs-phoenix-az?trk=homepage-basic_suggested-search",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "url": "https://www.channelpartner.es/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "url": "https://www.channelpartner.es/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "url": "https://www.channelpartner.es/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "url": "https://www.channelpartner.es/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "url": "https://www.channelpartner.es/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "url": "https://www.linkedin.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.linkedin.com/alliances",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "url": "https://www.linkedin.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.linkedin.com/find-a-partner",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "url": "https://business.linkedin.com/hire/hiring-pro/credit-offer?src=re-pod&trk=partner&mcid=7171262648741679121&veh=partner",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "url": "https://www.linkedin.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.linkedin.com/partner-locator",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "url": "https://www.linkedin.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.linkedin.com/partners",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "url": "https://www.tdsynnex.com/eu/es/es/partnerfirst.html",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "MCR",
-      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-espana-por-facturacion/",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "MCR",
-      "url": "https://www.itchannel.pt/directorio/distribuidores/20",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "MCR",
-      "url": "https://news.mcr.com.es/",
-      "family": "official",
-      "status": 0,
-      "error": "SSLError: HTTPSConnectionPool(host='www.mcr.com.es', port=443): Max retries exceeded with url: /blog/ (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer ce",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "MCR",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "MCR",
-      "url": "https://multimac.pt/servicos-e-solucoes/",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "MCR",
-      "url": "https://www.also.com/ec/cms5/es_2610/2610/also-spain-technology/hazte-cliente-de-also/index.jsp",
-      "family": "cases",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "MCR",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_y_plataformas/index.jsp",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "MCR",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/caracteristicas_de_acmp/index.jsp",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "ALSO",
-      "url": "https://www.also.com/ec/cms5/en_6000/6000/",
-      "family": "analyst",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "ALSO",
-      "url": "https://www.itchannel.pt/directorio/distribuidores/",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/analyst",
       "family": "analyst",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "ALSO",
-      "url": "https://www.esprinet.com/es/oferta/servicios/innovexya/",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "ALSO",
-      "url": "https://www.globomatik.com/ordenadores/software/servicios",
-      "family": "services",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/careers",
+      "family": "careers",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.globomatik.com/ordenadores/software/servicios",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "ALSO",
-      "url": "https://weblib.com/alliances",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/es/ecosistema/fabricantes",
       "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://weblib.com/alliances",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "ALSO",
-      "url": "https://weblib.com/find-a-partner",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/fabricantes",
       "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://weblib.com/find-a-partner",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "ALSO",
-      "url": "https://weblib.com/partners/",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/find-a-partner",
       "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "ALSO",
-      "url": "https://weblib.com/partner-locator",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/line-card",
       "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://weblib.com/partner-locator",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "ALSO",
-      "url": "https://weblib.com/partners/",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/marcas",
       "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "ALSO",
-      "url": "https://weblib.com/partners/",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/market",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/parceiros",
       "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/empresa/",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/empresa/",
-      "family": "cases",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/case-studies",
-      "family": "cases",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://liscic.pt/case-studies",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/casos",
-      "family": "cases",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/partner",
+      "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://liscic.pt/casos",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/clientes",
-      "family": "cases",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/partner-locator",
+      "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://liscic.pt/clientes",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/cloud",
-      "family": "services",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/partners",
+      "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://liscic.pt/cloud",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/customer-stories",
-      "family": "cases",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/portfolio",
+      "family": "partners",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://liscic.pt/customer-stories",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/customers",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/projects",
       "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/empresa/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/industrias",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/proyectos",
       "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/industries",
-      "family": "cases",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/pt/vendors/",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/managed-services",
-      "family": "services",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/reports",
+      "family": "analyst",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/networking",
-      "family": "services",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/research",
+      "family": "analyst",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/projects",
-      "family": "cases",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/resources",
+      "family": "analyst",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/robots.txt",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/robots.txt",
       "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/security",
-      "family": "services",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/rss",
+      "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/sitemap.xml",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/sitemap.xml",
       "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/sitemap.xml",
-      "family": "services",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/sitemap.xml",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/sitemap.xml",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/sitemap.xml",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/sitemap.xml",
       "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://liscic.pt/success-stories",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/success-stories",
       "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Liscic",
-      "url": "https://multimac.pt/servicos-e-solucoes/",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "WDMI",
-      "url": "https://wdmi.pt/",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.exclusive-networks.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "WDMI",
-      "url": "https://wdmi.pt/",
-      "family": "cases",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "WDMI",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "WDMI",
-      "url": "https://wdmi.pt/",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.extremenetworks.com/",
       "family": "official",
       "cached": true,
       "relevant": true,
@@ -2737,49 +1723,96 @@
       "status": 200
     },
     {
-      "section": "distributors",
-      "entity": "WDMI",
-      "url": "https://multimac.pt/servicos-e-solucoes/",
-      "family": "services",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.extremenetworks.com/actualidad",
+      "family": "news",
       "cached": true,
-      "relevant": true,
+      "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "clients_private",
-      "entity": "Galp Energia",
-      "url": "https://www.galp.com/es/",
-      "family": "official",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.extremenetworks.com/alianzas",
+      "family": "partners",
       "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "clients_private",
-      "entity": "Jerónimo Martins",
-      "url": "https://www.jeronimomartins.com/en/?lang=en",
-      "family": "official",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.extremenetworks.com/alliances",
+      "family": "partners",
       "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "clients_private",
-      "entity": "Repsol",
-      "url": "https://www.repsol.com/es/index.cshtml",
-      "family": "official",
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "url": "https://www.extremenetworks.com/analyst",
+      "family": "analyst",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "url": "https://www.gartner.com/en/documents/7787453",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "url": "https://www.gartner.com/en/documents/7860081",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "family": "services",
       "cached": false,
       "relevant": true,
       "accepted": 1,
       "status": 200
     },
     {
-      "section": "clients_private",
-      "entity": "Repsol",
-      "url": "https://www.repsol.com/es/mis-servicios/index.cshtml?returnUrl=https://www.repsol.com/es/index.cshtml",
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-05-12-gartner-predicts-40-percent-of-organizations-deploying-ai-will-use-ai-observability-to-monitor-model-performance-by-2028",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "url": "https://aslan.es/arrow-ecs-amplia-su-acuerdo-de-distribucion-con-palo-alto-networks-a-espana-y-portugal/",
       "family": "services",
       "cached": false,
       "relevant": false,
@@ -2787,9 +1820,101 @@
       "status": 200
     },
     {
-      "section": "clients_private",
-      "entity": "Repsol",
-      "url": "https://www.repsol.com/es/productos-y-servicios/index.cshtml",
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "url": "https://news.tdsynnex.com/news/td-synnex-strengthens-cybersecurity-portfolio-with-addition-of-palo-alto-networks-in-europe/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "url": "https://www.westconcomstor.com/es/es/sitemap.html",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "url": "https://www.gartner.com/en/documents/7713557",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "url": "https://www.gartner.com/en/documents/7787453",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "url": "https://www.gartner.com/en/documents/7860081",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "url": "https://www.bing.com/news",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "AI-ready Data Center / Fabric / Edge",
+      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-05-19-gartner-forecasts-worldwide-ai-spending-to-grow-47-percent-in-2026",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "AI-ready Data Center / Fabric / Edge",
+      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-06-23-gartner-predicts-neocloud-providers-will-capture-20-percent-of-the-267-billion-dollar-ai-cloud-market-by-2030",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "AI-ready Data Center / Fabric / Edge",
+      "url": "https://www.gartner.com/en/documents/6808434",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "AI-ready Data Center / Fabric / Edge",
+      "url": "https://www.gartner.com/en/documents/8084665",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "AI-ready Data Center / Fabric / Edge",
+      "url": "https://www.forrester.com/blogs/europes-2026-tech-spend-exceeds-e1-5-trillion-driven-by-ai-cloud-and-sovereignty/",
       "family": "services",
       "cached": false,
       "relevant": false,
@@ -2797,24 +1922,870 @@
       "status": 200
     },
     {
-      "section": "clients_private",
-      "entity": "Repsol",
-      "url": "https://www.repsol.com/es/empleo/index.cshtml",
-      "family": "careers",
+      "section": "trends",
+      "entity": "AI-ready Data Center / Fabric / Edge",
+      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-05-12-gartner-predicts-40-percent-of-organizations-deploying-ai-will-use-ai-observability-to-monitor-model-performance-by-2028",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "AI-ready Data Center / Fabric / Edge",
+      "url": "https://www.gartner.com/en/documents/6808434",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "AI-ready Data Center / Fabric / Edge",
+      "url": "https://www.gartner.com/en/documents/8084665",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "AI-ready Data Center / Fabric / Edge",
+      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-07-20-gartner-forecasts-worldwide-ai-platforms-and-models-market-to-grow-63-percent-in-2026",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "AI-ready Data Center / Fabric / Edge",
+      "url": "https://www.idc.com/resource-center/blog/emea-it-market-2026-q2-updates-5-key-takeaways-on-ai-it-spending-and-market-trends/",
+      "family": "analyst",
       "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
+      "section": "trends",
+      "entity": "AI-ready Data Center / Fabric / Edge",
+      "url": "https://www.forrester.com/technology/",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "AI-ready Data Center / Fabric / Edge",
+      "url": "https://www.bing.com/news",
+      "family": "news",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "AI-ready Data Center / Fabric / Edge",
+      "url": "https://news.google.com/home?hl=es-419&gl=US&ceid=US:es-419",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "NaaS / Managed Networking",
+      "url": "https://www.prnewswire.com/news-releases/ai-will-push-cloud-managed-network-revenue-over-10-billion-according-to-delloro-group-302814090.html",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "NaaS / Managed Networking",
+      "url": "https://www.gartner.com/en/documents/7860081",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "NaaS / Managed Networking",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "family": "partners",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "NaaS / Managed Networking",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "NaaS / Managed Networking",
+      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxORTJ3S3RYdjBaZVZDOEJ2amdYYnUyU3BhWWUzUGx2R1ZOZTR5ZDF0RXhFLVM3WHltazBkQ3A5cklTTG1TN3NMUm5vdTBsclBJZkozN0c4OExQQkRaR25ZaEN4OHU1SjBzSlIza00wb1JLZVBicUJ6YXhkeV85dFVTTVJqLW5sSUd3d243YWpyNTNrak5URVp3dFFPQ1lJUnRJczl2X2ZuU0drQlpXM3ZMNFZmV2owNmNOVUdONlZrbmx0bjA4eDNXSHI2MHFkd3lFSnRYQkVBbDRiQQ?oc=5&hl=es-419&gl=US&ceid=US:es-419",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "NaaS / Managed Networking",
+      "url": "https://www.flane.es/ciscochannelpartner/express_foundation",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "family": "services",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "url": "https://www.prnewswire.com/news-releases/ai-will-push-cloud-managed-network-revenue-over-10-billion-according-to-delloro-group-302814090.html",
+      "family": "services",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "url": "https://www.gartner.com/en/documents/7860081",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxORTJ3S3RYdjBaZVZDOEJ2amdYYnUyU3BhWWUzUGx2R1ZOZTR5ZDF0RXhFLVM3WHltazBkQ3A5cklTTG1TN3NMUm5vdTBsclBJZkozN0c4OExQQkRaR25ZaEN4OHU1SjBzSlIza00wb1JLZVBicUJ6YXhkeV85dFVTTVJqLW5sSUd3d243YWpyNTNrak5URVp3dFFPQ1lJUnRJczl2X2ZuU0drQlpXM3ZMNFZmV2owNmNOVUdONlZrbmx0bjA4eDNXSHI2MHFkd3lFSnRYQkVBbDRiQQ?oc=5&hl=es-419&gl=US&ceid=US:es-419",
+      "family": "news",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://www.prnewswire.com/news-releases/cnapp-to-reach-12-9-b-by-2030-as-cloud-security-becomes-a-platform-power-play-according-to-delloro-group-302659029.html",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://www.gartner.com/en/documents/6808434",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://www.gartner.com/reviews/market/cloud-web-application-and-api-protection/vendor/f5/alternatives",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://investor.forrester.com/news-releases/news-release-details/forrester-global-sovereignty-forecast-despite-rising/",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://investor.forrester.com/news-releases/news-release-details/forrester-global-sovereignty-forecast-despite-rising/",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://www.forrester.com/blogs/europes-2026-tech-spend-exceeds-e1-5-trillion-driven-by-ai-cloud-and-sovereignty/",
+      "family": "services",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://academy.westconcomstor.com/es/catalog/search",
+      "family": "analyst",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://academy.westconcomstor.com/es/catalog/search",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQUGlDLXgtUElGNnkxcE9UUVNxSGs4TUxVTWpJRWE2UFZmZG4wdWl5TnZoZ0lveTcxTVRzamJVX295Q3NsNERFd1lfVF9JVm9QYTlvNG44dkVaQWRMNDZXY1hSU19XU01LWTI3YXVOM1V0N3lGUFQycUdKUjhjaGlDamUzMGMtc0NkaWE3aTFqSjRhYWp0T2pXYzA1b3liOUVrQjhFOXloT1I3Yk1tOU5HNWJtTDhZcF9TeUZjYTFHQ00?oc=5&hl=es-419&gl=US&ceid=US:es-419",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://www.gartner.com/en/documents/6808434",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://www.idc.com/resource-center/blog/",
+      "family": "analyst",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://www.bing.com/news",
+      "family": "news",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "OT / XIoT Security & Resilience",
+      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-02-12-gartner-predicts-that-by-2028-misconfigured-ai-will-shut-down-national-critical-infrastructure-in-a-g20-country",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "OT / XIoT Security & Resilience",
+      "url": "https://www.gartner.com/en/documents/7540249",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "OT / XIoT Security & Resilience",
+      "url": "https://academy.westconcomstor.com/es/catalog/search",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "OT / XIoT Security & Resilience",
+      "url": "https://www.gartner.com/en/documents/7540249",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "OT / XIoT Security & Resilience",
+      "url": "https://www.fortinet.com/tw/products/next-generation-firewall",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "OT / XIoT Security & Resilience",
+      "url": "https://www.bing.com/news",
+      "family": "news",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "OT / XIoT Security & Resilience",
+      "url": "https://news.google.com/home?hl=es-419&gl=US&ceid=US:es-419",
+      "family": "official",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "OT / XIoT Security & Resilience",
+      "url": "https://www.forrester.com/technology/",
+      "family": "analyst",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "OT / XIoT Security & Resilience",
+      "url": "https://www.gartner.com/en/information-technology",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "OT / XIoT Security & Resilience",
+      "url": "https://www.idc.com/eu/",
+      "family": "analyst",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "url": "https://www.gartner.com/en/documents/4559999",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "url": "https://www.prnewswire.com/news-releases/sase-1q-2026-revenue-climbs-21-percent-to-over-3-b-driven-by-ai-governance-according-to-delloro-group-302798346.html",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "url": "https://www.gartner.com/en/documents/8183329",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "url": "https://www.prnewswire.com/news-releases/stronger-sd-wan-and-sse-growth-lift-sase-forecast-to-24-b-by-2030-according-to-delloro-group-302843066.html",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
+      "family": "services",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "family": "services",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxORTJ3S3RYdjBaZVZDOEJ2amdYYnUyU3BhWWUzUGx2R1ZOZTR5ZDF0RXhFLVM3WHltazBkQ3A5cklTTG1TN3NMUm5vdTBsclBJZkozN0c4OExQQkRaR25ZaEN4OHU1SjBzSlIza00wb1JLZVBicUJ6YXhkeV85dFVTTVJqLW5sSUd3d243YWpyNTNrak5URVp3dFFPQ1lJUnRJczl2X2ZuU0drQlpXM3ZMNFZmV2owNmNOVUdONlZrbmx0bjA4eDNXSHI2MHFkd3lFSnRYQkVBbDRiQQ?oc=5&hl=es-419&gl=US&ceid=US:es-419",
+      "family": "news",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
       "section": "clients_private",
-      "entity": "Repsol",
-      "url": "https://www.repsol.com/es/conocenos/nuestra-actividad/industrial/index.cshtml",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/xms/files/Investidores/Relatorio_Anual/Amorim_RC24_EN_low.pdf",
+      "family": "financial",
+      "status": 200,
+      "error": "unsupported-content-type:application/pdf",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/architecture",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/architectures",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/case-studies",
       "family": "cases",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/platform",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/products",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/services",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/sitemap.xml",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/solutions",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/technologies",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/technology",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Corticeira Amorim",
+      "url": "https://www.amorim.com/tecnologia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     }
   ],
   "candidate_rejection_rows_total": 0,
