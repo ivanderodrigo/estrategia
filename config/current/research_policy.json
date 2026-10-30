@@ -109,22 +109,23 @@
     ],
     "budgets": {
       "daily": {
-        "max_entities": 36,
-        "queries_per_entity": 2,
-        "results_per_query": 4
+        "max_entities": 48,
+        "queries_per_entity": 3,
+        "results_per_query": 6
       },
       "deep": {
-        "max_entities": 220,
-        "queries_per_entity": 5,
-        "results_per_query": 8
+        "max_entities": 320,
+        "queries_per_entity": 7,
+        "results_per_query": 10
       },
       "exhaustive": {
-        "max_entities": 600,
-        "queries_per_entity": 8,
-        "results_per_query": 10
+        "max_entities": 800,
+        "queries_per_entity": 10,
+        "results_per_query": 12
       }
     },
     "discovery_only": true,
-    "no_api_key_required": true
+    "no_api_key_required": true,
+    "note": "Discovery budgets are upper bounds; canonical runtime deadline and research integrity gates remain authoritative."
   }
 }
