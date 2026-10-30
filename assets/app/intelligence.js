@@ -1,4 +1,4 @@
-// App v4.4.0
+// App v4.5.0
 (() => {
   'use strict';
   const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
@@ -202,6 +202,7 @@
     $('#textLarger')?.addEventListener('click', () => changeTextScale(0.1));
     $('#textReset')?.addEventListener('click', resetTextScale);
     document.addEventListener('click', e=>{
+      const focusToggle=e.target.closest('[data-evidence-first]'); if(focusToggle){toggleEvidenceFirst(focusToggle.dataset.evidenceFirst);return;}
       const more=e.target.closest('[data-more-tags]'); if(more){ const box=more.closest('.tag-list'); box?.classList.toggle('expanded'); more.textContent=box?.classList.contains('expanded')?'Mostrar menos':more.dataset.label; }
       const moreText=e.target.closest('[data-more-text]'); if(moreText){ const box=moreText.closest('.scalar-compact'); box?.classList.toggle('expanded'); moreText.textContent=box?.classList.contains('expanded')?'Ver menos':'Ver más'; e.stopPropagation(); }
       const legend=e.target.closest('[data-trend-index]'); if(legend){ const id=legend.dataset.trendIndex; $$('.trend-loop-node').forEach(n=>n.classList.toggle('active',n.dataset.trendIndex===id)); }
@@ -481,8 +482,32 @@
     const sort=state.sort[view], arrow=sort?.col===col.id?(sort.dir===1?' ↑':' ↓'):'',w=currentColumnWidth(view,col.id);
     return `<th draggable="true" data-col="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${w}px;min-width:${w}px" title="Arrastrar para mover · clic para ordenar"><span class="drag-grip">⋮⋮</span><span class="help-wrap"><span>${esc(col.label)}${arrow}</span>${col.clarify?`<button class="help-icon" type="button" aria-label="Aclaración de ${esc(col.label)}">?</button><span class="help-tip">${esc(col.help||'')}</span>`:''}</span><span class="col-resizer" title="Redimensionar" aria-hidden="true"></span></th>`;
   }
+  // A field is worth prominent table space only when the snapshot actually contains
+  // substantial information about it. All fields remain in the chooser and reports.
+  function fieldCoverage(col,rows){
+    if(!rows?.length)return 0;
+    let n=0;
+    for(const row of rows) if(hasValue(fieldFor(row,col)?.value)) n++;
+    return n/rows.length;
+  }
+  function evidenceFirstMode(view){
+    return loadTablePref(view,'evidence-first',true)!==false;
+  }
+  function toggleEvidenceFirst(view){
+    const next=!evidenceFirstMode(view);
+    localStorage.setItem(`westcon-table-evidence-first-${view}`,JSON.stringify(next));
+    renderCurrent(view);
+  }
+  function prominentColumn(col,rows,view){
+    return !evidenceFirstMode(view)||col.essential||fieldCoverage(col,rows)>=.30;
+  }
+  function coverageOverview(schema,rows,view){
+    const visible=schema.filter(c=>c.hidden!==true&&(c.essential||!hiddenCols(view).includes(c.id)));
+    const prominent=visible.filter(c=>prominentColumn(c,rows,view)).length;
+    return `<div class="coverage-overview"><span><b>Vista ${evidenceFirstMode(view)?'esencial':'completa'}</b> · ${prominent} de ${visible.length} columnas seleccionadas · los campos poco poblados se conservan y pueden explorarse</span><button type="button" data-evidence-first="${esc(view)}">${evidenceFirstMode(view)?'Ver todas las columnas':'Priorizar datos disponibles'}</button></div>`;
+  }
   function activeColumns(schema, rows, view){
-    let cols=schema.filter(col=>col.hidden!==true&&(col.essential||!hiddenCols(view).includes(col.id))&&(col.show_when_empty===true||rows.some(row=>hasValue(fieldFor(row,col)?.value))));
+    let cols=schema.filter(col=>col.hidden!==true&&(col.essential||!hiddenCols(view).includes(col.id))&&(col.show_when_empty===true||rows.some(row=>hasValue(fieldFor(row,col)?.value)))&&prominentColumn(col,rows,view));
     const order=state.columnOrder[view]||JSON.parse(localStorage.getItem(`westcon-cols-${view}`)||'null');
     if(order){state.columnOrder[view]=order; cols.sort((a,b)=>{let ai=order.indexOf(a.id),bi=order.indexOf(b.id);if(ai<0)ai=999;if(bi<0)bi=999;return ai-bi;});}
     return cols;
@@ -551,8 +576,8 @@
     persistFilter(view);state.analysisOpen[view]=true;renderCurrent(view);
   }
   function missingMarkup(col){
-    const label=col?.derived||['DERIVED_FACT','INTERNAL_CLASSIFICATION'].includes(String(col?.claim_class||''))?'Cálculo pendiente':'Dato no disponible';
-    return '<span class="research-gap" title="Este campo no dispone de un valor acreditado. El estado de investigación se consulta en Estado de datos.">'+esc(label)+'</span>';
+    const label='—';
+    return '<span class="research-gap" title="Sin evidencia pública suficiente en este campo. No implica que la entidad carezca de esta capacidad.">'+esc(label)+'</span>';
   }
   function sortedRows(rows,view){const s=state.sort[view];if(!s)return rows;const col=(state.data.schemas[view]||[]).find(c=>c.id===s.col)||{id:s.col};return [...rows].sort((a,b)=>valueText(filterAccessor(a,s.col,col)??a.name).localeCompare(valueText(filterAccessor(b,s.col,col)??b.name),'es',{numeric:true})*s.dir);}
   function toggleSort(view,col){if(!view)return;const cur=state.sort[view];state.sort[view]={col,dir:cur?.col===col?-cur.dir:1};renderCurrent(view);}
@@ -560,7 +585,7 @@
   function renderCurrent(view){({manufacturers:renderManufacturers,integrators:renderIntegrators,distributors:renderDistributors,clients_public:renderClients,clients_private:renderClients}[view]||(()=>{}))();}
   function tableHtml(rows, schema, emptyText, view, baseRows=rows){
     const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table'):missingMarkup(col)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
-    return `<div class="table-shell">${columnChooser(schema,view,baseRows)}<div class="table-scroll">${body}</div></div>${analysisPanel(view,schema,baseRows,rows)}`;
+    return `<div class="table-shell">${columnChooser(schema,view,baseRows)}${coverageOverview(schema,baseRows,view)}<div class="table-scroll">${body}</div></div>${analysisPanel(view,schema,baseRows,rows)}`;
   }
   function scopeMatch(row, scope){
     if(scope==='all') return true;
@@ -1130,7 +1155,7 @@
 
   function renderAll(){
     populateIntegratorVendorFilter(); renderActiveView(); renderSourceCatalog(); renderUpdateStatus(); renderConfidenceGuide();
-    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v4.4.0 · dataset v${meta.version||'4.3.0'} · ${meta.source_count||0} fuentes acreditativas/familias · ${meta.scope||'Iberia'}`;
+    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v4.5.0 · dataset v${meta.version||'4.3.0'} · ${meta.source_count||0} fuentes acreditativas/familias · ${meta.scope||'Iberia'}`;
   }
 
   load().catch(err => { console.error(err); const main=document.querySelector('main'); if(main) main.innerHTML=`<div class="fatal"><h1>No se pudo cargar la inteligencia</h1><p>${esc(err.message)}</p></div>`; });
