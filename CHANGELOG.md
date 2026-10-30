@@ -1,5 +1,15 @@
 # Changelog
 
+## 4.4.0 — Observatory Discovery
+- El producto vuelve a situar **Fabricantes, Mayoristas, Integradores, Clientes, Tendencias y Arquitecturas** como navegación principal; se retira «Hoy en Westcon» del primer plano.
+- Se conecta por fin `query_hints` con la ejecución real: Bing RSS y DuckDuckGo HTML se usan como **descubrimiento de URLs**, sin claves API y con presupuestos acotados por perfil.
+- Los resultados del buscador nunca acreditan por sí solos un dato: las páginas descubiertas pasan por seguridad de URL, binding entidad/sujeto, extracción semántica, provenance tipada y evidencia atómica antes de cualquier promoción.
+- La búsqueda amplía el long-tail en español, portugués e inglés sin rebajar los criterios existentes ni eliminar conocimiento histórico.
+- Nuevas métricas de investigación: targets con búsqueda, consultas intentadas/exitosas, fallos de proveedor y URLs candidatas descubiertas.
+- Los informes dejan de convertir toda ausencia en «Por investigar»: usan «Sin dato acreditado» y remiten al estado de investigación para distinguir no investigado, no localizado y fuente no disponible.
+- Nueva utilidad `scripts/discovery_probe.py` para probar el descubrimiento de forma **read-only** sin modificar el dataset canónico.
+- Añadidos tests específicos de parsing/seguridad del descubrimiento y smoke test de la navegación de seis dominios.
+
 ## 4.2.2
 - Evidencia Westcon vigente: la presentación corporativa FY2027 acredita de forma atómica la pertenencia al portfolio España y las capacidades que aparecen explícitamente en sus slides.
 - Portugal: mismo portfolio FY2027 de España más Check Point. Se corrige la antigua pista que añadía también Proofpoint como excepción portuguesa.

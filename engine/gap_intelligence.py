@@ -199,19 +199,71 @@ def _query_hints(gap: Mapping[str, Any], family: str) -> list[str]:
     for target in targets[:3]:
         hints.extend([f'"{entity}" "{target}"', f'"{entity}" {field} "{target}"'])
     if family == "partners":
-        hints.extend([f'"{entity}" partners vendors', f'"{entity}" alianzas fabricantes'])
+        hints.extend([
+            f'"{entity}" partner locator vendors',
+            f'"{entity}" alianzas fabricantes',
+            f'"{entity}" parceiros fabricantes',
+            f'"{entity}" alliance reseller distributor integrator',
+        ])
     elif family == "procurement":
-        hints.extend([f'"{entity}" contratación tecnología', f'"{entity}" concurso adjudicación'])
+        hints.extend([
+            f'"{entity}" contratación tecnología adjudicación',
+            f'"{entity}" licitación informática redes ciberseguridad',
+            f'"{entity}" contratação tecnologia adjudicação',
+            f'"{entity}" concurso aquisição informática',
+        ])
+    elif family == "cases":
+        hints.extend([
+            f'"{entity}" case study customer success',
+            f'"{entity}" caso de éxito cliente tecnología',
+            f'"{entity}" caso de sucesso cliente tecnologia',
+        ])
     elif family == "careers":
-        hints.extend([f'"{entity}" careers {field}', f'"{entity}" empleo tecnología'])
+        hints.extend([
+            f'"{entity}" careers {field}',
+            f'"{entity}" empleo tecnología certificación',
+            f'"{entity}" vagas emprego tecnologia',
+            f'"{entity}" jobs cloud security network',
+        ])
     elif family == "financial":
-        hints.extend([f'"{entity}" annual report revenue', f'"{entity}" facturación resultados'])
-    elif family in {"services", "technology"}:
-        hints.extend([f'"{entity}" {field}', f'"{entity}" solutions services'])
+        hints.extend([
+            f'"{entity}" annual report revenue',
+            f'"{entity}" facturación resultados anuales',
+            f'"{entity}" relatório contas receita',
+            f'"{entity}" investor relations financial results',
+        ])
+    elif family == "services":
+        hints.extend([
+            f'"{entity}" {field}',
+            f'"{entity}" solutions services capabilities',
+            f'"{entity}" servicios soluciones capacidades',
+            f'"{entity}" serviços soluções competências',
+        ])
+    elif family == "technology":
+        hints.extend([
+            f'"{entity}" {field}',
+            f'"{entity}" technology platform architecture',
+            f'"{entity}" tecnología arquitectura plataforma',
+            f'"{entity}" tecnologia arquitetura plataforma',
+        ])
     elif family == "analyst":
-        hints.extend([f'"{entity}" market share report', f'"{entity}" analyst report'])
+        hints.extend([
+            f'"{entity}" market report 2026',
+            f'"{entity}" analyst report market growth',
+            f'"{entity}" Iberia Spain Portugal market',
+            f'"{entity}" Gartner IDC Omdia Canalys',
+        ])
+    elif family == "news":
+        hints.extend([
+            f'"{entity}" technology announcement 2026',
+            f'"{entity}" tecnología inversión alianza 2026',
+            f'"{entity}" tecnologia investimento parceria 2026',
+        ])
     else:
-        hints.append(f'"{entity}" {field}')
+        hints.extend([
+            f'"{entity}" {field}',
+            f'"{entity}" {field} Spain Portugal Iberia',
+        ])
     output: list[str] = []
     seen = set()
     for hint in hints:
@@ -219,7 +271,7 @@ def _query_hints(gap: Mapping[str, Any], family: str) -> list[str]:
         if hint and key not in seen:
             seen.add(key)
             output.append(hint)
-    return output[:6]
+    return output[:10]
 
 
 def _field_value(row: Mapping[str, Any], field: str) -> Any:

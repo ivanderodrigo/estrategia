@@ -5,14 +5,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 class ObservatorioHomeTest(unittest.TestCase):
-    def test_executive_section_and_navigation_exist(self):
+    def test_six_domain_observatory_is_primary_navigation(self):
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         js = (ROOT / "assets/app/intelligence.js").read_text(encoding="utf-8")
-        self.assertIn('id="observatorio" class="view active"', html)
-        self.assertIn('data-view="observatorio"', html)
-        self.assertIn("observatorio:renderObservatorio", js)
-        self.assertIn("data-observatorio-jump", js)
-        self.assertIn("lastRun:null, view:'observatorio'", js)
+        self.assertNotIn('data-view="observatorio"', html)
+        self.assertIn('data-view="fabricantes"', html)
+        self.assertIn('data-view="mayoristas"', html)
+        self.assertIn('data-view="integradores"', html)
+        self.assertIn('data-view="clientes"', html)
+        self.assertIn('data-view="tendencias"', html)
+        self.assertIn('data-view="arquitecturas"', html)
+        self.assertIn("lastRun:null, view:'fabricantes'", js)
+        self.assertNotIn("observatorio:renderObservatorio", js)
 
     def test_no_unsupported_100_percent_coverage(self):
         js = (ROOT / "assets/app/intelligence.js").read_text(encoding="utf-8")

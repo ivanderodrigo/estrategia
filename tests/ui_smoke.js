@@ -5,7 +5,7 @@ const css = fs.readFileSync('assets/app/intelligence.css', 'utf8');
 
 for (const token of [
   'data/public/manifest.json', 'ensureSection', 'ensureViewData', 'clients_public',
-  'clients_private', 'reorderColumn', 'columnChooser', 'currentColumnWidth', 'App v4.3.1',
+  'clients_private', 'reorderColumn', 'columnChooser', 'currentColumnWidth', 'App v4.4.0',
   'atomic-evidence-missing', 'el sistema no muestra fuentes de otros elementos',
   'analysisPanel', 'WestconFilters.apply', 'sessionStorage', 'savedFilters',
   'openFilteredReport', 'WestconReports.build', 'generateFilteredCsv', 'window.print',
@@ -34,4 +34,10 @@ for (const token of [
 if (js.includes('data-col-toggle data-view=')) throw new Error('column chooser contains duplicate data-col-toggle attribute');
 if (!js.includes('data-view="${esc(view)}" data-col-toggle="${esc(c.id)}"')) throw new Error('column chooser does not expose the selected column id');
 
-console.log('UI smoke v4.3.1 PASS');
+const html = fs.readFileSync('index.html', 'utf8');
+if (html.includes('data-view="observatorio"')) throw new Error('legacy Hoy en Westcon tab is still primary navigation');
+for (const label of ['Fabricantes','Mayoristas','Integradores','Clientes','Tendencias','Arquitecturas']) {
+  if (!html.includes('>'+label+'</button>')) throw new Error('missing primary observatory area: '+label);
+}
+
+console.log('UI smoke v4.4.0 PASS');

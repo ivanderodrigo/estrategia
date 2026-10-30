@@ -1,7 +1,7 @@
-// App v4.3.1
+// App v4.4.0
 (() => {
   'use strict';
-  const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'observatorio', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
+  const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -13,7 +13,7 @@
   const toast = msg => { const el=$('#toast'); if(!el) return; el.textContent=msg; el.classList.add('show'); clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove('show'),2600); };
 
   const PUBLIC_SECTIONS=['manufacturers','distributors','integrators','clients_public','clients_private','trends','architectures'];
-  const VIEW_SECTIONS={observatorio:PUBLIC_SECTIONS,fabricantes:['manufacturers'],mayoristas:['distributors'],integradores:['integrators','manufacturers'],clientes:['clients_public','clients_private'],tendencias:['trends','manufacturers'],arquitecturas:['architectures']};
+  const VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors'],integradores:['integrators','manufacturers'],clientes:['clients_public','clients_private'],tendencias:['trends','manufacturers'],arquitecturas:['architectures']};
   const CRITERIA_VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors'],integradores:['integrators'],clientes:['clients_public','clients_private'],tendencias:['trends'],arquitecturas:['architectures']};
   const CRITERIA_SECTION_LABELS={manufacturers:'Fabricantes',distributors:'Mayoristas',integrators:'Integradores',clients_public:'Clientes públicos',clients_private:'Clientes privados',trends:'Tendencias',architectures:'Arquitecturas'};
   const RESEARCH_CRITERIA_PLAYBOOKS={
@@ -148,7 +148,7 @@
     window.WestconCommercial?.mount($('#commercialDesk'),state.deskRows||[]);
   }
   function renderActiveView(){
-    ({observatorio:renderObservatorio,fabricantes:renderManufacturers,mayoristas:renderDistributors,integradores:renderIntegrators,clientes:renderClients,tendencias:renderTrends,arquitecturas:renderArchitectures}[state.view]||(()=>{}))();
+    ({fabricantes:renderManufacturers,mayoristas:renderDistributors,integradores:renderIntegrators,clientes:renderClients,tendencias:renderTrends,arquitecturas:renderArchitectures}[state.view]||(()=>{}))();
   }
   async function load(){
     const [res, runRes, historyRes] = await Promise.all([
@@ -170,7 +170,6 @@
 
   function bind(){
     $$('#tabs [data-view]').forEach(btn => btn.addEventListener('click', () => switchView(btn.dataset.view)));
-    $('#observatorioBody')?.addEventListener('click', e => {const target=e.target.closest('[data-observatorio-jump]');if(target)switchView(target.dataset.observatorioJump);});
     $('#utilityMenuToggle')?.addEventListener('click', e => { e.stopPropagation(); toggleUtilityMenu(); });
     $('#manufacturerSearch')?.addEventListener('input', renderManufacturers);
     $('#integratorSearch')?.addEventListener('input', renderIntegrators);
@@ -624,7 +623,7 @@
     const view=state.reportView;if(!view)return null;const schema=state.data.schemas[view]||[],columns=selectedFilteredReportColumns(view),title=$('#filteredReportName')?.value.trim()||'Westcon Iberia · Informe filtrado';
     const model=window.WestconReports.build({rows:state.baseRows[view]||[],tree:getFilterTree(view),schema:analysisSchema(schema),columns,accessor:filterAccessor,title});model.view=view;model.headerCriteria=state.headerCriteria[view]||'Sin filtros de cabecera';return model;
   }
-  function reportCellValue(row,col){const value=filterAccessor(row,col.id,col);return hasValue(value)?valueText(value):'Por investigar';}
+  function reportCellValue(row,col){const value=filterAccessor(row,col.id,col);return hasValue(value)?valueText(value):'Sin dato acreditado';}
   function derivedSummary(model){
     const candidates=model.columns.filter(c=>!c.virtual).slice(0,5),blocks=[];
     for(const col of candidates){const counts=new Map();for(const row of model.rows)for(const value of (Array.isArray(filterAccessor(row,col.id,col))?filterAccessor(row,col.id,col):[filterAccessor(row,col.id,col)])){if(!hasValue(value))continue;const key=String(value);counts.set(key,(counts.get(key)||0)+1);}const top=[...counts.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'es')).slice(0,4);if(top.length)blocks.push(`<div><b>${esc(col.label)}</b><ul>${top.map(([v,n])=>`<li>${esc(v)} · ${n}</li>`).join('')}</ul></div>`);}return blocks.join('')||'<p>No hay campos seleccionados con valores suficientes para resumir.</p>';
@@ -635,7 +634,7 @@
     const table=detail?`<div class="filtered-report-table-wrap"><table><thead><tr><th>Entidad</th>${model.columns.map(c=>`<th>${esc(c.label)}</th>`).join('')}</tr></thead><tbody>${model.rows.map(row=>`<tr><td><b>${esc(row.name)}</b></td>${model.columns.map(c=>`<td>${esc(reportCellValue(row,c))}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:'';
     const sources=includeSources?`<section><h2>Fuentes trazables</h2>${model.sources.length?`<ol class="filtered-source-list">${model.sources.map(ev=>`<li><b>${esc(ev.source||ev.title||'Fuente')}</b> · ${esc(ev.title||'')} · ${esc(ev.date||'sin fecha')}${ev.url?` · <span>${esc(ev.url)}</span>`:ev.document?` · ${esc(ev.document)}${ev.slide?` · slide ${esc(ev.slide)}`:''}`:''}</li>`).join('')}</ol>`:'<p>No hay fuentes acreditativas en el subconjunto.</p>'}</section>`:'';
     const confidence=$('#filteredReportConfidence')?.checked?`<section><h2>Confianza</h2><p>Distribución por entidad: alta ${bands.high}, media ${bands.medium}, baja ${bands.low}. El nivel se calcula por la mejor evidencia relevante, calidad, actualidad, corroboración y contradicciones; no por el número bruto de URLs.</p></section>`:'';
-    return `<header><div><span>WESTCON IBERIA · DECISION INTELLIGENCE</span><h1>${esc(model.title)}</h1></div><b>v${esc(state.data.meta.version||'4.3.0')}</b></header><section class="filtered-report-meta"><div><b>Generado</b><span>${esc(localDateTime(model.generatedAt))}</span></div><div><b>Entidades</b><span>${model.entityCount}</span></div><div><b>Pendientes</b><span>${model.pending}</span></div></section><section><h2>Criterios de filtrado</h2>${reportCriteriaHtml(model)}</section>${summary?`<section><h2>Resumen ejecutivo derivado</h2><p>Resumen descriptivo calculado exclusivamente a partir de las ${model.entityCount} filas filtradas.</p><div class="filtered-summary">${derivedSummary(model)}</div></section>`:''}${model.pending?`<section class="filtered-warning"><h2>Advertencia de cobertura</h2><p>${model.pending} celdas incluidas están vacías o no tienen evidencia acreditativa vinculada. Se mantienen como «Por investigar» o «Pendiente de verificación».</p></section>`:''}${table}${confidence}${sources}<footer>Westcon Iberia · informe filtrado · ${esc(model.criteria)}</footer>`;
+    return `<header><div><span>WESTCON IBERIA · DECISION INTELLIGENCE</span><h1>${esc(model.title)}</h1></div><b>v${esc(state.data.meta.version||'4.3.0')}</b></header><section class="filtered-report-meta"><div><b>Generado</b><span>${esc(localDateTime(model.generatedAt))}</span></div><div><b>Entidades</b><span>${model.entityCount}</span></div><div><b>Pendientes</b><span>${model.pending}</span></div></section><section><h2>Criterios de filtrado</h2>${reportCriteriaHtml(model)}</section>${summary?`<section><h2>Resumen ejecutivo derivado</h2><p>Resumen descriptivo calculado exclusivamente a partir de las ${model.entityCount} filas filtradas.</p><div class="filtered-summary">${derivedSummary(model)}</div></section>`:''}${model.pending?`<section class="filtered-warning"><h2>Advertencia de cobertura</h2><p>${model.pending} celdas incluidas están vacías o no tienen evidencia acreditativa vinculada. Se muestran como «Sin dato acreditado»; el detalle de estado distingue si aún no se investigó, no se encontró evidencia suficiente o la fuente no estuvo disponible.</p></section>`:''}${table}${confidence}${sources}<footer>Westcon Iberia · informe filtrado · ${esc(model.criteria)}</footer>`;
   }
   function generateFilteredPrintReport(){const model=filteredReportModel();if(!model||!model.rows.length){toast('No hay resultados para el informe');return;}const sheet=$('#filteredReportSheet');sheet.innerHTML=filteredReportHtml(model);sheet.setAttribute('aria-hidden','false');sheet.classList.add('ready');closeModal('filteredReportModal');document.body.classList.add('filtered-report-print');requestAnimationFrame(()=>{window.print();document.body.classList.remove('filtered-report-print');});}
   function csvEscape(value){const text=String(value??'').replace(/\r?\n/g,' ');return `"${text.replace(/"/g,'""')}"`;}
@@ -1131,7 +1130,7 @@
 
   function renderAll(){
     populateIntegratorVendorFilter(); renderActiveView(); renderSourceCatalog(); renderUpdateStatus(); renderConfidenceGuide();
-    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v4.3.1 · dataset v${meta.version||'4.3.0'} · ${meta.source_count||0} fuentes acreditativas/familias · ${meta.scope||'Iberia'}`;
+    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v4.4.0 · dataset v${meta.version||'4.3.0'} · ${meta.source_count||0} fuentes acreditativas/familias · ${meta.scope||'Iberia'}`;
   }
 
   load().catch(err => { console.error(err); const main=document.querySelector('main'); if(main) main.innerHTML=`<div class="fatal"><h1>No se pudo cargar la inteligencia</h1><p>${esc(err.message)}</p></div>`; });

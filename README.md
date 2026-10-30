@@ -1,4 +1,4 @@
-# Westcon Iberia Decision Intelligence — v4.2.2
+# Westcon Iberia Observatorio Tecnológico — v4.4.0
 
 Plataforma de inteligencia de negocio para el canal IT de España y Portugal. Su principio de diseño es: **hipersofisticada por dentro; extremadamente sencilla por fuera**.
 
@@ -13,7 +13,7 @@ La v4 sustituye la evolución acumulativa anterior por una arquitectura canónic
 - `data/public/`: proyección mínima que consume el navegador por carga diferida.
 - `assets/app/`: un único frontend ejecutivo.
 
-## Garantías v4.2
+## Garantías v4.4
 - Evidence Contract: los hechos externos requieren evidencia pública actual; la documentación/regla Westcon vigente puede acreditar únicamente hechos propios de Westcon sobre portfolio, capacidades y servicios; el histórico permanece como memoria de investigación.
 - Knowledge Guard: Tendencias, Arquitecturas y capacidades no relacionales de fabricantes no pueden desaparecer silenciosamente.
 - Preservation Gate: entidades, valores poblados, soporte público, relaciones y research seeds se comparan semánticamente antes/después de cada build.
@@ -30,6 +30,22 @@ La v4 sustituye la evolución acumulativa anterior por una arquitectura canónic
 - El dataset interno canónico está particionado en shards JSON acotados; `data/current/intelligence.json` es un puntero de compatibilidad y no vuelve a crecer como monolito.
 - Los gaps se priorizan P0–P3 por valor de negocio × investigabilidad, con playbook de fuentes por campo y fairness entre secciones.
 - `business_weighted_coverage_pct` complementa el número bruto de gaps para medir cobertura útil de inteligencia.
+
+
+## Qué cambia en v4.4
+
+> **Versionado:** v4.4.0 identifica la aplicación/motor de descubrimiento. El `VERSION` canónico del dataset permanece en 4.3.0 hasta una migración explícita del esquema de datos; así los workflows pueden validar el snapshot publicado antes de investigar.
+
+La investigación ya no depende únicamente de URLs conocidas, rutas convencionales, sitemaps y Wikidata. Los `query_hints` calculados por el planner se ejecutan mediante una capa de **descubrimiento web** que busca URLs candidatas y las entrega al mismo pipeline conservador de validación. El buscador no es evidencia.
+
+La interfaz sitúa como producto principal las seis dimensiones del observatorio: **Fabricantes, Mayoristas, Integradores, Clientes, Tendencias y Arquitecturas**. El estado de actualización, las fuentes y los criterios permanecen en utilidades, sin convertir la aplicación en un generador de acciones comerciales.
+
+Prueba read-only del descubrimiento:
+
+```powershell
+python scripts/discovery_probe.py "NTT DATA" --family partners
+python scripts/discovery_probe.py "SASE" --family analyst --query "\"SASE\" Iberia market 2026"
+```
 
 ## Validación local
 
