@@ -5,26 +5,25 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#082335">
 <meta name="description" content="Westcon Iberia · Business Intelligence · Fabricantes, mayoristas, integradores, clientes, tendencias y arquitecturas con trazabilidad por campo.">
-<title>Westcon Iberia · Observatorio Tecnológico y Comercial</title>
+<title>Westcon Iberia · Observatorio Tecnológico</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/app/intelligence.css?v=4.3.1-commercial-20261026b">
+<link rel="stylesheet" href="assets/app/intelligence.css?v=4.4.0-observatory">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.13.0/dist/pptxgen.bundle.js"></script>
 <script defer src="assets/app/filter_engine.js?v=4.3.1"></script>
 <script defer src="assets/app/report_engine.js?v=4.3.1"></script>
-<script defer src="assets/app/observatory.js?v=20261024"></script>
+<script defer src="assets/app/observatory.js?v=4.4.0"></script>
 <script defer src="assets/app/commercial.js?v=20261026"></script>
-<script defer src="assets/app/intelligence.js?v=4.3.1-hf5-commercial-20261026"></script>
+<script defer src="assets/app/intelligence.js?v=4.4.0-observatory"></script>
 </head>
 <body>
 <header class="appbar">
   <div class="brand">
     <div class="brandmark" aria-hidden="true"><span></span><span></span><span></span></div>
-    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v4.3.1</small></div>
+    <div><b>WESTCON IBERIA</b><small>Observatorio Tecnológico · v4.4.0</small></div>
   </div>
   <nav id="tabs" aria-label="Áreas de inteligencia">
-    <button class="active" data-view="observatorio" type="button">Hoy en Westcon</button>
-    <button data-view="fabricantes" type="button">Fabricantes</button>
+    <button class="active" data-view="fabricantes" type="button">Fabricantes</button>
     <button data-view="mayoristas" type="button">Mayoristas</button>
     <button data-view="integradores" type="button">Integradores</button>
     <button data-view="clientes" type="button">Clientes</button>
@@ -50,13 +49,7 @@
 </header>
 
 <main>
-  <section id="observatorio" class="view active">
-    <div class="page-head">
-      <div><div class="eyebrow">OBSERVATORIO TECNOLÓGICO Y COMERCIAL</div><h1>Hoy en Westcon Iberia</h1><p>Lectura ejecutiva del conocimiento acreditado, evolución de la investigación y áreas donde profundizar. Las señales y los huecos no son oportunidades comerciales confirmadas.</p></div>
-    </div>
-    <div id="observatorioBody" class="observatorio-body" aria-live="polite"></div>
-  </section>
-  <section id="fabricantes" class="view">
+  <section id="fabricantes" class="view active">
     <div class="page-head">
       <div><div class="eyebrow">FABRICANTES</div><h1>Portfolio, competencia y ecosistema de canal.</h1><p>Visión comparativa de los fabricantes del portfolio Westcon Iberia: posicionamiento, competidores, mayoristas alternativos, integradores, señales de mercado y principales áreas tecnológicas. La tabla permite identificar rápidamente presión competitiva, fortaleza de ecosistema y oportunidades de profundización.</p></div>
       <div class="view-count" id="manufacturerCount"></div>
