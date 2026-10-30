@@ -38,6 +38,7 @@ from .extractors import (
     revenue_value_is_strict,
 )
 from .planner import plan
+from .query_discovery import discover as discover_search_sources
 from .security import UnsafeUrl, validate_public_url
 from .sources import PATH_FAMILY_HINTS, SourceSeed, family_from_url, relevant_families, seeds_for
 from .state import ResearchState, now_iso
@@ -382,7 +383,10 @@ def _filter_entity_seeds(
             source_type=seed.source_type,
             source_name=seed.source_name,
         )
-        if binding in {"entity-owned", "relationship-source"}:
+        if (
+            binding in {"entity-owned", "relationship-source"}
+            or str(seed.source_type or "").startswith("search-discovery:")
+        ):
             output.append(seed)
     return output
 
@@ -1394,6 +1398,11 @@ def run(
         "unsafe_url_rejections": 0,
         "official_sites_discovered": 0,
         "financial_links_discovered": 0,
+        "query_discovery_targets": 0,
+        "search_queries_attempted": 0,
+        "search_queries_succeeded": 0,
+        "search_provider_failures": 0,
+        "search_urls_discovered": 0,
         "manufacturer_revenue_rows_before": _count_populated_rows(data, "manufacturers", "revenue"),
         "manufacturer_revenue_acceptances": 0,
         "stop_reason": "complete",
@@ -1487,6 +1496,51 @@ def run(
                 if discovered:
                     seeds = [discovered]
                     stats["official_sites_discovered"] += 1
+        # Query discovery closes the blind spot between generated query hints and
+        # the URL-only crawler. Search results are discovery leads, never evidence.
+        query_policy = RESEARCH_POLICY.get("query_discovery") or {}
+        query_budgets = query_policy.get("budgets") or {}
+        query_budget = query_budgets.get(profile) or {}
+        can_query_discover = (
+            bool(query_policy.get("enabled", True))
+            and bool(target.get("query_hints"))
+            and stats["query_discovery_targets"] < int(query_budget.get("max_entities") or 0)
+            and time.monotonic() < deadline - max(5.0, float(profile_config.request_timeout_s))
+        )
+        if can_query_discover:
+            fallback_family = next(iter(target.get("families") or []), "official")
+            discovered, query_stats = discover_search_sources(
+                fetcher.session,
+                target.get("query_hints") or [],
+                fallback_family=fallback_family,
+                providers=query_policy.get("providers") or ["bing_rss", "duckduckgo_html"],
+                timeout_s=min(float(profile_config.request_timeout_s), max(2.5, deadline - time.monotonic() - 3)),
+                max_queries=int(query_budget.get("queries_per_entity") or 0),
+                results_per_query=int(query_budget.get("results_per_query") or 4),
+            )
+            stats["query_discovery_targets"] += 1
+            stats["search_queries_attempted"] += int(query_stats.get("queries_attempted") or 0)
+            stats["search_queries_succeeded"] += int(query_stats.get("queries_succeeded") or 0)
+            stats["search_provider_failures"] += int(query_stats.get("provider_failures") or 0)
+            stats["search_urls_discovered"] += int(query_stats.get("urls_discovered") or 0)
+            # A discovered page is official only when its host is demonstrably owned
+            # by the researched entity. Everything else remains grade-C discovery.
+            discovered = [
+                SourceSeed(
+                    seed.url,
+                    seed.family,
+                    True,
+                    "A",
+                    "search-discovery:official-owned-host",
+                    target["entity"],
+                )
+                if _host_entity_owned(seed.url, target["entity"])
+                else seed
+                for seed in discovered
+            ]
+            seeds = _merge_source_seeds(seeds, discovered)
+            seeds = _filter_entity_seeds(seeds, target["entity"], target["section"])
+
         if not seeds:
             for gap_id in target["gap_ids"]:
                 research_state.record_gap(gap_id, accepted=0, error="no-seed-source")
