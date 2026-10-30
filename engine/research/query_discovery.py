@@ -6,7 +6,6 @@ binding, semantic extraction, typed provenance and atomic evidence promotion.
 """
 from __future__ import annotations
 
-import re
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from typing import Iterable
@@ -42,10 +41,6 @@ class _LinkParser(HTMLParser):
         href = next((value for key, value in attrs if key.casefold() == "href" and value), None)
         if href:
             self.hrefs.append(href)
-
-
-def _host(url: str) -> str:
-    return (urlparse(url).hostname or "").casefold().removeprefix("www.")
 
 
 def _unwrap_duckduckgo(raw: str) -> str:
@@ -190,7 +185,14 @@ def discover(
                 diagnostics["provider_failures"] += 1
                 continue
             for url in urls:
-                family = family_from_url(url, fallback=fallback_family)
+                inferred_family = family_from_url(url, fallback=fallback_family)
+                # Preserve the query intent for generic home/news URLs; explicit
+                # partner/service/case/technology paths may still refine it.
+                family = (
+                    fallback_family
+                    if inferred_family in {"official", "news", "signals"}
+                    else inferred_family
+                )
                 key = (url.casefold().rstrip("/"), family)
                 if key in seen:
                     continue
