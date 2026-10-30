@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "profiles": {
     "daily": {
       "entity_limit": 120,
@@ -41,6 +41,7 @@
     "official_marketplaces_and_service_catalogues",
     "sitemap",
     "relevant_internal_links",
+    "query_discovery_multilingual",
     "spain_official_procurement",
     "portugal_official_procurement",
     "ted_search_api",
@@ -98,5 +99,32 @@
       "public_validation_gaps"
     ],
     "low_context_public_tier_ceiling": "P2"
+  },
+  "query_discovery": {
+    "enabled": true,
+    "principle": "search engines discover candidate URLs only; every discovered page must still pass the canonical evidence gates",
+    "providers": [
+      "bing_rss",
+      "duckduckgo_html"
+    ],
+    "budgets": {
+      "daily": {
+        "max_entities": 36,
+        "queries_per_entity": 2,
+        "results_per_query": 4
+      },
+      "deep": {
+        "max_entities": 220,
+        "queries_per_entity": 5,
+        "results_per_query": 8
+      },
+      "exhaustive": {
+        "max_entities": 600,
+        "queries_per_entity": 8,
+        "results_per_query": 10
+      }
+    },
+    "discovery_only": true,
+    "no_api_key_required": true
   }
 }
