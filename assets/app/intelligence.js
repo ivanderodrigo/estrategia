@@ -1,4 +1,4 @@
-// App v4.5.0
+// App v4.6.0
 (() => {
   'use strict';
   const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
@@ -369,7 +369,7 @@
     const factors=deriveConfidenceFactors(field,item,band,evidence);
     const why=(band==='medium'||band==='low'||factors.length)?`<div class="confidence-why"><b>Por qué tiene este nivel</b><ul>${factors.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
     const sources=evidence.length?evidence.map(ev=>sourceItem(ev,factScore,band)).join(''):'<p class="atomic-evidence-missing">Pendiente de verificación: no existe todavía una fuente pública actual o documentación Westcon específica para este elemento; el sistema no muestra fuentes de otros elementos del campo.</p>';
-    const pending=evidence.length?'':'<span class="pending-verification">Pendiente de verificación</span>';
+    const pending='';
     return `<div class="traceable ${evidence.length?'':'pending-source'}" tabindex="0"><div class="trace-value">${inner}${pending}</div><span class="trace-mark confidence-dot ${esc(evidence.length?band:'low')}" title="${esc(evidence.length?levelLabel:'Pendiente de verificación')}">i</span><div class="trace-popover"><strong>TRAZABILIDAD DEL DATO</strong><div class="claim-kind">${esc(claimLabel)} · ${esc(evidence.length?levelLabel:'Pendiente de verificación')}</div><div class="confidence-three"><span><b>${confidencePct(factScore)}%</b>Hecho</span><span><b>${confidencePct(interpretationScore)}%</b>Interpretación</span><span><b>${esc(actionRisk)}</b>Riesgo de acción</span></div>${reason?`<p class="confidence-explain">${esc(reason)}</p>`:''}${why}${competitionInfo}${qualifier?`<span class="qualifier">${esc(qualifier)}</span>`:''}<div class="trace-source-heading">Fuentes actuales que sostienen este dato</div>${sources}<button type="button" class="confidence-help-link" data-confidence-help>¿Cómo se calcula e interpreta la confianza?</button></div></div>`;
   }
 
@@ -576,7 +576,7 @@
     persistFilter(view);state.analysisOpen[view]=true;renderCurrent(view);
   }
   function missingMarkup(col){
-    const label='—';
+    const label='';
     return '<span class="research-gap" title="Sin evidencia pública suficiente en este campo. No implica que la entidad carezca de esta capacidad.">'+esc(label)+'</span>';
   }
   function sortedRows(rows,view){const s=state.sort[view];if(!s)return rows;const col=(state.data.schemas[view]||[]).find(c=>c.id===s.col)||{id:s.col};return [...rows].sort((a,b)=>valueText(filterAccessor(a,s.col,col)??a.name).localeCompare(valueText(filterAccessor(b,s.col,col)??b.name),'es',{numeric:true})*s.dir);}
