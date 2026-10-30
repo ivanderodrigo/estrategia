@@ -264,6 +264,38 @@ def _query_hints(gap: Mapping[str, Any], family: str) -> list[str]:
             f'"{entity}" {field}',
             f'"{entity}" {field} Spain Portugal Iberia',
         ])
+    # Source-specific searches supplement broad queries. Alternate phrasing
+    # prevents every research cycle revisiting the same generic search.
+    if family == "partners":
+        hints.extend([
+            f'"{entity}" site:partnerportal.io',
+            f'"{entity}" "authorized partner" "Spain"',
+            f'"{entity}" "parceiro" "Portugal"',
+            f'"{entity}" "distribuidor" "fabricantes"',
+            f'"{entity}" "technology partners" alliances',
+        ])
+    elif family == "procurement":
+        hints.extend([
+            f'"{entity}" site:contrataciondelestado.es',
+            f'"{entity}" site:base.gov.pt',
+            f'"{entity}" site:ted.europa.eu',
+            f'"{entity}" "adjudicatario" "ciberseguridad"',
+            f'"{entity}" "adjudicatário" "rede"',
+        ])
+    elif family == "financial":
+        hints.extend([
+            f'"{entity}" filetype:pdf "annual report" 2025',
+            f'"{entity}" filetype:pdf "informe anual" 2025',
+            f'"{entity}" filetype:pdf "relatório e contas" 2025',
+        ])
+    elif family in {"technology", "services", "cases"}:
+        hints.extend([
+            f'"{entity}" filetype:pdf arquitectura infraestructura',
+            f'"{entity}" filetype:pdf "caso de éxito"',
+            f'"{entity}" filetype:pdf "caso de sucesso"',
+            f'"{entity}" "reference architecture"',
+            f'"{entity}" "customer story"',
+        ])
     output: list[str] = []
     seen = set()
     for hint in hints:
@@ -271,7 +303,7 @@ def _query_hints(gap: Mapping[str, Any], family: str) -> list[str]:
         if hint and key not in seen:
             seen.add(key)
             output.append(hint)
-    return output[:10]
+    return output[:16]
 
 
 def _field_value(row: Mapping[str, Any], field: str) -> Any:
