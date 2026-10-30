@@ -141,9 +141,12 @@ def main() -> int:
     if not app_version:
         errors.append('frontend App version marker missing')
     else:
-        html_app_marker = 'Business Intelligence \u00b7 v' + app_version
+        html_app_markers = (
+            'Business Intelligence \u00b7 v' + app_version,
+            'Observatorio Tecnológico \u00b7 v' + app_version,
+        )
 
-        if html_app_marker not in index_html:
+        if not any(marker in index_html for marker in html_app_markers):
             errors.append(
                 f'frontend HTML identity is not App v{app_version}'
             )
