@@ -34,10 +34,10 @@ for (const token of [
 if (js.includes('data-col-toggle data-view=')) throw new Error('column chooser contains duplicate data-col-toggle attribute');
 if (!js.includes('data-view="${esc(view)}" data-col-toggle="${esc(c.id)}"')) throw new Error('column chooser does not expose the selected column id');
 
-console.log('UI smoke v4.4.0 PASS');
-
 const html = fs.readFileSync('index.html', 'utf8');
 if (html.includes('data-view="observatorio"')) throw new Error('legacy Hoy en Westcon tab is still primary navigation');
 for (const label of ['Fabricantes','Mayoristas','Integradores','Clientes','Tendencias','Arquitecturas']) {
   if (!html.includes('>'+label+'</button>')) throw new Error('missing primary observatory area: '+label);
 }
+
+console.log('UI smoke v4.4.0 PASS');
