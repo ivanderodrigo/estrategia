@@ -5,7 +5,7 @@ const css = fs.readFileSync('assets/app/intelligence.css', 'utf8');
 
 for (const token of [
   'data/public/manifest.json', 'ensureSection', 'ensureViewData', 'clients_public',
-  'clients_private', 'reorderColumn', 'columnChooser', 'currentColumnWidth', 'App v4.5.0',
+  'clients_private', 'reorderColumn', 'columnChooser', 'currentColumnWidth', 'App v4.6.0',
   'atomic-evidence-missing', 'el sistema no muestra fuentes de otros elementos',
   'analysisPanel', 'WestconFilters.apply', 'sessionStorage', 'savedFilters',
   'openFilteredReport', 'WestconReports.build', 'generateFilteredCsv', 'window.print',
