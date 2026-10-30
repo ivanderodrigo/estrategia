@@ -268,7 +268,7 @@ def _query_hints(gap: Mapping[str, Any], family: str) -> list[str]:
     # prevents every research cycle revisiting the same generic search.
     if family == "partners":
         hints.extend([
-            f'"{entity}" site:partnerportal.io',
+            f'"{entity}" "find a partner" "Spain"',
             f'"{entity}" "authorized partner" "Spain"',
             f'"{entity}" "parceiro" "Portugal"',
             f'"{entity}" "distribuidor" "fabricantes"',
