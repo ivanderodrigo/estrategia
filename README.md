@@ -34,6 +34,8 @@ La v4 sustituye la evolución acumulativa anterior por una arquitectura canónic
 
 ## Qué cambia en v4.4
 
+> **Versionado:** v4.4.0 identifica la aplicación/motor de descubrimiento. El `VERSION` canónico del dataset permanece en 4.3.0 hasta una migración explícita del esquema de datos; así los workflows pueden validar el snapshot publicado antes de investigar.
+
 La investigación ya no depende únicamente de URLs conocidas, rutas convencionales, sitemaps y Wikidata. Los `query_hints` calculados por el planner se ejecutan mediante una capa de **descubrimiento web** que busca URLs candidatas y las entrega al mismo pipeline conservador de validación. El buscador no es evidencia.
 
 La interfaz sitúa como producto principal las seis dimensiones del observatorio: **Fabricantes, Mayoristas, Integradores, Clientes, Tendencias y Arquitecturas**. El estado de actualización, las fuentes y los criterios permanecen en utilidades, sin convertir la aplicación en un generador de acciones comerciales.
