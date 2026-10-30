@@ -107,7 +107,7 @@ class RevenueQualityAndCriteriaHF5(unittest.TestCase):
 
     def test_static_asset_is_cache_busted(self) -> None:
         html = (ROOT / "index.html").read_text(encoding="utf-8")
-        self.assertIn("assets/app/intelligence.js?v=4.3.1-hf5", html)
+        self.assertIn("assets/app/intelligence.js?v=4.4.0-observatory", html)
 
 
 if __name__ == "__main__":
