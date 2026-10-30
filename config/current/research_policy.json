@@ -114,18 +114,18 @@
         "results_per_query": 6
       },
       "deep": {
-        "max_entities": 320,
-        "queries_per_entity": 7,
+        "max_entities": 400,
+        "queries_per_entity": 10,
         "results_per_query": 10
       },
       "exhaustive": {
-        "max_entities": 800,
-        "queries_per_entity": 10,
+        "max_entities": 1000,
+        "queries_per_entity": 16,
         "results_per_query": 12
       }
     },
     "discovery_only": true,
     "no_api_key_required": true,
-    "note": "Discovery budgets are upper bounds; canonical runtime deadline and research integrity gates remain authoritative."
+    "note": "Upper bounds only: supervisor deadline, safety and evidence gates remain authoritative; sources are discovery only."
   }
 }
