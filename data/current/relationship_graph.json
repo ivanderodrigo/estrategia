@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-10-30T15:43:23.874271+00:00",
+  "generated_at": "2026-10-30T16:12:52.035626+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -211,6 +211,14 @@
       "historical_names": []
     },
     {
+      "id": "clie_cedd6e170c342885",
+      "canonical_name": "CONSEJERIA DE SOSTENIBILIDAD Y MEDIO AMBIENTE",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "clie_da74520692b4c3af",
       "canonical_name": "CTT Correios de Portugal",
       "entity_type": "client",
@@ -349,6 +357,14 @@
     {
       "id": "clie_1577c311a4885321",
       "canonical_name": "Fluidra",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_4f9f5bcd4051b759",
+      "canonical_name": "Fundació Privada Institut de Recerca de l'Hospital de la Santa Creu i Sant Pau",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -29668,7 +29684,9 @@
           "item_value": "Cloud",
           "item_key": "cloud",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "forbes.com",
@@ -29717,7 +29735,9 @@
           "item_value": "Cybersecurity",
           "item_key": "cybersecurity",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "aprender21.com",
@@ -29766,7 +29786,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "aprender21.com",
@@ -29815,7 +29837,9 @@
           "item_value": "AI / Data",
           "item_key": "ai data",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "aprender21.com",
@@ -29864,7 +29888,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "cm-silves.pt",
@@ -29913,7 +29939,9 @@
           "item_value": "Identity & Access",
           "item_key": "identity access",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "cim-regiaodecoimbra.pt",
@@ -30257,6 +30285,182 @@
       ],
       "source": "naturgy.com",
       "date": "2026-10-26",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_90d89977b3e835c1",
+      "entity_a_id": "clie_cedd6e170c342885",
+      "entity_a": "CONSEJERIA DE SOSTENIBILIDAD Y MEDIO AMBIENTE",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_e767adbaaec3b48b",
+      "entity_b": "AI / Data",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "eltiempo.com",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "CONSEJERIA DE SOSTENIBILIDAD Y MEDIO AMBIENTE",
+          "source_binding": "atomic-item",
+          "title": "Últimas noticias de Colombia y el Mundo - ELTIEMPO.COM",
+          "url": "https://www.eltiempo.com/",
+          "date": "2026-10-30",
+          "description": "…DEPORTES Apuestas deportivas IR A APUESTAS DEPORTVAS CASAS DE APUESTAS CÓDIGOS PROMOCIONALES TIPOS DE APUESTAS Tecnología IR A TECNOLOGÍA APPS INTELIGENCIA ARTIFICIAL DISPOSITIVOS VIDEOJUEGOS NOVEDADES TUTORIALES Lecturas El tiempo play Bocas UNIDAD DE Datos SERVICIOS LO ENCONTRASTE SEGUROS EL TIEMPO A…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-30",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "3c7d1263af41d69f02495c4dc21898a501ae0463017028aa3502af038497f956",
+          "matched_terms": [
+            "inteligencia artificial"
+          ],
+          "field": "technology_signals",
+          "item_value": "AI / Data",
+          "item_key": "ai data",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "eltiempo.com",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "CONSEJERIA DE SOSTENIBILIDAD Y MEDIO AMBIENTE",
+          "source_binding": "atomic-item",
+          "title": "Últimas noticias de Colombia y el Mundo - ELTIEMPO.COM - ELTIEMPO.COM",
+          "url": "https://www.eltiempo.com/ultimas-noticias",
+          "date": "2026-10-30",
+          "description": "…MO OTROS DEPORTES Apuestas deportivas IR A APUESTAS DEPORTVAS CASAS DE APUESTAS CÓDIGOS PROMOCIONALES TIPOS DE APUESTAS Tecnología IR A TECNOLOGÍA APPS INTELIGENCIA ARTIFICIAL DISPOSITIVOS VIDEOJUEGOS NOVEDADES TUTORIALES Lecturas El tiempo play Bocas UNIDAD DE Datos SERVICIOS LO ENCONTRASTE SEGUROS EL…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-30",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "661276146d5f9023f4e7a8e4ea11ebad1432abb1631f289c5dc8d558905f99e6",
+          "matched_terms": [
+            "inteligencia artificial"
+          ],
+          "field": "technology_signals",
+          "item_value": "AI / Data",
+          "item_key": "ai data",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "eltiempo.com",
+      "date": "2026-10-30",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_3d43aed3f65bddc0",
+      "entity_a_id": "clie_cedd6e170c342885",
+      "entity_a": "CONSEJERIA DE SOSTENIBILIDAD Y MEDIO AMBIENTE",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_000e793db70c5930",
+      "entity_b": "Cloud",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "tiempo.com",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "CONSEJERIA DE SOSTENIBILIDAD Y MEDIO AMBIENTE",
+          "source_binding": "atomic-item",
+          "title": "El tiempo 14 días - Meteored España",
+          "url": "https://www.tiempo.com/",
+          "date": "2026-10-30",
+          "description": "…e intensas lluvias Duncan Wingen Actualidad Rubén del Campo, sobre los bulos de la 'Dana de Valencia' de 2024: \"Los radares no sirven para mover las nubes, punto\" Rocio González Ocio El pueblo extremeño con alma portuguesa que guarda la receta de un dulce con un ingrediente secreto P…",
+          "scope": "ES",
+          "scope_provenance": "explicit-text",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-30",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "fa2f8734168f5be09d8b3d901fa86a2434abbb0b8365a42abf875ef925111b96",
+          "matched_terms": [
+            "nube"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cloud",
+          "item_key": "cloud",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "tiempo.com",
+      "date": "2026-10-30",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_c5147fe43284468f",
+      "entity_a_id": "clie_4f9f5bcd4051b759",
+      "entity_a": "Fundació Privada Institut de Recerca de l'Hospital de la Santa Creu i Sant Pau",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_70574f8129932ee1",
+      "entity_b": "Identity & Access",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "vivesantiago.cl",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Fundació Privada Institut de Recerca de l'Hospital de la Santa Creu i Sant Pau",
+          "source_binding": "atomic-item",
+          "title": "Barrio Italia · VIVE Santiago",
+          "url": "https://vivesantiago.cl/barrio-italia.html",
+          "date": "2026-10-30",
+          "description": "…límite entre Providencia y Ñuñoa. Los antiguos galpones de mueblistas y talleres de restauración dieron paso a un circuito de anticuarios que, desde los años noventa, definió la identidad comercial del barrio. Hoy las casonas se organizan en patios y galerías interiores: tiendas de diseñ…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-30",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "0690ebfd882fe51e52a04c7278c378d783e2d0bc88b81810246f83195d06d430",
+          "matched_terms": [
+            "identidad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Identity & Access",
+          "item_key": "identity access",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "vivesantiago.cl",
+      "date": "2026-10-30",
       "confidence": 0.48,
       "status": "SEÑAL",
       "validity": "needs-corroboration",

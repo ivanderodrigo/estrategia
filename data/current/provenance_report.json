@@ -10,7 +10,7 @@
       "RESEARCH_SEED": 180,
       "LEGACY_UNRESOLVED": 176,
       "PUBLIC_PRIMARY": 9512,
-      "PUBLIC_SECONDARY": 3857
+      "PUBLIC_SECONDARY": 3877
     },
     "legacy_unresolved_fields": 0,
     "legacy_unresolved_items": 66,
@@ -31,7 +31,7 @@
   "archive_apply": {
     "field_evidence_added": 223,
     "item_evidence_added": 3738,
-    "legacy_resolved": 82,
+    "legacy_resolved": 86,
     "unknown_classified": 0,
     "registry_matches_checked": 947,
     "value_guard_skips": 154
@@ -57,29 +57,29 @@
     "model_revision": "r6-public-plus-current-westcon-first-party",
     "policy": "Hechos externos: fuente pública actual. Hechos propiedad de Westcon sobre portfolio/capacidades: documentación o regla Westcon vigente y atómica. Histórico: pista no acreditativa. Conclusiones internas/derivadas: inputs sustentados + regla trazable.",
     "support_rule": "CURRENT_PUBLIC_OR_CURRENT_WESTCON_OWNED_OR_TRACEABLE_DERIVATION",
-    "targets_total": 16442,
-    "targets_direct_supported": 7312,
+    "targets_total": 16450,
+    "targets_direct_supported": 7320,
     "targets_supported_westcon_only": 286,
-    "targets_supported_public_only": 6977,
+    "targets_supported_public_only": 6985,
     "targets_supported_westcon_and_public": 49,
     "claim_classes": {
-      "EXTERNAL_FACT": 14378,
+      "EXTERNAL_FACT": 14382,
       "DERIVED_FACT": 1537,
-      "INTERNAL_CLASSIFICATION": 527
+      "INTERNAL_CLASSIFICATION": 531
     },
     "support_pending_occurrences": 9130,
     "support_pending_unique_claims": 8791,
     "duplicate_pending_occurrences": 339,
-    "external_search_required_occurrences": 7213,
-    "external_search_required_unique": 7044,
-    "derived_support_required_occurrences": 1917,
-    "derived_support_required_unique": 1747,
+    "external_search_required_occurrences": 7209,
+    "external_search_required_unique": 7040,
+    "derived_support_required_occurrences": 1921,
+    "derived_support_required_unique": 1751,
     "historical_total": 254,
     "historical_supported_westcon": 112,
     "historical_supported_public": 19,
     "historical_supported_westcon_and_public": 25,
     "historical_search_required": 98,
-    "targets_supported": 7312,
+    "targets_supported": 7320,
     "targets_search_required": 9130,
     "unsupported_targets": [
       {
@@ -74228,6 +74228,54 @@
       },
       {
         "section": "clients_public",
+        "entity": "CONSEJERIA DE SOSTENIBILIDAD Y MEDIO AMBIENTE",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "CONSEJERIA DE SOSTENIBILIDAD Y MEDIO AMBIENTE",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "CONSEJERIA DE SOSTENIBILIDAD Y MEDIO AMBIENTE",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "AI / Data",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "EMEL - Empresa Municipal de Mobilidade e Estacionamento de Lisboa, EM, SA",
         "field": "cpv_codes",
         "level": "item",
@@ -74348,6 +74396,22 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Data Center",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Fundació Privada Institut de Recerca de l'Hospital de la Santa Creu i Sant Pau",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -136277,20 +136341,6 @@
         "entity": "Secure Campus / LAN",
         "field": "vendors",
         "level": "item",
-        "value": "Cisco",
-        "claim_class": "EXTERNAL_FACT",
-        "research_mode": "public-source-verification",
-        "derivation_rule": "direct support required",
-        "dependency_fields": [],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "architectures",
-        "entity": "Secure Campus / LAN",
-        "field": "vendors",
-        "level": "item",
         "value": "Extreme Networks",
         "claim_class": "EXTERNAL_FACT",
         "research_mode": "public-source-verification",
@@ -136320,20 +136370,6 @@
         "field": "vendors",
         "level": "item",
         "value": "Zscaler",
-        "claim_class": "EXTERNAL_FACT",
-        "research_mode": "public-source-verification",
-        "derivation_rule": "direct support required",
-        "dependency_fields": [],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "architectures",
-        "entity": "Secure Campus / LAN",
-        "field": "vendors",
-        "level": "item",
-        "value": "Palo Alto Networks",
         "claim_class": "EXTERNAL_FACT",
         "research_mode": "public-source-verification",
         "derivation_rule": "direct support required",
@@ -140610,34 +140646,6 @@
           ],
           "note": "Network visibility/assurance."
         },
-        "claim_class": "EXTERNAL_FACT",
-        "research_mode": "public-source-verification",
-        "derivation_rule": "direct support required",
-        "dependency_fields": [],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "architectures",
-        "entity": "NaaS / Managed Networking",
-        "field": "vendors",
-        "level": "item",
-        "value": "Cisco",
-        "claim_class": "EXTERNAL_FACT",
-        "research_mode": "public-source-verification",
-        "derivation_rule": "direct support required",
-        "dependency_fields": [],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "architectures",
-        "entity": "NaaS / Managed Networking",
-        "field": "vendors",
-        "level": "item",
-        "value": "Extreme Networks",
         "claim_class": "EXTERNAL_FACT",
         "research_mode": "public-source-verification",
         "derivation_rule": "direct support required",
@@ -214520,6 +214528,54 @@
       },
       {
         "section": "clients_public",
+        "entity": "CONSEJERIA DE SOSTENIBILIDAD Y MEDIO AMBIENTE",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "CONSEJERIA DE SOSTENIBILIDAD Y MEDIO AMBIENTE",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "CONSEJERIA DE SOSTENIBILIDAD Y MEDIO AMBIENTE",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "AI / Data",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "EMEL - Empresa Municipal de Mobilidade e Estacionamento de Lisboa, EM, SA",
         "field": "cpv_codes",
         "level": "item",
@@ -214640,6 +214696,22 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Data Center",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Fundació Privada Institut de Recerca de l'Hospital de la Santa Creu i Sant Pau",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -272051,20 +272123,6 @@
         "entity": "Secure Campus / LAN",
         "field": "vendors",
         "level": "item",
-        "value": "Cisco",
-        "claim_class": "EXTERNAL_FACT",
-        "research_mode": "public-source-verification",
-        "derivation_rule": "direct support required",
-        "dependency_fields": [],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "architectures",
-        "entity": "Secure Campus / LAN",
-        "field": "vendors",
-        "level": "item",
         "value": "Extreme Networks",
         "claim_class": "EXTERNAL_FACT",
         "research_mode": "public-source-verification",
@@ -272094,20 +272152,6 @@
         "field": "vendors",
         "level": "item",
         "value": "Zscaler",
-        "claim_class": "EXTERNAL_FACT",
-        "research_mode": "public-source-verification",
-        "derivation_rule": "direct support required",
-        "dependency_fields": [],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "architectures",
-        "entity": "Secure Campus / LAN",
-        "field": "vendors",
-        "level": "item",
-        "value": "Palo Alto Networks",
         "claim_class": "EXTERNAL_FACT",
         "research_mode": "public-source-verification",
         "derivation_rule": "direct support required",
@@ -276384,34 +276428,6 @@
           ],
           "note": "Network visibility/assurance."
         },
-        "claim_class": "EXTERNAL_FACT",
-        "research_mode": "public-source-verification",
-        "derivation_rule": "direct support required",
-        "dependency_fields": [],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "architectures",
-        "entity": "NaaS / Managed Networking",
-        "field": "vendors",
-        "level": "item",
-        "value": "Cisco",
-        "claim_class": "EXTERNAL_FACT",
-        "research_mode": "public-source-verification",
-        "derivation_rule": "direct support required",
-        "dependency_fields": [],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "architectures",
-        "entity": "NaaS / Managed Networking",
-        "field": "vendors",
-        "level": "item",
-        "value": "Extreme Networks",
         "claim_class": "EXTERNAL_FACT",
         "research_mode": "public-source-verification",
         "derivation_rule": "direct support required",
