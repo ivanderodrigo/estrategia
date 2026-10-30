@@ -1,710 +1,512 @@
 {
   "version": "4.3.0",
   "profile": "daily",
-  "started_at": "2026-10-30T11:23:25.522181+00:00",
+  "started_at": "2026-10-30T15:32:45.473673+00:00",
   "planned_entities": 120,
-  "fetch_attempts": 337,
-  "fetch_successes": 429,
-  "pages_relevant": 103,
-  "candidate_evidences": 66,
-  "candidate_values_seen": 110,
-  "candidate_values_promoted": 110,
+  "fetch_attempts": 461,
+  "fetch_successes": 499,
+  "pages_relevant": 148,
+  "candidate_evidences": 24,
+  "candidate_values_seen": 34,
+  "candidate_values_promoted": 34,
   "candidate_values_rejected": 0,
   "candidate_fields_rejected": 0,
-  "accepted_evidences": 63,
-  "fields_enriched": 63,
-  "values_added": 5,
-  "entities_added": 24,
-  "cache_hits": 212,
-  "circuit_skips": 1221,
-  "unsafe_url_rejections": 2,
-  "official_sites_discovered": 11,
-  "financial_links_discovered": 277,
+  "accepted_evidences": 19,
+  "fields_enriched": 19,
+  "values_added": 10,
+  "entities_added": 4,
+  "cache_hits": 206,
+  "circuit_skips": 852,
+  "unsafe_url_rejections": 0,
+  "official_sites_discovered": 9,
+  "financial_links_discovered": 429,
+  "query_discovery_targets": 36,
+  "search_queries_attempted": 75,
+  "search_queries_succeeded": 75,
+  "search_provider_failures": 0,
+  "search_urls_discovered": 268,
   "manufacturer_revenue_rows_before": 1,
   "manufacturer_revenue_acceptances": 0,
-  "stop_reason": "complete",
-  "historical_lead_targets_planned": 88,
-  "historical_lead_urls_planned": 386,
-  "historical_lead_urls_attempted": 358,
-  "historical_lead_evidences_accepted": 52,
+  "stop_reason": "deadline",
+  "historical_lead_targets_planned": 90,
+  "historical_lead_urls_planned": 271,
+  "historical_lead_urls_attempted": 291,
+  "historical_lead_evidences_accepted": 5,
   "structured_entity_budget": 24,
-  "structured_entities_added": 24,
+  "structured_entities_added": 4,
   "structured_notices": 24,
-  "accepted_evidence_per_fetch_attempt": 0.1869,
-  "candidate_acceptance_rate": 0.9545,
+  "accepted_evidence_per_fetch_attempt": 0.0412,
+  "candidate_acceptance_rate": 0.7917,
   "candidate_value_promotion_rate": 1.0,
-  "values_per_accepted_evidence": 0.0794,
-  "growth_pressure_ratio": 4.8,
+  "values_per_accepted_evidence": 0.5263,
+  "growth_pressure_ratio": 0.4,
   "manufacturer_revenue_rows_after": 1,
   "manufacturer_revenue_rows_added": 0,
-  "elapsed_s": 398.58,
-  "finished_at": "2026-10-30T11:30:02.492441+00:00",
-  "result_rows_total": 1772,
-  "accepted_result_rows_total": 63,
+  "elapsed_s": 627.11,
+  "finished_at": "2026-10-30T15:43:11.529840+00:00",
+  "result_rows_total": 1519,
+  "accepted_result_rows_total": 19,
   "results_truncated": true,
   "results": [
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/financial-information",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/financial-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/financials",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/industrias",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/customers",
       "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/informacao-financeira",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/informacion-financiera",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/investor",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/licitacoes",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/managed-services",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/cybersecurity",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/networking",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/managed-services",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/news",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/news",
       "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/noticias",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/noticias",
       "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/open-positions",
-      "family": "careers",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/parceiros",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/platform",
-      "family": "technology",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/partner",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/press",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/press",
       "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/press-releases",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/press-releases",
       "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/procurement",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/products",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/projects",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/projects",
       "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/proyectos",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/proyectos",
       "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/quarterly-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/relatorio-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/relatorios-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/reports-and-filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/resultados",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/resultados-financieros",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/robots.txt",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/robots.txt",
       "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/rss",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/rss",
       "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/security",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/security",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/services",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/services",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/services",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/servicios",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/servicios",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/servicos",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/servicos",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/sitemap.xml",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/sitemap.xml",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/sitemap.xml",
       "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/sitemap.xml",
-      "family": "financial",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/sitemap.xml",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/sitemap.xml",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/sitemap.xml",
       "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/sitemap.xml",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/sitemap.xml",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/sitemap.xml",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/sitemap.xml",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/sitemap.xml",
       "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/soluciones",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/soluciones",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/solucoes",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/solucoes",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/solutions",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/solutions",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/solutions",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/success-stories",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/success-stories",
       "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/talent",
-      "family": "careers",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://factis.pt/vendors",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/technologies",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://www.factis.com/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
     },
     {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/technology",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/tecnologia",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/tenders",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/es/view-news/-/news/grifols-accelerates-healthcare-innovation-with-google-cloud-s-ai-and-analytics",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/es/productos-servicios-para-hospitales",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/es/otras-oportunidades-terapeuticas",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/es/chronos-pd-plasma-investigacion-parkinson",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/es/conectamos-conocimiento-red-centros-investigacion-desarrollo",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/documents/3625622/8322595/IAR+ESP+FY25_AuditReport.pdf/f556101e-ce31-832c-3f24-3f1cc1f34c10?t=1777268674543",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/es/resultados-financieros",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/sustainability-reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/documents/3625622/8719483/pr-20260728-es.pdf/f809d9a3-8dc0-71ae-7c8d-61ac4f296a18?t=1785251828280",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/es/captacion-talento",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/es/talento-joven",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/es/resultados-financieros-primer-semestre-2026",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/en/newsroom-press-releases",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://www.factis.com/actualidad",
       "family": "news",
       "status": 0,
-      "error": "domain-circuit-open",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.factis.com/actualidad",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "IAG",
-      "url": "https://www.iairgroup.com/media/ktnlp1jx/iag-annual-report-and-accounts-2025.pdf",
-      "family": "financial",
-      "status": 200,
-      "error": "unsupported-content-type:application/pdf",
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://www.factis.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.factis.com/alianzas",
       "accepted": 0
     },
     {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://www.factis.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.factis.com/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://www.factis.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.factis.com/case-studies",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://www.factis.com/casos-de-sucesso-e-testemunhos/",
+      "family": "cases",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://www.factis.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.factis.com/clientes",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://www.factis.com/cloud-computing/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://www.factis.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.factis.com/customer-stories",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://www.factis.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.factis.com/customers",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "url": "https://www.factis.com/cybersecurity-toolkit/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
       "section": "clients_private",
-      "entity": "Ibersol",
-      "url": "https://www.ibersol.pt/",
-      "family": "official",
+      "entity": "CTT Correios de Portugal",
+      "url": "https://www.ctt.pt/grupo-ctt/media/noticias/ctt-e-microsoft-celebram-parceria-inovadora-no-setor-logistico-em-portugal",
+      "family": "news",
       "cached": false,
       "relevant": true,
       "accepted": 1,
@@ -712,8 +514,17 @@
     },
     {
       "section": "clients_private",
-      "entity": "Ibersol",
-      "url": "https://www.ibersol.pt/investidores/aumento-de-capital/",
+      "entity": "CTT Correios de Portugal",
+      "url": "https://www.bportugal.pt/publicacoes",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "CTT Correios de Portugal",
+      "url": "https://www.ctt.pt/grupo-ctt/investidores/",
       "family": "financial",
       "cached": false,
       "relevant": false,
@@ -722,8 +533,8 @@
     },
     {
       "section": "clients_private",
-      "entity": "Ibersol",
-      "url": "https://www.ibersol.pt/investidores/comunicados-ibersol/",
+      "entity": "CTT Correios de Portugal",
+      "url": "https://www.ctt.pt/grupo-ctt/investidores/informacao-financeira/contas-consolidadas",
       "family": "financial",
       "cached": false,
       "relevant": false,
@@ -732,8 +543,8 @@
     },
     {
       "section": "clients_private",
-      "entity": "Ibersol",
-      "url": "https://www.ibersol.pt/investidores/relatorios/relatorio-e-contas/",
+      "entity": "CTT Correios de Portugal",
+      "url": "https://www.ctt.pt/grupo-ctt/investidores/informacao-financeira/divulgacao-resultados",
       "family": "financial",
       "cached": false,
       "relevant": false,
@@ -742,8 +553,8 @@
     },
     {
       "section": "clients_private",
-      "entity": "Ibersol",
-      "url": "https://www.ibersol.pt/investidores/relatorios/relatorios-de-sustentabilidade/",
+      "entity": "CTT Correios de Portugal",
+      "url": "https://www.ctt.pt/grupo-ctt/investidores/informacao-financeira/principais-indicadores",
       "family": "financial",
       "cached": false,
       "relevant": false,
@@ -752,8 +563,8 @@
     },
     {
       "section": "clients_private",
-      "entity": "Teixeira Duarte",
-      "url": "https://www.teixeiraduarte.pt/",
+      "entity": "Ferrovial",
+      "url": "https://www.ferrovial.com/",
       "family": "official",
       "cached": false,
       "relevant": false,
@@ -761,9 +572,76 @@
       "status": 200
     },
     {
+      "section": "clients_private",
+      "entity": "Ferrovial",
+      "url": "https://www.ferrovial.com/en/document/investors-presentation-2007/",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Ferrovial",
+      "url": "https://www.ferrovial.com/en/document/investors-presentation-2007/",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Ferrovial",
+      "url": "https://www.ferrovial.com/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "ConnectionError: HTTPSConnectionPool(host='www.ferrovial.com', port=443): Max retries exceeded with url: /en/awards/actualidad-economica-magazine/ (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.ferrovial.com', port=443): Read ti",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Ferrovial",
+      "url": "https://www.ferrovial.com/adjudicaciones",
+      "family": "procurement",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.ferrovial.com/adjudicaciones/",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Ferrovial",
+      "url": "https://www.ferrovial.com/en/ir-shareholders/corporate-governance/annual-reports-on-directors-remuneration/",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Ferrovial",
+      "url": "https://www.ferrovial.com/en/ir-shareholders/corporate-governance/annual-reports-on-directors-remuneration/",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
       "section": "distributors",
-      "entity": "Ignition Technology",
-      "url": "https://www.ignition-technology.com/vendors/",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/es/aws/dsor/",
       "family": "partners",
       "cached": false,
       "relevant": true,
@@ -772,9 +650,9 @@
     },
     {
       "section": "distributors",
-      "entity": "Ignition Technology",
-      "url": "https://www.globomatik.com/customer/account/forgotpassword",
-      "family": "cases",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/es/aws/dsor/",
+      "family": "careers",
       "cached": true,
       "relevant": true,
       "accepted": 0,
@@ -782,1064 +660,17 @@
     },
     {
       "section": "distributors",
-      "entity": "Ignition Technology",
-      "url": "https://www.globomatik.com/customer/account/login",
-      "family": "cases",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Ignition Technology",
-      "url": "https://www.infortisa.com/",
-      "family": "cases",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Ignition Technology",
-      "url": "https://www.esprinet.com/es/oferta/",
-      "family": "cases",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/alianzas-tecnologicas/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.ingecom.net/efficientip-se-suma-al-portfolio-de-soluciones-de-ingecom/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.also.com/ec/cms5/es_2610/2610/also-spain-technology/hazte-cliente-de-also/index.jsp",
-      "family": "cases",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.esprinet.com/es/oferta/",
-      "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Ingecom Ignition",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Acciona Energía",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
-      "family": "financial",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Acciona Energía",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing.html",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Acciona Energía",
-      "url": "https://www.acciona.com/content/dam/acciona-global/documentos/juntas-generales/2026/11-ana-annual-corporate-governance-report-2025.pdf",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Acciona Energía",
-      "url": "https://www.acciona.com/actualidad",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/",
       "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "clients_private",
-      "entity": "Acciona Energía",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/prices-and-markets/statistics/bulletins-and-reports.html",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Acciona Energía",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/prices-and-markets/market-data-services.html",
-      "family": "services",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Acciona Energía",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/prices-and-markets/meff/equities.html",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "ArcelorMittal",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
-      "family": "financial",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "ArcelorMittal",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing.html",
-      "family": "financial",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "ArcelorMittal",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/prices-and-markets/statistics/bulletins-and-reports.html",
-      "family": "financial",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "ArcelorMittal",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/prices-and-markets/market-data-services.html",
-      "family": "services",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "ArcelorMittal",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/prices-and-markets/meff/equities.html",
-      "family": "financial",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Banco Sabadell",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
-      "family": "financial",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Banco Sabadell",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing.html",
-      "family": "financial",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Banco Sabadell",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/prices-and-markets/statistics/bulletins-and-reports.html",
-      "family": "financial",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Banco Sabadell",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/prices-and-markets/market-data-services.html",
-      "family": "services",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Banco Sabadell",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/prices-and-markets/meff/equities.html",
-      "family": "financial",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/www/webcorp/swf/memoria2025/innovacion.html",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.bankinter.com/www/webcorp/swf/memoria2025/innovacion.html",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
-      "family": "financial",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/www/webcorp/swf/memoria2025/innovacion.html",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/about-us/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/about/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/actualidad",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/adjudicaciones",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/annual-report",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/annual-reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/architecture",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/architectures",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/company/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/company/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/concursos",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/contracts",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/contratacion",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/contratacion-publica",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/earnings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/feed",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/financial-information",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/financial-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/financials",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/informacao-financeira",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/informacion-financiera",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/investor",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/licitacoes",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/platform",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/press",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/procurement",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/products",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/quarterly-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/relatorio-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/relatorios-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/reports-and-filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/resultados",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/resultados-financieros",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/services",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/sitemap.xml",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/sitemap.xml",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/sitemap.xml",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/solutions",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/technologies",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/technology",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/tecnologia",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/tenders",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/www/webcorp/swf/memoria2025/innovacion.html",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/prices-and-markets/statistics/bulletins-and-reports.html",
-      "family": "financial",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/prices-and-markets/market-data-services.html",
-      "family": "services",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/prices-and-markets/meff/equities.html",
-      "family": "financial",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/prices-and-markets/fixed-income/marf-financial-reports.html",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
       "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9EMHJIeUZ4TDBrcTRkaDlwTk9BVFAyUU9lZHJmZDhMRms4WGNmSWJITnR5T0xHelNWMEd1NVA5VVZOZ3NmODJOSXF5RXZPNmU4a3dBcnNjM0lOTVpLRHk2eXZFQjA1VVZtUGNVUWM0NHZwUldI0gF6QVVfeXFMT1YzUDdiYkNrNWxDdXVRbl9KMnhuVmZJM1VIbElMMmhHMGZlX3ZPTkkzTTJBQW14ZDNhSDhkRmlIdTczQjRJdkVtYXBMVGo1QUZRLXJxa3laTy1BcWJON09UdEpKZHJvc0hiLXp3c2t4bWUtVE9sZmNQREE?oc=5&hl=es-419&gl=US&ceid=US:es-419",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQbFphM29EM05BWmExd0hhcVVDUXN4UXZLSzlpOGh1bEkyTU0zQnFyVDUtVWRKVlZKU0x6UU1Mc19QS284WlZYUlllTE9xc05UWmtTM3RwaHVIWEswckYwcDFuSm02RjE0NmdqeTd0Y0laWmZPT1MzWmprTExlZFNoallGcUlUTnFiNkpTZDJ5U3JrRXcyTUUxUjZFR2Yyd9IBowFBVV95cUxNamZwV3hjTmFnU294T3hEbXFaQ0FNWVRIeHRCTHFWSEJTTkt4c0c4Q2hkb25iT0syNFJuOEtBM0w2Vnl3YVd0MFpNMVhVWjZRUS12aE9aaVRwS1QyYWFRajM5UlVhWm9rZDRmbi1XUm1QSEhNQ2JBeEIyTEx1ZUlnOGhSZ1g2VU5TSUxLWlFOb0x0dlh6UzNrTXp4d0doX0c1TFdB?oc=5&hl=es-419&gl=US&ceid=US:es-419",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/ecosystem/vendors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/alianzas",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
@@ -1847,7 +678,981 @@
     },
     {
       "section": "distributors",
-      "entity": "Exclusive Networks",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://hub.tdsynnex.com/alianzas",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://hub.tdsynnex.com/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://hub.tdsynnex.com/careers",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://hub.tdsynnex.com/carreiras",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://hub.tdsynnex.com/case-studies",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/es/aws/dsor/",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://news.tdsynnex.com/alianzas",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://news.tdsynnex.com/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://news.tdsynnex.com/careers",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://news.tdsynnex.com/carreiras",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://news.tdsynnex.com/case-studies",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/news/td-synnex-strengthens-cybersecurity-portfolio-with-addition-of-palo-alto-networks-in-europe/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
       "url": "https://www.channelpartner.es/alliances",
       "family": "partners",
       "status": 0,
@@ -1856,7 +1661,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Exclusive Networks",
+      "entity": "TD SYNNEX",
       "url": "https://www.channelpartner.es/find-a-partner",
       "family": "partners",
       "status": 0,
@@ -1865,7 +1670,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Exclusive Networks",
+      "entity": "TD SYNNEX",
       "url": "https://www.channelpartner.es/partner",
       "family": "partners",
       "status": 0,
@@ -1874,7 +1679,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Exclusive Networks",
+      "entity": "TD SYNNEX",
       "url": "https://www.channelpartner.es/partner-locator",
       "family": "partners",
       "status": 0,
@@ -1883,7 +1688,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Exclusive Networks",
+      "entity": "TD SYNNEX",
       "url": "https://www.channelpartner.es/partners",
       "family": "partners",
       "status": 0,
@@ -1892,556 +1697,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/actualidad",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/alianzas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/es/ecosistema/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/es/ecosistema/vendedores/palo-alto-networks",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/es/recursos/centro-de-prensa/noticias/exclusive-networks-firma-dos-acuerdos-con-amazon-web-services-para-mejorar-la-distribucion-en-la-nube-y-la-presencia-en-el-mercado",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/feed",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/line-card",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/portfolio",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/press",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/pt/vendors/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/sitemap.xml",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.exclusive-networks.com/vendors",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Exclusive Networks",
+      "entity": "TD SYNNEX",
       "url": "https://www.itchannel.pt/alliances",
       "family": "partners",
       "status": 0,
@@ -2450,7 +1706,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Exclusive Networks",
+      "entity": "TD SYNNEX",
       "url": "https://www.itchannel.pt/find-a-partner",
       "family": "partners",
       "status": 0,
@@ -2459,7 +1715,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Exclusive Networks",
+      "entity": "TD SYNNEX",
       "url": "https://www.itchannel.pt/partner",
       "family": "partners",
       "status": 0,
@@ -2468,7 +1724,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Exclusive Networks",
+      "entity": "TD SYNNEX",
       "url": "https://www.itchannel.pt/partner-locator",
       "family": "partners",
       "status": 0,
@@ -2477,7 +1733,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Exclusive Networks",
+      "entity": "TD SYNNEX",
       "url": "https://www.itchannel.pt/partners",
       "family": "partners",
       "status": 0,
@@ -2486,9 +1742,29 @@
     },
     {
       "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://www.tdsynnex.com/eu/es/es/partnerfirst.html",
+      "entity": "TD SYNNEX",
+      "url": "https://www.tdsynnex.com/na/us/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "White Hat",
+      "url": "https://www.whitehat.pt/",
       "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "White Hat",
+      "url": "https://www.whitehat.pt/",
+      "family": "careers",
       "cached": true,
       "relevant": false,
       "accepted": 0,
@@ -2496,74 +1772,102 @@
     },
     {
       "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
+      "entity": "White Hat",
+      "url": "https://www.itchannel.pt/alliances",
       "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
       "section": "distributors",
-      "entity": "Exclusive Networks",
-      "url": "https://weblib.com/partners/",
+      "entity": "White Hat",
+      "url": "https://www.itchannel.pt/find-a-partner",
       "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "White Hat",
+      "url": "https://www.itchannel.pt/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "White Hat",
+      "url": "https://www.itchannel.pt/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "White Hat",
+      "url": "https://www.itchannel.pt/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "White Hat",
+      "url": "https://www.whitehat.pt/",
+      "family": "official",
       "cached": true,
       "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/articles/hype-cycle-for-agentic-ai",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/7455226",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-07-20-gartner-forecasts-worldwide-ai-platforms-and-models-market-to-grow-63-percent-in-2026",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.idc.com/resource-center/blog/emea-it-market-2026-q2-updates-5-key-takeaways-on-ai-it-spending-and-market-trends/",
-      "family": "analyst",
+      "section": "distributors",
+      "entity": "White Hat",
+      "url": "https://www.whitehat.pt/#contacto",
+      "family": "official",
       "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "White Hat",
+      "url": "https://www.whitehat.pt/#fabricantes",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acerinox",
+      "url": "https://www.acerinox.com/export/sites/acerinox/es/accionistas-e-inversores/gobierno-corporativo/junta-general-de-accionistas/.galleries/Documentos-Junta-General/15-Audit-Committee-Activity-Report-2025.pdf",
+      "family": "financial",
+      "status": 200,
+      "error": "unsupported-content-type:application/pdf",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Acerinox",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/composicion.html",
+      "family": "technology",
+      "cached": true,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/8049333",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.idc.com/eu/",
+      "section": "clients_private",
+      "entity": "Acerinox",
+      "url": "https://validate.perfdrive.com/?ssa=fff82ecd-e394-4697-b210-0d250cf61fc8&ssb=75242212278&ssc=https%3A%2F%2Fwww.acerinox.com%2Fes&ssi=a6dcc746-cs9v-4aab-aca1-b7c22160e89a&ssk=botmanager_support@radware.com&ssm=86403335702230000138419368024131&ssn=f2908b6d6ca7eb53b7dabc7cc0fa89eb469f2401ae65-98ef-4f45-801cb4&sso=7205c0f8-695d6366c4c0433b7901d1809d83e1fc8431de82b5d998a7&ssp=14019015081793324409179330923209784&ssq=46838987493637079140874936926145648420163&ssr=MjAuMTcxLjMyLjU3&sst=Westcon-Iberia-Decision-Intelligence/4.3.0%20(public%20research;%20bounded;%20respectful;%20contact=repository-owner)&ssu=&ssv=&ssw=&ssx=eyJyZCI6ImFjZXJpbm94LmNvbSIsIl9fdXptZiI6IjdmOTAwMDI0MDFhZTY1LTk4ZWYtNGY0NS04MGY4LTY5NWQ2MzY2YzRjMDEtMTc5MzM3NDkzNjAzMzE5My0wMDVhZTZkMzUwNWVmNWZlOWU0MTMiLCJ1em14IjoiN2ZjMDAwODAzYWE4OGMtZDY0Ni00OGZhLWE4MGEtMTgyMGZlMWU2YTlmMS0xNzkzMzc0OTM2MDMzMTkzLTAwYjQ2OWYyYmNiYTZkMzg4MzQxMyJ9",
       "family": "official",
       "cached": false,
       "relevant": false,
@@ -2571,45 +1875,9 @@
       "status": 200
     },
     {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/articles/hype-cycle-for-agentic-ai",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/7455226",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/8049333",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/8142929",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.forrester.com/technology/",
+      "section": "clients_private",
+      "entity": "Acerinox",
+      "url": "https://validate.perfdrive.com/?ssa=87385caa-cd9e-406d-a06f-6f88687322de&ssb=75242212278&ssc=https%3A%2F%2Fwww.acerinox.com%2Farchitecture&ssi=3ecb752e-cs9v-4506-b7b3-dbed58f72db3&ssk=botmanager_support@radware.com&ssm=86403335702230000168419368024131&ssn=f2908b6dab60cebb7ba618d2b09e89eb469f2401ae65-98ef-4f45-801cb4&sso=7205c0f8-695d6366c4c0433b7901747ebf942568e1796473b5d998a7&ssp=14019015081793324409179330923209784&ssq=46838987493637079140874936926145648420163&ssr=MjAuMTcxLjMyLjU3&sst=Westcon-Iberia-Decision-Intelligence/4.3.0%20(public%20research;%20bounded;%20respectful;%20contact=repository-owner)&ssu=&ssv=&ssw=&ssx=eyJyZCI6ImFjZXJpbm94LmNvbSIsIl9fdXptZiI6IjdmOTAwMDI0MDFhZTY1LTk4ZWYtNGY0NS04MGY4LTY5NWQ2MzY2YzRjMDEtMTc5MzM3NDkzNjAzMzcwNS0wMDU1OGJkMzk0YmM3OGZiODY1MTYiLCJ1em14IjoiN2ZjMDAwODAzYWE4OGMtZDY0Ni00OGZhLWE4MGEtMTgyMGZlMWU2YTlmMS0xNzkzMzc0OTM2MDMzNzA1LTAwYmM5Nzg4ZGQ0YWQzODVlZDQxNiJ9",
       "family": "technology",
       "cached": false,
       "relevant": false,
@@ -2617,19 +1885,56 @@
       "status": 200
     },
     {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.bing.com/news?brdr=1",
-      "family": "news",
+      "section": "clients_private",
+      "entity": "Acerinox",
+      "url": "https://validate.perfdrive.com/?ssa=5f6f0cac-b7ee-4a41-8e7f-ef9718a5e2cc&ssb=09866285006&ssc=https%3A%2F%2Fwww.acerinox.com%2Farchitectures&ssi=4e2b8746-cs9v-490c-85dd-239fefd88ac2&ssk=botmanager_support@radware.com&ssm=00371828334810165190413856470009&ssn=663f2afc538372491ee80b47b662cbefa68d2401ae65-98ef-4f45-8d48d7&sso=e06ca0f8-695d6366c4c083e5926778c14c001ac40dbfbbabb44c912a&ssp=65044618481793394260179333971564798&ssq=63758557493735554867974936713299893982797&ssr=MjAuMTcxLjMyLjU3&sst=Westcon-Iberia-Decision-Intelligence/4.3.0%20(public%20research;%20bounded;%20respectful;%20contact=repository-owner)&ssu=&ssv=&ssw=&ssx=eyJyZCI6ImFjZXJpbm94LmNvbSIsIl9fdXptZiI6IjdmOTAwMDI0MDFhZTY1LTk4ZWYtNGY0NS04MGY4LTY5NWQ2MzY2YzRjMDEtMTc5MzM3NDkzNjAzMzk3OC0wMDVlMGUwMjZlNjJhOGM5ZTAyMTkiLCJ1em14IjoiN2ZjMDAwODAzYWE4OGMtZDY0Ni00OGZhLWE4MGEtMTgyMGZlMWU2YTlmMS0xNzkzMzc0OTM2MDMzOTc4LTAwYjZhZTBlNjY0OTQ3ZDZhZTQxOSJ9",
+      "family": "technology",
       "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://news.google.com/home?hl=es-419&gl=US&ceid=US:es-419",
+      "section": "clients_private",
+      "entity": "Acerinox",
+      "url": "https://validate.perfdrive.com/?ssa=adfce981-b16d-4563-bf05-f23d1c82b9fa&ssb=09866285006&ssc=https%3A%2F%2Fwww.acerinox.com%2Fcase-studies&ssi=a3eada43-cs9v-4b67-bce8-15bf6fd94cd5&ssk=botmanager_support@radware.com&ssm=00371828334810165220413856470009&ssn=663f2afcc3c370d7674f5c895115cbefa68d2401ae65-98ef-4f45-8d48d7&sso=e06ca0f8-695d6366c4c083e59267a230f8dc5c0dec496499b44c912a&ssp=65044618481793394260179333971564798&ssq=63758557493735554867974936713299893982797&ssr=MjAuMTcxLjMyLjU3&sst=Westcon-Iberia-Decision-Intelligence/4.3.0%20(public%20research;%20bounded;%20respectful;%20contact=repository-owner)&ssu=&ssv=&ssw=&ssx=eyJyZCI6ImFjZXJpbm94LmNvbSIsIl9fdXptZiI6IjdmOTAwMDI0MDFhZTY1LTk4ZWYtNGY0NS04MGY4LTY5NWQ2MzY2YzRjMDEtMTc5MzM3NDkzNjAzMzEyNDYtMDA1MjlmNGUxNGNhNDU3Y2ZmNzIyIiwidXpteCI6IjdmYzAwMDgwM2FhODhjLWQ2NDYtNDhmYS1hODBhLTE4MjBmZTFlNmE5ZjEtMTc5MzM3NDkzNjAzMzEyNDYtMDBiYzFmMzI3YThjMWRiNzc1MjIyIn0=",
+      "family": "cases",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Banco Comercial Português",
+      "url": "http://www.millenniumbcp.pt",
+      "family": "official",
+      "status": 0,
+      "error": "ConnectTimeout: HTTPConnectionPool(host='www.millenniumbcp.pt', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPConnection(host='www.millenniumbcp.pt', port=80) at 0x7f093e85b380>, 'Connection to www.millenniu",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/wp-content/uploads/2026/05/Merlin-EMTN-2026-Base-Prospectus-Final-1.pdf",
+      "family": "technology",
+      "status": 200,
+      "error": "unsupported-content-type:application/pdf",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/wp-content/uploads/2026/05/Merlin-EMTN-2026-Base-Prospectus-Final-1.pdf",
+      "family": "cases",
+      "status": 200,
+      "error": "unsupported-content-type:application/pdf",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/",
       "family": "official",
       "cached": false,
       "relevant": false,
@@ -2637,162 +1942,843 @@
       "status": 200
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7647529",
-      "family": "analyst",
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/architecture",
+      "family": "technology",
       "status": 0,
-      "error": "domain-circuit-open",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://ir.merlinproperties.com/architecture",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7408930",
-      "family": "analyst",
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/architectures",
+      "family": "technology",
       "status": 0,
-      "error": "domain-circuit-open",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://ir.merlinproperties.com/architectures",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-02-05-gartner-identifies-the-top-cybersecurity-trends-for-2026",
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://ir.merlinproperties.com/case-studies",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://ir.merlinproperties.com/casos",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://ir.merlinproperties.com/clientes",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/cloud",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7865681",
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/platform",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/products",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/services",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/sitemap.xml",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/solutions",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/technologies",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/technology",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/tecnologia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Merlin Properties",
+      "url": "https://ir.merlinproperties.com/wp-content/uploads/2026/05/Merlin-EMTN-2026-Base-Prospectus-Final-1.pdf",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://www.gartner.com/en/documents/8049333",
       "family": "analyst",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7913209",
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://ir.uipath.com/actualidad",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://ir.uipath.com/alianzas",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://ir.uipath.com/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/analyst",
       "family": "analyst",
       "status": 0,
-      "error": "domain-circuit-open",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://ir.uipath.com/analyst",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7298830",
-      "family": "analyst",
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://ir.uipath.com/careers",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/carreiras",
+      "family": "careers",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7298830",
-      "family": "official",
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/case-studies",
+      "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7408930",
-      "family": "official",
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/casos",
+      "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7647529",
-      "family": "official",
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/clientes",
+      "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7865681",
-      "family": "official",
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/customer-stories",
+      "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/documents/7913209",
-      "family": "official",
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/customers",
+      "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-04-09-gartner-predicts-25-percent-of-all-enterprise-gen-ai-applications-will-experience-at-least-five-minor-security-incidents-per-year-by-2028",
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/feed",
       "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.idc.com/resource-center/blog/",
-      "family": "analyst",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.idc.com/resource-center/blog/european-ciso-priorities-in-2026-ai-agents-platformization-and-sovereignty/",
-      "family": "analyst",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.bing.com/news?brdr=1",
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/insights",
       "family": "news",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://news.google.com/home?hl=es-419&gl=US&ceid=US:es-419",
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/market",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/reports",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/research",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/resources",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/sitemap.xml",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://ir.uipath.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://www.uipath.com/",
       "family": "official",
       "cached": true,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "trends",
-      "entity": "SecOps / XDR / MDR / CTEM",
-      "url": "https://www.forrester.com/technology/",
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://www.uipath.com/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.uipath.com/actualidad",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://www.uipath.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.uipath.com/alianzas",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://www.uipath.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.uipath.com/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "url": "https://www.uipath.com/analyst",
       "family": "analyst",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.uipath.com/analyst",
+      "accepted": 0
     }
   ],
   "candidate_rejection_rows_total": 0,

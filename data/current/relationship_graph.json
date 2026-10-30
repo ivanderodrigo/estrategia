@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-10-30T11:30:22.205396+00:00",
+  "generated_at": "2026-10-30T15:43:23.874271+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -243,6 +243,14 @@
       "historical_names": []
     },
     {
+      "id": "clie_f714a9edbc66b094",
+      "canonical_name": "Comunidade Intermunicipal da Região de Coimbra",
+      "entity_type": "client",
+      "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "clie_cc3555d59b44e04b",
       "canonical_name": "Consejería de Educación de la Junta de Castilla y León",
       "entity_type": "client",
@@ -303,6 +311,14 @@
       "canonical_name": "Entidade pública portuguesa",
       "entity_type": "client",
       "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_9ba7a6b59096d303",
+      "canonical_name": "European Commission, DG BUDG - Budget",
+      "entity_type": "client",
+      "country": "IBERIA",
       "aliases": [],
       "historical_names": []
     },
@@ -499,6 +515,14 @@
       "historical_names": []
     },
     {
+      "id": "clie_64031fbc1753001e",
+      "canonical_name": "Município de Silves",
+      "entity_type": "client",
+      "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "clie_dc62c81ac4e5960e",
       "canonical_name": "NATURGY ENERGY GROUP",
       "entity_type": "client",
@@ -575,6 +599,14 @@
       "canonical_name": "Sacyr",
       "entity_type": "client",
       "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_d107d6d9b93c95dc",
+      "canonical_name": "Secretaria-Geral do Ministério da Defesa Nacional",
+      "entity_type": "client",
+      "country": "PT",
       "aliases": [],
       "historical_names": []
     },
@@ -2406,7 +2438,7 @@
       "id": "tech_e767adbaaec3b48b",
       "canonical_name": "AI / Data",
       "entity_type": "technology",
-      "country": "ES",
+      "country": "PT",
       "aliases": [],
       "historical_names": []
     },
@@ -2622,7 +2654,7 @@
       "id": "tech_78fd5cac8c025bab",
       "canonical_name": "Cybersecurity",
       "entity_type": "technology",
-      "country": "ES",
+      "country": "PT",
       "aliases": [],
       "historical_names": []
     },
@@ -2910,7 +2942,7 @@
       "id": "tech_70574f8129932ee1",
       "canonical_name": "Identity & Access",
       "entity_type": "technology",
-      "country": "ES",
+      "country": "PT",
       "aliases": [],
       "historical_names": []
     },
@@ -29598,6 +29630,300 @@
       "derived": false
     },
     {
+      "id": "rel_bbd1f9c65d049074",
+      "entity_a_id": "clie_9ba7a6b59096d303",
+      "entity_a": "European Commission, DG BUDG - Budget",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_000e793db70c5930",
+      "entity_b": "Cloud",
+      "countries": [
+        "IBERIA"
+      ],
+      "country": "IBERIA",
+      "evidence": [
+        {
+          "source": "forbes.com",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "European Commission, DG BUDG - Budget",
+          "source_binding": "atomic-item",
+          "title": "Stuart Miller",
+          "url": "https://www.forbes.com/profile/stuart-miller/",
+          "date": "2026-10-30",
+          "description": "…ed Cybersecurity Acxiom Insights | Paid Program Enterprise AI Nutanix BrandVoice AI In Healthcare Future of Healthcare Enterprise Intelligence Employee and Customer Experience AI Agentic AI Gaming Big Data Cloud Cloud 100 Consumer Tech Creator Economy Cybersecurity Digital Transformat…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "IBERIA",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-30",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "dd492be798ca50f312e17689587d842dff09fb7c26472aa762d8dfcf770dbecf",
+          "matched_terms": [
+            "cloud"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cloud",
+          "item_key": "cloud",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "forbes.com",
+      "date": "2026-10-30",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_13db0b8e64a28e63",
+      "entity_a_id": "clie_d107d6d9b93c95dc",
+      "entity_a": "Secretaria-Geral do Ministério da Defesa Nacional",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_78fd5cac8c025bab",
+      "entity_b": "Cybersecurity",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "aprender21.com",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Secretaria-Geral do Ministério da Defesa Nacional",
+          "source_binding": "atomic-item",
+          "title": "Funciones de una Secretaria: Qué Hace y 30 Tareas Clave [2026] | Aprender21",
+          "url": "https://www.aprender21.com/blog/funciones-secretaria",
+          "date": "2026-10-30",
+          "description": "…áticas Todos los cursos de Redes Informáticas Experto en Administración y Seguridad de Redes Informáticas Curso de Seguridad Informática Experto en Ciberseguridad Reparación de PC Experto en Hardware de Sistemas PC Técnico en Reparación de PC Técnico en Aire Acondicionado Experto en Refrigerac…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-30",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "4a62e3534d58ffafb2a126f14c02177d2bc68e8a635513d93d813205e4cc393a",
+          "matched_terms": [
+            "ciberseguridad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cybersecurity",
+          "item_key": "cybersecurity",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "aprender21.com",
+      "date": "2026-10-30",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_b5097e74e4adf74f",
+      "entity_a_id": "clie_d107d6d9b93c95dc",
+      "entity_a": "Secretaria-Geral do Ministério da Defesa Nacional",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "aprender21.com",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Secretaria-Geral do Ministério da Defesa Nacional",
+          "source_binding": "atomic-item",
+          "title": "Funciones de una Secretaria: Qué Hace y 30 Tareas Clave [2026] | Aprender21",
+          "url": "https://www.aprender21.com/blog/funciones-secretaria",
+          "date": "2026-10-30",
+          "description": "…Conocimiento Marketing Psicología Recursos Humanos Secretariado Ventas Cursos de Programación Inteligencia Artificial Java Python PHP Cursos de Redes Informáticas Redes Informáticas Linux Redes Windows Seguridad Informática Cursos de Reparación de PC Reparación de PC Cursos de Electr…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-30",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "4a62e3534d58ffafb2a126f14c02177d2bc68e8a635513d93d813205e4cc393a",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "aprender21.com",
+      "date": "2026-10-30",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_e80967d1d9f9149c",
+      "entity_a_id": "clie_d107d6d9b93c95dc",
+      "entity_a": "Secretaria-Geral do Ministério da Defesa Nacional",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_e767adbaaec3b48b",
+      "entity_b": "AI / Data",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "aprender21.com",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Secretaria-Geral do Ministério da Defesa Nacional",
+          "source_binding": "atomic-item",
+          "title": "Funciones de una Secretaria: Qué Hace y 30 Tareas Clave [2026] | Aprender21",
+          "url": "https://www.aprender21.com/blog/funciones-secretaria",
+          "date": "2026-10-30",
+          "description": "…e Empresas Administración de Proyectos Gestión del Conocimiento Marketing Psicología Recursos Humanos Secretariado Ventas Cursos de Programación Inteligencia Artificial Java Python PHP Cursos de Redes Informáticas Redes Informáticas Linux Redes Windows Seguridad Informática Cursos de Reparación de PC R…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-30",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "4a62e3534d58ffafb2a126f14c02177d2bc68e8a635513d93d813205e4cc393a",
+          "matched_terms": [
+            "inteligencia artificial"
+          ],
+          "field": "technology_signals",
+          "item_value": "AI / Data",
+          "item_key": "ai data",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "aprender21.com",
+      "date": "2026-10-30",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_01c64139119b6169",
+      "entity_a_id": "clie_64031fbc1753001e",
+      "entity_a": "Município de Silves",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "cm-silves.pt",
+          "source_catalog_name": "Município de Silves",
+          "researched_entity": "Município de Silves",
+          "source_binding": "atomic-item",
+          "title": "Câmara Municipal de Silves",
+          "url": "https://www.cm-silves.pt/pt/Default.aspx",
+          "date": "2026-10-30",
+          "description": "…âmara Municipal de Silves Site Autárquico Silves main Contactos: expediente@cm-silves.pt 282 440 800 (chamada para a rede fixa nacional) pt | en | Redes sociais Município 21 Câmara Municipal 31 Assembleia Municipal 583 Juntas de Freguesia 582 Atos Eleitorais 58 Contactos 482 Eleições…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-30",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "faf837fb85f8544b780fbc0e03017a4a3b169502b3a3f6543b36b2faabe155b1",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "cm-silves.pt",
+      "date": "2026-10-30",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_5e55907d88f004bb",
+      "entity_a_id": "clie_f714a9edbc66b094",
+      "entity_a": "Comunidade Intermunicipal da Região de Coimbra",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_70574f8129932ee1",
+      "entity_b": "Identity & Access",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "cim-regiaodecoimbra.pt",
+          "source_catalog_name": "Comunidade Intermunicipal da Região de Coimbra",
+          "researched_entity": "Comunidade Intermunicipal da Região de Coimbra",
+          "source_binding": "atomic-item",
+          "title": "CIM Região de Coimbra, Comunidade Intermunicipal da Região de Coimbra",
+          "url": "https://www.cim-regiaodecoimbra.pt/",
+          "date": "2026-10-30",
+          "description": "…Estatísticas The technical storage or access that is used exclusively for statistical purposes. Exclusivamente utilizador para acesso a estatísticas anónimas. Nenhuma das estat´sticas recolhidas poderá ser utilizada para a identificação da sua identidade. Marketing Marketing Rqeuisitado p…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-30",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "cb15b1d6a1989fc10e7d9ac6ac10cbb97bdd817ff8dadb82bce78532db0f9801",
+          "matched_terms": [
+            "identidad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Identity & Access",
+          "item_key": "identity access",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "cim-regiaodecoimbra.pt",
+      "date": "2026-10-30",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
       "id": "rel_4afeb4152ea74077",
       "entity_a_id": "clie_e3bb077383ca4765",
       "entity_a": "Ajuntament de Reus",
@@ -39749,7 +40075,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "ibersol.pt",
