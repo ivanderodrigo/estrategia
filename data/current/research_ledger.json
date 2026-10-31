@@ -1,30 +1,30 @@
 {
   "version": "4.3.0",
   "profile": "daily",
-  "started_at": "2026-10-31T08:51:47.337203+00:00",
-  "planned_entities": 120,
-  "fetch_attempts": 224,
-  "fetch_successes": 272,
-  "pages_relevant": 15,
-  "candidate_evidences": 14,
-  "candidate_values_seen": 15,
-  "candidate_values_promoted": 15,
+  "started_at": "2026-10-31T09:22:01.770275+00:00",
+  "planned_entities": 10,
+  "fetch_attempts": 59,
+  "fetch_successes": 50,
+  "pages_relevant": 7,
+  "candidate_evidences": 4,
+  "candidate_values_seen": 8,
+  "candidate_values_promoted": 8,
   "candidate_values_rejected": 0,
   "candidate_fields_rejected": 0,
-  "accepted_evidences": 9,
-  "fields_enriched": 9,
-  "values_added": 8,
+  "accepted_evidences": 1,
+  "fields_enriched": 1,
+  "values_added": 2,
   "entities_added": 0,
-  "cache_hits": 103,
-  "circuit_skips": 193,
+  "cache_hits": 0,
+  "circuit_skips": 15,
   "unsafe_url_rejections": 0,
-  "official_sites_discovered": 4,
+  "official_sites_discovered": 1,
   "financial_links_discovered": 0,
-  "query_discovery_targets": 48,
-  "search_queries_attempted": 185,
-  "search_queries_succeeded": 185,
+  "query_discovery_targets": 10,
+  "search_queries_attempted": 32,
+  "search_queries_succeeded": 32,
   "search_provider_failures": 0,
-  "search_urls_discovered": 542,
+  "search_urls_discovered": 150,
   "manufacturer_revenue_rows_before": 1,
   "manufacturer_revenue_acceptances": 0,
   "stop_reason": "complete",
@@ -35,42 +35,23 @@
   "structured_entity_budget": 24,
   "structured_entities_added": 0,
   "structured_notices": 24,
-  "accepted_evidence_per_fetch_attempt": 0.0402,
-  "candidate_acceptance_rate": 0.6429,
+  "accepted_evidence_per_fetch_attempt": 0.0169,
+  "candidate_acceptance_rate": 0.25,
   "candidate_value_promotion_rate": 1.0,
-  "values_per_accepted_evidence": 0.8889,
+  "values_per_accepted_evidence": 2.0,
   "growth_pressure_ratio": 0.0,
   "manufacturer_revenue_rows_after": 1,
   "manufacturer_revenue_rows_added": 0,
-  "elapsed_s": 257.08,
-  "finished_at": "2026-10-31T08:56:03.419599+00:00",
-  "result_rows_total": 520,
-  "accepted_result_rows_total": 9,
-  "results_truncated": true,
+  "elapsed_s": 66.45,
+  "finished_at": "2026-10-31T09:23:06.695882+00:00",
+  "result_rows_total": 74,
+  "accepted_result_rows_total": 1,
+  "results_truncated": false,
   "results": [
     {
       "section": "clients_public",
-      "entity": "Instituto de Informática, I.P.",
-      "url": "https://www.findglocal.com/US/Laredo/125413700850927/Instituto-Cultural-Mexicano-de-Laredo",
-      "family": "procurement",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.findglocal.com/US/Laredo/125413700850927/Instituto-Cultural-Mexicano-de-Laredo",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Instituto de Informática, I.P.",
-      "url": "https://definicion.de/instituto/",
-      "family": "procurement",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Gallego de Salud",
-      "url": "https://es.wikipedia.org/wiki/Ant%C3%A1rtida",
+      "entity": "Junta de Gobierno del Ayuntamiento de Granada",
+      "url": "https://escuelademapas.com/mapa-de-rusia/",
       "family": "procurement",
       "cached": false,
       "relevant": false,
@@ -79,8 +60,17 @@
     },
     {
       "section": "clients_public",
-      "entity": "Servicio Gallego de Salud",
-      "url": "https://concepto.de/antartida/",
+      "entity": "Junta de Gobierno del Ayuntamiento de Granada",
+      "url": "https://mundomapa.com/mapa-de-rusia/",
+      "family": "procurement",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://mundomapa.com/mapa-de-rusia/",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Granada",
+      "url": "https://www.rusalia.com/mapas-rusia/",
       "family": "procurement",
       "cached": false,
       "relevant": false,
@@ -89,1128 +79,18 @@
     },
     {
       "section": "clients_public",
-      "entity": "Servicio Gallego de Salud",
-      "url": "https://pt.wikipedia.org/wiki/Ant%C3%A1rtida",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Gallego de Salud",
-      "url": "https://humanidades.com/antartida/",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Gallego de Salud",
-      "url": "https://es.wikipedia.org/wiki/Geograf%C3%ADa_de_la_Ant%C3%A1rtida",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Gallego de Salud",
-      "url": "https://es.wikipedia.org/wiki/Ant%C3%A1rtida",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Gallego de Salud",
-      "url": "https://concepto.de/antartida/",
-      "family": "procurement",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Gallego de Salud",
-      "url": "https://pt.wikipedia.org/wiki/Ant%C3%A1rtida",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Gallego de Salud",
-      "url": "https://humanidades.com/antartida/",
-      "family": "procurement",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Gallego de Salud",
-      "url": "https://es.wikipedia.org/wiki/Geograf%C3%ADa_de_la_Ant%C3%A1rtida",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/particulares/",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/actualidad",
-      "family": "news",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.bancosantander.es/actualidad",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/adjudicaciones",
+      "entity": "Junta de Gobierno del Ayuntamiento de Granada",
+      "url": "https://proyectoviajero.com/mapas-de-rusia/",
       "family": "procurement",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.bancosantander.es/adjudicaciones",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://proyectoviajero.com/mapas-de-rusia/",
       "accepted": 0
     },
     {
       "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/architecture",
-      "family": "technology",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.bancosantander.es/architecture",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/architectures",
-      "family": "technology",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.bancosantander.es/architectures",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.bancosantander.es/careers",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/concursos",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/contracts",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/contratacion",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/contratacion-publica",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/feed",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/licitacoes",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/particulares",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/platform",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/press",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/procurement",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/products",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/services",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/solutions",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/technologies",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/technology",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/tecnologia",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/tenders",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://economipedia.com/definiciones/banco.html",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bankofamerica.com/es/",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://es.wikipedia.org/wiki/Banco",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancoestado.cl/content/bancoestado-public/cl/es/home/home.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Município de Lisboa",
-      "url": "https://mx.ebay.com/b/Hersheys-Chocolate-Dark-Chocolates/258022/bn_95432471",
-      "family": "procurement",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://mx.ebay.com/b/Hersheys-Chocolate-Dark-Chocolates/258022/bn_95432471",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Município de Lisboa",
-      "url": "https://www.walmart.com/c/kp/hershey-chocolate-bars",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Município de Lisboa",
-      "url": "https://www.soriana.com/chocolate-dark-hersheys-90-gr-pz/11537109.html",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Município de Lisboa",
-      "url": "https://www.walmart.com.mx/blocked?url=L2lwL2JhcnJhLWRlLWNob2NvbGF0ZS1oZXJzaGV5LXMtZGFyay0xMDAtZy8wMDc1MDEwMjQ1MjAxNQ==&uuid=c88378e7-d508-11f1-be0a-ca546c070cce&vid=&g=b",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Município de Lisboa",
-      "url": "https://dulfi.com/product/choc-hersheys-dark-41-grs/",
-      "family": "technology",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Município de Lisboa",
-      "url": "https://www.walmart.com.mx/blocked?url=L2lwL2Nob2NvbGF0ZS1hbWFyZ28taGVyc2hleS1zLWRhcmstYmFycmEtOTAtZy8wMDc1MDEwMjQ1OTU0OQ==&uuid=caf140e2-d508-11f1-8c73-15795d937a57&vid=&g=b",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Gallego de Salud",
-      "url": "https://www.lejdd.fr/",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Gallego de Salud",
-      "url": "https://www.lejdd.fr/Societe",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Gallego de Salud",
-      "url": "https://abo.lejdd.fr/",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Gallego de Salud",
-      "url": "https://newsletter.lejdd.fr/",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Gallego de Salud",
-      "url": "https://abonnement.lejdd.fr/aide-et-contact",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Ajuntament de Rubí",
-      "url": "https://www.spanishdict.com/translate/hello",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Ajuntament de Rubí",
-      "url": "https://www.spanishdict.com/guide/how-to-say-hello-in-spanish",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Ajuntament de Rubí",
-      "url": "https://translate.google.es/?hl=en",
-      "family": "careers",
-      "status": 200,
-      "error": "response-too-large",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Ajuntament de Rubí",
-      "url": "https://www.wikihow.com/Say-Hello-in-Spanish",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Ajuntament de Rubí",
-      "url": "https://migaku.com/blog/spanish/hello-in-spanish",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Ajuntament de Rubí",
-      "url": "https://dictionary.cambridge.org/dictionary/english-spanish/hello",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Autoridad Portuaria de Cartagena",
-      "url": "https://www.guggenheim-bilbao.eus/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Autoridad Portuaria de Cartagena",
-      "url": "https://www.guggenheim-bilbao.eus/apoyo-empresarial/eventos-corporativos",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Autoridad Portuaria de Cartagena",
-      "url": "https://cms.guggenheim-bilbao.eus/uploads/2023/06/Plano-270623.pdf",
-      "family": "careers",
-      "status": 200,
-      "error": "unsupported-content-type:application/pdf",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Autoridad Portuaria de Cartagena",
-      "url": "https://tienda.guggenheim-bilbao.eus/",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://tienda.guggenheim-bilbao.eus/",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Autoridad Portuaria de Cartagena",
-      "url": "https://cms.guggenheim-bilbao.eus/uploads/2025/08/ACTIVITY-REPORT-2024.pdf",
-      "family": "financial",
-      "status": 200,
-      "error": "unsupported-content-type:application/pdf",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Autoridad Portuaria de Cartagena",
-      "url": "https://tienda.guggenheim-bilbao.eus/es/guggenheim-bilbao",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://tienda.guggenheim-bilbao.eus/es/guggenheim-bilbao",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Autoridad Portuaria de Cartagena",
-      "url": "https://en.wikipedia.org/wiki/Crimea",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Autoridad Portuaria de Cartagena",
-      "url": "https://es.wikipedia.org/wiki/Crimea",
-      "family": "careers",
-      "cached": false,
-      "relevant": true,
-      "accepted": 2,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Autoridad Portuaria de Cartagena",
-      "url": "https://www.britannica.com/place/Crimea",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.britannica.com/place/Crimea",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Autoridad Portuaria de Cartagena",
-      "url": "https://proyectoviajero.com/crimea-geografia-historia/",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://proyectoviajero.com/crimea-geografia-historia/",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Autoridad Portuaria de Cartagena",
-      "url": "https://es.wikipedia.org/wiki/Rep%C3%BAblica_de_Crimea",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Departament de la Presidència",
-      "url": "https://www.cuidadodesalud.gov/es/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Departament de la Presidència",
-      "url": "https://www.cuidadodesalud.gov/login",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Departament de la Presidència",
-      "url": "https://www.sofiasalud.com/blog/que-importancia-tiene-el-cuidado-de-la-salud",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Departament de la Presidència",
-      "url": "https://cuidados-de.com/salud/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Departament de la Presidència",
-      "url": "https://noticiasdeprimera.com/salud/cuidado-de-la-salud/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Andaluz de Salud. Hospital Universitario Juan Ramón Jiménez",
-      "url": "https://finance.yahoo.com/quote/VFINX/",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Andaluz de Salud. Hospital Universitario Juan Ramón Jiménez",
-      "url": "https://finance.yahoo.com/quote/VFINX/news/",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Andaluz de Salud. Hospital Universitario Juan Ramón Jiménez",
-      "url": "https://hk.finance.yahoo.com/quote/VFINX/",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Andaluz de Salud. Hospital Universitario Juan Ramón Jiménez",
-      "url": "https://es.finance.yahoo.com/quote/VFINX/",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Servicio Andaluz de Salud. Hospital Universitario Juan Ramón Jiménez",
-      "url": "https://ca.finance.yahoo.com/quote/VFINX/profile/?guccounter=1",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Telecomunicaciones y Digitalización",
+      "entity": "Junta de Gobierno del Ayuntamiento de Granada",
       "url": "https://www.google.com/maps",
       "family": "procurement",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Telecomunicaciones y Digitalización",
-      "url": "https://fl.postcodebase.com/es/random_address_city/MIAMI",
-      "family": "procurement",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Telecomunicaciones y Digitalización",
-      "url": "https://dle.rae.es/direcci%C3%B3n",
-      "family": "procurement",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Telecomunicaciones y Digitalización",
-      "url": "https://www.google.com/maps/search/?hl=es",
-      "family": "procurement",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Telecomunicaciones y Digitalización",
-      "url": "https://worldstreets.global/united-states/florida/miami-4164138",
-      "family": "procurement",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Agência para a Integração, Migrações e Asilo, IP",
-      "url": "https://www.elsol.com.co/",
-      "family": "careers",
       "cached": false,
       "relevant": false,
       "accepted": 0,
@@ -1218,9 +98,9 @@
     },
     {
       "section": "clients_public",
-      "entity": "Agência para a Integração, Migrações e Asilo, IP",
-      "url": "https://es.wikipedia.org/wiki/Sol",
-      "family": "careers",
+      "entity": "Junta de Gobierno del Ayuntamiento de Granada",
+      "url": "https://www.paises.net/europa/rusia/mapa/",
+      "family": "procurement",
       "cached": false,
       "relevant": false,
       "accepted": 0,
@@ -1228,9 +108,9 @@
     },
     {
       "section": "clients_public",
-      "entity": "Agência para a Integração, Migrações e Asilo, IP",
-      "url": "https://www.colombia.com/radio/el-sol-105.4-fm-bogota-3902",
-      "family": "careers",
+      "entity": "Junta de Gobierno del Ayuntamiento de Granada",
+      "url": "https://www.newyorkjets.com/",
+      "family": "procurement",
       "cached": false,
       "relevant": false,
       "accepted": 0,
@@ -1238,9 +118,9 @@
     },
     {
       "section": "clients_public",
-      "entity": "Agência para a Integração, Migrações e Asilo, IP",
-      "url": "https://concepto.de/sol/",
-      "family": "careers",
+      "entity": "Junta de Gobierno del Ayuntamiento de Rivas Vaciamadrid",
+      "url": "https://en.wikipedia.org/wiki/Microsoft_Bing",
+      "family": "procurement",
       "cached": false,
       "relevant": false,
       "accepted": 0,
@@ -1248,18 +128,277 @@
     },
     {
       "section": "clients_public",
-      "entity": "Agência para a Integração, Migrações e Asilo, IP",
-      "url": "https://www.nationalgeographic.com.es/ciencia/sol-estrella-que-sostiene-vida-tierra_18659",
-      "family": "careers",
+      "entity": "Junta de Gobierno del Ayuntamiento de Rivas Vaciamadrid",
+      "url": "https://apkpure.com/es/bing-your-ai-copilot/com.microsoft.bing/versions",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Rivas Vaciamadrid",
+      "url": "https://edgeservices.bing.com/",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Rivas Vaciamadrid",
+      "url": "https://addons.mozilla.org/en-US/firefox/addon/bing-search-engine-/versions/",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Rivas Vaciamadrid",
+      "url": "https://addons.mozilla.org/es-ES/firefox/addon/bing-search-engine-/versions/",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Vinarós",
+      "url": "https://www.therams.com/",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Vinarós",
+      "url": "https://www.therams.com/news/",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Vinarós",
+      "url": "https://en.wikipedia.org/wiki/Los_Angeles_Rams",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Vinarós",
+      "url": "https://www.nfl.com/teams/los-angeles-rams/",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Vinarós",
+      "url": "https://es.wikipedia.org/wiki/Los_Angeles_Rams",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Presidencia de la Autoridad Portuaria de Valencia",
+      "url": "https://es.wikipedia.org/wiki/Cangas_de_On%C3%ADs",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Presidencia de la Autoridad Portuaria de Valencia",
+      "url": "https://turismocangasdeonis.com/index.html",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Presidencia de la Autoridad Portuaria de Valencia",
+      "url": "https://pte.es/turismo/Asturias/c33550/Cangas-de-Onis.html",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Presidencia de la Autoridad Portuaria de Valencia",
+      "url": "https://asturias.com/cangas-de-onis-info-basica/",
+      "family": "procurement",
       "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.nationalgeographic.com.es/ciencia/sol-estrella-que-sostiene-vida-tierra_18659",
+      "error": "UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf1 in position 70435: invalid continuation byte",
       "accepted": 0
     },
     {
       "section": "clients_public",
-      "entity": "Agência para a Integração, Migrações e Asilo, IP",
-      "url": "https://ciencia.nasa.gov/datos-sobre-el-sol/",
-      "family": "careers",
+      "entity": "Presidencia de la Autoridad Portuaria de Valencia",
+      "url": "https://pte.es/Mapas/Asturias/c33550/Cangas-de-Onis.html",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Presidencia de la Autoridad Portuaria de Valencia",
+      "url": "https://www.pueblosmagicos.es/cangas-de-onis/",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Secretaría General de la Agencia Estatal Consejo Superior de Investigaciones Científicas",
+      "url": "https://es.wikipedia.org/wiki/Condado_de_Pierce_(Washington)",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Secretaría General de la Agencia Estatal Consejo Superior de Investigaciones Científicas",
+      "url": "https://www.piercecountywa.gov/",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Secretaría General de la Agencia Estatal Consejo Superior de Investigaciones Científicas",
+      "url": "https://ofm.wa.gov/es/data-research/county-data/pierce/",
+      "family": "analyst",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Secretaría General de la Agencia Estatal Consejo Superior de Investigaciones Científicas",
+      "url": "https://www.piercecountywa.gov/6559/Espaol-Spanish",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Secretaría General de la Agencia Estatal Consejo Superior de Investigaciones Científicas",
+      "url": "https://www.wikiwand.com/es/Condado_de_Pierce_(Washington)",
+      "family": "procurement",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.wikiwand.com/es/Condado_de_Pierce_(Washington)",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Secretaría General de la Agencia Estatal Consejo Superior de Investigaciones Científicas",
+      "url": "https://mypcls.org/",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Vicepresidencia del Consejo de Administración de Fires, Congressos i Esdeveniments D'Eivissa, S.A.U.",
+      "url": "https://support.microsoft.com/nl-nl/swiftkey-keyboard/why-has-my-enter-key-turned-into-a-send-button-in-whatsapp",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Vicepresidencia del Consejo de Administración de Fires, Congressos i Esdeveniments D'Eivissa, S.A.U.",
+      "url": "https://support.microsoft.com/en-us/swiftkey-keyboard/why-has-my-enter-key-turned-into-a-send-button-in-whatsapp",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Vicepresidencia del Consejo de Administración de Fires, Congressos i Esdeveniments D'Eivissa, S.A.U.",
+      "url": "https://www.answers.com/telecommunications/List_of_nokia_phones_supporting_whatsapp_messenger",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Vicepresidencia del Consejo de Administración de Fires, Congressos i Esdeveniments D'Eivissa, S.A.U.",
+      "url": "https://www.answers.com/finance/What-are-some-common-scams-involving-coinbase-and-whatsapp",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Vicepresidencia del Consejo de Administración de Fires, Congressos i Esdeveniments D'Eivissa, S.A.U.",
+      "url": "https://www.chargers.com/",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Braga",
+      "url": "https://www.cm-braga.pt/es",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Braga",
+      "url": "https://www.cm-braga.pt/pt",
+      "family": "news",
       "cached": false,
       "relevant": true,
       "accepted": 1,
@@ -1267,1495 +406,38 @@
     },
     {
       "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/actualidad",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/adjudicaciones",
+      "entity": "Município de Braga",
+      "url": "https://www.cm-braga.pt/pt",
       "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/architecture",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/architectures",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/concursos",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/contracts",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/contratacion",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/contratacion-publica",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/feed",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/licitacoes",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/particulares",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/particulares/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/platform",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/press",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/procurement",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/products",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/services",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/solutions",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/technologies",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/technology",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/tecnologia",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/tenders",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://economipedia.com/definiciones/banco.html",
-      "family": "official",
-      "cached": true,
+      "cached": false,
       "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bankofamerica.com/es/",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://es.wikipedia.org/wiki/Banco",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancoestado.cl/content/bancoestado-public/cl/es/home/home.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/particulares",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://economipedia.com/definiciones/banco.html",
-      "family": "careers",
-      "cached": true,
+      "entity": "Município de Braga",
+      "url": "https://www.cm-braga.pt/pt",
+      "family": "procurement",
+      "cached": false,
       "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
+      "entity": "Município de Braga",
+      "url": "https://www.cm-braga.pt/pt",
+      "family": "procurement",
       "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/inicio/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zinYItLBydDB0NDIxDLQwczQIDnS1dDIwMLI31C7IdFQFQSibi/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/datos_abiertos/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLfxMLRydDB0N_M0tXQwCjd0sTcz8AgJCLMz1C7IdFQEVbuag/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/inicio/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zinYItLBydDB0NDIxDLQwczQIDnS1dDIwMLI31C7IdFQFQSibi/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/datos_abiertos/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLfxMLRydDB0N_M0tXQwCjd0sTcz8AgJCLMz1C7IdFQEVbuag/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/actualidad",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/adjudicaciones",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/architecture",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/architectures",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/cloud",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/concursos",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/contracts",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/contratacion",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/contratacion-publica",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/cybersecurity",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/feed",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/licitacoes",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/particulares",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/particulares/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/platform",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/press",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/procurement",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/products",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/services",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/solutions",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/technologies",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/technology",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/tecnologia",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/tenders",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://www.bancosantander.es/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://economipedia.com/definiciones/banco.html",
-      "family": "official",
-      "cached": true,
       "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://economipedia.com/newsletter",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Banco de España",
-      "url": "https://economipedia.com/empleo",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Agência para a Integração, Migrações e Asilo, IP",
-      "url": "https://ciencia.nasa.gov/datos-sobre-el-sol/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Agência para a Integração, Migrações e Asilo, IP",
-      "url": "https://ciencia.nasa.gov/technology/",
-      "family": "technology",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://ciencia.nasa.gov/technology/",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Agência para a Integração, Migrações e Asilo, IP",
-      "url": "https://ciencia.nasa.gov/news/",
-      "family": "news",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://ciencia.nasa.gov/news/",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/inicio/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zinYItLBydDB0NDIxDLQwczQIDnS1dDIwMLI31C7IdFQFQSibi/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/datos_abiertos/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLfxMLRydDB0N_M0tXQwCjd0sTcz8AgJCLMz1C7IdFQEVbuag/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/inicio/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zinYItLBydDB0NDIxDLQwczQIDnS1dDIwMLI31C7IdFQFQSibi/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/datos_abiertos/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLfxMLRydDB0N_M0tXQwCjd0sTcz8AgJCLMz1C7IdFQEVbuag/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Agência para a Reforma Tecnológica do Estado, IP",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Agência para a Reforma Tecnológica do Estado, IP",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Agência para a Reforma Tecnológica do Estado, IP",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/inicio/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zinYItLBydDB0NDIxDLQwczQIDnS1dDIwMLI31C7IdFQFQSibi/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Agência para a Reforma Tecnológica do Estado, IP",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/datos_abiertos/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLfxMLRydDB0N_M0tXQwCjd0sTcz8AgJCLMz1C7IdFQEVbuag/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Consejería de Educación de la Junta de Castilla y León",
-      "url": "https://www.jcyl.es/web/jcyl/Portada/es/Plantilla100DirectorioPortada/1248366924958/0/1284181175622/DirectorioPadre",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/",
       "family": "official",
       "cached": false,
       "relevant": true,
@@ -2764,80 +446,320 @@
     },
     {
       "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cm-gondomar.pt/actualidad",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/adjudicaciones",
+      "family": "procurement",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cm-gondomar.pt/adjudicaciones",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/concursos",
+      "family": "procurement",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cm-gondomar.pt/concursos",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/contracts",
+      "family": "procurement",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cm-gondomar.pt/contracts",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/contratacion",
+      "family": "procurement",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cm-gondomar.pt/contratacion",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/contratacion-publica",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/licitacoes",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/procurement",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/robots.txt",
       "family": "official",
-      "cached": true,
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/sitemap.xml",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://www.cm-gondomar.pt/tenders",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Município de Gondomar",
+      "url": "https://support.google.com/docs/thread/187549444/query-function-not-returning-all-data?hl=en",
+      "family": "procurement",
+      "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": true,
+      "entity": "Município de Gondomar",
+      "url": "https://support.google.com/docs/answer/3093343?hl=fr",
+      "family": "procurement",
+      "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/inicio/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zinYItLBydDB0NDIxDLQwczQIDnS1dDIwMLI31C7IdFQFQSibi/",
-      "family": "official",
-      "cached": true,
+      "entity": "Município de Gondomar",
+      "url": "https://wormzilla.io/",
+      "family": "procurement",
+      "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/datos_abiertos/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLfxMLRydDB0N_M0tXQwCjd0sTcz8AgJCLMz1C7IdFQEVbuag/",
-      "family": "official",
-      "cached": true,
+      "entity": "Município de Gondomar",
+      "url": "https://wormzilla.io/site/",
+      "family": "procurement",
+      "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "clients_public",
-      "entity": "Junta de Contratación del Ministerio de Sanidad",
-      "url": "https://contrataciondelestado.es/",
+      "entity": "NATURGY ENERGY GROUP",
+      "url": "https://www.naturgy.com/",
       "family": "official",
-      "cached": true,
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "NATURGY ENERGY GROUP",
+      "url": "https://validate.perfdrive.com/?ssa=1a2a3e0a-7cd9-4d15-a72f-bea7bf0c1837&ssb=77880391573&ssc=https%3A%2F%2Fwww.naturgy.com%2Factualidad&ssi=ff114829-cld7-4afb-8a79-40d5c2d7b881&ssk=botmanager_support@radware.com&ssm=18043261535228853130251771259188&ssn=fc55442153ccc337b00a31e5b578a3156c242a69fb86-4373-406d-b151a4&sso=d6e8e09b-7e4b6f2f1aa73ac8526c4be9078ebf4b5fb1b7a2c09a41b2&ssp=51959833061793460062179343233928142&ssq=80244703858119970287738581330470386473915&ssr=MTcyLjE4Mi4yMTMuNzE=&sst=Westcon-Iberia-Decision-Intelligence/4.3.0%20(public%20research;%20bounded;%20respectful;%20contact=repository-owner)&ssu=&ssv=&ssw=&ssx=eyJyZCI6Im5hdHVyZ3kuY29tIiwiX191em1mIjoiN2Y5MDAwMmE2OWZiODYtNDM3My00MDZkLWIwOWItN2U0YjZmMmYxYWE3MS0xNzkzNDM4NTgxMjEyNzYzLTAwNTk3MDg5YjJkNzhkZDI3YzkxMyIsInV6bXgiOiI3ZmMwMDBiMjM0YThiOC00ODQyLTQyOWUtOGYwMC1iZGM3YWEwMmViZDIxLTE3OTM0Mzg1ODEyMTI3NjItMDBiYTNhZDBjMGMwZDllNTQ3MjEzIn0=",
+      "family": "news",
+      "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "clients_public",
-      "entity": "Junta de Contratación del Ministerio de Sanidad",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": true,
+      "entity": "NATURGY ENERGY GROUP",
+      "url": "https://validate.perfdrive.com/?ssa=bf56c0cf-79d1-4ef6-bdbc-53ba42c62e8a&ssb=75864369528&ssc=https%3A%2F%2Fwww.naturgy.com%2Fadjudicaciones&ssi=20a4edf2-cld7-4a6c-801f-5588bb61700b&ssk=botmanager_support@radware.com&ssm=58589419963118504164161777236080&ssn=3b035d14aae990d74348a78c8b8df99021202a69fb86-4373-406d-be0653&sso=3603b09b-7e4b6f2f1aa70d3140669c8dfcc5c9cd0da65b4716f862fa&ssp=96903078991793415137179347261680988&ssq=84978913858239101200738581106986232672979&ssr=MTcyLjE4Mi4yMTMuNzE=&sst=Westcon-Iberia-Decision-Intelligence/4.3.0%20(public%20research;%20bounded;%20respectful;%20contact=repository-owner)&ssu=&ssv=&ssw=&ssx=eyJyZCI6Im5hdHVyZ3kuY29tIiwiX191em1mIjoiN2Y5MDAwMmE2OWZiODYtNDM3My00MDZkLWIwOWItN2U0YjZmMmYxYWE3MS0xNzkzNDM4NTgxMjEyMTMxOS0wMDU2YTE1NWE0ZDIzY2U0OTA5MTYiLCJ1em14IjoiN2ZjMDAwYjIzNGE4YjgtNDg0Mi00MjllLThmMDAtYmRjN2FhMDJlYmQyMS0xNzkzNDM4NTgxMjEyMTMxOS0wMGJmMzlmNzZlZDc3M2Y0YTg5MTYifQ==",
+      "family": "procurement",
+      "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "clients_public",
-      "entity": "Junta de Contratación del Ministerio de Sanidad",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/inicio/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zinYItLBydDB0NDIxDLQwczQIDnS1dDIwMLI31C7IdFQFQSibi/",
-      "family": "official",
-      "cached": true,
+      "entity": "NATURGY ENERGY GROUP",
+      "url": "https://validate.perfdrive.com/?ssa=09466676-8a05-4a67-a51b-3a3366c77c07&ssb=75864369528&ssc=https%3A%2F%2Fwww.naturgy.com%2Fconcursos&ssi=1086a7a9-cld7-493a-b343-577c9379259a&ssk=botmanager_support@radware.com&ssm=58589419963118504194161777236080&ssn=3b035d145ecdc2ddeaad83168d19f99021202a69fb86-4373-406d-be0653&sso=3603b09b-7e4b6f2f1aa70d3140669b67bd78e257b9399a2016f862fa&ssp=96903078991793415137179347261680988&ssq=84978913858239101200738581106986232672979&ssr=MTcyLjE4Mi4yMTMuNzE=&sst=Westcon-Iberia-Decision-Intelligence/4.3.0%20(public%20research;%20bounded;%20respectful;%20contact=repository-owner)&ssu=&ssv=&ssw=&ssx=eyJyZCI6Im5hdHVyZ3kuY29tIiwiX191em1mIjoiN2Y5MDAwMmE2OWZiODYtNDM3My00MDZkLWIwOWItN2U0YjZmMmYxYWE3MS0xNzkzNDM4NTgxMjEyMTU4OC0wMDUzZDNmZTM4YjdhYjIwYWI5MTkiLCJ1em14IjoiN2ZjMDAwYjIzNGE4YjgtNDg0Mi00MjllLThmMDAtYmRjN2FhMDJlYmQyMS0xNzkzNDM4NTgxMjEyMTU4OC0wMGI2MDg0NGIwYjRjNDJmMjJjMTkifQ==",
+      "family": "procurement",
+      "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "clients_public",
-      "entity": "Junta de Contratación del Ministerio de Sanidad",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/datos_abiertos/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLfxMLRydDB0N_M0tXQwCjd0sTcz8AgJCLMz1C7IdFQEVbuag/",
-      "family": "official",
-      "cached": true,
+      "entity": "NATURGY ENERGY GROUP",
+      "url": "https://validate.perfdrive.com/?ssa=6a4b61c1-17d6-4042-92bd-50176996578f&ssb=36219301675&ssc=https%3A%2F%2Fwww.naturgy.com%2Fcontracts&ssi=163d698e-cld7-4a5e-91db-1c11c1f49862&ssk=botmanager_support@radware.com&ssm=40982443738792132224888135349812&ssn=fe066d1cd6d34a755e63d9b56350cd8ade0b2a69fb86-4373-406d-b6c96e&sso=dff7509b-7e4b6f2f1aa76dc5eb36017576c0459dcaa6a822d12188a0&ssp=34063259371793433487179340049625501&ssq=73476613858304901294438581974835654336684&ssr=MTcyLjE4Mi4yMTMuNzE=&sst=Westcon-Iberia-Decision-Intelligence/4.3.0%20(public%20research;%20bounded;%20respectful;%20contact=repository-owner)&ssu=&ssv=&ssw=&ssx=eyJyZCI6Im5hdHVyZ3kuY29tIiwiX191em1mIjoiN2Y5MDAwMmE2OWZiODYtNDM3My00MDZkLWIwOWItN2U0YjZmMmYxYWE3MS0xNzkzNDM4NTgxMjEyMTg1OS0wMDViZmY3YjFkNDM5ODIyOTIyMjIiLCJ1em14IjoiN2ZjMDAwYjIzNGE4YjgtNDg0Mi00MjllLThmMDAtYmRjN2FhMDJlYmQyMS0xNzkzNDM4NTgxMjEyMTg1OS0wMGJiMDFjOGU0MGEzYjkzZjViMjIifQ==",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agencia para la Modernización Tecnológica de Galicia",
+      "url": "https://es.wikipedia.org/wiki/Washington_Commanders",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agencia para la Modernización Tecnológica de Galicia",
+      "url": "https://www.commanders.com/",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agencia para la Modernización Tecnológica de Galicia",
+      "url": "https://espndeportes.espn.com/futbol-americano/nfl/equipo/_/nombre/wsh/washington-commanders",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agencia para la Modernización Tecnológica de Galicia",
+      "url": "https://www.nfl.com/teams/washington-commanders/",
+      "family": "procurement",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agencia para la Modernización Tecnológica de Galicia",
+      "url": "https://www.commanders.com/team/players-roster/",
+      "family": "procurement",
+      "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
