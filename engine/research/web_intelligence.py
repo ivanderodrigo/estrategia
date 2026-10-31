@@ -23,7 +23,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 from ..enrichment import merge_field
-from ..knowledge_provenance import typed_evidence_sufficient
+from ..knowledge_provenance import typed_evidence_sufficient, accrediting_evidence
 from ..model import canonical
 from ..provenance import evidence_for_item, evidence_for_relationship, infer_scope_from_text
 from ..settings import RESEARCH_POLICY, RESEARCH_PROFILES, VERSION
@@ -80,6 +80,43 @@ def _row_index(data: dict[str, Any]) -> dict[tuple[str, str], dict[str, Any]]:
     ):
         for row in data.get(section) or []:
             output[(section, canonical(row.get("name")))] = row
+    return output
+
+
+def _unsourced_value_queries(row: dict[str, Any], target_fields: list[str], limit: int = 3) -> list[str]:
+    """Recover exact unsourced atomic claims as search leads, never as proof.
+
+    Previously, only gap.target_values fed focused searches. Many preserved
+    historical items have no target_values in their gap record; this extracts
+    those existing claim values without treating them as verified.
+    """
+    entity = str(row.get("name") or "").strip()
+    if not entity:
+        return []
+    output: list[str] = []
+    seen: set[str] = set()
+    for field_name in target_fields:
+        field = (row.get("fields") or {}).get(field_name) or {}
+        if not isinstance(field, dict):
+            continue
+        for item in field.get("items") or []:
+            if not isinstance(item, dict):
+                continue
+            value = item.get("value")
+            if not isinstance(value, str):
+                continue
+            value = value.strip()
+            if not (3 <= len(value) <= 95) or canonical(value) == canonical(entity):
+                continue
+            if any(accrediting_evidence(ev) for ev in item.get("evidence") or [] if isinstance(ev, dict)):
+                continue
+            query = f'"{entity}" "{value}"'
+            key = query.casefold()
+            if key not in seen:
+                seen.add(key)
+                output.append(query)
+                if len(output) >= limit:
+                    return output
     return output
 
 
@@ -1419,6 +1456,7 @@ def run(
         "search_queries_succeeded": 0,
         "search_provider_failures": 0,
         "search_urls_discovered": 0,
+        "unsourced_value_queries": 0,
         "manufacturer_revenue_rows_before": _count_populated_rows(data, "manufacturers", "revenue"),
         "manufacturer_revenue_acceptances": 0,
         "stop_reason": "complete",
@@ -1473,6 +1511,12 @@ def run(
         row = index.get((target["section"], canonical(target["entity"])))
         if not row:
             continue
+        exact_unsourced_queries = _unsourced_value_queries(row, target["fields"])
+        if exact_unsourced_queries:
+            target["query_hints"] = list(dict.fromkeys(
+                exact_unsourced_queries + list(target.get("query_hints") or [])
+            ))[:16]
+            stats["unsourced_value_queries"] += len(exact_unsourced_queries)
         seeds = _merge_source_seeds(
             _revalidation_source_seeds(target),
             seeds_for(row, target["fields"], target=target),
