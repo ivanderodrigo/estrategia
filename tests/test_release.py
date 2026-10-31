@@ -72,11 +72,14 @@ class ReleaseIntegrity(unittest.TestCase):
         row = next(item for item in self.data["manufacturers"] if item["name"] == "1Password")
         field = row["fields"]["distributors"]
         item = next(item for item in field["items"] if item["value"] == "Ingram Micro")
-        self.assertEqual(len(item["evidence"]), 1)
-        blob = json.dumps(item["evidence"][0], ensure_ascii=False).casefold()
-        self.assertIn("1password", blob)
-        self.assertIn("ingram", blob)
-        self.assertNotIn("uipath", blob)
+        # Multiple independent, exact corroborations are valid; only
+        # field-wide/other-vendor evidence must be rejected.
+        self.assertGreaterEqual(len(item["evidence"]), 1)
+        for evidence in item["evidence"]:
+            blob = json.dumps(evidence, ensure_ascii=False).casefold()
+            self.assertIn("1password", blob)
+            self.assertIn("ingram", blob)
+            self.assertNotIn("uipath", blob)
 
     def test_strict_gaps_keep_learning_state(self) -> None:
         self.assertEqual(self.gaps["total_gaps"], len(self.gaps["gaps"]))
