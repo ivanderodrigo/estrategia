@@ -25,6 +25,16 @@ jobs:
         run: python scripts/security_audit.py
       - name: v4.1 source and preservation audit
         run: python scripts/audit_release_v410.py
+      - name: Audit published claim-to-source bindings
+        run: |
+          python scripts/audit_claim_sources.py --output claim-source-audit.json > /dev/null
+          python -c "import json; d=json.load(open('claim-source-audit.json')); print({k:v['counts'] for k,v in d['sections'].items()})"
+      - name: Upload claim-source audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: claim-source-audit
+          path: claim-source-audit.json
+          retention-days: 14
       - name: Frontend syntax
         run: node --check assets/app/intelligence.js
       - name: Frontend smoke
