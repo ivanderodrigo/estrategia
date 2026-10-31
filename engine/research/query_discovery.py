@@ -9,6 +9,7 @@ from __future__ import annotations
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from typing import Iterable
+from collections import Counter
 from urllib.parse import parse_qs, unquote, urlparse
 
 import requests
@@ -162,6 +163,10 @@ def discover(
     }
     output: list[SourceSeed] = []
     seen: set[tuple[str, str]] = set()
+    hosts_seen: Counter[str] = Counter()
+    diagnostics["duplicate_urls_skipped"] = 0
+    diagnostics["host_saturation_skipped"] = 0
+    diagnostics["empty_result_queries"] = 0
 
     clean_queries = _unique((str(value).strip() for value in queries), max(0, max_queries))
     for query in clean_queries:
@@ -195,8 +200,16 @@ def discover(
                 )
                 key = (url.casefold().rstrip("/"), family)
                 if key in seen:
+                    diagnostics["duplicate_urls_skipped"] += 1
+                    continue
+                host = (urlparse(url).hostname or "").casefold()
+                # Search ranking can otherwise flood each target with one
+                # domain's generic pages and waste the bounded crawl budget.
+                if hosts_seen[host] >= 2:
+                    diagnostics["host_saturation_skipped"] += 1
                     continue
                 seen.add(key)
+                hosts_seen[host] += 1
                 output.append(SourceSeed(
                     url=url,
                     family=family,
@@ -209,6 +222,8 @@ def discover(
             # the next provider only when the first one found nothing.
             if urls:
                 break
+        else:
+            diagnostics["empty_result_queries"] += 1
 
     diagnostics["urls_discovered"] = len(output)
     return output, diagnostics
