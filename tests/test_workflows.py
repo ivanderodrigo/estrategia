@@ -34,6 +34,12 @@ class WorkflowIntegrity(unittest.TestCase):
             self.assertIn(f'cron: "{cron}"', text)
             self.assertIn("contents: write", text)
 
+    def test_source_verification_uses_python_modules(self) -> None:
+        source = (WORKFLOWS / "source-verification.yml").read_text(encoding="utf-8")
+        self.assertIn("python -m scripts.audit_claim_sources", source)
+        self.assertIn("python -m scripts.review_sources_live", source)
+        self.assertIn("workflow_dispatch:", source)
+
     def test_reusable_runner_serializes_validates_and_preserves_diagnostics(self) -> None:
         text = (WORKFLOWS / "research-run.yml").read_text(encoding="utf-8")
         for token in (
