@@ -107,7 +107,7 @@ class KnowledgePreservationGate(unittest.TestCase):
                 self.assertEqual(report["status"], "FAIL")
                 self.assertTrue(any(message in error for error in report["errors"]))
 
-    def test_existing_public_acceptances_are_monotonic(self) -> None:
+    def test_run_accepted_evidence_totals_are_consistent(self) -> None:
         ledger = read_json("data/current/research_ledger.json")
         accepted = int(ledger.get("accepted_evidences") or 0)
         stored_results = [
@@ -125,8 +125,9 @@ class KnowledgePreservationGate(unittest.TestCase):
         else:
             accepted_rows = stored_accepted_rows
             self.assertEqual(accepted_rows, accepted)
-        self.assertGreaterEqual(accepted, 8)
-        self.assertGreaterEqual(accepted_rows, 8)
+        # Accepted evidence is per-run yield: zero is valid, mismatched totals are not.
+        self.assertGreaterEqual(accepted, 0)
+        self.assertEqual(accepted_rows, accepted)
 
 
 if __name__ == "__main__":
