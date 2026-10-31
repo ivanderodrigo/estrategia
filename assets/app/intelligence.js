@@ -388,6 +388,13 @@
       return /^https?:\/\//i.test(String(ev.url||'')) && ev.accrediting!==false;
     });
   }
+  function sourcedScalarForTable(field){
+    if(!field||!hasValue(field.value))return false;
+    // Do not present unsupported individual values as established facts.
+    // Retain the underlying record and its research leads unchanged.
+    if(Array.isArray(field.value))return true;
+    return atomicCurrentProof(field.evidence);
+  }
   function supportedListValues(field){
     const values=Array.isArray(field?.value)?field.value:[];
     return values.filter((value,index)=>atomicCurrentProof(itemFor(field,value,index).evidence));
@@ -601,7 +608,7 @@
   function reorderColumn(view,from,to){if(!view||from===to)return;const schema=state.data.schemas[view]||[];let order=(state.columnOrder[view]||schema.map(x=>x.id)).filter(x=>schema.some(c=>c.id===x));const a=order.indexOf(from),b=order.indexOf(to);if(a<0||b<0)return;order.splice(b,0,order.splice(a,1)[0]);state.columnOrder[view]=order;localStorage.setItem(`westcon-cols-${view}`,JSON.stringify(order));renderCurrent(view);}
   function renderCurrent(view){({manufacturers:renderManufacturers,integrators:renderIntegrators,distributors:renderDistributors,clients_public:renderClients,clients_private:renderClients}[view]||(()=>{}))();}
   function tableHtml(rows, schema, emptyText, view, baseRows=rows){
-    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table'):missingMarkup(col)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
+    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&sourcedScalarForTable(f)?renderValue(f,null,'table'):missingMarkup(col)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
     return `<div class="table-shell">${columnChooser(schema,view,baseRows)}${coverageOverview(schema,baseRows,view)}<div class="table-scroll">${body}</div></div>${analysisPanel(view,schema,baseRows,rows)}`;
   }
   function scopeMatch(row, scope){
