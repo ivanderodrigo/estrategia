@@ -95,6 +95,18 @@ def _compact_object(obj: Any, registry: dict[str, dict[str, Any]]) -> Any:
             out["evidence_ids"] = ids
         else:
             out[key] = _compact_object(value, registry)
+    # A claim can lose its only evidence when non-accrediting historical/internal
+    # provenance is removed from the public projection. Its inherited confidence
+    # must not continue to show 0.99 / "high" next to zero public sources.
+    if "value" in out and "confidence" in out and not out.get("evidence_ids"):
+        out["confidence"] = min(float(out.get("confidence") or 0), 0.38)
+        out["fact_confidence"] = min(float(out.get("fact_confidence") or 0), 0.38)
+        out["interpretation_confidence"] = min(float(out.get("interpretation_confidence") or 0), 0.38)
+        out["confidence_band"] = "low"
+        out["evidence_level"] = "weak"
+        out["evidence_color"] = "red"
+        out["action_risk"] = "alto"
+        out["confidence_reason"] = "Sin fuente acreditativa pública o documental vigente específica para este valor."
     return out
 
 
