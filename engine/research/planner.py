@@ -12,6 +12,7 @@ bounded-run fairness so one large section cannot monopolise research.
 from __future__ import annotations
 
 from collections import defaultdict
+from urllib.parse import urlsplit
 from typing import Any
 
 from ..gap_intelligence import FAMILY_BY_FIELD as GAP_FAMILY_BY_FIELD
@@ -184,6 +185,33 @@ def _with_manufacturer_revenue_reserve(
             break
     return selected[:limit]
 
+def historical_exact_queries(entity: str, targets: dict[str, list], leads: list[dict], limit: int = 8) -> list[str]:
+    """Build focused searches from exact historical clues, without treating clues as facts."""
+    output: list[str] = []
+    seen: set[str] = set()
+
+    def push(query: str) -> None:
+        key = query.casefold().strip()
+        if query and key not in seen and len(output) < limit:
+            seen.add(key)
+            output.append(query)
+
+    for field, values in targets.items():
+        for raw in values[:3]:
+            value = str(raw).strip()
+            if not value or len(value) > 160 or value.casefold() in {"none", "unknown", "por investigar"}:
+                continue
+            push(f'"{entity}" "{value}"')
+            push(f'"{entity}" "{value}" {str(field).replace("_", " ")}')
+    for seed in leads[:4]:
+        url = str(seed.get("url") or "")
+        parsed = urlsplit(url)
+        host = (parsed.hostname or "").lower()
+        if host and "." in host and not host.endswith((".local", ".internal")):
+            push(f'"{entity}" site:{host}')
+    return output
+
+
 def plan(
     gaps: dict[str, Any],
     learning: dict[str, Any],
@@ -299,7 +327,10 @@ def plan(
         item["priority_tiers"] = sorted(item["priority_tiers"])
         item["target_values"] = dict(item["target_values"])
         item["target_values_by_field"] = dict(item["target_values_by_field"])
-        item["query_hints"] = item["query_hints"][:12]
+        exact = historical_exact_queries(
+            item["entity"], item["target_values_by_field"], item["revalidation_seeds"]
+        ) if {"historical-revalidation", "historical-relationship-revalidation", "evidence-support"} & set(item["gap_kinds"]) else []
+        item["query_hints"] = list(dict.fromkeys(exact + item["query_hints"]))[:16]
         item["priority"] = round(item["priority"], 4)
         output.append(item)
 
