@@ -38,6 +38,20 @@ class QueryDiscoveryTests(unittest.TestCase):
         self.assertEqual(stats["host_saturation_skipped"], 1)
         self.assertTrue(all(not seed.official for seed in seeds))
 
+    @patch("engine.research.query_discovery._search_provider")
+    def test_alternative_engine_runs_when_first_only_duplicates(self, provider):
+        provider.side_effect = [
+            ["https://same.example.org/a"],
+            ["https://same.example.org/a"],
+            ["https://other.example.org/b"],
+        ]
+        leads, diagnostics = discover(Mock(), ["entity partners", "entity solutions"],
+            fallback_family="partners", providers=["bing_rss", "duckduckgo_html"],
+            timeout_s=5, max_queries=2, results_per_query=4)
+        self.assertEqual(len(leads), 2)
+        self.assertEqual(diagnostics["queries_attempted"], 3)
+        self.assertGreaterEqual(diagnostics["duplicate_urls_skipped"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()
