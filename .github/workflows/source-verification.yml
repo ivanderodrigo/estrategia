@@ -1,0 +1,43 @@
+name: Westcon Source Verification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/source-verification.yml'
+  schedule:
+    - cron: "11 20 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: westcon-source-verification
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Audit all published claim bindings
+        run: python scripts/audit_claim_sources.py --output claim-source-audit.json > /dev/null
+      - name: Inspect a rotating set of original source pages
+        run: python scripts/review_sources_live.py --limit 200 --output source-live-review.json
+      - name: Upload verification reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: claim-source-verification
+          path: |
+            claim-source-audit.json
+            source-live-review.json
+          if-no-files-found: warn
+          retention-days: 30
