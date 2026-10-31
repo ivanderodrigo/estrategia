@@ -73,10 +73,16 @@ class ReleaseAuditHF10(unittest.TestCase):
         errors = self._run(preservation=preservation)
         self.assertTrue(any("missing evidences" in error for error in errors))
 
-    def test_public_acceptance_ledger_is_floor_not_magic_exact_count(self):
+    def test_low_yield_never_forces_fabricated_evidence(self):
         self.assertEqual(self._run(ledger=_ledger(3138)), [])
-        errors = self._run(ledger=_ledger(7))
-        self.assertTrue(any("below v4.1.0 floor" in error for error in errors))
+        self.assertEqual(self._run(ledger=_ledger(7)), [])
+        self.assertEqual(self._run(ledger=_ledger(0)), [])
+
+    def test_evidence_total_mismatch_still_blocks(self):
+        ledger = _ledger(1)
+        ledger["accepted_result_rows_total"] = 2
+        errors = self._run(ledger=ledger)
+        self.assertTrue(any("aggregate mismatch" in error for error in errors))
 
     def test_internal_document_cannot_leak_into_public_sources(self):
         errors = self._run(manifest=_manifest("Fuente documental Westcon", "WESTCON_DOCUMENT"))
