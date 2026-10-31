@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-10-31T10:21:35.465335+00:00",
+  "generated_at": "2026-10-31T10:25:02.006466+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -701,6 +701,14 @@
     {
       "id": "clie_92cf356939752efd",
       "canonical_name": "Sacyr",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_d0c1440a2a2fc274",
+      "canonical_name": "Salut Sant Joan de Reus - Baix Camp",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -29785,6 +29793,55 @@
       "derived": true
     },
     {
+      "id": "rel_0deed20185513073",
+      "entity_a_id": "clie_d0c1440a2a2fc274",
+      "entity_a": "Salut Sant Joan de Reus - Baix Camp",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_000e793db70c5930",
+      "entity_b": "Cloud",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "en.wikipedia.org",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Salut Sant Joan de Reus - Baix Camp",
+          "source_binding": "atomic-item",
+          "title": "Minnesota Vikings - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Minnesota_Vikings",
+          "date": "2026-10-31",
+          "description": "…, 2019 Kevin O'Connell 2022–present 43 24 0 .641 2022, 2024 Total 546 445 11 .554 32 Current staff Minnesota Vikings staff v t e Front office Owner/chairman – Zygi Wilf Owner/vice chairman – Leonard Wilf Owner/president – Mark Wilf Chief operating officer – Andrew Miller Executive vic…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "5c1b31713901d9505111e04764a655a43cd7865d1bbb891b26cee75dfc06f89f",
+          "matched_terms": [
+            "cloud"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cloud",
+          "item_key": "cloud",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "en.wikipedia.org",
+      "date": "2026-10-31",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
       "id": "rel_13db0b8e64a28e63",
       "entity_a_id": "clie_d107d6d9b93c95dc",
       "entity_a": "Secretaria-Geral do Ministério da Defesa Nacional",
@@ -31023,7 +31080,7 @@
           "retrieved_at": "2026-10-31",
           "freshness_status": "current",
           "method": "web-evidence:official",
-          "content_digest": "6159599441059e42c5ed9621bd625ba79bab4aba4c65fae8b55fb85344eba38b",
+          "content_digest": "dba5acace17f98abd9d73b36d504c9a9459667956e37e23611de7193a73dd75a",
           "matched_terms": [
             "redes"
           ],
@@ -31031,9 +31088,7 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": "",
-          "intelligence_tier": "C",
-          "source_role": "Fuente pública secundaria"
+          "revalidation": ""
         },
         {
           "source": "cursa.app",
@@ -31054,7 +31109,7 @@
           "retrieved_at": "2026-10-31",
           "freshness_status": "current",
           "method": "web-evidence:official",
-          "content_digest": "27d362a4657c5661036a8d1c51a30cce50926d2fb69af6cf9e6d3893327d9202",
+          "content_digest": "4489bd416750bdf969130857c35fe29d74d83c1f986d4c095304e2e7930d543e",
           "matched_terms": [
             "redes"
           ],
@@ -31062,9 +31117,7 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": "",
-          "intelligence_tier": "C",
-          "source_role": "Fuente pública secundaria"
+          "revalidation": ""
         }
       ],
       "source": "ivoox.com",
@@ -31094,7 +31147,7 @@
           "title": "Podcasts para aprender a programar (2026)",
           "url": "https://www.ivoox.com/landing/podcasts-de-programacion-254",
           "date": "2026-10-31",
-          "description": "…le Coding Daily Érase una vez un algoritmo... Codeadores Entre Dev y Ops Podcast Declarando Variables Devs Lives Don Tomás Artesanos del Código Programar es una mierda Los androides Atareao con Linux DevTalles La Vieja Guardia IA++: inteligencia artificial para programadores Code Time Nada nuevo bajo e…",
+          "description": "…a Apple Coding Daily Los androides The apicurios - El podcast para los APIcuriosos Cosas de desarrolladores | podcast de campusMVP.es Declarando Variables CodigoTecno Don Tomás Punto y Coma: el podcast de noticias de programaci IA++: inteligencia artificial para programadores Codeadores Freelandev - Vi…",
           "scope": "GLOBAL",
           "scope_provenance": "unspecified",
           "research_target_scope": "ES",
@@ -31105,7 +31158,7 @@
           "retrieved_at": "2026-10-31",
           "freshness_status": "current",
           "method": "web-evidence:official",
-          "content_digest": "6159599441059e42c5ed9621bd625ba79bab4aba4c65fae8b55fb85344eba38b",
+          "content_digest": "dba5acace17f98abd9d73b36d504c9a9459667956e37e23611de7193a73dd75a",
           "matched_terms": [
             "inteligencia artificial"
           ],
@@ -31113,9 +31166,7 @@
           "item_value": "AI / Data",
           "item_key": "ai data",
           "atomic": true,
-          "revalidation": "",
-          "intelligence_tier": "C",
-          "source_role": "Fuente pública secundaria"
+          "revalidation": ""
         },
         {
           "source": "maestrodelacomputacion.net",
@@ -31136,7 +31187,7 @@
           "retrieved_at": "2026-10-31",
           "freshness_status": "current",
           "method": "web-evidence:official",
-          "content_digest": "2afd57ce2cd72ff1cfcec0b6730c61b1d91e292b42e24f81656cf0183d236b6b",
+          "content_digest": "07ef3e1da8970bdb3d48bca697fbb828fb17b3f206e9a4a877222ba14b1020d5",
           "matched_terms": [
             "inteligencia artificial"
           ],
@@ -31144,9 +31195,7 @@
           "item_value": "AI / Data",
           "item_key": "ai data",
           "atomic": true,
-          "revalidation": "",
-          "intelligence_tier": "C",
-          "source_role": "Fuente pública secundaria"
+          "revalidation": ""
         },
         {
           "source": "cursa.app",
@@ -31167,7 +31216,7 @@
           "retrieved_at": "2026-10-31",
           "freshness_status": "current",
           "method": "web-evidence:official",
-          "content_digest": "27d362a4657c5661036a8d1c51a30cce50926d2fb69af6cf9e6d3893327d9202",
+          "content_digest": "4489bd416750bdf969130857c35fe29d74d83c1f986d4c095304e2e7930d543e",
           "matched_terms": [
             "inteligencia artificial"
           ],
@@ -31175,9 +31224,7 @@
           "item_value": "AI / Data",
           "item_key": "ai data",
           "atomic": true,
-          "revalidation": "",
-          "intelligence_tier": "C",
-          "source_role": "Fuente pública secundaria"
+          "revalidation": ""
         }
       ],
       "source": "ivoox.com",
@@ -31218,7 +31265,7 @@
           "retrieved_at": "2026-10-31",
           "freshness_status": "current",
           "method": "web-evidence:official",
-          "content_digest": "27d362a4657c5661036a8d1c51a30cce50926d2fb69af6cf9e6d3893327d9202",
+          "content_digest": "4489bd416750bdf969130857c35fe29d74d83c1f986d4c095304e2e7930d543e",
           "matched_terms": [
             "cloud"
           ],
@@ -31226,9 +31273,7 @@
           "item_value": "Cloud",
           "item_key": "cloud",
           "atomic": true,
-          "revalidation": "",
-          "intelligence_tier": "C",
-          "source_role": "Fuente pública secundaria"
+          "revalidation": ""
         }
       ],
       "source": "cursa.app",
@@ -31320,7 +31365,7 @@
           "retrieved_at": "2026-10-31",
           "freshness_status": "current",
           "method": "web-evidence:official",
-          "content_digest": "12ff8ed307ddd500639135c943abc50112559aaaa12d7e44510100a0fe22b7f7",
+          "content_digest": "87676c159a21d0ca1259c10fc677b59e630fd749c6e32fadb3dbc3c391085d70",
           "matched_terms": [
             "redes"
           ],
@@ -31328,9 +31373,7 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": "",
-          "intelligence_tier": "C",
-          "source_role": "Fuente pública secundaria"
+          "revalidation": ""
         }
       ],
       "source": "ciencia.nasa.gov",
