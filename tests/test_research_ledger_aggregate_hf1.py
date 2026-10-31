@@ -73,7 +73,7 @@ class ResearchLedgerAggregateHF1(unittest.TestCase):
         }
         errors, _stats = evaluate(ledger)
         self.assertTrue(any("aggregate mismatch" in error for error in errors), errors)
-        self.assertTrue(any("result rows regressed" in error for error in errors), errors)
+        self.assertEqual(sum("aggregate mismatch" in error for error in errors), 1)
 
     def test_legacy_300_row_ledger_uses_complete_counter(self):
         ledger = {
