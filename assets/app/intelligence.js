@@ -378,6 +378,20 @@
     return items.find(x=>norm(typeof x?.value==='object'?JSON.stringify(x.value):x?.value)===wanted)
       ||{value,evidence:[],confidence:field?.confidence,confidence_band:field?.confidence_band,claim_type:field?.claim_type};
   }
+  function atomicCurrentProof(evidence){
+    return Array.isArray(evidence)&&evidence.some(ev=>{
+      if(!ev||typeof ev!=='object')return false;
+      const origin=String(ev.provenance_origin||'').toUpperCase();
+      if(/HISTORICAL|ARCHIVE|REPORT_CORROBORATION|RESEARCH_SEED|LEGACY_UNRESOLVED/.test(origin))return false;
+      if(origin==='WESTCON_DOCUMENT')return false;
+      if(/WESTCON_DOCUMENT_CURRENT|WESTCON_FIRST_PARTY_CURRENT/.test(origin))return Boolean(ev.document||ev.document_id||ev.url);
+      return /^https?:\/\//i.test(String(ev.url||'')) && ev.accrediting!==false;
+    });
+  }
+  function supportedListValues(field){
+    const values=Array.isArray(field?.value)?field.value:[];
+    return values.filter((value,index)=>atomicCurrentProof(itemFor(field,value,index).evidence));
+  }
   function tagHtml(field,value,index,extra=''){
     const item=itemFor(field,value,index), score=item?.confidence??field?.confidence??.66, band=item?.confidence_band||field?.confidence_band||(score>=.8?'high':score>=.6?'medium':'low');
     const raw=typeof value==='object'?JSON.stringify(value):String(value??'');
@@ -402,10 +416,13 @@
       if(value.length&&typeof value[0]==='object'&&value[0].layer){
         return `<div class="layer-list">${value.map(x=>{const layerField={...field,items:x.vendor_items||[]};const vendors=(x.vendors||[]),lim=limit??listLimit(vendors,context);const tags=vendors.map((v,i)=>`<span class="tag-entry ${i>=lim?'tag-overflow':''}">${tagHtml(layerField,v,i,'emphasis')}</span>`).join('');const more=vendors.length>lim?`<button type="button" class="more-tags" data-more-tags data-label="… +${vendors.length-lim}">… +${vendors.length-lim}</button>`:'';return `<div class="layer"><b>${esc(x.layer)}</b><div class="tag-list">${tags}${more}</div>${x.note?`<small>${compactScalar(x.note,120)}</small>`:''}</div>`;}).join('')}</div>`;
       }
-      const lim=limit??listLimit(value,context);
-      const tags=value.map((v,i)=>`<span class="tag-entry ${i>=lim?'tag-overflow':''}">${tagHtml(field,v,i)}</span>`).join('');
-      const more=value.length>lim?`<button type="button" class="more-tags" data-more-tags data-label="… +${value.length-lim}">… +${value.length-lim}</button>`:'';
-      return `<div class="tag-list">${tags}${more}</div>`;
+      const documented=supportedListValues(field);
+      const hiddenCount=value.length-documented.length;
+      const lim=limit??listLimit(documented,context);
+      const tags=documented.map((v,i)=>`<span class="tag-entry ${i>=lim?'tag-overflow':''}">${tagHtml(field,v,i)}</span>`).join('');
+      const more=documented.length>lim?`<button type="button" class="more-tags" data-more-tags data-label="… +${documented.length-lim}">… +${documented.length-lim}</button>`:'';
+      const clues=hiddenCount?`<details class="unverified-clues"><summary>${hiddenCount} indicios conservados sin fuente específica</summary><p>Estos valores no se presentan como hechos. Se conservan para búsqueda y acreditación posterior.</p></details>`:'';
+      return `<div class="tag-list">${tags}${more}</div>${clues}`;
     }
     return traceable(field,compactScalar(value,context==='table'?110:300));
   }
