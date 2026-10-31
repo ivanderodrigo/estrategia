@@ -177,6 +177,7 @@ def discover(
             if not provider:
                 continue
             diagnostics["queries_attempted"] += 1
+            before_query_results = len(output)
             try:
                 urls = _search_provider(
                     session,
@@ -218,9 +219,9 @@ def discover(
                     source_type=f"search-discovery:{provider}",
                     source_name=f"Descubrimiento web · {provider}",
                 ))
-            # One provider with results is enough for this query; fall through to
-            # the next provider only when the first one found nothing.
-            if urls:
+            # A provider may return only duplicate or saturated-domain URLs.
+            # Try the next independent index unless it added a usable lead.
+            if len(output) > before_query_results:
                 break
         else:
             diagnostics["empty_result_queries"] += 1
