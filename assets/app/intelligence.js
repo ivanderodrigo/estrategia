@@ -414,7 +414,7 @@
     const value=field?.value;
     if(Array.isArray(value)){
       if(value.length&&typeof value[0]==='object'&&value[0].layer){
-        return `<div class="layer-list">${value.map(x=>{const layerField={...field,items:x.vendor_items||[]};const vendors=(x.vendors||[]),lim=limit??listLimit(vendors,context);const tags=vendors.map((v,i)=>`<span class="tag-entry ${i>=lim?'tag-overflow':''}">${tagHtml(layerField,v,i,'emphasis')}</span>`).join('');const more=vendors.length>lim?`<button type="button" class="more-tags" data-more-tags data-label="… +${vendors.length-lim}">… +${vendors.length-lim}</button>`:'';return `<div class="layer"><b>${esc(x.layer)}</b><div class="tag-list">${tags}${more}</div>${x.note?`<small>${compactScalar(x.note,120)}</small>`:''}</div>`;}).join('')}</div>`;
+        return `<div class="layer-list">${value.map(x=>{const layerField={...field,items:x.vendor_items||[]};const vendors=(x.vendors||[]),lim=limit??listLimit(vendors,context);const vetted=vendors.filter((v,i)=>atomicCurrentProof(itemFor(layerField,v,i).evidence));const tags=vetted.map((v,i)=>`<span class="tag-entry ${i>=lim?'tag-overflow':''}">${tagHtml(layerField,v,i,'emphasis')}</span>`).join('');const more=vendors.length>lim?`<button type="button" class="more-tags" data-more-tags data-label="… +${vendors.length-lim}">… +${vendors.length-lim}</button>`:'';return `<div class="layer"><b>${esc(x.layer)}</b><div class="tag-list">${tags}${more}</div>${x.note?`<small>${compactScalar(x.note,120)}</small>`:''}</div>`;}).join('')}</div>`;
       }
       const documented=supportedListValues(field);
       const hiddenCount=value.length-documented.length;
