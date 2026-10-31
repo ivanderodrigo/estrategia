@@ -1,4 +1,5 @@
 import unittest
+from pathlib import Path
 from unittest.mock import Mock, patch
 
 from engine.research.query_discovery import (
@@ -51,6 +52,12 @@ class QueryDiscoveryTests(unittest.TestCase):
         self.assertEqual(len(leads), 2)
         self.assertEqual(diagnostics["queries_attempted"], 3)
         self.assertGreaterEqual(diagnostics["duplicate_urls_skipped"], 1)
+
+    def test_daily_cooldown_rescue_is_bounded_and_keeps_provenance_gates(self):
+        source = (Path(__file__).resolve().parents[1] / "engine/research/web_intelligence.py").read_text(encoding="utf-8")
+        self.assertIn('if profile == "daily" and not targets:', source)
+        self.assertIn('targets = rotated[:12]', source)
+        self.assertIn('"rescue_targets_after_cooldown": rescue_targets', source)
 
 
 if __name__ == "__main__":
