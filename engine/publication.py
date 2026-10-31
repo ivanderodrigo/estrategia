@@ -110,6 +110,27 @@ def _compact_object(obj: Any, registry: dict[str, dict[str, Any]]) -> Any:
     return out
 
 
+def _source_coverage(rows: Any, evidence: dict[str, dict[str, Any]]) -> dict[str, int]:
+    """Count actual public claim support after source filtering, not internal confidence."""
+    counts = {"claims": 0, "sourced": 0, "unsourced": 0, "broken_references": 0}
+    def walk(obj: Any) -> None:
+        if isinstance(obj, list):
+            for part in obj:
+                walk(part)
+        elif isinstance(obj, dict):
+            if "value" in obj and "confidence" in obj and obj.get("value") not in (None, "", [], {}):
+                counts["claims"] += 1
+                references = obj.get("evidence_ids") or []
+                valid = [ref for ref in references if ref in evidence]
+                counts["broken_references"] += len(references) - len(valid)
+                counts["sourced" if valid else "unsourced"] += 1
+            for part in obj.values():
+                if isinstance(part, (list, dict)):
+                    walk(part)
+    walk(rows)
+    return counts
+
+
 def _confidence_distribution(data: dict[str, Any]) -> dict[str, int]:
     counts = {"high": 0, "medium": 0, "low": 0}
     for section in SECTIONS:
@@ -201,10 +222,12 @@ def public_payloads(
 ) -> tuple[dict[str, bytes], dict[str, Any]]:
     files: dict[str, bytes] = {}
     section_meta = {}
+    coverage_meta: dict[str, dict[str, int]] = {}
     for section in SECTIONS:
         registry: dict[str, dict[str, Any]] = {}
         rows = _compact_object(data.get(section) or [], registry)
         payload = {"version": VERSION, "section": section, "rows": rows, "evidence": registry}
+        coverage_meta[section] = _source_coverage(rows, registry)
         relative = f"data/public/sections/{section}.json"
         encoded = json_bytes(payload, pretty=False)
         files[relative] = encoded
@@ -221,6 +244,7 @@ def public_payloads(
         if key.endswith("_research") or key in {"research_model", "claim_model", "relationship_truth_source", "portfolio_fit_cleanup", "distributor_validation", "integrator_graph"}:
             meta.pop(key, None)
     meta["version"] = VERSION
+    meta["source_coverage"] = coverage_meta
     manifest = {
         "version": VERSION,
         "generated_at": meta.get("generated_at"),
