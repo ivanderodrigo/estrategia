@@ -46,3 +46,6 @@ console.log('UI smoke v4.4.0 PASS');
 if (!js.includes('function atomicCurrentProof(')) throw new Error('atomic current proof filter missing');
 if (!js.includes('const documented=supportedListValues(field)')) throw new Error('list labels are not evidence-filtered');
 if (!js.includes('indicios conservados sin fuente específica')) throw new Error('unverified clues are not retained separately');
+
+if (!js.includes('function sourcedScalarForTable(')) throw new Error('scalar proof filter absent');
+if (!js.includes('f&&sourcedScalarForTable(f)?renderValue(')) throw new Error('scalar proof filter not connected to tables');
