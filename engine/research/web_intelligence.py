@@ -1370,6 +1370,21 @@ def run(
         max_tasks=max_tasks,
         include_gap_kinds=include_gap_kinds,
     )
+    # All gaps may be in exponential cooldown simultaneously. A zero-target
+    # Daily must not silently report success while making no research attempts.
+    # Rotate a small rescue batch across the eligible entity pool; canonical
+    # evidence gates, URL security, watchdog and preservation still apply.
+    rescue_targets = 0
+    if profile == "daily" and not targets:
+        candidate_pool = plan(
+            gaps, learning, profile, state=None,
+            max_tasks=240, include_gap_kinds=include_gap_kinds,
+        )
+        if candidate_pool:
+            offset = (datetime.now(timezone.utc).timetuple().tm_yday * 13) % len(candidate_pool)
+            rotated = candidate_pool[offset:] + candidate_pool[:offset]
+            targets = rotated[:12]
+            rescue_targets = len(targets)
     index = _row_index(data)
     vendor_names = _vendor_names(data)
     active_gap_ids = {str(gap.get("id")) for gap in gaps.get("gaps") or [] if gap.get("id")}
@@ -1380,6 +1395,7 @@ def run(
         "profile": profile,
         "started_at": now_iso(),
         "planned_entities": len(targets),
+        "rescue_targets_after_cooldown": rescue_targets,
         "fetch_attempts": 0,
         "fetch_successes": 0,
         "pages_relevant": 0,
