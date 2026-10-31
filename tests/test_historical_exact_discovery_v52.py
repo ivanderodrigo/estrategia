@@ -1,5 +1,6 @@
 import unittest
 from engine.research.planner import historical_exact_queries
+from pathlib import Path
 
 
 class HistoricalExactDiscoveryTests(unittest.TestCase):
