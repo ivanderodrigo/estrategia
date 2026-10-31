@@ -34,6 +34,14 @@ class WorkflowIntegrity(unittest.TestCase):
             self.assertIn(f'cron: "{cron}"', text)
             self.assertIn("contents: write", text)
 
+    def test_runtime_has_room_for_validation_and_publication(self) -> None:
+        for name, minimum in (("weekly", 65), ("monthly", 90)):
+            source = (WORKFLOWS / f"research-{name}.yml").read_text(encoding="utf-8")
+            self.assertIn(f"timeout_minutes: {minimum}", source)
+        daily = (WORKFLOWS / "research-daily.yml").read_text(encoding="utf-8")
+        self.assertNotIn("      - 'tests/**'", daily)
+        self.assertIn("workflow_dispatch:", daily)
+
     def test_source_verification_uses_python_modules(self) -> None:
         source = (WORKFLOWS / "source-verification.yml").read_text(encoding="utf-8")
         self.assertIn("python -m scripts.audit_claim_sources", source)
