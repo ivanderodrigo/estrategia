@@ -327,9 +327,12 @@ def plan(
         item["priority_tiers"] = sorted(item["priority_tiers"])
         item["target_values"] = dict(item["target_values"])
         item["target_values_by_field"] = dict(item["target_values_by_field"])
+        # Source recovery is not confined to the "historical" gap kind:
+        # many unsupported items are classified as not-found / insufficient-support.
+        # A remembered exact value is a search lead, never self-accrediting.
         exact = historical_exact_queries(
             item["entity"], item["target_values_by_field"], item["revalidation_seeds"]
-        ) if {"historical-revalidation", "historical-relationship-revalidation", "evidence-support"} & set(item["gap_kinds"]) else []
+        ) if item["target_values_by_field"] or item["revalidation_seeds"] else []
         item["query_hints"] = list(dict.fromkeys(exact + item["query_hints"]))[:16]
         item["priority"] = round(item["priority"], 4)
         output.append(item)
