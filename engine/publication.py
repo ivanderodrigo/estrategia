@@ -131,6 +131,46 @@ def _source_coverage(rows: Any, evidence: dict[str, dict[str, Any]]) -> dict[str
     return counts
 
 
+def _rebind_exact_item_evidence(rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], int]:
+    """Restore only explicit field+item-value source associations inside one entity.
+
+    Historical leads and evidence without an exact item_value never become
+    accrediting merely because they are on the same field.
+    """
+    output = deepcopy(rows)
+    rebound = 0
+    for row in output:
+        if not isinstance(row, dict):
+            continue
+        for field_name, field in (row.get("fields") or {}).items():
+            if not isinstance(field, dict):
+                continue
+            exact_sources: dict[str, list[dict[str, Any]]] = {}
+            for ev in field.get("evidence") or []:
+                if not isinstance(ev, dict) or not accrediting_evidence(ev):
+                    continue
+                if str(ev.get("field") or "").strip() != field_name:
+                    continue
+                value = ev.get("item_value")
+                if not isinstance(value, str) or not value.strip():
+                    continue
+                exact_sources.setdefault(value.strip().casefold(), []).append(ev)
+            for item in field.get("items") or []:
+                if not isinstance(item, dict):
+                    continue
+                value = item.get("value")
+                if not isinstance(value, str) or not value.strip():
+                    continue
+                existing = item.setdefault("evidence", [])
+                if any(isinstance(ev, dict) and accrediting_evidence(ev) for ev in existing):
+                    continue
+                for ev in exact_sources.get(value.strip().casefold(), []):
+                    if ev not in existing:
+                        existing.append(deepcopy(ev))
+                        rebound += 1
+    return output, rebound
+
+
 def _confidence_distribution(data: dict[str, Any]) -> dict[str, int]:
     counts = {"high": 0, "medium": 0, "low": 0}
     for section in SECTIONS:
@@ -223,9 +263,12 @@ def public_payloads(
     files: dict[str, bytes] = {}
     section_meta = {}
     coverage_meta: dict[str, dict[str, int]] = {}
+    rebound_meta: dict[str, int] = {}
     for section in SECTIONS:
         registry: dict[str, dict[str, Any]] = {}
-        rows = _compact_object(data.get(section) or [], registry)
+        repaired, rebound = _rebind_exact_item_evidence(data.get(section) or [])
+        rebound_meta[section] = rebound
+        rows = _compact_object(repaired, registry)
         payload = {"version": VERSION, "section": section, "rows": rows, "evidence": registry}
         coverage_meta[section] = _source_coverage(rows, registry)
         relative = f"data/public/sections/{section}.json"
@@ -245,6 +288,7 @@ def public_payloads(
             meta.pop(key, None)
     meta["version"] = VERSION
     meta["source_coverage"] = coverage_meta
+    meta["exact_source_rebindings"] = rebound_meta
     manifest = {
         "version": VERSION,
         "generated_at": meta.get("generated_at"),
