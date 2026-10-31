@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-10-30T16:12:52.035626+00:00",
+  "generated_at": "2026-10-31T08:49:03.734639+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -83,6 +83,14 @@
       "historical_names": []
     },
     {
+      "id": "clie_a59c22850441ac70",
+      "canonical_name": "Agencia para la Administración Digital de la CM",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "clie_f7b1544320203309",
       "canonical_name": "Agencia para la Modernización Tecnológica de Galicia",
       "entity_type": "client",
@@ -149,6 +157,14 @@
     {
       "id": "clie_b1248ae1347dd35f",
       "canonical_name": "Ayuntamiento de Oviedo",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_14b4de09b253db9b",
+      "canonical_name": "Ayuntamiento de Reus",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -283,6 +299,14 @@
       "historical_names": []
     },
     {
+      "id": "clie_001e1baacf14c341",
+      "canonical_name": "Dirección General de Salud Digital y Sistemas de Información del Sistema Nacional de Salud",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "clie_9026b61f113abfc2",
       "canonical_name": "EDP",
       "entity_type": "client",
@@ -317,6 +341,14 @@
     {
       "id": "clie_824fa510d9c46338",
       "canonical_name": "Entidade pública portuguesa",
+      "entity_type": "client",
+      "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_507fb7ba6e7e826b",
+      "canonical_name": "Estado-Maior do Exército",
       "entity_type": "client",
       "country": "PT",
       "aliases": [],
@@ -467,6 +499,14 @@
       "historical_names": []
     },
     {
+      "id": "clie_11d1d582633040d5",
+      "canonical_name": "Junta de Gobierno del Ayuntamiento de Albacete",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "clie_8b949308413b7958",
       "canonical_name": "Laboratorios Rovi",
       "entity_type": "client",
@@ -557,6 +597,14 @@
     {
       "id": "clie_be77dcba5d84ca56",
       "canonical_name": "Naturgy",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_4a7e88e18e8d76a9",
+      "canonical_name": "OSAKIDETZA - Servicio Vasco de Salud - Organización Central",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -30329,7 +30377,9 @@
           "item_value": "AI / Data",
           "item_key": "ai data",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "eltiempo.com",
@@ -30358,7 +30408,9 @@
           "item_value": "AI / Data",
           "item_key": "ai data",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "eltiempo.com",
@@ -30407,7 +30459,9 @@
           "item_value": "Cloud",
           "item_key": "cloud",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "tiempo.com",
@@ -30456,11 +30510,111 @@
           "item_value": "Identity & Access",
           "item_key": "identity access",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "vivesantiago.cl",
       "date": "2026-10-30",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_9a5d1853657bc011",
+      "entity_a_id": "clie_001e1baacf14c341",
+      "entity_a": "Dirección General de Salud Digital y Sistemas de Información del Sistema Nacional de Salud",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_000e793db70c5930",
+      "entity_b": "Cloud",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "dle.rae.es",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Dirección General de Salud Digital y Sistemas de Información del Sistema Nacional de Salud",
+          "source_binding": "atomic-item",
+          "title": "dirección | Definición | Diccionario de la lengua española | RAE - ASALE",
+          "url": "https://dle.rae.es/direcci%C3%B3n",
+          "date": "2026-10-31",
+          "description": "…dvertencias Email Enviar Responsable: Real Academia Española. Finalidades: Gestionar su suscripción al boletín mensual de la RAE. Derechos: Tiene derecho a acceder, rectificar y suprimir sus datos, así como a otros derechos, como se explica en la información adicional y detallada que…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "fec16078c82d48447e201910cd6c26e88f43ffd30bbc363bc83933a864cee5cc",
+          "matched_terms": [
+            "cloud"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cloud",
+          "item_key": "cloud",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "dle.rae.es",
+      "date": "2026-10-31",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_68f3187151973944",
+      "entity_a_id": "clie_507fb7ba6e7e826b",
+      "entity_a": "Estado-Maior do Exército",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_70574f8129932ee1",
+      "entity_b": "Identity & Access",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "es.wikipedia.org",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Estado-Maior do Exército",
+          "source_binding": "atomic-item",
+          "title": "Estado - Wikipedia, la enciclopedia libre",
+          "url": "https://es.wikipedia.org/wiki/Estado",
+          "date": "2026-10-31",
+          "description": "…estatalidad \" o \" estatalismo \") El Capitolio de los Estados Unidos . No todos los Estados actuales surgieron de la misma manera; tampoco siguieron una evolución o un camino inexorable y único. Esto es así porque los Estados son construcciones históricas de cada sociedad . En algunos caso…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "e5cc2e6d3ed9ffdf0d2c891d27dd5a232c660043b3343eb4051ac6117ffe3782",
+          "matched_terms": [
+            "identidad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Identity & Access",
+          "item_key": "identity access",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "es.wikipedia.org",
+      "date": "2026-10-31",
       "confidence": 0.48,
       "status": "SEÑAL",
       "validity": "needs-corroboration",
@@ -30518,6 +30672,454 @@
       "derived": true
     },
     {
+      "id": "rel_ae4d7c85ac8473b7",
+      "entity_a_id": "clie_14b4de09b253db9b",
+      "entity_a": "Ayuntamiento de Reus",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "reus.cat",
+          "source_catalog_name": "reus.cat",
+          "researched_entity": "Ayuntamiento de Reus",
+          "source_binding": "atomic-item",
+          "title": "Ajuntament de Reus | viure la ciutat",
+          "url": "https://www.reus.cat/",
+          "date": "2026-10-31",
+          "description": "…ana Padró d'habitants Tot el que has de saber dels tràmits de padró Ple Reus Sessions plenàries i de Junta de Govern Bústia Ciutadana Queixes, incidències i suggeriments Altres webs de l'Ajuntament Mostra Empreses Municipals Reus Mobilitat i Serveis Aigües de Reus Reus Serveis Municip…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "8577246cbde5cf10ab6e76494318f22347cb560d8cd92a858b64c398b091fee6",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "reus.cat",
+          "source_catalog_name": "reus.cat",
+          "researched_entity": "Ayuntamiento de Reus",
+          "source_binding": "atomic-item",
+          "title": "L’Ajuntament de Reus obre el termini de presentació de candidatures al Premis de Medi Ambient Ciutat de Reus | Ajuntament de Reus",
+          "url": "https://www.reus.cat/noticia/lajuntament-de-reus-obre-el-termini-de-presentacio-de-candidatures-al-premis-de-medi-ambient",
+          "date": "2026-10-31",
+          "description": "…tres drets d'accés, rectificació, cancel·lació i oposició de les vostres dades personals. Altres webs de l'Ajuntament Mostra Empreses Municipals Reus Mobilitat i Serveis Aigües de Reus Reus Serveis Municipals Reus Desenvolupament Econòmic (REDESSA) Reus Esport i lleure Reus Transport…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "92813df3fc2b66a1b148137e1cf546559139e7a4185241cf821109302f4f4db8",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "reus.cat",
+          "source_catalog_name": "reus.cat",
+          "researched_entity": "Ayuntamiento de Reus",
+          "source_binding": "atomic-item",
+          "title": "reus.cat Ajornada per dol oficial la Festa de la Castanyada de Joventut La Regidoria de Joventut impulsa Joves Implicats, un nou espai de participació juvenil Les Biblioteques Municipals se sumen al festival internacional de dibuix Big Draw",
+          "url": "https://www.reus.cat/noticies/feed",
+          "date": "2026-10-31",
+          "description": "…des com aquesta combinen la visió dels organismes de suport amb l’experiència de les empreses per identificar oportunitats i donar resposta als reptes dels mercats internacionals”.</p> </div> <p class=\"sub-titol2\">Estratègia, logística i suport a la internacionalització </p> <p>La ponència…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "3f07d518f9eb2d18230869b5eb8806a2ac68a7cf5d8e8dd51d76422ac7cfcb09",
+          "matched_terms": [
+            "networking"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "reus.cat",
+          "source_catalog_name": "reus.cat",
+          "researched_entity": "Ayuntamiento de Reus",
+          "source_binding": "atomic-item",
+          "title": "Les Biblioteques Municipals se sumen al festival internacional de dibuix Big Draw amb una programació per a totes les edats | Ajuntament de Reus",
+          "url": "https://www.reus.cat/noticia/les-biblioteques-municipals-se-sumen-al-festival-internacional-de-dibuix-big-draw-amb-una",
+          "date": "2026-10-31",
+          "description": "…ana per exercir els vostres drets d'accés, rectificació, cancel·lació i oposició de les vostres dades personals. Altres webs de l'Ajuntament Mostra Empreses Municipals Reus Mobilitat i Serveis Aigües de Reus Reus Serveis Municipals Reus Desenvolupament Econòmic (REDESSA) Reus Esport i…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "dad50ab3a5a5b72e5f615a8c5a65ce189a10b31b103175ec56186a817a169f50",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "reus.cat",
+          "source_catalog_name": "reus.cat",
+          "researched_entity": "Ayuntamiento de Reus",
+          "source_binding": "atomic-item",
+          "title": "L’Ajuntament de Reus posa en marxa l’Oficina Tècnica del Pla de Barris Reus Sud al Centre Cívic Migjorn | Ajuntament de Reus",
+          "url": "https://www.reus.cat/noticia/lajuntament-de-reus-posa-en-marxa-loficina-tecnica-del-pla-de-barris-reus-sud-al-centre",
+          "date": "2026-10-31",
+          "description": "…r els vostres drets d'accés, rectificació, cancel·lació i oposició de les vostres dades personals. Altres webs de l'Ajuntament Mostra Empreses Municipals Reus Mobilitat i Serveis Aigües de Reus Reus Serveis Municipals Reus Desenvolupament Econòmic (REDESSA) Reus Esport i lleure Reus T…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain-discovery",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:news",
+          "content_digest": "41ed985f60c2c5802777ca068f832c24f106bafa9447f5fbef22e3bfb28435d6",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "reus.cat",
+      "date": "2026-10-31",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_e6c9e7320b078025",
+      "entity_a_id": "clie_a59c22850441ac70",
+      "entity_a": "Agencia para la Administración Digital de la CM",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "ivoox.com",
+          "source_catalog_name": "ivoox.com",
+          "researched_entity": "Agencia para la Administración Digital de la CM",
+          "source_binding": "atomic-item",
+          "title": "Podcasts para aprender a programar (2026)",
+          "url": "https://www.ivoox.com/landing/podcasts-de-programacion-254",
+          "date": "2026-10-31",
+          "description": "…tu podcast Patrocinios para tu podcast iVoox Influencers iVoox Creators Recomendado Se busca en Google Listas populares iVoox Magazine Ranking Podcast Observatorio iVoox Descarga nuestra app Disponible en App Store Google Play Síguenos en redes sociales Política de privacidad y Condic…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "6159599441059e42c5ed9621bd625ba79bab4aba4c65fae8b55fb85344eba38b",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "cursa.app",
+          "source_catalog_name": "cursa.app",
+          "researched_entity": "Agencia para la Administración Digital de la CM",
+          "source_binding": "atomic-item",
+          "title": "Libro gratuito Aprende a programar en Java completo, desde programación lógica hasta avanzada | Cursa",
+          "url": "https://cursa.app/es/libro-electronico-gratis/aprenda-programar-em-java-completo-da-logica-de-programacao-ao-avancado",
+          "date": "2026-10-31",
+          "description": "…cimientos de Java y conocer tecnologías habituales del ecosistema profesional. ¿El libro explica cómo configurar Java y un IDE? Sí. Incluye la configuración del JDK, el entorno de desarrollo y la JVM. ¿Incluye Spring Boot para crear APIs REST? Sí. Trata la creación de APIs REST, segur…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "27d362a4657c5661036a8d1c51a30cce50926d2fb69af6cf9e6d3893327d9202",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "ivoox.com",
+      "date": "2026-10-31",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_1076980f13137a80",
+      "entity_a_id": "clie_a59c22850441ac70",
+      "entity_a": "Agencia para la Administración Digital de la CM",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_e767adbaaec3b48b",
+      "entity_b": "AI / Data",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "ivoox.com",
+          "source_catalog_name": "ivoox.com",
+          "researched_entity": "Agencia para la Administración Digital de la CM",
+          "source_binding": "atomic-item",
+          "title": "Podcasts para aprender a programar (2026)",
+          "url": "https://www.ivoox.com/landing/podcasts-de-programacion-254",
+          "date": "2026-10-31",
+          "description": "…le Coding Daily Érase una vez un algoritmo... Codeadores Entre Dev y Ops Podcast Declarando Variables Devs Lives Don Tomás Artesanos del Código Programar es una mierda Los androides Atareao con Linux DevTalles La Vieja Guardia IA++: inteligencia artificial para programadores Code Time Nada nuevo bajo e…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "6159599441059e42c5ed9621bd625ba79bab4aba4c65fae8b55fb85344eba38b",
+          "matched_terms": [
+            "inteligencia artificial"
+          ],
+          "field": "technology_signals",
+          "item_value": "AI / Data",
+          "item_key": "ai data",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "maestrodelacomputacion.net",
+          "source_catalog_name": "maestrodelacomputacion.net",
+          "researched_entity": "Agencia para la Administración Digital de la CM",
+          "source_binding": "atomic-item",
+          "title": "5 Libros en español para aprender a programar en Java",
+          "url": "https://www.maestrodelacomputacion.net/libros-espanol-aprender-a-programar-en-java/",
+          "date": "2026-10-31",
+          "description": "…almente vale la pena actualizar PHP2Shell: el fallo crítico de PHP que puso en alerta a Internet y cómo proteger tu sitio Agentes de IA: qué son y cómo pueden cambiar nuestra forma de vivir y trabajar 9 estafas con inteligencia artificial que debes aprender a reconocer en 2026 Cómo saber si una imagen…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "2afd57ce2cd72ff1cfcec0b6730c61b1d91e292b42e24f81656cf0183d236b6b",
+          "matched_terms": [
+            "inteligencia artificial"
+          ],
+          "field": "technology_signals",
+          "item_value": "AI / Data",
+          "item_key": "ai data",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "cursa.app",
+          "source_catalog_name": "cursa.app",
+          "researched_entity": "Agencia para la Administración Digital de la CM",
+          "source_binding": "atomic-item",
+          "title": "Libro gratuito Aprende a programar en Java completo, desde programación lógica hasta avanzada | Cursa",
+          "url": "https://cursa.app/es/libro-electronico-gratis/aprenda-programar-em-java-completo-da-logica-de-programacao-ao-avancado",
+          "date": "2026-10-31",
+          "description": "…unitarias con JUnit y Mockito. Documentación con Javadoc y automatización con Maven o Gradle. APIs REST con Spring Boot, Spring Data JPA y Spring Security. Persistencia con JPA e Hibernate, caché, mensajería y NoSQL. Microservicios, Docker, Kubernetes, CI/CD y monitorización. Rendimiento de la JVM, re…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "27d362a4657c5661036a8d1c51a30cce50926d2fb69af6cf9e6d3893327d9202",
+          "matched_terms": [
+            "inteligencia artificial"
+          ],
+          "field": "technology_signals",
+          "item_value": "AI / Data",
+          "item_key": "ai data",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "ivoox.com",
+      "date": "2026-10-31",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_54916d6f3fffae9e",
+      "entity_a_id": "clie_a59c22850441ac70",
+      "entity_a": "Agencia para la Administración Digital de la CM",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_000e793db70c5930",
+      "entity_b": "Cloud",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "cursa.app",
+          "source_catalog_name": "cursa.app",
+          "researched_entity": "Agencia para la Administración Digital de la CM",
+          "source_binding": "atomic-item",
+          "title": "Libro gratuito Aprende a programar en Java completo, desde programación lógica hasta avanzada | Cursa",
+          "url": "https://cursa.app/es/libro-electronico-gratis/aprenda-programar-em-java-completo-da-logica-de-programacao-ao-avancado",
+          "date": "2026-10-31",
+          "description": "…dencias? 4 minutos Accesibilidad y diseño inclusivo + Ejercicio: ¿Cuál de los siguientes principios NO es uno de los fundamentos del diseño inclusivo mencionado en el texto sobre accesibilidad y diseño inclusivo en aplicaciones Java? 4 minutos Desarrollo dirigido por dominios con Java…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "27d362a4657c5661036a8d1c51a30cce50926d2fb69af6cf9e6d3893327d9202",
+          "matched_terms": [
+            "cloud"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cloud",
+          "item_key": "cloud",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "cursa.app",
+      "date": "2026-10-31",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_408b70b27d76db36",
+      "entity_a_id": "clie_11d1d582633040d5",
+      "entity_a": "Junta de Gobierno del Ayuntamiento de Albacete",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_e767adbaaec3b48b",
+      "entity_b": "AI / Data",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "eltiempo.com",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Junta de Gobierno del Ayuntamiento de Albacete",
+          "source_binding": "atomic-item",
+          "title": "Últimas noticias de Colombia y el Mundo - ELTIEMPO.COM - ELTIEMPO.COM",
+          "url": "https://www.eltiempo.com/ultimas-noticias",
+          "date": "2026-10-31",
+          "description": "…MO OTROS DEPORTES Apuestas deportivas IR A APUESTAS DEPORTVAS CASAS DE APUESTAS CÓDIGOS PROMOCIONALES TIPOS DE APUESTAS Tecnología IR A TECNOLOGÍA APPS INTELIGENCIA ARTIFICIAL DISPOSITIVOS VIDEOJUEGOS NOVEDADES TUTORIALES Lecturas El tiempo play Bocas UNIDAD DE Datos SERVICIOS LO ENCONTRASTE SEGUROS EL…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "0b83dc8093452d88bec3a2d3a1daa4891df24f005882cf9c380e5b72b4b00ba8",
+          "matched_terms": [
+            "inteligencia artificial"
+          ],
+          "field": "technology_signals",
+          "item_value": "AI / Data",
+          "item_key": "ai data",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "eltiempo.com",
+      "date": "2026-10-31",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
       "id": "rel_064c2fef16b2204b",
       "entity_a_id": "clie_cc3555d59b44e04b",
       "entity_a": "Consejería de Educación de la Junta de Castilla y León",
@@ -30563,6 +31165,113 @@
       ],
       "source": "jcyl.es",
       "date": "2026-10-23",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_c4a5dcbd31a3657a",
+      "entity_a_id": "clie_4a7e88e18e8d76a9",
+      "entity_a": "OSAKIDETZA - Servicio Vasco de Salud - Organización Central",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "es.wikipedia.org",
+          "source_catalog_name": "es.wikipedia.org",
+          "researched_entity": "OSAKIDETZA - Servicio Vasco de Salud - Organización Central",
+          "source_binding": "atomic-item",
+          "title": "Generación Z - Wikipedia, la enciclopedia libre",
+          "url": "https://es.wikipedia.org/wiki/Generaci%C3%B3n_Z",
+          "date": "2026-10-31",
+          "description": "…al ocultar Inicio 1 Terminología 2 Fechas y rango de edad 3 Características Alternar subsección Características 3.1 Uso de la tecnología y las redes sociales 3.2 Arte y cultura 3.3 Educación 3.4 Posturas políticas 3.5 Empleo 4 Sucesores 5 Véase también 6 Notas 7 Referencias 8 Bibliogr…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "be3c8db271eaf2cc90a56097bf0f4310fcb4945a321026176cb0f2b04c538392",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "thepower.education",
+          "source_catalog_name": "thepower.education",
+          "researched_entity": "OSAKIDETZA - Servicio Vasco de Salud - Organización Central",
+          "source_binding": "atomic-item",
+          "title": "Generación Z: edad y diferencias con Millennials",
+          "url": "https://thepower.education/blog/business/generacion-z-quienes-son",
+          "date": "2026-10-31",
+          "description": "…or la tecnología e imaginarse que hay un mundo anterior a la internet es casi imposible de asimilar para ellos. Para la generación Z la conexión de las redes sociales con sus necesidades de comunicación ha estado disponible desde su gestación y nacimiento, su influencia más representa…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "f67595cf4b88af65d52e3651e132c8759f332dd7249c34a5ded2ef69e3536e01",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "enciclopediauniversal.com",
+          "source_catalog_name": "enciclopediauniversal.com",
+          "researched_entity": "OSAKIDETZA - Servicio Vasco de Salud - Organización Central",
+          "source_binding": "atomic-item",
+          "title": "Generación Z: Características, Actitud y Futuro",
+          "url": "https://enciclopediauniversal.com/generacion-z/",
+          "date": "2026-10-31",
+          "description": "…convierte en el grupo demográfico más joven del planeta. Su nacimiento coincidió con un período de cambios tecnológicos y sociales significativos, incluyendo el auge de Internet, las redes sociales y la globalización. Eventos históricos como los atentados terroristas del 11 de septiem…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "fa688cb4497710e08574418f2ae493db0d237eef52fc92d14c2d01f8b6e11fe3",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "es.wikipedia.org",
+      "date": "2026-10-31",
       "confidence": 0.48,
       "status": "SEÑAL",
       "validity": "needs-corroboration",
