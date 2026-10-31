@@ -146,7 +146,11 @@ def _rebind_exact_item_evidence(rows: list[dict[str, Any]]) -> tuple[list[dict[s
             if not isinstance(field, dict):
                 continue
             exact_sources: dict[str, list[dict[str, Any]]] = {}
-            for ev in field.get("evidence") or []:
+            # Entity-level sources sometimes already declare the exact field
+            # and item, but their original ingestion lost the field binding.
+            # No source may cross the containing entity boundary.
+            candidates = list(field.get("evidence") or []) + list(row.get("evidence") or [])
+            for ev in candidates:
                 if not isinstance(ev, dict) or not accrediting_evidence(ev):
                     continue
                 if str(ev.get("field") or "").strip() != field_name:
@@ -155,6 +159,18 @@ def _rebind_exact_item_evidence(rows: list[dict[str, Any]]) -> tuple[list[dict[s
                 if not isinstance(value, str) or not value.strip():
                     continue
                 exact_sources.setdefault(value.strip().casefold(), []).append(ev)
+            # Scalar fields can also recover a source already held at entity
+            # level, but only with identical explicit item_value.
+            scalar = field.get("value")
+            if isinstance(scalar, str) and scalar.strip() and not any(
+                isinstance(ev, dict) and accrediting_evidence(ev)
+                for ev in field.get("evidence") or []
+            ):
+                for ev in exact_sources.get(scalar.strip().casefold(), []):
+                    current = field.setdefault("evidence", [])
+                    if ev not in current:
+                        current.append(deepcopy(ev))
+                        rebound += 1
             for item in field.get("items") or []:
                 if not isinstance(item, dict):
                     continue

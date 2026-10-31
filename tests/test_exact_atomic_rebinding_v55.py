@@ -40,6 +40,31 @@ class AtomicRebindingTests(unittest.TestCase):
         self.assertEqual(count, 0)
         self.assertEqual(fixed[0]["fields"]["vendor_relations"]["items"][0]["evidence"], [])
 
+    def test_entity_level_exact_field_and_value_can_support_item(self):
+        rows = [{"name": "Partner A", "evidence": [evidence("Vendor X")],
+            "fields": {"vendor_relations": {
+                "value": ["Vendor X", "Vendor Y"],
+                "items": [{"value": "Vendor X", "evidence": []},
+                          {"value": "Vendor Y", "evidence": []}],
+                "evidence": [],
+            }}}]
+        repaired, count = _rebind_exact_item_evidence(rows)
+        self.assertEqual(count, 1)
+        items = repaired[0]["fields"]["vendor_relations"]["items"]
+        self.assertEqual(len(items[0]["evidence"]), 1)
+        self.assertEqual(items[1]["evidence"], [])
+
+    def test_entity_level_source_must_match_scalar_field_and_value(self):
+        rows = [{"name": "Partner A", "evidence": [
+            evidence("Cloud", field="domain"),
+            evidence("Network", field="services"),
+        ], "fields": {"domain": {"value": "Cloud", "evidence": []},
+                      "services": {"value": "Cloud", "evidence": []}}}]
+        repaired, count = _rebind_exact_item_evidence(rows)
+        self.assertEqual(count, 1)
+        self.assertEqual(len(repaired[0]["fields"]["domain"]["evidence"]), 1)
+        self.assertEqual(repaired[0]["fields"]["services"]["evidence"], [])
+
 
 if __name__ == "__main__":
     unittest.main()
