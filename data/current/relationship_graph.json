@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-10-31T14:45:38.250728+00:00",
+  "generated_at": "2026-10-31T18:12:00.807704+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -523,6 +523,14 @@
       "historical_names": []
     },
     {
+      "id": "clie_454a1cf13e653d4c",
+      "canonical_name": "Instituto para os Comportamentos Aditivos e as Dependências, IP",
+      "entity_type": "client",
+      "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "clie_c98a470db4d1214f",
       "canonical_name": "Jefatura de Asuntos Económicos del Estado Mayor de la Defensa",
       "entity_type": "client",
@@ -535,6 +543,14 @@
       "canonical_name": "Jerónimo Martins",
       "entity_type": "client",
       "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_82ef20c0dd96c991",
+      "canonical_name": "Junta de Gobierno de la Diputación Provincial de Jaén",
+      "entity_type": "client",
+      "country": "ES",
       "aliases": [],
       "historical_names": []
     },
@@ -645,6 +661,14 @@
     {
       "id": "clie_4a7e88e18e8d76a9",
       "canonical_name": "OSAKIDETZA - Servicio Vasco de Salud - Organización Central",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_ec28a46bac914f22",
+      "canonical_name": "Presidencia de la Autoridad Independiente de Responsabilidad Fiscal",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -31408,6 +31432,55 @@
       "derived": true
     },
     {
+      "id": "rel_80029427d3b78661",
+      "entity_a_id": "clie_82ef20c0dd96c991",
+      "entity_a": "Junta de Gobierno de la Diputación Provincial de Jaén",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_70574f8129932ee1",
+      "entity_b": "Identity & Access",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "vivesantiago.cl",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Junta de Gobierno de la Diputación Provincial de Jaén",
+          "source_binding": "atomic-item",
+          "title": "Barrio Italia · VIVE Santiago",
+          "url": "https://vivesantiago.cl/barrio-italia.html",
+          "date": "2026-10-31",
+          "description": "…límite entre Providencia y Ñuñoa. Los antiguos galpones de mueblistas y talleres de restauración dieron paso a un circuito de anticuarios que, desde los años noventa, definió la identidad comercial del barrio. Hoy las casonas se organizan en patios y galerías interiores: tiendas de diseñ…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "0690ebfd882fe51e52a04c7278c378d783e2d0bc88b81810246f83195d06d430",
+          "matched_terms": [
+            "identidad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Identity & Access",
+          "item_key": "identity access",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "vivesantiago.cl",
+      "date": "2026-10-31",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
       "id": "rel_4239e61b31298112",
       "entity_a_id": "clie_72f4450a1e1175ca",
       "entity_a": "Agência para a Integração, Migrações e Asilo, IP",
@@ -31636,6 +31709,55 @@
         }
       ],
       "source": "bancosantander.es",
+      "date": "2026-10-31",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_1a0ce89f768a9902",
+      "entity_a_id": "clie_ec28a46bac914f22",
+      "entity_a": "Presidencia de la Autoridad Independiente de Responsabilidad Fiscal",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_70574f8129932ee1",
+      "entity_b": "Identity & Access",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "es.wikipedia.org",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Presidencia de la Autoridad Independiente de Responsabilidad Fiscal",
+          "source_binding": "atomic-item",
+          "title": "Barack Obama - Wikipedia, la enciclopedia libre",
+          "url": "https://es.wikipedia.org/wiki/Barack_Obama",
+          "date": "2026-10-31",
+          "description": "…06 ] A partir de ése momento, Obama condenó los comentarios de Wright y lo alejó de cualquier asociación con su campaña política. [ 107 ] Durante la controversia, pronunció un discurso titulado Una unión más perfecta (en inglés A More Perfect Union ), en el cual expuso sobre asuntos racia…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "f3f019edd94652503b2272343c0cd7ee30714760a11e8905fd374facbb1cda15",
+          "matched_terms": [
+            "identidad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Identity & Access",
+          "item_key": "identity access",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "es.wikipedia.org",
       "date": "2026-10-31",
       "confidence": 0.48,
       "status": "SEÑAL",
@@ -32284,6 +32406,55 @@
       ],
       "source": "amtega.xunta.gal",
       "date": "2026-10-29",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_6ac085fb9a02d60e",
+      "entity_a_id": "clie_454a1cf13e653d4c",
+      "entity_a": "Instituto para os Comportamentos Aditivos e as Dependências, IP",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_000e793db70c5930",
+      "entity_b": "Cloud",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "arimetrics.com",
+          "source_catalog_name": "arimetrics.com",
+          "researched_entity": "Instituto para os Comportamentos Aditivos e as Dependências, IP",
+          "source_binding": "atomic-item",
+          "title": "Qué es una Query: tipos principales",
+          "url": "https://www.arimetrics.com/glosario-digital/query",
+          "date": "2026-10-31",
+          "description": "…oducts que cumplen la condición indicada. A diferencia de una búsqueda web, la operación actúa sobre una estructura de datos definida y utiliza una sintaxis formal. Términos relacionados Analizador Sintáctico – Parser Folksonomía Metadato Nube de Tags Taxonomía Servicios Marketing Di…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "c1171466b4343901489cca886e298af09f718bac5ee71153b6ddffe13aea6fe9",
+          "matched_terms": [
+            "nube"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cloud",
+          "item_key": "cloud",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "arimetrics.com",
+      "date": "2026-10-31",
       "confidence": 0.48,
       "status": "SEÑAL",
       "validity": "needs-corroboration",

@@ -3,30 +3,30 @@
   "model_revision": "r6-public-plus-current-westcon-first-party",
   "policy": "Hechos externos: fuente pública actual. Hechos propiedad de Westcon sobre portfolio/capacidades: documentación o regla Westcon vigente y atómica. Histórico: pista no acreditativa. Conclusiones internas/derivadas: inputs sustentados + regla trazable.",
   "support_rule": "CURRENT_PUBLIC_OR_CURRENT_WESTCON_OWNED_OR_TRACEABLE_DERIVATION",
-  "targets_total": 16498,
-  "targets_direct_supported": 7357,
+  "targets_total": 16522,
+  "targets_direct_supported": 7380,
   "targets_supported_westcon_only": 286,
-  "targets_supported_public_only": 7022,
+  "targets_supported_public_only": 7045,
   "targets_supported_westcon_and_public": 49,
   "claim_classes": {
-    "EXTERNAL_FACT": 14407,
+    "EXTERNAL_FACT": 14427,
     "DERIVED_FACT": 1537,
-    "INTERNAL_CLASSIFICATION": 554
+    "INTERNAL_CLASSIFICATION": 558
   },
-  "support_pending_occurrences": 9141,
-  "support_pending_unique_claims": 8800,
+  "support_pending_occurrences": 9142,
+  "support_pending_unique_claims": 8801,
   "duplicate_pending_occurrences": 341,
-  "external_search_required_occurrences": 7197,
-  "external_search_required_unique": 7028,
-  "derived_support_required_occurrences": 1944,
-  "derived_support_required_unique": 1772,
+  "external_search_required_occurrences": 7194,
+  "external_search_required_unique": 7025,
+  "derived_support_required_occurrences": 1948,
+  "derived_support_required_unique": 1776,
   "historical_total": 254,
   "historical_supported_westcon": 112,
   "historical_supported_public": 19,
   "historical_supported_westcon_and_public": 25,
   "historical_search_required": 98,
-  "targets_supported": 7357,
-  "targets_search_required": 9141,
+  "targets_supported": 7380,
+  "targets_search_required": 9142,
   "unsupported_targets": [
     {
       "section": "manufacturers",
@@ -8937,20 +8937,6 @@
       "entity": "Esprinet / V-Valley",
       "field": "differential_capabilities",
       "level": "item",
-      "value": "Logística",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "support_basis": "SEARCH_REQUIRED",
-      "expected_gap_kind": "evidence-support",
-      "preserve_value": true
-    },
-    {
-      "section": "distributors",
-      "entity": "Esprinet / V-Valley",
-      "field": "differential_capabilities",
-      "level": "item",
       "value": "Marketplace / plataforma cloud",
       "claim_class": "EXTERNAL_FACT",
       "research_mode": "public-source-verification",
@@ -17254,20 +17240,6 @@
       "field": "differential_capabilities",
       "level": "item",
       "value": "Soporte",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "support_basis": "SEARCH_REQUIRED",
-      "expected_gap_kind": "evidence-support",
-      "preserve_value": true
-    },
-    {
-      "section": "distributors",
-      "entity": "V-Valley Advanced Solutions Portugal",
-      "field": "differential_capabilities",
-      "level": "item",
-      "value": "Logística",
       "claim_class": "EXTERNAL_FACT",
       "research_mode": "public-source-verification",
       "derivation_rule": "direct support required",
@@ -64080,20 +64052,6 @@
     },
     {
       "section": "integrators",
-      "entity": "Timestamp",
-      "field": "managed_services",
-      "level": "item",
-      "value": "Sí",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "support_basis": "SEARCH_REQUIRED",
-      "expected_gap_kind": "evidence-support",
-      "preserve_value": true
-    },
-    {
-      "section": "integrators",
       "entity": "Tokiota",
       "field": "roles",
       "level": "item",
@@ -89534,6 +89492,22 @@
     },
     {
       "section": "clients_public",
+      "entity": "Junta de Gobierno de la Diputación Provincial de Jaén",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Identity & Access",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
       "entity": "Autoridade Nacional de Comunicações",
       "field": "cpv_codes",
       "level": "item",
@@ -93274,6 +93248,38 @@
     },
     {
       "section": "clients_public",
+      "entity": "Presidencia de la Autoridad Independiente de Responsabilidad Fiscal",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Cybersecurity",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Presidencia de la Autoridad Independiente de Responsabilidad Fiscal",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Identity & Access",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
       "entity": "Institut Valencià de Cultura",
       "field": "cpv_codes",
       "level": "item",
@@ -95598,6 +95604,22 @@
       "field": "westcon_area",
       "level": "item",
       "value": "Networking",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Instituto para os Comportamentos Aditivos e as Dependências, IP",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Cloud",
       "claim_class": "INTERNAL_CLASSIFICATION",
       "research_mode": "derive-from-supported-inputs",
       "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -150005,20 +150027,6 @@
       "entity": "Esprinet / V-Valley",
       "field": "differential_capabilities",
       "level": "item",
-      "value": "Logística",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "support_basis": "SEARCH_REQUIRED",
-      "expected_gap_kind": "evidence-support",
-      "preserve_value": true
-    },
-    {
-      "section": "distributors",
-      "entity": "Esprinet / V-Valley",
-      "field": "differential_capabilities",
-      "level": "item",
       "value": "Marketplace / plataforma cloud",
       "claim_class": "EXTERNAL_FACT",
       "research_mode": "public-source-verification",
@@ -158322,20 +158330,6 @@
       "field": "differential_capabilities",
       "level": "item",
       "value": "Soporte",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "support_basis": "SEARCH_REQUIRED",
-      "expected_gap_kind": "evidence-support",
-      "preserve_value": true
-    },
-    {
-      "section": "distributors",
-      "entity": "V-Valley Advanced Solutions Portugal",
-      "field": "differential_capabilities",
-      "level": "item",
-      "value": "Logística",
       "claim_class": "EXTERNAL_FACT",
       "research_mode": "public-source-verification",
       "derivation_rule": "direct support required",
@@ -205148,20 +205142,6 @@
     },
     {
       "section": "integrators",
-      "entity": "Timestamp",
-      "field": "managed_services",
-      "level": "item",
-      "value": "Sí",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "support_basis": "SEARCH_REQUIRED",
-      "expected_gap_kind": "evidence-support",
-      "preserve_value": true
-    },
-    {
-      "section": "integrators",
       "entity": "Tokiota",
       "field": "roles",
       "level": "item",
@@ -228598,6 +228578,22 @@
     },
     {
       "section": "clients_public",
+      "entity": "Junta de Gobierno de la Diputación Provincial de Jaén",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Identity & Access",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
       "entity": "Autoridade Nacional de Comunicações",
       "field": "cpv_codes",
       "level": "item",
@@ -231596,6 +231592,38 @@
     },
     {
       "section": "clients_public",
+      "entity": "Presidencia de la Autoridad Independiente de Responsabilidad Fiscal",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Cybersecurity",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Presidencia de la Autoridad Independiente de Responsabilidad Fiscal",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Identity & Access",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
       "entity": "Institut Valencià de Cultura",
       "field": "cpv_codes",
       "level": "item",
@@ -232996,6 +233024,22 @@
       "field": "westcon_area",
       "level": "item",
       "value": "Networking",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Instituto para os Comportamentos Aditivos e as Dependências, IP",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Cloud",
       "claim_class": "INTERNAL_CLASSIFICATION",
       "research_mode": "derive-from-supported-inputs",
       "derivation_rule": "supported client technology signals → Westcon area taxonomy",
