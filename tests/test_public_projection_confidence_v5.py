@@ -23,7 +23,8 @@ class PublicConfidenceGuardTests(unittest.TestCase):
         claim = {
             "value": "Vendor X", "confidence": 0.9, "confidence_band": "high",
             "evidence": [{
-                "source": "Official", "provenance_origin": "PUBLIC_PRIMARY",
+                "source": "Official", "title": "Verified product page", "date": "2026-10-30",
+                "description": "Vendor X is a product partner", "provenance_origin": "PUBLIC_PRIMARY",
                 "url": "https://example.org/confirmed",
                 "source_grade": "A",
             }],
