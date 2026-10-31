@@ -43,6 +43,6 @@ for (const label of ['Fabricantes','Mayoristas','Integradores','Clientes','Tende
 console.log('UI smoke v4.4.0 PASS');
 
 // Public-facing list tags must be backed by item-specific, current evidence.
-if (!source.includes('function atomicCurrentProof(')) throw new Error('atomic current proof filter missing');
-if (!source.includes('const documented=supportedListValues(field)')) throw new Error('list labels are not evidence-filtered');
-if (!source.includes('indicios conservados sin fuente específica')) throw new Error('unverified clues are not retained separately');
+if (!js.includes('function atomicCurrentProof(')) throw new Error('atomic current proof filter missing');
+if (!js.includes('const documented=supportedListValues(field)')) throw new Error('list labels are not evidence-filtered');
+if (!js.includes('indicios conservados sin fuente específica')) throw new Error('unverified clues are not retained separately');
