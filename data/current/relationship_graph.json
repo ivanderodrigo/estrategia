@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-10-31T08:49:03.734639+00:00",
+  "generated_at": "2026-10-31T08:56:15.939838+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -99,6 +99,14 @@
       "historical_names": []
     },
     {
+      "id": "clie_72f4450a1e1175ca",
+      "canonical_name": "Agência para a Integração, Migrações e Asilo, IP",
+      "entity_type": "client",
+      "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "clie_e3bb077383ca4765",
       "canonical_name": "Ajuntament de Reus",
       "entity_type": "client",
@@ -117,6 +125,14 @@
     {
       "id": "clie_b84823823296149e",
       "canonical_name": "ArcelorMittal",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_ee26554034c4b57d",
+      "canonical_name": "Autoridad Portuaria de Cartagena",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -211,6 +227,14 @@
       "historical_names": []
     },
     {
+      "id": "clie_98a7672c79a5b9ce",
+      "canonical_name": "Banco de España",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "clie_08257e072d604cca",
       "canonical_name": "Bankinter",
       "entity_type": "client",
@@ -261,6 +285,14 @@
     {
       "id": "clie_bc808763e52471c5",
       "canonical_name": "Centro de Documentación Judicial",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_ccf74bd78eba6cc5",
+      "canonical_name": "Compras de la Corporación de Radio y Televisión Española S.A.",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -487,6 +519,14 @@
       "canonical_name": "Instituto de Informática, IP",
       "entity_type": "client",
       "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_c98a470db4d1214f",
+      "canonical_name": "Jefatura de Asuntos Económicos del Estado Mayor de la Defensa",
+      "entity_type": "client",
+      "country": "ES",
       "aliases": [],
       "historical_names": []
     },
@@ -30523,6 +30563,104 @@
       "derived": true
     },
     {
+      "id": "rel_b1ab8046f197a51e",
+      "entity_a_id": "clie_c98a470db4d1214f",
+      "entity_a": "Jefatura de Asuntos Económicos del Estado Mayor de la Defensa",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_78fd5cac8c025bab",
+      "entity_b": "Cybersecurity",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "es.wikipedia.org",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Jefatura de Asuntos Económicos del Estado Mayor de la Defensa",
+          "source_binding": "atomic-item",
+          "title": "Francia - Wikipedia, la enciclopedia libre",
+          "url": "https://es.wikipedia.org/wiki/Francia",
+          "date": "2026-10-31",
+          "description": "…pp. 79-82. ↑ Carpentier et al. 2000, p. 81. ↑ Carpentier et al. 2000, p. 84. ↑ Carpentier et al. 2000, pp. 84-88. ↑ «La préhistoire à Saint-Pierre et Miquelon» . Archivado desde el original el 9 de agosto de 2020 . Consultado el 18 de julio de 2020 . ↑ Siegel. «Analyse préliminaire de prélève…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "4fe6a1067c0c14fc385b9d30f4a4b53f7ba76363a11cd3a91f8e241db0f0a335",
+          "matched_terms": [
+            "cybersecurity"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cybersecurity",
+          "item_key": "cybersecurity",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "es.wikipedia.org",
+      "date": "2026-10-31",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_1394aa3ef4aec83e",
+      "entity_a_id": "clie_c98a470db4d1214f",
+      "entity_a": "Jefatura de Asuntos Económicos del Estado Mayor de la Defensa",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_70574f8129932ee1",
+      "entity_b": "Identity & Access",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "es.wikipedia.org",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Jefatura de Asuntos Económicos del Estado Mayor de la Defensa",
+          "source_binding": "atomic-item",
+          "title": "Francia - Wikipedia, la enciclopedia libre",
+          "url": "https://es.wikipedia.org/wiki/Francia",
+          "date": "2026-10-31",
+          "description": "…iocho regiones integrales (cinco de las cuales son de ultramar) abarcan una superficie combinada de 643 801 km 2 y más de 68 millones de personas. [ 7 ] Culturalmente, pertenece a la Europa latina . Francia limita con nueve países en Europa ( Bélgica , Luxemburgo , Alemania , Suiza , Ital…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "4fe6a1067c0c14fc385b9d30f4a4b53f7ba76363a11cd3a91f8e241db0f0a335",
+          "matched_terms": [
+            "identidad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Identity & Access",
+          "item_key": "identity access",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "es.wikipedia.org",
+      "date": "2026-10-31",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
       "id": "rel_9a5d1853657bc011",
       "entity_a_id": "clie_001e1baacf14c341",
       "entity_a": "Dirección General de Salud Digital y Sistemas de Información del Sistema Nacional de Salud",
@@ -30561,7 +30699,9 @@
           "item_value": "Cloud",
           "item_key": "cloud",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "dle.rae.es",
@@ -30610,7 +30750,9 @@
           "item_value": "Identity & Access",
           "item_key": "identity access",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "es.wikipedia.org",
@@ -30710,7 +30852,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "reus.cat",
@@ -30739,7 +30883,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "reus.cat",
@@ -30768,7 +30914,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "reus.cat",
@@ -30797,7 +30945,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "reus.cat",
@@ -30826,7 +30976,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "reus.cat",
@@ -30875,7 +31027,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "cursa.app",
@@ -30904,7 +31058,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "ivoox.com",
@@ -30953,7 +31109,9 @@
           "item_value": "AI / Data",
           "item_key": "ai data",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "maestrodelacomputacion.net",
@@ -30982,7 +31140,9 @@
           "item_value": "AI / Data",
           "item_key": "ai data",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "cursa.app",
@@ -31011,7 +31171,9 @@
           "item_value": "AI / Data",
           "item_key": "ai data",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "ivoox.com",
@@ -31060,7 +31222,9 @@
           "item_value": "Cloud",
           "item_key": "cloud",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "cursa.app",
@@ -31109,10 +31273,110 @@
           "item_value": "AI / Data",
           "item_key": "ai data",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "eltiempo.com",
+      "date": "2026-10-31",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_4239e61b31298112",
+      "entity_a_id": "clie_72f4450a1e1175ca",
+      "entity_a": "Agência para a Integração, Migrações e Asilo, IP",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "ciencia.nasa.gov",
+          "source_catalog_name": "ciencia.nasa.gov",
+          "researched_entity": "Agência para a Integração, Migrações e Asilo, IP",
+          "source_binding": "atomic-item",
+          "title": "Datos sobre el Sol - NASA Ciencia",
+          "url": "https://ciencia.nasa.gov/datos-sobre-el-sol/",
+          "date": "2026-10-31",
+          "description": "…A/SDO Eyecciones de masa coronal (EMC): Las eyecciones de masa coronal (EMC) son inmensas nubes de partículas magnetizadas que el Sol lanza al espacio a más de 1,6 millones de kilómetros (un millón de millas) por hora, generalmente después de una erupción solar. Las EMC se van expandi…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "12ff8ed307ddd500639135c943abc50112559aaaa12d7e44510100a0fe22b7f7",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "ciencia.nasa.gov",
+      "date": "2026-10-31",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_545f53c3610f1fbd",
+      "entity_a_id": "clie_ccf74bd78eba6cc5",
+      "entity_a": "Compras de la Corporación de Radio y Televisión Española S.A.",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "quieroviajarsola.com",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Compras de la Corporación de Radio y Televisión Española S.A.",
+          "source_binding": "atomic-item",
+          "title": "12 cosas que hacer y que ver en Sacramento (California)",
+          "url": "https://www.quieroviajarsola.com/estados-unidos/california/que-ver-en-sacramento/",
+          "date": "2026-10-31",
+          "description": "…QuieroViajarSola Mi antiguo blog, Viajes e ideas Por qué puedes confiar en Quiero Viajar Sola En estos 10 años viajando sola por todo el mundo he recorrido muchos países y destinos de los que puedo darte consejos en base a mi experiencia. Puedo recomendarte lugares para visitar, dormi…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "4507b22d93a2d4645fa475d5855a4c023f7777fa64ee228b58f7422767110256",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "quieroviajarsola.com",
       "date": "2026-10-31",
       "confidence": 0.48,
       "status": "SEÑAL",
@@ -31171,6 +31435,113 @@
       "derived": true
     },
     {
+      "id": "rel_f8c6c4414dae3c9f",
+      "entity_a_id": "clie_98a7672c79a5b9ce",
+      "entity_a": "Banco de España",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "bancosantander.es",
+          "source_catalog_name": "Banco de España",
+          "researched_entity": "Banco de España",
+          "source_binding": "atomic-item",
+          "title": "Particulares - Banco Santander",
+          "url": "https://www.bancosantander.es/particulares",
+          "date": "2026-10-31",
+          "description": "…contraten por primera vez la Tarjeta Crédito Santander. Consulta condiciones de la promoción aquí . 4. El servicio de eSIM es prestado por Gigs GmbH, con Tax ID n° 87 HRB220086 y domicilio en Bergstr. 77, 10115 Berlin, Alemania. Banco Santander actúa como canal de comercialización y no es re…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "search-discovery:official-owned-host",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "6ab976b1722b642532760c976be06095f1960cd7103e003148b2a2436099674a",
+          "matched_terms": [
+            "conectividad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "economipedia.com",
+          "source_catalog_name": "economipedia.com",
+          "researched_entity": "Banco de España",
+          "source_binding": "atomic-item",
+          "title": "Banco: qué es, cómo gana dinero y tipos que existen",
+          "url": "https://economipedia.com/definiciones/banco.html",
+          "date": "2026-10-31",
+          "description": "…nómico Guías de inversión Actualidad Simulador de carteras Comparador de brókers Newsletter gratuita Formación Programa de Inversión Intensivo de Fondos y ETFs Club Mr Market Mentorías Acceso Campus Economipedia ¿Qué es Economipedia? ¿Quiénes somos? El equipo Empleo Contacto Legal Coo…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "e83eb87110cfd76e0dbfd48714d2d72e46920474dbbb4cc39c09c5558323a06b",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "bancosantander.es",
+          "source_catalog_name": "Banco de España",
+          "researched_entity": "Banco de España",
+          "source_binding": "atomic-item",
+          "title": "Particulares - Banco Santander",
+          "url": "https://www.bancosantander.es/particulares/",
+          "date": "2026-10-31",
+          "description": "…contraten por primera vez la Tarjeta Crédito Santander. Consulta condiciones de la promoción aquí . 4. El servicio de eSIM es prestado por Gigs GmbH, con Tax ID n° 87 HRB220086 y domicilio en Bergstr. 77, 10115 Berlin, Alemania. Banco Santander actúa como canal de comercialización y no es re…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "6ab976b1722b642532760c976be06095f1960cd7103e003148b2a2436099674a",
+          "matched_terms": [
+            "conectividad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "bancosantander.es",
+      "date": "2026-10-31",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
       "id": "rel_c4a5dcbd31a3657a",
       "entity_a_id": "clie_4a7e88e18e8d76a9",
       "entity_a": "OSAKIDETZA - Servicio Vasco de Salud - Organización Central",
@@ -31209,7 +31580,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "thepower.education",
@@ -31238,7 +31611,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "enciclopediauniversal.com",
@@ -31267,7 +31642,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "es.wikipedia.org",
@@ -31806,6 +32183,55 @@
       ],
       "source": "amtega.xunta.gal",
       "date": "2026-10-29",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_10046d8d97a6f4bf",
+      "entity_a_id": "clie_ee26554034c4b57d",
+      "entity_a": "Autoridad Portuaria de Cartagena",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "es.wikipedia.org",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Autoridad Portuaria de Cartagena",
+          "source_binding": "atomic-item",
+          "title": "Crimea - Wikipedia, la enciclopedia libre",
+          "url": "https://es.wikipedia.org/wiki/Crimea",
+          "date": "2026-10-31",
+          "description": "…ea también se vieron afectados de manera significativa, ya que Ucrania cortó el suministro de agua a través del Canal de Crimea del Norte , causando que la cosecha de arroz de 2014 falle, y dañando en gran medida los cultivos de maíz y soja. [ 88 ] Rusia ordenó elevar las jubilaciones…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-10-31",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "2ae3373bf485f434c45c7cb7599a0ca7565368508a31438fa69e67ab31f1eef1",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "es.wikipedia.org",
+      "date": "2026-10-31",
       "confidence": 0.48,
       "status": "SEÑAL",
       "validity": "needs-corroboration",

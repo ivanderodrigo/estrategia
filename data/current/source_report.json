@@ -1,9 +1,9 @@
 {
   "version": "4.3.0",
-  "sources": 2316,
-  "domains_unique": 421,
-  "official_evidences": 1782,
-  "traceable_fields": 5581,
+  "sources": 2323,
+  "domains_unique": 425,
+  "official_evidences": 1783,
+  "traceable_fields": 5588,
   "provenance": {
     "policy": "typed-provenance-non-destructive",
     "types": {
@@ -13,8 +13,8 @@
       "WESTCON_FIRST_PARTY_CURRENT": 110,
       "RESEARCH_SEED": 180,
       "LEGACY_UNRESOLVED": 176,
-      "PUBLIC_PRIMARY": 9522,
-      "PUBLIC_SECONDARY": 3917
+      "PUBLIC_PRIMARY": 9524,
+      "PUBLIC_SECONDARY": 3933
     },
     "legacy_unresolved_fields": 0,
     "legacy_unresolved_items": 66,
@@ -37,30 +37,30 @@
     "model_revision": "r6-public-plus-current-westcon-first-party",
     "policy": "Hechos externos: fuente pública actual. Hechos propiedad de Westcon sobre portfolio/capacidades: documentación o regla Westcon vigente y atómica. Histórico: pista no acreditativa. Conclusiones internas/derivadas: inputs sustentados + regla trazable.",
     "support_rule": "CURRENT_PUBLIC_OR_CURRENT_WESTCON_OWNED_OR_TRACEABLE_DERIVATION",
-    "targets_total": 16477,
-    "targets_direct_supported": 7333,
+    "targets_total": 16491,
+    "targets_direct_supported": 7341,
     "targets_supported_westcon_only": 286,
-    "targets_supported_public_only": 6998,
+    "targets_supported_public_only": 7006,
     "targets_supported_westcon_and_public": 49,
     "claim_classes": {
-      "EXTERNAL_FACT": 14395,
+      "EXTERNAL_FACT": 14403,
       "DERIVED_FACT": 1537,
-      "INTERNAL_CLASSIFICATION": 545
+      "INTERNAL_CLASSIFICATION": 551
     },
-    "support_pending_occurrences": 9144,
-    "support_pending_unique_claims": 8804,
-    "duplicate_pending_occurrences": 340,
+    "support_pending_occurrences": 9150,
+    "support_pending_unique_claims": 8809,
+    "duplicate_pending_occurrences": 341,
     "external_search_required_occurrences": 7209,
     "external_search_required_unique": 7040,
-    "derived_support_required_occurrences": 1935,
-    "derived_support_required_unique": 1764,
+    "derived_support_required_occurrences": 1941,
+    "derived_support_required_unique": 1769,
     "historical_total": 254,
     "historical_supported_westcon": 112,
     "historical_supported_public": 19,
     "historical_supported_westcon_and_public": 25,
     "historical_search_required": 98,
-    "targets_supported": 7333,
-    "targets_search_required": 9144,
+    "targets_supported": 7341,
+    "targets_search_required": 9150,
     "unsupported_targets": [
       {
         "section": "manufacturers",
@@ -74490,6 +74490,38 @@
       },
       {
         "section": "clients_public",
+        "entity": "Jefatura de Asuntos Económicos del Estado Mayor de la Defensa",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Jefatura de Asuntos Económicos del Estado Mayor de la Defensa",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Secretaría General de la Consejería de Hacienda, Administraciones Públicas y Transformación Digital de la Junta de Comunidades de Castilla-La Mancha",
         "field": "cpv_codes",
         "level": "item",
@@ -91981,6 +92013,38 @@
       {
         "section": "clients_public",
         "entity": "Agência para a Integração, Migrações e Asilo, IP",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agência para a Integração, Migrações e Asilo, IP",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agência para a Integração, Migrações e Asilo, IP",
         "field": "westcon_fit",
         "level": "item",
         "value": "1Password",
@@ -92984,6 +93048,22 @@
         "dependency_fields": [],
         "support_basis": "SEARCH_REQUIRED",
         "expected_gap_kind": "evidence-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Banco de España",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
         "preserve_value": true
       },
       {
@@ -100700,6 +100780,22 @@
         "field": "westcon_area",
         "level": "item",
         "value": "AI / Data",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Autoridad Portuaria de Cartagena",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -215000,6 +215096,38 @@
       },
       {
         "section": "clients_public",
+        "entity": "Jefatura de Asuntos Económicos del Estado Mayor de la Defensa",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Jefatura de Asuntos Económicos del Estado Mayor de la Defensa",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Secretaría General de la Consejería de Hacienda, Administraciones Públicas y Transformación Digital de la Junta de Comunidades de Castilla-La Mancha",
         "field": "cpv_codes",
         "level": "item",
@@ -230799,6 +230927,38 @@
       {
         "section": "clients_public",
         "entity": "Agência para a Integração, Migrações e Asilo, IP",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agência para a Integração, Migrações e Asilo, IP",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agência para a Integração, Migrações e Asilo, IP",
         "field": "westcon_fit",
         "level": "item",
         "value": "Okta",
@@ -236690,6 +236850,22 @@
         "field": "westcon_area",
         "level": "item",
         "value": "AI / Data",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Autoridad Portuaria de Cartagena",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
