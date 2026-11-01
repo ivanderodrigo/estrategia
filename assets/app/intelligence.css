@@ -315,3 +315,14 @@ main,.view,.page-head,.toolbar,.table-shell,.intelligence-table{min-width:0;max-
 
 /* v4.5 evidence-first observatory */
 .coverage-overview{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;margin:8px 0;background:#eaf3f7;border:1px solid #d1e1e9;border-radius:9px;color:#24485a;font-size:12px}.coverage-overview button{background:#fff;color:#16566c;border:1px solid #9bbdc9;padding:6px 10px;border-radius:6px;cursor:pointer}.coverage-overview button:hover{background:#dcf3f6}@media(max-width:700px){.coverage-overview{flex-direction:column;align-items:flex-start}}
+
+/* Accessible, explicit disclosure of unsupported historical claim values. */
+.unverified-clues{margin-top:8px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#f7fafc;max-width:100%}
+.unverified-clues summary{cursor:pointer;font-weight:650;color:var(--navy);line-height:1.45}
+.unverified-clues summary:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+.unverified-clues p{margin:8px 0;color:var(--muted);font-size:.88em}
+.unverified-clue-list{margin:8px 0 0;padding-left:23px;max-height:280px;overflow-y:auto;overflow-wrap:anywhere}
+.unverified-clue-list li{margin:0 0 9px;padding:0 0 8px;border-bottom:1px solid var(--line)}
+.unverified-clue-list li:last-child{border:0}
+.unverified-clue-value{display:block;font-weight:650;color:var(--ink)}
+.unverified-clue-list small{display:block;margin-top:3px;color:var(--muted);line-height:1.4}

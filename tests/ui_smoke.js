@@ -46,6 +46,11 @@ console.log('UI smoke v4.4.0 PASS');
 if (!js.includes('function atomicCurrentProof(')) throw new Error('atomic current proof filter missing');
 if (!js.includes('const documented=supportedListValues(field)')) throw new Error('list labels are not evidence-filtered');
 if (!js.includes('indicios conservados sin fuente específica')) throw new Error('unverified clues are not retained separately');
+if (!js.includes('Ver cuáles son')) throw new Error('unverified claim disclosure is not available');
+if (!js.includes('unsupported.map((v,i)=>')) throw new Error('unverified claim values are hidden');
+if (!js.includes('unverified-clue-value')) throw new Error('exact unsupported values are not exposed');
+if (!js.includes('esc(raw)')) throw new Error('unsupported claim values are not escaped');
+if (!css.includes('.unverified-clue-list')) throw new Error('unsupported claim disclosure is unreadable');
 
 if (!js.includes('function sourcedScalarForTable(')) throw new Error('scalar proof filter absent');
 if (!js.includes('f&&sourcedScalarForTable(f)?renderValue(')) throw new Error('scalar proof filter not connected to tables');

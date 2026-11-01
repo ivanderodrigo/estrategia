@@ -428,7 +428,8 @@
       const lim=limit??listLimit(documented,context);
       const tags=documented.map((v,i)=>`<span class="tag-entry ${i>=lim?'tag-overflow':''}">${tagHtml(field,v,i)}</span>`).join('');
       const more=documented.length>lim?`<button type="button" class="more-tags" data-more-tags data-label="… +${documented.length-lim}">… +${documented.length-lim}</button>`:'';
-      const clues=hiddenCount?`<details class="unverified-clues"><summary>${hiddenCount} indicios conservados sin fuente específica</summary><p>Estos valores no se presentan como hechos. Se conservan para búsqueda y acreditación posterior.</p></details>`:'';
+      const unsupported=value.filter((v,i)=>!atomicCurrentProof(itemFor(field,v,i).evidence));
+      const clues=hiddenCount?`<details class="unverified-clues"><summary>${hiddenCount} indicios conservados sin fuente específica · Ver cuáles son</summary><p>Valores históricos pendientes de acreditación; no deben interpretarse como hechos comprobados.</p><ul class="unverified-clue-list">${unsupported.map((v,i)=>{const item=itemFor(field,v,i);const raw=typeof v==='object'?JSON.stringify(v):String(v??'');const refs=(item.evidence||[]).filter(e=>e&&typeof e==='object');const reason=refs.length?'La documentación asociada todavía no acredita este valor exacto.':'No existe una fuente específica asociada a este valor.';return `<li><span class="unverified-clue-value">${esc(raw)}</span><small>${esc(reason)}</small></li>`;}).join('')}</ul></details>`:'';
       return `<div class="tag-list">${tags}${more}</div>${clues}`;
     }
     return traceable(field,compactScalar(value,context==='table'?110:300));
