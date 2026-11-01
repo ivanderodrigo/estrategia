@@ -8,6 +8,12 @@ on:
     branches: [main]
     paths:
       - 'engine/**'
+      - 'scripts/research_supervisor.py'
+      - 'config/current/research_policy.json'
+      - 'tests/test_research_query_budget_initialization.py'
+      - 'tests/test_supervisor_research_outcome.py'
+      - 'tests/test_debt_aware_growth.py'
+      - 'tests/test_planner_claim_corroboration_priority.py'
       - '.github/workflows/research-run.yml'
       - '.github/workflows/research-daily.yml'
   schedule:
