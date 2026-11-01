@@ -1527,7 +1527,9 @@ def run(
         row = index.get((target["section"], canonical(target["entity"])))
         if not row:
             continue
-        exact_unsourced_queries = _unsourced_value_queries(\n            row, target["fields"], rotation=datetime.now(timezone.utc).date().toordinal()\n        )
+        exact_unsourced_queries = _unsourced_value_queries(
+            row, target["fields"], rotation=datetime.now(timezone.utc).date().toordinal()
+        )
         if exact_unsourced_queries:
             target["query_hints"] = list(dict.fromkeys(
                 exact_unsourced_queries + list(target.get("query_hints") or [])
