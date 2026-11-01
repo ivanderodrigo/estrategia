@@ -83,6 +83,35 @@ def _row_index(data: dict[str, Any]) -> dict[tuple[str, str], dict[str, Any]]:
     return output
 
 
+def _prioritize_research_queries(exact_queries: list[str], planned_queries: list[str], budget: int) -> list[str]:
+    """Mix atomic claims with contextual corroboration in a bounded query budget.
+
+    A 3-query daily budget previously spent all three on unqualified exact
+    strings, starving the slide-derived vendor/partner/service searches.
+    Preserve all leads for larger profiles without treating any as evidence.
+    """
+    if budget <= 0:
+        return []
+    def unique(values):
+        return list(dict.fromkeys(str(q).strip() for q in values if str(q).strip()))
+    exact, planned = unique(exact_queries), unique(planned_queries)
+    contextual = [q for q in planned if any(
+        token in q.casefold() for token in (
+            " partner", " alliance", " certification", " service",
+            " solution", " product", " case study", " assessment",
+            " awarded", " contract", " deployment",
+        )
+    )]
+    output = []
+    for bucket in (exact[:1], contextual[:1], planned[:1], exact[1:], contextual[1:], planned[1:]):
+        for query in bucket:
+            if query not in output:
+                output.append(query)
+            if len(output) >= budget:
+                return output
+    return output
+
+
 def _unsourced_value_queries(
     row: dict[str, Any], target_fields: list[str], limit: int = 3,
     *, rotation: int = 0,
@@ -1531,10 +1560,14 @@ def run(
             row, target["fields"], rotation=datetime.now(timezone.utc).date().toordinal()
         )
         if exact_unsourced_queries:
-            target["query_hints"] = list(dict.fromkeys(
-                exact_unsourced_queries + list(target.get("query_hints") or [])
-            ))[:16]
             stats["unsourced_value_queries"] += len(exact_unsourced_queries)
+        # Interleave context-specific and atomic lead queries in the *actual*
+        # profile budget, rather than letting the first three strings starve
+        # every field-aware search in daily research.
+        target["query_hints"] = _prioritize_research_queries(
+            exact_unsourced_queries, list(target.get("query_hints") or []),
+            int(query_budget.get("queries_per_entity") or 0),
+        )
         seeds = _merge_source_seeds(
             _revalidation_source_seeds(target),
             seeds_for(row, target["fields"], target=target),
