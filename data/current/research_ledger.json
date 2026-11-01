@@ -1,575 +1,89 @@
 {
   "version": "4.3.0",
   "profile": "daily",
-  "started_at": "2026-11-01T13:36:13.890171+00:00",
-  "planned_entities": 31,
+  "started_at": "2026-11-01T14:59:10.469455+00:00",
+  "planned_entities": 4,
   "rescue_targets_after_cooldown": 0,
-  "fetch_attempts": 119,
-  "fetch_successes": 99,
-  "pages_relevant": 13,
-  "candidate_evidences": 14,
-  "candidate_values_seen": 17,
-  "candidate_values_promoted": 17,
+  "fetch_attempts": 29,
+  "fetch_successes": 20,
+  "pages_relevant": 10,
+  "candidate_evidences": 1,
+  "candidate_values_seen": 1,
+  "candidate_values_promoted": 1,
   "candidate_values_rejected": 0,
   "candidate_fields_rejected": 0,
-  "accepted_evidences": 13,
-  "fields_enriched": 13,
-  "values_added": 11,
+  "accepted_evidences": 1,
+  "fields_enriched": 1,
+  "values_added": 0,
   "entities_added": 0,
-  "cache_hits": 13,
-  "circuit_skips": 106,
+  "cache_hits": 2,
+  "circuit_skips": 39,
   "unsafe_url_rejections": 0,
-  "official_sites_discovered": 2,
+  "official_sites_discovered": 0,
   "financial_links_discovered": 0,
-  "query_discovery_targets": 31,
-  "search_queries_attempted": 149,
-  "search_queries_succeeded": 144,
-  "search_provider_failures": 5,
-  "search_urls_discovered": 198,
-  "unsourced_value_queries": 58,
+  "query_discovery_targets": 4,
+  "search_queries_attempted": 16,
+  "search_queries_succeeded": 16,
+  "search_provider_failures": 0,
+  "search_urls_discovered": 50,
+  "unsourced_value_queries": 10,
   "manufacturer_revenue_rows_before": 1,
   "manufacturer_revenue_acceptances": 0,
   "stop_reason": "complete",
   "historical_lead_targets_planned": 4,
-  "historical_lead_urls_planned": 8,
-  "historical_lead_urls_attempted": 11,
-  "historical_lead_evidences_accepted": 0,
+  "historical_lead_urls_planned": 9,
+  "historical_lead_urls_attempted": 13,
+  "historical_lead_evidences_accepted": 1,
   "structured_entity_budget": 24,
   "structured_entities_added": 0,
   "structured_notices": 24,
-  "accepted_evidence_per_fetch_attempt": 0.1092,
-  "candidate_acceptance_rate": 0.9286,
+  "accepted_evidence_per_fetch_attempt": 0.0345,
+  "candidate_acceptance_rate": 1.0,
   "candidate_value_promotion_rate": 1.0,
-  "values_per_accepted_evidence": 0.8462,
+  "values_per_accepted_evidence": 0.0,
   "growth_pressure_ratio": 0.0,
   "manufacturer_revenue_rows_after": 1,
   "manufacturer_revenue_rows_added": 0,
-  "elapsed_s": 139.97,
-  "finished_at": "2026-11-01T13:38:32.671379+00:00",
-  "result_rows_total": 238,
-  "accepted_result_rows_total": 13,
+  "elapsed_s": 76.14,
+  "finished_at": "2026-11-01T15:00:24.978346+00:00",
+  "result_rows_total": 70,
+  "accepted_result_rows_total": 1,
   "results_truncated": false,
   "results": [
     {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://www.cerronavia.cl/",
-      "family": "careers",
-      "status": 0,
-      "error": "ConnectTimeout: HTTPSConnectionPool(host='www.cerronavia.cl', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.cerronavia.cl', port=443) at 0x7fa5b1b024e0>, 'Connection to www.cerronavia.",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://www.cerronavia.cl/?option=com_remository&func=select&id=2&orderby=3",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://es.wikipedia.org/wiki/Cerro_Navia",
-      "family": "careers",
+      "section": "integrators",
+      "entity": "NTT Group Europe",
+      "url": "https://aws.amazon.com/es/blogs/apn/",
+      "family": "official",
       "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://conociendochile.com/c-region-metropolitana-de-santiago/cerro-navia/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://corporacion.cerronavia.cl/",
-      "family": "careers",
-      "status": 0,
-      "error": "ConnectTimeout: HTTPSConnectionPool(host='corporacion.cerronavia.cl', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='corporacion.cerronavia.cl', port=443) at 0x7fa5b1954830>, 'Connection to",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://siac.cerronavia.cl/",
-      "family": "careers",
-      "status": 0,
-      "error": "ConnectTimeout: HTTPSConnectionPool(host='siac.cerronavia.cl', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='siac.cerronavia.cl', port=443) at 0x7fa5b1955730>, 'Connection to siac.cerronav",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://es-cl.topographic-map.com/map-ht1f3/Cerro-Chena/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://callejero.openalfa.cl/calles/cerro-chena-pudahuel-provincia-de-santiago",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://chile-streets.openalfa.com/streets/cerro-chena-pudahuel-provincia-de-santiago",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://chile-streets.openalfa.com/streets/cerro-chena-pudahuel-provincia-de-santiago",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://www.andeshandbook.org/montanismo/cerro/2537/chena/tracks",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.andeshandbook.org/montanismo/cerro/2537/chena/tracks",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://cl.maptons.com/p/2404992175",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://cl.maptons.com/p/2404992175",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://www.andeshandbook.org/montanismo/cerro/2537/chena",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.andeshandbook.org/montanismo/cerro/2537/chena",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://www.yelp.com/search?cflt=pizza&find_loc=Redmond%2C+WA+98052",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://www.yelp.com/search?find_desc=Pizza&find_loc=Redmond%2C+WA+98052",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://www.tripadvisor.com/Restaurants-g58702-c31-Redmond_Washington.html",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.tripadvisor.com/Restaurants-g58702-c31-Redmond_Washington.html",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "European Union Satellite Centre",
-      "url": "https://locations.pizzahut.com/wa/redmond/pizzeria",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
-      "url": "https://emisoras.com.mx/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
-      "url": "https://www.iheart.com/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
-      "url": "https://www.radio.net/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
-      "url": "https://www.radio.es/",
-      "family": "careers",
-      "cached": false,
-      "relevant": true,
-      "accepted": 2,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
-      "url": "https://www.emisorascolombianas.co/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Consejería delegada de ACOSOL, S.A.U.",
-      "url": "https://en.wikipedia.org/wiki/Queen_Anne,_Seattle",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Consejería delegada de ACOSOL, S.A.U.",
-      "url": "https://seattletravel.com/queen-anne-seattle/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Consejería delegada de ACOSOL, S.A.U.",
-      "url": "https://www.zillow.com/seattle-wa/queen-anne_att/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Consejería delegada de ACOSOL, S.A.U.",
-      "url": "https://seeingwashington.com/queen-anne-seattle-guide/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Consejería delegada de ACOSOL, S.A.U.",
-      "url": "https://www.queenannerealestate.com/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Imprensa Nacional-Casa da Moeda, SA",
-      "url": "https://panini.queue-it.net/?c=panini&e=paninies&ver=v3-php-3.7.4&cver=29&man=Panini%20Spain%20-%20Production%20-%20Server&t=https%3A%2F%2Fwww.panini.es%2Fshp_esp_es%2Fcromos-coleccionables%2Fdeporte%2Ffifa-world-cuptm%2Fqatar-2022.html&kupver=magento2_1.3.5",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Imprensa Nacional-Casa da Moeda, SA",
-      "url": "https://collect.fifa.com/marketplace/pn-c1-45",
-      "family": "analyst",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Imprensa Nacional-Casa da Moeda, SA",
-      "url": "https://fifapaninicollection.com/countries/qatar",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Imprensa Nacional-Casa da Moeda, SA",
-      "url": "https://www.amazon.com/Panini-World-QATAR-ALBUM-Stickers/dp/B0B9CFRSPC",
-      "family": "careers",
-      "cached": false,
-      "relevant": true,
-      "accepted": 2,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Imprensa Nacional-Casa da Moeda, SA",
-      "url": "https://www.walmart.com/ip/Panini-Fifa-World-Cup-Qatar-2022-Only-Album-Soft-Cover/1670585642",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Junta de Gobierno Local del Ayuntamiento de Jerez",
-      "url": "https://edgeservices.bing.com/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Junta de Gobierno Local del Ayuntamiento de Jerez",
-      "url": "https://techdows.com/how-to-see-all-bing-related-searches.html",
-      "family": "careers",
+      "section": "integrators",
+      "entity": "NTT Group Europe",
+      "url": "https://jobs.atos.net/",
+      "family": "official",
       "cached": false,
       "relevant": true,
       "accepted": 1,
       "status": 200
     },
     {
-      "section": "clients_public",
-      "entity": "Junta de Gobierno Local del Ayuntamiento de Jerez",
-      "url": "https://addons.mozilla.org/en-US/firefox/addon/bing-visual-search/versions/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Junta de Gobierno Local del Ayuntamiento de Jerez",
-      "url": "https://apkpure.com/es/bing-your-ai-copilot/com.microsoft.bing/versions",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Junta de Gobierno Local del Ayuntamiento de Jerez",
-      "url": "https://addons.mozilla.org/en-US/firefox/addon/bing-search-engine-/versions/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Comisión ejecutiva del Consejo de Administración de la Empresa Municipal de Transportes de Fuenlabrada, S.A.",
-      "url": "https://es.wikipedia.org/wiki/Francia",
-      "family": "careers",
+      "section": "integrators",
+      "entity": "NTT Group Europe",
+      "url": "https://www.itreseller.es/",
+      "family": "official",
       "cached": false,
       "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Comisión ejecutiva del Consejo de Administración de la Empresa Municipal de Transportes de Fuenlabrada, S.A.",
-      "url": "https://www.hoy.es/temas/lugares/francia.html",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "clients_public",
-      "entity": "Comisión ejecutiva del Consejo de Administración de la Empresa Municipal de Transportes de Fuenlabrada, S.A.",
-      "url": "https://geogra.org/es/recursos-educativos/paises-europeos-resumenes/francia/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Comisión ejecutiva del Consejo de Administración de la Empresa Municipal de Transportes de Fuenlabrada, S.A.",
-      "url": "https://www.paises.net/europa/francia/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Comisión ejecutiva del Consejo de Administración de la Empresa Municipal de Transportes de Fuenlabrada, S.A.",
-      "url": "https://humanidades.com/francia/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Institut de Diagnòstic per la Imatge (IDI)",
-      "url": "https://www.koordinaten-umrechner.de/?koordinatenfinder=1&qs=47.55555,+-122.55555",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.koordinaten-umrechner.de/?koordinatenfinder=1&qs=47.55555,+-122.55555",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Institut de Diagnòstic per la Imatge (IDI)",
-      "url": "https://www.dwell.com/discover/47.55555%2C%2B-122.55555",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.dwell.com/discover/47.55555%2C%2B-122.55555",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Institut de Diagnòstic per la Imatge (IDI)",
-      "url": "https://www.shein.com.mx/risk/challenge?captcha_type=909&redirection=https%3A%2F%2Fwww.shein.com.mx%2Fpdsearch%2F47.55555%2525252525252525252525252C%2B-122.55555&risk-id=E4943561410806227585",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Institut de Diagnòstic per la Imatge (IDI)",
-      "url": "https://www.yoreparo.com/buscar?q=47.55555%2C+-122.55555",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Institut de Diagnòstic per la Imatge (IDI)",
-      "url": "https://us.shein.com/risk/challenge?captcha_type=909&redirection=https%3A%2F%2Fus.shein.com%2Fpdsearch%2F47.55555%25252525252525252C%2B-122.55555&risk-id=E4943561417077963649",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Institut de Diagnòstic per la Imatge (IDI)",
-      "url": "https://ca.shein.com/risk/challenge?captcha_type=909&redirection=https%3A%2F%2Fca.shein.com%2Fpdsearch%2F47.55555%25252525252525252C%2B-122.55555&risk-id=E4943561424077009923",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Institut de Diagnòstic per la Imatge (IDI)",
-      "url": "https://escuelademapas.com/mapa-de-rusia/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Parc Tecnocampus Mataró",
-      "url": "https://support.google.com/docs/thread/187549444/query-function-not-returning-all-data?hl=en",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Parc Tecnocampus Mataró",
-      "url": "https://support.google.com/docs/answer/9702507?hl=en",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Parc Tecnocampus Mataró",
-      "url": "https://origin-qsstg.cummins.com/",
-      "family": "careers",
-      "status": 0,
-      "error": "RetryError: HTTPSConnectionPool(host='origin-qsstg.cummins.com', port=443): Max retries exceeded with url: / (Caused by ResponseError('too many 502 error responses'))",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Parc Tecnocampus Mataró",
-      "url": "https://www.merito.com/resources/product-release-updates/release-history/tricentis-qtest",
-      "family": "analyst",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Parc Tecnocampus Mataró",
-      "url": "https://github.com/sstsimulator/sst-downloads",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Parc Tecnocampus Mataró",
-      "url": "https://cst.cummins.com/ServiceTraining/",
+      "section": "integrators",
+      "entity": "NTT Group Europe",
+      "url": "https://aws.amazon.com/es/smart-business/solutions/artificial-intelligence-small-medium-business/?nc2=h_dsc_ex_s4",
       "family": "services",
       "cached": false,
       "relevant": false,
@@ -577,403 +91,9 @@
       "status": 200
     },
     {
-      "section": "clients_public",
-      "entity": "Ajuntament de Sant Joan Despí",
-      "url": "https://vivesantiago.cl/barrio-italia.html",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Ajuntament de Sant Joan Despí",
-      "url": "https://www.bancosantander.es/particulares",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Ajuntament de Sant Joan Despí",
-      "url": "https://www.bancosantander.es/particulares/",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Ajuntament de Sant Joan Despí",
-      "url": "https://www.santander.com/es/accionistas-e-inversores/accion-santander",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 2,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Ajuntament de Sant Joan Despí",
-      "url": "https://www.santander.com/es/accionistas-e-inversores/accion-santander/cotizacion-historica",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 2,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Majadahonda",
-      "url": "https://www.yelp.com/search?cflt=pizza&find_loc=Redmond%2C+WA+98052",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Majadahonda",
-      "url": "https://pagliacci.com/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Majadahonda",
-      "url": "https://www.pagliacci.com/locations/redmond",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Majadahonda",
-      "url": "https://pizza.dominos.com/washington/redmond",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Majadahonda",
-      "url": "https://locations.pizzahut.com/wa/redmond/pizzeria",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Majadahonda",
-      "url": "https://www.tripadvisor.com/Restaurants-g58702-c31-Redmond_Washington.html",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Junta de Gobierno del Ayuntamiento de Majadahonda",
-      "url": "https://learn.microsoft.com/en-us/answers/questions/4584243/automatically-showing-me-the-emails-in-address-boo?forum=outlook_com-all&referrer=answers",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Presidencia de la Diputación Provincial de A Coruña",
-      "url": "https://social.microsoft.com/Forums/azure/en-US/0f3f46ea-f58f-450e-8459-d1c7f8d9968f/automatic-creation-of-duplicate-contacts-in-crm-2011",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://learn.microsoft.com/en-us/archive/msdn-technet-forums/0f3f46ea-f58f-450e-8459-d1c7f8d9968f",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Presidencia de la Diputación Provincial de A Coruña",
-      "url": "https://social.microsoft.com/Forums/en-US/fdce9040-9da7-402c-a31e-0d7eb1cb4609/accessing-the-crm-lookup-window-from-an-external-application",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://learn.microsoft.com/en-us/archive/msdn-technet-forums/fdce9040-9da7-402c-a31e-0d7eb1cb4609",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Presidencia de la Diputación Provincial de A Coruña",
-      "url": "https://www.tiktok.com/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Presidencia de la Diputación Provincial de A Coruña",
-      "url": "https://www.tiktok.com/es/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Presidencia de la Diputación Provincial de A Coruña",
-      "url": "https://livecenter.tiktok.com/?lang=es",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Presidencia de la Diputación Provincial de A Coruña",
-      "url": "https://play.google.com/store/apps/details?id=com.zhiliaoapp.musically&hl=es",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Presidencia de la Diputación Provincial de A Coruña",
-      "url": "https://m.tiktok.com/signup",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Salut Sant Joan de Reus - Baix Camp",
-      "url": "https://es.wikipedia.org/wiki/Regi%C3%B3n_Metropolitana_de_Santiago",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Salut Sant Joan de Reus - Baix Camp",
-      "url": "https://mapasmilhaud.com/mapas-geograficos/mapa-de-la-region-metropolitana-de-santiago-chile-2023/",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Salut Sant Joan de Reus - Baix Camp",
-      "url": "https://www.urbanocotidiano.com/mapa_calles/chile/metropolitana-de-santiago/",
-      "family": "procurement",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Salut Sant Joan de Reus - Baix Camp",
-      "url": "https://exwww.gobiernosantiago.cl/servidor-de-mapas/",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Salut Sant Joan de Reus - Baix Camp",
-      "url": "https://satellites.pro/plano/mapa_de_Region_Metropolitana_de_Santiago_de_Chile",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Salut Sant Joan de Reus - Baix Camp",
-      "url": "https://region-metropolitana-ubohiggins.hub.arcgis.com/",
-      "family": "procurement",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Alcaldía del Ayuntamiento de Puerto Real",
-      "url": "https://www.delmundo.top/mapas/mapa-francia/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Alcaldía del Ayuntamiento de Puerto Real",
-      "url": "https://geographyquiz.io/es/mapa-de-francia",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Alcaldía del Ayuntamiento de Puerto Real",
-      "url": "https://mundomapa.com/mapa-de-francia/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Alcaldía del Ayuntamiento de Puerto Real",
-      "url": "https://www.franciaturismo.net/es/mapa-francia/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Alcaldía del Ayuntamiento de Puerto Real",
-      "url": "https://es.francemap360.com/",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://es.francemap360.com/",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Alcaldía del Ayuntamiento de Puerto Real",
-      "url": "https://www.viajarafrancia.com/mapa-de-francia/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Asamblea General del Consorcio Sierra Nevada Vega Sur",
-      "url": "https://edgeservices.bing.com/",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Asamblea General del Consorcio Sierra Nevada Vega Sur",
-      "url": "https://techdows.com/how-to-see-all-bing-related-searches.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Asamblea General del Consorcio Sierra Nevada Vega Sur",
-      "url": "https://apkpure.com/es/bing-your-ai-copilot/com.microsoft.bing/versions",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Asamblea General del Consorcio Sierra Nevada Vega Sur",
-      "url": "https://www.bing.com/?cc=in",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Asamblea General del Consorcio Sierra Nevada Vega Sur",
-      "url": "https://addons.mozilla.org/en-US/firefox/addon/bing-visual-search/versions/",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Gestión Económica, Contratación e Infraestructuras de la Conselleria de Sanidad",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Gestión Económica, Contratación e Infraestructuras de la Conselleria de Sanidad",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Gestión Económica, Contratación e Infraestructuras de la Conselleria de Sanidad",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/inicio/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zinYItLBydDB0NDIxDLQwczQIDnS1dDIwMLI31C7IdFQFQSibi/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Gestión Económica, Contratación e Infraestructuras de la Conselleria de Sanidad",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/datos_abiertos/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLfxMLRydDB0N_M0tXQwCjd0sTcz8AgJCLMz1C7IdFQEVbuag/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Comisión ejecutiva del Consejo de Administración de la Empresa Municipal de Transportes de Fuenlabrada, S.A.",
-      "url": "https://es.wikipedia.org/wiki/Francia",
+      "section": "integrators",
+      "entity": "NTT Group Europe",
+      "url": "https://www.firemon.com/partners/find-a-partner",
       "family": "official",
       "cached": false,
       "relevant": true,
@@ -981,103 +101,9 @@
       "status": 200
     },
     {
-      "section": "clients_public",
-      "entity": "Estado-Maior-General das Forças Armadas (EMGFA)",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Estado-Maior-General das Forças Armadas (EMGFA)",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Estado-Maior-General das Forças Armadas (EMGFA)",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/inicio/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zinYItLBydDB0NDIxDLQwczQIDnS1dDIwMLI31C7IdFQFQSibi/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Estado-Maior-General das Forças Armadas (EMGFA)",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/datos_abiertos/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLfxMLRydDB0N_M0tXQwCjd0sTcz8AgJCLMz1C7IdFQEVbuag/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.gartner.com/en/documents/7169730",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.exclusive-networks.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.exclusive-networks.com/alliances",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.exclusive-networks.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.exclusive-networks.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.exclusive-networks.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.exclusive-networks.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/",
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://www.cellnex.com/",
       "family": "official",
       "cached": false,
       "relevant": true,
@@ -1085,1045 +111,85 @@
       "status": 200
     },
     {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/actualidad",
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://www.cellnex.com/",
       "family": "news",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.okta.com/actualidad",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/alianzas",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.okta.com/alianzas",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.okta.com/alliances",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/analyst",
-      "family": "analyst",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.okta.com/analyst",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/company/careers/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
+      "cached": true,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.okta.com/carreiras",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.okta.com/case-studies",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.okta.com/casos",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.okta.com/clientes",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.okta.com/customer-stories",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/feed",
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://www.cellnex.com/actualidad",
       "family": "news",
       "status": 0,
-      "error": "domain-circuit-open",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cellnex.com/actualidad",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://www.cellnex.com/use-cases/cloudskin-adaptive-virtualization-for-ai-enabled-cloud-edge-continuum/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
     },
     {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/line-card",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/market",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/portfolio",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/press",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/reports",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/research",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/resources",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/sitemap.xml",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/sitemap.xml",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/vendors",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/sites/default/files/2021-10/PT_SIA_v4.pdf",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/products/adaptive-multi-factor-authentication/",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/products/single-sign-on-workforce-identity/",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.okta.com/solutions/secure-ciam/",
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://www.cellnex.com/cybersecurity",
       "family": "services",
       "status": 0,
-      "error": "domain-circuit-open",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cellnex.com/cybersecurity",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://www.levelblue.com/technology-partners",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Okta",
-      "url": "https://certesnetworks.com/partners/",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.gartner.com/en/documents/7169730",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/en.html",
-      "family": "official",
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://www.cellnex.com/",
+      "family": "news",
       "cached": false,
       "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/actualidad",
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://www.cellnex.com/insights",
       "family": "news",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.pingidentity.com/en/rewrites/actualidad.html",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cellnex.com/gb-en/download/insights-report-are-the-uks-offices-future-fit/",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/alianzas",
-      "family": "partners",
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://www.cellnex.com/managed-services",
+      "family": "services",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.pingidentity.com/en/rewrites/alianzas.html",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cellnex.com/managed-services",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/alliances",
-      "family": "partners",
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://www.cellnex.com/networking",
+      "family": "services",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.pingidentity.com/en/rewrites/alliances.html",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.cellnex.com/networking",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/analyst",
-      "family": "analyst",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.pingidentity.com/en/rewrites/analyst.html",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/en/company/careers.html",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.pingidentity.com/en/rewrites/carreiras.html",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.pingidentity.com/en/rewrites/case-studies.html",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.pingidentity.com/en/rewrites/casos.html",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.pingidentity.com/en/rewrites/clientes.html",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.pingidentity.com/en/rewrites/customer-stories.html",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/en/lp/p/accenture.html",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/feed",
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://www.cellnex.com/sections/news/",
       "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/line-card",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/market",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/portfolio",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/press",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/press-releases",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/reports",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/research",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/resources",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/robots.txt",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/sitemap.xml",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/sitemap.xml",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/sitemap.xml",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/sitemap.xml",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/success-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/vendors",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.pingidentity.com/en/platform/pricing.html",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://www.levelblue.com/technology-partners",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "url": "https://certesnetworks.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "IREO",
-      "url": "https://www.itreseller.es/distribucion/2020/02/ireo-se-convierte-en-mayorista-para-espana-y-portugal-de-ping-identity",
-      "family": "partners",
       "cached": false,
       "relevant": true,
       "accepted": 0,
@@ -2131,8 +197,8 @@
     },
     {
       "section": "distributors",
-      "entity": "IREO",
-      "url": "https://www.ireo.com/alianzas",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/sobreNos.php",
       "family": "partners",
       "cached": false,
       "relevant": false,
@@ -2141,29 +207,427 @@
     },
     {
       "section": "distributors",
-      "entity": "IREO",
-      "url": "https://www.ireo.com/alliances",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/sobreNos.php",
+      "family": "careers",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/alianzas",
       "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.inforfoco.pt/alianzas",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.inforfoco.pt/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.inforfoco.pt/careers",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.inforfoco.pt/carreiras",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.inforfoco.pt/case-studies",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/sitemap.xml",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/sobreNos.php",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.inforfoco.pt/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.itchannel.pt/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.itchannel.pt/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.itchannel.pt/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.itchannel.pt/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://www.itchannel.pt/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://multimac.pt/servicos-e-solucoes/",
+      "family": "services",
       "cached": false,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "distributors",
-      "entity": "IREO",
-      "url": "https://www.ireo.com/careers",
-      "family": "careers",
+      "entity": "Inforfoco Distribuição",
+      "url": "https://multimac.pt/solucoes-documentais/",
+      "family": "services",
       "cached": false,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "distributors",
-      "entity": "IREO",
-      "url": "https://www.ireo.com/carreiras",
-      "family": "careers",
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://www.gartner.com/en/documents/6808434",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://www.prnewswire.com/news-releases/cnapp-to-reach-12-9-b-by-2030-as-cloud-security-becomes-a-platform-power-play-according-to-delloro-group-302659029.html",
+      "family": "services",
       "cached": false,
       "relevant": false,
       "accepted": 0,
@@ -2171,8 +635,26 @@
     },
     {
       "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/articles/hype-cycle-for-agentic-ai",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://www.gartner.com/reviews/market/cloud-web-application-and-api-protection/vendor/f5/alternatives",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://investor.forrester.com/news-releases/news-release-details/forrester-global-sovereignty-forecast-despite-rising/",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://investor.forrester.com/news-releases/news-release-details/forrester-global-sovereignty-forecast-despite-rising/",
+      "accepted": 0
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://www.gartner.com/en/documents/6808434",
       "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
@@ -2180,8 +662,8 @@
     },
     {
       "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.idc.com/resource-center/blog/emea-it-market-2026-q2-updates-5-key-takeaways-on-ai-it-spending-and-market-trends/",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://www.idc.com/resource-center/blog/",
       "family": "analyst",
       "cached": false,
       "relevant": false,
@@ -2190,80 +672,7 @@
     },
     {
       "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/7455226",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/8142929",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-07-20-gartner-forecasts-worldwide-ai-platforms-and-models-market-to-grow-63-percent-in-2026",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/articles/hype-cycle-for-agentic-ai",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/7455226",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/8142929",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.idc.com/eu/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.gartner.com/en/documents/8049333",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
+      "entity": "Cloud Native Security / CNAPP",
       "url": "https://www.forrester.com/technology/",
       "family": "technology",
       "cached": false,
@@ -2273,20 +682,20 @@
     },
     {
       "section": "trends",
-      "entity": "Agentic Automation",
+      "entity": "Cloud Native Security / CNAPP",
+      "url": "https://www.forrester.com/blogs/europes-2026-tech-spend-exceeds-e1-5-trillion-driven-by-ai-cloud-and-sovereignty/",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
       "url": "https://news.google.com/home?hl=es-419&gl=US&ceid=US:es-419",
       "family": "official",
       "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Agentic Automation",
-      "url": "https://www.forrester.com/technology/",
-      "family": "analyst",
-      "cached": true,
       "relevant": false,
       "accepted": 0,
       "status": 200
