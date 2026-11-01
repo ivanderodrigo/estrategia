@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-11-01T12:06:33.312450+00:00",
+  "generated_at": "2026-11-01T13:38:47.494088+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -109,6 +109,14 @@
     {
       "id": "clie_e3bb077383ca4765",
       "canonical_name": "Ajuntament de Reus",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_861e787457805c4d",
+      "canonical_name": "Ajuntament de Sant Joan Despí",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -285,6 +293,14 @@
     {
       "id": "clie_bc808763e52471c5",
       "canonical_name": "Centro de Documentación Judicial",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_f540aac57a9bc067",
+      "canonical_name": "Comisión ejecutiva del Consejo de Administración de la Empresa Municipal de Transportes de Fuenlabrada, S.A.",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -491,6 +507,14 @@
       "historical_names": []
     },
     {
+      "id": "clie_bec3d276cea33051",
+      "canonical_name": "Imprensa Nacional-Casa da Moeda, SA",
+      "entity_type": "client",
+      "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
       "id": "clie_2f1f5a050bbfc8b7",
       "canonical_name": "Inditex",
       "entity_type": "client",
@@ -551,6 +575,14 @@
       "canonical_name": "Jerónimo Martins",
       "entity_type": "client",
       "country": "PT",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_42011237ef81f63d",
+      "canonical_name": "Junta de Gobierno Local del Ayuntamiento de Jerez",
+      "entity_type": "client",
+      "country": "ES",
       "aliases": [],
       "historical_names": []
     },
@@ -701,6 +733,14 @@
     {
       "id": "clie_1eb3a14ee1ca62f1",
       "canonical_name": "Puig Brands",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_1de5e4857f08536b",
+      "canonical_name": "RADIO TELEVISIÓN MADRID, S.A.U.",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -2614,7 +2654,7 @@
       "id": "tech_e767adbaaec3b48b",
       "canonical_name": "AI / Data",
       "entity_type": "technology",
-      "country": "PT",
+      "country": "ES",
       "aliases": [],
       "historical_names": []
     },
@@ -6187,7 +6227,9 @@
           "item_value": "AWS",
           "item_key": "aws",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "AWS",
@@ -6340,7 +6382,9 @@
           "item_value": "Zscaler",
           "item_key": "zscaler",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "okta.com",
@@ -6369,7 +6413,9 @@
           "item_value": "Zscaler",
           "item_key": "zscaler",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "zscaler.com",
@@ -6398,7 +6444,9 @@
           "item_value": "Zscaler",
           "item_key": "zscaler",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "Zscaler",
@@ -6515,7 +6563,9 @@
           "item_value": "Okta",
           "item_key": "okta",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "Okta",
@@ -6580,7 +6630,9 @@
           "item_value": "CrowdStrike",
           "item_key": "crowdstrike",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "CrowdStrike",
@@ -6645,7 +6697,9 @@
           "item_value": "Anomali",
           "item_key": "anomali",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "Anomali",
@@ -6710,7 +6764,9 @@
           "item_value": "Proofpoint",
           "item_key": "proofpoint",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "Proofpoint",
@@ -6828,7 +6884,9 @@
           "item_value": "AWS",
           "item_key": "aws",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "aws.amazon.com",
@@ -6857,7 +6915,9 @@
           "item_value": "AWS",
           "item_key": "aws",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "AWS",
@@ -7118,7 +7178,9 @@
           "item_value": "CrowdStrike",
           "item_key": "crowdstrike",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "CrowdStrike / Telefónica Tech",
@@ -7183,7 +7245,9 @@
           "item_value": "EfficientIP",
           "item_key": "efficientip",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "MuyCanal · entrevista a EfficientIP Iberia",
@@ -8416,7 +8480,9 @@
           "item_value": "Extreme Networks",
           "item_key": "extreme networks",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "extremenetworks.com",
@@ -8445,7 +8511,9 @@
           "item_value": "Extreme Networks",
           "item_key": "extreme networks",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "Extreme Networks",
@@ -9542,7 +9610,9 @@
           "item_value": "Cisco",
           "item_key": "cisco",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "Cisco España",
@@ -9659,7 +9729,9 @@
           "item_value": "Check Point",
           "item_key": "check point",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "Check Point",
@@ -9724,7 +9796,9 @@
           "item_value": "AWS",
           "item_key": "aws",
           "atomic": true,
-          "revalidation": "historical-source-refetched"
+          "revalidation": "historical-source-refetched",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "crowdstrike.com",
@@ -9753,7 +9827,9 @@
           "item_value": "AWS",
           "item_key": "aws",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "okta.com",
@@ -9782,7 +9858,9 @@
           "item_value": "AWS",
           "item_key": "aws",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "AWS Partner Network",
@@ -9863,7 +9941,9 @@
           "item_value": "Okta",
           "item_key": "okta",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "Okta Identity Summit Madrid",
@@ -9964,7 +10044,9 @@
           "item_value": "CrowdStrike",
           "item_key": "crowdstrike",
           "atomic": true,
-          "revalidation": "historical-source-refetched"
+          "revalidation": "historical-source-refetched",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "crowdstrike.com",
@@ -9993,7 +10075,9 @@
           "item_value": "CrowdStrike",
           "item_key": "crowdstrike",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "okta.com",
@@ -10022,7 +10106,9 @@
           "item_value": "CrowdStrike",
           "item_key": "crowdstrike",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "CrowdStrike",
@@ -10087,7 +10173,9 @@
           "item_value": "Proofpoint",
           "item_key": "proofpoint",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "Proofpoint",
@@ -10390,7 +10478,9 @@
           "item_value": "AWS",
           "item_key": "aws",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "checkpoint.com",
@@ -10419,7 +10509,9 @@
           "item_value": "AWS",
           "item_key": "aws",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "DXC Technology",
@@ -10484,7 +10576,9 @@
           "item_value": "Proofpoint",
           "item_key": "proofpoint",
           "atomic": true,
-          "revalidation": "historical-source-refetched"
+          "revalidation": "historical-source-refetched",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "Proofpoint",
@@ -10913,7 +11007,9 @@
           "item_value": "CrowdStrike",
           "item_key": "crowdstrike",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "CrowdStrike",
@@ -13532,7 +13628,9 @@
           "item_value": "AWS",
           "item_key": "aws",
           "atomic": true,
-          "revalidation": "historical-source-refetched"
+          "revalidation": "historical-source-refetched",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "AWS Partner Network",
@@ -15158,7 +15256,9 @@
           "item_value": "Cisco",
           "item_key": "cisco",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "Cisco España",
@@ -15321,7 +15421,9 @@
           "item_value": "Cisco",
           "item_key": "cisco",
           "atomic": true,
-          "revalidation": "historical-source-refetched"
+          "revalidation": "historical-source-refetched",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "Cisco España",
@@ -15778,7 +15880,9 @@
           "item_value": "Cisco",
           "item_key": "cisco",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "Cisco España",
@@ -16307,7 +16411,9 @@
           "item_value": "Cisco",
           "item_key": "cisco",
           "atomic": true,
-          "revalidation": "historical-source-refetched"
+          "revalidation": "historical-source-refetched",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "Telefónica Tech",
@@ -17246,7 +17352,9 @@
           "item_value": "Menlo Security",
           "item_key": "menlo security",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "menlosecurity.com",
@@ -17275,7 +17383,9 @@
           "item_value": "Menlo Security",
           "item_key": "menlo security",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "Menlo Security",
@@ -17340,7 +17450,9 @@
           "item_value": "Cisco",
           "item_key": "cisco",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "Cisco España",
@@ -26175,7 +26287,9 @@
           "item_value": "Nokia",
           "item_key": "nokia",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "nokia.com",
@@ -26251,7 +26365,9 @@
           "item_value": "Palo Alto Networks",
           "item_key": "palo alto networks",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "okta.com",
@@ -26280,7 +26396,9 @@
           "item_value": "Palo Alto Networks",
           "item_key": "palo alto networks",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "nokia.com",
@@ -26357,7 +26475,9 @@
           "item_value": "AWS",
           "item_key": "aws",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "okta.com",
@@ -26386,7 +26506,9 @@
           "item_value": "AWS",
           "item_key": "aws",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "nokia.com",
@@ -26435,7 +26557,9 @@
           "item_value": "Zscaler",
           "item_key": "zscaler",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "crowdstrike.com",
@@ -27376,7 +27500,9 @@
           "item_value": "Zscaler",
           "item_key": "zscaler",
           "atomic": true,
-          "revalidation": "historical-source-refetched"
+          "revalidation": "historical-source-refetched",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "crowdstrike.com",
@@ -27405,7 +27531,9 @@
           "item_value": "Zscaler",
           "item_key": "zscaler",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "okta.com",
@@ -27434,7 +27562,9 @@
           "item_value": "Zscaler",
           "item_key": "zscaler",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "aws.amazon.com",
@@ -27681,7 +27811,9 @@
           "item_value": "Nokia",
           "item_key": "nokia",
           "atomic": true,
-          "revalidation": "historical-source-refetched"
+          "revalidation": "historical-source-refetched",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "nokia.com",
@@ -27710,7 +27842,9 @@
           "item_value": "Nokia",
           "item_key": "nokia",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "nokia.com",
@@ -27739,7 +27873,9 @@
           "item_value": "Nokia",
           "item_key": "nokia",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "DXC Technology Spain",
@@ -27815,7 +27951,9 @@
           "item_value": "Check Point",
           "item_key": "check point",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "checkpoint.com",
@@ -27844,7 +27982,9 @@
           "item_value": "Check Point",
           "item_key": "check point",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "checkpoint.com",
@@ -27941,7 +28081,9 @@
           "item_value": "Palo Alto Networks",
           "item_key": "palo alto networks",
           "atomic": true,
-          "revalidation": "historical-source-refetched"
+          "revalidation": "historical-source-refetched",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "nokia.com",
@@ -28169,7 +28311,9 @@
           "item_value": "Nokia",
           "item_key": "nokia",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "Nokia",
@@ -28241,7 +28385,9 @@
           "item_value": "Palo Alto Networks",
           "item_key": "palo alto networks",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "Nokia",
@@ -28314,7 +28460,9 @@
           "item_value": "AWS",
           "item_key": "aws",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "EY",
@@ -28363,7 +28511,9 @@
           "item_value": "Zscaler",
           "item_key": "zscaler",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "crowdstrike.com",
@@ -29080,7 +29230,9 @@
           "item_value": "AttackIQ",
           "item_key": "attackiq",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         },
         {
           "source": "attackiq.com",
@@ -29109,7 +29261,9 @@
           "item_value": "AttackIQ",
           "item_key": "attackiq",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "attackiq.com",
@@ -29158,7 +29312,9 @@
           "item_value": "Check Point",
           "item_key": "check point",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "checkpoint.com",
@@ -29207,7 +29363,9 @@
           "item_value": "AWS",
           "item_key": "aws",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "checkpoint.com",
@@ -29256,7 +29414,9 @@
           "item_value": "XM Cyber",
           "item_key": "xm cyber",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "xmcyber.com",
@@ -29353,7 +29513,9 @@
           "item_value": "AudioCodes",
           "item_key": "audiocodes",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "audiocodes.com",
@@ -29402,7 +29564,9 @@
           "item_value": "Zscaler",
           "item_key": "zscaler",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "zscaler.com",
@@ -29532,7 +29696,9 @@
           "item_value": "Check Point",
           "item_key": "check point",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "checkpoint.com",
@@ -30749,7 +30915,9 @@
           "item_value": "XM Cyber",
           "item_key": "xm cyber",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "xmcyber.com",
@@ -30798,7 +30966,9 @@
           "item_value": "AttackIQ",
           "item_key": "attackiq",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "attackiq.com",
@@ -30847,7 +31017,9 @@
           "item_value": "AudioCodes",
           "item_key": "audiocodes",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "audiocodes.com",
@@ -30896,7 +31068,9 @@
           "item_value": "Claroty",
           "item_key": "claroty",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "claroty.com",
@@ -31582,7 +31756,9 @@
           "item_value": "Palo Alto Networks",
           "item_key": "palo alto networks",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "firemon.com",
@@ -31631,7 +31807,9 @@
           "item_value": "Juniper Networks",
           "item_key": "juniper networks",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "firemon.com",
@@ -31680,7 +31858,9 @@
           "item_value": "Microsoft Azure",
           "item_key": "microsoft azure",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "firemon.com",
@@ -31729,7 +31909,9 @@
           "item_value": "Check Point",
           "item_key": "check point",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "firemon.com",
@@ -31778,7 +31960,9 @@
           "item_value": "Zscaler",
           "item_key": "zscaler",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "firemon.com",
@@ -31827,7 +32011,9 @@
           "item_value": "FireMon",
           "item_key": "firemon",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "firemon.com",
@@ -31876,7 +32062,9 @@
           "item_value": "Akamai",
           "item_key": "akamai",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "firemon.com",
@@ -31925,7 +32113,9 @@
           "item_value": "Cisco",
           "item_key": "cisco",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "firemon.com",
@@ -31974,7 +32164,9 @@
           "item_value": "AWS",
           "item_key": "aws",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "firemon.com",
@@ -32074,7 +32266,9 @@
           "item_value": "Nokia",
           "item_key": "nokia",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "nokia.com",
@@ -32123,7 +32317,9 @@
           "item_value": "Palo Alto Networks",
           "item_key": "palo alto networks",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "A2",
+          "source_role": "Fuente primaria externa"
         }
       ],
       "source": "nokia.com",
@@ -32268,6 +32464,104 @@
       "derived": false
     },
     {
+      "id": "rel_4a73bd8d60384255",
+      "entity_a_id": "clie_1de5e4857f08536b",
+      "entity_a": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "radio.es",
+          "source_catalog_name": "RADIO TELEVISIÓN MADRID, S.A.U.",
+          "researched_entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+          "source_binding": "atomic-item",
+          "title": "Escuchar radio online y música gratis",
+          "url": "https://www.radio.es/",
+          "date": "2026-11-01",
+          "description": "…Para ello, se utilizan los llamados servidores de streaming. Los receptores u oyentes se conectan directamente a estos servidores a través de la URL de streaming. Las capacidades de un servidor siempre tienen un límite técnico, por lo que el número de oyentes simultáneos es limitado.…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "search-discovery:official-owned-host",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-11-01",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "062f6fc384801e62ca6cefda7a049a30f1dda5a9dbe4c5e0171b4fb89b133f6a",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "radio.es",
+      "date": "2026-11-01",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_a729b8e6718ef245",
+      "entity_a_id": "clie_1de5e4857f08536b",
+      "entity_a": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_e767adbaaec3b48b",
+      "entity_b": "AI / Data",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "radio.es",
+          "source_catalog_name": "RADIO TELEVISIÓN MADRID, S.A.U.",
+          "researched_entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+          "source_binding": "atomic-item",
+          "title": "Escuchar radio online y música gratis",
+          "url": "https://www.radio.es/",
+          "date": "2026-11-01",
+          "description": "…l Humor Delirios de España. Las frivolidades que cambiaron un país Cultura y sociedad, Documental Inglés desde cero Aprendizaje de idiomas, Educación Arpa Talks Ciencias Podimo True Crime Cultura y sociedad, Documental, True crime El Test de Turing - Inteligencia Artificial IA Aplicada a Negocio Tecnol…",
+          "scope": "ES",
+          "scope_provenance": "explicit-text",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "search-discovery:official-owned-host",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-11-01",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "062f6fc384801e62ca6cefda7a049a30f1dda5a9dbe4c5e0171b4fb89b133f6a",
+          "matched_terms": [
+            "inteligencia artificial"
+          ],
+          "field": "technology_signals",
+          "item_value": "AI / Data",
+          "item_key": "ai data",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "radio.es",
+      "date": "2026-11-01",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
       "id": "rel_bbd1f9c65d049074",
       "entity_a_id": "clie_9ba7a6b59096d303",
       "entity_a": "European Commission, DG BUDG - Budget",
@@ -32364,6 +32658,55 @@
       ],
       "source": "en.wikipedia.org",
       "date": "2026-10-31",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_4abbbb4c99f0dfeb",
+      "entity_a_id": "clie_42011237ef81f63d",
+      "entity_a": "Junta de Gobierno Local del Ayuntamiento de Jerez",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_000e793db70c5930",
+      "entity_b": "Cloud",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "techdows.com",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Junta de Gobierno Local del Ayuntamiento de Jerez",
+          "source_binding": "atomic-item",
+          "title": "How To See All Bing Related Searches - Techdows",
+          "url": "https://techdows.com/how-to-see-all-bing-related-searches.html",
+          "date": "2026-11-01",
+          "description": "…d Download PHP for Windows PHP2Shell by platform PHP 8.3 fix on Ubuntu 24.04 PHP 8.1 fix on Ubuntu 22.04 PHP 8.2 and 8.4 fix on Debian Update PHP on IIS Cloudflare PHP2Shell WAF rule All PHP guides → News How To See All Bing Related Searches September 24, 2026 by Philip Celasco Leave…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-11-01",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "2d9acec2de5bfed776ba08764946b718d0e0a1cbbabec9ce2d34a1a1362cce3e",
+          "matched_terms": [
+            "cloud"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cloud",
+          "item_key": "cloud",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "techdows.com",
+      "date": "2026-11-01",
       "confidence": 0.48,
       "status": "SEÑAL",
       "validity": "needs-corroboration",
@@ -32523,6 +32866,55 @@
       "derived": true
     },
     {
+      "id": "rel_1dcefc97517f380e",
+      "entity_a_id": "clie_bec3d276cea33051",
+      "entity_a": "Imprensa Nacional-Casa da Moeda, SA",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_000e793db70c5930",
+      "entity_b": "Cloud",
+      "countries": [
+        "PT"
+      ],
+      "country": "PT",
+      "evidence": [
+        {
+          "source": "amazon.com",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Imprensa Nacional-Casa da Moeda, SA",
+          "source_binding": "atomic-item",
+          "title": "Amazon.com: Panini FIFA Copa del Mundo QATAR 2022 - Álbum + Caja (50 paquetes, 5 cromos por paquete) : Todo lo demás",
+          "url": "https://www.amazon.com/Panini-World-QATAR-ALBUM-Stickers/dp/B0B9CFRSPC",
+          "date": "2026-11-01",
+          "description": "…l Estados Unidos Amazon Music Reproduce millones de canciones Amazon Advertising Encontrar, atraer y captar clientes 6pm Descubre ofertas en marcas de moda AbeBooks Libros, arte & artículos de colección ACX Editorial de Audiolibros Hecho Fácil Venda en Amazon Comience una cuenta de v…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "PT",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-11-01",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "6763cfc6618fda25255ef67bd4bf0978f719d86da066a2c1f16b2c4ede1de333",
+          "matched_terms": [
+            "nube"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cloud",
+          "item_key": "cloud",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "amazon.com",
+      "date": "2026-11-01",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
       "id": "rel_01c64139119b6169",
       "entity_a_id": "clie_64031fbc1753001e",
       "entity_a": "Município de Silves",
@@ -32612,7 +33004,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "visme.co",
@@ -32661,7 +33055,9 @@
           "item_value": "Identity & Access",
           "item_key": "identity access",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "visme.co",
@@ -32761,7 +33157,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "santander.com",
@@ -32789,6 +33187,320 @@
           "field": "technology_signals",
           "item_value": "Networking",
           "item_key": "networking",
+          "atomic": true,
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
+        }
+      ],
+      "source": "santander.com",
+      "date": "2026-11-01",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_de94c1160a115f38",
+      "entity_a_id": "clie_f540aac57a9bc067",
+      "entity_a": "Comisión ejecutiva del Consejo de Administración de la Empresa Municipal de Transportes de Fuenlabrada, S.A.",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_70574f8129932ee1",
+      "entity_b": "Identity & Access",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "es.wikipedia.org",
+          "source_catalog_name": "es.wikipedia.org",
+          "researched_entity": "Comisión ejecutiva del Consejo de Administración de la Empresa Municipal de Transportes de Fuenlabrada, S.A.",
+          "source_binding": "atomic-item",
+          "title": "Francia - Wikipedia, la enciclopedia libre",
+          "url": "https://es.wikipedia.org/wiki/Francia",
+          "date": "2026-11-01",
+          "description": "…iocho regiones integrales (cinco de las cuales son de ultramar) abarcan una superficie combinada de 643 801 km 2 y más de 68 millones de personas. [ 7 ] Culturalmente, pertenece a la Europa latina . Francia limita con nueve países en Europa ( Bélgica , Luxemburgo , Alemania , Suiza , Ital…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-11-01",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "c2e189fd5cba7a69729e122ef71c58cd3d5ed739ebd0a87b64fb71a67f3e6459",
+          "matched_terms": [
+            "identidad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Identity & Access",
+          "item_key": "identity access",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "es.wikipedia.org",
+      "date": "2026-11-01",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_59edc89d4afa1bdf",
+      "entity_a_id": "clie_861e787457805c4d",
+      "entity_a": "Ajuntament de Sant Joan Despí",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_70574f8129932ee1",
+      "entity_b": "Identity & Access",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "vivesantiago.cl",
+          "source_catalog_name": "vivesantiago.cl",
+          "researched_entity": "Ajuntament de Sant Joan Despí",
+          "source_binding": "atomic-item",
+          "title": "Barrio Italia · VIVE Santiago",
+          "url": "https://vivesantiago.cl/barrio-italia.html",
+          "date": "2026-11-01",
+          "description": "…límite entre Providencia y Ñuñoa. Los antiguos galpones de mueblistas y talleres de restauración dieron paso a un circuito de anticuarios que, desde los años noventa, definió la identidad comercial del barrio. Hoy las casonas se organizan en patios y galerías interiores: tiendas de diseñ…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "B",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-11-01",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "0690ebfd882fe51e52a04c7278c378d783e2d0bc88b81810246f83195d06d430",
+          "matched_terms": [
+            "identidad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Identity & Access",
+          "item_key": "identity access",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "vivesantiago.cl",
+      "date": "2026-11-01",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_78eff8d9911babb3",
+      "entity_a_id": "clie_861e787457805c4d",
+      "entity_a": "Ajuntament de Sant Joan Despí",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "bancosantander.es",
+          "source_catalog_name": "bancosantander.es",
+          "researched_entity": "Ajuntament de Sant Joan Despí",
+          "source_binding": "atomic-item",
+          "title": "Particulares - Banco Santander",
+          "url": "https://www.bancosantander.es/particulares",
+          "date": "2026-11-01",
+          "description": "…contraten por primera vez la Tarjeta Crédito Santander. Consulta condiciones de la promoción aquí . 4. El servicio de eSIM es prestado por Gigs GmbH, con Tax ID n° 87 HRB220086 y domicilio en Bergstr. 77, 10115 Berlin, Alemania. Banco Santander actúa como canal de comercialización y no es re…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "search-discovery:official-owned-host",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-11-01",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "6ab976b1722b642532760c976be06095f1960cd7103e003148b2a2436099674a",
+          "matched_terms": [
+            "conectividad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "bancosantander.es",
+          "source_catalog_name": "bancosantander.es",
+          "researched_entity": "Ajuntament de Sant Joan Despí",
+          "source_binding": "atomic-item",
+          "title": "Particulares - Banco Santander",
+          "url": "https://www.bancosantander.es/particulares/",
+          "date": "2026-11-01",
+          "description": "…contraten por primera vez la Tarjeta Crédito Santander. Consulta condiciones de la promoción aquí . 4. El servicio de eSIM es prestado por Gigs GmbH, con Tax ID n° 87 HRB220086 y domicilio en Bergstr. 77, 10115 Berlin, Alemania. Banco Santander actúa como canal de comercialización y no es re…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-11-01",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "6ab976b1722b642532760c976be06095f1960cd7103e003148b2a2436099674a",
+          "matched_terms": [
+            "conectividad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "santander.com",
+          "source_catalog_name": "santander.com",
+          "researched_entity": "Ajuntament de Sant Joan Despí",
+          "source_binding": "atomic-item",
+          "title": "Acción Santander | Accionistas e Inversores | Banco Santander",
+          "url": "https://www.santander.com/es/accionistas-e-inversores/accion-santander",
+          "date": "2026-11-01",
+          "description": "…a Santander Cuenta Accionista Cuenta de Reinversión del Dividendo Cursos Santander Sala de Comunicación Notas de Prensa Recursos para medios Especiales Redes sociales Santander Conferencia Internacional de Banca Public Policy & Research Centre Trabaja con nosotros Oportunidades abiert…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "B",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-11-01",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "36706562d33746cd9c3755311e1671747df712893cdeebc7274658d21b304940",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "santander.com",
+          "source_catalog_name": "santander.com",
+          "researched_entity": "Ajuntament de Sant Joan Despí",
+          "source_binding": "atomic-item",
+          "title": "Cotización histórica | Accionistas e Inversores | Banco Santander",
+          "url": "https://www.santander.com/es/accionistas-e-inversores/accion-santander/cotizacion-historica",
+          "date": "2026-11-01",
+          "description": "…a Santander Cuenta Accionista Cuenta de Reinversión del Dividendo Cursos Santander Sala de Comunicación Notas de Prensa Recursos para medios Especiales Redes sociales Santander Conferencia Internacional de Banca Public Policy & Research Centre Trabaja con nosotros Oportunidades abiert…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "B",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-11-01",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "1305364bdb936cefd2be974cf735f090814296b6a4bb5d3839d1851d25c7ad9d",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "bancosantander.es",
+      "date": "2026-11-01",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_5bea2a9adcda7686",
+      "entity_a_id": "clie_861e787457805c4d",
+      "entity_a": "Ajuntament de Sant Joan Despí",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_e767adbaaec3b48b",
+      "entity_b": "AI / Data",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "santander.com",
+          "source_catalog_name": "santander.com",
+          "researched_entity": "Ajuntament de Sant Joan Despí",
+          "source_binding": "atomic-item",
+          "title": "Acción Santander | Accionistas e Inversores | Banco Santander",
+          "url": "https://www.santander.com/es/accionistas-e-inversores/accion-santander",
+          "date": "2026-11-01",
+          "description": "…stros clientes Educación, empleabilidad y emprendimiento Educación Empleabilidad Emprendimiento Otras iniciativas de apoyo a la comunidad Datos e Inteligencia Artificial Políticas, informes, data pack y ESG ratings Accionistas e inversores Acción Santander Cotización Cotización histórica Remuneración a…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "B",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-11-01",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "36706562d33746cd9c3755311e1671747df712893cdeebc7274658d21b304940",
+          "matched_terms": [
+            "inteligencia artificial"
+          ],
+          "field": "technology_signals",
+          "item_value": "AI / Data",
+          "item_key": "ai data",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "santander.com",
+          "source_catalog_name": "santander.com",
+          "researched_entity": "Ajuntament de Sant Joan Despí",
+          "source_binding": "atomic-item",
+          "title": "Cotización histórica | Accionistas e Inversores | Banco Santander",
+          "url": "https://www.santander.com/es/accionistas-e-inversores/accion-santander/cotizacion-historica",
+          "date": "2026-11-01",
+          "description": "…stros clientes Educación, empleabilidad y emprendimiento Educación Empleabilidad Emprendimiento Otras iniciativas de apoyo a la comunidad Datos e Inteligencia Artificial Políticas, informes, data pack y ESG ratings Accionistas e inversores Acción Santander Cotización Cotización histórica Remuneración a…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "B",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-11-01",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "1305364bdb936cefd2be974cf735f090814296b6a4bb5d3839d1851d25c7ad9d",
+          "matched_terms": [
+            "inteligencia artificial"
+          ],
+          "field": "technology_signals",
+          "item_value": "AI / Data",
+          "item_key": "ai data",
           "atomic": true,
           "revalidation": ""
         }
@@ -33065,7 +33777,9 @@
           "item_value": "Cybersecurity",
           "item_key": "cybersecurity",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "elgrupoinformatico.com",
@@ -33114,7 +33828,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "elgrupoinformatico.com",
@@ -35273,7 +35989,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "es.wikipedia.org",

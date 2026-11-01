@@ -9,8 +9,8 @@
       "WESTCON_FIRST_PARTY_CURRENT": 110,
       "RESEARCH_SEED": 180,
       "LEGACY_UNRESOLVED": 176,
-      "PUBLIC_PRIMARY": 10464,
-      "PUBLIC_SECONDARY": 4444
+      "PUBLIC_PRIMARY": 10472,
+      "PUBLIC_SECONDARY": 4466
     },
     "legacy_unresolved_fields": 0,
     "legacy_unresolved_items": 66,
@@ -57,30 +57,30 @@
     "model_revision": "r6-public-plus-current-westcon-first-party",
     "policy": "Hechos externos: fuente pública actual. Hechos propiedad de Westcon sobre portfolio/capacidades: documentación o regla Westcon vigente y atómica. Histórico: pista no acreditativa. Conclusiones internas/derivadas: inputs sustentados + regla trazable.",
     "support_rule": "CURRENT_PUBLIC_OR_CURRENT_WESTCON_OWNED_OR_TRACEABLE_DERIVATION",
-    "targets_total": 17147,
-    "targets_direct_supported": 7931,
+    "targets_total": 17168,
+    "targets_direct_supported": 7942,
     "targets_supported_westcon_only": 286,
-    "targets_supported_public_only": 7596,
+    "targets_supported_public_only": 7607,
     "targets_supported_westcon_and_public": 49,
     "claim_classes": {
-      "EXTERNAL_FACT": 15014,
+      "EXTERNAL_FACT": 15025,
       "DERIVED_FACT": 1537,
-      "INTERNAL_CLASSIFICATION": 596
+      "INTERNAL_CLASSIFICATION": 606
     },
-    "support_pending_occurrences": 9216,
-    "support_pending_unique_claims": 8840,
+    "support_pending_occurrences": 9226,
+    "support_pending_unique_claims": 8850,
     "duplicate_pending_occurrences": 376,
     "external_search_required_occurrences": 7230,
     "external_search_required_unique": 7034,
-    "derived_support_required_occurrences": 1986,
-    "derived_support_required_unique": 1806,
+    "derived_support_required_occurrences": 1996,
+    "derived_support_required_unique": 1816,
     "historical_total": 254,
     "historical_supported_westcon": 112,
     "historical_supported_public": 19,
     "historical_supported_westcon_and_public": 25,
     "historical_search_required": 98,
-    "targets_supported": 7931,
-    "targets_search_required": 9216,
+    "targets_supported": 7942,
+    "targets_search_required": 9226,
     "unsupported_targets": [
       {
         "section": "manufacturers",
@@ -67570,6 +67570,70 @@
       },
       {
         "section": "clients_public",
+        "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "AI / Data",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Automation",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Dirección Económico-Financiera de ENAIRE",
         "field": "cpv_codes",
         "level": "item",
@@ -68278,6 +68342,22 @@
       },
       {
         "section": "clients_public",
+        "entity": "Junta de Gobierno Local del Ayuntamiento de Jerez",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Gobierno de La Rioja",
         "field": "cpv_codes",
         "level": "item",
@@ -68388,6 +68468,22 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Imprensa Nacional-Casa da Moeda, SA",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -72622,6 +72718,22 @@
       },
       {
         "section": "clients_public",
+        "entity": "Comisión ejecutiva del Consejo de Administración de la Empresa Municipal de Transportes de Fuenlabrada, S.A.",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Agencia para la Modernización Tecnológica de Galicia",
         "field": "cpv_codes",
         "level": "item",
@@ -72714,6 +72826,54 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Ajuntament de Sant Joan Despí",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Ajuntament de Sant Joan Despí",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Ajuntament de Sant Joan Despí",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "AI / Data",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -209772,6 +209932,70 @@
       },
       {
         "section": "clients_public",
+        "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "AI / Data",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Automation",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Dirección Económico-Financiera de ENAIRE",
         "field": "cpv_codes",
         "level": "item",
@@ -210466,6 +210690,22 @@
       },
       {
         "section": "clients_public",
+        "entity": "Junta de Gobierno Local del Ayuntamiento de Jerez",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Gobierno de La Rioja",
         "field": "cpv_codes",
         "level": "item",
@@ -210576,6 +210816,22 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Imprensa Nacional-Casa da Moeda, SA",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -214350,6 +214606,22 @@
       },
       {
         "section": "clients_public",
+        "entity": "Comisión ejecutiva del Consejo de Administración de la Empresa Municipal de Transportes de Fuenlabrada, S.A.",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Agencia para la Modernización Tecnológica de Galicia",
         "field": "westcon_area",
         "level": "item",
@@ -214428,6 +214700,54 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Ajuntament de Sant Joan Despí",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Ajuntament de Sant Joan Despí",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Ajuntament de Sant Joan Despí",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "AI / Data",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
