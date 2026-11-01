@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "updated_at": 1793548160.3362644,
+  "updated_at": 1793548793.5006256,
   "runs": [
     {
       "version": "4.0.0",
@@ -2164,6 +2164,43 @@
       ],
       "elapsed_s": 617.48,
       "finished_at": 1793548160.3346338
+    },
+    {
+      "version": "4.3.0",
+      "profile": "daily",
+      "started_at": 1793548712.6800141,
+      "requested_max_runtime_s": 720,
+      "effective_max_runtime_s": 720,
+      "budgets": {
+        "research_s": 630,
+        "fallback_s": 0,
+        "build_reserve_s": 90
+      },
+      "stages": [
+        {
+          "research": "degraded",
+          "fetch_attempts": 0,
+          "fetch_successes": 0,
+          "pages_relevant": 0,
+          "candidate_evidences": 0,
+          "accepted_evidences": 0,
+          "fields_enriched": 0,
+          "values_added": 0,
+          "entities_added": 0,
+          "stop_reason": null,
+          "error": "  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/runner/work/estrategia/estrategia/engine/research/web_intelligence.py\", line 1918, in <module>\n    result = run(arguments.profile, max_runtime=arguments.max_runtime, max_tasks=arguments.max_tasks)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/estrategia/estrategia/engine/research/web_intelligence.py\", line 1569, in run\n    int(query_budget.get(\"queries_per_entity\") or 0),\n        ^^^^^^^^^^^^\nUnboundLocalError: cannot access local variable 'query_budget' where it is not associated with a value"
+        },
+        {
+          "build": "ok",
+          "gaps": 20115,
+          "gaps_closed_vs_release_baseline": -18717,
+          "distributor_gaps": 1933,
+          "integrator_gaps": 4969,
+          "quality_score": 100
+        }
+      ],
+      "elapsed_s": 80.82,
+      "finished_at": 1793548793.498786
     }
   ]
 }
