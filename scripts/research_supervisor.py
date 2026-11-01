@@ -188,7 +188,12 @@ def main() -> int:
 
     try:
         with ProcessLock(timeout_s=5):
+            previous_quality = read_json("data/current/quality_report.json", {})
+            previous_gap_count = (previous_quality.get("checks") or {}).get("gaps")
             result = _run_research(arguments.profile, research_budget)
+            if result.get("status") != "ok":
+                # A successful rebuild must never hide a failed research stage.
+                exit_code = 1
             status["stages"].append({
                 "research": result.get("status"),
                 "fetch_attempts": result.get("fetch_attempts", 0),
@@ -221,6 +226,15 @@ def main() -> int:
                 "build": "ok",
                 "gaps": after["gaps_total"],
                 "gaps_closed_vs_release_baseline": before["gaps_total"] - after["gaps_total"],
+                "gaps_previous_run": previous_gap_count,
+                "gaps_delta_vs_previous_run": (
+                    after["gaps_total"] - previous_gap_count
+                    if isinstance(previous_gap_count, int) else None
+                ),
+                "gaps_closed_vs_previous_run": (
+                    previous_gap_count - after["gaps_total"]
+                    if isinstance(previous_gap_count, int) else None
+                ),
                 "distributor_gaps": after["gaps_by_section"]["distributors"],
                 "integrator_gaps": after["gaps_by_section"]["integrators"],
                 "quality_score": quality.get("score"),
