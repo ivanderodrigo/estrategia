@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-11-01T15:58:52.818033+00:00",
+  "generated_at": "2026-11-01T19:50:20.877766+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -821,6 +821,14 @@
     {
       "id": "clie_599196e2013b11d3",
       "canonical_name": "Servicio público de salud",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_18a212e08526411d",
+      "canonical_name": "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S. A.",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -34409,6 +34417,55 @@
       ],
       "source": "reus.cat",
       "date": "2026-10-29",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
+      "id": "rel_814297e3837385de",
+      "entity_a_id": "clie_18a212e08526411d",
+      "entity_a": "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S. A.",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_000e793db70c5930",
+      "entity_b": "Cloud",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "es.finance.yahoo.com",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S.A.",
+          "source_binding": "atomic-item",
+          "title": "Precio de acciones, noticias, cotización e historial de Microsoft Corporation (MSFT) - Yahoo Finanzas",
+          "url": "https://es.finance.yahoo.com/quote/MSFT/",
+          "date": "2026-11-01",
+          "description": "…bility + Security, Power BI, Exchange, SharePoint, Microsoft Teams, Microsoft 365 Security and Compliance, Microsoft 365 Copilot, and Windows Commercial on-premises and Office licensed on-premises. This segment also provides Microsoft 365 Consumer products and cloud services; LinkedIn…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-11-01",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "c4b46b356eaa58a388c37083e97b44c9b343a07b5021e3af8e6054b70f3b63b4",
+          "matched_terms": [
+            "cloud"
+          ],
+          "field": "technology_signals",
+          "item_value": "Cloud",
+          "item_key": "cloud",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "es.finance.yahoo.com",
+      "date": "2026-11-01",
       "confidence": 0.48,
       "status": "SEÑAL",
       "validity": "needs-corroboration",

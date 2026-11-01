@@ -10,7 +10,7 @@
       "RESEARCH_SEED": 180,
       "LEGACY_UNRESOLVED": 176,
       "PUBLIC_PRIMARY": 10566,
-      "PUBLIC_SECONDARY": 4712
+      "PUBLIC_SECONDARY": 4720
     },
     "legacy_unresolved_fields": 0,
     "legacy_unresolved_items": 66,
@@ -57,30 +57,30 @@
     "model_revision": "r6-public-plus-current-westcon-first-party",
     "policy": "Hechos externos: fuente pública actual. Hechos propiedad de Westcon sobre portfolio/capacidades: documentación o regla Westcon vigente y atómica. Histórico: pista no acreditativa. Conclusiones internas/derivadas: inputs sustentados + regla trazable.",
     "support_rule": "CURRENT_PUBLIC_OR_CURRENT_WESTCON_OWNED_OR_TRACEABLE_DERIVATION",
-    "targets_total": 17213,
-    "targets_direct_supported": 7994,
+    "targets_total": 17219,
+    "targets_direct_supported": 7998,
     "targets_supported_westcon_only": 286,
-    "targets_supported_public_only": 7659,
+    "targets_supported_public_only": 7663,
     "targets_supported_westcon_and_public": 49,
     "claim_classes": {
-      "EXTERNAL_FACT": 15069,
+      "EXTERNAL_FACT": 15073,
       "DERIVED_FACT": 1537,
-      "INTERNAL_CLASSIFICATION": 607
+      "INTERNAL_CLASSIFICATION": 609
     },
-    "support_pending_occurrences": 9219,
-    "support_pending_unique_claims": 8843,
+    "support_pending_occurrences": 9221,
+    "support_pending_unique_claims": 8845,
     "duplicate_pending_occurrences": 376,
     "external_search_required_occurrences": 7222,
     "external_search_required_unique": 7026,
-    "derived_support_required_occurrences": 1997,
-    "derived_support_required_unique": 1817,
+    "derived_support_required_occurrences": 1999,
+    "derived_support_required_unique": 1819,
     "historical_total": 254,
     "historical_supported_westcon": 112,
     "historical_supported_public": 19,
     "historical_supported_westcon_and_public": 25,
     "historical_search_required": 98,
-    "targets_supported": 7994,
-    "targets_search_required": 9219,
+    "targets_supported": 7998,
+    "targets_search_required": 9221,
     "unsupported_targets": [
       {
         "section": "manufacturers",
@@ -73630,6 +73630,38 @@
         "dependency_fields": [],
         "support_basis": "SEARCH_REQUIRED",
         "expected_gap_kind": "evidence-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S. A.",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S. A.",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
         "preserve_value": true
       },
       {
@@ -215282,6 +215314,38 @@
         "dependency_fields": [],
         "support_basis": "SEARCH_REQUIRED",
         "expected_gap_kind": "evidence-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S. A.",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S. A.",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
         "preserve_value": true
       },
       {
