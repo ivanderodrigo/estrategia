@@ -11,7 +11,7 @@ RECORD={"gap_id":"gap-1","section":"integrators","entity":"Test Integrator","fie
 class HistoricalResearchRoutingTest(unittest.TestCase):
     def test_exact_evidence_urls_are_bounded_and_untrusted(self):
         urls=historical_revalidation_seeds(GAP,{"gap-1":RECORD})
-        self.assertEqual(len(urls),2)
+        self.assertEqual(len(urls),3)
         self.assertTrue(all(row["official"] is False and row["source_grade"]=="C" for row in urls))
         self.assertTrue(all(row["historical_lead"] is True for row in urls))
 
@@ -30,7 +30,7 @@ class HistoricalResearchRoutingTest(unittest.TestCase):
             work = plan(report, {"families":{}}, "daily", max_tasks=1)
         self.assertEqual(len(work), 1)
         history=[x for x in work[0]["revalidation_seeds"] if x.get("historical_lead")]
-        self.assertEqual(len(history),2)
+        self.assertEqual(len(history),3)
         self.assertFalse(any(x["official"] for x in history))
 
     def test_ssrf_style_links_are_excluded(self):

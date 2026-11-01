@@ -13,7 +13,7 @@ from ..settings import ROOT
 
 HISTORY_INDEX = ROOT / "data/public/historical/gap_matches.json"
 ELIGIBLE = frozenset({"manufacturers", "distributors", "integrators", "clients_private", "trends"})
-MAX_SEEDS_PER_GAP = 2
+MAX_SEEDS_PER_GAP = 5
 
 
 def usable_historical_url(url: str) -> bool:
@@ -68,13 +68,27 @@ def historical_revalidation_seeds(gap: dict, index: dict[str, dict] | None = Non
         return []
     if str(record.get("entity")) != str(gap.get("entity")):
         return []
-    urls = []
-    for url in record.get("source_urls") or []:
-        if not usable_historical_url(url) or url in urls:
+    # Prefer independent hostnames before multiple pages from one domain.
+    # A historical URL is only a rediscovery seed, not accredited evidence.
+    candidates = []
+    seen = set()
+    for raw in record.get("source_urls") or []:
+        url = str(raw).strip()
+        if not usable_historical_url(url) or url in seen:
             continue
-        urls.append(url)
-        if len(urls) == MAX_SEEDS_PER_GAP:
-            break
+        seen.add(url)
+        candidates.append(url)
+    distinct_hosts = []
+    repeated_hosts = []
+    hosts = set()
+    for url in candidates:
+        host = (urlsplit(url).hostname or "").casefold().removeprefix("www.")
+        if host not in hosts:
+            distinct_hosts.append(url)
+            hosts.add(host)
+        else:
+            repeated_hosts.append(url)
+    urls = (distinct_hosts + repeated_hosts)[:MAX_SEEDS_PER_GAP]
     return [{
         "url": url,
         "official": False,

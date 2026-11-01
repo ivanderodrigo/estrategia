@@ -9,6 +9,7 @@ class HistoricalExactDiscoveryTests(unittest.TestCase):
             "Acme Iberia", {"vendor_relations": ["Extreme Networks"]},
             [{"url": "https://www.example.com/partners/acme"}])
         self.assertIn('"Acme Iberia" "Extreme Networks"', result)
+        self.assertIn('"Acme Iberia" "Extreme Networks" site:www.example.com', result)
         self.assertIn('"Acme Iberia" site:www.example.com', result)
         self.assertLess(result.index('"Acme Iberia" "Extreme Networks"'), result.index('"Acme Iberia" site:www.example.com'))
 
