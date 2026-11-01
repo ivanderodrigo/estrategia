@@ -203,11 +203,18 @@ def historical_exact_queries(entity: str, targets: dict[str, list], leads: list[
                 continue
             push(f'"{entity}" "{value}"')
             push(f'"{entity}" "{value}" {str(field).replace("_", " ")}')
-    for seed in leads[:4]:
+    for seed in leads[:5]:
         url = str(seed.get("url") or "")
         parsed = urlsplit(url)
         host = (parsed.hostname or "").lower()
         if host and "." in host and not host.endswith((".local", ".internal")):
+            # Search the original domain for the actual historical assertion,
+            # not merely any page mentioning the entity.
+            for values in targets.values():
+                for raw in values[:1]:
+                    value = str(raw).strip()
+                    if 3 <= len(value) <= 120:
+                        push(f'"{entity}" "{value}" site:{host}')
             push(f'"{entity}" site:{host}')
     return output
 
