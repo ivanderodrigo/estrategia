@@ -1547,6 +1547,13 @@ def run(
         except requests.RequestException as exc:
             stats["structured_ted_status"] = f"degraded:{type(exc).__name__}"
 
+    # Resolve the search budget before the first target is processed. The
+    # previous order referenced query_budget before assignment and crashed
+    # every run with at least one actionable research target.
+    query_policy = RESEARCH_POLICY.get("query_discovery") or {}
+    query_budgets = query_policy.get("budgets") or {}
+    query_budget = query_budgets.get(profile) or {}
+
     for target in targets:
         if "derivation-support" in set(target.get("gap_kinds") or []):
             continue
