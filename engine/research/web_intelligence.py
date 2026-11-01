@@ -1532,14 +1532,26 @@ def run(
             structured_growth_budget = max(
                 0, int(structured_growth_limits.get(profile, structured_growth_defaults[profile]))
             )
+            # Debt-aware growth brake: adding structured notices can introduce
+            # dozens of required fields per entity before any are supported.
+            # Keep existing entities intact and focus on validating them while
+            # the unresolved backlog is large. Never falsify the gap count.
+            growth_policy = RESEARCH_POLICY.get("debt_aware_growth") or {}
+            if growth_policy.get("enabled", True):
+                backlog = len(gaps.get("gaps") or [])
+                ceiling = int(growth_policy.get("pause_above_gaps") or 12000)
+                if backlog >= ceiling:
+                    structured_growth_budget = 0
+                    stats["structured_growth_paused_for_debt"] = True
+                    stats["structured_growth_backlog"] = backlog
             stats["structured_entity_budget"] = structured_growth_budget
             notices = fetch_notices(
                 fetcher.session,
                 lookback_days=profile_config.ted_lookback_days,
                 timeout_s=profile_config.request_timeout_s,
                 limit=structured_growth_budget,
-            )
-            structured_added = upsert_notices(data, notices)
+            ) if structured_growth_budget else []
+            structured_added = upsert_notices(data, notices) if structured_growth_budget else 0
             stats["entities_added"] += structured_added
             stats["structured_entities_added"] = structured_added
             stats["structured_notices"] = len(notices)
