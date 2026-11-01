@@ -45,12 +45,13 @@ class QueryDiscoveryTests(unittest.TestCase):
             ["https://same.example.org/a"],
             ["https://same.example.org/a"],
             ["https://other.example.org/b"],
+            [],
         ]
         leads, diagnostics = discover(Mock(), ["entity partners", "entity solutions"],
             fallback_family="partners", providers=["bing_rss", "duckduckgo_html"],
             timeout_s=5, max_queries=2, results_per_query=4)
         self.assertEqual(len(leads), 2)
-        self.assertEqual(diagnostics["queries_attempted"], 3)
+        self.assertEqual(diagnostics["queries_attempted"], 4)
         self.assertGreaterEqual(diagnostics["duplicate_urls_skipped"], 1)
 
     def test_daily_cooldown_rescue_is_bounded_and_keeps_provenance_gates(self):

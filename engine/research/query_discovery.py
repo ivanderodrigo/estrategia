@@ -219,9 +219,14 @@ def discover(
                     source_type=f"search-discovery:{provider}",
                     source_name=f"Descubrimiento web · {provider}",
                 ))
-            # A provider may return only duplicate or saturated-domain URLs.
-            # Try the next independent index unless it added a usable lead.
-            if len(output) > before_query_results:
+            # One URL is a fragile result for cross-checking historical claims.
+            # Consult another independent index unless at least two distinct
+            # hosts were found for this query (never turn hits into evidence).
+            query_hosts = {
+                (urlparse(seed.url).hostname or "").casefold().removeprefix("www.")
+                for seed in output[before_query_results:]
+            }
+            if len(query_hosts) >= 2:
                 break
         else:
             diagnostics["empty_result_queries"] += 1
