@@ -1467,6 +1467,26 @@ def run(
             rotated = candidate_pool[offset:] + candidate_pool[:offset]
             targets = rotated[:12]
             rescue_targets = len(targets)
+    # Deep investigation can be reduced to a tiny fraction of its 520-target
+    # capacity by exponential cooldown. Reserve a bounded rotating research
+    # sample even then, preserving all provenance and publication checks.
+    if profile == "deep" and len(targets) < 50:
+        pool = plan(
+            gaps, learning, profile, state=None,
+            max_tasks=300, include_gap_kinds=include_gap_kinds,
+        )
+        existing = {(t["section"], t["task_entity_key"]) for t in targets}
+        if pool:
+            offset = (datetime.now(timezone.utc).timetuple().tm_yday * 29) % len(pool)
+            for candidate in pool[offset:] + pool[:offset]:
+                key = (candidate["section"], candidate["task_entity_key"])
+                if key in existing:
+                    continue
+                targets.append(candidate)
+                existing.add(key)
+                rescue_targets += 1
+                if rescue_targets >= 30:
+                    break
     index = _row_index(data)
     vendor_names = _vendor_names(data)
     active_gap_ids = {str(gap.get("id")) for gap in gaps.get("gaps") or [] if gap.get("id")}
