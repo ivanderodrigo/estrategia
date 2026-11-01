@@ -353,6 +353,15 @@ def plan(
                 item["query_hints"].append(str(hint))
 
         score = float(gap.get("priority_score") or _fallback_score(gap, section, field))
+        # A concrete unsupported claim is much more actionable than an empty
+        # schema cell: recover evidence before endlessly exploring unknowns.
+        # This only affects work ordering; no claim is marked verified.
+        has_claim = bool(gap.get("target_values"))
+        has_lead = bool(gap.get("revalidation_seeds"))
+        if has_claim:
+            score *= 1.75
+        elif has_lead:
+            score *= 1.35
         score *= _learning_yield(learning, section, family)
         if kind == "public-validation":
             score *= 1.12
