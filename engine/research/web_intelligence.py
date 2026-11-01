@@ -83,22 +83,26 @@ def _row_index(data: dict[str, Any]) -> dict[tuple[str, str], dict[str, Any]]:
     return output
 
 
-def _unsourced_value_queries(row: dict[str, Any], target_fields: list[str], limit: int = 3) -> list[str]:
-    """Recover exact unsourced atomic claims as search leads, never as proof.
+def _unsourced_value_queries(
+    row: dict[str, Any], target_fields: list[str], limit: int = 3,
+    *, rotation: int = 0,
+) -> list[str]:
+    """Rotate exact unsupported historical claims across runs.
 
-    Previously, only gap.target_values fed focused searches. Many preserved
-    historical items have no target_values in their gap record; this extracts
-    those existing claim values without treating them as verified.
+    Round-robin over different fields and rotate within each field, avoiding
+    repeatedly researching the same first few unsupported values. All
+    discovered links still require fresh evidence promotion.
     """
     entity = str(row.get("name") or "").strip()
-    if not entity:
+    if not entity or limit <= 0:
         return []
-    output: list[str] = []
-    seen: set[str] = set()
+    groups: list[list[str]] = []
     for field_name in target_fields:
         field = (row.get("fields") or {}).get(field_name) or {}
         if not isinstance(field, dict):
             continue
+        candidates: list[str] = []
+        seen: set[str] = set()
         for item in field.get("items") or []:
             if not isinstance(item, dict):
                 continue
@@ -106,19 +110,31 @@ def _unsourced_value_queries(row: dict[str, Any], target_fields: list[str], limi
             if not isinstance(value, str):
                 continue
             value = value.strip()
-            if not (3 <= len(value) <= 95) or canonical(value) == canonical(entity):
+            if not 3 <= len(value) <= 95 or canonical(value) == canonical(entity):
                 continue
             if any(accrediting_evidence(ev) for ev in item.get("evidence") or [] if isinstance(ev, dict)):
                 continue
-            query = f'"{entity}" "{value}"'
+            if canonical(value) not in seen:
+                seen.add(canonical(value))
+                candidates.append(value)
+        if candidates:
+            offset = rotation % len(candidates)
+            groups.append(candidates[offset:] + candidates[:offset])
+    output: list[str] = []
+    used: set[str] = set()
+    for index in range(max((len(group) for group in groups), default=0)):
+        for group in groups:
+            if index >= len(group):
+                continue
+            query = f'"{entity}" "{group[index]}"'
             key = query.casefold()
-            if key not in seen:
-                seen.add(key)
-                output.append(query)
-                if len(output) >= limit:
-                    return output
+            if key in used:
+                continue
+            used.add(key)
+            output.append(query)
+            if len(output) >= limit:
+                return output
     return output
-
 
 def _vendor_names(data: dict[str, Any]) -> list[str]:
     names = []
@@ -1511,7 +1527,7 @@ def run(
         row = index.get((target["section"], canonical(target["entity"])))
         if not row:
             continue
-        exact_unsourced_queries = _unsourced_value_queries(row, target["fields"])
+        exact_unsourced_queries = _unsourced_value_queries(\n            row, target["fields"], rotation=datetime.now(timezone.utc).date().toordinal()\n        )
         if exact_unsourced_queries:
             target["query_hints"] = list(dict.fromkeys(
                 exact_unsourced_queries + list(target.get("query_hints") or [])
