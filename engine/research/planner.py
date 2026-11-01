@@ -185,6 +185,42 @@ def _with_manufacturer_revenue_reserve(
             break
     return selected[:limit]
 
+# Presentation-derived research vocabulary, not evidence. Each query must lead to
+# independently fetched, claim-specific, publicly verifiable documentation.
+PRESENTATION_SEARCH_CONTEXT = {
+    "capabilities": ("solution", "product", "technology"),
+    "specializations": ("specialization", "solution", "certification"),
+    "vendor_relations": ("partner", "technology alliance", "authorized"),
+    "partners": ("partner", "channel", "reseller"),
+    "services": ("managed services", "professional services", "assessment"),
+    "public_cases": ("case study", "customer story", "reference"),
+    "technology_signals": ("project", "deployment", "tender"),
+    "identified_vendors": ("awarded", "contract", "deployment"),
+}
+
+
+def presentation_signal_queries(entity: str, targets: dict[str, list], limit: int = 8) -> list[str]:
+    """Convert already preserved claim values into field-aware search leads.
+
+    No presentation assertion or numeric marketing promise is promoted to a
+    verified fact. Neither the presentation itself nor a search snippet is proof.
+    """
+    output: list[str] = []
+    for field, values in targets.items():
+        contexts = PRESENTATION_SEARCH_CONTEXT.get(field, ())
+        for raw in values[:2]:
+            value = str(raw).strip()
+            if not 3 <= len(value) <= 100 or value.casefold() in {"unknown", "por investigar"}:
+                continue
+            for context in contexts[:2]:
+                query = f'"{entity}" "{value}" {context}'
+                if query not in output:
+                    output.append(query)
+                if len(output) >= limit:
+                    return output
+    return output
+
+
 def historical_exact_queries(entity: str, targets: dict[str, list], leads: list[dict], limit: int = 8) -> list[str]:
     """Build focused searches from exact historical clues, without treating clues as facts."""
     output: list[str] = []
@@ -340,7 +376,8 @@ def plan(
         exact = historical_exact_queries(
             item["entity"], item["target_values_by_field"], item["revalidation_seeds"]
         ) if item["target_values_by_field"] or item["revalidation_seeds"] else []
-        item["query_hints"] = list(dict.fromkeys(exact + item["query_hints"]))[:16]
+        contextual = presentation_signal_queries(item["entity"], item["target_values_by_field"])
+        item["query_hints"] = list(dict.fromkeys(exact + contextual + item["query_hints"]))[:24]
         item["priority"] = round(item["priority"], 4)
         output.append(item)
 
