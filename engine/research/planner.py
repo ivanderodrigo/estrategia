@@ -357,8 +357,12 @@ def plan(
         # schema cell: recover evidence before endlessly exploring unknowns.
         # This only affects work ordering; no claim is marked verified.
         has_claim = bool(gap.get("target_values"))
-        has_lead = bool(gap.get("revalidation_seeds"))
-        if has_claim:
+        # Include recovered archived leads: they are attached to the grouped
+        # task above, not necessarily present on the original gap record.
+        has_lead = bool(gap.get("revalidation_seeds")) or bool(historical_index.get(gap_id))
+        if has_claim and has_lead:
+            score *= 2.15
+        elif has_claim:
             score *= 1.75
         elif has_lead:
             score *= 1.35
