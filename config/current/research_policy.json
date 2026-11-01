@@ -127,5 +127,10 @@
     "discovery_only": true,
     "no_api_key_required": true,
     "note": "Upper bounds only: supervisor deadline, safety and evidence gates remain authoritative; sources are discovery only."
+  },
+  "debt_aware_growth": {
+    "enabled": true,
+    "pause_above_gaps": 12000,
+    "principle": "Do not add new procurement entities while unsupported evidence debt is high; retain all existing intelligence and research existing claims first."
   }
 }
