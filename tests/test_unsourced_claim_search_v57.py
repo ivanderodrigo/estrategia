@@ -26,6 +26,28 @@ class UnsourcedClaimSearchTests(unittest.TestCase):
             '"Integrator A" "Legacy Platform"',
         ])
 
+    def test_rotation_reaches_other_values_and_balances_fields(self):
+        row = {"name": "Integrator A", "fields": {
+            "vendor_relations": {"items": [
+                {"value": "Vendor A", "evidence": []},
+                {"value": "Vendor B", "evidence": []},
+                {"value": "Vendor C", "evidence": []},
+                {"value": "Vendor D", "evidence": []},
+            ]},
+            "capabilities": {"items": [
+                {"value": "Network security", "evidence": []},
+                {"value": "Cloud migration", "evidence": []},
+            ]},
+        }}
+        result = _unsourced_value_queries(row, ["vendor_relations", "capabilities"], limit=3, rotation=1)
+        self.assertEqual(result, [
+            '"Integrator A" "Vendor B"',
+            '"Integrator A" "Cloud migration"',
+            '"Integrator A" "Vendor C"',
+        ])
+        rotated = _unsourced_value_queries(row, ["vendor_relations"], limit=1, rotation=3)
+        self.assertEqual(rotated, ['"Integrator A" "Vendor D"'])
+
     def test_reject_unhelpful_values_and_bound_results(self):
         row = {"name": "Integrator A", "fields": {"capabilities": {
             "items": [
