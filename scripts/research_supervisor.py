@@ -233,6 +233,7 @@ def main() -> int:
             status["stages"].append({
                 "build": "ok",
                 "gaps": after["gaps_total"],
+                "debt_breakdown": dict((metrics.get("debt_breakdown") or {})),
                 "gaps_closed_vs_release_baseline": before["gaps_total"] - after["gaps_total"],
                 "gaps_previous_run": previous_gap_count,
                 "gaps_delta_vs_previous_run": (
