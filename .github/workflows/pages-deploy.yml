@@ -54,7 +54,7 @@ jobs:
           cp -R assets/app/. _site/assets/app/
           cp -R data/public/* _site/data/public/
           [ -f CNAME ] && cp CNAME _site/CNAME || true
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
       - uses: actions/deploy-pages@v4
