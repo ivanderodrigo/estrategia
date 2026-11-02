@@ -381,6 +381,16 @@ def run() -> dict[str, Any]:
         "data/current/research_gaps.json": json_bytes(gaps),
         "data/current/metrics_before_after.json": json_bytes(compare),
         "data/current/coverage_report.json": json_bytes(gaps["coverage"]),
+        "data/current/debt_diagnostic.json": json_bytes({
+            "version": VERSION,
+            "generated_at": now,
+            "total_open_gaps": gaps["total_gaps"],
+            "debt_breakdown": gaps.get("debt_breakdown") or {},
+            "actionable_by_section": gaps.get("actionable_by_section") or {},
+            "missing_by_field": gaps.get("missing_by_field") or {},
+            "critical_by_section": gaps.get("critical_by_section") or {},
+            "note": "Exhaustive backlog is retained; empty fields are not accredited claims.",
+        }),
         "data/current/source_report.json": json_bytes({
             "version": VERSION,
             "sources": len(data.get("source_catalog") or []),
