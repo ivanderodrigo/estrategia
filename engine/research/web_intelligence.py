@@ -100,6 +100,10 @@ def _prioritize_research_queries(exact_queries: list[str], planned_queries: list
             " partner", " alliance", " certification", " service",
             " solution", " product", " case study", " assessment",
             " awarded", " contract", " deployment",
+            " alianza", " parceiro", " distribuidor autorizado",
+            " servicios gestionados", " serviços geridos", " especialización",
+            " especialização", " soluciones", " soluções",
+            " caso de éxito", " caso de sucesso",
         )
     )]
     output = []
