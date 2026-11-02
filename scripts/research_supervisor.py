@@ -191,8 +191,15 @@ def main() -> int:
             previous_quality = read_json("data/current/quality_report.json", {})
             previous_gap_count = (previous_quality.get("checks") or {}).get("gaps")
             result = _run_research(arguments.profile, research_budget)
+            if (result.get("status") == "ok"
+                    and int(previous_gap_count or 0) > 0
+                    and int(result.get("fetch_attempts") or 0) == 0
+                    and int(result.get("search_queries_attempted") or 0) == 0
+                    and int(result.get("entities_added") or 0) == 0):
+                result["status"] = "no-research-work"
+                result["error"] = "Unresolved gaps remain, but no URLs or searches were attempted."
             if result.get("status") != "ok":
-                # A successful rebuild must never hide a failed research stage.
+                # A successful rebuild must never hide failed or idle research.
                 exit_code = 1
             status["stages"].append({
                 "research": result.get("status"),
