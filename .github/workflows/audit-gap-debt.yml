@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/audit_gap_debt.py'
+      - 'tests/test_audit_gap_debt.py'
       - '.github/workflows/audit-gap-debt.yml'
 permissions:
   contents: write
@@ -21,6 +22,8 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
+      - name: Validate evidence debt accounting
+        run: python -m unittest discover -s tests -p "test_audit_gap_debt.py" -v
       - name: Generate independent backlog diagnostic
         run: python scripts/audit_gap_debt.py
       - name: Publish audit
