@@ -1,11 +1,3643 @@
 {
-  "generated_at": "2026-11-02T16:36:46.382531+00:00",
+  "generated_at": "2026-11-02T16:45:32.228225+00:00",
   "total_open_gaps": 20113,
   "debt_breakdown": {
     "claims_awaiting_evidence": 7024,
     "empty_schema_fields": 9058,
     "derivation_support": 4031
   },
+  "evidence_priority_tiers": {
+    "P0": 28,
+    "P1": 2249,
+    "P2": 1928,
+    "P3": 2819
+  },
+  "priority_evidence_queue": [
+    {
+      "gap_id": "manufacturers:aws:capabilities:public-validation:7d3230c89bfb",
+      "section": "manufacturers",
+      "entity": "AWS",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 89.0,
+      "target_values": [
+        "IaaS/PaaS"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:attackiq:capabilities:public-validation:566c2d89bb04",
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 89.0,
+      "target_values": [
+        "BAS"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:cisco:capabilities:public-validation:4992a53f162b",
+      "section": "manufacturers",
+      "entity": "Cisco",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 89.0,
+      "target_values": [
+        "Security"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:cisco:capabilities:public-validation:d18416c3e9a0",
+      "section": "manufacturers",
+      "entity": "Cisco",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 89.0,
+      "target_values": [
+        "Collaboration"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:cisco:capabilities:public-validation:00c4283fc65a",
+      "section": "manufacturers",
+      "entity": "Cisco",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 89.0,
+      "target_values": [
+        "Observability"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:f5:capabilities:public-validation:7073e6898619",
+      "section": "manufacturers",
+      "entity": "F5",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 89.0,
+      "target_values": [
+        "ADC"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:microsoft azure:capabilities:public-validation:7d3230c89bfb",
+      "section": "manufacturers",
+      "entity": "Microsoft Azure",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 89.0,
+      "target_values": [
+        "IaaS/PaaS"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:microsoft azure:capabilities:public-validation:bb384e68664b",
+      "section": "manufacturers",
+      "entity": "Microsoft Azure",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 89.0,
+      "target_values": [
+        "Hybrid Cloud"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:akamai / noname:capabilities:public-validation:a32b7d8ee31b",
+      "section": "manufacturers",
+      "entity": "Akamai / Noname",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 81.1,
+      "target_values": [
+        "WAAP"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:ciena:capabilities:public-validation:ee70eb884028",
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 81.1,
+      "target_values": [
+        "Optical"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:ciena:capabilities:public-validation:8c3e87fbbf3d",
+      "section": "manufacturers",
+      "entity": "Ciena",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 81.1,
+      "target_values": [
+        "Transport"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:claroty:capabilities:public-validation:72c3caf32cad",
+      "section": "manufacturers",
+      "entity": "Claroty",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 81.1,
+      "target_values": [
+        "XIoT"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:ivanti:capabilities:public-validation:bf93ec686e17",
+      "section": "manufacturers",
+      "entity": "Ivanti",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 81.1,
+      "target_values": [
+        "Patch"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:ivanti:capabilities:public-validation:ea0ede92a8d6",
+      "section": "manufacturers",
+      "entity": "Ivanti",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 81.1,
+      "target_values": [
+        "ZTNA"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:ruckus networks:capabilities:public-validation:81cc48bd180f",
+      "section": "manufacturers",
+      "entity": "Ruckus Networks",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 81.1,
+      "target_values": [
+        "Campus"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:uipath:capabilities:public-validation:4dbddbd9406c",
+      "section": "manufacturers",
+      "entity": "UiPath",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 81.1,
+      "target_values": [
+        "Agentic Automation"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "manufacturers:vectra ai:capabilities:public-validation:af92ce7131c3",
+      "section": "manufacturers",
+      "entity": "Vectra AI",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 81.1,
+      "target_values": [
+        "Identity Threat Detection"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:deloitte:capabilities:evidence-support:dad8157b3ab3",
+      "section": "integrators",
+      "entity": "Deloitte",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 78.6,
+      "target_values": [
+        "Integración"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:deloitte:capabilities:evidence-support:f01fdcb3b48a",
+      "section": "integrators",
+      "entity": "Deloitte",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 78.6,
+      "target_values": [
+        "Ciberdefensa y respuesta a incidentes"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:deloitte:capabilities:evidence-support:c86bdd2a1845",
+      "section": "integrators",
+      "entity": "Deloitte",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 78.6,
+      "target_values": [
+        "Seguridad OT/IoT e ICS"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:deloitte:capabilities:evidence-support:6caa5e8f131c",
+      "section": "integrators",
+      "entity": "Deloitte",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 78.6,
+      "target_values": [
+        "Simulación y wargaming"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:deloitte:capabilities:evidence-support:fa01dc29ba76",
+      "section": "integrators",
+      "entity": "Deloitte",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 78.6,
+      "target_values": [
+        "Resiliencia y continuidad"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:deloitte:capabilities:evidence-support:b77860e13cd2",
+      "section": "integrators",
+      "entity": "Deloitte",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 78.6,
+      "target_values": [
+        "Data Center"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:deloitte:capabilities:evidence-support:4553f1aa77c3",
+      "section": "integrators",
+      "entity": "Deloitte",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 78.6,
+      "target_values": [
+        "Identity & Access"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:deloitte:capabilities:evidence-support:42079c128262",
+      "section": "integrators",
+      "entity": "Deloitte",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 78.6,
+      "target_values": [
+        "Incident Response"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:deloitte:capabilities:evidence-support:a098f99faad7",
+      "section": "integrators",
+      "entity": "Deloitte",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 78.6,
+      "target_values": [
+        "Threat Intelligence"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:deloitte:capabilities:evidence-support:a03d1f96ae50",
+      "section": "integrators",
+      "entity": "Deloitte",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 78.6,
+      "target_values": [
+        "MSSP"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:deloitte:capabilities:evidence-support:9f2306265298",
+      "section": "integrators",
+      "entity": "Deloitte",
+      "field": "capabilities",
+      "priority_tier": "P0",
+      "priority_score": 78.6,
+      "target_values": [
+        "Networking"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:marino software:services:evidence-support:0b576ec5c716",
+      "section": "integrators",
+      "entity": "Marino Software",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 73.7,
+      "target_values": [
+        "Suministro / reventa · AWS"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:marino software:services:evidence-support:34ee50fcc839",
+      "section": "integrators",
+      "entity": "Marino Software",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 73.7,
+      "target_values": [
+        "Formación"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:marino software:services:evidence-support:df35a4ceac7a",
+      "section": "integrators",
+      "entity": "Marino Software",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 73.7,
+      "target_values": [
+        "Marketplace / plataforma cloud"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:marino software:services:evidence-support:21386b21ca35",
+      "section": "integrators",
+      "entity": "Marino Software",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 73.7,
+      "target_values": [
+        "Logística"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:barrier networks:capabilities:evidence-support:9624de75cf2a",
+      "section": "integrators",
+      "entity": "Barrier Networks",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Cybersecurity"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:barrier networks:capabilities:evidence-support:9f2306265298",
+      "section": "integrators",
+      "entity": "Barrier Networks",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Networking"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:barrier networks:capabilities:evidence-support:00c4283fc65a",
+      "section": "integrators",
+      "entity": "Barrier Networks",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Observability"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:barrier networks:capabilities:evidence-support:4553f1aa77c3",
+      "section": "integrators",
+      "entity": "Barrier Networks",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Identity & Access"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:barrier networks:capabilities:evidence-support:9ff64dc2f59e",
+      "section": "integrators",
+      "entity": "Barrier Networks",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "AI / Data"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:datacom:capabilities:evidence-support:9624de75cf2a",
+      "section": "integrators",
+      "entity": "Datacom",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Cybersecurity"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:datacom:capabilities:evidence-support:00c4283fc65a",
+      "section": "integrators",
+      "entity": "Datacom",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Observability"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:datacom:capabilities:evidence-support:4553f1aa77c3",
+      "section": "integrators",
+      "entity": "Datacom",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Identity & Access"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:datacom:capabilities:evidence-support:9ff64dc2f59e",
+      "section": "integrators",
+      "entity": "Datacom",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "AI / Data"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:decunify:capabilities:evidence-support:81cc48bd180f",
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Campus"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:decunify:capabilities:evidence-support:dad8157b3ab3",
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Integración"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:decunify:capabilities:evidence-support:9624de75cf2a",
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Cybersecurity"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:decunify:capabilities:evidence-support:00c4283fc65a",
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Observability"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:decunify:capabilities:evidence-support:4553f1aa77c3",
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Identity & Access"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:decunify:capabilities:evidence-support:9ff64dc2f59e",
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "AI / Data"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:decunify:capabilities:evidence-support:a03d1f96ae50",
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "MSSP"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:decunify:capabilities:evidence-support:a098f99faad7",
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Threat Intelligence"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:infoavan:capabilities:evidence-support:9624de75cf2a",
+      "section": "integrators",
+      "entity": "Infoavan",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Cybersecurity"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:infoavan:capabilities:evidence-support:9f2306265298",
+      "section": "integrators",
+      "entity": "Infoavan",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Networking"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:infoavan:capabilities:evidence-support:00c4283fc65a",
+      "section": "integrators",
+      "entity": "Infoavan",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Observability"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:infoavan:capabilities:evidence-support:4553f1aa77c3",
+      "section": "integrators",
+      "entity": "Infoavan",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Identity & Access"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:infoavan:capabilities:evidence-support:9ff64dc2f59e",
+      "section": "integrators",
+      "entity": "Infoavan",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "AI / Data"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:infoavan:capabilities:evidence-support:a03d1f96ae50",
+      "section": "integrators",
+      "entity": "Infoavan",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "MSSP"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:infoavan:capabilities:evidence-support:a098f99faad7",
+      "section": "integrators",
+      "entity": "Infoavan",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Threat Intelligence"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:infosys:capabilities:evidence-support:5e0b8762a93d",
+      "section": "integrators",
+      "entity": "Infosys",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Cloud"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:infosys:capabilities:evidence-support:b77860e13cd2",
+      "section": "integrators",
+      "entity": "Infosys",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Data Center"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:infosys:capabilities:evidence-support:9ff64dc2f59e",
+      "section": "integrators",
+      "entity": "Infosys",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "AI / Data"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:insight:capabilities:evidence-support:9624de75cf2a",
+      "section": "integrators",
+      "entity": "Insight",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Cybersecurity"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:insight:capabilities:evidence-support:9f2306265298",
+      "section": "integrators",
+      "entity": "Insight",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Networking"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:insight:capabilities:evidence-support:00c4283fc65a",
+      "section": "integrators",
+      "entity": "Insight",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Observability"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:insight:capabilities:evidence-support:4553f1aa77c3",
+      "section": "integrators",
+      "entity": "Insight",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Identity & Access"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:insight:capabilities:evidence-support:9ff64dc2f59e",
+      "section": "integrators",
+      "entity": "Insight",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "AI / Data"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:insight:capabilities:evidence-support:a03d1f96ae50",
+      "section": "integrators",
+      "entity": "Insight",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "MSSP"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:insight:capabilities:evidence-support:a098f99faad7",
+      "section": "integrators",
+      "entity": "Insight",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Threat Intelligence"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:italtel:capabilities:evidence-support:5e0b8762a93d",
+      "section": "integrators",
+      "entity": "Italtel",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Cloud"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:italtel:capabilities:evidence-support:9624de75cf2a",
+      "section": "integrators",
+      "entity": "Italtel",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Cybersecurity"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:italtel:capabilities:evidence-support:00c4283fc65a",
+      "section": "integrators",
+      "entity": "Italtel",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Observability"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:italtel:capabilities:evidence-support:4553f1aa77c3",
+      "section": "integrators",
+      "entity": "Italtel",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Identity & Access"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:italtel:capabilities:evidence-support:9ff64dc2f59e",
+      "section": "integrators",
+      "entity": "Italtel",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "AI / Data"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:85db5b637bb4",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Enterprise networking"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:d9b7b223fbf8",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Harmony Email & Collaboration"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:39c21f49fed5",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Identity security"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:7198a15ee3ab",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Business automation"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:586f7fb2206e",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Agentic automation"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:3c44787a0f2a",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Continuous security validation"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:ffd3566c911c",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "People, data and brand security"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:3216665f2720",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Microsoft Teams"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:3397545538d7",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Contact Center"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:ef0b9875a88c",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Post-quantum readiness"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:4a2d9adfa42b",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Confidential Computing"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:3c1821f543c8",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Ucopia WiFi"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:9b89a4eb6b1c",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Primer Certificado LEED Zero Carbon en España: Un Hito en Sostenibilidad por MERLIN Properties y NTT DATA - es.nttdata.com"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:09f8c538c2a0",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "IT Services"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:277a68cf3a04",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Automation"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:afd0292e8b63",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "AttackIQ · Strategic Technology Partner"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:a98cf74649b8",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "AudioCodes · Platinum Channel Partner"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:specializations:evidence-support:6b531f519cb5",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Fortanix · Global technology and services partner"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt group europe:capabilities:evidence-support:9624de75cf2a",
+      "section": "integrators",
+      "entity": "NTT Group Europe",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Cybersecurity"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt group europe:capabilities:evidence-support:4553f1aa77c3",
+      "section": "integrators",
+      "entity": "NTT Group Europe",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Identity & Access"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt group europe:capabilities:evidence-support:9ff64dc2f59e",
+      "section": "integrators",
+      "entity": "NTT Group Europe",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "AI / Data"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:overti:capabilities:evidence-support:50a0539598a9",
+      "section": "integrators",
+      "entity": "OVERTI",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "IT Service Management"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:overti:capabilities:evidence-support:4992a53f162b",
+      "section": "integrators",
+      "entity": "OVERTI",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Security"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:prodware spain:capabilities:evidence-support:9624de75cf2a",
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Cybersecurity"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:prodware spain:capabilities:evidence-support:9f2306265298",
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Networking"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:prodware spain:capabilities:evidence-support:00c4283fc65a",
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Observability"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:prodware spain:capabilities:evidence-support:4553f1aa77c3",
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Identity & Access"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:prodware spain:capabilities:evidence-support:9ff64dc2f59e",
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "AI / Data"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:prodware spain:capabilities:evidence-support:a03d1f96ae50",
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "MSSP"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:prodware spain:capabilities:evidence-support:a098f99faad7",
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Threat Intelligence"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:tokiota:capabilities:evidence-support:9624de75cf2a",
+      "section": "integrators",
+      "entity": "Tokiota",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Cybersecurity"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:tokiota:capabilities:evidence-support:9f2306265298",
+      "section": "integrators",
+      "entity": "Tokiota",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Networking"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:tokiota:capabilities:evidence-support:00c4283fc65a",
+      "section": "integrators",
+      "entity": "Tokiota",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Observability"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:tokiota:capabilities:evidence-support:4553f1aa77c3",
+      "section": "integrators",
+      "entity": "Tokiota",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Identity & Access"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:tokiota:capabilities:evidence-support:9ff64dc2f59e",
+      "section": "integrators",
+      "entity": "Tokiota",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "AI / Data"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:tokiota:capabilities:evidence-support:a03d1f96ae50",
+      "section": "integrators",
+      "entity": "Tokiota",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "MSSP"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:tokiota:capabilities:evidence-support:a098f99faad7",
+      "section": "integrators",
+      "entity": "Tokiota",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Threat Intelligence"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ust-global spain:specializations:evidence-support:6e45c87e3708",
+      "section": "integrators",
+      "entity": "UST-Global Spain",
+      "field": "specializations",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "UiPath · UiPath Service Partner"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "partners",
+        "cases",
+        "careers",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:wipro:capabilities:evidence-support:5e0b8762a93d",
+      "section": "integrators",
+      "entity": "Wipro",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Cloud"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:wipro:capabilities:evidence-support:9624de75cf2a",
+      "section": "integrators",
+      "entity": "Wipro",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Cybersecurity"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:wipro:capabilities:evidence-support:b77860e13cd2",
+      "section": "integrators",
+      "entity": "Wipro",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "Data Center"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:wipro:capabilities:evidence-support:9ff64dc2f59e",
+      "section": "integrators",
+      "entity": "Wipro",
+      "field": "capabilities",
+      "priority_tier": "P1",
+      "priority_score": 72.7,
+      "target_values": [
+        "AI / Data"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:also:differential_capabilities:evidence-support:19d1e94fcbb8",
+      "section": "distributors",
+      "entity": "ALSO",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Provisioning & billing"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:also:differential_capabilities:evidence-support:08a8fdd8723c",
+      "section": "distributors",
+      "entity": "ALSO",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Modelo de suscripción"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:also:differential_capabilities:evidence-support:dfd55de83498",
+      "section": "distributors",
+      "entity": "ALSO",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Servicios digitales de canal"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:also:differential_capabilities:evidence-support:ca6fecf92037",
+      "section": "distributors",
+      "entity": "ALSO",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Financiación"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:esprinet / v-valley:differential_capabilities:evidence-support:8aa75e8471b1",
+      "section": "distributors",
+      "entity": "Esprinet / V-Valley",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Technical advisory"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:esprinet / v-valley:differential_capabilities:evidence-support:81da62eefd1d",
+      "section": "distributors",
+      "entity": "Esprinet / V-Valley",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "NOC"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:esprinet / v-valley:differential_capabilities:evidence-support:9f2306265298",
+      "section": "distributors",
+      "entity": "Esprinet / V-Valley",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Networking"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:esprinet / v-valley:differential_capabilities:evidence-support:518b5764207f",
+      "section": "distributors",
+      "entity": "Esprinet / V-Valley",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Más de 850 proveedores tecnológicos"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:esprinet / v-valley:differential_capabilities:evidence-support:c22ef6ee928c",
+      "section": "distributors",
+      "entity": "Esprinet / V-Valley",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Catálogo superior a 130.000 productos"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:esprinet / v-valley:differential_capabilities:evidence-support:371a75bb2403",
+      "section": "distributors",
+      "entity": "Esprinet / V-Valley",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Ecosistema de servicios 360 grados"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:esprinet / v-valley:differential_capabilities:evidence-support:ca6fecf92037",
+      "section": "distributors",
+      "entity": "Esprinet / V-Valley",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Financiación"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:esprinet / v-valley:differential_capabilities:evidence-support:df35a4ceac7a",
+      "section": "distributors",
+      "entity": "Esprinet / V-Valley",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Marketplace / plataforma cloud"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:exclusive networks:differential_capabilities:evidence-support:602c7044fd92",
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Centre of Excellence"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:exclusive networks:differential_capabilities:evidence-support:c2538add5746",
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Cloud distribution"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:exclusive networks:differential_capabilities:evidence-support:d2962043e684",
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Value-added distribution"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:exclusive networks:differential_capabilities:evidence-support:9c38ffb8a79a",
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Channel enablement"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:exclusive networks:differential_capabilities:evidence-support:8c59751fc055",
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "NOC / red gestionada"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:exclusive networks:differential_capabilities:evidence-support:52c429970b73",
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Formación y enablement"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:exclusive networks:differential_capabilities:evidence-support:6402ae121c3b",
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "MSP"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:exclusive networks:differential_capabilities:evidence-support:232320521a9f",
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Formación oficial y soporte experto alrededor del portfolio"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:exclusive networks:differential_capabilities:evidence-support:0abce4deea66",
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Servicios gestionados y recurrentes"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:exclusive networks:differential_capabilities:evidence-support:5f88945be1cc",
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Gestión de suscripciones y nube"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:exclusive networks:differential_capabilities:evidence-support:2239da800d74",
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Servicios profesionales"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:exclusive networks:differential_capabilities:evidence-support:2167fd7ad7f0",
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Soporte"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:exclusive networks:differential_capabilities:evidence-support:34ee50fcc839",
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Formación"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:exclusive networks:differential_capabilities:evidence-support:ca6fecf92037",
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Financiación"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:exclusive networks:differential_capabilities:evidence-support:21386b21ca35",
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Logística"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:infinigate:differential_capabilities:evidence-support:23b7d04f1741",
+      "section": "distributors",
+      "entity": "Infinigate",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "DDoS / security visibility"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:infinigate:differential_capabilities:evidence-support:d93ddbea90b6",
+      "section": "distributors",
+      "entity": "Infinigate",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Portfolio paneuropeo especializado"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:infinigate:differential_capabilities:evidence-support:d14e33aba867",
+      "section": "distributors",
+      "entity": "Infinigate",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Servicios para VAR, integradores y MSP"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:v-valley advanced solutions portugal:differential_capabilities:evidence-support:8aa75e8471b1",
+      "section": "distributors",
+      "entity": "V-Valley Advanced Solutions Portugal",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Technical advisory"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:v-valley advanced solutions portugal:differential_capabilities:evidence-support:81da62eefd1d",
+      "section": "distributors",
+      "entity": "V-Valley Advanced Solutions Portugal",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "NOC"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:v-valley advanced solutions portugal:differential_capabilities:evidence-support:9f2306265298",
+      "section": "distributors",
+      "entity": "V-Valley Advanced Solutions Portugal",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Networking"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:v-valley advanced solutions portugal:differential_capabilities:evidence-support:df35a4ceac7a",
+      "section": "distributors",
+      "entity": "V-Valley Advanced Solutions Portugal",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Marketplace / plataforma cloud"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:v-valley advanced solutions portugal:differential_capabilities:evidence-support:2167fd7ad7f0",
+      "section": "distributors",
+      "entity": "V-Valley Advanced Solutions Portugal",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Soporte"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "distributors:v-valley advanced solutions portugal:differential_capabilities:evidence-support:ca6fecf92037",
+      "section": "distributors",
+      "entity": "V-Valley Advanced Solutions Portugal",
+      "field": "differential_capabilities",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Financiación"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:dxc technology spain:services:evidence-support:c23e261fb77d",
+      "section": "integrators",
+      "entity": "DXC Technology Spain",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Integración de soluciones · Proofpoint"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:dxc technology spain:services:evidence-support:ffa815139afd",
+      "section": "integrators",
+      "entity": "DXC Technology Spain",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Security consulting"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:dxc technology spain:services:evidence-support:df35a4ceac7a",
+      "section": "integrators",
+      "entity": "DXC Technology Spain",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Marketplace / plataforma cloud"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:dxc technology spain:services:evidence-support:21386b21ca35",
+      "section": "integrators",
+      "entity": "DXC Technology Spain",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Logística"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:infoavan:services:evidence-support:2239da800d74",
+      "section": "integrators",
+      "entity": "Infoavan",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Servicios profesionales"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:infoavan:services:evidence-support:df35a4ceac7a",
+      "section": "integrators",
+      "entity": "Infoavan",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Marketplace / plataforma cloud"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:infoavan:services:evidence-support:21386b21ca35",
+      "section": "integrators",
+      "entity": "Infoavan",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Logística"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:infoavan:services:evidence-support:2167fd7ad7f0",
+      "section": "integrators",
+      "entity": "Infoavan",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Soporte"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:insight:services:evidence-support:2239da800d74",
+      "section": "integrators",
+      "entity": "Insight",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Servicios profesionales"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:insight:services:evidence-support:df35a4ceac7a",
+      "section": "integrators",
+      "entity": "Insight",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Marketplace / plataforma cloud"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:insight:services:evidence-support:21386b21ca35",
+      "section": "integrators",
+      "entity": "Insight",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Logística"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:3db3cf0be154",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Servicios gestionados · AWS"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:0b576ec5c716",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Suministro / reventa · AWS"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:8e5156be62dd",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Automation implementation"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:cac1aeb3875b",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Service delivery"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:dbe8085dbc3c",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Automation consulting"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:04ccf5232fb8",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Servicios gestionados · Proofpoint"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:c23e261fb77d",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Integración de soluciones · Proofpoint"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:ffa815139afd",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Security consulting"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:5f043281ee02",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Global technology services"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:0b1e71332690",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Implementation"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:056566478bf7",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Integración de soluciones · Weblib"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:0b474410210e",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Suministro / reventa · Weblib"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:bf05dbd15eee",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Design"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:8398910ea190",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Integration"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:8dd4dce4c4d5",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Installation"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:2f4f91e18e2b",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Support"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:51a6586072b6",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Integración de soluciones · Zscaler"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:ntt:services:evidence-support:52c429970b73",
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Formación y enablement"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:overti:services:evidence-support:4bbc4c8c8621",
+      "section": "integrators",
+      "entity": "OVERTI",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Integración de soluciones · Ivanti"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:overti:services:evidence-support:df35a4ceac7a",
+      "section": "integrators",
+      "entity": "OVERTI",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Marketplace / plataforma cloud"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:overti:services:evidence-support:2239da800d74",
+      "section": "integrators",
+      "entity": "OVERTI",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Servicios profesionales"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:overti:services:evidence-support:21386b21ca35",
+      "section": "integrators",
+      "entity": "OVERTI",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Logística"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:prodware spain:services:evidence-support:2239da800d74",
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Servicios profesionales"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:prodware spain:services:evidence-support:df35a4ceac7a",
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Marketplace / plataforma cloud"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:prodware spain:services:evidence-support:21386b21ca35",
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Logística"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:prodware spain:services:evidence-support:2167fd7ad7f0",
+      "section": "integrators",
+      "entity": "Prodware Spain",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Soporte"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:tokiota:services:evidence-support:2239da800d74",
+      "section": "integrators",
+      "entity": "Tokiota",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Servicios profesionales"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:tokiota:services:evidence-support:df35a4ceac7a",
+      "section": "integrators",
+      "entity": "Tokiota",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Marketplace / plataforma cloud"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:tokiota:services:evidence-support:21386b21ca35",
+      "section": "integrators",
+      "entity": "Tokiota",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Logística"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:tokiota:services:evidence-support:2167fd7ad7f0",
+      "section": "integrators",
+      "entity": "Tokiota",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Soporte"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:xalient:services:evidence-support:2239da800d74",
+      "section": "integrators",
+      "entity": "Xalient",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Servicios profesionales"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:xalient:services:evidence-support:df35a4ceac7a",
+      "section": "integrators",
+      "entity": "Xalient",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Marketplace / plataforma cloud"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:xalient:services:evidence-support:21386b21ca35",
+      "section": "integrators",
+      "entity": "Xalient",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Logística"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:xalient:services:evidence-support:b672764ea462",
+      "section": "integrators",
+      "entity": "Xalient",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Implementación / integración"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "integrators:xalient:services:evidence-support:2167fd7ad7f0",
+      "section": "integrators",
+      "entity": "Xalient",
+      "field": "services",
+      "priority_tier": "P1",
+      "priority_score": 68.2,
+      "target_values": [
+        "Soporte"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "clients_private:acs:technology_signals:evidence-support:b77860e13cd2",
+      "section": "clients_private",
+      "entity": "ACS",
+      "field": "technology_signals",
+      "priority_tier": "P1",
+      "priority_score": 67.3,
+      "target_values": [
+        "Data Center"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "technology",
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "clients_private:acciona:technology_signals:evidence-support:9f2306265298",
+      "section": "clients_private",
+      "entity": "Acciona",
+      "field": "technology_signals",
+      "priority_tier": "P1",
+      "priority_score": 67.3,
+      "target_values": [
+        "Networking"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "technology",
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "clients_private:acciona energía:technology_signals:evidence-support:9f2306265298",
+      "section": "clients_private",
+      "entity": "Acciona Energía",
+      "field": "technology_signals",
+      "priority_tier": "P1",
+      "priority_score": 67.3,
+      "target_values": [
+        "Networking"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "technology",
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "clients_private:amadeus it group:technology_signals:evidence-support:9f2306265298",
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "field": "technology_signals",
+      "priority_tier": "P1",
+      "priority_score": 67.3,
+      "target_values": [
+        "Networking"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "technology",
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    },
+    {
+      "gap_id": "clients_private:arcelormittal:technology_signals:evidence-support:9f2306265298",
+      "section": "clients_private",
+      "entity": "ArcelorMittal",
+      "field": "technology_signals",
+      "priority_tier": "P1",
+      "priority_score": 67.3,
+      "target_values": [
+        "Networking"
+      ],
+      "research_mode": "public-source-verification",
+      "source_playbook": [
+        "technology",
+        "services",
+        "cases",
+        "official"
+      ],
+      "historical_leads": 0
+    }
+  ],
   "actionable_by_section": {
     "architectures": {
       "claims_awaiting_evidence": 286
