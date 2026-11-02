@@ -611,6 +611,19 @@ def build_gaps(
         "other_open_debt": sum(1 for g in gaps if not g.get("target_values") and g.get("gap_kind") not in ("standard", "derivation-support")),
     }
     assert sum(debt_breakdown.values()) == len(gaps)
+    actionable_by_section = {
+        section: {
+            "unverified_claims": sum(
+                1 for g in gaps if g["section"] == section and g.get("target_values")
+                and g.get("gap_kind") != "derivation-support"
+            ),
+            "empty_fields": sum(
+                1 for g in gaps if g["section"] == section
+                and g.get("gap_kind") == "standard" and not g.get("target_values")
+            ),
+        }
+        for section in SECTIONS
+    }
     by_section = {section: sum(1 for gap in gaps if gap["section"] == section) for section in SECTIONS}
     coverage = {
         section: {
@@ -631,6 +644,7 @@ def build_gaps(
         ),
         "total_gaps": len(gaps),
         "debt_breakdown": debt_breakdown,
+        "actionable_by_section": actionable_by_section,
         "public_status_summary": public_status_summary,
         "historical_lookup": historical_lookup,
         "historical_revalidation_gaps": historical_revalidation_gaps,
