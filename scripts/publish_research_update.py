@@ -31,6 +31,7 @@ ALLOWED = [
     "data/current/discovery_queue.json",
     "data/current/run_history.json",
     "data/current/quality_report.json",
+    "data/public/debt_overview.json",
     "data/public/manifest.json",
     "data/public/last_run.json",
     "data/public/sections/manufacturers.json",
