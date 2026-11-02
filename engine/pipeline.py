@@ -207,6 +207,7 @@ def run() -> dict[str, Any]:
     gaps = build_gaps(data, VERSION, research_state)
     metrics = calculate(data, gaps, graph)
     metrics.update({
+        "debt_breakdown": dict(gaps.get("debt_breakdown") or {}),
         "evidence_support_pending": int(gaps.get("evidence_support_gaps") or 0),
         "derivation_support_pending": int(gaps.get("derivation_support_gaps") or 0),
         "historical_revalidation_pending": int(gaps.get("historical_revalidation_gaps") or 0),
