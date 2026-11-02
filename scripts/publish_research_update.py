@@ -72,8 +72,8 @@ def main() -> int:
     local_before = output(["git", "rev-parse", "HEAD"])
     remote_before = output(["git", "rev-parse", "origin/main"])
     if local_before != remote_before:
-        print("Remote main changed during research; stale snapshot was not published safely.")
-        return 0
+        print("Remote main changed during research; stale snapshot was not published safely.", file=sys.stderr)
+        return 1
 
     existing = [path for path in ALLOWED if (ROOT / path).exists()]
     run(["git", "add", "-A", "--", *existing])
@@ -88,8 +88,8 @@ def main() -> int:
             return 0
         run(["git", "fetch", "origin", "main"], check=False)
         if output(["git", "rev-parse", "origin/main"]) != remote_before:
-            print("Remote main advanced before push; generated snapshot remains unpublished.")
-            return 0
+            print("Remote main advanced before push; generated snapshot remains unpublished.", file=sys.stderr)
+            return 1
         if attempt < arguments.attempts:
             time.sleep(min(8, 2 ** attempt))
 
