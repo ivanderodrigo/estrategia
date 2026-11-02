@@ -80,24 +80,25 @@ SECTION_MAX_SHARE = {
 
 
 def _learning_yield(learning: dict[str, Any], section: str, family: str) -> float:
-    """Reward source families that turn attempts into accepted evidence, not merely HTTP success."""
+    """Use evidence per attempt, with a prior, not HTTP success alone.
+
+    The prior prevents an unfamiliar source family from being starved. A family
+    with thousands of failed requests loses priority, while an effective family
+    earns more budget. Raw accepted counts may exceed attempts when one page
+    yields several claims, so this is a bounded yield rather than a probability.
+    """
     stats = (learning.get("families") or {}).get(f"{section}:{family}") or {}
-    attempts = int(stats.get("attempts") or 0)
-    successes = int(stats.get("fetch_successes") or 0)
-    relevant = int(stats.get("pages_relevant") or 0)
-    accepted = int(stats.get("accepted_evidence") or 0)
-    if attempts <= 0:
-        return 0.66
-    evidence_per_attempt = accepted / max(1, attempts)
-    relevance_per_attempt = relevant / max(1, attempts)
-    transport_success = successes / max(1, attempts)
-    score = (
-        0.34
-        + min(0.48, evidence_per_attempt * 4.0)
-        + min(0.20, relevance_per_attempt * 0.8)
-        + min(0.12, transport_success * 0.2)
-    )
-    return max(0.35, min(1.18, score))
+    attempts = max(0, int(stats.get("attempts") or 0))
+    accepted = max(0, int(stats.get("accepted_evidence") or 0))
+    relevant = max(0, int(stats.get("pages_relevant") or 0))
+    if attempts == 0:
+        return 0.74
+    # Empirical-Bayes smoothing: ten synthetic attempts at modest yield,
+    # limiting the influence of tiny samples and permitting exploration.
+    accepted_yield = (accepted + 1.5) / (attempts + 10)
+    relevant_yield = (relevant + 2.0) / (attempts + 10)
+    score = 0.30 + min(0.72, accepted_yield * 3.0) + min(0.16, relevant_yield * 0.4)
+    return max(0.32, min(1.18, score))
 
 
 def _fallback_score(gap: dict[str, Any], section: str, field: str) -> float:
