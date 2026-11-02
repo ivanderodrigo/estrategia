@@ -8,6 +8,8 @@ on:
       - '.github/workflows/research-weekly.yml'
       - 'engine/research/historical_leads.py'
       - 'engine/research/planner.py'
+      - 'engine/research/web_intelligence.py'
+      - 'tests/test_deep_cooldown_rescue.py'
   schedule:
     # Deep source corroboration four evenings/week, away from weekday Daily.
     - cron: "29 22 * * 0,1,3,5"
