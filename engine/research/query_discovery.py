@@ -148,7 +148,7 @@ def discover(
     timeout_s: float,
     max_queries: int,
     results_per_query: int,
-) -> tuple[list[SourceSeed], dict[str, int]]:
+) -> tuple[list[SourceSeed], dict[str, int | dict[str, int]]]:
     """Return safe candidate URLs plus diagnostics.
 
     Results are deliberately grade C/discovery-only. The caller may upgrade a
