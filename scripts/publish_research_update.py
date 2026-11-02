@@ -23,6 +23,7 @@ ALLOWED = [
     "data/current/research_gaps.json",
     "data/current/metrics_before_after.json",
     "data/current/coverage_report.json",
+    "data/current/debt_diagnostic.json",
     "data/current/source_report.json",
     "data/current/research_learning.json",
     "data/current/research_ledger.json",
