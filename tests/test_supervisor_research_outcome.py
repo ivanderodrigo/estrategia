@@ -20,6 +20,12 @@ class SupervisorOutcomeTests(unittest.TestCase):
         self.assertIn('exit_code = 1', self.source)
         self.assertIn('"research": result.get("status")', self.source)
 
+    def test_idle_research_with_backlog_is_not_success(self):
+        self.assertIn('result["status"] = "no-research-work"', self.source)
+        self.assertIn('int(previous_gap_count or 0) > 0', self.source)
+        self.assertIn('int(result.get("fetch_attempts") or 0) == 0', self.source)
+        self.assertIn('int(result.get("search_queries_attempted") or 0) == 0', self.source)
+
     def test_gap_delta_uses_immediately_previous_quality_report(self):
         self.assertIn('previous_quality = read_json("data/current/quality_report.json", {})', self.source)
         self.assertIn('"gaps_delta_vs_previous_run"', self.source)
