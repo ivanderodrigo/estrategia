@@ -604,6 +604,13 @@ def build_gaps(
         -float(item.get("priority_score") or 0),
         item["priority"], item["section"], norm(item["entity"]), item["field"]
     ))
+    debt_breakdown = {
+        "empty_schema_fields": sum(1 for g in gaps if g.get("gap_kind") == "standard" and not g.get("target_values")),
+        "claims_awaiting_evidence": sum(1 for g in gaps if g.get("target_values") and g.get("gap_kind") != "derivation-support"),
+        "derived_support": sum(1 for g in gaps if g.get("gap_kind") == "derivation-support"),
+        "other_open_debt": sum(1 for g in gaps if not g.get("target_values") and g.get("gap_kind") not in ("standard", "derivation-support")),
+    }
+    assert sum(debt_breakdown.values()) == len(gaps)
     by_section = {section: sum(1 for gap in gaps if gap["section"] == section) for section in SECTIONS}
     coverage = {
         section: {
@@ -623,6 +630,7 @@ def build_gaps(
             "PPT, portfolio e histórico se conservan como pistas internas y generan deuda de validación pública, no acreditación."
         ),
         "total_gaps": len(gaps),
+        "debt_breakdown": debt_breakdown,
         "public_status_summary": public_status_summary,
         "historical_lookup": historical_lookup,
         "historical_revalidation_gaps": historical_revalidation_gaps,
