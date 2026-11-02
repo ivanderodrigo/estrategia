@@ -1457,7 +1457,7 @@ def run(
     # Rotate a small rescue batch across the eligible entity pool; canonical
     # evidence gates, URL security, watchdog and preservation still apply.
     rescue_targets = 0
-    if profile == "daily" and not targets:
+    if profile in {"daily", "deep"} and not targets:
         candidate_pool = plan(
             gaps, learning, profile, state=None,
             max_tasks=240, include_gap_kinds=include_gap_kinds,
@@ -1465,7 +1465,7 @@ def run(
         if candidate_pool:
             offset = (datetime.now(timezone.utc).timetuple().tm_yday * 13) % len(candidate_pool)
             rotated = candidate_pool[offset:] + candidate_pool[:offset]
-            targets = rotated[:12]
+            targets = rotated[:(12 if profile == "daily" else 36)]
             rescue_targets = len(targets)
     index = _row_index(data)
     vendor_names = _vendor_names(data)
