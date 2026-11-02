@@ -167,6 +167,8 @@ def discover(
     diagnostics["duplicate_urls_skipped"] = 0
     diagnostics["host_saturation_skipped"] = 0
     diagnostics["empty_result_queries"] = 0
+    diagnostics["provider_attempts"] = {}
+    diagnostics["provider_urls"] = {}
 
     clean_queries = _unique((str(value).strip() for value in queries), max(0, max_queries))
     for query in clean_queries:
@@ -177,6 +179,7 @@ def discover(
             if not provider:
                 continue
             diagnostics["queries_attempted"] += 1
+            diagnostics["provider_attempts"][provider] = diagnostics["provider_attempts"].get(provider, 0) + 1
             before_query_results = len(output)
             try:
                 urls = _search_provider(
@@ -187,6 +190,7 @@ def discover(
                     result_limit=max(1, results_per_query),
                 )
                 diagnostics["queries_succeeded"] += 1
+                diagnostics["provider_urls"][provider] = diagnostics["provider_urls"].get(provider, 0) + len(urls)
             except (requests.RequestException, ValueError, UnicodeError):
                 diagnostics["provider_failures"] += 1
                 continue
