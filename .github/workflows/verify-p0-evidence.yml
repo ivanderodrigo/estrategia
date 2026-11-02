@@ -1,0 +1,40 @@
+name: Verify P0 Evidence
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/check_p0_evidence.py'
+      - '.github/workflows/verify-p0-evidence.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - name: Syntax and focused tests
+        run: |
+          python -m compileall -q engine scripts tests
+          python -m unittest discover -s tests -p 'test_*.py'
+      - name: Rebuild canonical dataset
+        run: python -m engine.pipeline
+      - name: Validate canonical snapshot
+        run: |
+          python scripts/validate.py
+          python -m scripts.check_p0_evidence
+      - name: Upload verification reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p0-evidence-verification-${{ github.run_id }}
+          path: |
+            data/current/quality_report.json
+            data/current/debt_diagnostic.json
+            data/current/research_gaps.json
+          retention-days: 7
