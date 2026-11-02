@@ -56,7 +56,8 @@ jobs:
       - name: Canonical preflight
         run: |
           python -m compileall -q engine scripts tests
-          python -m unittest discover -s tests -p "test_*.py" -v
+          python -m unittest discover -s tests -p "test_*.py" -v 2>&1 | tee full-test-results.txt
+          test ${PIPESTATUS[0]} -eq 0
           python scripts/validate_workflows.py
           python scripts/security_audit.py
           python scripts/validate.py
@@ -89,6 +90,7 @@ jobs:
         with:
           name: research-diagnostics-${{ inputs.profile }}-${{ github.run_id }}
           path: |
+            full-test-results.txt
             data/current/supervisor.json
             data/current/run_history.json
             data/current/research_ledger.json
