@@ -381,6 +381,20 @@ def run() -> dict[str, Any]:
         "data/current/research_gaps.json": json_bytes(gaps),
         "data/current/metrics_before_after.json": json_bytes(compare),
         "data/current/coverage_report.json": json_bytes(gaps["coverage"]),
+        "data/public/debt_overview.json": json_bytes({
+            "generated_at": now,
+            "total_open_gaps": gaps["total_gaps"],
+            "debt_breakdown": gaps.get("debt_breakdown") or {},
+            "priority_tiers": (gaps.get("business_priority") or {}).get("tiers") or {},
+            "by_section": {
+                section: {
+                    "claims_awaiting_evidence": sum(1 for g in gaps["gaps"] if g["section"] == section and g.get("target_values") and g.get("gap_kind") != "derivation-support"),
+                    "derivation_support": sum(1 for g in gaps["gaps"] if g["section"] == section and g.get("gap_kind") == "derivation-support"),
+                    "empty_schema_fields": sum(1 for g in gaps["gaps"] if g["section"] == section and g.get("gap_kind") == "standard" and not g.get("target_values")),
+                }
+                for section in SECTIONS
+            },
+        }),
         "data/current/debt_diagnostic.json": json_bytes({
             "version": VERSION,
             "generated_at": now,
