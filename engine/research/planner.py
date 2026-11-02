@@ -207,18 +207,25 @@ def presentation_signal_queries(entity: str, targets: dict[str, list], limit: in
     verified fact. Neither the presentation itself nor a search snippet is proof.
     """
     output: list[str] = []
+    # Distribute searches across independent fields and all language contexts.
+    # A field with many values must not consume the entire budget before
+    # Portuguese/English alternatives or the next field are considered.
+    buckets: list[list[str]] = []
     for field, values in targets.items():
         contexts = PRESENTATION_SEARCH_CONTEXT.get(field, ())
         for raw in values[:2]:
             value = str(raw).strip()
             if not 3 <= len(value) <= 100 or value.casefold() in {"unknown", "por investigar"}:
                 continue
-            for context in contexts[:2]:
-                query = f'"{entity}" "{value}" {context}'
-                if query not in output:
-                    output.append(query)
+            buckets.append([f'"{entity}" "{value}" {context}' for context in contexts])
+    depth = 0
+    while len(output) < limit and any(depth < len(bucket) for bucket in buckets):
+        for bucket in buckets:
+            if depth < len(bucket) and bucket[depth] not in output:
+                output.append(bucket[depth])
                 if len(output) >= limit:
-                    return output
+                    break
+        depth += 1
     return output
 
 
