@@ -131,7 +131,7 @@ def _search_provider(
     if provider == "duckduckgo_html":
         response = session.get(
             DUCKDUCKGO_HTML,
-            params={"q": query, "kl": "es-es"},
+            params={"q": query, "kl": "pt-pt" if any(word in query.casefold() for word in ("parceiro", "serviços", "soluções", "especialização", "caso de sucesso")) else "es-es"},
             timeout=timeout,
         )
         response.raise_for_status()
