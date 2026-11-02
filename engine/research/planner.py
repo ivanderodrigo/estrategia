@@ -189,12 +189,12 @@ def _with_manufacturer_revenue_reserve(
 # Presentation-derived research vocabulary, not evidence. Each query must lead to
 # independently fetched, claim-specific, publicly verifiable documentation.
 PRESENTATION_SEARCH_CONTEXT = {
-    "capabilities": ("solution", "product", "technology"),
-    "specializations": ("specialization", "solution", "certification"),
-    "vendor_relations": ("partner", "technology alliance", "authorized"),
-    "partners": ("partner", "channel", "reseller"),
-    "services": ("managed services", "professional services", "assessment"),
-    "public_cases": ("case study", "customer story", "reference"),
+    "capabilities": ("soluciones", "soluções", "technology"),
+    "specializations": ("especialización", "especialização", "certification"),
+    "vendor_relations": ("partner", "alianza tecnológica", "parceiro certificado"),
+    "partners": ("partner", "distribuidor autorizado", "parceiro"),
+    "services": ("servicios gestionados", "serviços geridos", "professional services"),
+    "public_cases": ("caso de éxito", "caso de sucesso", "customer story"),
     "technology_signals": ("project", "deployment", "tender"),
     "identified_vendors": ("awarded", "contract", "deployment"),
 }
