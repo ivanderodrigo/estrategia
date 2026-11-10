@@ -17,3 +17,48 @@ jobs:
       fallback_runtime: 0
       timeout_minutes: 35
       commit_message: "chore: inteligencia pública diaria"
+
+  health:
+    name: Record Daily outcome
+    if: always()
+    needs: research
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Persist exact failed step
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESEARCH_OUTCOME: ${{ needs.research.result }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/jobs" --paginate > /tmp/daily_jobs.json
+          python - <<'PY'
+          import json, os
+          from datetime import datetime,timezone
+          from pathlib import Path
+          jobs=json.loads(Path('/tmp/daily_jobs.json').read_text()).get('jobs',[])
+          researched=[job for job in jobs if 'research' in job.get('name','').lower()]
+          failed=[{'job':job.get('name'), 'step':step.get('name'), 'conclusion':step.get('conclusion')}
+                  for job in researched for step in job.get('steps',[])
+                  if step.get('conclusion') in ('failure','cancelled','timed_out')]
+          report={'generated_at':datetime.now(timezone.utc).isoformat(),
+                  'run_id':os.environ['GITHUB_RUN_ID'],
+                  'run_url':'https://github.com/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/'+os.environ['GITHUB_RUN_ID'],
+                  'research_job_result':os.environ.get('RESEARCH_OUTCOME'),
+                  'failed_steps':failed,
+                  'scope':'GitHub Actions job status; not proof of factual evidence yield'}
+          dest=Path('data/current/daily_workflow_health.json')
+          dest.parent.mkdir(parents=True,exist_ok=True)
+          dest.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps(report,ensure_ascii=False))
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/current/daily_workflow_health.json
+          git commit -m 'chore: record Daily workflow outcome'
+          git pull --rebase origin main
+          git push origin HEAD:main
