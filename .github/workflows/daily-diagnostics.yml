@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths:
       - 'scripts/diagnose_daily.py'
+      - 'engine/research/planner.py'
+      - 'tests/test_query_discovery_v440.py'
+      - 'tests/test_v422_tag_ergonomics.py'
       - '.github/workflows/daily-diagnostics.yml'
 permissions:
   contents: write
