@@ -2,6 +2,7 @@
 """Reproducible Daily preflight diagnostic, independent of the research/publish path."""
 from __future__ import annotations
 import json
+import re
 import subprocess
 import sys
 import time
@@ -45,7 +46,8 @@ def main() -> int:
         item = {
             "name": name, "status": status, "returncode": code,
             "elapsed_seconds": round(time.monotonic()-begin, 2),
-            "output_tail": combined[-7000:] if status != "passed" else combined[-450:],
+            "failure_headers": re.findall(r"^(?:FAIL|ERROR): .+$", combined, flags=re.MULTILINE),
+            "output_tail": combined[-2000:] if status != "passed" else combined[-450:],
         }
         results.append(item)
         print(f"daily diagnostic: {name}: {status}", flush=True)
