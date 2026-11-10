@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-10T18:54:51.477918+00:00",
-  "started_at": "2026-11-10T18:54:22.410556+00:00",
+  "generated_at": "2026-11-10T18:56:53.793294+00:00",
+  "started_at": "2026-11-10T18:56:23.734366+00:00",
   "conclusion": "failed",
-  "failed_step": "release_audit_v422",
+  "failed_step": "release_audit_v430",
   "steps": [
     {
       "name": "compile",
       "status": "passed",
       "returncode": 0,
-      "elapsed_seconds": 0.29,
+      "elapsed_seconds": 0.3,
       "failure_headers": [],
       "output_tail": "\n"
     },
@@ -16,9 +16,9 @@
       "name": "unit_tests",
       "status": "passed",
       "returncode": 0,
-      "elapsed_seconds": 20.71,
+      "elapsed_seconds": 21.01,
       "failure_headers": [],
-      "output_tail": "usable_runner_serializes_validates_and_preserves_diagnostics) ... ok\ntest_runtime_has_room_for_validation_and_publication (test_workflows.WorkflowIntegrity.test_runtime_has_room_for_validation_and_publication) ... ok\ntest_source_verification_uses_python_modules (test_workflows.WorkflowIntegrity.test_source_verification_uses_python_modules) ... ok\n\n----------------------------------------------------------------------\nRan 315 tests in 19.350s\n\nOK\n"
+      "output_tail": "usable_runner_serializes_validates_and_preserves_diagnostics) ... ok\ntest_runtime_has_room_for_validation_and_publication (test_workflows.WorkflowIntegrity.test_runtime_has_room_for_validation_and_publication) ... ok\ntest_source_verification_uses_python_modules (test_workflows.WorkflowIntegrity.test_source_verification_uses_python_modules) ... ok\n\n----------------------------------------------------------------------\nRan 315 tests in 19.646s\n\nOK\n"
     },
     {
       "name": "workflow_validation",
@@ -32,7 +32,7 @@
       "name": "security_audit",
       "status": "passed",
       "returncode": 0,
-      "elapsed_seconds": 2.62,
+      "elapsed_seconds": 2.63,
       "failure_headers": [],
       "output_tail": "security audit: PASS\n\n"
     },
@@ -40,7 +40,7 @@
       "name": "data_validation",
       "status": "passed",
       "returncode": 0,
-      "elapsed_seconds": 1.9,
+      "elapsed_seconds": 1.95,
       "failure_headers": [],
       "output_tail": "v4.3.0 canonical validation: PASS\n\n"
     },
@@ -62,11 +62,19 @@
     },
     {
       "name": "release_audit_v422",
-      "status": "failed",
-      "returncode": 1,
+      "status": "passed",
+      "returncode": 0,
       "elapsed_seconds": 2.51,
       "failure_headers": [],
-      "output_tail": "v4.2.2 current-document + tag-ergonomics audit: FAIL\n - spain_portfolio_current: 36\n - portugal_base_current: 36\n - portugal_additional_check_point: True\n - fy27_capability_items_current: 192\n - current_westcon_visible_evidence: 269\n - blocked_historical_visible: 0\n - gaps_total: 20113\n - public_validation_gaps: 93\n - unknown_research_gaps: 20020\n - negative control ADC accredited by deck: 0\n - ERROR: frontend HTML identity is not App v4.6.0\n\n"
+      "output_tail": "v4.2.2 current-document + tag-ergonomics audit: PASS\n - spain_portfolio_current: 36\n - portugal_base_current: 36\n - portugal_additional_check_point: True\n - fy27_capability_items_current: 192\n - current_westcon_visible_evidence: 269\n - blocked_historical_visible: 0\n - gaps_total: 20113\n - public_validation_gaps: 93\n - unknown_research_gaps: 20020\n - negative control ADC accredited by deck: 0\n\n"
+    },
+    {
+      "name": "release_audit_v430",
+      "status": "failed",
+      "returncode": 1,
+      "elapsed_seconds": 0.6,
+      "failure_headers": [],
+      "output_tail": "v4.3.0 research-ROI + controlled-growth audit: FAIL\n - structured growth budgets: {'daily': 24, 'deep': 100, 'exhaustive': 220}\n - gaps total: 20113\n - P0/P1: 2412\n - business-weighted coverage %: 30.31\n - low-context public gaps: 0\n - low-context public P0/P1: 0\n - context-rich public gaps: 9089\n - public-validation gaps: 93\n - hard relations before/after: 430 -> 430\n - provisional relation signals before/after: 280 -> 280\n - provisional relations skipped during reconciliation: 280\n - ERROR: planner missing ROI marker: evidence_per_attempt\n - ERROR: planner missing ROI marker: relevance_per_attempt\n - ERROR: planner missing ROI marker: transport_success\n\n"
     }
   ],
   "scope": "Preflight only. Does not certify successful web research or publication."
