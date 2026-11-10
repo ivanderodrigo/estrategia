@@ -56,8 +56,8 @@ class QueryDiscoveryTests(unittest.TestCase):
 
     def test_daily_cooldown_rescue_is_bounded_and_keeps_provenance_gates(self):
         source = (Path(__file__).resolve().parents[1] / "engine/research/web_intelligence.py").read_text(encoding="utf-8")
-        self.assertIn('if profile == "daily" and not targets:', source)
-        self.assertIn('targets = rotated[:12]', source)
+        self.assertIn('if profile in {"daily", "deep"} and not targets:', source)
+        self.assertIn('targets = rotated[:(12 if profile == "daily" else 36)]', source)
         self.assertIn('"rescue_targets_after_cooldown": rescue_targets', source)
 
 
