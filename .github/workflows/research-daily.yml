@@ -1,6 +1,12 @@
 name: Westcon Intelligence Daily
 
 on:
+  # One controlled research run whenever this workflow is explicitly maintained.
+  # Ordinary application/code commits never trigger the expensive crawler.
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/research-daily.yml'
   schedule:
     - cron: "17 5 * * 1-5"
   workflow_dispatch:
