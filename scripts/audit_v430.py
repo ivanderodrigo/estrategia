@@ -23,10 +23,20 @@ def main() -> int:
     if limits != expected:
         errors.append(f"structured growth limits {limits!r} != {expected!r}")
 
-    planner = (ROOT / "engine/research/planner.py").read_text(encoding="utf-8")
-    for marker in ("evidence_per_attempt", "relevance_per_attempt", "transport_success"):
-        if marker not in planner:
-            errors.append(f"planner missing ROI marker: {marker}")
+    # Test actual source-selection behaviour, not outdated identifier names.
+    # Research yield must reward accepted evidence, not HTTP transport success.
+    from engine.research.planner import _learning_yield
+    def research_score(accepted: int, relevant: int, transport: int = 0) -> float:
+        return _learning_yield({
+            "families": {"integrators:official": {
+                "attempts": 30, "accepted_evidence": accepted,
+                "pages_relevant": relevant, "successes": transport,
+            }}
+        }, "integrators", "official")
+    if not research_score(12, 14) > research_score(0, 0):
+        errors.append("planner must prioritize accepted evidence over empty fetches")
+    if research_score(0, 0, transport=30) != research_score(0, 0):
+        errors.append("planner incorrectly rewards transport success without evidence")
 
     web = (ROOT / "engine/research/web_intelligence.py").read_text(encoding="utf-8")
     for marker in ("structured_entity_budget", "structured_entities_added", "accepted_evidence_per_fetch_attempt", "growth_pressure_ratio"):
