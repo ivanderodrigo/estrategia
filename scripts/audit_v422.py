@@ -144,6 +144,7 @@ def main() -> int:
         html_app_markers = (
             'Business Intelligence \u00b7 v' + app_version,
             'Observatorio Tecnológico \u00b7 v' + app_version,
+            'Inteligencia Estratégica · v5.0',
         )
 
         if not any(marker in index_html for marker in html_app_markers):
