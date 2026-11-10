@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-10T18:56:53.793294+00:00",
-  "started_at": "2026-11-10T18:56:23.734366+00:00",
-  "conclusion": "failed",
-  "failed_step": "release_audit_v430",
+  "generated_at": "2026-11-10T18:58:33.378371+00:00",
+  "started_at": "2026-11-10T18:58:09.288872+00:00",
+  "conclusion": "passed",
+  "failed_step": null,
   "steps": [
     {
       "name": "compile",
       "status": "passed",
       "returncode": 0,
-      "elapsed_seconds": 0.3,
+      "elapsed_seconds": 0.23,
       "failure_headers": [],
       "output_tail": "\n"
     },
@@ -16,15 +16,15 @@
       "name": "unit_tests",
       "status": "passed",
       "returncode": 0,
-      "elapsed_seconds": 21.01,
+      "elapsed_seconds": 16.44,
       "failure_headers": [],
-      "output_tail": "usable_runner_serializes_validates_and_preserves_diagnostics) ... ok\ntest_runtime_has_room_for_validation_and_publication (test_workflows.WorkflowIntegrity.test_runtime_has_room_for_validation_and_publication) ... ok\ntest_source_verification_uses_python_modules (test_workflows.WorkflowIntegrity.test_source_verification_uses_python_modules) ... ok\n\n----------------------------------------------------------------------\nRan 315 tests in 19.646s\n\nOK\n"
+      "output_tail": "usable_runner_serializes_validates_and_preserves_diagnostics) ... ok\ntest_runtime_has_room_for_validation_and_publication (test_workflows.WorkflowIntegrity.test_runtime_has_room_for_validation_and_publication) ... ok\ntest_source_verification_uses_python_modules (test_workflows.WorkflowIntegrity.test_source_verification_uses_python_modules) ... ok\n\n----------------------------------------------------------------------\nRan 315 tests in 14.953s\n\nOK\n"
     },
     {
       "name": "workflow_validation",
       "status": "passed",
       "returncode": 0,
-      "elapsed_seconds": 0.08,
+      "elapsed_seconds": 0.07,
       "failure_headers": [],
       "output_tail": "workflow validation: PASS\n\n"
     },
@@ -32,7 +32,7 @@
       "name": "security_audit",
       "status": "passed",
       "returncode": 0,
-      "elapsed_seconds": 2.63,
+      "elapsed_seconds": 2.08,
       "failure_headers": [],
       "output_tail": "security audit: PASS\n\n"
     },
@@ -40,7 +40,7 @@
       "name": "data_validation",
       "status": "passed",
       "returncode": 0,
-      "elapsed_seconds": 1.95,
+      "elapsed_seconds": 1.79,
       "failure_headers": [],
       "output_tail": "v4.3.0 canonical validation: PASS\n\n"
     },
@@ -48,7 +48,7 @@
       "name": "release_audit_v410",
       "status": "passed",
       "returncode": 0,
-      "elapsed_seconds": 0.33,
+      "elapsed_seconds": 0.27,
       "failure_headers": [],
       "output_tail": "ease audit: PASS\n - visible public source families: 1643\n - visible atomic public evidence (section-deduplicated): 3674\n - internal/historical evidence exposed as accreditation: 0\n - preservation: PASS\n - values: 14197 -> 14197\n - public claim support: 6955 -> 6955\n - relations: 430 -> 430\n - research-seed claims: 11106 -> 11108\n - accepted research evidences: 0 (v4.1.0 floor >= 8)\n - accepted public evidence result rows: 0 (full-run aggregate)\n\n"
     },
@@ -56,7 +56,7 @@
       "name": "release_audit_v421",
       "status": "passed",
       "returncode": 0,
-      "elapsed_seconds": 0.63,
+      "elapsed_seconds": 0.53,
       "failure_headers": [],
       "output_tail": " technology_signals | x 1.41\n    P1 66.8 | Presidencia de la Agencia Estatal de Meteorología | technology_signals | x 1.5\n    P1 65.9 | Comisión ejecutiva del Consejo de Administración de la Empresa Municipal de Transportes de Fuenlabrada, S.A. | technology_signals | x 1.36\n    P1 65.0 | Corporació de Salut del Maresme i la Selva | technology_signals | x 1.46\n    P1 64.0 | Institut de Diagnòstic per la Imatge (IDI) | technology_signals | x 1.32\n\n"
     },
@@ -64,17 +64,49 @@
       "name": "release_audit_v422",
       "status": "passed",
       "returncode": 0,
-      "elapsed_seconds": 2.51,
+      "elapsed_seconds": 2.05,
       "failure_headers": [],
       "output_tail": "v4.2.2 current-document + tag-ergonomics audit: PASS\n - spain_portfolio_current: 36\n - portugal_base_current: 36\n - portugal_additional_check_point: True\n - fy27_capability_items_current: 192\n - current_westcon_visible_evidence: 269\n - blocked_historical_visible: 0\n - gaps_total: 20113\n - public_validation_gaps: 93\n - unknown_research_gaps: 20020\n - negative control ADC accredited by deck: 0\n\n"
     },
     {
       "name": "release_audit_v430",
-      "status": "failed",
-      "returncode": 1,
-      "elapsed_seconds": 0.6,
+      "status": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 0.52,
       "failure_headers": [],
-      "output_tail": "v4.3.0 research-ROI + controlled-growth audit: FAIL\n - structured growth budgets: {'daily': 24, 'deep': 100, 'exhaustive': 220}\n - gaps total: 20113\n - P0/P1: 2412\n - business-weighted coverage %: 30.31\n - low-context public gaps: 0\n - low-context public P0/P1: 0\n - context-rich public gaps: 9089\n - public-validation gaps: 93\n - hard relations before/after: 430 -> 430\n - provisional relation signals before/after: 280 -> 280\n - provisional relations skipped during reconciliation: 280\n - ERROR: planner missing ROI marker: evidence_per_attempt\n - ERROR: planner missing ROI marker: relevance_per_attempt\n - ERROR: planner missing ROI marker: transport_success\n\n"
+      "output_tail": " audit: PASS\n - structured growth budgets: {'daily': 24, 'deep': 100, 'exhaustive': 220}\n - gaps total: 20113\n - P0/P1: 2412\n - business-weighted coverage %: 30.31\n - low-context public gaps: 0\n - low-context public P0/P1: 0\n - context-rich public gaps: 9089\n - public-validation gaps: 93\n - hard relations before/after: 430 -> 430\n - provisional relation signals before/after: 280 -> 280\n - provisional relations skipped during reconciliation: 280\n\n"
+    },
+    {
+      "name": "node_syntax",
+      "status": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 0.03,
+      "failure_headers": [],
+      "output_tail": "\n"
+    },
+    {
+      "name": "node_command_center",
+      "status": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 0.02,
+      "failure_headers": [],
+      "output_tail": "\n"
+    },
+    {
+      "name": "ui_smoke",
+      "status": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 0.03,
+      "failure_headers": [],
+      "output_tail": "UI smoke v4.4.0 PASS\n\n"
+    },
+    {
+      "name": "filter_builder",
+      "status": "passed",
+      "returncode": 0,
+      "elapsed_seconds": 0.03,
+      "failure_headers": [],
+      "output_tail": "Filter builder and exact-subset report v4.1.0 PASS\n\n"
     }
   ],
   "scope": "Preflight only. Does not certify successful web research or publication."
