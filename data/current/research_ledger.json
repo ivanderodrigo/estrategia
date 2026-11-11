@@ -1,2126 +1,1684 @@
 {
   "version": "4.3.0",
   "profile": "daily",
-  "started_at": "2026-11-10T19:00:10.740348+00:00",
+  "started_at": "2026-11-11T12:43:35.251377+00:00",
   "planned_entities": 120,
   "rescue_targets_after_cooldown": 0,
-  "fetch_attempts": 379,
-  "fetch_successes": 485,
-  "pages_relevant": 79,
-  "candidate_evidences": 36,
-  "candidate_values_seen": 37,
-  "candidate_values_promoted": 37,
+  "fetch_attempts": 399,
+  "fetch_successes": 498,
+  "pages_relevant": 128,
+  "candidate_evidences": 68,
+  "candidate_values_seen": 93,
+  "candidate_values_promoted": 93,
   "candidate_values_rejected": 0,
   "candidate_fields_rejected": 0,
-  "accepted_evidences": 34,
-  "fields_enriched": 34,
-  "values_added": 19,
+  "accepted_evidences": 51,
+  "fields_enriched": 51,
+  "values_added": 28,
   "entities_added": 0,
-  "cache_hits": 282,
-  "circuit_skips": 2442,
-  "unsafe_url_rejections": 8,
-  "official_sites_discovered": 7,
-  "financial_links_discovered": 67,
+  "cache_hits": 255,
+  "circuit_skips": 2744,
+  "unsafe_url_rejections": 4,
+  "official_sites_discovered": 3,
+  "financial_links_discovered": 404,
   "query_discovery_targets": 48,
-  "search_queries_attempted": 177,
-  "search_queries_succeeded": 177,
+  "search_queries_attempted": 192,
+  "search_queries_succeeded": 192,
   "search_provider_failures": 0,
-  "search_urls_discovered": 699,
-  "unsourced_value_queries": 334,
+  "search_urls_discovered": 589,
+  "unsourced_value_queries": 326,
   "manufacturer_revenue_rows_before": 1,
   "manufacturer_revenue_acceptances": 0,
   "stop_reason": "complete",
-  "historical_lead_targets_planned": 102,
-  "historical_lead_urls_planned": 599,
-  "historical_lead_urls_attempted": 469,
-  "historical_lead_evidences_accepted": 27,
+  "historical_lead_targets_planned": 94,
+  "historical_lead_urls_planned": 486,
+  "historical_lead_urls_attempted": 373,
+  "historical_lead_evidences_accepted": 45,
   "structured_growth_paused_for_debt": true,
-  "structured_growth_backlog": 20113,
+  "structured_growth_backlog": 20081,
   "structured_entity_budget": 0,
   "structured_entities_added": 0,
   "structured_notices": 0,
-  "accepted_evidence_per_fetch_attempt": 0.0897,
-  "candidate_acceptance_rate": 0.9444,
+  "accepted_evidence_per_fetch_attempt": 0.1278,
+  "candidate_acceptance_rate": 0.75,
   "candidate_value_promotion_rate": 1.0,
-  "values_per_accepted_evidence": 0.5588,
+  "values_per_accepted_evidence": 0.549,
   "growth_pressure_ratio": 0.0,
   "manufacturer_revenue_rows_after": 1,
   "manufacturer_revenue_rows_added": 0,
-  "elapsed_s": 563.14,
-  "finished_at": "2026-11-10T19:09:32.341855+00:00",
-  "result_rows_total": 3111,
-  "accepted_result_rows_total": 34,
+  "elapsed_s": 526.78,
+  "finished_at": "2026-11-11T12:52:20.585734+00:00",
+  "result_rows_total": 3402,
+  "accepted_result_rows_total": 51,
   "results_truncated": true,
   "results": [
     {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.aicox.com/sitemap.xml",
-      "family": "services",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://cradlepoint.com/actualidad",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/alianzas",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.aicox.com/sitemap.xml",
-      "family": "technology",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/alliances",
+      "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.aicox.com/sitemap.xml",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/analyst",
       "family": "analyst",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.aicox.com/soluciones",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.aicox.com/solucoes",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.aicox.com/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.aicox.com/solutions",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/architecture",
       "family": "technology",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.aicox.com/success-stories",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/architectures",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/case-studies",
       "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.aicox.com/talent",
-      "family": "careers",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/casos",
+      "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.aicox.com/technologies",
-      "family": "technology",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/clientes",
+      "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.aicox.com/technology",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.aicox.com/tecnologia",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.aicox.com/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.aicox.com/vendors",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.channelpartner.es/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.channelpartner.es/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.channelpartner.es/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.channelpartner.es/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.channelpartner.es/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.exclusive-networks.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.exclusive-networks.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.exclusive-networks.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.exclusive-networks.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.exclusive-networks.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.tdsynnex.com/eu/es/es/partnerfirst.html",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://weblib.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-ignition-technology-expand-partnership/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Aicox Soluciones",
-      "url": "https://1password.com/blog/1password-ingram-micro-partnership-resellers",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "DSSI",
-      "url": "https://dssi.pt/email-marketing/",
-      "family": "analyst",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "DSSI",
-      "url": "https://www.itchannel.pt/directorio/distribuidores/10",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "DSSI",
-      "url": "https://www.itchannel.pt/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "DSSI",
-      "url": "https://www.itchannel.pt/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "DSSI",
-      "url": "https://www.itchannel.pt/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "DSSI",
-      "url": "https://www.itchannel.pt/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "DSSI",
-      "url": "https://www.itchannel.pt/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "DSSI",
-      "url": "https://www.tdsynnex.com/eu/es/es/partnerfirst.html",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "DSSI",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "DSSI",
-      "url": "https://weblib.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "DSSI",
-      "url": "https://www.aicox.com/partners/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "DSSI",
-      "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "DSSI",
-      "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-ignition-technology-expand-partnership/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "SCE",
-      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "SCE",
-      "url": "https://www.channelpartner.es/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "SCE",
-      "url": "https://www.channelpartner.es/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "SCE",
-      "url": "https://www.channelpartner.es/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "SCE",
-      "url": "https://www.channelpartner.es/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "SCE",
-      "url": "https://www.channelpartner.es/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "SCE",
-      "url": "https://www.tdsynnex.com/eu/es/es/partnerfirst.html",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "SCE",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "SCE",
-      "url": "https://weblib.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "SCE",
-      "url": "https://www.aicox.com/partners/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "SCE",
-      "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "SCE",
-      "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-ignition-technology-expand-partnership/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "SCE",
-      "url": "https://1password.com/blog/1password-ingram-micro-partnership-resellers",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://nexus-solutions.pt/wp-content/uploads/2019/06/Catalogo-Produtos-NEXUS.pdf",
-      "family": "analyst",
-      "status": 200,
-      "error": "unsupported-content-type:application/pdf",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://www.itchannel.pt/directorio/distribuidores/soon-business-solutions-sa",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/cloud",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://nexus-solutions.pt/",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/market",
       "family": "analyst",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://www.itchannel.pt/directorio/distribuidores/30",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/partners/network-operators/",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/platform",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/products",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/reports",
       "family": "analyst",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://nexus-solutions.pt/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://nexus-solutions.pt/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://nexus-solutions.pt/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://nexus-solutions.pt/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://nexus-solutions.pt/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://www.itchannel.pt/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://www.itchannel.pt/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://www.itchannel.pt/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://www.itchannel.pt/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://www.itchannel.pt/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://www.tdsynnex.com/eu/es/es/partnerfirst.html",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://weblib.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://www.aicox.com/partners/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-ignition-technology-expand-partnership/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Soon",
-      "url": "https://1password.com/blog/1password-ingram-micro-partnership-resellers",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Tempel",
-      "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/research",
       "family": "analyst",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Tempel",
-      "url": "https://www.channelpartner.es/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Tempel",
-      "url": "https://www.channelpartner.es/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Tempel",
-      "url": "https://www.channelpartner.es/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Tempel",
-      "url": "https://www.channelpartner.es/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Tempel",
-      "url": "https://www.channelpartner.es/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Tempel",
-      "url": "https://www.tdsynnex.com/eu/es/es/partnerfirst.html",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Tempel",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Tempel",
-      "url": "https://weblib.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Tempel",
-      "url": "https://www.aicox.com/partners/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Tempel",
-      "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Tempel",
-      "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-ignition-technology-expand-partnership/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Tempel",
-      "url": "https://1password.com/blog/1password-ingram-micro-partnership-resellers",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/about-us/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.ajoomal.com/about-us/investors",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/about/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.ajoomal.com/about/investors",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/annual-report",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.ajoomal.com/annual-report",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/annual-reports",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.ajoomal.com/annual-reports",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/company/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.ajoomal.com/company/investor-relations",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/company/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/earnings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/financial-information",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/financial-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/financials",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/informacao-financeira",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/informacion-financiera",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/investor",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/quarterly-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/relatorio-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/relatorios-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/reports-and-filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/resultados",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/resultados-financieros",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/sitemap.xml",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/resources",
       "family": "analyst",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.itchannel.pt/directorio/distribuidores/",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/robots.txt",
       "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/actualidad",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/rss",
       "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/alianzas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/analyst",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/architecture",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/architectures",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/careers",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/carreiras",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/case-studies",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/casos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/clientes",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/cloud",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/security",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/customer-stories",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/customers",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/cybersecurity",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/services",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/empleo",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/emprego",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/feed",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/industrias",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/industries",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/insights",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/jobs",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/line-card",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/managed-services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/market",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/networking",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/news",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/noticias",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/open-positions",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/platform",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/services",
       "family": "technology",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/portfolio",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/sitemap.xml",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/press",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/sitemap.xml",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/sitemap.xml",
       "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/press-releases",
-      "family": "news",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/sitemap.xml",
+      "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/products",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/sitemap.xml",
       "family": "technology",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/projects",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/proyectos",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/reports",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/research",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/resources",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/robots.txt",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/sitemap.xml",
       "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/rss",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/security",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/services",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/services",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/servicos",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/sitemap.xml",
-      "family": "cases",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/sitemap.xml",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/sitemap.xml",
-      "family": "news",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/sitemap.xml",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/sitemap.xml",
       "family": "careers",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/sitemap.xml",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/solutions",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/technologies",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/technology",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/tecnologia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/",
+      "family": "official",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://cradlepoint.ericsson.com/actualidad/",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://cradlepoint.ericsson.com/alianzas/",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://cradlepoint.ericsson.com/alliances/",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/analyst",
+      "family": "analyst",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://cradlepoint.ericsson.com/analyst/",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/architecture",
+      "family": "technology",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://cradlepoint.ericsson.com/architecture/",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/architectures",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/fabricantes",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/line-card",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/marcas",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/market",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/parceiros",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/platform",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/portfolio",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/products",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/reports",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/research",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/resources",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/robots.txt",
       "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/sitemap.xml",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/security",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/sitemap.xml",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/services",
       "family": "technology",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/sitemap.xml",
-      "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/soluciones",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/servicios",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/solucoes",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/servicos",
       "family": "services",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/solutions",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/success-stories",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/sitemap.xml",
       "family": "cases",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/talent",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/technologies",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/technology",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/tecnologia",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/vacancies",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.ajoomal.com/vendors",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/sitemap.xml",
       "family": "partners",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.itchannel.pt/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.itchannel.pt/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.itchannel.pt/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.itchannel.pt/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.itchannel.pt/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.tdsynnex.com/eu/es/es/partnerfirst.html",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://weblib.com/partners/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.aicox.com/partners/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Ajoomal",
-      "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-ignition-technology-expand-partnership/",
-      "family": "partners",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Caseking Iberia",
-      "url": "https://b2b.caseking.pt/marcas",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://b2b.caseking.pt/marcas",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Caseking Iberia",
-      "url": "https://www.itchannel.pt/directorio/distribuidores/",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/sitemap.xml",
       "family": "analyst",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Caseking Iberia",
-      "url": "https://www.itchannel.pt/alliances",
-      "family": "partners",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/sitemap.xml",
+      "family": "news",
       "status": 0,
       "error": "domain-circuit-open",
       "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Caseking Iberia",
-      "url": "https://www.itchannel.pt/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Caseking Iberia",
-      "url": "https://www.itchannel.pt/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Caseking Iberia",
-      "url": "https://www.itchannel.pt/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Caseking Iberia",
-      "url": "https://www.itchannel.pt/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Caseking Iberia",
-      "url": "https://multimac.pt/servicos-e-solucoes/",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/sitemap.xml",
       "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
     },
     {
-      "section": "distributors",
-      "entity": "Caseking Iberia",
-      "url": "https://multimac.pt/solucoes-documentais/",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/sitemap.xml",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/soluciones",
       "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/solutions",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/technologies",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/technology",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/tecnologia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/vendors",
+      "family": "partners",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://www.orange-business.com/alliances",
+      "family": "partners",
       "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Caseking Iberia",
-      "url": "https://multimac.pt/solucoes-visuais/",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Caseking Iberia",
-      "url": "https://www.tdsynnex.com/eu/es/es/partnerfirst.html",
-      "family": "partners",
-      "cached": true,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "distributors",
-      "entity": "Caseking Iberia",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://www.orange-business.com/find-a-partner",
       "family": "partners",
-      "cached": true,
+      "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "distributors",
-      "entity": "CloudIT",
-      "url": "https://www.itchannel.pt/directorio/distribuidores/10",
+      "section": "manufacturers",
+      "entity": "Ericsson Cradlepoint",
+      "url": "https://www.orange-business.com/partner",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/company/security-breach",
       "family": "analyst",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "CloudIT",
-      "url": "https://www.itchannel.pt/alliances",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "CloudIT",
-      "url": "https://www.itchannel.pt/find-a-partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "CloudIT",
-      "url": "https://www.itchannel.pt/partner",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "CloudIT",
-      "url": "https://www.itchannel.pt/partner-locator",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "CloudIT",
-      "url": "https://www.itchannel.pt/partners",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "CloudIT",
-      "url": "https://multimac.pt/servicos-e-solucoes/",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "CloudIT",
-      "url": "https://multimac.pt/solucoes-documentais/",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "CloudIT",
-      "url": "https://multimac.pt/solucoes-visuais/",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "CloudIT",
-      "url": "https://www.tdsynnex.com/eu/es/es/partnerfirst.html",
-      "family": "partners",
       "cached": true,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "distributors",
-      "entity": "CloudIT",
-      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
-      "family": "partners",
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/security-operations-platforms",
+      "family": "technology",
       "cached": true,
       "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/services",
+      "family": "services",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/services/cyber-advisory",
+      "family": "services",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Weblib",
+      "url": "https://www.levelblue.com/services/data-security",
+      "family": "services",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "1Password",
+      "url": "https://www.levelblue.com/company/security-breach",
+      "family": "analyst",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "1Password",
+      "url": "https://www.levelblue.com/security-operations-platforms",
+      "family": "technology",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "1Password",
+      "url": "https://www.levelblue.com/services/cyber-advisory",
+      "family": "services",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "1Password",
+      "url": "https://www.levelblue.com/services/data-security",
+      "family": "services",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "1Password",
+      "url": "https://www.levelblue.com/services/email-security",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://www.gartner.com/reviews/product/efficientip-solidserver-ddi/alternatives",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/blog/elevate-dns-threat-intelligence-for-proactive-network-security/",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/blog/idc-2023-network-automation-report-why-ddi-is-an-obvious-starting-point/",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/products/cloud-observer/",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/products/ddi-observability-center/",
+      "family": "technology",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "EfficientIP",
+      "url": "https://efficientip.com/products/dns-cloud/",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+      "url": "https://www.elgrupoinformatico.com/tutoriales/como-reinstalar-controlador-bluetooth-windows-t84264.html",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+      "url": "https://www.elgrupoinformatico.com/noticias/grupos-telegram-los-que-debes-unirte-t79929.html",
+      "family": "news",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+      "url": "https://www.elgrupoinformatico.com/noticias/pipl-busca-personas-internet-con-este-buscador-t81031.html",
+      "family": "news",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+      "url": "https://www.elgrupoinformatico.com/noticias/mejores-podcasts-que-escuchar-spotify-t78506.html",
+      "family": "news",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+      "url": "https://www.elgrupoinformatico.com/noticias/",
+      "family": "news",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Infraestruturas de Portugal",
+      "url": "https://www.bportugal.pt/publicacoes",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+      "url": "https://www.elgrupoinformatico.com/noticias/",
+      "family": "news",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+      "url": "https://www.elgrupoinformatico.com/noticias/grupos-telegram-los-que-debes-unirte-t79929.html",
+      "family": "news",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+      "url": "https://www.elgrupoinformatico.com/noticias/mejores-podcasts-que-escuchar-spotify-t78506.html",
+      "family": "news",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+      "url": "https://www.elgrupoinformatico.com/noticias/pipl-busca-personas-internet-con-este-buscador-t81031.html",
+      "family": "news",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+      "url": "https://www.elgrupoinformatico.com/tutoriales/como-reinstalar-controlador-bluetooth-windows-t84264.html",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "clients_private",
-      "entity": "Acciona",
-      "url": "https://www.acciona.com/content/dam/acciona-global/documentos/juntas-generales/2026/11-ana-annual-corporate-governance-report-2025.pdf",
+      "entity": "Mota-Engil",
+      "url": "https://www.mota-engil.com/app/uploads/2026/03/Integrated-Report-2025_ING-1.pdf",
       "family": "financial",
       "status": 200,
       "error": "unsupported-content-type:application/pdf",
@@ -2128,654 +1686,93 @@
     },
     {
       "section": "clients_private",
-      "entity": "Acciona",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
+      "entity": "Mota-Engil",
+      "url": "https://www.mota-engil.com/",
       "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Acciona",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing.html",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Acciona",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/etfs.html",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Acciona",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells.html",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Acciona",
-      "url": "https://www.bolsasymercados.es/es/sobre-bme/empleo/empleados.html",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Acciona Energía",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Acciona Energía",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Acciona Energía",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/etfs.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Acciona Energía",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Acciona Energía",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells/joins-bme-cox.html",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Aena",
-      "url": "https://www.aena.es/es/corporativa/sobre-aena/seguridad-de-la-informacion.html",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Aena",
-      "url": "https://www.aena.es/es/pasajeros/pasajeros.html",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Aena",
-      "url": "https://www.aena.es/es/pasajeros/pasajeros.html",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Aena",
-      "url": "https://www.aena.es/es/corporativa/innovacion/estrategia.html",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Aena",
-      "url": "https://www.aena.es/es/corporativa/sobre-aena/seguridad-de-la-informacion.html",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "ArcelorMittal",
-      "url": "https://corporate.arcelormittal.com/",
-      "family": "official",
       "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://corporate.arcelormittal.com/",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "clients_private",
-      "entity": "Banco Sabadell",
-      "url": "https://www.fundacionbancosabadell.com/",
+      "entity": "Mota-Engil",
+      "url": "https://www.mota-engil.com/",
       "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bankinter.com/www/webcorp/swf/memoria2025/innovacion.html",
-      "family": "careers",
       "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.bankinter.com/www/webcorp/swf/memoria2025/innovacion.html",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/etfs.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Bankinter",
-      "url": "https://www.bolsasymercados.es/es/sobre-bme/empleo/empleados.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Enagás",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Enagás",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Enagás",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/etfs.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Enagás",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Enagás",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells/joins-bme-cox.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Iberdrola",
-      "url": "https://www.iberdrola.com",
-      "family": "official",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.iberdrola.com/",
+      "entity": "REN",
+      "url": "https://www.ren.pt/media/ckybesi2/ren-relatorio-integrado-2025.pdf",
+      "family": "financial",
+      "status": 200,
+      "error": "unsupported-content-type:application/pdf",
       "accepted": 0
     },
     {
       "section": "clients_private",
-      "entity": "Inditex",
-      "url": "https://www.inditex.com/itxcomweb/us/es/home",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Indra",
-      "url": "http://www.indra-hitsmusic.com/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Inmobiliaria Colonial",
-      "url": "https://www.colonial-sfl.com/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Jerónimo Martins",
-      "url": "https://careers.jeronimomartins.com/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Jerónimo Martins",
-      "url": "https://careers.jeronimomartins.com/go/Internships-and-Talent-Programs/8975255/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Jerónimo Martins",
-      "url": "https://careers.jeronimomartins.com/go/Internships-and-Talent-Programs/8975255/?q=&sortColumn=sort_department&sortDirection=asc",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Jerónimo Martins",
-      "url": "https://careers.jeronimomartins.com/go/Internships-and-Talent-Programs/8975255/?q=&sortColumn=sort_department&sortDirection=desc",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Jerónimo Martins",
-      "url": "https://careers.jeronimomartins.com/go/Internships-and-Talent-Programs/8975255/?q=&sortColumn=sort_facility&sortDirection=asc",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Laboratorios Rovi",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Laboratorios Rovi",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Laboratorios Rovi",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/etfs.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Laboratorios Rovi",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Laboratorios Rovi",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells/joins-bme-cox.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Naturgy",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Naturgy",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Naturgy",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/etfs.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Naturgy",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Naturgy",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells/joins-bme-cox.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Puig Brands",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Puig Brands",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Puig Brands",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/etfs.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Puig Brands",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Puig Brands",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells/joins-bme-cox.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Redeia",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Redeia",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Redeia",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/etfs.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Redeia",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Redeia",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells/joins-bme-cox.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Solaria",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Solaria",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Solaria",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/etfs.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Solaria",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Solaria",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells/joins-bme-cox.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Sonae",
-      "url": "https://careers.sonae.com/",
+      "entity": "REN",
+      "url": "https://www.ren.pt/",
       "family": "careers",
       "status": 0,
-      "error": "unsafe-url: Host does not resolve exclusively to public addresses",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "clients_private",
-      "entity": "Sonae",
-      "url": "https://careers.sonae.com/",
+      "entity": "REN",
+      "url": "https://www.ren.pt/politica-publica-de-seguranca-da-informacao",
       "family": "official",
       "status": 0,
-      "error": "unsafe-url: Host does not resolve exclusively to public addresses",
+      "error": "domain-circuit-open",
       "accepted": 0
     },
     {
       "section": "clients_private",
-      "entity": "Sonae",
-      "url": "https://www.sonae.pt/pt",
+      "entity": "REN",
+      "url": "https://www.ren.pt/",
       "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Sacyr",
+      "url": "https://sacyr.com/en/innovation",
+      "family": "careers",
       "cached": false,
       "relevant": false,
       "accepted": 0,
-      "status": 247
+      "status": 200
     },
     {
       "section": "clients_private",
-      "entity": "Unicaja",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
+      "entity": "Sacyr",
+      "url": "https://sacyr.com/en/",
       "family": "careers",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Sacyr",
+      "url": "https://sacyr.com/en/news",
+      "family": "careers",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Sacyr",
+      "url": "https://sacyr.com/en/",
+      "family": "official",
       "cached": true,
       "relevant": false,
       "accepted": 0,
@@ -2783,9 +1780,27 @@
     },
     {
       "section": "clients_private",
-      "entity": "Unicaja",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing.html",
-      "family": "careers",
+      "entity": "Sacyr",
+      "url": "https://sacyr.com/about-us/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: 404 for url: https://sacyr.com/en/about-us/investors",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Sacyr",
+      "url": "https://sacyr.com/about/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: 404 for url: https://sacyr.com/en/about/investors",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Sacyr",
+      "url": "https://sacyr.com/en/news",
+      "family": "news",
       "cached": true,
       "relevant": false,
       "accepted": 0,
@@ -2793,29 +1808,37 @@
     },
     {
       "section": "clients_private",
-      "entity": "Unicaja",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/etfs.html",
+      "entity": "The Navigator Company",
+      "url": "https://thenavigatorcompany.com/wp-content/uploads/2026/06/RA25_NAVIGATOR_EN.pdf",
       "family": "careers",
-      "cached": true,
+      "status": 200,
+      "error": "unsupported-content-type:application/pdf",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "The Navigator Company",
+      "url": "https://thenavigatorcompany.com/",
+      "family": "careers",
+      "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "clients_private",
-      "entity": "Unicaja",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells.html",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "entity": "The Navigator Company",
+      "url": "https://thenavigatorcompany.com/wp-content/uploads/2026/06/RA25_NAVIGATOR_EN.pdf",
+      "family": "official",
+      "status": 200,
+      "error": "unsupported-content-type:application/pdf",
+      "accepted": 0
     },
     {
       "section": "clients_private",
-      "entity": "Unicaja",
-      "url": "https://www.bolsasymercados.es/en/bme-exchange/listing/opening-bells/joins-bme-cox.html",
-      "family": "careers",
+      "entity": "The Navigator Company",
+      "url": "https://thenavigatorcompany.com/",
+      "family": "official",
       "cached": true,
       "relevant": false,
       "accepted": 0,
@@ -2823,8 +1846,707 @@
     },
     {
       "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/",
+      "entity": "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S.A.",
+      "url": "https://es.finance.yahoo.com/noticias/anthropic-apunta-valoraci%C3%B3n-1-4-052737469.html",
+      "family": "news",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S.A.",
+      "url": "https://es.finance.yahoo.com/quote/MSFT/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S.A.",
+      "url": "https://es.finance.yahoo.com/noticias/comentarios-mercado/",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://es.finance.yahoo.com/noticias/comentarios-mercado/",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S.A.",
+      "url": "https://es.finance.yahoo.com/research-hub/screener/",
+      "family": "cases",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S.A.",
+      "url": "https://es.finance.yahoo.com/research-hub/screener/",
+      "family": "cases",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S.A.",
+      "url": "https://es.finance.yahoo.com/noticias/anthropic-debes-saber-salida-bolsa-075919060.html",
+      "family": "news",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.radio.es/actualidad",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/adjudicaciones",
+      "family": "procurement",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.radio.es/adjudicaciones",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/architecture",
+      "family": "technology",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.radio.es/architecture",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/architectures",
+      "family": "technology",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.radio.es/architectures",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/careers",
+      "family": "careers",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.radio.es/careers",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/carreiras",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/case-studies",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/casos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/clientes",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/cloud",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/concursos",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/contracts",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/contratacion",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/contratacion-publica",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/customer-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/customers",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/cybersecurity",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/empleo",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/emprego",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/feed",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/industrias",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/industries",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/insights",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/jobs",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/licitacoes",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/managed-services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/networking",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/noticias",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/open-positions",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/platform",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/press",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/press-releases",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/procurement",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/products",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/projects",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/proyectos",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/robots.txt",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/rss",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/services",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/services",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/sitemap.xml",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/sitemap.xml",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/sitemap.xml",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/sitemap.xml",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/sitemap.xml",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/sitemap.xml",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/sitemap.xml",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/soluciones",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/solucoes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/solutions",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/solutions",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/success-stories",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/talent",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/technologies",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/technology",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/tecnologia",
+      "family": "technology",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/tenders",
+      "family": "procurement",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/vacancies",
+      "family": "careers",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/podcast/roca-project",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/podcast/the-wild-project",
+      "family": "cases",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/podcast/ft-news-briefing",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/podcast/the-news-agents",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/podcast/las-noticias-en-onda-cero",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/topic/news",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/topic/news/culture",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "RADIO TELEVISIÓN MADRID, S.A.U.",
+      "url": "https://www.radio.es/podcast/news-podcasts",
+      "family": "news",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "European Union Satellite Centre",
+      "url": "https://www.satcen.europa.eu/",
       "family": "official",
       "cached": false,
       "relevant": false,
@@ -2833,8 +2555,248 @@
     },
     {
       "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/",
+      "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+      "url": "https://www.elgrupoinformatico.com/noticias/",
+      "family": "news",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+      "url": "https://www.elgrupoinformatico.com/noticias/grupos-telegram-los-que-debes-unirte-t79929.html",
+      "family": "news",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+      "url": "https://www.elgrupoinformatico.com/noticias/mejores-podcasts-que-escuchar-spotify-t78506.html",
+      "family": "news",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+      "url": "https://www.elgrupoinformatico.com/noticias/pipl-busca-personas-internet-con-este-buscador-t81031.html",
+      "family": "news",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+      "url": "https://www.elgrupoinformatico.com/tutoriales/como-reinstalar-controlador-bluetooth-windows-t84264.html",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "url": "https://www.gartner.com/en/documents/7913209",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "url": "https://www.gartner.com/en/documents/8183329",
+      "family": "analyst",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "url": "https://academy.tdsynnex.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error:  for url: https://academy.tdsynnex.com/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "url": "https://academy.tdsynnex.com/find-a-partner",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error:  for url: https://academy.tdsynnex.com/find-a-partner",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "url": "https://academy.tdsynnex.com/partner",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error:  for url: https://academy.tdsynnex.com/partner",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "url": "https://academy.tdsynnex.com/partner-locator",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error:  for url: https://academy.tdsynnex.com/partner-locator",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "url": "https://academy.tdsynnex.com/partners",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error:  for url: https://academy.tdsynnex.com/partners",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "url": "https://blog.checkpoint.com/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "url": "https://blog.checkpoint.com/actualidad",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://blog.checkpoint.com/actualidad",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "url": "https://blog.checkpoint.com/alianzas",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://blog.checkpoint.com/alianzas",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "url": "https://blog.checkpoint.com/alliances",
+      "family": "partners",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://blog.checkpoint.com/alliances",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "url": "https://blog.checkpoint.com/analyst",
+      "family": "analyst",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "url": "https://blog.checkpoint.com/architecture",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "url": "https://blog.checkpoint.com/architectures",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "url": "https://blog.checkpoint.com/careers",
+      "family": "careers",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno Local del Ayuntamiento de Jerez",
+      "url": "https://techdows.com/how-to-see-all-bing-related-searches.html",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno Local del Ayuntamiento de Jerez",
+      "url": "https://techdows.com/windows-wifi-network-guide.html",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno Local del Ayuntamiento de Jerez",
+      "url": "https://techdows.com/how-to-cancel-or-delete-a-stuck-print-job-in-windows-10-11.html",
+      "family": "careers",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno Local del Ayuntamiento de Jerez",
+      "url": "https://techdows.com/office-productivity-apps-for-pc.html",
+      "family": "technology",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno Local del Ayuntamiento de Jerez",
+      "url": "https://techdows.com/how-to-get-a-product-key-for-microsoft-office.html",
+      "family": "technology",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Imprensa Nacional-Casa da Moeda, SA",
+      "url": "https://www.amazon.com/Panini-World-QATAR-ALBUM-Stickers/dp/B0B9CFRSPC",
       "family": "official",
       "cached": false,
       "relevant": false,
@@ -2843,21 +2805,11 @@
     },
     {
       "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/inicio/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zinYItLBydDB0NDIxDLQwczQIDnS1dDIwMLI31C7IdFQFQSibi/",
+      "entity": "Comisión ejecutiva del Consejo de Administración de la Empresa Municipal de Transportes de Fuenlabrada, S.A.",
+      "url": "https://es.wikipedia.org/wiki/Francia",
       "family": "official",
       "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/datos_abiertos/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLfxMLRydDB0N_M0tXQwCjd0sTcz8AgJCLMz1C7IdFQEVbuag/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     }

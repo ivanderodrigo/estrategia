@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "updated_at": 1794337836.5295677,
+  "updated_at": 1794401604.6046145,
   "runs": [
     {
       "version": "4.0.0",
@@ -2339,6 +2339,55 @@
       ],
       "elapsed_s": 627.43,
       "finished_at": 1794337836.528181
+    },
+    {
+      "version": "4.3.0",
+      "profile": "daily",
+      "started_at": 1794401013.6980238,
+      "requested_max_runtime_s": 720,
+      "effective_max_runtime_s": 720,
+      "budgets": {
+        "research_s": 630,
+        "fallback_s": 0,
+        "build_reserve_s": 90
+      },
+      "stages": [
+        {
+          "research": "ok",
+          "fetch_attempts": 399,
+          "fetch_successes": 498,
+          "search_queries_attempted": 192,
+          "search_queries_succeeded": 192,
+          "search_urls_discovered": 589,
+          "candidate_values_seen": 93,
+          "candidate_values_promoted": 93,
+          "candidate_values_rejected": 0,
+          "candidate_fields_rejected": 0,
+          "structured_growth_paused_for_debt": true,
+          "pages_relevant": 128,
+          "candidate_evidences": 68,
+          "accepted_evidences": 51,
+          "fields_enriched": 51,
+          "values_added": 28,
+          "entities_added": 0,
+          "stop_reason": "complete",
+          "error": ""
+        },
+        {
+          "build": "ok",
+          "gaps": 20046,
+          "debt_breakdown": {},
+          "gaps_closed_vs_release_baseline": -18648,
+          "gaps_previous_run": 20081,
+          "gaps_delta_vs_previous_run": -35,
+          "gaps_closed_vs_previous_run": 35,
+          "distributor_gaps": 1923,
+          "integrator_gaps": 4917,
+          "quality_score": 100
+        }
+      ],
+      "elapsed_s": 590.91,
+      "finished_at": 1794401604.6032026
     }
   ]
 }
