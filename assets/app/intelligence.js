@@ -429,7 +429,8 @@
     return values.filter((value,index)=>atomicCurrentProof(itemFor(field,value,index).evidence));
   }
   function tagHtml(field,value,index,extra=''){
-    const item=itemFor(field,value,index), score=item?.confidence??field?.confidence??.66, band=item?.confidence_band||field?.confidence_band||(score>=.8?'high':score>=.6?'medium':'low');
+    const rawItem=itemFor(field,value,index), item=(!Array.isArray(field?.value)&&!rawItem.evidence?.length)?{...rawItem,evidence:field?.evidence||[]}:rawItem;
+    const score=item?.confidence??field?.confidence??.66, band=item?.confidence_band||field?.confidence_band||(score>=.8?'high':score>=.6?'medium':'low');
     const raw=typeof value==='object'?JSON.stringify(value):String(value??'');
     return traceable(field,`<span class="tag confidence-tag ${esc(band)} ${extra}"><span class="tag-label" title="${esc(raw)}">${esc(raw)}</span><small>${confidencePct(score)}%</small></span>`,item);
   }
@@ -468,7 +469,7 @@
       return '<div class="tag-list">'+tags+more+'</div>';
     }
     if(CATEGORICAL_FIELDS.has(columnId)){
-      const verified=atomicCurrentProof(field?.evidence);
+      const verified=atomicCurrentProof(itemFor(field,value,0)?.evidence)||atomicCurrentProof(field?.evidence);
       return '<div class="tag-list categorical-tags"><span class="tag-entry">'+
         (verified?tagHtml(field,value,0):pendingTagHtml(field,value,0))+'</span></div>';
     }
