@@ -16,7 +16,7 @@ function classifyNeed(raw){
  const areas=AREAS.filter(([,expression])=>expression.test(text)).map(([name])=>name);
  if(!areas.length)return {fit:false,areas:[],reason:VAGUE.test(text)?'Mención tecnológica genérica, sin solución Westcon identificable':'Sin relación explícita con el portfolio'};
  // Commodity projects need an unmistakable enterprise technology contract, not a general IT reference.
- if(NON_FIT.test(text)&&!/(firewall|cyber|cibersegur|siem|sase|zero trust|sd.wan|wi.fi|wifi|switch|network security|seguridad de redes|data center|centro de datos|nac|identity management)/i.test(text)){
+ if(NON_FIT.test(text)&&!/(firewall|cyber|cibersegur|siem|sase|zero trust|sd.wan|switch|network security|seguridad de redes|data center|centro de datos|nac|identity management)/i.test(text)){
    return {fit:false,areas:[],reason:'Objeto principal ajeno al portfolio tecnológico'};
  }
  return {fit:true,areas,reason:'Necesidad tecnológica explícita'};
