@@ -42,4 +42,21 @@ assert.ok(clientTech.length>0,'Client news must include at least one sourced tec
 assert.ok(scores.trends.news>0,'Trend news cannot be empty when sourced technical articles exist');
 assert.ok(scores.architectures.news+linked.length>0,'Architectures must have some sourced topical publications');
 
+// AI/OT architecture news must use precise headline anchors, not generic
+// "security", "modern", "experience", or topics merely adjacent to technology.
+const sampleArchitectureNews=bi.relatedArchitectureNews(
+ [{name:'AI Security'},{name:'OT / CPS Security'},{name:'Observability / Digital Experience'}],
+ [
+  {vendor:'AI Trends',title:'AI Systems Security Market Grows in 2026',url:'https://example.org/news/ai-security-market',date:4},
+  {vendor:'Industry Trends',title:'Operational Technology Security in Industrial Control Systems',url:'https://example.org/news/industrial-control-systems',date:3},
+  {vendor:'AI Trends',title:'AI agents transform employee productivity',url:'https://example.org/news/agents-and-productivity',date:2},
+  {vendor:'Marketing',title:'Modern Customer Experience: Spring Promotions',url:'https://example.org/news/modern-customer-experience',date:1},
+ ],
+);
+assert.deepStrictEqual(new Set(sampleArchitectureNews.map(x=>x.vendor)),
+  new Set(['AI Security','OT / CPS Security']));
+assert.strictEqual(sampleArchitectureNews.length,2,'related technical news cannot fabricate unrelated architecture links');
+assert.ok(scores.architecture_topic_crosslinks.crosslinked>=3,
+  'existing accredited architecture topic references must be preserved');
+
 console.log('NEWS_COVERAGE_V64 '+JSON.stringify(scores));
