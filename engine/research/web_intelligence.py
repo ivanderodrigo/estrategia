@@ -39,6 +39,7 @@ from .extractors import (
 )
 from .planner import plan
 from .query_discovery import discover as discover_search_sources
+from .intelligent_discovery import intelligent_discovery_queries
 from .security import UnsafeUrl, validate_public_url
 from .sources import PATH_FAMILY_HINTS, SourceSeed, family_from_url, relevant_families, seeds_for
 from .state import ResearchState, now_iso
@@ -107,12 +108,15 @@ def _prioritize_research_queries(exact_queries: list[str], planned_queries: list
         )
     )]
     systematic = [q for q in planned if " site:" in q.casefold()]
+    competitive = [q for q in planned if any(term in q.casefold() for term in (
+        'competing vendors', 'competidores fabricantes', 'concorrentes fornecedores', ' vs ',
+    ))]
     output = []
     # Reserve real budget for discovery. Otherwise exact historical values can
     # consume the whole Daily budget and the new source lanes never execute.
     for bucket in (
-        exact[:1], systematic[:1], contextual[:1], planned[:1],
-        systematic[1:], exact[1:], contextual[1:], planned[1:],
+        competitive[:1], exact[:1], systematic[:1], contextual[:1], planned[:1],
+        competitive[1:], systematic[1:], exact[1:], contextual[1:], planned[1:],
     ):
         for query in bucket:
             if query not in output:
@@ -1593,11 +1597,15 @@ def run(
         )
         if exact_unsourced_queries:
             stats["unsourced_value_queries"] += len(exact_unsourced_queries)
-        # Interleave context-specific and atomic lead queries in the *actual*
-        # profile budget, rather than letting the first three strings starve
-        # every field-aware search in daily research.
+        # Source discovery is topic-aware: sector + product taxonomy + field purpose.
+        # Candidate relationships remain unverified until the canonical evidence gate.
+        contextual_intelligence = intelligent_discovery_queries(
+            row, target['fields'], section=target['section'],
+            rotation=datetime.now(timezone.utc).date().toordinal(), limit=12,
+        )
         target["query_hints"] = _prioritize_research_queries(
-            exact_unsourced_queries, list(target.get("query_hints") or []),
+            exact_unsourced_queries,
+            contextual_intelligence + list(target.get("query_hints") or []),
             int(query_budget.get("queries_per_entity") or 0),
         )
         seeds = _merge_source_seeds(
