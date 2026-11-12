@@ -237,11 +237,13 @@ def systematic_discovery_queries(
         return []
 
     if section == "clients_public":
-        lane_names = ("public_procurement", "cyber_security_public")
+        lane_names = ("public_procurement", "cyber_security_public", "cybersecurity_media")
     elif section in {"manufacturers", "distributors", "integrators"}:
-        lane_names = ("iberia_channel_press", "cyber_security_public")
-    elif section in {"clients_private", "trends", "architectures"}:
-        lane_names = ("iberia_channel_press", "cyber_security_public")
+        lane_names = ("spain_channel_press", "portugal_channel_press", "cybersecurity_media", "cyber_security_public")
+    elif section == "clients_private":
+        lane_names = ("spain_channel_press", "portugal_channel_press", "technology_research", "cybersecurity_media")
+    elif section in {"trends", "architectures"}:
+        lane_names = ("technology_research", "cybersecurity_media", "cyber_security_public")
     else:
         lane_names = tuple(lanes)
 
@@ -257,11 +259,20 @@ def systematic_discovery_queries(
     # Breadth-first across domains so the budget samples independent publishers
     # instead of spending every query on one site or one vocabulary variant.
     selected_domains: list[str] = []
-    for lane_name in lane_names:
-        for domain in lanes.get(lane_name) or []:
-            domain = str(domain).strip()
-            if domain and domain not in selected_domains:
-                selected_domains.append(domain)
+    lane_domains = [
+        [str(domain).strip() for domain in (lanes.get(lane_name) or []) if str(domain).strip()]
+        for lane_name in lane_names
+    ]
+    # Round-robin lanes: a daily 3-query budget still samples different
+    # geographies/source classes instead of three publishers from one lane.
+    domain_depth = 0
+    while any(domain_depth < len(bucket) for bucket in lane_domains):
+        for bucket in lane_domains:
+            if domain_depth < len(bucket):
+                domain = bucket[domain_depth]
+                if domain not in selected_domains:
+                    selected_domains.append(domain)
+        domain_depth += 1
     depth = 0
     while len(output) < limit and selected_domains:
         for index, domain in enumerate(selected_domains):
