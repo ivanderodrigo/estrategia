@@ -221,7 +221,7 @@ function relatedArchitectureNews(architectures, trendPublications){
   const tokens=normalize(owner).replace(/[^\p{L}\p{N}\s]/gu,' ').split(/\s+/).filter(t=>t.length>=3&&!excluded.has(t));
   if(!tokens.length)continue;
   for(const article of trendPublications||[]){
-   const subject=' '+normalize([article.title,article.summary].join(' ')).replace(/[^\p{L}\p{N}\s]/gu,' ')+' ';
+   const subject=' '+normalize(article.title||'').replace(/[^\p{L}\p{N}\s]/gu,' ')+' ';
    if(!tokens.some(t=>subject.includes(' '+t+' ')))continue;
    const key=normalize(owner)+'|'+article.url.toLowerCase();
    if(seen.has(key))continue;
