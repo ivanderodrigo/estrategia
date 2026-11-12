@@ -3,7 +3,7 @@ name: Westcon Intelligence Daily
 on:
   # One controlled research run whenever this workflow is explicitly maintained.
   # v6 publication-race fix: run once on merge to validate end-to-end Daily publication.
-  # v6.1: one controlled research pass on merge to discover vendor comparisons and news.
+  # v6.1.1: retry the controlled research pass after aligning release identity and cache keys.
   # Ordinary application/code commits never trigger the expensive crawler.
   push:
     branches: [main]
