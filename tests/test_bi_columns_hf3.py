@@ -43,7 +43,9 @@ class BusinessColumnsHF3(unittest.TestCase):
         self.assertEqual(ids[pos:pos + 3], ["westcon_overlap", "competitor_vendor_overlap", "vendor_relations"])
         d = {x["id"]: x for x in dist}
         self.assertEqual(d["revenue"]["type"], "list")
-        self.assertTrue(d["vendor_relations"]["ui_remainder_of_linecard"])
+        self.assertFalse(d["vendor_relations"]["ui_remainder_of_linecard"])
+        self.assertIn("completo", d["vendor_relations"]["label"].lower())
+        self.assertTrue(d["linecard_remainder"]["virtual"])
 
     def test_revenue_extractor_for_manufacturer_and_distributor(self) -> None:
         doc = Document(
