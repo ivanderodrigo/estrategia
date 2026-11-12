@@ -180,15 +180,42 @@ def _unsourced_value_queries(
     return output
 
 def _vendor_names(data: dict[str, Any]) -> list[str]:
-    names = []
-    for row in data.get("manufacturers") or []:
-        name = str(row.get("name") or "").strip()
-        if not name:
+    """Multi-source candidate vocabulary; a candidate name is never a relation."""
+    # Candidates complement historical cues and known linecards. A comparative
+    # statement on a fetched page is required before any may be accredited.
+    names = [
+        "Cisco", "Juniper Networks", "HPE Aruba Networking", "Arista Networks",
+        "Fortinet", "Palo Alto Networks", "Check Point", "Netskope",
+        "Cato Networks", "Cloudflare", "Akamai", "Ruckus Networks",
+        "Ubiquiti", "SonicWall", "SentinelOne", "Sophos", "Trend Micro",
+        "Forcepoint", "Illumio", "F5", "Citrix", "Riverbed", "Datadog",
+        "Dynatrace", "Elastic", "Splunk", "IBM", "Microsoft", "AWS",
+        "Google Cloud", "Veeam", "Rubrik", "Nutanix", "Broadcom", "VMware",
+        "Dell Technologies", "HPE", "NetApp", "Extreme Networks", "Zscaler",
+        "CrowdStrike", "Proofpoint", "Okta", "Fastly", "Tenable", "Qualys",
+        "SentinelOne", "Acronis", "OpenText", "Rapid7", "Ping Identity",
+    ]
+    for section, fields in (
+        ("manufacturers", ("competitors",)),
+        ("integrators", ("vendor_relations", "competitor_vendor_overlap")),
+        ("distributors", ("vendor_relations", "competitor_vendor_overlap")),
+    ):
+        for row in data.get(section) or []:
+            if section == "manufacturers":
+                names.append(str(row.get("name") or ""))
+            for field in fields:
+                values = ((row.get("fields") or {}).get(field) or {}).get("value")
+                for value in values if isinstance(values, list) else []:
+                    if isinstance(value, str):
+                        names.append(value.strip())
+    result: dict[str, str] = {}
+    for name in names:
+        if not 3 <= len(name) <= 55 or len(name.split()) > 6:
             continue
-        names.append(name)
-        if "/" in name:
-            names.extend(part.strip() for part in name.split("/") if part.strip())
-    return sorted(set(names), key=len, reverse=True)
+        key = canonical(name)
+        if key not in result and key not in {"unknown", "por investigar", "sin dato"}:
+            result[key] = name
+    return sorted(result.values(), key=len, reverse=True)[:250]
 
 
 def _field_values(field: dict[str, Any] | None) -> set[str]:
@@ -974,6 +1001,7 @@ SEMANTICALLY_BOUND_WEB_FIELDS = {
     "specializations": "specializations",
     "verticals": "verticals",
     "vendor_relations": "vendor_relations",
+    "competitors": "competitors",
     "identified_vendors": "identified_vendors",
     "job_vendors": "job_vendors",
     "technology_signals": "technology_signals",
@@ -1243,7 +1271,7 @@ def _candidate_items(
 
 _RELATION_PROMOTION_FIELDS = frozenset({
     "vendor_relations", "distributors", "integrators",
-    "westcon_overlap", "competitor_vendor_overlap",
+    "westcon_overlap", "competitor_vendor_overlap", "competitors",
 })
 
 
@@ -1744,6 +1772,7 @@ def run(
                 document,
                 vendor_names,
                 official=seed.official,
+                researched_entity=target['entity'],
             )
             candidates = _focus_candidates(
                 candidates, target, document, seed.official
