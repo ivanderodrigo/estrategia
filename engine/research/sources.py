@@ -237,7 +237,10 @@ def seeds_for(
     ordered = sorted(
         found.values(),
         key=lambda item: (
-            item.source_type != "historical-public-revalidation-seed",
+            (0 if vendor_research and item.source_type == "official-linecard-discovery-lead"
+             else 1 if vendor_research and item.official and catalogue_rank(item) <= 1
+             else 2 if item.source_type == "historical-public-revalidation-seed"
+             else 3),
             catalogue_rank(item),
             item.family not in families,
             not item.official,
