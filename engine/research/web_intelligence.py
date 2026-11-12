@@ -215,7 +215,8 @@ def _vendor_names(data: dict[str, Any]) -> list[str]:
         key = canonical(name)
         if key not in result and key not in {"unknown", "por investigar", "sin dato"}:
             result[key] = name
-    return sorted(result.values(), key=len, reverse=True)[:250]
+    # Keep the manually curated core competitor vocabulary ahead of noisy historical leads.
+    return list(result.values())[:250]
 
 
 def _field_values(field: dict[str, Any] | None) -> set[str]:
