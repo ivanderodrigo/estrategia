@@ -81,4 +81,6 @@ assert.strictEqual(bi.isPublicationUrl('https://news.example.org/2026/11/sase-ad
 assert.strictEqual(bi.isPublicationUrl('https://news.example.org/noticias'),false);
 assert.strictEqual(bi.isPublicationUrl('https://news.example.org/research/sase-market-2026'),true);
 
+assert.strictEqual(bi.technicalNews({title:'Premios de medio ambiente convocados por la ciudad',summary:'La entidad también utiliza cloud y cybersecurity'}),false,'Parent technology signal must not turn an unrelated article into tech news');
+assert.strictEqual(bi.technicalNews({title:'La entidad invierte en servicios de ciberseguridad y Zero Trust',summary:''}),true);
 console.log('Business Intelligence v6.4: relevant procurement and accredited news OK');
