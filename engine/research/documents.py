@@ -31,6 +31,8 @@ class TextExtractor(HTMLParser):
         self.brand_image_labels: list[str] = []
         self.manufacturer_section_images: list[str] = []
         self._in_manufacturer_section = False
+        self._in_brand_inventory = False
+        self.brand_inventory_labels: list[str] = []
         self.links: list[tuple[str, list[str]]] = []
         self._title_depth = 0
         self._ignored_depth = 0
@@ -76,6 +78,16 @@ class TextExtractor(HTMLParser):
         if not text:
             return
         self.parts.append(text)
+        # Depau-style directories enumerate named manufacturers in a bounded
+        # first-party "Estas son las marcas..." region, not image logos.
+        if re.search(r"(?i)estas son las marcas que forman parte de nuestro cat[aá]logo", text):
+            self._in_brand_inventory = True
+        elif self._in_brand_inventory:
+            if text.casefold() in {"volver", "nuestros clientes opinan", "localización"}:
+                self._in_brand_inventory = False
+            elif (2 <= len(text) <= 48 and 1 <= len(text.split()) <= 5
+                  and text.upper() == text and any(ch.isalpha() for ch in text)):
+                self.brand_inventory_labels.append(text)
         if re.search(r"(?i)\b(?:nuestros|nossos|our)\s+fabricantes\s+(?:que|that|para)\b", text):
             self._in_manufacturer_section = True
         elif re.search(r"(?i)\b(?:nuestros|nossos|our)\s+servicios\s+complementarios\b", text):
@@ -116,6 +128,8 @@ def parse_document(raw: str, final_url: str, digest: str) -> Document:
         parser.brand_image_labels if catalogue_page
         else parser.manufacturer_section_images
     )
+    if catalogue_page:
+        logo_labels = [*logo_labels, *parser.brand_inventory_labels]
     return Document(
         url=final_url,
         title=" ".join(parser.title_parts)[:240],
