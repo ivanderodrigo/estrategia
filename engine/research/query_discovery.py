@@ -6,6 +6,7 @@ binding, semantic extraction, typed provenance and atomic evidence promotion.
 """
 from __future__ import annotations
 
+import re
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from typing import Iterable
@@ -139,6 +140,20 @@ def _search_provider(
     return []
 
 
+def _disambiguate_technical_query(query: str) -> str:
+    """Prefer unambiguous industry concepts to overloaded acronym headings.
+
+    OT/CPS is operational-technology / cyber-physical security, not
+    entertainment or generic transport operators. This only changes search
+    discovery hints; evidence gates remain unchanged.
+    """
+    return re.sub(
+        r'(?i)"?\\bOT\\s*/\\s*CPS\\s+Security\\b"?',
+        '"operational technology" "industrial control systems" cybersecurity',
+        query,
+    )
+
+
 def discover(
     session: requests.Session,
     queries: Iterable[str],
@@ -170,7 +185,7 @@ def discover(
     diagnostics["provider_attempts"] = {}
     diagnostics["provider_urls"] = {}
 
-    clean_queries = _unique((str(value).strip() for value in queries), max(0, max_queries))
+    clean_queries = _unique((_disambiguate_technical_query(str(value).strip()) for value in queries), max(0, max_queries))
     for query in clean_queries:
         if not query:
             continue
