@@ -9,10 +9,30 @@ import requests
 
 from ..enrichment import merge_field
 from ..model import canonical, stable_id
+from ..settings import RESEARCH_POLICY
 
 
 TED_SEARCH_URL = "https://api.ted.europa.eu/v3/notices/search"
 IT_CPV_PREFIXES = ("302", "324", "325", "48", "72")
+NETWORK_CPV_PREFIXES = ("324", "325")
+DEFAULT_PORTFOLIO_TERMS = (
+    "cybersecurity", "cyber security", "ciberseguridad", "ciberseguranca",
+    "security", "seguridad", "seguranca", "firewall", "siem", "soc", "xdr", "edr", "mdr",
+    "sase", "sse", "zero trust", "iam", "identity", "identidad", "identidade", "mfa", "pam",
+    "network", "networking", "redes", "rede", "lan", "wan", "sd wan", "wifi", "wi fi",
+    "switching", "routing", "router", "switch", "nac", "ddi", "dns", "dhcp",
+    "telecommunications", "telecomunicaciones", "telecomunicacoes",
+    "cloud", "nube", "nuvem", "data center", "datacenter", "centro de datos", "centro de dados",
+    "observability", "observabilidad", "observabilidade", "monitoring", "monitorizacion", "monitorizacao",
+    "load balancer", "balanceador", "adc", "api security", "backup", "recovery",
+    "virtualization", "virtualizacion", "kubernetes", "container", "automation", "automatizacion", "automacao",
+)
+DEFAULT_EXCLUDE_TERMS = (
+    "printer", "impresora", "impressora", "toner", "cartucho", "photocopier", "fotocopiadora",
+    "mobiliario de oficina", "office furniture", "water meter", "contador de agua",
+    "smartphone", "telefonia movil de usuario", "telemovel", "laptop", "portatil",
+    "ordenador personal", "desktop pc",
+)
 
 
 def _first(value: Any) -> str:
@@ -33,10 +53,45 @@ def _cpv_codes(notice: dict[str, Any]) -> list[str]:
     return list(dict.fromkeys(str(value).strip() for value in values if str(value).strip()))
 
 
-def notice_is_relevant(notice: dict[str, Any]) -> bool:
-    """Limit automatic growth to computing, networking, telecom, software and IT services."""
+def _notice_text(notice: dict[str, Any]) -> str:
+    return canonical(" ".join(filter(None, (
+        _first(notice.get("notice-title")),
+        _first(notice.get("title-proc")),
+        _first(notice.get("description-proc")),
+        _first(notice.get("description-lot")),
+    ))))
 
-    return any(code.startswith(IT_CPV_PREFIXES) for code in _cpv_codes(notice))
+
+def _policy_terms(key: str, fallback: tuple[str, ...]) -> tuple[str, ...]:
+    configured = (RESEARCH_POLICY.get("procurement_relevance") or {}).get(key) or fallback
+    return tuple(canonical(value) for value in configured if canonical(value))
+
+
+def notice_is_relevant(notice: dict[str, Any]) -> bool:
+    """Keep only procurement with explicit Westcon-portfolio technology fit.
+
+    CPV is used as a coarse official pre-filter, never as enough evidence that a
+    notice is commercially relevant. Networking/telecom CPVs are intrinsically
+    close to the portfolio; generic computing, software and IT-service CPVs must
+    also expose a portfolio term in the published need.
+    """
+    codes = _cpv_codes(notice)
+    if not any(code.startswith(IT_CPV_PREFIXES) for code in codes):
+        return False
+
+    text = _notice_text(notice)
+    include_terms = _policy_terms("include_terms", DEFAULT_PORTFOLIO_TERMS)
+    exclude_terms = _policy_terms("exclude_terms", DEFAULT_EXCLUDE_TERMS)
+    matched = any(term and term in text for term in include_terms)
+    excluded = any(term and term in text for term in exclude_terms)
+
+    # Explicit commodity intent wins unless the title also names a concrete
+    # portfolio technology (e.g. network security appliances).
+    if excluded and not matched:
+        return False
+
+    network_cpv = any(code.startswith(NETWORK_CPV_PREFIXES) for code in codes)
+    return network_cpv or matched
 
 
 def parse_notice(notice: dict[str, Any]) -> dict[str, Any] | None:
