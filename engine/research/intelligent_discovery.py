@@ -148,6 +148,19 @@ def intelligent_discovery_queries(
             if vendor.casefold() != entity.casefold():
                 add(f'"{entity}" "{vendor}" distribución autorizada marcas')
 
+    if section in {"distributors", "integrators"} and "vendor_relations" in targets:
+        # Use the entity's own official domains and technology footprint to
+        # find linecards and alliance directories. A search result is still only
+        # a URL lead; the canonical source/relationship gate remains mandatory.
+        for host in _entity_official_hosts(row):
+            add(f'site:{host} marcas fabricantes partners vendors')
+            add(f'site:{host} linecard brand catalogue tecnologia networking cybersecurity')
+        for context in topics[:2]:
+            add(f'"{entity}" "{context}" marcas fabricantes alianzas')
+            add(f'"{entity}" "{context}" certified partner vendors integrator')
+        for known in _texts((row.get("fields") or {}).get("vendor_relations"), limit=2):
+            add(f'"{entity}" "{known}" distribuidor integrador partner oficial')
+
     if section in {"distributors", "integrators", "clients_private", "clients_public", "trends", "architectures"} and "recent_signals" in targets:
         add(f'"{entity}" actualidad tecnología ciberseguridad cloud networking')
         add(f'"{entity}" noticias proyectos transformación digital comunicado')
