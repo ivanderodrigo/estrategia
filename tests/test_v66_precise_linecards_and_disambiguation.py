@@ -6,6 +6,7 @@ from unittest.mock import Mock, patch
 from engine.research.documents import parse_document
 from engine.research.extractors import distributor_linecard_vendors, extract_candidates
 from engine.research.query_discovery import _disambiguate_technical_query, discover
+from engine.research.planner import _first_party_catalogue_boost
 from engine.research.sources import seeds_for
 
 
@@ -135,6 +136,18 @@ class PreciseLinecardsAndSearchV66(unittest.TestCase):
                     target={'section': 'distributors'},
                 )
                 self.assertTrue(any(s.official and suffix in s.url for s in seeds))
+
+    def test_catalogue_leads_receive_priority_but_never_accredit_data(self):
+        self.assertEqual(_first_party_catalogue_boost(
+            'distributors', 'Ajoomal', 'vendor_relations'), 2.0)
+        self.assertEqual(_first_party_catalogue_boost(
+            'distributors', 'Depau', 'vendor_relations'), 2.0)
+        self.assertEqual(_first_party_catalogue_boost(
+            'manufacturers', 'Depau', 'vendor_relations'), 1.0)
+        self.assertEqual(_first_party_catalogue_boost(
+            'distributors', 'Depau', 'revenue'), 1.0)
+        self.assertEqual(_first_party_catalogue_boost(
+            'distributors', 'Unknown Corp', 'vendor_relations'), 1.0)
 
     def test_search_disambiguation_prevents_entertainment_queries(self):
         original = '"OT / CPS Security" latest architecture'
