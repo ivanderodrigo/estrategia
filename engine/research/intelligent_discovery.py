@@ -6,6 +6,7 @@ gates must corroborate a named vendor before populating any field.
 """
 from __future__ import annotations
 from typing import Any
+from urllib.parse import urlsplit
 
 HIGH_VALUE_FIELDS = {
     "competitors": ("competitors alternative vendors", "competidores alternativas fabricantes", "concorrentes fabricantes"),
@@ -16,6 +17,7 @@ HIGH_VALUE_FIELDS = {
     "use_cases": ("use cases customer story", "casos de uso caso de éxito", "casos de uso sucesso"),
     "services": ("professional services managed services", "servicios profesionales gestionados", "serviços geridos"),
     "recent_signals": ("latest product announcements press release", "novedades lanzamiento nota de prensa", "notícias lançamento"),
+    "vendor_relations": ("lista fabricantes marcas linecard", "vendor brands catalogue partnerships", "fabricantes distribuídos marcas parceiras"),
     "partner_program": ("channel partner program", "programa de partners", "programa de parceiros"),
     "certifications": ("technical certifications partner specializations", "certificaciones especializaciones", "certificações especializações"),
 }
@@ -46,7 +48,7 @@ def _texts(field: Any, limit: int = 5) -> list[str]:
 def _topics(row: dict[str, Any]) -> list[str]:
     fields = row.get("fields") or {}
     topics: list[str] = []
-    for field in ("domain", "subcategories", "capabilities", "products_platforms", "known_architectures", "use_cases"):
+    for field in ("domain", "subcategories", "technology_domains", "capabilities", "services", "products_platforms", "known_architectures", "use_cases"):
         topics.extend(_texts(fields.get(field), limit=3 if field in {"domain", "subcategories"} else 2))
     # Keep short category/product descriptions only, not sentence-length claims.
     topics = [value for value in topics if len(value.split()) <= 8]
@@ -58,6 +60,38 @@ def _topics(row: dict[str, Any]) -> list[str]:
             seen.add(key)
             output.append(topic)
     return output[:12]
+
+
+
+def _entity_official_hosts(row: dict[str, Any]) -> list[str]:
+    """Derive site: restrictions only from entity-owned official evidence."""
+    entity = str(row.get("name") or "").lower()
+    keywords = [
+        token for token in "".join(c if c.isalnum() else " " for c in entity).split()
+        if len(token) >= 5 and token not in {"grupo", "group", "iberia", "espana",
+                                             "portugal", "distribucion", "distribution"}
+    ]
+    if not keywords:
+        return []
+    evidence = list(row.get("evidence") or [])
+    for field in (row.get("fields") or {}).values():
+        if isinstance(field, dict):
+            evidence.extend(field.get("evidence") or [])
+            for item in field.get("items") or []:
+                if isinstance(item, dict):
+                    evidence.extend(item.get("evidence") or [])
+    hosts: list[str] = []
+    for ev in evidence:
+        if not isinstance(ev, dict):
+            continue
+        source_type = str(ev.get("source_type") or ev.get("type") or "").lower()
+        if not (ev.get("official") is True or "official" in source_type):
+            continue
+        host = (urlsplit(str(ev.get("url") or "")).hostname or "").lower()
+        if not host or host in hosts or not any(k in host.replace("-", "") for k in keywords):
+            continue
+        hosts.append(host)
+    return hosts[:2]
 
 
 def intelligent_discovery_queries(
@@ -98,6 +132,26 @@ def intelligent_discovery_queries(
                 add(f'"{entity}" vs "{candidate}" "{topic}" comparison')
         for offset, context in enumerate(SOURCE_VARIANTS):
             add(f'"{entity}" "{topics[offset % len(topics)]}" {context}')
+
+    if section == "distributors" and any(
+        field in targets for field in ("vendor_relations", "westcon_overlap", "competitor_vendor_overlap")
+    ):
+        # Put first-party linecards ahead of incidental co-mentions in industry press.
+        for host in _entity_official_hosts(row):
+            add(f'site:{host} fabricantes marcas vendors linecard portfolio')
+            add(f'site:{host} cybersecurity networking cloud fabricantes distribuidor')
+        add(f'"{entity}" "fabricantes" "marcas" distribuidor')
+        add(f'"{entity}" "line card" "vendors" partner')
+        add(f'"{entity}" "fabricantes" "ciberseguridad" "networking"')
+        add(f'"{entity}" "fabricantes" "cloud" "data center"')
+        for vendor in _texts((row.get("fields") or {}).get("vendor_relations"), limit=3):
+            if vendor.casefold() != entity.casefold():
+                add(f'"{entity}" "{vendor}" distribución autorizada marcas')
+
+    if section in {"integrators", "clients_private", "clients_public"} and "recent_signals" in targets:
+        add(f'"{entity}" actualidad tecnología ciberseguridad cloud networking')
+        add(f'"{entity}" noticias proyectos transformación digital comunicado')
+        add(f'"{entity}" press release technology infrastructure partnership')
 
     for idx, field in enumerate(targets):
         intents = HIGH_VALUE_FIELDS.get(field)
