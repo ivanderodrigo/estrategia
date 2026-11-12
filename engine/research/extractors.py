@@ -338,11 +338,12 @@ def evidence_snippet(text: str, terms: Iterable[str], *, radius: int = 180) -> s
 
 
 def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]) -> tuple[list[str], list[str]]:
-    """Find named vendors in an explicit distributor-owned brand catalogue.
+    """Extract named brands from explicit first-party reseller/distributor catalogues.
 
-    Vendor mentions elsewhere (news, sidebars, technology articles) are not a
-    linecard relationship. The calling pipeline still requires first-party
-    ownership and value-specific accreditation before promotion.
+    The caller must require an *official entity-owned source*. These are
+    DISCOVERY observations: the canonical relation provenance gate still verifies
+    subject, vendor and field. Generic site footers and news co-mentions do not
+    count as a linecard.
     """
     from urllib.parse import urlsplit
 
@@ -351,7 +352,7 @@ def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]
     labels = (
         "fabricantes", "marcas", "vendors", "brands", "line card",
         "linecard", "portfolio", "catalogo de marcas", "catalogo fabricantes",
-        "nuestras marcas", "nossos fabricantes",
+        "nuestras marcas", "nossos fabricantes", "nossos parceiros",
     )
     owned_catalogue = any(label in path or label in title for label in labels)
     text = document.text or ""
@@ -364,10 +365,37 @@ def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]
     )
     if not owned_catalogue and not heading:
         return [], []
-    # Bound the extraction to catalogue content, not an entire multi-page crawl.
     body = text[:70000] if owned_catalogue else text[:7000]
-    return vendors_in_text(body, vendor_names)
-
+    known, terms = vendors_in_text(body, vendor_names)
+    # Official logo catalogues often contain more brands than a static
+    # vocabulary. parse_document adds their img alt labels only on explicit
+    # manufacturer/brand paths. Keep strong brand-like labels, not page UI.
+    if owned_catalogue and " Marcas y fabricantes: " in body:
+        raw_labels = body.rsplit(" Marcas y fabricantes: ", 1)[1].split(" / ")
+        excluded = {
+            "home", "inicio", "busqueda", "buscar", "search", "cart",
+            "email", "login", "linkedin", "twitter", "facebook", "youtube",
+            "loading", "icon", "logo", "banner", "partner", "partners",
+            "networking", "cloud", "cybersecurity", "ciberseguridad",
+            "tecnologia", "technology", "productos", "productos y servicios",
+            "ver mas", "leer mas", "contacto", "contact", "menu",
+            "certified", "distribuidor", "fabricantes", "marcas",
+        }
+        for label in raw_labels[:250]:
+            brand = re.sub(r"(?i)^(?:logo\s+(?:de|da|of)\s+)", "", label.strip())
+            brand = re.sub(r"(?i)\s+(?:logo|brand logo)$", "", brand).strip()
+            key = canonical(brand)
+            if (not 2 <= len(brand) <= 48 or len(brand.split()) > 5 or
+                not re.search(r"[a-zA-Z]", brand) or key in excluded or
+                any(word in key.split() for word in ("image", "imagen", "banner", "icono")) or
+                re.fullmatch(r"\d+", brand)):
+                continue
+            if key not in {canonical(value) for value in known}:
+                known.append(brand)
+                terms.append(label.strip())
+            if len(known) >= 100:
+                break
+    return known[:100], terms[:100]
 
 def extract_candidates(
     section: str,
@@ -406,11 +434,11 @@ def extract_candidates(
             add("revenue", revenues, revenue_terms, confidence=0.90 if official else 0.74)
         if family == "partners":
             add("vendor_relations", vendors, vendor_terms)
-        elif section == "distributors" and official:
-            # Official brand/linecard catalogues are authoritative even when the
-            # source registry classifies the landing page as 'official'.
+        elif official and family in {"official", "technology", "services"}:
+            # First-party brand catalogues may be categorized as generic or
+            # technical pages; accept evidence-specific logos for both groups.
             listed, listed_terms = distributor_linecard_vendors(document, vendor_names)
-            add("vendor_relations", listed, listed_terms, confidence=0.91)
+            add("vendor_relations", listed, listed_terms, confidence=0.90)
         if family in {"services", "official"}:
             add("capabilities", capabilities, cap_terms)
             add("services", services, service_terms)
