@@ -38,7 +38,7 @@ PUBLIC_PROCUREMENT_FIELDS = {
 
 SECTION_WEIGHT = {
     "integrators": 1.55,
-    "distributors": 1.45,
+    "distributors": 1.90,
     "clients_private": 1.30,
     "manufacturers": 1.25,
     "clients_public": 1.00,
@@ -47,7 +47,7 @@ SECTION_WEIGHT = {
 }
 FIELD_WEIGHT = {
     "competitors": 1.55,
-    "vendor_relations": 1.45,
+    "vendor_relations": 1.72,
     "westcon_overlap": 1.40,
     "competitor_vendor_overlap": 1.35,
     "services": 1.30,
@@ -61,6 +61,7 @@ FIELD_WEIGHT = {
     "identified_integrators": 1.20,
     "estimated_amount": 1.18,
     "hiring_signals": 1.12,
+    "recent_signals": 1.22,
     "job_profiles": 1.10,
     "job_vendors": 1.14,
     "revenue": 1.20,
@@ -71,7 +72,7 @@ FIELD_WEIGHT = {
 # sections do not have enough due work.
 SECTION_MAX_SHARE = {
     "integrators": 0.32,
-    "distributors": 0.24,
+    "distributors": 0.30,
     "manufacturers": 0.20,
     "clients_private": 0.18,
     "clients_public": 0.22,
