@@ -502,7 +502,7 @@ def extract_candidates(
             r"comunicados|announcements?|blog|insights|articles?|media|"
             r"newsroom|releases|research|reports|estudios|publicaciones|"
             r"artigos|sala-de-prensa|case-studies)/[^/?#]{7,}", path
-        )) or re.search(r"/20\d\d/(?:0?[1-9]|1[012])/[a-z0-9-]{8,}",path))
+        ) or re.search(r"/20\d\d/(?:0?[1-9]|1[012])/[a-z0-9-]{8,}",path))
         has_owner = (
             bool(researched_entity)
             and canonical(researched_entity) in canonical(title + " " + (text[:700] if text else ""))
