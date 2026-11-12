@@ -1519,6 +1519,90 @@ def _query_limit_for_target(
 
 
 
+
+def _rescue_missing_research_sections(
+    targets: list[dict[str, Any]],
+    gaps: dict[str, Any],
+    learning: dict[str, Any],
+    profile: str,
+    *,
+    max_tasks: int | None = None,
+    include_gap_kinds: set[str] | None = None,
+) -> tuple[list[dict[str, Any]], dict[str, int]]:
+    """Reserve limited Daily opportunities for sections entirely in cooldown.
+
+    ResearchState.gap_due may leave all vendor, distributor, trend and architecture
+    tasks in cooldown while hundreds of public-client tasks remain due. Interleaving
+    an all-client plan does not solve that selection failure. A small independent
+    sample of still-open work is allowed a retry; it never changes the provenance
+    or accreditation gates, and source/domain backoff still applies.
+    """
+    if profile != "daily" or include_gap_kinds is not None:
+        return targets, {}
+    limit = int(max_tasks or RESEARCH_PROFILES[profile].entity_limit)
+    if limit <= 0:
+        return targets, {}
+    lanes = {
+        "distributors": 12,
+        "integrators": 5,
+        "manufacturers": 4,
+        "clients_private": 3,
+        "trends": 3,
+        "architectures": 3,
+    }
+    existing_sections = {str(row.get("section") or "") for row in targets}
+    absent = {section: cap for section, cap in lanes.items()
+              if section not in existing_sections}
+    if not absent:
+        return targets, {}
+    # Capped to one fifth of Daily; do not force the full backlog into one run.
+    maximum_extra = min(sum(absent.values()), max(1, limit // 5))
+    backlog_pool = plan(
+        gaps, learning, profile,
+        state=None, max_tasks=max(600, limit * 4),
+        include_gap_kinds=include_gap_kinds,
+    )
+    already = {
+        (str(row.get("section") or ""), str(row.get("task_entity_key") or row.get("entity") or ""))
+        for row in targets
+    }
+    catalogue = read_json("config/current/linecard_source_leads.json", {})
+    first_party_names = {
+        canonical(row.get("name")) for row in (catalogue.get("entries") or [])
+        if isinstance(row, dict) and row.get("url")
+    }
+    rescued: list[dict[str, Any]] = []
+    by_section: dict[str, int] = defaultdict(int)
+    for section, cap in absent.items():
+        subset = [
+            item for item in backlog_pool
+            if item.get("section") == section
+            and (section != "distributors" or "vendor_relations" in (item.get("fields") or []))
+        ]
+        if section == "distributors":
+            subset.sort(key=lambda item: (
+                canonical(item.get("entity")) not in first_party_names,
+                -float(item.get("priority") or 0),
+            ))
+        for item in subset:
+            if by_section[section] >= cap or len(rescued) >= maximum_extra:
+                break
+            key = (section, str(item.get("task_entity_key") or item.get("entity") or ""))
+            if key in already:
+                continue
+            rescued.append(item)
+            already.add(key)
+            by_section[section] += 1
+        if len(rescued) >= maximum_extra:
+            break
+    if not rescued:
+        return targets, {}
+    # Reserve their slots; original tasks stay ordered and no gap is deleted.
+    remaining = max(0, limit - len(rescued))
+    return [*rescued, *targets[:remaining]], dict(by_section)
+
+
+
 def run(
     profile: str = "daily",
     max_runtime: int = 600,
@@ -1563,7 +1647,10 @@ def run(
             rotated = candidate_pool[offset:] + candidate_pool[:offset]
             targets = rotated[:(12 if profile == "daily" else 36)]
             rescue_targets = len(targets)
-    # Fair operational order, regardless of ranking-heavy section clusters.
+    targets, cooldown_lane_rescues = _rescue_missing_research_sections(
+        targets, gaps, learning, profile,
+        max_tasks=max_tasks, include_gap_kinds=include_gap_kinds,
+    )
     targets = _fair_target_order(targets)
     index = _row_index(data)
     vendor_names = _vendor_names(data)
@@ -1581,6 +1668,7 @@ def run(
         },
         "processed_sections": defaultdict(int),
         "rescue_targets_after_cooldown": rescue_targets,
+        "cooldown_lane_rescues": cooldown_lane_rescues,
         "fetch_attempts": 0,
         "fetch_successes": 0,
         "pages_relevant": 0,
