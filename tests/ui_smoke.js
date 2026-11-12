@@ -5,7 +5,7 @@ const css = fs.readFileSync('assets/app/intelligence.css', 'utf8');
 
 for (const token of [
   'data/public/manifest.json', 'ensureSection', 'ensureViewData', 'clients_public',
-  'clients_private', 'reorderColumn', 'columnChooser', 'currentColumnWidth', 'App v4.6.0',
+  'clients_private', 'reorderColumn', 'columnChooser', 'currentColumnWidth', 'App v6.1.0',
   'atomic-evidence-missing', 'el sistema no muestra fuentes de otros elementos',
   'analysisPanel', 'WestconFilters.apply', 'sessionStorage', 'savedFilters',
   'openFilteredReport', 'WestconReports.build', 'generateFilteredCsv', 'window.print',
@@ -42,15 +42,9 @@ for (const label of ['Fabricantes','Mayoristas','Integradores','Clientes','Tende
 
 console.log('UI smoke v4.4.0 PASS');
 
-// Public-facing list tags must be backed by item-specific, current evidence.
-if (!js.includes('function atomicCurrentProof(')) throw new Error('atomic current proof filter missing');
-if (!js.includes('const documented=supportedListValues(field)')) throw new Error('list labels are not evidence-filtered');
-if (!js.includes('indicios conservados sin fuente específica')) throw new Error('unverified clues are not retained separately');
-if (!js.includes('Ver cuáles son')) throw new Error('unverified claim disclosure is not available');
-if (!js.includes('unsupported.map((v,i)=>')) throw new Error('unverified claim values are hidden');
-if (!js.includes('unverified-clue-value')) throw new Error('exact unsupported values are not exposed');
-if (!js.includes('esc(raw)')) throw new Error('unsupported claim values are not escaped');
-if (!css.includes('.unverified-clue-list')) throw new Error('unsupported claim disclosure is unreadable');
-
-if (!js.includes('function sourcedScalarForTable(')) throw new Error('scalar proof filter absent');
-if (!js.includes('f&&sourcedScalarForTable(f)?renderValue(')) throw new Error('scalar proof filter not connected to tables');
+// v6.1: all data values use badges; unsupported ones must never inherit proof.
+for (const token of ['function atomicCurrentProof(', 'function pendingTagHtml(', 'confidence-tag unverified', 'elements=value.map(', 'return sourcedScalarForTable(field)?traceable(', 'f&&hasValue(f.value)?renderValue(']) {
+  if (!js.includes(token)) throw new Error('business-evidence UI regression: '+token);
+}
+if (js.includes('unverified-clues')) throw new Error('legacy disclosure remains instead of uniform tags');
+if (!html.includes('id="manufacturerNews"') || !html.includes('id="procurementDownloadCsv"')) throw new Error('v6.1 news or procurement downloads missing');
