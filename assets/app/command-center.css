@@ -5,9 +5,16 @@ body.cc-home .view{display:none!important}body.cc-home #commandCenter{display:bl
 .cc-audit-table caption{text-align:left;margin:8px 0 12px;color:#617783;font-size:11px}
 .cc-audit-table th,.cc-audit-table td{white-space:normal;vertical-align:top;padding:9px 8px;font-size:11px;line-height:1.45}
 .cc-audit-table thead th{background:#f0f6f7;color:#1b4857;font-weight:800}
-.cc-audit-table tbody th{font-weight:800;color:#17475c}
+.cc-audit-table tbody th{font-weight:800;color:#17475c;background:#f0f6f8;position:static;top:auto;z-index:auto;white-space:normal;letter-spacing:normal}
 .cc-audit-ok,.cc-audit-warning,.cc-audit-method,.cc-audit-meta{font-size:12px!important;line-height:1.55!important;margin:11px 0!important}
 .cc-audit-warning{border-left:3px solid #b46c2a;background:#fff5e7;color:#784a20;padding:10px 12px;border-radius:5px}
 .cc-audit-ok{border-left:3px solid #10826b;background:#f0faf7;color:#155d50;padding:8px 11px;border-radius:5px}
 .cc-audit-method{color:#56717e}
 .cc-audit-meta{color:#375667;overflow-wrap:anywhere}
+
+/* v6.5 — isolate audit table semantics from the app-wide dark sticky table headings. */
+#commandCenter .cc-audit-table{min-width:640px;table-layout:auto}
+#commandCenter .cc-audit-table thead th{background:#eaf1f5;color:#163d4f;position:static;top:auto;z-index:auto;white-space:normal}
+#commandCenter .cc-audit-table tbody th{background:#f3f8fa!important;color:#123e51!important;position:static!important;top:auto!important;z-index:auto!important;white-space:normal!important;text-shadow:none!important}
+#commandCenter .cc-audit-table tbody tr:nth-child(even) th{background:#eaf3f6!important}
+#commandCenter .cc-audit-table tbody td{color:#264351;background:#fff}
