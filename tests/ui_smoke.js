@@ -55,7 +55,7 @@ for(const label of [
  "renderValue(f,null,'table',col.id)",
  "renderEntityNews('distributors',relevant)",
  "distributorIncludeUnconfirmed",
- "distributorContext(row,manufacturers)",
+ "context(row,manufacturers)",
 ]){
  if(!js.includes(label))throw new Error('v6.3 business curation/category badge regression: '+label);
 }
