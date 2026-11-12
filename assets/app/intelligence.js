@@ -1,4 +1,4 @@
-// App v4.6.0
+// App v6.1.0
 (() => {
   'use strict';
   const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
@@ -69,43 +69,26 @@
     localStorage.setItem(revision,'1');
   }
   function observatoryWatch(){try{const x=JSON.parse(localStorage.getItem('westcon-observatory-watch')||'[]');return Array.isArray(x)?x.filter(v=>typeof v==='string'):[];}catch(_){return [];}}
-  function procurementAlertConfig(){
-    const defaults={email:'',scope:'IBERIA',frequency:'daily',time:'08:00',keywords:'',portfolio_only:true,delivery:'smtp-not-connected'};
-    try{return {...defaults,...JSON.parse(localStorage.getItem('westcon-procurement-alert')||'{}'),portfolio_only:true};}catch(_){return defaults;}
-  }
-  function fillProcurementAlert(){
-    const cfg=procurementAlertConfig();
-    if($('#procurementAlertEmail'))$('#procurementAlertEmail').value=cfg.email||'';
-    if($('#procurementAlertScope'))$('#procurementAlertScope').value=cfg.scope||'IBERIA';
-    if($('#procurementAlertFrequency'))$('#procurementAlertFrequency').value=cfg.frequency||'daily';
-    if($('#procurementAlertTime'))$('#procurementAlertTime').value=cfg.time||'08:00';
-    if($('#procurementAlertKeywords'))$('#procurementAlertKeywords').value=cfg.keywords||'';
-    if($('#procurementAlertStatus'))$('#procurementAlertStatus').textContent='Configuración local guardada. El correo automático no está activo hasta conectar un servicio SMTP.';
-  }
-  function readProcurementAlert(){
-    return {
-      version:1,
-      email:($('#procurementAlertEmail')?.value||'').trim(),
-      scope:$('#procurementAlertScope')?.value||'IBERIA',
-      frequency:$('#procurementAlertFrequency')?.value||'daily',
-      time:$('#procurementAlertTime')?.value||'08:00',
-      keywords:($('#procurementAlertKeywords')?.value||'').trim(),
-      portfolio_only:true,
-      timezone:'Europe/Madrid',
-      delivery:'smtp-not-connected'
-    };
-  }
-  function saveProcurementAlert(download=false){
-    const cfg=readProcurementAlert();
-    if(cfg.email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cfg.email)){toast('Introduce un correo válido');return;}
-    localStorage.setItem('westcon-procurement-alert',JSON.stringify(cfg));
-    if($('#procurementAlertStatus'))$('#procurementAlertStatus').textContent='Configuración local guardada. No hay envíos activos mientras SMTP no esté conectado.';
-    if(download){
-      const blob=new Blob([JSON.stringify(cfg,null,2)+'\n'],{type:'application/json;charset=utf-8'});
-      const url=URL.createObjectURL(blob),a=document.createElement('a');
-      a.href=url;a.download='westcon-procurement-alert.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-      toast('Configuración de alerta descargada');
-    }else toast('Configuración de alerta guardada en este navegador');
+  function exportProcurement(rows,format='csv'){
+    const logic=window.WestconBusiness;
+    const clean=(rows||[]).filter(row=>logic.classifyNotice(row).fit);
+    if(!clean.length){toast('No hay pliegos acreditados con los filtros actuales');return;}
+    const records=clean.map(row=>{
+      const fit=logic.classifyNotice(row),f=row.fields||{};
+      const val=key=>logic.supportedTexts(f[key]).join(' · ');
+      return {entidad:row.name,expediente:val('notice_id'),objeto:val('request_or_need'),areas:fit.areas.join(' / '),importe:val('estimated_amount'),fecha_hito:val('milestone_date'),estado:val('procurement_stage'),CPV:val('cpv_codes'),fuente_oficial:fit.official,PDF_verificado:fit.pdf};
+    });
+    let blob,ext;
+    if(format==='json'){blob=new Blob([JSON.stringify({generado:new Date().toISOString(),criterio:'Encaje explícito Westcon + evidencia por dato',expedientes:records},null,2)],{type:'application/json;charset=utf-8'});ext='json';}
+    else{
+      const head=Object.keys(records[0]),quote=v=>'"'+String(v??'').replace(/"/g,'""').replace(/[\r\n]+/g,' ')+'"';
+      const lines=[head.map(quote).join(';'),...records.map(record=>head.map(key=>quote(record[key])).join(';'))];
+      blob=new Blob(['\ufeff'+lines.join('\r\n')],{type:'text/csv;charset=utf-8'});ext='csv';
+    }
+    const url=URL.createObjectURL(blob),a=document.createElement('a');
+    a.href=url;a.download='Westcon_Iberia_Pliegos_'+records.length+'_'+new Date().toISOString().slice(0,10)+'.'+ext;
+    a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    toast(records.length+' expedientes descargados, con enlace a la documentación oficial');
   }
   function renderDecisionDesk(){
     const host=$('#decisionDesk');if(!host||!window.WestconObservatory)return;
@@ -217,9 +200,8 @@
     $('#distributorScope')?.addEventListener('change', renderDistributors);
     $('#publicClientSearch')?.addEventListener('input', renderClients);
     $('#publicClientScope')?.addEventListener('change', renderClients);
-    $('#procurementAlertBtn')?.addEventListener('click',()=>{fillProcurementAlert();openModal('procurementAlertModal');});
-    $('#procurementAlertSave')?.addEventListener('click',()=>saveProcurementAlert(false));
-    $('#procurementAlertDownload')?.addEventListener('click',()=>saveProcurementAlert(true));
+    $('#procurementDownloadCsv')?.addEventListener('click',()=>exportProcurement(state.downloadableNotices||[],'csv'));
+    $('#procurementDownloadJson')?.addEventListener('click',()=>exportProcurement(state.downloadableNotices||[],'json'));
     $('#privateClientSearch')?.addEventListener('input', renderClients);
     $('#privateClientScope')?.addEventListener('change', renderClients);
     $('#trendSearch')?.addEventListener('input', renderTrends);
@@ -243,6 +225,8 @@
     $('#textLarger')?.addEventListener('click', () => changeTextScale(0.1));
     $('#textReset')?.addEventListener('click', resetTextScale);
     document.addEventListener('click', e=>{
+      const noticeDownload=e.target.closest('[data-download-notice]');if(noticeDownload){const row=(state.downloadableNotices||[]).find(x=>String(x.id)===noticeDownload.dataset.downloadNotice);if(row)exportProcurement([row],'json');return;}
+      const newsMore=e.target.closest('#manufacturerNewsMore');if(newsMore){state.showNewsAll=!state.showNewsAll;renderManufacturers();return;}
       const focusToggle=e.target.closest('[data-evidence-first]'); if(focusToggle){toggleEvidenceFirst(focusToggle.dataset.evidenceFirst);return;}
       const more=e.target.closest('[data-more-tags]'); if(more){ const box=more.closest('.tag-list'); box?.classList.toggle('expanded'); more.textContent=box?.classList.contains('expanded')?'Mostrar menos':more.dataset.label; }
       const moreText=e.target.closest('[data-more-text]'); if(moreText){ const box=moreText.closest('.scalar-compact'); box?.classList.toggle('expanded'); moreText.textContent=box?.classList.contains('expanded')?'Ver menos':'Ver más'; e.stopPropagation(); }
@@ -421,7 +405,7 @@
   }
   function atomicCurrentProof(evidence){
     return Array.isArray(evidence)&&evidence.some(ev=>{
-      if(!ev||typeof ev!=='object')return false;
+      if(!ev||typeof ev!=='object'||ev.accrediting===false||ev.contradicted||['stale','rejected','contradicted'].includes(String(ev.freshness_status||'')))return false;
       const origin=String(ev.provenance_origin||'').toUpperCase();
       if(/HISTORICAL|ARCHIVE|REPORT_CORROBORATION|RESEARCH_SEED|LEGACY_UNRESOLVED/.test(origin))return false;
       if(origin==='WESTCON_DOCUMENT')return false;
@@ -445,6 +429,11 @@
     const raw=typeof value==='object'?JSON.stringify(value):String(value??'');
     return traceable(field,`<span class="tag confidence-tag ${esc(band)} ${extra}"><span class="tag-label" title="${esc(raw)}">${esc(raw)}</span><small>${confidencePct(score)}%</small></span>`,item);
   }
+  function pendingTagHtml(field,value,index){
+    const item=itemFor(field,value,index),raw=typeof value==='object'?JSON.stringify(value):String(value??'');
+    const unsupported={...item,evidence:[],confidence:0,confidence_band:'low',confidence_reason:'Indicio conservado; falta una fuente específica que respalde el valor exacto.'};
+    return traceable({...field,evidence:[]},'<span class="tag confidence-tag unverified" title="No acreditado: '+esc(raw)+'"><span class="tag-label">'+esc(raw)+'</span><small>?</small></span>',unsupported);
+  }
   function compactScalar(value, max=150){
     const raw=String(value??'');
     if(raw.length<=max) return esc(raw);
@@ -464,16 +453,16 @@
       if(value.length&&typeof value[0]==='object'&&value[0].layer){
         return `<div class="layer-list">${value.map(x=>{const layerField={...field,items:x.vendor_items||[]};const vendors=(x.vendors||[]),lim=limit??listLimit(vendors,context);const vetted=vendors.filter((v,i)=>atomicCurrentProof(itemFor(layerField,v,i).evidence));const tags=vetted.map((v,i)=>`<span class="tag-entry ${i>=lim?'tag-overflow':''}">${tagHtml(layerField,v,i,'emphasis')}</span>`).join('');const more=vendors.length>lim?`<button type="button" class="more-tags" data-more-tags data-label="… +${vendors.length-lim}">… +${vendors.length-lim}</button>`:'';return `<div class="layer"><b>${esc(x.layer)}</b><div class="tag-list">${tags}${more}</div>${x.note?`<small>${compactScalar(x.note,120)}</small>`:''}</div>`;}).join('')}</div>`;
       }
-      const documented=supportedListValues(field);
-      const hiddenCount=value.length-documented.length;
-      const lim=limit??listLimit(documented,context);
-      const tags=documented.map((v,i)=>`<span class="tag-entry ${i>=lim?'tag-overflow':''}">${tagHtml(field,v,i)}</span>`).join('');
-      const more=documented.length>lim?`<button type="button" class="more-tags" data-more-tags data-label="… +${documented.length-lim}">… +${documented.length-lim}</button>`:'';
-      const unsupported=value.filter((v,i)=>!atomicCurrentProof(itemFor(field,v,i).evidence));
-      const clues=hiddenCount?`<details class="unverified-clues"><summary>${hiddenCount} indicios conservados sin fuente específica · Ver cuáles son</summary><p>Valores históricos pendientes de acreditación; no deben interpretarse como hechos comprobados.</p><ul class="unverified-clue-list">${unsupported.map((v,i)=>{const item=itemFor(field,v,i);const raw=typeof v==='object'?JSON.stringify(v):String(v??'');const refs=(item.evidence||[]).filter(e=>e&&typeof e==='object');const reason=refs.length?'La documentación asociada todavía no acredita este valor exacto.':'No existe una fuente específica asociada a este valor.';return `<li><span class="unverified-clue-value">${esc(raw)}</span><small>${esc(reason)}</small></li>`;}).join('')}</ul></details>`:'';
-      return `<div class="tag-list">${tags}${more}</div>${clues}`;
+      // Uniform badges for verified and unverified elements: no mixed dropdowns.
+      const elements=value.map((v,i)=>({value:v,index:i,verified:atomicCurrentProof(itemFor(field,v,i).evidence)}))
+        .sort((a,b)=>Number(b.verified)-Number(a.verified));
+      const lim=limit??listLimit(elements.map(x=>x.value),context);
+      const tags=elements.map((x,i)=>'<span class="tag-entry '+(i>=lim?'tag-overflow':'')+'">'+
+        (x.verified?tagHtml(field,x.value,x.index):pendingTagHtml(field,x.value,x.index))+'</span>').join('');
+      const more=elements.length>lim?'<button type="button" class="more-tags" data-more-tags data-label="… +'+(elements.length-lim)+'">… +'+(elements.length-lim)+'</button>':'';
+      return '<div class="tag-list">'+tags+more+'</div>';
     }
-    return traceable(field,compactScalar(value,context==='table'?110:300));
+    return sourcedScalarForTable(field)?traceable(field,compactScalar(value,context==='table'?110:300)):pendingTagHtml(field,value,0);
   }
   function allRowEvidence(row){
     const rows=[...(row?.evidence||[])];Object.values(row?.fields||{}).forEach(f=>{rows.push(...(f?.evidence||[]));(f?.items||[]).forEach(it=>rows.push(...(it?.evidence||[])));});
@@ -650,7 +639,7 @@
   function reorderColumn(view,from,to){if(!view||from===to)return;const schema=state.data.schemas[view]||[];let order=(state.columnOrder[view]||schema.map(x=>x.id)).filter(x=>schema.some(c=>c.id===x));const a=order.indexOf(from),b=order.indexOf(to);if(a<0||b<0)return;order.splice(b,0,order.splice(a,1)[0]);state.columnOrder[view]=order;localStorage.setItem(`westcon-cols-${view}`,JSON.stringify(order));renderCurrent(view);}
   function renderCurrent(view){({manufacturers:renderManufacturers,integrators:renderIntegrators,distributors:renderDistributors,clients_public:renderClients,clients_private:renderClients}[view]||(()=>{}))();}
   function tableHtml(rows, schema, emptyText, view, baseRows=rows){
-    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&sourcedScalarForTable(f)?renderValue(f,null,'table'):missingMarkup(col)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
+    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table'):missingMarkup(col)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
     return `<div class="table-shell">${columnChooser(schema,view,baseRows)}${coverageOverview(schema,baseRows,view)}<div class="table-scroll">${body}</div></div>${analysisPanel(view,schema,baseRows,rows)}`;
   }
   function scopeMatch(row, scope){
@@ -660,11 +649,22 @@
   }
   function setCount(id, shown, total, noun){ const el=$(id); if(el) el.innerHTML=`<b>${shown}</b><span>${esc(noun)}${shown!==total?` · ${total} totales`:''}</span>`; }
 
+  function renderManufacturerNews(rows){
+    const node=$('#manufacturerNews');if(!node||!window.WestconBusiness)return;
+    const news=window.WestconBusiness.uniqueNews(rows),visible=state.showNewsAll?news:news.slice(0,18);
+    const fmt=date=>date?new Date(date).toLocaleDateString('es-ES',{year:'numeric',month:'short',day:'numeric'}):'Fecha no indicada';
+    const cards=visible.map(n=>'<article class="manufacturer-news-card"><div class="news-card-meta"><span>'+esc(n.vendor)+'</span><time>'+esc(fmt(n.date))+'</time></div><h3>'+esc(n.title)+'</h3><p>'+esc(n.summary.length>190?n.summary.slice(0,187)+'…':n.summary)+'</p><div class="news-card-foot"><small>'+esc(n.source)+'</small><a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">Leer publicación ↗</a></div></article>').join('');
+    node.innerHTML='<div class="news-heading"><div><span class="eyebrow">ACTUALIDAD ACREDITADA</span><h2>Noticias y movimientos de los fabricantes</h2><p>Publicaciones documentadas, ordenadas por fecha. La búsqueda superior filtra también las noticias.</p></div><strong>'+news.length+' noticias</strong></div>'+
+      (visible.length?'<div class="manufacturer-news-grid">'+cards+'</div>':'<p class="news-empty">No hay novedades con evidencia específica para este filtro. Los indicios no acreditados no se publican como noticias.</p>')+
+      (news.length>18?'<button class="news-more" id="manufacturerNewsMore" type="button">'+(state.showNewsAll?'Mostrar menos':'Ver todas las '+news.length+' noticias')+'</button>':'');
+  }
   function renderManufacturers(){
     const q=norm($('#manufacturerSearch')?.value);
     const all=state.data.manufacturers||[];
     const base=all.filter(r=>!q||rowBlob(r).includes(q)),rows=applyDynamicFilters('manufacturers',base,state.data.schemas.manufacturers);state.headerCriteria.manufacturers=q?`Búsqueda general: ${$('#manufacturerSearch').value}`:'Sin filtros de cabecera';
-    $('#manufacturerTable').innerHTML=tableHtml(rows,state.data.schemas.manufacturers,'No hay fabricantes con esos filtros.','manufacturers',base);
+    const schema=(state.data.schemas.manufacturers||[]).filter(c=>c.id!=='recent_signals');
+    $('#manufacturerTable').innerHTML=tableHtml(rows,schema,'No hay fabricantes con esos filtros.','manufacturers',base);
+    renderManufacturerNews(rows);
     setCount('#manufacturerCount',rows.length,all.length,'fabricantes');
   }
   function renderIntegrators(){
@@ -686,23 +686,7 @@
     $('#distributorTable').innerHTML=tableHtml(rows,state.data.schemas.distributors,'No hay mayoristas con esos filtros.','distributors',base);
     setCount('#distributorCount',rows.length,all.length,'mayoristas competidores');
   }
-  function publicProcurementPortfolioFit(row){
-    const portfolioFields=['request_or_need','technology_signals','known_architectures','opportunity_area','evidenced_needs'];
-    const values=[];
-    for(const key of portfolioFields){
-      const field=row?.fields?.[key];
-      if(!field)continue;
-      if(Array.isArray(field.value)) values.push(...supportedListValues(field).map(String));
-      else if(sourcedScalarForTable(field)) values.push(String(field.value??''));
-    }
-    const text=norm(values.join(' '));
-    if(!text)return false;
-    const fit=/\b(cybersecurity|cyber security|ciberseguridad|ciberseguranca|seguridad de la informacion|seguranca da informacao|firewall|siem|soc|xdr|edr|mdr|sase|sse|zero trust|iam|identity|identidad|identidade|mfa|pam|network|networking|redes|rede|lan|wan|sd-wan|sd wan|wifi|wi-fi|switching|routing|router|switch|nac|ddi|dns|dhcp|telecomunicaciones|telecomunicacoes|cloud|nube|nuvem|data center|datacenter|centro de datos|centro de dados|observability|observabilidad|observabilidade|monitoring|monitorizacion|monitorizacao|load balancer|balanceador|api security|backup|recovery|virtualization|virtualizacion|kubernetes|container|automation|automatizacion|automacao)\b/.test(text);
-    if(!fit)return false;
-    const commodity=/\b(printer|impresora|impressora|toner|cartucho|fotocopiadora|photocopier|mobiliario de oficina|office furniture|water meter|contador de agua|smartphone|telemovel|laptop|portatil|ordenador personal|desktop pc)\b/.test(text);
-    const strong=/\b(cybersecurity|ciberseguridad|ciberseguranca|firewall|siem|soc|xdr|edr|mdr|sase|sse|zero trust|network|networking|redes|rede|lan|wan|sd-wan|wifi|switching|routing|nac|ddi|cloud|nube|nuvem|data center|datacenter|observability|backup|kubernetes)\b/.test(text);
-    return !commodity||strong;
-  }
+  function publicProcurementPortfolioFit(row){return Boolean(window.WestconBusiness?.classifyNotice(row).fit);}
 
   function renderClients(){
     const publicQ=norm($('#publicClientSearch')?.value), publicScope=$('#publicClientScope')?.value||'all';
@@ -712,9 +696,21 @@
     const publicPortfolioAll=publicAll.filter(publicProcurementPortfolioFit);
     const publicBase=publicPortfolioAll.filter(r=>(!publicQ||rowBlob(r).includes(publicQ))&&scopeMatch(r,publicScope));
     const privateBase=privateAll.filter(r=>(!privateQ||rowBlob(r).includes(privateQ))&&scopeMatch(r,privateScope));
-    const publicRows=applyDynamicFilters('clients_public',publicBase,state.data.schemas.clients_public),privateRows=applyDynamicFilters('clients_private',privateBase,state.data.schemas.clients_private);state.headerCriteria.clients_public=[publicQ&&`Búsqueda: ${$('#publicClientSearch').value}`,publicScope!=='all'&&`País: ${publicScope}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';state.headerCriteria.clients_private=[privateQ&&`Búsqueda: ${$('#privateClientSearch').value}`,privateScope!=='all'&&`País: ${privateScope}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';
+    const publicRows=applyDynamicFilters('clients_public',publicBase,state.data.schemas.clients_public),privateRows=applyDynamicFilters('clients_private',privateBase,state.data.schemas.clients_private);
+    state.downloadableNotices=publicRows;state.headerCriteria.clients_public=[publicQ&&`Búsqueda: ${$('#publicClientSearch').value}`,publicScope!=='all'&&`País: ${publicScope}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';state.headerCriteria.clients_private=[privateQ&&`Búsqueda: ${$('#privateClientSearch').value}`,privateScope!=='all'&&`País: ${privateScope}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';
     $('#publicClientTable').innerHTML=tableHtml(publicRows,state.data.schemas.clients_public,'No hay oportunidades públicas con esos filtros.','clients_public',publicBase);
+    const publicMap=new Map(publicRows.map(row=>[String(row.id),row]));
+    $('#publicClientTable').querySelectorAll('tr[data-section="clients_public"]').forEach(tr=>{
+      const row=publicMap.get(tr.dataset.rowId),cell=tr.querySelector('.name-cell');if(!row||!cell)return;
+      const fit=window.WestconBusiness.classifyNotice(row),box=document.createElement('div');box.className='notice-actions';
+      const button=document.createElement('button');button.type='button';button.textContent='Descargar ficha';button.dataset.downloadNotice=String(row.id);box.appendChild(button);
+      if(fit.pdf||fit.official){
+        const link=document.createElement('a');link.href=fit.pdf||fit.official;link.target='_blank';link.rel='noopener noreferrer';link.textContent=fit.pdf?'Descargar PDF oficial ↗':'Expediente oficial ↗';box.appendChild(link);
+      }
+      cell.appendChild(box);
+    });
     $('#privateClientTable').innerHTML=tableHtml(privateRows,state.data.schemas.clients_private,'No hay grandes cuentas privadas con esos filtros.','clients_private',privateBase);
+    const status=$('#procurementFilterStatus');if(status)status.textContent=(publicAll.length-publicPortfolioAll.length)+' registros excluidos por falta de encaje tecnológico acreditado. '+publicRows.length+' expedientes disponibles para descargar.';
     setCount('#publicClientCount',publicRows.length,publicPortfolioAll.length,'oportunidades públicas con encaje de portfolio');
     setCount('#privateClientCount',privateRows.length,privateAll.length,'grandes cuentas privadas');
     setCount('#clientCount',publicRows.length+privateRows.length,publicPortfolioAll.length+privateAll.length,'clientes / oportunidades relevantes');
@@ -1240,7 +1236,7 @@
 
   function renderAll(){
     populateIntegratorVendorFilter(); renderActiveView(); renderSourceCatalog(); renderUpdateStatus(); renderConfidenceGuide();
-    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v4.5.0 · dataset v${meta.version||'4.3.0'} · ${meta.source_count||0} fuentes acreditativas/familias · ${meta.scope||'Iberia'}`;
+    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v6.1.0 · dataset v${meta.version||'4.3.0'} · ${meta.source_count||0} fuentes acreditativas/familias · ${meta.scope||'Iberia'}`;
   }
 
   load().catch(err => { console.error(err); const main=document.querySelector('main'); if(main) main.innerHTML=`<div class="fatal"><h1>No se pudo cargar la inteligencia</h1><p>${esc(err.message)}</p></div>`; });

@@ -46,6 +46,7 @@ SECTION_WEIGHT = {
     "architectures": 0.95,
 }
 FIELD_WEIGHT = {
+    "competitors": 1.55,
     "vendor_relations": 1.45,
     "westcon_overlap": 1.40,
     "competitor_vendor_overlap": 1.35,
@@ -203,6 +204,10 @@ SYSTEMATIC_FIELD_TERMS = {
     "vendor_relations": ("partner", "alianza", "parceiro"),
     "westcon_overlap": ("partner", "portfolio", "fabricante"),
     "competitor_vendor_overlap": ("portfolio", "vendor", "fabricante"),
+    "competitors": ("competing vendors alternatives", "competidores fabricantes", "concorrentes fornecedores"),
+    "products_platforms": ("platform products datasheet", "plataformas ficha técnica", "plataformas tecnologia"),
+    "use_cases": ("customer story deployment", "caso de uso solución", "caso de sucesso solução"),
+    "recent_signals": ("news press release launch", "novedades anuncios", "notícias lançamento"),
     "services": ("managed services", "servicios", "serviços"),
     "capabilities": ("cybersecurity networking cloud", "ciberseguridad redes nube", "cibersegurança rede nuvem"),
     "specializations": ("certification", "especialización", "especialização"),

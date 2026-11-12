@@ -38,6 +38,8 @@ jobs:
       - name: Frontend syntax
         run: node --check assets/app/intelligence.js
       - name: Frontend smoke
-        run: node tests/ui_smoke.js
+        run: |
+          node tests/ui_smoke.js
+          node tests/business_intelligence_v61.js
       - name: Filter builder and exact-subset report
         run: node tests/filter_builder_v410.js

@@ -6,6 +6,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Any
 
 import requests
+import re
 
 from ..enrichment import merge_field
 from ..model import canonical, stable_id
@@ -67,31 +68,48 @@ def _policy_terms(key: str, fallback: tuple[str, ...]) -> tuple[str, ...]:
     return tuple(canonical(value) for value in configured if canonical(value))
 
 
-def notice_is_relevant(notice: dict[str, Any]) -> bool:
-    """Keep only procurement with explicit Westcon-portfolio technology fit.
+# A taxonomy label / broad IT CPV is not an actual Westcon business opportunity.
+# Search hints are deliberately broader than this publication gate.
+AMBIGUOUS_TERMS = {
+    "security", "seguridad", "seguranca", "network", "redes", "rede",
+    "monitoring", "monitorizacion", "monitorizacao", "automation",
+    "automatizacion", "automacao", "recovery", "container",
+}
+NON_COMMODITY_PROOFS = (
+    "firewall", "siem", "sase", "sse", "zero trust", "xdr", "edr", "mdr",
+    "sd wan", "sd-wan", "switching", "switches", "nac",
+    "data center", "datacenter", "centro de datos", "centro de dados",
+    "cloud security", "network security", "ciberseguridad", "ciberseguranca",
+)
 
-    CPV is used as a coarse official pre-filter, never as enough evidence that a
-    notice is commercially relevant. Networking/telecom CPVs are intrinsically
-    close to the portfolio; generic computing, software and IT-service CPVs must
-    also expose a portfolio term in the published need.
+def _term_in(text: str, term: str) -> bool:
+    # Word boundaries avoid spurious "LAN" in "plan", or "SOC" in "social".
+    return bool(re.search(r"(?<!\w)" + re.escape(canonical(term)) + r"(?!\w)", text))
+
+
+def notice_is_relevant(notice: dict[str, Any]) -> bool:
+    """Return True only for an explicitly documented Westcon technology need.
+
+    CPV 324 (networking) and 325 (telephony) are not enough on their own:
+    the object of the contract must actually request networking, security,
+    cloud/data-center or directly related services. Commodity acquisitions
+    with incidental Wi-Fi/IT language must not leak into the opportunity list.
     """
     codes = _cpv_codes(notice)
     if not any(code.startswith(IT_CPV_PREFIXES) for code in codes):
         return False
-
     text = _notice_text(notice)
+    if not text:
+        return False
     include_terms = _policy_terms("include_terms", DEFAULT_PORTFOLIO_TERMS)
     exclude_terms = _policy_terms("exclude_terms", DEFAULT_EXCLUDE_TERMS)
-    matched = any(term and term in text for term in include_terms)
-    excluded = any(term and term in text for term in exclude_terms)
-
-    # Explicit commodity intent wins unless the title also names a concrete
-    # portfolio technology (e.g. network security appliances).
-    if excluded and not matched:
+    specific = [term for term in include_terms if term not in AMBIGUOUS_TERMS]
+    if not any(_term_in(text, term) for term in specific):
         return False
-
-    network_cpv = any(code.startswith(NETWORK_CPV_PREFIXES) for code in codes)
-    return network_cpv or matched
+    if any(_term_in(text, term) for term in exclude_terms):
+        if not any(_term_in(text, term) for term in NON_COMMODITY_PROOFS):
+            return False
+    return True
 
 
 def parse_notice(notice: dict[str, Any]) -> dict[str, Any] | None:

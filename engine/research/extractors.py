@@ -70,6 +70,52 @@ VERTICAL_TERMS = {
 }
 
 
+def competitors_in_text(text: str, entity: str, known_vendors: Iterable[str]) -> tuple[list[str], list[str]]:
+    """Identify explicitly compared named vendors, never mere sector co-membership.
+
+    A vendor must occur close to the researched entity with a direct comparative
+    expression between the two names. Neither analyst rankings nor category
+    membership alone establish competition. Discovery vocabulary is not evidence.
+    """
+    if not entity or not text:
+        return [], []
+    blob = canonical(text[:120_000])
+    name = canonical(entity)
+    owner_positions = list(re.finditer(r"(?<![a-z0-9])" + re.escape(name) + r"(?![a-z0-9])", blob))[:24]
+    if not owner_positions:
+        return [], []
+    relation = re.compile(
+        r"\b(?:competitor(?:s)?|competitive|compete(?:s|d)?|rival(?:s)?|"
+        r"alternativ(?:e|es|a|as)|versus|vs|competidor(?:es)?|"
+        r"compite(?:n)?|concorrent(?:e|es)?|comparativ[oa]|comparison|"
+        r"compare(?:d|s)?|comparacion)\b"
+    )
+    found: list[str] = []
+    for vendor in known_vendors:
+        canonical_vendor = canonical(vendor)
+        if len(canonical_vendor) < 3 or canonical_vendor == name or canonical_vendor in name:
+            continue
+        vendor_positions = list(re.finditer(
+            r"(?<![a-z0-9])" + re.escape(canonical_vendor) + r"(?![a-z0-9])", blob
+        ))[:24]
+        accepted = False
+        for left in owner_positions:
+            for right in vendor_positions:
+                distance = min(abs(left.start() - right.end()), abs(right.start() - left.end()))
+                if distance > 340:
+                    continue
+                gap = blob[min(left.end(), right.end()):max(left.start(), right.start())]
+                # Strictly require comparative language near the two parties.
+                if relation.search(gap):
+                    accepted = True
+                    break
+            if accepted:
+                break
+        if accepted:
+            found.append(str(vendor))
+    return list(dict.fromkeys(found))[:14], list(dict.fromkeys(found))[:14]
+
+
 def _matches(text: str, dictionary: dict[str, Iterable[str]]) -> tuple[list[str], list[str]]:
     blob = f" {canonical(text)} "
     labels: list[str] = []
@@ -297,6 +343,7 @@ def extract_candidates(
     vendor_names: Iterable[str],
     *,
     official: bool,
+    researched_entity: str = '',
 ) -> dict[str, Candidate]:
     text = document.text
     candidates: dict[str, Candidate] = {}
@@ -308,6 +355,7 @@ def extract_candidates(
     verticals, vertical_terms = _matches(text, VERTICAL_TERMS)
     vendors, vendor_terms = vendors_in_text(text, vendor_names)
     revenues, revenue_terms = revenue_observations(text, global_only=(section == "manufacturers"))
+    competitors, competitor_terms = competitors_in_text(text, researched_entity, vendor_names) if section == 'manufacturers' else ([], [])
 
     def add(field: str, values: list[str], terms: list[str], claim: str = "fact", confidence: float | None = None) -> None:
         if not values:
@@ -366,6 +414,24 @@ def extract_candidates(
             add("revenue", revenues, revenue_terms, confidence=0.92 if official else 0.76)
         if family in {"services", "official", "technology"}:
             add("capabilities", capabilities, cap_terms)
+        if family in {"analyst", "news", "technology", "official", "cases"}:
+            add("competitors", competitors, competitor_terms, confidence=0.83 if official else 0.76)
+        # Capture specific, linkable manufacturer publications. A generic
+        # landing page, search snippet or timeless product brochure is not news.
+        if family in {"news", "official"}:
+            from urllib.parse import urlsplit
+            path = urlsplit(document.url).path.casefold()
+            title = (document.title or "").strip()
+            is_news_path = any(word in path for word in (
+                "/news", "/press", "/blog", "/announc", "/noticia", "/actualidad",
+                "/media/", "/newsroom", "/releases/",
+            ))
+            has_owner = canonical(researched_entity) in canonical(
+                title + " " + (text[:500] if text else "")
+            ) if researched_entity else False
+            if is_news_path and has_owner and 22 <= len(title) <= 180:
+                add("recent_signals", [title], [title], claim="signal",
+                    confidence=0.77 if official else 0.66)
     elif section == "trends":
         if family in {"analyst", "news", "official", "technology"}:
             add("market_players", vendors, vendor_terms, confidence=0.68 if not official else 0.80)
