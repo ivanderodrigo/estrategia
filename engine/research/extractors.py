@@ -426,9 +426,21 @@ def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]
         compact,
     )
     menu_brands = _official_menu_brand_links(document)
-    if not owned_catalogue and not heading and not menu_brands:
+    # Some wholesalers list named brands in an explicit first-party distribution
+    # paragraph on the product page rather than in a separate logo directory.
+    # Extract only the text within that direct catalogue claim.
+    statement = re.search(
+        r"(?is)\b(?:mejores fabricantes del sector|fabricantes del sector):\s*"
+        r"(.{12,1600}?)\s*,?\s*entre otros\b",
+        text,
+    )
+    explicit_list = bool(
+        statement and "distribuidores oficiales" in canonical(text[:12000])
+    )
+    if not owned_catalogue and not heading and not menu_brands and not explicit_list:
         return [], []
-    body = text[:70000] if owned_catalogue else text[:7000]
+    body = (text[:70000] if owned_catalogue else
+            statement.group(0) if explicit_list else text[:7000])
     known, terms = vendors_in_text(body, vendor_names)
     known_keys = {canonical(value) for value in known}
     for brand in menu_brands:
@@ -453,7 +465,7 @@ def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]
         }
         for label in raw_labels[:1000]:
             brand = re.sub(r"(?i)^logo[\s_-]*(?:(?:de|da|of)[\s_-]+)?", "", label.strip())
-            brand = brand.replace("_", " ").replace("-", " ")
+            brand = brand.replace("_", " ")  # preserve legitimate brand hyphens (D-Link, TP-Link)
             brand = re.sub(r"(?i)\s+(?:logo|brand logo)$", "", brand).strip()
             key = canonical(brand)
             if (not 2 <= len(brand) <= 48 or len(brand.split()) > 5 or
@@ -490,6 +502,22 @@ def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]
                 known_keys.add(key)
             if len(known) >= 1000:
                 break
+    if explicit_list and statement:
+        # Each comma-separated name is part of the stated manufacturer list;
+        # never mine products, footers or generic text on the same page.
+        listing = statement.group(1)
+        entries = re.split(r"\s*,\s*|\s+y\s+(?=[A-ZÀ-Ú])", listing)
+        for raw in entries[:200]:
+            brand = " ".join(raw.split()).strip(".,;: ")
+            key = canonical(brand)
+            if (not 2 <= len(brand) <= 48 or len(brand.split()) > 5 or
+                    not re.search(r"[a-zA-Z]", brand) or
+                    key in {"entre otros", "fabricantes", "productos"}):
+                continue
+            if key not in known_keys:
+                known.append(brand)
+                terms.append(brand)
+                known_keys.add(key)
     return known[:1000], terms[:1000]
 
 def extract_candidates(

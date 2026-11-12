@@ -17,6 +17,7 @@ from typing import Any
 
 from ..gap_intelligence import FAMILY_BY_FIELD as GAP_FAMILY_BY_FIELD
 from ..settings import RESEARCH_POLICY, RESEARCH_PROFILES
+from ..storage import read_json
 
 # Backwards-compatible export used by engine.research.sources.
 FAMILY_BY_FIELD = dict(GAP_FAMILY_BY_FIELD)
@@ -101,6 +102,23 @@ def _learning_yield(learning: dict[str, Any], section: str, family: str) -> floa
     relevant_yield = (relevant + 2.0) / (attempts + 10)
     score = 0.30 + min(0.72, accepted_yield * 3.0) + min(0.16, relevant_yield * 0.4)
     return max(0.32, min(1.18, score))
+
+
+def _first_party_catalogue_boost(section: str, entity: str, field: str) -> float:
+    """Route actual official linecard leads before low-yield generic discovery.
+
+    A source lead is not evidence and cannot by itself satisfy a gap.
+    Boost only the vendor-relations research task, never derived overlaps.
+    """
+    if section != "distributors" or field != "vendor_relations":
+        return 1.0
+    registry = read_json("config/current/linecard_source_leads.json", {})
+    known = {
+        " ".join(str(item.get("name") or "").casefold().split())
+        for item in (registry.get("entries") or [])
+        if isinstance(item, dict) and item.get("url")
+    }
+    return 2.0 if " ".join(entity.casefold().split()) in known else 1.0
 
 
 def _fallback_score(gap: dict[str, Any], section: str, field: str) -> float:
@@ -455,6 +473,7 @@ def plan(
                 item["query_hints"].append(str(hint))
 
         score = float(gap.get("priority_score") or _fallback_score(gap, section, field))
+        score *= _first_party_catalogue_boost(section, entity, field)
         # A concrete unsupported claim is much more actionable than an empty
         # schema cell: recover evidence before endlessly exploring unknowns.
         # This only affects work ordering; no claim is marked verified.

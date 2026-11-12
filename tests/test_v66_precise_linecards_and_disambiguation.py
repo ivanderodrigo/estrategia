@@ -6,6 +6,7 @@ from unittest.mock import Mock, patch
 from engine.research.documents import parse_document
 from engine.research.extractors import distributor_linecard_vendors, extract_candidates
 from engine.research.query_discovery import _disambiguate_technical_query, discover
+from engine.research.planner import _first_party_catalogue_boost
 from engine.research.sources import seeds_for
 
 
@@ -86,6 +87,67 @@ class PreciseLinecardsAndSearchV66(unittest.TestCase):
                 )
                 self.assertTrue(any(s.official and suffix in s.url for s in seeds))
                 self.assertTrue(all(s.source_grade == 'A' for s in seeds))
+
+    def test_depau_brand_inventory_reads_only_explicit_brand_section(self):
+        doc = parse_document(
+            '<title>Nuestras Marcas | Depau</title><body>'
+            '<h1>Estas son las marcas que forman parte de nuestro catálogo:</h1>'
+            '<span>A</span><span>ADATA</span><span>BROTHER</span>'
+            '<span>D-LINK</span><span>MIKROTIK</span><span>TP-LINK</span>'
+            '<h2>Volver</h2><span>MARCA DECORATIVA</span></body>',
+            'https://www.depau.es/marcas-disponibles', 'depau-test',
+        )
+        names, _ = distributor_linecard_vendors(doc, [])
+        self.assertEqual(set(names), {'ADATA', 'BROTHER', 'D-LINK', 'MIKROTIK', 'TP-LINK'})
+        self.assertNotIn('MARCA DECORATIVA', names)
+
+    def test_infortisa_explicit_brands_paragraph_not_site_wide_news(self):
+        doc = parse_document(
+            '<title>Nuestros productos - Infortisa</title><body>'
+            '<p>Somos proveedores y distribuidores oficiales.</p>'
+            '<p>Los mejores fabricantes del sector: MSI, ASUS, Intel,'
+            ' Gigabyte, Synology, Ubiquiti y Zyxel, entre otros.</p>'
+            '<div>Noticias: Cisco firma una alianza distinta</div></body>',
+            'https://www.infortisa.com/productos/', 'infortisa-test',
+        )
+        names, _ = distributor_linecard_vendors(doc, ['Cisco'])
+        self.assertEqual(
+            set(names),
+            {'MSI', 'ASUS', 'Intel', 'Gigabyte', 'Synology', 'Ubiquiti', 'Zyxel'}
+        )
+        self.assertNotIn('Cisco', names)
+
+    def test_new_brandless_distributors_have_official_targeted_sources(self):
+        entries = {
+            'MCR': '/marcas/',
+            'Depau': '/marcas-disponibles',
+            'Megasur': '/list-brand',
+            'Infortisa': '/productos/',
+            'Niposom': 'niposom.pt',
+            'Globomatik': 'globomatik.com',
+            'Valorista': 'valorista.com',
+            'Visiotech Security': 'visiotechsecurity.com',
+        }
+        for name, suffix in entries.items():
+            with self.subTest(name=name):
+                seeds = seeds_for(
+                    {'name': name, 'fields': {}},
+                    ['vendor_relations'],
+                    target={'section': 'distributors'},
+                )
+                self.assertTrue(any(s.official and suffix in s.url for s in seeds))
+
+    def test_catalogue_leads_receive_priority_but_never_accredit_data(self):
+        self.assertEqual(_first_party_catalogue_boost(
+            'distributors', 'Ajoomal', 'vendor_relations'), 2.0)
+        self.assertEqual(_first_party_catalogue_boost(
+            'distributors', 'Depau', 'vendor_relations'), 2.0)
+        self.assertEqual(_first_party_catalogue_boost(
+            'manufacturers', 'Depau', 'vendor_relations'), 1.0)
+        self.assertEqual(_first_party_catalogue_boost(
+            'distributors', 'Depau', 'revenue'), 1.0)
+        self.assertEqual(_first_party_catalogue_boost(
+            'distributors', 'Unknown Corp', 'vendor_relations'), 1.0)
 
     def test_search_disambiguation_prevents_entertainment_queries(self):
         original = '"OT / CPS Security" latest architecture'
