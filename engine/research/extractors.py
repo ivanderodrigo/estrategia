@@ -440,7 +440,7 @@ def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]
     # Official logo catalogues often contain more brands than a static
     # vocabulary. parse_document adds their img alt labels only on explicit
     # manufacturer/brand paths. Keep strong brand-like labels, not page UI.
-    if owned_catalogue and " Marcas y fabricantes: " in body:
+    if (owned_catalogue or heading) and " Marcas y fabricantes: " in body:
         raw_labels = body.rsplit(" Marcas y fabricantes: ", 1)[1].split(" / ")
         excluded = {
             "home", "inicio", "busqueda", "buscar", "search", "cart",
@@ -451,8 +451,9 @@ def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]
             "ver mas", "leer mas", "contacto", "contact", "menu",
             "certified", "distribuidor", "fabricantes", "marcas",
         }
-        for label in raw_labels[:250]:
-            brand = re.sub(r"(?i)^(?:logo\s+(?:de|da|of)\s+)", "", label.strip())
+        for label in raw_labels[:1000]:
+            brand = re.sub(r"(?i)^logo[\s_-]*(?:(?:de|da|of)[\s_-]+)?", "", label.strip())
+            brand = brand.replace("_", " ").replace("-", " ")
             brand = re.sub(r"(?i)\s+(?:logo|brand logo)$", "", brand).strip()
             key = canonical(brand)
             if (not 2 <= len(brand) <= 48 or len(brand.split()) > 5 or
@@ -463,9 +464,33 @@ def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]
             if key not in {canonical(value) for value in known}:
                 known.append(brand)
                 terms.append(label.strip())
-            if len(known) >= 100:
+            if len(known) >= 1000:
                 break
-    return known[:100], terms[:100]
+
+    # Spanish Ingram Micro vendor directory: a catalogue link carries
+    # "Fabricante (número de productos)", never a contractual volume.
+    url_path = urlsplit(document.url).path.casefold()
+    if "/site/vendor/index" in url_path and "lista de fabricantes" in compact:
+        host = (urlsplit(document.url).hostname or "").casefold()
+        for link in document.links:
+            match = re.fullmatch(r"\s*(.{2,48}?)\s*\((\d{1,7})\)\s*", link.label or "")
+            if not match:
+                continue
+            linked = urlsplit(link.url)
+            if ((linked.hostname or "").casefold() != host
+                    or "/site/vendor/" not in linked.path.casefold()):
+                continue
+            brand = match.group(1).strip()
+            key = canonical(brand)
+            if key in {"fabricantes", "productos", "marcas"} or not re.search(r"[a-zA-Z]", brand):
+                continue
+            if key not in known_keys:
+                known.append(brand)
+                terms.append(link.label)
+                known_keys.add(key)
+            if len(known) >= 1000:
+                break
+    return known[:1000], terms[:1000]
 
 def extract_candidates(
     section: str,
