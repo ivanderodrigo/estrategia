@@ -69,6 +69,44 @@
     localStorage.setItem(revision,'1');
   }
   function observatoryWatch(){try{const x=JSON.parse(localStorage.getItem('westcon-observatory-watch')||'[]');return Array.isArray(x)?x.filter(v=>typeof v==='string'):[];}catch(_){return [];}}
+  function procurementAlertConfig(){
+    const defaults={email:'',scope:'IBERIA',frequency:'daily',time:'08:00',keywords:'',portfolio_only:true,delivery:'smtp-not-connected'};
+    try{return {...defaults,...JSON.parse(localStorage.getItem('westcon-procurement-alert')||'{}'),portfolio_only:true};}catch(_){return defaults;}
+  }
+  function fillProcurementAlert(){
+    const cfg=procurementAlertConfig();
+    if($('#procurementAlertEmail'))$('#procurementAlertEmail').value=cfg.email||'';
+    if($('#procurementAlertScope'))$('#procurementAlertScope').value=cfg.scope||'IBERIA';
+    if($('#procurementAlertFrequency'))$('#procurementAlertFrequency').value=cfg.frequency||'daily';
+    if($('#procurementAlertTime'))$('#procurementAlertTime').value=cfg.time||'08:00';
+    if($('#procurementAlertKeywords'))$('#procurementAlertKeywords').value=cfg.keywords||'';
+    if($('#procurementAlertStatus'))$('#procurementAlertStatus').textContent='Configuración local guardada. El correo automático no está activo hasta conectar un servicio SMTP.';
+  }
+  function readProcurementAlert(){
+    return {
+      version:1,
+      email:($('#procurementAlertEmail')?.value||'').trim(),
+      scope:$('#procurementAlertScope')?.value||'IBERIA',
+      frequency:$('#procurementAlertFrequency')?.value||'daily',
+      time:$('#procurementAlertTime')?.value||'08:00',
+      keywords:($('#procurementAlertKeywords')?.value||'').trim(),
+      portfolio_only:true,
+      timezone:'Europe/Madrid',
+      delivery:'smtp-not-connected'
+    };
+  }
+  function saveProcurementAlert(download=false){
+    const cfg=readProcurementAlert();
+    if(cfg.email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cfg.email)){toast('Introduce un correo válido');return;}
+    localStorage.setItem('westcon-procurement-alert',JSON.stringify(cfg));
+    if($('#procurementAlertStatus'))$('#procurementAlertStatus').textContent='Configuración local guardada. No hay envíos activos mientras SMTP no esté conectado.';
+    if(download){
+      const blob=new Blob([JSON.stringify(cfg,null,2)+'\n'],{type:'application/json;charset=utf-8'});
+      const url=URL.createObjectURL(blob),a=document.createElement('a');
+      a.href=url;a.download='westcon-procurement-alert.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+      toast('Configuración de alerta descargada');
+    }else toast('Configuración de alerta guardada en este navegador');
+  }
   function renderDecisionDesk(){
     const host=$('#decisionDesk');if(!host||!window.WestconObservatory)return;
     const O=window.WestconObservatory;
@@ -179,6 +217,9 @@
     $('#distributorScope')?.addEventListener('change', renderDistributors);
     $('#publicClientSearch')?.addEventListener('input', renderClients);
     $('#publicClientScope')?.addEventListener('change', renderClients);
+    $('#procurementAlertBtn')?.addEventListener('click',()=>{fillProcurementAlert();openModal('procurementAlertModal');});
+    $('#procurementAlertSave')?.addEventListener('click',()=>saveProcurementAlert(false));
+    $('#procurementAlertDownload')?.addEventListener('click',()=>saveProcurementAlert(true));
     $('#privateClientSearch')?.addEventListener('input', renderClients);
     $('#privateClientScope')?.addEventListener('change', renderClients);
     $('#trendSearch')?.addEventListener('input', renderTrends);
