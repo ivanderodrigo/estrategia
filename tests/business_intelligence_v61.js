@@ -66,4 +66,19 @@ const distributorNews=bi.uniqueNews([{name:'Mayorista Rival',fields:{
  title:'Mayorista Rival anuncia nuevas soluciones cloud'}]}]}
 }}],'distributors');
 assert.strictEqual(distributorNews.length,1,'Official distributor news should be visible as a publication card');
-console.log('Business Intelligence v6.3: relevant procurement and accredited news OK');
+const detailedRelation=(value,support=true)=>({value:[value],items:[{value,evidence:support?[ev]:[]}]});
+const integratorOfficial={name:'Integrador del Canal',fields:{vendor_relations:detailedRelation('Cisco')}};
+const westconOfficial={name:'Extreme Networks',fields:{competitors:detailedRelation('Cisco')}};
+const competition=bi.verifiedCompetitionFor(integratorOfficial,[westconOfficial]);
+assert.deepStrictEqual(competition.value,['Cisco'],'Both source-backed relationships must map exact competitor');
+assert.strictEqual(competition.items[0].competes_with_westcon[0],'Extreme Networks');
+assert.strictEqual(bi.verifiedCompetitionFor(integratorOfficial,[
+  {name:'Extreme Networks',fields:{competitors:detailedRelation('Cisco',false)}}
+]).value.length,0,'Unsourced competitor mapping is not proof');
+const trending=bi.uniqueNews([{name:'SASE adoption',fields:{sources:detailedRelation('SASE report'),}}],'trends');
+assert.ok(Array.isArray(trending));
+assert.strictEqual(bi.isPublicationUrl('https://news.example.org/2026/11/sase-adoption-report-2026'),true);
+assert.strictEqual(bi.isPublicationUrl('https://news.example.org/noticias'),false);
+assert.strictEqual(bi.isPublicationUrl('https://news.example.org/research/sase-market-2026'),true);
+
+console.log('Business Intelligence v6.4: relevant procurement and accredited news OK');
