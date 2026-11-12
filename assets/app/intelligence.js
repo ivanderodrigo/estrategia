@@ -649,11 +649,22 @@
   }
   function setCount(id, shown, total, noun){ const el=$(id); if(el) el.innerHTML=`<b>${shown}</b><span>${esc(noun)}${shown!==total?` · ${total} totales`:''}</span>`; }
 
+  function renderManufacturerNews(rows){
+    const node=$('#manufacturerNews');if(!node||!window.WestconBusiness)return;
+    const news=window.WestconBusiness.uniqueNews(rows),visible=state.showNewsAll?news:news.slice(0,18);
+    const fmt=date=>date?new Date(date).toLocaleDateString('es-ES',{year:'numeric',month:'short',day:'numeric'}):'Fecha no indicada';
+    const cards=visible.map(n=>'<article class="manufacturer-news-card"><div class="news-card-meta"><span>'+esc(n.vendor)+'</span><time>'+esc(fmt(n.date))+'</time></div><h3>'+esc(n.title)+'</h3><p>'+esc(n.summary.length>190?n.summary.slice(0,187)+'…':n.summary)+'</p><div class="news-card-foot"><small>'+esc(n.source)+'</small><a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">Leer publicación ↗</a></div></article>').join('');
+    node.innerHTML='<div class="news-heading"><div><span class="eyebrow">ACTUALIDAD ACREDITADA</span><h2>Noticias y movimientos de los fabricantes</h2><p>Publicaciones documentadas, ordenadas por fecha. La búsqueda superior filtra también las noticias.</p></div><strong>'+news.length+' noticias</strong></div>'+
+      (visible.length?'<div class="manufacturer-news-grid">'+cards+'</div>':'<p class="news-empty">No hay novedades con evidencia específica para este filtro. Los indicios no acreditados no se publican como noticias.</p>')+
+      (news.length>18?'<button class="news-more" id="manufacturerNewsMore" type="button">'+(state.showNewsAll?'Mostrar menos':'Ver todas las '+news.length+' noticias')+'</button>':'');
+  }
   function renderManufacturers(){
     const q=norm($('#manufacturerSearch')?.value);
     const all=state.data.manufacturers||[];
     const base=all.filter(r=>!q||rowBlob(r).includes(q)),rows=applyDynamicFilters('manufacturers',base,state.data.schemas.manufacturers);state.headerCriteria.manufacturers=q?`Búsqueda general: ${$('#manufacturerSearch').value}`:'Sin filtros de cabecera';
-    $('#manufacturerTable').innerHTML=tableHtml(rows,state.data.schemas.manufacturers,'No hay fabricantes con esos filtros.','manufacturers',base);
+    const schema=(state.data.schemas.manufacturers||[]).filter(c=>c.id!=='recent_signals');
+    $('#manufacturerTable').innerHTML=tableHtml(rows,schema,'No hay fabricantes con esos filtros.','manufacturers',base);
+    renderManufacturerNews(rows);
     setCount('#manufacturerCount',rows.length,all.length,'fabricantes');
   }
   function renderIntegrators(){
@@ -675,23 +686,7 @@
     $('#distributorTable').innerHTML=tableHtml(rows,state.data.schemas.distributors,'No hay mayoristas con esos filtros.','distributors',base);
     setCount('#distributorCount',rows.length,all.length,'mayoristas competidores');
   }
-  function publicProcurementPortfolioFit(row){
-    const portfolioFields=['request_or_need','technology_signals','known_architectures','opportunity_area','evidenced_needs'];
-    const values=[];
-    for(const key of portfolioFields){
-      const field=row?.fields?.[key];
-      if(!field)continue;
-      if(Array.isArray(field.value)) values.push(...supportedListValues(field).map(String));
-      else if(sourcedScalarForTable(field)) values.push(String(field.value??''));
-    }
-    const text=norm(values.join(' '));
-    if(!text)return false;
-    const fit=/\b(cybersecurity|cyber security|ciberseguridad|ciberseguranca|seguridad de la informacion|seguranca da informacao|firewall|siem|soc|xdr|edr|mdr|sase|sse|zero trust|iam|identity|identidad|identidade|mfa|pam|network|networking|redes|rede|lan|wan|sd-wan|sd wan|wifi|wi-fi|switching|routing|router|switch|nac|ddi|dns|dhcp|telecomunicaciones|telecomunicacoes|cloud|nube|nuvem|data center|datacenter|centro de datos|centro de dados|observability|observabilidad|observabilidade|monitoring|monitorizacion|monitorizacao|load balancer|balanceador|api security|backup|recovery|virtualization|virtualizacion|kubernetes|container|automation|automatizacion|automacao)\b/.test(text);
-    if(!fit)return false;
-    const commodity=/\b(printer|impresora|impressora|toner|cartucho|fotocopiadora|photocopier|mobiliario de oficina|office furniture|water meter|contador de agua|smartphone|telemovel|laptop|portatil|ordenador personal|desktop pc)\b/.test(text);
-    const strong=/\b(cybersecurity|ciberseguridad|ciberseguranca|firewall|siem|soc|xdr|edr|mdr|sase|sse|zero trust|network|networking|redes|rede|lan|wan|sd-wan|wifi|switching|routing|nac|ddi|cloud|nube|nuvem|data center|datacenter|observability|backup|kubernetes)\b/.test(text);
-    return !commodity||strong;
-  }
+  function publicProcurementPortfolioFit(row){return Boolean(window.WestconBusiness?.classifyNotice(row).fit);}
 
   function renderClients(){
     const publicQ=norm($('#publicClientSearch')?.value), publicScope=$('#publicClientScope')?.value||'all';
@@ -701,9 +696,21 @@
     const publicPortfolioAll=publicAll.filter(publicProcurementPortfolioFit);
     const publicBase=publicPortfolioAll.filter(r=>(!publicQ||rowBlob(r).includes(publicQ))&&scopeMatch(r,publicScope));
     const privateBase=privateAll.filter(r=>(!privateQ||rowBlob(r).includes(privateQ))&&scopeMatch(r,privateScope));
-    const publicRows=applyDynamicFilters('clients_public',publicBase,state.data.schemas.clients_public),privateRows=applyDynamicFilters('clients_private',privateBase,state.data.schemas.clients_private);state.headerCriteria.clients_public=[publicQ&&`Búsqueda: ${$('#publicClientSearch').value}`,publicScope!=='all'&&`País: ${publicScope}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';state.headerCriteria.clients_private=[privateQ&&`Búsqueda: ${$('#privateClientSearch').value}`,privateScope!=='all'&&`País: ${privateScope}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';
+    const publicRows=applyDynamicFilters('clients_public',publicBase,state.data.schemas.clients_public),privateRows=applyDynamicFilters('clients_private',privateBase,state.data.schemas.clients_private);
+    state.downloadableNotices=publicRows;state.headerCriteria.clients_public=[publicQ&&`Búsqueda: ${$('#publicClientSearch').value}`,publicScope!=='all'&&`País: ${publicScope}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';state.headerCriteria.clients_private=[privateQ&&`Búsqueda: ${$('#privateClientSearch').value}`,privateScope!=='all'&&`País: ${privateScope}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';
     $('#publicClientTable').innerHTML=tableHtml(publicRows,state.data.schemas.clients_public,'No hay oportunidades públicas con esos filtros.','clients_public',publicBase);
+    const publicMap=new Map(publicRows.map(row=>[row.name,row]));
+    $('#publicClientTable').querySelectorAll('tr[data-section="clients_public"]').forEach(tr=>{
+      const row=publicMap.get(tr.dataset.entity),cell=tr.querySelector('.name-cell');if(!row||!cell)return;
+      const fit=window.WestconBusiness.classifyNotice(row),box=document.createElement('div');box.className='notice-actions';
+      const button=document.createElement('button');button.type='button';button.textContent='Descargar ficha';button.dataset.downloadNotice=String(row.id);box.appendChild(button);
+      if(fit.pdf||fit.official){
+        const link=document.createElement('a');link.href=fit.pdf||fit.official;link.target='_blank';link.rel='noopener noreferrer';link.textContent=fit.pdf?'Descargar PDF oficial ↗':'Expediente oficial ↗';box.appendChild(link);
+      }
+      cell.appendChild(box);
+    });
     $('#privateClientTable').innerHTML=tableHtml(privateRows,state.data.schemas.clients_private,'No hay grandes cuentas privadas con esos filtros.','clients_private',privateBase);
+    const status=$('#procurementFilterStatus');if(status)status.textContent=(publicAll.length-publicPortfolioAll.length)+' registros excluidos por falta de encaje tecnológico acreditado. '+publicRows.length+' expedientes disponibles para descargar.';
     setCount('#publicClientCount',publicRows.length,publicPortfolioAll.length,'oportunidades públicas con encaje de portfolio');
     setCount('#privateClientCount',privateRows.length,privateAll.length,'grandes cuentas privadas');
     setCount('#clientCount',publicRows.length+privateRows.length,publicPortfolioAll.length+privateAll.length,'clientes / oportunidades relevantes');
