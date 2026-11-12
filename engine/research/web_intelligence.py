@@ -12,7 +12,7 @@ import json
 import re
 import sys
 import time
-from collections import defaultdict
+from collections import defaultdict, deque
 from dataclasses import asdict
 from datetime import datetime, timezone
 from typing import Any
@@ -1478,6 +1478,30 @@ def _checkpoint(
     atomic_write_json("data/current/research_ledger.json", ledger)
 
 
+
+# Processing order is intentionally different from task selection: the planner
+# may fairly *select* every section but return all high-scoring public clients
+# first. A bounded Daily can then time out before a single distributor is read.
+# Round-robin preserves priority WITHIN each section, including revenue reserve.
+_RESEARCH_LANES = (
+    "distributors", "integrators", "distributors", "manufacturers",
+    "clients_private", "clients_public", "trends", "architectures",
+)
+
+
+def _fair_target_order(targets: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    buckets: dict[str, deque[dict[str, Any]]] = defaultdict(deque)
+    for target in targets:
+        buckets[str(target.get("section") or "other")].append(target)
+    lanes = (*_RESEARCH_LANES, *sorted(set(buckets) - set(_RESEARCH_LANES)))
+    output: list[dict[str, Any]] = []
+    while len(output) < len(targets):
+        for section in lanes:
+            if buckets[section]:
+                output.append(buckets[section].popleft())
+    return output
+
+
 def run(
     profile: str = "daily",
     max_runtime: int = 600,
@@ -1522,6 +1546,8 @@ def run(
             rotated = candidate_pool[offset:] + candidate_pool[:offset]
             targets = rotated[:(12 if profile == "daily" else 36)]
             rescue_targets = len(targets)
+    # Fair operational order, regardless of ranking-heavy section clusters.
+    targets = _fair_target_order(targets)
     index = _row_index(data)
     vendor_names = _vendor_names(data)
     active_gap_ids = {str(gap.get("id")) for gap in gaps.get("gaps") or [] if gap.get("id")}
@@ -1532,6 +1558,11 @@ def run(
         "profile": profile,
         "started_at": now_iso(),
         "planned_entities": len(targets),
+        "planned_sections": {
+            section: sum(1 for item in targets if item.get("section") == section)
+            for section in sorted({str(item.get("section") or "") for item in targets})
+        },
+        "processed_sections": defaultdict(int),
         "rescue_targets_after_cooldown": rescue_targets,
         "fetch_attempts": 0,
         "fetch_successes": 0,
@@ -1633,6 +1664,7 @@ def run(
         row = index.get((target["section"], canonical(target["entity"])))
         if not row:
             continue
+        stats["processed_sections"][target["section"]] += 1
         # Optional editorial news must not become thousands of schema gaps.
         # Rotate a bounded slice of entities daily; deep/monthly runs cover all
         # due entities and still apply normal source and item evidence gates.
@@ -1703,6 +1735,15 @@ def run(
         query_policy = RESEARCH_POLICY.get("query_discovery") or {}
         query_budgets = query_policy.get("budgets") or {}
         query_budget = query_budgets.get(profile) or {}
+        # Official catalogue URLs are already concrete high-quality research
+        # leads. Avoid spending six generic searches before even fetching one.
+        # Keep one fallback discovery query for ES/PT distributors; deeper
+        # profiles retain their original full query budget.
+        query_limit = int(query_budget.get("queries_per_entity") or 0)
+        if (profile == "daily" and target["section"] == "distributors"
+                and "vendor_relations" in target["fields"]
+                and any(seed.official and seed.family == "partners" for seed in seeds)):
+            query_limit = min(query_limit, 1)
         can_query_discover = (
             bool(query_policy.get("enabled", True))
             and bool(target.get("query_hints"))
@@ -1717,7 +1758,7 @@ def run(
                 fallback_family=fallback_family,
                 providers=query_policy.get("providers") or ["bing_rss", "duckduckgo_html"],
                 timeout_s=min(float(profile_config.request_timeout_s), max(2.5, deadline - time.monotonic() - 3)),
-                max_queries=int(query_budget.get("queries_per_entity") or 0),
+                max_queries=query_limit,
                 results_per_query=int(query_budget.get("results_per_query") or 4),
             )
             stats["query_discovery_targets"] += 1
