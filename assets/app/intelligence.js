@@ -529,7 +529,8 @@
     return {...field,value:isList?kept:(kept[0]??''),items};
   }
   function fieldFor(row,col){
-    if(col?.ui_remainder_of_linecard)return linecardRemainderField(row);
+    if(col?.id==='linecard_remainder'||col?.ui_remainder_of_linecard)return linecardRemainderField(row);
+    if(col?.id==='mapped_competitor_vendors')return window.WestconBusiness?.verifiedCompetitionFor(row,state.data?.manufacturers||[])||null;
     const base=col?.virtual?virtualField(row,col):(row?.fields?.[col?.id]||null);
     return col?.id==='revenue'?strictRevenueField(base,col):base;
   }
@@ -646,16 +647,25 @@
     if(action==='report'){openFilteredReport(view);return;}
     persistFilter(view);state.analysisOpen[view]=true;renderCurrent(view);
   }
-  function missingMarkup(col){
-    const label='';
-    return '<span class="research-gap" title="Sin evidencia pública suficiente en este campo. No implica que la entidad carezca de esta capacidad.">'+esc(label)+'</span>';
+  function missingMarkup(col,row=null){
+    const type=col?.id;
+    if(row&&['competitor_vendor_overlap','mapped_competitor_vendors'].includes(type)){
+      const vendors=window.WestconBusiness?.supportedTexts(row?.fields?.vendor_relations)||[];
+      const info=vendors.length?'Cruce competitivo sin evidencia suficiente · '+vendors.length+' fabricantes acreditados en el linecard':'Linecard de fabricantes pendiente de acreditar';
+      return '<span class="tag confidence-tag unverified missing-explained" title="La falta de una comparación no demuestra ausencia de competencia"><span class="tag-label">'+esc(info)+'</span><small>?</small></span>';
+    }
+    if(row&&type==='revenue')
+      return '<span class="tag confidence-tag unverified missing-explained" title="No existe una cifra que cumpla entidad, concepto financiero, importe/moneda, año y fuente"><span class="tag-label">Facturación pública por acreditar</span><small>?</small></span>';
+    if(row&&type==='linecard_remainder')
+      return '<span class="tag confidence-tag unverified missing-explained" title="No hay marcas adicionales con evidencia; no implica un catálogo completo"><span class="tag-label">Sin otras marcas acreditadas</span><small>?</small></span>';
+    return '<span class="research-gap" title="Sin evidencia pública suficiente en este campo. No implica que la entidad carezca de esta capacidad.">Por investigar</span>';
   }
   function sortedRows(rows,view){const s=state.sort[view];if(!s)return rows;const col=(state.data.schemas[view]||[]).find(c=>c.id===s.col)||{id:s.col};return [...rows].sort((a,b)=>valueText(filterAccessor(a,s.col,col)??a.name).localeCompare(valueText(filterAccessor(b,s.col,col)??b.name),'es',{numeric:true})*s.dir);}
   function toggleSort(view,col){if(!view)return;const cur=state.sort[view];state.sort[view]={col,dir:cur?.col===col?-cur.dir:1};renderCurrent(view);}
   function reorderColumn(view,from,to){if(!view||from===to)return;const schema=state.data.schemas[view]||[];let order=(state.columnOrder[view]||schema.map(x=>x.id)).filter(x=>schema.some(c=>c.id===x));const a=order.indexOf(from),b=order.indexOf(to);if(a<0||b<0)return;order.splice(b,0,order.splice(a,1)[0]);state.columnOrder[view]=order;localStorage.setItem(`westcon-cols-${view}`,JSON.stringify(order));renderCurrent(view);}
   function renderCurrent(view){({manufacturers:renderManufacturers,integrators:renderIntegrators,distributors:renderDistributors,clients_public:renderClients,clients_private:renderClients}[view]||(()=>{}))();}
   function tableHtml(rows, schema, emptyText, view, baseRows=rows){
-    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';const relevance=view==='distributors'?(state.distributorReasons?.get(String(row.id||row.name))||'Vínculo competitivo por acreditar'):'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>${relevance?`<small class="distributor-relevance-reason">${esc(relevance)}</small>`:''}`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table',col.id):missingMarkup(col)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
+    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';const relevance=view==='distributors'?(state.distributorReasons?.get(String(row.id||row.name))||'Vínculo competitivo por acreditar'):'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>${relevance?`<small class="distributor-relevance-reason">${esc(relevance)}</small>`:''}`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table',col.id):missingMarkup(col,row)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
     return `<div class="table-shell">${columnChooser(schema,view,baseRows)}${coverageOverview(schema,baseRows,view)}<div class="table-scroll">${body}</div></div>${analysisPanel(view,schema,baseRows,rows)}`;
   }
   function scopeMatch(row, scope){
