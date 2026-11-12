@@ -23,4 +23,23 @@ for(const section of ['manufacturers','distributors','integrators','clients_publ
   sample:publications.slice(0,2).map(n=>({title:n.title,url:n.url}))};
  assert.ok(rows.length>=1,'empty published area '+section);
 }
+const clientNews=[
+ ...bi.uniqueNews(load('clients_public'),'clients'),
+ ...bi.uniqueNews(load('clients_private'),'clients'),
+];
+const clientTech=clientNews.filter(bi.technicalNews);
+const linked=bi.relatedArchitectureNews(load('architectures'),bi.uniqueNews(load('trends'),'trends'));
+scores.client_technology={
+ news:clientTech.length,
+ entities:new Set(clientTech.map(x=>x.vendor)).size,
+ sample:clientTech.slice(0,4).map(n=>({title:n.title,url:n.url}))
+};
+scores.architecture_topic_crosslinks={
+ crosslinked:linked.length,topics:new Set(linked.map(x=>x.vendor)).size,
+ sample:linked.slice(0,3).map(n=>({topic:n.vendor,title:n.title}))
+};
+assert.ok(clientTech.length>0,'Client news must include at least one sourced technology story in the public snapshot');
+assert.ok(scores.trends.news>0,'Trend news cannot be empty when sourced technical articles exist');
+assert.ok(scores.architectures.news+linked.length>0,'Architectures must have some sourced topical publications');
+
 console.log('NEWS_COVERAGE_V64 '+JSON.stringify(scores));
