@@ -1621,6 +1621,15 @@ def run(
         row = index.get((target["section"], canonical(target["entity"])))
         if not row:
             continue
+        # Optional editorial news must not become thousands of schema gaps.
+        # Rotate a bounded slice of entities daily; deep/monthly runs cover all
+        # due entities and still apply normal source and item evidence gates.
+        if target["section"] in {"integrators", "clients_private", "clients_public"}:
+            day = datetime.now(timezone.utc).date().toordinal()
+            bucket = int(hashlib.sha1(str(target["entity"]).encode("utf-8")).hexdigest()[:8], 16)
+            if profile != "daily" or (bucket + day) % 4 == 0:
+                target["fields"] = list(dict.fromkeys([*target["fields"], "recent_signals"]))
+                target["families"] = list(dict.fromkeys([*(target.get("families") or []), "news"]))
         exact_unsourced_queries = _unsourced_value_queries(
             row, target["fields"], rotation=datetime.now(timezone.utc).date().toordinal()
         )
