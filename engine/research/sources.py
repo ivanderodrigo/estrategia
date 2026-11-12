@@ -23,7 +23,9 @@ ROUTES = {
     "partners": (
         "/partners", "/partner", "/partner-locator", "/find-a-partner", "/parceiros", "/alianzas",
         "/alliances", "/vendors", "/fabricantes", "/marcas", "/portfolio", "/line-card",
-        "/linecard", "/brands", "/our-vendors", "/our-brands", "/catalogo-marcas", "/nossas-marcas", "/sitemap.xml",
+        "/linecard", "/brands", "/our-vendors", "/our-brands", "/catalogo-marcas", "/nossas-marcas",
+        "/es/vendors/", "/es/fabricantes/", "/es/marcas/", "/es/brands/",
+        "/pt/vendors/", "/pt/fabricantes/", "/pt/marcas/", "/pt/brands/", "/sitemap.xml",
     ),
     "services": (
         "/services", "/servicios", "/servicos", "/solutions", "/soluciones", "/solucoes",
@@ -186,10 +188,32 @@ def seeds_for(
                     )
                     found.setdefault((routed.url, wanted), routed)
 
+    # Prefer official vendor directories in the appropriate regional locale.
+    # These URL patterns are only discovery leads and do not establish
+    # a manufacturer relationship without an exact per-vendor source.
+    vendor_research = section in {"distributors", "integrators"} and any(
+        name in set(fields) for name in
+        ("vendor_relations", "westcon_overlap", "competitor_vendor_overlap")
+    )
+    def catalogue_rank(seed: SourceSeed) -> int:
+        if not vendor_research:
+            return 4
+        path = urlparse(seed.url).path.lower().rstrip("/")
+        if path in {"/es/vendors", "/es/fabricantes", "/pt/vendors",
+                    "/pt/fabricantes", "/es/marcas", "/pt/marcas"}:
+            return 0
+        if path in {"/vendors", "/fabricantes", "/marcas", "/brands",
+                    "/line-card", "/linecard", "/our-vendors"}:
+            return 1
+        if path in {"", "/"}:
+            return 2
+        return 3
+
     ordered = sorted(
         found.values(),
         key=lambda item: (
             item.source_type != "historical-public-revalidation-seed",
+            catalogue_rank(item),
             item.family not in families,
             not item.official,
             item.source_grade[:1] not in {"A", "B"},
