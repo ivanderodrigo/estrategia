@@ -1,5 +1,5 @@
 {
-  "version": "6.3.0",
+  "version": "6.4.0",
   "policy": "Business-facing, additive, typed and research-driven. Empty columns are hidden by the UI, never fabricated.",
   "sections": {
     "manufacturers": [
@@ -281,10 +281,11 @@
       },
       {
         "id": "vendor_relations",
-        "label": "Fabricantes Westcon relacionados",
+        "label": "Linecard y fabricantes acreditados",
         "type": "list",
         "default_visible": true,
-        "decision_required": true
+        "decision_required": true,
+        "help": "Relaciones verificadas con fabricantes, no solo los del portfolio Westcon."
       },
       {
         "id": "westcon_overlap",
@@ -434,6 +435,23 @@
         "decision_required": false,
         "feed_only": true,
         "help": "Noticias y publicaciones fechadas con URL de artículo, evidencia específica y entidad explícita. Se muestran en la sección de actualidad y no generan huecos por ausencia de noticias."
+      },
+      {
+        "id": "mapped_competitor_vendors",
+        "label": "Fabricantes con competencia acreditada frente a Westcon",
+        "type": "list",
+        "virtual": true,
+        "default_visible": true,
+        "show_when_empty": true,
+        "help": "Cruce estricto entre un fabricante acreditado del integrador y la lista de competidores acreditados de cada fabricante Westcon. No se infiere por la mera coincidencia de categoría."
+      },
+      {
+        "id": "linecard_remainder",
+        "label": "Otras marcas acreditadas",
+        "virtual": true,
+        "type": "list",
+        "default_visible": false,
+        "help": "Marcas documentadas fuera del portfolio Westcon y de los competidores específicos acreditados."
       }
     ],
     "distributors": [
@@ -475,13 +493,13 @@
       },
       {
         "id": "vendor_relations",
-        "label": "Resto de line card relevante",
+        "label": "Linecard completo acreditado",
         "type": "list",
         "default_visible": true,
         "decision_required": true,
         "clarify": true,
-        "ui_remainder_of_linecard": true,
-        "help": "Resto del line card acreditado después de excluir en la vista los fabricantes Westcon coincidentes y los competidores específicamente mapeados. El line card canónico completo se conserva para trazabilidad y relaciones."
+        "ui_remainder_of_linecard": false,
+        "help": "Fabricantes demostrados en el portfolio del mayorista, con fuente específica. La ausencia de una marca no significa que no la distribuya."
       },
       {
         "id": "specializations",
@@ -640,6 +658,14 @@
         "decision_required": false,
         "feed_only": true,
         "help": "Solo noticias, acuerdos y anuncios con artículo individual y evidencia pública acreditativa. La ausencia de noticias no crea huecos artificiales."
+      },
+      {
+        "id": "linecard_remainder",
+        "label": "Otras marcas del linecard",
+        "virtual": true,
+        "type": "list",
+        "default_visible": false,
+        "help": "Marcas documentadas que no están clasificadas como Westcon o competidores acreditados; no indica que el portfolio sea exhaustivo."
       }
     ],
     "clients_public": [
@@ -1010,6 +1036,28 @@
         "decision_required": false,
         "feed_only": true,
         "help": "Noticias y publicaciones fechadas con URL de artículo, evidencia específica y entidad explícita. Se muestran en la sección de actualidad y no generan huecos por ausencia de noticias."
+      }
+    ],
+    "trends": [
+      {
+        "id": "recent_signals",
+        "label": "Publicaciones y novedades",
+        "type": "list",
+        "default_visible": false,
+        "feed_only": true,
+        "decision_required": false,
+        "help": "Artículos y noticias publicados con enlace, fuente y fecha de publicación cuando consta. La ausencia de noticias no genera huecos ficticios."
+      }
+    ],
+    "architectures": [
+      {
+        "id": "recent_signals",
+        "label": "Publicaciones y novedades",
+        "type": "list",
+        "default_visible": false,
+        "feed_only": true,
+        "decision_required": false,
+        "help": "Artículos y noticias publicados con enlace, fuente y fecha de publicación cuando consta. La ausencia de noticias no genera huecos ficticios."
       }
     ]
   }
