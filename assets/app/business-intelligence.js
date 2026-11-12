@@ -112,7 +112,7 @@ function distributorContext(row,manufacturers=[]){
 
 const NEWS_FIELDS={
  manufacturers:['recent_signals'],
- distributors:['recent_signals'],
+ distributors:['recent_signals','vendor_relations','acquisitions'],
  integrators:['recent_signals','public_cases','public_contracts'],
  clients:['recent_signals','investment_signals','public_projects','contracts']
 };
