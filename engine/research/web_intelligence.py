@@ -1502,6 +1502,23 @@ def _fair_target_order(targets: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return output
 
 
+
+def _query_limit_for_target(
+    profile: str,
+    target: dict[str, Any],
+    seeds: list[SourceSeed],
+    configured: int,
+) -> int:
+    """Give official linecards the first research budget; deep runs stay broad."""
+    budget = max(0, configured)
+    if (profile == "daily" and target.get("section") == "distributors"
+            and "vendor_relations" in (target.get("fields") or [])
+            and any(seed.official and seed.family == "partners" for seed in seeds)):
+        return min(budget, 1)
+    return budget
+
+
+
 def run(
     profile: str = "daily",
     max_runtime: int = 600,
@@ -1739,11 +1756,10 @@ def run(
         # leads. Avoid spending six generic searches before even fetching one.
         # Keep one fallback discovery query for ES/PT distributors; deeper
         # profiles retain their original full query budget.
-        query_limit = int(query_budget.get("queries_per_entity") or 0)
-        if (profile == "daily" and target["section"] == "distributors"
-                and "vendor_relations" in target["fields"]
-                and any(seed.official and seed.family == "partners" for seed in seeds)):
-            query_limit = min(query_limit, 1)
+        query_limit = _query_limit_for_target(
+            profile, target, seeds,
+            int(query_budget.get("queries_per_entity") or 0),
+        )
         can_query_discover = (
             bool(query_policy.get("enabled", True))
             and bool(target.get("query_hints"))
