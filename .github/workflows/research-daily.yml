@@ -2,6 +2,7 @@ name: Westcon Intelligence Daily
 
 on:
   # One controlled research run whenever this workflow is explicitly maintained.
+  # v6 evidence-first discovery rollout: run once on merge to validate real search yield.
   # Ordinary application/code commits never trigger the expensive crawler.
   push:
     branches: [main]
