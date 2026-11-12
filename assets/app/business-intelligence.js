@@ -203,7 +203,35 @@ function uniqueNews(rows,section='manufacturers'){
  return news.sort((a,b)=>b.date-a.date||a.vendor.localeCompare(b.vendor,'es')||a.title.localeCompare(b.title,'es'));
 }
 
-const api={normalize,classifyNeed,classifyNotice,supportedTexts,safeUrl,uniqueNews,isPublicationUrl,distributorContext,sameBusinessName,verifiedCompetitionFor};
+
+function technicalNews(article){
+ const value=normalize([article?.title||'',article?.summary||''].join(' '));
+ if(!value)return false;
+ return classifyNeed(value).fit ||
+  /\b(inteligencia artificial|ia generativa|agentic ai|machine learning|deep learning|llms?|gpu|inferencia de ia|cibergal|5g empresarial|5g industrial|digital workplace|observabilidad|sre|automatizacion de redes|automacao de redes|data governance|gobierno del dato|data center|zero trust)\b/i.test(value);
+}
+function relatedArchitectureNews(architectures, trendPublications){
+ const excluded=new Set(['architecture','arquitectura','arquitecturas','security','seguridad','network','networking','cloud','infraestructura','infrastructure','platform','platforms','tecnologia','technology','digital','services','servicios','hybrid','data','center','centro','empresarial','solutions','soluciones','integracion','convergencia','inteligencia','artificial','modernizacion','ia']);
+ const matches=[],seen=new Set();
+ for(const row of architectures||[]){
+  const owner=String(row?.name||'').trim();if(!owner)continue;
+  const tokens=normalize(owner).replace(/[^\p{L}\p{N}\s]/gu,' ').split(/\s+/).filter(t=>t.length>=3&&!excluded.has(t));
+  if(!tokens.length)continue;
+  for(const article of trendPublications||[]){
+   const subject=' '+normalize([article.title,article.summary].join(' ')).replace(/[^\p{L}\p{N}\s]/gu,' ')+' ';
+   if(!tokens.some(t=>subject.includes(' '+t+' ')))continue;
+   const key=normalize(owner)+'|'+article.url.toLowerCase();
+   if(seen.has(key))continue;
+   seen.add(key);
+   matches.push({...article,vendor:owner,related:true,
+    summary:'Referencia tecnológica relacionada con '+owner+'. '+article.title,
+    originalTopic:article.vendor,field:'referencia-tematica'});
+  }
+ }
+ return matches.sort((a,b)=>b.date-a.date||a.vendor.localeCompare(b.vendor,'es'));
+}
+
+const api={normalize,classifyNeed,classifyNotice,supportedTexts,safeUrl,uniqueNews,isPublicationUrl,distributorContext,sameBusinessName,verifiedCompetitionFor,technicalNews,relatedArchitectureNews};
 root.WestconBusiness=api;
 if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
