@@ -213,20 +213,47 @@ function technicalNews(article){
  return classifyNeed(headline).fit ||
   /\b(inteligencia artificial|ia generativa|agentic ai|machine learning|deep learning|llms?|gpu|inferencia de ia|ciber\.?gal|5g industrial|5g empresarial|software libre|open source|infraestructura digital|transformacion digital|digital workplace|observabilidad|sre|automatizacion de redes|automacao de redes|data governance|gobierno del dato|centro de datos|zero trust|cloud computing|ciberseguridad|seguridad informatica)\b/i.test(headline);
 }
+// Each link uses the headline of an already source-accredited publication.
+// Architecture-name broad words like "security" or "experience" never count.
+const ARCHITECTURE_HEADLINE_ANCHORS={
+ 'sase / sse':['sase','sse','secure access service edge','security service edge'],
+ 'zero trust':['zero trust'],
+ 'identity security':['identity security','identity governance','identity threat detection','itdr','non human identity','machine identity','identity and access management'],
+ 'ai security':['ai security','ai systems security','security for ai','security of ai','genai security','llm security','shadow ai','ai governance','agent security'],
+ 'modern soc / secops':['security operations','security operation center','security operations center','secops','soc','xdr','mdr','ctem','siem'],
+ 'network platform / aiops':['aiops','ai native networking','networking platforms','network platform','network automation','cloud managed network'],
+ 'secure campus / lan':['secure campus','campus networking','campus security','secure lan','campus lan','cloud managed network','wired and wireless'],
+ 'ot / cps security':['cps','cyber physical systems','operational technology','industrial control systems','ics security','industrial cybersecurity','xiot security'],
+ 'ai ready data center & edge':['ai ready data center','ai data center','gpu infrastructure','gpu data center','data center fabric','edge computing','edge ai'],
+ 'observability / digital experience':['observability','digital experience monitoring','digital experience management','application performance monitoring','network performance monitoring'],
+ 'naas / managed networking':['naas','network as a service','managed network services','managed networking'],
+ 'agentic automation':['agentic ai','agentic automation','ai agents','autonomous ai agents','ai powered automation'],
+};
+function architectureTitleAnchors(owner){
+ const key=normalize(owner).replace(/[^\p{L}\p{N}]+/gu,' ').trim();
+ // Keys declared as readable taxonomy names; canonicalise them just like titles.
+ const configured=Object.entries(ARCHITECTURE_HEADLINE_ANCHORS)
+  .find(([name])=>normalize(name).replace(/[^\p{L}\p{N}]+/gu,' ').trim()===key);
+ if(configured)return configured[1];
+ const blocked=new Set(['architecture','arquitectura','security','seguridad','network','networking','cloud','infraestructura','infrastructure','platform','platforms','technology','digital','services','data','center','modern','ready','managed','experience']);
+ return key.split(/\s+/).filter(t=>t.length>=5&&!blocked.has(t));
+}
 function relatedArchitectureNews(architectures, trendPublications){
- const excluded=new Set(['architecture','arquitectura','arquitecturas','security','seguridad','network','networking','cloud','infraestructura','infrastructure','platform','platforms','tecnologia','technology','digital','services','servicios','hybrid','data','center','centro','empresarial','solutions','soluciones','integracion','convergencia','inteligencia','artificial','modernizacion','ia']);
  const matches=[],seen=new Set();
  for(const row of architectures||[]){
-  const owner=String(row?.name||'').trim();if(!owner)continue;
-  const tokens=normalize(owner).replace(/[^\p{L}\p{N}\s]/gu,' ').split(/\s+/).filter(t=>t.length>=3&&!excluded.has(t));
-  if(!tokens.length)continue;
+  const owner=String(row?.name||'').trim();
+  if(!owner)continue;
+  const aliases=architectureTitleAnchors(owner).map(v=>' '+normalize(v).replace(/[^\p{L}\p{N}]+/gu,' ').trim()+' ');
+  if(!aliases.length)continue;
   for(const article of trendPublications||[]){
-   const subject=' '+normalize(article.title||'').replace(/[^\p{L}\p{N}\s]/gu,' ')+' ';
-   if(!tokens.some(t=>subject.includes(' '+t+' ')))continue;
-   const key=normalize(owner)+'|'+article.url.toLowerCase();
+   const title=' '+normalize(article.title||'').replace(/[^\p{L}\p{N}]+/gu,' ').trim()+' ';
+   if(!aliases.some(alias=>title.includes(alias)))continue;
+   const url=safeUrl(article.url||'');
+   if(!url)continue;
+   const key=normalize(owner)+'|'+url.toLowerCase();
    if(seen.has(key))continue;
    seen.add(key);
-   matches.push({...article,vendor:owner,related:true,
+   matches.push({...article,url,vendor:owner,related:true,
     summary:'Referencia tecnológica relacionada con '+owner+'. '+article.title,
     originalTopic:article.vendor,field:'referencia-tematica'});
   }
