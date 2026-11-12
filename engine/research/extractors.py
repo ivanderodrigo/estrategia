@@ -463,7 +463,7 @@ def extract_candidates(
     # Publish only item-specific articles that clearly name the researched entity.
     # All three sections share the same accredited news feed; landing pages do not
     # count as publications. Retrieval dates are never asserted as publish dates.
-    if section in {"manufacturers", "integrators", "clients_private", "clients_public"} and family in {
+    if section in {"manufacturers", "distributors", "integrators", "clients_private", "clients_public"} and family in {
         "news", "official", "partners", "technology", "cases", "services",
     }:
         from urllib.parse import urlsplit

@@ -1,4 +1,4 @@
-/* Westcon Iberia v6.1 — shared, conservative business-intelligence decisions.
+/* Westcon Iberia v6.3 — shared, conservative business-intelligence decisions.
    A keyword is a retrieval clue, never proof of a relationship or contract fit. */
 (function(root){
 'use strict';
@@ -59,8 +59,60 @@ function classifyNotice(row){
  const pdf=evidence.map(e=>safeUrl(e?.url)).find(url=>/\.pdf(?:[?#]|$)/i.test(url))||'';
  return {fit,areas:fit?areas:[],reason:fit?'Encaje explícito con necesidad documentada':primary.reason,official,pdf};
 }
+
+function entityKey(raw){
+ return normalize(raw).replace(/\b(s\.?a\.?|s\.?l\.?|ltd|limited|inc|corp|corporation)\b/g,'')
+  .replace(/[^\p{L}\p{N}\s]/gu,' ').replace(/\s+/g,' ').trim();
+}
+function sameBusinessName(a,b){
+ const left=entityKey(a),right=entityKey(b);
+ if(!left||!right)return false;
+ if(left===right)return true;
+ // Country suffixes on official partner locators are accepted, never arbitrary substrings.
+ const countries=/^(espana|spain|portugal|iberia)$/;
+ if(left.startsWith(right+' ')&&countries.test(left.slice(right.length).trim()))return true;
+ if(right.startsWith(left+' ')&&countries.test(right.slice(left.length).trim()))return true;
+ return false;
+}
+function distributorContext(row,manufacturers=[]){
+ const f=row?.fields||{},reasons=[];
+ const overlap=supportedTexts(f.westcon_overlap);
+ const competitorOverlap=supportedTexts(f.competitor_vendor_overlap);
+ if(overlap.length)reasons.push('Fabricante Westcon acreditado: '+overlap.slice(0,3).join(', '));
+ if(competitorOverlap.length)reasons.push('Fabricante competidor acreditado: '+competitorOverlap.slice(0,3).join(', '));
+ const vendorRelations=supportedTexts(f.vendor_relations);
+ const vendorMatches=[];
+ for(const manufacturer of manufacturers||[]){
+  const name=manufacturer?.name||'';
+  if(!name)continue;
+  if(vendorRelations.some(v=>sameBusinessName(v,name))){
+   vendorMatches.push(name);
+  }
+  const documentedDistributors=supportedTexts(manufacturer.fields?.distributors);
+  if(documentedDistributors.some(v=>sameBusinessName(v,row?.name))){
+   vendorMatches.push(name);
+  }
+  // A competitor is a documented manufacturer-level relationship, not
+  // a generic product-category similarity.
+  const documentedCompetitors=supportedTexts(manufacturer.fields?.competitors);
+  if(vendorRelations.some(v=>documentedCompetitors.some(c=>sameBusinessName(v,c)))){
+   reasons.push('Competidor tecnológico relacionado con '+name);
+  }
+ }
+ if(vendorMatches.length){
+  reasons.push('Coincidencia contrastada en el ecosistema Westcon: '+[...new Set(vendorMatches)].slice(0,3).join(', '));
+ }
+ return {
+  relevant:reasons.length>0,
+  reasons:[...new Set(reasons)],
+  vendorCount:vendorRelations.length,
+  contextStatus:reasons.length>0?'Acreditado':'Sin relación competitiva acreditada'
+ };
+}
+
 const NEWS_FIELDS={
  manufacturers:['recent_signals'],
+ distributors:['recent_signals','vendor_relations','acquisitions'],
  integrators:['recent_signals','public_cases','public_contracts'],
  clients:['recent_signals','investment_signals','public_projects','contracts']
 };
@@ -102,7 +154,7 @@ function uniqueNews(rows,section='manufacturers'){
  }
  return news.sort((a,b)=>b.date-a.date||a.vendor.localeCompare(b.vendor,'es')||a.title.localeCompare(b.title,'es'));
 }
-const api={normalize,classifyNeed,classifyNotice,supportedTexts,safeUrl,uniqueNews,isPublicationUrl};
+const api={normalize,classifyNeed,classifyNotice,supportedTexts,safeUrl,uniqueNews,isPublicationUrl,distributorContext,sameBusinessName};
 root.WestconBusiness=api;
 if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

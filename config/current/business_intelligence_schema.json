@@ -1,5 +1,5 @@
 {
-  "version": "6.2.0",
+  "version": "6.3.0",
   "policy": "Business-facing, additive, typed and research-driven. Empty columns are hidden by the UI, never fabricated.",
   "sections": {
     "manufacturers": [
@@ -631,6 +631,15 @@
         "type": "list",
         "virtual": true,
         "default_visible": false
+      },
+      {
+        "id": "recent_signals",
+        "label": "Noticias y movimientos",
+        "type": "list",
+        "default_visible": false,
+        "decision_required": false,
+        "feed_only": true,
+        "help": "Solo noticias, acuerdos y anuncios con artículo individual y evidencia pública acreditativa. La ausencia de noticias no crea huecos artificiales."
       }
     ],
     "clients_public": [

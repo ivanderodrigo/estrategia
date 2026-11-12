@@ -100,6 +100,35 @@ class IntelligentDiscoveryV61Tests(unittest.TestCase):
             "https://atlas-distribution.example/noticias/articulo", "abc")
         self.assertNotIn("Cisco", outside.text)
 
+    def test_distributor_publication_discovery_does_not_create_fabricated_news(self):
+        row = {"name": "Mayorista Tecnológico", "fields": {"technology_domains": {"value": ["Networking"]}}}
+        queries = intelligent_discovery_queries(
+            row, ["recent_signals"], section="distributors", limit=12
+        )
+        self.assertTrue(any("noticias" in query or "press release" in query for query in queries))
+        article = Document(
+            url="https://mayorista.example/noticias/acuerdo-nuevo-fabricante-2026",
+            title="Mayorista Tecnológico anuncia un acuerdo de distribución",
+            text="Mayorista Tecnológico anuncia un acuerdo de distribución de ciberseguridad.",
+            links=(), content_digest="abc",
+        )
+        found = extract_candidates(
+            "distributors", "news", article, [], official=True,
+            researched_entity="Mayorista Tecnológico",
+        )
+        self.assertIn("recent_signals", found)
+        self.assertIn("acuerdo", found["recent_signals"].values[0])
+        unnamed = Document(
+            url="https://mayorista.example/noticias",
+            title="Últimas noticias",
+            text="Resumen sin una noticia individual",
+            links=(), content_digest="abc",
+        )
+        self.assertNotIn("recent_signals", extract_candidates(
+            "distributors", "news", unnamed, [], official=True,
+            researched_entity="Mayorista Tecnológico",
+        ))
+
     def test_integrator_and_customer_articles_extracted_with_evidence_specific_title(self):
         for section, name in (
             ("integrators", "Socio Integrador"),

@@ -7,15 +7,15 @@
 <meta name="description" content="Westcon Iberia · Business Intelligence · Fabricantes, mayoristas, integradores, clientes, tendencias y arquitecturas con trazabilidad por campo.">
 <title>Westcon Iberia · Observatorio Tecnológico</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/app/intelligence.css?v=6.2.0">
+<link rel="stylesheet" href="assets/app/intelligence.css?v=6.3.0">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.13.0/dist/pptxgen.bundle.js"></script>
-<script defer src="assets/app/filter_engine.js?v=6.2.0"></script>
-<script defer src="assets/app/report_engine.js?v=6.2.0"></script>
+<script defer src="assets/app/filter_engine.js?v=6.3.0"></script>
+<script defer src="assets/app/report_engine.js?v=6.3.0"></script>
 <script defer src="assets/app/observatory.js?v=4.4.0"></script>
 <script defer src="assets/app/commercial.js?v=20261026"></script>
-<script defer src="assets/app/business-intelligence.js?v=6.2.0"></script>
-<script defer src="assets/app/intelligence.js?v=6.2.0"></script>
+<script defer src="assets/app/business-intelligence.js?v=6.3.0"></script>
+<script defer src="assets/app/intelligence.js?v=6.3.0"></script>
 <link rel="stylesheet" href="assets/app/command-center.css?v=1">
 <script defer src="assets/app/command-center.js?v=1"></script>
 </head>
@@ -23,7 +23,7 @@
 <header class="appbar">
   <div class="brand">
     <div class="brandmark" aria-hidden="true"><span></span><span></span><span></span></div>
-    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v6.2.0</small></div>
+    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v6.3.0</small></div>
   </div>
   <nav id="tabs" aria-label="Áreas de inteligencia">
     <button class="active" id="homeNav" type="button">Visión general</button>
@@ -100,7 +100,15 @@
       <input id="distributorSearch" type="search" placeholder="Buscar mayorista, fabricante, tecnología, servicio o perfil…">
       <select id="distributorScope"><option value="all">España + Portugal / Iberia</option><option value="ES">España</option><option value="PT">Portugal</option><option value="IBERIA">Iberia</option></select>
     </div>
+    <div class="distributor-curation-controls">
+      <p id="distributorFocusStatus" class="distributor-focus-status" role="status">Analizando las relaciones acreditadas con el ecosistema Westcon…</p>
+      <label class="distributor-archive-option"><input type="checkbox" id="distributorIncludeUnconfirmed">
+        Mostrar también candidatos sin relación competitiva acreditada <small>(archivo de investigación)</small>
+      </label>
+    </div>
     <div id="distributorTable" class="intelligence-table"></div>
+    <div class="news-search-toolbar"><label for="distributorNewsSearch"><span>Buscar en las noticias</span><input id="distributorNewsSearch" type="search" placeholder="Filtrar por mayorista, fabricante, adquisición o anuncio…" autocomplete="off" aria-label="Buscar noticias de mayoristas"></label></div>
+    <section id="distributorNews" class="manufacturer-news" aria-label="Noticias acreditadas de mayoristas"></section>
   </section>
 
   <section id="integradores" class="view">
