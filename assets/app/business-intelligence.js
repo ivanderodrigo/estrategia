@@ -1,4 +1,4 @@
-/* Westcon Iberia v6.4 — shared, conservative business-intelligence decisions.
+/* Westcon Iberia v6.5 — shared, conservative business-intelligence decisions.
    A keyword is a retrieval clue, never proof of a relationship or contract fit. */
 (function(root){
 'use strict';

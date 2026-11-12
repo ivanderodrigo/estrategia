@@ -84,7 +84,7 @@ def _row_index(data: dict[str, Any]) -> dict[tuple[str, str], dict[str, Any]]:
     return output
 
 
-def _prioritize_research_queries(exact_queries: list[str], planned_queries: list[str], budget: int) -> list[str]:
+def _prioritize_research_queries(exact_queries: list[str], planned_queries: list[str], budget: int, *, section: str = "") -> list[str]:
     """Mix atomic claims with contextual corroboration in a bounded query budget.
 
     A 3-query daily budget previously spent all three on unqualified exact
@@ -107,17 +107,29 @@ def _prioritize_research_queries(exact_queries: list[str], planned_queries: list
             " caso de éxito", " caso de sucesso",
         )
     )]
-    systematic = [q for q in planned if " site:" in q.casefold()]
+    systematic = [q for q in planned if "site:" in q.casefold()]
+    linecard = [q for q in planned if any(
+        key in q.casefold() for key in (
+            "linecard", "line card", "fabricantes", "marcas", "vendors",
+            "nossas marcas", "catalogo", "brands",
+        )
+    )]
     competitive = [q for q in planned if any(term in q.casefold() for term in (
         'competing vendors', 'competidores fabricantes', 'concorrentes fornecedores', ' vs ',
     ))]
     output = []
     # Reserve real budget for discovery. Otherwise exact historical values can
     # consume the whole Daily budget and the new source lanes never execute.
-    for bucket in (
-        competitive[:1], exact[:1], systematic[:1], contextual[:1], planned[:1],
-        competitive[1:], systematic[1:], exact[1:], contextual[1:], planned[1:],
-    ):
+    if section in {"distributors", "integrators"}:
+        # A narrow daily budget must reach the actual first-party linecard.
+        buckets = (systematic[:1], linecard[:1], exact[:1],
+                   systematic[1:], linecard[1:], contextual[:1],
+                   exact[1:], planned)
+    else:
+        buckets = (competitive[:1], exact[:1], systematic[:1],
+                   contextual[:1], planned[:1], competitive[1:],
+                   systematic[1:], exact[1:], contextual[1:], planned[1:])
+    for bucket in buckets:
         for query in bucket:
             if query not in output:
                 output.append(query)
@@ -1645,6 +1657,7 @@ def run(
             exact_unsourced_queries,
             contextual_intelligence + list(target.get("query_hints") or []),
             int(query_budget.get("queries_per_entity") or 0),
+            section=target["section"],
         )
         seeds = _merge_source_seeds(
             _revalidation_source_seeds(target),
