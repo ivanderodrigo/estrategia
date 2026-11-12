@@ -1,4 +1,4 @@
-// App v6.2.0
+// App v6.3.0
 (() => {
   'use strict';
   const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
@@ -13,7 +13,7 @@
   const toast = msg => { const el=$('#toast'); if(!el) return; el.textContent=msg; el.classList.add('show'); clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove('show'),2600); };
 
   const PUBLIC_SECTIONS=['manufacturers','distributors','integrators','clients_public','clients_private','trends','architectures'];
-  const VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors'],integradores:['integrators','manufacturers'],clientes:['clients_public','clients_private'],tendencias:['trends','manufacturers'],arquitecturas:['architectures']};
+  const VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors','manufacturers'],integradores:['integrators','manufacturers'],clientes:['clients_public','clients_private'],tendencias:['trends','manufacturers'],arquitecturas:['architectures']};
   const CRITERIA_VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors'],integradores:['integrators'],clientes:['clients_public','clients_private'],tendencias:['trends'],arquitecturas:['architectures']};
   const CRITERIA_SECTION_LABELS={manufacturers:'Fabricantes',distributors:'Mayoristas',integrators:'Integradores',clients_public:'Clientes públicos',clients_private:'Clientes privados',trends:'Tendencias',architectures:'Arquitecturas'};
   const RESEARCH_CRITERIA_PLAYBOOKS={
@@ -198,9 +198,10 @@
     $('#integratorVendor')?.addEventListener('change', renderIntegrators);
     $('#distributorSearch')?.addEventListener('input', renderDistributors);
     $('#distributorScope')?.addEventListener('change', renderDistributors);
+    $('#distributorIncludeUnconfirmed')?.addEventListener('change',renderDistributors);
     $('#publicClientSearch')?.addEventListener('input', renderClients);
     $('#publicClientScope')?.addEventListener('change', renderClients);
-    for(const [section,selector] of [['manufacturers','#manufacturerNewsSearch'],['integrators','#integratorNewsSearch'],['clients','#clientNewsSearch']]){
+    for(const [section,selector] of [['manufacturers','#manufacturerNewsSearch'],['distributors','#distributorNewsSearch'],['integrators','#integratorNewsSearch'],['clients','#clientNewsSearch']]){
       $(selector)?.addEventListener('input',()=>renderEntityNews(section,state.newsRows?.[section]||[]));
     }
     $('#procurementDownloadCsv')?.addEventListener('click',()=>exportProcurement(state.downloadableNotices||[],'csv'));
@@ -450,7 +451,8 @@
     if(value.length>=5 || long>=1) return 2;
     return 3;
   }
-  function renderValue(field, limit=null, context='table'){
+  const CATEGORICAL_FIELDS=new Set(['domain','technology_domains','subcategories','roles','category','vendor_type','scope','westcon_area']);
+  function renderValue(field, limit=null, context='table', columnId=''){
     const value=field?.value;
     if(Array.isArray(value)){
       if(value.length&&typeof value[0]==='object'&&value[0].layer){
@@ -464,6 +466,11 @@
         (x.verified?tagHtml(field,x.value,x.index):pendingTagHtml(field,x.value,x.index))+'</span>').join('');
       const more=elements.length>lim?'<button type="button" class="more-tags" data-more-tags data-label="… +'+(elements.length-lim)+'">… +'+(elements.length-lim)+'</button>':'';
       return '<div class="tag-list">'+tags+more+'</div>';
+    }
+    if(CATEGORICAL_FIELDS.has(columnId)){
+      const verified=atomicCurrentProof(field?.evidence);
+      return '<div class="tag-list categorical-tags"><span class="tag-entry">'+
+        (verified?tagHtml(field,value,0):pendingTagHtml(field,value,0))+'</span></div>';
     }
     return sourcedScalarForTable(field)?traceable(field,compactScalar(value,context==='table'?110:300)):pendingTagHtml(field,value,0);
   }
@@ -642,7 +649,7 @@
   function reorderColumn(view,from,to){if(!view||from===to)return;const schema=state.data.schemas[view]||[];let order=(state.columnOrder[view]||schema.map(x=>x.id)).filter(x=>schema.some(c=>c.id===x));const a=order.indexOf(from),b=order.indexOf(to);if(a<0||b<0)return;order.splice(b,0,order.splice(a,1)[0]);state.columnOrder[view]=order;localStorage.setItem(`westcon-cols-${view}`,JSON.stringify(order));renderCurrent(view);}
   function renderCurrent(view){({manufacturers:renderManufacturers,integrators:renderIntegrators,distributors:renderDistributors,clients_public:renderClients,clients_private:renderClients}[view]||(()=>{}))();}
   function tableHtml(rows, schema, emptyText, view, baseRows=rows){
-    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table'):missingMarkup(col)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
+    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table',col.id):missingMarkup(col)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
     return `<div class="table-shell">${columnChooser(schema,view,baseRows)}${coverageOverview(schema,baseRows,view)}<div class="table-scroll">${body}</div></div>${analysisPanel(view,schema,baseRows,rows)}`;
   }
   function scopeMatch(row, scope){
@@ -653,6 +660,7 @@
   function setCount(id, shown, total, noun){ const el=$(id); if(el) el.innerHTML=`<b>${shown}</b><span>${esc(noun)}${shown!==total?` · ${total} totales`:''}</span>`; }
 
   const NEWS_VIEWS={
+    distributors:{host:'#distributorNews',search:'#distributorNewsSearch',title:'Noticias de mayoristas tecnológicos',description:'Nuevos fabricantes, acuerdos de distribución y movimientos relevantes respaldados por publicaciones.'},
     manufacturers:{host:'#manufacturerNews',search:'#manufacturerNewsSearch',title:'Noticias y movimientos de los fabricantes',description:'Publicaciones acreditadas de fabricantes, vinculadas con sus fuentes.'},
     integrators:{host:'#integratorNews',search:'#integratorNewsSearch',title:'Actualidad de integradores y partners',description:'Noticias, proyectos y casos publicados con evidencia de cada entidad.'},
     clients:{host:'#clientNews',search:'#clientNewsSearch',title:'Actualidad tecnológica de clientes',description:'Inversiones, proyectos y novedades tecnológicas documentadas de clientes públicos y privados.'}
@@ -697,11 +705,26 @@
     setCount('#integratorCount',rows.length,all.length,'partners / integradores');
   }
   function renderDistributors(){
-    const q=norm($('#distributorSearch')?.value), scope=$('#distributorScope')?.value||'all';
+    const q=norm($('#distributorSearch')?.value),scope=$('#distributorScope')?.value||'all';
     const all=state.data.distributors||[];
-    const base=all.filter(r=>(!q||rowBlob(r).includes(q))&&scopeMatch(r,scope)),rows=applyDynamicFilters('distributors',base,state.data.schemas.distributors);state.headerCriteria.distributors=[q&&`Búsqueda: ${$('#distributorSearch').value}`,scope!=='all'&&`País: ${scope}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';
-    $('#distributorTable').innerHTML=tableHtml(rows,state.data.schemas.distributors,'No hay mayoristas con esos filtros.','distributors',base);
-    setCount('#distributorCount',rows.length,all.length,'mayoristas competidores');
+    const manufacturers=state.data.manufacturers||[];
+    const context=window.WestconBusiness?.distributorContext;
+    const classified=all.map(row=>({row,decision:context?context(row,manufacturers):{relevant:false,reasons:[]}}));
+    const relevant=classified.filter(x=>x.decision.relevant).map(x=>x.row);
+    const archived=classified.filter(x=>!x.decision.relevant);
+    const showUnconfirmed=Boolean($('#distributorIncludeUnconfirmed')?.checked);
+    const visiblePool=showUnconfirmed?all:relevant;
+    const base=visiblePool.filter(r=>(!q||rowBlob(r).includes(q))&&scopeMatch(r,scope));
+    const rows=applyDynamicFilters('distributors',base,state.data.schemas.distributors);
+    state.headerCriteria.distributors=[!showUnconfirmed&&'Solo contexto acreditado',q&&('Búsqueda: '+$('#distributorSearch').value),scope!=='all'&&('País: '+scope)].filter(Boolean).join(' · ')||'Sin filtros';
+    $('#distributorTable').innerHTML=tableHtml(rows,state.data.schemas.distributors,
+      'No hay mayoristas con relación competitiva acreditada para estos filtros. Activa el archivo para revisar candidatos.', 'distributors',base);
+    const notice=$('#distributorFocusStatus');
+    if(notice)notice.textContent=relevant.length+' mayoristas con contexto acreditado · '+archived.length+
+      ' candidatos fuera del análisis principal por no tener relación competitiva documentada.'+
+      (showUnconfirmed?' Archivo visible para investigación.':' Conservados para búsquedas posteriores, sin borrado de evidencias.');
+    renderEntityNews('distributors',relevant);
+    setCount('#distributorCount',rows.length,visiblePool.length,'mayoristas'+(showUnconfirmed?' (incluido archivo)':' relevantes'));
   }
   function publicProcurementPortfolioFit(row){return Boolean(window.WestconBusiness?.classifyNotice(row).fit);}
 
