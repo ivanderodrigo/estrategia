@@ -131,6 +131,7 @@
         <div class="toolbar clients-toolbar">
           <input id="publicClientSearch" type="search" placeholder="Buscar entidad, necesidad, área, tecnología o estado…">
           <select id="publicClientScope"><option value="all">España + Portugal / Iberia</option><option value="ES">España</option><option value="PT">Portugal</option></select>
+          <button id="procurementAlertBtn" class="ghost dark" type="button">Configurar alertas</button>
         </div>
         <div id="publicClientTable" class="intelligence-table"></div>
       </section>
@@ -178,6 +179,22 @@
 
 <footer class="footer"><span id="footerStatus">Cargando inteligencia…</span><span>Datos públicos + documentación Westcon aportada · trazabilidad campo a campo</span></footer>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<div id="procurementAlertModal" class="modal" aria-hidden="true">
+  <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="procurementAlertTitle">
+    <div class="modal-head"><div><span>ALERTAS DE PLIEGOS</span><h2 id="procurementAlertTitle">Regla de aviso personalizada</h2><p>Configura correo, ámbito, palabras clave, frecuencia y hora. La configuración se guarda solo en este navegador y puede descargarse para conectarla a un servicio de envío.</p></div><button class="modal-close" data-close="procurementAlertModal" type="button" aria-label="Cerrar">×</button></div>
+    <div class="confidence-note"><b>Estado de envío:</b> <span id="procurementAlertStatus">Configuración local. El correo automático no está activo hasta conectar un servicio SMTP.</span></div>
+    <label class="report-title">Correo destinatario<input id="procurementAlertEmail" type="email" autocomplete="email" placeholder="nombre@empresa.com"></label>
+    <div class="filtered-report-options">
+      <label>Ámbito<select id="procurementAlertScope"><option value="IBERIA">España + Portugal</option><option value="ES">España</option><option value="PT">Portugal</option></select></label>
+      <label>Frecuencia<select id="procurementAlertFrequency"><option value="daily">Diaria</option><option value="weekly">Semanal</option></select></label>
+      <label>Hora local<input id="procurementAlertTime" type="time" value="08:00"></label>
+      <label><input id="procurementAlertPortfolioOnly" type="checkbox" checked disabled> Solo oportunidades con encaje Westcon</label>
+    </div>
+    <label class="report-title">Palabras clave opcionales<input id="procurementAlertKeywords" type="text" placeholder="Ej.: SASE, firewall, Wi-Fi, cloud"></label>
+    <div class="export-actions"><button id="procurementAlertSave" class="primary" type="button">Guardar en este navegador</button><button id="procurementAlertDownload" class="ghost dark" type="button">Descargar configuración</button></div>
+  </div>
+</div>
 
 <div id="sourceModal" class="modal" aria-hidden="true">
   <div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="sourceTitle">
