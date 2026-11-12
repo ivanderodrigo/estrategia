@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-11-12T09:34:44.887227+00:00",
+  "generated_at": "2026-11-12T12:46:57.959215+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -357,6 +357,14 @@
     {
       "id": "clie_001e1baacf14c341",
       "canonical_name": "Dirección General de Salud Digital y Sistemas de Información del Sistema Nacional de Salud",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_56d708bae22dc96d",
+      "canonical_name": "Dirección de la Agencia Española de Medicamentos y Productos Sanitarios",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -37644,6 +37652,55 @@
       "derived": true
     },
     {
+      "id": "rel_6c167c14917748ed",
+      "entity_a_id": "clie_56d708bae22dc96d",
+      "entity_a": "Dirección de la Agencia Española de Medicamentos y Productos Sanitarios",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "escuelademapas.com",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Dirección de la Agencia Española de Medicamentos y Productos Sanitarios",
+          "source_binding": "atomic-item",
+          "title": "Mapa de Rusia: Cartografía del país más grande del mundo",
+          "url": "https://escuelademapas.com/mapa-de-rusia/",
+          "date": "2026-11-12",
+          "description": "…ográfico de Rusia Mapa lingüístico de Rusia Mapa climático de Rusia Mapa de recursos naturales de Rusia Mapa económico de Rusia Mapa vial de Rusia: Una de las redes viales más amplias del mundo Mapa turístico de Rusia: descubriendo lugares icónicos. Mapa geológico de Rusia: estructura…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-11-12",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "ae5906d9c4e4a9859d9177a9e247b5450642d1c64bdd7f234ac794dfc6562d09",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "escuelademapas.com",
+      "date": "2026-11-12",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
       "id": "rel_76ab58f78ae545d6",
       "entity_a_id": "clie_3ccb44c7206d5fb6",
       "entity_a": "Presidencia del Consorcio As Mariñas",
@@ -38236,7 +38293,9 @@
           "item_value": "Cloud",
           "item_key": "cloud",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "es.finance.yahoo.com",
@@ -38316,7 +38375,9 @@
           "item_value": "AI / Data",
           "item_key": "ai data",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "es.finance.yahoo.com",
@@ -40178,7 +40239,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "thepower.education",
@@ -40207,7 +40270,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "enciclopediauniversal.com",
@@ -40236,7 +40301,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "chile.trabajos.com",
@@ -40265,7 +40332,9 @@
           "item_value": "Networking",
           "item_key": "networking",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "es.wikipedia.org",
