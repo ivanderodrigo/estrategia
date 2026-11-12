@@ -13,7 +13,7 @@
   const toast = msg => { const el=$('#toast'); if(!el) return; el.textContent=msg; el.classList.add('show'); clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove('show'),2600); };
 
   const PUBLIC_SECTIONS=['manufacturers','distributors','integrators','clients_public','clients_private','trends','architectures'];
-  const VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors','manufacturers'],integradores:['integrators','manufacturers'],clientes:['clients_public','clients_private'],tendencias:['trends','manufacturers'],arquitecturas:['architectures']};
+  const VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors','manufacturers'],integradores:['integrators','manufacturers'],clientes:['clients_public','clients_private'],tendencias:['trends','manufacturers'],arquitecturas:['architectures','trends']};
   const CRITERIA_VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors'],integradores:['integrators'],clientes:['clients_public','clients_private'],tendencias:['trends'],arquitecturas:['architectures']};
   const CRITERIA_SECTION_LABELS={manufacturers:'Fabricantes',distributors:'Mayoristas',integrators:'Integradores',clients_public:'Clientes públicos',clients_private:'Clientes privados',trends:'Tendencias',architectures:'Arquitecturas'};
   const RESEARCH_CRITERIA_PLAYBOOKS={
@@ -689,12 +689,19 @@
     state.newsRows=state.newsRows||{};
     state.newsRows[section]=rows;
     const q=norm($(cfg.search)?.value||'');
-    const all=window.WestconBusiness.uniqueNews(rows,section);
+    const primary=window.WestconBusiness.uniqueNews(rows,section);
+    const related=section==='architectures'
+      ?window.WestconBusiness.relatedArchitectureNews(rows,
+         window.WestconBusiness.uniqueNews(state.data?.trends||[],'trends'))
+      :[];
+    const all=section==='clients'
+      ?primary.filter(window.WestconBusiness.technicalNews)
+      :[...primary,...related].filter((n,i,items)=>items.findIndex(m=>m.vendor===n.vendor&&m.url===n.url)===i);
     const news=q?all.filter(n=>norm([n.vendor,n.title,n.summary,n.source].join(' ')).includes(q)):all;
     const expanded=Boolean(state.newsExpanded?.[section]);
     const visible=expanded?news:news.slice(0,18);
     const fmt=date=>date?new Date(date).toLocaleDateString('es-ES',{year:'numeric',month:'short',day:'numeric'}):'Sin fecha publicada';
-    const cards=visible.map(n=>'<article class="manufacturer-news-card"><div class="news-card-meta"><span>'+esc(n.vendor)+'</span><time>'+esc(fmt(n.date))+'</time></div><h3>'+esc(n.title)+'</h3><p>'+esc(n.summary.length>190?n.summary.slice(0,187)+'…':n.summary)+'</p><div class="news-card-foot"><small>'+esc(n.source)+'</small><a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">Leer publicación ↗</a></div></article>').join('');
+    const cards=visible.map(n=>'<article class="manufacturer-news-card"><div class="news-card-meta"><span>'+esc(n.vendor)+'</span><time>'+esc(fmt(n.date))+'</time></div><h3>'+esc(n.title)+'</h3>'+(n.related?'<small class="news-source-relation">Relacionado por tema · no acredita implantación</small>':'')+'<p>'+esc(n.summary.length>190?n.summary.slice(0,187)+'…':n.summary)+'</p><div class="news-card-foot"><small>'+esc(n.source)+'</small><a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">Leer publicación ↗</a></div></article>').join('');
     node.innerHTML='<div class="news-heading"><div><span class="eyebrow">ACTUALIDAD ACREDITADA</span><h2>'+esc(cfg.title)+'</h2><p>'+esc(cfg.description)+' La búsqueda de noticias es independiente de la tabla.</p></div><strong>'+news.length+(q?' coincidencias':' publicaciones')+'</strong></div>'+
       (visible.length?'<div class="manufacturer-news-grid">'+cards+'</div>':'<p class="news-empty">No hay publicaciones con evidencia específica para esta búsqueda. Los indicios no acreditados no se publican como noticias.</p>')+
       (news.length>18?'<button class="news-more" data-news-more="'+esc(section)+'" type="button">'+(expanded?'Mostrar menos':'Ver todas las '+news.length+' publicaciones')+'</button>':'');
@@ -772,7 +779,7 @@
     const status=$('#procurementFilterStatus');if(status)status.textContent=(publicAll.length-publicPortfolioAll.length)+' registros excluidos por falta de encaje tecnológico acreditado. '+publicRows.length+' expedientes disponibles para descargar.';
     setCount('#publicClientCount',publicRows.length,publicPortfolioAll.length,'oportunidades públicas con encaje de portfolio');
     setCount('#privateClientCount',privateRows.length,privateAll.length,'grandes cuentas privadas');
-    renderEntityNews("clients",[...publicPortfolioAll,...privateAll]);
+    renderEntityNews("clients",[...publicAll,...privateAll]);
     setCount('#clientCount',publicRows.length+privateRows.length,publicPortfolioAll.length+privateAll.length,'clientes / oportunidades relevantes');
   }
 
