@@ -535,7 +535,9 @@ def build_gaps(
         for row in public.get(section) or []:
             fields = row.get("fields") or {}
             for field_id, column in schema.items():
-                if column.get("virtual"):
+                # Editorial feeds may have zero publications; absence is not a research gap.
+                # Any populated news claim remains subject to the atomic evidence audit below.
+                if column.get("virtual") or column.get("feed_only"):
                     continue
                 expected[section] += 1
                 field = fields.get(field_id) or {}
