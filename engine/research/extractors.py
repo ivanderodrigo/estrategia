@@ -491,21 +491,34 @@ def extract_candidates(
     # Publish only item-specific articles that clearly name the researched entity.
     # All three sections share the same accredited news feed; landing pages do not
     # count as publications. Retrieval dates are never asserted as publish dates.
-    if section in {"manufacturers", "distributors", "integrators", "clients_private", "clients_public"} and family in {
-        "news", "official", "partners", "technology", "cases", "services",
+    if section in {"manufacturers", "distributors", "integrators", "clients_private", "clients_public", "trends", "architectures"} and family in {
+        "news", "official", "partners", "technology", "cases", "services", "analyst",
     }:
         from urllib.parse import urlsplit
         path = urlsplit(document.url).path.casefold()
         title = (document.title or "").strip()
         is_article = bool(re.search(
             r"/(?:news|noticias?|actualidad|novidades|press|press-releases|"
-            r"comunicados|announcements?|blog|insights|articles|media|"
-            r"newsroom|releases)/[^/?#]{5,}", path
-        ))
+            r"comunicados|announcements?|blog|insights|articles?|media|"
+            r"newsroom|releases|research|reports|estudios|publicaciones|"
+            r"artigos|sala-de-prensa|case-studies)/[^/?#]{7,}", path
+        )) or re.search(r"/20\d\d/(?:0?[1-9]|1[012])/[a-z0-9-]{8,}",path))
         has_owner = (
             bool(researched_entity)
             and canonical(researched_entity) in canonical(title + " " + (text[:700] if text else ""))
         )
+        if section in {"trends", "architectures"} and not has_owner:
+            # Topic labels are editorial headings, not legal entity names.
+            # Require a distinctive technical term in the specific article
+            # title, not a generic category word occurring in a sidebar.
+            stopped = {"technology", "tecnologia", "seguridad", "security",
+                       "architecture", "arquitectura", "network", "networking",
+                       "data", "cloud", "digital", "inteligencia", "artificial",
+                       "infraestructura", "convergencia", "solutions"}
+            anchors = [x for x in canonical(researched_entity).split()
+                       if len(x)>=3 and x not in stopped]
+            title_words = set(canonical(title).split())
+            has_owner = any(word in title_words for word in anchors)
         if is_article and has_owner and 22 <= len(title) <= 180:
             add("recent_signals", [title], [title], claim="signal",
                 confidence=0.82 if official else 0.70)
