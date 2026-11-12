@@ -405,7 +405,7 @@
   }
   function atomicCurrentProof(evidence){
     return Array.isArray(evidence)&&evidence.some(ev=>{
-      if(!ev||typeof ev!=='object')return false;
+      if(!ev||typeof ev!=='object'||ev.accrediting===false||ev.contradicted||['stale','rejected','contradicted'].includes(String(ev.freshness_status||'')))return false;
       const origin=String(ev.provenance_origin||'').toUpperCase();
       if(/HISTORICAL|ARCHIVE|REPORT_CORROBORATION|RESEARCH_SEED|LEGACY_UNRESOLVED/.test(origin))return false;
       if(origin==='WESTCON_DOCUMENT')return false;
@@ -462,7 +462,7 @@
       const more=elements.length>lim?'<button type="button" class="more-tags" data-more-tags data-label="… +'+(elements.length-lim)+'">… +'+(elements.length-lim)+'</button>':'';
       return '<div class="tag-list">'+tags+more+'</div>';
     }
-    return traceable(field,compactScalar(value,context==='table'?110:300));
+    return sourcedScalarForTable(field)?traceable(field,compactScalar(value,context==='table'?110:300)):pendingTagHtml(field,value,0);
   }
   function allRowEvidence(row){
     const rows=[...(row?.evidence||[])];Object.values(row?.fields||{}).forEach(f=>{rows.push(...(f?.evidence||[]));(f?.items||[]).forEach(it=>rows.push(...(it?.evidence||[])));});
@@ -639,7 +639,7 @@
   function reorderColumn(view,from,to){if(!view||from===to)return;const schema=state.data.schemas[view]||[];let order=(state.columnOrder[view]||schema.map(x=>x.id)).filter(x=>schema.some(c=>c.id===x));const a=order.indexOf(from),b=order.indexOf(to);if(a<0||b<0)return;order.splice(b,0,order.splice(a,1)[0]);state.columnOrder[view]=order;localStorage.setItem(`westcon-cols-${view}`,JSON.stringify(order));renderCurrent(view);}
   function renderCurrent(view){({manufacturers:renderManufacturers,integrators:renderIntegrators,distributors:renderDistributors,clients_public:renderClients,clients_private:renderClients}[view]||(()=>{}))();}
   function tableHtml(rows, schema, emptyText, view, baseRows=rows){
-    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&sourcedScalarForTable(f)?renderValue(f,null,'table'):missingMarkup(col)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
+    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table'):missingMarkup(col)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
     return `<div class="table-shell">${columnChooser(schema,view,baseRows)}${coverageOverview(schema,baseRows,view)}<div class="table-scroll">${body}</div></div>${analysisPanel(view,schema,baseRows,rows)}`;
   }
   function scopeMatch(row, scope){
