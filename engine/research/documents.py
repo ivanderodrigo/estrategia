@@ -43,7 +43,7 @@ class TextExtractor(HTMLParser):
         # when assembling the document; do not index decorative images globally.
         if tag == "img":
             alt = next((value for key, value in attrs if key.casefold() == "alt" and value), "")
-            alt = re.sub(r"\\s+", " ", alt).strip()
+            alt = re.sub(r"\s+", " ", alt).strip()
             if 2 <= len(alt) <= 70 and alt.casefold() not in {
                 "logo", "imagen", "image", "photo", "foto", "banner", "icon", "icono",
             }:
