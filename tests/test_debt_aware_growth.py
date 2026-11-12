@@ -16,7 +16,10 @@ class DebtAwareGrowthTests(unittest.TestCase):
         self.assertGreater(policy["debt_aware_growth"]["pause_above_gaps"], 0)
         source = (ROOT / "engine/research/web_intelligence.py").read_text(encoding="utf-8")
         ast.parse(source)
-        self.assertIn('stats["structured_growth_paused_for_debt"] = True', source)
+        floors = policy["debt_aware_growth"]["minimum_growth_under_debt"]
+        self.assertGreater(floors["daily"], 0)
+        self.assertIn('stats["structured_growth_restricted_for_debt"] = True', source)
+        self.assertIn('structured_growth_budget = min(structured_growth_budget, growth_floor)', source)
         self.assertIn('if structured_growth_budget else []', source)
         self.assertIn('if backlog >= ceiling:', source)
 

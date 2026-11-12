@@ -1,9 +1,9 @@
 {
-  "version": 3,
+  "version": 4,
   "profiles": {
     "daily": {
-      "entity_limit": 120,
-      "pages_per_entity": 5,
+      "entity_limit": 160,
+      "pages_per_entity": 6,
       "request_timeout_s": 7,
       "retries": 2,
       "cache_ttl_s": 21600,
@@ -11,8 +11,8 @@
       "checkpoint_every": 20
     },
     "deep": {
-      "entity_limit": 520,
-      "pages_per_entity": 16,
+      "entity_limit": 700,
+      "pages_per_entity": 20,
       "request_timeout_s": 9,
       "retries": 3,
       "cache_ttl_s": 86400,
@@ -20,8 +20,8 @@
       "checkpoint_every": 20
     },
     "exhaustive": {
-      "entity_limit": 1400,
-      "pages_per_entity": 32,
+      "entity_limit": 1800,
+      "pages_per_entity": 40,
       "request_timeout_s": 12,
       "retries": 4,
       "cache_ttl_s": 172800,
@@ -42,6 +42,8 @@
     "sitemap",
     "relevant_internal_links",
     "query_discovery_multilingual",
+    "portfolio_procurement_relevance_gate",
+    "systematic_source_lanes",
     "spain_official_procurement",
     "portugal_official_procurement",
     "ted_search_api",
@@ -109,19 +111,19 @@
     ],
     "budgets": {
       "daily": {
-        "max_entities": 48,
-        "queries_per_entity": 3,
-        "results_per_query": 6
+        "max_entities": 72,
+        "queries_per_entity": 6,
+        "results_per_query": 8
       },
       "deep": {
-        "max_entities": 400,
-        "queries_per_entity": 10,
-        "results_per_query": 10
+        "max_entities": 500,
+        "queries_per_entity": 14,
+        "results_per_query": 12
       },
       "exhaustive": {
-        "max_entities": 1000,
-        "queries_per_entity": 16,
-        "results_per_query": 12
+        "max_entities": 1200,
+        "queries_per_entity": 20,
+        "results_per_query": 15
       }
     },
     "discovery_only": true,
@@ -131,6 +133,141 @@
   "debt_aware_growth": {
     "enabled": true,
     "pause_above_gaps": 12000,
-    "principle": "Do not add new procurement entities while unsupported evidence debt is high; retain all existing intelligence and research existing claims first."
+    "minimum_growth_under_debt": {
+      "daily": 6,
+      "deep": 18,
+      "exhaustive": 36
+    },
+    "principle": "When unsupported debt is high, sharply restrict growth but keep a small stream of new high-fit procurement intelligence. Never add generic commodity notices merely to increase entity counts."
+  },
+  "systematic_discovery": {
+    "enabled": true,
+    "principle": "Search every research target across independent, source-specific lanes. These queries discover candidate URLs only; no snippet or search hit is evidence.",
+    "lanes": {
+      "spain_channel_press": [
+        "channelpartner.es",
+        "itreseller.es",
+        "computing.es"
+      ],
+      "portugal_channel_press": [
+        "itchannel.pt"
+      ],
+      "cybersecurity_media": [
+        "revistasic.es",
+        "redseguridad.com"
+      ],
+      "technology_research": [
+        "idc.com",
+        "omdia.tech.informa.com",
+        "deloitte.com",
+        "pwc.es"
+      ],
+      "public_procurement": [
+        "contrataciondelestado.es",
+        "base.gov.pt",
+        "ted.europa.eu"
+      ],
+      "cyber_security_public": [
+        "incibe.es",
+        "ccn-cert.cni.es",
+        "cncs.gov.pt"
+      ]
+    },
+    "rotate_across_runs": true,
+    "max_domain_queries_per_target": {
+      "daily": 3,
+      "deep": 7,
+      "exhaustive": 10
+    }
+  },
+  "procurement_relevance": {
+    "principle": "Surface procurement only when the published need has explicit fit with Westcon Iberia networking, cybersecurity, cloud, data-center, observability, identity or automation domains.",
+    "include_terms": [
+      "cybersecurity",
+      "cyber security",
+      "ciberseguridad",
+      "cibersegurança",
+      "seguridad de la información",
+      "segurança da informação",
+      "firewall",
+      "siem",
+      "soc",
+      "xdr",
+      "edr",
+      "mdr",
+      "sase",
+      "sse",
+      "zero trust",
+      "iam",
+      "identity",
+      "identidad",
+      "identidade",
+      "mfa",
+      "pam",
+      "network",
+      "networking",
+      "redes",
+      "rede",
+      "lan",
+      "wan",
+      "sd-wan",
+      "wifi",
+      "wi-fi",
+      "switching",
+      "routing",
+      "router",
+      "switch",
+      "nac",
+      "ddi",
+      "dns",
+      "dhcp",
+      "cloud",
+      "nube",
+      "nuvem",
+      "data center",
+      "datacenter",
+      "centro de datos",
+      "centro de dados",
+      "observability",
+      "observabilidad",
+      "observabilidade",
+      "monitoring",
+      "monitorización",
+      "monitorização",
+      "load balancer",
+      "balanceador",
+      "adc",
+      "api security",
+      "backup",
+      "recovery",
+      "virtualization",
+      "virtualización",
+      "kubernetes",
+      "container",
+      "automation",
+      "automatización",
+      "automação"
+    ],
+    "exclude_terms": [
+      "printer",
+      "impresora",
+      "impressora",
+      "toner",
+      "cartucho",
+      "photocopier",
+      "fotocopiadora",
+      "mobiliario de oficina",
+      "office furniture",
+      "water meter",
+      "contador de agua",
+      "contador de água",
+      "smartphone",
+      "telefonía móvil de usuario",
+      "telemóvel",
+      "laptop",
+      "portátil",
+      "ordenador personal",
+      "desktop pc"
+    ]
   }
 }

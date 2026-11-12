@@ -9,6 +9,7 @@ class QueryBudgetPriorityTests(unittest.TestCase):
         self.assertEqual(len(queries),3)
         self.assertEqual(queries[0],atomic[0])
         self.assertIn('"VASS" "Extreme" partner',queries)
+        self.assertIn('"VASS" site:example.org',queries)
 
     def test_budget_and_dedup(self):
         self.assertEqual(_prioritize_research_queries(['A','A'],['B','C'],0),[])

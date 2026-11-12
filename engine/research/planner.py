@@ -16,7 +16,7 @@ from urllib.parse import urlsplit
 from typing import Any
 
 from ..gap_intelligence import FAMILY_BY_FIELD as GAP_FAMILY_BY_FIELD
-from ..settings import RESEARCH_PROFILES
+from ..settings import RESEARCH_POLICY, RESEARCH_PROFILES
 
 # Backwards-compatible export used by engine.research.sources.
 FAMILY_BY_FIELD = dict(GAP_FAMILY_BY_FIELD)
@@ -198,6 +198,94 @@ PRESENTATION_SEARCH_CONTEXT = {
     "technology_signals": ("project", "deployment", "tender"),
     "identified_vendors": ("awarded", "contract", "deployment"),
 }
+
+SYSTEMATIC_FIELD_TERMS = {
+    "vendor_relations": ("partner", "alianza", "parceiro"),
+    "westcon_overlap": ("partner", "portfolio", "fabricante"),
+    "competitor_vendor_overlap": ("portfolio", "vendor", "fabricante"),
+    "services": ("managed services", "servicios", "serviços"),
+    "capabilities": ("cybersecurity networking cloud", "ciberseguridad redes nube", "cibersegurança rede nuvem"),
+    "specializations": ("certification", "especialización", "especialização"),
+    "public_cases": ("customer story", "caso de éxito", "caso de sucesso"),
+    "technology_signals": ("cybersecurity networking cloud", "ciberseguridad redes nube", "cibersegurança rede nuvem"),
+    "identified_vendors": ("technology vendor", "fabricante tecnología", "fabricante tecnologia"),
+    "request_or_need": ("licitación tecnología", "concurso tecnologia", "tender technology"),
+    "hiring_signals": ("cybersecurity networking cloud jobs", "empleo tecnología", "emprego tecnologia"),
+    "revenue": ("annual report revenue", "resultados ingresos", "relatório receita"),
+}
+
+
+def systematic_discovery_queries(
+    section: str,
+    entity: str,
+    fields: list[str],
+    *,
+    profile: str,
+) -> list[str]:
+    """Build systematic source-lane searches that complement exact revalidation.
+
+    These are discovery instructions only. A result still has to be fetched,
+    semantically bound to the subject and exact value, and pass provenance gates.
+    """
+    policy = RESEARCH_POLICY.get("systematic_discovery") or {}
+    if not policy.get("enabled", True):
+        return []
+    lanes = policy.get("lanes") or {}
+    max_by_profile = policy.get("max_domain_queries_per_target") or {}
+    limit = max(0, int(max_by_profile.get(profile) or 0))
+    if limit <= 0:
+        return []
+
+    if section == "clients_public":
+        lane_names = ("public_procurement", "cyber_security_public", "cybersecurity_media")
+    elif section in {"manufacturers", "distributors", "integrators"}:
+        lane_names = ("spain_channel_press", "portugal_channel_press", "cybersecurity_media", "cyber_security_public")
+    elif section == "clients_private":
+        lane_names = ("spain_channel_press", "portugal_channel_press", "technology_research", "cybersecurity_media")
+    elif section in {"trends", "architectures"}:
+        lane_names = ("technology_research", "cybersecurity_media", "cyber_security_public")
+    else:
+        lane_names = tuple(lanes)
+
+    terms: list[str] = []
+    for field in fields:
+        for term in SYSTEMATIC_FIELD_TERMS.get(field, ()):
+            if term not in terms:
+                terms.append(term)
+    if not terms:
+        terms = ["cybersecurity networking cloud"]
+
+    output: list[str] = []
+    # Breadth-first across domains so the budget samples independent publishers
+    # instead of spending every query on one site or one vocabulary variant.
+    selected_domains: list[str] = []
+    lane_domains = [
+        [str(domain).strip() for domain in (lanes.get(lane_name) or []) if str(domain).strip()]
+        for lane_name in lane_names
+    ]
+    # Round-robin lanes: a daily 3-query budget still samples different
+    # geographies/source classes instead of three publishers from one lane.
+    domain_depth = 0
+    while any(domain_depth < len(bucket) for bucket in lane_domains):
+        for bucket in lane_domains:
+            if domain_depth < len(bucket):
+                domain = bucket[domain_depth]
+                if domain not in selected_domains:
+                    selected_domains.append(domain)
+        domain_depth += 1
+    depth = 0
+    while len(output) < limit and selected_domains:
+        for index, domain in enumerate(selected_domains):
+            term = terms[(depth + index) % len(terms)]
+            query = f'"{entity}" {term} site:{domain}'
+            if query not in output:
+                output.append(query)
+                if len(output) >= limit:
+                    break
+        depth += 1
+        if depth >= max(1, len(terms)):
+            break
+    return output
 
 
 def presentation_signal_queries(entity: str, targets: dict[str, list], limit: int = 8) -> list[str]:
@@ -398,7 +486,13 @@ def plan(
             item["entity"], item["target_values_by_field"], item["revalidation_seeds"]
         ) if item["target_values_by_field"] or item["revalidation_seeds"] else []
         contextual = presentation_signal_queries(item["entity"], item["target_values_by_field"])
-        item["query_hints"] = list(dict.fromkeys(exact + contextual + item["query_hints"]))[:24]
+        systematic = systematic_discovery_queries(
+            item["section"], item["entity"], item["fields"], profile=profile
+        )
+        query_cap = {"daily": 48, "deep": 72, "exhaustive": 96}.get(profile, 48)
+        item["query_hints"] = list(dict.fromkeys(
+            exact + contextual + systematic + item["query_hints"]
+        ))[:query_cap]
         item["priority"] = round(item["priority"], 4)
         output.append(item)
 
