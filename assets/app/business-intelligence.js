@@ -205,10 +205,13 @@ function uniqueNews(rows,section='manufacturers'){
 
 
 function technicalNews(article){
- const value=normalize([article?.title||'',article?.summary||''].join(' '));
- if(!value)return false;
- return classifyNeed(value).fit ||
-  /\b(inteligencia artificial|ia generativa|agentic ai|machine learning|deep learning|llms?|gpu|inferencia de ia|cibergal|5g empresarial|5g industrial|digital workplace|observabilidad|sre|automatizacion de redes|automacao de redes|data governance|gobierno del dato|data center|zero trust)\b/i.test(value);
+ // The article headline, not the surrounding evidence summary, must identify
+ // the technology. Otherwise an unrelated municipal or corporate story can
+ // inherit the technology category of its parent entity.
+ const headline=normalize(article?.title||'');
+ if(!headline)return false;
+ return classifyNeed(headline).fit ||
+  /\b(inteligencia artificial|ia generativa|agentic ai|machine learning|deep learning|llms?|gpu|inferencia de ia|ciber\.?gal|5g industrial|5g empresarial|software libre|open source|infraestructura digital|transformacion digital|digital workplace|observabilidad|sre|automatizacion de redes|automacao de redes|data governance|gobierno del dato|centro de datos|zero trust|cloud computing|ciberseguridad|seguridad informatica)\b/i.test(headline);
 }
 function relatedArchitectureNews(architectures, trendPublications){
  const excluded=new Set(['architecture','arquitectura','arquitecturas','security','seguridad','network','networking','cloud','infraestructura','infrastructure','platform','platforms','tecnologia','technology','digital','services','servicios','hybrid','data','center','centro','empresarial','solutions','soluciones','integracion','convergencia','inteligencia','artificial','modernizacion','ia']);
