@@ -6,6 +6,8 @@ from typing import Any, Iterable, Mapping
 from urllib.parse import urlparse
 
 from .planner import FAMILY_BY_FIELD
+from ..model import canonical
+from ..storage import read_json
 
 
 @dataclass(frozen=True)
@@ -149,6 +151,29 @@ def seeds_for(
     if isinstance(target, Mapping):
         families.update(str(value) for value in (target.get("source_families") or []) if str(value))
     found: dict[tuple[str, str], SourceSeed] = {}
+
+    # Entity-bound official linecard leads can bridge the cold-start problem:
+    # an otherwise unverified distributor may have no official evidence at all
+    # and would never be routed to its manufacturer list. These are only URLs
+    # for live fetching, never accepted facts.
+    if section == "distributors" and any(
+        f in set(fields) for f in
+        ("vendor_relations", "westcon_overlap", "competitor_vendor_overlap")
+    ):
+        registry = read_json("config/current/linecard_source_leads.json", {})
+        for entry in (registry.get("entries") or []):
+            if canonical(entry.get("name")) != canonical(row.get("name")):
+                continue
+            url = str(entry.get("url") or "")
+            if not url.startswith("https://"):
+                continue
+            seed = SourceSeed(
+                url=url, family=str(entry.get("family") or "partners"),
+                official=True, source_grade="A",
+                source_type="official-linecard-discovery-lead",
+                source_name=str(row.get("name") or "Fuente oficial"),
+            )
+            found.setdefault((url, seed.family), seed)
 
     # First: exact historical/public URLs attached to a pending validation claim.
     for seed in _gap_seed_hints(target):
