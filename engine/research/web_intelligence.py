@@ -1545,9 +1545,12 @@ def run(
                 backlog = len(gaps.get("gaps") or [])
                 ceiling = int(growth_policy.get("pause_above_gaps") or 12000)
                 if backlog >= ceiling:
-                    structured_growth_budget = 0
-                    stats["structured_growth_paused_for_debt"] = True
+                    floor_by_profile = growth_policy.get("minimum_growth_under_debt") or {}
+                    growth_floor = max(0, int(floor_by_profile.get(profile) or 0))
+                    structured_growth_budget = min(structured_growth_budget, growth_floor)
+                    stats["structured_growth_restricted_for_debt"] = True
                     stats["structured_growth_backlog"] = backlog
+                    stats["structured_growth_floor"] = growth_floor
             stats["structured_entity_budget"] = structured_growth_budget
             notices = fetch_notices(
                 fetcher.session,
