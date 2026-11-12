@@ -1,4 +1,4 @@
-// App v6.3.0
+// App v6.4.0
 (() => {
   'use strict';
   const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
@@ -13,7 +13,7 @@
   const toast = msg => { const el=$('#toast'); if(!el) return; el.textContent=msg; el.classList.add('show'); clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove('show'),2600); };
 
   const PUBLIC_SECTIONS=['manufacturers','distributors','integrators','clients_public','clients_private','trends','architectures'];
-  const VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors','manufacturers'],integradores:['integrators','manufacturers'],clientes:['clients_public','clients_private'],tendencias:['trends','manufacturers'],arquitecturas:['architectures']};
+  const VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors','manufacturers'],integradores:['integrators','manufacturers'],clientes:['clients_public','clients_private'],tendencias:['trends','manufacturers'],arquitecturas:['architectures','trends']};
   const CRITERIA_VIEW_SECTIONS={fabricantes:['manufacturers'],mayoristas:['distributors'],integradores:['integrators'],clientes:['clients_public','clients_private'],tendencias:['trends'],arquitecturas:['architectures']};
   const CRITERIA_SECTION_LABELS={manufacturers:'Fabricantes',distributors:'Mayoristas',integrators:'Integradores',clients_public:'Clientes públicos',clients_private:'Clientes privados',trends:'Tendencias',architectures:'Arquitecturas'};
   const RESEARCH_CRITERIA_PLAYBOOKS={
@@ -201,7 +201,7 @@
     $('#distributorIncludeUnconfirmed')?.addEventListener('change',renderDistributors);
     $('#publicClientSearch')?.addEventListener('input', renderClients);
     $('#publicClientScope')?.addEventListener('change', renderClients);
-    for(const [section,selector] of [['manufacturers','#manufacturerNewsSearch'],['distributors','#distributorNewsSearch'],['integrators','#integratorNewsSearch'],['clients','#clientNewsSearch']]){
+    for(const [section,selector] of [['manufacturers','#manufacturerNewsSearch'],['distributors','#distributorNewsSearch'],['integrators','#integratorNewsSearch'],['clients','#clientNewsSearch'],['trends','#trendNewsSearch'],['architectures','#architectureNewsSearch']]){
       $(selector)?.addEventListener('input',()=>renderEntityNews(section,state.newsRows?.[section]||[]));
     }
     $('#procurementDownloadCsv')?.addEventListener('click',()=>exportProcurement(state.downloadableNotices||[],'csv'));
@@ -468,7 +468,7 @@
       const more=elements.length>lim?'<button type="button" class="more-tags" data-more-tags data-label="… +'+(elements.length-lim)+'">… +'+(elements.length-lim)+'</button>':'';
       return '<div class="tag-list">'+tags+more+'</div>';
     }
-    if(CATEGORICAL_FIELDS.has(columnId)){
+    if(CATEGORICAL_FIELDS.has(columnId)||columnId==='revenue'){
       const verified=atomicCurrentProof(itemFor(field,value,0)?.evidence)||atomicCurrentProof(field?.evidence);
       return '<div class="tag-list categorical-tags"><span class="tag-entry">'+
         (verified?tagHtml(field,value,0):pendingTagHtml(field,value,0))+'</span></div>';
@@ -529,7 +529,8 @@
     return {...field,value:isList?kept:(kept[0]??''),items};
   }
   function fieldFor(row,col){
-    if(col?.ui_remainder_of_linecard)return linecardRemainderField(row);
+    if(col?.id==='linecard_remainder'||col?.ui_remainder_of_linecard)return linecardRemainderField(row);
+    if(col?.id==='mapped_competitor_vendors')return window.WestconBusiness?.verifiedCompetitionFor(row,state.data?.manufacturers||[])||null;
     const base=col?.virtual?virtualField(row,col):(row?.fields?.[col?.id]||null);
     return col?.id==='revenue'?strictRevenueField(base,col):base;
   }
@@ -570,7 +571,12 @@
   function coverageOverview(schema,rows,view){
     const visible=schema.filter(c=>c.hidden!==true&&(c.essential||!hiddenCols(view).includes(c.id)));
     const prominent=visible.filter(c=>prominentColumn(c,rows,view)).length;
-    return `<div class="coverage-overview"><span><b>Vista ${evidenceFirstMode(view)?'esencial':'completa'}</b> · ${prominent} de ${visible.length} columnas seleccionadas · los campos poco poblados se conservan y pueden explorarse</span><button type="button" data-evidence-first="${esc(view)}">${evidenceFirstMode(view)?'Ver todas las columnas':'Priorizar datos disponibles'}</button></div>`;
+    const snapshot=state.manifest?.meta?.source_coverage?.[view];
+    const sourced=Number(snapshot?.sourced),total=Number(snapshot?.claims);
+    const sourceSummary=Number.isFinite(sourced)&&Number.isFinite(total)&&total>0
+      ?` · Cobertura documental del conjunto: ${sourced.toLocaleString('es-ES')} / ${total.toLocaleString('es-ES')} afirmaciones (${Math.round(sourced*100/total)}%), no equivale a cobertura de mercado`
+      :' · Cobertura documental global aún no disponible';
+    return `<div class="coverage-overview"><span><b>Vista ${evidenceFirstMode(view)?'esencial':'completa'}</b> · ${prominent} de ${visible.length} columnas seleccionadas${sourceSummary} · corte ${esc((state.manifest?.generated_at||'sin fecha').slice(0,10))}</span><button type="button" data-evidence-first="${esc(view)}">${evidenceFirstMode(view)?'Ver todas las columnas':'Priorizar datos disponibles'}</button></div>`;
   }
   function activeColumns(schema, rows, view){
     let cols=schema.filter(col=>col.hidden!==true&&(col.essential||!hiddenCols(view).includes(col.id))&&(col.show_when_empty===true||rows.some(row=>hasValue(fieldFor(row,col)?.value)))&&prominentColumn(col,rows,view));
@@ -641,16 +647,25 @@
     if(action==='report'){openFilteredReport(view);return;}
     persistFilter(view);state.analysisOpen[view]=true;renderCurrent(view);
   }
-  function missingMarkup(col){
-    const label='';
-    return '<span class="research-gap" title="Sin evidencia pública suficiente en este campo. No implica que la entidad carezca de esta capacidad.">'+esc(label)+'</span>';
+  function missingMarkup(col,row=null){
+    const type=col?.id;
+    if(row&&['competitor_vendor_overlap','mapped_competitor_vendors'].includes(type)){
+      const vendors=window.WestconBusiness?.supportedTexts(row?.fields?.vendor_relations)||[];
+      const info=vendors.length?'Cruce competitivo sin evidencia suficiente · '+vendors.length+' fabricantes acreditados en el linecard':'Linecard de fabricantes pendiente de acreditar';
+      return '<span class="tag confidence-tag unverified missing-explained" title="La falta de una comparación no demuestra ausencia de competencia"><span class="tag-label">'+esc(info)+'</span><small>?</small></span>';
+    }
+    if(row&&type==='revenue')
+      return '<span class="tag confidence-tag unverified missing-explained" title="No existe una cifra que cumpla entidad, concepto financiero, importe/moneda, año y fuente"><span class="tag-label">Facturación pública por acreditar</span><small>?</small></span>';
+    if(row&&type==='linecard_remainder')
+      return '<span class="tag confidence-tag unverified missing-explained" title="No hay marcas adicionales con evidencia; no implica un catálogo completo"><span class="tag-label">Sin otras marcas acreditadas</span><small>?</small></span>';
+    return '<span class="research-gap" title="Sin evidencia pública suficiente en este campo. No implica que la entidad carezca de esta capacidad.">Por investigar</span>';
   }
   function sortedRows(rows,view){const s=state.sort[view];if(!s)return rows;const col=(state.data.schemas[view]||[]).find(c=>c.id===s.col)||{id:s.col};return [...rows].sort((a,b)=>valueText(filterAccessor(a,s.col,col)??a.name).localeCompare(valueText(filterAccessor(b,s.col,col)??b.name),'es',{numeric:true})*s.dir);}
   function toggleSort(view,col){if(!view)return;const cur=state.sort[view];state.sort[view]={col,dir:cur?.col===col?-cur.dir:1};renderCurrent(view);}
   function reorderColumn(view,from,to){if(!view||from===to)return;const schema=state.data.schemas[view]||[];let order=(state.columnOrder[view]||schema.map(x=>x.id)).filter(x=>schema.some(c=>c.id===x));const a=order.indexOf(from),b=order.indexOf(to);if(a<0||b<0)return;order.splice(b,0,order.splice(a,1)[0]);state.columnOrder[view]=order;localStorage.setItem(`westcon-cols-${view}`,JSON.stringify(order));renderCurrent(view);}
   function renderCurrent(view){({manufacturers:renderManufacturers,integrators:renderIntegrators,distributors:renderDistributors,clients_public:renderClients,clients_private:renderClients}[view]||(()=>{}))();}
   function tableHtml(rows, schema, emptyText, view, baseRows=rows){
-    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';const relevance=view==='distributors'?(state.distributorReasons?.get(String(row.id||row.name))||'Vínculo competitivo por acreditar'):'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>${relevance?`<small class="distributor-relevance-reason">${esc(relevance)}</small>`:''}`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table',col.id):missingMarkup(col)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
+    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';const relevance=view==='distributors'?(state.distributorReasons?.get(String(row.id||row.name))||'Vínculo competitivo por acreditar'):'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>${relevance?`<small class="distributor-relevance-reason">${esc(relevance)}</small>`:''}`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table',col.id):missingMarkup(col,row)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
     return `<div class="table-shell">${columnChooser(schema,view,baseRows)}${coverageOverview(schema,baseRows,view)}<div class="table-scroll">${body}</div></div>${analysisPanel(view,schema,baseRows,rows)}`;
   }
   function scopeMatch(row, scope){
@@ -664,7 +679,9 @@
     distributors:{host:'#distributorNews',search:'#distributorNewsSearch',title:'Noticias de mayoristas tecnológicos',description:'Nuevos fabricantes, acuerdos de distribución y movimientos relevantes respaldados por publicaciones.'},
     manufacturers:{host:'#manufacturerNews',search:'#manufacturerNewsSearch',title:'Noticias y movimientos de los fabricantes',description:'Publicaciones acreditadas de fabricantes, vinculadas con sus fuentes.'},
     integrators:{host:'#integratorNews',search:'#integratorNewsSearch',title:'Actualidad de integradores y partners',description:'Noticias, proyectos y casos publicados con evidencia de cada entidad.'},
-    clients:{host:'#clientNews',search:'#clientNewsSearch',title:'Actualidad tecnológica de clientes',description:'Inversiones, proyectos y novedades tecnológicas documentadas de clientes públicos y privados.'}
+    clients:{host:'#clientNews',search:'#clientNewsSearch',title:'Actualidad tecnológica de clientes',description:'Publicaciones específicas de empresas y entidades públicas con fuentes comprobables; se distinguen de licitaciones y simples señales.'},
+    trends:{host:'#trendNews',search:'#trendNewsSearch',title:'Novedades e informes sobre tendencias',description:'Publicaciones, investigaciones y movimientos acreditados relacionados con las tendencias analizadas.'},
+    architectures:{host:'#architectureNews',search:'#architectureNewsSearch',title:'Novedades sobre arquitecturas',description:'Publicaciones y avances tecnológicos vinculados a arquitecturas y sus componentes.'}
   };
   function renderEntityNews(section,rows){
     const cfg=NEWS_VIEWS[section],node=$(cfg?.host||'');
@@ -672,12 +689,19 @@
     state.newsRows=state.newsRows||{};
     state.newsRows[section]=rows;
     const q=norm($(cfg.search)?.value||'');
-    const all=window.WestconBusiness.uniqueNews(rows,section);
+    const primary=window.WestconBusiness.uniqueNews(rows,section);
+    const related=section==='architectures'
+      ?window.WestconBusiness.relatedArchitectureNews(rows,
+         window.WestconBusiness.uniqueNews(state.data?.trends||[],'trends'))
+      :[];
+    const all=section==='clients'
+      ?primary.filter(window.WestconBusiness.technicalNews)
+      :[...primary,...related].filter((n,i,items)=>items.findIndex(m=>m.vendor===n.vendor&&m.url===n.url)===i);
     const news=q?all.filter(n=>norm([n.vendor,n.title,n.summary,n.source].join(' ')).includes(q)):all;
     const expanded=Boolean(state.newsExpanded?.[section]);
     const visible=expanded?news:news.slice(0,18);
-    const fmt=date=>date?new Date(date).toLocaleDateString('es-ES',{year:'numeric',month:'short',day:'numeric'}):'Fecha de publicación no acreditada';
-    const cards=visible.map(n=>'<article class="manufacturer-news-card"><div class="news-card-meta"><span>'+esc(n.vendor)+'</span><time>'+esc(fmt(n.date))+'</time></div><h3>'+esc(n.title)+'</h3><p>'+esc(n.summary.length>190?n.summary.slice(0,187)+'…':n.summary)+'</p><div class="news-card-foot"><small>'+esc(n.source)+'</small><a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">Leer publicación ↗</a></div></article>').join('');
+    const fmt=date=>date?new Date(date).toLocaleDateString('es-ES',{year:'numeric',month:'short',day:'numeric'}):'Sin fecha publicada';
+    const cards=visible.map(n=>'<article class="manufacturer-news-card"><div class="news-card-meta"><span>'+esc(n.vendor)+'</span><time>'+esc(fmt(n.date))+'</time></div><h3>'+esc(n.title)+'</h3>'+(n.related?'<small class="news-source-relation">Relacionado por tema · no acredita implantación</small>':'')+'<p>'+esc(n.summary.length>190?n.summary.slice(0,187)+'…':n.summary)+'</p><div class="news-card-foot"><small>'+esc(n.source)+'</small><a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">Leer publicación ↗</a></div></article>').join('');
     node.innerHTML='<div class="news-heading"><div><span class="eyebrow">ACTUALIDAD ACREDITADA</span><h2>'+esc(cfg.title)+'</h2><p>'+esc(cfg.description)+' La búsqueda de noticias es independiente de la tabla.</p></div><strong>'+news.length+(q?' coincidencias':' publicaciones')+'</strong></div>'+
       (visible.length?'<div class="manufacturer-news-grid">'+cards+'</div>':'<p class="news-empty">No hay publicaciones con evidencia específica para esta búsqueda. Los indicios no acreditados no se publican como noticias.</p>')+
       (news.length>18?'<button class="news-more" data-news-more="'+esc(section)+'" type="button">'+(expanded?'Mostrar menos':'Ver todas las '+news.length+' publicaciones')+'</button>':'');
@@ -755,7 +779,7 @@
     const status=$('#procurementFilterStatus');if(status)status.textContent=(publicAll.length-publicPortfolioAll.length)+' registros excluidos por falta de encaje tecnológico acreditado. '+publicRows.length+' expedientes disponibles para descargar.';
     setCount('#publicClientCount',publicRows.length,publicPortfolioAll.length,'oportunidades públicas con encaje de portfolio');
     setCount('#privateClientCount',privateRows.length,privateAll.length,'grandes cuentas privadas');
-    renderEntityNews("clients",[...publicRows,...privateRows]);
+    renderEntityNews("clients",[...publicAll,...privateAll]);
     setCount('#clientCount',publicRows.length+privateRows.length,publicPortfolioAll.length+privateAll.length,'clientes / oportunidades relevantes');
   }
 
@@ -803,16 +827,34 @@
     await pptx.writeFile({fileName:`Westcon_Iberia_${model.view}_${model.entityCount}_resultados_v4.3.1.pptx`});closeModal('filteredReportModal');toast('PowerPoint generado con el subconjunto filtrado');
   }
 
-  function cardField(col,f,context='card'){if(!f||!hasValue(f.value))return '';const help=col.clarify?`<span class="help-wrap card-help"><span>${esc(col.label)}</span><button class="help-icon" type="button" aria-label="Aclaración de ${esc(col.label)}">?</button><span class="help-tip">${esc(col.help||'')}</span></span>`:esc(col.label);return `<div class="card-field"><label>${help}</label>${renderValue(f,null,context)}</div>`;}
+  function cardField(col,f,context='card'){if(!f||!hasValue(f.value))return '';const help=col.clarify?`<span class="help-wrap card-help"><span>${esc(col.label)}</span><button class="help-icon" type="button" aria-label="Aclaración de ${esc(col.label)}">?</button><span class="help-tip">${esc(col.help||'')}</span></span>`:esc(col.label);return `<div class="card-field"><label>${help}</label>${renderValue(f,null,context,col.id)}</div>`;}
   function cardGrid(rows, schema, forceAll=false, context='card'){
     const cols=forceAll?schema:activeColumns(schema,rows,'cards');
     const cardClass=context==='trend'?'intel-card trend-card':'intel-card';
     return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable({value:row.name,evidence:row.evidence||[],confidence:.9,confidence_band:'high'},`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>cardField(c,fieldFor(row,c),context)||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c)}</div>`).join('')}</article>`).join('');
   }
+  function renderSectionCoverage(section,selector){
+    const el=$(selector);if(!el)return;
+    const coverage=state.manifest?.meta?.source_coverage?.[section];
+    const total=Number(coverage?.claims),sourced=Number(coverage?.sourced);
+    const date=String(state.manifest?.generated_at||'').slice(0,10);
+    if(!Number.isFinite(total)||total<1||!Number.isFinite(sourced)){
+      el.textContent='Auditoría de evidencia no disponible en el manifiesto publicado.';
+      return;
+    }
+    el.innerHTML='<strong>Auditoría documental</strong> · '+sourced.toLocaleString('es-ES')+
+      ' afirmaciones con fuente / '+total.toLocaleString('es-ES')+
+      ' ('+Math.round(sourced*100/total)+'%) · '+(total-sourced).toLocaleString('es-ES')+
+      ' sin vínculo de fuente · corte '+esc(date)+
+      '<small>No es una estimación de cuota ni cobertura del mercado. Cada campo debe conservar su prueba individual.</small>';
+  }
+
   function renderTrends(){
     const q=norm($('#trendSearch')?.value), all=state.data.trends||[], rows=all.filter(r=>!q||rowBlob(r).includes(q));
     $('#trendGrid').innerHTML=cardGrid(rows,state.data.schemas.trends,true,'trend')||'<div class="empty-state">No hay tendencias con ese filtro.</div>';
+    renderSectionCoverage('trends','#trendCoverageAudit');
     setCount('#trendCount',rows.length,all.length,'tendencias'); renderTrendAnalytics(rows);
+    renderEntityNews('trends',all);
   }
   function trendActorData(limit=32){
     const actors=new Map(), portfolio=new Set((state.data.manufacturers||[]).map(x=>norm(x.name)));
@@ -849,7 +891,9 @@
   function renderArchitectures(){
     const q=norm($('#architectureSearch')?.value), all=state.data.architectures||[], rows=all.filter(r=>!q||rowBlob(r).includes(q));
     $('#architectureGrid').innerHTML=cardGrid(rows,state.data.schemas.architectures)||'<div class="empty-state">No hay arquitecturas con ese filtro.</div>';
+    renderSectionCoverage('architectures','#architectureCoverageAudit');
     setCount('#architectureCount',rows.length,all.length,'arquitecturas');
+    renderEntityNews('architectures',all);
   }
 
   function localDateTime(value){

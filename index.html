@@ -7,23 +7,24 @@
 <meta name="description" content="Westcon Iberia · Business Intelligence · Fabricantes, mayoristas, integradores, clientes, tendencias y arquitecturas con trazabilidad por campo.">
 <title>Westcon Iberia · Observatorio Tecnológico</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/app/intelligence.css?v=6.3.0">
+<link rel="stylesheet" href="assets/app/intelligence.css?v=6.4.0">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.13.0/dist/pptxgen.bundle.js"></script>
-<script defer src="assets/app/filter_engine.js?v=6.3.0"></script>
-<script defer src="assets/app/report_engine.js?v=6.3.0"></script>
+<script defer src="assets/app/filter_engine.js?v=6.4.0"></script>
+<script defer src="assets/app/report_engine.js?v=6.4.0"></script>
 <script defer src="assets/app/observatory.js?v=4.4.0"></script>
 <script defer src="assets/app/commercial.js?v=20261026"></script>
-<script defer src="assets/app/business-intelligence.js?v=6.3.0"></script>
-<script defer src="assets/app/intelligence.js?v=6.3.0"></script>
-<link rel="stylesheet" href="assets/app/command-center.css?v=1">
-<script defer src="assets/app/command-center.js?v=1"></script>
+<script defer src="assets/app/business-intelligence.js?v=6.4.0"></script>
+<script defer src="assets/app/intelligence.js?v=6.4.0"></script>
+<link rel="stylesheet" href="assets/app/command-center.css?v=6.4.0">
+<script defer src="assets/app/audit-intelligence.js?v=6.4.0"></script>
+<script defer src="assets/app/command-center.js?v=6.4.0"></script>
 </head>
 <body>
 <header class="appbar">
   <div class="brand">
     <div class="brandmark" aria-hidden="true"><span></span><span></span><span></span></div>
-    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v6.3.0</small></div>
+    <div><b>WESTCON IBERIA</b><small>Business Intelligence · v6.4.0</small></div>
   </div>
   <nav id="tabs" aria-label="Áreas de inteligencia">
     <button class="active" id="homeNav" type="button">Visión general</button>
@@ -74,7 +75,7 @@
         <button type="button" data-cc-go="arquitecturas"><b>Arquitecturas</b><span>Soluciones multivendor y encaje tecnológico</span><i>Explorar</i></button>
       </div>
     </section>
-    <section class="cc-panel cc-integrity"><span class="cc-eyebrow">RIGOR Y TRAZABILIDAD</span><h2>Lo que sabemos y lo que falta</h2><p>La calidad no se mide sumando celdas vacías. Distinguimos afirmaciones que necesitan fuentes, cálculos que necesitan datos y atributos sin información.</p><div id="ccDebt" class="cc-debt">Cargando diagnóstico…</div><details><summary>Ver la auditoría por área</summary><div id="ccAudit"></div></details></section>
+    <section class="cc-panel cc-integrity"><span class="cc-eyebrow">RIGOR Y TRAZABILIDAD</span><h2>Lo que sabemos y lo que falta</h2><p>La calidad no se mide sumando celdas vacías. Distinguimos afirmaciones que necesitan fuentes, cálculos que necesitan datos y atributos sin información.</p><div id="ccDebt" class="cc-debt">Cargando diagnóstico…</div><details><summary>Ver la auditoría por área</summary><div id="ccAudit" role="status" aria-live="polite"><p>Preparando auditoría por área, fuentes y fecha de publicación…</p></div></details></section>
   </div>
   <div class="cc-method"><b>Regla editorial</b><span>Una relación o capacidad se presenta como acreditada solo cuando existe evidencia específica. Las señales, inferencias y datos desconocidos se mantienen diferenciados.</span></div>
 </section>
@@ -176,12 +177,15 @@
       <div class="view-count" id="trendCount"></div>
     </div>
     <div class="toolbar single"><input id="trendSearch" type="search" placeholder="Buscar tendencia, área, métrica o fuente…"></div>
+    <div id="trendCoverageAudit" class="section-audit-strip" role="status"></div>
     <div id="trendGrid" class="card-grid"></div>
     <section class="trend-analytics" aria-label="Análisis visual de tendencias">
       <div class="analytics-intro"><div><span>LECTURA VISUAL</span><b>Dos vistas complementarias</b></div><p><strong>Trend Loop</strong> responde «¿en qué fase está cada tendencia y con qué velocidad avanza?». <strong>Vendor Arena</strong> responde «¿qué fabricantes aparecen de forma más amplia y mejor documentada en esas tendencias?». Ninguno de los dos gráficos representa cuota de mercado ni replica metodologías propietarias de consultoras.</p></div>
       <div id="trendLifecycleChart" class="analytics-panel"></div>
       <div id="vendorTrendMap" class="analytics-panel"></div>
     </section>
+    <div class="news-search-toolbar"><label for="trendNewsSearch"><span>Buscar novedades y publicaciones</span><input id="trendNewsSearch" type="search" placeholder="Filtrar tendencia, informe, estudio o tecnología…" autocomplete="off" aria-label="Buscar noticias de tendencias"></label></div>
+    <section id="trendNews" class="manufacturer-news" aria-label="Noticias y publicaciones acreditadas de tendencias"></section>
   </section>
 
   <section id="arquitecturas" class="view">
@@ -190,7 +194,10 @@
       <div class="view-count" id="architectureCount"></div>
     </div>
     <div class="toolbar single"><input id="architectureSearch" type="search" placeholder="Buscar arquitectura, fabricante, capa o tecnología…"></div>
+    <div id="architectureCoverageAudit" class="section-audit-strip" role="status"></div>
     <div id="architectureGrid" class="card-grid architecture-grid"></div>
+    <div class="news-search-toolbar"><label for="architectureNewsSearch"><span>Buscar novedades y publicaciones</span><input id="architectureNewsSearch" type="search" placeholder="Filtrar arquitectura, publicación o fabricante…" autocomplete="off" aria-label="Buscar noticias de arquitecturas"></label></div>
+    <section id="architectureNews" class="manufacturer-news" aria-label="Noticias y publicaciones acreditadas de arquitecturas"></section>
   </section>
 </main>
 

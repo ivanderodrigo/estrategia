@@ -1,4 +1,4 @@
-/* Westcon Iberia v6.3 — shared, conservative business-intelligence decisions.
+/* Westcon Iberia v6.4 — shared, conservative business-intelligence decisions.
    A keyword is a retrieval clue, never proof of a relationship or contract fit. */
 (function(root){
 'use strict';
@@ -110,21 +110,65 @@ function distributorContext(row,manufacturers=[]){
  };
 }
 
+function verifiedCompetitionFor(row,manufacturers=[]){
+ const vendorField=row?.fields?.vendor_relations||{};
+ const vendors=supportedTexts(vendorField);
+ const mapped=[];
+ for(const vendor of vendors){
+  const matched=[];
+  const vendorItem=(vendorField.items||[]).find(x=>sameBusinessName(x?.value,vendor));
+  if(!vendorItem?.evidence?.length)continue;
+  let sourceEvidence=[...vendorItem.evidence];
+  for(const manufacturer of manufacturers||[]){
+   const field=manufacturer?.fields?.competitors||{};
+   const competitor=supportedTexts(field).find(v=>sameBusinessName(v,vendor));
+   if(!competitor)continue;
+   const item=(field.items||[]).find(x=>sameBusinessName(x?.value,competitor));
+   if(!item?.evidence?.length)continue;
+   matched.push(manufacturer.name);
+   sourceEvidence=[...sourceEvidence,...item.evidence];
+  }
+  if(matched.length)mapped.push({
+   value:vendor,evidence:sourceEvidence,claim_type:'interpretation',
+   confidence:0.67,confidence_band:'medium',assertion_status:'DERIVADO',
+   qualifier:'Relación acreditada del actor con el fabricante y comparación acreditada con cada fabricante Westcon.',
+   competes_with_westcon:[...new Set(matched)],competition_mapping_status:'EVIDENCIADO'
+  });
+ }
+ return {value:mapped.map(x=>x.value),items:mapped,
+   evidence:mapped.flatMap(x=>x.evidence),confidence:0.67,
+   claim_type:'interpretation',assertion_status:'DERIVADO',
+   qualifier:'Cruce de dos relaciones con evidencia; no se deriva por compartir una categoría tecnológica.'};
+}
+
 const NEWS_FIELDS={
- manufacturers:['recent_signals'],
+ manufacturers:['recent_signals','analyst_signals'],
  distributors:['recent_signals','vendor_relations','acquisitions'],
- integrators:['recent_signals','public_cases','public_contracts'],
- clients:['recent_signals','investment_signals','public_projects','contracts']
+ integrators:['recent_signals','public_cases','public_contracts','alliances'],
+ clients:['recent_signals','investment_signals','public_projects','contracts','technology_signals','strategic_programs','request_or_need'],
+ trends:['recent_signals','sources','drivers','evolution','market_players','technology_signals','buyer_priorities'],
+ architectures:['recent_signals','sources','use_cases','vendors','layers','technology_signals','market_drivers']
 };
 function isPublicationUrl(href){
  try{
-  const path=new URL(href).pathname.toLowerCase();
-  const match=path.match(/\/(news|noticias|noticia|actualidad|novidades|press|press-releases|releases|comunicados|announcements|announcement|blog|insights|articles|case-studies|customer-stories|casos-de-exito|success-stories|media|prensa)(?:\/|$)/);
-  if(!match)return false;
-  const suffix=path.slice(match.index+match[0].length);
-  // A section homepage is never a publication (except a dated standalone announcement URL).
-  return suffix.replace(/\//g,'').length>=5 || /^(announcement|comunicados|releases)$/.test(match[1]);
+  const parsed=new URL(href),path=decodeURI(parsed.pathname).toLowerCase();
+  if(!['https:','http:'].includes(parsed.protocol)||/\.(pdf|zip|xlsx?|pptx?|docx?|xml|json|csv|jpg|png|gif|webp)$/i.test(path))return false;
+  // An individual article may be filed by topic, by pressroom or by date.
+  const folders=/(?:^|\/)(?:news|noticias?|actualidad|novidades|press|prensa|sala.de.prensa|press.releases?|releases?|comunicados?|announcements?|blog|insights|articles?|artigos?|actualites|research|reports?|estudios|publicaciones?|case.studies|casos.de.exito|success.stories|media|newsroom|comunicacao|comunicacion)(?:\/|$)/i;
+  const dated=/(?:^|\/)20(?:2[0-9]|3[0-5])\/(?:0?[1-9]|1[0-2])\/[a-z0-9][a-z0-9-]{7,}/i;
+  if(dated.test(path))return true;
+  const match=folders.exec(path);if(!match)return false;
+  const suffix=path.slice(match.index+match[0].length).replace(/^\/+|\/+$/g,'');
+  // Never treat a generic news landing page or a section index as a news item.
+  return suffix.length>=9 && /[a-z]/.test(suffix) && !/^(index|archive|archivo|archivo-de-noticias|recent-news|all|latest|tag|category|page)(\/|$)/.test(suffix);
  }catch(_){return false;}
+}
+function distinctEvidence(field,value){
+ if(!field)return [];
+ if(!Array.isArray(field.value))return field.evidence||[];
+ const item=(field.items||[]).find(x=>JSON.stringify(x?.value)===JSON.stringify(value));
+ // No guessing that one field-level link supports a different element of a list.
+ return item?.evidence||[];
 }
 function uniqueNews(rows,section='manufacturers'){
  const news=[],seen=new Set(),fields=NEWS_FIELDS[section]||NEWS_FIELDS.manufacturers;
@@ -132,29 +176,65 @@ function uniqueNews(rows,section='manufacturers'){
   const owner=String(row?.name||'').trim();
   if(!owner)continue;
   for(const fieldName of fields){
-   const field=row?.fields?.[fieldName];
-   if(!field)continue;
+   const field=row?.fields?.[fieldName];if(!field)continue;
    const values=Array.isArray(field.value)?field.value:[field.value];
    for(const value of values){
-    if(!value||typeof value!=='string')continue;
-    const item=Array.isArray(field.value)?(field.items||[]).find(x=>x.value===value):field;
-    const evidence=(item?.evidence||[]).filter(ev=>fieldProof({evidence:[ev]})&&isPublicationUrl(safeUrl(ev.url)));
-    for(const ev of evidence){
-     const url=safeUrl(ev.url),title=String(ev.title||value).trim();
-     if(title.length<12||/^(noticias|news|press releases?|actualidad|blog|inicio|home|casos de exito)$/i.test(title))continue;
+    if(value===null||value===undefined||value==='')continue;
+    const supportive=distinctEvidence(field,value).filter(ev=>fieldProof({evidence:[ev]})&&isPublicationUrl(safeUrl(ev.url)));
+    for(const ev of supportive){
+     const url=safeUrl(ev.url);
+     const fallback=typeof value==='string'?value:'';
+     const title=String(ev.title||fallback).trim();
+     if(title.length<16||title.length>240||/^(noticias?|news|press releases?|actualidad|blog|inicio|home|casos de exito|latest updates|todas las noticias)$/i.test(title))continue;
      const key=normalize(owner)+'|'+url.toLowerCase();
      if(seen.has(key))continue;
      seen.add(key);
-     const publicationDate=ev.published_at||ev.published_date||ev.date||'';
-     const stamp=Date.parse(publicationDate)||0;
-     news.push({vendor:owner,title,url,date:stamp,dateLabel:publicationDate,source:ev.source||'Fuente pública',summary:value,field:fieldName});
+     // 'date' may be an evidence/retrieval date, not a publication date.
+     const pubDate=ev.published_at||ev.published_date||ev.date_published||'';
+     const stamp=Number.isFinite(Date.parse(pubDate))?Date.parse(pubDate):0;
+     const summary=typeof value==='string' ? value : title;
+     news.push({vendor:owner,title,url,date:stamp,dateLabel:pubDate,
+       source:ev.source||'Fuente pública',summary,field:fieldName,
+       publicationDateVerified:stamp>0});
     }
    }
   }
  }
  return news.sort((a,b)=>b.date-a.date||a.vendor.localeCompare(b.vendor,'es')||a.title.localeCompare(b.title,'es'));
 }
-const api={normalize,classifyNeed,classifyNotice,supportedTexts,safeUrl,uniqueNews,isPublicationUrl,distributorContext,sameBusinessName};
+
+
+function technicalNews(article){
+ // The article headline, not the surrounding evidence summary, must identify
+ // the technology. Otherwise an unrelated municipal or corporate story can
+ // inherit the technology category of its parent entity.
+ const headline=normalize(article?.title||'');
+ if(!headline)return false;
+ return classifyNeed(headline).fit ||
+  /\b(inteligencia artificial|ia generativa|agentic ai|machine learning|deep learning|llms?|gpu|inferencia de ia|ciber\.?gal|5g industrial|5g empresarial|software libre|open source|infraestructura digital|transformacion digital|digital workplace|observabilidad|sre|automatizacion de redes|automacao de redes|data governance|gobierno del dato|centro de datos|zero trust|cloud computing|ciberseguridad|seguridad informatica)\b/i.test(headline);
+}
+function relatedArchitectureNews(architectures, trendPublications){
+ const excluded=new Set(['architecture','arquitectura','arquitecturas','security','seguridad','network','networking','cloud','infraestructura','infrastructure','platform','platforms','tecnologia','technology','digital','services','servicios','hybrid','data','center','centro','empresarial','solutions','soluciones','integracion','convergencia','inteligencia','artificial','modernizacion','ia']);
+ const matches=[],seen=new Set();
+ for(const row of architectures||[]){
+  const owner=String(row?.name||'').trim();if(!owner)continue;
+  const tokens=normalize(owner).replace(/[^\p{L}\p{N}\s]/gu,' ').split(/\s+/).filter(t=>t.length>=3&&!excluded.has(t));
+  if(!tokens.length)continue;
+  for(const article of trendPublications||[]){
+   const subject=' '+normalize(article.title||'').replace(/[^\p{L}\p{N}\s]/gu,' ')+' ';
+   if(!tokens.some(t=>subject.includes(' '+t+' ')))continue;
+   const key=normalize(owner)+'|'+article.url.toLowerCase();
+   if(seen.has(key))continue;
+   seen.add(key);
+   matches.push({...article,vendor:owner,related:true,
+    summary:'Referencia tecnológica relacionada con '+owner+'. '+article.title,
+    originalTopic:article.vendor,field:'referencia-tematica'});
+  }
+ }
+ return matches.sort((a,b)=>b.date-a.date||a.vendor.localeCompare(b.vendor,'es'));
+}
+
+const api={normalize,classifyNeed,classifyNotice,supportedTexts,safeUrl,uniqueNews,isPublicationUrl,distributorContext,sameBusinessName,verifiedCompetitionFor,technicalNews,relatedArchitectureNews};
 root.WestconBusiness=api;
 if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
