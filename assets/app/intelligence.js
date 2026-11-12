@@ -1,4 +1,4 @@
-// App v6.3.0
+// App v6.4.0
 (() => {
   'use strict';
   const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
@@ -201,7 +201,7 @@
     $('#distributorIncludeUnconfirmed')?.addEventListener('change',renderDistributors);
     $('#publicClientSearch')?.addEventListener('input', renderClients);
     $('#publicClientScope')?.addEventListener('change', renderClients);
-    for(const [section,selector] of [['manufacturers','#manufacturerNewsSearch'],['distributors','#distributorNewsSearch'],['integrators','#integratorNewsSearch'],['clients','#clientNewsSearch']]){
+    for(const [section,selector] of [['manufacturers','#manufacturerNewsSearch'],['distributors','#distributorNewsSearch'],['integrators','#integratorNewsSearch'],['clients','#clientNewsSearch'],['trends','#trendNewsSearch'],['architectures','#architectureNewsSearch']]){
       $(selector)?.addEventListener('input',()=>renderEntityNews(section,state.newsRows?.[section]||[]));
     }
     $('#procurementDownloadCsv')?.addEventListener('click',()=>exportProcurement(state.downloadableNotices||[],'csv'));
@@ -468,7 +468,7 @@
       const more=elements.length>lim?'<button type="button" class="more-tags" data-more-tags data-label="… +'+(elements.length-lim)+'">… +'+(elements.length-lim)+'</button>':'';
       return '<div class="tag-list">'+tags+more+'</div>';
     }
-    if(CATEGORICAL_FIELDS.has(columnId)){
+    if(CATEGORICAL_FIELDS.has(columnId)||columnId==='revenue'){
       const verified=atomicCurrentProof(itemFor(field,value,0)?.evidence)||atomicCurrentProof(field?.evidence);
       return '<div class="tag-list categorical-tags"><span class="tag-entry">'+
         (verified?tagHtml(field,value,0):pendingTagHtml(field,value,0))+'</span></div>';
@@ -570,7 +570,12 @@
   function coverageOverview(schema,rows,view){
     const visible=schema.filter(c=>c.hidden!==true&&(c.essential||!hiddenCols(view).includes(c.id)));
     const prominent=visible.filter(c=>prominentColumn(c,rows,view)).length;
-    return `<div class="coverage-overview"><span><b>Vista ${evidenceFirstMode(view)?'esencial':'completa'}</b> · ${prominent} de ${visible.length} columnas seleccionadas · los campos poco poblados se conservan y pueden explorarse</span><button type="button" data-evidence-first="${esc(view)}">${evidenceFirstMode(view)?'Ver todas las columnas':'Priorizar datos disponibles'}</button></div>`;
+    const snapshot=state.manifest?.meta?.source_coverage?.[view];
+    const sourced=Number(snapshot?.sourced),total=Number(snapshot?.claims);
+    const sourceSummary=Number.isFinite(sourced)&&Number.isFinite(total)&&total>0
+      ?` · Cobertura documental del conjunto: ${sourced.toLocaleString('es-ES')} / ${total.toLocaleString('es-ES')} afirmaciones (${Math.round(sourced*100/total)}%), no equivale a cobertura de mercado`
+      :' · Cobertura documental global aún no disponible';
+    return `<div class="coverage-overview"><span><b>Vista ${evidenceFirstMode(view)?'esencial':'completa'}</b> · ${prominent} de ${visible.length} columnas seleccionadas${sourceSummary} · corte ${esc((state.manifest?.generated_at||'sin fecha').slice(0,10))}</span><button type="button" data-evidence-first="${esc(view)}">${evidenceFirstMode(view)?'Ver todas las columnas':'Priorizar datos disponibles'}</button></div>`;
   }
   function activeColumns(schema, rows, view){
     let cols=schema.filter(col=>col.hidden!==true&&(col.essential||!hiddenCols(view).includes(col.id))&&(col.show_when_empty===true||rows.some(row=>hasValue(fieldFor(row,col)?.value)))&&prominentColumn(col,rows,view));
@@ -664,7 +669,9 @@
     distributors:{host:'#distributorNews',search:'#distributorNewsSearch',title:'Noticias de mayoristas tecnológicos',description:'Nuevos fabricantes, acuerdos de distribución y movimientos relevantes respaldados por publicaciones.'},
     manufacturers:{host:'#manufacturerNews',search:'#manufacturerNewsSearch',title:'Noticias y movimientos de los fabricantes',description:'Publicaciones acreditadas de fabricantes, vinculadas con sus fuentes.'},
     integrators:{host:'#integratorNews',search:'#integratorNewsSearch',title:'Actualidad de integradores y partners',description:'Noticias, proyectos y casos publicados con evidencia de cada entidad.'},
-    clients:{host:'#clientNews',search:'#clientNewsSearch',title:'Actualidad tecnológica de clientes',description:'Inversiones, proyectos y novedades tecnológicas documentadas de clientes públicos y privados.'}
+    clients:{host:'#clientNews',search:'#clientNewsSearch',title:'Actualidad tecnológica de clientes',description:'Publicaciones específicas de empresas y entidades públicas con fuentes comprobables; se distinguen de licitaciones y simples señales.'},
+    trends:{host:'#trendNews',search:'#trendNewsSearch',title:'Novedades e informes sobre tendencias',description:'Publicaciones, investigaciones y movimientos acreditados relacionados con las tendencias analizadas.'},
+    architectures:{host:'#architectureNews',search:'#architectureNewsSearch',title:'Novedades sobre arquitecturas',description:'Publicaciones y avances tecnológicos vinculados a arquitecturas y sus componentes.'}
   };
   function renderEntityNews(section,rows){
     const cfg=NEWS_VIEWS[section],node=$(cfg?.host||'');
@@ -676,7 +683,7 @@
     const news=q?all.filter(n=>norm([n.vendor,n.title,n.summary,n.source].join(' ')).includes(q)):all;
     const expanded=Boolean(state.newsExpanded?.[section]);
     const visible=expanded?news:news.slice(0,18);
-    const fmt=date=>date?new Date(date).toLocaleDateString('es-ES',{year:'numeric',month:'short',day:'numeric'}):'Fecha de publicación no acreditada';
+    const fmt=date=>date?new Date(date).toLocaleDateString('es-ES',{year:'numeric',month:'short',day:'numeric'}):'Sin fecha publicada';
     const cards=visible.map(n=>'<article class="manufacturer-news-card"><div class="news-card-meta"><span>'+esc(n.vendor)+'</span><time>'+esc(fmt(n.date))+'</time></div><h3>'+esc(n.title)+'</h3><p>'+esc(n.summary.length>190?n.summary.slice(0,187)+'…':n.summary)+'</p><div class="news-card-foot"><small>'+esc(n.source)+'</small><a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">Leer publicación ↗</a></div></article>').join('');
     node.innerHTML='<div class="news-heading"><div><span class="eyebrow">ACTUALIDAD ACREDITADA</span><h2>'+esc(cfg.title)+'</h2><p>'+esc(cfg.description)+' La búsqueda de noticias es independiente de la tabla.</p></div><strong>'+news.length+(q?' coincidencias':' publicaciones')+'</strong></div>'+
       (visible.length?'<div class="manufacturer-news-grid">'+cards+'</div>':'<p class="news-empty">No hay publicaciones con evidencia específica para esta búsqueda. Los indicios no acreditados no se publican como noticias.</p>')+
@@ -755,7 +762,7 @@
     const status=$('#procurementFilterStatus');if(status)status.textContent=(publicAll.length-publicPortfolioAll.length)+' registros excluidos por falta de encaje tecnológico acreditado. '+publicRows.length+' expedientes disponibles para descargar.';
     setCount('#publicClientCount',publicRows.length,publicPortfolioAll.length,'oportunidades públicas con encaje de portfolio');
     setCount('#privateClientCount',privateRows.length,privateAll.length,'grandes cuentas privadas');
-    renderEntityNews("clients",[...publicRows,...privateRows]);
+    renderEntityNews("clients",[...publicPortfolioAll,...privateAll]);
     setCount('#clientCount',publicRows.length+privateRows.length,publicPortfolioAll.length+privateAll.length,'clientes / oportunidades relevantes');
   }
 
@@ -803,7 +810,7 @@
     await pptx.writeFile({fileName:`Westcon_Iberia_${model.view}_${model.entityCount}_resultados_v4.3.1.pptx`});closeModal('filteredReportModal');toast('PowerPoint generado con el subconjunto filtrado');
   }
 
-  function cardField(col,f,context='card'){if(!f||!hasValue(f.value))return '';const help=col.clarify?`<span class="help-wrap card-help"><span>${esc(col.label)}</span><button class="help-icon" type="button" aria-label="Aclaración de ${esc(col.label)}">?</button><span class="help-tip">${esc(col.help||'')}</span></span>`:esc(col.label);return `<div class="card-field"><label>${help}</label>${renderValue(f,null,context)}</div>`;}
+  function cardField(col,f,context='card'){if(!f||!hasValue(f.value))return '';const help=col.clarify?`<span class="help-wrap card-help"><span>${esc(col.label)}</span><button class="help-icon" type="button" aria-label="Aclaración de ${esc(col.label)}">?</button><span class="help-tip">${esc(col.help||'')}</span></span>`:esc(col.label);return `<div class="card-field"><label>${help}</label>${renderValue(f,null,context,col.id)}</div>`;}
   function cardGrid(rows, schema, forceAll=false, context='card'){
     const cols=forceAll?schema:activeColumns(schema,rows,'cards');
     const cardClass=context==='trend'?'intel-card trend-card':'intel-card';
@@ -813,6 +820,7 @@
     const q=norm($('#trendSearch')?.value), all=state.data.trends||[], rows=all.filter(r=>!q||rowBlob(r).includes(q));
     $('#trendGrid').innerHTML=cardGrid(rows,state.data.schemas.trends,true,'trend')||'<div class="empty-state">No hay tendencias con ese filtro.</div>';
     setCount('#trendCount',rows.length,all.length,'tendencias'); renderTrendAnalytics(rows);
+    renderEntityNews('trends',all);
   }
   function trendActorData(limit=32){
     const actors=new Map(), portfolio=new Set((state.data.manufacturers||[]).map(x=>norm(x.name)));
@@ -850,6 +858,7 @@
     const q=norm($('#architectureSearch')?.value), all=state.data.architectures||[], rows=all.filter(r=>!q||rowBlob(r).includes(q));
     $('#architectureGrid').innerHTML=cardGrid(rows,state.data.schemas.architectures)||'<div class="empty-state">No hay arquitecturas con ese filtro.</div>';
     setCount('#architectureCount',rows.length,all.length,'arquitecturas');
+    renderEntityNews('architectures',all);
   }
 
   function localDateTime(value){
