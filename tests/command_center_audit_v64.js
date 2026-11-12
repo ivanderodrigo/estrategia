@@ -17,6 +17,7 @@ async function render(failDebt=false){
  };
  vm.runInNewContext(script,{document,window:{WestconAudit:audit,scrollTo(){}},fetch,console});
  for(let i=0;i<5;i++)await Promise.resolve();
+ await new Promise(resolve=>setTimeout(resolve,20));
  return nodes;
 }
 (async()=>{
