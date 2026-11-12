@@ -19,7 +19,7 @@ class TagErgonomicsV422(unittest.TestCase):
         self.assertEqual(version, "4.3.0")
         self.assertIn("Observatorio Tecnológico", html)
         self.assertIn("Inteligencia Estratégica · v6.1", html)
-        self.assertIn("intelligence.js?v=4.6.0", html)
+        self.assertIn("intelligence.js?v=6.1.0", html)
         self.assertIn("App v4.6.0", js)
         self.assertIn("meta.version||'4.3.0'", js)
 
