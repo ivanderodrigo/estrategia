@@ -48,7 +48,11 @@ function classifyNotice(row){
  // Ancillary inferred opportunity fields cannot create a portfolio match.
  const primary=classifyNeed(needs.join(' '));
  const secondary=classifyNeed(tech.join(' '));
- const fit=primary.fit || (secondary.fit && needs.some(v=>/\b(network|red|sistema|infraestructura|servicio|seguridad|cloud|nube|equipamiento|plataforma|tecnologia|technology|software)\b/i.test(normalize(v))));
+ // Secondary signals can refine a tender, but cannot turn a generic IT purchase
+ // into a portfolio opportunity. Require a specific technical anchor in the
+ // evidenced procurement object, not words like "sistema" or "servicio".
+ const anchor=/\b(ciberseguridad|ciberseguranca|cybersecurity|seguridad informatica|seguridad de redes|network security|infraestructura de red|red de datos|red corporativa|rede de dados|lan|wlan|wan|wifi|wi.fi|switches?|routers?|firewalls?|siem|soar|sase|sse|zero trust|sd.wan|cloud|nube|nuvem|data.?center|centro de datos|centro de dados|kubernetes|virtualizacion|virtualization|backup empresarial|observabilidad|observability)\b/i;
+ const fit=primary.fit || (secondary.fit && needs.some(v=>anchor.test(normalize(v))));
  const areas=[...new Set([...(primary.fit?primary.areas:[]),...(secondary.fit?secondary.areas:[])])];
  const evidence=[...(f.request_or_need?.evidence||[]),...(f.notice_id?.evidence||[]),...(row.evidence||[])];
  const official=(evidence.map(e=>safeUrl(e?.url)).find(Boolean)||'');
@@ -67,11 +71,11 @@ function uniqueNews(rows){
    const evidence=(item?.evidence||[]).filter(ev=>fieldProof({evidence:[ev]})&&safeUrl(ev.url));
    for(const ev of evidence){
     const url=safeUrl(ev.url),title=(ev.title&&ev.title.length>12?ev.title:value).trim();
-    const stamp=Date.parse(ev.date||ev.retrieved_at||'')||0;
+    // Retrieval time is not publication time: do not invent recency.\n    const publicationDate=ev.published_at||ev.published_date||ev.date||'';\n    const stamp=Date.parse(publicationDate)||0;
     const key=row.name.toLowerCase()+'|'+url;
     if(seen.has(key))continue;
     seen.add(key);
-    news.push({vendor:row.name,title,url,date:stamp,dateLabel:ev.date||ev.retrieved_at||'',source:ev.source||'Fuente pública',summary:value});
+    news.push({vendor:row.name,title,url,date:stamp,dateLabel:publicationDate,source:ev.source||'Fuente pública',summary:value});
    }
   }
  }
