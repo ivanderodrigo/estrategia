@@ -37,4 +37,33 @@ const clientFeed=bi.uniqueNews([{name:'Empresa Ejemplo',fields:{investment_signa
 assert.strictEqual(clientFeed.length,1,'Client technology investment article must be discoverable');
 const nonArticle=bi.uniqueNews([{name:'Empresa Ejemplo',fields:{recent_signals:{value:['Novedades'],items:[{value:'Novedades',evidence:[{...ev,title:'Portal de noticias',url:'https://example.org/noticias'}]}]}}}],'clients');
 assert.strictEqual(nonArticle.length,0,'News section index is not a publication');
-console.log('Business Intelligence v6.1: relevant procurement and accredited news OK');
+
+const verifiedList=value=>({value:[value],items:[{value,evidence:[ev]}],evidence:[ev]});
+const unverifiableList=value=>({value:[value],items:[{value,evidence:[]}],evidence:[]});
+const verifiedManufacturers=[{
+ name:'Extreme Networks',
+ fields:{
+   distributors:verifiedList('Distribuidor Verificado'),
+   competitors:verifiedList('Cisco'),
+ }
+}];
+const direct={name:'Distribuidor Verificado',fields:{vendor_relations:unverifiableList('Cisco')}};
+assert.strictEqual(bi.distributorContext(direct,verifiedManufacturers).relevant,true,
+ 'Evidence-backed reciprocal manufacturer directory keeps the distributor visible');
+const rival={name:'Mayorista Rival',fields:{vendor_relations:verifiedList('Cisco')}};
+assert.strictEqual(bi.distributorContext(rival,verifiedManufacturers).relevant,true,
+ 'A supported vendor relationship to a supported Westcon competitor is competitive context');
+const unsupported={name:'Mayorista Sin Contexto',fields:{vendor_relations:unverifiableList('Cisco')}};
+assert.strictEqual(bi.distributorContext(unsupported,verifiedManufacturers).relevant,false,
+ 'Unverified co-mentions must not promote irrelevant entities into business intelligence');
+const unrelated={name:'Mayorista Al Azar',fields:{vendor_relations:verifiedList('Impresoras Genéricas')}};
+assert.strictEqual(bi.distributorContext(unrelated,verifiedManufacturers).relevant,false,
+ 'Even a verified vendor is irrelevant if no business relationship to Westcon is established');
+const distributorNews=bi.uniqueNews([{name:'Mayorista Rival',fields:{
+ recent_signals:{value:['Mayorista Rival anuncia nuevas soluciones cloud'],
+ items:[{value:'Mayorista Rival anuncia nuevas soluciones cloud',
+ evidence:[{...ev,url:'https://example.org/noticias/nueva-distribucion-cloud-2026',
+ title:'Mayorista Rival anuncia nuevas soluciones cloud'}]}]}
+}}],'distributors');
+assert.strictEqual(distributorNews.length,1,'Official distributor news should be visible as a publication card');
+console.log('Business Intelligence v6.3: relevant procurement and accredited news OK');
