@@ -148,7 +148,7 @@ def intelligent_discovery_queries(
             if vendor.casefold() != entity.casefold():
                 add(f'"{entity}" "{vendor}" distribución autorizada marcas')
 
-    if section in {"integrators", "clients_private", "clients_public"} and "recent_signals" in targets:
+    if section in {"distributors", "integrators", "clients_private", "clients_public"} and "recent_signals" in targets:
         add(f'"{entity}" actualidad tecnología ciberseguridad cloud networking')
         add(f'"{entity}" noticias proyectos transformación digital comunicado')
         add(f'"{entity}" press release technology infrastructure partnership')
