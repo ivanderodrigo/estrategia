@@ -645,19 +645,38 @@
     $('#distributorTable').innerHTML=tableHtml(rows,state.data.schemas.distributors,'No hay mayoristas con esos filtros.','distributors',base);
     setCount('#distributorCount',rows.length,all.length,'mayoristas competidores');
   }
+  function publicProcurementPortfolioFit(row){
+    const portfolioFields=['request_or_need','technology_signals','known_architectures','opportunity_area','evidenced_needs'];
+    const values=[];
+    for(const key of portfolioFields){
+      const field=row?.fields?.[key];
+      if(!field)continue;
+      if(Array.isArray(field.value)) values.push(...supportedListValues(field).map(String));
+      else if(sourcedScalarForTable(field)) values.push(String(field.value??''));
+    }
+    const text=norm(values.join(' '));
+    if(!text)return false;
+    const fit=/\b(cybersecurity|cyber security|ciberseguridad|ciberseguranca|seguridad de la informacion|seguranca da informacao|firewall|siem|soc|xdr|edr|mdr|sase|sse|zero trust|iam|identity|identidad|identidade|mfa|pam|network|networking|redes|rede|lan|wan|sd-wan|sd wan|wifi|wi-fi|switching|routing|router|switch|nac|ddi|dns|dhcp|telecomunicaciones|telecomunicacoes|cloud|nube|nuvem|data center|datacenter|centro de datos|centro de dados|observability|observabilidad|observabilidade|monitoring|monitorizacion|monitorizacao|load balancer|balanceador|api security|backup|recovery|virtualization|virtualizacion|kubernetes|container|automation|automatizacion|automacao)\b/.test(text);
+    if(!fit)return false;
+    const commodity=/\b(printer|impresora|impressora|toner|cartucho|fotocopiadora|photocopier|mobiliario de oficina|office furniture|water meter|contador de agua|smartphone|telemovel|laptop|portatil|ordenador personal|desktop pc)\b/.test(text);
+    const strong=/\b(cybersecurity|ciberseguridad|ciberseguranca|firewall|siem|soc|xdr|edr|mdr|sase|sse|zero trust|network|networking|redes|rede|lan|wan|sd-wan|wifi|switching|routing|nac|ddi|cloud|nube|nuvem|data center|datacenter|observability|backup|kubernetes)\b/.test(text);
+    return !commodity||strong;
+  }
+
   function renderClients(){
     const publicQ=norm($('#publicClientSearch')?.value), publicScope=$('#publicClientScope')?.value||'all';
     const privateQ=norm($('#privateClientSearch')?.value), privateScope=$('#privateClientScope')?.value||'all';
     const publicAll=state.data.clients_public||[];
     const privateAll=state.data.clients_private||[];
-    const publicBase=publicAll.filter(r=>(!publicQ||rowBlob(r).includes(publicQ))&&scopeMatch(r,publicScope));
+    const publicPortfolioAll=publicAll.filter(publicProcurementPortfolioFit);
+    const publicBase=publicPortfolioAll.filter(r=>(!publicQ||rowBlob(r).includes(publicQ))&&scopeMatch(r,publicScope));
     const privateBase=privateAll.filter(r=>(!privateQ||rowBlob(r).includes(privateQ))&&scopeMatch(r,privateScope));
     const publicRows=applyDynamicFilters('clients_public',publicBase,state.data.schemas.clients_public),privateRows=applyDynamicFilters('clients_private',privateBase,state.data.schemas.clients_private);state.headerCriteria.clients_public=[publicQ&&`Búsqueda: ${$('#publicClientSearch').value}`,publicScope!=='all'&&`País: ${publicScope}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';state.headerCriteria.clients_private=[privateQ&&`Búsqueda: ${$('#privateClientSearch').value}`,privateScope!=='all'&&`País: ${privateScope}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';
     $('#publicClientTable').innerHTML=tableHtml(publicRows,state.data.schemas.clients_public,'No hay oportunidades públicas con esos filtros.','clients_public',publicBase);
     $('#privateClientTable').innerHTML=tableHtml(privateRows,state.data.schemas.clients_private,'No hay grandes cuentas privadas con esos filtros.','clients_private',privateBase);
-    setCount('#publicClientCount',publicRows.length,publicAll.length,'oportunidades públicas');
+    setCount('#publicClientCount',publicRows.length,publicPortfolioAll.length,'oportunidades públicas con encaje de portfolio');
     setCount('#privateClientCount',privateRows.length,privateAll.length,'grandes cuentas privadas');
-    setCount('#clientCount',publicRows.length+privateRows.length,publicAll.length+privateAll.length,'clientes / oportunidades');
+    setCount('#clientCount',publicRows.length+privateRows.length,publicPortfolioAll.length+privateAll.length,'clientes / oportunidades relevantes');
   }
 
   function reportAvailableColumns(view){const schema=state.data.schemas[view]||[],rows=state.baseRows[view]||[];return schema.filter(c=>c.hidden!==true&&columnAvailable(c,rows));}
