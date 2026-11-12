@@ -5,6 +5,7 @@ import unittest
 from engine.research.intelligent_discovery import intelligent_discovery_queries
 from engine.research.web_intelligence import _prioritize_research_queries
 from engine.research.ted import notice_is_relevant
+from engine.research.extractors import competitors_in_text
 
 
 class IntelligentDiscoveryV61Tests(unittest.TestCase):
@@ -39,6 +40,20 @@ class IntelligentDiscoveryV61Tests(unittest.TestCase):
         self.assertTrue(any("datasheet" in q for q in queries))
         self.assertTrue(any("services" in q for q in queries))
         self.assertTrue(any("casos de uso" in q for q in queries))
+
+    def test_competitor_extraction_requires_explicit_comparison(self):
+        vendors = ["Cisco", "Juniper Networks", "Fortinet"]
+        found, terms = competitors_in_text(
+            "Extreme Networks competes with Cisco and Juniper Networks in campus networking.",
+            "Extreme Networks", vendors
+        )
+        self.assertIn("Cisco", found)
+        self.assertIn("Juniper Networks", terms)
+        unrelated, _ = competitors_in_text(
+            "Extreme Networks and Cisco announced an integration partnership.",
+            "Extreme Networks", vendors
+        )
+        self.assertNotIn("Cisco", unrelated)
 
     def test_generic_telephone_cpv_rejected(self):
         self.assertFalse(notice_is_relevant({"classification-cpv": ["32500000"], "notice-title": {"spa": "Mantenimiento de teléfonos móviles"}}))
