@@ -43,6 +43,7 @@ jobs:
           node --check assets/app/intelligence.js
           node --check assets/app/command-center.js
           node tests/ui_smoke.js
+          node tests/business_intelligence_v61.js
       - name: Keep failure logs
         if: always()
         uses: actions/upload-artifact@v4
