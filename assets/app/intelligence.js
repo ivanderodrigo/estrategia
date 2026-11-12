@@ -826,9 +826,26 @@
     const cardClass=context==='trend'?'intel-card trend-card':'intel-card';
     return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable({value:row.name,evidence:row.evidence||[],confidence:.9,confidence_band:'high'},`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>cardField(c,fieldFor(row,c),context)||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c)}</div>`).join('')}</article>`).join('');
   }
+  function renderSectionCoverage(section,selector){
+    const el=$(selector);if(!el)return;
+    const coverage=state.manifest?.meta?.source_coverage?.[section];
+    const total=Number(coverage?.claims),sourced=Number(coverage?.sourced);
+    const date=String(state.manifest?.generated_at||'').slice(0,10);
+    if(!Number.isFinite(total)||total<1||!Number.isFinite(sourced)){
+      el.textContent='Auditoría de evidencia no disponible en el manifiesto publicado.';
+      return;
+    }
+    el.innerHTML='<strong>Auditoría documental</strong> · '+sourced.toLocaleString('es-ES')+
+      ' afirmaciones con fuente / '+total.toLocaleString('es-ES')+
+      ' ('+Math.round(sourced*100/total)+'%) · '+(total-sourced).toLocaleString('es-ES')+
+      ' sin vínculo de fuente · corte '+esc(date)+
+      '<small>No es una estimación de cuota ni cobertura del mercado. Cada campo debe conservar su prueba individual.</small>';
+  }
+
   function renderTrends(){
     const q=norm($('#trendSearch')?.value), all=state.data.trends||[], rows=all.filter(r=>!q||rowBlob(r).includes(q));
     $('#trendGrid').innerHTML=cardGrid(rows,state.data.schemas.trends,true,'trend')||'<div class="empty-state">No hay tendencias con ese filtro.</div>';
+    renderSectionCoverage('trends','#trendCoverageAudit');
     setCount('#trendCount',rows.length,all.length,'tendencias'); renderTrendAnalytics(rows);
     renderEntityNews('trends',all);
   }
@@ -867,6 +884,7 @@
   function renderArchitectures(){
     const q=norm($('#architectureSearch')?.value), all=state.data.architectures||[], rows=all.filter(r=>!q||rowBlob(r).includes(q));
     $('#architectureGrid').innerHTML=cardGrid(rows,state.data.schemas.architectures)||'<div class="empty-state">No hay arquitecturas con ese filtro.</div>';
+    renderSectionCoverage('architectures','#architectureCoverageAudit');
     setCount('#architectureCount',rows.length,all.length,'arquitecturas');
     renderEntityNews('architectures',all);
   }
