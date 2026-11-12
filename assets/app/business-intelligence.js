@@ -110,6 +110,37 @@ function distributorContext(row,manufacturers=[]){
  };
 }
 
+function verifiedCompetitionFor(row,manufacturers=[]){
+ const vendorField=row?.fields?.vendor_relations||{};
+ const vendors=supportedTexts(vendorField);
+ const mapped=[];
+ for(const vendor of vendors){
+  const matched=[];
+  const vendorItem=(vendorField.items||[]).find(x=>sameBusinessName(x?.value,vendor));
+  if(!vendorItem?.evidence?.length)continue;
+  let sourceEvidence=[...vendorItem.evidence];
+  for(const manufacturer of manufacturers||[]){
+   const field=manufacturer?.fields?.competitors||{};
+   const competitor=supportedTexts(field).find(v=>sameBusinessName(v,vendor));
+   if(!competitor)continue;
+   const item=(field.items||[]).find(x=>sameBusinessName(x?.value,competitor));
+   if(!item?.evidence?.length)continue;
+   matched.push(manufacturer.name);
+   sourceEvidence=[...sourceEvidence,...item.evidence];
+  }
+  if(matched.length)mapped.push({
+   value:vendor,evidence:sourceEvidence,claim_type:'interpretation',
+   confidence:0.67,confidence_band:'medium',assertion_status:'DERIVADO',
+   qualifier:'Relación acreditada del actor con el fabricante y comparación acreditada con cada fabricante Westcon.',
+   competes_with_westcon:[...new Set(matched)],competition_mapping_status:'EVIDENCIADO'
+  });
+ }
+ return {value:mapped.map(x=>x.value),items:mapped,
+   evidence:mapped.flatMap(x=>x.evidence),confidence:0.67,
+   claim_type:'interpretation',assertion_status:'DERIVADO',
+   qualifier:'Cruce de dos relaciones con evidencia; no se deriva por compartir una categoría tecnológica.'};
+}
+
 const NEWS_FIELDS={
  manufacturers:['recent_signals','analyst_signals'],
  distributors:['recent_signals','vendor_relations','acquisitions'],
@@ -172,7 +203,7 @@ function uniqueNews(rows,section='manufacturers'){
  return news.sort((a,b)=>b.date-a.date||a.vendor.localeCompare(b.vendor,'es')||a.title.localeCompare(b.title,'es'));
 }
 
-const api={normalize,classifyNeed,classifyNotice,supportedTexts,safeUrl,uniqueNews,isPublicationUrl,distributorContext,sameBusinessName};
+const api={normalize,classifyNeed,classifyNotice,supportedTexts,safeUrl,uniqueNews,isPublicationUrl,distributorContext,sameBusinessName,verifiedCompetitionFor};
 root.WestconBusiness=api;
 if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
