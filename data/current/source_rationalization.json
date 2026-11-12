@@ -3,30 +3,30 @@
   "model_revision": "r6-public-plus-current-westcon-first-party",
   "policy": "Hechos externos: fuente pública actual. Hechos propiedad de Westcon sobre portfolio/capacidades: documentación o regla Westcon vigente y atómica. Histórico: pista no acreditativa. Conclusiones internas/derivadas: inputs sustentados + regla trazable.",
   "support_rule": "CURRENT_PUBLIC_OR_CURRENT_WESTCON_OWNED_OR_TRACEABLE_DERIVATION",
-  "targets_total": 17526,
-  "targets_direct_supported": 8392,
+  "targets_total": 17550,
+  "targets_direct_supported": 8405,
   "targets_supported_westcon_only": 287,
-  "targets_supported_public_only": 8056,
+  "targets_supported_public_only": 8069,
   "targets_supported_westcon_and_public": 49,
   "claim_classes": {
-    "EXTERNAL_FACT": 15364,
+    "EXTERNAL_FACT": 15377,
     "DERIVED_FACT": 1537,
-    "INTERNAL_CLASSIFICATION": 625
+    "INTERNAL_CLASSIFICATION": 636
   },
-  "support_pending_occurrences": 9134,
-  "support_pending_unique_claims": 8757,
+  "support_pending_occurrences": 9145,
+  "support_pending_unique_claims": 8768,
   "duplicate_pending_occurrences": 377,
   "external_search_required_occurrences": 7119,
   "external_search_required_unique": 6922,
-  "derived_support_required_occurrences": 2015,
-  "derived_support_required_unique": 1835,
+  "derived_support_required_occurrences": 2026,
+  "derived_support_required_unique": 1846,
   "historical_total": 252,
   "historical_supported_westcon": 112,
   "historical_supported_public": 23,
   "historical_supported_westcon_and_public": 25,
   "historical_search_required": 92,
-  "targets_supported": 8392,
-  "targets_search_required": 9134,
+  "targets_supported": 8405,
+  "targets_search_required": 9145,
   "unsupported_targets": [
     {
       "section": "manufacturers",
@@ -68954,6 +68954,38 @@
     },
     {
       "section": "clients_public",
+      "entity": "Universidade Nova de Lisboa",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Networking",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Universidade Nova de Lisboa",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Identity & Access",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
       "entity": "Institut Cartogràfic i Geològic de Catalunya",
       "field": "cpv_codes",
       "level": "item",
@@ -69094,6 +69126,22 @@
       "dependency_fields": [],
       "support_basis": "SEARCH_REQUIRED",
       "expected_gap_kind": "evidence-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consorcio Regional de Transportes de Madrid",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Identity & Access",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
       "preserve_value": true
     },
     {
@@ -70592,6 +70640,22 @@
     },
     {
       "section": "clients_public",
+      "entity": "Secretaria General del Servicio Canario de Salud",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Cloud",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
       "entity": "Junta de Gobierno del Ayuntamiento de Alzira",
       "field": "cpv_codes",
       "level": "item",
@@ -70602,6 +70666,54 @@
       "dependency_fields": [],
       "support_basis": "SEARCH_REQUIRED",
       "expected_gap_kind": "evidence-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Alzira",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Networking",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Alzira",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Cybersecurity",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Alzira",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "AI / Data",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
       "preserve_value": true
     },
     {
@@ -72746,6 +72858,38 @@
     },
     {
       "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Torrent",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Cybersecurity",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Torrent",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Identity & Access",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
       "entity": "Dirección General de Recursos Económicos del Servicio Canario de la Salud",
       "field": "cpv_codes",
       "level": "item",
@@ -73240,6 +73384,38 @@
       "dependency_fields": [],
       "support_basis": "SEARCH_REQUIRED",
       "expected_gap_kind": "evidence-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agencia Catalana de Turismo",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Networking",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agencia Catalana de Turismo",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Cybersecurity",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
       "preserve_value": true
     },
     {
@@ -210052,6 +210228,38 @@
     },
     {
       "section": "clients_public",
+      "entity": "Universidade Nova de Lisboa",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Networking",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Universidade Nova de Lisboa",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Identity & Access",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
       "entity": "Institut Cartogràfic i Geològic de Catalunya",
       "field": "cpv_codes",
       "level": "item",
@@ -210192,6 +210400,22 @@
       "dependency_fields": [],
       "support_basis": "SEARCH_REQUIRED",
       "expected_gap_kind": "evidence-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Consorcio Regional de Transportes de Madrid",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Identity & Access",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
       "preserve_value": true
     },
     {
@@ -211516,6 +211740,22 @@
     },
     {
       "section": "clients_public",
+      "entity": "Secretaria General del Servicio Canario de Salud",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Cloud",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
       "entity": "Junta de Gobierno del Ayuntamiento de Alzira",
       "field": "cpv_codes",
       "level": "item",
@@ -211526,6 +211766,54 @@
       "dependency_fields": [],
       "support_basis": "SEARCH_REQUIRED",
       "expected_gap_kind": "evidence-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Alzira",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Networking",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Alzira",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Cybersecurity",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Alzira",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "AI / Data",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
       "preserve_value": true
     },
     {
@@ -213184,6 +213472,38 @@
     },
     {
       "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Torrent",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Cybersecurity",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Junta de Gobierno del Ayuntamiento de Torrent",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Identity & Access",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
       "entity": "Dirección General de Recursos Económicos del Servicio Canario de la Salud",
       "field": "cpv_codes",
       "level": "item",
@@ -213484,6 +213804,38 @@
       "dependency_fields": [],
       "support_basis": "SEARCH_REQUIRED",
       "expected_gap_kind": "evidence-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agencia Catalana de Turismo",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Networking",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
+      "preserve_value": true
+    },
+    {
+      "section": "clients_public",
+      "entity": "Agencia Catalana de Turismo",
+      "field": "westcon_area",
+      "level": "item",
+      "value": "Cybersecurity",
+      "claim_class": "INTERNAL_CLASSIFICATION",
+      "research_mode": "derive-from-supported-inputs",
+      "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+      "dependency_fields": [
+        "technology_signals"
+      ],
+      "support_basis": "SEARCH_REQUIRED",
+      "expected_gap_kind": "derivation-support",
       "preserve_value": true
     },
     {
