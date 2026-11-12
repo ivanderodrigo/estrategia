@@ -465,7 +465,7 @@ def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]
         }
         for label in raw_labels[:1000]:
             brand = re.sub(r"(?i)^logo[\s_-]*(?:(?:de|da|of)[\s_-]+)?", "", label.strip())
-            brand = brand.replace("_", " ").replace("-", " ")
+            brand = brand.replace("_", " ")  # preserve legitimate brand hyphens (D-Link, TP-Link)
             brand = re.sub(r"(?i)\s+(?:logo|brand logo)$", "", brand).strip()
             key = canonical(brand)
             if (not 2 <= len(brand) <= 48 or len(brand.split()) > 5 or
