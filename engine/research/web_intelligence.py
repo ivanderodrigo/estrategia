@@ -106,8 +106,14 @@ def _prioritize_research_queries(exact_queries: list[str], planned_queries: list
             " caso de éxito", " caso de sucesso",
         )
     )]
+    systematic = [q for q in planned if " site:" in q.casefold()]
     output = []
-    for bucket in (exact[:1], contextual[:1], planned[:1], exact[1:], contextual[1:], planned[1:]):
+    # Reserve real budget for discovery. Otherwise exact historical values can
+    # consume the whole Daily budget and the new source lanes never execute.
+    for bucket in (
+        exact[:1], systematic[:1], contextual[:1], planned[:1],
+        systematic[1:], exact[1:], contextual[1:], planned[1:],
+    ):
         for query in bucket:
             if query not in output:
                 output.append(query)
