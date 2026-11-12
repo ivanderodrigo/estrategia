@@ -5,7 +5,7 @@ const css = fs.readFileSync('assets/app/intelligence.css', 'utf8');
 
 for (const token of [
   'data/public/manifest.json', 'ensureSection', 'ensureViewData', 'clients_public',
-  'clients_private', 'reorderColumn', 'columnChooser', 'currentColumnWidth', 'App v6.1.0',
+  'clients_private', 'reorderColumn', 'columnChooser', 'currentColumnWidth', 'App v6.2.0',
   'atomic-evidence-missing', 'el sistema no muestra fuentes de otros elementos',
   'analysisPanel', 'WestconFilters.apply', 'sessionStorage', 'savedFilters',
   'openFilteredReport', 'WestconReports.build', 'generateFilteredCsv', 'window.print',
@@ -47,4 +47,4 @@ for (const token of ['function atomicCurrentProof(', 'function pendingTagHtml(',
   if (!js.includes(token)) throw new Error('business-evidence UI regression: '+token);
 }
 if (js.includes('unverified-clues')) throw new Error('legacy disclosure remains instead of uniform tags');
-if (!html.includes('id="manufacturerNews"') || !html.includes('id="procurementDownloadCsv"')) throw new Error('v6.1 news or procurement downloads missing');
+if (!['manufacturerNews','integratorNews','clientNews','manufacturerNewsSearch','integratorNewsSearch','clientNewsSearch','procurementDownloadCsv'].every(id => html.includes('id="'+id+'"'))) throw new Error('v6.1 news or procurement downloads missing');
