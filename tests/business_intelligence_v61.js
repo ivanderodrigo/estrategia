@@ -27,7 +27,7 @@ assert.strictEqual(bi.classifyNotice(generic).fit,false);
 const specific=notice('Renovación de infraestructura de red corporativa');
 specific.fields.technology_signals=field('switches y SD-WAN');
 assert.strictEqual(bi.classifyNotice(specific).fit,true);
-const noPublicationDate=bi.uniqueNews([{name:'Proveedor C',fields:{recent_signals:{value:['Actualización'],items:[{value:'Actualización',evidence:[{...ev,date:undefined,retrieved_at:'2026-11-12',url:'https://example.org/announcement',title:'Actualización de la plataforma'}]}]}}}]);
+const noPublicationDate=bi.uniqueNews([{name:'Proveedor C',fields:{recent_signals:{value:['Actualización'],items:[{value:'Actualización',evidence:[{...ev,date:undefined,retrieved_at:'2026-11-12',url:'https://example.org/announcements/actualizacion-plataforma-2026',title:'Actualización de la plataforma'}]}]}}}]);
 assert.strictEqual(noPublicationDate[0].date,0,'Crawl date must never become news publication date');
 
 const integratorFeed=bi.uniqueNews([{name:'Partner Ejemplo',fields:{public_cases:{value:['Despliegue de red segura'],items:[{value:'Despliegue de red segura',evidence:[{...ev,title:'Partner Ejemplo moderniza la red de un hospital',url:'https://example.org/case-studies/hospital-seguro'}]}]}}}],'integrators');
