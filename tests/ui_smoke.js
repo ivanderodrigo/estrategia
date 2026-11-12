@@ -48,3 +48,17 @@ for (const token of ['function atomicCurrentProof(', 'function pendingTagHtml(',
 }
 if (js.includes('unverified-clues')) throw new Error('legacy disclosure remains instead of uniform tags');
 if (!['manufacturerNews','integratorNews','clientNews','distributorNews','manufacturerNewsSearch','integratorNewsSearch','clientNewsSearch','distributorNewsSearch','distributorIncludeUnconfirmed','procurementDownloadCsv'].every(id => html.includes('id="'+id+'"'))) throw new Error('v6.1 news or procurement downloads missing');
+
+for(const label of [
+ "CATEGORICAL_FIELDS=new Set(['domain'",
+ "CATEGORICAL_FIELDS.has(columnId)",
+ "renderValue(f,null,'table',col.id)",
+ "renderEntityNews('distributors',relevant)",
+ "distributorIncludeUnconfirmed",
+ "distributorContext(row,manufacturers)",
+]){
+ if(!js.includes(label))throw new Error('v6.3 business curation/category badge regression: '+label);
+}
+for(const label of ['.categorical-tags .confidence-tag','.distributor-curation-controls']){
+ if(!css.includes(label))throw new Error('v6.3 category/curation visual regression: '+label);
+}
