@@ -12,7 +12,7 @@ HIGH_VALUE_FIELDS = {
     "integrators": ("certified partners systems integrators", "integradores partners certificados", "parceiros integradores"),
     "distributors": ("authorized distributors channel", "mayoristas distribución", "distribuidores parceiros"),
     "capabilities": ("product technical datasheet architecture", "soluciones tecnología documentación técnica", "soluções tecnologia"),
-    "products_platforms": ("products platforms portfolio", "plataformas productos soluciones", "produtos plataformas"),
+    "products_platforms": ("product technical datasheet architecture", "plataformas productos soluciones", "produtos plataformas"),
     "use_cases": ("use cases customer story", "casos de uso caso de éxito", "casos de uso sucesso"),
     "services": ("professional services managed services", "servicios profesionales gestionados", "serviços geridos"),
     "recent_signals": ("latest product announcements press release", "novedades lanzamiento nota de prensa", "notícias lançamento"),
