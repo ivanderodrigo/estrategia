@@ -29,6 +29,8 @@ class TextExtractor(HTMLParser):
         self.parts: list[str] = []
         self.title_parts: list[str] = []
         self.brand_image_labels: list[str] = []
+        self.manufacturer_section_images: list[str] = []
+        self._in_manufacturer_section = False
         self.links: list[tuple[str, list[str]]] = []
         self._title_depth = 0
         self._ignored_depth = 0
@@ -48,6 +50,8 @@ class TextExtractor(HTMLParser):
                 "logo", "imagen", "image", "photo", "foto", "banner", "icon", "icono",
             }:
                 self.brand_image_labels.append(alt)
+                if self._in_manufacturer_section:
+                    self.manufacturer_section_images.append(alt)
         if tag == "title":
             self._title_depth += 1
         if tag == "a":
@@ -72,6 +76,10 @@ class TextExtractor(HTMLParser):
         if not text:
             return
         self.parts.append(text)
+        if re.search(r"(?i)\b(?:nuestros|nossos|our)\s+fabricantes\s+(?:que|that|para)\b", text):
+            self._in_manufacturer_section = True
+        elif re.search(r"(?i)\b(?:nuestros|nossos|our)\s+servicios\s+complementarios\b", text):
+            self._in_manufacturer_section = False
         if self._title_depth:
             self.title_parts.append(text)
         if self._active_link:
@@ -89,19 +97,34 @@ def parse_document(raw: str, final_url: str, digest: str) -> Document:
             continue
         seen.add(target)
         links.append(Link(target, " ".join(label_parts)[:180]))
+    # Only explicit manufacturer directories (or manufacturer-labelled sections)
+    # may turn image alt labels into candidate brand names. Decorative images on
+    # general service/news pages are never catalogue evidence.
+    page_path = urlsplit(final_url).path.casefold()
+    page_title = " ".join(parser.title_parts).casefold()
+    catalogue_page = (
+        any(tag in page_path for tag in (
+            "/fabricant", "/marcas", "/brands", "/vendors", "/line-card",
+            "/linecard", "/catalogo-marcas", "/nossas-marcas", "/site/vendor/",
+        ))
+        or any(label in page_title for label in (
+            "portfolio de fabricantes", "catálogo de fabricantes",
+            "catalogo de fabricantes", "lista de fabricantes",
+        ))
+    )
+    logo_labels = (
+        parser.brand_image_labels if catalogue_page
+        else parser.manufacturer_section_images
+    )
     return Document(
         url=final_url,
         title=" ".join(parser.title_parts)[:240],
         text=(
-            " ".join(parser.parts) + (
-                " Marcas y fabricantes: " + " / ".join(dict.fromkeys(parser.brand_image_labels[:250]))
-                if any(tag in urlsplit(final_url).path.casefold() for tag in (
-                    "/fabricant", "/marcas", "/brands", "/vendors", "/line-card",
-                    "/linecard", "/catalogo-marcas", "/nossas-marcas",
-                )) else ""
-            )
+            " ".join(parser.parts)
+            + (" Marcas y fabricantes: " + " / ".join(dict.fromkeys(logo_labels[:1000]))
+               if logo_labels else "")
         )[:1_500_000],
-        links=tuple(links[:300]),
+        links=tuple(links[:1500]),
         content_digest=digest,
     )
 
