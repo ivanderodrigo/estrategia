@@ -1,6 +1,6 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-11-12T14:27:21.490525+00:00",
+  "generated_at": "2026-11-12T15:45:32.936332+00:00",
   "entities": [
     {
       "id": "clie_257c699509389edc",
@@ -69,6 +69,14 @@
     {
       "id": "clie_f1418aec7f315eff",
       "canonical_name": "Aena",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_6a231a37a7fd862c",
+      "canonical_name": "Agencia Digital de Andalucía",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -717,6 +725,14 @@
     {
       "id": "clie_4a7e88e18e8d76a9",
       "canonical_name": "OSAKIDETZA - Servicio Vasco de Salud - Organización Central",
+      "entity_type": "client",
+      "country": "ES",
+      "aliases": [],
+      "historical_names": []
+    },
+    {
+      "id": "clie_1127a1cf6307b869",
+      "canonical_name": "Pleno de la Diputación Provincial de Valencia",
       "entity_type": "client",
       "country": "ES",
       "aliases": [],
@@ -37601,6 +37617,55 @@
       "derived": true
     },
     {
+      "id": "rel_bb76a2e27a1bdbab",
+      "entity_a_id": "clie_1127a1cf6307b869",
+      "entity_a": "Pleno de la Diputación Provincial de Valencia",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "radio-espana.es",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Pleno de la Diputación Provincial de Valencia",
+          "source_binding": "atomic-item",
+          "title": "Escucha Capital Radio en DIRECTO 🎧",
+          "url": "https://www.radio-espana.es/capital-radio",
+          "date": "2026-11-12",
+          "description": "…ria Capital Radio After Work Capital Radio Foro RRHH Capital Radio - Episodio 355 07 Sep 2026 55 min Ventaja Legal Capital Radio Contactos Sitio web https://www.capitalradio.es/ Redes sociales Actualiza esta información de radio Compartir Facebook Twitter DESCARGAR APP Radios de Españ…",
+          "scope": "ES",
+          "scope_provenance": "explicit-text",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-11-12",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "5cc2f6f6ceb16a50ebe8aa1ebf34b050c285c51b0099d35f8e3a462f5cdf5c90",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "radio-espana.es",
+      "date": "2026-11-12",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
       "id": "rel_5e55907d88f004bb",
       "entity_a_id": "clie_f714a9edbc66b094",
       "entity_a": "Comunidade Intermunicipal da Região de Coimbra",
@@ -38295,7 +38360,9 @@
           "item_value": "Cloud",
           "item_key": "cloud",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "es.finance.yahoo.com",
@@ -38344,7 +38411,9 @@
           "item_value": "AI / Data",
           "item_key": "ai data",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         },
         {
           "source": "es.finance.yahoo.com",
@@ -38373,7 +38442,9 @@
           "item_value": "AI / Data",
           "item_key": "ai data",
           "atomic": true,
-          "revalidation": ""
+          "revalidation": "",
+          "intelligence_tier": "C",
+          "source_role": "Fuente pública secundaria"
         }
       ],
       "source": "es.finance.yahoo.com",
@@ -39388,6 +39459,55 @@
       "derived": true
     },
     {
+      "id": "rel_aabef50312cb4cd9",
+      "entity_a_id": "clie_6a231a37a7fd862c",
+      "entity_a": "Agencia Digital de Andalucía",
+      "relation": "technology_signal",
+      "entity_b_id": "tech_9e91940ff9231ef9",
+      "entity_b": "Networking",
+      "countries": [
+        "ES"
+      ],
+      "country": "ES",
+      "evidence": [
+        {
+          "source": "en.wikipedia.org",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Agencia Digital de Andalucía",
+          "source_binding": "atomic-item",
+          "title": "Madrid - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Madrid",
+          "date": "2026-11-12",
+          "description": "…72 ] Casablanca , Morocco [ 272 ] Partnerships with international organisations [ edit ] C40 Cities [ 272 ] International Labour Organization (OIT) [ 272 ] Ibero-American General Secretariat (SEGIB) [ 272 ] United Nations Educational, Scientific and Cultural Organization (UNESCO) [ 27…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-11-12",
+          "freshness_status": "current",
+          "method": "web-evidence:careers",
+          "content_digest": "161e7c769fd29a68402d8e0c32b023f074263b3ef9563f36cbc65b53df51c167",
+          "matched_terms": [
+            "redes"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        }
+      ],
+      "source": "en.wikipedia.org",
+      "date": "2026-11-12",
+      "confidence": 0.48,
+      "status": "SEÑAL",
+      "validity": "needs-corroboration",
+      "derived": true
+    },
+    {
       "id": "rel_ae4d7c85ac8473b7",
       "entity_a_id": "clie_14b4de09b253db9b",
       "entity_a": "Ayuntamiento de Reus",
@@ -40136,10 +40256,97 @@
           "revalidation": "",
           "intelligence_tier": "C",
           "source_role": "Fuente pública secundaria"
+        },
+        {
+          "source": "bancosantander.es",
+          "source_catalog_name": "Banco de España",
+          "researched_entity": "Banco de España",
+          "source_binding": "atomic-item",
+          "title": "Particulares - Banco Santander",
+          "url": "https://www.bancosantander.es/particulares/",
+          "date": "2026-11-12",
+          "description": "…contraten por primera vez la Tarjeta Crédito Santander. Consulta condiciones de la promoción aquí . 4. El servicio de eSIM es prestado por Gigs GmbH, con Tax ID n° 87 HRB220086 y domicilio en Bergstr. 77, 10115 Berlin, Alemania. Banco Santander actúa como canal de comercialización y no es re…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "A",
+          "source_type": "official-domain",
+          "official": true,
+          "classification": "public",
+          "retrieved_at": "2026-11-12",
+          "freshness_status": "current",
+          "method": "web-evidence:official",
+          "content_digest": "4ccbb44dca4faf03daa21cc6f5c23733a8d6db7af687e92e66c1077209c99598",
+          "matched_terms": [
+            "conectividad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "toyota.es",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Banco de España",
+          "source_binding": "atomic-item",
+          "title": "Bienvenido a Toyota España | Vehículos Toyota",
+          "url": "https://www.toyota.es/",
+          "date": "2026-11-12",
+          "description": "…in new window Renting de Toyota Opens in new window Renting todo incluido Propietarios Mi cuenta Cita Previa Instalaciones oficiales Preguntas frecuentes Mantenimiento Preventivo Servicios Servicios Posventa Promociones Posventa Mantenimiento Toyota Toyota Relax Mi vehículo Campañas de segur…",
+          "scope": "ES",
+          "scope_provenance": "explicit-text",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-11-12",
+          "freshness_status": "current",
+          "method": "web-evidence:procurement",
+          "content_digest": "fcba5eea36f9f473f6581c56b173657ca700586180971975e464551c15533f60",
+          "matched_terms": [
+            "conectividad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
+        },
+        {
+          "source": "toyota.es",
+          "source_catalog_name": "Descubrimiento web · bing_rss",
+          "researched_entity": "Banco de España",
+          "source_binding": "atomic-item",
+          "title": "Gama Toyota: accede a todos los modelos y al configurador",
+          "url": "https://www.toyota.es/coches",
+          "date": "2026-11-12",
+          "description": "…s in new window Renting todo incluido Propietarios Mi cuenta Cita Previa Instalaciones oficiales Preguntas frecuentes Mantenimiento Preventivo Pasaporte Digital de Baterías Toyota Servicios Servicios Posventa Promociones Posventa Mantenimiento Toyota Toyota Relax Mi vehículo Campañas de segu…",
+          "scope": "GLOBAL",
+          "scope_provenance": "unspecified",
+          "research_target_scope": "ES",
+          "source_grade": "C",
+          "source_type": "search-discovery:bing_rss",
+          "official": false,
+          "classification": "public",
+          "retrieved_at": "2026-11-12",
+          "freshness_status": "current",
+          "method": "web-evidence:procurement",
+          "content_digest": "3b81c4c3bb1085ab9f580625b536a9bacd470211c0410face00cbb4acd3287eb",
+          "matched_terms": [
+            "conectividad"
+          ],
+          "field": "technology_signals",
+          "item_value": "Networking",
+          "item_key": "networking",
+          "atomic": true,
+          "revalidation": ""
         }
       ],
       "source": "bancosantander.es",
-      "date": "2026-10-31",
+      "date": "2026-11-12",
       "confidence": 0.48,
       "status": "SEÑAL",
       "validity": "needs-corroboration",
