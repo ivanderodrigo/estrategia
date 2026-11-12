@@ -71,7 +71,9 @@ function uniqueNews(rows){
    const evidence=(item?.evidence||[]).filter(ev=>fieldProof({evidence:[ev]})&&safeUrl(ev.url));
    for(const ev of evidence){
     const url=safeUrl(ev.url),title=(ev.title&&ev.title.length>12?ev.title:value).trim();
-    // Retrieval time is not publication time: do not invent recency.\n    const publicationDate=ev.published_at||ev.published_date||ev.date||'';\n    const stamp=Date.parse(publicationDate)||0;
+    // Retrieval time is not publication time: do not invent recency.
+    const publicationDate=ev.published_at||ev.published_date||ev.date||'';
+    const stamp=Date.parse(publicationDate)||0;
     const key=row.name.toLowerCase()+'|'+url;
     if(seen.has(key))continue;
     seen.add(key);
