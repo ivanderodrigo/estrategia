@@ -1,4 +1,4 @@
-// App v4.6.0
+// App v6.1.0
 (() => {
   'use strict';
   const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
@@ -69,43 +69,26 @@
     localStorage.setItem(revision,'1');
   }
   function observatoryWatch(){try{const x=JSON.parse(localStorage.getItem('westcon-observatory-watch')||'[]');return Array.isArray(x)?x.filter(v=>typeof v==='string'):[];}catch(_){return [];}}
-  function procurementAlertConfig(){
-    const defaults={email:'',scope:'IBERIA',frequency:'daily',time:'08:00',keywords:'',portfolio_only:true,delivery:'smtp-not-connected'};
-    try{return {...defaults,...JSON.parse(localStorage.getItem('westcon-procurement-alert')||'{}'),portfolio_only:true};}catch(_){return defaults;}
-  }
-  function fillProcurementAlert(){
-    const cfg=procurementAlertConfig();
-    if($('#procurementAlertEmail'))$('#procurementAlertEmail').value=cfg.email||'';
-    if($('#procurementAlertScope'))$('#procurementAlertScope').value=cfg.scope||'IBERIA';
-    if($('#procurementAlertFrequency'))$('#procurementAlertFrequency').value=cfg.frequency||'daily';
-    if($('#procurementAlertTime'))$('#procurementAlertTime').value=cfg.time||'08:00';
-    if($('#procurementAlertKeywords'))$('#procurementAlertKeywords').value=cfg.keywords||'';
-    if($('#procurementAlertStatus'))$('#procurementAlertStatus').textContent='Configuración local guardada. El correo automático no está activo hasta conectar un servicio SMTP.';
-  }
-  function readProcurementAlert(){
-    return {
-      version:1,
-      email:($('#procurementAlertEmail')?.value||'').trim(),
-      scope:$('#procurementAlertScope')?.value||'IBERIA',
-      frequency:$('#procurementAlertFrequency')?.value||'daily',
-      time:$('#procurementAlertTime')?.value||'08:00',
-      keywords:($('#procurementAlertKeywords')?.value||'').trim(),
-      portfolio_only:true,
-      timezone:'Europe/Madrid',
-      delivery:'smtp-not-connected'
-    };
-  }
-  function saveProcurementAlert(download=false){
-    const cfg=readProcurementAlert();
-    if(cfg.email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cfg.email)){toast('Introduce un correo válido');return;}
-    localStorage.setItem('westcon-procurement-alert',JSON.stringify(cfg));
-    if($('#procurementAlertStatus'))$('#procurementAlertStatus').textContent='Configuración local guardada. No hay envíos activos mientras SMTP no esté conectado.';
-    if(download){
-      const blob=new Blob([JSON.stringify(cfg,null,2)+'\n'],{type:'application/json;charset=utf-8'});
-      const url=URL.createObjectURL(blob),a=document.createElement('a');
-      a.href=url;a.download='westcon-procurement-alert.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-      toast('Configuración de alerta descargada');
-    }else toast('Configuración de alerta guardada en este navegador');
+  function exportProcurement(rows,format='csv'){
+    const logic=window.WestconBusiness;
+    const clean=(rows||[]).filter(row=>logic.classifyNotice(row).fit);
+    if(!clean.length){toast('No hay pliegos acreditados con los filtros actuales');return;}
+    const records=clean.map(row=>{
+      const fit=logic.classifyNotice(row),f=row.fields||{};
+      const val=key=>logic.supportedTexts(f[key]).join(' · ');
+      return {entidad:row.name,expediente:val('notice_id'),objeto:val('request_or_need'),areas:fit.areas.join(' / '),importe:val('estimated_amount'),fecha_hito:val('milestone_date'),estado:val('procurement_stage'),CPV:val('cpv_codes'),fuente_oficial:fit.official,PDF_verificado:fit.pdf};
+    });
+    let blob,ext;
+    if(format==='json'){blob=new Blob([JSON.stringify({generado:new Date().toISOString(),criterio:'Encaje explícito Westcon + evidencia por dato',expedientes:records},null,2)],{type:'application/json;charset=utf-8'});ext='json';}
+    else{
+      const head=Object.keys(records[0]),quote=v=>'"'+String(v??'').replace(/"/g,'""').replace(/[\r\n]+/g,' ')+'"';
+      const lines=[head.map(quote).join(';'),...records.map(record=>head.map(key=>quote(record[key])).join(';'))];
+      blob=new Blob(['\ufeff'+lines.join('\r\n')],{type:'text/csv;charset=utf-8'});ext='csv';
+    }
+    const url=URL.createObjectURL(blob),a=document.createElement('a');
+    a.href=url;a.download='Westcon_Iberia_Pliegos_'+records.length+'_'+new Date().toISOString().slice(0,10)+'.'+ext;
+    a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    toast(records.length+' expedientes descargados, con enlace a la documentación oficial');
   }
   function renderDecisionDesk(){
     const host=$('#decisionDesk');if(!host||!window.WestconObservatory)return;
@@ -217,9 +200,8 @@
     $('#distributorScope')?.addEventListener('change', renderDistributors);
     $('#publicClientSearch')?.addEventListener('input', renderClients);
     $('#publicClientScope')?.addEventListener('change', renderClients);
-    $('#procurementAlertBtn')?.addEventListener('click',()=>{fillProcurementAlert();openModal('procurementAlertModal');});
-    $('#procurementAlertSave')?.addEventListener('click',()=>saveProcurementAlert(false));
-    $('#procurementAlertDownload')?.addEventListener('click',()=>saveProcurementAlert(true));
+    $('#procurementDownloadCsv')?.addEventListener('click',()=>exportProcurement(state.downloadableNotices||[],'csv'));
+    $('#procurementDownloadJson')?.addEventListener('click',()=>exportProcurement(state.downloadableNotices||[],'json'));
     $('#privateClientSearch')?.addEventListener('input', renderClients);
     $('#privateClientScope')?.addEventListener('change', renderClients);
     $('#trendSearch')?.addEventListener('input', renderTrends);
@@ -243,6 +225,8 @@
     $('#textLarger')?.addEventListener('click', () => changeTextScale(0.1));
     $('#textReset')?.addEventListener('click', resetTextScale);
     document.addEventListener('click', e=>{
+      const noticeDownload=e.target.closest('[data-download-notice]');if(noticeDownload){const row=(state.downloadableNotices||[]).find(x=>String(x.id)===noticeDownload.dataset.downloadNotice);if(row)exportProcurement([row],'json');return;}
+      const newsMore=e.target.closest('#manufacturerNewsMore');if(newsMore){state.showNewsAll=!state.showNewsAll;renderManufacturers();return;}
       const focusToggle=e.target.closest('[data-evidence-first]'); if(focusToggle){toggleEvidenceFirst(focusToggle.dataset.evidenceFirst);return;}
       const more=e.target.closest('[data-more-tags]'); if(more){ const box=more.closest('.tag-list'); box?.classList.toggle('expanded'); more.textContent=box?.classList.contains('expanded')?'Mostrar menos':more.dataset.label; }
       const moreText=e.target.closest('[data-more-text]'); if(moreText){ const box=moreText.closest('.scalar-compact'); box?.classList.toggle('expanded'); moreText.textContent=box?.classList.contains('expanded')?'Ver menos':'Ver más'; e.stopPropagation(); }
@@ -445,6 +429,11 @@
     const raw=typeof value==='object'?JSON.stringify(value):String(value??'');
     return traceable(field,`<span class="tag confidence-tag ${esc(band)} ${extra}"><span class="tag-label" title="${esc(raw)}">${esc(raw)}</span><small>${confidencePct(score)}%</small></span>`,item);
   }
+  function pendingTagHtml(field,value,index){
+    const item=itemFor(field,value,index),raw=typeof value==='object'?JSON.stringify(value):String(value??'');
+    const unsupported={...item,evidence:[],confidence:0,confidence_band:'low',confidence_reason:'Indicio conservado; falta una fuente específica que respalde el valor exacto.'};
+    return traceable({...field,evidence:[]},'<span class="tag confidence-tag unverified" title="No acreditado: '+esc(raw)+'"><span class="tag-label">'+esc(raw)+'</span><small>?</small></span>',unsupported);
+  }
   function compactScalar(value, max=150){
     const raw=String(value??'');
     if(raw.length<=max) return esc(raw);
@@ -464,14 +453,14 @@
       if(value.length&&typeof value[0]==='object'&&value[0].layer){
         return `<div class="layer-list">${value.map(x=>{const layerField={...field,items:x.vendor_items||[]};const vendors=(x.vendors||[]),lim=limit??listLimit(vendors,context);const vetted=vendors.filter((v,i)=>atomicCurrentProof(itemFor(layerField,v,i).evidence));const tags=vetted.map((v,i)=>`<span class="tag-entry ${i>=lim?'tag-overflow':''}">${tagHtml(layerField,v,i,'emphasis')}</span>`).join('');const more=vendors.length>lim?`<button type="button" class="more-tags" data-more-tags data-label="… +${vendors.length-lim}">… +${vendors.length-lim}</button>`:'';return `<div class="layer"><b>${esc(x.layer)}</b><div class="tag-list">${tags}${more}</div>${x.note?`<small>${compactScalar(x.note,120)}</small>`:''}</div>`;}).join('')}</div>`;
       }
-      const documented=supportedListValues(field);
-      const hiddenCount=value.length-documented.length;
-      const lim=limit??listLimit(documented,context);
-      const tags=documented.map((v,i)=>`<span class="tag-entry ${i>=lim?'tag-overflow':''}">${tagHtml(field,v,i)}</span>`).join('');
-      const more=documented.length>lim?`<button type="button" class="more-tags" data-more-tags data-label="… +${documented.length-lim}">… +${documented.length-lim}</button>`:'';
-      const unsupported=value.filter((v,i)=>!atomicCurrentProof(itemFor(field,v,i).evidence));
-      const clues=hiddenCount?`<details class="unverified-clues"><summary>${hiddenCount} indicios conservados sin fuente específica · Ver cuáles son</summary><p>Valores históricos pendientes de acreditación; no deben interpretarse como hechos comprobados.</p><ul class="unverified-clue-list">${unsupported.map((v,i)=>{const item=itemFor(field,v,i);const raw=typeof v==='object'?JSON.stringify(v):String(v??'');const refs=(item.evidence||[]).filter(e=>e&&typeof e==='object');const reason=refs.length?'La documentación asociada todavía no acredita este valor exacto.':'No existe una fuente específica asociada a este valor.';return `<li><span class="unverified-clue-value">${esc(raw)}</span><small>${esc(reason)}</small></li>`;}).join('')}</ul></details>`:'';
-      return `<div class="tag-list">${tags}${more}</div>${clues}`;
+      // Uniform badges for verified and unverified elements: no mixed dropdowns.
+      const elements=value.map((v,i)=>({value:v,index:i,verified:atomicCurrentProof(itemFor(field,v,i).evidence)}))
+        .sort((a,b)=>Number(b.verified)-Number(a.verified));
+      const lim=limit??listLimit(elements.map(x=>x.value),context);
+      const tags=elements.map((x,i)=>'<span class="tag-entry '+(i>=lim?'tag-overflow':'')+'">'+
+        (x.verified?tagHtml(field,x.value,x.index):pendingTagHtml(field,x.value,x.index))+'</span>').join('');
+      const more=elements.length>lim?'<button type="button" class="more-tags" data-more-tags data-label="… +'+(elements.length-lim)+'">… +'+(elements.length-lim)+'</button>':'';
+      return '<div class="tag-list">'+tags+more+'</div>';
     }
     return traceable(field,compactScalar(value,context==='table'?110:300));
   }
@@ -1240,7 +1229,7 @@
 
   function renderAll(){
     populateIntegratorVendorFilter(); renderActiveView(); renderSourceCatalog(); renderUpdateStatus(); renderConfidenceGuide();
-    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v4.5.0 · dataset v${meta.version||'4.3.0'} · ${meta.source_count||0} fuentes acreditativas/familias · ${meta.scope||'Iberia'}`;
+    const meta=state.data.meta||{}; const status=$('#footerStatus'); if(status) status.textContent=`App v6.1.0 · dataset v${meta.version||'4.3.0'} · ${meta.source_count||0} fuentes acreditativas/familias · ${meta.scope||'Iberia'}`;
   }
 
   load().catch(err => { console.error(err); const main=document.querySelector('main'); if(main) main.innerHTML=`<div class="fatal"><h1>No se pudo cargar la inteligencia</h1><p>${esc(err.message)}</p></div>`; });
