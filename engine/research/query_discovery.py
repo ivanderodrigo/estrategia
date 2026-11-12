@@ -148,7 +148,7 @@ def _disambiguate_technical_query(query: str) -> str:
     discovery hints; evidence gates remain unchanged.
     """
     return re.sub(
-        r'(?i)"?\\bOT\\s*/\\s*CPS\\s+Security\\b"?',
+        r'(?i)"?\bOT\s*/\s*CPS\s+Security\b"?',
         '"operational technology" "industrial control systems" cybersecurity',
         query,
     )
