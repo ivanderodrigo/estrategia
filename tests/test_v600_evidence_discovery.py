@@ -22,7 +22,8 @@ class V600EvidenceDiscoveryTests(unittest.TestCase):
         self.assertGreaterEqual(len(queries), 3)
         self.assertLessEqual(len(queries), 3)
         self.assertTrue(any("site:channelpartner.es" in query for query in queries))
-        self.assertTrue(any("site:itreseller.es" in query for query in queries))
+        self.assertTrue(any("site:itchannel.pt" in query for query in queries))
+        self.assertTrue(any("site:revistasic.es" in query for query in queries))
         self.assertEqual(len(queries), len(set(queries)))
 
     def test_public_procurement_uses_procurement_lane(self):
