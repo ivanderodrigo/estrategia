@@ -7,15 +7,15 @@
 <meta name="description" content="Westcon Iberia · Business Intelligence · Fabricantes, mayoristas, integradores, clientes, tendencias y arquitecturas con trazabilidad por campo.">
 <title>Westcon Iberia · Observatorio Tecnológico</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/app/intelligence.css?v=6.1.0">
+<link rel="stylesheet" href="assets/app/intelligence.css?v=6.2.0">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.13.0/dist/pptxgen.bundle.js"></script>
-<script defer src="assets/app/filter_engine.js?v=6.1.0"></script>
-<script defer src="assets/app/report_engine.js?v=6.1.0"></script>
+<script defer src="assets/app/filter_engine.js?v=6.2.0"></script>
+<script defer src="assets/app/report_engine.js?v=6.2.0"></script>
 <script defer src="assets/app/observatory.js?v=4.4.0"></script>
 <script defer src="assets/app/commercial.js?v=20261026"></script>
-<script defer src="assets/app/business-intelligence.js?v=6.1.0"></script>
-<script defer src="assets/app/intelligence.js?v=6.1.0"></script>
+<script defer src="assets/app/business-intelligence.js?v=6.2.0"></script>
+<script defer src="assets/app/intelligence.js?v=6.2.0"></script>
 <link rel="stylesheet" href="assets/app/command-center.css?v=1">
 <script defer src="assets/app/command-center.js?v=1"></script>
 </head>
@@ -87,6 +87,7 @@
       <input id="manufacturerSearch" type="search" placeholder="Buscar fabricante Westcon, competidor, tecnología, mayorista, partner o analista…">
     </div>
     <div id="manufacturerTable" class="intelligence-table"></div>
+    <div class="news-search-toolbar"><label for="manufacturerNewsSearch"><span>Buscar en las noticias</span><input id="manufacturerNewsSearch" type="search" placeholder="Filtrar por fabricante, titular, tecnología o fuente…" autocomplete="off" aria-label="Buscar noticias" /></label></div>
     <section id="manufacturerNews" class="manufacturer-news" aria-label="Noticias acreditadas de fabricantes"></section>
   </section>
 
@@ -113,6 +114,8 @@
       <select id="integratorScope"><option value="all">España + Portugal / Iberia</option><option value="ES">España</option><option value="PT">Portugal</option><option value="IBERIA">Iberia</option></select>
     </div>
     <div id="integratorTable" class="intelligence-table"></div>
+    <div class="news-search-toolbar"><label for="integratorNewsSearch"><span>Buscar en las noticias</span><input id="integratorNewsSearch" type="search" placeholder="Filtrar por integrador, proyecto, servicio o noticia…" autocomplete="off" aria-label="Buscar noticias" /></label></div>
+    <section id="integratorNews" class="manufacturer-news" aria-label="Actualidad acreditada de integradores"></section>
   </section>
 
   <section id="clientes" class="view">
@@ -155,6 +158,8 @@
         <div id="privateClientTable" class="intelligence-table"></div>
       </section>
     </div>
+    <div class="news-search-toolbar"><label for="clientNewsSearch"><span>Buscar en las noticias</span><input id="clientNewsSearch" type="search" placeholder="Filtrar por cliente, noticia, proyecto o inversión…" autocomplete="off" aria-label="Buscar noticias" /></label></div>
+    <section id="clientNews" class="manufacturer-news" aria-label="Actualidad acreditada de clientes públicos y privados"></section>
   </section>
 
   <section id="tendencias" class="view">
