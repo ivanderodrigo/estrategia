@@ -1,4 +1,4 @@
-// App v6.1.0
+// App v6.2.0
 (() => {
   'use strict';
   const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
@@ -200,6 +200,9 @@
     $('#distributorScope')?.addEventListener('change', renderDistributors);
     $('#publicClientSearch')?.addEventListener('input', renderClients);
     $('#publicClientScope')?.addEventListener('change', renderClients);
+    for(const [section,selector] of [['manufacturers','#manufacturerNewsSearch'],['integrators','#integratorNewsSearch'],['clients','#clientNewsSearch']]){
+      $(selector)?.addEventListener('input',()=>renderEntityNews(section,state.newsRows?.[section]||[]));
+    }
     $('#procurementDownloadCsv')?.addEventListener('click',()=>exportProcurement(state.downloadableNotices||[],'csv'));
     $('#procurementDownloadJson')?.addEventListener('click',()=>exportProcurement(state.downloadableNotices||[],'json'));
     $('#privateClientSearch')?.addEventListener('input', renderClients);
@@ -226,7 +229,7 @@
     $('#textReset')?.addEventListener('click', resetTextScale);
     document.addEventListener('click', e=>{
       const noticeDownload=e.target.closest('[data-download-notice]');if(noticeDownload){const row=(state.downloadableNotices||[]).find(x=>String(x.id)===noticeDownload.dataset.downloadNotice);if(row)exportProcurement([row],'json');return;}
-      const newsMore=e.target.closest('#manufacturerNewsMore');if(newsMore){state.showNewsAll=!state.showNewsAll;renderManufacturers();return;}
+      const newsMore=e.target.closest('[data-news-more]');if(newsMore){const section=newsMore.dataset.newsMore;state.newsExpanded=state.newsExpanded||{};state.newsExpanded[section]=!state.newsExpanded[section];renderEntityNews(section,state.newsRows?.[section]||[]);return;}
       const focusToggle=e.target.closest('[data-evidence-first]'); if(focusToggle){toggleEvidenceFirst(focusToggle.dataset.evidenceFirst);return;}
       const more=e.target.closest('[data-more-tags]'); if(more){ const box=more.closest('.tag-list'); box?.classList.toggle('expanded'); more.textContent=box?.classList.contains('expanded')?'Mostrar menos':more.dataset.label; }
       const moreText=e.target.closest('[data-more-text]'); if(moreText){ const box=moreText.closest('.scalar-compact'); box?.classList.toggle('expanded'); moreText.textContent=box?.classList.contains('expanded')?'Ver menos':'Ver más'; e.stopPropagation(); }
@@ -649,22 +652,35 @@
   }
   function setCount(id, shown, total, noun){ const el=$(id); if(el) el.innerHTML=`<b>${shown}</b><span>${esc(noun)}${shown!==total?` · ${total} totales`:''}</span>`; }
 
-  function renderManufacturerNews(rows){
-    const node=$('#manufacturerNews');if(!node||!window.WestconBusiness)return;
-    const news=window.WestconBusiness.uniqueNews(rows),visible=state.showNewsAll?news:news.slice(0,18);
-    const fmt=date=>date?new Date(date).toLocaleDateString('es-ES',{year:'numeric',month:'short',day:'numeric'}):'Fecha no indicada';
+  const NEWS_VIEWS={
+    manufacturers:{host:'#manufacturerNews',search:'#manufacturerNewsSearch',title:'Noticias y movimientos de los fabricantes',description:'Publicaciones acreditadas de fabricantes, vinculadas con sus fuentes.'},
+    integrators:{host:'#integratorNews',search:'#integratorNewsSearch',title:'Actualidad de integradores y partners',description:'Noticias, proyectos y casos publicados con evidencia de cada entidad.'},
+    clients:{host:'#clientNews',search:'#clientNewsSearch',title:'Actualidad tecnológica de clientes',description:'Inversiones, proyectos y novedades tecnológicas documentadas de clientes públicos y privados.'}
+  };
+  function renderEntityNews(section,rows){
+    const cfg=NEWS_VIEWS[section],node=$(cfg?.host||'');
+    if(!node||!window.WestconBusiness)return;
+    state.newsRows=state.newsRows||{};
+    state.newsRows[section]=rows;
+    const q=norm($(cfg.search)?.value||'');
+    const all=window.WestconBusiness.uniqueNews(rows,section);
+    const news=q?all.filter(n=>norm([n.vendor,n.title,n.summary,n.source].join(' ')).includes(q)):all;
+    const expanded=Boolean(state.newsExpanded?.[section]);
+    const visible=expanded?news:news.slice(0,18);
+    const fmt=date=>date?new Date(date).toLocaleDateString('es-ES',{year:'numeric',month:'short',day:'numeric'}):'Fecha de publicación no acreditada';
     const cards=visible.map(n=>'<article class="manufacturer-news-card"><div class="news-card-meta"><span>'+esc(n.vendor)+'</span><time>'+esc(fmt(n.date))+'</time></div><h3>'+esc(n.title)+'</h3><p>'+esc(n.summary.length>190?n.summary.slice(0,187)+'…':n.summary)+'</p><div class="news-card-foot"><small>'+esc(n.source)+'</small><a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">Leer publicación ↗</a></div></article>').join('');
-    node.innerHTML='<div class="news-heading"><div><span class="eyebrow">ACTUALIDAD ACREDITADA</span><h2>Noticias y movimientos de los fabricantes</h2><p>Publicaciones documentadas, ordenadas por fecha. La búsqueda superior filtra también las noticias.</p></div><strong>'+news.length+' noticias</strong></div>'+
-      (visible.length?'<div class="manufacturer-news-grid">'+cards+'</div>':'<p class="news-empty">No hay novedades con evidencia específica para este filtro. Los indicios no acreditados no se publican como noticias.</p>')+
-      (news.length>18?'<button class="news-more" id="manufacturerNewsMore" type="button">'+(state.showNewsAll?'Mostrar menos':'Ver todas las '+news.length+' noticias')+'</button>':'');
+    node.innerHTML='<div class="news-heading"><div><span class="eyebrow">ACTUALIDAD ACREDITADA</span><h2>'+esc(cfg.title)+'</h2><p>'+esc(cfg.description)+' La búsqueda de noticias es independiente de la tabla.</p></div><strong>'+news.length+(q?' coincidencias':' publicaciones')+'</strong></div>'+
+      (visible.length?'<div class="manufacturer-news-grid">'+cards+'</div>':'<p class="news-empty">No hay publicaciones con evidencia específica para esta búsqueda. Los indicios no acreditados no se publican como noticias.</p>')+
+      (news.length>18?'<button class="news-more" data-news-more="'+esc(section)+'" type="button">'+(expanded?'Mostrar menos':'Ver todas las '+news.length+' publicaciones')+'</button>':'');
   }
+
   function renderManufacturers(){
     const q=norm($('#manufacturerSearch')?.value);
     const all=state.data.manufacturers||[];
     const base=all.filter(r=>!q||rowBlob(r).includes(q)),rows=applyDynamicFilters('manufacturers',base,state.data.schemas.manufacturers);state.headerCriteria.manufacturers=q?`Búsqueda general: ${$('#manufacturerSearch').value}`:'Sin filtros de cabecera';
     const schema=(state.data.schemas.manufacturers||[]).filter(c=>c.id!=='recent_signals');
     $('#manufacturerTable').innerHTML=tableHtml(rows,schema,'No hay fabricantes con esos filtros.','manufacturers',base);
-    renderManufacturerNews(rows);
+    renderEntityNews("manufacturers",rows);
     setCount('#manufacturerCount',rows.length,all.length,'fabricantes');
   }
   function renderIntegrators(){
@@ -677,6 +693,7 @@
     });
     const rows=applyDynamicFilters('integrators',base,state.data.schemas.integrators);state.headerCriteria.integrators=[q&&`Búsqueda: ${$('#integratorSearch').value}`,scope!=='all'&&`País: ${scope}`,vendor!=='all'&&`Fabricante: ${vendor}`].filter(Boolean).join(' · ')||'Sin filtros de cabecera';
     $('#integratorTable').innerHTML=tableHtml(rows,state.data.schemas.integrators,'No hay partners/integradores con esos filtros.','integrators',base);
+    renderEntityNews("integrators",rows);
     setCount('#integratorCount',rows.length,all.length,'partners / integradores');
   }
   function renderDistributors(){
@@ -713,6 +730,7 @@
     const status=$('#procurementFilterStatus');if(status)status.textContent=(publicAll.length-publicPortfolioAll.length)+' registros excluidos por falta de encaje tecnológico acreditado. '+publicRows.length+' expedientes disponibles para descargar.';
     setCount('#publicClientCount',publicRows.length,publicPortfolioAll.length,'oportunidades públicas con encaje de portfolio');
     setCount('#privateClientCount',privateRows.length,privateAll.length,'grandes cuentas privadas');
+    renderEntityNews("clients",[...publicRows,...privateRows]);
     setCount('#clientCount',publicRows.length+privateRows.length,publicPortfolioAll.length+privateAll.length,'clientes / oportunidades relevantes');
   }
 

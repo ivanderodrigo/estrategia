@@ -5,7 +5,8 @@ import unittest
 from engine.research.intelligent_discovery import intelligent_discovery_queries
 from engine.research.web_intelligence import _prioritize_research_queries
 from engine.research.ted import notice_is_relevant
-from engine.research.extractors import competitors_in_text
+from engine.research.extractors import competitors_in_text, extract_candidates, distributor_linecard_vendors
+from engine.research.documents import Document, parse_document
 
 
 class IntelligentDiscoveryV61Tests(unittest.TestCase):
@@ -54,6 +55,76 @@ class IntelligentDiscoveryV61Tests(unittest.TestCase):
             "Extreme Networks", vendors
         )
         self.assertNotIn("Cisco", unrelated)
+
+    def test_distributor_site_specific_linecard_queries(self):
+        row = {
+            "name": "Atlas Distribution",
+            "evidence": [{"url": "https://atlas-distribution.example/fabricantes",
+                          "official": True, "source_type": "official"}],
+            "fields": {"vendor_relations": {"value": []},
+                       "technology_domains": {"value": ["Networking"]}},
+        }
+        queries = intelligent_discovery_queries(
+            row, ["vendor_relations"], section="distributors", limit=12)
+        self.assertTrue(any("site:atlas-distribution.example" in q for q in queries))
+        self.assertTrue(any("fabricantes" in q for q in queries))
+
+    def test_official_distributor_linecard_extraction(self):
+        page = Document(
+            url="https://atlas-distribution.example/fabricantes",
+            title="Nuestras marcas y fabricantes",
+            text="Atlas Distribution. Fabricantes y marcas: Cisco, Fortinet y VMware.",
+            links=(), content_digest="abc")
+        found = extract_candidates(
+            "distributors", "official", page, ["Cisco", "Fortinet", "VMware"],
+            official=True, researched_entity="Atlas Distribution")
+        self.assertIn("vendor_relations", found)
+        self.assertIn("Cisco", found["vendor_relations"].values)
+        unrelated = Document(
+            url="https://atlas-distribution.example/contacto",
+            title="Contacto",
+            text="Nota de prensa con Cisco, Fortinet y VMware sin catálogo de marcas",
+            links=(), content_digest="abc")
+        self.assertEqual(distributor_linecard_vendors(unrelated, ["Cisco", "Fortinet"]), ([], []))
+
+    def test_logo_only_distributor_page_provides_brand_labels(self):
+        html = """<html><head><title>Atlas Distribution - Fabricantes</title></head>
+            <body><h1>Nuestras marcas</h1>
+            <a href="/vendor/cisco"><img alt="Cisco"></a>
+            <a href="/vendor/fortinet"><img alt="Fortinet"></a></body></html>"""
+        doc = parse_document(html, "https://atlas-distribution.example/fabricantes", "abc")
+        extracted = distributor_linecard_vendors(doc, ["Cisco", "Fortinet"])
+        self.assertEqual(set(extracted[0]), {"Cisco", "Fortinet"})
+        outside = parse_document(
+            '<html><body><img alt="Cisco"></body></html>',
+            "https://atlas-distribution.example/noticias/articulo", "abc")
+        self.assertNotIn("Cisco", outside.text)
+
+    def test_integrator_and_customer_articles_extracted_with_evidence_specific_title(self):
+        for section, name in (
+            ("integrators", "Socio Integrador"),
+            ("clients_private", "Cliente Empresa"),
+            ("clients_public", "Ayuntamiento de Ejemplo"),
+        ):
+            page = Document(
+                url="https://example.org/noticias/proyecto-red-segura-2026",
+                title=f"{name} presenta una nueva red segura para sus sedes",
+                text=f"{name} ha renovado su infraestructura y red de comunicaciones.",
+                links=(), content_digest="abc")
+            data = extract_candidates(
+                section, "news", page, [], official=False, researched_entity=name)
+            self.assertIn("recent_signals", data, section)
+            self.assertTrue(data["recent_signals"].values)
+        index = Document(
+            url="https://example.org/noticias",
+            title="Socio Integrador - Noticias",
+            text="Socio Integrador actualidad corporativa",
+            links=(), content_digest="abc")
+        self.assertNotIn(
+            "recent_signals",
+            extract_candidates("integrators", "news", index, [], official=True,
+                               researched_entity="Socio Integrador"),
+        )
 
     def test_generic_telephone_cpv_rejected(self):
         self.assertFalse(notice_is_relevant({"classification-cpv": ["32500000"], "notice-title": {"spa": "Mantenimiento de teléfonos móviles"}}))

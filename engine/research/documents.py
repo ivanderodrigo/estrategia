@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 from html.parser import HTMLParser
-from urllib.parse import urldefrag, urljoin
+from urllib.parse import urldefrag, urljoin, urlsplit
 
 
 @dataclass(frozen=True)
@@ -28,6 +28,7 @@ class TextExtractor(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.parts: list[str] = []
         self.title_parts: list[str] = []
+        self.brand_image_labels: list[str] = []
         self.links: list[tuple[str, list[str]]] = []
         self._title_depth = 0
         self._ignored_depth = 0
@@ -37,6 +38,16 @@ class TextExtractor(HTMLParser):
         tag = tag.casefold()
         if tag in {"script", "style", "noscript", "svg"}:
             self._ignored_depth += 1
+        # Some distributors expose their entire vendor linecard as logo images.
+        # Preserve visible alt labels only for explicit brand catalogue pages
+        # when assembling the document; do not index decorative images globally.
+        if tag == "img":
+            alt = next((value for key, value in attrs if key.casefold() == "alt" and value), "")
+            alt = re.sub(r"\s+", " ", alt).strip()
+            if 2 <= len(alt) <= 70 and alt.casefold() not in {
+                "logo", "imagen", "image", "photo", "foto", "banner", "icon", "icono",
+            }:
+                self.brand_image_labels.append(alt)
         if tag == "title":
             self._title_depth += 1
         if tag == "a":
@@ -81,7 +92,15 @@ def parse_document(raw: str, final_url: str, digest: str) -> Document:
     return Document(
         url=final_url,
         title=" ".join(parser.title_parts)[:240],
-        text=" ".join(parser.parts)[:1_500_000],
+        text=(
+            " ".join(parser.parts) + (
+                " Marcas y fabricantes: " + " / ".join(dict.fromkeys(parser.brand_image_labels[:250]))
+                if any(tag in urlsplit(final_url).path.casefold() for tag in (
+                    "/fabricant", "/marcas", "/brands", "/vendors", "/line-card",
+                    "/linecard", "/catalogo-marcas", "/nossas-marcas",
+                )) else ""
+            )
+        )[:1_500_000],
         links=tuple(links[:300]),
         content_digest=digest,
     )

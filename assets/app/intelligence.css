@@ -357,3 +357,12 @@ main,.view,.page-head,.toolbar,.table-shell,.intelligence-table{min-width:0;max-
 .clients-toolbar{grid-template-columns:minmax(220px,1fr) minmax(140px,190px) auto auto}
 @media(max-width:800px){.clients-toolbar{grid-template-columns:1fr 1fr}.clients-toolbar input{grid-column:1/-1}.news-heading{align-items:start;flex-direction:column}.manufacturer-news-card{padding:14px}}
 @media print{.manufacturer-news{break-before:page}.news-more,.notice-actions{display:none!important}}
+
+/* v6.2: consistent editorial feeds with independent, accessible search controls */
+.news-search-toolbar{display:flex;justify-content:flex-end;margin:25px 0 0;gap:14px}
+.news-search-toolbar label{display:flex;flex-direction:column;gap:7px;min-width:260px;max-width:480px;width:100%;color:var(--muted);font-size:12px;font-weight:650}
+.news-search-toolbar input{width:100%;border:1px solid #b4cbd2;border-radius:11px;background:#fff;color:var(--ink);padding:12px 14px;outline-offset:2px;font:inherit;font-size:14px}
+.news-search-toolbar input:focus-visible{outline:2px solid #0aafa9;outline-offset:2px}
+.news-search-toolbar+.manufacturer-news{margin-top:13px}
+.news-empty{padding:15px 0}
+@media(max-width:640px){.news-search-toolbar label{min-width:0;max-width:none}}

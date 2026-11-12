@@ -22,7 +22,8 @@ ROUTES = {
     "official": ("/", "/sitemap.xml", "/robots.txt"),
     "partners": (
         "/partners", "/partner", "/partner-locator", "/find-a-partner", "/parceiros", "/alianzas",
-        "/alliances", "/vendors", "/fabricantes", "/marcas", "/portfolio", "/line-card", "/sitemap.xml",
+        "/alliances", "/vendors", "/fabricantes", "/marcas", "/portfolio", "/line-card",
+        "/linecard", "/brands", "/our-vendors", "/our-brands", "/catalogo-marcas", "/nossas-marcas", "/sitemap.xml",
     ),
     "services": (
         "/services", "/servicios", "/servicos", "/solutions", "/soluciones", "/solucoes",
@@ -60,7 +61,7 @@ ROUTES = {
     ),
 }
 PATH_FAMILY_HINTS = {
-    "partners": ("partner", "vendor", "fabric", "marca", "portfolio", "line-card", "parceir", "alian", "alliance"),
+    "partners": ("partner", "vendor", "fabric", "marca", "portfolio", "line-card", "linecard", "brand", "parceir", "alian", "alliance"),
     "careers": ("career", "job", "emple", "emprego", "talent", "oportun", "vacanc"),
     "cases": ("case", "caso", "customer", "client", "project", "industr", "sector", "success"),
     "services": ("service", "servic", "solu", "cyber", "cloud", "network", "managed"),

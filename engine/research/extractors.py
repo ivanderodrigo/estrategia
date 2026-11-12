@@ -336,6 +336,39 @@ def evidence_snippet(text: str, terms: Iterable[str], *, radius: int = 180) -> s
     return compact[:360] + ("…" if len(compact) > 360 else "")
 
 
+
+def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]) -> tuple[list[str], list[str]]:
+    """Find named vendors in an explicit distributor-owned brand catalogue.
+
+    Vendor mentions elsewhere (news, sidebars, technology articles) are not a
+    linecard relationship. The calling pipeline still requires first-party
+    ownership and value-specific accreditation before promotion.
+    """
+    from urllib.parse import urlsplit
+
+    path = canonical(urlsplit(document.url).path)
+    title = canonical(document.title)
+    labels = (
+        "fabricantes", "marcas", "vendors", "brands", "line card",
+        "linecard", "portfolio", "catalogo de marcas", "catalogo fabricantes",
+        "nuestras marcas", "nossos fabricantes",
+    )
+    owned_catalogue = any(label in path or label in title for label in labels)
+    text = document.text or ""
+    compact = canonical(text[:4500])
+    heading = re.search(
+        r"\b(nuestros fabricantes|nuestras marcas|marcas que distribuimos|"
+        r"fabricantes que distribuimos|nossos fabricantes|as nossas marcas|"
+        r"our vendors|our brands|vendor linecard|line card de fabricantes)\b",
+        compact,
+    )
+    if not owned_catalogue and not heading:
+        return [], []
+    # Bound the extraction to catalogue content, not an entire multi-page crawl.
+    body = text[:70000] if owned_catalogue else text[:7000]
+    return vendors_in_text(body, vendor_names)
+
+
 def extract_candidates(
     section: str,
     family: str,
@@ -373,6 +406,11 @@ def extract_candidates(
             add("revenue", revenues, revenue_terms, confidence=0.90 if official else 0.74)
         if family == "partners":
             add("vendor_relations", vendors, vendor_terms)
+        elif section == "distributors" and official:
+            # Official brand/linecard catalogues are authoritative even when the
+            # source registry classifies the landing page as 'official'.
+            listed, listed_terms = distributor_linecard_vendors(document, vendor_names)
+            add("vendor_relations", listed, listed_terms, confidence=0.91)
         if family in {"services", "official"}:
             add("capabilities", capabilities, cap_terms)
             add("services", services, service_terms)
@@ -416,26 +454,32 @@ def extract_candidates(
             add("capabilities", capabilities, cap_terms)
         if family in {"analyst", "news", "technology", "official", "cases"}:
             add("competitors", competitors, competitor_terms, confidence=0.83 if official else 0.76)
-        # Capture specific, linkable manufacturer publications. A generic
-        # landing page, search snippet or timeless product brochure is not news.
-        if family in {"news", "official"}:
-            from urllib.parse import urlsplit
-            path = urlsplit(document.url).path.casefold()
-            title = (document.title or "").strip()
-            is_news_path = any(word in path for word in (
-                "/news", "/press", "/blog", "/announc", "/noticia", "/actualidad",
-                "/media/", "/newsroom", "/releases/",
-            ))
-            has_owner = canonical(researched_entity) in canonical(
-                title + " " + (text[:500] if text else "")
-            ) if researched_entity else False
-            if is_news_path and has_owner and 22 <= len(title) <= 180:
-                add("recent_signals", [title], [title], claim="signal",
-                    confidence=0.77 if official else 0.66)
     elif section == "trends":
         if family in {"analyst", "news", "official", "technology"}:
             add("market_players", vendors, vendor_terms, confidence=0.68 if not official else 0.80)
     elif section == "architectures" and family in {"analyst", "technology", "official"}:
         add("vendors", vendors, vendor_terms, claim="interpretation", confidence=0.68)
+
+    # Publish only item-specific articles that clearly name the researched entity.
+    # All three sections share the same accredited news feed; landing pages do not
+    # count as publications. Retrieval dates are never asserted as publish dates.
+    if section in {"manufacturers", "integrators", "clients_private", "clients_public"} and family in {
+        "news", "official", "partners", "technology", "cases", "services",
+    }:
+        from urllib.parse import urlsplit
+        path = urlsplit(document.url).path.casefold()
+        title = (document.title or "").strip()
+        is_article = bool(re.search(
+            r"/(?:news|noticias?|actualidad|novidades|press|press-releases|"
+            r"comunicados|announcements?|blog|insights|articles|media|"
+            r"newsroom|releases)/[^/?#]{5,}", path
+        ))
+        has_owner = (
+            bool(researched_entity)
+            and canonical(researched_entity) in canonical(title + " " + (text[:700] if text else ""))
+        )
+        if is_article and has_owner and 22 <= len(title) <= 180:
+            add("recent_signals", [title], [title], claim="signal",
+                confidence=0.82 if official else 0.70)
 
     return candidates

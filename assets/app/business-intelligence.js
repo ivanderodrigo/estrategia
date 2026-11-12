@@ -48,36 +48,61 @@ function classifyNotice(row){
  // Ancillary inferred opportunity fields cannot create a portfolio match.
  const primary=classifyNeed(needs.join(' '));
  const secondary=classifyNeed(tech.join(' '));
- const fit=primary.fit || (secondary.fit && needs.some(v=>/\b(network|red|sistema|infraestructura|servicio|seguridad|cloud|nube|equipamiento|plataforma|tecnologia|technology|software)\b/i.test(normalize(v))));
+ // Secondary signals can refine a tender, but cannot turn a generic IT purchase
+ // into a portfolio opportunity. Require a specific technical anchor in the
+ // evidenced procurement object, not words like "sistema" or "servicio".
+ const anchor=/\b(ciberseguridad|ciberseguranca|cybersecurity|seguridad informatica|seguridad de redes|network security|infraestructura de red|red de datos|red corporativa|rede de dados|lan|wlan|wan|wifi|wi.fi|switches?|routers?|firewalls?|siem|soar|sase|sse|zero trust|sd.wan|cloud|nube|nuvem|data.?center|centro de datos|centro de dados|kubernetes|virtualizacion|virtualization|backup empresarial|observabilidad|observability)\b/i;
+ const fit=primary.fit || (secondary.fit && needs.some(v=>anchor.test(normalize(v))));
  const areas=[...new Set([...(primary.fit?primary.areas:[]),...(secondary.fit?secondary.areas:[])])];
  const evidence=[...(f.request_or_need?.evidence||[]),...(f.notice_id?.evidence||[]),...(row.evidence||[])];
  const official=(evidence.map(e=>safeUrl(e?.url)).find(Boolean)||'');
  const pdf=evidence.map(e=>safeUrl(e?.url)).find(url=>/\.pdf(?:[?#]|$)/i.test(url))||'';
  return {fit,areas:fit?areas:[],reason:fit?'Encaje explícito con necesidad documentada':primary.reason,official,pdf};
 }
-function uniqueNews(rows){
- const news=[],seen=new Set();
+const NEWS_FIELDS={
+ manufacturers:['recent_signals'],
+ integrators:['recent_signals','public_cases','public_contracts'],
+ clients:['recent_signals','investment_signals','public_projects','contracts']
+};
+function isPublicationUrl(href){
+ try{
+  const path=new URL(href).pathname.toLowerCase();
+  const match=path.match(/\/(news|noticias|noticia|actualidad|novidades|press|press-releases|releases|comunicados|announcements|announcement|blog|insights|articles|case-studies|customer-stories|casos-de-exito|success-stories|media|prensa)(?:\/|$)/);
+  if(!match)return false;
+  const suffix=path.slice(match.index+match[0].length);
+  // A section homepage is never a publication (except a dated standalone announcement URL).
+  return suffix.replace(/\//g,'').length>=5 || /^(announcement|comunicados|releases)$/.test(match[1]);
+ }catch(_){return false;}
+}
+function uniqueNews(rows,section='manufacturers'){
+ const news=[],seen=new Set(),fields=NEWS_FIELDS[section]||NEWS_FIELDS.manufacturers;
  for(const row of rows||[]){
-  const field=row?.fields?.recent_signals;
-  if(!field)continue;
-  const values=Array.isArray(field.value)?field.value:[field.value];
-  for(const value of values){
-   if(!value||typeof value!=='string')continue;
-   const item=Array.isArray(field.value)?(field.items||[]).find(x=>x.value===value):field;
-   const evidence=(item?.evidence||[]).filter(ev=>fieldProof({evidence:[ev]})&&safeUrl(ev.url));
-   for(const ev of evidence){
-    const url=safeUrl(ev.url),title=(ev.title&&ev.title.length>12?ev.title:value).trim();
-    const stamp=Date.parse(ev.date||ev.retrieved_at||'')||0;
-    const key=row.name.toLowerCase()+'|'+url;
-    if(seen.has(key))continue;
-    seen.add(key);
-    news.push({vendor:row.name,title,url,date:stamp,dateLabel:ev.date||ev.retrieved_at||'',source:ev.source||'Fuente pública',summary:value});
+  const owner=String(row?.name||'').trim();
+  if(!owner)continue;
+  for(const fieldName of fields){
+   const field=row?.fields?.[fieldName];
+   if(!field)continue;
+   const values=Array.isArray(field.value)?field.value:[field.value];
+   for(const value of values){
+    if(!value||typeof value!=='string')continue;
+    const item=Array.isArray(field.value)?(field.items||[]).find(x=>x.value===value):field;
+    const evidence=(item?.evidence||[]).filter(ev=>fieldProof({evidence:[ev]})&&isPublicationUrl(safeUrl(ev.url)));
+    for(const ev of evidence){
+     const url=safeUrl(ev.url),title=String(ev.title||value).trim();
+     if(title.length<12||/^(noticias|news|press releases?|actualidad|blog|inicio|home|casos de exito)$/i.test(title))continue;
+     const key=normalize(owner)+'|'+url.toLowerCase();
+     if(seen.has(key))continue;
+     seen.add(key);
+     const publicationDate=ev.published_at||ev.published_date||ev.date||'';
+     const stamp=Date.parse(publicationDate)||0;
+     news.push({vendor:owner,title,url,date:stamp,dateLabel:publicationDate,source:ev.source||'Fuente pública',summary:value,field:fieldName});
+    }
    }
   }
  }
  return news.sort((a,b)=>b.date-a.date||a.vendor.localeCompare(b.vendor,'es')||a.title.localeCompare(b.title,'es'));
 }
-const api={normalize,classifyNeed,classifyNotice,supportedTexts,safeUrl,uniqueNews};
+const api={normalize,classifyNeed,classifyNotice,supportedTexts,safeUrl,uniqueNews,isPublicationUrl};
 root.WestconBusiness=api;
 if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

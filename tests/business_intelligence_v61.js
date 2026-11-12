@@ -14,9 +14,27 @@ assert.strictEqual(bi.classifyNotice(notice('Servicio gestionado de cloud y Zero
 assert.strictEqual(bi.classifyNotice(notice('Servicio gestionado de cloud y Zero Trust',false)).fit,false);
 assert.strictEqual(bi.classifyNotice(notice('Suministro de portátiles y equipos de escritorio')).fit,false);
 assert.strictEqual(bi.classifyNotice(notice('Renovación Wi-Fi 802.11 para edificios')).official,ev.url);
-const news=bi.uniqueNews([{name:'Proveedor A',fields:{recent_signals:{value:['Lanzamiento producto'],items:[{value:'Lanzamiento producto',evidence:[{...ev,url:'https://example.org/news',title:'Lanzamiento del nuevo producto A'}]}]}}}]);
+const news=bi.uniqueNews([{name:'Proveedor A',fields:{recent_signals:{value:['Lanzamiento producto'],items:[{value:'Lanzamiento producto',evidence:[{...ev,url:'https://example.org/news/lanzamiento-producto-a',title:'Lanzamiento del nuevo producto A'}]}]}}}]);
 assert.strictEqual(news.length,1);
 assert.strictEqual(news[0].vendor,'Proveedor A');
 const fake=bi.uniqueNews([{name:'Proveedor B',fields:{recent_signals:field(['Rumor'],false)}}]);
 assert.strictEqual(fake.length,0);
+// A generic technology procurement must not be promoted just because its
+// separately extracted technology signals contain a portfolio term.
+const generic=notice('Servicio de mantenimiento de sistemas informáticos');
+generic.fields.technology_signals=field('firewall y cloud');
+assert.strictEqual(bi.classifyNotice(generic).fit,false);
+const specific=notice('Renovación de infraestructura de red corporativa');
+specific.fields.technology_signals=field('switches y SD-WAN');
+assert.strictEqual(bi.classifyNotice(specific).fit,true);
+const noPublicationDate=bi.uniqueNews([{name:'Proveedor C',fields:{recent_signals:{value:['Actualización'],items:[{value:'Actualización',evidence:[{...ev,date:undefined,retrieved_at:'2026-11-12',url:'https://example.org/announcement',title:'Actualización de la plataforma'}]}]}}}]);
+assert.strictEqual(noPublicationDate[0].date,0,'Crawl date must never become news publication date');
+
+const integratorFeed=bi.uniqueNews([{name:'Partner Ejemplo',fields:{public_cases:{value:['Despliegue de red segura'],items:[{value:'Despliegue de red segura',evidence:[{...ev,title:'Partner Ejemplo moderniza la red de un hospital',url:'https://example.org/case-studies/hospital-seguro'}]}]}}}],'integrators');
+assert.strictEqual(integratorFeed.length,1,'Integrator case article must be discoverable as news');
+assert.strictEqual(integratorFeed[0].vendor,'Partner Ejemplo');
+const clientFeed=bi.uniqueNews([{name:'Empresa Ejemplo',fields:{investment_signals:{value:['Inversion en cloud para reducir riesgo'],items:[{value:'Inversion en cloud para reducir riesgo',evidence:[{...ev,title:'Empresa Ejemplo invierte en ciberseguridad cloud',url:'https://example.org/noticias/inversion-cloud-segura'}]}]}}}],'clients');
+assert.strictEqual(clientFeed.length,1,'Client technology investment article must be discoverable');
+const nonArticle=bi.uniqueNews([{name:'Empresa Ejemplo',fields:{recent_signals:{value:['Novedades'],items:[{value:'Novedades',evidence:[{...ev,title:'Portal de noticias',url:'https://example.org/noticias'}]}]}}}],'clients');
+assert.strictEqual(nonArticle.length,0,'News section index is not a publication');
 console.log('Business Intelligence v6.1: relevant procurement and accredited news OK');
