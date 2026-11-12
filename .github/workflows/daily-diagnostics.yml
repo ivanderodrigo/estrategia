@@ -12,7 +12,7 @@ on:
       - 'scripts/audit_v430.py'
       - '.github/workflows/daily-diagnostics.yml'
 permissions:
-  contents: write
+  contents: read
 jobs:
   inspect:
     runs-on: ubuntu-latest
@@ -47,21 +47,20 @@ jobs:
           path.write_text(json.dumps({'conclusion':'failed','failed_step':'dependencies',
             'scope':'Preflight only','steps':[]},indent=2)+'\n')
           PY
-      - name: Persist diagnostic even on failure
+      - name: Prepare diagnostic artifact even on failure
         if: always()
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
           if [ ! -f data/current/daily_preflight_health.json ]; then
             echo '{"conclusion":"failed","failed_step":"workflow_setup"}' > data/current/daily_preflight_health.json
           fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/current/daily_preflight_health.json
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'chore: persist daily preflight diagnostic'
-          git pull --rebase origin main
-          git push origin HEAD:main
+      - name: Upload preflight diagnostic without mutating main
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-preflight-diagnostic-${{ github.run_id }}
+          path: data/current/daily_preflight_health.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Fail if any prerequisite failed
         if: always()
         run: |
