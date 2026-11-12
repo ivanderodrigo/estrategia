@@ -6,7 +6,7 @@ from engine.research.intelligent_discovery import intelligent_discovery_queries
 from engine.research.web_intelligence import _prioritize_research_queries
 from engine.research.ted import notice_is_relevant
 from engine.research.extractors import competitors_in_text, extract_candidates, distributor_linecard_vendors
-from engine.research.documents import Document
+from engine.research.documents import Document, parse_document
 
 
 class IntelligentDiscoveryV61Tests(unittest.TestCase):
@@ -86,6 +86,19 @@ class IntelligentDiscoveryV61Tests(unittest.TestCase):
             text="Nota de prensa con Cisco, Fortinet y VMware sin catálogo de marcas",
             links=(), content_digest="abc")
         self.assertEqual(distributor_linecard_vendors(unrelated, ["Cisco", "Fortinet"]), ([], []))
+
+    def test_logo_only_distributor_page_provides_brand_labels(self):
+        html = """<html><head><title>Atlas Distribution - Fabricantes</title></head>
+            <body><h1>Nuestras marcas</h1>
+            <a href="/vendor/cisco"><img alt="Cisco"></a>
+            <a href="/vendor/fortinet"><img alt="Fortinet"></a></body></html>"""
+        doc = parse_document(html, "https://atlas-distribution.example/fabricantes", "abc")
+        extracted = distributor_linecard_vendors(doc, ["Cisco", "Fortinet"])
+        self.assertEqual(set(extracted[0]), {"Cisco", "Fortinet"})
+        outside = parse_document(
+            '<html><body><img alt="Cisco"></body></html>',
+            "https://atlas-distribution.example/noticias/articulo", "abc")
+        self.assertNotIn("Cisco", outside.text)
 
     def test_integrator_and_customer_articles_extracted_with_evidence_specific_title(self):
         for section, name in (
