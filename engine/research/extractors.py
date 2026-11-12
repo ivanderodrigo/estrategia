@@ -337,6 +337,68 @@ def evidence_snippet(text: str, terms: Iterable[str], *, radius: int = 180) -> s
 
 
 
+def _official_menu_brand_links(document: Document) -> list[str]:
+    """Brands under an explicit first-party *Fabricantes/Vendors* navigation menu.
+
+    Ajoomal, for example, publishes the catalogue as /bluecat/, /check-point/,
+    etc. A bare vendor name on a news or solution page is not sufficient.
+    Require multiple same-host links with labels matching their canonical slugs
+    and labels in the contiguous vendor-menu region.
+    """
+    from urllib.parse import urlsplit
+
+    text = document.text or ""
+    menu_start = re.search(
+        r"\b(?:fabricantes|nuestras marcas|nossos fabricantes|our vendors|"
+        r"our brands|brands we distribute)\b", canonical(text[:7000]),
+    )
+    if not menu_start:
+        return []
+    # canonical() may change length due to accents. Only use it to find the
+    # anchor; derive the navigation region from original text consistently.
+    raw_match = re.search(
+        r"(?i)\b(?:fabricantes|nuestras marcas|nossos fabricantes|"
+        r"our vendors|our brands|brands we distribute)\b", text[:7000]
+    )
+    if not raw_match:
+        return []
+    region = text[raw_match.end(): raw_match.end()+1600]
+    stop = re.search(r"(?i)\b(?:soluciones\s*(?:y|&)\s*servicios|"
+                     r"solucoes\s*e\s*servicos|newsroom|noticias|"
+                     r"servicios profesionales|eventos|careers)\b", region)
+    if stop:
+        region = region[:stop.start()]
+    normalized_region = " " + canonical(region) + " "
+    host = (urlsplit(document.url).hostname or "").lower().removeprefix("www.")
+    excluded = {
+        "fabricantes", "marcas", "brand", "brands", "vendors", "inicio",
+        "home", "contacto", "contact", "newsletter", "soluciones", "servicios",
+        "partners", "blog", "news", "noticias", "eventos", "securidad",
+        "ciberseguridad", "cybersecurity", "cloud", "networking", "wifi",
+        "backup", "hardware", "software", "casos de exito", "soporte",
+    }
+    labels: dict[str, str] = {}
+    for link in document.links:
+        url = urlsplit(link.url)
+        if (url.scheme not in {"http", "https"} or
+            (url.hostname or "").lower().removeprefix("www.") != host):
+            continue
+        label = " ".join(str(link.label or "").split()).strip()
+        key = canonical(label)
+        if (not 2 <= len(label) <= 48 or len(label.split()) > 5 or
+            key in excluded or not re.search(r"[a-zA-Z]", label)):
+            continue
+        # Restrict to named menu entities, never unrelated site-wide links.
+        if " "+key+" " not in normalized_region:
+            continue
+        slug = url.path.strip("/").split("/")[-1]
+        slugkey = canonical(slug.replace("-", " ").replace("_", " "))
+        if not slugkey or slugkey.replace(" ","") != key.replace(" ",""):
+            continue
+        labels.setdefault(key, label)
+    return list(labels.values())[:150] if len(labels) >= 4 else []
+
+
 def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]) -> tuple[list[str], list[str]]:
     """Extract named brands from explicit first-party reseller/distributor catalogues.
 
@@ -363,10 +425,18 @@ def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]
         r"our vendors|our brands|vendor linecard|line card de fabricantes)\b",
         compact,
     )
-    if not owned_catalogue and not heading:
+    menu_brands = _official_menu_brand_links(document)
+    if not owned_catalogue and not heading and not menu_brands:
         return [], []
     body = text[:70000] if owned_catalogue else text[:7000]
     known, terms = vendors_in_text(body, vendor_names)
+    known_keys = {canonical(value) for value in known}
+    for brand in menu_brands:
+        key = canonical(brand)
+        if key not in known_keys:
+            known.append(brand)
+            terms.append(brand)
+            known_keys.add(key)
     # Official logo catalogues often contain more brands than a static
     # vocabulary. parse_document adds their img alt labels only on explicit
     # manufacturer/brand paths. Keep strong brand-like labels, not page UI.
@@ -433,10 +503,18 @@ def extract_candidates(
         if section == "distributors" and family in {"financial", "official"}:
             add("revenue", revenues, revenue_terms, confidence=0.90 if official else 0.74)
         if family == "partners":
-            add("vendor_relations", vendors, vendor_terms)
+            if official:
+                listed, listed_terms = distributor_linecard_vendors(document, vendor_names)
+                if listed:
+                    add("vendor_relations", listed, listed_terms, confidence=0.90)
+                else:
+                    # Partner detail pages may evidence one particular relationship
+                    # without publishing an entire catalogue.
+                    add("vendor_relations", vendors, vendor_terms)
+            else:
+                add("vendor_relations", vendors, vendor_terms)
         elif official and family in {"official", "technology", "services"}:
-            # First-party brand catalogues may be categorized as generic or
-            # technical pages; accept evidence-specific logos for both groups.
+            # First-party catalogues may be classified as generic or technical.
             listed, listed_terms = distributor_linecard_vendors(document, vendor_names)
             add("vendor_relations", listed, listed_terms, confidence=0.90)
         if family in {"services", "official"}:
