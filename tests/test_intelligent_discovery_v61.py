@@ -155,6 +155,38 @@ class IntelligentDiscoveryV61Tests(unittest.TestCase):
                                researched_entity="Socio Integrador"),
         )
 
+    def test_unknown_brand_from_official_catalogue_logo_without_generic_ui(self):
+        html = """<html><title>Nuestras marcas</title><body>
+            <img alt="NicheFab Technologies" />
+            <img alt="Cloud" /><img alt="Buscar" />
+            <img alt="logo de Fortinet" /></body></html>"""
+        doc = parse_document(html,"https://mydistribution.example/fabricantes","digest")
+        found = extract_candidates("distributors","official",doc,[],official=True,
+                                  researched_entity="My Distribution")
+        labels=list(found["vendor_relations"].values)
+        self.assertIn("NicheFab Technologies",labels)
+        self.assertIn("Fortinet",labels)
+        self.assertNotIn("Cloud",labels)
+        self.assertNotIn("Buscar",labels)
+
+    def test_news_research_on_architecture_and_trend_requires_topic_in_article_title(self):
+        for section,entity,title in (
+            ("trends","SASE / SSE","SASE adoption and SSE convergence in 2026"),
+            ("architectures","Zero Trust Architecture","Zero Trust deployment architecture in Europe"),
+        ):
+            doc=Document(url="https://example.org/research/technology-market-2026",
+                         title=title,text=title+" research and evidence",
+                         links=(),content_digest="digest")
+            observed=extract_candidates(section,"analyst",doc,[],official=False,
+                                        researched_entity=entity)
+            self.assertIn("recent_signals",observed,section)
+            unrelated=Document(url="https://example.org/research/unrelated-market-overview",
+                               title="The future of banking security",
+                               text="Generic security industry commentary",links=(),content_digest="digest")
+            self.assertNotIn("recent_signals",extract_candidates(
+                section,"analyst",unrelated,[],official=False,
+                researched_entity=entity),section)
+
     def test_generic_telephone_cpv_rejected(self):
         self.assertFalse(notice_is_relevant({"classification-cpv": ["32500000"], "notice-title": {"spa": "Mantenimiento de teléfonos móviles"}}))
 
