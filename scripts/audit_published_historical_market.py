@@ -42,6 +42,12 @@ def check():
                   for ev in evidence)
         record={"entity":claim["entity"],"value":claim["value"],"url":expected_url,
                 "row_present":bool(row),"item_present":bool(item),
+                "evidence_count":len(evidence),
+                "evidence_details":[{"url":e.get("url"),"atomic":e.get("atomic"),
+                                     "field":e.get("field"),"item_value":e.get("item_value"),
+                                     "origin":e.get("provenance_origin"),
+                                     "source_binding":e.get("source_binding")}
+                                    for e in evidence[:5] if isinstance(e,dict)],
                 "item_has_exact_published_evidence":proof}
         (confirmed if proof else failures).append(record)
     report={"expected":len(evidence_config["existing_claim_sources"]),
