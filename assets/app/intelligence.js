@@ -419,11 +419,11 @@
     const claimLabel=claim==='signal'?'Señal':claim==='interpretation'?'Interpretación':'Hecho';
     const levelLabel=bandLabel(band);
     const factors=deriveConfidenceFactors(field,item,band,evidence);
-    const why=(band==='medium'||band==='low'||factors.length)?`<div class="confidence-why"><b>Por qué tiene este nivel</b><ul>${factors.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
+    const why=(band==='medium'||band==='low')?`<div class="confidence-why"><b>Por qué tiene este nivel</b><ul>${factors.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
     const sources=evidence.length?evidence.map(ev=>sourceItem(ev,factScore,band)).join(''):'<p class="atomic-evidence-missing">Sin fuente actual acreditada para esta afirmación.</p>';
     const pending='';
     const archaeology=sourceArchaeology(field,item);
-    return `<div class="traceable ${evidence.length?'':'pending-source'}" tabindex="0"><div class="trace-value">${inner}${pending}</div><span class="trace-mark confidence-dot ${esc(evidence.length?band:'low')}" title="${esc(evidence.length?levelLabel:'Pendiente de verificación')}">i</span><div class="trace-popover"><strong>TRAZABILIDAD DEL DATO</strong><div class="claim-kind">${esc(claimLabel)} · ${esc(evidence.length?levelLabel:'Pendiente de verificación')}</div><div class="confidence-three"><span><b>${confidencePct(factScore)}%</b>Hecho</span><span><b>${confidencePct(interpretationScore)}%</b>Interpretación</span><span><b>${esc(actionRisk)}</b>Riesgo de acción</span></div>${reason?`<p class="confidence-explain">${esc(reason)}</p>`:''}${why}${competitionInfo}${qualifier?`<span class="qualifier">${esc(qualifier)}</span>`:''}<div class="trace-source-heading">Fuentes actuales que sostienen este dato</div>${sources}${archaeology}<button type="button" class="confidence-help-link" data-confidence-help>¿Cómo se calcula e interpreta la confianza?</button></div></div>`;
+    return `<div class="traceable ${evidence.length?'':'pending-source'}" tabindex="0"><div class="trace-value">${inner}${pending}</div><span class="trace-mark confidence-dot ${esc(evidence.length?band:'low')}" title="${esc(evidence.length?levelLabel:'Pendiente de verificación')}">i</span><div class="trace-popover"><strong>TRAZABILIDAD DEL DATO</strong><div class="claim-kind">${esc(claimLabel)} · ${esc(evidence.length?levelLabel:'Pendiente de verificación')}</div><div class="confidence-three"><span><b>${confidencePct(factScore)}%</b>Hecho</span><span><b>${confidencePct(interpretationScore)}%</b>Interpretación</span><span><b>${esc(actionRisk)}</b>Riesgo de acción</span></div>${band!=='high'&&reason?`<p class="confidence-explain">${esc(reason)}</p>`:''}${why}${competitionInfo}${qualifier?`<span class="qualifier">${esc(qualifier)}</span>`:''}<div class="trace-source-heading">Fuentes actuales que sostienen este dato</div>${sources}${archaeology}<button type="button" class="confidence-help-link" data-confidence-help>¿Cómo se calcula e interpreta la confianza?</button></div></div>`;
   }
 
   function itemFor(field,value,index){
@@ -673,15 +673,6 @@
   }
   function missingMarkup(col,row=null){
     const type=col?.id;
-    if(row&&['competitor_vendor_overlap','mapped_competitor_vendors'].includes(type)){
-      const vendors=window.WestconBusiness?.supportedTexts(row?.fields?.vendor_relations)||[];
-      const info=vendors.length?'Cruce competitivo sin evidencia suficiente · '+vendors.length+' fabricantes acreditados en el linecard':'Linecard de fabricantes pendiente de acreditar';
-      return '<span class="tag confidence-tag unverified missing-explained" title="La falta de una comparación no demuestra ausencia de competencia"><span class="tag-label">'+esc(info)+'</span><small>?</small></span>';
-    }
-    if(row&&type==='revenue')
-      return '<span class="tag confidence-tag unverified missing-explained" title="No existe una cifra que cumpla entidad, concepto financiero, importe/moneda, año y fuente"><span class="tag-label">Facturación pública por acreditar</span><small>?</small></span>';
-    if(row&&type==='linecard_remainder')
-      return '<span class="tag confidence-tag unverified missing-explained" title="No hay marcas adicionales con evidencia; no implica un catálogo completo"><span class="tag-label">Sin otras marcas acreditadas</span><small>?</small></span>';
     const historical=row?._historical?.[type]||[];
     return historical.length?traceable({_historical:historical,value:'Por acreditar',evidence:[]},
       '<span class="tag confidence-tag unverified"><span class="tag-label">Por acreditar</span><small>?</small></span>'):
@@ -705,7 +696,7 @@
     if(!scoped.length)return '';
     const rows=scoped.slice(0,8).map(h=>{
       const val=typeof h.value==='object'?JSON.stringify(h.value):String(h.value??'');
-      const links=(h.urls||[]).filter(url=>/^https:\/\/[^\\s"'<>]+$/i.test(url)).slice(0,3)
+      const links=(h.urls||[]).filter(url=>/^https:\/\/[^\s"'<>]+$/i.test(url)).slice(0,3)
         .map(url=>'<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Ver referencia original</a>').join(' · ');
       return '<li><span>'+esc(val.slice(0,240))+'</span>'+(links?'<div>'+links+'</div>':'')+'</li>';
     }).join('');
@@ -714,7 +705,12 @@
       '<ul>'+rows+'</ul></section>';
   }
   function tableHtml(rows, schema, emptyText, view, baseRows=rows){
-    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';const relevance='';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div>${identity.evidence.length?'<small>Entidad documentada</small>':''}`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table',col.id):missingMarkup(col,row)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
+    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const baseIdentityEvidence=(row.evidence||[]).filter(e=>atomicCurrentProof([e]));
+const linkedEvidence=(row.fields?.vendor_relations?.items||[]).filter(i=>atomicCurrentProof(i.evidence)).flatMap(i=>i.evidence||[]);
+const westconProof=(row.fields?.westcon_overlap?.items||[]).filter(i=>atomicCurrentProof(i.evidence)).flatMap(i=>i.evidence||[]);
+const identityEvidence=baseIdentityEvidence.length?baseIdentityEvidence:(westconProof.length?westconProof:linkedEvidence);
+const identity={value:row.name,evidence:identityEvidence.slice(0,6),confidence:.95,confidence_band:identityEvidence.length?'high':'low',qualifier:westconProof.length?'Relación documentada con al menos un fabricante Westcon. La confianza no se extiende a relaciones no verificadas.':''};
+const identityTone=identityEvidence.length?'high':'unverified';const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';const relevance='';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><span class="tag confidence-tag ${identityTone} entity-pill"><span class="tag-label">${esc(row.name)}</span><small>${identityEvidence.length?'✓':'?'}</small></span>${direct}</div>`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table',col.id):missingMarkup(col,row)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
     return `<div class="table-shell">${columnChooser(schema,view,baseRows)}${coverageOverview(schema,baseRows,view)}<div class="table-scroll">${body}</div></div>${analysisPanel(view,schema,baseRows,rows)}`;
   }
   function scopeMatch(row, scope){
