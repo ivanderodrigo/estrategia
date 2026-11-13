@@ -134,6 +134,10 @@ def run(limit=30, timeout=12):
               "policy": "Solo afirmaciones atómicas citadas en listados explícitos de alternativas de producto. Ninguna coincidencia de texto genérica acredita.",
               "existing_claim_sources": sorted(confirmed.values(), key=lambda c: (
                   c["section"], c["entity"], c["field"], c["value"]))}
+    # Keep the versioned evidence registry unchanged when nothing was accredited.
+    # Otherwise a Pages rebuild would commit a fresh timestamp and recursively retrigger itself.
+    if previous.get("existing_claim_sources") == output["existing_claim_sources"]:
+        output["verified_on"] = previous.get("verified_on") or today
     atomic_write_json(OUT, output)
     audit = {"generated_at": today, "urls_eligible": len(inventory),
              "claims_reviewed_this_run": len(attempts),
