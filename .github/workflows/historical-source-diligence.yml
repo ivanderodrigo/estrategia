@@ -45,11 +45,13 @@ jobs:
           print('Audited',report['urls_checked_this_run'],'URLs and',
                 report['claims_checked_this_run'],'claim-source pairs')
           PY
+      - name: Verify every reachable claim in its source context across sections
+        run: python scripts/accredit_semantic_historical_sources.py
       - name: Publish source checks without overwriting intelligence
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/current/historical_source_checks.json data/public/historical/current/source_checks.json
+          git add data/current/historical_source_checks.json data/public/historical/current/source_checks.json config/current/historical_semantic_verified.json data/public/historical/current/semantic_claim_audit.json
           if git diff --cached --quiet; then
             echo "No new checks"
             exit 0
