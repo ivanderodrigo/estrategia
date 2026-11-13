@@ -64,10 +64,24 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # A parallel historical source audit can update only its two source
+          # check reports. Preserve those newer checks and safely move our
+          # generated public snapshot onto that newer commit, while refusing
+          # any concurrent changes to code or other intelligence.
+          git fetch origin main
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
+            while IFS= read -r changed; do
+              [ -n "$changed" ] || continue
+              case "$changed" in
+                data/current/historical_source_checks.json|data/public/historical/current/source_checks.json) ;;
+                *) echo "Main changed outside source audit ($changed): refusing stale publish"; exit 1 ;;
+              esac
+            done < <(git diff --name-only HEAD origin/main)
+            git restore --source=origin/main --worktree -- data/public/historical/current/source_checks.json
+            git reset --soft origin/main
+          fi
           git add -A data/public config/current/historical_structured_verified.json
           if ! git diff --cached --quiet; then
-            git fetch origin main
-            test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" || { echo "Main moved while rebuilding; refusing to publish stale data"; exit 1; }
             git commit -m "data: persist validated public intelligence snapshot [skip ci]"
             git push origin HEAD:main
           fi
