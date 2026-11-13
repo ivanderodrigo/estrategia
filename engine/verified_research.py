@@ -120,6 +120,8 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
     structured = read_json("config/current/historical_structured_verified.json", {})
     exact_sources = list(registry.get("existing_claim_sources") or [])
     exact_sources.extend(structured.get("existing_claim_sources") or [])
+    historical_market = read_json("config/current/verified_historical_market_20261114.json", {})
+    exact_sources.extend(historical_market.get("existing_claim_sources") or [])
     for claim in exact_sources:
         section = str(claim.get("section") or "")
         field_id = str(claim.get("field") or "")
@@ -147,10 +149,22 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
                 # missing historical competitor value. All other relationship
                 # fields still require an existing exact assertion.
                 url = str(source.get("url") or "")
-                if not (section == "manufacturers" and field_id == "competitors"
-                        and source.get("source_type") == "analyst-peer-review"
-                        and url.startswith("https://www.gartner.com/reviews/product/")
-                        and url.rstrip("/").endswith("/alternatives")):
+                exact_historical = (
+                    section == "manufacturers" and field_id == "competitors"
+                    and (
+                        (source.get("source_type") == "analyst-peer-review"
+                         and url.startswith("https://www.gartner.com/reviews/product/")
+                         and url.rstrip("/").endswith("/alternatives"))
+                        or (source.get("source_type") == "analyst-market-comparison"
+                            and source.get("verification_method") == "same-market-explicit-vendor-list"
+                            and url.startswith("https://www.gartner.com/en/documents/"))
+                        or (source.get("source_type") == "official-regulatory-filing"
+                            and source.get("verification_method") == "issuer-identified-direct-competitor"
+                            and canonical(entity) == "audiocodes"
+                            and url.startswith("https://www.otcmarkets.com/filing/html"))
+                    )
+                )
+                if not exact_historical:
                     continue
                 match = value
             # Preserve the exact published spelling and all existing support.
