@@ -170,7 +170,7 @@
       stat('Integradores',run.integrators??counts.integrators,'Fichas de ecosistema')+
       stat('Mayoristas',run.distributors??counts.distributors,'Comparación competitiva')+
       stat('Clientes',run.clients??(Number(counts.clients_public||0)+Number(counts.clients_private||0)),'Cuentas y contratación')+
-      stat('Pliegos vigentes',run.procurement_lifecycle?.currently_active_or_date_unknown,'Excluye vencidos y adjudicados')+
+      stat('Expedientes abiertos / fecha desconocida',run.procurement_lifecycle?.currently_active_or_date_unknown,'Solo expedientes con número identificable')+
       '</div>'+
       '<div class="observatorio-panels">'+
       '<section class="observatorio-panel"><h2>Qué aportó la última investigación</h2><p>Los hallazgos no equivalen automáticamente a oportunidades de venta.</p>'+
@@ -178,7 +178,7 @@
       stat('Valores añadidos',q.values_added,'Nuevos datos')+
       stat('Evidencias aceptadas',q.accepted_evidences,'Pueden corroborar valores existentes')+
       stat('Entidades añadidas',q.entities_added,'Requieren contexto comercial')+
-      stat('Pliegos cerrados/vencidos',run.procurement_lifecycle?.closed_or_deadline_expired,'Conservados solo para histórico')+
+      stat('Expedientes cerrados o vencidos',run.procurement_lifecycle?.closed_or_deadline_expired,'Solo expedientes; se conserva su historial')+
       '</div></section>'+
       '<section class="observatorio-panel"><h2>Qué sigue pendiente</h2><p>'+esc(count(run.research_gaps))+' tareas abiertas; no son '+esc(count(run.research_gaps))+' casillas vacías. Un campo puede generar varias verificaciones.</p>'+
       (rows?'<table class="observatorio-debt"><tbody>'+rows+'</tbody></table>':'<p>El desglose por estados estará disponible tras la próxima publicación del motor actualizado.</p>')+
