@@ -8,10 +8,12 @@ item-specific current source.
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
-from engine.model import canonical
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
+from engine.model import canonical
 INPUT=ROOT/"config/current/verified_historical_market_20261114.json"
 PUBLIC=ROOT/"data/public/sections/manufacturers.json"
 OUTPUT=ROOT/"data/public/historical/current/market_proof_audit.json"
