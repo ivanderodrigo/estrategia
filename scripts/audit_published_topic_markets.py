@@ -8,10 +8,10 @@ sys.path.insert(0,str(ROOT))
 from engine.model import canonical
 
 def main():
-    doc=json.loads((ROOT/"config/current/verified_historical_topic_markets_20261114.json").read_text())
+    doc=json.loads((ROOT/"config/current/verified_historical_topic_markets_20261114.json").read_text(encoding="utf-8"))
     sections={}
     for section in {"trends","architectures"}:
-        sections[section]=json.loads((ROOT/f"data/public/sections/{section}.json").read_text())
+        sections[section]=json.loads((ROOT/f"data/public/sections/{section}.json").read_text(encoding="utf-8"))
     good=[];missing=[]
     for record in doc["existing_claim_sources"]:
         section=record["section"]
