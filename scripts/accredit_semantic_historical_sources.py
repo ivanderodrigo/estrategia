@@ -8,7 +8,6 @@ The input has been fetched by revalidate_historical_sources.py.
 """
 from __future__ import annotations
 from collections import Counter
-from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 import json,re,sys
@@ -73,8 +72,6 @@ def classify(claim,url):
     if field in OWN_CAPABILITY.get(section,set()):
         if not direct_owner:
             return "NOT_FIRST_PARTY"
-        if field=="clients_private":
-            return "FIELD_NOT_SUPPORTED"
         if section=="clients_private":
             # A corporate source mentioning an exact, distinctive phrase proves
             # the owner's technology statement, but a short domain label does not.
@@ -145,7 +142,7 @@ def main():
                                "field":claim.get("field"),"value":claim.get("value"),
                                "url":url,"reason":status})
     REGISTRY.parent.mkdir(parents=True,exist_ok=True)
-    REGISTRY.write_text(json.dumps({"version":1,"generated_at":datetime.now(timezone.utc).isoformat(),
+    REGISTRY.write_text(json.dumps({"version":1,"generated_at":str(report.get("generated_at") or ""),
           "policy":"One-by-one first-party field/claim/source excerpt checks. Never authorizes historical archive mention alone.",
           "existing_claim_sources":successes},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     REPORT.parent.mkdir(parents=True,exist_ok=True)
