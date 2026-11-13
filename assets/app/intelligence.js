@@ -1,7 +1,7 @@
 // App v6.5.0
 (() => {
   'use strict';
-  const state = {data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
+  const state = {historicalSections:{}, historicalSummary:null, data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -58,6 +58,17 @@
     const info=state.manifest?.sections?.[section]; if(!info) throw new Error(`Sección pública no disponible: ${section}`);
     const res=await fetch(info.file,{cache:'no-store'}); if(!res.ok) throw new Error(`No se pudo cargar ${info.file} (${res.status})`);
     const payload=await res.json(); state.data[section]=hydrateEvidence(payload.rows||[],payload.evidence||{}); state.loadedSections.add(section);
+    // Historical references are a distinct, explicitly unverified layer.
+    // They never enter accredited field.evidence or source coverage.
+    try {
+      const leadRes=await fetch('data/public/historical/current/'+section+'.json',{cache:'no-store'});
+      if(leadRes.ok) {
+        const leadData=await leadRes.json();
+        if(leadData.status==='HISTORICAL_LEADS_NOT_ACCREDITED' && leadData.generated_at===state.manifest?.generated_at)
+          state.historicalSections[section]=leadData.entities||{};
+      }
+    } catch(e){console.warn('Referencias históricas no disponibles',section);}
+
   }
   async function ensureViewData(view){for(const section of (VIEW_SECTIONS[view]||[])) await ensureSection(section);}
   async function ensureAllData(){for(const section of PUBLIC_SECTIONS) await ensureSection(section);}
@@ -129,7 +140,7 @@
     const valid=run.status==='published';
     const count=(v)=>Number.isFinite(Number(v))?Number(v).toLocaleString('es-ES'):'—';
     const counts=state.manifest?.counts||{};
-    const historical=state.historyGapSummary||null;
+    const historical=state.historicalSummary?.generated_at===state.manifest?.generated_at?state.historicalSummary:null;
     const stat=(title,value,note)=>'<article class="observatorio-card"><span>'+esc(title)+'</span><strong>'+esc(count(value))+'</strong><small>'+esc(note)+'</small></article>';
     const statusLabels=[
       ['not-researched','Sin investigación registrada'],
@@ -161,10 +172,8 @@
       (rows?'<table class="observatorio-debt"><tbody>'+rows+'</tbody></table>':'<p>El desglose por estados estará disponible tras la próxima publicación del motor actualizado.</p>')+
       '<p>Prioridad elevada (P0 + P1): '+esc(count(Number(priorities.P0||0)+Number(priorities.P1||0)))+' tareas, sujetas a relevancia y acreditación.</p></section></div>'+
       '<div class="observatorio-panel"><h2>Inteligencia con memoria histórica</h2>'+
-      (historical?'<p><strong>'+esc(count(historical.tasks_with_historical_antecedents))+'</strong> de <strong>'+esc(count(historical.total_current_research_tasks))+
-      '</strong> tareas tenían antecedentes documentados en el snapshot del '+esc(String(historical.dataset_published_at||'').slice(0,10))+'. '+esc(count(historical.by_match_level?.['exact-value-history']||0))+
-      ' coincidían además en el valor histórico. Son pistas para la revalidación, <strong>no hechos actuales confirmados</strong>.</p>':
-      '<p>El resumen de antecedentes históricos todavía no está disponible.</p>')+
+      (historical?'<p><strong>'+esc(count(historical.claims))+'</strong> afirmaciones pendientes tienen fuentes históricas enlazadas en su campo. '+esc(count(historical.unique_urls))+' URLs históricas diferentes recuperadas. Son <strong>referencias para revalidar, no hechos confirmados</strong>.</p>':
+      '<p>La memoria histórica del dataset actual no está disponible o su fecha no coincide con la publicación.</p>')+
       '<p>El nuevo motor consulta primero las URLs históricas exactas, las verifica nuevamente y conserva tanto los hallazgos como sus fuentes.</p>'+
       '<p><a href="memoria-historica.html">Explorar memoria histórica y fuentes ↗</a></p></div>'+
       '<div class="observatorio-panel"><h2>Explorar el observatorio</h2><p>Consulta la información con sus fuentes y fechas antes de convertir una señal en una propuesta comercial.</p>'+
@@ -179,7 +188,7 @@
     const [res, runRes, historyRes] = await Promise.all([
       fetch('data/public/manifest.json', {cache:'no-store'}),
       fetch('data/public/last_run.json', {cache:'no-store'}).catch(()=>null),
-      fetch('data/public/historical/gap_summary.json', {cache:'no-store'}).catch(()=>null)
+      fetch('data/public/historical/current/summary.json', {cache:'no-store'}).catch(()=>null)
     ]);
     if(!res.ok) throw new Error(`No se pudo cargar data/public/manifest.json (${res.status})`);
     state.manifest = await res.json();
@@ -187,7 +196,7 @@
     migrateBusinessTablePrefs();
     for(const section of PUBLIC_SECTIONS) state.data[section]=[];
     if(runRes?.ok){ try{ state.lastRun = await runRes.json(); }catch(_){ state.lastRun=null; } }
-    if(historyRes?.ok){ try{state.historyGapSummary=await historyRes.json();}catch(_){state.historyGapSummary=null;} }
+    if(historyRes?.ok){ try{state.historicalSummary=await historyRes.json();}catch(_){state.historicalSummary=null;} }
     await ensureViewData(state.view);
     bind();
     renderAll();
@@ -668,8 +677,25 @@
   function toggleSort(view,col){if(!view)return;const cur=state.sort[view];state.sort[view]={col,dir:cur?.col===col?-cur.dir:1};renderCurrent(view);}
   function reorderColumn(view,from,to){if(!view||from===to)return;const schema=state.data.schemas[view]||[];let order=(state.columnOrder[view]||schema.map(x=>x.id)).filter(x=>schema.some(c=>c.id===x));const a=order.indexOf(from),b=order.indexOf(to);if(a<0||b<0)return;order.splice(b,0,order.splice(a,1)[0]);state.columnOrder[view]=order;localStorage.setItem(`westcon-cols-${view}`,JSON.stringify(order));renderCurrent(view);}
   function renderCurrent(view){({manufacturers:renderManufacturers,integrators:renderIntegrators,distributors:renderDistributors,clients_public:renderClients,clients_private:renderClients}[view]||(()=>{}))();}
+  function historicalKey(value){return norm(value).replace(/[^a-z0-9]+/g,' ').trim();}
+  function historicalTrail(view,row,fieldId){
+    const section=state.historicalSections?.[view];
+    const claims=section?.[historicalKey(row?.name)]?.[fieldId]||[];
+    if(!claims.length)return '';
+    const preview=claims.slice(0,8).map(item=>{
+      const raw=typeof item.value==='object'?JSON.stringify(item.value):String(item.value??'');
+      const urls=(item.urls||[]).filter(url=>/^https:\/\/[^\s"'<>]+$/i.test(url)).slice(0,3);
+      return '<li><span class="historical-claim-text">'+esc(raw.length>180?raw.slice(0,177)+'…':raw)+'</span>'+
+        (urls.length?'<div class="historical-trail-links">'+urls.map((url,i)=>'<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer" title="Fuente histórica por revalidar">Fuente histórica '+(i+1)+'</a>').join(' · ')+'</div>':'')+
+        (item.last_revision?'<small>Última versión: '+esc(item.last_revision)+'</small>':'')+'</li>';
+    }).join('');
+    return '<details class="historical-trail" title="Fuentes recuperadas de versiones antiguas. Ninguna es evidencia actualmente acreditada.">'+
+      '<summary>Memoria histórica: '+esc(claims.length)+' referencia'+(claims.length===1?'':'s')+' por verificar</summary>'+
+      '<div class="historical-trail-body"><strong>No acreditado hoy.</strong> La URL se recuperó de una versión antigua y debe comprobarse antes de reutilizar el dato.'+
+      '<ul>'+preview+'</ul>'+ (claims.length>8?'<small>Mostrando las 8 primeras coincidencias.</small>':'')+'</div></details>';
+  }
   function tableHtml(rows, schema, emptyText, view, baseRows=rows){
-    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';const relevance=view==='distributors'?(state.distributorReasons?.get(String(row.id||row.name))||'Vínculo competitivo por acreditar'):'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>${relevance?`<small class="distributor-relevance-reason">${esc(relevance)}</small>`:''}`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table',col.id):missingMarkup(col,row)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
+    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';const relevance=view==='distributors'?(state.distributorReasons?.get(String(row.id||row.name))||'Vínculo competitivo por acreditar'):'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>${relevance?`<small class="distributor-relevance-reason">${esc(relevance)}</small>`:''}`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table',col.id):missingMarkup(col,row)}${historicalTrail(view,row,col.id)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
     return `<div class="table-shell">${columnChooser(schema,view,baseRows)}${coverageOverview(schema,baseRows,view)}<div class="table-scroll">${body}</div></div>${analysisPanel(view,schema,baseRows,rows)}`;
   }
   function scopeMatch(row, scope){
