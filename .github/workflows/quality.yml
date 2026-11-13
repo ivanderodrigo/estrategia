@@ -35,6 +35,11 @@ jobs:
           name: claim-source-audit
           path: claim-source-audit.json
           retention-days: 14
+      - name: Rebuild and validate proposed canonical snapshot
+        run: |
+          python -m engine.pipeline
+          python scripts/validate.py
+          python scripts/audit_claim_sources.py --output claim-source-rebuilt.json > /dev/null
       - name: Frontend syntax
         run: node --check assets/app/intelligence.js
       - name: Frontend smoke
