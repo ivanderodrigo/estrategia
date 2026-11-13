@@ -686,7 +686,7 @@
     const historical=row?._historical?.[type]||[];
     return historical.length?traceable({_historical:historical,value:'Por acreditar',evidence:[]},
       '<span class="tag confidence-tag unverified"><span class="tag-label">Por acreditar</span><small>?</small></span>'):
-      '<span class="tag confidence-tag unverified"><span class="tag-label">Por investigar</span><small>?</small></span>';
+      '<span class="tag confidence-tag not-researched"><span class="tag-label">Por investigar</span><small>·</small></span>';
   }
   function sortedRows(rows,view){const s=state.sort[view];if(!s)return view==='manufacturers'?[...rows].sort((a,b)=>String(a.name||'').localeCompare(String(b.name||''),'es',{numeric:true,sensitivity:'base'})):rows;const col=(state.data.schemas[view]||[]).find(c=>c.id===s.col)||{id:s.col};return [...rows].sort((a,b)=>valueText(filterAccessor(a,s.col,col)??a.name).localeCompare(valueText(filterAccessor(b,s.col,col)??b.name),'es',{numeric:true})*s.dir);}
   function toggleSort(view,col){if(!view)return;const cur=state.sort[view];state.sort[view]={col,dir:cur?.col===col?-cur.dir:1};renderCurrent(view);}
