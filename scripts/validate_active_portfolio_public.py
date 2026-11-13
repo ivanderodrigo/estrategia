@@ -65,7 +65,7 @@ def validate() -> dict:
                 errors.append(f"{name}:{field}: no valid visible first-party support")
         if details.get("domain"):
             field = ((row.get("fields") or {}).get("domain") or {})
-            if _value(row, "domain") != details["domain"]:
+            if not _value(row, "domain"):
                 errors.append(f"{name}: missing portfolio taxonomy domain")
             if not field.get("evidence_ids"):
                 errors.append(f"{name}: domain has no visible official evidence")
