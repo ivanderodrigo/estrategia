@@ -42,6 +42,7 @@ jobs:
             exit 1
           fi
           python scripts/validate.py
+          python scripts/validate_active_portfolio_public.py
           python scripts/audit_claim_sources.py --output claim-source-rebuilt.json > /dev/null
       - name: Frontend syntax
         run: node --check assets/app/intelligence.js

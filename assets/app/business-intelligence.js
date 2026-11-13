@@ -74,6 +74,9 @@ function sameBusinessName(a,b){
  if(right.startsWith(left+' ')&&countries.test(right.slice(left.length).trim()))return true;
  return false;
 }
+function isActiveWestcon(row){
+ return row?.fields?.westcon_spain?.value===true || row?.fields?.westcon_portugal?.value===true;
+}
 function distributorContext(row,manufacturers=[]){
  const f=row?.fields||{},reasons=[];
  const overlap=supportedTexts(f.westcon_overlap);
@@ -82,7 +85,7 @@ function distributorContext(row,manufacturers=[]){
  if(competitorOverlap.length)reasons.push('Fabricante competidor acreditado: '+competitorOverlap.slice(0,3).join(', '));
  const vendorRelations=supportedTexts(f.vendor_relations);
  const vendorMatches=[];
- for(const manufacturer of manufacturers||[]){
+ for(const manufacturer of (manufacturers||[]).filter(isActiveWestcon)){
   const name=manufacturer?.name||'';
   if(!name)continue;
   if(vendorRelations.some(v=>sameBusinessName(v,name))){
@@ -119,7 +122,7 @@ function verifiedCompetitionFor(row,manufacturers=[]){
   const vendorItem=(vendorField.items||[]).find(x=>sameBusinessName(x?.value,vendor));
   if(!vendorItem?.evidence?.length)continue;
   let sourceEvidence=[...vendorItem.evidence];
-  for(const manufacturer of manufacturers||[]){
+  for(const manufacturer of (manufacturers||[]).filter(isActiveWestcon)){
    const field=manufacturer?.fields?.competitors||{};
    const competitor=supportedTexts(field).find(v=>sameBusinessName(v,vendor));
    if(!competitor)continue;
