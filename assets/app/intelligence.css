@@ -401,3 +401,22 @@ main,.view,.page-head,.toolbar,.table-shell,.intelligence-table{min-width:0;max-
 .trace-history li { font-size:11px; overflow-wrap:anywhere; }
 .trace-history a { color:#8edbff; display:inline-block; margin-top:3px; }
 .card-evidence-group .traceable{min-width:0;}
+
+
+/* Semantic status palette. Unknown / not researched is neutral slate,
+   distinct from the violet claim that exists but lacks accreditation. */
+.tag.confidence-tag.not-researched,
+.confidence-tag.not-researched {
+  background:#e9eef2!important;
+  color:#475569!important;
+  border:1px solid #94a3b8!important;
+  box-shadow:none!important;
+}
+.confidence-tag.not-researched small {
+  background:#64748b!important;
+  color:#fff!important;
+  border-radius:999px;
+  min-width:17px;
+  text-align:center;
+  font-weight:800;
+}
