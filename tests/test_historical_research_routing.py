@@ -3,10 +3,11 @@ from engine.research.historical_leads import historical_revalidation_seeds, usab
 from engine.research.planner import plan
 
 GAP={"id":"gap-1","section":"integrators","entity":"Test Integrator","field":"services",
-     "gap_kind":"public-validation","priority":1}
+     "gap_kind":"public-validation","priority":1,"target_values":["Endpoint support"]}
 RECORD={"gap_id":"gap-1","section":"integrators","entity":"Test Integrator","field":"services",
  "match_level":"exact-value-history","identity_scope":"canonical-name",
- "source_urls":["https://example.com/services","https://example.net/partners","https://example.org/about"]}
+ "source_urls":["https://example.com/services","https://example.net/partners","https://example.org/about"],
+ "historical_samples":[{"value":"\\\"Endpoint support\\\""}]}
 
 class HistoricalResearchRoutingTest(unittest.TestCase):
     def test_exact_evidence_urls_are_bounded_and_untrusted(self):
