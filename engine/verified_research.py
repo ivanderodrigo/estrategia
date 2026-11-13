@@ -121,6 +121,7 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
         section = str(claim.get("section") or "")
         field_id = str(claim.get("field") or "")
         if (section, field_id) not in {
+            ("manufacturers", "competitors"),
             ("architectures", "vendors"),
             ("trends", "market_players"),
         }:
