@@ -47,6 +47,8 @@ jobs:
           node tests/filter_builder_v410.js
       - name: Individually accredit structured historical competitor links
         run: python scripts/accredit_structured_historical.py --limit 30 --timeout 9
+      - name: Individually assess historical source/claim excerpts across all sections
+        run: python scripts/accredit_semantic_historical_sources.py
       - name: Rebuild accredited intelligence
         run: python -m engine.pipeline
       - name: Validate
@@ -60,6 +62,8 @@ jobs:
       # Do not trigger on data/public/** alone to avoid a self-rebuild loop.
       - name: Validate 85 historical competitors in final public JSON
         run: python scripts/audit_published_historical_market.py
+      - name: Validate 48 topic market facts in published JSON
+        run: python scripts/audit_published_topic_markets.py
       - name: Validate mass archived-source sidecars
         run: python scripts/validate_mass_historical_publication.py
       - name: Commit rebuilt public data to main
@@ -82,7 +86,7 @@ jobs:
             git restore --source=origin/main --worktree -- data/public/historical/current/source_checks.json
             git reset --soft origin/main
           fi
-          git add -A data/public config/current/historical_structured_verified.json
+          git add -A data/public config/current/historical_structured_verified.json config/current/historical_semantic_verified.json
           if ! git diff --cached --quiet; then
             git commit -m "data: persist validated public intelligence snapshot [skip ci]"
             git push origin HEAD:main
