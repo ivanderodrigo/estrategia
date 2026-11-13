@@ -1,0 +1,60 @@
+name: Westcon Exact TED CPV Recovery
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ted-cpv-revalidate.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: westcon-intelligence-research
+  cancel-in-progress: false
+jobs:
+  verify-cpv:
+    runs-on: ubuntu-latest
+    timeout-minutes: 32
+    env:
+      PYTHONHASHSEED: "0"
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+      - name: Install runtime
+        run: python -m pip install -r requirements.txt
+      - name: Strict exact-CPV regression tests
+        run: python -m unittest discover -s tests -p "test_v72_ted_exact_cpv_revalidation.py" -v
+      - name: Recover historical CPV claims from live original TED announcements
+        run: python scripts/revalidate_ted_cpv.py --max-runtime 600 --max-notices 1000 --batch-size 18
+      - name: Validate that reconstructed output retains exact provenance
+        run: |
+          python scripts/validate.py
+          python scripts/audit_release_v410.py
+          python -m scripts.audit_v421
+          python -m scripts.audit_v422
+          python -m scripts.audit_v430
+          python -m unittest discover -s tests -p "test_*.py" -v
+          node tests/ui_smoke.js
+      - name: Upload independent TED source validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-ted-cpv-revalidation-${{ github.run_id }}
+          path: |
+            data/current/ted_cpv_revalidation.json
+            data/current/debt_diagnostic.json
+            data/current/quality_report.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Publish only if main is unchanged and canonical validation passes
+        run: >-
+          python scripts/publish_research_update.py
+          --message "chore: revalidate exact CPV claims against TED API"
