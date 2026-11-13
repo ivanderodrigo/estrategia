@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from .model import canonical
+from .historical_source_alignment import source_alignment
 from .settings import SECTIONS
 from .research.historical_leads import (
     historical_record_for_gap, history_by_gap, history_by_identity,
@@ -30,6 +31,7 @@ def publish_historical_trails(gap_report: dict[str, Any], generated_at: str) -> 
     )
     tally = Counter()
     unique_urls: set[str] = set()
+    quarantine: list[dict[str, Any]] = []
     for gap in gap_report.get("gaps") or []:
         if not isinstance(gap, dict):
             continue
@@ -58,10 +60,18 @@ def publish_historical_trails(gap_report: dict[str, Any], generated_at: str) -> 
                            if isinstance(item, dict) and item.get("value") == key), None)
             if sample is None:
                 continue
-            urls = list(dict.fromkeys(
-                str(url) for url in sample.get("source_urls") or []
-                if usable_historical_url(url)
-            ))[:MAX_URLS]
+            urls = []
+            for url in dict.fromkeys(str(u) for u in sample.get("source_urls") or []):
+                if not usable_historical_url(url):
+                    continue
+                aligned, reason = source_alignment(section, entity, field, url)
+                if not aligned:
+                    quarantine.append({"section": section, "entity": entity,
+                                       "field": field, "value": target, "url": url,
+                                       "reason": reason})
+                    continue
+                if len(urls) < MAX_URLS:
+                    urls.append(url)
             if not urls:
                 continue
             claims = by_section[section][canonical(entity)][field]
@@ -100,5 +110,10 @@ def publish_historical_trails(gap_report: dict[str, Any], generated_at: str) -> 
                                 "entities": tally["entities_" + section]} for section in SECTIONS},
         "policy": "Fuentes históricas localizadas, no acreditadas. Requieren lectura actual que respalde exactamente la afirmación. No reducen el contador de huecos sin validación.",
     }
+    summary["quarantined_source_links"] = len(quarantine)
+    out["data/public/historical/current/quarantined_links.json"] = json_bytes({
+        "generated_at": generated_at, "records": quarantine,
+        "policy": "URLs originales conservadas solo para auditoría: se refieren a otro fabricante."
+    })
     out["data/public/historical/current/summary.json"] = json_bytes(summary)
     return out, summary

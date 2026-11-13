@@ -186,6 +186,11 @@
       '<div class="observatorio-panel"><h2>Inteligencia con memoria histórica</h2>'+
       (historical?'<p><strong>'+esc(count(historical.claims))+'</strong> afirmaciones pendientes tienen fuentes históricas enlazadas en su campo. '+esc(count(historical.unique_urls))+' URLs históricas diferentes recuperadas. Son <strong>referencias para revalidar, no hechos confirmados</strong>.</p>':
       '<p>La memoria histórica del dataset actual no está disponible o su fecha no coincide con la publicación.</p>')+
+      (run.historical_trails?.claim_review?'<p><strong>Revisión individualizada:</strong> '+
+        esc(count(run.historical_trails.claim_review.reviewed))+' afirmaciones contrastadas contra el dataset acreditado actual; '+
+        esc(count(run.historical_trails.claim_review.accredited_existing))+' ya tienen soporte actual en el campo exacto; '+
+        esc(count(run.historical_trails.claim_review.pending_revalidation))+' requieren lectura de contenido. Este cotejo automático no equivale a validar de nuevo cada fuente externa.</p>':'')+
+      (run.historical_trails?.claim_review?.reviewed?'<p><a href="data/public/historical/current/claim_review.json" target="_blank" rel="noopener">Auditoría por dato, fuente y estado</a></p>':'')+
       '<p>Las comprobaciones de acceso a fuentes históricas se identifican dentro del mismo panel azul de trazabilidad, sin convertir automáticamente una URL accesible en un hecho acreditado.</p>'+
       (Object.keys(state.historicalChecks||{}).length?'<p>Fuentes históricas consultadas por el comprobador: '+esc(count(Object.keys(state.historicalChecks).length))+'.</p>':'')+
       '<p><a href="memoria-historica.html">Explorar memoria histórica y fuentes ↗</a></p></div>'+
@@ -686,7 +691,7 @@
     const historical=row?._historical?.[type]||[];
     return historical.length?traceable({_historical:historical,value:'Por acreditar',evidence:[]},
       '<span class="tag confidence-tag unverified"><span class="tag-label">Por acreditar</span><small>?</small></span>'):
-      '<span class="tag confidence-tag unverified"><span class="tag-label">Por investigar</span><small>?</small></span>';
+      '<span class="tag confidence-tag not-researched"><span class="tag-label">Por investigar</span><small>·</small></span>';
   }
   function sortedRows(rows,view){const s=state.sort[view];if(!s)return view==='manufacturers'?[...rows].sort((a,b)=>String(a.name||'').localeCompare(String(b.name||''),'es',{numeric:true,sensitivity:'base'})):rows;const col=(state.data.schemas[view]||[]).find(c=>c.id===s.col)||{id:s.col};return [...rows].sort((a,b)=>valueText(filterAccessor(a,s.col,col)??a.name).localeCompare(valueText(filterAccessor(b,s.col,col)??b.name),'es',{numeric:true})*s.dir);}
   function toggleSort(view,col){if(!view)return;const cur=state.sort[view];state.sort[view]={col,dir:cur?.col===col?-cur.dir:1};renderCurrent(view);}
