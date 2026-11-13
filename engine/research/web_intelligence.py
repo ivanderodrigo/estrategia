@@ -40,6 +40,7 @@ from .extractors import (
 from .planner import plan
 from .query_discovery import discover as discover_search_sources
 from .intelligent_discovery import intelligent_discovery_queries
+from .evidence_routing import precise_claim_queries, precise_navigation, prioritize_sources
 from .security import UnsafeUrl, validate_public_url
 from .sources import PATH_FAMILY_HINTS, SourceSeed, family_from_url, relevant_families, seeds_for
 from .state import ResearchState, now_iso
@@ -122,9 +123,9 @@ def _prioritize_research_queries(exact_queries: list[str], planned_queries: list
     # consume the whole Daily budget and the new source lanes never execute.
     if section in {"distributors", "integrators"}:
         # A narrow daily budget must reach the actual first-party linecard.
-        buckets = (systematic[:1], linecard[:1], exact[:1],
-                   systematic[1:], linecard[1:], contextual[:1],
-                   exact[1:], planned)
+        buckets = (linecard[:1], exact[:1], systematic[:1],
+                   linecard[1:], exact[1:], contextual[:1],
+                   systematic[1:], planned)
     else:
         buckets = (competitive[:1], exact[:1], systematic[:1],
                    contextual[:1], planned[:1], competitive[1:],
@@ -1693,6 +1694,8 @@ def run(
         "search_provider_failures": 0,
         "search_urls_discovered": 0,
         "unsourced_value_queries": 0,
+        "precise_claim_queries": 0,
+        "official_navigation_links": 0,
         "manufacturer_revenue_rows_before": _count_populated_rows(data, "manufacturers", "revenue"),
         "manufacturer_revenue_acceptances": 0,
         "stop_reason": "complete",
@@ -1790,12 +1793,6 @@ def run(
             row, target['fields'], section=target['section'],
             rotation=datetime.now(timezone.utc).date().toordinal(), limit=12,
         )
-        target["query_hints"] = _prioritize_research_queries(
-            exact_unsourced_queries,
-            contextual_intelligence + list(target.get("query_hints") or []),
-            int(query_budget.get("queries_per_entity") or 0),
-            section=target["section"],
-        )
         seeds = _merge_source_seeds(
             _revalidation_source_seeds(target),
             seeds_for(row, target["fields"], target=target),
@@ -1835,6 +1832,19 @@ def run(
                 if discovered:
                     seeds = [discovered]
                     stats["official_sites_discovered"] += 1
+        # Search unsupported assertions inside first-party domains, not only
+        # generic media queries. Search snippets never accredit any assertion.
+        precise_queries = precise_claim_queries(
+            target, seeds,
+            rotation=datetime.now(timezone.utc).date().toordinal(), limit=4,
+        )
+        stats["precise_claim_queries"] += len(precise_queries)
+        target["query_hints"] = _prioritize_research_queries(
+            [*precise_queries, *exact_unsourced_queries],
+            contextual_intelligence + list(target.get("query_hints") or []),
+            int(query_budget.get("queries_per_entity") or 0),
+            section=target["section"],
+        )
         # Query discovery closes the blind spot between generated query hints and
         # the URL-only crawler. Search results are discovery leads, never evidence.
         query_policy = RESEARCH_POLICY.get("query_discovery") or {}
@@ -1893,6 +1903,7 @@ def run(
                 research_state.record_gap(gap_id, accepted=0, error="no-seed-source")
             continue
 
+        seeds = prioritize_sources(seeds, target)
         archived_urls = {
             str(item.get("url") or "") for item in target.get("revalidation_seeds") or []
             if isinstance(item, dict) and item.get("historical_lead")
@@ -2034,6 +2045,22 @@ def run(
                 "accepted": accepted_here,
                 "status": status,
             })
+
+            # Navigate explicit first-party menus even when the homepage did not
+            # contain extractable facts; investigate named catalogue documents.
+            if profile == "daily" and seed.official:
+                navigation = [
+                    candidate for candidate in precise_navigation(
+                        document, seed, target["fields"], limit=4
+                    )
+                    if (candidate.url, candidate.family) not in seen
+                ]
+                if navigation:
+                    queued = {(item.url, item.family) for item in queue}
+                    fresh = [item for item in navigation
+                             if (item.url, item.family) not in queued]
+                    queue = [*fresh, *queue]
+                    stats["official_navigation_links"] += len(fresh)
 
             # Sitemaps and real links drive discovery. Financial research additionally starts from
             # the trusted official page and can follow an explicit Investor Relations/results link
