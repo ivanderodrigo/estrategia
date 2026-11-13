@@ -480,7 +480,7 @@ def plan(
         has_claim = bool(gap.get("target_values"))
         # Include recovered archived leads: they are attached to the grouped
         # task above, not necessarily present on the original gap record.
-        has_lead = bool(gap.get("revalidation_seeds")) or bool(historical_index.get(gap_id))
+        has_lead = bool(item["revalidation_seeds"])
         if has_claim and has_lead:
             score *= 2.15
         elif has_claim:
