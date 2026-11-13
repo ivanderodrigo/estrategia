@@ -1,7 +1,7 @@
 // App v6.5.0
 (() => {
   'use strict';
-  const state = {historicalSections:{}, historicalSummary:null, data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
+  const state = {historicalSections:{}, historicalSummary:null, historicalChecks:{}, data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -66,6 +66,16 @@
         const leadData=await leadRes.json();
         if(leadData.status==='HISTORICAL_LEADS_NOT_ACCREDITED' && leadData.generated_at===state.manifest?.generated_at)
           state.historicalSections[section]=leadData.entities||{};
+        // The source archaeology lives on the same field for the existing blue
+        // trace panel; it is NOT merged into accrediting evidence.
+        for(const row of state.data[section]||[]){
+          const key=historicalKey(row.name), entries=leadData.entities?.[key]||{};
+          row._historical=entries;
+          for(const [fieldId,claims] of Object.entries(entries)){
+            const target=row.fields?.[fieldId];
+            if(target&&Array.isArray(claims))target._historical=claims;
+          }
+        }
       }
     } catch(e){console.warn('Referencias históricas no disponibles',section);}
 
@@ -160,6 +170,7 @@
       stat('Integradores',run.integrators??counts.integrators,'Fichas de ecosistema')+
       stat('Mayoristas',run.distributors??counts.distributors,'Comparación competitiva')+
       stat('Clientes',run.clients??(Number(counts.clients_public||0)+Number(counts.clients_private||0)),'Cuentas y contratación')+
+      stat('Pliegos vigentes',run.procurement_lifecycle?.currently_active_or_date_unknown,'Excluye vencidos y adjudicados')+
       '</div>'+
       '<div class="observatorio-panels">'+
       '<section class="observatorio-panel"><h2>Qué aportó la última investigación</h2><p>Los hallazgos no equivalen automáticamente a oportunidades de venta.</p>'+
@@ -167,6 +178,7 @@
       stat('Valores añadidos',q.values_added,'Nuevos datos')+
       stat('Evidencias aceptadas',q.accepted_evidences,'Pueden corroborar valores existentes')+
       stat('Entidades añadidas',q.entities_added,'Requieren contexto comercial')+
+      stat('Pliegos cerrados/vencidos',run.procurement_lifecycle?.closed_or_deadline_expired,'Conservados solo para histórico')+
       '</div></section>'+
       '<section class="observatorio-panel"><h2>Qué sigue pendiente</h2><p>'+esc(count(run.research_gaps))+' tareas abiertas; no son '+esc(count(run.research_gaps))+' casillas vacías. Un campo puede generar varias verificaciones.</p>'+
       (rows?'<table class="observatorio-debt"><tbody>'+rows+'</tbody></table>':'<p>El desglose por estados estará disponible tras la próxima publicación del motor actualizado.</p>')+
@@ -174,7 +186,8 @@
       '<div class="observatorio-panel"><h2>Inteligencia con memoria histórica</h2>'+
       (historical?'<p><strong>'+esc(count(historical.claims))+'</strong> afirmaciones pendientes tienen fuentes históricas enlazadas en su campo. '+esc(count(historical.unique_urls))+' URLs históricas diferentes recuperadas. Son <strong>referencias para revalidar, no hechos confirmados</strong>.</p>':
       '<p>La memoria histórica del dataset actual no está disponible o su fecha no coincide con la publicación.</p>')+
-      '<p>El nuevo motor consulta primero las URLs históricas exactas, las verifica nuevamente y conserva tanto los hallazgos como sus fuentes.</p>'+
+      '<p>Las comprobaciones de acceso a fuentes históricas se identifican dentro del mismo panel azul de trazabilidad, sin convertir automáticamente una URL accesible en un hecho acreditado.</p>'+
+      (Object.keys(state.historicalChecks||{}).length?'<p>Fuentes históricas consultadas por el comprobador: '+esc(count(Object.keys(state.historicalChecks).length))+'.</p>':'')+
       '<p><a href="memoria-historica.html">Explorar memoria histórica y fuentes ↗</a></p></div>'+
       '<div class="observatorio-panel"><h2>Explorar el observatorio</h2><p>Consulta la información con sus fuentes y fechas antes de convertir una señal en una propuesta comercial.</p>'+
       '<div class="observatorio-links">'+nav.map(([id,label])=>'<button type="button" data-observatorio-jump="'+esc(id)+'">'+esc(label)+' →</button>').join('')+'</div></div></details>';
@@ -185,10 +198,11 @@
     ({fabricantes:renderManufacturers,mayoristas:renderDistributors,integradores:renderIntegrators,clientes:renderClients,tendencias:renderTrends,arquitecturas:renderArchitectures}[state.view]||(()=>{}))();
   }
   async function load(){
-    const [res, runRes, historyRes] = await Promise.all([
+    const [res, runRes, historyRes, checkedRes] = await Promise.all([
       fetch('data/public/manifest.json', {cache:'no-store'}),
       fetch('data/public/last_run.json', {cache:'no-store'}).catch(()=>null),
-      fetch('data/public/historical/current/summary.json', {cache:'no-store'}).catch(()=>null)
+      fetch('data/public/historical/current/summary.json', {cache:'no-store'}).catch(()=>null),
+      fetch('data/public/historical/current/source_checks.json', {cache:'no-store'}).catch(()=>null)
     ]);
     if(!res.ok) throw new Error(`No se pudo cargar data/public/manifest.json (${res.status})`);
     state.manifest = await res.json();
@@ -197,6 +211,7 @@
     for(const section of PUBLIC_SECTIONS) state.data[section]=[];
     if(runRes?.ok){ try{ state.lastRun = await runRes.json(); }catch(_){ state.lastRun=null; } }
     if(historyRes?.ok){ try{state.historicalSummary=await historyRes.json();}catch(_){state.historicalSummary=null;} }
+    if(checkedRes?.ok){try{const check=await checkedRes.json();state.historicalChecks=check.results||{};}catch(_){state.historicalChecks={};}}
     await ensureViewData(state.view);
     bind();
     renderAll();
@@ -397,11 +412,11 @@
     const currentEvidence=allEvidence.filter(ev=>!isHistorical(ev));
     const evidence=currentEvidence.slice(0,8);
     const score=item?.confidence ?? field?.confidence ?? 0.66;
-    const band=item?.confidence_band || field?.confidence_band || (score>=.8?'high':score>=.6?'medium':'low');
+    const band=atomicCurrentProof(evidence)?(score>=.65?'high':'medium'):'low';
     const reason=item?.confidence_reason || field?.confidence_reason || '';
     const qualifier=item?.qualifier||field?.qualifier;
     const competitionTargets=Array.isArray(item?.competes_with_westcon)?item.competes_with_westcon.filter(Boolean):[];
-    const competitionInfo=item?.competition_mapping_status==='EVIDENCIADO'&&competitionTargets.length?`<div class="confidence-why"><b>Fabricantes Westcon con los que compite</b><p>${esc(competitionTargets.join(' · '))}</p></div>`:'';
+    const competitionInfo=item?.competition_mapping_status==='EVIDENCIADO'&&competitionTargets.length?`<div class="confidence-why"><b>Competencia documentada con</b><p>${esc(competitionTargets.join(' · '))}</p></div>`:'';
     const claim=item?.claim_type||field?.claim_type||'fact';
     const factScore=item?.fact_confidence??field?.fact_confidence??score;
     const interpretationScore=item?.interpretation_confidence??field?.interpretation_confidence??Math.min(score,.7);
@@ -409,10 +424,11 @@
     const claimLabel=claim==='signal'?'Señal':claim==='interpretation'?'Interpretación':'Hecho';
     const levelLabel=bandLabel(band);
     const factors=deriveConfidenceFactors(field,item,band,evidence);
-    const why=(band==='medium'||band==='low'||factors.length)?`<div class="confidence-why"><b>Por qué tiene este nivel</b><ul>${factors.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
-    const sources=evidence.length?evidence.map(ev=>sourceItem(ev,factScore,band)).join(''):'<p class="atomic-evidence-missing">Pendiente de verificación: no existe todavía una fuente pública actual o documentación Westcon específica para este elemento; el sistema no muestra fuentes de otros elementos del campo.</p>';
+    const why=(band==='medium'||band==='low')?`<div class="confidence-why"><b>Por qué tiene este nivel</b><ul>${factors.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
+    const sources=evidence.length?evidence.map(ev=>sourceItem(ev,factScore,band)).join(''):'<p class="atomic-evidence-missing">Sin fuente actual acreditada para esta afirmación.</p>';
     const pending='';
-    return `<div class="traceable ${evidence.length?'':'pending-source'}" tabindex="0"><div class="trace-value">${inner}${pending}</div><span class="trace-mark confidence-dot ${esc(evidence.length?band:'low')}" title="${esc(evidence.length?levelLabel:'Pendiente de verificación')}">i</span><div class="trace-popover"><strong>TRAZABILIDAD DEL DATO</strong><div class="claim-kind">${esc(claimLabel)} · ${esc(evidence.length?levelLabel:'Pendiente de verificación')}</div><div class="confidence-three"><span><b>${confidencePct(factScore)}%</b>Hecho</span><span><b>${confidencePct(interpretationScore)}%</b>Interpretación</span><span><b>${esc(actionRisk)}</b>Riesgo de acción</span></div>${reason?`<p class="confidence-explain">${esc(reason)}</p>`:''}${why}${competitionInfo}${qualifier?`<span class="qualifier">${esc(qualifier)}</span>`:''}<div class="trace-source-heading">Fuentes actuales que sostienen este dato</div>${sources}<button type="button" class="confidence-help-link" data-confidence-help>¿Cómo se calcula e interpreta la confianza?</button></div></div>`;
+    const archaeology=sourceArchaeology(field,item);
+    return `<div class="traceable ${evidence.length?'':'pending-source'}" tabindex="0"><div class="trace-value">${inner}${pending}</div><span class="trace-mark confidence-dot ${esc(evidence.length?band:'low')}" title="${esc(evidence.length?levelLabel:'Pendiente de verificación')}">i</span><div class="trace-popover"><strong>TRAZABILIDAD DEL DATO</strong><div class="claim-kind">${esc(claimLabel)} · ${esc(evidence.length?levelLabel:'Pendiente de verificación')}</div><div class="confidence-three"><span><b>${confidencePct(factScore)}%</b>Hecho</span><span><b>${confidencePct(interpretationScore)}%</b>Interpretación</span><span><b>${esc(actionRisk)}</b>Riesgo de acción</span></div>${band!=='high'&&reason?`<p class="confidence-explain">${esc(reason)}</p>`:''}${why}${competitionInfo}${qualifier?`<span class="qualifier">${esc(qualifier)}</span>`:''}<div class="trace-source-heading">Fuentes actuales que sostienen este dato</div>${sources}${archaeology}<button type="button" class="confidence-help-link" data-confidence-help>¿Cómo se calcula e interpreta la confianza?</button></div></div>`;
   }
 
   function itemFor(field,value,index){
@@ -443,7 +459,7 @@
   }
   function tagHtml(field,value,index,extra=''){
     const rawItem=itemFor(field,value,index), item=(!Array.isArray(field?.value)&&!rawItem.evidence?.length)?{...rawItem,evidence:field?.evidence||[]}:rawItem;
-    const score=item?.confidence??field?.confidence??.66, band=item?.confidence_band||field?.confidence_band||(score>=.8?'high':score>=.6?'medium':'low');
+    const score=item?.confidence??field?.confidence??.66, band=atomicCurrentProof(item.evidence||field?.evidence)?(score>=.65?'high':'medium'):'low';
     const raw=typeof value==='object'?JSON.stringify(value):String(value??'');
     return traceable(field,`<span class="tag confidence-tag ${esc(band)} ${extra}"><span class="tag-label" title="${esc(raw)}">${esc(raw)}</span><small>${confidencePct(score)}%</small></span>`,item);
   }
@@ -486,7 +502,12 @@
       return '<div class="tag-list categorical-tags"><span class="tag-entry">'+
         (verified?tagHtml(field,value,0):pendingTagHtml(field,value,0))+'</span></div>';
     }
-    return sourcedScalarForTable(field)?traceable(field,compactScalar(value,context==='table'?110:300)):pendingTagHtml(field,value,0);
+    if(!sourcedScalarForTable(field))return pendingTagHtml(field,value,0);
+    const evidence=field?.evidence||[],score=Number(field?.confidence??.85);
+    const tone=atomicCurrentProof(evidence)?(score>=.65?'high':'medium'):'unverified';
+    return traceable(field,'<span class="tag confidence-tag '+tone+'"><span class="tag-label">'+
+      compactScalar(value,context==='table'?110:300)+'</span><small>'+confidencePct(score)+'%</small></span>');
+
   }
   function allRowEvidence(row){
     const rows=[...(row?.evidence||[])];Object.values(row?.fields||{}).forEach(f=>{rows.push(...(f?.evidence||[]));(f?.items||[]).forEach(it=>rows.push(...(it?.evidence||[])));});
@@ -662,40 +683,46 @@
   }
   function missingMarkup(col,row=null){
     const type=col?.id;
-    if(row&&['competitor_vendor_overlap','mapped_competitor_vendors'].includes(type)){
-      const vendors=window.WestconBusiness?.supportedTexts(row?.fields?.vendor_relations)||[];
-      const info=vendors.length?'Cruce competitivo sin evidencia suficiente · '+vendors.length+' fabricantes acreditados en el linecard':'Linecard de fabricantes pendiente de acreditar';
-      return '<span class="tag confidence-tag unverified missing-explained" title="La falta de una comparación no demuestra ausencia de competencia"><span class="tag-label">'+esc(info)+'</span><small>?</small></span>';
-    }
-    if(row&&type==='revenue')
-      return '<span class="tag confidence-tag unverified missing-explained" title="No existe una cifra que cumpla entidad, concepto financiero, importe/moneda, año y fuente"><span class="tag-label">Facturación pública por acreditar</span><small>?</small></span>';
-    if(row&&type==='linecard_remainder')
-      return '<span class="tag confidence-tag unverified missing-explained" title="No hay marcas adicionales con evidencia; no implica un catálogo completo"><span class="tag-label">Sin otras marcas acreditadas</span><small>?</small></span>';
-    return '<span class="research-gap" title="Sin evidencia pública suficiente en este campo. No implica que la entidad carezca de esta capacidad.">Por investigar</span>';
+    const historical=row?._historical?.[type]||[];
+    return historical.length?traceable({_historical:historical,value:'Por acreditar',evidence:[]},
+      '<span class="tag confidence-tag unverified"><span class="tag-label">Por acreditar</span><small>?</small></span>'):
+      '<span class="tag confidence-tag unverified"><span class="tag-label">Por investigar</span><small>?</small></span>';
   }
   function sortedRows(rows,view){const s=state.sort[view];if(!s)return view==='manufacturers'?[...rows].sort((a,b)=>String(a.name||'').localeCompare(String(b.name||''),'es',{numeric:true,sensitivity:'base'})):rows;const col=(state.data.schemas[view]||[]).find(c=>c.id===s.col)||{id:s.col};return [...rows].sort((a,b)=>valueText(filterAccessor(a,s.col,col)??a.name).localeCompare(valueText(filterAccessor(b,s.col,col)??b.name),'es',{numeric:true})*s.dir);}
   function toggleSort(view,col){if(!view)return;const cur=state.sort[view];state.sort[view]={col,dir:cur?.col===col?-cur.dir:1};renderCurrent(view);}
   function reorderColumn(view,from,to){if(!view||from===to)return;const schema=state.data.schemas[view]||[];let order=(state.columnOrder[view]||schema.map(x=>x.id)).filter(x=>schema.some(c=>c.id===x));const a=order.indexOf(from),b=order.indexOf(to);if(a<0||b<0)return;order.splice(b,0,order.splice(a,1)[0]);state.columnOrder[view]=order;localStorage.setItem(`westcon-cols-${view}`,JSON.stringify(order));renderCurrent(view);}
   function renderCurrent(view){({manufacturers:renderManufacturers,integrators:renderIntegrators,distributors:renderDistributors,clients_public:renderClients,clients_private:renderClients}[view]||(()=>{}))();}
   function historicalKey(value){return norm(value).replace(/[^a-z0-9]+/g,' ').trim();}
-  function historicalTrail(view,row,fieldId){
-    const section=state.historicalSections?.[view];
-    const claims=section?.[historicalKey(row?.name)]?.[fieldId]||[];
-    if(!claims.length)return '';
-    const preview=claims.slice(0,8).map(item=>{
-      const raw=typeof item.value==='object'?JSON.stringify(item.value):String(item.value??'');
-      const urls=(item.urls||[]).filter(url=>/^https:\/\/[^\s"'<>]+$/i.test(url)).slice(0,3);
-      return '<li><span class="historical-claim-text">'+esc(raw.length>180?raw.slice(0,177)+'…':raw)+'</span>'+
-        (urls.length?'<div class="historical-trail-links">'+urls.map((url,i)=>'<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer" title="Fuente histórica por revalidar">Fuente histórica '+(i+1)+'</a>').join(' · ')+'</div>':'')+
-        (item.last_revision?'<small>Última versión: '+esc(item.last_revision)+'</small>':'')+'</li>';
+  function sourceArchaeology(field,item){
+    const all=Array.isArray(field?._historical)?field._historical:[];
+    if(!all.length)return '';
+    const target=item?.value;
+    const scoped=target===undefined?all:all.filter(h=>historicalKey(typeof h.value==='object'?JSON.stringify(h.value):h.value)===historicalKey(typeof target==='object'?JSON.stringify(target):target));
+    if(!scoped.length)return '';
+    const rows=scoped.slice(0,8).map(h=>{
+      const val=typeof h.value==='object'?JSON.stringify(h.value):String(h.value??'');
+      const links=(h.urls||[]).filter(url=>/^https:\/\/[^\s"'<>]+$/i.test(url)).slice(0,3)
+        .map(url=>{
+          const check=state.historicalChecks?.[url];
+          const status=check?.status==='REACHABLE_TEXT_MATCH'?' · texto localizado, requiere validación':
+            check?.status==='REACHABLE_NO_EXACT_TEXT'?' · página accesible, dato no localizado':
+            check?' · acceso no comprobado':'';
+          return '<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Fuente original</a>'+
+            (status?'<small>'+esc(status)+'</small>':'');
+        }).join(' · ');
+      return '<li><span>'+esc(val.slice(0,240))+'</span>'+(links?'<div>'+links+'</div>':'')+'</li>';
     }).join('');
-    return '<details class="historical-trail" title="Fuentes recuperadas de versiones antiguas. Ninguna es evidencia actualmente acreditada.">'+
-      '<summary>Memoria histórica: '+esc(claims.length)+' referencia'+(claims.length===1?'':'s')+' por verificar</summary>'+
-      '<div class="historical-trail-body"><strong>No acreditado hoy.</strong> La URL se recuperó de una versión antigua y debe comprobarse antes de reutilizar el dato.'+
-      '<ul>'+preview+'</ul>'+ (claims.length>8?'<small>Mostrando las 8 primeras coincidencias.</small>':'')+'</div></details>';
+    return '<section class="trace-history"><strong>Referencias históricas relacionadas</strong>'+
+      '<p>Localizadas en versiones anteriores. No acreditan el dato hasta verificar nuevamente su contenido.</p>'+
+      '<ul>'+rows+'</ul></section>';
   }
   function tableHtml(rows, schema, emptyText, view, baseRows=rows){
-    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const identity={value:row.name,evidence:row.evidence||[],confidence:.95,confidence_band:'high'};const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';const relevance=view==='distributors'?(state.distributorReasons?.get(String(row.id||row.name))||'Vínculo competitivo por acreditar'):'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><b>${esc(row.name)}</b>${direct}</div><small>Identidad trazable</small>${relevance?`<small class="distributor-relevance-reason">${esc(relevance)}</small>`:''}`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table',col.id):missingMarkup(col,row)}${historicalTrail(view,row,col.id)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
+    const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const baseIdentityEvidence=(row.evidence||[]).filter(e=>atomicCurrentProof([e]));
+const linkedEvidence=(row.fields?.vendor_relations?.items||[]).filter(i=>atomicCurrentProof(i.evidence)).flatMap(i=>i.evidence||[]);
+const westconProof=(row.fields?.westcon_overlap?.items||[]).filter(i=>atomicCurrentProof(i.evidence)).flatMap(i=>i.evidence||[]);
+const identityEvidence=baseIdentityEvidence.length?baseIdentityEvidence:(westconProof.length?westconProof:linkedEvidence);
+const identity={value:row.name,evidence:identityEvidence.slice(0,6),confidence:.95,confidence_band:identityEvidence.length?'high':'low',qualifier:westconProof.length?'Relación documentada con al menos un fabricante Westcon. La confianza no se extiende a relaciones no verificadas.':''};
+const identityTone=identityEvidence.length?'high':'unverified';const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><span class="tag confidence-tag ${identityTone} entity-pill"><span class="tag-label">${esc(row.name)}</span><small>${identityEvidence.length?'✓':'?'}</small></span>${direct}</div>`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table',col.id):missingMarkup(col,row)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
     return `<div class="table-shell">${columnChooser(schema,view,baseRows)}${coverageOverview(schema,baseRows,view)}<div class="table-scroll">${body}</div></div>${analysisPanel(view,schema,baseRows,rows)}`;
   }
   function scopeMatch(row, scope){
@@ -782,7 +809,17 @@
     renderEntityNews('distributors',relevant);
     setCount('#distributorCount',rows.length,visiblePool.length,'mayoristas'+(showUnconfirmed?' (incluido archivo)':' relevantes'));
   }
-  function publicProcurementPortfolioFit(row){return Boolean(window.WestconBusiness?.classifyNotice(row).fit);}
+  function publicTenderCurrent(row){
+    const f=row?.fields||{},status=norm(f.procurement_stage?.value||'');
+    if(/cancelad|anulad|adjudicad|desiert|expired|closed|awarded|cancelled|canceled/.test(status))return false;
+    const raw=String(f.milestone_date?.value||'').trim();
+    if(!raw)return true;
+    const iso=/^\d{4}-\d{2}-\d{2}/.test(raw)?raw.slice(0,10):/^\d{2}\/\d{2}\/\d{4}/.test(raw)?raw.slice(6,10)+'-'+raw.slice(3,5)+'-'+raw.slice(0,2):'';
+    if(!iso)return true; // Unknown dates must not be guessed.
+    const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Madrid',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+    return iso>=today;
+  }
+  function publicProcurementPortfolioFit(row){return publicTenderCurrent(row)&&Boolean(window.WestconBusiness?.classifyNotice(row).fit);}
 
   function renderClients(){
     const publicQ=norm($('#publicClientSearch')?.value), publicScope=$('#publicClientScope')?.value||'all';
@@ -790,6 +827,7 @@
     const publicAll=state.data.clients_public||[];
     const privateAll=state.data.clients_private||[];
     const publicPortfolioAll=publicAll.filter(publicProcurementPortfolioFit);
+    state.archivedProcurementCount=publicAll.filter(r=>!publicTenderCurrent(r)).length;
     const publicBase=publicPortfolioAll.filter(r=>(!publicQ||rowBlob(r).includes(publicQ))&&scopeMatch(r,publicScope));
     const privateBase=privateAll.filter(r=>(!privateQ||rowBlob(r).includes(privateQ))&&scopeMatch(r,privateScope));
     const publicRows=applyDynamicFilters('clients_public',publicBase,state.data.schemas.clients_public),privateRows=applyDynamicFilters('clients_private',privateBase,state.data.schemas.clients_private);
@@ -861,7 +899,7 @@
   function cardGrid(rows, schema, forceAll=false, context='card'){
     const cols=forceAll?schema:activeColumns(schema,rows,'cards');
     const cardClass=context==='trend'?'intel-card trend-card':'intel-card';
-    return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable({value:row.name,evidence:row.evidence||[],confidence:.9,confidence_band:'high'},`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>`<div class="card-evidence-group">${cardField(c,fieldFor(row,c),context)||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c)}</div>`}${historicalTrail(context==='trend'?'trends':'architectures',row,c.id)}</div>`).join('')}</article>`).join('');
+    return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable({value:row.name,evidence:row.evidence||[],confidence:.9,confidence_band:'high'},`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>`<div class="card-evidence-group">${cardField(c,fieldFor(row,c),context)||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c,row)}</div>`}</div>`).join('')}</article>`).join('');
   }
   function renderSectionCoverage(section,selector){
     const el=$(selector);if(!el)return;
@@ -948,7 +986,7 @@
     const debtSummary=Object.entries(labels).filter(([key])=>Number(debt[key]||0)>0)
       .map(([key,label])=>'<div class="update-stat"><b>'+esc(debt[key])+'</b><span>'+esc(label)+'</span></div>').join('');
     const counts=[['Fabricantes',run.manufacturers??state.manifest?.counts?.manufacturers??state.data?.manufacturers?.length??0],['Mayoristas',run.distributors??state.manifest?.counts?.distributors??state.data?.distributors?.length??0],['Integradores',run.integrators??state.manifest?.counts?.integrators??state.data?.integrators?.length??0],['Clientes',run.clients??((state.manifest?.counts?.clients_public??state.data?.clients_public?.length??0)+(state.manifest?.counts?.clients_private??state.data?.clients_private?.length??0))],['Tendencias',run.trends??state.manifest?.counts?.trends??state.data?.trends?.length??0],['Arquitecturas',run.architectures??state.manifest?.counts?.architectures??state.data?.architectures?.length??0]];
-    body.innerHTML=`<p class="update-note">Los huecos son tareas de investigación y validación, no equivalen a casillas vacías. Un campo puede originar varias tareas. Integridad 100/100 no significa cobertura completa.</p><div class="update-hero">${debtSummary}<div class="update-stat primary"><b>${esc(status)}</b><span>Última publicación: ${esc(localDateTime(finished))} · ${esc(ageText(finished))} · ciclo ${esc(updateProfileLabel(run.profile))}</span></div><div class="update-stat"><b>${esc(run.sources??meta.source_count??0)}</b><span>fuentes / familias activas</span></div><div class="update-stat"><b>${esc(run.traceable_fields??'Por investigar')}</b><span>campos trazables publicados</span></div><div class="update-stat"><b>${esc(run.research_gaps??'Por investigar')}</b><span>huecos que el motor volverá a investigar</span></div></div><div class="update-cycles"><div class="update-cycle"><b>DIARIA · incremental</b><strong>06:23</strong><span>Todos los días, hora de Madrid. Busca cambios recientes, nuevas relaciones, señales, empleo, casos y evidencias que puedan modificar confianza.</span></div><div class="update-cycle"><b>SEMANAL · profunda</b><strong>Domingo 04:47</strong><span>Amplía partner locators, webs de integradores, mayoristas, clientes públicos/privados, contratación, certificaciones, servicios, casos, portales de empleo y fuentes de mercado.</span></div><div class="update-cycle"><b>MENSUAL · exhaustiva</b><strong>Día 1 · 03:17</strong><span>Revisa long-tail, huecos persistentes, nuevas entidades, tendencias, arquitecturas, evidencias envejecidas y cobertura general.</span></div></div><div class="update-scope"><div><b>Qué datos pueden cambiar</b><span>Fabricante↔integrador, fabricante↔mayorista, fabricantes de cada integrador, servicios, especializaciones, verticales, casos, certificaciones, empleo, competidores, métricas y actores de tendencias, encaje de arquitecturas, fuentes, fechas y confianza.</span></div><div><b>Cómo comprobarlo</b><span>Este botón muestra la última publicación y el tipo de ciclo. En GitHub → Actions puedes verificar research-daily, research-weekly y research-monthly y comprobar si finalizaron correctamente.</span></div><div><b>Qué ocurre con una celda vacía</b><span>No se da por buena: entra en la cola de investigación y genera nuevas rutas de búsqueda. Si aparece una señal débil puede publicarse en rojo; si se corrobora, la confianza puede subir a amarillo o verde.</span></div><div><b>Qué ocurre con evidencia antigua</b><span>El motor conserva fecha y vigencia, vuelve a sondear la relación y puede mantener, degradar o elevar su confianza según la nueva evidencia encontrada.</span></div></div><div class="update-note">Los horarios mostrados son hora local de Madrid y el workflow incluye guardia de horario de verano/invierno. La automatización actualiza inteligencia pública y trazabilidad; no genera salidas prescriptivas.</div><div class="update-scope">${counts.map(([k,v])=>`<div><b>${esc(k)}</b><span>${esc(v)} entidades en la fotografía publicada</span></div>`).join('')}</div>`;
+    body.innerHTML=`<p class="update-note">Los huecos son tareas de investigación y validación, no equivalen a casillas vacías. Un campo puede originar varias tareas. Integridad 100/100 no significa cobertura completa.</p><div class="update-hero">${debtSummary}<div class="update-stat primary"><b>${esc(status)}</b><span>Última publicación: ${esc(localDateTime(finished))} · ${esc(ageText(finished))} · ciclo ${esc(updateProfileLabel(run.profile))}</span></div><div class="update-stat"><b>${esc(run.sources??meta.source_count??0)}</b><span>fuentes / familias activas</span></div><div class="update-stat"><b>${esc(run.traceable_fields??'Por investigar')}</b><span>campos trazables publicados</span></div><div class="update-stat"><b>${esc(run.research_gaps??'Por investigar')}</b><span>huecos que el motor volverá a investigar</span></div></div><div class="update-cycles"><div class="update-cycle"><b>DIARIA · incremental</b><strong>05:17 UTC · lunes a viernes</strong><span>Ciclo programado en días laborables. Busca cambios recientes, nuevas relaciones, señales, empleo, casos y evidencias que puedan modificar confianza.</span></div><div class="update-cycle"><b>SEMANAL · profunda</b><strong>Domingo 04:47</strong><span>Amplía partner locators, webs de integradores, mayoristas, clientes públicos/privados, contratación, certificaciones, servicios, casos, portales de empleo y fuentes de mercado.</span></div><div class="update-cycle"><b>MENSUAL · exhaustiva</b><strong>Día 1 · 03:17</strong><span>Revisa long-tail, huecos persistentes, nuevas entidades, tendencias, arquitecturas, evidencias envejecidas y cobertura general.</span></div></div><div class="update-scope"><div><b>Qué datos pueden cambiar</b><span>Fabricante↔integrador, fabricante↔mayorista, fabricantes de cada integrador, servicios, especializaciones, verticales, casos, certificaciones, empleo, competidores, métricas y actores de tendencias, encaje de arquitecturas, fuentes, fechas y confianza.</span></div><div><b>Cómo comprobarlo</b><span>Este botón muestra la última publicación y el tipo de ciclo. En GitHub → Actions puedes verificar research-daily, research-weekly y research-monthly y comprobar si finalizaron correctamente.</span></div><div><b>Qué ocurre con una celda vacía</b><span>No se da por buena: entra en la cola de investigación y genera nuevas rutas de búsqueda. Si aparece una señal débil puede publicarse en rojo; si se corrobora, la confianza puede subir a amarillo o verde.</span></div><div><b>Qué ocurre con evidencia antigua</b><span>El motor conserva fecha y vigencia, vuelve a sondear la relación y puede mantener, degradar o elevar su confianza según la nueva evidencia encontrada.</span></div></div><div class="update-note">Los horarios mostrados son hora local de Madrid y el workflow incluye guardia de horario de verano/invierno. La automatización actualiza inteligencia pública y trazabilidad; no genera salidas prescriptivas.</div><div class="update-scope">${counts.map(([k,v])=>`<div><b>${esc(k)}</b><span>${esc(v)} entidades en la fotografía publicada</span></div>`).join('')}</div>`;
   }
 
   function renderConfidenceGuide(){

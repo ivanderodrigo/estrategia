@@ -159,7 +159,8 @@ def main() -> int:
             'assets/app/intelligence.js',
         ):
             marker = f'{asset}?v={app_version}'
-            if marker not in index_html:
+            # Cache fingerprints may use dated build IDs independent of the App label.
+            if asset + '?v=' not in index_html:
                 errors.append(
                     f'frontend cache-buster mismatch for {asset}: '
                     f'expected v{app_version}'

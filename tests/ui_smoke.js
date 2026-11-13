@@ -6,7 +6,7 @@ const css = fs.readFileSync('assets/app/intelligence.css', 'utf8');
 for (const token of [
   'data/public/manifest.json', 'ensureSection', 'ensureViewData', 'clients_public',
   'clients_private', 'reorderColumn', 'columnChooser', 'currentColumnWidth', 'App v6.5.0',
-  'atomic-evidence-missing', 'el sistema no muestra fuentes de otros elementos',
+  'atomic-evidence-missing', 'Sin fuente actual acreditada para esta afirmación',
   'analysisPanel', 'WestconFilters.apply', 'sessionStorage', 'savedFilters',
   'openFilteredReport', 'WestconReports.build', 'generateFilteredCsv', 'window.print',
   'Pendiente de verificación', 'Fuente documental Westcon', 'Fuente pública primaria',
@@ -43,7 +43,7 @@ for (const label of ['Fabricantes','Mayoristas','Integradores','Clientes','Tende
 console.log('UI smoke v4.4.0 PASS');
 
 // v6.1: all data values use badges; unsupported ones must never inherit proof.
-for (const token of ['function atomicCurrentProof(', 'function pendingTagHtml(', 'confidence-tag unverified', 'elements=value.map(', 'return sourcedScalarForTable(field)?traceable(', 'f&&hasValue(f.value)?renderValue(']) {
+for (const token of ['function atomicCurrentProof(', 'function pendingTagHtml(', 'confidence-tag unverified', 'elements=value.map(', 'if(!sourcedScalarForTable(field))return pendingTagHtml(field,value,0)', 'f&&hasValue(f.value)?renderValue(']) {
   if (!js.includes(token)) throw new Error('business-evidence UI regression: '+token);
 }
 if (js.includes('unverified-clues')) throw new Error('legacy disclosure remains instead of uniform tags');

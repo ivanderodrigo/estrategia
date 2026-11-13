@@ -389,15 +389,15 @@ main,.view,.page-head,.toolbar,.table-shell,.intelligence-table{min-width:0;max-
 .news-source-relation{display:inline-flex;align-self:flex-start;padding:4px 8px;border-radius:999px;background:#fff6e8;color:#9a5d19;border:1px solid #f0d5a9;font-size:10px;font-weight:700}
 
 
-/* Source archaeology, deliberately separated from accredited provenance. */
-.historical-trail{margin:.45rem 0 0;padding:.3rem .45rem;border:1px dashed var(--border,#b4bdc9);border-radius:.5rem;font-size:.74rem;max-width:420px;background:rgba(125,125,125,.045);}
-.historical-trail summary{cursor:pointer;font-weight:650;white-space:normal;line-height:1.3;color:inherit;}
-.historical-trail[open]{min-width:220px;}
-.historical-trail-body{padding:.35rem .2rem;max-height:330px;overflow:auto;}
-.historical-trail-body>strong{font-weight:700;}
-.historical-trail-body ul{margin:.4rem 0;padding-left:1.2rem;display:grid;gap:.5rem;}
-.historical-trail-body li{overflow-wrap:anywhere;line-height:1.45;}
-.historical-claim-text{display:block;}
-.historical-trail-links{margin-top:.2rem;}
-.historical-trail-links a{font-weight:650;text-decoration:underline;text-underline-offset:2px;}
-.historical-trail-body small{display:block;opacity:.75;}
+/* Unified confidence language: every visible field uses the same evidence pill. */
+.entity-name-line .entity-pill { display:inline-flex; align-items:center; max-width:100%; font-size:calc(11px * var(--font-scale)); font-weight:700; line-height:1.4; padding:5px 9px; margin:0; border-radius:8px; }
+.entity-name-line .entity-pill .tag-label { overflow-wrap:anywhere; white-space:normal; }
+.entity-name-line .entity-pill small { display:inline; margin-left:5px; font-size:calc(10px * var(--font-scale)); font-weight:800; }
+.name-cell .traceable{min-width:0;}
+.trace-history { margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,.18); color:#e3edf2; }
+.trace-history>strong { display:block; color:#8fe3db; font-size:12px; }
+.trace-history>p { margin:4px 0 8px; font-size:11px; line-height:1.5; color:#c3d4df; }
+.trace-history ul { display:grid; gap:8px; margin:0; padding-left:17px; }
+.trace-history li { font-size:11px; overflow-wrap:anywhere; }
+.trace-history a { color:#8edbff; display:inline-block; margin-top:3px; }
+.card-evidence-group .traceable{min-width:0;}

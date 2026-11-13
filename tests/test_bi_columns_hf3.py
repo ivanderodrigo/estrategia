@@ -96,7 +96,7 @@ class BusinessColumnsHF3(unittest.TestCase):
     def test_frontend_has_remainder_mapping_and_pref_migration(self) -> None:
         js = (ROOT / "assets/app/intelligence.js").read_text(encoding="utf-8")
         self.assertIn("function linecardRemainderField(", js)
-        self.assertIn("Fabricantes Westcon con los que compite", js)
+        self.assertIn("Competencia documentada con", js)
         self.assertIn("westcon-table-pref-revision-v431-hf3", js)
 
 
