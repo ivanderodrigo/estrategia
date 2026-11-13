@@ -477,6 +477,28 @@ def _manufacturer_map(data: dict[str, Any]) -> dict[str, str]:
     return result
 
 
+def _active_westcon_manufacturer_map(data: dict[str, Any]) -> dict[str, str]:
+    """Only currently contracted Westcon vendors, never the entire vendor universe."""
+    config = _load("config/current/westcon_fy27_document_facts.json", {})
+    override = config.get("portfolio_override_2026_11") or {}
+    active = {
+        canonical(name)
+        for name in (config.get("portfolio_spain") or {})
+    }
+    active.update(canonical(name) for name in (config.get("portugal_additional") or []))
+    active.difference_update(canonical(name) for name in (override.get("excluded") or []))
+    active.update(canonical(name) for name in (override.get("included") or {}))
+    for name, info in (config.get("portfolio_spain") or {}).items():
+        if canonical(name) in active:
+            active.update(canonical(alias) for alias in (info.get("aliases") or []))
+    for name, info in (override.get("included") or {}).items():
+        if canonical(name) in active:
+            active.update(canonical(alias) for alias in ((info or {}).get("aliases") or []))
+    all_known = _manufacturer_map(data)
+    return {alias: resolved for alias, resolved in all_known.items()
+            if canonical(resolved) in active or alias in active}
+
+
 def _relation_names(field: dict[str, Any]) -> list[str]:
     result = []
     for raw in values(field.get("value")):
@@ -489,12 +511,12 @@ def _relation_names(field: dict[str, Any]) -> list[str]:
     return list(dict.fromkeys(result))
 
 
-def _manufacturer_competition_map(data: dict[str, Any]) -> dict[str, dict[str, Any]]:
+def _manufacturer_competition_map(data: dict[str, Any], active: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
     # Map each evidenced competitor/peer to the Westcon manufacturers it competes with.
     result: dict[str, dict[str, Any]] = {}
     for row in data.get("manufacturers") or []:
         manufacturer = str(row.get("name") or "").strip()
-        if not manufacturer:
+        if not manufacturer or (active is not None and canonical(manufacturer) not in active):
             continue
         field = (row.get("fields") or {}).get("competitors") or {}
         item_by_key = {
@@ -517,8 +539,8 @@ def _manufacturer_competition_map(data: dict[str, Any]) -> dict[str, dict[str, A
 
 
 def derive_overlap_fields(data: dict[str, Any]) -> dict[str, Any]:
-    westcon = _manufacturer_map(data)
-    competition = _manufacturer_competition_map(data)
+    westcon = _active_westcon_manufacturer_map(data)
+    competition = _manufacturer_competition_map(data, westcon)
     for section in ("distributors", "integrators"):
         for row in data.get(section) or []:
             fields = row.setdefault("fields", {})
@@ -727,7 +749,7 @@ def project_graph_to_views(data: dict[str, Any], graph: dict[str, Any]) -> dict[
 
 
 def derive_secondary_views(data: dict[str, Any]) -> dict[str, Any]:
-    westcon = _manufacturer_map(data)
+    westcon = _active_westcon_manufacturer_map(data)
     for row in data.get("trends") or []:
         fields = row.setdefault("fields", {})
         if (fields.get("westcon_vendors") or {}).get("value"):
