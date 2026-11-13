@@ -1,7 +1,7 @@
 // App v6.5.0
 (() => {
   'use strict';
-  const state = {historicalSections:{}, historicalSummary:null, historicalChecks:{}, historicalStructured:new Set(), data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
+  const state = {historicalSections:{}, historicalSummary:null, historicalChecks:{}, historicalStructured:new Set(), historicalVerifiedRecords:new Map(), data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -74,6 +74,30 @@
           for(const [fieldId,claims] of Object.entries(entries)){
             const annotated=(Array.isArray(claims)?claims:[]).map(claim=>({...claim,verified_urls:(claim.urls||[]).filter(url=>state.historicalStructured.has([section,historicalKey(row.name),fieldId,historicalKey(claim.value),url].join('|')))}));
             row._historical[fieldId]=annotated;
+            // Only manually reviewed, exact entity+field+value+URL citations can
+            // upgrade a pending displayed item. Generic text hits never can.
+            if(section==='manufacturers'&&fieldId==='competitors'){
+              const target=row.fields?.[fieldId];
+              if(target){
+                for(const h of annotated){
+                  const matching=(h.verified_urls||[]).find(url=>state.historicalVerifiedRecords.has([section,historicalKey(row.name),fieldId,historicalKey(h.value),url].join('|')));
+                  if(!matching)continue;
+                  const ev={url:matching,source:'Gartner Peer Insights',title:'Alternativas al producto: '+row.name,
+                    description:'Competidor de producto identificado expresamente en el listado de alternativas de Gartner.',
+                    provenance_origin:'PUBLIC_ANALYST',source_type:'analyst-peer-review',source_grade:'B',
+                    source_binding:'claim-specific',atomic:true,field:fieldId,item_value:h.value,
+                    researched_entity:row.name,retrieved_at:reviewedHistoricalDate(),freshness_status:'current'};
+                  if(!Array.isArray(target.value))target.value=[];
+                  if(!target.value.some(v=>historicalKey(v)===historicalKey(h.value)))target.value.push(h.value);
+                  if(!Array.isArray(target.items))target.items=[];
+                  let item=target.items.find(it=>historicalKey(it.value)===historicalKey(h.value));
+                  if(!item){item={value:h.value,evidence:[],confidence:.76};target.items.push(item);}
+                  if(!Array.isArray(item.evidence))item.evidence=[];
+                  if(!item.evidence.some(e=>e.url===matching&&historicalKey(e.item_value)===historicalKey(h.value)))item.evidence.push(ev);
+                  item.confidence=Math.max(Number(item.confidence||0),.76);
+                }
+              }
+            }
             const target=row.fields?.[fieldId];
             if(target&&Array.isArray(claims))target._historical=annotated;
           }
@@ -220,7 +244,12 @@
     if(runRes?.ok){ try{ state.lastRun = await runRes.json(); }catch(_){ state.lastRun=null; } }
     if(historyRes?.ok){ try{state.historicalSummary=await historyRes.json();}catch(_){state.historicalSummary=null;} }
     if(checkedRes?.ok){try{const check=await checkedRes.json();state.historicalChecks=check.results||{};}catch(_){state.historicalChecks={};}}
-    if(structuredRes?.ok){try{const review=await structuredRes.json();state.historicalStructured=new Set((review.claims||[]).filter(c=>c.status==='VERIFIED_EXPLICIT_ALTERNATIVE'||c.status==='VERIFIED_CURATED_DIRECT_SOURCE').map(c=>[c.section,historicalKey(c.entity),c.field,historicalKey(c.value),c.source_url].join('|')));}catch(_){state.historicalStructured=new Set();}}
+    if(structuredRes?.ok){try{
+      const review=await structuredRes.json();
+      const accepted=(review.claims||[]).filter(c=>c.status==='VERIFIED_EXPLICIT_ALTERNATIVE'||c.status==='VERIFIED_CURATED_DIRECT_SOURCE');
+      state.historicalVerifiedRecords=new Map(accepted.map(c=>[[c.section,historicalKey(c.entity),c.field,historicalKey(c.value),c.source_url].join('|'),c]));
+      state.historicalStructured=new Set(state.historicalVerifiedRecords.keys());
+    }catch(_){state.historicalStructured=new Set();state.historicalVerifiedRecords=new Map();}}
     await ensureViewData(state.view);
     bind();
     renderAll();
@@ -702,6 +731,7 @@
   function reorderColumn(view,from,to){if(!view||from===to)return;const schema=state.data.schemas[view]||[];let order=(state.columnOrder[view]||schema.map(x=>x.id)).filter(x=>schema.some(c=>c.id===x));const a=order.indexOf(from),b=order.indexOf(to);if(a<0||b<0)return;order.splice(b,0,order.splice(a,1)[0]);state.columnOrder[view]=order;localStorage.setItem(`westcon-cols-${view}`,JSON.stringify(order));renderCurrent(view);}
   function renderCurrent(view){({manufacturers:renderManufacturers,integrators:renderIntegrators,distributors:renderDistributors,clients_public:renderClients,clients_private:renderClients}[view]||(()=>{}))();}
   function historicalKey(value){return norm(value).replace(/[^a-z0-9]+/g,' ').trim();}
+  function reviewedHistoricalDate(){return String(state.lastRun?.generated_at||state.manifest?.generated_at||'').slice(0,10);}
   function sourceArchaeology(field,item){
     const all=Array.isArray(field?._historical)?field._historical:[];
     if(!all.length)return '';
@@ -907,9 +937,12 @@ const identityTone=identityEvidence.length?'high':'unverified';const direct=view
 
   function cardField(col,f,context='card'){if(!f||!hasValue(f.value))return '';const help=col.clarify?`<span class="help-wrap card-help"><span>${esc(col.label)}</span><button class="help-icon" type="button" aria-label="Aclaración de ${esc(col.label)}">?</button><span class="help-tip">${esc(col.help||'')}</span></span>`:esc(col.label);return `<div class="card-field"><label>${help}</label>${renderValue(f,null,context,col.id)}</div>`;}
   function cardGrid(rows, schema, forceAll=false, context='card'){
-    const cols=forceAll?schema:activeColumns(schema,rows,'cards');
+    // Feed-only fields (notably Publications and novedades) belong to the
+    // dedicated sourced news feed, not to per-topic factual cards.
+    const chosen=forceAll?schema:activeColumns(schema,rows,'cards');
+    const cols=chosen.filter(c=>!c.feed_only&&c.id!=='recent_signals');
     const cardClass=context==='trend'?'intel-card trend-card':'intel-card';
-    return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable({value:row.name,evidence:row.evidence||[],confidence:.9,confidence_band:'high'},`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>`<div class="card-evidence-group">${cardField(c,fieldFor(row,c),context)||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c,row)}</div>`}</div>`).join('')}</article>`).join('');
+    return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable({value:row.name,evidence:row.evidence||[],confidence:.9,confidence_band:'high'},`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>{const field=fieldFor(row,c);const historical=Boolean(row._historical?.[c.id]?.length);const rendered=cardField(c,field,context);if((context==='trend'||row._section==='architectures')&&!rendered&&!historical)return '';return `<div class="card-evidence-group">${rendered||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c,row)}</div>`}</div>`;}).join('')}</article>`).join('');
   }
   function renderSectionCoverage(section,selector){
     const el=$(selector);if(!el)return;
@@ -968,7 +1001,7 @@ const identityTone=identityEvidence.length?'high':'unverified';const direct=view
 
   function renderArchitectures(){
     const q=norm($('#architectureSearch')?.value), all=state.data.architectures||[], rows=all.filter(r=>!q||rowBlob(r).includes(q));
-    $('#architectureGrid').innerHTML=cardGrid(rows,state.data.schemas.architectures)||'<div class="empty-state">No hay arquitecturas con ese filtro.</div>';
+    $('#architectureGrid').innerHTML=cardGrid(rows.map(r=>({...r,_section:'architectures'})),state.data.schemas.architectures)||'<div class="empty-state">No hay arquitecturas con ese filtro.</div>';
     renderSectionCoverage('architectures','#architectureCoverageAudit');
     setCount('#architectureCount',rows.length,all.length,'arquitecturas');
     renderEntityNews('architectures',all);
