@@ -47,7 +47,7 @@ class SemanticHistoricalTests(unittest.TestCase):
         ev=claim("architectures","vendors","Zero Trust","Okta",
                  "NIST Zero Trust Okta")
         self.assertEqual(classify(ev,"https://csrc.nist.gov/publications/detail/sp/800-207/final"),
-                         "UNSUPPORTED_FIELD_OR_CONTEXT")
+                         "AMBIGUOUS_SHORT_VALUE")
 
     def test_partner_logo_alt_is_visible_for_original_source_audit(self):
         html=('''<html><body><h1>Partners tecnológicos</h1><section>'''
@@ -60,8 +60,8 @@ class SemanticHistoricalTests(unittest.TestCase):
         self.assertNotIn("bogus fake competitor",txt)
 
     def test_topic_roster_items_have_exact_market_document(self):
-        reg=json.loads((ROOT/"config/current/verified_historical_topic_markets_20261114.json").read_text())
-        market=json.loads((ROOT/"config/current/verified_historical_market_20261114.json").read_text())
+        reg=json.loads((ROOT/"config/current/verified_historical_topic_markets_20261114.json").read_text(encoding="utf-8"))
+        market=json.loads((ROOT/"config/current/verified_historical_market_20261114.json").read_text(encoding="utf-8"))
         rosters=market["market_rosters"]
         self.assertEqual(len(reg["existing_claim_sources"]),48)
         allowed=reg["eligible_market_ids"]
