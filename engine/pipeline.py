@@ -204,6 +204,7 @@ def run() -> dict[str, Any]:
     # Portfolio rule is applied late; rebuild all channel comparison fields NOW,
     # including integrators, against the updated active vendor universe.
     derive_overlap_fields(data)
+    normalize_fields(data)
     _sync_source_catalog(data)
     confidence_stats = apply_confidence_model(data)
     source_rationalization = rationalize_sources(data)
