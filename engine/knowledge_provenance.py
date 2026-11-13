@@ -176,7 +176,14 @@ def accrediting_evidence(evidence: Mapping[str, Any]) -> bool:
         return bool(
             evidence.get("atomic") is True
             and str(evidence.get("source_binding") or "").lower() == "claim-specific"
-            and str(evidence.get("field") or "") == "competitors"
+            and (
+                str(evidence.get("field") or "") == "competitors"
+                or (
+                    str(evidence.get("field") or "") in {"market_players", "vendors"}
+                    and evidence.get("topic_market_match") is True
+                    and method == "same-market-explicit-vendor-list"
+                )
+            )
             and str(evidence.get("item_value") or "").strip()
             and str(evidence.get("url") or "").startswith("https://www.gartner.com/")
             and (
