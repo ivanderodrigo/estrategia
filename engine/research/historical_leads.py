@@ -102,12 +102,19 @@ def build_identity_index(rows: list[dict]) -> dict[tuple[str, str, str, str], di
                 # The public summary intentionally truncates some complex values.
                 # Never match a partial JSON fragment and guess its provenance.
                 continue
+            # The record-level source_urls are a UNION across values of a
+            # field; they can be unrelated to the exact historical assertion.
+            # The sample-level URLs were recovered from the individual claim.
+            specific_urls = [url for url in historical.get("source_urls") or []
+                             if isinstance(url, str)]
+            if not specific_urls:
+                continue
             key = (section, entity, field, _exact_key(value))
             if key not in lookup:
-                lookup[key] = {**record, "source_urls": list(record.get("source_urls") or [])}
+                lookup[key] = {**record, "source_urls": list(specific_urls)}
             else:
                 existing = lookup[key]["source_urls"]
-                for url in record.get("source_urls") or []:
+                for url in specific_urls:
                     if url not in existing:
                         existing.append(url)
     return lookup
@@ -148,7 +155,15 @@ def historical_record_for_gap(
             if isinstance(sample, dict)
         }
         if any(_exact_key(value) in key_values for value in target_values):
-            return by_id
+            specific = [
+                url
+                for sample in by_id.get("historical_samples") or []
+                if isinstance(sample, dict) and sample.get("value") in
+                {_exact_key(value) for value in target_values}
+                for url in (sample.get("source_urls") or [])
+            ]
+            if specific:
+                return {**by_id, "source_urls": list(dict.fromkeys(specific))}
     return None
 
 
