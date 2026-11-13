@@ -220,7 +220,7 @@
     if(runRes?.ok){ try{ state.lastRun = await runRes.json(); }catch(_){ state.lastRun=null; } }
     if(historyRes?.ok){ try{state.historicalSummary=await historyRes.json();}catch(_){state.historicalSummary=null;} }
     if(checkedRes?.ok){try{const check=await checkedRes.json();state.historicalChecks=check.results||{};}catch(_){state.historicalChecks={};}}
-    if(structuredRes?.ok){try{const review=await structuredRes.json();state.historicalStructured=new Set((review.claims||[]).filter(c=>c.status==='VERIFIED_EXPLICIT_ALTERNATIVE').map(c=>[c.section,historicalKey(c.entity),c.field,historicalKey(c.value),c.source_url].join('|')));}catch(_){state.historicalStructured=new Set();}}
+    if(structuredRes?.ok){try{const review=await structuredRes.json();state.historicalStructured=new Set((review.claims||[]).filter(c=>c.status==='VERIFIED_EXPLICIT_ALTERNATIVE'||c.status==='VERIFIED_CURATED_DIRECT_SOURCE').map(c=>[c.section,historicalKey(c.entity),c.field,historicalKey(c.value),c.source_url].join('|')));}catch(_){state.historicalStructured=new Set();}}
     await ensureViewData(state.view);
     bind();
     renderAll();
