@@ -56,6 +56,8 @@ jobs:
       # Persist the actual compiled snapshot. GitHub Pages can also be configured
       # to publish directly from /main; without this commit it serves old data.
       # Do not trigger on data/public/** alone to avoid a self-rebuild loop.
+      - name: Validate mass archived-source sidecars
+        run: python scripts/validate_mass_historical_publication.py
       - name: Commit rebuilt public data to main
         run: |
           git config user.name "github-actions[bot]"

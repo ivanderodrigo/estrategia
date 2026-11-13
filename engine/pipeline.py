@@ -40,6 +40,7 @@ from .knowledge_provenance import (
 from .graph import build_graph
 from .metrics import calculate
 from .publication import public_payloads
+from .historical_publication import publish_historical_trails
 from .westcon_current_evidence import apply_westcon_current_evidence
 from .verified_research import apply_verified_research
 from .quality import audit
@@ -370,7 +371,15 @@ def run() -> dict[str, Any]:
         },
     }
 
+    historical_files, historical_summary = publish_historical_trails(gaps, now)
+    # Historical source trails deliberately do not alter accreditation metrics.
+    last_run["historical_trails"] = {
+        "claims": historical_summary["claims"],
+        "unique_urls": historical_summary["unique_urls"],
+        "status": historical_summary["status"],
+    }
     public_files, manifest = public_payloads(data, last_run)
+    public_files.update(historical_files)
     compare["public_projection"] = {
         "manifest_bytes": len(public_files["data/public/manifest.json"]),
         "sections_bytes": sum(
