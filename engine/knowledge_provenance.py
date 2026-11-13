@@ -161,10 +161,38 @@ def typed_evidence_sufficient(evidence: Mapping[str, Any]) -> bool:
 
 
 def accrediting_evidence(evidence: Mapping[str, Any]) -> bool:
-    """Evidence allowed in the normal user-facing source UI."""
+    """Evidence allowed in the normal user-facing source UI.
+
+    Gartner/analyst claims are only accrediting when individually bound to a
+    specific competitor and vetted against an explicit product alternatives
+    list or a same-market comparative vendor roster. A generic analyst report
+    or a vendor mention is *never* enough.
+    """
     if not typed_evidence_sufficient(evidence):
         return False
-    return provenance_kind(evidence) in {"PUBLIC_PRIMARY", "PUBLIC_SECONDARY"} | CURRENT_WESTCON_EVIDENCE_KINDS
+    kind = provenance_kind(evidence)
+    if kind == "PUBLIC_ANALYST":
+        method = str(evidence.get("verification_method") or "")
+        return bool(
+            evidence.get("atomic") is True
+            and str(evidence.get("source_binding") or "").lower() == "claim-specific"
+            and str(evidence.get("field") or "") == "competitors"
+            and str(evidence.get("item_value") or "").strip()
+            and str(evidence.get("url") or "").startswith("https://www.gartner.com/")
+            and (
+                method in {
+                    "same-market-explicit-vendor-list",
+                    "explicit-product-alternative",
+                    "structured-product-alternative",
+                }
+                or (
+                    str(evidence.get("source_type") or "") == "analyst-peer-review"
+                    and str(evidence.get("url") or "").split("?")[0].rstrip("/").endswith("/alternatives")
+                    and "/reviews/product/" in str(evidence.get("url") or "")
+                )
+            )
+        )
+    return kind in {"PUBLIC_PRIMARY", "PUBLIC_SECONDARY"} | CURRENT_WESTCON_EVIDENCE_KINDS
 
 
 def real_evidence(rows: Iterable[Mapping[str, Any]]) -> list[dict[str, Any]]:
