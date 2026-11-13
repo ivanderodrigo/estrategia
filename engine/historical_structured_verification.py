@@ -56,8 +56,8 @@ class _StructuredAlternatives(HTMLParser):
             text = " ".join(" ".join(self.buffer).split())
             if tag == "h1":
                 self.title.append(text)
-            elif re.match(r"^\\d+\\.\\s+", text):
-                self.alternatives.append(re.sub(r"^\\d+\\.\\s+", "", text).strip())
+            elif re.match(r"^\d+\.\s+", text):
+                self.alternatives.append(re.sub(r"^\d+\.\s+", "", text).strip())
             self.capture = None
             self.buffer = []
 
