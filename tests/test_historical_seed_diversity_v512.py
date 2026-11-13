@@ -3,8 +3,9 @@ from engine.research.historical_leads import historical_revalidation_seeds, MAX_
 
 class HistoricSeedDiversityTests(unittest.TestCase):
     def test_independent_hosts_precede_duplicate_host_pages(self):
-        gap={"id":"g1","section":"integrators","entity":"A","field":"vendor_relations"}
-        records={"g1":{"section":"integrators","entity":"A","field":"vendor_relations","source_urls":[
+        gap={"id":"g1","section":"integrators","entity":"A","field":"vendor_relations","target_values":["Extreme Networks"]}
+        records={"g1":{"section":"integrators","entity":"A","field":"vendor_relations","match_level":"exact-value-history",
+         "historical_samples":[{"value":"\\\"Extreme Networks\\\""}],"source_urls":[
             "https://one.example.com/a","https://one.example.com/b",
             "https://two.example.org/a","https://three.example.net/a",
             "https://one.example.com/a","http://invalid.example/b",
