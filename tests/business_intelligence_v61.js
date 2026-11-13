@@ -73,6 +73,11 @@ const westconOfficial={name:'Extreme Networks',fields:{westcon_spain:field(true)
 const competition=bi.verifiedCompetitionFor(integratorOfficial,[westconOfficial]);
 assert.deepStrictEqual(competition.value,['Cisco'],'Both source-backed relationships must map exact competitor');
 assert.strictEqual(competition.items[0].competes_with_westcon[0],'Extreme Networks');
+const retired={name:'Ruckus Networks',fields:{westcon_spain:field(false),competitors:detailedRelation('Cisco')}};
+assert.deepStrictEqual(bi.verifiedCompetitionFor(integratorOfficial,[retired]).value,[],
+ 'A retired manufacturer must never produce a Westcon competitor mapping');
+assert.strictEqual(bi.distributorContext(rival,[retired]).relevant,false,
+ 'Retired manufacturers must not make a distributor a Westcon rival');
 assert.strictEqual(bi.verifiedCompetitionFor(integratorOfficial,[
   {name:'Extreme Networks',fields:{westcon_spain:field(true),competitors:detailedRelation('Cisco',false)}}
 ]).value.length,0,'Unsourced competitor mapping is not proof');
