@@ -50,7 +50,7 @@ class HistoricalPublicationTests(unittest.TestCase):
         self.assertEqual(claims[0]["urls"], ["https://www.okta.com/products/"])
         self.assertNotIn("principles", arch["entities"]["zero trust"])
         self.assertNotIn("https://unrelated.example.org/other", str(arch))
-        self.assertEqual(len(files), 8)
+        self.assertEqual(len(files), 9)
 
     def test_does_not_export_derived_claim_or_source_for_wrong_value(self):
         old, gaps = self._data()
