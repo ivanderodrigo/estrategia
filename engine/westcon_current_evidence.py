@@ -349,7 +349,11 @@ def apply_westcon_current_evidence(data: dict[str, Any], config: Mapping[str, An
             if details.get("domain"):
                 domain_ev = _catalog_evidence(details, override, field="domain", value=details["domain"])
                 _attach_scalar(row, "domain", details["domain"], domain_ev)
-                row["fields"]["domain"]["evidence"] = [domain_ev]
+                # Retain prior accredited taxonomy sources; never replace the
+                # baseline support merely to attach a newer official catalog.
+                row["fields"]["domain"]["evidence"] = _dedupe_evidence(
+                    list(row["fields"]["domain"].get("evidence") or []) + [domain_ev]
+                )
             if details.get("capabilities"):
                 capabilities = [str(x) for x in details["capabilities"]]
                 field = _field(row, "capabilities", capabilities)
