@@ -4,6 +4,7 @@ import unittest
 
 from engine.research.intelligent_discovery import intelligent_discovery_queries
 from engine.westcon_current_evidence import apply_westcon_current_evidence
+from engine.enrichment import _active_westcon_manufacturer_map, derive_overlap_fields
 
 
 class PortfolioAndCrossDiscoveryTests(unittest.TestCase):
@@ -55,6 +56,33 @@ class PortfolioAndCrossDiscoveryTests(unittest.TestCase):
         )
         self.assertTrue(any('"Cloudflare"' in query for query in queries))
         self.assertTrue(any('"Sonar"' in query for query in queries))
+
+    def test_old_vendors_do_not_count_as_westcon_overlap(self):
+        data = {
+            "manufacturers": [
+                {"name": "Juniper Networks", "fields": {}},
+                {"name": "Ruckus Networks", "fields": {}},
+                {"name": "Cloudflare", "fields": {}},
+                {"name": "Sonar", "fields": {}},
+            ],
+            "distributors": [{
+                "name": "Distributor Example",
+                "fields": {"vendor_relations": {
+                    "value": ["Juniper Networks", "Ruckus Networks", "Cloudflare", "Sonar"],
+                    "items": [{"value": name, "evidence": []} for name in
+                              ("Juniper Networks", "Ruckus Networks", "Cloudflare", "Sonar")],
+                }},
+            }],
+            "integrators": [],
+        }
+        active = _active_westcon_manufacturer_map(data)
+        self.assertNotIn("juniper networks", active)
+        self.assertNotIn("ruckus networks", active)
+        self.assertIn("cloudflare", active)
+        self.assertIn("sonar", active)
+        derive_overlap_fields(data)
+        overlaps = data["distributors"][0]["fields"]["westcon_overlap"]["value"]
+        self.assertEqual(set(overlaps), {"Cloudflare", "Sonar"})
 
     def test_trends_use_analyst_and_standard_sources(self):
         row = {"name": "AI Security", "fields": {"domain": {"value": "Cybersecurity"}}}
