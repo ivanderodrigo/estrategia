@@ -401,3 +401,18 @@ main,.view,.page-head,.toolbar,.table-shell,.intelligence-table{min-width:0;max-
 .historical-trail-links{margin-top:.2rem;}
 .historical-trail-links a{font-weight:650;text-decoration:underline;text-underline-offset:2px;}
 .historical-trail-body small{display:block;opacity:.75;}
+
+/* Unified confidence language: every visible field uses the same evidence pill. */
+.entity-name-line .entity-pill { display:inline-flex; align-items:center; max-width:100%; font-size:calc(11px * var(--font-scale)); font-weight:700; line-height:1.4; padding:5px 9px; margin:0; border-radius:8px; }
+.entity-name-line .entity-pill .tag-label { overflow-wrap:anywhere; white-space:normal; }
+.entity-name-line .entity-pill small { display:inline; margin-left:5px; font-size:calc(10px * var(--font-scale)); font-weight:800; }
+.name-cell .traceable{min-width:0;}
+.trace-history { margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,.18); color:#e3edf2; }
+.trace-history>strong { display:block; color:#8fe3db; font-size:12px; }
+.trace-history>p { margin:4px 0 8px; font-size:11px; line-height:1.5; color:#c3d4df; }
+.trace-history ul { display:grid; gap:8px; margin:0; padding-left:17px; }
+.trace-history li { font-size:11px; overflow-wrap:anywhere; }
+.trace-history a { color:#8edbff; display:inline-block; margin-top:3px; }
+.card-evidence-group .traceable{min-width:0;}
+/* The old second dropdown is retired; a cell has one provenance interaction. */
+.historical-trail{display:none !important;}
