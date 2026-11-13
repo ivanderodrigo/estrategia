@@ -7,7 +7,7 @@ GAP={"id":"gap-1","section":"integrators","entity":"Test Integrator","field":"se
 RECORD={"gap_id":"gap-1","section":"integrators","entity":"Test Integrator","field":"services",
  "match_level":"exact-value-history","identity_scope":"canonical-name",
  "source_urls":["https://example.com/services","https://example.net/partners","https://example.org/about"],
- "historical_samples":[{"value":"\\\"Endpoint support\\\""}]}
+ "historical_samples":[{"value":'"Endpoint support"'}]}
 
 class HistoricalResearchRoutingTest(unittest.TestCase):
     def test_exact_evidence_urls_are_bounded_and_untrusted(self):
