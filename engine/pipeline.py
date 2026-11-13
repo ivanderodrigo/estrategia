@@ -41,6 +41,7 @@ from .graph import build_graph
 from .metrics import calculate
 from .publication import public_payloads
 from .westcon_current_evidence import apply_westcon_current_evidence
+from .verified_research import apply_verified_research
 from .quality import audit
 from .preservation import (
     audit as audit_preservation,
@@ -191,6 +192,7 @@ def run() -> dict[str, Any]:
     westcon_current_evidence = apply_westcon_current_evidence(
         data, read_json("config/current/westcon_fy27_document_facts.json", {})
     )
+    verified_public_research = apply_verified_research(data)
     # HF6-R13-R3: enforce exact atomic binding after late migrations.
     normalize_fields(data)
     # HF6 R23: restore only evidence for surviving exact claims after the LAST
@@ -298,6 +300,7 @@ def run() -> dict[str, Any]:
             ),
         })
         raise ValueError("Quality gate failed: " + "; ".join(quality["errors"][:5]))
+    meta["verified_research_20261113"] = verified_public_research
     meta["source_count"] = metrics["sources"]
     meta["quality_score"] = quality["score"]
 
