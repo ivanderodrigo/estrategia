@@ -122,6 +122,8 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
     exact_sources.extend(structured.get("existing_claim_sources") or [])
     historical_market = read_json("config/current/verified_historical_market_20261114.json", {})
     exact_sources.extend(historical_market.get("existing_claim_sources") or [])
+    topic_market = read_json("config/current/verified_historical_topic_markets_20261114.json", {})
+    exact_sources.extend(topic_market.get("existing_claim_sources") or [])
     for claim in exact_sources:
         section = str(claim.get("section") or "")
         field_id = str(claim.get("field") or "")
