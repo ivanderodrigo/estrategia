@@ -1,7 +1,7 @@
 // App v6.5.0
 (() => {
   'use strict';
-  const state = {historicalSections:{}, historicalSummary:null, data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
+  const state = {historicalSections:{}, historicalSummary:null, historicalChecks:{}, data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -195,10 +195,11 @@
     ({fabricantes:renderManufacturers,mayoristas:renderDistributors,integradores:renderIntegrators,clientes:renderClients,tendencias:renderTrends,arquitecturas:renderArchitectures}[state.view]||(()=>{}))();
   }
   async function load(){
-    const [res, runRes, historyRes] = await Promise.all([
+    const [res, runRes, historyRes, checkedRes] = await Promise.all([
       fetch('data/public/manifest.json', {cache:'no-store'}),
       fetch('data/public/last_run.json', {cache:'no-store'}).catch(()=>null),
-      fetch('data/public/historical/current/summary.json', {cache:'no-store'}).catch(()=>null)
+      fetch('data/public/historical/current/summary.json', {cache:'no-store'}).catch(()=>null),
+      fetch('data/public/historical/current/source_checks.json', {cache:'no-store'}).catch(()=>null)
     ]);
     if(!res.ok) throw new Error(`No se pudo cargar data/public/manifest.json (${res.status})`);
     state.manifest = await res.json();
@@ -207,6 +208,7 @@
     for(const section of PUBLIC_SECTIONS) state.data[section]=[];
     if(runRes?.ok){ try{ state.lastRun = await runRes.json(); }catch(_){ state.lastRun=null; } }
     if(historyRes?.ok){ try{state.historicalSummary=await historyRes.json();}catch(_){state.historicalSummary=null;} }
+    if(checkedRes?.ok){try{const check=await checkedRes.json();state.historicalChecks=check.results||{};}catch(_){state.historicalChecks={};}}
     await ensureViewData(state.view);
     bind();
     renderAll();
@@ -697,7 +699,14 @@
     const rows=scoped.slice(0,8).map(h=>{
       const val=typeof h.value==='object'?JSON.stringify(h.value):String(h.value??'');
       const links=(h.urls||[]).filter(url=>/^https:\/\/[^\s"'<>]+$/i.test(url)).slice(0,3)
-        .map(url=>'<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Ver referencia original</a>').join(' · ');
+        .map(url=>{
+          const check=state.historicalChecks?.[url];
+          const status=check?.status==='REACHABLE_TEXT_MATCH'?' · texto localizado, requiere validación':
+            check?.status==='REACHABLE_NO_EXACT_TEXT'?' · página accesible, dato no localizado':
+            check?' · acceso no comprobado':'';
+          return '<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Fuente original</a>'+
+            (status?'<small>'+esc(status)+'</small>':'');
+        }).join(' · ');
       return '<li><span>'+esc(val.slice(0,240))+'</span>'+(links?'<div>'+links+'</div>':'')+'</li>';
     }).join('');
     return '<section class="trace-history"><strong>Referencias históricas relacionadas</strong>'+
