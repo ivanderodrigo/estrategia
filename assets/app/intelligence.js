@@ -723,7 +723,7 @@
       return '<li><span>'+esc(val.slice(0,240))+'</span>'+(links?'<div>'+links+'</div>':'')+'</li>';
     }).join('');
     return '<section class="trace-history"><strong>Referencias históricas relacionadas</strong>'+
-      '<p>Una referencia histórica no acredita por sí sola. Las fuentes confirmadas mediante lectura estructurada aparecen identificadas individualmente.</p>'+
+      '<p>No acreditan el dato hasta verificar de nuevo su contenido; las fuentes confirmadas mediante lectura estructurada aparecen identificadas individualmente.</p>'+
       '<ul>'+rows+'</ul></section>';
   }
   function tableHtml(rows, schema, emptyText, view, baseRows=rows){
