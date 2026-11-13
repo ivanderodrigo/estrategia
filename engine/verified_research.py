@@ -53,7 +53,8 @@ def _safe_research_merge(current: dict[str, Any], new: dict[str, Any]) -> dict[s
 def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
     registry = read_json("config/current/verified_research_20261113.json", {})
     stats = {"manufacturer_values_added": 0, "trend_values_added": 0,
-             "architecture_values_added": 0, "rows_enriched": 0}
+             "architecture_values_added": 0, "rows_enriched": 0,
+             "existing_claims_accredited": 0}
     if not isinstance(registry, dict):
         return stats
     by_section = registry.get("entities") or {}
@@ -112,4 +113,34 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
                 stats[counter] += added
                 touched |= bool(added)
             stats["rows_enriched"] += int(touched)
+    # Backfill the source for an ALREADY present, exact vendor assertion.
+    # This is not category similarity, a discovered partner or a generated
+    # competitor. The official page must name the product/vendor's role.
+    # Do not fabricate new layer memberships or missing market participants.
+    for claim in registry.get("existing_claim_sources") or []:
+        section = str(claim.get("section") or "")
+        field_id = str(claim.get("field") or "")
+        if (section, field_id) not in {
+            ("architectures", "vendors"),
+            ("trends", "market_players"),
+        }:
+            continue
+        entity = str(claim.get("entity") or "")
+        value = str(claim.get("value") or "")
+        source = claim.get("source") or {}
+        if not entity or not value or not isinstance(source, dict):
+            continue
+        for row in data.get(section) or []:
+            if canonical(row.get("name")) != canonical(entity):
+                continue
+            field = (row.get("fields") or {}).get(field_id) or {}
+            old_values = field.get("value") if isinstance(field.get("value"), list) else []
+            match = next((v for v in old_values if canonical(v) == canonical(value)), None)
+            if match is None:
+                continue
+            # Preserve the exact published spelling and all existing support.
+            new = _claim_field(field_id, [[match, source]])
+            row["fields"][field_id] = merge_field(field, new)
+            stats["existing_claims_accredited"] += 1
+            break
     return stats
