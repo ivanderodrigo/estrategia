@@ -58,6 +58,25 @@ class StableHistoricalSourceRecoveryTests(unittest.TestCase):
                     "old-gap-id": self.rows[0]
                 }), [])
 
+    def test_does_not_mix_field_level_urls_from_other_claims(self):
+        record = {
+            **self.rows[0],
+            "source_urls": [
+                "https://www.nist.gov/publications/example",
+                "https://other.example.org/unrelated",
+            ],
+            "historical_samples": [{
+                "value": json.dumps("Okta"),
+                "source_urls": ["https://www.nist.gov/publications/example"],
+            }],
+        }
+        index = historical_leads.build_identity_index([record])
+        value = index[("architectures", "zero trust", "vendors", json.dumps("Okta"))]
+        self.assertEqual(value["source_urls"],
+                         ["https://www.nist.gov/publications/example"])
+        self.assertNotIn("https://other.example.org/unrelated",
+                         value["source_urls"])
+
     def test_truncated_or_field_only_history_never_claims_exact_match(self):
         rows = self.rows + [{
             **self.rows[0],
