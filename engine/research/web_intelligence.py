@@ -1792,6 +1792,7 @@ def run(
         contextual_intelligence = intelligent_discovery_queries(
             row, target['fields'], section=target['section'],
             rotation=datetime.now(timezone.utc).date().toordinal(), limit=12,
+            market_rows=data.get('manufacturers') or [],
         )
         seeds = _merge_source_seeds(
             _revalidation_source_seeds(target),
