@@ -33,7 +33,7 @@ jobs:
       - name: Strict exact-CPV regression tests
         run: python -m unittest discover -s tests -p "test_v72_ted_exact_cpv_revalidation.py" -v
       - name: Recover historical CPV claims from live original TED announcements
-        run: python scripts/revalidate_ted_cpv.py --max-runtime 600 --max-notices 1000 --batch-size 18
+        run: python -m scripts.revalidate_ted_cpv --max-runtime 600 --max-notices 1000 --batch-size 18
       - name: Validate that reconstructed output retains exact provenance
         run: |
           python scripts/validate.py
