@@ -77,6 +77,31 @@ class HistoricalSourceCheckSafety(unittest.TestCase):
         self.assertEqual(result["status"],"REACHABLE_TEXT_MATCH")
 
 
+class FullHistoricalDiligenceTests(unittest.TestCase):
+    def test_short_competitor_is_checked_individually_but_not_accredited(self):
+        class Response:
+            status_code=200
+            headers={"Content-Type":"text/html"}
+            text="<html><body>1Password vs LastPass compare password managers. "*8+"</body></html>"
+        class Session:
+            def get(self,*args,**kwargs):
+                return Response()
+        with patch("scripts.revalidate_historical_sources.validate_public_url",
+                   side_effect=lambda url:url):
+            result=check_one("https://1password.com/compare/1password-vs-lastpass",
+                [{"section":"manufacturers","entity":"1Password",
+                  "field":"competitors","value":"LastPass"},
+                 {"section":"manufacturers","entity":"1Password",
+                  "field":"competitors","value":"UnrelatedVendor"}],
+                 session=Session())
+        self.assertEqual(result["claim_hits"],1)
+        self.assertEqual(len(result["claim_checks"]),2)
+        self.assertEqual(result["claim_checks"][0]["status"],"VALUE_PRESENT_REQUIRES_CONTEXT")
+        self.assertEqual(result["claim_checks"][1]["status"],"NO_SPECIFIC_VALUE_CONFIRMED")
+        self.assertTrue(all(not c["accredited"] for c in result["claim_checks"]))
+        self.assertEqual(result["accreditation"],"NOT_ACCREDITED")
+
+
 class PublicationContracts(unittest.TestCase):
     def test_all_periodic_publications_include_historical_and_tender_reports(self):
         text=(Path(__file__).resolve().parents[1]/"scripts/publish_research_update.py").read_text(encoding='utf-8')
