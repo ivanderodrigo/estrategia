@@ -43,6 +43,7 @@ jobs:
           fi
           python scripts/validate.py
           python scripts/validate_active_portfolio_public.py
+          python scripts/validate_mass_historical_publication.py
           PYTHONPATH=. python scripts/report_gap_targets.py
           python scripts/audit_historical_reuse_20261113.py
           python scripts/audit_claim_sources.py --output claim-source-rebuilt.json > /dev/null
