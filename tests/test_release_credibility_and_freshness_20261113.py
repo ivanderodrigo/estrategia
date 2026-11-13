@@ -62,11 +62,11 @@ class HistoricalSourceCheckSafety(unittest.TestCase):
 
 class PublicationContracts(unittest.TestCase):
     def test_all_periodic_publications_include_historical_and_tender_reports(self):
-        text=(Path(__file__).resolve().parents[1]/"scripts/publish_research_update.py").read_text()
+        text=(Path(__file__).resolve().parents[1]/"scripts/publish_research_update.py").read_text(encoding='utf-8')
         self.assertIn('data/public/historical/current/architectures.json',text)
         self.assertIn('data/public/historical/current/source_checks.json',text)
         self.assertIn('data/public/procurement_lifecycle.json',text)
-        app=(Path(__file__).resolve().parents[1]/"assets/app/intelligence.js").read_text()
+        app=(Path(__file__).resolve().parents[1]/"assets/app/intelligence.js").read_text(encoding='utf-8')
         self.assertIn("sourceArchaeology(field,item)",app)
         self.assertNotIn("${historicalTrail(view,row,col.id)}",app)
         self.assertIn("publicTenderCurrent(row)",app)
