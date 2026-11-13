@@ -13,6 +13,7 @@ def notice(deadline="", status=""):
     return {"name":"Sample", "fields":{
         "milestone_date":{"value":deadline},
         "procurement_stage":{"value":status},
+        "notice_id":{"value":"PROC-2026-0001"},
     }}
 
 
@@ -31,6 +32,20 @@ class ProcurementLifecycleTests(unittest.TestCase):
         self.assertFalse(public_tender_active(notice("2026-12-15","Cancelado"),today))
         self.assertTrue(public_tender_active(notice("2026-12-15","Abierto"),today))
 
+    def test_non_notice_public_clients_do_not_become_expired_tenders(self):
+        row = {"name": "Ayuntamiento como cliente", "fields": {
+            "notice_id": {"value": "Por investigar"},
+            "milestone_date": {"value": "2020-01-01"},
+        }}
+        tenders = [notice("2026-11-12"), notice("2026-11-20")]
+        report = tender_lifecycle_report({"clients_public": [row, *tenders]},
+                                         date(2026,11,13))
+        self.assertEqual(report["total_public_rows"], 3)
+        self.assertEqual(report["non_notice_public_rows"], 1)
+        self.assertEqual(report["total_retained"], 2)
+        self.assertEqual(report["closed_or_deadline_expired"], 1)
+        self.assertEqual(report["currently_active_or_date_unknown"], 1)
+
     def test_counts_historical_records_not_deleted(self):
         rows=[notice("2026-11-12"),notice("2026-11-14"),
               notice(""),notice("2026-12-01","adjudicado")]
@@ -38,6 +53,8 @@ class ProcurementLifecycleTests(unittest.TestCase):
         report=tender_lifecycle_report(data,date(2026,11,13))
         self.assertEqual(report["closed_or_deadline_expired"],2)
         self.assertEqual(report["currently_active_or_date_unknown"],2)
+        self.assertEqual(report["total_retained"],4)
+        self.assertEqual(report["total_public_rows"],4)
         self.assertEqual(len(data["clients_public"]),4)
 
 
