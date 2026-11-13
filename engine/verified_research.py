@@ -34,6 +34,22 @@ def _claim_field(field_id: str, claims: list[list[Any]]) -> dict[str, Any]:
             "assertion_status": "CONFIRMADO"}
 
 
+def _safe_research_merge(current: dict[str, Any], new: dict[str, Any]) -> dict[str, Any]:
+    """Never replace an accredited scalar with a different claim.
+    
+    The same category can be described by multiple sources, but only list-valued
+    fields are additive. A scalar text is immutable unless it is empty.
+    """
+    old_value = current.get("value")
+    new_value = new.get("value")
+    if old_value not in (None, "", [], {}) and not isinstance(old_value, list):
+        candidates = new_value if isinstance(new_value, list) else [new_value]
+        if not any(canonical(old_value) == canonical(value) for value in candidates):
+            return current
+        return merge_field(current, {**new, "value": old_value})
+    return merge_field(current, new)
+
+
 def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
     registry = read_json("config/current/verified_research_20261113.json", {})
     stats = {"manufacturer_values_added": 0, "trend_values_added": 0,
@@ -57,7 +73,7 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
                     else ([existing.get("value")] if existing.get("value") else [])
                 )}
                 facts = _claim_field(field_id, claims)
-                fields[field_id] = merge_field(existing, facts)
+                fields[field_id] = _safe_research_merge(existing, facts)
                 newly = sum(1 for claim in claims if canonical(claim[0]) not in old)
                 stats["manufacturer_values_added"] += newly
                 touched |= bool(newly)
@@ -87,7 +103,7 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
                     old_field.get("value") if isinstance(old_field.get("value"), list)
                     else ([old_field.get("value")] if old_field.get("value") else [])
                 )}
-                fields[field_id] = merge_field(old_field, _claim_field(field_id, claims))
+                fields[field_id] = _safe_research_merge(old_field, _claim_field(field_id, claims))
                 added = sum(1 for claim in claims if canonical(claim[0]) not in old)
                 stats[counter] += added
                 touched |= bool(added)
