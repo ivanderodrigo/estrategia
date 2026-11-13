@@ -42,6 +42,17 @@ ALLOWED = [
     "data/public/sections/clients_private.json",
     "data/public/sections/trends.json",
     "data/public/sections/architectures.json",
+    # Historical claim/source sidecars must advance atomically with each snapshot.
+    "data/public/historical/current/summary.json",
+    "data/public/historical/current/manufacturers.json",
+    "data/public/historical/current/distributors.json",
+    "data/public/historical/current/integrators.json",
+    "data/public/historical/current/clients_public.json",
+    "data/public/historical/current/clients_private.json",
+    "data/public/historical/current/trends.json",
+    "data/public/historical/current/architectures.json",
+    "data/current/historical_source_checks.json",
+    "data/public/historical/current/source_checks.json",
 ]
 
 
