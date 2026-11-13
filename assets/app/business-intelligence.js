@@ -122,7 +122,7 @@ function verifiedCompetitionFor(row,manufacturers=[]){
   const vendorItem=(vendorField.items||[]).find(x=>sameBusinessName(x?.value,vendor));
   if(!vendorItem?.evidence?.length)continue;
   let sourceEvidence=[...vendorItem.evidence];
-  for(const manufacturer of manufacturers||[]){
+  for(const manufacturer of (manufacturers||[]).filter(isActiveWestcon)){
    const field=manufacturer?.fields?.competitors||{};
    const competitor=supportedTexts(field).find(v=>sameBusinessName(v,vendor));
    if(!competitor)continue;
