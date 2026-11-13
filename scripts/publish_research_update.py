@@ -27,6 +27,7 @@ ALLOWED = [
     "data/current/source_report.json",
     "data/current/research_learning.json",
     "data/current/research_ledger.json",
+    "data/current/ted_cpv_revalidation.json",
     "data/current/research_state.json",
     "data/current/discovery_queue.json",
     "data/current/run_history.json",
