@@ -131,16 +131,18 @@ def prioritize_sources(seeds: list[SourceSeed], target: dict) -> list[SourceSeed
             priority = 2
         elif source_type == "official-explicit-navigation":
             priority = 2
-        elif seed.official and seed.family != "official" and path and "sitemap" not in path:
+        elif source_type == "official-domain":
+            # The expanded routes are only guesses: an actual documented
+            # homepage is more useful because its links reveal real paths.
+            priority = 9 if "sitemap" in path or "robots.txt" in path else 7
+        elif seed.official and path and "sitemap" not in path:
             priority = 3
-        elif "search-discovery" in source_type and path and path != "/":
+        elif seed.official and path in {"", "/"}:
             priority = 4
-        elif seed.official and path not in {"", "/"} and "sitemap" not in path:
+        elif "search-discovery" in source_type and path and path != "/":
             priority = 5
         elif "search-discovery" in source_type:
             priority = 6
-        elif path in {"", "/"}:
-            priority = 7
         elif path.endswith(("sitemap.xml", "robots.txt", "sitemap_index.xml")):
             priority = 9
         else:
