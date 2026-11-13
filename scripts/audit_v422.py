@@ -160,7 +160,7 @@ def main() -> int:
         ):
             marker = f'{asset}?v={app_version}'
             # Cache fingerprints may use dated build IDs independent of the App label.
-            if not __import__('re').search(__import__('re').escape(asset)+r'\\?v=[^\\"\\\']+', index_html):
+            if asset + '?v=' not in index_html:
                 errors.append(
                     f'frontend cache-buster mismatch for {asset}: '
                     f'expected v{app_version}'
