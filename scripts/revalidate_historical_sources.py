@@ -60,10 +60,25 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
     try:
         safe = validate_public_url(url)
         get = session.get if session is not None else requests.get
-        response = get(safe, timeout=timeout,
-                       allow_redirects=False,
-                       headers={"User-Agent": "Westcon-Intelligence-Historical-Revalidation/1.0"})
+        headers={"User-Agent": "Westcon-Intelligence-Historical-Revalidation/1.0"}
+        redirects=[]
+        # Redirects are not failed evidence: follow them only after validating
+        # each next target against the public-URL security policy.
+        for _ in range(4):
+            response = get(safe, timeout=timeout, allow_redirects=False, headers=headers)
+            if response.status_code not in (301,302,303,307,308):
+                break
+            from urllib.parse import urljoin
+            location=response.headers.get("Location")
+            if not location:
+                break
+            next_url=validate_public_url(urljoin(safe, location))
+            redirects.append(next_url)
+            safe=next_url
         result["http_status"] = response.status_code
+        result["resolved_url"]=safe
+        if redirects:
+            result["redirect_chain"]=redirects
         if not (200 <= response.status_code < 300):
             result["status"] = "HTTP_UNAVAILABLE"
             return result
@@ -90,11 +105,20 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
             occurs = bool(informative and re.search(
                 r"(?<![a-z0-9])" + re.escape(value) + r"(?![a-z0-9])", text
             ))
+            # Keep a bounded, reviewable excerpt for every positive match.
+            # A mention is deliberately NOT evidence of a named relationship.
+            context=""
+            if occurs:
+                match=re.search(r"(?<![a-z0-9])" + re.escape(value) + r"(?![a-z0-9])", text)
+                if match:
+                    context=text[max(0,match.start()-120):min(len(text),match.end()+120)]
             checks.append({
                 "section": claim["section"], "entity": claim["entity"],
                 "field": claim["field"], "value": claim["value"][:180],
                 "status": "VALUE_PRESENT_REQUIRES_CONTEXT" if occurs
                           else "NO_SPECIFIC_VALUE_CONFIRMED",
+                "source_context": context,
+                "resolved_url": safe,
                 "accredited": False,
             })
         hits = [c for c in checks if c["status"] == "VALUE_PRESENT_REQUIRES_CONTEXT"]

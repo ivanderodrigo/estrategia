@@ -126,6 +126,8 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
         if (section, field_id) not in {
             ("manufacturers", "competitors"),
             ("architectures", "vendors"),
+            ("architectures", "context"),
+            ("architectures", "principles"),
             ("trends", "market_players"),
         }:
             continue
@@ -138,7 +140,7 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
             if canonical(row.get("name")) != canonical(entity):
                 continue
             field = (row.get("fields") or {}).get(field_id) or {}
-            old_values = field.get("value") if isinstance(field.get("value"), list) else []
+            old_values = field.get("value") if isinstance(field.get("value"), list) else ([field.get("value")] if field.get("value") not in (None, "", []) else [])
             match = next((v for v in old_values if canonical(v) == canonical(value)), None)
             if match is None:
                 # A manually audited product-alternative citation may recover a
@@ -153,6 +155,11 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
                 match = value
             # Preserve the exact published spelling and all existing support.
             new = _claim_field(field_id, [[match, source]])
+            if not isinstance(field.get("value"), list):
+                # Scalar architecture assertions have field-level, not item-level,
+                # provenance. Keep the original scalar and attach the exact proof.
+                new = {**new, "value": match,
+                       "evidence": list(new["items"][0]["evidence"])}
             row["fields"][field_id] = merge_field(field, new)
             stats["existing_claims_accredited"] += 1
             break
