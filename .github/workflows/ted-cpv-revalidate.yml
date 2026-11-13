@@ -55,4 +55,6 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
       - name: Publish only if main is unchanged and canonical validation passes
-        run: python scripts/publish_research_update.py --message "chore: revalidate exact CPV claims against TED API"
+        run: >-
+          python scripts/publish_research_update.py
+          --message "chore: revalidate exact CPV claims against TED API"
