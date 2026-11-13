@@ -1,6 +1,7 @@
 import unittest
 from datetime import date
 from pathlib import Path
+from unittest.mock import patch
 
 from engine.procurement_lifecycle import (
     deadline_date, public_tender_active, tender_lifecycle_report,
@@ -45,12 +46,12 @@ class HistoricalSourceCheckSafety(unittest.TestCase):
         class Response:
             status_code=200
             headers={"Content-Type":"text/html"}
-            text="<html><body>Zero Trust Network Architecture explained by NIST and others in detail.</body></html>"
+            text="<html><body>Zero Trust Network Architecture explained by the NIST publication, discussing authentication authorization users devices applications access policies trusted resources and enterprise protection in extensive technical detail.</body></html>"
         class Session:
             def get(self,*args,**kwargs):
                 return Response()
         # An HTTP success proves page reachability only, not atomic fact.
-        with unittest.mock.patch("scripts.revalidate_historical_sources.validate_public_url",side_effect=lambda u:u):
+        with patch("scripts.revalidate_historical_sources.validate_public_url",side_effect=lambda u:u):
             result=check_one("https://example.org/zero-trust",[{
                 "section":"architectures","entity":"Zero Trust",
                 "field":"context","value":"Zero Trust Network Architecture"}],
