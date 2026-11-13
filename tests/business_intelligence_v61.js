@@ -43,6 +43,7 @@ const unverifiableList=value=>({value:[value],items:[{value,evidence:[]}],eviden
 const verifiedManufacturers=[{
  name:'Extreme Networks',
  fields:{
+   westcon_spain:field(true),
    distributors:verifiedList('Distribuidor Verificado'),
    competitors:verifiedList('Cisco'),
  }
@@ -68,12 +69,12 @@ const distributorNews=bi.uniqueNews([{name:'Mayorista Rival',fields:{
 assert.strictEqual(distributorNews.length,1,'Official distributor news should be visible as a publication card');
 const detailedRelation=(value,support=true)=>({value:[value],items:[{value,evidence:support?[ev]:[]}]});
 const integratorOfficial={name:'Integrador del Canal',fields:{vendor_relations:detailedRelation('Cisco')}};
-const westconOfficial={name:'Extreme Networks',fields:{competitors:detailedRelation('Cisco')}};
+const westconOfficial={name:'Extreme Networks',fields:{westcon_spain:field(true),competitors:detailedRelation('Cisco')}};
 const competition=bi.verifiedCompetitionFor(integratorOfficial,[westconOfficial]);
 assert.deepStrictEqual(competition.value,['Cisco'],'Both source-backed relationships must map exact competitor');
 assert.strictEqual(competition.items[0].competes_with_westcon[0],'Extreme Networks');
 assert.strictEqual(bi.verifiedCompetitionFor(integratorOfficial,[
-  {name:'Extreme Networks',fields:{competitors:detailedRelation('Cisco',false)}}
+  {name:'Extreme Networks',fields:{westcon_spain:field(true),competitors:detailedRelation('Cisco',false)}}
 ]).value.length,0,'Unsourced competitor mapping is not proof');
 const trending=bi.uniqueNews([{name:'SASE adoption',fields:{sources:detailedRelation('SASE report'),}}],'trends');
 assert.ok(Array.isArray(trending));
