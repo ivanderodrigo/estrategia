@@ -3,6 +3,7 @@ import json
 import unittest
 from pathlib import Path
 from scripts.accredit_semantic_historical_sources import classify, owner_site
+from scripts.revalidate_historical_sources import historical_visible_text
 from engine.model import canonical
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -47,6 +48,16 @@ class SemanticHistoricalTests(unittest.TestCase):
                  "NIST Zero Trust Okta")
         self.assertEqual(classify(ev,"https://csrc.nist.gov/publications/detail/sp/800-207/final"),
                          "UNSUPPORTED_FIELD_OR_CONTEXT")
+
+    def test_partner_logo_alt_is_visible_for_original_source_audit(self):
+        html=('''<html><body><h1>Partners tecnológicos</h1><section>'''
+              '''<img src="/logos/avaya.svg" alt="Avaya">'''
+              '''<img src="/logos/extreme.svg" aria-label="Extreme Networks">'''
+              '''<script>ignore bogus fake competitor</script></section></body></html>''')
+        txt=historical_visible_text(html)
+        self.assertIn("avaya",txt)
+        self.assertIn("extreme networks",txt)
+        self.assertNotIn("bogus fake competitor",txt)
 
     def test_topic_roster_items_have_exact_market_document(self):
         reg=json.loads((ROOT/"config/current/verified_historical_topic_markets_20261114.json").read_text())
