@@ -69,6 +69,7 @@ class HistoricalPublicationTests(unittest.TestCase):
         self.assertIn("historicalTrail(view,row,col.id)", js)
         self.assertIn("No acreditado hoy.", js)
         self.assertIn("HISTORICAL_LEADS_NOT_ACCREDITED", js)
+        self.assertIn("historicalTrail(context===\'trend\'?\'trends\':\'architectures\',row,c.id)", js)
 
 
 if __name__ == "__main__":
