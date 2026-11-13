@@ -861,7 +861,7 @@
   function cardGrid(rows, schema, forceAll=false, context='card'){
     const cols=forceAll?schema:activeColumns(schema,rows,'cards');
     const cardClass=context==='trend'?'intel-card trend-card':'intel-card';
-    return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable({value:row.name,evidence:row.evidence||[],confidence:.9,confidence_band:'high'},`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>cardField(c,fieldFor(row,c),context)||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c)}</div>`).join('')}</article>`).join('');
+    return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable({value:row.name,evidence:row.evidence||[],confidence:.9,confidence_band:'high'},`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>`<div class="card-evidence-group">${cardField(c,fieldFor(row,c),context)||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c)}</div>`}${historicalTrail(context==='trend'?'trends':'architectures',row,c.id)}</div>`).join('')}</article>`).join('');
   }
   function renderSectionCoverage(section,selector){
     const el=$(selector);if(!el)return;
