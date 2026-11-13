@@ -86,6 +86,31 @@ def _rule_evidence(rule: Mapping[str, Any], *, field: str, value: Any) -> dict[s
     return ev
 
 
+def _catalog_evidence(details: Mapping[str, Any], fallback_rule: Mapping[str, Any], *,
+                      field: str, value: Any) -> dict[str, Any]:
+    """Document product characteristics with the vendor's website, not a Westcon claim.
+
+    Membership in Westcon is first-party. A public product page separately proves
+    the manufacturer's category and capabilities, never the channel relationship.
+    """
+    catalog = details.get("catalog_source") or {}
+    if not isinstance(catalog, Mapping) or not str(catalog.get("url") or "").startswith("https://"):
+        return _rule_evidence(fallback_rule, field=field, value=value)
+    ev = deepcopy(dict(catalog))
+    ev.update({
+        "field": field, "item_value": value, "atomic": True,
+        "source_binding": "claim-specific",
+        "source_type": "vendor-official-product",
+        "provenance_origin": "PUBLIC_PRIMARY",
+        "classification": "public", "official": True,
+        "source_grade": "A", "scope": "GLOBAL", "freshness_status": "current",
+        "source_role": "Fuente pública oficial del fabricante",
+        "description": f"Capacidad/categoría «{value}» documentada en el portfolio oficial del fabricante. "
+                       "No acredita relación de distribución con Westcon.",
+    })
+    return ev
+
+
 def _field(row: dict[str, Any], field_id: str, value: Any) -> dict[str, Any]:
     fields = row.setdefault("fields", {})
     target = fields.get(field_id)
@@ -322,13 +347,19 @@ def apply_westcon_current_evidence(data: dict[str, Any], config: Mapping[str, An
                 _attach_scalar(row, field_id, value, ev)
                 row["fields"][field_id]["evidence"] = [ev]
             if details.get("domain"):
-                _attach_scalar(row, "domain", details["domain"],
-                               _rule_evidence(override, field="domain", value=details["domain"]))
+                # Do not rewrite the already-accredited scalar or its provenance.
+                # The portfolio update only supplies a taxonomy when it was
+                # previously empty. A separate research cycle can add corroboration.
+                existing_domain = (row.get("fields") or {}).get("domain") or {}
+                if not _has_value(existing_domain.get("value")):
+                    domain_ev = _catalog_evidence(details, override, field="domain", value=details["domain"])
+                    _attach_scalar(row, "domain", details["domain"], domain_ev)
             if details.get("capabilities"):
                 capabilities = [str(x) for x in details["capabilities"]]
                 field = _field(row, "capabilities", capabilities)
                 field["items"] = [{"value": item, "evidence": [
-                    _rule_evidence(override, field="capabilities", value=item)]} for item in capabilities]
+                    _catalog_evidence(details, override, field="capabilities", value=item)
+                ]} for item in capabilities]
                 field["evidence"] = [ev for item in field["items"] for ev in item["evidence"]]
             row["evidence"] = _dedupe_evidence(list(row.get("evidence") or []) + [
                 _rule_evidence(override, field="portfolio", value=name)])

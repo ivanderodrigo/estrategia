@@ -63,6 +63,21 @@ def validate() -> dict:
         for field in ("westcon_spain", "westcon_portugal"):
             if not ((row.get("fields") or {}).get(field) or {}).get("evidence_ids"):
                 errors.append(f"{name}:{field}: no valid visible first-party support")
+        if details.get("domain"):
+            field = ((row.get("fields") or {}).get("domain") or {})
+            if not _value(row, "domain"):
+                errors.append(f"{name}: missing portfolio taxonomy domain")
+            if not field.get("evidence_ids"):
+                errors.append(f"{name}: domain has no visible official evidence")
+        if details.get("capabilities"):
+            field = ((row.get("fields") or {}).get("capabilities") or {})
+            values = {_norm(x) for x in (field.get("value") or [])}
+            expected = {_norm(x) for x in details["capabilities"]}
+            if not expected <= values:
+                errors.append(f"{name}: missing capability values: {sorted(expected - values)}")
+            for item in field.get("items") or []:
+                if _norm(item.get("value")) in expected and not item.get("evidence_ids"):
+                    errors.append(f"{name}: capability {item.get('value')} missing official item evidence")
 
     active = {
         _norm(row.get("name")) for row in rows
