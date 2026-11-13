@@ -124,10 +124,33 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
     exact_sources.extend(historical_market.get("existing_claim_sources") or [])
     topic_market = read_json("config/current/verified_historical_topic_markets_20261114.json", {})
     exact_sources.extend(topic_market.get("existing_claim_sources") or [])
+    semantic_history = read_json("config/current/historical_semantic_verified.json", {})
+    exact_sources.extend(semantic_history.get("existing_claim_sources") or [])
     for claim in exact_sources:
         section = str(claim.get("section") or "")
         field_id = str(claim.get("field") or "")
-        if (section, field_id) not in {
+        # The semantic registry is a separately reviewed, exact historical
+        # URL/excerpt assertion. All other registries retain their narrow scope.
+        semantic_fields = {
+            "manufacturers": {"capabilities"},
+            "distributors": {"services", "capabilities", "specializations", "technology_domains",
+                             "training", "marketplace", "logistics", "financing", "verticals"},
+            "integrators": {"vendor_relations", "manufacturer_relations", "vendor_partnerships",
+                            "partnerships", "capabilities", "specializations", "services",
+                            "technology_domains", "technology_specializations", "service_portfolio"},
+            "clients_private": {"technology_signals", "hiring_signals"},
+            "trends": {"sources"},
+            "architectures": {"analyst_basis"},
+        }
+        source = claim.get("source") or {}
+        exact_semantic = (
+            isinstance(source, dict)
+            and source.get("source_type") == "historical-verified-excerpt"
+            and str(source.get("verification_method") or "").startswith("VERIFIED_")
+            and field_id in semantic_fields.get(section, set())
+            and str(source.get("description") or "").startswith("Extracto de evidencia:")
+        )
+        if not exact_semantic and (section, field_id) not in {
             ("manufacturers", "competitors"),
             ("architectures", "vendors"),
             ("architectures", "context"),
