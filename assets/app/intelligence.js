@@ -502,7 +502,12 @@
       return '<div class="tag-list categorical-tags"><span class="tag-entry">'+
         (verified?tagHtml(field,value,0):pendingTagHtml(field,value,0))+'</span></div>';
     }
-    return sourcedScalarForTable(field)?traceable(field,compactScalar(value,context==='table'?110:300)):pendingTagHtml(field,value,0);
+    if(!sourcedScalarForTable(field))return pendingTagHtml(field,value,0);
+    const evidence=field?.evidence||[],score=Number(field?.confidence??.85);
+    const tone=atomicCurrentProof(evidence)?(score>=.65?'high':'medium'):'unverified';
+    return traceable(field,'<span class="tag confidence-tag '+tone+'"><span class="tag-label">'+
+      compactScalar(value,context==='table'?110:300)+'</span><small>'+confidencePct(score)+'%</small></span>');
+
   }
   function allRowEvidence(row){
     const rows=[...(row?.evidence||[])];Object.values(row?.fields||{}).forEach(f=>{rows.push(...(f?.evidence||[]));(f?.items||[]).forEach(it=>rows.push(...(it?.evidence||[])));});
