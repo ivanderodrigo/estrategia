@@ -40,6 +40,7 @@ from .knowledge_provenance import (
 from .graph import build_graph
 from .metrics import calculate
 from .publication import public_payloads
+from .procurement_lifecycle import tender_lifecycle_report
 from .historical_publication import publish_historical_trails
 from .westcon_current_evidence import apply_westcon_current_evidence
 from .verified_research import apply_verified_research
@@ -307,7 +308,9 @@ def run() -> dict[str, Any]:
 
     internal_files, internal_store = intelligence_files(data)
 
+    lifecycle = tender_lifecycle_report(data)
     last_run = {
+        "procurement_lifecycle": lifecycle,
         "version": VERSION,
         "generated_at": now,
         "finished_at": now,
@@ -393,6 +396,7 @@ def run() -> dict[str, Any]:
     }
 
     files = {
+        "data/public/procurement_lifecycle.json": json_bytes({"generated_at": now, **lifecycle}),
         "data/current/research_state.json": json_bytes(research_state),
         "data/current/relationship_graph.json": json_bytes(graph),
         "data/current/research_gaps.json": json_bytes(gaps),
