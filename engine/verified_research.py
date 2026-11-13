@@ -78,8 +78,8 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
                 if not pattern or not re.search(pattern, name, re.IGNORECASE):
                     continue
                 field_id = str(rule.get("field") or "")
-                if field_id not in (("sources",) if section == "trends"
-                                    else ("analyst_basis",)):
+                if field_id not in (("sources", "drivers", "observed") if section == "trends"
+                                    else ("analyst_basis", "principles", "context")):
                     continue
                 claims = rule.get("values") or []
                 old_field = fields.get(field_id) or {}
