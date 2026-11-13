@@ -1,7 +1,7 @@
 // App v6.5.0
 (() => {
   'use strict';
-  const state = {historicalSections:{}, historicalSummary:null, historicalChecks:{}, data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
+  const state = {historicalSections:{}, historicalSummary:null, historicalChecks:{}, historicalStructured:new Set(), data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -70,10 +70,12 @@
         // trace panel; it is NOT merged into accrediting evidence.
         for(const row of state.data[section]||[]){
           const key=historicalKey(row.name), entries=leadData.entities?.[key]||{};
-          row._historical=entries;
+          row._historical={};
           for(const [fieldId,claims] of Object.entries(entries)){
+            const annotated=(Array.isArray(claims)?claims:[]).map(claim=>({...claim,verified_urls:(claim.urls||[]).filter(url=>state.historicalStructured.has([section,historicalKey(row.name),fieldId,historicalKey(claim.value),url].join('|')))}));
+            row._historical[fieldId]=annotated;
             const target=row.fields?.[fieldId];
-            if(target&&Array.isArray(claims))target._historical=claims;
+            if(target&&Array.isArray(claims))target._historical=annotated;
           }
         }
       }
@@ -203,11 +205,12 @@
     ({fabricantes:renderManufacturers,mayoristas:renderDistributors,integradores:renderIntegrators,clientes:renderClients,tendencias:renderTrends,arquitecturas:renderArchitectures}[state.view]||(()=>{}))();
   }
   async function load(){
-    const [res, runRes, historyRes, checkedRes] = await Promise.all([
+    const [res, runRes, historyRes, checkedRes, structuredRes] = await Promise.all([
       fetch('data/public/manifest.json', {cache:'no-store'}),
       fetch('data/public/last_run.json', {cache:'no-store'}).catch(()=>null),
       fetch('data/public/historical/current/summary.json', {cache:'no-store'}).catch(()=>null),
-      fetch('data/public/historical/current/source_checks.json', {cache:'no-store'}).catch(()=>null)
+      fetch('data/public/historical/current/source_checks.json', {cache:'no-store'}).catch(()=>null),
+      fetch('data/public/historical/current/structured_verification.json', {cache:'no-store'}).catch(()=>null)
     ]);
     if(!res.ok) throw new Error(`No se pudo cargar data/public/manifest.json (${res.status})`);
     state.manifest = await res.json();
@@ -217,6 +220,7 @@
     if(runRes?.ok){ try{ state.lastRun = await runRes.json(); }catch(_){ state.lastRun=null; } }
     if(historyRes?.ok){ try{state.historicalSummary=await historyRes.json();}catch(_){state.historicalSummary=null;} }
     if(checkedRes?.ok){try{const check=await checkedRes.json();state.historicalChecks=check.results||{};}catch(_){state.historicalChecks={};}}
+    if(structuredRes?.ok){try{const review=await structuredRes.json();state.historicalStructured=new Set((review.claims||[]).filter(c=>c.status==='VERIFIED_EXPLICIT_ALTERNATIVE').map(c=>[c.section,historicalKey(c.entity),c.field,historicalKey(c.value),c.source_url].join('|')));}catch(_){state.historicalStructured=new Set();}}
     await ensureViewData(state.view);
     bind();
     renderAll();
@@ -709,7 +713,8 @@
       const links=(h.urls||[]).filter(url=>/^https:\/\/[^\s"'<>]+$/i.test(url)).slice(0,3)
         .map(url=>{
           const check=state.historicalChecks?.[url];
-          const status=check?.status==='REACHABLE_TEXT_MATCH'?' · texto localizado, requiere validación':
+          const status=(h.verified_urls||[]).includes(url)?' · acreditado: alternativa explícita de producto':
+             check?.status==='REACHABLE_TEXT_MATCH'?' · texto localizado, requiere validación':
             check?.status==='REACHABLE_NO_EXACT_TEXT'?' · página accesible, dato no localizado':
             check?' · acceso no comprobado':'';
           return '<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Fuente original</a>'+
@@ -718,7 +723,7 @@
       return '<li><span>'+esc(val.slice(0,240))+'</span>'+(links?'<div>'+links+'</div>':'')+'</li>';
     }).join('');
     return '<section class="trace-history"><strong>Referencias históricas relacionadas</strong>'+
-      '<p>Localizadas en versiones anteriores. No acreditan el dato hasta verificar nuevamente su contenido.</p>'+
+      '<p>Una referencia histórica no acredita por sí sola. Las fuentes confirmadas mediante lectura estructurada aparecen identificadas individualmente.</p>'+
       '<ul>'+rows+'</ul></section>';
   }
   function tableHtml(rows, schema, emptyText, view, baseRows=rows){
