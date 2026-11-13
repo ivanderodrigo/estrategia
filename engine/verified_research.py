@@ -74,7 +74,9 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
                 )}
                 facts = _claim_field(field_id, claims)
                 fields[field_id] = _safe_research_merge(existing, facts)
-                newly = sum(1 for claim in claims if canonical(claim[0]) not in old)
+                result_value = fields[field_id].get("value")
+                actual = result_value if isinstance(result_value, list) else ([result_value] if result_value else [])
+                newly = sum(1 for value in actual if canonical(value) not in old)
                 stats["manufacturer_values_added"] += newly
                 touched |= bool(newly)
             stats["rows_enriched"] += int(touched)
@@ -104,7 +106,9 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
                     else ([old_field.get("value")] if old_field.get("value") else [])
                 )}
                 fields[field_id] = _safe_research_merge(old_field, _claim_field(field_id, claims))
-                added = sum(1 for claim in claims if canonical(claim[0]) not in old)
+                result_value = fields[field_id].get("value")
+                actual = result_value if isinstance(result_value, list) else ([result_value] if result_value else [])
+                added = sum(1 for value in actual if canonical(value) not in old)
                 stats[counter] += added
                 touched |= bool(added)
             stats["rows_enriched"] += int(touched)
