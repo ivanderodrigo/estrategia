@@ -140,7 +140,7 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
             if canonical(row.get("name")) != canonical(entity):
                 continue
             field = (row.get("fields") or {}).get(field_id) or {}
-            old_values = field.get("value") if isinstance(field.get("value"), list) else []
+            old_values = field.get("value") if isinstance(field.get("value"), list) else ([field.get("value")] if field.get("value") not in (None, "", []) else [])
             match = next((v for v in old_values if canonical(v) == canonical(value)), None)
             if match is None:
                 # A manually audited product-alternative citation may recover a
