@@ -2,14 +2,14 @@ name: Deploy Pages
 on:
   push:
     branches: [main]
-    paths: ["index.html","404.html","memoria-historica.html","assets/**","data/public/**","engine/**","config/current/**","tests/**","scripts/validate.py","scripts/validate_workflows.py",".github/workflows/pages-deploy.yml"]
+    paths: ["index.html","404.html","memoria-historica.html","assets/**","engine/**","config/current/**","tests/**","scripts/**",".github/workflows/pages-deploy.yml"]
   workflow_dispatch:
   workflow_run:
     workflows: ["Westcon Intelligence Daily", "Westcon Intelligence Weekly", "Westcon Intelligence Monthly"]
     types: [completed]
     branches: [main]
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 concurrency:
@@ -51,6 +51,22 @@ jobs:
         run: |
           python scripts/validate_workflows.py
           python scripts/validate.py
+      - name: Validate active portfolio and competitive mapping in published JSON
+        run: python scripts/validate_active_portfolio_public.py
+      # Persist the actual compiled snapshot. GitHub Pages can also be configured
+      # to publish directly from /main; without this commit it serves old data.
+      # Do not trigger on data/public/** alone to avoid a self-rebuild loop.
+      - name: Commit rebuilt public data to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data/public
+          if ! git diff --cached --quiet; then
+            git fetch origin main
+            test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" || { echo "Main moved while rebuilding; refusing to publish stale data"; exit 1; }
+            git commit -m "data: persist validated public intelligence snapshot [skip ci]"
+            git push origin HEAD:main
+          fi
       - name: Build public site
         run: |
           mkdir -p _site/assets/app _site/data/public
