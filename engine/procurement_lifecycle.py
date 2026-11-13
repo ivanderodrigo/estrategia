@@ -40,11 +40,27 @@ def public_tender_active(row: dict[str, Any], today: date | None = None) -> bool
     return stamp is None or stamp >= today
 
 
+def is_identified_tender(row: dict[str, Any]) -> bool:
+    """A public client is NOT a procurement notice without an exact notice ID."""
+    fields = row.get("fields") or {}
+    value = (fields.get("notice_id") or {}).get("value")
+    if isinstance(value, list):
+        value = next((item for item in value if isinstance(item, str) and item.strip()), "")
+    raw = str(value or "").strip()
+    return bool(raw and raw.casefold() not in {
+        "por investigar", "pendiente", "n/d", "nd", "sin datos",
+        "no disponible", "desconocido", "—", "-", "none",
+    })
+
+
 def tender_lifecycle_report(data: dict[str, Any], today: date | None = None) -> dict[str, int]:
     today = today or datetime.now(timezone.utc).date()
-    rows = data.get("clients_public") or []
+    public_rows = data.get("clients_public") or []
+    rows = [row for row in public_rows if is_identified_tender(row)]
     active = [row for row in rows if public_tender_active(row, today)]
     return {
+        "total_public_rows": len(public_rows),
+        "non_notice_public_rows": len(public_rows) - len(rows),
         "total_retained": len(rows),
         "currently_active_or_date_unknown": len(active),
         "closed_or_deadline_expired": len(rows) - len(active),
