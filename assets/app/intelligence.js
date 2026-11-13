@@ -1,7 +1,7 @@
 // App v6.5.0
 (() => {
   'use strict';
-  const state = {historicalSections:{}, historicalSummary:null, historicalChecks:{}, data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', historyGapSummary:null, fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
+  const state = {historicalSections:{}, historicalSummary:null, historicalChecks:{}, data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -693,11 +693,6 @@
   function reorderColumn(view,from,to){if(!view||from===to)return;const schema=state.data.schemas[view]||[];let order=(state.columnOrder[view]||schema.map(x=>x.id)).filter(x=>schema.some(c=>c.id===x));const a=order.indexOf(from),b=order.indexOf(to);if(a<0||b<0)return;order.splice(b,0,order.splice(a,1)[0]);state.columnOrder[view]=order;localStorage.setItem(`westcon-cols-${view}`,JSON.stringify(order));renderCurrent(view);}
   function renderCurrent(view){({manufacturers:renderManufacturers,integrators:renderIntegrators,distributors:renderDistributors,clients_public:renderClients,clients_private:renderClients}[view]||(()=>{}))();}
   function historicalKey(value){return norm(value).replace(/[^a-z0-9]+/g,' ').trim();}
-  function historicalTrail(view,row,fieldId){
-    // UI is intentionally unified: all historical sources appear inside the
-    // normal traceable field popup, not as a second dropdown.
-    return '';
-  }
   function sourceArchaeology(field,item){
     const all=Array.isArray(field?._historical)?field._historical:[];
     if(!all.length)return '';
@@ -727,7 +722,7 @@ const linkedEvidence=(row.fields?.vendor_relations?.items||[]).filter(i=>atomicC
 const westconProof=(row.fields?.westcon_overlap?.items||[]).filter(i=>atomicCurrentProof(i.evidence)).flatMap(i=>i.evidence||[]);
 const identityEvidence=baseIdentityEvidence.length?baseIdentityEvidence:(westconProof.length?westconProof:linkedEvidence);
 const identity={value:row.name,evidence:identityEvidence.slice(0,6),confidence:.95,confidence_band:identityEvidence.length?'high':'low',qualifier:westconProof.length?'Relación documentada con al menos un fabricante Westcon. La confianza no se extiende a relaciones no verificadas.':''};
-const identityTone=identityEvidence.length?'high':'unverified';const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';const relevance='';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><span class="tag confidence-tag ${identityTone} entity-pill"><span class="tag-label">${esc(row.name)}</span><small>${identityEvidence.length?'✓':'?'}</small></span>${direct}</div>`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table',col.id):missingMarkup(col,row)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
+const identityTone=identityEvidence.length?'high':'unverified';const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><span class="tag confidence-tag ${identityTone} entity-pill"><span class="tag-label">${esc(row.name)}</span><small>${identityEvidence.length?'✓':'?'}</small></span>${direct}</div>`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table',col.id):missingMarkup(col,row)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
     return `<div class="table-shell">${columnChooser(schema,view,baseRows)}${coverageOverview(schema,baseRows,view)}<div class="table-scroll">${body}</div></div>${analysisPanel(view,schema,baseRows,rows)}`;
   }
   function scopeMatch(row, scope){
