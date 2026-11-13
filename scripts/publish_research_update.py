@@ -35,6 +35,7 @@ ALLOWED = [
     "data/public/debt_overview.json",
     "data/public/manifest.json",
     "data/public/last_run.json",
+    "data/public/procurement_lifecycle.json",
     "data/public/sections/manufacturers.json",
     "data/public/sections/distributors.json",
     "data/public/sections/integrators.json",
