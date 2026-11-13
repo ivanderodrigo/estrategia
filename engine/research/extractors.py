@@ -520,6 +520,44 @@ def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]
                 known_keys.add(key)
     return known[:1000], terms[:1000]
 
+def _explicit_official_vendor_detail(document: Document) -> tuple[list[str], list[str]]:
+    """One named vendor on a first-party catalogue detail page.
+
+    /gfi/ titled 'GFI Software – Ajoomal' is a specific product/brand page.
+    /partners/ merely mentioning Cisco in a blog teaser is NOT a relation.
+    This path never extracts arbitrary vendor names from generic page prose.
+    """
+    from urllib.parse import urlsplit
+
+    slug = urlsplit(document.url).path.strip("/").split("/")[-1]
+    slug_key = canonical(slug.replace("-", " ").replace("_", " "))
+    excluded = {
+        "partner", "partners", "fabricantes", "marcas", "vendors", "brands",
+        "portfolio", "inicio", "home", "news", "noticias", "blog",
+        "servicios", "services", "solutions", "soluciones", "productos",
+        "contacto", "about", "nosotros", "ayuda", "catalogo", "recurso",
+        "resources", "empresa", "casos", "clientes", "industries",
+    }
+    if not 3 <= len(slug_key) <= 36 or slug_key in excluded:
+        return [], []
+    title_part = re.split(r"\s+[–—|]\s+|\s+-\s+", document.title or "")[0].strip()
+    title_key = canonical(title_part)
+    if (not 3 <= len(title_part) <= 60 or len(title_part.split()) > 5
+            or title_key in excluded or not (
+                title_key == slug_key or title_key.startswith(slug_key + " ")
+            )):
+        return [], []
+    body = canonical((document.text or "")[:9000])
+    if not any(cue in body for cue in (
+        "producto", "product", "solucion", "solution", "plataforma",
+        "fabricante", "marca", "tecnologia", "technology",
+    )):
+        return [], []
+    if not (title_key in body or slug_key in body):
+        return [], []
+    return [title_part], [title_part]
+
+
 def extract_candidates(
     section: str,
     family: str,
@@ -561,9 +599,11 @@ def extract_candidates(
                 if listed:
                     add("vendor_relations", listed, listed_terms, confidence=0.90)
                 else:
-                    # Partner detail pages may evidence one particular relationship
-                    # without publishing an entire catalogue.
-                    add("vendor_relations", vendors, vendor_terms)
+                    # Generic partner/news menus often mention unrelated brands.
+                    # Only a first-party named vendor product/detail page can
+                    # evidence one relation without a full catalogue directory.
+                    direct, direct_terms = _explicit_official_vendor_detail(document)
+                    add("vendor_relations", direct, direct_terms, confidence=0.89)
             else:
                 add("vendor_relations", vendors, vendor_terms)
         elif official and family in {"official", "technology", "services"}:
