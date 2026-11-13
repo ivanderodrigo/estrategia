@@ -54,6 +54,8 @@ ALLOWED = [
     "data/public/historical/current/architectures.json",
     "data/current/historical_source_checks.json",
     "data/public/historical/current/source_checks.json",
+    "data/public/historical/current/quarantined_links.json",
+    "data/public/historical/current/claim_review.json",
 ]
 
 
