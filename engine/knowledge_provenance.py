@@ -179,11 +179,18 @@ def accrediting_evidence(evidence: Mapping[str, Any]) -> bool:
             and str(evidence.get("field") or "") == "competitors"
             and str(evidence.get("item_value") or "").strip()
             and str(evidence.get("url") or "").startswith("https://www.gartner.com/")
-            and method in {
-                "same-market-explicit-vendor-list",
-                "explicit-product-alternative",
-                "structured-product-alternative",
-            }
+            and (
+                method in {
+                    "same-market-explicit-vendor-list",
+                    "explicit-product-alternative",
+                    "structured-product-alternative",
+                }
+                or (
+                    str(evidence.get("source_type") or "") == "analyst-peer-review"
+                    and str(evidence.get("url") or "").split("?")[0].rstrip("/").endswith("/alternatives")
+                    and "/reviews/product/" in str(evidence.get("url") or "")
+                )
+            )
         )
     return kind in {"PUBLIC_PRIMARY", "PUBLIC_SECONDARY"} | CURRENT_WESTCON_EVIDENCE_KINDS
 
