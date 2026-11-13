@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "policy": "Excepciones explícitas para el cambio de portfolio Iberia 2026-11-13. Exclusivamente las seis afirmaciones de pertenencia/ámbito reemplazadas por una regla Westcon vigente y acreditada; no se permite perder entidades, capacidades, relaciones ni evidencias externas.",
+  "policy": "Excepciones auditadas y exactas: membresía Westcon retirada en noviembre 2026 (Juniper/Ruckus) y tres proyecciones de tendencias que aún rotulaban a Ruckus como Westcon. La mención neutral a Ruckus como competidor o actor externo se conserva.",
   "entities": [],
   "values": [
     "manufacturers:mfr ruckus networks:scope:[\"text\",\"es pt\"]",
@@ -8,7 +8,10 @@
     "manufacturers:mfr ruckus networks:westcon_portugal:true",
     "manufacturers:mfr juniper networks:westcon_spain:true",
     "manufacturers:mfr juniper networks:westcon_portugal:true",
-    "manufacturers:mfr juniper networks:scope:[\"text\",\"es pt\"]"
+    "manufacturers:mfr juniper networks:scope:[\"text\",\"es pt\"]",
+    "trends:network aiops:westcon_vendors:[\"text\",\"ruckus networks\"]",
+    "trends:secure lan:westcon_vendors:[\"text\",\"ruckus networks\"]",
+    "trends:naas:westcon_vendors:[\"text\",\"ruckus networks\"]"
   ],
   "evidences": [
     "4c48ebbe6488f58d98c20a5c83761bb6d7875d5a",
@@ -19,5 +22,5 @@
     "c9decc18b900f9e7dad8b30a4615a53b6c2f8217"
   ],
   "relations": [],
-  "justification": "Los seis fingerprints corresponden exclusivamente al antiguo estado documentado como portfolio Westcon de Juniper y Ruckus (ES, PT y scope). La actualización de noviembre 2026 los sustituye expresamente; no se borran los fabricantes ni sus relaciones externas o su historial."
+  "justification": "Los seis fingerprints corresponden exclusivamente al antiguo estado documentado como portfolio Westcon de Juniper y Ruckus (ES, PT y scope). La actualización de noviembre 2026 los sustituye expresamente; no se borran los fabricantes ni sus relaciones externas o su historial. Se autorizan asimismo exactamente tres supersesiones en trends/*/westcon_vendors de Ruckus, antigua clasificación Westcon, sin eliminar actores de mercado ni evidencias externas."
 }
