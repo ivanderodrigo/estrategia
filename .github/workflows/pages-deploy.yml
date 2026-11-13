@@ -45,6 +45,8 @@ jobs:
           node tests/news_coverage_v64.js
           node tests/distributor_linecard_audit_v65.js
           node tests/filter_builder_v410.js
+      - name: Individually accredit structured historical competitor links
+        run: python scripts/accredit_structured_historical.py --limit 30 --timeout 9
       - name: Rebuild accredited intelligence
         run: python -m engine.pipeline
       - name: Validate
@@ -62,7 +64,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A data/public
+          git add -A data/public config/current/historical_structured_verified.json
           if ! git diff --cached --quiet; then
             git fetch origin main
             test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" || { echo "Main moved while rebuilding; refusing to publish stale data"; exit 1; }

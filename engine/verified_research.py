@@ -117,7 +117,10 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
     # This is not category similarity, a discovered partner or a generated
     # competitor. The official page must name the product/vendor's role.
     # Do not fabricate new layer memberships or missing market participants.
-    for claim in registry.get("existing_claim_sources") or []:
+    structured = read_json("config/current/historical_structured_verified.json", {})
+    exact_sources = list(registry.get("existing_claim_sources") or [])
+    exact_sources.extend(structured.get("existing_claim_sources") or [])
+    for claim in exact_sources:
         section = str(claim.get("section") or "")
         field_id = str(claim.get("field") or "")
         if (section, field_id) not in {
