@@ -797,7 +797,17 @@ const identityTone=identityEvidence.length?'high':'unverified';const direct=view
     renderEntityNews('distributors',relevant);
     setCount('#distributorCount',rows.length,visiblePool.length,'mayoristas'+(showUnconfirmed?' (incluido archivo)':' relevantes'));
   }
-  function publicProcurementPortfolioFit(row){return Boolean(window.WestconBusiness?.classifyNotice(row).fit);}
+  function publicTenderCurrent(row){
+    const f=row?.fields||{},status=norm(f.procurement_stage?.value||'');
+    if(/cancelad|anulad|adjudicad|desiert|expired|closed|awarded|cancelled|canceled/.test(status))return false;
+    const raw=String(f.milestone_date?.value||'').trim();
+    if(!raw)return true;
+    const iso=/^\d{4}-\d{2}-\d{2}/.test(raw)?raw.slice(0,10):/^\d{2}\/\d{2}\/\d{4}/.test(raw)?raw.slice(6,10)+'-'+raw.slice(3,5)+'-'+raw.slice(0,2):'';
+    if(!iso)return true; // Unknown dates must not be guessed.
+    const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Madrid',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+    return iso>=today;
+  }
+  function publicProcurementPortfolioFit(row){return publicTenderCurrent(row)&&Boolean(window.WestconBusiness?.classifyNotice(row).fit);}
 
   function renderClients(){
     const publicQ=norm($('#publicClientSearch')?.value), publicScope=$('#publicClientScope')?.value||'all';
@@ -805,6 +815,7 @@ const identityTone=identityEvidence.length?'high':'unverified';const direct=view
     const publicAll=state.data.clients_public||[];
     const privateAll=state.data.clients_private||[];
     const publicPortfolioAll=publicAll.filter(publicProcurementPortfolioFit);
+    state.archivedProcurementCount=publicAll.filter(r=>!publicTenderCurrent(r)).length;
     const publicBase=publicPortfolioAll.filter(r=>(!publicQ||rowBlob(r).includes(publicQ))&&scopeMatch(r,publicScope));
     const privateBase=privateAll.filter(r=>(!privateQ||rowBlob(r).includes(privateQ))&&scopeMatch(r,privateScope));
     const publicRows=applyDynamicFilters('clients_public',publicBase,state.data.schemas.clients_public),privateRows=applyDynamicFilters('clients_private',privateBase,state.data.schemas.clients_private);
