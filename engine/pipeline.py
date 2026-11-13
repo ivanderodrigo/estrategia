@@ -201,6 +201,9 @@ def run() -> dict[str, Any]:
     # In particular, it must not reintroduce web rows discarded by the final
     # normalizer (e.g. generic 'Soporte' on unrelated V-Valley fields).
     normalize_fields(data)
+    # Portfolio rule is applied late; rebuild all channel comparison fields NOW,
+    # including integrators, against the updated active vendor universe.
+    derive_overlap_fields(data)
     _sync_source_catalog(data)
     confidence_stats = apply_confidence_model(data)
     source_rationalization = rationalize_sources(data)
