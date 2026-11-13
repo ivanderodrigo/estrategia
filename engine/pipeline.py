@@ -371,15 +371,15 @@ def run() -> dict[str, Any]:
         },
     }
 
-    public_files, manifest = public_payloads(data, last_run)
     historical_files, historical_summary = publish_historical_trails(gaps, now)
-    public_files.update(historical_files)
     # Historical source trails deliberately do not alter accreditation metrics.
     last_run["historical_trails"] = {
         "claims": historical_summary["claims"],
         "unique_urls": historical_summary["unique_urls"],
         "status": historical_summary["status"],
     }
+    public_files, manifest = public_payloads(data, last_run)
+    public_files.update(historical_files)
     compare["public_projection"] = {
         "manifest_bytes": len(public_files["data/public/manifest.json"]),
         "sections_bytes": sum(
