@@ -175,6 +175,32 @@ def seeds_for(
             )
             found.setdefault((url, seed.family), seed)
 
+    # Direct entity-specific, first-party service catalogues can support many
+    # independent service/capability claims in one visit. These are routes
+    # only: every extracted claim still passes typed atomic validation.
+    if section in {"integrators", "distributors"} and set(fields) & {
+        "services", "capabilities", "technology_domains", "specializations",
+        "differential_capabilities", "managed_services", "msp_mssp",
+        "logistics", "marketplace", "training", "financing",
+    }:
+        registry = read_json("config/current/official_service_source_leads.json", {})
+        for entry in (registry.get("entries") or []):
+            if (str(entry.get("section") or "") != section
+                    or canonical(entry.get("name")) != canonical(row.get("name"))):
+                continue
+            url = str(entry.get("url") or "")
+            if not url.startswith("https://"):
+                continue
+            family = str(entry.get("family") or "services")
+            found.setdefault((url, family), SourceSeed(
+                url=url,
+                family=family,
+                official=True,
+                source_grade="A",
+                source_type="official-entity-source-lead",
+                source_name=str(row.get("name") or "Fuente oficial"),
+            ))
+
     # First: exact historical/public URLs attached to a pending validation claim.
     for seed in _gap_seed_hints(target):
         found.setdefault((seed.url, seed.family), seed)
@@ -238,6 +264,7 @@ def seeds_for(
         found.values(),
         key=lambda item: (
             (0 if vendor_research and item.source_type == "official-linecard-discovery-lead"
+             else 0 if item.source_type == "official-entity-source-lead"
              else 1 if vendor_research and item.official and catalogue_rank(item) <= 1
              else 2 if item.source_type == "historical-public-revalidation-seed"
              else 3),
