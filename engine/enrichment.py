@@ -743,8 +743,22 @@ def derive_secondary_views(data: dict[str, Any]) -> dict[str, Any]:
     westcon = _active_westcon_manufacturer_map(data)
     for row in data.get("trends") or []:
         fields = row.setdefault("fields", {})
-        if (fields.get("westcon_vendors") or {}).get("value"):
-            continue
+        # The market-player list may legitimately include former Westcon brands.
+        # The Westcon-only projection MUST be refreshed on every portfolio change.
+        active_names = {canonical(name) for name in westcon.values()}
+        existing = fields.get("westcon_vendors") or {}
+        if isinstance(existing, dict) and existing.get("value"):
+            old_values = existing["value"] if isinstance(existing["value"], list) else [existing["value"]]
+            filtered = [name for name in old_values if canonical(name) in active_names]
+            if filtered:
+                existing["value"] = filtered
+                keys = {canonical(name) for name in filtered}
+                existing["items"] = [item for item in (existing.get("items") or [])
+                                     if isinstance(item, dict) and canonical(item.get("value")) in keys]
+                existing["evidence"] = [ev for item in existing["items"] for ev in (item.get("evidence") or [])]
+                fields["westcon_vendors"] = existing
+                continue
+            fields.pop("westcon_vendors", None)
         market = fields.get("market_players") or {}
         vals = []
         for name in _relation_names(market):
