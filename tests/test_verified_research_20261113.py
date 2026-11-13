@@ -44,6 +44,36 @@ class VerifiedResearchRelease(unittest.TestCase):
         self.assertIn("analyst_basis", data["architectures"][0]["fields"])
         self.assertNotIn("analyst_basis", data["architectures"][1]["fields"])
 
+    def test_existing_vendor_claim_must_be_present_before_source_is_attached(self):
+        data = {"manufacturers": [], "trends": [
+            {"name": "Agentic Automation", "fields": {"market_players": {
+                "value": ["UiPath", "Unrelated Vendor"],
+                "items": [{"value": "UiPath", "evidence": []},
+                          {"value": "Unrelated Vendor", "evidence": []}],
+                "evidence": [],
+            }}},
+        ], "architectures": [
+            {"name": "Agentic Automation", "fields": {"vendors": {
+                "value": ["UiPath"],
+                "items": [{"value": "UiPath", "evidence": []}],
+                "evidence": [],
+            }}},
+            {"name": "Modern SOC / SecOps", "fields": {"vendors": {
+                "value": ["Unrelated Vendor"], "items": [
+                    {"value": "Unrelated Vendor", "evidence": []}],
+                "evidence": [],
+            }}},
+        ]}
+        stats = apply_verified_research(data)
+        self.assertGreaterEqual(stats["existing_claims_accredited"], 2)
+        trend = data["trends"][0]["fields"]["market_players"]
+        architecture = data["architectures"][0]["fields"]["vendors"]
+        self.assertEqual(trend["value"], ["UiPath", "Unrelated Vendor"])
+        self.assertTrue(next(x for x in trend["items"] if x["value"] == "UiPath")["evidence"])
+        self.assertFalse(next(x for x in trend["items"] if x["value"] == "Unrelated Vendor")["evidence"])
+        self.assertEqual(architecture["items"][0]["evidence"][0]["item_value"], "UiPath")
+        self.assertEqual(data["architectures"][1]["fields"]["vendors"]["value"], ["Unrelated Vendor"])
+
     def test_default_frontend_name_sort_is_explicit(self):
         js = (ROOT / "assets/app/intelligence.js").read_text(encoding="utf-8")
         self.assertIn("view==='manufacturers'?[...rows].sort", js)
