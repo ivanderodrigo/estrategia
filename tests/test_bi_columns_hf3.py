@@ -64,10 +64,10 @@ class BusinessColumnsHF3(unittest.TestCase):
     def test_competitor_maps_to_specific_westcon_manufacturer(self) -> None:
         data = {
             "manufacturers": [{
-                "name": "Fortinet",
+                "name": "Palo Alto Networks",
                 "fields": {"competitors": {
-                    "value": ["Palo Alto Networks"],
-                    "items": [{"value": "Palo Alto Networks", "evidence": [ev("Fortinet comparison", "Palo Alto Networks")]}],
+                    "value": ["Fortinet"],
+                    "items": [{"value": "Fortinet", "evidence": [ev("Palo Alto comparison", "Fortinet")]}],
                 }},
             }],
             "distributors": [{
@@ -86,10 +86,10 @@ class BusinessColumnsHF3(unittest.TestCase):
         }
         derive_overlap_fields(data)
         fields = data["distributors"][0]["fields"]
-        self.assertEqual(fields["westcon_overlap"]["value"], ["Fortinet"])
-        self.assertEqual(fields["competitor_vendor_overlap"]["value"], ["Palo Alto Networks"])
+        self.assertEqual(fields["westcon_overlap"]["value"], ["Palo Alto Networks"])
+        self.assertEqual(fields["competitor_vendor_overlap"]["value"], ["Fortinet"])
         item = fields["competitor_vendor_overlap"]["items"][0]
-        self.assertEqual(item["competes_with_westcon"], ["Fortinet"])
+        self.assertEqual(item["competes_with_westcon"], ["Palo Alto Networks"])
         self.assertEqual(item["competition_mapping_status"], "EVIDENCIADO")
         self.assertNotIn("Dell Technologies", fields["competitor_vendor_overlap"]["value"])
 
