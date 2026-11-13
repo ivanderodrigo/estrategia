@@ -56,7 +56,7 @@ def classify(claim,url):
     context=canonical(excerpt)
     if any(s in clean for s in NEGATIVE):
         return "HYPOTHESIS_NOT_FACT"
-    if len(clean)<7 or len(clean.split())<2 and field not in RELATION_FIELDS.get(section,set()):
+    if field not in RELATION_FIELDS.get(section,set()) and (len(clean)<7 or len(clean.split())<2):
         return "AMBIGUOUS_SHORT_VALUE"
     if clean not in context:
         return "NOT_EXACT_IN_CONTEXT"
