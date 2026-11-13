@@ -155,6 +155,11 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
                 match = value
             # Preserve the exact published spelling and all existing support.
             new = _claim_field(field_id, [[match, source]])
+            if not isinstance(field.get("value"), list):
+                # Scalar architecture assertions have field-level, not item-level,
+                # provenance. Keep the original scalar and attach the exact proof.
+                new = {**new, "value": match,
+                       "evidence": list(new["items"][0]["evidence"])}
             row["fields"][field_id] = merge_field(field, new)
             stats["existing_claims_accredited"] += 1
             break
