@@ -7,6 +7,8 @@ atomic claim. Output is an auditable research queue, never accrediting evidence.
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor
+from threading import BoundedSemaphore, Lock
 import hashlib
 import json
 import re
@@ -73,15 +75,30 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
         if len(text) < 100:
             result["status"] = "INSUFFICIENT_SOURCE_CONTENT"
             return result
-        hits = []
+        # Every exact claim is evaluated separately. A text mention is a
+        # RESEARCH FINDING, not accreditation: a vendor can occur in an index,
+        # footnote, negative comparison or entirely unrelated page section.
+        checks = []
         for claim in claims:
             value = canonical(claim["value"])
-            # Common generic tokens and numbers cannot prove individual claims.
-            if len(value) < 12 or len(value.split()) < 2:
-                continue
-            if value in text:
-                hits.append({"section":claim["section"],"entity":claim["entity"],
-                             "field":claim["field"],"value":claim["value"][:150]})
+            tokens = value.split()
+            informative = len(value) >= 6 and (
+                len(tokens) >= 2 or
+                claim.get("field") in ("competitors", "market_players", "vendors",
+                                        "vendor_relations", "westcon_overlap")
+            )
+            occurs = bool(informative and re.search(
+                r"(?<![a-z0-9])" + re.escape(value) + r"(?![a-z0-9])", text
+            ))
+            checks.append({
+                "section": claim["section"], "entity": claim["entity"],
+                "field": claim["field"], "value": claim["value"][:180],
+                "status": "VALUE_PRESENT_REQUIRES_CONTEXT" if occurs
+                          else "NO_SPECIFIC_VALUE_CONFIRMED",
+                "accredited": False,
+            })
+        hits = [c for c in checks if c["status"] == "VALUE_PRESENT_REQUIRES_CONTEXT"]
+        result["claim_checks"] = checks
         result["claim_hits"] = len(hits)
         result["examples"] = hits[:5]
         result["status"] = "REACHABLE_TEXT_MATCH" if hits else "REACHABLE_NO_EXACT_TEXT"
@@ -92,7 +109,7 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
         return result
 
 
-def run(limit: int, timeout: float) -> dict:
+def run(limit: int, timeout: float, workers: int = 1) -> dict:
     inventory = candidate_inventory()
     previous = read_json("data/current/historical_source_checks.json", {})
     state = dict(previous.get("results") or {})
@@ -101,11 +118,28 @@ def run(limit: int, timeout: float) -> dict:
                                                    url))
     chosen = ordered[:max(1, limit)]
     stats = Counter()
-    with requests.Session() as session:
-        for url in chosen:
-            outcome = check_one(url, inventory[url], timeout, session)
-            state[url] = outcome
-            stats[outcome["status"]] += 1
+    if workers <= 1:
+        with requests.Session() as session:
+            for url in chosen:
+                outcome = check_one(url, inventory[url], timeout, session)
+                state[url] = outcome
+                stats[outcome["status"]] += 1
+    else:
+        # Limit concurrent requests to any one hostname (external courtesy).
+        semaphores: dict[str, BoundedSemaphore] = {}
+        mutex = Lock()
+        def assess(url: str) -> tuple[str, dict]:
+            host = urlparse(url).hostname or ""
+            with mutex:
+                if host not in semaphores:
+                    semaphores[host] = BoundedSemaphore(2)
+                semaphore = semaphores[host]
+            with semaphore:
+                return url, check_one(url, inventory[url], timeout)
+        with ThreadPoolExecutor(max_workers=min(12, max(1, workers))) as pool:
+            for url, outcome in pool.map(assess, chosen):
+                state[url] = outcome
+                stats[outcome["status"]] += 1
     # Drop pages no longer referenced by any current historical assertion.
     state = {url: row for url, row in state.items() if url in inventory}
     completed = datetime.now(timezone.utc).isoformat()
@@ -114,6 +148,7 @@ def run(limit: int, timeout: float) -> dict:
         "status": "SOURCE_REACHABILITY_CHECK_NOT_ACCREDITATION",
         "urls_in_inventory": len(inventory),
         "urls_checked_this_run": len(chosen),
+        "claims_checked_this_run": sum(int(state[url].get("claims_tested") or 0) for url in chosen),
         "urls_with_prior_checks": len(state),
         "claim_accuracy_note": "An HTTP success or phrase hit does not verify the specific fact; evidence promotion still needs content/relationship assessment.",
         "run_statuses": dict(stats),
@@ -122,7 +157,7 @@ def run(limit: int, timeout: float) -> dict:
     atomic_write_json("data/current/historical_source_checks.json", output)
     public = {k: value for k, value in output.items() if k != "results"}
     public["results"] = {url: {k: row.get(k) for k in (
-        "checked_at", "status", "http_status", "claim_hits", "accreditation")}
+        "checked_at", "status", "http_status", "claim_hits", "claims_tested", "accreditation")}
         for url, row in state.items()}
     atomic_write_json("data/public/historical/current/source_checks.json", public)
     print(json.dumps({k: v for k, v in output.items() if k != "results"},
@@ -134,5 +169,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=24)
     parser.add_argument("--timeout", type=float, default=7.0)
+    parser.add_argument("--workers", type=int, default=1)
     args = parser.parse_args()
-    run(args.limit, args.timeout)
+    run(args.limit, args.timeout, args.workers)

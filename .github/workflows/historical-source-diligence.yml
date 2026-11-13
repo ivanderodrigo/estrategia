@@ -1,0 +1,60 @@
+name: Historical Source Diligence
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/revalidate_historical_sources.py'
+      - '.github/workflows/historical-source-diligence.yml'
+  schedule:
+    - cron: '37 3 * * 1'
+permissions:
+  contents: write
+concurrency:
+  group: historical-source-diligence
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install prerequisites
+        run: python -m pip install -r requirements.txt
+      - name: Audit the full source URL inventory with individual claim checks
+        run: >-
+          python scripts/revalidate_historical_sources.py
+          --limit 750 --timeout 5 --workers 8
+      - name: Verify that no HTTP or mention result can automatically accredit a claim
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('data/current/historical_source_checks.json').read_text(encoding='utf-8'))
+          assert report['status'] == 'SOURCE_REACHABILITY_CHECK_NOT_ACCREDITATION'
+          assert report['urls_checked_this_run'] >= 1
+          for value in report['results'].values():
+              assert value['accreditation'] == 'NOT_ACCREDITED'
+              assert all(not item['accredited'] for item in value.get('claim_checks') or [])
+          print('Audited',report['urls_checked_this_run'],'URLs and',
+                report['claims_checked_this_run'],'claim-source pairs')
+          PY
+      - name: Publish source checks without overwriting intelligence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/current/historical_source_checks.json data/public/historical/current/source_checks.json
+          if git diff --cached --quiet; then
+            echo "No new checks"
+            exit 0
+          fi
+          git commit -m 'research: audit historical sources and individual claims [skip ci]'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
