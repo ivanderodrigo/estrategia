@@ -42,6 +42,7 @@ from .metrics import calculate
 from .publication import public_payloads
 from .procurement_lifecycle import tender_lifecycle_report
 from .historical_publication import publish_historical_trails
+from .historical_claim_audit import audit_historical_claims
 from .westcon_current_evidence import apply_westcon_current_evidence
 from .verified_research import apply_verified_research
 from .quality import audit
@@ -375,11 +376,17 @@ def run() -> dict[str, Any]:
     }
 
     historical_files, historical_summary = publish_historical_trails(gaps, now)
+    # Exhaustive, atomic inventory; it does not promote archived URLs.
+    audit_bytes, history_audit_summary = audit_historical_claims(data, historical_files, now)
+    historical_files["data/public/historical/current/claim_review.json"] = audit_bytes
+    historical_summary["claim_review"] = history_audit_summary
+
     # Historical source trails deliberately do not alter accreditation metrics.
     last_run["historical_trails"] = {
         "claims": historical_summary["claims"],
         "unique_urls": historical_summary["unique_urls"],
         "status": historical_summary["status"],
+        "claim_review": history_audit_summary,
     }
     public_files, manifest = public_payloads(data, last_run)
     public_files.update(historical_files)
