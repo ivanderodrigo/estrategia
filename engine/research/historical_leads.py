@@ -8,11 +8,14 @@ import json
 from functools import lru_cache
 from pathlib import Path
 from urllib.parse import urlsplit
+from collections import defaultdict
+
+from ..model import canonical
 
 from ..settings import ROOT
 
 HISTORY_INDEX = ROOT / "data/public/historical/gap_matches.json"
-ELIGIBLE = frozenset({"manufacturers", "distributors", "integrators", "clients_private", "trends"})
+ELIGIBLE = frozenset({"manufacturers", "distributors", "integrators", "clients_private", "trends", "architectures"})
 MAX_SEEDS_PER_GAP = 5
 
 
@@ -54,19 +57,114 @@ def history_by_gap() -> dict[str, dict]:
     return out
 
 
+def _exact_key(value: object) -> str:
+    """Match the original JSON claim, not just a neighbouring entity/field."""
+    return json.dumps(value, ensure_ascii=False, sort_keys=True, default=str)
+
+
+@lru_cache(maxsize=1)
+def history_by_identity() -> dict[tuple[str, str, str, str], dict]:
+    """Reuse archived evidence after a gap ID changes on a later rebuild.
+
+    The archived 'gap_matches' index was keyed by ephemeral gap IDs from 2026-10.
+    Current gaps have been reissued multiple times. Match exact claim identity
+    instead: section + entity + field + JSON-serialized value.
+    """
+    try:
+        report = json.loads(HISTORY_INDEX.read_text(encoding="utf-8"))
+    except (OSError, ValueError, UnicodeError):
+        return {}
+    return build_identity_index(report.get("matches") or [])
+
+
+def build_identity_index(rows: list[dict]) -> dict[tuple[str, str, str, str], dict]:
+    """Pure helper also used by regressions with synthetic historical rows."""
+    lookup: dict[tuple[str, str, str, str], dict] = {}
+    for record in rows:
+        if not isinstance(record, dict):
+            continue
+        section = str(record.get("section") or "")
+        if section not in ELIGIBLE or record.get("match_level") != "exact-value-history":
+            continue
+        if record.get("identity_scope") != "canonical-name":
+            continue
+        entity = canonical(record.get("entity"))
+        field = str(record.get("field") or "")
+        if not entity or not field:
+            continue
+        for historical in record.get("historical_samples") or []:
+            raw = historical.get("value")
+            if not isinstance(raw, str):
+                continue
+            try:
+                value = json.loads(raw)
+            except (ValueError, TypeError):
+                # The public summary intentionally truncates some complex values.
+                # Never match a partial JSON fragment and guess its provenance.
+                continue
+            key = (section, entity, field, _exact_key(value))
+            if key not in lookup:
+                lookup[key] = {**record, "source_urls": list(record.get("source_urls") or [])}
+            else:
+                existing = lookup[key]["source_urls"]
+                for url in record.get("source_urls") or []:
+                    if url not in existing:
+                        existing.append(url)
+    return lookup
+
+
+def historical_record_for_gap(
+    gap: dict, index: dict[str, dict] | None = None,
+    identity_index: dict[tuple[str, str, str, str], dict] | None = None,
+) -> dict | None:
+    section = str(gap.get("section") or "")
+    entity = str(gap.get("entity") or "")
+    field = str(gap.get("field") or "")
+    if section not in ELIGIBLE or not entity or not field:
+        return None
+    candidates = index if index is not None else history_by_gap()
+    by_id = candidates.get(str(gap.get("id") or ""))
+    # Even an apparently matching ID must still match the exact assertion.
+    target_values = gap.get("target_values") or []
+    identity = identity_index if identity_index is not None else history_by_identity()
+    if not target_values:
+        return None
+    hits = []
+    for value in target_values:
+        record = identity.get((section, canonical(entity), field, _exact_key(value)))
+        if record:
+            hits.append(record)
+    if hits:
+        combined = dict(hits[0])
+        combined["source_urls"] = list(dict.fromkeys(
+            url for hit in hits for url in (hit.get("source_urls") or [])
+        ))
+        return combined
+    # Old index keyed by gap ID is not sufficient: it may refer to a renamed
+    # or changed claim even if section/entity/field still look similar.
+    if by_id and by_id.get("match_level") == "exact-value-history":
+        key_values = {
+            str(sample.get("value")) for sample in by_id.get("historical_samples") or []
+            if isinstance(sample, dict)
+        }
+        if any(_exact_key(value) in key_values for value in target_values):
+            return by_id
+    return None
+
+
 def historical_revalidation_seeds(gap: dict, index: dict[str, dict] | None = None) -> list[dict]:
     if gap.get("gap_kind") == "derivation-support" or gap.get("research_mode") == "derive-from-supported-inputs":
         return []
     if str(gap.get("section") or "") not in ELIGIBLE:
         return []
-    record = (index if index is not None else history_by_gap()).get(str(gap.get("id") or ""))
+    record = historical_record_for_gap(gap, index=index)
     if not record:
         return []
     if str(record.get("section")) != str(gap.get("section")):
         return []
     if str(record.get("field")) != str(gap.get("field")):
         return []
-    if str(record.get("entity")) != str(gap.get("entity")):
+    if canonical(record.get("entity")) != canonical(gap.get("entity")):
         return []
     # Prefer independent hostnames before multiple pages from one domain.
     # A historical URL is only a rediscovery seed, not accredited evidence.
