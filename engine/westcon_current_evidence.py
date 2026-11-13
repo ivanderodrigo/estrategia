@@ -347,13 +347,13 @@ def apply_westcon_current_evidence(data: dict[str, Any], config: Mapping[str, An
                 _attach_scalar(row, field_id, value, ev)
                 row["fields"][field_id]["evidence"] = [ev]
             if details.get("domain"):
-                domain_ev = _catalog_evidence(details, override, field="domain", value=details["domain"])
-                _attach_scalar(row, "domain", details["domain"], domain_ev)
-                # Retain prior accredited taxonomy sources; never replace the
-                # baseline support merely to attach a newer official catalog.
-                row["fields"]["domain"]["evidence"] = _dedupe_evidence(
-                    list(row["fields"]["domain"].get("evidence") or []) + [domain_ev]
-                )
+                # Do not rewrite the already-accredited scalar or its provenance.
+                # The portfolio update only supplies a taxonomy when it was
+                # previously empty. A separate research cycle can add corroboration.
+                existing_domain = (row.get("fields") or {}).get("domain") or {}
+                if not _has_value(existing_domain.get("value")):
+                    domain_ev = _catalog_evidence(details, override, field="domain", value=details["domain"])
+                    _attach_scalar(row, "domain", details["domain"], domain_ev)
             if details.get("capabilities"):
                 capabilities = [str(x) for x in details["capabilities"]]
                 field = _field(row, "capabilities", capabilities)
