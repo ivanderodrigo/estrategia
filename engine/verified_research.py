@@ -141,7 +141,16 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
             old_values = field.get("value") if isinstance(field.get("value"), list) else []
             match = next((v for v in old_values if canonical(v) == canonical(value)), None)
             if match is None:
-                continue
+                # A manually audited product-alternative citation may recover a
+                # missing historical competitor value. All other relationship
+                # fields still require an existing exact assertion.
+                url = str(source.get("url") or "")
+                if not (section == "manufacturers" and field_id == "competitors"
+                        and source.get("source_type") == "analyst-peer-review"
+                        and url.startswith("https://www.gartner.com/reviews/product/")
+                        and url.rstrip("/").endswith("/alternatives")):
+                    continue
+                match = value
             # Preserve the exact published spelling and all existing support.
             new = _claim_field(field_id, [[match, source]])
             row["fields"][field_id] = merge_field(field, new)

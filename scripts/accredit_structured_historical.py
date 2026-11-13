@@ -18,11 +18,41 @@ import requests
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from engine.historical_structured_verification import source_entity, verify_explicit_alternative
+from engine.model import canonical
 from engine.research.security import validate_public_url
 from engine.storage import atomic_write_json, read_json
 
 OUT = "config/current/historical_structured_verified.json"
 AUDIT = "data/public/historical/current/structured_verification.json"
+CURATED = "config/current/verified_research_20261113.json"
+
+def apply_curated_reviews(attempts, registry):
+    """Recover claim-by-claim human-reviewed proof even if live crawling is blocked.
+
+    The registry only credits the exact historical entity, field, value AND
+    original URL. It cannot turn an unrelated source into accreditation.
+    """
+    confirmed = set()
+    for row in registry.get("existing_claim_sources") or []:
+        source = row.get("source") or {}
+        if (row.get("section"), row.get("field")) != ("manufacturers", "competitors"):
+            continue
+        if source.get("source_type") != "analyst-peer-review":
+            continue
+        confirmed.add((
+            canonical(row.get("entity")), canonical(row.get("value")),
+            str(source.get("url") or "")
+        ))
+    for item in attempts:
+        key = (canonical(item.get("entity")), canonical(item.get("value")),
+               str(item.get("source_url") or ""))
+        if key not in confirmed or item.get("field") != "competitors" or item.get("section") != "manufacturers":
+            continue
+        if item["status"] != "VERIFIED_EXPLICIT_ALTERNATIVE":
+            item["automated_fetch_status"] = item["status"]
+            item["status"] = "VERIFIED_CURATED_DIRECT_SOURCE"
+            item["review_method"] = "individual-direct-source-review"
+    return attempts
 
 def claims_inventory():
     payload = read_json("data/public/historical/current/manufacturers.json", {})
@@ -98,15 +128,22 @@ def run(limit=30, timeout=12):
                 for claim in claims:
                     attempts.append({**claim, "source_url": url, "status": "UNREACHABLE_OR_UNREADABLE",
                                      "error_type": type(exc).__name__, "checked_at": today})
+    apply_curated_reviews(attempts, read_json(CURATED, {}))
+    counts = Counter(item["status"] for item in attempts)
     output = {"version": 1, "verified_on": today,
               "policy": "Solo afirmaciones atómicas citadas en listados explícitos de alternativas de producto. Ninguna coincidencia de texto genérica acredita.",
               "existing_claim_sources": sorted(confirmed.values(), key=lambda c: (
                   c["section"], c["entity"], c["field"], c["value"]))}
+    # Keep the versioned evidence registry unchanged when nothing was accredited.
+    # Otherwise a Pages rebuild would commit a fresh timestamp and recursively retrigger itself.
+    if previous.get("existing_claim_sources") == output["existing_claim_sources"]:
+        output["verified_on"] = previous.get("verified_on") or today
     atomic_write_json(OUT, output)
     audit = {"generated_at": today, "urls_eligible": len(inventory),
              "claims_reviewed_this_run": len(attempts),
-             "claims_confirmed_this_run": counts["VERIFIED_EXPLICIT_ALTERNATIVE"],
-             "evidence_records_total": len(confirmed),
+             "claims_confirmed_this_run": counts["VERIFIED_EXPLICIT_ALTERNATIVE"] + counts["VERIFIED_CURATED_DIRECT_SOURCE"],
+             "claims_curated_source_review": counts["VERIFIED_CURATED_DIRECT_SOURCE"],
+             "evidence_records_total": len(confirmed) + counts["VERIFIED_CURATED_DIRECT_SOURCE"],
              "statuses": dict(counts), "claims": attempts}
     atomic_write_json(AUDIT, audit)
     print(json.dumps({k:v for k,v in audit.items() if k != "claims"}, ensure_ascii=False))
