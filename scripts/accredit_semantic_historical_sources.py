@@ -146,7 +146,7 @@ def main():
           "policy":"One-by-one first-party field/claim/source excerpt checks. Never authorizes historical archive mention alone.",
           "existing_claim_sources":successes},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     REPORT.parent.mkdir(parents=True,exist_ok=True)
-    REPORT.write_text(json.dumps({"generated_at":datetime.now(timezone.utc).isoformat(),
+    REPORT.write_text(json.dumps({"generated_at":str(report.get("generated_at") or ""),
           "urls_scanned":len(results),"claim_source_pairs_reviewed":sum(counter.values()),
           "verified_claim_source_pairs":len(successes),
           "statuses":dict(counter),"by_section":dict(Counter(c["section"] for c in successes)),
