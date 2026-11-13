@@ -743,7 +743,11 @@
       const links=(h.urls||[]).filter(url=>/^https:\/\/[^\s"'<>]+$/i.test(url)).slice(0,3)
         .map(url=>{
           const check=state.historicalChecks?.[url];
-          const status=(h.verified_urls||[]).includes(url)?' · acreditado: alternativa explícita de producto':
+          const exactProof=(item?.evidence||field?.evidence||[]).some(ev=>ev.url===url
+             && (!ev.item_value||historicalKey(ev.item_value)===historicalKey(h.value))
+             && atomicCurrentProof([ev]));
+           const status=exactProof?' · acreditado: fuente vinculada al dato exacto':
+             (h.verified_urls||[]).includes(url)?' · acreditado: alternativa explícita de producto':
              check?.status==='REACHABLE_TEXT_MATCH'?' · texto localizado, requiere validación':
             check?.status==='REACHABLE_NO_EXACT_TEXT'?' · página accesible, dato no localizado':
             check?' · acceso no comprobado':'';
