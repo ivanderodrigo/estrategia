@@ -161,6 +161,30 @@ def intelligent_discovery_queries(
         for known in _texts((row.get("fields") or {}).get("vendor_relations"), limit=2):
             add(f'"{entity}" "{known}" distribuidor integrador partner oficial')
 
+    if section in {"trends", "architectures"}:
+        # Analyst and standards publications are discovery leads, never automatic proof.
+        # Search for the exact topic in specialist primary sources, not generic news.
+        for host in ("gartner.com", "idc.com", "forrester.com", "nista.gov",
+                     "nist.gov", "enisa.europa.eu", "cisa.gov", "cloudsecurityalliance.org"):
+            if host == "nista.gov":
+                continue
+            add(f'site:{host} "{entity}" research report architecture trends')
+        add(f'"{entity}" 2026 2027 research adoption technology market')
+        add(f'"{entity}" reference architecture technical guidance standards')
+
+    if section in {"distributors", "integrators"} and any(
+        field in targets for field in ("vendor_relations", "competitor_vendor_overlap", "westcon_overlap")
+    ):
+        # Query the FULL ecosystem and both ES/PT scopes. Do not infer relationships
+        # from a category match: attribution requires the verified local linecard.
+        add(f'"{entity}" fabricantes marcas catálogo completo listado')
+        add(f'"{entity}" vendor linecard all brands partners')
+        add(f'"{entity}" fabricantes parceiros marcas Portugal')
+        add(f'"{entity}" manufacturer partner directory cybersecurity networking cloud')
+        for host in _entity_official_hosts(row):
+            add(f'site:{host} ("fabricantes" OR "marcas" OR "partners")')
+            add(f'site:{host} ("vendors" OR "linecard" OR "brand")')
+
     if section in {"distributors", "integrators", "clients_private", "clients_public", "trends", "architectures"} and "recent_signals" in targets:
         add(f'"{entity}" actualidad tecnología ciberseguridad cloud networking')
         add(f'"{entity}" noticias proyectos transformación digital comunicado')
