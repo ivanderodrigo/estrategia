@@ -101,6 +101,7 @@ def intelligent_discovery_queries(
     section: str = "manufacturers",
     rotation: int = 0,
     limit: int = 8,
+    market_rows: list[dict[str, Any]] | None = None,
 ) -> list[str]:
     """Generate context-aware, multilingual, cross-field discovery instructions.
 
@@ -121,7 +122,26 @@ def intelligent_discovery_queries(
         if value and value not in queries:
             queries.append(value)
 
+    # Same-taxonomy vendors generate research hypotheses, never confirmed rivals.
+    market_rows = market_rows or []
+    own_topics = {topic.casefold() for topic in topics[:8]}
+    peer_rows = []
+    for candidate in market_rows:
+        other = str(candidate.get("name") or "").strip()
+        if not other or other.casefold() == entity.casefold():
+            continue
+        overlap = own_topics.intersection(topic.casefold() for topic in _topics(candidate))
+        if overlap:
+            peer_rows.append((len(overlap), other))
+    peer_rows.sort(key=lambda item: (-item[0], item[1].casefold()))
+
     if section == "manufacturers" and "competitors" in targets:
+        if peer_rows:
+            candidates = [name for _, name in peer_rows]
+            for offset in range(min(2, len(candidates))):
+                peer = candidates[(rotation + offset) % len(candidates)]
+                add(f'"{entity}" vs "{peer}" independent comparison competitors')
+
         # Reserve dedicated vendor-discovery routes, even if the field is empty.
         topic = topics[0]
         add(f'"{entity}" "{topic}" competing vendors alternatives')
@@ -132,6 +152,16 @@ def intelligent_discovery_queries(
                 add(f'"{entity}" vs "{candidate}" "{topic}" comparison')
         for offset, context in enumerate(SOURCE_VARIANTS):
             add(f'"{entity}" "{topics[offset % len(topics)]}" {context}')
+
+    if section in {"distributors", "integrators"} and "vendor_relations" in targets and market_rows:
+        # Rotate all indexed manufacturers through official linecards, ES and PT.
+        known = sorted({str(v.get("name") or "").strip() for v in market_rows
+                        if str(v.get("name") or "").strip()})
+        for offset in range(min(2, len(known))):
+            vendor = known[(rotation + offset) % len(known)]
+            for host in _entity_official_hosts(row)[:1]:
+                add(f'site:{host} "{vendor}" fabricante partner marca')
+            add(f'"{entity}" "{vendor}" official distributor partner linecard')
 
     if section == "distributors" and any(
         field in targets for field in ("vendor_relations", "westcon_overlap", "competitor_vendor_overlap")
@@ -160,6 +190,28 @@ def intelligent_discovery_queries(
             add(f'"{entity}" "{context}" certified partner vendors integrator')
         for known in _texts((row.get("fields") or {}).get("vendor_relations"), limit=2):
             add(f'"{entity}" "{known}" distribuidor integrador partner oficial')
+
+    if section in {"trends", "architectures"}:
+        # Analyst and standards publications are discovery leads, never automatic proof.
+        # Search for the exact topic in specialist primary sources, not generic news.
+        for host in ("gartner.com", "idc.com", "forrester.com",
+                     "nist.gov", "enisa.europa.eu", "cisa.gov", "cloudsecurityalliance.org"):
+            add(f'site:{host} "{entity}" research report architecture trends')
+        add(f'"{entity}" 2026 2027 research adoption technology market')
+        add(f'"{entity}" reference architecture technical guidance standards')
+
+    if section in {"distributors", "integrators"} and any(
+        field in targets for field in ("vendor_relations", "competitor_vendor_overlap", "westcon_overlap")
+    ):
+        # Query the FULL ecosystem and both ES/PT scopes. Do not infer relationships
+        # from a category match: attribution requires the verified local linecard.
+        add(f'"{entity}" fabricantes marcas catálogo completo listado')
+        add(f'"{entity}" vendor linecard all brands partners')
+        add(f'"{entity}" fabricantes parceiros marcas Portugal')
+        add(f'"{entity}" manufacturer partner directory cybersecurity networking cloud')
+        for host in _entity_official_hosts(row):
+            add(f'site:{host} ("fabricantes" OR "marcas" OR "partners")')
+            add(f'site:{host} ("vendors" OR "linecard" OR "brand")')
 
     if section in {"distributors", "integrators", "clients_private", "clients_public", "trends", "architectures"} and "recent_signals" in targets:
         add(f'"{entity}" actualidad tecnología ciberseguridad cloud networking')

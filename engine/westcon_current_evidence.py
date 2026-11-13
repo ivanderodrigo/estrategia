@@ -293,6 +293,54 @@ def apply_westcon_current_evidence(data: dict[str, Any], config: Mapping[str, An
         row["evidence"] = _dedupe_evidence(list(row.get("evidence") or []) + [_rule_evidence(portugal_rule, field="portfolio", value=name)])
         stats["portfolio_portugal_rows"] += 1
 
+    # A dated first-party portfolio change supersedes membership in the FY27 deck.
+    # The deck remains available for historical provenance, not active membership.
+    override = config.get("portfolio_override_2026_11") or {}
+    if override:
+        for name in override.get("excluded") or []:
+            row = _find_row(rows, [str(name)])
+            if row is None:
+                continue
+            for field_id in ("westcon_spain", "westcon_portugal"):
+                ev = _rule_evidence(override, field=field_id, value=False)
+                _attach_scalar(row, field_id, False, ev)
+                row["fields"][field_id]["evidence"] = [ev]
+            _attach_scalar(row, "scope", "No pertenece al portfolio Westcon Iberia vigente",
+                           _rule_evidence(override, field="scope", value="No pertenece al portfolio Westcon Iberia vigente"))
+            row["fields"]["scope"]["evidence"] = [_rule_evidence(
+                override, field="scope", value="No pertenece al portfolio Westcon Iberia vigente")]
+        for name, details in (override.get("included") or {}).items():
+            details = details or {}
+            row = _find_row(rows, [name] + list(details.get("aliases") or []))
+            if row is None:
+                row = {"id": _slug(name), "name": name, "evidence": [], "fields": {}}
+                rows.append(row)
+                stats["rows_created"] += 1
+            for field_id, value in (("westcon_spain", True),
+                                    ("westcon_portugal", True), ("scope", "ES + PT")):
+                ev = _rule_evidence(override, field=field_id, value=value)
+                _attach_scalar(row, field_id, value, ev)
+                row["fields"][field_id]["evidence"] = [ev]
+            if details.get("domain"):
+                _attach_scalar(row, "domain", details["domain"],
+                               _rule_evidence(override, field="domain", value=details["domain"]))
+            if details.get("capabilities"):
+                capabilities = [str(x) for x in details["capabilities"]]
+                field = _field(row, "capabilities", capabilities)
+                field["items"] = [{"value": item, "evidence": [
+                    _rule_evidence(override, field="capabilities", value=item)]} for item in capabilities]
+                field["evidence"] = [ev for item in field["items"] for ev in item["evidence"]]
+            row["evidence"] = _dedupe_evidence(list(row.get("evidence") or []) + [
+                _rule_evidence(override, field="portfolio", value=name)])
+            stats["portfolio_spain_rows"] += 1
+            stats["portfolio_portugal_rows"] += 1
+        stats["portfolio_spain_rows"] -= sum(
+            1 for name in (override.get("excluded") or [])
+            if canonical(name) in {canonical(key) for key in portfolio})
+        stats["portfolio_portugal_rows"] -= sum(
+            1 for name in (override.get("excluded") or [])
+            if canonical(name) in {canonical(key) for key in portfolio})
+
     # Do not silently keep the superseded "Proofpoint + Check Point" PT-only rule anywhere.
     stats["legacy_clues_corrected"] = _correct_legacy_portfolio_clues(data)
 

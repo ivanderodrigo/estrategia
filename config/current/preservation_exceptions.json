@@ -1,8 +1,23 @@
 {
-  "version": 1,
-  "policy": "Every exception must be explicit, reviewed and justified. Empty in v4.1.0.",
+  "version": 2,
+  "policy": "Excepciones explícitas para el cambio de portfolio Iberia 2026-11-13. Exclusivamente las seis afirmaciones de pertenencia/ámbito reemplazadas por una regla Westcon vigente y acreditada; no se permite perder entidades, capacidades, relaciones ni evidencias externas.",
   "entities": [],
-  "values": [],
-  "evidences": [],
-  "relations": []
+  "values": [
+    "manufacturers:mfr ruckus networks:scope:[\"text\",\"es pt\"]",
+    "manufacturers:mfr ruckus networks:westcon_spain:true",
+    "manufacturers:mfr ruckus networks:westcon_portugal:true",
+    "manufacturers:mfr juniper networks:westcon_spain:true",
+    "manufacturers:mfr juniper networks:westcon_portugal:true",
+    "manufacturers:mfr juniper networks:scope:[\"text\",\"es pt\"]"
+  ],
+  "evidences": [
+    "4c48ebbe6488f58d98c20a5c83761bb6d7875d5a",
+    "541760474a1a33c36d8e52ff9b87e81d3bf1d512",
+    "55e1e62f25aeb26cf595dcf8da6487710c0284a5",
+    "b0cd52c11a65115c8145504179ece9fd0e0f6865",
+    "b47ca1e570be5eb354a6a01b6bcb26b3f1a7f492",
+    "c9decc18b900f9e7dad8b30a4615a53b6c2f8217"
+  ],
+  "relations": [],
+  "justification": "Los seis fingerprints corresponden exclusivamente al antiguo estado documentado como portfolio Westcon de Juniper y Ruckus (ES, PT y scope). La actualización de noviembre 2026 los sustituye expresamente; no se borran los fabricantes ni sus relaciones externas o su historial."
 }
