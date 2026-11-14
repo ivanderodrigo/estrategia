@@ -1,38 +1,41 @@
 {
-  "generated_at": "2026-11-14T14:19:16.165046+00:00",
+  "generated_at": "2026-11-14T14:27:10.625486+00:00",
   "urls_scanned": 2005,
   "claim_source_pairs_reviewed": 61803,
-  "verified_claim_source_pairs": 2471,
-  "verified_this_run": 2261,
-  "retained_prior_verified": 210,
+  "verified_claim_source_pairs": 2439,
+  "verified_this_run": 2237,
+  "retained_prior_verified": 202,
+  "quarantined_generic_homepage_claims": 41,
   "expired_prior_verified": 0,
   "statuses": {
-    "VALUE_NOT_FOUND": 35761,
-    "NOT_FIRST_PARTY": 2071,
-    "RELATIONSHIP_NOT_SHOWN": 1056,
-    "VERIFIED_EXPLICIT_PARTNER_CONTEXT": 1232,
-    "VERIFIED_FIRST_PARTY_CATALOG_VALUE": 2088,
-    "VERIFIED_EXPLICIT_DISTRIBUTION_AGREEMENT": 30,
-    "COMPETITION_NOT_SHOWN": 51,
+    "VALUE_NOT_FOUND": 35955,
+    "NOT_FIRST_PARTY": 2081,
+    "RELATIONSHIP_NOT_SHOWN": 1054,
+    "VERIFIED_EXPLICIT_PARTNER_CONTEXT": 1240,
+    "VERIFIED_FIRST_PARTY_CATALOG_VALUE": 2050,
+    "VERIFIED_EXPLICIT_DISTRIBUTION_AGREEMENT": 32,
+    "COMPETITION_NOT_SHOWN": 47,
     "VERIFIED_EXPLICIT_COMPETITOR_CONTEXT": 7,
     "DISTRIBUTION_RELATIONSHIP_NOT_SHOWN": 106,
-    "SOURCE_UNAVAILABLE": 18600,
+    "SOURCE_UNAVAILABLE": 18395,
+    "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF": 53,
     "VERIFIED_FIRST_PARTY_NEWS_STATEMENT": 97,
-    "GENERIC_CAPABILITY_NOT_SPECIFIC": 83,
-    "UNSUPPORTED_FIELD_OR_CONTEXT": 434,
+    "GENERIC_CAPABILITY_NOT_SPECIFIC": 67,
+    "UNSUPPORTED_FIELD_OR_CONTEXT": 428,
     "GENERIC_DOMAIN_OR_HIRING_NOT_SPECIFIC": 46,
-    "VERIFIED_CITED_ANALYST_DOCUMENT": 50,
+    "VERIFIED_CITED_ANALYST_DOCUMENT": 52,
     "AMBIGUOUS_SHORT_VALUE": 77,
+    "VERIFIED_FIRST_PARTY_TECH_STATEMENT": 2,
     "VERIFIED_FIRST_PARTY_HIRING": 2,
     "VERIFIED_FIRST_PARTY_CASE_STUDY": 12
   },
   "by_section": {
-    "distributors": 1293,
-    "manufacturers": 404,
-    "integrators": 727,
+    "distributors": 1266,
+    "manufacturers": 400,
+    "integrators": 726,
     "architectures": 17,
-    "clients_private": 3,
-    "trends": 27
+    "trends": 27,
+    "clients_private": 3
   },
   "pending_recheck_examples": [
     {
@@ -808,6 +811,15 @@
       "url": "https://aseminfor.es/novedades-amd/",
       "historical_url": "https://aseminfor.es/catalogo/",
       "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "Atos Spain",
+      "field": "services",
+      "value": "Logística",
+      "url": "https://www.atos.ai/es-es?utm_source=atos.net&utm_medium=301",
+      "historical_url": "https://atos.net/es/espana",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "manufacturers",
@@ -7188,7 +7200,16 @@
       "value": "Networking",
       "url": "https://careers.capgemini.com/",
       "historical_url": "https://careers.capgemini.com/",
-      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "integrators",
+      "entity": "Capgemini Spain",
+      "field": "capabilities",
+      "value": "Networking",
+      "url": "https://careers.capgemini.com/",
+      "historical_url": "https://careers.capgemini.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "integrators",
@@ -9927,60 +9948,6 @@
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
-      "section": "distributors",
-      "entity": "Factis",
-      "field": "vendor_relations",
-      "value": "HaloITSM",
-      "url": "https://www.factis.com/casos-de-sucesso-e-testemunhos/",
-      "historical_url": "https://factis.pt/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
-    },
-    {
-      "section": "distributors",
-      "entity": "Factis",
-      "field": "vendor_relations",
-      "value": "Lansweeper",
-      "url": "https://www.factis.com/casos-de-sucesso-e-testemunhos/",
-      "historical_url": "https://factis.pt/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
-    },
-    {
-      "section": "distributors",
-      "entity": "Factis",
-      "field": "vendor_relations",
-      "value": "NAKIVO",
-      "url": "https://www.factis.com/casos-de-sucesso-e-testemunhos/",
-      "historical_url": "https://factis.pt/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
-    },
-    {
-      "section": "distributors",
-      "entity": "Factis",
-      "field": "vendor_relations",
-      "value": "HaloITSM",
-      "url": "https://www.factis.com/",
-      "historical_url": "https://factis.pt/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
-    },
-    {
-      "section": "distributors",
-      "entity": "Factis",
-      "field": "vendor_relations",
-      "value": "Lansweeper",
-      "url": "https://www.factis.com/",
-      "historical_url": "https://factis.pt/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
-    },
-    {
-      "section": "distributors",
-      "entity": "Factis",
-      "field": "vendor_relations",
-      "value": "NAKIVO",
-      "url": "https://www.factis.com/",
-      "historical_url": "https://factis.pt/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
-    },
-    {
       "section": "manufacturers",
       "entity": "Cisco",
       "field": "distributors",
@@ -10127,6 +10094,24 @@
     {
       "section": "distributors",
       "entity": "Inforpor",
+      "field": "specializations",
+      "value": "Consumibles",
+      "url": "https://inforpor.com/",
+      "historical_url": "https://inforpor.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforpor",
+      "field": "specializations",
+      "value": "Hardware",
+      "url": "https://inforpor.com/",
+      "historical_url": "https://inforpor.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforpor",
       "field": "services",
       "value": "30.000 referencias",
       "url": "https://inforpor.com/",
@@ -10168,6 +10153,96 @@
       "url": "https://inforpor.com/",
       "historical_url": "https://inforpor.com/",
       "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+    },
+    {
+      "section": "integrators",
+      "entity": "decunify",
+      "field": "specializations",
+      "value": "Networking",
+      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "capabilities",
+      "value": "Cloud",
+      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "capabilities",
+      "value": "Networking",
+      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "technology_domains",
+      "value": "Cloud",
+      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "technology_domains",
+      "value": "Networking",
+      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "vendor_relations",
+      "value": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "westcon_overlap",
+      "value": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "specializations",
+      "value": "Networking",
+      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "vendor_relations",
+      "value": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "westcon_overlap",
+      "value": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
     },
     {
       "section": "integrators",
@@ -12502,6 +12577,15 @@
     },
     {
       "section": "integrators",
+      "entity": "Atos Spain",
+      "field": "capabilities",
+      "value": "Cloud",
+      "url": "https://jobs.atos.net/",
+      "historical_url": "https://jobs.atos.net/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "integrators",
       "entity": "Axazure",
       "field": "public_cases",
       "value": "Jobs at Atos",
@@ -12669,7 +12753,7 @@
       "value": "CyberSOC",
       "url": "https://jobs.orangecyberdefense.com/",
       "historical_url": "https://jobs.orangecyberdefense.com/",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "integrators",
@@ -12678,7 +12762,7 @@
       "value": "CyberSOC",
       "url": "https://jobs.orangecyberdefense.com/",
       "historical_url": "https://jobs.orangecyberdefense.com/",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "integrators",
@@ -15175,6 +15259,78 @@
     },
     {
       "section": "distributors",
+      "entity": "TD SYNNEX",
+      "field": "capabilities",
+      "value": "Cloud",
+      "url": "https://news.tdsynnex.com/",
+      "historical_url": "https://news.tdsynnex.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "field": "capabilities",
+      "value": "Cloud",
+      "url": "https://news.tdsynnex.com/tag/cloud/",
+      "historical_url": "https://news.tdsynnex.com/featured/como-pueden-los-socios-seguir-impulsando-el-crecimiento-cuando-los-clientes-se-enfrentan-a-presupuestos-mas-ajustados-y-al-aumento-de-los-costos/",
+      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "field": "capabilities",
+      "value": "Cybersecurity",
+      "url": "https://news.tdsynnex.com/tag/cloud/",
+      "historical_url": "https://news.tdsynnex.com/featured/como-pueden-los-socios-seguir-impulsando-el-crecimiento-cuando-los-clientes-se-enfrentan-a-presupuestos-mas-ajustados-y-al-aumento-de-los-costos/",
+      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "field": "distributors",
+      "value": "TD SYNNEX",
+      "url": "https://news.tdsynnex.com/news/td-synnex-strengthens-cybersecurity-portfolio-with-addition-of-palo-alto-networks-in-europe/",
+      "historical_url": "https://news.tdsynnex.com/news/td-synnex-strengthens-cybersecurity-portfolio-with-addition-of-palo-alto-networks-in-europe/",
+      "reason": "VERIFIED_EXPLICIT_DISTRIBUTION_AGREEMENT"
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "field": "vendor_relations",
+      "value": "Cisco",
+      "url": "https://news.tdsynnex.com/news/td-synnex-strengthens-cybersecurity-portfolio-with-addition-of-palo-alto-networks-in-europe/",
+      "historical_url": "https://news.tdsynnex.com/tag/palo-alto-networks/",
+      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "field": "vendor_relations",
+      "value": "Palo Alto Networks",
+      "url": "https://news.tdsynnex.com/news/td-synnex-strengthens-cybersecurity-portfolio-with-addition-of-palo-alto-networks-in-europe/",
+      "historical_url": "https://news.tdsynnex.com/tag/palo-alto-networks/",
+      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "field": "westcon_overlap",
+      "value": "Cisco",
+      "url": "https://news.tdsynnex.com/news/td-synnex-strengthens-cybersecurity-portfolio-with-addition-of-palo-alto-networks-in-europe/",
+      "historical_url": "https://news.tdsynnex.com/tag/palo-alto-networks/",
+      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "field": "westcon_overlap",
+      "value": "Palo Alto Networks",
+      "url": "https://news.tdsynnex.com/news/td-synnex-strengthens-cybersecurity-portfolio-with-addition-of-palo-alto-networks-in-europe/",
+      "historical_url": "https://news.tdsynnex.com/tag/palo-alto-networks/",
+      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+    },
+    {
+      "section": "distributors",
       "entity": "soon",
       "field": "capabilities",
       "value": "Cloud",
@@ -15374,6 +15530,33 @@
     {
       "section": "distributors",
       "entity": "Ingram Micro",
+      "field": "capabilities",
+      "value": "Cloud",
+      "url": "https://services.ingrammicro.com/",
+      "historical_url": "https://services.ingrammicro.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ingram Micro",
+      "field": "capabilities",
+      "value": "Networking",
+      "url": "https://services.ingrammicro.com/",
+      "historical_url": "https://services.ingrammicro.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ingram Micro",
+      "field": "services",
+      "value": "Marketing",
+      "url": "https://services.ingrammicro.com/",
+      "historical_url": "https://services.ingrammicro.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ingram Micro",
       "field": "services",
       "value": "Professional Services",
       "url": "https://services.ingrammicro.com/",
@@ -15396,7 +15579,7 @@
       "value": "Cloud",
       "url": "https://services.ingrammicro.com/",
       "historical_url": "https://services.ingrammicro.com/",
-      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -15420,10 +15603,37 @@
       "section": "distributors",
       "entity": "Ingram Micro",
       "field": "services",
+      "value": "Consultoría",
+      "url": "https://services.ingrammicro.com/?lang=es-ES",
+      "historical_url": "https://services.ingrammicro.com/?lang=es-ES",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ingram Micro",
+      "field": "services",
+      "value": "Formación",
+      "url": "https://services.ingrammicro.com/?lang=es-ES",
+      "historical_url": "https://services.ingrammicro.com/?lang=es-ES",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ingram Micro",
+      "field": "services",
       "value": "Marketing",
       "url": "https://services.ingrammicro.com/?lang=es-ES",
       "historical_url": "https://services.ingrammicro.com/?lang=es-ES",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ingram Micro",
+      "field": "services",
+      "value": "Soporte",
+      "url": "https://services.ingrammicro.com/?lang=es-ES",
+      "historical_url": "https://services.ingrammicro.com/?lang=es-ES",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -15586,6 +15796,15 @@
       "url": "https://services.ingrammicro.com/?lang=es-ES",
       "historical_url": "https://services.ingrammicro.com/?lang=es-ES",
       "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "distributors",
+      "entity": "Tenmega",
+      "field": "capabilities",
+      "value": "Networking",
+      "url": "https://tenmega.pt/",
+      "historical_url": "https://tenmega.pt/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "manufacturers",
@@ -15940,24 +16159,6 @@
     },
     {
       "section": "distributors",
-      "entity": "Voxsys",
-      "field": "specializations",
-      "value": "UC",
-      "url": "https://voxsys.pt/marca/emeet/",
-      "historical_url": "https://voxsys.pt/",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
-    },
-    {
-      "section": "distributors",
-      "entity": "voxsys",
-      "field": "specializations",
-      "value": "UC",
-      "url": "https://voxsys.pt/marca/emeet/",
-      "historical_url": "https://voxsys.pt/quem-somos/",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
-    },
-    {
-      "section": "distributors",
       "entity": "ALSO",
       "field": "technology_domains",
       "value": "Cloud",
@@ -15973,6 +16174,24 @@
       "url": "https://www.ajoomal.com/bluecat/",
       "historical_url": "https://www.ajoomal.com/",
       "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ajoomal",
+      "field": "specializations",
+      "value": "MDM",
+      "url": "https://www.ajoomal.com/",
+      "historical_url": "https://www.ajoomal.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ajoomal",
+      "field": "specializations",
+      "value": "NDR",
+      "url": "https://www.ajoomal.com/",
+      "historical_url": "https://www.ajoomal.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -17813,6 +18032,15 @@
     {
       "section": "integrators",
       "entity": "Atos Spain",
+      "field": "services",
+      "value": "Logística",
+      "url": "https://www.atos.ai/es-es?utm_medium=301&utm_source=atos.net",
+      "historical_url": "https://www.atos.ai/es-es?utm_medium=301&utm_source=atos.net",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "integrators",
+      "entity": "Atos Spain",
       "field": "technology_domains",
       "value": "AI / Data",
       "url": "https://www.atos.ai/en/news-insights/case-studies",
@@ -17889,7 +18117,7 @@
       "value": "Cloud",
       "url": "https://www.attackiq.com/",
       "historical_url": "https://www.attackiq.com/",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "manufacturers",
@@ -19531,6 +19759,15 @@
     },
     {
       "section": "clients_private",
+      "entity": "Bankinter",
+      "field": "technology_signals",
+      "value": "Copilotos, asistentes y agentes de IA",
+      "url": "https://www.bankinter.com/www/webcorp/swf/memoria2025/innovacion.html",
+      "historical_url": "https://www.bankinter.com/www/webcorp/swf/memoria2025/innovacion.html",
+      "reason": "VERIFIED_FIRST_PARTY_TECH_STATEMENT"
+    },
+    {
+      "section": "clients_private",
       "entity": "bbva",
       "field": "technology_domains",
       "value": "Cybersecurity",
@@ -19609,6 +19846,15 @@
       "url": "https://www.bbva.com/es/empleo/tech-data/",
       "historical_url": "https://www.bbva.com/es/empleo/tech-data/",
       "reason": "GENERIC_DOMAIN_OR_HIRING_NOT_SPECIFIC"
+    },
+    {
+      "section": "integrators",
+      "entity": "Bechtle Spain",
+      "field": "capabilities",
+      "value": "Cloud",
+      "url": "https://www.bechtle.com/",
+      "historical_url": "https://www.bechtle.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "integrators",
@@ -20775,6 +21021,15 @@
       "section": "integrators",
       "entity": "Capgemini Spain",
       "field": "capabilities",
+      "value": "Cloud",
+      "url": "https://www.capgemini.com/",
+      "historical_url": "https://www.capgemini.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "integrators",
+      "entity": "Capgemini Spain",
+      "field": "capabilities",
       "value": "Data Center",
       "url": "https://www.capgemini.com/services/cloud/",
       "historical_url": "https://www.capgemini.com/services/data-and-ai/",
@@ -20959,6 +21214,15 @@
       "url": "https://www.ciscochannelconnect.com/DistiProfile/347",
       "historical_url": "https://www.ciscochannelconnect.com/DistiProfile/347",
       "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "Computacenter",
+      "field": "capabilities",
+      "value": "Cloud",
+      "url": "https://www.computacenter.com/",
+      "historical_url": "https://www.computacenter.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "integrators",
@@ -22161,6 +22425,15 @@
       "section": "distributors",
       "entity": "Depau",
       "field": "services",
+      "value": "RMA",
+      "url": "https://www.depau.es/",
+      "historical_url": "https://www.depau.es/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Depau",
+      "field": "services",
       "value": "Dropshipping",
       "url": "https://www.depau.es/",
       "historical_url": "https://www.depau.es/",
@@ -22173,7 +22446,7 @@
       "value": "RMA",
       "url": "https://www.depau.es/",
       "historical_url": "https://www.depau.es/",
-      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -22192,6 +22465,15 @@
       "url": "https://www.depau.es/marcas-disponibles",
       "historical_url": "https://www.depau.es/marcas-disponibles",
       "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+    },
+    {
+      "section": "distributors",
+      "entity": "Distr-IT",
+      "field": "capabilities",
+      "value": "Cloud",
+      "url": "https://www.distr-it.pt/",
+      "historical_url": "https://www.distr-it.pt/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -22530,15 +22812,6 @@
       "section": "integrators",
       "entity": "Logicalis",
       "field": "capabilities",
-      "value": "MSP",
-      "url": "https://www.es.logicalis.com/es/perspectivas/noticias/logicalis-spain-obtiene-ha-sido-reconocido-como-partner-ola-de-aws-liderando",
-      "historical_url": "https://www.es.logicalis.com/es/perspectivas/noticias/logicalis-spain-ha-sido-reconocido-como-platform-partner-year-fy25-por-palo",
-      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
-    },
-    {
-      "section": "integrators",
-      "entity": "Logicalis",
-      "field": "capabilities",
       "value": "Azure",
       "url": "https://www.es.logicalis.com/es/perspectivas/blogs/seguridad/cloud-de-aws-te-puede-proteger-de-un-ataque-de-ransomware",
       "historical_url": "https://www.es.logicalis.com/es/perspectivas/noticias/logicalis-spain-ha-sido-reconocido-como-platform-partner-year-fy25-por-palo",
@@ -22570,6 +22843,15 @@
       "url": "https://www.es.logicalis.com/es/perspectivas/blogs/cloud/logicalis-spain-recibe-la-competencia-en-storage-de-aws",
       "historical_url": "https://www.es.logicalis.com/es/reconocimientos",
       "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "services",
+      "value": "Consultoría",
+      "url": "https://www.esistemas.pt/pt/",
+      "historical_url": "https://www.esistemas.pt/pt/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -22808,6 +23090,15 @@
     {
       "section": "distributors",
       "entity": "Esprinet / V-Valley",
+      "field": "services",
+      "value": "Consultoría",
+      "url": "https://www.esprinet.com/pt/",
+      "historical_url": "https://www.esprinet.com/pt/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Esprinet / V-Valley",
       "field": "technology_domains",
       "value": "Identity & Access",
       "url": "https://www.esprinet.com/en/offer/products/",
@@ -22839,7 +23130,7 @@
       "value": "Consultoría",
       "url": "https://www.esprinet.com/pt/",
       "historical_url": "https://www.esprinet.com/pt/",
-      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -22875,7 +23166,7 @@
       "value": "NOC",
       "url": "https://www.exclusive-networks.com/",
       "historical_url": "https://www.exclusive-networks.com/",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "manufacturers",
@@ -22952,11 +23243,20 @@
     {
       "section": "distributors",
       "entity": "Exclusive Networks",
+      "field": "services",
+      "value": "Enablement",
+      "url": "https://www.exclusive-networks.com/",
+      "historical_url": "https://www.exclusive-networks.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Exclusive Networks",
       "field": "capabilities",
       "value": "MSSP",
       "url": "https://www.exclusive-networks.com/",
       "historical_url": "https://www.exclusive-networks.com/",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -29443,6 +29743,15 @@
       "entity": "Fortanix",
       "field": "capabilities",
       "value": "Cloud",
+      "url": "https://www.fortanix.com/",
+      "historical_url": "https://www.fortanix.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Fortanix",
+      "field": "capabilities",
+      "value": "Cloud",
       "url": "https://www.fortanix.com/platform/data-security-manager/multicloud-key-management",
       "historical_url": "https://www.fortanix.com/company/pr/2025/10/ntt-data-and-fortanix-announce-global-partnership-to-strengthen-security-in-the-ai-and-post-quantum-era",
       "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
@@ -32348,6 +32657,15 @@
     {
       "section": "distributors",
       "entity": "Infinigate",
+      "field": "capabilities",
+      "value": "Cloud",
+      "url": "https://www.infinigate.com/",
+      "historical_url": "https://www.infinigate.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Infinigate",
       "field": "vendor_relations",
       "value": "NETSCOUT",
       "url": "https://www.infinigate.com/",
@@ -33198,7 +33516,7 @@
       "value": "Soporte",
       "url": "https://www.infortisa.com/",
       "historical_url": "https://www.infortisa.com/",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -33207,7 +33525,7 @@
       "value": "CTEM",
       "url": "https://www.ingecom.net/",
       "historical_url": "https://www.ingecom.net/",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -33216,7 +33534,16 @@
       "value": "DDI",
       "url": "https://www.ingecom.net/",
       "historical_url": "https://www.ingecom.net/",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ingecom Ignition",
+      "field": "capabilities",
+      "value": "MSSP",
+      "url": "https://www.ingecom.net/",
+      "historical_url": "https://www.ingecom.net/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -37038,6 +37365,24 @@
       "section": "manufacturers",
       "entity": "LevelBlue",
       "field": "capabilities",
+      "value": "MSSP",
+      "url": "https://www.levelblue.com/pga-of-america-partnership",
+      "historical_url": "https://www.levelblue.com/",
+      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "LevelBlue",
+      "field": "capabilities",
+      "value": "Cloud",
+      "url": "https://www.levelblue.com/",
+      "historical_url": "https://www.levelblue.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "LevelBlue",
+      "field": "capabilities",
       "value": "MDR",
       "url": "https://www.levelblue.com/services/managed-cloud-security",
       "historical_url": "https://www.levelblue.com/blogs/levelblue-blog/5-key-benefits-of-a-cloud-data-security-solution",
@@ -38324,28 +38669,28 @@
     {
       "section": "distributors",
       "entity": "idiomund",
-      "field": "job_profiles",
-      "value": "Network Engineer",
-      "url": "https://www.linkedin.com/jobs/engineering-jobs-phoenix-az?trk=homepage-basic_suggested-search",
-      "historical_url": "https://www.linkedin.com/jobs/engineering-jobs-phoenix-az?trk=homepage-basic_suggested-search",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+      "field": "capabilities",
+      "value": "Cloud",
+      "url": "https://www.linkedin.com/",
+      "historical_url": "https://www.linkedin.com/",
+      "reason": "NOT_FIRST_PARTY"
     },
     {
       "section": "distributors",
-      "entity": "Idiomund",
-      "field": "job_profiles",
-      "value": "Network Engineer",
-      "url": "https://www.linkedin.com/jobs/engineering-jobs-phoenix-az?trk=homepage-basic_suggested-search",
-      "historical_url": "https://www.linkedin.com/jobs/engineering-jobs-phoenix-az?trk=homepage-basic_suggested-search",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+      "entity": "idiomund",
+      "field": "capabilities",
+      "value": "Cybersecurity",
+      "url": "https://www.linkedin.com/",
+      "historical_url": "https://www.linkedin.com/",
+      "reason": "NOT_FIRST_PARTY"
     },
     {
-      "section": "clients_private",
-      "entity": "telefonica",
-      "field": "hiring_signals",
-      "value": "Network Engineer",
-      "url": "https://www.linkedin.com/jobs/engineering-jobs-phoenix-az?trk=homepage-jobseeker_suggested-search",
-      "historical_url": "https://www.linkedin.com/jobs/engineering-jobs-phoenix-az?trk=homepage-jobseeker_suggested-search",
+      "section": "distributors",
+      "entity": "idiomund",
+      "field": "capabilities",
+      "value": "Networking",
+      "url": "https://www.linkedin.com/",
+      "historical_url": "https://www.linkedin.com/",
       "reason": "NOT_FIRST_PARTY"
     },
     {
@@ -38410,6 +38755,15 @@
       "url": "https://www.menlosecurity.com/",
       "historical_url": "https://www.menlosecurity.com/",
       "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "field": "capabilities",
+      "value": "Cloud",
+      "url": "https://www.menlosecurity.com/",
+      "historical_url": "https://www.menlosecurity.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "integrators",
@@ -38898,67 +39252,13 @@
       "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
     },
     {
-      "section": "integrators",
-      "entity": "Minsait",
-      "field": "services",
-      "value": "Consulting",
-      "url": "https://www.minsait.com/es/servicios/consultoria-de-infraestructuras-y-logistica-alg",
-      "historical_url": "https://www.minsait.com/es/industrias",
-      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
-    },
-    {
-      "section": "integrators",
-      "entity": "Minsait",
-      "field": "services",
-      "value": "Consultoría",
-      "url": "https://www.minsait.com/es/servicios/consultoria-de-infraestructuras-y-logistica-alg",
-      "historical_url": "https://www.minsait.com/es/industrias",
-      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
-    },
-    {
-      "section": "integrators",
-      "entity": "Minsait",
-      "field": "services",
-      "value": "Logística",
-      "url": "https://www.minsait.com/es/servicios/consultoria-de-infraestructuras-y-logistica-alg",
-      "historical_url": "https://www.minsait.com/es/industrias",
-      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
-    },
-    {
-      "section": "integrators",
-      "entity": "Minsait",
-      "field": "verticals",
-      "value": "Sector público",
-      "url": "https://www.minsait.com/es/industrias/administraciones-publicas",
-      "historical_url": "https://www.minsait.com/es/industrias",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "Minsait",
-      "field": "verticals",
-      "value": "Administraciones Públicas",
-      "url": "https://www.minsait.com/es/industrias/administraciones-publicas",
-      "historical_url": "https://www.minsait.com/es/industrias",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "Minsait",
-      "field": "verticals",
-      "value": "Servicios Financieros",
-      "url": "https://www.minsait.com/es/industrias/administraciones-publicas",
-      "historical_url": "https://www.minsait.com/es/industrias",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "Minsait",
-      "field": "public_cases",
-      "value": "Industrias | Minsait",
-      "url": "https://www.minsait.com/es/industrias",
-      "historical_url": "https://www.minsait.com/es/industrias",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+      "section": "distributors",
+      "entity": "M. Hermida",
+      "field": "capabilities",
+      "value": "Cloud",
+      "url": "https://www.mhermida.com/",
+      "historical_url": "https://www.mhermida.com/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "integrators",
@@ -38985,15 +39285,6 @@
       "value": "Indra Group",
       "url": "https://www.minsait.com/es/nosotros/ecosistema-de-partners",
       "historical_url": "https://www.minsait.com/es/nosotros/ecosistema-de-partners",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "manufacturers",
-      "entity": "AWS",
-      "field": "integrators",
-      "value": "Indra Group",
-      "url": "https://www.minsait.com/es/servicios/cloud",
-      "historical_url": "https://www.minsait.com/es/servicios/cloud",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
@@ -42822,42 +43113,6 @@
       "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
     },
     {
-      "section": "manufacturers",
-      "entity": "AudioCodes",
-      "field": "competitors",
-      "value": "Avaya",
-      "url": "https://www.otcmarkets.com/filing/html?guid=YuI-kaiFu42DB3h&id=19296659",
-      "historical_url": "https://www.otcmarkets.com/filing/html?guid=YuI-kaiFu42DB3h&id=19296659",
-      "reason": "COMPETITION_NOT_SHOWN"
-    },
-    {
-      "section": "manufacturers",
-      "entity": "AudioCodes",
-      "field": "competitors",
-      "value": "Cisco",
-      "url": "https://www.otcmarkets.com/filing/html?guid=YuI-kaiFu42DB3h&id=19296659",
-      "historical_url": "https://www.otcmarkets.com/filing/html?guid=YuI-kaiFu42DB3h&id=19296659",
-      "reason": "COMPETITION_NOT_SHOWN"
-    },
-    {
-      "section": "manufacturers",
-      "entity": "AudioCodes",
-      "field": "competitors",
-      "value": "Oracle",
-      "url": "https://www.otcmarkets.com/filing/html?guid=YuI-kaiFu42DB3h&id=19296659",
-      "historical_url": "https://www.otcmarkets.com/filing/html?guid=YuI-kaiFu42DB3h&id=19296659",
-      "reason": "COMPETITION_NOT_SHOWN"
-    },
-    {
-      "section": "manufacturers",
-      "entity": "AudioCodes",
-      "field": "competitors",
-      "value": "Ribbon Communications",
-      "url": "https://www.otcmarkets.com/filing/html?guid=YuI-kaiFu42DB3h&id=19296659",
-      "historical_url": "https://www.otcmarkets.com/filing/html?guid=YuI-kaiFu42DB3h&id=19296659",
-      "reason": "COMPETITION_NOT_SHOWN"
-    },
-    {
       "section": "integrators",
       "entity": "overti",
       "field": "capabilities",
@@ -45189,6 +45444,42 @@
       "reason": "RELATIONSHIP_NOT_SHOWN"
     },
     {
+      "section": "distributors",
+      "entity": "Esprinet / V-Valley",
+      "field": "services",
+      "value": "Consultoría",
+      "url": "https://www.v-valley.com/pt/",
+      "historical_url": "https://www.v-valley.com/pt/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Esprinet / V-Valley",
+      "field": "capabilities",
+      "value": "Cloud",
+      "url": "https://www.v-valley.com/pt/",
+      "historical_url": "https://www.v-valley.com/pt/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "Esprinet / V-Valley",
+      "field": "capabilities",
+      "value": "Networking",
+      "url": "https://www.v-valley.com/pt/",
+      "historical_url": "https://www.v-valley.com/pt/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
+      "section": "distributors",
+      "entity": "V-Valley Advanced Solutions Portugal",
+      "field": "services",
+      "value": "Consultoría",
+      "url": "https://www.v-valley.com/pt/",
+      "historical_url": "https://www.v-valley.com/pt/",
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
+    },
+    {
       "section": "integrators",
       "entity": "Deloitte",
       "field": "capabilities",
@@ -45528,7 +45819,7 @@
       "value": "NGFW",
       "url": "https://www.whitehat.pt/",
       "historical_url": "https://www.whitehat.pt/",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -45537,7 +45828,7 @@
       "value": "Cloud",
       "url": "https://www.whitehat.pt/",
       "historical_url": "https://www.whitehat.pt/",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -45564,7 +45855,7 @@
       "value": "NGFW",
       "url": "https://www.whitehat.pt/",
       "historical_url": "https://www.whitehat.pt/",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -45573,7 +45864,7 @@
       "value": "Cloud",
       "url": "https://www.whitehat.pt/#contacto",
       "historical_url": "https://www.whitehat.pt/#contacto",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -45600,7 +45891,7 @@
       "value": "NGFW",
       "url": "https://www.whitehat.pt/#contacto",
       "historical_url": "https://www.whitehat.pt/#contacto",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "distributors",
@@ -45609,7 +45900,7 @@
       "value": "Cloud",
       "url": "https://www.whitehat.pt/#fabricantes",
       "historical_url": "https://www.whitehat.pt/#fabricantes",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+      "reason": "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
     },
     {
       "section": "integrators",
@@ -46479,7 +46770,25 @@
       "section": "integrators",
       "entity": "Adarma",
       "field": "capabilities",
+      "value": "Cybersecurity",
+      "url": "https://xmcyber.com/",
+      "historical_url": "https://xmcyber.com/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Adarma",
+      "field": "capabilities",
       "value": "Cloud",
+      "url": "https://xmcyber.com/",
+      "historical_url": "https://xmcyber.com/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Adarma",
+      "field": "capabilities",
+      "value": "Cybersecurity",
       "url": "https://xmcyber.com/",
       "historical_url": "https://xmcyber.com/",
       "reason": "NOT_FIRST_PARTY"
@@ -46590,6 +46899,15 @@
       "value": "It took $58 to break Microsoft’s SCCM, but a patch made it harder",
       "url": "https://www.csoonline.com/article/4209154/it-took-58-to-break-microsofts-sccm-but-a-patch-made-it-harder.html",
       "historical_url": "https://xmcyber.com/news/it-took-58-to-break-microsofts-sccm-but-a-patch-made-it-harder/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "XM Cyber",
+      "field": "recent_signals",
+      "value": "OAuth client ID spoofing silently validates stolen Microsoft Entra ID credentials",
+      "url": "https://www.scworld.com/news/oauth-client-id-spoofing-generates-a-successful-sign-in-to-ms-entra-id",
+      "historical_url": "https://xmcyber.com/news/oauth-client-id-spoofing-silently-validates-stolen-microsoft-entra-id-credentials/",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
