@@ -14,11 +14,12 @@ showHome();
 const getJson=async path=>{const response=await fetch(path,{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);return response.json();};
 const metrics=document.getElementById('ccMetrics'),debt=document.getElementById('ccDebt'),audit=document.getElementById('ccAudit');
 const dateLabel=v=>v?String(v).slice(0,16).replace('T',' ')+' UTC':'fecha no disponible';
-Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/debt_overview.json'),getJson('data/public/audit_integrity.json'),getJson('data/public/last_run.json')]).then(([mr,dr,ir,rr])=>{
+Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/debt_overview.json'),getJson('data/public/audit_integrity.json'),getJson('data/public/last_run.json'),getJson('data/public/source_verification_status.json')]).then(([mr,dr,ir,rr,vr])=>{
  const m=mr.status==='fulfilled'?mr.value:null;
  const d=dr.status==='fulfilled'?dr.value:null;
  const integrity=ir.status==='fulfilled'?ir.value:null;
  const lastRun=rr.status==='fulfilled'?rr.value:null;
+ const sourceCheck=vr.status==='fulfilled'?vr.value:null;
  if(m?.counts){
   const c=m.counts,totalClients=Number(c.clients_public||0)+Number(c.clients_private||0);
   const tiles=[['Fabricantes',c.manufacturers],['Mayoristas',c.distributors],['Integradores',c.integrators],['Clientes',totalClients],['Tendencias y arquitecturas',Number(c.trends||0)+Number(c.architectures||0)]];
@@ -30,8 +31,22 @@ Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/de
   const researchLabel=researchAt?' · Última investigación real: '+dateLabel(researchAt):' · Fecha de la última búsqueda: no disponible';
   const sameRun=lastRun?.generated_at===m.generated_at;
   const provenanceWarning=sameRun?'':' · Advertencia: registro de investigación de otro corte.';
+  const sourceDate=Date.parse(sourceCheck?.generated_at||'');
+  const sourceAge=Number.isFinite(sourceDate)?Math.max(0,(Date.now()-sourceDate)/86400000):null;
+  const sourceValid=sourceCheck?.status==='REVIEW_QUEUE_NOT_FACT_ACCREDITATION';
+  const sourceMatches=sourceValid&&sourceCheck?.snapshot_generated_at===m.generated_at;
+  const sourceLabel=!sourceValid?' · Verificación independiente de enlaces: sin informe publicado':
+   ' · Revisión independiente de enlaces: '+dateLabel(sourceCheck.generated_at)+
+   ' ('+fmt(sourceCheck.live_sample_reviewed)+' de '+fmt(sourceCheck.total_live_review_candidates)+
+   ' referencias; NO acredita hechos)'+
+   (!sourceMatches?' · ALERTA: revisión correspondiente a otro snapshot':'')+
+   (sourceAge!==null&&sourceAge>2?' · ALERTA: verificación con más de 48 h':'');
+  const actualResearch=Date.parse(researchAt||'');
+  const researchAge=Number.isFinite(actualResearch)?Math.max(0,(Date.now()-actualResearch)/86400000):null;
+  const researchWarning=researchAge!==null&&researchAge>2?' · ALERTA: última investigación real hace más de 48 h':'';
   document.getElementById('ccFreshness').textContent='Fotografía publicada: '+dateLabel(m.generated_at)+researchLabel+
-    ' · Calidad de integridad '+(m.meta?.quality_score??'N/D')+'/100 (NO es cobertura de evidencia).'+stale+provenanceWarning;
+    ' · Calidad de integridad '+(m.meta?.quality_score??'N/D')+'/100 (NO es cobertura de evidencia).'+
+    stale+provenanceWarning+researchWarning+sourceLabel;
  }else{
   metrics.textContent='No se han podido cargar las métricas verificables del dataset.';
   document.getElementById('ccFreshness').textContent='Estado de la publicación: no disponible; revisar manifest.json.';
