@@ -114,14 +114,22 @@ class _RelevantInternalLinks(HTMLParser):
             self.current_label.append(data)
 
 
-def deep_source_links(html: str, base_url: str, *, limit: int = 3) -> list[str]:
+def deep_source_links(html: str, base_url: str, *, limit: int = 4,
+                      claims: list[dict] | None = None) -> list[str]:
     """Rank relevant same-host internal pages as next-hop source candidates."""
     from urllib.parse import urljoin
     parser = _RelevantInternalLinks()
-    parser.feed(html[:400_000])
+    parser.feed(html[:1_000_000])
     base_host=(urlparse(base_url).hostname or "").lower().removeprefix("www.")
     ranked=[]
     seen=set()
+    # Historical links are usually generic landing pages. Rank next-hop
+    # sources by the actual unresolved manufacturer/value, not generic menu
+    # labels that happen to say 'solutions' or 'services'.
+    target_names={
+        canonical(str(c.get("value") or "").split(" · ", 1)[0])
+        for c in (claims or []) if len(canonical(c.get("value") or "")) >= 3
+    }
     signals=("partner","fabricant","vendor","linecard","marcas","marca",
              "alianza","alliance","ecosystem","portfolio","catalog","product",
              "services","servicios","solutions","soluciones","customer","case",
@@ -141,8 +149,13 @@ def deep_source_links(html: str, base_url: str, *, limit: int = 3) -> list[str]:
         caption=canonical(label)
         path_hits=sum(sig in path for sig in signals)
         label_hits=sum(sig in caption for sig in signals)
-        score=path_hits*3+label_hits*2
-        if score>0 and len(path)<140:
+        target_hits=sum(
+            1 for name in target_names
+            if name in (path+" "+caption)
+            or name.replace(" ","-") in parsed.path.lower()
+        )
+        score=path_hits*3+label_hits*2+target_hits*12
+        if score>0 and len(path)<180:
             ranked.append((-score,clean))
     ranked.sort()
     return [u for _,u in ranked[:limit]]
@@ -308,7 +321,7 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
             if content_type and not any(t in content_type for t in ("text/", "html", "json")):
                 result["status"] = "NON_TEXT_SOURCE"
                 return result
-            text = historical_visible_text(response.text[:600_000])
+            text = historical_visible_text(response.text[:1_000_000])
             result["source_format"] = "html"
         if len(text) < 100:
             result["status"] = "INSUFFICIENT_SOURCE_CONTENT"
@@ -385,7 +398,7 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
                 r"(?<![a-z0-9])" + re.escape(search_value) + r"(?![a-z0-9])", text
             ) if informative else None
             occurs = bool(match)
-            context = (text[max(0, match.start()-140):min(len(text),match.end()+140)]
+            context = (text[max(0, match.start()-220):min(len(text),match.end()+220)]
                        if match else "")
             checks.append({
                 "section": claim["section"], "entity": claim["entity"],
@@ -422,7 +435,7 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
                         )
                         and canonical(c.get("entity") or "") in owned_entities]
             if unresolved:
-                deep_links=deep_source_links(response.text,safe,limit=3)
+                deep_links=deep_source_links(response.text,safe,limit=4,claims=unresolved)
                 result["followup_candidates"]=len(deep_links)
                 result["deep_links_fetched"]=0
                 result["deep_claim_hits"]=0
