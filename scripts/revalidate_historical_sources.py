@@ -512,7 +512,7 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
             checks.append({
                 "match_method": "PUBLISHER_TITLE_OVERLAP" if citation_match else "EXACT_VALUE",
                 "section": claim["section"], "entity": claim["entity"],
-                "field": field_id, "value": raw_value[:180],
+                "field": field_id, "value": raw_value[:1200],
                 "status": ("VERIFIED_EXPLICIT_ALTERNATIVE" if explicit_alternative else
                            "VALUE_PRESENT_REQUIRES_CONTEXT" if occurs else
                            "NO_SPECIFIC_VALUE_CONFIRMED"),
