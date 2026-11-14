@@ -122,6 +122,8 @@ def classify(claim,url):
         # A comparison page often contains unrelated vendor names in menus,
         # footers and "related comparisons". Credit ONLY the actual pair
         # identified by the source URL or an explicit "A vs B" phrase.
+        if not official_party:
+            return "COMPETITION_NOT_SHOWN"
         if official_comparison_path:
             direct_path_pair = (
                 " vs " in f" {page_path} " and entity_name in page_path
@@ -129,8 +131,8 @@ def classify(claim,url):
             )
             a, b = re.escape(entity_name), re.escape(clean)
             direct_text_pair = bool(re.search(
-                rf"(?<![a-z0-9])(?:{a}\\s+(?:vs|versus|contra)\\s+{b}|"
-                rf"{b}\\s+(?:vs|versus|contra)\\s+{a})(?![a-z0-9])",
+                rf"(?<![a-z0-9])(?:{a}\s+(?:vs|versus|contra)\s+{b}|"
+                rf"{b}\s+(?:vs|versus|contra)\s+{a})(?![a-z0-9])",
                 context,
             ))
             if not (direct_path_pair or direct_text_pair):
