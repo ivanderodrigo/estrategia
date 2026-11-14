@@ -1,14 +1,26 @@
 {
+  "procurement_lifecycle": {
+    "total_public_rows": 490,
+    "non_notice_public_rows": 0,
+    "total_retained": 490,
+    "currently_active_or_date_unknown": 60,
+    "closed_or_deadline_expired": 430,
+    "date_unknown": 9
+  },
   "version": "4.3.0",
-  "generated_at": "2026-11-13T12:00:50.247169+00:00",
-  "finished_at": "2026-11-13T12:00:50.247169+00:00",
+  "generated_at": "2026-11-14T15:47:00.587875+00:00",
+  "finished_at": "2026-11-14T15:47:00.587875+00:00",
   "profile": "daily",
+  "research_finished_at": "2026-11-13T11:31:21.132759+00:00",
+  "research_started_at": "2026-11-13T11:20:54.914974+00:00",
+  "research_stop_reason": "deadline",
+  "research_metrics_from_ledger": true,
   "status": "published",
-  "sources": 2425,
-  "traceable_fields": 6689,
-  "research_gaps": 18885,
-  "critical_gaps": 6860,
-  "manufacturers": 37,
+  "sources": 2781,
+  "traceable_fields": 6724,
+  "research_gaps": 18606,
+  "critical_gaps": 6698,
+  "manufacturers": 39,
   "distributors": 58,
   "integrators": 130,
   "clients": 541,
@@ -33,17 +45,18 @@
   "provenance": {
     "policy": "typed-provenance-non-destructive",
     "types": {
-      "HISTORICAL_RECOVERED": 68,
-      "ARCHIVE_RECOVERED": 39,
-      "WESTCON_DOCUMENT_CURRENT": 525,
-      "WESTCON_FIRST_PARTY_CURRENT": 110,
-      "RESEARCH_SEED": 177,
-      "LEGACY_UNRESOLVED": 175,
-      "PUBLIC_PRIMARY": 14121,
-      "PUBLIC_SECONDARY": 5735
+      "HISTORICAL_RECOVERED": 67,
+      "ARCHIVE_RECOVERED": 38,
+      "WESTCON_DOCUMENT_CURRENT": 521,
+      "WESTCON_FIRST_PARTY_CURRENT": 223,
+      "RESEARCH_SEED": 176,
+      "LEGACY_UNRESOLVED": 173,
+      "PUBLIC_PRIMARY": 19826,
+      "PUBLIC_SECONDARY": 5910,
+      "PUBLIC_ANALYST": 372
     },
     "legacy_unresolved_fields": 0,
-    "legacy_unresolved_items": 66,
+    "legacy_unresolved_items": 62,
     "documents_are_valid_primary_sources": true,
     "legacy_unresolved_remains_research_gap": true
   },
@@ -59,19 +72,19 @@
     "generated_at": "2026-09-01T15:14:33.897953+00:00"
   },
   "archive_apply": {
-    "field_evidence_added": 223,
-    "item_evidence_added": 3711,
-    "legacy_resolved": 86,
+    "field_evidence_added": 221,
+    "item_evidence_added": 3488,
+    "legacy_resolved": 104,
     "unknown_classified": 0,
     "registry_matches_checked": 947,
-    "value_guard_skips": 161
+    "value_guard_skips": 232
   },
   "document_apply": {
     "manufacturer_fields_documented": 4,
     "manufacturer_rows_documented": 0,
     "manufacturer_capability_items_documented": 0,
-    "capability_items_with_public_and_document": 45,
-    "legacy_placeholders_removed": 193
+    "capability_items_with_public_and_document": 61,
+    "legacy_placeholders_removed": 152
   },
   "westcon_current_evidence": {
     "portfolio_spain_rows": 36,
@@ -88,9 +101,9 @@
     "sections": 7
   },
   "confidence_model": {
-    "fields": 8064,
-    "items": 13177,
-    "without_accrediting_evidence": 9248
+    "fields": 8045,
+    "items": 13255,
+    "without_accrediting_evidence": 8830
   },
   "knowledge_preservation": {
     "version": "4.3.0",
@@ -100,7 +113,7 @@
     "errors": [],
     "before": {
       "entities": {
-        "manufacturers": 37,
+        "manufacturers": 39,
         "distributors": 57,
         "integrators": 130,
         "clients_public": 490,
@@ -108,41 +121,41 @@
         "trends": 15,
         "architectures": 12
       },
-      "values": 14441,
-      "evidences": 8575,
-      "relations": 618,
-      "provisional_relations": 300,
-      "research_seed_claims": 11160,
-      "derived_values": 3233,
-      "derived_evidence_support": 1149
-    },
-    "after": {
-      "entities": {
-        "manufacturers": 37,
-        "distributors": 57,
-        "integrators": 130,
-        "clients_public": 490,
-        "clients_private": 51,
-        "trends": 15,
-        "architectures": 12
-      },
-      "values": 14441,
-      "evidences": 8575,
+      "values": 14565,
+      "evidences": 9049,
       "relations": 618,
       "provisional_relations": 300,
       "research_seed_claims": 11162,
-      "derived_values": 3233,
-      "derived_evidence_support": 1149
+      "derived_values": 3249,
+      "derived_evidence_support": 1166
+    },
+    "after": {
+      "entities": {
+        "manufacturers": 39,
+        "distributors": 57,
+        "integrators": 130,
+        "clients_public": 490,
+        "clients_private": 51,
+        "trends": 15,
+        "architectures": 12
+      },
+      "values": 14562,
+      "evidences": 9049,
+      "relations": 622,
+      "provisional_relations": 300,
+      "research_seed_claims": 11185,
+      "derived_values": 3197,
+      "derived_evidence_support": 1124
     },
     "semantic_changes": {
       "accredited_scalar_supersessions": [],
       "raw_evidence_sources_replaced_or_removed": [],
-      "derived_values_before": 3233,
+      "derived_values_before": 3249,
       "provisional_relationship_signals_before": 300,
       "provisional_relationship_signals_after": 300,
-      "derived_values_after": 3233,
-      "derived_evidence_support_before": 1149,
-      "derived_evidence_support_after": 1149
+      "derived_values_after": 3197,
+      "derived_evidence_support_before": 1166,
+      "derived_evidence_support_after": 1124
     },
     "missing": {
       "entities": [],
@@ -157,27 +170,27 @@
         "field_evidence_restored": 0,
         "item_evidence_restored": 79,
         "moved_item_support_restored": 0,
-        "claims_examined": 7121,
+        "claims_examined": 7140,
         "total_evidence_restored": 79
       },
       "accredited_support_final": {
         "field_evidence_restored": 0,
-        "item_evidence_restored": 0,
+        "item_evidence_restored": 120,
         "moved_item_support_restored": 0,
-        "claims_examined": 7121,
-        "total_evidence_restored": 0
+        "claims_examined": 7140,
+        "total_evidence_restored": 120
       },
       "relations": {
-        "relations_restored": 0,
+        "relations_restored": 4,
         "relations_skipped_unresolved_endpoints": 0,
         "relations_skipped_provisional": 300,
         "endpoint_evidence_rows_pruned": 0,
         "graph_entities_restored": 0,
         "table_endpoint_fallbacks": 0,
-        "relations_after": 918
+        "relations_after": 922
       },
       "manufacturer_deduplication": {
-        "fields_examined": 527,
+        "fields_examined": 489,
         "duplicates_removed": 0,
         "evidence_merged": 0,
         "qualified_variants_merged": 0
@@ -189,42 +202,42 @@
       "baseline_seed_snapshot": {
         "baseline_claims_seen": 1206,
         "seed_rows_added": 975,
-        "unmatched_values": 59
+        "unmatched_values": 60
       },
       "seed_registry_snapshot": {
-        "registry_claims": 11160,
+        "registry_claims": 11162,
         "source_claims_preserved": 0
       },
       "internal_seed_migration": {
         "document_rows_converted": 606,
-        "historical_rows_marked": 15884
+        "historical_rows_marked": 15194
       },
       "baseline_seed_migration": {
         "baseline_claims_seen": 1206,
-        "seed_rows_added": 106,
-        "unmatched_values": 59
+        "seed_rows_added": 179,
+        "unmatched_values": 60
       },
       "research_seed_reconciliation": {
-        "claims_examined": 8064,
+        "claims_examined": 8087,
         "field_seed_rows_restored": 35,
-        "item_seed_rows_restored": 1213,
+        "item_seed_rows_restored": 1140,
         "moved_item_seed_rows_restored": 0,
         "linecard_seed_rows_restored": 0,
-        "total_seed_rows_restored": 1248
+        "total_seed_rows_restored": 1175
       },
       "research_seed_registry": {
-        "registry_claims": 11162,
-        "source_claims_preserved": 11160
+        "registry_claims": 11185,
+        "source_claims_preserved": 11162
       },
       "public_evidence_migration": {
-        "configured": 56,
-        "matched": 56,
-        "evidence_added": 0,
+        "configured": 69,
+        "matched": 69,
+        "evidence_added": 3,
         "unmatched": 0
       },
       "public_evidence_migration_final": {
-        "configured": 56,
-        "matched": 56,
+        "configured": 69,
+        "matched": 69,
         "evidence_added": 0,
         "unmatched": 0
       }
@@ -233,63 +246,64 @@
   "gap_priority": {
     "model": "business-value-x-researchability-opportunity-v2",
     "tiers": {
-      "P0": 10,
-      "P1": 1041,
-      "P2": 4767,
-      "P3": 13067
+      "P0": 51,
+      "P1": 985,
+      "P2": 4564,
+      "P3": 13006
     },
-    "actionable_high_value_gaps": 1051,
-    "weighted_expected_debt": 31083.01,
-    "weighted_open_debt": 20166.22,
-    "business_weighted_coverage_pct": 35.12,
+    "actionable_high_value_gaps": 1036,
+    "weighted_expected_debt": 31193.07,
+    "weighted_open_debt": 20272.53,
+    "business_weighted_coverage_pct": 35.01,
     "source_families": {
-      "official": 7714,
+      "official": 7699,
       "procurement": 3467,
-      "services": 2604,
-      "technology": 1031,
-      "careers": 977,
-      "partners": 972,
-      "cases": 750,
-      "news": 748,
-      "analyst": 366,
-      "financial": 256
+      "services": 2502,
+      "technology": 1026,
+      "careers": 979,
+      "partners": 852,
+      "cases": 752,
+      "news": 750,
+      "analyst": 321,
+      "financial": 258
     },
     "by_section_tier": {
       "manufacturers": {
-        "P3": 864,
-        "P2": 211,
-        "P1": 50
+        "P3": 892,
+        "P2": 115,
+        "P1": 30
       },
       "distributors": {
-        "P3": 910,
-        "P2": 894,
-        "P1": 77
+        "P3": 904,
+        "P2": 837,
+        "P1": 74,
+        "P0": 2
       },
       "integrators": {
-        "P3": 2600,
-        "P2": 1363,
-        "P1": 844,
-        "P0": 10
+        "P3": 2585,
+        "P0": 49,
+        "P2": 1321,
+        "P1": 812
       },
       "clients_public": {
-        "P3": 7171,
-        "P2": 1278,
-        "P1": 19
+        "P3": 7177,
+        "P2": 1273,
+        "P1": 18
       },
       "clients_private": {
         "P3": 629,
-        "P2": 963,
+        "P2": 962,
         "P1": 51
       },
       "trends": {
-        "P3": 607,
-        "P2": 58
+        "P3": 551,
+        "P2": 56
       },
       "architectures": {
-        "P3": 286
+        "P3": 268
       }
     },
-    "clients_public_share_of_p0_p1_pct": 1.81,
+    "clients_public_share_of_p0_p1_pct": 1.74,
     "low_context_public_gaps": 0,
     "low_context_public_p0_p1": 0,
     "context_rich_public_gaps": 8077,
@@ -297,25 +311,27 @@
   },
   "gap_status_summary": {
     "version": 1,
-    "defined_at": "2026-11-13T12:01:49.570099+00:00",
-    "total": 18885,
+    "defined_at": "2026-11-14T15:48:09.554870+00:00",
+    "total": 18606,
     "by_status": {
-      "derivation-pending": 4063,
-      "historical-validation": 88,
-      "insufficient-support": 2079,
-      "not-found": 10023,
+      "derivation-pending": 4064,
+      "historical-validation": 82,
+      "insufficient-support": 1946,
+      "not-found": 9793,
+      "not-researched": 89,
       "source-unavailable": 2632
     },
     "by_section": {
       "architectures": {
-        "historical-validation": 12,
-        "insufficient-support": 21,
-        "not-found": 253
+        "historical-validation": 9,
+        "insufficient-support": 19,
+        "not-found": 236,
+        "not-researched": 4
       },
       "clients_private": {
         "derivation-pending": 800,
         "insufficient-support": 23,
-        "not-found": 820
+        "not-found": 819
       },
       "clients_public": {
         "derivation-pending": 3062,
@@ -324,46 +340,70 @@
         "source-unavailable": 2632
       },
       "distributors": {
-        "insufficient-support": 477,
-        "not-found": 1404
+        "insufficient-support": 444,
+        "not-found": 1371,
+        "not-researched": 2
       },
       "integrators": {
-        "insufficient-support": 1309,
-        "not-found": 3508
+        "insufficient-support": 1252,
+        "not-found": 3475,
+        "not-researched": 40
       },
       "manufacturers": {
-        "derivation-pending": 74,
-        "historical-validation": 23,
-        "insufficient-support": 85,
-        "not-found": 943
+        "derivation-pending": 78,
+        "historical-validation": 20,
+        "insufficient-support": 61,
+        "not-found": 835,
+        "not-researched": 43
       },
       "trends": {
-        "derivation-pending": 127,
+        "derivation-pending": 124,
         "historical-validation": 53,
-        "insufficient-support": 96,
-        "not-found": 389
+        "insufficient-support": 79,
+        "not-found": 351
       }
     },
     "note": "Open research tasks, not missing cells. A field may produce multiple tasks. Completeness, integrity and freshness are different measures."
   },
   "intelligence_storage": {
     "format": "westcon-sharded-v1",
-    "logical_bytes": 88437786,
-    "shards": 17,
-    "largest_shard_bytes": 8388558
+    "logical_bytes": 95603244,
+    "shards": 19,
+    "largest_shard_bytes": 8387334
   },
   "source_intelligence": {
-    "historical_total": 252,
+    "historical_total": 251,
     "historical_supported_current_open": 0,
-    "historical_search_required": 92,
-    "historical_supported_westcon": 112,
-    "historical_supported_public": 23,
+    "historical_search_required": 86,
+    "historical_supported_westcon": 111,
+    "historical_supported_public": 29,
     "historical_supported_westcon_and_public": 25,
-    "targets_supported": 9867,
-    "targets_search_required": 7873,
-    "claims_publicly_accredited": 9531,
-    "claims_westcon_supported": 287,
-    "claims_westcon_and_public": 49,
-    "claims_pending": 7693
+    "targets_supported": 10315,
+    "targets_search_required": 7509,
+    "claims_publicly_accredited": 9973,
+    "claims_westcon_supported": 252,
+    "claims_westcon_and_public": 90,
+    "claims_pending": 7329
+  },
+  "historical_trails": {
+    "claims": 5092,
+    "unique_urls": 608,
+    "status": "HISTORICAL_LEADS_NOT_ACCREDITED",
+    "claim_review": {
+      "generated_at": "2026-11-14T15:47:00.587875+00:00",
+      "review_policy": "Atomic claim/value matching against accredited current evidence; historical URLs alone never confer accreditation.",
+      "reviewed": 5092,
+      "accredited_existing": 62,
+      "pending_revalidation": 5030,
+      "by_section": {
+        "manufacturers": 96,
+        "distributors": 996,
+        "integrators": 3081,
+        "clients_public": 0,
+        "clients_private": 257,
+        "trends": 466,
+        "architectures": 196
+      }
+    }
   }
 }

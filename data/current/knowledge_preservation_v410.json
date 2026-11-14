@@ -6,7 +6,7 @@
   "errors": [],
   "before": {
     "entities": {
-      "manufacturers": 37,
+      "manufacturers": 39,
       "distributors": 57,
       "integrators": 130,
       "clients_public": 490,
@@ -14,41 +14,41 @@
       "trends": 15,
       "architectures": 12
     },
-    "values": 14441,
-    "evidences": 8575,
-    "relations": 618,
-    "provisional_relations": 300,
-    "research_seed_claims": 11160,
-    "derived_values": 3233,
-    "derived_evidence_support": 1149
-  },
-  "after": {
-    "entities": {
-      "manufacturers": 37,
-      "distributors": 57,
-      "integrators": 130,
-      "clients_public": 490,
-      "clients_private": 51,
-      "trends": 15,
-      "architectures": 12
-    },
-    "values": 14441,
-    "evidences": 8575,
+    "values": 14565,
+    "evidences": 9049,
     "relations": 618,
     "provisional_relations": 300,
     "research_seed_claims": 11162,
-    "derived_values": 3233,
-    "derived_evidence_support": 1149
+    "derived_values": 3249,
+    "derived_evidence_support": 1166
+  },
+  "after": {
+    "entities": {
+      "manufacturers": 39,
+      "distributors": 57,
+      "integrators": 130,
+      "clients_public": 490,
+      "clients_private": 51,
+      "trends": 15,
+      "architectures": 12
+    },
+    "values": 14562,
+    "evidences": 9049,
+    "relations": 622,
+    "provisional_relations": 300,
+    "research_seed_claims": 11185,
+    "derived_values": 3197,
+    "derived_evidence_support": 1124
   },
   "semantic_changes": {
     "accredited_scalar_supersessions": [],
     "raw_evidence_sources_replaced_or_removed": [],
-    "derived_values_before": 3233,
+    "derived_values_before": 3249,
     "provisional_relationship_signals_before": 300,
     "provisional_relationship_signals_after": 300,
-    "derived_values_after": 3233,
-    "derived_evidence_support_before": 1149,
-    "derived_evidence_support_after": 1149
+    "derived_values_after": 3197,
+    "derived_evidence_support_before": 1166,
+    "derived_evidence_support_after": 1124
   },
   "missing": {
     "entities": [],
@@ -63,27 +63,27 @@
       "field_evidence_restored": 0,
       "item_evidence_restored": 79,
       "moved_item_support_restored": 0,
-      "claims_examined": 7121,
+      "claims_examined": 7140,
       "total_evidence_restored": 79
     },
     "accredited_support_final": {
       "field_evidence_restored": 0,
-      "item_evidence_restored": 0,
+      "item_evidence_restored": 120,
       "moved_item_support_restored": 0,
-      "claims_examined": 7121,
-      "total_evidence_restored": 0
+      "claims_examined": 7140,
+      "total_evidence_restored": 120
     },
     "relations": {
-      "relations_restored": 0,
+      "relations_restored": 4,
       "relations_skipped_unresolved_endpoints": 0,
       "relations_skipped_provisional": 300,
       "endpoint_evidence_rows_pruned": 0,
       "graph_entities_restored": 0,
       "table_endpoint_fallbacks": 0,
-      "relations_after": 918
+      "relations_after": 922
     },
     "manufacturer_deduplication": {
-      "fields_examined": 527,
+      "fields_examined": 489,
       "duplicates_removed": 0,
       "evidence_merged": 0,
       "qualified_variants_merged": 0
@@ -95,42 +95,42 @@
     "baseline_seed_snapshot": {
       "baseline_claims_seen": 1206,
       "seed_rows_added": 975,
-      "unmatched_values": 59
+      "unmatched_values": 60
     },
     "seed_registry_snapshot": {
-      "registry_claims": 11160,
+      "registry_claims": 11162,
       "source_claims_preserved": 0
     },
     "internal_seed_migration": {
       "document_rows_converted": 606,
-      "historical_rows_marked": 15884
+      "historical_rows_marked": 15194
     },
     "baseline_seed_migration": {
       "baseline_claims_seen": 1206,
-      "seed_rows_added": 106,
-      "unmatched_values": 59
+      "seed_rows_added": 179,
+      "unmatched_values": 60
     },
     "research_seed_reconciliation": {
-      "claims_examined": 8064,
+      "claims_examined": 8087,
       "field_seed_rows_restored": 35,
-      "item_seed_rows_restored": 1213,
+      "item_seed_rows_restored": 1140,
       "moved_item_seed_rows_restored": 0,
       "linecard_seed_rows_restored": 0,
-      "total_seed_rows_restored": 1248
+      "total_seed_rows_restored": 1175
     },
     "research_seed_registry": {
-      "registry_claims": 11162,
-      "source_claims_preserved": 11160
+      "registry_claims": 11185,
+      "source_claims_preserved": 11162
     },
     "public_evidence_migration": {
-      "configured": 56,
-      "matched": 56,
-      "evidence_added": 0,
+      "configured": 69,
+      "matched": 69,
+      "evidence_added": 3,
       "unmatched": 0
     },
     "public_evidence_migration_final": {
-      "configured": 56,
-      "matched": 56,
+      "configured": 69,
+      "matched": 69,
       "evidence_added": 0,
       "unmatched": 0
     }
