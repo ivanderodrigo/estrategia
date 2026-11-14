@@ -56,7 +56,7 @@ def classify(claim,url):
     value=str(claim.get("value") or "").strip()
     entity=str(claim.get("entity") or "").strip()
     excerpt=str(claim.get("source_context") or "").strip()
-    if not entity or not value or not excerpt or len(value)>160:
+    if not entity or not value or not excerpt or len(value)>1200:
         return "INSUFFICIENT_EXCERPT"
     clean=canonical(value)
     context=canonical(excerpt)
