@@ -9,7 +9,11 @@ on:
       - '404.html'
       - 'memoria-historica.html'
       - 'assets/**'
-      - 'data/public/**'
+      # Wait for an atomic canonical rebuild; historical sidecars alone are
+      # intermediate research results and can precede a public snapshot.
+      - 'data/public/manifest.json'
+      - 'data/public/sections/**'
+      - 'data/public/audit_integrity.json'
       - 'CNAME'
       - '.github/workflows/pages-deploy.yml'
   workflow_dispatch:
@@ -18,7 +22,6 @@ on:
       - 'Westcon Intelligence Daily'
       - 'Westcon Intelligence Weekly'
       - 'Westcon Intelligence Monthly'
-      - 'Historical Source Diligence'
     types: [completed]
     branches: [main]
 permissions:
