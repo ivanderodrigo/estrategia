@@ -627,12 +627,36 @@
     const map=new Map();rows.forEach(ev=>{if(!ev)return;const k=ev.url||`${ev.document_id||ev.document||''}|${ev.slide||''}|${ev.field||''}|${ev.item_value||''}`;if(k&&!map.has(k))map.set(k,ev);});return [...map.values()];
   }
   function rowConfidence(row){
-    const fields=Object.values(row?.fields||{}).filter(f=>hasValue(f?.value)),scores=fields.map(f=>Number(f.confidence)).filter(Number.isFinite),score=scores.length?scores.reduce((a,b)=>a+b,0)/scores.length:.38;
-    return {score,band:score>=.8?'high':score>=.6?'medium':'low'};
+    // Global confidence is about supported published claims, never the
+    // average of numerical estimates stored for unverified fields.
+    let supported=0,unsourced=0;const scores=[];
+    for(const field of Object.values(row?.fields||{})){
+      if(!hasValue(field?.value))continue;
+      const value=field.value;
+      const items=Array.isArray(value)
+        ?value.flatMap(v=>v&&typeof v==='object'&&v.layer
+            ?(v.vendors||[]).map((name,i)=>itemFor({
+                value:v.vendors||[],items:v.vendor_items||[],evidence:[]},name,i))
+            :[itemFor(field,v,0)])
+        :[field];
+      for(const item of items){
+        const proof=atomicCurrentProof(item?.evidence||[]);
+        if(proof){
+          supported++;
+          scores.push(Math.min(1,Math.max(.38,Number(item.confidence??field.confidence??.65))));
+        }else{
+          unsourced++;
+          scores.push(.38);
+        }
+      }
+    }
+    const score=scores.length?scores.reduce((a,b)=>a+b,0)/scores.length:.38;
+    const band=!supported?'low':unsourced?'medium':score>=.8?'high':score>=.6?'medium':'low';
+    return {score,band,supported,unsourced};
   }
   function virtualField(row,col){
     const evidence=allRowEvidence(row),confidence=rowConfidence(row);
-    if(col.id==='confidence')return {value:confidence.band,confidence:confidence.score,confidence_band:confidence.band,evidence,claim_type:'interpretation',qualifier:'Síntesis de los campos poblados de la fila; ponderada previamente por calidad y actualidad de sus evidencias.'};
+    if(col.id==='confidence')return {value:confidence.band,confidence:confidence.score,confidence_band:confidence.band,evidence:evidence.filter(ev=>atomicCurrentProof([ev])),claim_type:'interpretation',qualifier:'Resumen de afirmaciones de esta ficha: '+confidence.supported+' acreditadas y '+confidence.unsourced+' sin fuente específica. La confianza global no acredita cada campo por separado.'};
     if(col.id==='last_verified'){
       const dates=evidence.map(ev=>ev.retrieved_at||ev.date).filter(Boolean).map(v=>({raw:v,time:new Date(v).getTime()})).filter(x=>Number.isFinite(x.time)).sort((a,b)=>b.time-a.time);
       return {value:dates[0]?.raw||'',confidence:confidence.score,confidence_band:confidence.band,evidence,claim_type:'fact'};
