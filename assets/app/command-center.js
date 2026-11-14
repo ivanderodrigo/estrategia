@@ -14,9 +14,10 @@ showHome();
 const getJson=async path=>{const response=await fetch(path,{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);return response.json();};
 const metrics=document.getElementById('ccMetrics'),debt=document.getElementById('ccDebt'),audit=document.getElementById('ccAudit');
 const dateLabel=v=>v?String(v).slice(0,16).replace('T',' ')+' UTC':'fecha no disponible';
-Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/debt_overview.json')]).then(([mr,dr])=>{
+Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/debt_overview.json'),getJson('data/public/audit_integrity.json')]).then(([mr,dr,ir])=>{
  const m=mr.status==='fulfilled'?mr.value:null;
  const d=dr.status==='fulfilled'?dr.value:null;
+ const integrity=ir.status==='fulfilled'?ir.value:null;
  if(m?.counts){
   const c=m.counts,totalClients=Number(c.clients_public||0)+Number(c.clients_private||0);
   const tiles=[['Fabricantes',c.manufacturers],['Mayoristas',c.distributors],['Integradores',c.integrators],['Clientes',totalClients],['Tendencias y arquitecturas',Number(c.trends||0)+Number(c.architectures||0)]];
@@ -26,8 +27,8 @@ Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/de
   metrics.textContent='No se han podido cargar las métricas verificables del dataset.';
   document.getElementById('ccFreshness').textContent='Estado de la publicación: no disponible; revisar manifest.json.';
  }
- const r=window.WestconAudit?.evaluate(m,d);
- audit.innerHTML=window.WestconAudit?.render(m,d)||
+ const r=window.WestconAudit?.evaluate(m,d,integrity);
+ audit.innerHTML=window.WestconAudit?.render(m,d,integrity)||
   '<p class="cc-audit-warning">La herramienta de auditoría no se ha cargado. Consulta data/public/debt_overview.json.</p>';
  if(r?.hasData){
   const c=d.debt_breakdown||{};
