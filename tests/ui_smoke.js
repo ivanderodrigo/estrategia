@@ -42,6 +42,17 @@ for (const label of ['Fabricantes','Mayoristas','Integradores','Clientes','Tende
 
 console.log('UI smoke v4.4.0 PASS');
 
+// Directly confirmed portfolio statements have no public URL. They must be
+// recognized as exact proof without accepting an untyped or unrelated claim.
+const proofFunction = js.slice(js.indexOf('function atomicCurrentProof('), js.indexOf('function sourcedScalarForTable(')).trim();
+const acceptsProof = new Function('return (' + proofFunction + ')')();
+const statement = {provenance_origin:'WESTCON_FIRST_PARTY_CURRENT', statement_id:'confirmed-portfolio',
+  accrediting:true, atomic:true, source_binding:'claim-specific', westcon_claim_scope:'portfolio-membership', field:'westcon_portugal'};
+if (!acceptsProof([statement])) throw new Error('Confirmed portfolio statement incorrectly pending');
+if (acceptsProof([{...statement,field:'capabilities'}])) throw new Error('Portfolio statement leaks to technical capability');
+if (acceptsProof([{...statement,accrediting:false}])) throw new Error('Rejected statement accepted');
+if (acceptsProof([{...statement,atomic:false}])) throw new Error('Unbound statement accepted');
+
 // v6.1: all data values use badges; unsupported ones must never inherit proof.
 for (const token of ['function atomicCurrentProof(', 'function pendingTagHtml(', 'confidence-tag unverified', 'elements=value.map(', 'if(!sourcedScalarForTable(field))return pendingTagHtml(field,value,0)', 'f&&hasValue(f.value)?renderValue(']) {
   if (!js.includes(token)) throw new Error('business-evidence UI regression: '+token);

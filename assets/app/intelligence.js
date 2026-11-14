@@ -452,7 +452,9 @@
     const score=item?.confidence ?? field?.confidence ?? 0.66;
     const band=atomicCurrentProof(evidence)?(score>=.65?'high':'medium'):'low';
     const reason=item?.confidence_reason || field?.confidence_reason || '';
-    const qualifier=item?.qualifier||field?.qualifier;
+    const storedQualifier=item?.qualifier||field?.qualifier;
+    const qualifier=atomicCurrentProof(evidence)&&storedQualifier==='Dato histórico preservado; procedencia específica pendiente de reconstrucción.'
+      ?'Dato acreditado mediante las fuentes específicas mostradas a continuación.':storedQualifier;
     const competitionTargets=Array.isArray(item?.competes_with_westcon)?item.competes_with_westcon.filter(Boolean):[];
     const competitionInfo=item?.competition_mapping_status==='EVIDENCIADO'&&competitionTargets.length?`<div class="confidence-why"><b>Competencia documentada con</b><p>${esc(competitionTargets.join(' · '))}</p></div>`:'';
     const claim=item?.claim_type||field?.claim_type||'fact';
@@ -480,6 +482,7 @@
       const origin=String(ev.provenance_origin||'').toUpperCase();
       if(/HISTORICAL|ARCHIVE|REPORT_CORROBORATION|RESEARCH_SEED|LEGACY_UNRESOLVED/.test(origin))return false;
       if(origin==='WESTCON_DOCUMENT')return false;
+      if(origin==='WESTCON_FIRST_PARTY_CURRENT'&&ev.statement_id)return ev.accrediting===true&&ev.atomic===true&&ev.source_binding==='claim-specific'&&ev.westcon_claim_scope==='portfolio-membership'&&['westcon_spain','westcon_portugal','scope','portfolio'].includes(ev.field);
       if(/WESTCON_DOCUMENT_CURRENT|WESTCON_FIRST_PARTY_CURRENT/.test(origin))return Boolean(ev.document||ev.document_id||ev.url);
       return /^https?:\/\//i.test(String(ev.url||'')) && ev.accrediting!==false;
     });
