@@ -101,6 +101,32 @@ class WorkflowIntegrity(unittest.TestCase):
         self.assertIn("python -m scripts.review_sources_live", source)
         self.assertIn("workflow_dispatch:", source)
 
+    def test_source_verification_publishes_snapshot_bound_review_status(self) -> None:
+        source = (WORKFLOWS / "source-verification.yml").read_text(encoding="utf-8")
+        self.assertIn("scripts/publish_source_verification_status.py", source)
+        self.assertIn("data/public/source_verification_status.json", source)
+        self.assertIn("contents: write", source)
+        self.assertIn("git fetch origin main", source)
+        self.assertIn("git reset --hard origin/main", source)
+        self.assertIn("source-live-review.json", source)
+        frontend = (ROOT / "assets/app/command-center.js").read_text(encoding="utf-8")
+        self.assertIn("source_verification_status.json", frontend)
+        self.assertIn("REVIEW_QUEUE_NOT_FACT_ACCREDITATION", frontend)
+        self.assertIn("snapshot_generated_at===m.generated_at", frontend)
+
+    def test_published_scheduling_copy_matches_actual_utc_cron(self) -> None:
+        frontend = (ROOT / "assets/app/intelligence.js").read_text(encoding="utf-8")
+        schedules = {
+            "daily": ("17 5 * * 1-5", "05:17 UTC"),
+            "weekly": ("29 22 * * 0,1,3,5", "22:29 UTC"),
+            "monthly": ("41 3 1 * *", "03:41 UTC"),
+        }
+        for profile, (cron, label) in schedules.items():
+            workflow = (WORKFLOWS / f"research-{profile}.yml").read_text(encoding="utf-8")
+            self.assertIn(cron, workflow)
+            self.assertIn(label, frontend)
+        self.assertIn("horarios indicados son UTC", frontend)
+
     def test_reusable_runner_serializes_validates_and_preserves_diagnostics(self) -> None:
         text = (WORKFLOWS / "research-run.yml").read_text(encoding="utf-8")
         for token in (
