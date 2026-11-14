@@ -319,6 +319,9 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
     result = {"url": url, "checked_at": checked,
               "status": "UNAVAILABLE", "claim_hits": 0,
               "claims_tested": len(claims),
+              "claim_checks": [{**claim, "status": "SOURCE_UNAVAILABLE",
+                                "source_context": "", "accredited": False}
+                               for claim in claims],
               "accreditation": "NOT_ACCREDITED"}
     try:
         safe = validate_public_url(url)
@@ -424,7 +427,12 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
                 field_id in partner_fields and owned and partner_page
                 and len(vendor) >= 2
             )
-            informative = (
+            informative = len(value) >= 2 and field_id in {
+                "distributors", "competitors", "vendor_relations", "westcon_overlap",
+                "manufacturer_relations", "vendor_partnerships", "partnerships",
+                "linecard_remainder", "alliances", "competitor_vendor_overlap",
+                "capabilities", "services", "specializations", "technology_domains",
+            } or (
                 (len(value) >= 6 and
                  (len(tokens) >= 2 or field_id in (
                     "competitors", "market_players", "vendors",
@@ -493,10 +501,18 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
                             for original in checks:
                                 if (original["section"],original["entity"],original["field"],
                                     original["value"])==key:
+                                    # A later menu mention must never replace an
+                                    # already probative paragraph on the root page.
+                                    from scripts.accredit_semantic_historical_sources import classify
+                                    old_proven = classify(original, original.get("resolved_url") or safe).startswith("VERIFIED_")
+                                    new_proven = classify(child, child.get("resolved_url") or target).startswith("VERIFIED_")
+                                    if old_proven and not new_proven:
+                                        continue
                                     original.update(child)
                                     original["discovered_from"]=url
                                     result["deep_claim_hits"]+=1
-                                    found.append(key)
+                                    if new_proven or child.get("accredited"):
+                                        found.append(key)
                                     break
                     unresolved=[c for c in unresolved
                                 if (c["section"],c["entity"],c["field"],c["value"]) not in found]
@@ -545,6 +561,9 @@ def run(limit: int, timeout: float, workers: int = 1) -> dict:
             for url, outcome in pool.map(assess, chosen):
                 state[url] = outcome
                 stats[outcome["status"]] += 1
+                completed_count = sum(stats.values())
+                if completed_count % 50 == 0:
+                    print(f"Historical audit: {completed_count}/{len(chosen)} URLs checked", flush=True)
     # Drop pages no longer referenced by any current historical assertion.
     state = {url: row for url, row in state.items() if url in inventory}
     completed = datetime.now(timezone.utc).isoformat()
