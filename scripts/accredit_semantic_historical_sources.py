@@ -21,8 +21,9 @@ REGISTRY=ROOT/"config/current/historical_semantic_verified.json"
 REPORT=ROOT/"data/public/historical/current/semantic_claim_audit.json"
 
 RELATION_FIELDS={
-    "integrators":{"vendor_relations","manufacturer_relations","vendor_partnerships","partnerships"},
-    "distributors":{"vendor_relations"},
+    "integrators":{"vendor_relations","manufacturer_relations","vendor_partnerships",
+                   "partnerships","alliances"},
+    "distributors":{"vendor_relations","linecard_remainder"},
 }
 OWN_CAPABILITY={
     "manufacturers":{"capabilities"},
