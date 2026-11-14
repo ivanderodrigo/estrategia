@@ -11,9 +11,11 @@ import json
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from engine.publication import _source_coverage
 
 ROOT=Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0,str(ROOT))
+from engine.publication import _source_coverage
 PUBLIC=ROOT/"data/public"
 SECTIONS=("manufacturers","distributors","integrators","clients_public",
           "clients_private","trends","architectures")
