@@ -315,6 +315,49 @@ def apply_westcon_current_evidence(data: dict[str, Any], config: Mapping[str, An
         _attach_scalar(row, "scope", "PT", _rule_evidence(portugal_rule, field="scope", value="PT"))
         if canonical(name) in explicit_non_spain:
             _attach_scalar(row, "westcon_spain", False, _rule_evidence(portugal_rule, field="westcon_spain", value=False))
+        # The territorial relationship is a Westcon first-party fact. Technical
+        # categories are independently documented by the vendor's own catalogue.
+        # Do not use the Portugal membership statement to accredit a product category.
+        details = (config.get("portugal_additional_details") or {}).get(name) or {}
+        if details.get("domain"):
+            domain = str(details["domain"])
+            current_domain = (row.get("fields") or {}).get("domain") or {}
+            current_value = current_domain.get("value")
+            matches = (not _has_value(current_value) or
+                       canonical(domain) in {canonical(x) for x in (
+                           current_value if isinstance(current_value, list) else [current_value]
+                       )})
+            if matches:
+                domain_ev = _catalog_evidence(details, portugal_rule, field="domain", value=domain)
+                if not _has_value(current_value):
+                    _attach_scalar(row, "domain", domain, domain_ev)
+                elif isinstance(current_value, list):
+                    _attach_portfolio_domain(row, domain, domain_ev)
+                else:
+                    _attach_scalar(row, "domain", current_value, domain_ev)
+        if details.get("capabilities"):
+            existing_caps = (row.get("fields") or {}).get("capabilities") or {}
+            values = existing_caps.get("value") if isinstance(existing_caps.get("value"), list) else (
+                [existing_caps.get("value")] if _has_value(existing_caps.get("value")) else []
+            )
+            items = list(existing_caps.get("items") or [])
+            for capability in details["capabilities"]:
+                actual = next((v for v in values if canonical(v) == canonical(capability)), None)
+                if actual is None:
+                    actual = capability
+                    values.append(actual)
+                item = next((v for v in items if canonical(v.get("value")) == canonical(actual)), None)
+                if item is None:
+                    item = {"value": actual, "evidence": []}
+                    items.append(item)
+                ev = _catalog_evidence(details, portugal_rule, field="capabilities", value=actual)
+                item["evidence"] = _dedupe_evidence(list(item.get("evidence") or []) + [ev])
+            row.setdefault("fields", {})["capabilities"] = {
+                **existing_caps, "value": values, "items": items,
+                "evidence": _dedupe_evidence(list(existing_caps.get("evidence") or []) + [
+                    ev for item in items for ev in item.get("evidence") or []
+                ]),
+            }
         row["evidence"] = _dedupe_evidence(list(row.get("evidence") or []) + [_rule_evidence(portugal_rule, field="portfolio", value=name)])
         stats["portfolio_portugal_rows"] += 1
 
