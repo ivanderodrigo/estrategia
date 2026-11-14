@@ -99,6 +99,17 @@ class ReleaseAuditHF10(unittest.TestCase):
         errors = self._run(preservation=preservation)
         self.assertTrue(any("missing values" in error for error in errors))
 
+    def test_absent_empty_missing_values_key_does_not_block_clean_dedup(self):
+        preservation = _preservation()
+        preservation["after"]["values"] = 97
+        preservation["missing"].pop("values")
+        # Some preservation serializers omit empty categories. Absence of an
+        # empty list must not turn an exact PASS into a false regression.
+        self.assertEqual(self._run(preservation=preservation), [])
+        # A failed exact audit remains blocked regardless of raw counts.
+        preservation["status"] = "FAIL"
+        self.assertTrue(self._run(preservation=preservation))
+
     def test_protected_counter_regression_still_blocks(self):
         preservation = _preservation()
         preservation["after"]["relations"] = 49
