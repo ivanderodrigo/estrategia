@@ -55,18 +55,35 @@ def apply_curated_reviews(attempts, registry):
     return attempts
 
 def claims_inventory():
-    payload = read_json("data/public/historical/current/manufacturers.json", {})
+    """Find eligible exact product alternatives in ALL live and archived leads.
+
+    The historical manufacturers sidecar is not exhaustive. It often drops
+    archived product-level URLs even when they survive in the Git archive or
+    current-visible citation inventory.
+    """
+    from scripts.revalidate_historical_sources import candidate_inventory
     target = defaultdict(list)
-    for entity, fields in (payload.get("entities") or {}).items():
-        for item in fields.get("competitors") or []:
-            value = item.get("value")
-            if not isinstance(value, str) or not value:
+    seen = set()
+    for url, claims in candidate_inventory().items():
+        entity_from_page = source_entity(url)
+        if not entity_from_page:
+            continue
+        for claim in claims:
+            if claim.get("section") != "manufacturers" or claim.get("field") != "competitors":
                 continue
-            for url in item.get("urls") or []:
-                if source_entity(url) == entity:
-                    target[url].append({"section": "manufacturers",
-                                        "entity": entity, "field": "competitors",
-                                        "value": value})
+            if canonical(claim.get("entity") or "") != entity_from_page:
+                continue
+            value = str(claim.get("value") or "").strip()
+            if not value:
+                continue
+            key = (url, entity_from_page, canonical(value))
+            if key in seen:
+                continue
+            seen.add(key)
+            target[url].append({
+                "section": "manufacturers", "entity": entity_from_page,
+                "field": "competitors", "value": value,
+            })
     return target
 
 def run(limit=30, timeout=12):
