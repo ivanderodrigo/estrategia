@@ -215,6 +215,12 @@ def candidate_inventory() -> dict[str, list[dict]]:
                         for item in (field.get("items") or [])
                         if isinstance(item, dict)
                     ]
+                    # If a UI list has no item objects, its field-wide
+                    # references still need assessment per displayed value.
+                    tracked = {canonical(v) for v, _ in candidates}
+                    for value in values:
+                        if isinstance(value, str) and canonical(value) not in tracked:
+                            candidates.append((value, []))
                     # Legacy field-level evidence often applied to the whole
                     # list. Retain it as a lead for each exact item, not proof.
                     shared = list(field.get("evidence") or [])
@@ -224,7 +230,13 @@ def candidate_inventory() -> dict[str, list[dict]]:
                 for value, evidences in candidates:
                     if not isinstance(value, str) or not value.strip():
                         continue
-                    if any(accrediting_evidence(ev) for ev in evidences if isinstance(ev, dict)):
+                    if any(
+                        accrediting_evidence(ev)
+                        and ev.get("atomic") is True
+                        and str(ev.get("field") or "") == field_id
+                        and canonical(ev.get("item_value")) == canonical(value)
+                        for ev in evidences if isinstance(ev, dict)
+                    ):
                         continue
                     for ev in evidences:
                         if not isinstance(ev, dict):
