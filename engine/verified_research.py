@@ -122,6 +122,8 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
     exact_sources.extend(structured.get("existing_claim_sources") or [])
     historical_market = read_json("config/current/verified_historical_market_20261114.json", {})
     exact_sources.extend(historical_market.get("existing_claim_sources") or [])
+    historical_peers = read_json("config/current/verified_historical_peer_20261114.json", {})
+    exact_sources.extend(historical_peers.get("existing_claim_sources") or [])
     topic_market = read_json("config/current/verified_historical_topic_markets_20261114.json", {})
     exact_sources.extend(topic_market.get("existing_claim_sources") or [])
     semantic_history = read_json("config/current/historical_semantic_verified.json", {})
@@ -134,10 +136,12 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
         semantic_fields = {
             "manufacturers": {"capabilities"},
             "distributors": {"services", "capabilities", "specializations", "technology_domains",
-                             "training", "marketplace", "logistics", "financing", "verticals"},
+                             "training", "marketplace", "logistics", "financing", "verticals",
+                             "vendor_relations", "linecard_remainder"},
             "integrators": {"vendor_relations", "manufacturer_relations", "vendor_partnerships",
                             "partnerships", "capabilities", "specializations", "services",
-                            "technology_domains", "technology_specializations", "service_portfolio"},
+                            "technology_domains", "technology_specializations", "service_portfolio",
+                            "alliances"},
             "clients_private": {"technology_signals", "hiring_signals"},
             "trends": {"sources"},
             "architectures": {"analyst_basis"},

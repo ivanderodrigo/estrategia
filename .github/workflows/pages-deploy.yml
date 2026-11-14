@@ -64,6 +64,8 @@ jobs:
         run: python scripts/audit_published_historical_market.py
       - name: Validate 48 topic market facts in published JSON
         run: python scripts/audit_published_topic_markets.py
+      - name: Validate Ciena OSS competitor source bindings in final browser JSON
+        run: python scripts/audit_published_peer_competitors.py
       - name: Validate all semantically accredited historic claims in published JSON
         run: python scripts/audit_published_semantic_historical.py
       - name: Validate mass archived-source sidecars

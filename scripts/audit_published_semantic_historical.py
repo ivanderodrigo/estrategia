@@ -30,7 +30,14 @@ def run():
         ev.extend(j.get("evidence",{}).get(i) for i in ids)
         proven=any(isinstance(e,dict)
                    and e.get("url")==c["source"]["url"]
-                   and e.get("source_type")=="historical-verified-excerpt"
+                   and (
+                       e.get("source_type") == "historical-verified-excerpt"
+                       or (e.get("source_type") == "analyst-peer-review"
+                           and e.get("verification_method") == "explicit-product-alternative"
+                           and c.get("field") == "competitors"
+                           and c.get("section") == "manufacturers"
+                           and e.get("provenance_origin") == "PUBLIC_ANALYST")
+                   )
                    and e.get("atomic") is True
                    and canonical(e.get("item_value"))==canonical(c["value"])
                    and e.get("field")==c["field"] for e in ev)

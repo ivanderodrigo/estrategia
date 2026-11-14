@@ -21,8 +21,9 @@ REGISTRY=ROOT/"config/current/historical_semantic_verified.json"
 REPORT=ROOT/"data/public/historical/current/semantic_claim_audit.json"
 
 RELATION_FIELDS={
-    "integrators":{"vendor_relations","manufacturer_relations","vendor_partnerships","partnerships"},
-    "distributors":{"vendor_relations"},
+    "integrators":{"vendor_relations","manufacturer_relations","vendor_partnerships",
+                   "partnerships","alliances"},
+    "distributors":{"vendor_relations","linecard_remainder"},
 }
 OWN_CAPABILITY={
     "manufacturers":{"capabilities"},
@@ -109,7 +110,17 @@ def main():
         for claim in row.get("claim_checks") or []:
             status="SOURCE_UNAVAILABLE"
             if row.get("status") in ("REACHABLE_TEXT_MATCH","REACHABLE_NO_EXACT_TEXT"):
-                if claim.get("status")=="VALUE_PRESENT_REQUIRES_CONTEXT":
+                if (
+                    claim.get("status") == "VERIFIED_EXPLICIT_ALTERNATIVE"
+                    and claim.get("accredited") is True
+                    and claim.get("section") == "manufacturers"
+                    and claim.get("field") == "competitors"
+                    and urlparse(url).hostname in {"www.gartner.com","gartner.com"}
+                    and "/reviews/product/" in url
+                    and url.rstrip("/").endswith("/alternatives")
+                ):
+                    status = "VERIFIED_EXPLICIT_ALTERNATIVE"
+                elif claim.get("status")=="VALUE_PRESENT_REQUIRES_CONTEXT":
                     status=classify(claim,url)
                 else:
                     status="VALUE_NOT_FOUND"
@@ -120,20 +131,29 @@ def main():
                 section,entity,field=claim["section"],claim["entity"],claim["field"]
                 value=claim["value"]
                 direct=owner_site(entity,url)
+                peer = status == "VERIFIED_EXPLICIT_ALTERNATIVE"
                 source={
-                    "url":url,"source":entity if direct else urlparse(url).hostname,
-                    "title":f"Verificación de fuente histórica: {entity} / {field}",
-                    "description":f"Extracto de evidencia: {claim.get('source_context','')[:260]}",
+                    "url":url,"source":"Gartner Peer Insights" if peer else
+                             (entity if direct else urlparse(url).hostname),
+                    "title":(f"Alternativas explícitas a {entity} en Gartner Peer Insights" if peer
+                             else f"Verificación de fuente histórica: {entity} / {field}"),
+                    "description":(f"En la página de alternativas de producto a {entity}, "
+                                   f"Gartner Peer Insights identifica expresamente a "
+                                   f"{claim.get('matched_vendor')} como fabricante alternativo. "
+                                   f"Extracto: {claim.get('source_context','')[:150]}"
+                                   if peer else
+                                   f"Extracto de evidencia: {claim.get('source_context','')[:260]}"),
                     "date":str(row.get("checked_at") or "")[:10],
                     "retrieved_at":str(row.get("checked_at") or "")[:10],
-                    "provenance_origin":"PUBLIC_PRIMARY" if direct else "PUBLIC_SECONDARY",
-                    "source_type":"historical-verified-excerpt",
-                    "verification_method":status,
-                    "classification":"public","source_grade":"A" if direct else "B",
+                    "provenance_origin":("PUBLIC_ANALYST" if peer else
+                                         "PUBLIC_PRIMARY" if direct else "PUBLIC_SECONDARY"),
+                    "source_type":"analyst-peer-review" if peer else "historical-verified-excerpt",
+                    "verification_method":"explicit-product-alternative" if peer else status,
+                    "classification":"public","source_grade":"B" if peer else ("A" if direct else "B"),
                     "source_binding":"claim-specific",
                     "freshness_status":"current",
                     "scope":"GLOBAL",
-                    "official":direct,
+                    "official":False if peer else direct,
                 }
                 successes.append({"section":section,"entity":entity,"field":field,
                                   "value":value,"source":source})
