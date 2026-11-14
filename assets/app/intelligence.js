@@ -949,9 +949,9 @@ const identityTone=identityEvidence.length?'high':'unverified';const direct=view
   // Historical articles that describe a trend or an architecture belong in the
   // title's blue trace panel as contextual leads. They do not automatically
   // prove the exact taxonomy name or change its accreditation status.
-  function identityWithHistoricalContext(row){
+  function identityWithHistoricalContext(row,context){
     const direct=Array.isArray(row._historical?.name)?row._historical.name:[];
-    const prefer=row._section==='architectures'
+    const prefer=row._section==='architectures'||context==='architecture'
       ?['analyst_basis','principles','context','vendors']
       :['sources','drivers','domain','evolution','observed'];
     const seen=new Set();
@@ -980,7 +980,7 @@ const identityTone=identityEvidence.length?'high':'unverified';const direct=view
     const chosen=forceAll?schema:activeColumns(schema,rows,'cards');
     const cols=chosen.filter(c=>!c.feed_only&&c.id!=='recent_signals');
     const cardClass=context==='trend'?'intel-card trend-card':'intel-card';
-    return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable(identityWithHistoricalContext(row),`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>{const field=fieldFor(row,c);const historical=Boolean(row._historical?.[c.id]?.length);const rendered=cardField(c,field,context);if((context==='trend'||row._section==='architectures')&&!rendered&&!historical)return '';return `<div class="card-evidence-group">${rendered||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c,row)}</div>`}</div>`;}).join('')}</article>`).join('');
+    return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable(identityWithHistoricalContext(row,context),`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>{const field=fieldFor(row,c);const historical=Boolean(row._historical?.[c.id]?.length);const rendered=cardField(c,field,context);if((context==='trend'||row._section==='architectures')&&!rendered&&!historical)return '';return `<div class="card-evidence-group">${rendered||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c,row)}</div>`}</div>`;}).join('')}</article>`).join('');
   }
   function renderSectionCoverage(section,selector){
     const el=$(selector);if(!el)return;
