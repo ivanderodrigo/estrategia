@@ -43,7 +43,7 @@ function render(manifest,debt,integrity=null){
   '<td>'+number(a.entities)+'</td><td>'+number(a.sourced)+' / '+number(a.claims)+
   (a.coverage===null?'':' ('+a.coverage+'%)')+'</td>'+
   '<td>'+number(a.claimsPending)+'</td><td>'+number(a.derived)+'</td><td>'+number(a.empty)+'</td></tr>').join('');
- return alert+details+'<div class="cc-audit-scroll"><table class="cc-audit-table">'+
+ return alert+integrityWarning+details+'<div class="cc-audit-scroll"><table class="cc-audit-table">'+
   '<caption>Auditoría del dataset completo; no depende de los filtros de las tablas</caption>'+
   '<thead><tr><th>Área</th><th>Entidades</th><th>Afirmaciones con fuente / total</th><th>Por acreditar</th><th>Derivación</th><th>Vacíos</th></tr></thead><tbody>'+
   rows+'</tbody></table></div>'+
