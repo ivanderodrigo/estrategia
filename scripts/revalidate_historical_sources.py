@@ -246,6 +246,22 @@ def candidate_inventory() -> dict[str, list[dict]]:
                                 "section": section, "entity": entity,
                                 "field": field_id, "value": value,
                             })
+    # Independently survey historical Git snapshots beyond the curated
+    # sidecars. Archived evidence is never a proof by itself, but each exact
+    # URL / entity / field / value tuple must enter the verification queue.
+    recovered = read_json("data/public/historical/current/git_archive_additions.json", {})
+    for claim in recovered.get("claims") or []:
+        if not isinstance(claim, dict):
+            continue
+        url = str(claim.get("url") or "")
+        if not url.startswith("https://"):
+            continue
+        target = {k: claim.get(k) for k in ("section", "entity", "field", "value")}
+        target["inventory_origin"] = "git-archive-recovered"
+        if all(isinstance(target.get(k), str) and target[k].strip()
+               for k in ("section", "entity", "field", "value")):
+            if target not in targets[url]:
+                targets[url].append(target)
     # The historical sidecars only describe gaps recovered from past revisions.
     # They are NOT the complete UI: surviving current field/item links are
     # invisible to that archive.  Check all exact, currently displayed items.
