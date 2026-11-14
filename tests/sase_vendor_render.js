@@ -33,6 +33,14 @@ assert(css.includes('.card-field>.architecture-layer-content{grid-column:2'),
   'Layer content must stay in card field VALUE column');
 assert(css.includes('.architecture-layer-content .layer-list{width:100%'),
   'Architectural layer list must fill the available content width');
+assert(js.includes("col.id==='layers'?' architecture-layers-field'"),
+  'Layers must use a dedicated full-width card field');
+assert(css.includes('.card-field.architecture-layers-field{'),
+  'Layer field must override the generic card grid');
+assert(css.includes('display:block!important;'),
+  'Layer field must render as a standalone block');
+assert(css.includes('grid-template-columns:repeat(auto-fit,minmax(min(100%,265px),1fr))!important'),
+  'Layer cards must use a responsive full-width grid');
 assert(html.includes('architecture-vendor-summary'),'Missing flat manufacturer summary');
 assert(html.includes('architecture-vendor-tabs'),'Missing accessible badges');
 assert(html.includes('layer-vendors'),'Missing layered manufacturer badges');
