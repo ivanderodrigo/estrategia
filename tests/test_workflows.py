@@ -66,6 +66,23 @@ class WorkflowIntegrity(unittest.TestCase):
             self.assertIn("uses: ./.github/workflows/research-run.yml", workflow)
         self.assertIn("scripts/audit_public_consistency.py", pages)
 
+    def test_historical_evidence_reaches_public_snapshot(self) -> None:
+        runner = (WORKFLOWS / "research-run.yml").read_text(encoding="utf-8")
+        integration = (WORKFLOWS / "historical-evidence-integration.yml").read_text(encoding="utf-8")
+        self.assertLess(runner.index("revalidate_historical_sources.py"),
+                        runner.index("Accredit newly verified historical claim excerpts"))
+        self.assertLess(runner.index("Accredit newly verified historical claim excerpts"),
+                        runner.index("Integrate accredited historical claims into the public snapshot"))
+        self.assertLess(runner.index("Integrate accredited historical claims into the public snapshot"),
+                        runner.index("Publish validated intelligence"))
+        self.assertIn("Historical Source Diligence", integration)
+        self.assertIn("python -m engine.pipeline", integration)
+        self.assertIn("scripts/audit_public_consistency.py", integration)
+        self.assertIn("scripts/publish_research_update.py", integration)
+        self.assertLess(integration.index("python -m engine.pipeline"),
+                        integration.index("scripts/publish_research_update.py"))
+        self.assertIn("group: westcon-intelligence-research", integration)
+
     def test_source_verification_uses_python_modules(self) -> None:
         source = (WORKFLOWS / "source-verification.yml").read_text(encoding="utf-8")
         self.assertIn("python -m scripts.audit_claim_sources", source)
