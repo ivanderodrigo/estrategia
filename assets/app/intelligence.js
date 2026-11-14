@@ -577,7 +577,7 @@
         const summary='<div class="architecture-vendor-summary"><strong>Fabricantes asociados ('+
           roster.length+')</strong><div class="tag-list architecture-vendor-tabs">'+
           (rosterHtml||'<span>Sin fabricantes identificados</span>')+'</div></div>';
-        return summary+'<div class="layer-list">'+value.map(x=>{
+        return '<div class="architecture-layer-content">'+summary+'<div class="layer-list">'+value.map(x=>{
           const layerItem=(field.items||[]).find(it=>it?.value?.layer===x.layer);
           const layerField={value:[x.layer],items:layerItem?[{
             ...layerItem,value:x.layer
@@ -599,7 +599,7 @@
             '<div class="tag-list layer-vendors">'+
             (tags||'<span class="tag confidence-tag not-researched">Sin fabricantes identificados</span>')+
             '</div>'+(x.note?'<small class="layer-note">'+esc(x.note)+'</small>':'')+'</div>';
-        }).join('')+'</div>';
+        }).join('')+'</div></div>';
       }
       // Uniform badges for verified and unverified elements: no mixed dropdowns.
       const elements=value.map((v,i)=>({value:v,index:i,verified:atomicCurrentProof(itemFor(field,v,i).evidence)}))
