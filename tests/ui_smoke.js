@@ -66,9 +66,11 @@ for (const token of [
 for(const token of [
   "const heading=layerItem&&atomicCurrentProof(layerItem.evidence)",
   "pendingTagHtml(layerField,x.layer,0)",
-  "const vendors=x.vendors||[], vendorField=",
-  "verified?tagHtml(vendorField,v,i):pendingTagHtml(vendorField,v,i)",
-  "class=\"tag-list layer-heading\""
+  "const vendors=Array.isArray(x.vendors)?x.vendors:[]",
+  "verified?tagHtml(vendorField,vendor,i):pendingTagHtml(vendorField,vendor,i)",
+  "class=\"tag-list layer-heading\"",
+  "class=\"tag-list layer-vendors\"",
+  "Fabricantes (\u0027+vendors.length+\u0027)"
 ]) if(!js.includes(token))throw new Error("architecture layer confidence tabs missing: "+token);
 if(js.includes("vendors.filter((v,i)=>atomicCurrentProof(itemFor(layerField"))
   throw new Error("architecture hides unverified vendors");
