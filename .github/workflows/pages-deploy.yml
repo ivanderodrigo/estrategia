@@ -52,6 +52,8 @@ jobs:
         run: python scripts/accredit_semantic_historical_sources.py
       - name: Rebuild accredited intelligence
         run: python -m engine.pipeline
+      - name: Bind official manufacturer sources to each SASE/SSE layer
+        run: python scripts/attach_sase_layer_vendor_sources.py
       - name: Publish recovered historical links as compact section indexes
         run: python scripts/publish_git_archive_leads.py
       - name: Validate
