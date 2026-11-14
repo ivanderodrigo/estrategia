@@ -189,6 +189,45 @@ def historical_pdf_text(payload: bytes, *, max_pages: int = 120,
 
 
 
+def best_claim_excerpt(text: str, value: str, field_id: str, *,
+                       max_occurrences: int = 120) -> tuple[bool, str]:
+    """Select the most probative local mention, not the first menu/SEO hit.
+
+    Source text is already normalized. A contextual mention still requires a
+    separate relationship classifier; this function never accredits itself.
+    """
+    if not value:
+        return False, ""
+    phrase = re.compile(r"(?<![a-z0-9])" + re.escape(value) + r"(?![a-z0-9])")
+    cues = {
+        "distributors": ("distribution agreement", "distribution partnership",
+                          "distributor", "distribuidor", "distribucion", "mayorista"),
+        "vendor_relations": ("partner", "partnership", "alianza", "fabricante",
+                             "vendors", "portfolio", "linecard"),
+        "manufacturer_relations": ("partner", "fabricante", "portfolio", "alianza"),
+        "vendor_partnerships": ("partner", "partnership", "alianza", "alliance"),
+        "linecard_remainder": ("linecard", "fabricantes", "marcas", "vendors", "portfolio"),
+        "competitors": ("competitor", "competition", "competes", "alternative",
+                        "competidor", "rival", "versus"),
+    }
+    ranked = []
+    for i, match in enumerate(phrase.finditer(text)):
+        if i >= max_occurrences:
+            break
+        start, end = max(0, match.start()-220), min(len(text), match.end()+220)
+        excerpt = text[start:end]
+        words = cues.get(field_id, ())
+        score = sum(4 for cue in words if cue in excerpt)
+        score += sum(1 for cue in ("agreement", "announces", "signed", "official",
+                                   "product", "services", "security", "solutions")
+                     if cue in excerpt)
+        # Prefer compact sentence-level proof over menu text if scores tie.
+        ranked.append((score, -len(excerpt), -match.start(), excerpt))
+    if not ranked:
+        return False, ""
+    return True, max(ranked)[-1]
+
+
 def candidate_inventory() -> dict[str, list[dict]]:
     targets: dict[str, list[dict]] = defaultdict(list)
     for section in ("manufacturers", "distributors", "integrators",
@@ -394,12 +433,10 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
                 or short_partner
             )
             search_value = vendor if is_gartner_alternative else value
-            match = re.search(
-                r"(?<![a-z0-9])" + re.escape(search_value) + r"(?![a-z0-9])", text
-            ) if informative else None
-            occurs = bool(match)
-            context = (text[max(0, match.start()-220):min(len(text),match.end()+220)]
-                       if match else "")
+            occurs, context = (
+                best_claim_excerpt(text, search_value, field_id)
+                if informative else (False, "")
+            )
             checks.append({
                 "section": claim["section"], "entity": claim["entity"],
                 "field": field_id, "value": raw_value[:180],
