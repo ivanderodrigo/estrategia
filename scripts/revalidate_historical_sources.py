@@ -17,6 +17,7 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from html import unescape
 from html.parser import HTMLParser
+from io import BytesIO
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -77,6 +78,34 @@ def historical_visible_text(html: str) -> str:
     return canonical(unescape(" ".join(parser.parts)))
 
 
+def historical_pdf_text(payload: bytes, *, max_pages: int = 120,
+                        max_chars: int = 480_000) -> str:
+    """Extract already selectable PDF text from official reports, without OCR.
+
+    Avoid rendering or loading unbounded documents during a recurring crawl.
+    Image-only or oversized PDFs remain research leads rather than proof.
+    """
+    if len(payload) > 12_000_000 or not payload.lstrip().startswith(b"%PDF"):
+        return ""
+    from pypdf import PdfReader
+    reader = PdfReader(BytesIO(payload), strict=False)
+    if reader.is_encrypted:
+        return ""
+    parts: list[str] = []
+    size = 0
+    for page in reader.pages[:max_pages]:
+        value = str(page.extract_text() or "")
+        if not value:
+            continue
+        remaining = max_chars - size
+        if remaining <= 0:
+            break
+        parts.append(value[:remaining])
+        size += len(parts[-1])
+    return canonical(" ".join(parts))
+
+
+
 def candidate_inventory() -> dict[str, list[dict]]:
     targets: dict[str, list[dict]] = defaultdict(list)
     for section in ("manufacturers", "distributors", "integrators",
@@ -131,10 +160,22 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
             result["status"] = "HTTP_UNAVAILABLE"
             return result
         content_type = str(response.headers.get("Content-Type") or "").lower()
-        if content_type and not any(t in content_type for t in ("text/", "html", "json")):
-            result["status"] = "NON_TEXT_SOURCE"
-            return result
-        text = historical_visible_text(response.text[:600_000])
+        pdf_source = ("application/pdf" in content_type
+                      or urlparse(safe).path.lower().endswith(".pdf"))
+        if pdf_source:
+            try:
+                text = historical_pdf_text(response.content)
+            except Exception as exc:
+                result["status"] = "PDF_TEXT_EXTRACTION_FAILED"
+                result["error_kind"] = type(exc).__name__
+                return result
+            result["source_format"] = "pdf"
+        else:
+            if content_type and not any(t in content_type for t in ("text/", "html", "json")):
+                result["status"] = "NON_TEXT_SOURCE"
+                return result
+            text = historical_visible_text(response.text[:600_000])
+            result["source_format"] = "html"
         if len(text) < 100:
             result["status"] = "INSUFFICIENT_SOURCE_CONTENT"
             return result
