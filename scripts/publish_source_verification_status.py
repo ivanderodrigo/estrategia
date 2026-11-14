@@ -12,6 +12,11 @@ def build(binding, live, manifest, *, checked_at, run_url):
     for section, item in (binding.get("sections") or {}).items():
         sections[section] = dict(item.get("counts") or {})
     statuses = Counter(str(item.get("review_status") or "unknown") for item in live.get("items") or [])
+    sampled=int(live.get("sampled") or 0)
+    readable=sum(n for k,n in statuses.items() if k.startswith("page_"))
+    review_health="NO_CONTENT_EXTRACTED" if sampled and not readable else (
+        "PARTIAL_CONTENT" if readable<sampled else "CONTENT_READABLE"
+    )
     return {
         "generated_at": checked_at,
         "snapshot_generated_at": manifest.get("generated_at"),
@@ -20,7 +25,9 @@ def build(binding, live, manifest, *, checked_at, run_url):
         "scope": "Independent offline claim/source binding audit and rotating live URL sample",
         "source_content_semantically_verified": False,
         "total_live_review_candidates": int(live.get("total_references") or 0),
-        "live_sample_reviewed": int(live.get("sampled") or 0),
+        "live_sample_reviewed": sampled,
+        "live_content_accessible": readable,
+        "live_collection_health": review_health,
         "live_review_statuses": dict(statuses),
         "by_section": sections,
         "warning": "HTTP access and text co-occurrence do not validate a factual relationship. Consult claim-specific proof.",
