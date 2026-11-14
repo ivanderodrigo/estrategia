@@ -58,6 +58,10 @@ def classify(claim,url):
     excerpt=str(claim.get("source_context") or "").strip()
     if not entity or not value or not excerpt or len(value)>160:
         return "INSUFFICIENT_EXCERPT"
+    from engine.topic_evidence import classify_topic
+    topic_status = classify_topic(claim, url)
+    if topic_status:
+        return topic_status
     clean=canonical(value)
     context=canonical(excerpt)
     if any(s in clean for s in NEGATIVE):
@@ -205,6 +209,11 @@ def main():
                     "scope":"GLOBAL",
                     "official":False if peer else direct,
                 }
+                if field == "name":
+                    source["description"] = ("Extracto de evidencia: " + claim.get("source_context", "") +
+                        " · Acredita un componente de esta agrupación temática editorial; "
+                        "no certifica todas sus afirmaciones ni una arquitectura normativa con este nombre.")
+                    source["topic_identity_only"] = True
                 successes.append({"section":section,"entity":entity,"field":field,
                                   "value":value,"source":source})
             elif claim.get("status")=="VALUE_PRESENT_REQUIRES_CONTEXT":

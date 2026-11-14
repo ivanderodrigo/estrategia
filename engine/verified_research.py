@@ -146,8 +146,8 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
                             "technology_domains", "technology_specializations", "service_portfolio",
                             "alliances", "recent_signals", "public_cases"},
             "clients_private": {"technology_signals", "hiring_signals"},
-            "trends": {"sources"},
-            "architectures": {"analyst_basis"},
+            "trends": {"name", "sources", "observed", "drivers", "buyer_priorities", "evolution"},
+            "architectures": {"name", "analyst_basis", "context", "principles", "limits"},
         }
         source = claim.get("source") or {}
         exact_semantic = (
@@ -174,6 +174,8 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
             if canonical(row.get("name")) != canonical(entity):
                 continue
             field = (row.get("fields") or {}).get(field_id) or {}
+            if field_id == "name":
+                field = {**field, "value": row["name"]}
             old_values = field.get("value") if isinstance(field.get("value"), list) else ([field.get("value")] if field.get("value") not in (None, "", []) else [])
             match = next((v for v in old_values if canonical(v) == canonical(value)), None)
             if match is None:

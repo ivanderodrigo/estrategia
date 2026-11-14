@@ -946,13 +946,20 @@ const identityTone=identityEvidence.length?'high':'unverified';const direct=view
   }
 
   function cardField(col,f,context='card'){if(!f||!hasValue(f.value))return '';const help=col.clarify?`<span class="help-wrap card-help"><span>${esc(col.label)}</span><button class="help-icon" type="button" aria-label="Aclaración de ${esc(col.label)}">?</button><span class="help-tip">${esc(col.help||'')}</span></span>`:esc(col.label);return `<div class="card-field"><label>${help}</label>${renderValue(f,null,context,col.id)}</div>`;}
+  function topicIdentityField(row){
+    const identity=row.fields?.name||{value:row.name,evidence:row.evidence||[],confidence:.9};
+    const order=['name','sources','analyst_basis','context','observed'];
+    const keys=[...order,...Object.keys(row._historical||{}).filter(k=>!order.includes(k))];
+    const historical=keys.flatMap(k=>row._historical?.[k]||[]);
+    return {...identity,_historical:historical,qualifier:'El nombre agrupa temas documentados; cada cifra, fabricante y afirmación conserva su propia acreditación.'};
+  }
   function cardGrid(rows, schema, forceAll=false, context='card'){
     // Feed-only fields (notably Publications and novedades) belong to the
     // dedicated sourced news feed, not to per-topic factual cards.
     const chosen=forceAll?schema:activeColumns(schema,rows,'cards');
     const cols=chosen.filter(c=>!c.feed_only&&c.id!=='recent_signals');
     const cardClass=context==='trend'?'intel-card trend-card':'intel-card';
-    return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable({value:row.name,evidence:row.evidence||[],confidence:.9,confidence_band:'high'},`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>{const field=fieldFor(row,c);const historical=Boolean(row._historical?.[c.id]?.length);const rendered=cardField(c,field,context);if((context==='trend'||row._section==='architectures')&&!rendered&&!historical)return '';return `<div class="card-evidence-group">${rendered||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c,row)}</div>`}</div>`;}).join('')}</article>`).join('');
+    return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable(topicIdentityField(row),`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>{const field=fieldFor(row,c);const historical=Boolean(row._historical?.[c.id]?.length);const rendered=cardField(c,field,context);if((context==='trend'||row._section==='architectures')&&!rendered&&!historical)return '';return `<div class="card-evidence-group">${rendered||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c,row)}</div>`}</div>`;}).join('')}</article>`).join('');
   }
   function renderSectionCoverage(section,selector){
     const el=$(selector);if(!el)return;
@@ -972,7 +979,7 @@ const identityTone=identityEvidence.length?'high':'unverified';const direct=view
 
   function renderTrends(){
     const q=norm($('#trendSearch')?.value), all=state.data.trends||[], rows=all.filter(r=>!q||rowBlob(r).includes(q));
-    $('#trendGrid').innerHTML=cardGrid(rows,state.data.schemas.trends,true,'trend')||'<div class="empty-state">No hay tendencias con ese filtro.</div>';
+    $('#trendGrid').innerHTML=cardGrid(rows.map(r=>({...r,_section:'trends'})),state.data.schemas.trends,true,'trend')||'<div class="empty-state">No hay tendencias con ese filtro.</div>';
     renderSectionCoverage('trends','#trendCoverageAudit');
     setCount('#trendCount',rows.length,all.length,'tendencias'); renderTrendAnalytics(rows);
     renderEntityNews('trends',all);
