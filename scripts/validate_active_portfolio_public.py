@@ -79,6 +79,33 @@ def validate() -> dict:
                 if _norm(item.get("value")) in expected and not item.get("evidence_ids"):
                     errors.append(f"{name}: capability {item.get('value')} missing official item evidence")
 
+    # Independent public release gate: current geographic membership comes
+    # from Westcon, while technology classification comes from the vendor.
+    checkpoint = _named(rows, {_norm("Check Point")})
+    if checkpoint is None:
+        errors.append("Check Point: missing Portugal-only portfolio manufacturer")
+    else:
+        if _value(checkpoint, "westcon_spain") is not False:
+            errors.append("Check Point: incorrectly marked active in Spain")
+        if _value(checkpoint, "westcon_portugal") is not True:
+            errors.append("Check Point: missing Portugal-only membership")
+        if _norm(_value(checkpoint, "scope")) != "pt":
+            errors.append("Check Point: geographic scope should be PT")
+        domain = ((checkpoint.get("fields") or {}).get("domain") or {})
+        domain_values = domain.get("value")
+        domain_values = domain_values if isinstance(domain_values, list) else [domain_values]
+        if _norm("Cybersecurity") not in {_norm(v) for v in domain_values}:
+            errors.append("Check Point: cybersecurity domain not published")
+        if not domain.get("evidence_ids"):
+            errors.append("Check Point: cybersecurity lacks published official evidence")
+        caps = (checkpoint.get("fields") or {}).get("capabilities") or {}
+        for capability in ("Network Security", "Cloud Security", "SASE",
+                           "Endpoint Security", "AI Security"):
+            item = next((i for i in caps.get("items") or []
+                         if _norm(i.get("value")) == _norm(capability)), None)
+            if not item or not item.get("evidence_ids"):
+                errors.append(f"Check Point: {capability} missing official item proof")
+
     active = {
         _norm(row.get("name")) for row in rows
         if _value(row, "westcon_spain") is True or _value(row, "westcon_portugal") is True
