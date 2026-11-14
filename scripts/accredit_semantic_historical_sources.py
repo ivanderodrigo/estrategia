@@ -164,6 +164,43 @@ def main():
                 review.append({"section":claim.get("section"),"entity":claim.get("entity"),
                                "field":claim.get("field"),"value":claim.get("value"),
                                "url":proof_url,"historical_url":url,"reason":status})
+    # A transient 403, timeout or JS-only source cannot disprove a relationship
+    # that was already individually checked in an earlier run. Keep the last
+    # successful proof available, with its actual verification date. Recheck
+    # and expire after 120 days; never convert an unreachable URL into a *new*
+    # accreditation.
+    from datetime import date
+    previous = json.loads(REGISTRY.read_text(encoding="utf-8")) if REGISTRY.exists() else {}
+    old_records = list(previous.get("existing_claim_sources") or [])
+    def signature(item):
+        src=item.get("source") or {}
+        return (item.get("section"),canonical(item.get("entity")),
+                item.get("field"),canonical(item.get("value")),str(src.get("url") or ""))
+    existing={signature(item) for item in successes}
+    retained=0
+    expired=0
+    for old in old_records:
+        key=signature(old)
+        if key in existing:
+            continue
+        src=old.get("source") or {}
+        stamp=str(src.get("retrieved_at") or src.get("date") or "")[:10]
+        try:
+            age=(date.fromisoformat(str(report.get("generated_at") or "")[:10])-
+                 date.fromisoformat(stamp)).days
+        except ValueError:
+            age=10_000
+        if not (0<=age<=120):
+            expired+=1
+            continue
+        preserved=json.loads(json.dumps(old,ensure_ascii=False))
+        preserved["source"]["verification_reused"] = True
+        preserved["source"]["verification_reuse_reason"] = (
+            "Previously confirmed exact claim; latest fetch gave no new positive evidence"
+        )
+        successes.append(preserved)
+        existing.add(key)
+        retained+=1
     REGISTRY.parent.mkdir(parents=True,exist_ok=True)
     REGISTRY.write_text(json.dumps({"version":1,"generated_at":str(report.get("generated_at") or ""),
           "policy":"One-by-one first-party field/claim/source excerpt checks. Never authorizes historical archive mention alone.",
@@ -172,10 +209,15 @@ def main():
     REPORT.write_text(json.dumps({"generated_at":str(report.get("generated_at") or ""),
           "urls_scanned":len(results),"claim_source_pairs_reviewed":sum(counter.values()),
           "verified_claim_source_pairs":len(successes),
+          "verified_this_run":len(successes)-retained,
+          "retained_prior_verified":retained,
+          "expired_prior_verified":expired,
           "statuses":dict(counter),"by_section":dict(Counter(c["section"] for c in successes)),
           "pending_recheck_examples":review[:250]},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({"urls_scanned":len(results),"claims_checked":sum(counter.values()),
-          "verified":len(successes),"by_section":dict(Counter(c["section"] for c in successes)),
+          "verified":len(successes),"newly_verified":len(successes)-retained,
+          "retained_prior_verified":retained,
+          "by_section":dict(Counter(c["section"] for c in successes)),
           "statuses":dict(counter)},ensure_ascii=False))
     return successes
 
