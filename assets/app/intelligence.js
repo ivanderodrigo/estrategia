@@ -643,7 +643,8 @@
         const proof=atomicCurrentProof(item?.evidence||[]);
         if(proof){
           supported++;
-          scores.push(Math.min(1,Math.max(.38,Number(item.confidence??field.confidence??.65))));
+          const strength=Number(item.confidence??field.confidence??.65);
+          scores.push(Math.min(1,Math.max(.38,Number.isFinite(strength)?strength:.65)));
         }else{
           unsourced++;
           scores.push(.38);
