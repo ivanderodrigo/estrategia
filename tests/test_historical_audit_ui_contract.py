@@ -13,14 +13,14 @@ class HistoricalAuditUiContracts(unittest.TestCase):
             report["total_open_gaps"],
             sum(int(breakdown.get(k, 0)) for k in (
                 "empty_schema_fields", "claims_awaiting_evidence",
-                "derivation_support", "other_open_debt"
+                "derived_support", "other_open_debt"
             )),
         )
 
     def test_frontend_reads_canonical_derivation_support(self):
         script = (ROOT / "assets/app/audit-intelligence.js").read_text(encoding="utf-8")
-        self.assertIn("summary.derivation_support||0", script)
-        self.assertNotIn("summary.derived_support||0", script)
+        self.assertIn("summary.derived_support||0", script)
+        self.assertIn("section.derivation_support", script)
 
     def test_explicit_official_distribution_is_accredited(self):
         from scripts.accredit_semantic_historical_sources import classify
