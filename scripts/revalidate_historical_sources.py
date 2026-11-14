@@ -228,6 +228,46 @@ def best_claim_excerpt(text: str, value: str, field_id: str, *,
     return True, max(ranked)[-1]
 
 
+# Publication citations are frequently abbreviated in older snapshots.
+# Match a publisher-owned article by its distinctive title vocabulary, without
+# requiring an exact editorial heading or crediting unrelated market claims.
+CITATION_FIELDS = {("trends", "sources"), ("architectures", "analyst_basis")}
+TITLE_STOPWORDS = {"the", "a", "an", "for", "and", "of", "in", "on", "to", "by",
+                   "with", "from", "report", "study", "research", "market",
+                   "global", "worldwide", "european", "2025", "2026", "2027",
+                   "2028", "2029", "2030", "de", "del", "la", "el", "los",
+                   "las", "en", "para", "y", "sobre", "un", "una"}
+CITATION_PUBLISHERS = {"gartner", "forrester", "idc", "nist", "enisa"}
+
+def publication_title_match(value: str, text: str, url: str, section: str,
+                            field: str) -> tuple[bool, str]:
+    if (section, field) not in CITATION_FIELDS:
+        return False, ""
+    host = (urlparse(url).hostname or "").lower()
+    publisher = next((p for p in CITATION_PUBLISHERS
+                      if p in canonical(value).split(" ")[:3]), None)
+    if not publisher or publisher not in host:
+        return False, ""
+    title = canonical(value.split(":", 1)[-1].split("·", 1)[-1])
+    words = [x for x in title.split() if x not in TITLE_STOPWORDS
+             and len(x) >= 4]
+    terms = set(words)
+    if len(terms) < 3:
+        return False, ""
+    # A local passage, not global word presence across a site footer.
+    passages = [text[max(0, m.start()-260):m.end()+260]
+                for term in sorted(terms)[:5]
+                for m in list(re.finditer(r"(?<![a-z0-9])" + re.escape(term) +
+                         r"(?![a-z0-9])", text))[:20]]
+    ranked = [(len({t for t in terms if re.search(
+                  r"(?<![a-z0-9])" + re.escape(t) + r"(?![a-z0-9])", part)}),
+               part) for part in passages]
+    if not ranked:
+        return False, ""
+    score, excerpt = max(ranked, key=lambda x: x[0])
+    matched = score >= 3 and score / len(terms) >= .75
+    return matched, excerpt if matched else ""
+
 def candidate_inventory() -> dict[str, list[dict]]:
     targets: dict[str, list[dict]] = defaultdict(list)
     for section in ("manufacturers", "distributors", "integrators",
@@ -448,6 +488,7 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
                 "manufacturer_relations", "vendor_partnerships", "partnerships",
                 "linecard_remainder", "alliances", "competitor_vendor_overlap",
                 "capabilities", "services", "specializations", "technology_domains",
+                "market_players", "vendors",
             } or (
                 (len(value) >= 6 and
                  (len(tokens) >= 2 or field_id in (
@@ -461,7 +502,15 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
                 best_claim_excerpt(text, search_value, field_id)
                 if informative else (False, "")
             )
+            citation_match = False
+            if not occurs:
+                citation_match, citation_context = publication_title_match(
+                    raw_value, text, safe, str(claim.get("section") or ""),
+                    field_id)
+                if citation_match:
+                    occurs, context = True, citation_context
             checks.append({
+                "match_method": "PUBLISHER_TITLE_OVERLAP" if citation_match else "EXACT_VALUE",
                 "section": claim["section"], "entity": claim["entity"],
                 "field": field_id, "value": raw_value[:180],
                 "status": ("VERIFIED_EXPLICIT_ALTERNATIVE" if explicit_alternative else
