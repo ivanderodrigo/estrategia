@@ -53,4 +53,7 @@ jobs:
           node tests/confidence_color_consistency.js
           node tests/sase_vendor_render.js
       - name: Publish accredited snapshot on main
-        run: python scripts/publish_research_update.py --message 'data: integrate accredited historical evidence' --attempts 3
+        run: >-
+          python scripts/publish_research_update.py
+          --message 'data: integrate accredited historical evidence'
+          --attempts 3
