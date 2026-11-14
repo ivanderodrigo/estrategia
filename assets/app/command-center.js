@@ -14,15 +14,24 @@ showHome();
 const getJson=async path=>{const response=await fetch(path,{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);return response.json();};
 const metrics=document.getElementById('ccMetrics'),debt=document.getElementById('ccDebt'),audit=document.getElementById('ccAudit');
 const dateLabel=v=>v?String(v).slice(0,16).replace('T',' ')+' UTC':'fecha no disponible';
-Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/debt_overview.json'),getJson('data/public/audit_integrity.json')]).then(([mr,dr,ir])=>{
+Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/debt_overview.json'),getJson('data/public/audit_integrity.json'),getJson('data/public/last_run.json')]).then(([mr,dr,ir,rr])=>{
  const m=mr.status==='fulfilled'?mr.value:null;
  const d=dr.status==='fulfilled'?dr.value:null;
  const integrity=ir.status==='fulfilled'?ir.value:null;
+ const lastRun=rr.status==='fulfilled'?rr.value:null;
  if(m?.counts){
   const c=m.counts,totalClients=Number(c.clients_public||0)+Number(c.clients_private||0);
   const tiles=[['Fabricantes',c.manufacturers],['Mayoristas',c.distributors],['Integradores',c.integrators],['Clientes',totalClients],['Tendencias y arquitecturas',Number(c.trends||0)+Number(c.architectures||0)]];
   metrics.innerHTML=tiles.map(([label,val])=>'<div class="cc-metric"><strong>'+fmt(val)+'</strong><span>'+clean(label)+'</span></div>').join('');
-  document.getElementById('ccFreshness').textContent='Fotografía publicada: '+dateLabel(m.generated_at)+' · Calidad de integridad '+(m.meta?.quality_score??'N/D')+'/100 (NO es cobertura de evidencia).';
+  const publishedAt=Date.parse(m.generated_at||'');
+  const days=Number.isFinite(publishedAt)?Math.max(0,(Date.now()-publishedAt)/86400000):null;
+  const stale=days!==null&&days>4?' · Advertencia: publicación sin renovar desde hace más de cuatro días.':'';
+  const researchAt=lastRun?.research_finished_at||null;
+  const researchLabel=researchAt?' · Última investigación real: '+dateLabel(researchAt):' · Fecha de la última búsqueda: no disponible';
+  const sameRun=lastRun?.generated_at===m.generated_at;
+  const provenanceWarning=sameRun?'':' · Advertencia: registro de investigación de otro corte.';
+  document.getElementById('ccFreshness').textContent='Fotografía publicada: '+dateLabel(m.generated_at)+researchLabel+
+    ' · Calidad de integridad '+(m.meta?.quality_score??'N/D')+'/100 (NO es cobertura de evidencia).'+stale+provenanceWarning;
  }else{
   metrics.textContent='No se han podido cargar las métricas verificables del dataset.';
   document.getElementById('ccFreshness').textContent='Estado de la publicación: no disponible; revisar manifest.json.';
