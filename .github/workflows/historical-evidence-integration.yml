@@ -4,7 +4,9 @@ name: Integrate Accredited Historical Evidence
 on:
   push:
     branches: [main]
-    paths: ['.github/workflows/historical-evidence-integration.yml']
+    paths:
+      - '.github/workflows/historical-evidence-integration.yml'
+      - 'engine/enrichment.py'
   workflow_run:
     workflows: ['Historical Source Diligence']
     types: [completed]
