@@ -7,7 +7,37 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
-def build(binding, live, manifest, *, checked_at, run_url):
+SCHEDULED_NAMES = (
+    "Westcon Intelligence Daily",
+    "Westcon Intelligence Weekly",
+    "Westcon Intelligence Monthly",
+    "Historical Source Diligence",
+    "Westcon Source Verification",
+)
+
+
+def scheduled_health(runs):
+    """Summarize actual scheduled Actions runs, never infer success from cron."""
+    records = (runs or {}).get("workflow_runs") or []
+    output = {}
+    for name in SCHEDULED_NAMES:
+        matching = sorted(
+            [x for x in records if isinstance(x,dict) and x.get("name")==name and x.get("event")=="schedule"],
+            key=lambda x: str(x.get("created_at") or ""), reverse=True,
+        )
+        latest = matching[0] if matching else None
+        output[name] = {
+            "last_scheduled_at": (latest or {}).get("created_at"),
+            "last_status": (latest or {}).get("status") or "NOT_OBSERVED",
+            "last_conclusion": (latest or {}).get("conclusion") or "NOT_OBSERVED",
+            "last_run_id": (latest or {}).get("id"),
+            "recent_failures_in_sample": sum(x.get("conclusion") in ("failure", "timed_out") for x in matching),
+            "runs_in_api_sample": len(matching),
+        }
+    return output
+
+
+def build(binding, live, manifest, *, checked_at, run_url, workflow_runs=None):
     sections = {}
     for section, item in (binding.get("sections") or {}).items():
         sections[section] = dict(item.get("counts") or {})
@@ -30,6 +60,7 @@ def build(binding, live, manifest, *, checked_at, run_url):
         "live_collection_health": review_health,
         "live_review_statuses": dict(statuses),
         "by_section": sections,
+        "scheduled_workflows": scheduled_health(workflow_runs),
         "warning": "HTTP access and text co-occurrence do not validate a factual relationship. Consult claim-specific proof.",
     }
 
@@ -40,11 +71,13 @@ def main():
     p.add_argument("--manifest",default="data/public/manifest.json")
     p.add_argument("--output",default="data/public/source_verification_status.json")
     p.add_argument("--run-url",default="")
+    p.add_argument("--workflow-runs",default="")
     args=p.parse_args()
     def read(path):
         return json.loads(Path(path).read_text(encoding="utf-8"))
     status=build(read(args.binding),read(args.live),read(args.manifest),
-                 checked_at=datetime.now(timezone.utc).isoformat(),run_url=args.run_url)
+                 checked_at=datetime.now(timezone.utc).isoformat(),run_url=args.run_url,
+                 workflow_runs=read(args.workflow_runs) if args.workflow_runs else None)
     dest=Path(args.output)
     dest.parent.mkdir(parents=True,exist_ok=True)
     dest.write_text(json.dumps(status,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
