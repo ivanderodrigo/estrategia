@@ -145,7 +145,32 @@ def run(limit=30, timeout=12):
                 for claim in claims:
                     attempts.append({**claim, "source_url": url, "status": "UNREACHABLE_OR_UNREADABLE",
                                      "error_type": type(exc).__name__, "checked_at": today})
-    apply_curated_reviews(attempts, read_json(CURATED, {}))
+    curated = read_json(CURATED, {})
+    apply_curated_reviews(attempts, curated)
+    # A direct human-reviewed claim only counts as a persisted accreditation
+    # if its exact (entity, competitor, Gartner URL) proof can be recovered
+    # from the existing curated registry. Previously it was counted in the
+    # audit but never written to the structured evidence registry.
+    curated_index = {}
+    for claim in curated.get("existing_claim_sources") or []:
+        src = claim.get("source") or {}
+        if (claim.get("section"),claim.get("field")) != ("manufacturers","competitors"):
+            continue
+        if src.get("source_type") != "analyst-peer-review":
+            continue
+        key=(canonical(claim.get("entity")),canonical(claim.get("value")),
+             str(src.get("url") or ""))
+        curated_index[key] = claim
+    for item in attempts:
+        if item.get("status") != "VERIFIED_CURATED_DIRECT_SOURCE":
+            continue
+        key=(canonical(item.get("entity")),canonical(item.get("value")),
+             str(item.get("source_url") or ""))
+        reviewed=curated_index.get(key)
+        if reviewed is not None:
+            claim_key=(reviewed["section"],reviewed["entity"],
+                       reviewed["field"],reviewed["value"])
+            confirmed.setdefault(claim_key,reviewed)
     counts = Counter(item["status"] for item in attempts)
     output = {"version": 1, "verified_on": today,
               "policy": "Solo afirmaciones atómicas citadas en listados explícitos de alternativas de producto. Ninguna coincidencia de texto genérica acredita.",
@@ -160,7 +185,7 @@ def run(limit=30, timeout=12):
              "claims_reviewed_this_run": len(attempts),
              "claims_confirmed_this_run": counts["VERIFIED_EXPLICIT_ALTERNATIVE"] + counts["VERIFIED_CURATED_DIRECT_SOURCE"],
              "claims_curated_source_review": counts["VERIFIED_CURATED_DIRECT_SOURCE"],
-             "evidence_records_total": len(confirmed) + counts["VERIFIED_CURATED_DIRECT_SOURCE"],
+             "evidence_records_total": len(confirmed),
              "statuses": dict(counts), "claims": attempts}
     atomic_write_json(AUDIT, audit)
     print(json.dumps({k:v for k,v in audit.items() if k != "claims"}, ensure_ascii=False))
