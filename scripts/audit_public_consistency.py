@@ -11,6 +11,7 @@ import json
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from engine.publication import _source_coverage
 
 ROOT=Path(__file__).resolve().parents[1]
 PUBLIC=ROOT/"data/public"
@@ -59,6 +60,16 @@ def evaluate():
         if claims<=0 or sourced<0 or sourced>claims:
             errors.append(f"{section}: invalid published source coverage")
         source_registry=payload.get("evidence") or {}
+        actual=_source_coverage(rows,source_registry)
+        for metric in ("claims","sourced","unsourced","broken_references"):
+            declared=int(coverage.get(metric) or 0)
+            if declared!=actual[metric]:
+                errors.append(f"{section}: {metric} manifest={declared} actual={actual[metric]}")
+        if actual["broken_references"]:
+            errors.append(f"{section}: dangling evidence_id references: {actual['broken_references']}")
+        info_evidence=int(info.get("evidence") or 0)
+        if info_evidence!=len(source_registry):
+            errors.append(f"{section}: source registry metadata={info_evidence} actual={len(source_registry)}")
         wrong_role=[eid for eid,ev in source_registry.items()
                     if not isinstance(ev,dict) or ev.get("source_role") not in ROLES]
         if wrong_role:
