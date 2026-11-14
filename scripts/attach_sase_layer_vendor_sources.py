@@ -7,11 +7,14 @@ promoted. Sources assert capability alignment, not vendor interoperability.
 from __future__ import annotations
 import hashlib
 import json
+import sys
 from pathlib import Path
-from engine.publication import _source_coverage
-from engine.storage import json_bytes
 
 ROOT=Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0,str(ROOT))
+from engine.publication import _source_coverage
+from engine.storage import json_bytes
 REGISTRY=ROOT/"config/current/sase_layer_vendor_sources.json"
 PUBLISHED=ROOT/"data/public/sections/architectures.json"
 
