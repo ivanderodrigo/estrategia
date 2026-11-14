@@ -1,43 +1,34 @@
 {
-  "generated_at": "2026-11-14T01:52:33.795931+00:00",
+  "generated_at": "2026-11-14T01:56:16.614514+00:00",
   "urls_scanned": 1699,
-  "claim_source_pairs_reviewed": 23306,
-  "verified_claim_source_pairs": 441,
-  "verified_this_run": 253,
+  "claim_source_pairs_reviewed": 27319,
+  "verified_claim_source_pairs": 452,
+  "verified_this_run": 264,
   "retained_prior_verified": 188,
   "expired_prior_verified": 0,
   "statuses": {
-    "VALUE_NOT_FOUND": 21568,
-    "VERIFIED_FIRST_PARTY_CATALOG_VALUE": 257,
-    "DISTRIBUTION_RELATIONSHIP_NOT_SHOWN": 32,
-    "AMBIGUOUS_SHORT_VALUE": 181,
-    "VERIFIED_EXPLICIT_PARTNER_CONTEXT": 111,
-    "UNSUPPORTED_FIELD_OR_CONTEXT": 446,
+    "VALUE_NOT_FOUND": 25567,
+    "VERIFIED_FIRST_PARTY_CATALOG_VALUE": 254,
+    "VERIFIED_EXPLICIT_DISTRIBUTION_AGREEMENT": 7,
+    "AMBIGUOUS_SHORT_VALUE": 182,
+    "DISTRIBUTION_RELATIONSHIP_NOT_SHOWN": 27,
+    "VERIFIED_EXPLICIT_PARTNER_CONTEXT": 125,
+    "UNSUPPORTED_FIELD_OR_CONTEXT": 450,
     "DIFFERENTIAL_REQUIRES_COMPARISON": 30,
-    "NOT_FIRST_PARTY": 501,
-    "RELATIONSHIP_NOT_SHOWN": 156,
+    "NOT_FIRST_PARTY": 507,
+    "RELATIONSHIP_NOT_SHOWN": 148,
     "VERIFIED_CITED_ANALYST_DOCUMENT": 1,
     "GENERIC_CAPABILITY_NOT_SPECIFIC": 13,
-    "VERIFIED_EXPLICIT_DISTRIBUTION_AGREEMENT": 2,
     "INSUFFICIENT_EXCERPT": 8
   },
   "by_section": {
-    "manufacturers": 37,
-    "distributors": 185,
-    "integrators": 217,
+    "manufacturers": 42,
+    "distributors": 187,
+    "integrators": 221,
     "architectures": 1,
     "clients_private": 1
   },
   "pending_recheck_examples": [
-    {
-      "section": "manufacturers",
-      "entity": "1Password",
-      "field": "distributors",
-      "value": "Ingram Micro",
-      "url": "https://1password.com/blog/1password-ingram-micro-partnership-resellers",
-      "historical_url": "https://1password.com/blog/1password-ingram-micro-partnership-resellers",
-      "reason": "DISTRIBUTION_RELATIONSHIP_NOT_SHOWN"
-    },
     {
       "section": "distributors",
       "entity": "Ignition Technology",
@@ -2273,11 +2264,20 @@
     {
       "section": "integrators",
       "entity": "3Hold Technologies",
-      "field": "vendor_relations",
+      "field": "competitor_vendor_overlap",
       "value": "Amazon Web Services (AWS)",
       "url": "https://aws.amazon.com/es/partners/success/fund-grube/",
       "historical_url": "https://aws.amazon.com/es/partners/success/fund-grube/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "italtel",
+      "field": "public_cases",
+      "value": "Amazon Connect Customer - AWS",
+      "url": "https://aws.amazon.com/es/products/connect/customer/?nc2=h_prod_fs_cnct",
+      "historical_url": "https://aws.amazon.com/es/products/connect/customer/?nc2=h_prod_fs_cnct",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     }
   ]
 }
