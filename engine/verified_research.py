@@ -124,6 +124,8 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
     exact_sources.extend(historical_market.get("existing_claim_sources") or [])
     historical_peers = read_json("config/current/verified_historical_peer_20261114.json", {})
     exact_sources.extend(historical_peers.get("existing_claim_sources") or [])
+    issuer_competitors = read_json("config/current/verified_issuer_competitors_20261114.json", {})
+    exact_sources.extend(issuer_competitors.get("existing_claim_sources") or [])
     topic_market = read_json("config/current/verified_historical_topic_markets_20261114.json", {})
     exact_sources.extend(topic_market.get("existing_claim_sources") or [])
     semantic_history = read_json("config/current/historical_semantic_verified.json", {})
@@ -189,8 +191,13 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
                             and url.startswith("https://www.gartner.com/en/documents/"))
                         or (source.get("source_type") == "official-regulatory-filing"
                             and source.get("verification_method") == "issuer-identified-direct-competitor"
-                            and canonical(entity) == "audiocodes"
-                            and url.startswith("https://www.otcmarkets.com/filing/html"))
+                            and (
+                                (canonical(entity) == "audiocodes"
+                                 and url.startswith("https://www.otcmarkets.com/filing/html"))
+                                or (canonical(entity) == "ciena"
+                                    and canonical(source.get("issuer")) == "ciena"
+                                    and url == "https://www.sec.gov/Archives/edgar/data/936395/000162828025056698/cien-20251101.htm")
+                            ))
                     )
                 )
                 if not exact_historical:
