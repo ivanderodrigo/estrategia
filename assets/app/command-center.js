@@ -61,6 +61,26 @@ Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/de
  const r=window.WestconAudit?.evaluate(m,d,integrity);
  audit.innerHTML=window.WestconAudit?.render(m,d,integrity)||
   '<p class="cc-audit-warning">La herramienta de auditoría no se ha cargado. Consulta data/public/debt_overview.json.</p>';
+ if(sourceCheck?.status==='REVIEW_QUEUE_NOT_FACT_ACCREDITATION'){
+  const health=sourceCheck.scheduled_workflows||{};
+  const entries=Object.entries(health);
+  const statuses=entries.map(([name,item])=>{
+    const conclusion=String(item?.last_conclusion||'NOT_OBSERVED');
+    const failed=Number(item?.recent_failures_in_sample||0);
+    const last=item?.last_scheduled_at?dateLabel(item.last_scheduled_at):'Sin ejecución programada registrada';
+    const runId=Number(item?.last_run_id);
+    const link=Number.isSafeInteger(runId)&&runId>0
+      ?' <a href="https://github.com/ivanderodrigo/estrategia/actions/runs/'+runId+'" target="_blank" rel="noopener noreferrer">Ver ejecución</a>':'';
+    return '<li><strong>'+clean(name)+'</strong>: '+clean(conclusion)+
+      ' · '+clean(last)+' · '+fmt(failed)+' fallos en el historial consultado'+link+'</li>';
+  }).join('');
+  const noContent=sourceCheck.live_collection_health==='NO_CONTENT_EXTRACTED';
+  audit.innerHTML+='<section class="cc-audit-schedule"><h3>Salud real de las automatizaciones</h3>'+
+    '<p>Estados obtenidos de GitHub Actions, independientes del éxito de la reconstrucción. Los contadores corresponden a la muestra del historial consultado.</p>'+
+    (statuses?'<ul>'+statuses+'</ul>':'<p>Historial programado aún no disponible.</p>')+
+    (noContent?'<p class="cc-audit-warning">ALERTA: la última muestra de URL no pudo recuperar contenido de ninguna página. No existen nuevas acreditaciones semánticas derivadas de esa muestra.</p>':'')+
+    '</section>';
+ }
  if(r?.hasData){
   const c=d.debt_breakdown||{};
   const categories=[['Afirmaciones por acreditar',c.claims_awaiting_evidence,'evidence'],['Derivaciones pendientes',c.derived_support,'derived'],['Campos sin información',c.empty_schema_fields,'empty']];
