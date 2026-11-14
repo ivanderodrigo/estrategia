@@ -760,9 +760,9 @@
     const target=item?.value;
     const scoped=target===undefined?all:all.filter(h=>historicalKey(typeof h.value==='object'?JSON.stringify(h.value):h.value)===historicalKey(typeof target==='object'?JSON.stringify(target):target));
     if(!scoped.length)return '';
-    const rows=scoped.slice(0,8).map(h=>{
+    const rows=scoped.slice(0,20).map(h=>{
       const val=typeof h.value==='object'?JSON.stringify(h.value):String(h.value??'');
-      const links=(h.urls||[]).filter(url=>/^https:\/\/[^\s"'<>]+$/i.test(url)).slice(0,3)
+      const links=(h.urls||[]).filter(url=>/^https:\/\/[^\s"'<>]+$/i.test(url)).slice(0,6)
         .map(url=>{
           const check=state.historicalChecks?.[url];
           const exactProof=(item?.evidence||field?.evidence||[]).some(ev=>ev.url===url
@@ -783,7 +783,7 @@
     }).join('');
     return '<section class="trace-history"><strong>Referencias históricas relacionadas</strong>'+
       '<p>Las referencias históricas no acreditan por sí solas. Si el dato tiene prueba actual, esta aparece arriba y se identifica incluso cuando difiere del enlace original.</p>'+
-      '<ul>'+rows+'</ul></section>';
+      '<ul>'+rows+'</ul>'+(scoped.length>20?'<small>Se muestran 20 de '+scoped.length+' referencias históricas de este campo.</small>':'')+'</section>';
   }
   function tableHtml(rows, schema, emptyText, view, baseRows=rows){
     const cols=activeColumns(schema,baseRows,view), ordered=sortedRows(rows,view),body=ordered.length?`<table data-view="${esc(view)}" class="data-table"><thead><tr><th class="entity-head name-col">Entidad</th>${cols.map(c=>headerCell(c,view)).join('')}</tr></thead><tbody>${ordered.map(row=>{const baseIdentityEvidence=(row.evidence||[]).filter(e=>atomicCurrentProof([e]));
