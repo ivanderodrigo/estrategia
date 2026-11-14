@@ -143,35 +143,63 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
         # footnote, negative comparison or entirely unrelated page section.
         checks = []
         for claim in claims:
-            value = canonical(claim["value"])
+            raw_value = str(claim["value"])
+            # A historical vendor-valued label may carry a market qualifier.
+            # Example: "Huawei · Operations Support Systems peer". The page
+            # calls the provider Huawei, not that entire editorial label.
+            vendor = canonical(raw_value.split(" · ", 1)[0])
+            qualifier = canonical(raw_value.split(" · ", 1)[1]) if " · " in raw_value else ""
+            value = canonical(raw_value)
+            field_id = str(claim.get("field") or "")
+            is_gartner_alternative = bool(
+                claim.get("section") == "manufacturers"
+                and field_id == "competitors"
+                and urlparse(safe).hostname in {"www.gartner.com", "gartner.com"}
+                and re.fullmatch(r"/reviews/product/[a-z0-9-]+/alternatives/?", urlparse(safe).path)
+                and canonical(claim.get("entity") or "").replace(" ", "-")
+                   in urlparse(safe).path.split("/")[3]
+            )
+            # A top-level product-alternatives page explicitly identifies an
+            # alternative manufacturer as "By <vendor>" in the same market.
+            # This is stronger than a mere vendor mention in a generic report.
+            explicit_alternative = False
+            if is_gartner_alternative and vendor and len(vendor) >= 3:
+                vendor_match = re.search(
+                    r"(?<![a-z0-9])by\\s+" + re.escape(vendor) + r"(?![a-z0-9])", text
+                )
+                has_market = (not qualifier or
+                              all(x in text for x in qualifier.split()
+                                  if x not in {"peer","competitor","rival"}))
+                explicit_alternative = bool(vendor_match and has_market
+                    and "alternatives" in text and "compare with" in text)
             tokens = value.split()
             informative = len(value) >= 6 and (
-                len(tokens) >= 2 or
-                claim.get("field") in ("competitors", "market_players", "vendors",
-                                        "vendor_relations", "westcon_overlap")
+                len(tokens) >= 2 or field_id in
+                ("competitors", "market_players", "vendors",
+                 "vendor_relations", "westcon_overlap")
             )
-            occurs = bool(informative and re.search(
-                r"(?<![a-z0-9])" + re.escape(value) + r"(?![a-z0-9])", text
-            ))
-            # Keep a bounded, reviewable excerpt for every positive match.
-            # A mention is deliberately NOT evidence of a named relationship.
-            context=""
-            if occurs:
-                match=re.search(r"(?<![a-z0-9])" + re.escape(value) + r"(?![a-z0-9])", text)
-                if match:
-                    context=text[max(0,match.start()-120):min(len(text),match.end()+120)]
+            search_value = vendor if is_gartner_alternative else value
+            match = re.search(
+                r"(?<![a-z0-9])" + re.escape(search_value) + r"(?![a-z0-9])", text
+            ) if informative else None
+            occurs = bool(match)
+            context = (text[max(0, match.start()-140):min(len(text),match.end()+140)]
+                       if match else "")
             checks.append({
                 "section": claim["section"], "entity": claim["entity"],
-                "field": claim["field"], "value": claim["value"][:180],
-                "status": "VALUE_PRESENT_REQUIRES_CONTEXT" if occurs
-                          else "NO_SPECIFIC_VALUE_CONFIRMED",
+                "field": field_id, "value": raw_value[:180],
+                "status": ("VERIFIED_EXPLICIT_ALTERNATIVE" if explicit_alternative else
+                           "VALUE_PRESENT_REQUIRES_CONTEXT" if occurs else
+                           "NO_SPECIFIC_VALUE_CONFIRMED"),
                 "source_context": context,
+                "matched_vendor":vendor if explicit_alternative else None,
                 "resolved_url": safe,
-                "accredited": False,
+                "accredited": explicit_alternative,
             })
-        hits = [c for c in checks if c["status"] == "VALUE_PRESENT_REQUIRES_CONTEXT"]
+        hits = [c for c in checks if c["status"] in ("VALUE_PRESENT_REQUIRES_CONTEXT", "VERIFIED_EXPLICIT_ALTERNATIVE")]
         result["claim_checks"] = checks
         result["claim_hits"] = len(hits)
+        result["semantically_verified"] = sum(c["status"] == "VERIFIED_EXPLICIT_ALTERNATIVE" for c in checks)
         result["examples"] = hits[:5]
         result["status"] = "REACHABLE_TEXT_MATCH" if hits else "REACHABLE_NO_EXACT_TEXT"
         return result
