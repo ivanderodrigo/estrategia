@@ -5,7 +5,7 @@ on:
     paths: ["index.html","404.html","memoria-historica.html","assets/**","engine/**","config/current/**","tests/**","scripts/**",".github/workflows/pages-deploy.yml"]
   workflow_dispatch:
   workflow_run:
-    workflows: ["Westcon Intelligence Daily", "Westcon Intelligence Weekly", "Westcon Intelligence Monthly"]
+    workflows: ["Westcon Intelligence Daily", "Westcon Intelligence Weekly", "Westcon Intelligence Monthly", "Historical Source Diligence"]
     types: [completed]
     branches: [main]
 permissions:
@@ -81,11 +81,14 @@ jobs:
             while IFS= read -r changed; do
               [ -n "$changed" ] || continue
               case "$changed" in
-                data/current/historical_source_checks.json|data/public/historical/current/source_checks.json) ;;
+                data/current/historical_source_checks.json|data/public/historical/current/source_checks.json|config/current/historical_semantic_verified.json|data/public/historical/current/semantic_claim_audit.json) ;;
                 *) echo "Main changed outside source audit ($changed): refusing stale publish"; exit 1 ;;
               esac
             done < <(git diff --name-only HEAD origin/main)
-            git restore --source=origin/main --worktree -- data/public/historical/current/source_checks.json
+            # The diligence workflow owns these four paths. Preserve its latest
+            # first-party excerpt registry and diagnostics instead of overwriting
+            # them with stale artifacts from a simultaneous Pages build.
+            git restore --source=origin/main --worktree -- data/public/historical/current/source_checks.json data/public/historical/current/semantic_claim_audit.json config/current/historical_semantic_verified.json
             git reset --soft origin/main
           fi
           git add -A data/public config/current/historical_structured_verified.json config/current/historical_semantic_verified.json
