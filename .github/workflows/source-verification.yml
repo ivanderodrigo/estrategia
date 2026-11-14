@@ -7,6 +7,7 @@ on:
       - '.github/workflows/source-verification.yml'
       - 'scripts/publish_source_verification_status.py'
       - 'scripts/review_sources_live.py'
+      - 'scripts/diagnose_source_http.py'
   schedule:
     - cron: "11 20 * * *"
   workflow_dispatch:
@@ -36,6 +37,12 @@ jobs:
         run: python -m scripts.audit_claim_sources --output claim-source-audit.json > /dev/null
       - name: Inspect a rotating set of original source pages
         run: python -m scripts.review_sources_live --limit 200 --output source-live-review.json
+      - name: Diagnose source HTTP transport without treating HTTP success as proof
+        if: always()
+        run: |
+          if [ -s source-live-review.json ]; then
+            python scripts/diagnose_source_http.py
+          fi
       - name: Publish source-verification telemetry tied to its snapshot
         env:
           GH_TOKEN: ${{ github.token }}
@@ -81,6 +88,7 @@ jobs:
           path: |
             claim-source-audit.json
             source-live-review.json
+            source-http-diagnostics.json
           if-no-files-found: warn
           retention-days: 30
       - name: Fail closed if no source content was retrievable
