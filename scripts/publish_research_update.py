@@ -80,7 +80,11 @@ def output(command: list[str]) -> str:
 PRESENTATION_PATHS=("assets/app/","assets/favicon.svg","index.html",
                     "404.html","memoria-historica.html")
 UNRELATED_DIAGNOSTICS=("data/current/daily_workflow_health.json",
-                       "data/current/gap_debt_audit.json")
+                       "data/current/gap_debt_audit.json",
+                       # This independently sampled URL-health telemetry is
+                       # not source accreditation and does not affect the
+                       # canonical intelligence model or any claim binding.
+                       "data/public/source_verification_status.json")
 
 
 def safe_remote_only(paths: list[str]) -> bool:
