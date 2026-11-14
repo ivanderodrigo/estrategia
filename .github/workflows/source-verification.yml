@@ -5,12 +5,13 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/source-verification.yml'
+      - 'scripts/publish_source_verification_status.py'
   schedule:
     - cron: "11 20 * * *"
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: westcon-source-verification
@@ -22,6 +23,8 @@ jobs:
     timeout-minutes: 50
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
@@ -31,6 +34,25 @@ jobs:
         run: python -m scripts.audit_claim_sources --output claim-source-audit.json > /dev/null
       - name: Inspect a rotating set of original source pages
         run: python -m scripts.review_sources_live --limit 200 --output source-live-review.json
+      - name: Publish source-verification telemetry tied to its snapshot
+        env:
+          VERIFICATION_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python scripts/publish_source_verification_status.py --run-url "$VERIFICATION_RUN_URL"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp data/public/source_verification_status.json "$RUNNER_TEMP/source_verification_status.json"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp "$RUNNER_TEMP/source_verification_status.json" data/public/source_verification_status.json
+            git add data/public/source_verification_status.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "audit: publish sampled source-verification status [skip ci]"
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          echo "Cannot safely publish verification telemetry on current main"
+          exit 1
       - name: Upload verification reports
         if: always()
         uses: actions/upload-artifact@v4
