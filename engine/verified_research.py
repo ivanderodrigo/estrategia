@@ -136,7 +136,7 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
         # The semantic registry is a separately reviewed, exact historical
         # URL/excerpt assertion. All other registries retain their narrow scope.
         semantic_fields = {
-            "manufacturers": {"capabilities"},
+            "manufacturers": {"capabilities", "distributors"},
             "distributors": {"services", "capabilities", "specializations", "technology_domains",
                              "training", "marketplace", "logistics", "financing", "verticals",
                              "vendor_relations", "linecard_remainder"},
