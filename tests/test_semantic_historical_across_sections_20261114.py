@@ -13,6 +13,24 @@ def claim(section,field,entity,value,excerpt):
             "value":value,"source_context":canonical(excerpt)}
 
 class SemanticHistoricalTests(unittest.TestCase):
+    def test_issuer_competitor_list_accredits_ciena_huawei(self):
+        ev=claim("manufacturers","competitors","Ciena","Huawei",
+                 "Ciena Our competitors include Nokia, Huawei, Cisco, Hewlett Packard Enterprise and ZTE")
+        self.assertEqual(classify(ev,"https://www.sec.gov/Archives/edgar/data/936395/000162828025056698/cien-20251101.htm"),
+                         "VERIFIED_EXPLICIT_ISSUER_COMPETITOR")
+
+    def test_other_companies_sec_filing_cannot_credit_ciena(self):
+        ev=claim("manufacturers","competitors","Ciena","Huawei",
+                 "Our competitors include Nokia, Huawei and ZTE")
+        self.assertNotEqual(classify(ev,"https://www.sec.gov/Archives/edgar/data/858877/000085887726000132/csco-20260725.htm"),
+                            "VERIFIED_EXPLICIT_ISSUER_COMPETITOR")
+
+    def test_issuer_mention_without_competitive_predicate_is_not_enough(self):
+        ev=claim("manufacturers","competitors","Ciena","Huawei",
+                 "Huawei and Ciena held a joint session about customers")
+        self.assertNotEqual(classify(ev,"https://www.sec.gov/Archives/edgar/data/936395/000162828025056698/cien-20251101.htm"),
+                            "VERIFIED_EXPLICIT_ISSUER_COMPETITOR")
+
     def test_first_party_integrator_partner(self):
         ev=claim("integrators","vendor_relations","Nunsys","Avaya",
                  "Nunsys partners tecnologicos comunicaciones Avaya call center")

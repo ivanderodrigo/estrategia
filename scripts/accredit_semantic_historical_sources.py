@@ -57,6 +57,28 @@ def classify(claim,url):
     context=canonical(excerpt)
     if any(s in clean for s in NEGATIVE):
         return "HYPOTHESIS_NOT_FACT"
+    # A manufacturer's own filing or product page can expressly identify a
+    # competitor. Check the relationship words in the same short excerpt;
+    # a random vendor-name hit is not a competitive assertion.
+    if section == "manufacturers" and field == "competitors":
+        peer_name = clean.split(" operations support systems peer")[0].strip()
+        page = urlparse(url)
+        issuer_filings = {
+            "ciena": ("/Archives/edgar/data/936395/",),
+        }
+        issuer_document = (
+            page.hostname in {"www.sec.gov","sec.gov"}
+            and any(path in page.path for path in issuer_filings.get(canonical(entity), ()))
+        )
+        first_party = owner_site(entity,url) or issuer_document
+        named=bool(re.search(r"(?<![a-z0-9])"+re.escape(peer_name)+r"(?![a-z0-9])",context))
+        competition_words=bool(re.search(
+            r"(our competitors include|competitors include|competitors are|"
+            r"compete with|principal competitors|main competitors|"
+            r"competidores incluyen|principales competidores)",context
+        ))
+        if first_party and named and competition_words:
+            return "VERIFIED_EXPLICIT_ISSUER_COMPETITOR"
     if field not in RELATION_FIELDS.get(section,set()) and (len(clean)<7 or len(clean.split())<2):
         return "AMBIGUOUS_SHORT_VALUE"
     if clean not in context:
@@ -133,7 +155,12 @@ def main():
                 seen.add(key)
                 section,entity,field=claim["section"],claim["entity"],claim["field"]
                 value=claim["value"]
-                direct=owner_site(entity,proof_url)
+                direct=owner_site(entity,proof_url) or (
+                    status == "VERIFIED_EXPLICIT_ISSUER_COMPETITOR"
+                    and canonical(entity) == "ciena"
+                    and "/Archives/edgar/data/936395/" in proof_url
+                    and urlparse(proof_url).hostname in {"sec.gov","www.sec.gov"}
+                )
                 peer = status == "VERIFIED_EXPLICIT_ALTERNATIVE"
                 source={
                     "url":proof_url,"source":"Gartner Peer Insights" if peer else
