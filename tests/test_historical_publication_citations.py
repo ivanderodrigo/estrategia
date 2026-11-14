@@ -30,6 +30,16 @@ class HistoricalPublicationTests(unittest.TestCase):
         self.assertFalse(publication_title_match(
             value,TEXT,URL,"architectures","analyst_basis")[0])
 
+    def test_long_exact_historical_value_is_not_rejected_by_old_limit(self):
+        phrase = ("Cloud security assessment and continuous posture review for "
+                  "enterprise environments with verified configuration controls ")
+        value = (phrase * 2).strip()
+        url = "https://examplevendor.com/services/cloud-security"
+        claim = {"section":"distributors","field":"services","entity":"ExampleVendor",
+                 "value": value,"source_context": value,
+                 "match_method":"EXACT_VALUE"}
+        self.assertEqual(classify(claim,url),"VERIFIED_FIRST_PARTY_CATALOG_VALUE")
+
     def test_classifier_requires_matching_publisher_and_role(self):
         claim={"section":"architectures","field":"analyst_basis","entity":"Zero Trust",
                "value":"Forrester: Top Cybersecurity Trends for 2026",
