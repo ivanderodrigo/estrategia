@@ -30,7 +30,28 @@ def apply():
     if not layers or not all(isinstance(v,dict) for v in layers):
         raise AssertionError("SASE/SSE layers missing")
     registry=payload.setdefault("evidence",{})
-    counts={"vendor_layer_pairs":0,"source_records":0}
+    # Remove superseded historical one-off manufacturer URLs. An earlier
+    # manual version can otherwise leave a broken source clickable even after
+    # replacing it with better first-party documentation.
+    approved={(v["layer"],v["vendor"],v["url"]) for v in spec.get("sources") or []
+              if v.get("status")=="VERIFIED_VENDOR_CAPABILITY"}
+    superseded={eid for eid,ev in registry.items()
+                if eid.startswith(("ev_sase_verified_","ev_sase_capability_"))
+                and ev.get("architecture")=="SASE / SSE"
+                and (ev.get("layer"),ev.get("item_value"),ev.get("url")) not in approved}
+    if superseded:
+        for eid in superseded:registry.pop(eid,None)
+        def clean_superseded(obj):
+            if isinstance(obj,dict):
+                if isinstance(obj.get("evidence_ids"),list):
+                    obj["evidence_ids"]=[eid for eid in obj["evidence_ids"]
+                                          if eid not in superseded]
+                for value in obj.values():clean_superseded(value)
+            elif isinstance(obj,list):
+                for value in obj:clean_superseded(value)
+        clean_superseded(payload.get("rows") or [])
+    counts={"vendor_layer_pairs":0,"source_records":0,
+            "superseded_sources_removed":len(superseded)}
     touched=set()
     for spec_item in spec.get("sources") or []:
         layer_name=spec_item["layer"]; vendor=spec_item["vendor"]
