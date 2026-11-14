@@ -1,27 +1,177 @@
 {
-  "generated_at": "2026-11-14T00:04:46.092825+00:00",
-  "urls_scanned": 616,
-  "claim_source_pairs_reviewed": 8198,
-  "verified_claim_source_pairs": 25,
-  "verified_this_run": 20,
-  "retained_prior_verified": 5,
+  "generated_at": "2026-11-14T01:05:38.162804+00:00",
+  "urls_scanned": 1699,
+  "claim_source_pairs_reviewed": 18637,
+  "verified_claim_source_pairs": 187,
+  "verified_this_run": 180,
+  "retained_prior_verified": 7,
   "expired_prior_verified": 0,
   "statuses": {
-    "VALUE_NOT_FOUND": 7981,
-    "DIFFERENTIAL_REQUIRES_COMPARISON": 4,
-    "VERIFIED_FIRST_PARTY_CATALOG_VALUE": 19,
-    "UNSUPPORTED_FIELD_OR_CONTEXT": 60,
-    "NOT_FIRST_PARTY": 127,
+    "VALUE_NOT_FOUND": 17806,
+    "VERIFIED_FIRST_PARTY_CATALOG_VALUE": 145,
+    "UNSUPPORTED_FIELD_OR_CONTEXT": 294,
+    "AMBIGUOUS_SHORT_VALUE": 74,
+    "RELATIONSHIP_NOT_SHOWN": 61,
+    "VERIFIED_EXPLICIT_PARTNER_CONTEXT": 50,
+    "DIFFERENTIAL_REQUIRES_COMPARISON": 11,
+    "NOT_FIRST_PARTY": 185,
+    "VERIFIED_CITED_ANALYST_DOCUMENT": 1,
+    "GENERIC_CAPABILITY_NOT_SPECIFIC": 4,
     "VERIFIED_FIRST_PARTY_TECH_STATEMENT": 1,
-    "AMBIGUOUS_SHORT_VALUE": 5,
-    "GENERIC_CAPABILITY_NOT_SPECIFIC": 1
+    "INSUFFICIENT_EXCERPT": 5
   },
   "by_section": {
-    "distributors": 12,
-    "integrators": 12,
+    "manufacturers": 25,
+    "distributors": 57,
+    "integrators": 103,
+    "architectures": 1,
     "clients_private": 1
   },
   "pending_recheck_examples": [
+    {
+      "section": "manufacturers",
+      "entity": "1Password",
+      "field": "distributors",
+      "value": "Ingram Micro",
+      "url": "https://1password.com/blog/1password-ingram-micro-partnership-resellers",
+      "historical_url": "https://1password.com/blog/1password-ingram-micro-partnership-resellers",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ignition Technology",
+      "field": "westcon_overlap",
+      "value": "1Password",
+      "url": "https://1password.com/blog/1password-ingram-micro-partnership-resellers",
+      "historical_url": "https://1password.com/blog/1password-ingram-micro-partnership-resellers",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ingram Micro",
+      "field": "westcon_overlap",
+      "value": "1Password",
+      "url": "https://1password.com/blog/1password-ingram-micro-partnership-resellers",
+      "historical_url": "https://1password.com/blog/1password-ingram-micro-partnership-resellers",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "1Password",
+      "field": "capabilities",
+      "value": "Threat Intelligence",
+      "url": "https://1password.com/solutions/device-security",
+      "historical_url": "https://1password.com/careers",
+      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+    },
+    {
+      "section": "integrators",
+      "entity": "Abenet Soluciones",
+      "field": "westcon_overlap",
+      "value": "CrowdStrike",
+      "url": "https://1password.com/es/partners",
+      "historical_url": "https://1password.com/es/partners",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "integrators",
+      "entity": "Abenet Soluciones",
+      "field": "westcon_overlap",
+      "value": "1Password",
+      "url": "https://1password.com/es/partners",
+      "historical_url": "https://1password.com/es/partners",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "1Password",
+      "field": "capabilities",
+      "value": "Threat Intelligence",
+      "url": "https://1password.com/solutions/device-security",
+      "historical_url": "https://1password.com/platform",
+      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "field": "distributors",
+      "value": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "historical_url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Check Point",
+      "field": "distributors",
+      "value": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "historical_url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Microsoft Azure",
+      "field": "distributors",
+      "value": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "historical_url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "field": "distributors",
+      "value": "TD SYNNEX",
+      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "historical_url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "field": "vendor_relations",
+      "value": "Palo Alto Networks",
+      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "historical_url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "field": "vendor_relations",
+      "value": "Check Point",
+      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "historical_url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "field": "vendor_relations",
+      "value": "Amazon Web Services (AWS)",
+      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "historical_url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "field": "westcon_overlap",
+      "value": "Palo Alto Networks",
+      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "historical_url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "field": "westcon_overlap",
+      "value": "Check Point",
+      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "historical_url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
     {
       "section": "distributors",
       "entity": "aseminfor",
@@ -30,6 +180,105 @@
       "url": "https://aseminfor.es/",
       "historical_url": "https://aseminfor.es/",
       "reason": "DIFFERENTIAL_REQUIRES_COMPARISON"
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "field": "differential_capabilities",
+      "value": "14.000+ clientes activos",
+      "url": "https://aseminfor.es/",
+      "historical_url": "https://aseminfor.es/",
+      "reason": "DIFFERENTIAL_REQUIRES_COMPARISON"
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "field": "vendor_relations",
+      "value": "ASUS",
+      "url": "https://aseminfor.es/catalogo/",
+      "historical_url": "https://aseminfor.es/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "field": "recent_signals",
+      "value": "Amazon Cognito adds admin API operation to reset user TOTP configurations",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-cognito-totp-reset/",
+      "historical_url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-cognito-totp-reset/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "field": "recent_signals",
+      "value": "Amazon Connect Customer now supports points-based scoring in performance evaluations",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-connect-customer-points-based-scoring-evaluations/",
+      "historical_url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-connect-customer-points-based-scoring-evaluations/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "field": "recent_signals",
+      "value": "Amazon Connect Customer now supports unplanned shrinkage in agent schedules",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-connect-customer-unplanned-shrinkage/",
+      "historical_url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-connect-customer-unplanned-shrinkage/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "field": "recent_signals",
+      "value": "Amazon EC2 C8id and M8id instances are now available in additional AWS Regions",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-c8id-m8id-aws-regions/",
+      "historical_url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-c8id-m8id-aws-regions/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "field": "recent_signals",
+      "value": "Amazon EC2 R8id instances are now available in additional AWS Regions",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-r8id/",
+      "historical_url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-r8id/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "field": "recent_signals",
+      "value": "AWS Backup adds cross-Region backup copy and logically air-gapped vault support for Amazon DocumentDB in nine additional AWS Regions",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-backup-cross-region-air-gapped-docdb/",
+      "historical_url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-backup-cross-region-air-gapped-docdb/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "field": "recent_signals",
+      "value": "AWS Glue 5.1 is now available in AWS European Sovereign Cloud Region",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-glue-5-1-european-sovereign-cloud/",
+      "historical_url": "https://aws.amazon.com/about-aws/whats-new/2026/08/aws-glue-5-1-european-sovereign-cloud",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "field": "recent_signals",
+      "value": "Mountpoint for Amazon S3 adds memory usage controls",
+      "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/mountpoint-for-S3-adds-memory-usage-controls/",
+      "historical_url": "https://aws.amazon.com/about-aws/whats-new/2026/08/mountpoint-for-S3-adds-memory-usage-controls",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "HIBERUS",
+      "field": "services",
+      "value": "Servicios profesionales",
+      "url": "https://aws.amazon.com/es/",
+      "historical_url": "https://aws.amazon.com/es/",
+      "reason": "NOT_FIRST_PARTY"
     },
     {
       "section": "integrators",
@@ -78,6 +327,15 @@
     },
     {
       "section": "integrators",
+      "entity": "3Hold Technologies",
+      "field": "capabilities",
+      "value": "AI / Data",
+      "url": "https://aws.amazon.com/es/customer-enablement/?nc2=h_ql_ce",
+      "historical_url": "https://aws.amazon.com/es/customer-enablement/?nc2=h_ql_ce",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
       "entity": "3hold technologies",
       "field": "public_cases",
       "value": "Datos de AWS: historias de clientes | Análisis de datos e inteligencia artificial en AWS",
@@ -110,6 +368,60 @@
       "value": "Servicios financieros",
       "url": "https://aws.amazon.com/es/industries/?nc2=h_sol_ind_hub",
       "historical_url": "https://aws.amazon.com/es/industries/?nc2=h_sol_ind_hub",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "acens / Telefónica Tech",
+      "field": "vendor_relations",
+      "value": "Amazon Web Services (AWS)",
+      "url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
+      "historical_url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "acens / Telefónica Tech",
+      "field": "competitor_vendor_overlap",
+      "value": "Amazon Web Services (AWS)",
+      "url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
+      "historical_url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "Claranet",
+      "field": "vendor_relations",
+      "value": "Amazon Web Services (AWS)",
+      "url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
+      "historical_url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "Claranet",
+      "field": "competitor_vendor_overlap",
+      "value": "Amazon Web Services (AWS)",
+      "url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
+      "historical_url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "3Hold Technologies",
+      "field": "vendor_relations",
+      "value": "Amazon Web Services (AWS)",
+      "url": "https://aws.amazon.com/es/partners/success/fund-grube/",
+      "historical_url": "https://aws.amazon.com/es/partners/success/fund-grube/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "3Hold Technologies",
+      "field": "competitor_vendor_overlap",
+      "value": "Amazon Web Services (AWS)",
+      "url": "https://aws.amazon.com/es/partners/success/fund-grube/",
+      "historical_url": "https://aws.amazon.com/es/partners/success/fund-grube/",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
@@ -383,40 +695,40 @@
       "reason": "NOT_FIRST_PARTY"
     },
     {
-      "section": "integrators",
-      "entity": "telefonica",
-      "field": "specializations",
-      "value": "Zero Trust",
-      "url": "https://blog.checkpoint.com/partners/celebrating-the-2025-check-point-software-emea-partner-award-winners-recognizing-excellence-across-the-region/",
-      "historical_url": "https://blog.checkpoint.com/partners/celebrating-the-2025-check-point-software-emea-partner-award-winners-recognizing-excellence-across-the-region/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "ntt",
-      "field": "specializations",
-      "value": "Harmony Email & Collaboration",
-      "url": "https://blog.checkpoint.com/partners/celebrating-the-2025-check-point-software-emea-partner-award-winners-recognizing-excellence-across-the-region/",
-      "historical_url": "https://blog.checkpoint.com/partners/celebrating-the-2025-check-point-software-emea-partner-award-winners-recognizing-excellence-across-the-region/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "grant thornton",
+      "section": "manufacturers",
+      "entity": "AWS",
       "field": "capabilities",
       "value": "AI / Data",
-      "url": "https://blog.checkpoint.com/partners/celebrating-the-2025-check-point-software-emea-partner-award-winners-recognizing-excellence-across-the-region/",
-      "historical_url": "https://blog.checkpoint.com/partners/celebrating-the-2025-check-point-software-emea-partner-award-winners-recognizing-excellence-across-the-region/",
+      "url": "https://aws.amazon.com/types-of-cloud-computing/",
+      "historical_url": "https://aws.amazon.com/types-of-cloud-computing/",
       "reason": "NOT_FIRST_PARTY"
     },
     {
       "section": "integrators",
-      "entity": "grant thornton",
-      "field": "services",
-      "value": "Managed security services",
-      "url": "https://blog.checkpoint.com/partners/celebrating-the-2025-check-point-software-emea-partner-award-winners-recognizing-excellence-across-the-region/",
-      "historical_url": "https://blog.checkpoint.com/partners/celebrating-the-2025-check-point-software-emea-partner-award-winners-recognizing-excellence-across-the-region/",
-      "reason": "NOT_FIRST_PARTY"
+      "entity": "BiMind",
+      "field": "westcon_overlap",
+      "value": "Ivanti",
+      "url": "https://bimind.es/it-security/ivanti/",
+      "historical_url": "https://bimind.es/it-security/ivanti/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "distributors",
+      "entity": "Charmex",
+      "field": "differential_capabilities",
+      "value": "Servicio técnico postventa",
+      "url": "https://charmex.net/es/empresa",
+      "historical_url": "https://charmex.net/es/empresa",
+      "reason": "DIFFERENTIAL_REQUIRES_COMPARISON"
+    },
+    {
+      "section": "integrators",
+      "entity": "T-Systems Spain",
+      "field": "westcon_overlap",
+      "value": "Claroty",
+      "url": "https://claroty.com/partners",
+      "historical_url": "https://claroty.com/partners",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
     },
     {
       "section": "integrators",
@@ -444,6 +756,51 @@
       "url": "https://cradlepoint.ericsson.com/partners/network-operators/",
       "historical_url": "https://cradlepoint.com/partners/network-operators/",
       "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Vodafone Spain",
+      "field": "public_cases",
+      "value": "Private 5G keeps Lufthansa Cargo’s warehouse scanners connected 24x7 | Ericsson",
+      "url": "https://cradlepoint.ericsson.com/customer-stories/private-5g-keeps-lufthansa-cargos-warehouse-scanners-connected-24x7/",
+      "historical_url": "https://cradlepoint.ericsson.com/customer-stories/private-5g-keeps-lufthansa-cargos-warehouse-scanners-connected-24x7/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "Vodafone Spain",
+      "field": "public_cases",
+      "value": "Subway franchisee keeps network fresh with 5G connectivity | Ericsson",
+      "url": "https://cradlepoint.ericsson.com/customer-stories/subway-franchisee-keeps-network-fresh-with-5g-connectivity/",
+      "historical_url": "https://cradlepoint.ericsson.com/customer-stories/subway-franchisee-keeps-network-fresh-with-5g-connectivity/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "field": "integrators",
+      "value": "DXC Technology Spain",
+      "url": "https://dxc.com/newsroom/09122024",
+      "historical_url": "https://dxc.com/newsroom/09122024",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "DXC Technology Spain",
+      "field": "vendor_relations",
+      "value": "Amazon Web Services (AWS)",
+      "url": "https://dxc.com/newsroom/09122024",
+      "historical_url": "https://dxc.com/newsroom/09122024",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "DXC Technology Spain",
+      "field": "competitor_vendor_overlap",
+      "value": "Amazon Web Services (AWS)",
+      "url": "https://dxc.com/newsroom/09122024",
+      "historical_url": "https://dxc.com/newsroom/09122024",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
       "section": "integrators",
@@ -492,6 +849,168 @@
     },
     {
       "section": "integrators",
+      "entity": "Grupo ICA",
+      "field": "capabilities",
+      "value": "Threat Intelligence",
+      "url": "https://efficientip.com/resources/aemet-protect-dns-dhcp-ipam-systems-and-guarantee-network-visibility/",
+      "historical_url": "https://efficientip.com/resources/aemet-protect-dns-dhcp-ipam-systems-and-guarantee-network-visibility/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Grupo ICA",
+      "field": "vendor_relations",
+      "value": "EfficientIP",
+      "url": "https://efficientip.com/resources/aemet-protect-dns-dhcp-ipam-systems-and-guarantee-network-visibility/",
+      "historical_url": "https://efficientip.com/resources/aemet-protect-dns-dhcp-ipam-systems-and-guarantee-network-visibility/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "Grupo ICA",
+      "field": "westcon_overlap",
+      "value": "EfficientIP",
+      "url": "https://efficientip.com/resources/aemet-protect-dns-dhcp-ipam-systems-and-guarantee-network-visibility/",
+      "historical_url": "https://efficientip.com/resources/aemet-protect-dns-dhcp-ipam-systems-and-guarantee-network-visibility/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "integrators",
+      "entity": "Axians",
+      "field": "vendor_relations",
+      "value": "Extreme Networks",
+      "url": "https://www.extremenetworks.com/about-extreme-networks/company/newsroom",
+      "historical_url": "https://es.extremenetworks.com/press/press-release/axians-reconocida-como-partner-del-ano-de-extreme-networks-en-espana/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "Axians",
+      "field": "westcon_overlap",
+      "value": "Extreme Networks",
+      "url": "https://www.extremenetworks.com/about-extreme-networks/company/newsroom",
+      "historical_url": "https://es.extremenetworks.com/press/press-release/axians-reconocida-como-partner-del-ano-de-extreme-networks-en-espana/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "Axians Spain",
+      "field": "westcon_overlap",
+      "value": "Extreme Networks",
+      "url": "https://www.extremenetworks.com/about-extreme-networks/company/newsroom",
+      "historical_url": "https://es.extremenetworks.com/press/press-release/axians-reconocida-como-partner-del-ano-de-extreme-networks-en-espana/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "vendor_relations",
+      "value": "Extreme Networks",
+      "url": "https://www.extremenetworks.com/about-extreme-networks/company/newsroom",
+      "historical_url": "https://es.extremenetworks.com/press/press-release/extreme-networks-clausura-su-conferencia-anual-de-partners-en-emea/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "westcon_overlap",
+      "value": "Extreme Networks",
+      "url": "https://www.extremenetworks.com/about-extreme-networks/company/newsroom",
+      "historical_url": "https://es.extremenetworks.com/press/press-release/extreme-networks-clausura-su-conferencia-anual-de-partners-en-emea/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "field": "integrators",
+      "value": "NTT Data Spain",
+      "url": "https://es.nttdata.com/alliances/aws",
+      "historical_url": "https://es.nttdata.com/alliances/aws",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT Data Spain",
+      "field": "services",
+      "value": "Servicios profesionales",
+      "url": "https://es.nttdata.com/services/cloud-it",
+      "historical_url": "https://es.nttdata.com/alliances/aws",
+      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT Data Spain",
+      "field": "services",
+      "value": "Servicios gestionados",
+      "url": "https://es.nttdata.com/services/cloud-it",
+      "historical_url": "https://es.nttdata.com/alliances/aws",
+      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT Data Spain",
+      "field": "competitor_vendor_overlap",
+      "value": "Amazon Web Services (AWS)",
+      "url": "https://es.nttdata.com/alliances/aws",
+      "historical_url": "https://es.nttdata.com/alliances/aws",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT Data Spain",
+      "field": "roles",
+      "value": "Global Systems Integrator",
+      "url": "https://es.nttdata.com/alliances/microsoft",
+      "historical_url": "https://es.nttdata.com/alliances/microsoft",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT Data Spain",
+      "field": "services",
+      "value": "Managed Security",
+      "url": "https://es.nttdata.com/services/cybersecurity",
+      "historical_url": "https://es.nttdata.com/alliances/microsoft",
+      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT Data Spain",
+      "field": "services",
+      "value": "Servicios profesionales",
+      "url": "https://es.nttdata.com/services/cloud-it",
+      "historical_url": "https://es.nttdata.com/alliances/microsoft",
+      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT Data Spain",
+      "field": "services",
+      "value": "Servicios gestionados",
+      "url": "https://es.nttdata.com/services/cloud-it",
+      "historical_url": "https://es.nttdata.com/alliances/microsoft",
+      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT Data Spain",
+      "field": "westcon_overlap",
+      "value": "Microsoft Azure",
+      "url": "https://es.nttdata.com/alliances/microsoft",
+      "historical_url": "https://es.nttdata.com/alliances/microsoft",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT Data Spain",
+      "field": "westcon_overlap",
+      "value": "Zscaler",
+      "url": "https://es.nttdata.com/services/cybersecurity",
+      "historical_url": "https://es.nttdata.com/alliances/microsoft",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "integrators",
       "entity": "seyrcom",
       "field": "services",
       "value": "Servicios profesionales",
@@ -509,6 +1028,105 @@
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
+      "section": "integrators",
+      "entity": "Seyrcom",
+      "field": "vendor_relations",
+      "value": "Ruckus Networks",
+      "url": "https://es.ruckusnetworks.com/resources/case-studies/mahou-san-miguel/",
+      "historical_url": "https://es.ruckusnetworks.com/resources/case-studies/mahou-san-miguel/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "Seyrcom",
+      "field": "westcon_overlap",
+      "value": "Ruckus Networks",
+      "url": "https://es.ruckusnetworks.com/resources/case-studies/mahou-san-miguel/",
+      "historical_url": "https://es.ruckusnetworks.com/resources/case-studies/mahou-san-miguel/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "GMV",
+      "field": "vendor_relations",
+      "value": "Vectra AI",
+      "url": "https://es.vectra.ai/about/news/vectra-ai-honors-partner-community-with-2022-partner-of-the-year-awards",
+      "historical_url": "https://es.vectra.ai/about/news/vectra-ai-honors-partner-community-with-2022-partner-of-the-year-awards",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "SIA",
+      "field": "vendor_relations",
+      "value": "Vectra AI",
+      "url": "https://es.vectra.ai/about/news/vectra-ai-honors-partner-community-with-2022-partner-of-the-year-awards",
+      "historical_url": "https://es.vectra.ai/about/news/vectra-ai-honors-partner-community-with-2022-partner-of-the-year-awards",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "GMV",
+      "field": "vendor_relations",
+      "value": "Vectra AI",
+      "url": "https://es.vectra.ai/partners",
+      "historical_url": "https://es.vectra.ai/partners",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "GMV",
+      "field": "westcon_overlap",
+      "value": "Vectra AI",
+      "url": "https://es.vectra.ai/partners",
+      "historical_url": "https://es.vectra.ai/partners",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "SIA",
+      "field": "vendor_relations",
+      "value": "Vectra AI",
+      "url": "https://es.vectra.ai/partners",
+      "historical_url": "https://es.vectra.ai/partners",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "SIA",
+      "field": "westcon_overlap",
+      "value": "Vectra AI",
+      "url": "https://es.vectra.ai/partners",
+      "historical_url": "https://es.vectra.ai/partners",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "field": "vendor_relations",
+      "value": "HaloITSM",
+      "url": "https://www.factis.com/",
+      "historical_url": "https://factis.pt/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "field": "vendor_relations",
+      "value": "Lansweeper",
+      "url": "https://www.factis.com/",
+      "historical_url": "https://factis.pt/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "distributors",
+      "entity": "Factis",
+      "field": "vendor_relations",
+      "value": "NAKIVO",
+      "url": "https://www.factis.com/",
+      "historical_url": "https://factis.pt/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
       "section": "distributors",
       "entity": "td synnex",
       "field": "differential_capabilities",
@@ -516,6 +1134,33 @@
       "url": "https://hub.tdsynnex.com/es/advancedsolutions/security/",
       "historical_url": "https://hub.tdsynnex.com/es/advancedsolutions/security/",
       "reason": "DIFFERENTIAL_REQUIRES_COMPARISON"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "field": "distributors",
+      "value": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/es/aws/dsor/",
+      "historical_url": "https://hub.tdsynnex.com/es/aws/dsor/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Cisco",
+      "field": "distributors",
+      "value": "TD SYNNEX",
+      "url": "https://hub.tdsynnex.com/es/aws/dsor/",
+      "historical_url": "https://hub.tdsynnex.com/es/aws/dsor/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "distributors",
+      "entity": "TD SYNNEX",
+      "field": "vendor_relations",
+      "value": "Amazon Web Services (AWS)",
+      "url": "https://hub.tdsynnex.com/es/aws/cloud-labs/",
+      "historical_url": "https://hub.tdsynnex.com/es/aws/dsor/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
     },
     {
       "section": "distributors",
@@ -528,6 +1173,51 @@
     },
     {
       "section": "distributors",
+      "entity": "Inforpor",
+      "field": "differential_capabilities",
+      "value": "30.000 referencias",
+      "url": "https://inforpor.com/",
+      "historical_url": "https://inforpor.com/",
+      "reason": "DIFFERENTIAL_REQUIRES_COMPARISON"
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforpor",
+      "field": "differential_capabilities",
+      "value": "54 fabricantes",
+      "url": "https://inforpor.com/",
+      "historical_url": "https://inforpor.com/",
+      "reason": "DIFFERENTIAL_REQUIRES_COMPARISON"
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforpor",
+      "field": "differential_capabilities",
+      "value": "Servicios logísticos y financieros",
+      "url": "https://inforpor.com/",
+      "historical_url": "https://inforpor.com/",
+      "reason": "DIFFERENTIAL_REQUIRES_COMPARISON"
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "vendor_relations",
+      "value": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "Decunify",
+      "field": "westcon_overlap",
+      "value": "Extreme Networks",
+      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "distributors",
       "entity": "itancia",
       "field": "differential_capabilities",
       "value": "Vendedores especializados",
@@ -537,8 +1227,206 @@
     },
     {
       "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "field": "job_profiles",
+      "value": "Solutions Architecture",
+      "url": "https://jobs.orangecyberdefense.com/connect",
+      "historical_url": "https://jobs.orangecyberdefense.com/connect",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "Orange Cyberdefense",
+      "field": "job_profiles",
+      "value": "CERT / CSIRT",
+      "url": "https://jobs.orangecyberdefense.com/connect",
+      "historical_url": "https://jobs.orangecyberdefense.com/connect",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "All4Sec",
+      "field": "capabilities",
+      "value": "Data Center",
+      "url": "https://news-blogs.cisco.com/americas/es/",
+      "historical_url": "https://news-blogs.cisco.com/americas/es/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Cisco",
+      "field": "integrators",
+      "value": "Mira Telecomunicaciones",
+      "url": "https://news-blogs.cisco.com/emea/es/2025/02/07/cisco-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2025/02/07/cisco-premia-a-sus-partners-de-canal/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
       "entity": "telefonica",
       "field": "services",
+      "value": "Managed Services",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Cisco",
+      "field": "integrators",
+      "value": "Indra Group",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Cisco",
+      "field": "integrators",
+      "value": "Mira Telecomunicaciones",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Cisco",
+      "field": "integrators",
+      "value": "Vodafone Spain",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "Axians",
+      "field": "roles",
+      "value": "Managed Services Partner",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "Axians",
+      "field": "specializations",
+      "value": "Managed services",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Axians",
+      "field": "services",
+      "value": "Managed services",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Axians",
+      "field": "capabilities",
+      "value": "Managed Services",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Kyndryl",
+      "field": "roles",
+      "value": "Services and Software Partner",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "Nunsys",
+      "field": "roles",
+      "value": "Growth Partner",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "SATEC",
+      "field": "specializations",
+      "value": "Public Sector",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "SATEC",
+      "field": "capabilities",
+      "value": "Public Sector",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "SCC Spain",
+      "field": "roles",
+      "value": "Ecosystem Partner",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "Telefónica",
+      "field": "roles",
+      "value": "Security Partner",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "Telefónica",
+      "field": "specializations",
+      "value": "Service Provider",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Telefónica",
+      "field": "services",
+      "value": "Service Provider",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Telefónica",
+      "field": "services",
+      "value": "Servicios gestionados",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Telefónica",
+      "field": "capabilities",
+      "value": "Service Provider",
+      "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "Telefónica",
+      "field": "capabilities",
       "value": "Managed Services",
       "url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
       "historical_url": "https://news-blogs.cisco.com/emea/es/2026/01/16/cisco-espana-premia-a-sus-partners-de-canal/",
@@ -563,6 +1451,33 @@
       "reason": "NOT_FIRST_PARTY"
     },
     {
+      "section": "manufacturers",
+      "entity": "Microsoft Azure",
+      "field": "integrators",
+      "value": "Prodware Spain",
+      "url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/?lang=es",
+      "historical_url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/?lang=es",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "ENCAMINA",
+      "field": "westcon_overlap",
+      "value": "Microsoft Azure",
+      "url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/?lang=es",
+      "historical_url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/?lang=es",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "KPMG",
+      "field": "westcon_overlap",
+      "value": "Microsoft Azure",
+      "url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/?lang=es",
+      "historical_url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/?lang=es",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
       "section": "distributors",
       "entity": "soon",
       "field": "capabilities",
@@ -570,6 +1485,15 @@
       "url": "https://nexus-solutions.pt/",
       "historical_url": "https://nexus-solutions.pt/",
       "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "field": "integrators",
+      "value": "NTT Data Spain",
+      "url": "https://pt.nttdata.com/alliances/aws",
+      "historical_url": "https://pt.nttdata.com/alliances/aws",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
       "section": "manufacturers",
@@ -581,6 +1505,24 @@
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
+      "section": "distributors",
+      "entity": "Ingram Micro",
+      "field": "differential_capabilities",
+      "value": "Professional Services",
+      "url": "https://services.ingrammicro.com/",
+      "historical_url": "https://services.ingrammicro.com/",
+      "reason": "DIFFERENTIAL_REQUIRES_COMPARISON"
+    },
+    {
+      "section": "integrators",
+      "entity": "SITS Group",
+      "field": "technology_domains",
+      "value": "AI / Data",
+      "url": "https://sits.com/en/",
+      "historical_url": "https://sits.com/en/",
+      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+    },
+    {
       "section": "manufacturers",
       "entity": "vectra ai",
       "field": "recent_signals",
@@ -588,6 +1530,15 @@
       "url": "https://thecyberwire.com/newsletters/daily-briefing/8/216",
       "historical_url": "https://thecyberwire.com/newsletters/daily-briefing/8/216",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ignition Technology",
+      "field": "westcon_overlap",
+      "value": "Weblib",
+      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
+      "historical_url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
     },
     {
       "section": "integrators",
@@ -618,12 +1569,147 @@
     },
     {
       "section": "integrators",
+      "entity": "VASS",
+      "field": "capabilities",
+      "value": "Data & AI",
+      "url": "https://vasscompany.com/spain/es/talent/",
+      "historical_url": "https://vasscompany.com/spain/es/talent/",
+      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "field": "job_profiles",
+      "value": "Data & AI",
+      "url": "https://vasscompany.com/spain/es/talent/",
+      "historical_url": "https://vasscompany.com/spain/es/talent/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "field": "job_profiles",
+      "value": "DevOps & Cloud",
+      "url": "https://vasscompany.com/spain/es/talent/",
+      "historical_url": "https://vasscompany.com/spain/es/talent/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "field": "job_profiles",
+      "value": "Software Engineering",
+      "url": "https://vasscompany.com/spain/es/talent/",
+      "historical_url": "https://vasscompany.com/spain/es/talent/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "VASS",
+      "field": "westcon_overlap",
+      "value": "Palo Alto Networks",
+      "url": "https://vasscompany.com/spain/es/what-we-do/partners/",
+      "historical_url": "https://vasscompany.com/spain/es/what-we-do/partners/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
       "entity": "warpcom",
       "field": "job_profiles",
       "value": "Solutions Architect · Networking & Infrastructure",
       "url": "https://warpcom.com/oportunidades-em-aberto/",
       "historical_url": "https://warpcom.com/oportunidades-em-aberto/",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ajoomal",
+      "field": "westcon_overlap",
+      "value": "Check Point",
+      "url": "https://www.ajoomal.com/soluciones/anti-ransomware/",
+      "historical_url": "https://www.ajoomal.com/soluciones/anti-ransomware/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ajoomal",
+      "field": "westcon_overlap",
+      "value": "Check Point",
+      "url": "https://www.ajoomal.com/soluciones/back-up/",
+      "historical_url": "https://www.ajoomal.com/soluciones/back-up/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ajoomal",
+      "field": "westcon_overlap",
+      "value": "Check Point",
+      "url": "https://www.ajoomal.com/soluciones/dlp/",
+      "historical_url": "https://www.ajoomal.com/soluciones/dlp/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ignition Technology",
+      "field": "services",
+      "value": "Servicios profesionales",
+      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
+      "historical_url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ignition Technology",
+      "field": "differential_capabilities",
+      "value": "Servicios profesionales",
+      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
+      "historical_url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "field": "services",
+      "value": "Servicios profesionales",
+      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
+      "historical_url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "distributors",
+      "entity": "Visiotech Security",
+      "field": "differential_capabilities",
+      "value": "Servicios profesionales",
+      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
+      "historical_url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "distributors",
+      "entity": "ALSO",
+      "field": "differential_capabilities",
+      "value": "Cloud Marketplace",
+      "url": "https://www.also.com/ec/cms5/2610/es_es/fabricantes/index.jsp",
+      "historical_url": "https://www.also.com/ec/cms5/2610/es_es/fabricantes/index.jsp",
+      "reason": "DIFFERENTIAL_REQUIRES_COMPARISON"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ingram Micro",
+      "field": "services",
+      "value": "Professional Services",
+      "url": "https://www.also.com/ec/cms5/en_6000/6000/",
+      "historical_url": "https://www.also.com/ec/cms5/en_6000/6000/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ingram Micro",
+      "field": "differential_capabilities",
+      "value": "Professional Services",
+      "url": "https://www.also.com/ec/cms5/en_6000/6000/",
+      "historical_url": "https://www.also.com/ec/cms5/en_6000/6000/",
+      "reason": "NOT_FIRST_PARTY"
     },
     {
       "section": "distributors",
@@ -896,6 +1982,249 @@
       "reason": "NOT_FIRST_PARTY"
     },
     {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "The First AI Insider: Why the Hugging Face Incident Changes Cybersecurity Forever",
+      "url": "https://www.attackiq.com/2026/07/16/chaos-ransomware/",
+      "historical_url": "https://www.attackiq.com/2026/07/16/chaos-ransomware/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "Chaos Ransomware: BlackSuit-Linked RaaS Resurgence and Detection Opportunities",
+      "url": "https://www.attackiq.com/2026/07/16/chaos-ransomware/",
+      "historical_url": "https://www.attackiq.com/2026/07/16/chaos-ransomware/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "The First AI Insider: Why the Hugging Face Incident Changes Cybersecurity Forever",
+      "url": "https://www.attackiq.com/2026/07/23/the-first-ai-insider/",
+      "historical_url": "https://www.attackiq.com/2026/07/23/the-first-ai-insider/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "Chaos Ransomware: BlackSuit-Linked RaaS Resurgence and Detection Opportunities",
+      "url": "https://www.attackiq.com/2026/07/23/the-first-ai-insider/",
+      "historical_url": "https://www.attackiq.com/2026/07/23/the-first-ai-insider/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "Introducing AVA Agentic OS: The New AttackIQ",
+      "url": "https://www.attackiq.com/2026/07/30/introducing-ava-os/",
+      "historical_url": "https://www.attackiq.com/2026/07/30/introducing-ava-os/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "What Adversarial Exposure Validation (AEV) Means for Federal Cybersecurity",
+      "url": "https://www.attackiq.com/2026/08/04/what-aev-means-for-federal-cybersecurity/",
+      "historical_url": "https://www.attackiq.com/2026/08/04/what-aev-means-for-federal-cybersecurity/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "Continuous Compliance Validation (CCV): Why Annual Audits Will Fail in the Age of Autonomous AI",
+      "url": "https://www.attackiq.com/2026/08/04/what-aev-means-for-federal-cybersecurity/",
+      "historical_url": "https://www.attackiq.com/2026/08/04/what-aev-means-for-federal-cybersecurity/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "Threat-INFORM to Optimize Security Operations",
+      "url": "https://www.attackiq.com/2026/08/06/continuous-compliance-validation/",
+      "historical_url": "https://www.attackiq.com/2026/08/06/continuous-compliance-validation/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "What Adversarial Exposure Validation (AEV) Means for Federal Cybersecurity",
+      "url": "https://www.attackiq.com/2026/08/06/continuous-compliance-validation/",
+      "historical_url": "https://www.attackiq.com/2026/08/06/continuous-compliance-validation/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "Continuous Compliance Validation (CCV): Why Annual Audits Will Fail in the Age of Autonomous AI",
+      "url": "https://www.attackiq.com/2026/08/06/continuous-compliance-validation/",
+      "historical_url": "https://www.attackiq.com/2026/08/06/continuous-compliance-validation/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "Response to CISA Advisory (AA26-222A): #StopRansomware: Gunra Ransomware",
+      "url": "https://www.attackiq.com/2026/08/11/response-to-aa26-222a/",
+      "historical_url": "https://www.attackiq.com/2026/08/11/response-to-aa26-222a/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "Threat-INFORM to Optimize Security Operations",
+      "url": "https://www.attackiq.com/2026/08/11/response-to-aa26-222a/",
+      "historical_url": "https://www.attackiq.com/2026/08/11/response-to-aa26-222a/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "Updated Response to CISA Advisory (AA25-071A): #StopRansomware: Medusa Ransomware",
+      "url": "https://www.attackiq.com/2026/08/11/response-to-aa26-222a/",
+      "historical_url": "https://www.attackiq.com/2026/08/11/response-to-aa26-222a/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "Chaos Ransomware: BlackSuit-Linked RaaS Resurgence and Detection Opportunities",
+      "url": "https://www.attackiq.com/2026/08/11/response-to-aa26-222a/",
+      "historical_url": "https://www.attackiq.com/2026/08/11/response-to-aa26-222a/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "Response to CISA Advisory (AA26-222A): #StopRansomware: Gunra Ransomware",
+      "url": "https://www.attackiq.com/2026/08/11/threat-inform-to-optimize-security-operations/",
+      "historical_url": "https://www.attackiq.com/2026/08/11/threat-inform-to-optimize-security-operations/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "Threat-INFORM to Optimize Security Operations",
+      "url": "https://www.attackiq.com/2026/08/11/threat-inform-to-optimize-security-operations/",
+      "historical_url": "https://www.attackiq.com/2026/08/11/threat-inform-to-optimize-security-operations/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "Continuous Compliance Validation (CCV): Why Annual Audits Will Fail in the Age of Autonomous AI",
+      "url": "https://www.attackiq.com/2026/08/11/threat-inform-to-optimize-security-operations/",
+      "historical_url": "https://www.attackiq.com/2026/08/11/threat-inform-to-optimize-security-operations/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "Response to CISA Advisory (AA26-222A): #StopRansomware: Gunra Ransomware",
+      "url": "https://www.attackiq.com/2026/08/20/updated-response-to-aa25-071a/",
+      "historical_url": "https://www.attackiq.com/2026/08/20/updated-response-to-aa25-071a/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AttackIQ",
+      "field": "recent_signals",
+      "value": "Updated Response to CISA Advisory (AA25-071A): #StopRansomware: Medusa Ransomware",
+      "url": "https://www.attackiq.com/2026/08/20/updated-response-to-aa25-071a/",
+      "historical_url": "https://www.attackiq.com/2026/08/20/updated-response-to-aa25-071a/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "Kudelski Security",
+      "field": "westcon_overlap",
+      "value": "AttackIQ",
+      "url": "https://www.attackiq.com/lp/partner-champion-training/",
+      "historical_url": "https://www.attackiq.com/lp/partner-champion-training/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "roles",
+      "value": "Strategic Technology Partner",
+      "url": "https://www.attackiq.com/resources/press-release/attackiq-selected-by-ntt-ltd-as-a-strategic-technology-partner-to-provide-a-holistic-predictive-threat-intelligence-solution/",
+      "historical_url": "https://www.attackiq.com/resources/attackiq-selected-by-ntt-ltd-as-a-strategic-technology-partner-to-provide-a-holistic-predictive-threat-intelligence-solution/",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "value": "Continuous security validation",
+      "url": "https://www.attackiq.com/resources/press-release/attackiq-selected-by-ntt-ltd-as-a-strategic-technology-partner-to-provide-a-holistic-predictive-threat-intelligence-solution/",
+      "historical_url": "https://www.attackiq.com/resources/attackiq-selected-by-ntt-ltd-as-a-strategic-technology-partner-to-provide-a-holistic-predictive-threat-intelligence-solution/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "specializations",
+      "value": "Predictive threat intelligence",
+      "url": "https://www.attackiq.com/resources/press-release/attackiq-selected-by-ntt-ltd-as-a-strategic-technology-partner-to-provide-a-holistic-predictive-threat-intelligence-solution/",
+      "historical_url": "https://www.attackiq.com/resources/attackiq-selected-by-ntt-ltd-as-a-strategic-technology-partner-to-provide-a-holistic-predictive-threat-intelligence-solution/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "value": "Security consulting",
+      "url": "https://www.attackiq.com/resources/press-release/attackiq-selected-by-ntt-ltd-as-a-strategic-technology-partner-to-provide-a-holistic-predictive-threat-intelligence-solution/",
+      "historical_url": "https://www.attackiq.com/resources/attackiq-selected-by-ntt-ltd-as-a-strategic-technology-partner-to-provide-a-holistic-predictive-threat-intelligence-solution/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "services",
+      "value": "Global technology services",
+      "url": "https://www.attackiq.com/resources/press-release/attackiq-selected-by-ntt-ltd-as-a-strategic-technology-partner-to-provide-a-holistic-predictive-threat-intelligence-solution/",
+      "historical_url": "https://www.attackiq.com/resources/attackiq-selected-by-ntt-ltd-as-a-strategic-technology-partner-to-provide-a-holistic-predictive-threat-intelligence-solution/",
+      "reason": "NOT_FIRST_PARTY"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "vendor_relations",
+      "value": "AttackIQ",
+      "url": "https://www.attackiq.com/resources/press-release/attackiq-selected-by-ntt-ltd-as-a-strategic-technology-partner-to-provide-a-holistic-predictive-threat-intelligence-solution/",
+      "historical_url": "https://www.attackiq.com/resources/attackiq-selected-by-ntt-ltd-as-a-strategic-technology-partner-to-provide-a-holistic-predictive-threat-intelligence-solution/",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "integrators",
+      "entity": "NTT",
+      "field": "westcon_overlap",
+      "value": "AttackIQ",
+      "url": "https://www.attackiq.com/resources/press-release/attackiq-selected-by-ntt-ltd-as-a-strategic-technology-partner-to-provide-a-holistic-predictive-threat-intelligence-solution/",
+      "historical_url": "https://www.attackiq.com/resources/attackiq-selected-by-ntt-ltd-as-a-strategic-technology-partner-to-provide-a-holistic-predictive-threat-intelligence-solution/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
       "section": "integrators",
       "entity": "at t",
       "field": "capabilities",
@@ -915,884 +2244,38 @@
     },
     {
       "section": "integrators",
-      "entity": "avanade",
+      "entity": "NTT",
       "field": "specializations",
       "value": "Microsoft Teams",
-      "url": "https://www.audiocodes.com/partners/locators/solution-partner-locator",
-      "historical_url": "https://www.audiocodes.com/partners/locators/solution-partner-locator",
+      "url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/global/ntt-ltd",
+      "historical_url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/global/ntt-ltd",
       "reason": "NOT_FIRST_PARTY"
     },
     {
       "section": "integrators",
-      "entity": "avanade",
-      "field": "specializations",
-      "value": "Direct Routing",
-      "url": "https://www.audiocodes.com/partners/locators/solution-partner-locator",
-      "historical_url": "https://www.audiocodes.com/partners/locators/solution-partner-locator",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "avanade",
+      "entity": "NTT",
       "field": "specializations",
       "value": "Contact Center",
-      "url": "https://www.audiocodes.com/partners/locators/solution-partner-locator",
-      "historical_url": "https://www.audiocodes.com/partners/locators/solution-partner-locator",
+      "url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/global/ntt-ltd",
+      "historical_url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/global/ntt-ltd",
       "reason": "NOT_FIRST_PARTY"
     },
     {
       "section": "integrators",
-      "entity": "nextel telecomunicaciones",
-      "field": "capabilities",
-      "value": "Managed Services",
-      "url": "https://www.audiocodes.com/partners/locators/solution-partner-locator/nextel",
-      "historical_url": "https://www.audiocodes.com/partners/locators/solution-partner-locator/nextel",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "nextel telecomunicaciones",
-      "field": "services",
-      "value": "Enterprise Voice",
-      "url": "https://www.audiocodes.com/solutions/enterprises",
-      "historical_url": "https://www.audiocodes.com/solutions/enterprises",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "matrix electronica s l",
-      "field": "public_cases",
-      "value": "Customer and Employee Experience for Microsoft Teams",
-      "url": "https://www.audiocodes.com/solutions/microsoft-teams-solutions/customer-and-employee-experience-for-microsoft-teams",
-      "historical_url": "https://www.audiocodes.com/solutions/microsoft-teams-solutions/customer-and-employee-experience-for-microsoft-teams",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "nextel telecomunicaciones",
-      "field": "public_cases",
-      "value": "Customer and Employee Experience for Microsoft Teams",
-      "url": "https://www.audiocodes.com/solutions/microsoft-teams-solutions/customer-and-employee-experience-for-microsoft-teams",
-      "historical_url": "https://www.audiocodes.com/solutions/microsoft-teams-solutions/customer-and-employee-experience-for-microsoft-teams",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "satec",
-      "field": "public_cases",
-      "value": "Ranking del Canal TIC 2026: la mejor radiografía del sector",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "historical_url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "seidor",
-      "field": "public_cases",
-      "value": "Ranking del Canal TIC 2026: la mejor radiografía del sector",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "historical_url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "orcinus",
-      "field": "public_cases",
-      "value": "Ranking del Canal TIC 2026: la mejor radiografía del sector",
-      "url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "historical_url": "https://www.channelpartner.es/mayoristas/ranking-del-canal-tic-2026-la-mejor-radiografia-del-sector/",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "dxc technology spain",
-      "field": "capabilities",
-      "value": "Data Center",
-      "url": "https://www.checkpoint.com/",
-      "historical_url": "https://www.checkpoint.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "dxc technology spain",
-      "field": "capabilities",
-      "value": "Incident Response",
-      "url": "https://www.checkpoint.com/",
-      "historical_url": "https://www.checkpoint.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "dxc technology spain",
-      "field": "capabilities",
-      "value": "Threat Intelligence",
-      "url": "https://www.checkpoint.com/",
-      "historical_url": "https://www.checkpoint.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "deloitte",
-      "field": "capabilities",
-      "value": "Data Center",
-      "url": "https://www.checkpoint.com/",
-      "historical_url": "https://www.checkpoint.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "deloitte",
-      "field": "capabilities",
-      "value": "Incident Response",
-      "url": "https://www.checkpoint.com/",
-      "historical_url": "https://www.checkpoint.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "deloitte",
-      "field": "capabilities",
-      "value": "Threat Intelligence",
-      "url": "https://www.checkpoint.com/",
-      "historical_url": "https://www.checkpoint.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "hpe",
-      "field": "capabilities",
-      "value": "Data Center",
-      "url": "https://www.checkpoint.com/",
-      "historical_url": "https://www.checkpoint.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "hpe",
-      "field": "capabilities",
-      "value": "Incident Response",
-      "url": "https://www.checkpoint.com/",
-      "historical_url": "https://www.checkpoint.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "hpe",
-      "field": "capabilities",
-      "value": "Threat Intelligence",
-      "url": "https://www.checkpoint.com/",
-      "historical_url": "https://www.checkpoint.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "hpe",
-      "field": "capabilities",
-      "value": "AI / Data",
-      "url": "https://www.checkpoint.com/",
-      "historical_url": "https://www.checkpoint.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "fujitsu",
-      "field": "capabilities",
-      "value": "Data Center",
-      "url": "https://www.checkpoint.com/",
-      "historical_url": "https://www.checkpoint.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "fujitsu",
-      "field": "capabilities",
-      "value": "Incident Response",
-      "url": "https://www.checkpoint.com/",
-      "historical_url": "https://www.checkpoint.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "fujitsu",
-      "field": "capabilities",
-      "value": "Threat Intelligence",
-      "url": "https://www.checkpoint.com/",
-      "historical_url": "https://www.checkpoint.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "fujitsu",
-      "field": "capabilities",
-      "value": "AI / Data",
-      "url": "https://www.checkpoint.com/",
-      "historical_url": "https://www.checkpoint.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "deloitte",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.checkpoint.com/es/partners/global-systems-integrators/",
-      "historical_url": "https://www.checkpoint.com/es/partners/global-systems-integrators/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "deloitte",
-      "field": "specializations",
-      "value": "Zero Trust",
-      "url": "https://www.checkpoint.com/es/partners/global-systems-integrators/",
-      "historical_url": "https://www.checkpoint.com/es/partners/global-systems-integrators/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "logicalis",
-      "field": "verticals",
-      "value": "Servicios financieros",
-      "url": "https://www.es.logicalis.com/es/casos-de-exito",
-      "historical_url": "https://www.es.logicalis.com/es/casos-de-exito",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "distributors",
-      "entity": "wdmi",
-      "field": "differential_capabilities",
-      "value": "Certificaciones ISO",
-      "url": "https://www.esprinet.com/es/oferta/",
-      "historical_url": "https://www.esprinet.com/es/oferta/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "axians spain",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.extremenetworks.com/es/",
-      "historical_url": "https://www.extremenetworks.com/es/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "axians spain",
-      "field": "services",
-      "value": "Servicios gestionados",
-      "url": "https://www.extremenetworks.com/es/",
-      "historical_url": "https://www.extremenetworks.com/es/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "acens telefonica tech",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.f5.com/es_es/company/blog/f5-distributed-cloud-services-sees-tremendous-momentum-stopping-20-billion-malicious-attacks",
-      "historical_url": "https://www.f5.com/es_es/company/blog/f5-distributed-cloud-services-sees-tremendous-momentum-stopping-20-billion-malicious-attacks",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "hopla software",
-      "field": "public_cases",
-      "value": "Deliver and secure applications and APIs across industries | F5",
-      "url": "https://www.f5.com/industries",
-      "historical_url": "https://www.f5.com/industries",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "hopla software",
-      "field": "public_cases",
-      "value": "Public Sector Solutions | F5",
-      "url": "https://www.f5.com/industries/public-sector",
-      "historical_url": "https://www.f5.com/industries/public-sector",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "hopla software",
-      "field": "public_cases",
-      "value": "F5 Distributed Cloud Client-Side Defense | F5",
-      "url": "https://www.f5.com/products/distributed-cloud-services/client-side-defense",
-      "historical_url": "https://www.f5.com/products/distributed-cloud-services/client-side-defense",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "computacenter",
-      "field": "capabilities",
-      "value": "Incident Response",
-      "url": "https://www.firemon.com/",
-      "historical_url": "https://www.firemon.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "trends",
-      "entity": "lifecycle support professional services",
-      "field": "market_players",
-      "value": "Accenture",
-      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
-      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
-      "reason": "AMBIGUOUS_SHORT_VALUE"
-    },
-    {
-      "section": "trends",
-      "entity": "lifecycle support professional services",
-      "field": "market_players",
-      "value": "Bain & Company",
-      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
-      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "trends",
-      "entity": "lifecycle support professional services",
-      "field": "market_players",
-      "value": "Boston Consulting Group",
-      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
-      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "trends",
-      "entity": "lifecycle support professional services",
-      "field": "market_players",
-      "value": "Capgemini",
-      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
-      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
-      "reason": "AMBIGUOUS_SHORT_VALUE"
-    },
-    {
-      "section": "trends",
-      "entity": "lifecycle support professional services",
-      "field": "market_players",
-      "value": "Deloitte",
-      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
-      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
-      "reason": "AMBIGUOUS_SHORT_VALUE"
-    },
-    {
-      "section": "trends",
-      "entity": "lifecycle support professional services",
-      "field": "market_players",
-      "value": "McKinsey & Company",
-      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
-      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "architectures",
-      "entity": "modern soc secops",
-      "field": "analyst_basis",
-      "value": "IDC · European CISO priorities in 2026",
-      "url": "https://www.idc.com/resource-center/blog/european-ciso-priorities-in-2026-ai-agents-platformization-and-sovereignty/",
-      "historical_url": "https://www.idc.com/resource-center/blog/european-ciso-priorities-in-2026-ai-agents-platformization-and-sovereignty/",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "architectures",
-      "entity": "ai security",
-      "field": "analyst_basis",
-      "value": "IDC · European CISO priorities in 2026",
-      "url": "https://www.idc.com/resource-center/blog/european-ciso-priorities-in-2026-ai-agents-platformization-and-sovereignty/",
-      "historical_url": "https://www.idc.com/resource-center/blog/european-ciso-priorities-in-2026-ai-agents-platformization-and-sovereignty/",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "axazure",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "infoavan",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "insight",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "prodware spain",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "tokiota",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "encamina",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "sits group",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "decunify",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "arbentia",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
+      "entity": "NTT",
+      "field": "vendor_relations",
+      "value": "AudioCodes",
+      "url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/global/ntt-ltd",
+      "historical_url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/global/ntt-ltd",
+      "reason": "RELATIONSHIP_NOT_SHOWN"
     },
     {
       "section": "integrators",
-      "entity": "crayon spain",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "adarma",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "mcl",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "netability",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "solid8",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "swiss it",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "warpcom",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "historical_url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "axazure",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "historical_url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "infoavan",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "historical_url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "insight",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "historical_url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "prodware spain",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "historical_url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "tokiota",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "historical_url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "encamina",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "historical_url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "sits group",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "historical_url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "crayon spain",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "historical_url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "adarma",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "historical_url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "mcl",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "historical_url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "netability",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "historical_url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "solid8",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "historical_url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "swiss it",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "historical_url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "overti",
-      "field": "services",
-      "value": "Servicios profesionales",
-      "url": "https://www.ingecom.net/solucion/seguridad-en-el-perimetro/",
-      "historical_url": "https://www.ingecom.net/solucion/seguridad-en-el-perimetro/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "integrity360",
-      "field": "public_cases",
-      "value": "European payments provider",
-      "url": "https://www.integrity360.com/case-studies",
-      "historical_url": "https://www.integrity360.com/case-studies",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "manufacturers",
-      "entity": "menlo security",
-      "field": "competitors",
-      "value": "Zscaler",
-      "url": "https://www.levelblue.com/services/data-security",
-      "historical_url": "https://www.levelblue.com/services/data-security",
-      "reason": "AMBIGUOUS_SHORT_VALUE"
-    },
-    {
-      "section": "integrators",
-      "entity": "vodafone business",
-      "field": "specializations",
-      "value": "Zero Trust access",
-      "url": "https://www.menlosecurity.com/about/partners",
-      "historical_url": "https://www.menlosecurity.com/about/partners",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "distributors",
-      "entity": "niposom",
-      "field": "job_profiles",
-      "value": "Assistente de Pós-Venda",
-      "url": "https://www.niposom.pt/index.php?Itemid=240&id=44&layout=blog&option=com_content&view=category",
-      "historical_url": "https://www.niposom.pt/index.php?Itemid=240&id=44&layout=blog&option=com_content&view=category",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "distributors",
-      "entity": "niposom",
-      "field": "job_profiles",
-      "value": "Gestor de Importação",
-      "url": "https://www.niposom.pt/index.php?Itemid=240&id=44&layout=blog&option=com_content&view=category",
-      "historical_url": "https://www.niposom.pt/index.php?Itemid=240&id=44&layout=blog&option=com_content&view=category",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "ey",
-      "field": "capabilities",
-      "value": "Data Center",
-      "url": "https://www.nokia.com/",
-      "historical_url": "https://www.nokia.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "infosys",
-      "field": "capabilities",
-      "value": "Data Center",
-      "url": "https://www.nokia.com/",
-      "historical_url": "https://www.nokia.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "wipro",
-      "field": "capabilities",
-      "value": "Data Center",
-      "url": "https://www.nokia.com/",
-      "historical_url": "https://www.nokia.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "dxc technology spain",
-      "field": "capabilities",
-      "value": "Data Center",
-      "url": "https://www.nokia.com/",
-      "historical_url": "https://www.nokia.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "tech mahindra",
-      "field": "capabilities",
-      "value": "Data Center",
-      "url": "https://www.nokia.com/",
-      "historical_url": "https://www.nokia.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "tata consultancy services tcs",
-      "field": "capabilities",
-      "value": "Data Center",
-      "url": "https://www.nokia.com/",
-      "historical_url": "https://www.nokia.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "dxc technology spain",
-      "field": "capabilities",
-      "value": "Threat Intelligence",
-      "url": "https://www.proofpoint.com/us/global-system-integrator-gsi-and-global-managed-service-provider-msp-partners",
-      "historical_url": "https://www.proofpoint.com/us/global-system-integrator-gsi-and-global-managed-service-provider-msp-partners",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "timestamp",
-      "field": "verticals",
-      "value": "Emergency Services",
-      "url": "https://www.timestampgroup.com/en/partners/avaya-en",
-      "historical_url": "https://www.timestampgroup.com/en/partners/avaya-en",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "ey",
-      "field": "specializations",
-      "value": "Business automation",
-      "url": "https://www.uipath.com/partners/business-partners/44",
-      "historical_url": "https://www.uipath.com/partners/business-partners/44",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "ey",
-      "field": "specializations",
-      "value": "Agentic automation",
-      "url": "https://www.uipath.com/partners/business-partners/44",
-      "historical_url": "https://www.uipath.com/partners/business-partners/44",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "fujitsu portugal",
-      "field": "specializations",
-      "value": "Business automation",
-      "url": "https://www.uipath.com/partners/business-partners/44",
-      "historical_url": "https://www.uipath.com/partners/business-partners/44",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "pwc portugal",
-      "field": "specializations",
-      "value": "Business automation",
-      "url": "https://www.uipath.com/partners/business-partners/44",
-      "historical_url": "https://www.uipath.com/partners/business-partners/44",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "pwc portugal",
-      "field": "specializations",
-      "value": "Agentic automation",
-      "url": "https://www.uipath.com/partners/business-partners/44",
-      "historical_url": "https://www.uipath.com/partners/business-partners/44",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "pwc portugal",
-      "field": "roles",
-      "value": "UiPath Business Partner",
-      "url": "https://www.uipath.com/partners/business-partners/44",
-      "historical_url": "https://www.uipath.com/partners/business-partners/44",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "wemake tecnologias de informacao",
-      "field": "specializations",
-      "value": "Agentic automation",
-      "url": "https://www.uipath.com/partners/service-partners/3",
-      "historical_url": "https://www.uipath.com/partners/service-partners/3",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "wemake tecnologias de informacao",
-      "field": "specializations",
-      "value": "Business automation",
-      "url": "https://www.uipath.com/partners/service-partners/3",
-      "historical_url": "https://www.uipath.com/partners/service-partners/3",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "indra iii solucoes de tecnologia da informacao portugal",
-      "field": "specializations",
-      "value": "Agentic automation",
-      "url": "https://www.uipath.com/partners/service-partners/3",
-      "historical_url": "https://www.uipath.com/partners/service-partners/3",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "integrators",
-      "entity": "indra iii solucoes de tecnologia da informacao portugal",
-      "field": "specializations",
-      "value": "Business automation",
-      "url": "https://www.uipath.com/partners/service-partners/3",
-      "historical_url": "https://www.uipath.com/partners/service-partners/3",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "distributors",
-      "entity": "white hat",
-      "field": "specializations",
-      "value": "EDR/XDR",
-      "url": "https://www.whitehat.pt/",
-      "historical_url": "https://www.whitehat.pt/",
-      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
-    },
-    {
-      "section": "distributors",
-      "entity": "white hat",
-      "field": "specializations",
-      "value": "SD-WAN",
-      "url": "https://www.whitehat.pt/",
-      "historical_url": "https://www.whitehat.pt/",
+      "entity": "NTT",
+      "field": "westcon_overlap",
+      "value": "AudioCodes",
+      "url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/global/ntt-ltd",
+      "historical_url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/global/ntt-ltd",
       "reason": "AMBIGUOUS_SHORT_VALUE"
     }
   ]
