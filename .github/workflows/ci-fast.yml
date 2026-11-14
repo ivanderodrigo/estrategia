@@ -45,6 +45,7 @@ jobs:
           node --check assets/app/intelligence.js
           node --check assets/app/command-center.js
           node tests/ui_smoke.js
+          node tests/confidence_color_consistency.js
           node tests/business_intelligence_v61.js
           node tests/audit_intelligence_v64.js
           node tests/command_center_audit_v64.js
