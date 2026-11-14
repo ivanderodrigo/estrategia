@@ -11,7 +11,7 @@ function evaluate(manifest,debt){
  const summary=debt?.debt_breakdown||{};
  const bySection=debt?.by_section||{};
  const total=Number(debt?.total_open_gaps);
- const headline=Number(summary.empty_schema_fields||0)+Number(summary.claims_awaiting_evidence||0)+Number(summary.derived_support||0)+Number(summary.other_open_debt||0);
+ const headline=Number(summary.empty_schema_fields||0)+Number(summary.claims_awaiting_evidence||0)+Number(summary.derivation_support||0)+Number(summary.other_open_debt||0);
  const detail=order.reduce((sum,k)=>{const a=bySection[k]||{};return sum+Number(a.claims_awaiting_evidence||0)+Number(a.derivation_support||0)+Number(a.empty_schema_fields||0);},0);
  const hasData=Boolean(manifest?.counts&&debt?.by_section&&Number.isFinite(total));
  const consistent=hasData&&dateMatch&&headline===total&&detail===total;
