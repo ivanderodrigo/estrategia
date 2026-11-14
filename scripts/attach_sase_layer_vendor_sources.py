@@ -58,6 +58,7 @@ def apply():
             "provenance_origin":"PUBLIC_PRIMARY",
             "source_type":"manufacturer-product-documentation",
             "source_grade":"A","official":True,
+            "source_role":"Fuente pública primaria",
             "scope":"GLOBAL","classification":"public",
             "atomic":True,"field":"layers","item_value":vendor,
             "architecture":"SASE / SSE","layer":layer_name,
