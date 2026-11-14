@@ -86,24 +86,27 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # A parallel historical source audit can update only its two source
-          # check reports. Preserve those newer checks and safely move our
-          # generated public snapshot onto that newer commit, while refusing
-          # any concurrent changes to code or other intelligence.
+          # Permit UI-only concurrent changes, not modifications to canonical
+          # research, code that generates data, or another public snapshot.
+          # Always adopt the remote index (mixed reset) so an old checkout
+          # cannot recommit old JS/CSS/HTML over the latest main.
           git fetch origin main
           if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
             while IFS= read -r changed; do
               [ -n "$changed" ] || continue
               case "$changed" in
-                data/current/historical_source_checks.json|data/public/historical/current/source_checks.json|config/current/historical_semantic_verified.json|data/public/historical/current/semantic_claim_audit.json|data/public/historical/current/full_source_inventory_coverage.json|data/public/historical/current/git_archive_additions.json) ;;
-                *) echo "Main changed outside source audit ($changed): refusing stale publish"; exit 1 ;;
+                data/current/historical_source_checks.json|data/public/historical/current/source_checks.json|config/current/historical_semantic_verified.json|data/public/historical/current/semantic_claim_audit.json|data/public/historical/current/full_source_inventory_coverage.json|data/public/historical/current/git_archive_additions.json|data/current/daily_workflow_health.json|data/current/gap_debt_audit.json|assets/app/*|assets/favicon.svg|index.html|404.html|memoria-historica.html) ;;
+                *) echo "Main changed canonical research or application engine ($changed): refusing stale publish"; exit 1 ;;
               esac
             done < <(git diff --name-only HEAD origin/main)
             # The diligence workflow owns these four paths. Preserve its latest
             # first-party excerpt registry and diagnostics instead of overwriting
             # them with stale artifacts from a simultaneous Pages build.
             git restore --source=origin/main --worktree -- data/public/historical/current/source_checks.json data/public/historical/current/semantic_claim_audit.json data/public/historical/current/full_source_inventory_coverage.json data/public/historical/current/git_archive_additions.json config/current/historical_semantic_verified.json
-            git reset --soft origin/main
+            git reset --mixed origin/main
+            # Restore the newest site chrome, because the old runner checkout
+            # may not include a concurrent front-end edit.
+            git restore --source=origin/main --worktree -- index.html 404.html memoria-historica.html assets/app assets/favicon.svg
           fi
           git add -A data/public config/current/historical_structured_verified.json config/current/historical_semantic_verified.json
           if ! git diff --cached --quiet; then
