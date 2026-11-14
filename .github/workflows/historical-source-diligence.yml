@@ -7,6 +7,7 @@ on:
       - 'scripts/revalidate_historical_sources.py'
       - 'scripts/recover_historical_source_archive.py'
       - 'scripts/accredit_semantic_historical_sources.py'
+      - 'scripts/accredit_structured_historical.py'
       - '.github/workflows/historical-source-diligence.yml'
   schedule:
     - cron: '37 3 * * 1,4'
