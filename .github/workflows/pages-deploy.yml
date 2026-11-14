@@ -1,19 +1,32 @@
 name: Deploy Pages
+# Deployment consumes one already-validated snapshot. Research workflows own
+# crawling, accreditation, rebuilding and publishing data/public to main.
 on:
   push:
     branches: [main]
-    paths: ["index.html","404.html","memoria-historica.html","assets/**","engine/**","config/current/**","tests/**","scripts/**",".github/workflows/pages-deploy.yml"]
+    paths:
+      - 'index.html'
+      - '404.html'
+      - 'memoria-historica.html'
+      - 'assets/**'
+      - 'data/public/**'
+      - 'CNAME'
+      - '.github/workflows/pages-deploy.yml'
   workflow_dispatch:
   workflow_run:
-    workflows: ["Westcon Intelligence Daily", "Westcon Intelligence Weekly", "Westcon Intelligence Monthly", "Historical Source Diligence"]
+    workflows:
+      - 'Westcon Intelligence Daily'
+      - 'Westcon Intelligence Weekly'
+      - 'Westcon Intelligence Monthly'
+      - 'Historical Source Diligence'
     types: [completed]
     branches: [main]
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 concurrency:
-  group: pages
+  group: westcon-pages-deploy
   cancel-in-progress: false
 jobs:
   deploy:
@@ -21,24 +34,32 @@ jobs:
     environment:
       name: github-pages
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v5
         with:
           ref: main
+          persist-credentials: false
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
           cache: pip
-      - run: pip install -r requirements.txt
-      - uses: actions/configure-pages@v5
+      - run: python -m pip install -r requirements.txt
       - uses: actions/setup-node@v5
         with:
-          node-version: "22"
-      - name: Full frontend structural audit
-        run: python scripts/audit_app_structure.py
-      - name: Test application
+          node-version: '22'
+      - name: Verify published snapshot and frontend
         run: |
-          python -m unittest discover -s tests -p "test_*.py"
+          python scripts/audit_app_structure.py
+          python scripts/validate.py
+          python scripts/validate_active_portfolio_public.py
+          python scripts/audit_full_visible_source_coverage.py
+          python scripts/audit_published_historical_market.py
+          python scripts/audit_published_topic_markets.py
+          python scripts/audit_published_peer_competitors.py
+          python scripts/audit_published_semantic_historical.py
+          python scripts/audit_published_issuer_competitors.py
+          python scripts/validate_mass_historical_publication.py
           node tests/observatory.js
           node tests/ui_smoke.js
           node tests/confidence_color_consistency.js
@@ -49,80 +70,17 @@ jobs:
           node tests/news_coverage_v64.js
           node tests/distributor_linecard_audit_v65.js
           node tests/filter_builder_v410.js
-      - name: Individually accredit structured historical competitor links
-        run: python scripts/accredit_structured_historical.py --limit 30 --timeout 9
-      - name: Individually assess historical source/claim excerpts across all sections
-        run: python scripts/accredit_semantic_historical_sources.py
-      - name: Rebuild accredited intelligence
-        run: python -m engine.pipeline
-      - name: Bind official manufacturer sources to each SASE/SSE layer
-        run: python scripts/attach_sase_layer_vendor_sources.py
-      - name: Publish recovered historical links as compact section indexes
-        run: python scripts/publish_git_archive_leads.py
-      - name: Reconcile all published audit areas and source roles
-        run: python scripts/audit_public_consistency.py
-      - name: Validate
-        run: |
-          python scripts/validate_workflows.py
-          python scripts/validate.py
-      - name: Validate active portfolio and competitive mapping in published JSON
-        run: python scripts/validate_active_portfolio_public.py
-      # Persist the actual compiled snapshot. GitHub Pages can also be configured
-      # to publish directly from /main; without this commit it serves old data.
-      # Do not trigger on data/public/** alone to avoid a self-rebuild loop.
-      - name: Audit all currently visible source links versus historical sidecars
-        run: python scripts/audit_full_visible_source_coverage.py
-      - name: Validate 85 historical competitors in final public JSON
-        run: python scripts/audit_published_historical_market.py
-      - name: Validate 48 topic market facts in published JSON
-        run: python scripts/audit_published_topic_markets.py
-      - name: Validate Ciena OSS competitor source bindings in final browser JSON
-        run: python scripts/audit_published_peer_competitors.py
-      - name: Validate all semantically accredited historic claims in published JSON
-        run: python scripts/audit_published_semantic_historical.py
-      - name: Validate Ciena issuer direct competitors in published JSON
-        run: python scripts/audit_published_issuer_competitors.py
-      - name: Validate mass archived-source sidecars
-        run: python scripts/validate_mass_historical_publication.py
-      - name: Commit rebuilt public data to main
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Permit UI-only concurrent changes, not modifications to canonical
-          # research, code that generates data, or another public snapshot.
-          # Always adopt the remote index (mixed reset) so an old checkout
-          # cannot recommit old JS/CSS/HTML over the latest main.
-          git fetch origin main
-          if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
-            while IFS= read -r changed; do
-              [ -n "$changed" ] || continue
-              case "$changed" in
-                data/current/historical_source_checks.json|data/public/historical/current/source_checks.json|config/current/historical_semantic_verified.json|data/public/historical/current/semantic_claim_audit.json|data/public/historical/current/full_source_inventory_coverage.json|data/public/historical/current/git_archive_additions.json|data/current/daily_workflow_health.json|data/current/gap_debt_audit.json|assets/app/*|assets/favicon.svg|index.html|404.html|memoria-historica.html) ;;
-                *) echo "Main changed canonical research or application engine ($changed): refusing stale publish"; exit 1 ;;
-              esac
-            done < <(git diff --name-only HEAD origin/main)
-            # The diligence workflow owns these four paths. Preserve its latest
-            # first-party excerpt registry and diagnostics instead of overwriting
-            # them with stale artifacts from a simultaneous Pages build.
-            git restore --source=origin/main --worktree -- data/public/historical/current/source_checks.json data/public/historical/current/semantic_claim_audit.json data/public/historical/current/full_source_inventory_coverage.json data/public/historical/current/git_archive_additions.json config/current/historical_semantic_verified.json
-            git reset --mixed origin/main
-            # Restore the newest site chrome, because the old runner checkout
-            # may not include a concurrent front-end edit.
-            git restore --source=origin/main --worktree -- index.html 404.html memoria-historica.html assets/app assets/favicon.svg
-          fi
-          git add -A data/public config/current/historical_structured_verified.json config/current/historical_semantic_verified.json
-          if ! git diff --cached --quiet; then
-            git commit -m "data: persist validated public intelligence snapshot [skip ci]"
-            git push origin HEAD:main
-          fi
-      - name: Build public site
+      - name: Build immutable site from checked-out main
         run: |
           mkdir -p _site/assets/app _site/data/public
           cp index.html 404.html memoria-historica.html _site/
           cp assets/favicon.svg _site/assets/
           cp -R assets/app/. _site/assets/app/
-          cp -R data/public/* _site/data/public/
+          cp -R data/public/. _site/data/public/
           [ -f CNAME ] && cp CNAME _site/CNAME || true
+          echo "Publishing commit $(git rev-parse HEAD)"
+          test -s _site/data/public/manifest.json
+      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
