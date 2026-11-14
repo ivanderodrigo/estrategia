@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/source-verification.yml'
       - 'scripts/publish_source_verification_status.py'
+      - 'scripts/review_sources_live.py'
   schedule:
     - cron: "11 20 * * *"
   workflow_dispatch:
