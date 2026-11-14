@@ -116,9 +116,36 @@ def run(root: Path, limit: int, day: int, session: requests.Session) -> dict:
     total = len(claims)
     if not total:
         return {"total_references": 0, "sampled": 0, "items": []}
-    # Sequential cyclic windows cover the full reference population over runs.
-    start = (day * max(1, limit)) % total
-    selection = [claims[(start + i) % total] for i in range(min(limit, total))]
+    # A contiguous slice can contain 200 references to the SAME host (TED,
+    # for example), falsely reporting that *all* external sources failed.
+    # Rotate across section+host strata first; rotate items inside each
+    # stratum on successive days, retaining deterministic repeatability.
+    from collections import defaultdict
+    buckets = defaultdict(list)
+    for claim in claims:
+        host = (urlparse(claim["url"]).hostname or "").lower()
+        buckets[(claim["section"],host)].append(claim)
+    groups = sorted(buckets)
+    rotation = day % len(groups)
+    groups = groups[rotation:] + groups[:rotation]
+    selection = []
+    round_number = 0
+    target = min(limit,total)
+    while len(selection) < target:
+        grew = False
+        for key in groups:
+            bucket = buckets[key]
+            if round_number >= len(bucket):
+                continue
+            offset = day % len(bucket)
+            selection.append(bucket[(offset + round_number) % len(bucket)])
+            grew = True
+            if len(selection) >= target:
+                break
+        if not grew:
+            break
+        round_number += 1
+    start = rotation
     cache: dict[tuple[str, str, str], str] = {}
     for claim in selection:
         key = (claim["url"], claim["entity"], claim["value"])
@@ -126,7 +153,11 @@ def run(root: Path, limit: int, day: int, session: requests.Session) -> dict:
             cache[key] = review_document(session, *key)
         claim["review_status"] = cache[key]
     return {"total_references": total, "sampled": len(selection),
-            "start_offset": start, "source_content_semantically_verified": False,
+            "start_offset": start, "sampling_policy": "rotating-section-host-round-robin-v1",
+            "unique_source_hosts_in_sample": len(set(
+                (urlparse(item["url"]).hostname or "").lower() for item in selection
+            )),
+            "source_content_semantically_verified": False,
             "items": selection}
 
 
