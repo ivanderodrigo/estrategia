@@ -549,7 +549,35 @@
         // Preserve the original layer structure, but expose every manufacturer
         // as the SAME evidence-colored, clickable tab as an ordinary list.
         // Do not apply listLimit: these are complete architectural mappings.
-        return '<div class="layer-list">'+value.map(x=>{
+        // A flat, always-visible manufacturer roster makes the architectural
+        // mapping legible even where nested cards are clipped by layout.
+        // Each manufacturer preserves its strongest exact per-layer evidence;
+        // duplicate appearances without proof do not become accredited.
+        const vendorIndex=new Map();
+        for(const layer of value){
+          const vendors=Array.isArray(layer.vendors)?layer.vendors:[];
+          for(const [i,vendor] of vendors.entries()){
+            const name=String(vendor||'').trim();
+            if(!name)continue;
+            const candidate=itemFor({value:vendors,items:layer.vendor_items||[],evidence:[]},vendor,i);
+            const key=norm(name);
+            const existing=vendorIndex.get(key);
+            if(!existing || (!atomicCurrentProof(existing.evidence)&&atomicCurrentProof(candidate.evidence)))
+              vendorIndex.set(key,{...candidate,value:name});
+          }
+        }
+        const roster=[...vendorIndex.values()];
+        const rosterField={value:roster.map(v=>v.value),items:roster,evidence:[]};
+        const rosterHtml=roster.map((vendor,i)=>{
+          const verified=atomicCurrentProof(vendor.evidence);
+          return '<span class="tag-entry">'+
+            (verified?tagHtml(rosterField,vendor.value,i):pendingTagHtml(rosterField,vendor.value,i))+
+            '</span>';
+        }).join('');
+        const summary='<div class="architecture-vendor-summary"><strong>Fabricantes asociados ('+
+          roster.length+')</strong><div class="tag-list architecture-vendor-tabs">'+
+          (rosterHtml||'<span>Sin fabricantes identificados</span>')+'</div></div>';
+        return summary+'<div class="layer-list">'+value.map(x=>{
           const layerItem=(field.items||[]).find(it=>it?.value?.layer===x.layer);
           const layerField={value:[x.layer],items:layerItem?[{
             ...layerItem,value:x.layer
