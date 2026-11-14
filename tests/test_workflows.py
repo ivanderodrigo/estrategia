@@ -101,6 +101,20 @@ class WorkflowIntegrity(unittest.TestCase):
         self.assertIn("python -m scripts.review_sources_live", source)
         self.assertIn("workflow_dispatch:", source)
 
+    def test_scheduled_failures_have_one_nonrecursive_fresh_main_recovery(self) -> None:
+        recovery = (WORKFLOWS / "research-scheduled-recovery.yml").read_text(encoding="utf-8")
+        self.assertIn("workflow_run:", recovery)
+        self.assertIn("run_attempt == 1", recovery)
+        self.assertIn("workflow_run.event == 'schedule'", recovery)
+        self.assertIn("workflow_run.conclusion == 'failure'", recovery)
+        self.assertIn("actions: write", recovery)
+        self.assertIn("gh workflow run", recovery)
+        self.assertIn("--ref main", recovery)
+        for name in ("research-daily.yml", "research-weekly.yml", "research-monthly.yml"):
+            self.assertIn(name, recovery)
+        # Retries use dispatch rather than rerunning a stale SHA.
+        self.assertNotIn("gh run rerun", recovery)
+
     def test_source_verification_publishes_snapshot_bound_review_status(self) -> None:
         source = (WORKFLOWS / "source-verification.yml").read_text(encoding="utf-8")
         self.assertIn("scripts/publish_source_verification_status.py", source)
