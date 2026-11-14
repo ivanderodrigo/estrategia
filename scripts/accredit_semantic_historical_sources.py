@@ -174,6 +174,11 @@ def main():
             if status.startswith("VERIFIED_") and key not in seen:
                 seen.add(key)
                 section,entity,field=claim["section"],claim["entity"],claim["field"]
+                # Overlap is calculated from partnership + active portfolio.
+                # Store the proven base relationship so rebuilds cannot erase
+                # direct proof by regenerating the overlap column.
+                if field in {"westcon_overlap", "competitor_vendor_overlap"}:
+                    field = "vendor_relations"
                 value=claim["value"]
                 direct=owner_site(entity,proof_url)
                 peer = status == "VERIFIED_EXPLICIT_ALTERNATIVE"

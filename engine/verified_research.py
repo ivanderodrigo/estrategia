@@ -136,14 +136,15 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
         # The semantic registry is a separately reviewed, exact historical
         # URL/excerpt assertion. All other registries retain their narrow scope.
         semantic_fields = {
-            "manufacturers": {"capabilities", "distributors"},
+            "manufacturers": {"capabilities", "distributors", "competitors", "recent_signals"},
             "distributors": {"services", "capabilities", "specializations", "technology_domains",
                              "training", "marketplace", "logistics", "financing", "verticals",
-                             "vendor_relations", "linecard_remainder"},
+                             "vendor_relations", "linecard_remainder", "differential_capabilities",
+                             "recent_signals", "public_cases"},
             "integrators": {"vendor_relations", "manufacturer_relations", "vendor_partnerships",
                             "partnerships", "capabilities", "specializations", "services",
                             "technology_domains", "technology_specializations", "service_portfolio",
-                            "alliances"},
+                            "alliances", "recent_signals", "public_cases"},
             "clients_private": {"technology_signals", "hiring_signals"},
             "trends": {"sources"},
             "architectures": {"analyst_basis"},
@@ -200,12 +201,12 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
                             ))
                     )
                 )
-                if not exact_historical:
+                if not exact_historical and not exact_semantic:
                     continue
                 match = value
             # Preserve the exact published spelling and all existing support.
             new = _claim_field(field_id, [[match, source]])
-            if not isinstance(field.get("value"), list):
+            if "value" in field and not isinstance(field.get("value"), list):
                 # Scalar architecture assertions have field-level, not item-level,
                 # provenance. Keep the original scalar and attach the exact proof.
                 new = {**new, "value": match,

@@ -38,7 +38,8 @@ class HistoricalAuditUiContracts(unittest.TestCase):
 
     def test_historical_audit_cover_full_inventory(self):
         workflow = (ROOT / ".github/workflows/historical-source-diligence.yml").read_text(encoding="utf-8")
-        self.assertIn("--limit 2500", workflow)
+        self.assertIn("--limit 100000", workflow)
+        self.assertIn("report['urls_checked_this_run'] == report['urls_in_inventory']", workflow)
         self.assertIn("accredit_semantic_historical_sources.py", workflow)
 
 if __name__ == "__main__":

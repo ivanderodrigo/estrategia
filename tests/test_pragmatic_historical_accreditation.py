@@ -1,8 +1,25 @@
 import unittest
+from unittest.mock import patch
 from scripts.accredit_semantic_historical_sources import classify, owner_site
+from engine.verified_research import apply_verified_research
 
 
 class PragmaticHistoricalAccreditation(unittest.TestCase):
+    def test_proven_historical_relation_is_restored_as_atomic_base_fact(self):
+        entry = dict(section='integrators', entity='Example', field='vendor_relations', value='Cisco',
+                     source=dict(source_type='historical-verified-excerpt',
+                                 verification_method='VERIFIED_EXPLICIT_PARTNER_CONTEXT',
+                                 description='Extracto de evidencia: Example Cisco partners',
+                                 url='https://example.com/partners'))
+        def read(path, default):
+            return {'existing_claim_sources': [entry]} if 'historical_semantic_verified' in path else {}
+        data = {'integrators': [{'name': 'Example', 'fields': {}}]}
+        with patch('engine.verified_research.read_json', side_effect=read):
+            apply_verified_research(data)
+        field = data['integrators'][0]['fields']['vendor_relations']
+        self.assertEqual(field['value'], ['Cisco'])
+        self.assertTrue(field['items'][0]['evidence'][0]['atomic'])
+
     def assess(self, section, entity, field, value, context, url):
         return classify(dict(section=section, entity=entity, field=field,
                              value=value, source_context=context), url)
