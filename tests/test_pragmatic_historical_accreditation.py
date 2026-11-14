@@ -2,9 +2,23 @@ import unittest
 from unittest.mock import patch
 from scripts.accredit_semantic_historical_sources import classify, owner_site
 from engine.verified_research import apply_verified_research
+from engine.publication import _compact_object
 
 
 class PragmaticHistoricalAccreditation(unittest.TestCase):
+    def test_publication_preserves_revalidated_proof_at_same_url(self):
+        old = dict(url='https://example.com/partners', field='vendor_relations',
+                   item_value='Cisco', scope='GLOBAL', source='Example', title='Partners',
+                   source_type='official', official=True, classification='public',
+                   source_grade='A', date='2026-11-14', atomic=True,
+                   description='Example lists Cisco as a partner')
+        proof = {**old, 'source_type': 'historical-verified-excerpt',
+                 'verification_method': 'VERIFIED_EXPLICIT_PARTNER_CONTEXT'}
+        registry = {}
+        item = _compact_object({'evidence': [old, proof]}, registry)
+        self.assertEqual(len(item['evidence_ids']), 2)
+        self.assertTrue(any(e.get('verification_method') for e in registry.values()))
+
     def test_proven_historical_relation_is_restored_as_atomic_base_fact(self):
         entry = dict(section='integrators', entity='Example', field='vendor_relations', value='Cisco',
                      source=dict(source_type='historical-verified-excerpt',
