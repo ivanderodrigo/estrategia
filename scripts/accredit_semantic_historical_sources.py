@@ -104,8 +104,21 @@ def classify(claim,url):
             return "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
         return "RELATIONSHIP_NOT_SHOWN"
     if section=="manufacturers" and field=="competitors":
-        if (direct_owner or owner_site(value,url)) and (direct_owner or article_names) and any(
-            cue in context for cue in ("competitor", "competition", "competes", "competidor", "alternative to", "alternativa a")
+        official_party = direct_owner or owner_site(value,url)
+        # Official side-by-side vendor comparisons are explicit competitive
+        # evidence even when the publisher calls them "X vs Y" rather than
+        # using the literal English word "competitor".
+        explicit_competition = any(cue in context for cue in (
+            "competitor", "competition", "competes", "competidor",
+            "alternative to", "alternativa a", "comparison", "compare to",
+            "compare with", "comparativa", "comparacion",
+        )) or bool(re.search(r"\\b(?:vs|versus)\\b", context))
+        official_comparison_path = any(cue in canonical(urlparse(url).path) for cue in (
+            "compare", "comparison", "comparativa", "versus", "alternatives",
+        ))
+        named_pair = canonical(entity) in context and clean in context
+        if official_party and (direct_owner or article_names) and named_pair and (
+            explicit_competition or official_comparison_path
         ):
             return "VERIFIED_EXPLICIT_COMPETITOR_CONTEXT"
         return "COMPETITION_NOT_SHOWN"
