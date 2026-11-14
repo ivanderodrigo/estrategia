@@ -40,7 +40,21 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           VERIFICATION_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          gh api "repos/$GITHUB_REPOSITORY/actions/runs?event=schedule&per_page=100" > "$RUNNER_TEMP/scheduled-runs.json"
+          mkdir -p "$RUNNER_TEMP/workflow-history"
+          for workflow in research-daily.yml research-weekly.yml research-monthly.yml historical-source-diligence.yml source-verification.yml; do
+            gh api "repos/$GITHUB_REPOSITORY/actions/workflows/$workflow/runs?event=schedule&per_page=20" > "$RUNNER_TEMP/workflow-history/$workflow.json"
+          done
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          d=Path(os.environ["RUNNER_TEMP"])/"workflow-history"
+          runs=[]
+          for path in d.glob("*.json"):
+              runs.extend(json.loads(path.read_text(encoding="utf-8")).get("workflow_runs") or [])
+          target=Path(os.environ["RUNNER_TEMP"])/"scheduled-runs.json"
+          target.write_text(json.dumps({"workflow_runs":runs},ensure_ascii=False),encoding="utf-8")
+          print("Scheduled history:",len(runs),"runs across five named workflows")
+          PY
           python scripts/publish_source_verification_status.py \
             --run-url "$VERIFICATION_RUN_URL" \
             --workflow-runs "$RUNNER_TEMP/scheduled-runs.json"
