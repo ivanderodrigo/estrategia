@@ -13,7 +13,8 @@ async function render(failDebt=false){
  };
  const fetch=async path=>{
   if(failDebt&&path.includes('debt_overview'))throw Error('offline');
-  return {ok:true,json:async()=>path.includes('manifest')?manifest:debt};
+  return {ok:true,json:async()=>path.includes('manifest')?manifest:path.includes('audit_integrity')
+   ?{status:'PASS',snapshot_generated_at:manifest.generated_at}:debt};
  };
  vm.runInNewContext(script,{document,window:{WestconAudit:audit,scrollTo(){}},fetch,console});
  for(let i=0;i<5;i++)await Promise.resolve();
@@ -25,6 +26,8 @@ async function render(failDebt=false){
  assert.ok(ok.ccAudit.innerHTML.includes('Mayoristas'));
  assert.ok(ok.ccAudit.innerHTML.includes('Arquitecturas'));
  assert.ok(ok.ccDebt.innerHTML.includes('Afirmaciones por acreditar'));
+ assert.ok(ok.ccAudit.innerHTML.includes('Desglose conciliado'));
+ assert.ok(!ok.ccAudit.innerHTML.includes('Auditoría integral fallida'));
  const degraded=await render(true);
  assert.ok(degraded.ccAudit.innerHTML.includes('no disponible'),'Missing debt must show a message, never an empty audit');
  assert.ok(degraded.ccDebt.innerHTML.includes('sin datos consistentes'));
