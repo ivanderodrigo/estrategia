@@ -108,6 +108,9 @@ def main():
     successes=[];review=[];seen=set();counter=Counter()
     for url,row in sorted(results.items()):
         for claim in row.get("claim_checks") or []:
+            # When a linked official subpage proves the claim, cite that actual
+            # page rather than the generic historical landing page.
+            proof_url=str(claim.get("resolved_url") or url)
             status="SOURCE_UNAVAILABLE"
             if row.get("status") in ("REACHABLE_TEXT_MATCH","REACHABLE_NO_EXACT_TEXT"):
                 if (
@@ -115,26 +118,26 @@ def main():
                     and claim.get("accredited") is True
                     and claim.get("section") == "manufacturers"
                     and claim.get("field") == "competitors"
-                    and urlparse(url).hostname in {"www.gartner.com","gartner.com"}
-                    and "/reviews/product/" in url
-                    and url.rstrip("/").endswith("/alternatives")
+                    and urlparse(proof_url).hostname in {"www.gartner.com","gartner.com"}
+                    and "/reviews/product/" in proof_url
+                    and proof_url.rstrip("/").endswith("/alternatives")
                 ):
                     status = "VERIFIED_EXPLICIT_ALTERNATIVE"
                 elif claim.get("status")=="VALUE_PRESENT_REQUIRES_CONTEXT":
-                    status=classify(claim,url)
+                    status=classify(claim,proof_url)
                 else:
                     status="VALUE_NOT_FOUND"
             counter[status]+=1
-            key=(claim.get("section"),claim.get("entity"),claim.get("field"),canonical(claim.get("value")),url)
+            key=(claim.get("section"),claim.get("entity"),claim.get("field"),canonical(claim.get("value")),proof_url)
             if status.startswith("VERIFIED_") and key not in seen:
                 seen.add(key)
                 section,entity,field=claim["section"],claim["entity"],claim["field"]
                 value=claim["value"]
-                direct=owner_site(entity,url)
+                direct=owner_site(entity,proof_url)
                 peer = status == "VERIFIED_EXPLICIT_ALTERNATIVE"
                 source={
-                    "url":url,"source":"Gartner Peer Insights" if peer else
-                             (entity if direct else urlparse(url).hostname),
+                    "url":proof_url,"source":"Gartner Peer Insights" if peer else
+                             (entity if direct else urlparse(proof_url).hostname),
                     "title":(f"Alternativas explícitas a {entity} en Gartner Peer Insights" if peer
                              else f"Verificación de fuente histórica: {entity} / {field}"),
                     "description":(f"En la página de alternativas de producto a {entity}, "
@@ -160,7 +163,7 @@ def main():
             elif claim.get("status")=="VALUE_PRESENT_REQUIRES_CONTEXT":
                 review.append({"section":claim.get("section"),"entity":claim.get("entity"),
                                "field":claim.get("field"),"value":claim.get("value"),
-                               "url":url,"reason":status})
+                               "url":proof_url,"historical_url":url,"reason":status})
     REGISTRY.parent.mkdir(parents=True,exist_ok=True)
     REGISTRY.write_text(json.dumps({"version":1,"generated_at":str(report.get("generated_at") or ""),
           "policy":"One-by-one first-party field/claim/source excerpt checks. Never authorizes historical archive mention alone.",

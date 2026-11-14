@@ -17,6 +17,7 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from html import unescape
 from html.parser import HTMLParser
+from io import BytesIO
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -77,6 +78,104 @@ def historical_visible_text(html: str) -> str:
     return canonical(unescape(" ".join(parser.parts)))
 
 
+class _RelevantInternalLinks(HTMLParser):
+    """Extract first-party product, partner and service links without crawling indiscriminately."""
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.links: list[tuple[str,str]] = []
+        self.current_href = ""
+        self.current_label: list[str] = []
+        self.skip = 0
+
+    def handle_starttag(self, tag, attrs):
+        if tag in {"script","style","noscript"}:
+            self.skip += 1
+            return
+        if self.skip:
+            return
+        attributes = dict(attrs)
+        if tag == "a" and not self.current_href:
+            self.current_href = str(attributes.get("href") or "")
+            self.current_label = [str(attributes.get("title") or ""),
+                                  str(attributes.get("aria-label") or "")]
+        if tag == "img" and self.current_href:
+            self.current_label.append(str(attributes.get("alt") or ""))
+
+    def handle_endtag(self, tag):
+        if tag in {"script","style","noscript"} and self.skip:
+            self.skip -= 1
+        if tag == "a" and self.current_href:
+            self.links.append((self.current_href, " ".join(self.current_label)))
+            self.current_href = ""
+            self.current_label = []
+
+    def handle_data(self, data):
+        if self.current_href and not self.skip:
+            self.current_label.append(data)
+
+
+def deep_source_links(html: str, base_url: str, *, limit: int = 3) -> list[str]:
+    """Rank relevant same-host internal pages as next-hop source candidates."""
+    from urllib.parse import urljoin
+    parser = _RelevantInternalLinks()
+    parser.feed(html[:400_000])
+    base_host=(urlparse(base_url).hostname or "").lower().removeprefix("www.")
+    ranked=[]
+    seen=set()
+    signals=("partner","fabricant","vendor","linecard","marcas","marca",
+             "alianza","alliance","ecosystem","portfolio","catalog","product",
+             "services","servicios","solutions","soluciones","customer","case",
+             "casos","clientes","seguridad","security","network","cloud")
+    for href,label in parser.links:
+        if not href or href.startswith(("#","mailto:","tel:","javascript:")):
+            continue
+        resolved=urljoin(base_url,href)
+        parsed=urlparse(resolved)
+        if parsed.scheme!="https" or (parsed.hostname or "").lower().removeprefix("www.")!=base_host:
+            continue
+        clean=parsed._replace(fragment="",query="").geturl()
+        if clean.rstrip("/")==base_url.split("?")[0].rstrip("/") or clean in seen:
+            continue
+        seen.add(clean)
+        path=canonical(parsed.path)
+        caption=canonical(label)
+        path_hits=sum(sig in path for sig in signals)
+        label_hits=sum(sig in caption for sig in signals)
+        score=path_hits*3+label_hits*2
+        if score>0 and len(path)<140:
+            ranked.append((-score,clean))
+    ranked.sort()
+    return [u for _,u in ranked[:limit]]
+
+
+def historical_pdf_text(payload: bytes, *, max_pages: int = 120,
+                        max_chars: int = 480_000) -> str:
+    """Extract already selectable PDF text from official reports, without OCR.
+
+    Avoid rendering or loading unbounded documents during a recurring crawl.
+    Image-only or oversized PDFs remain research leads rather than proof.
+    """
+    if len(payload) > 12_000_000 or not payload.lstrip().startswith(b"%PDF"):
+        return ""
+    from pypdf import PdfReader
+    reader = PdfReader(BytesIO(payload), strict=False)
+    if reader.is_encrypted:
+        return ""
+    parts: list[str] = []
+    size = 0
+    for page in reader.pages[:max_pages]:
+        value = str(page.extract_text() or "")
+        if not value:
+            continue
+        remaining = max_chars - size
+        if remaining <= 0:
+            break
+        parts.append(value[:remaining])
+        size += len(parts[-1])
+    return canonical(" ".join(parts))
+
+
+
 def candidate_inventory() -> dict[str, list[dict]]:
     targets: dict[str, list[dict]] = defaultdict(list)
     for section in ("manufacturers", "distributors", "integrators",
@@ -99,7 +198,7 @@ def candidate_inventory() -> dict[str, list[dict]]:
 
 
 def check_one(url: str, claims: list[dict], timeout: float = 7.0,
-              session: requests.Session | None = None) -> dict:
+              session: requests.Session | None = None, *, depth: int = 0) -> dict:
     checked = datetime.now(timezone.utc).isoformat()
     result = {"url": url, "checked_at": checked,
               "status": "UNAVAILABLE", "claim_hits": 0,
@@ -131,10 +230,22 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
             result["status"] = "HTTP_UNAVAILABLE"
             return result
         content_type = str(response.headers.get("Content-Type") or "").lower()
-        if content_type and not any(t in content_type for t in ("text/", "html", "json")):
-            result["status"] = "NON_TEXT_SOURCE"
-            return result
-        text = historical_visible_text(response.text[:600_000])
+        pdf_source = ("application/pdf" in content_type
+                      or urlparse(safe).path.lower().endswith(".pdf"))
+        if pdf_source:
+            try:
+                text = canonical(historical_pdf_text(response.content))
+            except Exception as exc:
+                result["status"] = "PDF_TEXT_EXTRACTION_FAILED"
+                result["error_kind"] = type(exc).__name__
+                return result
+            result["source_format"] = "pdf"
+        else:
+            if content_type and not any(t in content_type for t in ("text/", "html", "json")):
+                result["status"] = "NON_TEXT_SOURCE"
+                return result
+            text = historical_visible_text(response.text[:600_000])
+            result["source_format"] = "html"
         if len(text) < 100:
             result["status"] = "INSUFFICIENT_SOURCE_CONTENT"
             return result
@@ -224,6 +335,53 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
                 "accredited": explicit_alternative,
             })
         hits = [c for c in checks if c["status"] in ("VALUE_PRESENT_REQUIRES_CONTEXT", "VERIFIED_EXPLICIT_ALTERNATIVE")]
+        # A historical homepage often links to the *actual* partner catalogue
+        # or services page. Follow a maximum of three same-host, semantically
+        # relevant links, and only when the root URL belongs to the claimed
+        # company. Each follow-up URL is individually SSRF-validated by check_one.
+        if depth == 0 and result.get("source_format") == "html":
+            host=(urlparse(safe).hostname or "").lower().removeprefix("www.")
+            entities={canonical(c.get("entity") or "") for c in claims}
+            owned_entities={e for e in entities if any(
+                t in host.replace("-","") for t in e.split()
+                if len(t)>=4 and t not in {"group","grupo","services","technology",
+                                           "technologies","solutions","security",
+                                           "espana","spain","portugal"}
+            )}
+            unresolved=[c for c,check in zip(claims,checks)
+                        if check["status"]=="NO_SPECIFIC_VALUE_CONFIRMED"
+                        and canonical(c.get("entity") or "") in owned_entities]
+            if unresolved:
+                deep_links=deep_source_links(response.text,safe,limit=3)
+                result["followup_candidates"]=len(deep_links)
+                result["deep_links_fetched"]=0
+                result["deep_claim_hits"]=0
+                for target in deep_links:
+                    if not unresolved:
+                        break
+                    secondary=check_one(target,unresolved,timeout,
+                                        session=session,depth=1)
+                    result["deep_links_fetched"]+=1
+                    if secondary.get("status") != "REACHABLE_TEXT_MATCH":
+                        continue
+                    found=[]
+                    for claim,child in zip(unresolved,secondary.get("claim_checks") or []):
+                        if child["status"] in (
+                            "VALUE_PRESENT_REQUIRES_CONTEXT","VERIFIED_EXPLICIT_ALTERNATIVE"
+                        ):
+                            key=(claim["section"],claim["entity"],claim["field"],claim["value"])
+                            for original in checks:
+                                if (original["section"],original["entity"],original["field"],
+                                    original["value"])==key:
+                                    original.update(child)
+                                    original["discovered_from"]=url
+                                    result["deep_claim_hits"]+=1
+                                    found.append(key)
+                                    break
+                    unresolved=[c for c in unresolved
+                                if (c["section"],c["entity"],c["field"],c["value"]) not in found]
+        hits = [c for c in checks if c["status"] in
+                ("VALUE_PRESENT_REQUIRES_CONTEXT", "VERIFIED_EXPLICIT_ALTERNATIVE")]
         result["claim_checks"] = checks
         result["claim_hits"] = len(hits)
         result["semantically_verified"] = sum(c["status"] == "VERIFIED_EXPLICIT_ALTERNATIVE" for c in checks)
