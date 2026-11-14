@@ -252,7 +252,11 @@ def publication_title_match(value: str, text: str, url: str, section: str,
     words = [x for x in title.split() if x not in TITLE_STOPWORDS
              and len(x) >= 4]
     terms = set(words)
-    if len(terms) < 3:
+    # Short but distinctive publication titles can contain only two
+    # meaningful tokens (e.g. "Cybersecurity Trends"). Do not require
+    # a third token that the actual title does not contain.
+    required = 2 if len(terms)==2 and any(len(t)>=10 for t in terms) else 3
+    if len(terms) < required:
         return False, ""
     # A local passage, not global word presence across a site footer.
     passages = [text[max(0, m.start()-260):m.end()+260]
@@ -265,7 +269,7 @@ def publication_title_match(value: str, text: str, url: str, section: str,
     if not ranked:
         return False, ""
     score, excerpt = max(ranked, key=lambda x: x[0])
-    matched = score >= 3 and score / len(terms) >= .75
+    matched = score >= required and score / len(terms) >= .75
     return matched, excerpt if matched else ""
 
 def candidate_inventory() -> dict[str, list[dict]]:
