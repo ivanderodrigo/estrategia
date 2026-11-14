@@ -73,6 +73,38 @@ const westconOfficial={name:'Extreme Networks',fields:{westcon_spain:field(true)
 const competition=bi.verifiedCompetitionFor(integratorOfficial,[westconOfficial]);
 assert.deepStrictEqual(competition.value,['Cisco'],'Both source-backed relationships must map exact competitor');
 assert.strictEqual(competition.items[0].competes_with_westcon[0],'Extreme Networks');
+// A current Westcon peer is NOT an external competitor in the partner lens.
+const bothWestcon=[
+ {name:'Extreme Networks',fields:{westcon_spain:field(true),competitors:detailedRelation('Cisco')}},
+ {name:'Cisco',fields:{westcon_spain:field(true),competitors:detailedRelation('Extreme Networks')}}
+];
+const westconPeerIntegrator={name:'Integrator peer',fields:{vendor_relations:detailedRelation('Cisco')}};
+assert.deepStrictEqual(bi.verifiedCompetitionFor(westconPeerIntegrator,bothWestcon).value,[],
+ 'Active Westcon manufacturer must not be counted as external rival even if an active peer competes with it');
+const westconPeerDistributor={name:'Distributor peer',fields:{
+ vendor_relations:detailedRelation('Cisco'),
+ competitor_vendor_overlap:detailedRelation('Cisco')
+}};
+const peerContext=bi.distributorContext(westconPeerDistributor,bothWestcon);
+assert.ok(!peerContext.reasons.some(reason=>/competidor/i.test(reason)),
+ 'Distributor competitive context must not label a current Westcon manufacturer as external');
+assert.strictEqual(peerContext.relevant,true,'Proven existing portfolio relationship remains visible');
+const mixed={name:'Distributor with two brands',fields:{vendor_relations:{
+ value:['Cisco','Arista Networks'],
+ items:[{value:'Cisco',evidence:[ev]},{value:'Arista Networks',evidence:[ev]}],
+ evidence:[ev]
+}}};
+const mixedManufacturers=[
+ ...bothWestcon.slice(0,1),
+ bothWestcon[1]
+];
+mixedManufacturers[0].fields.competitors={
+ value:['Cisco','Arista Networks'],
+ items:[{value:'Cisco',evidence:[ev]},{value:'Arista Networks',evidence:[ev]}],
+ evidence:[ev]
+};
+assert.deepStrictEqual(bi.verifiedCompetitionFor(mixed,mixedManufacturers).value,['Arista Networks'],
+ 'External proven competitor survives; active Westcon peer is excluded');
 const retired={name:'Ruckus Networks',fields:{westcon_spain:field(false),competitors:detailedRelation('Cisco')}};
 assert.deepStrictEqual(bi.verifiedCompetitionFor(integratorOfficial,[retired]).value,[],
  'A retired manufacturer must never produce a Westcon competitor mapping');
