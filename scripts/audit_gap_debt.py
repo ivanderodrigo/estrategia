@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "data/current/research_gaps.json"
-DEST = ROOT / "data/current/debt_diagnostic.json"
+DEST = ROOT / "data/current/gap_debt_audit.json"
 
 
 def analyze(report: dict) -> dict:
