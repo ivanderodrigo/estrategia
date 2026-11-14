@@ -1,0 +1,53 @@
+name: Integrate Accredited Historical Evidence
+# Historical diligence commits claim-specific proof, but only rebuilding the
+# canonical snapshot makes those verified sources visible as green badges.
+on:
+  workflow_run:
+    workflows: ['Historical Source Diligence']
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: westcon-intelligence-research
+  cancel-in-progress: false
+jobs:
+  integrate:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - run: python -m pip install -r requirements.txt
+      - name: Check published evidence and canonical model
+        run: |
+          python scripts/validate_workflows.py
+          python -m unittest discover -s tests -p 'test_semantic_historical_across_sections_20261114.py'
+          python -m unittest discover -s tests -p 'test_historical_source_retention_20261114.py'
+      - name: Rebuild from the newest confirmed source registry
+        run: |
+          python -m engine.pipeline
+          python scripts/attach_sase_layer_vendor_sources.py
+          python scripts/audit_public_consistency.py
+      - name: Verify immutable snapshot before publication
+        run: |
+          python scripts/validate.py
+          python scripts/validate_active_portfolio_public.py
+          python scripts/audit_published_semantic_historical.py
+          python scripts/validate_mass_historical_publication.py
+          node tests/ui_smoke.js
+          node tests/confidence_color_consistency.js
+          node tests/sase_vendor_render.js
+      - name: Publish accredited snapshot on main
+        run: python scripts/publish_research_update.py --message 'data: integrate accredited historical evidence' --attempts 3
