@@ -42,6 +42,25 @@ class WorkflowIntegrity(unittest.TestCase):
         self.assertNotIn("      - 'tests/**'", daily)
         self.assertIn("workflow_dispatch:", daily)
 
+    def test_every_scheduled_profile_publishes_source_bindings_and_same_snapshot_audit(self) -> None:
+        runner = (WORKFLOWS / "research-run.yml").read_text(encoding="utf-8")
+        publisher = (ROOT / "scripts/publish_research_update.py").read_text(encoding="utf-8")
+        pages = (WORKFLOWS / "pages-deploy.yml").read_text(encoding="utf-8")
+        for script in ("scripts/attach_sase_layer_vendor_sources.py",
+                       "scripts/audit_public_consistency.py"):
+            self.assertIn(script, runner)
+            self.assertIn(script, pages)
+            self.assertTrue((ROOT / script).exists())
+        self.assertIn('"data/public/audit_integrity.json"', publisher)
+        self.assertLess(runner.index("attach_sase_layer_vendor_sources.py"),
+                        runner.index("Validate generated snapshot"))
+        self.assertLess(runner.index("audit_public_consistency.py"),
+                        runner.index("Publish validated intelligence"))
+        for name in ("daily", "weekly", "monthly"):
+            workflow = (WORKFLOWS / f"research-{name}.yml").read_text(encoding="utf-8")
+            self.assertIn("uses: ./.github/workflows/research-run.yml", workflow)
+        self.assertIn("scripts/audit_public_consistency.py", pages)
+
     def test_source_verification_uses_python_modules(self) -> None:
         source = (WORKFLOWS / "source-verification.yml").read_text(encoding="utf-8")
         self.assertIn("python -m scripts.audit_claim_sources", source)
