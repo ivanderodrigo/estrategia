@@ -56,6 +56,24 @@ class SemanticHistoricalTests(unittest.TestCase):
         self.assertEqual(classify(ev,"https://csrc.nist.gov/publications/detail/sp/800-207/final"),
                          "AMBIGUOUS_SHORT_VALUE")
 
+    def test_official_vendor_comparison_is_explicit_competitive_proof(self):
+        ev=claim("manufacturers","competitors","Ciena","Huawei",
+                 "Ciena vs Huawei: compare optical network solutions")
+        self.assertEqual(classify(ev,"https://www.ciena.com/compare/huawei"),
+                         "VERIFIED_EXPLICIT_COMPETITOR_CONTEXT")
+
+    def test_vendor_mention_without_comparison_remains_uncredited(self):
+        ev=claim("manufacturers","competitors","Ciena","Huawei",
+                 "Ciena and Huawei participate at an industry event")
+        self.assertEqual(classify(ev,"https://www.ciena.com/news/events"),
+                         "COMPETITION_NOT_SHOWN")
+
+    def test_third_party_comparison_without_first_party_support_not_auto_accredited(self):
+        ev=claim("manufacturers","competitors","Ciena","Huawei",
+                 "Ciena vs Huawei: compare optical solutions")
+        self.assertEqual(classify(ev,"https://example.org/compare/vendors"),
+                         "COMPETITION_NOT_SHOWN")
+
     def test_partner_logo_alt_is_visible_for_original_source_audit(self):
         html=('''<html><body><h1>Partners tecnológicos</h1><section>'''
               '''<img src="/logos/avaya.svg" alt="Avaya">'''
