@@ -946,13 +946,41 @@ const identityTone=identityEvidence.length?'high':'unverified';const direct=view
   }
 
   function cardField(col,f,context='card'){if(!f||!hasValue(f.value))return '';const help=col.clarify?`<span class="help-wrap card-help"><span>${esc(col.label)}</span><button class="help-icon" type="button" aria-label="Aclaración de ${esc(col.label)}">?</button><span class="help-tip">${esc(col.help||'')}</span></span>`:esc(col.label);return `<div class="card-field"><label>${help}</label>${renderValue(f,null,context,col.id)}</div>`;}
+  // Historical articles that describe a trend or an architecture belong in the
+  // title's blue trace panel as contextual leads. They do not automatically
+  // prove the exact taxonomy name or change its accreditation status.
+  function identityWithHistoricalContext(row){
+    const direct=Array.isArray(row._historical?.name)?row._historical.name:[];
+    const prefer=row._section==='architectures'
+      ?['analyst_basis','principles','context','vendors']
+      :['sources','drivers','domain','evolution','observed'];
+    const seen=new Set();
+    const contextual=[];
+    for(const fieldId of prefer){
+      for(const claim of row._historical?.[fieldId]||[]){
+        const urls=(claim.urls||[]).filter(url=>/^https:\/\//i.test(url)&&!seen.has(url));
+        if(!urls.length)continue;
+        urls.forEach(url=>seen.add(url));
+        contextual.push({value:'Referencia temática: '+fieldId+' · '+String(claim.value??'').slice(0,120),urls});
+        if(contextual.length>=12)break;
+      }
+      if(contextual.length>=12)break;
+    }
+    const nameField=row.fields?.name;
+    const evidence=Array.isArray(nameField?.evidence)&&nameField.evidence.length
+      ?nameField.evidence:(row.evidence||[]);
+    return {value:row.name,evidence,confidence:nameField?.confidence??.9,
+      confidence_band:nameField?.confidence_band,
+      _historical:direct.length?direct:contextual};
+  }
+
   function cardGrid(rows, schema, forceAll=false, context='card'){
     // Feed-only fields (notably Publications and novedades) belong to the
     // dedicated sourced news feed, not to per-topic factual cards.
     const chosen=forceAll?schema:activeColumns(schema,rows,'cards');
     const cols=chosen.filter(c=>!c.feed_only&&c.id!=='recent_signals');
     const cardClass=context==='trend'?'intel-card trend-card':'intel-card';
-    return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable({value:row.name,evidence:row.evidence||[],confidence:.9,confidence_band:'high'},`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>{const field=fieldFor(row,c);const historical=Boolean(row._historical?.[c.id]?.length);const rendered=cardField(c,field,context);if((context==='trend'||row._section==='architectures')&&!rendered&&!historical)return '';return `<div class="card-evidence-group">${rendered||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c,row)}</div>`}</div>`;}).join('')}</article>`).join('');
+    return rows.map(row=>`<article class="${cardClass}"><div class="eyebrow">INTELIGENCIA TRAZABLE</div><div class="card-title">${traceable(identityWithHistoricalContext(row),`<h3>${esc(row.name)}</h3>`)}</div>${cols.map(c=>{const field=fieldFor(row,c);const historical=Boolean(row._historical?.[c.id]?.length);const rendered=cardField(c,field,context);if((context==='trend'||row._section==='architectures')&&!rendered&&!historical)return '';return `<div class="card-evidence-group">${rendered||`<div class="card-field"><label>${esc(c.label)}</label>${missingMarkup(c,row)}</div>`}</div>`;}).join('')}</article>`).join('');
   }
   function renderSectionCoverage(section,selector){
     const el=$(selector);if(!el)return;
