@@ -78,6 +78,34 @@ def historical_visible_text(html: str) -> str:
     return canonical(unescape(" ".join(parser.parts)))
 
 
+class _TopicHeadings(HTMLParser):
+    """Only document headings and synopsis establish a topic identity, not menus."""
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.capture = 0
+        self.parts = []
+    def handle_starttag(self, tag, attrs):
+        if tag in {"title", "h1", "h2"}:
+            self.capture += 1
+        if tag == "meta":
+            a = dict(attrs)
+            if a.get("name", "").lower() == "description" or a.get("property", "").lower() in {"og:title", "og:description"}:
+                self.parts.append(a.get("content", ""))
+    def handle_endtag(self, tag):
+        if tag in {"title", "h1", "h2"} and self.capture:
+            self.capture -= 1
+            self.parts.append(" ")
+    def handle_data(self, data):
+        if self.capture:
+            self.parts.append(data)
+
+
+def historical_topic_text(html):
+    parser = _TopicHeadings()
+    parser.feed(html)
+    return canonical(" ".join(parser.parts))
+
+
 class _RelevantInternalLinks(HTMLParser):
     """Extract first-party product, partner and service links without crawling indiscriminately."""
     def __init__(self):
@@ -310,6 +338,24 @@ def candidate_inventory() -> dict[str, list[dict]]:
                                  "inventory_origin": "current-visible-unaccredited"}
                         if claim not in targets[url]:
                             targets[url].append(claim)
+    # Topic names are editorial identities, absent from the old field-only
+    # inventory. Assess their documented components using every linked source.
+    for section in ("trends", "architectures"):
+        for row in current.get(section) or []:
+            entity = str(row.get("name") or "")
+            urls = {url for url, claims in targets.items()
+                    if any(c["section"] == section and canonical(c["entity"]) == canonical(entity)
+                           for c in claims)}
+            evidences = list(row.get("evidence") or [])
+            for field in (row.get("fields") or {}).values():
+                evidences.extend(field.get("evidence") or [])
+                for item in field.get("items") or []:
+                    evidences.extend(item.get("evidence") or [])
+            urls.update(str(ev.get("url") or "") for ev in evidences if isinstance(ev, dict))
+            for url in urls:
+                if url.startswith("https://"):
+                    targets[url].append({"section": section, "entity": entity,
+                                         "field": "name", "value": entity})
     return targets
 
 
@@ -445,6 +491,13 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
                 best_claim_excerpt(text, search_value, field_id)
                 if informative else (False, "")
             )
+            if claim.get("section") in ("trends", "architectures"):
+                from engine.topic_evidence import topic_excerpt
+                topic_context = topic_excerpt(claim, safe,
+                    historical_topic_text(response.text[:1_000_000])
+                    if field_id == "name" and not pdf_source else text)
+                if topic_context:
+                    occurs, context = True, topic_context
             checks.append({
                 "section": claim["section"], "entity": claim["entity"],
                 "field": field_id, "value": raw_value[:180],

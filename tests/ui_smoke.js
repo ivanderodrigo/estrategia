@@ -73,3 +73,11 @@ for(const label of [
 for(const label of ['.categorical-tags .confidence-tag','.distributor-curation-controls']){
  if(!css.includes(label))throw new Error('v6.3 category/curation visual regression: '+label);
 }
+
+// Topic headings retain the original references and only use identity-specific proof.
+const identityFunction=js.slice(js.indexOf('function topicIdentityField('),js.indexOf('function cardGrid(')).trim();
+const topicIdentity=new Function('return ('+identityFunction+')')();
+const topic=topicIdentity({name:'Zero Trust',evidence:[],fields:{name:{value:'Zero Trust',evidence:[{url:'https://csrc.nist.gov/'}]}},_historical:{analyst_basis:[{value:'NIST SP 800-207',urls:['https://csrc.nist.gov/']} ]}});
+if(topic._historical.length!==1||topic.evidence.length!==1||!topic._showAllHistory)throw new Error('Topic heading loses exact proof or historical references');
+const unproved=topicIdentity({name:'Zero Trust',fields:{vendors:{evidence:[{url:'https://example.org/vendor'}]}},_historical:{context:[{value:'Prior statement',urls:['https://example.org/old']}]}});
+if(unproved.evidence.length)throw new Error('Unrelated topic field was promoted to name proof');
