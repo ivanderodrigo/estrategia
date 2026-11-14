@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "scope": "SASE / SSE",
+  "verification_note": "Documentación oficial de la capacidad exacta del fabricante por capa. Encaje funcional no equivale a integración conjunta certificada ni a distribución comercial.",
+  "sources": [
+    {
+      "layer": "WAN / SD-WAN / Edge",
+      "vendor": "Cisco",
+      "url": "https://www.cisco.com/site/us/en/products/security/secure-access/sase.html",
+      "title": "Cisco Catalyst SD-WAN y Secure Access",
+      "description": "Cisco documenta la integración de Catalyst SD-WAN con Secure Access para SASE.",
+      "reviewed_at": "2026-11-14",
+      "status": "VERIFIED_VENDOR_CAPABILITY"
+    },
+    {
+      "layer": "WAN / SD-WAN / Edge",
+      "vendor": "Extreme Networks",
+      "url": "https://www.extremenetworks.com/solutions/sd-wan",
+      "title": "ExtremeCloud SD-WAN",
+      "description": "Extreme documenta SD-WAN y su integración con Extreme Fabric.",
+      "reviewed_at": "2026-11-14",
+      "status": "VERIFIED_VENDOR_CAPABILITY"
+    },
+    {
+      "layer": "WAN / SD-WAN / Edge",
+      "vendor": "Ericsson Cradlepoint",
+      "url": "https://cradlepoint.ericsson.com/products/wireless-wan/",
+      "title": "Ericsson Cradlepoint Wireless WAN",
+      "description": "Ericsson documenta routers WAN 5G/LTE y opciones SD-WAN para empresas.",
+      "reviewed_at": "2026-11-14",
+      "status": "VERIFIED_VENDOR_CAPABILITY"
+    },
+    {
+      "layer": "WAN / SD-WAN / Edge",
+      "vendor": "Palo Alto Networks",
+      "url": "https://docs.paloaltonetworks.com/prisma-sd-wan",
+      "title": "Prisma SD-WAN",
+      "description": "Palo Alto Networks documenta Prisma SD-WAN para redes empresariales.",
+      "reviewed_at": "2026-11-14",
+      "status": "VERIFIED_VENDOR_CAPABILITY"
+    },
+    {
+      "layer": "WAN / SD-WAN / Edge",
+      "vendor": "Check Point",
+      "url": "https://www.checkpoint.com/harmony/sase/",
+      "title": "Check Point SASE SD-WAN",
+      "description": "Check Point documenta SD-WAN segura dentro de su plataforma SASE.",
+      "reviewed_at": "2026-11-14",
+      "status": "VERIFIED_VENDOR_CAPABILITY"
+    },
+    {
+      "layer": "SSE / ZTNA / Secure Access",
+      "vendor": "Zscaler",
+      "url": "https://www.zscaler.com/products-and-solutions/zscaler-private-access",
+      "title": "Zscaler Private Access",
+      "description": "Zscaler documenta acceso a aplicaciones privadas mediante ZTNA.",
+      "reviewed_at": "2026-11-14",
+      "status": "VERIFIED_VENDOR_CAPABILITY"
+    },
+    {
+      "layer": "SSE / ZTNA / Secure Access",
+      "vendor": "Palo Alto Networks",
+      "url": "https://docs.paloaltonetworks.com/prisma-access/integration/integrate-third-party-sd-wans-with-prisma-access",
+      "title": "Prisma Access",
+      "description": "Palo Alto Networks documenta seguridad en la nube de sucursales a través de Prisma Access.",
+      "reviewed_at": "2026-11-14",
+      "status": "VERIFIED_VENDOR_CAPABILITY"
+    },
+    {
+      "layer": "SSE / ZTNA / Secure Access",
+      "vendor": "Check Point",
+      "url": "https://www.checkpoint.com/harmony/sase/",
+      "title": "Check Point SASE Private Access",
+      "description": "Check Point documenta ZTNA y acceso privado en su plataforma SASE.",
+      "reviewed_at": "2026-11-14",
+      "status": "VERIFIED_VENDOR_CAPABILITY"
+    },
+    {
+      "layer": "SSE / ZTNA / Secure Access",
+      "vendor": "Ivanti",
+      "url": "https://www.ivanti.com/es/products/ivanti-neurons-zero-trust-access",
+      "title": "Ivanti Neurons for Zero Trust Access",
+      "description": "Ivanti documenta controles de acceso condicional y ZTNA.",
+      "reviewed_at": "2026-11-14",
+      "status": "VERIFIED_VENDOR_CAPABILITY"
+    },
+    {
+      "layer": "SSE / ZTNA / Secure Access",
+      "vendor": "Menlo Security",
+      "url": "https://www.menlosecurity.com/product/secure-enterprise-browser",
+      "title": "Menlo Secure Enterprise Browser",
+      "description": "Menlo documenta acceso seguro, aislamiento y controles de navegador; encaje parcial en acceso seguro, no equivalencia con una plataforma SSE completa.",
+      "reviewed_at": "2026-11-14",
+      "status": "VERIFIED_VENDOR_CAPABILITY"
+    },
+    {
+      "layer": "Identity / Authentication",
+      "vendor": "Okta",
+      "url": "https://support.okta.com/help/s/article/What-factors-forms-of-MFA-does-Okta-Support",
+      "title": "Okta MFA",
+      "description": "Okta documenta mecanismos de autenticación multifactor.",
+      "reviewed_at": "2026-11-14",
+      "status": "VERIFIED_VENDOR_CAPABILITY"
+    },
+    {
+      "layer": "Identity / Authentication",
+      "vendor": "Ping Identity",
+      "url": "https://www.pingidentity.com/es/product/pingid.html",
+      "title": "PingID",
+      "description": "Ping Identity documenta MFA y SSO para empleados y socios.",
+      "reviewed_at": "2026-11-14",
+      "status": "VERIFIED_VENDOR_CAPABILITY"
+    },
+    {
+      "layer": "Identity / Authentication",
+      "vendor": "1Password",
+      "url": "https://1password.com/business-security",
+      "title": "1Password Business Security",
+      "description": "1Password documenta gestión de contraseñas, secretos e identidades empresariales; no se presume proveedor de SSO.",
+      "reviewed_at": "2026-11-14",
+      "status": "VERIFIED_VENDOR_CAPABILITY"
+    },
+    {
+      "layer": "Network & Experience Visibility",
+      "vendor": "NETSCOUT",
+      "url": "https://www.netscout.com/products",
+      "title": "NETSCOUT nGeniusONE",
+      "description": "NETSCOUT documenta visibilidad y análisis de rendimiento de redes y aplicaciones.",
+      "reviewed_at": "2026-11-14",
+      "status": "VERIFIED_VENDOR_CAPABILITY"
+    },
+    {
+      "layer": "Network & Experience Visibility",
+      "vendor": "Cisco",
+      "url": "https://www.cisco.com/site/uk/en/products/networking/software/internet-cloud-intelligence/index.html",
+      "title": "Cisco ThousandEyes",
+      "description": "Cisco documenta monitorización y visibilidad de experiencia digital de usuario a nube.",
+      "reviewed_at": "2026-11-14",
+      "status": "VERIFIED_VENDOR_CAPABILITY"
+    }
+  ]
+}
