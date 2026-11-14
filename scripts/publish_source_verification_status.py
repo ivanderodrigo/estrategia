@@ -56,6 +56,8 @@ def build(binding, live, manifest, *, checked_at, run_url, workflow_runs=None):
         "source_content_semantically_verified": False,
         "total_live_review_candidates": int(live.get("total_references") or 0),
         "live_sample_reviewed": sampled,
+        "live_sample_hosts": int(live.get("unique_source_hosts_in_sample") or 0),
+        "live_sampling_policy": str(live.get("sampling_policy") or "legacy-contiguous"),
         "live_content_accessible": readable,
         "live_collection_health": review_health,
         "live_review_statuses": dict(statuses),
