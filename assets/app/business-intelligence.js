@@ -77,10 +77,20 @@ function sameBusinessName(a,b){
 function isActiveWestcon(row){
  return row?.fields?.westcon_spain?.value===true || row?.fields?.westcon_portugal?.value===true;
 }
+function activeWestconNames(manufacturers=[]){
+ return (manufacturers||[]).filter(isActiveWestcon).map(row=>row.name).filter(Boolean);
+}
+function outsideWestcon(value,activeNames=[]){
+ return !activeNames.some(name=>sameBusinessName(value,name));
+}
 function distributorContext(row,manufacturers=[]){
  const f=row?.fields||{},reasons=[];
+ const activeNames=activeWestconNames(manufacturers);
  const overlap=supportedTexts(f.westcon_overlap);
- const competitorOverlap=supportedTexts(f.competitor_vendor_overlap);
+ // Old snapshots and derived UI columns may contain a competitor that is
+ // itself in the active Westcon portfolio. Never classify it as an outsider.
+ const competitorOverlap=supportedTexts(f.competitor_vendor_overlap)
+  .filter(v=>outsideWestcon(v,activeNames));
  if(overlap.length)reasons.push('Fabricante Westcon acreditado: '+overlap.slice(0,3).join(', '));
  if(competitorOverlap.length)reasons.push('Fabricante competidor acreditado: '+competitorOverlap.slice(0,3).join(', '));
  const vendorRelations=supportedTexts(f.vendor_relations);
@@ -98,8 +108,8 @@ function distributorContext(row,manufacturers=[]){
   // A competitor is a documented manufacturer-level relationship, not
   // a generic product-category similarity.
   const documentedCompetitors=supportedTexts(manufacturer.fields?.competitors);
-  if(vendorRelations.some(v=>documentedCompetitors.some(c=>sameBusinessName(v,c)))){
-   reasons.push('Competidor tecnológico relacionado con '+name);
+  if(vendorRelations.some(v=>outsideWestcon(v,activeNames)&&documentedCompetitors.some(c=>sameBusinessName(v,c)))){
+   reasons.push('Competidor tecnológico externo relacionado con '+name);
   }
  }
  if(vendorMatches.length){
@@ -115,7 +125,10 @@ function distributorContext(row,manufacturers=[]){
 
 function verifiedCompetitionFor(row,manufacturers=[]){
  const vendorField=row?.fields?.vendor_relations||{};
- const vendors=supportedTexts(vendorField);
+ const activeNames=activeWestconNames(manufacturers);
+ // Peer competition is possible between two Westcon manufacturers, but this
+ // column specifically means EXTERNAL competitors found in a partner linecard.
+ const vendors=supportedTexts(vendorField).filter(v=>outsideWestcon(v,activeNames));
  const mapped=[];
  for(const vendor of vendors){
   const matched=[];
