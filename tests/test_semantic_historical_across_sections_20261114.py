@@ -74,6 +74,20 @@ class SemanticHistoricalTests(unittest.TestCase):
         self.assertEqual(classify(ev,"https://example.org/compare/vendors"),
                          "COMPETITION_NOT_SHOWN")
 
+    def test_official_open_graph_description_is_available_for_verification(self):
+        html = ('<html><head><meta property="og:title" '
+                'content="Nunsys: partners tecnológicos">'
+                '<meta property="og:description" '
+                'content="Nunsys y Avaya, alianza de comunicaciones">'
+                '<meta property="og:image" content="irrelevant-cover">'
+                '</head><body></body></html>')
+        excerpt = historical_visible_text(html)
+        self.assertIn("nunsys y avaya alianza de comunicaciones", excerpt)
+        self.assertNotIn("irrelevant cover", excerpt)
+        ev=claim("integrators", "vendor_relations", "Nunsys", "Avaya",excerpt)
+        self.assertEqual(classify(ev,"https://www.nunsys.com/partners/"),
+                         "VERIFIED_EXPLICIT_PARTNER_CONTEXT")
+
     def test_partner_logo_alt_is_visible_for_original_source_audit(self):
         html=('''<html><body><h1>Partners tecnológicos</h1><section>'''
               '''<img src="/logos/avaya.svg" alt="Avaya">'''
