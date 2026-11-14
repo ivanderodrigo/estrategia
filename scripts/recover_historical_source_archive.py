@@ -26,7 +26,10 @@ def git(*args):
 
 
 def choose_revisions(section, limit):
-    path = "data/public/sections/" + section + ".json"
+    return choose_path_revisions("data/public/sections/" + section + ".json", limit)
+
+
+def choose_path_revisions(path, limit):
     result = git("log", "--all", "--format=%H", "--", path)
     if result.returncode:
         return []
@@ -73,7 +76,7 @@ def atom_values(field):
     return []
 
 
-def recover(max_snapshots=32, max_pairs=30000):
+def recover(max_snapshots=32, max_pairs=30000, internal_snapshots=8):
     discovered = {}
     per_section = Counter()
     snapshots = Counter()
@@ -123,6 +126,53 @@ def recover(max_snapshots=32, max_pairs=30000):
             if per_section[section] >= max_pairs // len(SECTIONS):
                 break
 
+    # The internal canonical file may retain evidence that was never exported
+    # to a public section. Sample its own independent Git history.
+    internal_attempted = 0
+    internal_success = 0
+    for rev in choose_path_revisions("data/current/intelligence.json", internal_snapshots):
+        internal_attempted += 1
+        proc = git("show", rev + ":data/current/intelligence.json")
+        if proc.returncode or not proc.stdout:
+            continue
+        try:
+            payload = json.loads(proc.stdout)
+        except (ValueError, UnicodeDecodeError):
+            continue
+        if not isinstance(payload, dict):
+            continue
+        internal_success += 1
+        for section in SECTIONS:
+            for row in payload.get(section) or []:
+                if not isinstance(row, dict):
+                    continue
+                entity = str(row.get("name") or "").strip()
+                if not entity:
+                    continue
+                # Internal records contain inline evidence rather than an ID registry.
+                for field_name, field in (row.get("fields") or {}).items():
+                    if not isinstance(field, dict):
+                        continue
+                    if per_section[section] >= max_pairs // len(SECTIONS):
+                        break
+                    for value in atom_values(field):
+                        for url in source_urls(field, {}):
+                            key = (section, entity, field_name, value, url)
+                            if key not in discovered and per_section[section] < max_pairs // len(SECTIONS):
+                                discovered[key] = rev[:12]
+                                per_section[section] += 1
+                    for item in field.get("items") or []:
+                        if not isinstance(item, dict):
+                            continue
+                        value = item.get("value")
+                        if not isinstance(value, (str, int, float)) or not str(value).strip():
+                            continue
+                        for url in source_urls(item, {}):
+                            key = (section, entity, field_name, str(value), url)
+                            if key not in discovered and per_section[section] < max_pairs // len(SECTIONS):
+                                discovered[key] = rev[:12]
+                                per_section[section] += 1
+
     # Retain exact claims, with provenance, as NON-accredited research leads.
     records = [{"section": s, "entity": e, "field": f, "value": v,
                 "url": url, "revision": rev, "inventory_origin": "git-archive-recovered"}
@@ -149,6 +199,8 @@ def recover(max_snapshots=32, max_pairs=30000):
         "status": "HISTORICAL_GIT_LEADS_NOT_ACCREDITED",
         "policy": "Archived Git URL tuples are investigative leads, never direct accreditation.",
         "sampled_snapshots": dict(snapshots),
+        "internal_attempted_snapshots": internal_attempted,
+        "internal_successful_snapshots": internal_success,
         "attempted_snapshots": dict(attempted),
         "all_archived_pairs": len(records),
         "additional_claim_url_pairs": len(additions),
@@ -167,8 +219,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--snapshots", type=int, default=32)
     parser.add_argument("--max-pairs", type=int, default=30000)
+    parser.add_argument("--internal-snapshots", type=int, default=8)
     args = parser.parse_args()
-    recover(max(2, args.snapshots), max(100, args.max_pairs))
+    recover(max(2, args.snapshots), max(100, args.max_pairs),
+            max(2, args.internal_snapshots))
 
 
 if __name__ == "__main__":
