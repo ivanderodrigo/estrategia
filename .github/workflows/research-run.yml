@@ -94,10 +94,18 @@ jobs:
           python scripts/revalidate_historical_sources.py
           --limit ${{ inputs.profile == 'daily' && 18 || inputs.profile == 'deep' && 32 || 48 }}
           --timeout 7
+      - name: Accredit newly verified historical claim excerpts
+        run: python scripts/accredit_semantic_historical_sources.py
+      - name: Integrate accredited historical claims into the public snapshot
+        run: |
+          python -m engine.pipeline
+          python scripts/attach_sase_layer_vendor_sources.py
+          python scripts/audit_public_consistency.py
       - name: Validate independent research reports
         run: |
           python scripts/validate_mass_historical_publication.py
           python scripts/validate.py
+          python scripts/audit_published_semantic_historical.py
       - name: Reconcile seven published areas before scheduled publication
         run: python scripts/audit_public_consistency.py
       - name: Upload diagnostics
