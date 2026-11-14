@@ -51,6 +51,16 @@ for (const token of [
   'const archaeology=sourceArchaeology(field,item)'
 ]) if (!js.includes(token)) throw new Error('historical title lineage regression: '+token);
 
+// The deploy must hydrate additional Git-history source leads in the same
+// blue field trace, without crediting an archived URL as current proof.
+for (const token of [
+  "git_'+section+'.json",
+  "GIT_HISTORICAL_LEADS_NOT_ACCREDITED",
+  "historicalEntities[key]||{},archiveEntities[key]||{}",
+  "state.historicalSections[section]=historicalEntities",
+  "_historical:row._historical?.__identity__||[]"
+]) if(!js.includes(token)) throw new Error("archived evidence UI missing: "+token);
+
 console.log('UI smoke v4.4.0 PASS');
 
 // Directly confirmed portfolio statements have no public URL. They must be
