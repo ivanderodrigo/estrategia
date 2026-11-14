@@ -35,6 +35,8 @@ jobs:
           python -m compileall -q engine scripts tests
           python -m unittest discover -s tests -p 'test_*.py' -v 2>&1 | tee fast-ci-tests.txt
           test ${PIPESTATUS[0]} -eq 0
+      - name: Cross-check published audit sections
+        run: python scripts/audit_public_consistency.py
       - name: Validate workflows and dataset
         run: |
           python scripts/validate_workflows.py
