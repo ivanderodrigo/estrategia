@@ -22,6 +22,17 @@ const sandbox={
 };
 vm.runInNewContext(body+';this.renderValue=renderValue;',sandbox);
 const html=sandbox.renderValue(sase.fields.layers,null,'card','layers');
+assert(html.startsWith('<div class="architecture-layer-content">'),
+  'Layer roster and layers must occupy ONE grid-value wrapper');
+assert(html.includes('</div><div class="layer-list">'),
+  'Layer list must directly follow roster INSIDE the same wrapper');
+assert(html.endsWith('</div></div>'),
+  'Renderer must close layer list and single outer wrapper');
+const css=fs.readFileSync('assets/app/intelligence.css','utf8');
+assert(css.includes('.card-field>.architecture-layer-content{grid-column:2'),
+  'Layer content must stay in card field VALUE column');
+assert(css.includes('.architecture-layer-content .layer-list{width:100%'),
+  'Architectural layer list must fill the available content width');
 assert(html.includes('architecture-vendor-summary'),'Missing flat manufacturer summary');
 assert(html.includes('architecture-vendor-tabs'),'Missing accessible badges');
 assert(html.includes('layer-vendors'),'Missing layered manufacturer badges');
