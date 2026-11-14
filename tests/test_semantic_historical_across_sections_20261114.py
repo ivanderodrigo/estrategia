@@ -2,7 +2,7 @@
 import json
 import unittest
 from pathlib import Path
-from scripts.accredit_semantic_historical_sources import classify, owner_site
+from scripts.accredit_semantic_historical_sources import classify, owner_site, retained_comparison_is_still_explicit
 from scripts.revalidate_historical_sources import historical_visible_text
 from engine.model import canonical
 
@@ -61,6 +61,17 @@ class SemanticHistoricalTests(unittest.TestCase):
                  "Ciena vs Huawei: compare optical network solutions")
         self.assertEqual(classify(ev,"https://www.ciena.com/compare/huawei"),
                          "VERIFIED_EXPLICIT_COMPETITOR_CONTEXT")
+
+    def test_stale_comparison_accreditation_cannot_survive_reuse(self):
+        source={"source_type":"historical-verified-excerpt",
+                "verification_method":"VERIFIED_EXPLICIT_COMPETITOR_CONTEXT",
+                "url":"https://1password.com/compare/1password-vs-lastpass",
+                "description":"Extracto de evidencia: 1Password vs LastPass. Related vendors include Bitwarden."}
+        invalid={"section":"manufacturers","field":"competitors",
+                 "entity":"1Password","value":"Bitwarden","source":source}
+        valid={**invalid,"value":"LastPass"}
+        self.assertFalse(retained_comparison_is_still_explicit(invalid))
+        self.assertTrue(retained_comparison_is_still_explicit(valid))
 
     def test_comparison_page_only_proves_the_named_pair(self):
         url="https://1password.com/compare/1password-vs-lastpass"
