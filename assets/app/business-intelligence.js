@@ -77,8 +77,18 @@ function sameBusinessName(a,b){
 function isActiveWestcon(row){
  return row?.fields?.westcon_spain?.value===true || row?.fields?.westcon_portugal?.value===true;
 }
+// Only documented portfolio aliases: an alias must never be classified as
+// an external competitor just because the visible brand spelling differs.
+const WESTCON_NAME_ALIASES={
+ 'sonar':['sonarqube','sonarsource'],
+ 'ericsson cradlepoint':['cradlepoint'],
+ 'akamai / noname':['akamai','noname','noname security'],
+ 'stratus / penguin solutions':['stratus','penguin solutions'],
+ 'f5':['f5 networks']
+};
 function activeWestconNames(manufacturers=[]){
- return (manufacturers||[]).filter(isActiveWestcon).map(row=>row.name).filter(Boolean);
+ const names=(manufacturers||[]).filter(isActiveWestcon).map(row=>row.name).filter(Boolean);
+ return [...new Set(names.flatMap(name=>[name,...(WESTCON_NAME_ALIASES[normalize(name)]||[])]))];
 }
 function outsideWestcon(value,activeNames=[]){
  return !activeNames.some(name=>sameBusinessName(value,name));
