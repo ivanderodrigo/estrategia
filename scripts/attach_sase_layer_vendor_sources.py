@@ -8,6 +8,8 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+from engine.publication import _source_coverage
+from engine.storage import json_bytes
 
 ROOT=Path(__file__).resolve().parents[1]
 REGISTRY=ROOT/"config/current/sase_layer_vendor_sources.json"
@@ -105,8 +107,22 @@ def apply():
         raise AssertionError(f"Unmatched sources: {sorted(expected-touched)}")
     if counts["vendor_layer_pairs"] < 12:
         raise AssertionError("Unexpectedly few SASE/SSE sources")
-    PUBLISHED.write_text(json.dumps(payload,ensure_ascii=False,separators=(",",":"))+"\n",
-                         encoding="utf-8")
+    encoded=json_bytes(payload,pretty=False)
+    PUBLISHED.write_bytes(encoded)
+    # The pipeline calculated manifest coverage BEFORE this source binding.
+    # Reconcile the public manifest with the final actual JSON, not with an
+    # intermediate projection; otherwise green tabs and audit coverage differ.
+    manifest_file=ROOT/"data/public/manifest.json"
+    manifest=json.loads(manifest_file.read_text(encoding="utf-8"))
+    manifest.setdefault("meta",{}).setdefault("source_coverage",{})["architectures"]=(
+        _source_coverage(payload["rows"],registry)
+    )
+    info=manifest.setdefault("sections",{}).get("architectures")
+    if not isinstance(info,dict):
+        raise AssertionError("Missing architecture section metadata in manifest")
+    info["evidence"]=len(registry)
+    info["bytes"]=len(encoded)
+    manifest_file.write_bytes(json_bytes(manifest,pretty=False))
     print(json.dumps(counts))
     return counts
 
