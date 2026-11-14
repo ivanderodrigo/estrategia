@@ -58,18 +58,38 @@
     const info=state.manifest?.sections?.[section]; if(!info) throw new Error(`Sección pública no disponible: ${section}`);
     const res=await fetch(info.file,{cache:'no-store'}); if(!res.ok) throw new Error(`No se pudo cargar ${info.file} (${res.status})`);
     const payload=await res.json(); state.data[section]=hydrateEvidence(payload.rows||[],payload.evidence||{}); state.loadedSections.add(section);
-    // Historical references are a distinct, explicitly unverified layer.
-    // They never enter accredited field.evidence or source coverage.
+    // Public historical clues and deeper Git-history clues are separate,
+    // explicitly NON-accrediting layers. Merge only their item-bound links.
     try {
-      const leadRes=await fetch('data/public/historical/current/'+section+'.json',{cache:'no-store'});
-      if(leadRes.ok) {
-        const leadData=await leadRes.json();
-        if(leadData.status==='HISTORICAL_LEADS_NOT_ACCREDITED' && leadData.generated_at===state.manifest?.generated_at)
-          state.historicalSections[section]=leadData.entities||{};
-        // The source archaeology lives on the same field for the existing blue
-        // trace panel; it is NOT merged into accrediting evidence.
-        for(const row of state.data[section]||[]){
-          const key=historicalKey(row.name), entries=leadData.entities?.[key]||{};
+      const [leadRes,archiveRes]=await Promise.all([
+        fetch('data/public/historical/current/'+section+'.json',{cache:'no-store'}),
+        fetch('data/public/historical/current/git_'+section+'.json',{cache:'no-store'})
+      ]);
+      const leadData=leadRes.ok?await leadRes.json():{};
+      const archiveData=archiveRes.ok?await archiveRes.json():{};
+      const historicalEntities=leadData.status==='HISTORICAL_LEADS_NOT_ACCREDITED'
+        ?(leadData.entities||{}):{};
+      const archiveEntities=archiveData.status==='GIT_HISTORICAL_LEADS_NOT_ACCREDITED'
+        ?(archiveData.entities||{}):{};
+      state.historicalSections[section]=historicalEntities;
+      for(const row of state.data[section]||[]){
+          const key=historicalKey(row.name);
+          const entries={};
+          for(const source of [historicalEntities[key]||{},archiveEntities[key]||{}]){
+            for(const [fieldId,claims] of Object.entries(source)){
+              if(!Array.isArray(claims))continue;
+              const list=entries[fieldId]||(entries[fieldId]=[]);
+              for(const claim of claims){
+                const valueKey=historicalKey(claim.value);
+                if(!valueKey)continue;
+                let existing=list.find(v=>historicalKey(v.value)===valueKey);
+                if(!existing){existing={...claim,urls:[]};list.push(existing);}
+                for(const url of claim.urls||[]){
+                  if(/^https:\/\//i.test(url)&&!existing.urls.includes(url))existing.urls.push(url);
+                }
+              }
+            }
+          }
           row._historical={};
           for(const [fieldId,claims] of Object.entries(entries)){
             const annotated=(Array.isArray(claims)?claims:[]).map(claim=>({...claim,verified_urls:(claim.urls||[]).filter(url=>state.historicalStructured.has([section,historicalKey(row.name),fieldId,historicalKey(claim.value),url].join('|')))}));
@@ -102,7 +122,6 @@
             if(target&&Array.isArray(claims))target._historical=annotated;
           }
         }
-      }
     } catch(e){console.warn('Referencias históricas no disponibles',section);}
 
   }
@@ -771,7 +790,7 @@
 const linkedEvidence=(row.fields?.vendor_relations?.items||[]).filter(i=>atomicCurrentProof(i.evidence)).flatMap(i=>i.evidence||[]);
 const westconProof=(row.fields?.westcon_overlap?.items||[]).filter(i=>atomicCurrentProof(i.evidence)).flatMap(i=>i.evidence||[]);
 const identityEvidence=baseIdentityEvidence.length?baseIdentityEvidence:(westconProof.length?westconProof:linkedEvidence);
-const identity={value:row.name,evidence:identityEvidence.slice(0,6),confidence:.95,confidence_band:identityEvidence.length?'high':'low',qualifier:westconProof.length?'Relación documentada con al menos un fabricante Westcon. La confianza no se extiende a relaciones no verificadas.':''};
+const identity={value:row.name,evidence:identityEvidence.slice(0,6),confidence:.95,confidence_band:identityEvidence.length?'high':'low',qualifier:westconProof.length?'Relación documentada con al menos un fabricante Westcon. La confianza no se extiende a relaciones no verificadas.':'',_historical:row._historical?.__identity__||[]};
 const identityTone=identityEvidence.length?'high':'unverified';const direct=view==='manufacturers'&&row.direct_sales?`<span class="direct-sales-badge" title="Fabricante con señal de venta directa; no se clasifica como mayorista">Venta directa</span>`:'';return `<tr data-section="${esc(view)}" data-entity="${esc(row.name)}" data-row-id="${esc(row.id||'')}"><td class="name-cell name-col">${traceable(identity,`<div class="entity-name-line"><span class="tag confidence-tag ${identityTone} entity-pill"><span class="tag-label">${esc(row.name)}</span><small>${identityEvidence.length?'✓':'?'}</small></span>${direct}</div>`)}</td>${cols.map(col=>{const f=fieldFor(row,col);return `<td data-field="${esc(col.id)}" class="col-${esc(col.id)}" style="width:${currentColumnWidth(view,col.id)}px;min-width:${currentColumnWidth(view,col.id)}px">${f&&hasValue(f.value)?renderValue(f,null,'table',col.id):missingMarkup(col,row)}</td>`}).join('')}</tr>`}).join('')}</tbody></table>`:`<div class="empty-state">${esc(emptyText)}</div>`;
     return `<div class="table-shell">${columnChooser(schema,view,baseRows)}${coverageOverview(schema,baseRows,view)}<div class="table-scroll">${body}</div></div>${analysisPanel(view,schema,baseRows,rows)}`;
   }
@@ -950,7 +969,7 @@ const identityTone=identityEvidence.length?'high':'unverified';const direct=view
   // title's blue trace panel as contextual leads. They do not automatically
   // prove the exact taxonomy name or change its accreditation status.
   function identityWithHistoricalContext(row,context){
-    const direct=Array.isArray(row._historical?.name)?row._historical.name:[];
+    const direct=[...(row._historical?.name||[]),...(row._historical?.__identity__||[])];
     const prefer=row._section==='architectures'||context==='architecture'
       ?['analyst_basis','principles','context','vendors']
       :['sources','drivers','domain','evolution','observed'];
