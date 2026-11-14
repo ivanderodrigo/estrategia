@@ -62,6 +62,14 @@ class SemanticHistoricalTests(unittest.TestCase):
         self.assertEqual(classify(ev,"https://www.ciena.com/compare/huawei"),
                          "VERIFIED_EXPLICIT_COMPETITOR_CONTEXT")
 
+    def test_comparison_page_only_proves_the_named_pair(self):
+        url="https://1password.com/compare/1password-vs-lastpass"
+        excerpt="1Password vs LastPass password manager comparison. Related comparisons: Bitwarden, Keeper."
+        yes=claim("manufacturers","competitors","1Password","LastPass",excerpt)
+        no=claim("manufacturers","competitors","1Password","Bitwarden",excerpt)
+        self.assertEqual(classify(yes,url),"VERIFIED_EXPLICIT_COMPETITOR_CONTEXT")
+        self.assertEqual(classify(no,url),"COMPARISON_PAGE_DOES_NOT_NAME_PAIR")
+
     def test_vendor_mention_without_comparison_remains_uncredited(self):
         ev=claim("manufacturers","competitors","Ciena","Huawei",
                  "Ciena and Huawei participate at an industry event")
