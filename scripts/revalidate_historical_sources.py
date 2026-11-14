@@ -54,10 +54,18 @@ class _HistoricalVisibleText(HTMLParser):
             text = attributes.get(name)
             if text:
                 self.parts.append(" " + text + " ")
-        if tag == "meta" and str(attributes.get("name") or "").lower() in {"description","keywords"}:
-            text = attributes.get("content")
-            if text:
-                self.parts.append(" " + text + " ")
+        if tag == "meta":
+            # Many first-party JS-heavy partner pages expose their real
+            # headline and summary only as social metadata. Treat this as
+            # source context (not automatic accreditation).
+            name = str(attributes.get("name") or "").lower()
+            prop = str(attributes.get("property") or "").lower()
+            if name in {"description","keywords","twitter:title","twitter:description"} or prop in {
+                "og:title", "og:description"
+            }:
+                text = attributes.get("content")
+                if text:
+                    self.parts.append(" " + text[:2000] + " ")
         if tag in {"p","div","li","h1","h2","h3","h4","h5","tr","td","section"}:
             self.parts.append(" ")
 
