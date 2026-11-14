@@ -127,8 +127,8 @@ def evaluate_release_contract(
             exact_values_preserved = (
                 key == "values"
                 and preservation.get("status") == "PASS"
-                and "values" in missing
                 and not missing.get("values")
+                and not preservation.get("errors")
             )
             if not exact_values_preserved:
                 errors.append(f"preserved {key} count regressed: {old}->{new}")
