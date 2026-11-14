@@ -234,7 +234,7 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
                       or urlparse(safe).path.lower().endswith(".pdf"))
         if pdf_source:
             try:
-                text = historical_pdf_text(response.content)
+                text = canonical(historical_pdf_text(response.content))
             except Exception as exc:
                 result["status"] = "PDF_TEXT_EXTRACTION_FAILED"
                 result["error_kind"] = type(exc).__name__
