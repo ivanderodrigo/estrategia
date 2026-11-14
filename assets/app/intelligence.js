@@ -746,8 +746,11 @@
           const exactProof=(item?.evidence||field?.evidence||[]).some(ev=>ev.url===url
              && (!ev.item_value||historicalKey(ev.item_value)===historicalKey(h.value))
              && atomicCurrentProof([ev]));
+           const otherProof=(item?.evidence||[]).some(ev=>atomicCurrentProof([ev])
+             && ev.item_value && historicalKey(ev.item_value)===historicalKey(h.value));
            const status=exactProof?' · acreditado: fuente vinculada al dato exacto':
              (h.verified_urls||[]).includes(url)?' · acreditado: alternativa explícita de producto':
+             otherProof?' · relación acreditada mediante otra fuente actual (visible arriba)':
              check?.status==='REACHABLE_TEXT_MATCH'?' · texto localizado, requiere validación':
             check?.status==='REACHABLE_NO_EXACT_TEXT'?' · página accesible, dato no localizado':
             check?' · acceso no comprobado':'';
@@ -757,7 +760,7 @@
       return '<li><span>'+esc(val.slice(0,240))+'</span>'+(links?'<div>'+links+'</div>':'')+'</li>';
     }).join('');
     return '<section class="trace-history"><strong>Referencias históricas relacionadas</strong>'+
-      '<p>No acreditan el dato hasta verificar de nuevo su contenido; las fuentes confirmadas mediante lectura estructurada aparecen identificadas individualmente.</p>'+
+      '<p>Las referencias históricas no acreditan por sí solas. Si el dato tiene prueba actual, esta aparece arriba y se identifica incluso cuando difiere del enlace original.</p>'+
       '<ul>'+rows+'</ul></section>';
   }
   function tableHtml(rows, schema, emptyText, view, baseRows=rows){
