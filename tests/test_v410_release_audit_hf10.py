@@ -89,6 +89,16 @@ class ReleaseAuditHF10(unittest.TestCase):
         self.assertTrue(any("internal/historical evidence" in error for error in errors))
         self.assertTrue(any("non-public accrediting catalog class" in error for error in errors))
 
+    def test_value_count_dedup_allowed_only_when_exact_values_preserved(self):
+        preservation = _preservation()
+        preservation["after"]["values"] = 97
+        # A PASS exact-value identity check can survive de-duplication.
+        self.assertEqual(self._run(preservation=preservation), [])
+        # Missing even a single original value is still a hard failure.
+        preservation["missing"]["values"] = ["vendor:field:lost"]
+        errors = self._run(preservation=preservation)
+        self.assertTrue(any("missing values" in error for error in errors))
+
     def test_protected_counter_regression_still_blocks(self):
         preservation = _preservation()
         preservation["after"]["relations"] = 49
