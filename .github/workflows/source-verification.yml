@@ -82,3 +82,21 @@ jobs:
             source-live-review.json
           if-no-files-found: warn
           retention-days: 30
+      - name: Fail closed if no source content was retrievable
+        if: always()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report=Path("source-live-review.json")
+          if not report.exists():
+              raise SystemExit("Source review report missing; review did not complete")
+          payload=json.loads(report.read_text(encoding="utf-8"))
+          rows=payload.get("items") or []
+          if not rows:
+              raise SystemExit("No source references were reviewed; do not claim healthy verification")
+          reachable=sum(str(x.get("review_status") or "").startswith("page_") for x in rows)
+          if reachable == 0:
+              raise SystemExit("Source review degraded: 0 readable pages. Telemetry is published, but verification is NOT healthy")
+          print(f"Source content readable for {reachable}/{len(rows)} sampled references (NOT factual accreditation)")
+          PY
