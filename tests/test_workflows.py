@@ -46,11 +46,16 @@ class WorkflowIntegrity(unittest.TestCase):
         runner = (WORKFLOWS / "research-run.yml").read_text(encoding="utf-8")
         publisher = (ROOT / "scripts/publish_research_update.py").read_text(encoding="utf-8")
         pages = (WORKFLOWS / "pages-deploy.yml").read_text(encoding="utf-8")
+        # Research owns generation and source binding. Deployment only verifies
+        # the already-committed immutable snapshot.
         for script in ("scripts/attach_sase_layer_vendor_sources.py",
                        "scripts/audit_public_consistency.py"):
             self.assertIn(script, runner)
-            self.assertIn(script, pages)
             self.assertTrue((ROOT / script).exists())
+        self.assertNotIn("python scripts/attach_sase_layer_vendor_sources.py", pages)
+        self.assertNotIn("python -m engine.pipeline", pages)
+        self.assertNotIn("git push", pages)
+        self.assertIn("contents: read", pages)
         self.assertIn('"data/public/audit_integrity.json"', publisher)
         self.assertLess(runner.index("attach_sase_layer_vendor_sources.py"),
                         runner.index("Validate generated snapshot"))
