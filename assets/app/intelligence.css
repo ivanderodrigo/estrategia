@@ -484,3 +484,11 @@ main,.view,.page-head,.toolbar,.table-shell,.intelligence-table{min-width:0;max-
   .card-field.architecture-layers-field>.architecture-layer-content{width:100%!important}
   .architecture-layers-field .layer-list{grid-template-columns:minmax(0,1fr)!important}
 }
+
+/* Unverified claims are purple in BOTH the tab and its information icon.
+   The generic low-confidence red icon must not override pending-source purple. */
+.pending-source>.trace-mark.confidence-dot.low{
+  background:#f3e6ff!important;
+  color:#653394!important;
+  border-color:#b785dd!important;
+}
