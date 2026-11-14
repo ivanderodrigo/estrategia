@@ -13,7 +13,13 @@ def _evidence_key(ev: dict[str, Any]) -> str:
     if provenance_kind(ev) in {"WESTCON_DOCUMENT", "WESTCON_DOCUMENT_CURRENT", "WESTCON_FIRST_PARTY_CURRENT"}:
         raw = "|".join(str(ev.get(k) or "") for k in ("document_id", "statement_id", "document", "slide", "field", "item_value"))
     else:
-        raw = "|".join(str(ev.get(k) or "") for k in ("url", "field", "item_value", "scope"))
+        # One URL can carry a legacy mention and a later individually verified
+        # relationship. Do not let registry.setdefault silently replace the
+        # checked proof with whichever generic record was serialized first.
+        raw = "|".join(str(ev.get(k) or "") for k in (
+            "url", "field", "item_value", "scope", "researched_entity",
+            "source_type", "verification_method",
+        ))
     return "ev_" + hashlib.sha1(raw.encode("utf-8")).hexdigest()[:16]
 
 

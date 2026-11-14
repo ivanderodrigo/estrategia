@@ -22,8 +22,8 @@ REPORT=ROOT/"data/public/historical/current/semantic_claim_audit.json"
 
 RELATION_FIELDS={
     "integrators":{"vendor_relations","manufacturer_relations","vendor_partnerships",
-                   "partnerships","alliances"},
-    "distributors":{"vendor_relations","linecard_remainder"},
+                   "partnerships","alliances","westcon_overlap","competitor_vendor_overlap"},
+    "distributors":{"vendor_relations","linecard_remainder","westcon_overlap","competitor_vendor_overlap"},
 }
 OWN_CAPABILITY={
     "manufacturers":{"capabilities"},
@@ -39,6 +39,11 @@ NEGATIVE=("por validar","por investigar","pendiente","posible","señal derivada"
 def owner_site(entity,url):
     host=(urlparse(url).hostname or "").lower()
     host=host.removeprefix("www.")
+    # Exact host labels also resolve short company names without accepting a
+    # substring such as SIA inside asia.example.com.
+    compact=re.sub(r"[^a-z0-9]","",canonical(entity))
+    if compact and compact in host.split("."):
+        return True
     tokens=[t for t in canonical(entity).split() if len(t)>=4 and t not in
             {"group","grupo","global","services","technology","technologies","solutions",
              "espana","spain","portugal","security","consulting","company"}]
@@ -57,7 +62,9 @@ def classify(claim,url):
     context=canonical(excerpt)
     if any(s in clean for s in NEGATIVE):
         return "HYPOTHESIS_NOT_FACT"
-    if field not in RELATION_FIELDS.get(section,set()) and (len(clean)<7 or len(clean.split())<2):
+    semantic_short = (field in {"distributors", "competitors", "integrators"}
+                      and section == "manufacturers") or field in OWN_CAPABILITY.get(section,set())
+    if field not in RELATION_FIELDS.get(section,set()) and not semantic_short and (len(clean)<7 or len(clean.split())<2):
         return "AMBIGUOUS_SHORT_VALUE"
     if clean not in context:
         return "NOT_EXACT_IN_CONTEXT"
@@ -73,18 +80,31 @@ def classify(claim,url):
         distribution_statement=any(term in context for term in (
             "distribution agreement", "distribution partnership",
             "distributor", "distribuidor", "distribucion",
-            "distribuidores", "mayorista", "reseller agreement",
+            "distribuidores", "mayorista", "reseller agreement", "distribute",
         ))
         if official_party and names_present and distribution_statement:
             return "VERIFIED_EXPLICIT_DISTRIBUTION_AGREEMENT"
         return "DISTRIBUTION_RELATIONSHIP_NOT_SHOWN"
     if field in RELATION_FIELDS.get(section,set()):
-        cues=("partner","alianza","alliance","ecosystem","fabricante","vendor","proveedor")
+        cues=("partner","alianza","alliance","ecosystem","fabricante","vendor","proveedor",
+              "linecard","portfolio","catalogo","catalog","marcas","brands","distribu")
         page=canonical(urlparse(url).path)
         if (direct_owner or article_names) and (any(t in page for t in cues) or
                any(t in context for t in cues)):
             return "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
         return "RELATIONSHIP_NOT_SHOWN"
+    if section=="manufacturers" and field=="competitors":
+        if (direct_owner or owner_site(value,url)) and (direct_owner or article_names) and any(
+            cue in context for cue in ("competitor", "competition", "competes", "competidor", "alternative to", "alternativa a")
+        ):
+            return "VERIFIED_EXPLICIT_COMPETITOR_CONTEXT"
+        return "COMPETITION_NOT_SHOWN"
+    if field=="recent_signals" and direct_owner and len(clean.split())>=5:
+        return "VERIFIED_FIRST_PARTY_NEWS_STATEMENT"
+    if field=="public_cases" and direct_owner and len(clean.split())>=5 and any(
+        cue in canonical(urlparse(url).path) for cue in ("case", "casos", "customer", "exito")
+    ):
+        return "VERIFIED_FIRST_PARTY_CASE_STUDY"
     if field in OWN_CAPABILITY.get(section,set()):
         if not direct_owner:
             return "NOT_FIRST_PARTY"
@@ -96,10 +116,17 @@ def classify(claim,url):
             if field=="hiring_signals" and len(clean)>=13 and any(t in canonical(url) for t in ("job","career","emple","talent")):
                 return "VERIFIED_FIRST_PARTY_HIRING"
             return "GENERIC_DOMAIN_OR_HIRING_NOT_SPECIFIC"
-        if len(clean)<10 and field not in {"marketplace","financing","training"}:
-            return "GENERIC_CAPABILITY_NOT_SPECIFIC"
         if field=="differential_capabilities":
-            return "DIFFERENTIAL_REQUIRES_COMPARISON"
+            if any(cue in clean for cue in ("mejor", "lider", "unico", "best", "leading", "unique")):
+                return "DIFFERENTIAL_REQUIRES_COMPARISON"
+            # A factual service or capacity does not assert superiority merely
+            # because the UI places it in a differentiators column.
+        if len(clean)<10 and field not in {"marketplace","financing","training"} and not any(
+            cue in canonical(urlparse(url).path)+" "+context for cue in (
+                "product", "solution", "solucion", "servic", "catalog", "portfolio", "ofrec", "offer"
+            )
+        ):
+            return "GENERIC_CAPABILITY_NOT_SPECIFIC"
         return "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
     if section=="architectures" and field=="analyst_basis":
         report=canonical(urlparse(url).hostname)
@@ -147,6 +174,11 @@ def main():
             if status.startswith("VERIFIED_") and key not in seen:
                 seen.add(key)
                 section,entity,field=claim["section"],claim["entity"],claim["field"]
+                # Overlap is calculated from partnership + active portfolio.
+                # Store the proven base relationship so rebuilds cannot erase
+                # direct proof by regenerating the overlap column.
+                if field in {"westcon_overlap", "competitor_vendor_overlap"}:
+                    field = "vendor_relations"
                 value=claim["value"]
                 direct=owner_site(entity,proof_url)
                 peer = status == "VERIFIED_EXPLICIT_ALTERNATIVE"
@@ -228,7 +260,7 @@ def main():
           "retained_prior_verified":retained,
           "expired_prior_verified":expired,
           "statuses":dict(counter),"by_section":dict(Counter(c["section"] for c in successes)),
-          "pending_recheck_examples":review[:250]},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          "pending_recheck_examples":review},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({"urls_scanned":len(results),"claims_checked":sum(counter.values()),
           "verified":len(successes),"newly_verified":len(successes)-retained,
           "retained_prior_verified":retained,

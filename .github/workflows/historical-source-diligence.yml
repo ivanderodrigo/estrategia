@@ -33,7 +33,7 @@ jobs:
       - name: Audit the full source URL inventory with individual claim checks
         run: >-
           python scripts/revalidate_historical_sources.py
-          --limit 2500 --timeout 5 --workers 12
+          --limit 100000 --timeout 5 --workers 12
       - name: Verify each automatic accreditation is a structurally explicit Gartner product alternative
         run: |
           python - <<'PY'
@@ -42,6 +42,7 @@ jobs:
           from urllib.parse import urlparse
           report = json.loads(Path('data/current/historical_source_checks.json').read_text(encoding='utf-8'))
           assert report['urls_checked_this_run'] >= 1
+          assert report['urls_checked_this_run'] == report['urls_in_inventory']
           accredited = 0
           for url, page in report['results'].items():
               assert page['accreditation'] == 'NOT_ACCREDITED'  # A page alone never establishes a relationship.
