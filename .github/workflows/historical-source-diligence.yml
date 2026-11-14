@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/revalidate_historical_sources.py'
+      - 'scripts/recover_historical_source_archive.py'
       - 'scripts/accredit_semantic_historical_sources.py'
       - '.github/workflows/historical-source-diligence.yml'
   schedule:
@@ -28,6 +29,8 @@ jobs:
           cache: pip
       - name: Install prerequisites
         run: python -m pip install -r requirements.txt
+      - name: Recover additional source URLs from historical Git snapshots
+        run: python scripts/recover_historical_source_archive.py --snapshots 32 --max-pairs 30000
       - name: Enumerate all visible and historical claim-source pairs
         run: python scripts/audit_full_visible_source_coverage.py
       - name: Audit the full source URL inventory with individual claim checks
@@ -69,6 +72,7 @@ jobs:
           # generated snapshot onto conflicting Pages-generated JSON files.
           output_dir="$RUNNER_TEMP/historical-source-audit"
           files=(
+            data/public/historical/current/git_archive_additions.json
             data/current/historical_source_checks.json
             data/public/historical/current/source_checks.json
             config/current/historical_semantic_verified.json
