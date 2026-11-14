@@ -16,6 +16,7 @@ import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from html import unescape
+from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -27,6 +28,53 @@ sys.path.insert(0, str(ROOT))
 from engine.model import canonical
 from engine.research.security import UnsafeUrl, validate_public_url
 from engine.storage import atomic_write_json, read_json
+
+
+
+class _HistoricalVisibleText(HTMLParser):
+    """Include product and partner-logo alt labels lost by tag-stripping.
+
+    An image's alt/aria-label text can be the only visible vendor name on an
+    official partner directory. Scripts/styles never contribute claim evidence.
+    """
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.parts: list[str] = []
+        self.skip = 0
+
+    def handle_starttag(self, tag, attrs):
+        if tag in {"script","style","noscript"}:
+            self.skip += 1
+            return
+        if self.skip:
+            return
+        attributes = dict(attrs)
+        for name in (("alt","aria-label","title") if tag in {"img","svg","a","button"} else ()):
+            text = attributes.get(name)
+            if text:
+                self.parts.append(" " + text + " ")
+        if tag == "meta" and str(attributes.get("name") or "").lower() in {"description","keywords"}:
+            text = attributes.get("content")
+            if text:
+                self.parts.append(" " + text + " ")
+        if tag in {"p","div","li","h1","h2","h3","h4","h5","tr","td","section"}:
+            self.parts.append(" ")
+
+    def handle_endtag(self, tag):
+        if tag in {"script","style","noscript"} and self.skip:
+            self.skip -= 1
+        elif not self.skip and tag in {"p","div","li","h1","h2","h3","h4","h5","tr","td","section"}:
+            self.parts.append(" ")
+
+    def handle_data(self, data):
+        if not self.skip:
+            self.parts.append(data)
+
+
+def historical_visible_text(html: str) -> str:
+    parser = _HistoricalVisibleText()
+    parser.feed(html)
+    return canonical(unescape(" ".join(parser.parts)))
 
 
 def candidate_inventory() -> dict[str, list[dict]]:
@@ -86,7 +134,7 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
         if content_type and not any(t in content_type for t in ("text/", "html", "json")):
             result["status"] = "NON_TEXT_SOURCE"
             return result
-        text = canonical(unescape(re.sub(r"<[^>]+>", " ", response.text[:600_000])))
+        text = historical_visible_text(response.text[:600_000])
         if len(text) < 100:
             result["status"] = "INSUFFICIENT_SOURCE_CONTENT"
             return result
