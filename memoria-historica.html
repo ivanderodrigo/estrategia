@@ -53,6 +53,13 @@ li{margin:.6rem 0;line-height:1.5}a{color:#006484}
 <header><a href="./">← Volver al observatorio</a><p>WESTCON IBERIA · INTELIGENCIA CON MEMORIA</p></header>
 <main><h1>Memoria histórica del conocimiento</h1>
 <p class="lead">Auditoría de 17 hitos históricos del repositorio, desde agosto a septiembre de 2026, comparados con los datos vigentes en el momento del análisis. Las diferencias identificadas no se convierten automáticamente en verdades actuales.</p>
+<section class="panel" id="liveHistoricalAudit">
+<h2>Auditoría de la publicación vigente</h2>
+<p id="historicalLiveStatus" role="status">Comprobando fechas, evidencia histórica y pendientes de investigación…</p>
+<div id="historicalLiveStats"></div>
+</section>
+<h2>Fotografía histórica archivada · 23 de octubre de 2026</h2>
+<p>Las cifras siguientes corresponden a una comparación de revisiones realizada en octubre; no son el número actual de huecos ni sustituyen la auditoría vigente.</p>
 <section class="cards" aria-label="Resumen de auditoría">
 <div class="card">Afirmaciones históricas<b>18.818</b><small>Distintas en los hitos comparados</small></div>
 <div class="card">Coinciden con datos actuales<b>18.144</b><small>Coincidencia de identidad y valor, no revalidación de fuente</small></div>
@@ -222,7 +229,44 @@ for(const selector of ['#gapSearch','#gapSection','#gapLevel']){
 }
 $('#gapPrev').addEventListener('click',()=>{if(relatedPage>0){relatedPage--;renderGaps()}});
 $('#gapNext').addEventListener('click',()=>{if((relatedPage+1)*GAP_PAGE<filteredGaps().length){relatedPage++;renderGaps()}});
+async function loadLiveAudit(){
+ const status=$('#historicalLiveStatus'),target=$('#historicalLiveStats');
+ try{
+  const [mr,dr,hr]=await Promise.all([
+   fetch('data/public/manifest.json',{cache:'no-store'}),
+   fetch('data/public/debt_overview.json',{cache:'no-store'}),
+   fetch('data/public/historical/current/summary.json',{cache:'no-store'})
+  ]);
+  if(!mr.ok||!dr.ok||!hr.ok)throw Error('No se pudieron descargar los tres inventarios');
+  const [m,d,h]=await Promise.all([mr.json(),dr.json(),hr.json()]);
+  const same=m.generated_at===d.generated_at&&m.generated_at===h.generated_at;
+  const by=h.by_section||{};
+  const order=[['manufacturers','Fabricantes'],['distributors','Mayoristas'],
+   ['integrators','Integradores'],['clients_public','Clientes públicos'],
+   ['clients_private','Clientes privados'],['trends','Tendencias'],['architectures','Arquitecturas']];
+  const fmt=n=>Number.isFinite(Number(n))?Number(n).toLocaleString('es-ES'):'N/D';
+  status.textContent=(same?'Fotografía conciliada: ':'Atención: fuentes publicadas en fechas diferentes. ')+
+    'Datos de '+String(m.generated_at||'fecha desconocida').slice(0,16).replace('T',' ')+' UTC';
+  target.innerHTML='<div class="cards">'+
+   '<div class="card">Referencias históricas pendientes<b>'+fmt(h.claims)+'</b><small>Enlaces históricos por afirmación, no verdades acreditadas</small></div>'+
+   '<div class="card">URLs originales<b>'+fmt(h.unique_urls)+'</b><small>Fuentes recuperadas del histórico actual</small></div>'+
+   '<div class="card">Investigaciones abiertas<b>'+fmt(d.total_open_gaps)+'</b><small>Inventario completo del corte publicado</small></div></div>'+
+   '<table><thead><tr><th>Área</th><th>Entidades</th><th>Fuentes actuales / afirmaciones</th><th>Referencias históricas</th></tr></thead><tbody>'+
+   order.map(([key,title])=>{
+    const cover=m.meta?.source_coverage?.[key]||{};
+    const hist=by[key]||{};
+    return '<tr><th>'+esc(title)+'</th><td>'+fmt(m.counts?.[key])+
+     '</td><td>'+fmt(cover.sourced)+' / '+fmt(cover.claims)+
+     '</td><td>'+fmt(hist.claims??0)+'</td></tr>';
+   }).join('')+'</tbody></table>'+
+   '<p>Una referencia histórica no acredita por sí sola una afirmación. Las cifras se muestran con el corte y la procedencia de los ficheros publicados.</p>';
+ }catch(e){
+  status.textContent='No se ha podido conciliar la auditoría actual: '+e.message;
+  target.textContent='';
+ }
+}
 gapSummary();
 init();
+loadLiveAudit();
 })();
 </script></body></html>
