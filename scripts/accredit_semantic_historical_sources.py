@@ -63,6 +63,21 @@ def classify(claim,url):
         return "NOT_EXACT_IN_CONTEXT"
     direct_owner=owner_site(entity,url)
     article_names=canonical(entity) in context and len(canonical(entity))>=5
+    # Explicit distribution announcements deserve atomic accreditation.
+    # The two organisations must co-occur with a distribution-specific
+    # statement on an official site belonging to either participant.
+    # A generic channel/partner listing or a mere vendor mention is insufficient.
+    if section=="manufacturers" and field=="distributors":
+        official_party=direct_owner or owner_site(value,url)
+        names_present=(direct_owner or canonical(entity) in context) and clean in context
+        distribution_statement=any(term in context for term in (
+            "distribution agreement", "distribution partnership",
+            "distributor", "distribuidor", "distribucion",
+            "distribuidores", "mayorista", "reseller agreement",
+        ))
+        if official_party and names_present and distribution_statement:
+            return "VERIFIED_EXPLICIT_DISTRIBUTION_AGREEMENT"
+        return "DISTRIBUTION_RELATIONSHIP_NOT_SHOWN"
     if field in RELATION_FIELDS.get(section,set()):
         cues=("partner","alianza","alliance","ecosystem","fabricante","vendor","proveedor")
         page=canonical(urlparse(url).path)

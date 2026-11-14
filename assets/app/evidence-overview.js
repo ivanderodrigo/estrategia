@@ -18,7 +18,7 @@
     .then(d => {
       const c = d.debt_breakdown || {};
       const claim = Number(c.claims_awaiting_evidence || 0);
-      const derive = Number(c.derivation_support || 0);
+      const derive = Number(c.derived_support ?? c.derivation_support ?? 0);
       const empty = Number(c.empty_schema_fields || 0);
       const total = Number(d.total_open_gaps || 0);
       if (claim + derive + empty !== total) throw new Error('diagnóstico inconsistente');

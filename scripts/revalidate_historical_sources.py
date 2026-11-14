@@ -412,8 +412,14 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
                                            "technologies","solutions","security",
                                            "espana","spain","portugal"}
             )}
+            # A value mentioned on a homepage is not necessarily proof of the
+            # claimed relationship. Inspect linked official catalogues even when
+            # the homepage already mentions the vendor without enough context.
             unresolved=[c for c,check in zip(claims,checks)
-                        if check["status"]=="NO_SPECIFIC_VALUE_CONFIRMED"
+                        if check["status"] in (
+                            "NO_SPECIFIC_VALUE_CONFIRMED",
+                            "VALUE_PRESENT_REQUIRES_CONTEXT",
+                        )
                         and canonical(c.get("entity") or "") in owned_entities]
             if unresolved:
                 deep_links=deep_source_links(response.text,safe,limit=3)

@@ -5,9 +5,10 @@ on:
     branches: [main]
     paths:
       - 'scripts/revalidate_historical_sources.py'
+      - 'scripts/accredit_semantic_historical_sources.py'
       - '.github/workflows/historical-source-diligence.yml'
   schedule:
-    - cron: '37 3 * * 1'
+    - cron: '37 3 * * 1,4'
 permissions:
   contents: write
 concurrency:
@@ -32,7 +33,7 @@ jobs:
       - name: Audit the full source URL inventory with individual claim checks
         run: >-
           python scripts/revalidate_historical_sources.py
-          --limit 1250 --timeout 4 --workers 12
+          --limit 2500 --timeout 5 --workers 12
       - name: Verify each automatic accreditation is a structurally explicit Gartner product alternative
         run: |
           python - <<'PY'
