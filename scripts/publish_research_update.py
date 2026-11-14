@@ -55,6 +55,10 @@ ALLOWED = [
     "data/public/historical/current/architectures.json",
     "data/current/historical_source_checks.json",
     "data/public/historical/current/source_checks.json",
+    # Persist the exact claim/source proof behind green confidence badges.
+    # Without the canonical semantic registry, the next rebuild loses proof.
+    "config/current/historical_semantic_verified.json",
+    "data/public/historical/current/semantic_claim_audit.json",
     "data/public/historical/current/quarantined_links.json",
     "data/public/historical/current/claim_review.json",
 ]
