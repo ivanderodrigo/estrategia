@@ -1017,7 +1017,7 @@ const identityTone=identityEvidence.length?'high':'unverified';const direct=view
     await pptx.writeFile({fileName:`Westcon_Iberia_${model.view}_${model.entityCount}_resultados_v4.3.1.pptx`});closeModal('filteredReportModal');toast('PowerPoint generado con el subconjunto filtrado');
   }
 
-  function cardField(col,f,context='card'){if(!f||!hasValue(f.value))return '';const help=col.clarify?`<span class="help-wrap card-help"><span>${esc(col.label)}</span><button class="help-icon" type="button" aria-label="Aclaración de ${esc(col.label)}">?</button><span class="help-tip">${esc(col.help||'')}</span></span>`:esc(col.label);return `<div class="card-field"><label>${help}</label>${renderValue(f,null,context,col.id)}</div>`;}
+  function cardField(col,f,context='card'){if(!f||!hasValue(f.value))return '';const help=col.clarify?`<span class="help-wrap card-help"><span>${esc(col.label)}</span><button class="help-icon" type="button" aria-label="Aclaración de ${esc(col.label)}">?</button><span class="help-tip">${esc(col.help||'')}</span></span>`:esc(col.label);return `<div class="card-field${col.id==='layers'?' architecture-layers-field':''}"><label>${help}</label>${renderValue(f,null,context,col.id)}</div>`;}
   // Historical articles that describe a trend or an architecture belong in the
   // title's blue trace panel as contextual leads. They do not automatically
   // prove the exact taxonomy name or change its accreditation status.
