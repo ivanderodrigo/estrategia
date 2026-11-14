@@ -426,3 +426,61 @@ main,.view,.page-head,.toolbar,.table-shell,.intelligence-table{min-width:0;max-
 @media(max-width:720px){
   .card-field>.architecture-layer-content{grid-column:1 / -1;width:100%}
 }
+
+
+/* Architecture layer mapping: a standalone full-width card section.
+   Do not let the generic two-column label/value grid shrink the layer cards. */
+.card-field.architecture-layers-field{
+  display:block!important;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  grid-template-columns:none!important;
+  box-sizing:border-box;
+}
+.card-field.architecture-layers-field>label{
+  display:block;
+  margin-bottom:12px;
+}
+.card-field.architecture-layers-field>.architecture-layer-content{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  grid-column:auto!important;
+  box-sizing:border-box;
+}
+.architecture-layers-field .architecture-vendor-summary{width:100%;box-sizing:border-box}
+.architecture-layers-field .layer-list{
+  display:grid!important;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,265px),1fr))!important;
+  gap:12px;
+  width:100%!important;
+  max-width:100%;
+  align-items:start;
+}
+.architecture-layers-field .layer{
+  min-width:0;
+  width:100%;
+  padding:13px;
+  border:1px solid #d9e6e9;
+  border-left:4px solid var(--cyan);
+  border-radius:8px;
+  background:#f4f8f9;
+  box-sizing:border-box;
+}
+.architecture-layers-field .layer-vendors,
+.architecture-layers-field .architecture-vendor-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-start;
+  gap:8px;
+}
+.architecture-layers-field .layer-vendors .tag-entry,
+.architecture-layers-field .architecture-vendor-tabs .tag-entry{flex:0 1 auto;min-width:0}
+.architecture-layers-field .layer-vendors .tag-label,
+.architecture-layers-field .architecture-vendor-tabs .tag-label{overflow-wrap:anywhere}
+@media(max-width:720px){
+  .card-field.architecture-layers-field>.architecture-layer-content{width:100%!important}
+  .architecture-layers-field .layer-list{grid-template-columns:minmax(0,1fr)!important}
+}
