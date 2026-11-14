@@ -9,7 +9,11 @@ import json
 from datetime import datetime,timezone
 from pathlib import Path
 from urllib.parse import urlparse
+import sys
 import requests
+ROOT=Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0,str(ROOT))
 from engine.research.security import validate_public_url
 
 REPORT=Path("source-live-review.json")
