@@ -125,6 +125,8 @@ class WorkflowIntegrity(unittest.TestCase):
         self.assertIn("source-live-review.json", source)
         frontend = (ROOT / "assets/app/command-center.js").read_text(encoding="utf-8")
         self.assertIn("source_verification_status.json", frontend)
+        pages = (WORKFLOWS / "pages-deploy.yml").read_text(encoding="utf-8")
+        self.assertIn("'data/public/source_verification_status.json'", pages)
         self.assertIn("REVIEW_QUEUE_NOT_FACT_ACCREDITATION", frontend)
         self.assertIn("snapshot_generated_at===m.generated_at", frontend)
 
