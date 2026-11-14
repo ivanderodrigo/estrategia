@@ -37,6 +37,8 @@ jobs:
           test ${PIPESTATUS[0]} -eq 0
       - name: Cross-check published audit sections
         run: python scripts/audit_public_consistency.py
+      - name: Full frontend structural audit
+        run: python scripts/audit_app_structure.py
       - name: Validate workflows and dataset
         run: |
           python scripts/validate_workflows.py
