@@ -48,7 +48,10 @@ def review_document(session: requests.Session, url: str, entity: str, value: str
         try:
             if 300 <= response.status_code < 400:
                 return "redirect_requires_review"
-            if response.status_code != 200:
+            # HTTP 202 Accepted can carry the complete readable document.
+            # Do not reject all 2xx statuses before checking the actual body.
+            # Conversely, a 202 with no usable content is NOT a verified page.
+            if not 200 <= response.status_code < 300:
                 return "http_" + str(response.status_code)
             content_type = response.headers.get("Content-Type", "").lower()
             if "text/html" not in content_type and "text/plain" not in content_type:
@@ -69,6 +72,8 @@ def review_document(session: requests.Session, url: str, entity: str, value: str
             text = " ".join(parser.parts)
         else:
             text = raw
+        if len(text.strip()) < 80:
+            return "http_" + str(response.status_code) + "_insufficient_content"
         if text_mentions(text, entity) and text_mentions(text, value):
             return "page_mentions_entity_and_value_needs_semantic_review"
         if text_mentions(text, value):
