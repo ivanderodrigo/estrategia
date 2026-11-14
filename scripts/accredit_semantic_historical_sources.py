@@ -66,7 +66,17 @@ def classify(claim,url):
                       and section == "manufacturers") or field in OWN_CAPABILITY.get(section,set())
     if field not in RELATION_FIELDS.get(section,set()) and not semantic_short and (len(clean)<7 or len(clean.split())<2):
         return "AMBIGUOUS_SHORT_VALUE"
-    if clean not in context:
+    # Archived analyst citations often paraphrase the headline. The
+    # fetcher permits a strong local title-overlap only on the publication's
+    # own domain, for citation fields and at least three distinctive words.
+    publication_field = ((section, field) in {
+        ("trends", "sources"), ("architectures", "analyst_basis")})
+    publication_match = (publication_field
+                         and claim.get("match_method") == "PUBLISHER_TITLE_OVERLAP"
+                         and any(p in (urlparse(url).hostname or "").lower()
+                                 and p in clean.split()[:3]
+                                 for p in ("gartner", "forrester", "idc", "nist", "enisa")))
+    if clean not in context and not publication_match:
         return "NOT_EXACT_IN_CONTEXT"
     direct_owner=owner_site(entity,url)
     article_names=canonical(entity) in context and len(canonical(entity))>=5
@@ -128,19 +138,11 @@ def classify(claim,url):
         ):
             return "GENERIC_CAPABILITY_NOT_SPECIFIC"
         return "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
-    if section=="architectures" and field=="analyst_basis":
-        report=canonical(urlparse(url).hostname)
-        if (("gartner" in report and "gartner" in clean) or
-            ("forrester" in report and "forrester" in clean) or
-            ("nist" in report and "nist" in clean) or
-            ("enisa" in report and "enisa" in clean)) and len(clean)>=14:
-            return "VERIFIED_CITED_ANALYST_DOCUMENT"
-    if section=="trends" and field=="sources":
-        report=canonical(urlparse(url).hostname)
-        if (("gartner" in report and "gartner" in clean) or
-            ("forrester" in report and "forrester" in clean) or
-            ("nist" in report and "nist" in clean) or
-            ("enisa" in report and "enisa" in clean)) and len(clean)>=14:
+    if publication_field:
+        report=(urlparse(url).hostname or "").lower()
+        issuer=next((p for p in ("gartner","forrester","idc","nist","enisa")
+                     if p in report and p in clean.split()[:3]), None)
+        if issuer and len(clean)>=14 and (clean in context or publication_match):
             return "VERIFIED_CITED_ANALYST_DOCUMENT"
     return "UNSUPPORTED_FIELD_OR_CONTEXT"
 
