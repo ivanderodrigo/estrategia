@@ -741,7 +741,7 @@
     const target=item?.value;
     const scoped=target===undefined?all:all.filter(h=>historicalKey(typeof h.value==='object'?JSON.stringify(h.value):h.value)===historicalKey(typeof target==='object'?JSON.stringify(target):target));
     if(!scoped.length)return '';
-    const rows=scoped.slice(0,8).map(h=>{
+    const rows=(field?._showAllHistory?scoped:scoped.slice(0,8)).map(h=>{
       const val=typeof h.value==='object'?JSON.stringify(h.value):String(h.value??'');
       const links=(h.urls||[]).filter(url=>/^https:\/\/[^\s"'<>]+$/i.test(url)).slice(0,3)
         .map(url=>{
@@ -951,7 +951,7 @@ const identityTone=identityEvidence.length?'high':'unverified';const direct=view
     const order=['name','sources','analyst_basis','context','observed'];
     const keys=[...order,...Object.keys(row._historical||{}).filter(k=>!order.includes(k))];
     const historical=keys.flatMap(k=>row._historical?.[k]||[]);
-    return {...identity,_historical:historical,qualifier:'El nombre agrupa temas documentados; cada cifra, fabricante y afirmación conserva su propia acreditación.'};
+    return {...identity,_historical:historical,_showAllHistory:true,qualifier:'El nombre agrupa temas documentados; cada cifra, fabricante y afirmación conserva su propia acreditación.'};
   }
   function cardGrid(rows, schema, forceAll=false, context='card'){
     // Feed-only fields (notably Publications and novedades) belong to the
