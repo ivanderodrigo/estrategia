@@ -67,7 +67,8 @@ class HistoricalPublicationTests(unittest.TestCase):
     def test_frontend_displays_explicit_not_accredited_history_label(self):
         js=(ROOT / "assets/app/intelligence.js").read_text(encoding="utf-8")
         self.assertIn("sourceArchaeology(field,item)", js)
-        self.assertIn("No acreditan el dato hasta verificar", js)
+        self.assertIn("Las referencias históricas no acreditan por sí solas.", js)
+        self.assertIn("relación acreditada mediante otra fuente actual", js)
         self.assertIn("HISTORICAL_LEADS_NOT_ACCREDITED", js)
         self.assertIn("const archaeology=sourceArchaeology(field,item)", js)
 
