@@ -51,6 +51,8 @@ jobs:
         run: python scripts/accredit_semantic_historical_sources.py
       - name: Rebuild accredited intelligence
         run: python -m engine.pipeline
+      - name: Publish recovered historical links as compact section indexes
+        run: python scripts/publish_git_archive_leads.py
       - name: Validate
         run: |
           python scripts/validate_workflows.py
