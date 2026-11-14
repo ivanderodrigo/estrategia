@@ -35,10 +35,17 @@ Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/de
   const sourceAge=Number.isFinite(sourceDate)?Math.max(0,(Date.now()-sourceDate)/86400000):null;
   const sourceValid=sourceCheck?.status==='REVIEW_QUEUE_NOT_FACT_ACCREDITATION';
   const sourceMatches=sourceValid&&sourceCheck?.snapshot_generated_at===m.generated_at;
+  const readable=Number(sourceCheck?.live_content_accessible);
+  const attempted=Number(sourceCheck?.live_sample_reviewed);
+  const sourceHealth=sourceCheck?.live_collection_health;
+  const sourceHealthNote=sourceHealth==='NO_CONTENT_EXTRACTED'
+   ?' · ALERTA: ningún contenido accesible en la muestra; HTTP/anti-bot requiere revisión':
+   Number.isFinite(readable)&&Number.isFinite(attempted)
+    ?' · '+fmt(readable)+' contenidos accesibles de '+fmt(attempted)+' intentos': '';
   const sourceLabel=!sourceValid?' · Verificación independiente de enlaces: sin informe publicado':
    ' · Revisión independiente de enlaces: '+dateLabel(sourceCheck.generated_at)+
-   ' ('+fmt(sourceCheck.live_sample_reviewed)+' de '+fmt(sourceCheck.total_live_review_candidates)+
-   ' referencias; NO acredita hechos)'+
+   ' ('+fmt(sourceCheck.live_sample_reviewed)+' intentos de '+fmt(sourceCheck.total_live_review_candidates)+
+   ' referencias; NO acredita hechos)'+sourceHealthNote+
    (!sourceMatches?' · ALERTA: revisión correspondiente a otro snapshot':'')+
    (sourceAge!==null&&sourceAge>2?' · ALERTA: verificación con más de 48 h':'');
   const actualResearch=Date.parse(researchAt||'');
