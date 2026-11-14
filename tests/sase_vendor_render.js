@@ -31,4 +31,18 @@ assert(html.includes('>Cisco</span>'));
 assert(html.includes('>Zscaler</span>'));
 assert(html.includes('>Palo Alto Networks</span>'));
 assert(html.includes('>Check Point</span>'));
+const official=JSON.parse(fs.readFileSync('config/current/sase_layer_vendor_sources.json','utf8'));
+assert(official.sources.length>=15,'Official manufacturer source registry incomplete');
+for(const source of official.sources){
+  const matching=layers.filter(l=>l.layer===source.layer)
+    .flatMap(l=>(l.vendor_items||[]).filter(i=>i.value===source.vendor));
+  assert(matching.length,'Vendor missing in declared architecture layer: '+source.vendor);
+  for(const item of matching){
+    const bound=(item.evidence_ids||[]).map(id=>data.evidence[id])
+      .filter(e=>e&&e.url===source.url&&e.field==='layers'&&
+        e.item_value===source.vendor&&e.layer===source.layer);
+    assert(bound.length,'Official source missing from exact vendor tab: '+source.vendor+
+      ' / '+source.layer);
+  }
+}
 console.log('SASE/SSE real manufacturer render PASS, distinct manufacturers:',allVendors.length);
