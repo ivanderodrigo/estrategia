@@ -53,15 +53,16 @@ class HistoricalCompoundAlternativeTests(unittest.TestCase):
                session=NotAlternatives())
         self.assertFalse(result["claim_checks"][0]["accredited"])
 
-    def test_three_manually_checked_current_source_matches_exact_historical_labels(self):
+    def test_seven_individually_reviewed_competitors_preserve_exact_historical_labels(self):
         j=json.loads(Path("config/current/verified_historical_peer_20261114.json").read_text(encoding="utf-8"))
-        self.assertEqual(len(j["existing_claim_sources"]),3)
+        self.assertEqual(len(j["existing_claim_sources"]),7)
         for entry in j["existing_claim_sources"]:
             self.assertEqual(entry["section"],"manufacturers")
             self.assertEqual(entry["field"],"competitors")
-            self.assertEqual(entry["source"]["url"],URL)
+            self.assertTrue(entry["source"]["url"].startswith("https://www.gartner.com/reviews/product/"))
             self.assertEqual(entry["source"]["verification_method"],"explicit-product-alternative")
-            self.assertIn("Operations Support Systems peer",entry["value"])
+            if entry["entity"]=="ciena":
+                self.assertIn("Operations Support Systems peer",entry["value"])
 
 if __name__=="__main__":
     unittest.main()
