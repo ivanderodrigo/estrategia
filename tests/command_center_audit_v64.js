@@ -14,7 +14,8 @@ async function render(failDebt=false){
  const fetch=async path=>{
   if(failDebt&&path.includes('debt_overview'))throw Error('offline');
   return {ok:true,json:async()=>path.includes('manifest')?manifest:path.includes('audit_integrity')
-   ?{status:'PASS',snapshot_generated_at:manifest.generated_at}:debt};
+   ?{status:'PASS',snapshot_generated_at:manifest.generated_at}:path.includes('last_run')
+   ?{generated_at:manifest.generated_at,research_finished_at:'2026-11-13T11:31:21+00:00'}:debt};
  };
  vm.runInNewContext(script,{document,window:{WestconAudit:audit,scrollTo(){}},fetch,console});
  for(let i=0;i<5;i++)await Promise.resolve();
@@ -26,6 +27,9 @@ async function render(failDebt=false){
  assert.ok(ok.ccAudit.innerHTML.includes('Mayoristas'));
  assert.ok(ok.ccAudit.innerHTML.includes('Arquitecturas'));
  assert.ok(ok.ccDebt.innerHTML.includes('Afirmaciones por acreditar'));
+ assert.ok(ok.ccFreshness.textContent.includes('Última investigación real'));
+ assert.ok(ok.ccFreshness.textContent.includes('Fotografía publicada'));
+ assert.ok(!ok.ccFreshness.textContent.includes('registro de investigación de otro corte'));
  assert.ok(ok.ccAudit.innerHTML.includes('Desglose conciliado'));
  assert.ok(!ok.ccAudit.innerHTML.includes('Auditoría integral fallida'));
  const degraded=await render(true);
