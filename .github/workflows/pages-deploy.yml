@@ -60,6 +60,8 @@ jobs:
       # Persist the actual compiled snapshot. GitHub Pages can also be configured
       # to publish directly from /main; without this commit it serves old data.
       # Do not trigger on data/public/** alone to avoid a self-rebuild loop.
+      - name: Audit all currently visible source links versus historical sidecars
+        run: python scripts/audit_full_visible_source_coverage.py
       - name: Validate 85 historical competitors in final public JSON
         run: python scripts/audit_published_historical_market.py
       - name: Validate 48 topic market facts in published JSON
@@ -68,6 +70,8 @@ jobs:
         run: python scripts/audit_published_peer_competitors.py
       - name: Validate all semantically accredited historic claims in published JSON
         run: python scripts/audit_published_semantic_historical.py
+      - name: Validate Ciena issuer direct competitors in published JSON
+        run: python scripts/audit_published_issuer_competitors.py
       - name: Validate mass archived-source sidecars
         run: python scripts/validate_mass_historical_publication.py
       - name: Commit rebuilt public data to main
@@ -83,14 +87,14 @@ jobs:
             while IFS= read -r changed; do
               [ -n "$changed" ] || continue
               case "$changed" in
-                data/current/historical_source_checks.json|data/public/historical/current/source_checks.json|config/current/historical_semantic_verified.json|data/public/historical/current/semantic_claim_audit.json) ;;
+                data/current/historical_source_checks.json|data/public/historical/current/source_checks.json|config/current/historical_semantic_verified.json|data/public/historical/current/semantic_claim_audit.json|data/public/historical/current/full_source_inventory_coverage.json) ;;
                 *) echo "Main changed outside source audit ($changed): refusing stale publish"; exit 1 ;;
               esac
             done < <(git diff --name-only HEAD origin/main)
             # The diligence workflow owns these four paths. Preserve its latest
             # first-party excerpt registry and diagnostics instead of overwriting
             # them with stale artifacts from a simultaneous Pages build.
-            git restore --source=origin/main --worktree -- data/public/historical/current/source_checks.json data/public/historical/current/semantic_claim_audit.json config/current/historical_semantic_verified.json
+            git restore --source=origin/main --worktree -- data/public/historical/current/source_checks.json data/public/historical/current/semantic_claim_audit.json data/public/historical/current/full_source_inventory_coverage.json config/current/historical_semantic_verified.json
             git reset --soft origin/main
           fi
           git add -A data/public config/current/historical_structured_verified.json config/current/historical_semantic_verified.json

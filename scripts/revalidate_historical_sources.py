@@ -194,6 +194,70 @@ def candidate_inventory() -> dict[str, list[dict]]:
                                 "section": section, "entity": entity,
                                 "field": field_id, "value": value,
                             })
+    # The historical sidecars only describe gaps recovered from past revisions.
+    # They are NOT the complete UI: surviving current field/item links are
+    # invisible to that archive.  Check all exact, currently displayed items.
+    current = read_json("data/current/intelligence.json", {})
+    from engine.knowledge_provenance import accrediting_evidence
+    for section in ("manufacturers", "distributors", "integrators",
+                    "clients_public", "clients_private", "trends", "architectures"):
+        for row in (current.get(section) or []):
+            if not isinstance(row, dict):
+                continue
+            entity = str(row.get("name") or "").strip()
+            for field_id, field in (row.get("fields") or {}).items():
+                if not isinstance(field, dict):
+                    continue
+                values = field.get("value")
+                if isinstance(values, list):
+                    candidates = [
+                        (item.get("value"), list(item.get("evidence") or []))
+                        for item in (field.get("items") or [])
+                        if isinstance(item, dict)
+                    ]
+                    # If a UI list has no item objects, its field-wide
+                    # references still need assessment per displayed value.
+                    tracked = {canonical(v) for v, _ in candidates}
+                    for value in values:
+                        if isinstance(value, str) and canonical(value) not in tracked:
+                            candidates.append((value, []))
+                    # Legacy field-level evidence often applied to the whole
+                    # list. Retain it as a lead for each exact item, not proof.
+                    shared = list(field.get("evidence") or [])
+                    candidates = [(v, ev + shared) for v, ev in candidates]
+                else:
+                    candidates = [(values, list(field.get("evidence") or []))]
+                # Some older cards store source links at row level rather
+                # than on the clicked competitor item. Those visible links
+                # must still be investigated, but never automatically credited.
+                if field_id in {
+                    "competitors", "vendor_relations", "manufacturer_relations",
+                    "vendor_partnerships", "alliances", "linecard_remainder",
+                }:
+                    fallback = list(row.get("evidence") or [])
+                    candidates = [(v, ev + fallback) for v, ev in candidates]
+                for value, evidences in candidates:
+                    if not isinstance(value, str) or not value.strip():
+                        continue
+                    if any(
+                        accrediting_evidence(ev)
+                        and ev.get("atomic") is True
+                        and str(ev.get("field") or "") == field_id
+                        and canonical(ev.get("item_value")) == canonical(value)
+                        for ev in evidences if isinstance(ev, dict)
+                    ):
+                        continue
+                    for ev in evidences:
+                        if not isinstance(ev, dict):
+                            continue
+                        url = str(ev.get("url") or "")
+                        if not url.startswith("https://"):
+                            continue
+                        claim = {"section": section, "entity": entity,
+                                 "field": field_id, "value": value,
+                                 "inventory_origin": "current-visible-unaccredited"}
+                        if claim not in targets[url]:
+                            targets[url].append(claim)
     return targets
 
 

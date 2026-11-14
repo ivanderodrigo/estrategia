@@ -27,10 +27,12 @@ jobs:
           cache: pip
       - name: Install prerequisites
         run: python -m pip install -r requirements.txt
+      - name: Enumerate all visible and historical claim-source pairs
+        run: python scripts/audit_full_visible_source_coverage.py
       - name: Audit the full source URL inventory with individual claim checks
         run: >-
           python scripts/revalidate_historical_sources.py
-          --limit 750 --timeout 5 --workers 8
+          --limit 1250 --timeout 4 --workers 12
       - name: Verify each automatic accreditation is a structurally explicit Gartner product alternative
         run: |
           python - <<'PY'
@@ -68,7 +70,7 @@ jobs:
             data/current/historical_source_checks.json
             data/public/historical/current/source_checks.json
             config/current/historical_semantic_verified.json
-            data/public/historical/current/semantic_claim_audit.json
+            data/public/historical/current/semantic_claim_audit.json data/public/historical/current/full_source_inventory_coverage.json
           )
           mkdir -p "$output_dir"
           for file in "${files[@]}"; do
