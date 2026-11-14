@@ -67,6 +67,7 @@ jobs:
           python -m scripts.audit_v430
           node --check assets/app/intelligence.js
           node tests/ui_smoke.js
+          node tests/confidence_color_consistency.js
           node tests/business_intelligence_v61.js
           node tests/filter_builder_v410.js
       - name: Research with watchdog
