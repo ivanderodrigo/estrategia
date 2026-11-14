@@ -40,6 +40,17 @@ for (const label of ['Fabricantes','Mayoristas','Integradores','Clientes','Tende
   if (!html.includes('>'+label+'</button>')) throw new Error('missing primary observatory area: '+label);
 }
 
+// Historical lineage must remain visible on the titles of both topic cards
+// without promoting a thematic link into a claim-specific accreditation.
+for (const token of [
+  'function identityWithHistoricalContext(row,context)',
+  "row._section==='architectures'||context==='architecture'",
+  "['analyst_basis','principles','context','vendors']",
+  "['sources','drivers','domain','evolution','observed']",
+  'traceable(identityWithHistoricalContext(row,context)',
+  'const archaeology=sourceArchaeology(field,item)'
+]) if (!js.includes(token)) throw new Error('historical title lineage regression: '+token);
+
 console.log('UI smoke v4.4.0 PASS');
 
 // Directly confirmed portfolio statements have no public URL. They must be
