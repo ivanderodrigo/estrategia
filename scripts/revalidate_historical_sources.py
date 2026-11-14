@@ -227,6 +227,15 @@ def candidate_inventory() -> dict[str, list[dict]]:
                     candidates = [(v, ev + shared) for v, ev in candidates]
                 else:
                     candidates = [(values, list(field.get("evidence") or []))]
+                # Some older cards store source links at row level rather
+                # than on the clicked competitor item. Those visible links
+                # must still be investigated, but never automatically credited.
+                if field_id in {
+                    "competitors", "vendor_relations", "manufacturer_relations",
+                    "vendor_partnerships", "alliances", "linecard_remainder",
+                }:
+                    fallback = list(row.get("evidence") or [])
+                    candidates = [(v, ev + fallback) for v, ev in candidates]
                 for value, evidences in candidates:
                     if not isinstance(value, str) or not value.strip():
                         continue
