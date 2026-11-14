@@ -13,6 +13,13 @@ def claim(section,field,entity,value,excerpt):
             "value":value,"source_context":canonical(excerpt)}
 
 class SemanticHistoricalTests(unittest.TestCase):
+    def test_generic_atos_homepage_does_not_prove_logistics_service(self):
+        ev=claim("integrators","services","Atos Spain","Logística",
+                 "Atos Spain servicios de tecnologia logistica sector industrial")
+        self.assertEqual(classify(
+            ev, "https://www.atos.ai/es-es?utm_medium=301&utm_source=atos.net"),
+            "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF")
+
     def test_first_party_integrator_partner(self):
         ev=claim("integrators","vendor_relations","Nunsys","Avaya",
                  "Nunsys partners tecnologicos comunicaciones Avaya call center")
