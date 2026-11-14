@@ -118,6 +118,13 @@ def classify(claim,url):
     if field in OWN_CAPABILITY.get(section,set()):
         if not direct_owner:
             return "NOT_FIRST_PARTY"
+        # A corporate homepage that mentions a generic one-word industry
+        # is not evidence that the company sells that named service.
+        # E.g. Atos Spain -> "Logística" on an /es-es landing page.
+        if field in {"services","capabilities","specializations"} and len(clean.split())==1 and len(clean)<12:
+            path=canonical(urlparse(url).path).strip()
+            if path in {"", "es", "es es", "pt", "pt pt", "en", "en us", "home", "inicio"}:
+                return "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF"
         if section=="clients_private":
             # A corporate source mentioning an exact, distinctive phrase proves
             # the owner's technology statement, but a short domain label does not.
@@ -228,7 +235,21 @@ def main():
     existing={signature(item) for item in successes}
     retained=0
     expired=0
+    quarantined_legacy=0
     for old in old_records:
+        # Previously retained positive matches must still satisfy the current
+        # explicit-context policy. A generic corporate homepage does not
+        # establish a one-word service, even if an old run once accepted it.
+        oldsrc=old.get("source") or {}
+        oldurl=str(oldsrc.get("url") or "")
+        oldval=canonical(old.get("value") or "")
+        oldfield=str(old.get("field") or "")
+        oldpath=canonical(urlparse(oldurl).path)
+        if (oldfield in {"services","capabilities","specializations"}
+            and len(oldval.split())==1 and len(oldval)<12
+            and oldpath in {"", "es", "es es", "pt", "pt pt", "en", "en us", "home", "inicio"}):
+            quarantined_legacy+=1
+            continue
         key=signature(old)
         if key in existing:
             continue
@@ -260,6 +281,7 @@ def main():
           "verified_claim_source_pairs":len(successes),
           "verified_this_run":len(successes)-retained,
           "retained_prior_verified":retained,
+          "quarantined_generic_homepage_claims":quarantined_legacy,
           "expired_prior_verified":expired,
           "statuses":dict(counter),"by_section":dict(Counter(c["section"] for c in successes)),
           "pending_recheck_examples":review},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
