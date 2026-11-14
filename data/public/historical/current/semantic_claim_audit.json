@@ -1,37 +1,37 @@
 {
-  "generated_at": "2026-11-14T11:23:57.212124+00:00",
+  "generated_at": "2026-11-14T11:32:15.208680+00:00",
   "urls_scanned": 2005,
   "claim_source_pairs_reviewed": 61803,
-  "verified_claim_source_pairs": 2422,
-  "verified_this_run": 2250,
-  "retained_prior_verified": 172,
+  "verified_claim_source_pairs": 2417,
+  "verified_this_run": 2215,
+  "retained_prior_verified": 202,
   "expired_prior_verified": 0,
   "statuses": {
-    "VALUE_NOT_FOUND": 36087,
-    "NOT_FIRST_PARTY": 2081,
-    "RELATIONSHIP_NOT_SHOWN": 1060,
-    "VERIFIED_EXPLICIT_PARTNER_CONTEXT": 1244,
-    "VERIFIED_FIRST_PARTY_CATALOG_VALUE": 2108,
-    "VERIFIED_EXPLICIT_DISTRIBUTION_AGREEMENT": 32,
-    "COMPETITION_NOT_SHOWN": 51,
+    "VALUE_NOT_FOUND": 35982,
+    "NOT_FIRST_PARTY": 2072,
+    "RELATIONSHIP_NOT_SHOWN": 1056,
+    "VERIFIED_EXPLICIT_PARTNER_CONTEXT": 1230,
+    "VERIFIED_FIRST_PARTY_CATALOG_VALUE": 2085,
+    "VERIFIED_EXPLICIT_DISTRIBUTION_AGREEMENT": 30,
+    "COMPETITION_NOT_SHOWN": 52,
     "VERIFIED_EXPLICIT_COMPETITOR_CONTEXT": 7,
     "DISTRIBUTION_RELATIONSHIP_NOT_SHOWN": 106,
-    "SOURCE_UNAVAILABLE": 18308,
+    "SOURCE_UNAVAILABLE": 18377,
     "VERIFIED_FIRST_PARTY_NEWS_STATEMENT": 97,
-    "GENERIC_CAPABILITY_NOT_SPECIFIC": 81,
-    "UNSUPPORTED_FIELD_OR_CONTEXT": 441,
+    "GENERIC_CAPABILITY_NOT_SPECIFIC": 83,
+    "UNSUPPORTED_FIELD_OR_CONTEXT": 439,
     "GENERIC_DOMAIN_OR_HIRING_NOT_SPECIFIC": 46,
     "VERIFIED_CITED_ANALYST_DOCUMENT": 3,
-    "AMBIGUOUS_SHORT_VALUE": 33,
-    "VERIFIED_FIRST_PARTY_TECH_STATEMENT": 2,
+    "NOT_EXACT_IN_CONTEXT": 37,
+    "AMBIGUOUS_SHORT_VALUE": 84,
     "VERIFIED_FIRST_PARTY_HIRING": 2,
-    "INSUFFICIENT_EXCERPT": 7,
+    "INSUFFICIENT_EXCERPT": 8,
     "VERIFIED_FIRST_PARTY_CASE_STUDY": 7
   },
   "by_section": {
-    "distributors": 1293,
+    "distributors": 1290,
     "manufacturers": 404,
-    "integrators": 721,
+    "integrators": 719,
     "architectures": 1,
     "clients_private": 3
   },
@@ -7651,6 +7651,24 @@
       "reason": "VERIFIED_CITED_ANALYST_DOCUMENT"
     },
     {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "field": "sources",
+      "value": "NIST SP 800-207A: Zero Trust cloud-native multicloud",
+      "url": "https://csrc.nist.gov/pubs/sp/800/207/A/final",
+      "historical_url": "https://csrc.nist.gov/pubs/sp/800/207/A/final",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "Digital Sovereignty / Sovereign Cloud",
+      "field": "sources",
+      "value": "NIST SP 800-207A: Zero Trust cloud-native multicloud",
+      "url": "https://csrc.nist.gov/pubs/sp/800/207/A/final",
+      "historical_url": "https://csrc.nist.gov/pubs/sp/800/207/A/final",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
       "section": "architectures",
       "entity": "Zero Trust",
       "field": "analyst_basis",
@@ -10171,94 +10189,139 @@
       "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
     },
     {
-      "section": "integrators",
-      "entity": "decunify",
-      "field": "specializations",
-      "value": "Networking",
-      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "reason": "NOT_FIRST_PARTY"
+      "section": "manufacturers",
+      "entity": "Palo Alto Networks",
+      "field": "competitors",
+      "value": "Fortinet",
+      "url": "https://investors.paloaltonetworks.com/static-files/d53f98a1-f3d8-4d10-9ead-e9964ed5d58b",
+      "historical_url": "https://investors.paloaltonetworks.com/static-files/d53f98a1-f3d8-4d10-9ead-e9964ed5d58b",
+      "reason": "COMPETITION_NOT_SHOWN"
     },
     {
-      "section": "integrators",
-      "entity": "Decunify",
-      "field": "capabilities",
-      "value": "Cloud",
-      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "reason": "NOT_FIRST_PARTY"
+      "section": "architectures",
+      "entity": "Modern SOC / SecOps",
+      "field": "vendors",
+      "value": "Check Point",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "historical_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
-      "section": "integrators",
-      "entity": "Decunify",
-      "field": "capabilities",
-      "value": "Networking",
-      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "reason": "NOT_FIRST_PARTY"
+      "section": "architectures",
+      "entity": "Modern SOC / SecOps",
+      "field": "vendors",
+      "value": "CrowdStrike",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "historical_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
     },
     {
-      "section": "integrators",
-      "entity": "Decunify",
-      "field": "technology_domains",
-      "value": "Cloud",
-      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "reason": "NOT_FIRST_PARTY"
+      "section": "architectures",
+      "entity": "Modern SOC / SecOps",
+      "field": "vendors",
+      "value": "Palo Alto Networks",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "historical_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
-      "section": "integrators",
-      "entity": "Decunify",
-      "field": "technology_domains",
-      "value": "Networking",
-      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "reason": "NOT_FIRST_PARTY"
+      "section": "architectures",
+      "entity": "Modern SOC / SecOps",
+      "field": "vendors",
+      "value": "Vectra AI",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "historical_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
-      "section": "integrators",
-      "entity": "Decunify",
-      "field": "vendor_relations",
-      "value": "Extreme Networks",
-      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "section": "trends",
+      "entity": "SecOps / XDR / MDR / CTEM",
+      "field": "market_players",
+      "value": "Arista Networks",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "historical_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
-      "section": "integrators",
-      "entity": "Decunify",
-      "field": "westcon_overlap",
-      "value": "Extreme Networks",
-      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "section": "trends",
+      "entity": "SecOps / XDR / MDR / CTEM",
+      "field": "market_players",
+      "value": "Check Point",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "historical_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
-      "section": "integrators",
-      "entity": "Decunify",
-      "field": "specializations",
-      "value": "Networking",
-      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "reason": "NOT_FIRST_PARTY"
+      "section": "trends",
+      "entity": "SecOps / XDR / MDR / CTEM",
+      "field": "market_players",
+      "value": "Corelight",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "historical_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
     },
     {
-      "section": "integrators",
-      "entity": "Decunify",
-      "field": "vendor_relations",
-      "value": "Extreme Networks",
-      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "section": "trends",
+      "entity": "SecOps / XDR / MDR / CTEM",
+      "field": "market_players",
+      "value": "CrowdStrike",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "historical_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
     },
     {
-      "section": "integrators",
-      "entity": "Decunify",
-      "field": "westcon_overlap",
-      "value": "Extreme Networks",
-      "url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "historical_url": "https://investor.extremenetworks.com/news/news-details/2019/Extreme-Networks-Celebrates-The-Extreme-Difference-at-Inaugural-EMEA-Partner-Conference-in-Athens-11-25-2019/default.aspx",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "section": "trends",
+      "entity": "SecOps / XDR / MDR / CTEM",
+      "field": "market_players",
+      "value": "Darktrace",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "historical_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "SecOps / XDR / MDR / CTEM",
+      "field": "market_players",
+      "value": "ExtraHop",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "historical_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "SecOps / XDR / MDR / CTEM",
+      "field": "market_players",
+      "value": "Fortinet",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "historical_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "SecOps / XDR / MDR / CTEM",
+      "field": "market_players",
+      "value": "Microsoft",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "historical_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "SecOps / XDR / MDR / CTEM",
+      "field": "market_players",
+      "value": "Palo Alto Networks",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "historical_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "SecOps / XDR / MDR / CTEM",
+      "field": "market_players",
+      "value": "Vectra AI",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "historical_url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
       "section": "integrators",
@@ -15266,69 +15329,6 @@
     },
     {
       "section": "distributors",
-      "entity": "TD SYNNEX",
-      "field": "capabilities",
-      "value": "Cloud",
-      "url": "https://news.tdsynnex.com/tag/cloud/",
-      "historical_url": "https://news.tdsynnex.com/featured/como-pueden-los-socios-seguir-impulsando-el-crecimiento-cuando-los-clientes-se-enfrentan-a-presupuestos-mas-ajustados-y-al-aumento-de-los-costos/",
-      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "field": "capabilities",
-      "value": "Cybersecurity",
-      "url": "https://news.tdsynnex.com/tag/cloud/",
-      "historical_url": "https://news.tdsynnex.com/featured/como-pueden-los-socios-seguir-impulsando-el-crecimiento-cuando-los-clientes-se-enfrentan-a-presupuestos-mas-ajustados-y-al-aumento-de-los-costos/",
-      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Palo Alto Networks",
-      "field": "distributors",
-      "value": "TD SYNNEX",
-      "url": "https://news.tdsynnex.com/news/td-synnex-strengthens-cybersecurity-portfolio-with-addition-of-palo-alto-networks-in-europe/",
-      "historical_url": "https://news.tdsynnex.com/news/td-synnex-strengthens-cybersecurity-portfolio-with-addition-of-palo-alto-networks-in-europe/",
-      "reason": "VERIFIED_EXPLICIT_DISTRIBUTION_AGREEMENT"
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "field": "vendor_relations",
-      "value": "Cisco",
-      "url": "https://news.tdsynnex.com/news/td-synnex-strengthens-cybersecurity-portfolio-with-addition-of-palo-alto-networks-in-europe/",
-      "historical_url": "https://news.tdsynnex.com/tag/palo-alto-networks/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "field": "vendor_relations",
-      "value": "Palo Alto Networks",
-      "url": "https://news.tdsynnex.com/news/td-synnex-strengthens-cybersecurity-portfolio-with-addition-of-palo-alto-networks-in-europe/",
-      "historical_url": "https://news.tdsynnex.com/tag/palo-alto-networks/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "field": "westcon_overlap",
-      "value": "Cisco",
-      "url": "https://news.tdsynnex.com/news/td-synnex-strengthens-cybersecurity-portfolio-with-addition-of-palo-alto-networks-in-europe/",
-      "historical_url": "https://news.tdsynnex.com/tag/palo-alto-networks/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "field": "westcon_overlap",
-      "value": "Palo Alto Networks",
-      "url": "https://news.tdsynnex.com/news/td-synnex-strengthens-cybersecurity-portfolio-with-addition-of-palo-alto-networks-in-europe/",
-      "historical_url": "https://news.tdsynnex.com/tag/palo-alto-networks/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
-    },
-    {
-      "section": "distributors",
       "entity": "soon",
       "field": "capabilities",
       "value": "Cloud",
@@ -16109,60 +16109,6 @@
       "url": "https://voxsys.pt/marca/emeet/",
       "historical_url": "https://voxsys.pt/quem-somos/",
       "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
-    },
-    {
-      "section": "integrators",
-      "entity": "Warpcom",
-      "field": "public_cases",
-      "value": "Centro Hospitalar Baixo Vouga",
-      "url": "https://warpcom.com/es/casos-practicos/",
-      "historical_url": "https://warpcom.com/es/casos-practicos/",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "Warpcom",
-      "field": "public_cases",
-      "value": "Centro Paroquial do Estoril",
-      "url": "https://warpcom.com/es/casos-practicos/",
-      "historical_url": "https://warpcom.com/es/casos-practicos/",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "warpcom",
-      "field": "job_vendors",
-      "value": "Palo Alto Networks",
-      "url": "https://warpcom.com/cybersecurity/",
-      "historical_url": "https://warpcom.com/oportunidades-em-aberto/",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "warpcom",
-      "field": "job_profiles",
-      "value": "Solutions Architect · Networking & Infrastructure",
-      "url": "https://warpcom.com/oportunidades/senior-solutions-architect-networking-infrastructure/",
-      "historical_url": "https://warpcom.com/oportunidades-em-aberto/",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "Warpcom",
-      "field": "job_vendors",
-      "value": "Check Point",
-      "url": "https://warpcom.com/cybersecurity/",
-      "historical_url": "https://warpcom.com/oportunidades-em-aberto/",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "integrators",
-      "entity": "Warpcom",
-      "field": "job_vendors",
-      "value": "Palo Alto Networks",
-      "url": "https://warpcom.com/cybersecurity/",
-      "historical_url": "https://warpcom.com/oportunidades-em-aberto/",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
       "section": "distributors",
@@ -19739,15 +19685,6 @@
     },
     {
       "section": "clients_private",
-      "entity": "Bankinter",
-      "field": "technology_signals",
-      "value": "Copilotos, asistentes y agentes de IA",
-      "url": "https://www.bankinter.com/www/webcorp/swf/memoria2025/innovacion.html",
-      "historical_url": "https://www.bankinter.com/www/webcorp/swf/memoria2025/innovacion.html",
-      "reason": "VERIFIED_FIRST_PARTY_TECH_STATEMENT"
-    },
-    {
-      "section": "clients_private",
       "entity": "bbva",
       "field": "technology_domains",
       "value": "Cybersecurity",
@@ -22687,6 +22624,15 @@
       "value": "Piñero optimiza la eficiencia del back office de la división de Real Estate & Golf mediante un asistente de Inteligencia Artificial desarrollado junto a Logicalis Spain",
       "url": "https://www.es.logicalis.com/es/soluciones-servicios/tecnologia/seguridad",
       "historical_url": "https://www.es.logicalis.com/es/perspectivas/blogs/casos-de-uso-verticales-con-agentes-ia-del-sector-seguros-la-administracion",
+      "reason": "INSUFFICIENT_EXCERPT"
+    },
+    {
+      "section": "integrators",
+      "entity": "Logicalis",
+      "field": "public_cases",
+      "value": "Piñero optimiza la eficiencia del back office de la división de Real Estate & Golf mediante un asistente de Inteligencia Artificial desarrollado junto a Logicalis Spain",
+      "url": "https://www.es.logicalis.com/es/soluciones-servicios/tecnologia/seguridad",
+      "historical_url": "https://www.es.logicalis.com/es/perspectivas/blogs/de-la-innovacion-la-industrializacion-como-watsonx-impulsa-la-ia-practica-en-la",
       "reason": "INSUFFICIENT_EXCERPT"
     },
     {
@@ -26428,6 +26374,15 @@
       "section": "architectures",
       "entity": "Network Platform / AIOps",
       "field": "vendors",
+      "value": "Cisco",
+      "url": "https://www.extremenetworks.com/about-extreme-networks/career",
+      "historical_url": "https://www.extremenetworks.com/es/platform-one",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "architectures",
+      "entity": "Network Platform / AIOps",
+      "field": "vendors",
       "value": "Extreme Networks",
       "url": "https://www.extremenetworks.com/about-extreme-networks/career",
       "historical_url": "https://www.extremenetworks.com/es/platform-one",
@@ -28930,10 +28885,46 @@
       "section": "trends",
       "entity": "Digital Sovereignty / Sovereign Cloud",
       "field": "market_players",
+      "value": "AWS",
+      "url": "https://www.flane.es/ciscochannelpartner/express_foundation",
+      "historical_url": "https://www.flane.es/ciscochannelpartner/express_foundation",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "Digital Sovereignty / Sovereign Cloud",
+      "field": "market_players",
       "value": "Google Cloud",
       "url": "https://www.flane.es/ciscochannelpartner/express_foundation",
       "historical_url": "https://www.flane.es/ciscochannelpartner/express_foundation",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "Digital Sovereignty / Sovereign Cloud",
+      "field": "market_players",
+      "value": "IBM",
+      "url": "https://www.flane.es/ciscochannelpartner/express_foundation",
+      "historical_url": "https://www.flane.es/ciscochannelpartner/express_foundation",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "Digital Sovereignty / Sovereign Cloud",
+      "field": "market_players",
+      "value": "IBM",
+      "url": "https://www.flane.es/ciscochannelpartner/express_foundation",
+      "historical_url": "https://www.flane.es/ciscochannelpartner/express_foundation",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "Digital Sovereignty / Sovereign Cloud",
+      "field": "market_players",
+      "value": "AWS",
+      "url": "https://www.flane.es/ciscochannelpartner/smb",
+      "historical_url": "https://www.flane.es/ciscochannelpartner/smb",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
     },
     {
       "section": "trends",
@@ -28946,12 +28937,48 @@
     },
     {
       "section": "trends",
+      "entity": "Digital Sovereignty / Sovereign Cloud",
+      "field": "market_players",
+      "value": "IBM",
+      "url": "https://www.flane.es/ciscochannelpartner/smb",
+      "historical_url": "https://www.flane.es/ciscochannelpartner/smb",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "Digital Sovereignty / Sovereign Cloud",
+      "field": "market_players",
+      "value": "IBM",
+      "url": "https://www.flane.es/ciscochannelpartner/smb",
+      "historical_url": "https://www.flane.es/ciscochannelpartner/smb",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "secure lan campus security convergence",
+      "field": "sources",
+      "value": "Forrester: The Forrester Wave: SASE Solutions, Q3 2025",
+      "url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
+      "historical_url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
       "entity": "SASE / SSE / Zero Trust",
       "field": "market_players",
       "value": "Cato Networks",
       "url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
       "historical_url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "field": "market_players",
+      "value": "Cisco",
+      "url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
+      "historical_url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
     },
     {
       "section": "trends",
@@ -29000,6 +29027,15 @@
     },
     {
       "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "field": "sources",
+      "value": "Forrester: The Forrester Wave: SASE Solutions, Q3 2025",
+      "url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
+      "historical_url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
       "entity": "Secure LAN / Campus-Security Convergence",
       "field": "drivers",
       "value": "Zero Trust",
@@ -29020,6 +29056,15 @@
       "section": "trends",
       "entity": "Secure LAN / Campus-Security Convergence",
       "field": "market_players",
+      "value": "Cisco",
+      "url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
+      "historical_url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "field": "market_players",
       "value": "Extreme Networks",
       "url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
       "historical_url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
@@ -29032,6 +29077,87 @@
       "value": "Fortinet",
       "url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
       "historical_url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "field": "sources",
+      "value": "Forrester: The Forrester Wave: SASE Solutions, Q3 2025",
+      "url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
+      "historical_url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "field": "sources",
+      "value": "Forrester: The Forrester Wave: SASE Solutions, Q3 2025",
+      "url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
+      "historical_url": "https://www.forrester.com/blogs/forrester-wave-secure-access-service-edge-solutions-q3-2025-a-market-transformed/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "secure lan campus security convergence",
+      "field": "sources",
+      "value": "Forrester: Networking vendors are finally starting to build platforms",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "ai native networking aiops",
+      "field": "sources",
+      "value": "Forrester: Networking vendors are finally starting to build platforms",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "naas managed networking",
+      "field": "sources",
+      "value": "Forrester: Networking vendors are finally starting to build platforms",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "architectures",
+      "entity": "naas managed networking",
+      "field": "analyst_basis",
+      "value": "Forrester · Networking vendors are finally starting to build platforms — not just dashboards",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "architectures",
+      "entity": "network platform aiops",
+      "field": "analyst_basis",
+      "value": "Forrester · Networking vendors are finally starting to build platforms — not just dashboards",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "architectures",
+      "entity": "NaaS / Managed Networking",
+      "field": "analyst_basis",
+      "value": "Forrester · Networking vendors are finally starting to build platforms — not just dashboards",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "architectures",
+      "entity": "NaaS / Managed Networking",
+      "field": "vendors",
+      "value": "Cisco",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
       "reason": "AMBIGUOUS_SHORT_VALUE"
     },
     {
@@ -29046,11 +29172,38 @@
     {
       "section": "architectures",
       "entity": "Network Platform / AIOps",
+      "field": "analyst_basis",
+      "value": "Forrester · Networking vendors are finally starting to build platforms — not just dashboards",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "architectures",
+      "entity": "Network Platform / AIOps",
+      "field": "vendors",
+      "value": "Cisco",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "architectures",
+      "entity": "Network Platform / AIOps",
       "field": "vendors",
       "value": "Extreme Networks",
       "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
       "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "field": "market_players",
+      "value": "Cisco",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
     },
     {
       "section": "trends",
@@ -29063,6 +29216,33 @@
     },
     {
       "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "field": "market_players",
+      "value": "HPE",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "field": "sources",
+      "value": "Forrester: Networking vendors are finally starting to build platforms",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "NaaS / Managed Networking",
+      "field": "market_players",
+      "value": "Cisco",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
       "entity": "NaaS / Managed Networking",
       "field": "market_players",
       "value": "Extreme Networks",
@@ -29072,12 +29252,93 @@
     },
     {
       "section": "trends",
+      "entity": "NaaS / Managed Networking",
+      "field": "market_players",
+      "value": "HPE",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "NaaS / Managed Networking",
+      "field": "sources",
+      "value": "Forrester: Networking vendors are finally starting to build platforms",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
       "entity": "Secure LAN / Campus-Security Convergence",
       "field": "drivers",
       "value": "Zero Trust",
       "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
       "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "field": "sources",
+      "value": "Forrester: Networking vendors are finally starting to build platforms",
+      "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "historical_url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "secure lan campus security convergence",
+      "field": "sources",
+      "value": "Forrester: The Forrester Wave: SASE Solutions, Q3 2025",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "ai native networking aiops",
+      "field": "sources",
+      "value": "Forrester: Predictions 2026: Infrastructure & Operations",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "naas managed networking",
+      "field": "sources",
+      "value": "Forrester: Predictions 2026: Infrastructure & Operations",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "architectures",
+      "entity": "observability digital experience",
+      "field": "vendors",
+      "value": "Cisco",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "architectures",
+      "entity": "Observability / Digital Experience",
+      "field": "vendors",
+      "value": "Cisco",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "architectures",
+      "entity": "Secure Campus / LAN",
+      "field": "vendors",
+      "value": "Cisco",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
     },
     {
       "section": "architectures",
@@ -29092,7 +29353,43 @@
       "section": "trends",
       "entity": "AI-Native Networking / AIOps",
       "field": "market_players",
+      "value": "Cisco",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "field": "market_players",
       "value": "Fortinet",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "field": "market_players",
+      "value": "HPE",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "field": "sources",
+      "value": "Forrester: Predictions 2026: Infrastructure & Operations",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "NaaS / Managed Networking",
+      "field": "market_players",
+      "value": "Cisco",
       "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
       "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
       "reason": "AMBIGUOUS_SHORT_VALUE"
@@ -29108,6 +29405,24 @@
     },
     {
       "section": "trends",
+      "entity": "NaaS / Managed Networking",
+      "field": "market_players",
+      "value": "HPE",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "NaaS / Managed Networking",
+      "field": "sources",
+      "value": "Forrester: Predictions 2026: Infrastructure & Operations",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
       "entity": "SASE / SSE / Zero Trust",
       "field": "market_players",
       "value": "Cato Networks",
@@ -29119,7 +29434,25 @@
       "section": "trends",
       "entity": "SASE / SSE / Zero Trust",
       "field": "market_players",
+      "value": "Cisco",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "field": "market_players",
       "value": "Fortinet",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "field": "market_players",
+      "value": "HPE",
       "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
       "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
       "reason": "AMBIGUOUS_SHORT_VALUE"
@@ -29144,12 +29477,39 @@
     },
     {
       "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "field": "sources",
+      "value": "Forrester: Predictions 2026: Infrastructure & Operations",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "field": "sources",
+      "value": "Forrester: The Forrester Wave: SASE Solutions, Q3 2025",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
       "entity": "Secure LAN / Campus-Security Convergence",
       "field": "drivers",
       "value": "Zero Trust",
       "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
       "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "field": "market_players",
+      "value": "Cisco",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
     },
     {
       "section": "trends",
@@ -29162,6 +29522,69 @@
     },
     {
       "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "field": "market_players",
+      "value": "HPE",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "field": "sources",
+      "value": "Forrester: Predictions 2026: Infrastructure & Operations",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "field": "sources",
+      "value": "Forrester: The Forrester Wave: SASE Solutions, Q3 2025",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "field": "sources",
+      "value": "Forrester: Predictions 2026: Infrastructure & Operations",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "field": "sources",
+      "value": "Forrester: The Forrester Wave: SASE Solutions, Q3 2025",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "field": "sources",
+      "value": "Forrester: Predictions 2026: Infrastructure & Operations",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "field": "sources",
+      "value": "Forrester: The Forrester Wave: SASE Solutions, Q3 2025",
+      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "historical_url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "trends",
       "entity": "lifecycle support professional services",
       "field": "market_players",
       "value": "Accenture",
@@ -29209,10 +29632,55 @@
       "section": "trends",
       "entity": "lifecycle support professional services",
       "field": "market_players",
+      "value": "EY",
+      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "lifecycle support professional services",
+      "field": "market_players",
+      "value": "IBM",
+      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "lifecycle support professional services",
+      "field": "market_players",
+      "value": "KPMG",
+      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "lifecycle support professional services",
+      "field": "market_players",
       "value": "McKinsey & Company",
       "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
       "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "lifecycle support professional services",
+      "field": "market_players",
+      "value": "PwC",
+      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "lifecycle support professional services",
+      "field": "sources",
+      "value": "Forrester: The Forrester Wave: AI Consulting Services, Q2 2026",
+      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
     },
     {
       "section": "trends",
@@ -29263,10 +29731,55 @@
       "section": "trends",
       "entity": "Lifecycle, Support & Professional Services",
       "field": "market_players",
+      "value": "EY",
+      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "Lifecycle, Support & Professional Services",
+      "field": "market_players",
+      "value": "IBM",
+      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "Lifecycle, Support & Professional Services",
+      "field": "market_players",
+      "value": "KPMG",
+      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "Lifecycle, Support & Professional Services",
+      "field": "market_players",
       "value": "McKinsey & Company",
       "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
       "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "Lifecycle, Support & Professional Services",
+      "field": "market_players",
+      "value": "PwC",
+      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "Lifecycle, Support & Professional Services",
+      "field": "sources",
+      "value": "Forrester: The Forrester Wave: AI Consulting Services, Q2 2026",
+      "url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "historical_url": "https://www.forrester.com/blogs/which-ai-consulting-service-provider-is-best-for-you/",
+      "reason": "NOT_EXACT_IN_CONTEXT"
     },
     {
       "section": "architectures",
@@ -29276,6 +29789,60 @@
       "url": "https://www.forrester.com/report/a-practical-guide-to-zero-trust-implementation/RES157736",
       "historical_url": "https://www.forrester.com/report/a-practical-guide-to-zero-trust-implementation/RES157736",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "architectures",
+      "entity": "Zero Trust",
+      "field": "analyst_basis",
+      "value": "Forrester · A Practical Guide To Zero Trust Implementation",
+      "url": "https://www.forrester.com/report/a-practical-guide-to-zero-trust-implementation/RES157736",
+      "historical_url": "https://www.forrester.com/report/a-practical-guide-to-zero-trust-implementation/RES157736",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "architectures",
+      "entity": "Zero Trust",
+      "field": "analyst_basis",
+      "value": "Forrester · A Practical Guide To Zero Trust Implementation",
+      "url": "https://www.forrester.com/report/a-practical-guide-to-zero-trust-implementation/RES157736",
+      "historical_url": "https://www.forrester.com/report/a-practical-guide-to-zero-trust-implementation/RES157736",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "architectures",
+      "entity": "sase sse",
+      "field": "analyst_basis",
+      "value": "Forrester · The Architect’s Guide To Secure Access Service Edge",
+      "url": "https://www.forrester.com/report/an-architects-guide-to-zero-trust-edge/RES181237",
+      "historical_url": "https://www.forrester.com/report/an-architects-guide-to-zero-trust-edge/RES181237",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "architectures",
+      "entity": "SASE / SSE",
+      "field": "analyst_basis",
+      "value": "Forrester · The Architect’s Guide To Secure Access Service Edge",
+      "url": "https://www.forrester.com/report/an-architects-guide-to-zero-trust-edge/RES181237",
+      "historical_url": "https://www.forrester.com/report/an-architects-guide-to-zero-trust-edge/RES181237",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "architectures",
+      "entity": "observability digital experience",
+      "field": "analyst_basis",
+      "value": "Forrester · The Digital Employee Experience Management (DEXM) Solutions Landscape, Q2 2026",
+      "url": "https://www.forrester.com/report/the-digital-employee-experience-management-dexm-solutions-landscape-q2-2026/RES196987",
+      "historical_url": "https://www.forrester.com/report/the-digital-employee-experience-management-dexm-solutions-landscape-q2-2026/RES196987",
+      "reason": "NOT_EXACT_IN_CONTEXT"
+    },
+    {
+      "section": "architectures",
+      "entity": "Observability / Digital Experience",
+      "field": "analyst_basis",
+      "value": "Forrester · The Digital Employee Experience Management (DEXM) Solutions Landscape, Q2 2026",
+      "url": "https://www.forrester.com/report/the-digital-employee-experience-management-dexm-solutions-landscape-q2-2026/RES196987",
+      "historical_url": "https://www.forrester.com/report/the-digital-employee-experience-management-dexm-solutions-landscape-q2-2026/RES196987",
+      "reason": "NOT_EXACT_IN_CONTEXT"
     },
     {
       "section": "trends",
@@ -29681,6 +30248,15 @@
       "url": "https://www.fortinet.com/tw/products/endpoint-security/forticlient",
       "historical_url": "https://www.fortinet.com/tw/products/endpoint-security/forticlient",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "OT / XIoT Security & Resilience",
+      "field": "market_players",
+      "value": "Armis",
+      "url": "https://www.fortinet.com/tw/products/next-generation-firewall",
+      "historical_url": "https://www.fortinet.com/tw/products/next-generation-firewall",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
     },
     {
       "section": "trends",
@@ -38261,51 +38837,6 @@
     },
     {
       "section": "distributors",
-      "entity": "idiomund",
-      "field": "capabilities",
-      "value": "Cloud",
-      "url": "https://www.linkedin.com/",
-      "historical_url": "https://www.linkedin.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "distributors",
-      "entity": "idiomund",
-      "field": "capabilities",
-      "value": "Cybersecurity",
-      "url": "https://www.linkedin.com/",
-      "historical_url": "https://www.linkedin.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "distributors",
-      "entity": "idiomund",
-      "field": "capabilities",
-      "value": "Networking",
-      "url": "https://www.linkedin.com/",
-      "historical_url": "https://www.linkedin.com/",
-      "reason": "NOT_FIRST_PARTY"
-    },
-    {
-      "section": "distributors",
-      "entity": "idiomund",
-      "field": "job_profiles",
-      "value": "Network Engineer",
-      "url": "https://www.linkedin.com/jobs/engineering-jobs-phoenix-az?trk=homepage-basic_suggested-search",
-      "historical_url": "https://www.linkedin.com/jobs/engineering-jobs-phoenix-az?trk=homepage-basic_suggested-search",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "distributors",
-      "entity": "Idiomund",
-      "field": "job_profiles",
-      "value": "Network Engineer",
-      "url": "https://www.linkedin.com/jobs/engineering-jobs-phoenix-az?trk=homepage-basic_suggested-search",
-      "historical_url": "https://www.linkedin.com/jobs/engineering-jobs-phoenix-az?trk=homepage-basic_suggested-search",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "distributors",
       "entity": "Idiomund",
       "field": "job_profiles",
       "value": "Network Engineer",
@@ -42941,6 +43472,42 @@
     },
     {
       "section": "trends",
+      "entity": "NaaS / Managed Networking",
+      "field": "market_players",
+      "value": "Cisco",
+      "url": "https://www.prnewswire.com/news-releases/ai-will-push-cloud-managed-network-revenue-over-10-billion-according-to-delloro-group-302814090.html",
+      "historical_url": "https://www.prnewswire.com/news-releases/ai-will-push-cloud-managed-network-revenue-over-10-billion-according-to-delloro-group-302814090.html",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "NaaS / Managed Networking",
+      "field": "market_players",
+      "value": "HPE",
+      "url": "https://www.prnewswire.com/news-releases/ai-will-push-cloud-managed-network-revenue-over-10-billion-according-to-delloro-group-302814090.html",
+      "historical_url": "https://www.prnewswire.com/news-releases/ai-will-push-cloud-managed-network-revenue-over-10-billion-according-to-delloro-group-302814090.html",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "field": "market_players",
+      "value": "Cisco",
+      "url": "https://www.prnewswire.com/news-releases/ai-will-push-cloud-managed-network-revenue-over-10-billion-according-to-delloro-group-302814090.html",
+      "historical_url": "https://www.prnewswire.com/news-releases/ai-will-push-cloud-managed-network-revenue-over-10-billion-according-to-delloro-group-302814090.html",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "Secure LAN / Campus-Security Convergence",
+      "field": "market_players",
+      "value": "HPE",
+      "url": "https://www.prnewswire.com/news-releases/ai-will-push-cloud-managed-network-revenue-over-10-billion-according-to-delloro-group-302814090.html",
+      "historical_url": "https://www.prnewswire.com/news-releases/ai-will-push-cloud-managed-network-revenue-over-10-billion-according-to-delloro-group-302814090.html",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
       "entity": "Cloud Native Security / CNAPP",
       "field": "drivers",
       "value": "Cloud-native",
@@ -42959,12 +43526,30 @@
     },
     {
       "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "field": "market_players",
+      "value": "Wiz",
+      "url": "https://www.prnewswire.com/news-releases/cnapp-to-reach-12-9-b-by-2030-as-cloud-security-becomes-a-platform-power-play-according-to-delloro-group-302659029.html",
+      "historical_url": "https://www.prnewswire.com/news-releases/cnapp-to-reach-12-9-b-by-2030-as-cloud-security-becomes-a-platform-power-play-according-to-delloro-group-302659029.html",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
       "entity": "SASE / SSE / Zero Trust",
       "field": "market_players",
       "value": "Cato Networks",
       "url": "https://www.prnewswire.com/news-releases/sase-1q-2026-revenue-climbs-21-percent-to-over-3-b-driven-by-ai-governance-according-to-delloro-group-302798346.html",
       "historical_url": "https://www.prnewswire.com/news-releases/sase-1q-2026-revenue-climbs-21-percent-to-over-3-b-driven-by-ai-governance-according-to-delloro-group-302798346.html",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "SASE / SSE / Zero Trust",
+      "field": "market_players",
+      "value": "Cisco",
+      "url": "https://www.prnewswire.com/news-releases/sase-1q-2026-revenue-climbs-21-percent-to-over-3-b-driven-by-ai-governance-according-to-delloro-group-302798346.html",
+      "historical_url": "https://www.prnewswire.com/news-releases/sase-1q-2026-revenue-climbs-21-percent-to-over-3-b-driven-by-ai-governance-according-to-delloro-group-302798346.html",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
     },
     {
       "section": "trends",
@@ -43748,6 +44333,42 @@
       "url": "https://www.santander.com/es/stories/-ciberseguridad",
       "historical_url": "https://www.santander.com/es/home",
       "reason": "GENERIC_DOMAIN_OR_HIRING_NOT_SPECIFIC"
+    },
+    {
+      "section": "distributors",
+      "entity": "TBA",
+      "field": "specializations",
+      "value": "Storage",
+      "url": "https://www.tba.pt/about-us.html",
+      "historical_url": "https://www.tba.pt/about-us.html",
+      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
+    },
+    {
+      "section": "distributors",
+      "entity": "TBA",
+      "field": "specializations",
+      "value": "Servidores",
+      "url": "https://www.tba.pt/about-us.html",
+      "historical_url": "https://www.tba.pt/about-us.html",
+      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+    },
+    {
+      "section": "distributors",
+      "entity": "TBA",
+      "field": "specializations",
+      "value": "Workstations",
+      "url": "https://www.tba.pt/about-us.html",
+      "historical_url": "https://www.tba.pt/about-us.html",
+      "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+    },
+    {
+      "section": "distributors",
+      "entity": "TBA",
+      "field": "specializations",
+      "value": "Storage",
+      "url": "https://www.tba.pt/about-us.html",
+      "historical_url": "https://www.tba.pt/about-us.html",
+      "reason": "GENERIC_CAPABILITY_NOT_SPECIFIC"
     },
     {
       "section": "distributors",
@@ -44716,6 +45337,15 @@
       "section": "architectures",
       "entity": "Agentic Automation",
       "field": "vendors",
+      "value": "AWS",
+      "url": "https://www.uipath.com/platform/agentic-automation",
+      "historical_url": "https://www.uipath.com/platform/agentic-automation",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "architectures",
+      "entity": "Agentic Automation",
+      "field": "vendors",
       "value": "UiPath",
       "url": "https://www.uipath.com/platform/agentic-automation",
       "historical_url": "https://www.uipath.com/platform/agentic-automation",
@@ -45247,10 +45877,28 @@
       "section": "trends",
       "entity": "AI-Native Networking / AIOps",
       "field": "market_players",
+      "value": "Cisco",
+      "url": "https://www.westconcomstor.com/es/es/sitemap.html",
+      "historical_url": "https://www.westconcomstor.com/es/es/sitemap.html",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "field": "market_players",
       "value": "Extreme Networks",
       "url": "https://www.westconcomstor.com/es/es/sitemap.html",
       "historical_url": "https://www.westconcomstor.com/es/es/sitemap.html",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
+    },
+    {
+      "section": "trends",
+      "entity": "AI-Native Networking / AIOps",
+      "field": "market_players",
+      "value": "HPE",
+      "url": "https://www.westconcomstor.com/es/es/sitemap.html",
+      "historical_url": "https://www.westconcomstor.com/es/es/sitemap.html",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
     },
     {
       "section": "integrators",
@@ -46375,15 +47023,6 @@
       "value": "It took $58 to break Microsoft’s SCCM, but a patch made it harder",
       "url": "https://www.csoonline.com/article/4209154/it-took-58-to-break-microsofts-sccm-but-a-patch-made-it-harder.html",
       "historical_url": "https://xmcyber.com/news/it-took-58-to-break-microsofts-sccm-but-a-patch-made-it-harder/",
-      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
-    },
-    {
-      "section": "manufacturers",
-      "entity": "XM Cyber",
-      "field": "recent_signals",
-      "value": "OAuth client ID spoofing silently validates stolen Microsoft Entra ID credentials",
-      "url": "https://www.scworld.com/news/oauth-client-id-spoofing-generates-a-successful-sign-in-to-ms-entra-id",
-      "historical_url": "https://xmcyber.com/news/oauth-client-id-spoofing-silently-validates-stolen-microsoft-entra-id-credentials/",
       "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
