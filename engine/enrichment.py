@@ -528,6 +528,11 @@ def _manufacturer_competition_map(data: dict[str, Any], active: dict[str, str] |
             key = canonical(competitor)
             if not key:
                 continue
+            # Competitive peers can legitimately belong to Westcon, but the
+            # channel's "other competing manufacturers" field only describes
+            # external vendors. Do not generate a rival mapping for our brands.
+            if active is not None and key in active:
+                continue
             item = item_by_key.get(key) or {}
             bucket = result.setdefault(key, {"manufacturers": [], "evidence": []})
             if manufacturer not in bucket["manufacturers"]:
