@@ -117,6 +117,24 @@ def classify(claim,url):
             "compare", "comparison", "comparativa", "versus", "alternatives",
         ))
         named_pair = canonical(entity) in context and clean in context
+        page_path = canonical(urlparse(url).path)
+        entity_name = canonical(entity)
+        # A comparison page often contains unrelated vendor names in menus,
+        # footers and "related comparisons". Credit ONLY the actual pair
+        # identified by the source URL or an explicit "A vs B" phrase.
+        if official_comparison_path:
+            direct_path_pair = (
+                " vs " in f" {page_path} " and entity_name in page_path
+                and clean in page_path
+            )
+            a, b = re.escape(entity_name), re.escape(clean)
+            direct_text_pair = bool(re.search(
+                rf"(?<![a-z0-9])(?:{a}\\s+(?:vs|versus|contra)\\s+{b}|"
+                rf"{b}\\s+(?:vs|versus|contra)\\s+{a})(?![a-z0-9])",
+                context,
+            ))
+            if not (direct_path_pair or direct_text_pair):
+                return "COMPARISON_PAGE_DOES_NOT_NAME_PAIR"
         if official_party and (direct_owner or article_names) and named_pair and (
             explicit_competition or official_comparison_path
         ):
