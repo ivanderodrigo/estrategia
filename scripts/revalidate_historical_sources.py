@@ -173,10 +173,37 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
                 explicit_alternative = bool(vendor_match and has_market
                     and "alternatives" in text and "compare with" in text)
             tokens = value.split()
-            informative = len(value) >= 6 and (
-                len(tokens) >= 2 or field_id in
-                ("competitors", "market_players", "vendors",
-                 "vendor_relations", "westcon_overlap")
+            # Short manufacturer names (F5, IBM, Cisco) are valid atomic
+            # partner/linecard claims. Do not discard them simply because they
+            # contain fewer than six characters. Restrict this expansion to a
+            # vendor-relation field on an entity-owned public partner/linecard page.
+            host = (urlparse(safe).hostname or "").lower().removeprefix("www.")
+            owner_tokens = [t for t in canonical(claim.get("entity") or "").split()
+                            if len(t)>=4 and t not in {
+                                "group","grupo","technology","technologies","services",
+                                "solutions","espana","portugal","spain","security",
+                            }]
+            owned = any(t.replace(" ","") in host.replace("-","")
+                        for t in owner_tokens)
+            partner_fields = {
+                "vendor_relations","manufacturer_relations","vendor_partnerships",
+                "partnerships","linecard_remainder","alliances",
+            }
+            partner_page = any(w in canonical(urlparse(safe).path) for w in (
+                "partner","fabricante","vendor","alianza","alliance",
+                "linecard","marcas","portfolio","catalogo"
+            ))
+            short_partner = bool(
+                field_id in partner_fields and owned and partner_page
+                and len(vendor) >= 2
+            )
+            informative = (
+                (len(value) >= 6 and
+                 (len(tokens) >= 2 or field_id in (
+                    "competitors", "market_players", "vendors",
+                    "vendor_relations", "westcon_overlap"
+                 )))
+                or short_partner
             )
             search_value = vendor if is_gartner_alternative else value
             match = re.search(
