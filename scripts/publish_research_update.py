@@ -67,6 +67,38 @@ def output(command: list[str]) -> str:
     return subprocess.check_output(command, cwd=ROOT, text=True).strip()
 
 
+# Only display-only changes may be rebased without recomputing research.
+# Engine, config, scripts, tests, workflows and any published data change
+# invalidates a long-running research snapshot and must trigger a fresh run.
+PRESENTATION_PATHS=("assets/app/","assets/favicon.svg","index.html",
+                    "404.html","memoria-historica.html")
+UNRELATED_DIAGNOSTICS=("data/current/daily_workflow_health.json",
+                       "data/current/gap_debt_audit.json")
+
+
+def safe_remote_only(paths: list[str]) -> bool:
+    def allowed(path: str) -> bool:
+        return path in UNRELATED_DIAGNOSTICS or any(
+            path == prefix or path.startswith(prefix)
+            for prefix in PRESENTATION_PATHS
+        )
+    return bool(paths) and all(allowed(path) for path in paths)
+
+
+def accept_presentation_only_updates(local_sha: str, remote_sha: str) -> bool:
+    changed=output(["git","diff","--name-only",local_sha,remote_sha]).splitlines()
+    if not safe_remote_only(changed):
+        print("Unsafe concurrent main changes; refusing stale research publication:",
+              ", ".join(changed[:15]),file=sys.stderr)
+        return False
+    # --mixed adopts the latest remote index while preserving locally
+    # validated research outputs in the worktree. Only ALLOWED data paths
+    # are staged below; old UI bytes are never committed.
+    run(["git","reset","--mixed",remote_sha])
+    print("Adopted presentation-only main changes without overwriting UI.")
+    return True
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--message", default="chore: update current decision intelligence")
@@ -87,8 +119,8 @@ def main() -> int:
     local_before = output(["git", "rev-parse", "HEAD"])
     remote_before = output(["git", "rev-parse", "origin/main"])
     if local_before != remote_before:
-        print("Remote main changed during research; stale snapshot was not published safely.", file=sys.stderr)
-        return 1
+        if not accept_presentation_only_updates(local_before,remote_before):
+            return 1
 
     existing = [path for path in ALLOWED if (ROOT / path).exists()]
     run(["git", "add", "-A", "--", *existing])
@@ -102,9 +134,17 @@ def main() -> int:
         if pushed.returncode == 0:
             return 0
         run(["git", "fetch", "origin", "main"], check=False)
-        if output(["git", "rev-parse", "origin/main"]) != remote_before:
-            print("Remote main advanced before push; generated snapshot remains unpublished.", file=sys.stderr)
-            return 1
+        advanced=output(["git", "rev-parse", "origin/main"])
+        if advanced != remote_before:
+            if not accept_presentation_only_updates(remote_before,advanced):
+                print("Remote main advanced before push; generated snapshot remains unpublished.",file=sys.stderr)
+                return 1
+            remote_before=advanced
+            run(["git","add","-A","--",*existing])
+            if run(["git","diff","--cached","--quiet"],check=False).returncode:
+                run(["git","commit","-m",arguments.message])
+            else:
+                return 0
         if attempt < arguments.attempts:
             time.sleep(min(8, 2 ** attempt))
 
