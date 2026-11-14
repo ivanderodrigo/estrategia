@@ -49,6 +49,7 @@ jobs:
         run: |
           python scripts/validate.py
           python scripts/validate_active_portfolio_public.py
+          python scripts/audit_competitor_portfolio_separation.py
           python scripts/audit_published_semantic_historical.py
           python scripts/validate_mass_historical_publication.py
           node tests/ui_smoke.js
