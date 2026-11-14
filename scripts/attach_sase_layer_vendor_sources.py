@@ -36,8 +36,9 @@ def apply():
     approved={(v["layer"],v["vendor"],v["url"]) for v in spec.get("sources") or []
               if v.get("status")=="VERIFIED_VENDOR_CAPABILITY"}
     superseded={eid for eid,ev in registry.items()
-                if eid.startswith(("ev_sase_verified_","ev_sase_capability_"))
-                and ev.get("architecture")=="SASE / SSE"
+                if ev.get("architecture")=="SASE / SSE"
+                and (eid.startswith(("ev_sase_verified_","ev_sase_capability_"))
+                     or ev.get("source_type")=="manufacturer-product-documentation")
                 and (ev.get("layer"),ev.get("item_value"),ev.get("url")) not in approved}
     if superseded:
         for eid in superseded:registry.pop(eid,None)
