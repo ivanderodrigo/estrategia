@@ -75,7 +75,7 @@ def atom_values(field):
 
 def recover(max_snapshots=32, max_pairs=30000):
     discovered = {}
-    samples = {}
+    per_section = Counter()
     snapshots = Counter()
     attempted = Counter()
     for section in SECTIONS:
@@ -95,8 +95,9 @@ def recover(max_snapshots=32, max_pairs=30000):
                 # Entity-level evidence is an identity lead only.
                 for url in source_urls(row, registry):
                     key = (section, entity, "__identity__", entity, url)
-                    if key not in discovered:
+                    if key not in discovered and per_section[section] < max_pairs // len(SECTIONS):
                         discovered[key] = rev[:12]
+                        per_section[section] += 1
                 for field_name, field in (row.get("fields") or {}).items():
                     if not isinstance(field, dict):
                         continue
@@ -105,8 +106,9 @@ def recover(max_snapshots=32, max_pairs=30000):
                         # Legacy shared URLs are leads, NOT proof for list members.
                         for url in shared:
                             key = (section, entity, field_name, value, url)
-                            if key not in discovered:
+                            if key not in discovered and per_section[section] < max_pairs // len(SECTIONS):
                                 discovered[key] = rev[:12]
+                                per_section[section] += 1
                     for item in field.get("items") or []:
                         if not isinstance(item, dict):
                             continue
@@ -115,12 +117,11 @@ def recover(max_snapshots=32, max_pairs=30000):
                             continue
                         for url in source_urls(item, registry):
                             key = (section, entity, field_name, str(value), url)
-                            if key not in discovered:
+                            if key not in discovered and per_section[section] < max_pairs // len(SECTIONS):
                                 discovered[key] = rev[:12]
-            if len(discovered) >= max_pairs:
+                                per_section[section] += 1
+            if per_section[section] >= max_pairs // len(SECTIONS):
                 break
-        if len(discovered) >= max_pairs:
-            break
 
     # Retain exact claims, with provenance, as NON-accredited research leads.
     records = [{"section": s, "entity": e, "field": f, "value": v,
