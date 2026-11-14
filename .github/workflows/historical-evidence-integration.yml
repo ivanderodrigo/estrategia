@@ -2,6 +2,9 @@ name: Integrate Accredited Historical Evidence
 # Historical diligence commits claim-specific proof, but only rebuilding the
 # canonical snapshot makes those verified sources visible as green badges.
 on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/historical-evidence-integration.yml']
   workflow_run:
     workflows: ['Historical Source Diligence']
     types: [completed]
