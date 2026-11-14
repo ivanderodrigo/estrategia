@@ -28,4 +28,10 @@ assert.strictEqual(mixed.unsourced,1);
 const layers=context.rowConfidence({fields:{layers:{value:[{layer:'SASE',vendors:['Green','Unverified'],
   vendor_items:[green,purple]}],confidence:.99}}});
 assert.strictEqual(layers.band,'medium','Layers must use their own vendor evidence');
+assert(js.includes("score>=.8?'high':score>=.6?'medium':'low'"),
+  'Field and entity badge thresholds must be consistent');
+assert(!js.includes("score>=.65?'high':'medium'"),
+  'Legacy 65 percent green threshold must not reappear');
+assert(js.includes("const identityTone=atomicCurrentProof(identityEvidence)?'high':'unverified'"),
+  'Entity identity may be green only when it has valid evidence');
 console.log('CONFIDENCE_COLOR_CONSISTENCY PASS');
