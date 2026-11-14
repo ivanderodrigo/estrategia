@@ -66,6 +66,8 @@ jobs:
           PY
       - name: Verify every reachable claim in its source context across sections
         run: python scripts/accredit_semantic_historical_sources.py
+      - name: Verify explicit structured product-alternative evidence
+        run: python scripts/accredit_structured_historical.py --limit 60 --timeout 7
       - name: Publish source checks without overwriting intelligence
         run: |
           git config user.name "github-actions[bot]"
@@ -78,6 +80,8 @@ jobs:
             data/current/historical_source_checks.json
             data/public/historical/current/source_checks.json
             config/current/historical_semantic_verified.json
+            config/current/historical_structured_verified.json
+            data/public/historical/current/structured_verification.json
             data/public/historical/current/semantic_claim_audit.json data/public/historical/current/full_source_inventory_coverage.json
           )
           mkdir -p "$output_dir"
