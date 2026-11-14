@@ -105,6 +105,10 @@ mixedManufacturers[0].fields.competitors={
 };
 assert.deepStrictEqual(bi.verifiedCompetitionFor(mixed,mixedManufacturers).value,['Arista Networks'],
  'External proven competitor survives; active Westcon peer is excluded');
+const sonarPortfolio=[{name:'Sonar',fields:{westcon_spain:field(true),competitors:detailedRelation('Some External Vendor')}}];
+const sonarAlias={name:'Sonar distributor',fields:{vendor_relations:detailedRelation('SonarQube')}};
+assert.deepStrictEqual(bi.verifiedCompetitionFor(sonarAlias,sonarPortfolio).value,[],
+ 'SonarQube is a known alias of active Westcon manufacturer Sonar');
 const retired={name:'Ruckus Networks',fields:{westcon_spain:field(false),competitors:detailedRelation('Cisco')}};
 assert.deepStrictEqual(bi.verifiedCompetitionFor(integratorOfficial,[retired]).value,[],
  'A retired manufacturer must never produce a Westcon competitor mapping');
