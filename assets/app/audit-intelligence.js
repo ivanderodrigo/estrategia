@@ -5,7 +5,7 @@ const order=['manufacturers','distributors','integrators','clients_public','clie
 const names={manufacturers:'Fabricantes',distributors:'Mayoristas',integrators:'Integradores',clients_public:'Clientes públicos',clients_private:'Clientes privados',trends:'Tendencias',architectures:'Arquitecturas'};
 const safe=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number=v=>v===null||v===undefined||v===''?'N/D':Number.isFinite(Number(v))?Number(v).toLocaleString('es-ES'):'N/D';
-function evaluate(manifest,debt){
+function evaluate(manifest,debt,integrity=null){
  const published=String(manifest?.generated_at||''),diagnosed=String(debt?.generated_at||'');
  const dateMatch=Boolean(published&&diagnosed&&published===diagnosed);
  const summary=debt?.debt_breakdown||{};
@@ -14,8 +14,9 @@ function evaluate(manifest,debt){
  const headline=Number(summary.empty_schema_fields||0)+Number(summary.claims_awaiting_evidence||0)+Number(summary.derived_support||0)+Number(summary.other_open_debt||0);
  const detail=order.reduce((sum,k)=>{const a=bySection[k]||{};return sum+Number(a.claims_awaiting_evidence||0)+Number(a.derivation_support||0)+Number(a.empty_schema_fields||0);},0);
  const hasData=Boolean(manifest?.counts&&debt?.by_section&&Number.isFinite(total));
- const consistent=hasData&&dateMatch&&headline===total&&detail===total;
- return {hasData,consistent,dateMatch,total,headline,detail,published,diagnosed,order:order.map(k=>{
+ const integrityMatch=Boolean(integrity?.status==='PASS'&&integrity?.snapshot_generated_at===published);
+ const consistent=hasData&&dateMatch&&headline===total&&detail===total&&(!integrity||integrityMatch);
+ return {hasData,consistent,dateMatch,integrityAvailable:Boolean(integrity),integrityMatch,total,headline,detail,published,diagnosed,order:order.map(k=>{
    const section=bySection[k]||{},sources=manifest?.meta?.source_coverage?.[k]||{},meta=manifest?.sections?.[k]||{};
    const claims=Number(sources.claims),sourced=Number(sources.sourced);
    return {key:k,label:names[k],entities:manifest?.counts?.[k]??meta.rows??null,claims:sources.claims??null,sourced:sources.sourced??null,
@@ -25,8 +26,8 @@ function evaluate(manifest,debt){
    };
  })};
 }
-function render(manifest,debt){
- const r=evaluate(manifest,debt);
+function render(manifest,debt,integrity=null){
+ const r=evaluate(manifest,debt,integrity);
  const details='<div class="cc-audit-meta"><b>Origen:</b> manifest.json · '+safe(r.published||'sin fecha')+
    ' | <b>Inventario:</b> debt_overview.json · '+safe(r.diagnosed||'sin fecha')+
    ' | <b>Fuente registrada:</b> '+number(manifest?.meta?.source_count)+' referencias</div>';
@@ -35,7 +36,9 @@ function render(manifest,debt){
   '<p><a href="data/public/debt_overview.json" target="_blank" rel="noopener">Consultar diagnóstico publicado</a></p>';
  }
  const alert=r.consistent?'<p class="cc-audit-ok">Desglose conciliado con el inventario publicado.</p>':
-  '<p class="cc-audit-warning">Advertencia: fechas o totales no coinciden. Los valores se presentan con su procedencia y no deben sumarse como una publicación conciliada.</p>';
+  '<p class="cc-audit-warning">Advertencia: fechas, totales o auditoría integral no coinciden. Los valores se muestran con su procedencia.</p>';
+ const integrityWarning=!r.integrityAvailable?'<p class="cc-audit-warning">Control de integridad de las siete áreas aún no disponible para esta publicación.</p>':
+   !r.integrityMatch?'<p class="cc-audit-warning">Auditoría integral fallida o correspondiente a otra publicación.</p>':'';
  const rows=r.order.map(a=>'<tr><th scope="row">'+safe(a.label)+'</th>'+
   '<td>'+number(a.entities)+'</td><td>'+number(a.sourced)+' / '+number(a.claims)+
   (a.coverage===null?'':' ('+a.coverage+'%)')+'</td>'+
