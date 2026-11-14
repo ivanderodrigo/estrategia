@@ -86,6 +86,15 @@ class WorkflowIntegrity(unittest.TestCase):
                         integration.index("scripts/publish_research_update.py"))
         self.assertIn("group: westcon-intelligence-research", integration)
 
+    def test_structured_competitor_proof_runs_on_historical_schedule(self) -> None:
+        diligence = (WORKFLOWS / "historical-source-diligence.yml").read_text(encoding="utf-8")
+        publisher = (ROOT / "scripts/publish_research_update.py").read_text(encoding="utf-8")
+        self.assertIn("scripts/accredit_structured_historical.py --limit 60", diligence)
+        for artifact in ("config/current/historical_structured_verified.json",
+                         "data/public/historical/current/structured_verification.json"):
+            self.assertIn(artifact, diligence)
+            self.assertIn(f'"{artifact}"', publisher)
+
     def test_source_verification_uses_python_modules(self) -> None:
         source = (WORKFLOWS / "source-verification.yml").read_text(encoding="utf-8")
         self.assertIn("python -m scripts.audit_claim_sources", source)
