@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import Mock, patch
 
-from scripts.review_sources_live import review_document
+from scripts.review_sources_live import review_document, run
 
 
 class LiveSourceReviewTests(unittest.TestCase):
@@ -47,6 +47,29 @@ class LiveSourceReviewTests(unittest.TestCase):
             review_document(session,"https://example.org","Integrator X","Vendor A"),
             "http_202_insufficient_content"
         )
+
+    def test_rotating_sample_spreads_across_hosts_and_sections(self):
+        claims=[
+            {"section":"clients_public","entity":"Buyer","field":"notice_id",
+             "value":str(i),"url":f"https://ted.europa.eu/notice/{i}"}
+            for i in range(100)
+        ]+[
+            {"section":"manufacturers","entity":"Vendor","field":"competitors",
+             "value":str(i),"url":f"https://manufacturer{i%4}.example.org/compare/{i}"}
+            for i in range(20)
+        ]+[
+            {"section":"integrators","entity":"Partner","field":"vendor_relations",
+             "value":str(i),"url":f"https://partner{i%3}.example.org/vendors/{i}"}
+            for i in range(20)
+        ]
+        with patch("scripts.review_sources_live.collect_claims",return_value=claims), \
+             patch("scripts.review_sources_live.review_document",return_value="page_mentions_value_only"):
+            result=run(None,limit=14,day=740000,session=Mock())
+        self.assertEqual(result["sampled"],14)
+        self.assertEqual(result["total_references"],140)
+        self.assertGreaterEqual(result["unique_source_hosts_in_sample"],6)
+        self.assertGreaterEqual(len({x["section"] for x in result["items"]}),3)
+        self.assertEqual(result["sampling_policy"],"rotating-section-host-round-robin-v1")
 
     @patch("scripts.review_sources_live.validate_public_url", side_effect=lambda x: x)
     def test_redirect_not_followed(self, validate):
