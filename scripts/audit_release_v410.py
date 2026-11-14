@@ -120,7 +120,18 @@ def evaluate_release_contract(
         old = _int(before.get(key))
         new = _int(after.get(key))
         if new < old:
-            errors.append(f"preserved {key} count regressed: {old}->{new}")
+            # A raw value count can shrink through canonical deduplication
+            # even though the exact-identity preservation audit reports no
+            # missing values. Never mask a real missing-value report: it is
+            # rejected above. Relations and evidence counters remain strict.
+            exact_values_preserved = (
+                key == "values"
+                and preservation.get("status") == "PASS"
+                and "values" in missing
+                and not missing.get("values")
+            )
+            if not exact_values_preserved:
+                errors.append(f"preserved {key} count regressed: {old}->{new}")
     before_entities = before.get("entities") or {}
     after_entities = after.get("entities") or {}
     for section, old_raw in before_entities.items():
