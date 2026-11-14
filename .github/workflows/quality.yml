@@ -50,6 +50,7 @@ jobs:
           fi
           python scripts/validate.py
           python scripts/validate_active_portfolio_public.py
+          python scripts/audit_competitor_portfolio_separation.py
           python scripts/validate_mass_historical_publication.py
           python scripts/audit_published_topic_markets.py
           python scripts/audit_published_issuer_competitors.py
