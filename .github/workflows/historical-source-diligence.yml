@@ -30,7 +30,7 @@ jobs:
       - name: Install prerequisites
         run: python -m pip install -r requirements.txt
       - name: Verify Git archive recovery invariants
-        run: python -m unittest tests.test_git_archive_source_recovery
+        run: python -m unittest discover -s tests -p 'test_git_archive_source_recovery.py'
       - name: Recover additional source URLs from historical Git snapshots
         run: python scripts/recover_historical_source_archive.py --snapshots 32 --max-pairs 30000
       - name: Enumerate all visible and historical claim-source pairs
