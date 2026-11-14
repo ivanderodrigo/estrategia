@@ -31,19 +31,29 @@ jobs:
         run: >-
           python scripts/revalidate_historical_sources.py
           --limit 750 --timeout 5 --workers 8
-      - name: Verify that no HTTP or mention result can automatically accredit a claim
+      - name: Verify each automatic accreditation is a structurally explicit Gartner product alternative
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
+          from urllib.parse import urlparse
           report = json.loads(Path('data/current/historical_source_checks.json').read_text(encoding='utf-8'))
-          assert report['status'] == 'SOURCE_REACHABILITY_CHECK_NOT_ACCREDITATION'
           assert report['urls_checked_this_run'] >= 1
-          for value in report['results'].values():
-              assert value['accreditation'] == 'NOT_ACCREDITED'
-              assert all(not item['accredited'] for item in value.get('claim_checks') or [])
-          print('Audited',report['urls_checked_this_run'],'URLs and',
-                report['claims_checked_this_run'],'claim-source pairs')
+          accredited = 0
+          for url, page in report['results'].items():
+              assert page['accreditation'] == 'NOT_ACCREDITED'  # A page alone never establishes a relationship.
+              for item in page.get('claim_checks') or []:
+                  if item.get('accredited'):
+                      accredited += 1
+                      assert item['status'] == 'VERIFIED_EXPLICIT_ALTERNATIVE'
+                      assert item['section'] == 'manufacturers' and item['field'] == 'competitors'
+                      assert urlparse(url).hostname in {'www.gartner.com','gartner.com'}
+                      assert urlparse(url).path.startswith('/reviews/product/')
+                      assert urlparse(url).path.rstrip('/').endswith('/alternatives')
+                      assert item.get('matched_vendor')
+          print('Audited', report['urls_checked_this_run'],'URLs and',
+                report['claims_checked_this_run'],'claim-source pairs,',
+                accredited,'explicit product alternatives')
           PY
       - name: Verify every reachable claim in its source context across sections
         run: python scripts/accredit_semantic_historical_sources.py
