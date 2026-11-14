@@ -546,7 +546,34 @@
     const value=field?.value;
     if(Array.isArray(value)){
       if(value.length&&typeof value[0]==='object'&&value[0].layer){
-        return `<div class="layer-list">${value.map(x=>{const layerField={...field,items:x.vendor_items||[]};const vendors=(x.vendors||[]),lim=limit??listLimit(vendors,context);const vetted=vendors.filter((v,i)=>atomicCurrentProof(itemFor(layerField,v,i).evidence));const tags=vetted.map((v,i)=>`<span class="tag-entry ${i>=lim?'tag-overflow':''}">${tagHtml(layerField,v,i,'emphasis')}</span>`).join('');const more=vendors.length>lim?`<button type="button" class="more-tags" data-more-tags data-label="… +${vendors.length-lim}">… +${vendors.length-lim}</button>`:'';return `<div class="layer"><b>${esc(x.layer)}</b><div class="tag-list">${tags}${more}</div>${x.note?`<small>${compactScalar(x.note,120)}</small>`:''}</div>`;}).join('')}</div>`;
+        // Architectural layers use the SAME confidence tabs as ordinary
+        // list fields. Never hide unresolved vendors or make a shared layer
+        // citation appear to certify every individual manufacturer.
+        return '<div class="layer-list">'+value.map(x=>{
+          const layerItem=(field.items||[]).find(it=>it?.value?.layer===x.layer);
+          const layerField={value:[x.layer],items:layerItem?[{
+            ...layerItem,value:x.layer
+          }]:[],evidence:[],confidence:layerItem?.confidence??0};
+          const heading=layerItem&&atomicCurrentProof(layerItem.evidence)
+            ?tagHtml(layerField,x.layer,0,'emphasis')
+            :pendingTagHtml(layerField,x.layer,0);
+          const vendors=x.vendors||[], vendorField={value:vendors,
+            items:x.vendor_items||[],evidence:[]};
+          const lim=limit??listLimit(vendors,context);
+          const tags=vendors.map((v,i)=>{
+            const item=itemFor(vendorField,v,i);
+            const verified=atomicCurrentProof(item.evidence);
+            return '<span class="tag-entry '+(i>=lim?'tag-overflow':'')+'">'+
+              (verified?tagHtml(vendorField,v,i):pendingTagHtml(vendorField,v,i))+
+              '</span>';
+          }).join('');
+          const more=vendors.length>lim
+            ?'<button type="button" class="more-tags" data-more-tags data-label="… +'+(vendors.length-lim)+'">… +'+(vendors.length-lim)+'</button>'
+            :'';
+          return '<div class="layer"><div class="tag-list layer-heading"><span class="tag-entry">'+
+            heading+'</span></div><div class="tag-list">'+tags+more+'</div>'+
+            (x.note?'<small>'+esc(x.note)+'</small>':'')+'</div>';
+        }).join('')+'</div>';
       }
       // Uniform badges for verified and unverified elements: no mixed dropdowns.
       const elements=value.map((v,i)=>({value:v,index:i,verified:atomicCurrentProof(itemFor(field,v,i).evidence)}))
