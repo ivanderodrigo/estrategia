@@ -61,12 +61,40 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/current/historical_source_checks.json data/public/historical/current/source_checks.json config/current/historical_semantic_verified.json data/public/historical/current/semantic_claim_audit.json
-          if git diff --cached --quiet; then
-            echo "No new checks"
-            exit 0
-          fi
-          git commit -m 'research: audit historical sources and individual claims [skip ci]'
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
+          # Save only the four outputs owned by diligence. Never rebase a
+          # generated snapshot onto conflicting Pages-generated JSON files.
+          output_dir="$RUNNER_TEMP/historical-source-audit"
+          files=(
+            data/current/historical_source_checks.json
+            data/public/historical/current/source_checks.json
+            config/current/historical_semantic_verified.json
+            data/public/historical/current/semantic_claim_audit.json
+          )
+          mkdir -p "$output_dir"
+          for file in "${files[@]}"; do
+            mkdir -p "$output_dir/$(dirname "$file")"
+            cp "$file" "$output_dir/$file"
+          done
+          for attempt in 1 2 3 4; do
+            # Reapply the audited artifacts on the very latest main, preserving
+            # any simultaneous application changes and Pages-published data.
+            git fetch origin main
+            git reset --hard origin/main
+            for file in "${files[@]}"; do
+              cp "$output_dir/$file" "$file"
+            done
+            git add "${files[@]}"
+            if git diff --cached --quiet; then
+              echo "Historical source audit already up to date"
+              exit 0
+            fi
+            git commit -m 'research: revalidate individually sourced historical claims [skip ci]'
+            if git push origin HEAD:main; then
+              echo "Published audited sources on current main"
+              exit 0
+            fi
+            echo "Main advanced while publishing audit; reconciling attempt $attempt"
+            sleep 2
+          done
+          echo "Source audit could not publish without racing another update"
+          exit 1
