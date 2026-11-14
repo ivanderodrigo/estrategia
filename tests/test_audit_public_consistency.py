@@ -28,7 +28,9 @@ class PublicAuditConsistencyTests(unittest.TestCase):
         self.write("manifest.json",self.manifest)
         self.write("debt_overview.json",self.debt)
         self.write("last_run.json",{"generated_at":stamp})
-        for s in SECTIONS:self.write(f"sections/{s}.json",{"rows":[{"name":s}],
+        for s in SECTIONS:self.write(f"sections/{s}.json",{"rows":[{
+            "name":s,"fields":{"sample":{"value":"Documentado","confidence":0.9,
+            "evidence_ids":["ev"]}}}],
             "evidence":{"ev":{"source_role":"Fuente pública primaria",
                         "url":"https://example.org/example"}}})
 
