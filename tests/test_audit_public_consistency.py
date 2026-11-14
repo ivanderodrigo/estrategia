@@ -19,7 +19,7 @@ class PublicAuditConsistencyTests(unittest.TestCase):
         self.root_patch.start();self.public_patch.start()
         stamp="2026-11-14T15:00:00+00:00"
         self.manifest={"generated_at":stamp,"counts":{s:1 for s in SECTIONS},
-                       "sections":{s:{"file":f"data/public/sections/{s}.json"} for s in SECTIONS},
+                       "sections":{s:{"file":f"data/public/sections/{s}.json","evidence":1} for s in SECTIONS},
                        "meta":{"source_coverage":{s:{"claims":1,"sourced":1} for s in SECTIONS}}}
         self.debt={"generated_at":stamp,"total_open_gaps":7,
                    "debt_breakdown":{"empty_schema_fields":7,"claims_awaiting_evidence":0,"derived_support":0},
