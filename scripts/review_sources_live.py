@@ -72,7 +72,7 @@ def review_document(session: requests.Session, url: str, entity: str, value: str
             text = " ".join(parser.parts)
         else:
             text = raw
-        if len(text.strip()) < 80:
+        if len(text.strip()) < 20:
             return "http_" + str(response.status_code) + "_insufficient_content"
         if text_mentions(text, entity) and text_mentions(text, value):
             return "page_mentions_entity_and_value_needs_semantic_review"
