@@ -16,7 +16,7 @@ concurrency:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v5
         with:
@@ -32,7 +32,7 @@ jobs:
       - name: Audit the full source URL inventory with individual claim checks
         run: >-
           python scripts/revalidate_historical_sources.py
-          --limit 1250 --timeout 4 --workers 12
+          --limit 5000 --timeout 4 --workers 12
       - name: Verify each automatic accreditation is a structurally explicit Gartner product alternative
         run: |
           python - <<'PY'
@@ -40,6 +40,11 @@ jobs:
           from pathlib import Path
           from urllib.parse import urlparse
           report = json.loads(Path('data/current/historical_source_checks.json').read_text(encoding='utf-8'))
+          # An exhaustive source audit checks every distinct current+archived
+          # URL in THIS run, not a small oldest-first slice.
+          assert report['urls_checked_this_run'] == report['urls_in_inventory'], (
+              f"Source inventory incomplete: {report['urls_checked_this_run']} / "
+              f"{report['urls_in_inventory']}")
           assert report['urls_checked_this_run'] >= 1
           accredited = 0
           for url, page in report['results'].items():
