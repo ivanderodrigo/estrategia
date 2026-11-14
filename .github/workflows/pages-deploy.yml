@@ -14,6 +14,9 @@ on:
       - 'data/public/manifest.json'
       - 'data/public/sections/**'
       - 'data/public/audit_integrity.json'
+      # Independent verification health changes daily even when canonical
+      # research stays unchanged. Publish its new warnings without rebuilding.
+      - 'data/public/source_verification_status.json'
       - 'CNAME'
       - '.github/workflows/pages-deploy.yml'
   workflow_dispatch:
