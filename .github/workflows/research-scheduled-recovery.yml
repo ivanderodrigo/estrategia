@@ -1,0 +1,41 @@
+name: Recover Failed Scheduled Research
+# One controlled retry using current main after a scheduled job fails.
+# A workflow_dispatch retry does not meet the 'schedule' guard, so it cannot
+# recurse indefinitely, and the reusable researcher serializes writes.
+on:
+  workflow_run:
+    workflows:
+      - 'Westcon Intelligence Daily'
+      - 'Westcon Intelligence Weekly'
+      - 'Westcon Intelligence Monthly'
+    types: [completed]
+    branches: [main]
+permissions:
+  actions: write
+  contents: read
+jobs:
+  retry-once:
+    if: >-
+      github.event.workflow_run.event == 'schedule' &&
+      github.event.workflow_run.conclusion == 'failure' &&
+      github.event.workflow_run.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Dispatch one fresh-main recovery without recursion
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          FAILED_WORKFLOW: ${{ github.event.workflow_run.name }}
+          FAILED_URL: ${{ github.event.workflow_run.html_url }}
+        run: |
+          set -euo pipefail
+          case "$FAILED_WORKFLOW" in
+            "Westcon Intelligence Daily") target="research-daily.yml" ;;
+            "Westcon Intelligence Weekly") target="research-weekly.yml" ;;
+            "Westcon Intelligence Monthly") target="research-monthly.yml" ;;
+            *) echo "Unknown scheduled workflow: $FAILED_WORKFLOW"; exit 1 ;;
+          esac
+          echo "Recovering scheduled run $FAILED_URL on latest main via $target"
+          gh workflow run "$target" --repo "$REPO" --ref main
+          echo "Single recovery dispatched. The resulting run must pass its own full validations."
