@@ -14,6 +14,12 @@ for(const area of ['Fabricantes','Mayoristas','Integradores','Clientes públicos
 }
 assert.ok(html.includes('Afirmaciones con fuente / total'));
 assert.ok(html.includes('Con fuente ≠ hecho verificado'));
+const verified={status:'PASS',snapshot_generated_at:m.generated_at};
+assert.strictEqual(a.evaluate(m,d,verified).consistent,true);
+const obsolete={...verified,snapshot_generated_at:'2025-01-01'};
+assert.strictEqual(a.evaluate(m,d,obsolete).consistent,false);
+assert.ok(a.render(m,d,obsolete).includes('Auditoría integral fallida'));
+assert.ok(a.render(m,d,null).includes('Control de integridad'));
 const empty=a.render(m,null);
 assert.ok(empty.includes('no disponible'));
 assert.ok(!empty.includes('NaN'));
