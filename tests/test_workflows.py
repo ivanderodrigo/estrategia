@@ -79,6 +79,9 @@ class WorkflowIntegrity(unittest.TestCase):
         self.assertIn("python -m engine.pipeline", integration)
         self.assertIn("scripts/audit_public_consistency.py", integration)
         self.assertIn("scripts/publish_research_update.py", integration)
+        publisher = (ROOT / "scripts/publish_research_update.py").read_text(encoding="utf-8")
+        self.assertIn('"config/current/historical_semantic_verified.json"', publisher)
+        self.assertIn('"data/public/historical/current/semantic_claim_audit.json"', publisher)
         self.assertLess(integration.index("python -m engine.pipeline"),
                         integration.index("scripts/publish_research_update.py"))
         self.assertIn("group: westcon-intelligence-research", integration)
