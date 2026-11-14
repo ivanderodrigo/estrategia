@@ -165,7 +165,7 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
             explicit_alternative = False
             if is_gartner_alternative and vendor and len(vendor) >= 3:
                 vendor_match = re.search(
-                    r"(?<![a-z0-9])by\\s+" + re.escape(vendor) + r"(?![a-z0-9])", text
+                    r"(?<![a-z0-9])by\s+" + re.escape(vendor) + r"(?![a-z0-9])", text
                 )
                 has_market = (not qualifier or
                               all(x in text for x in qualifier.split()
