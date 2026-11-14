@@ -61,6 +61,18 @@ for (const token of [
   "_historical:row._historical?.__identity__||[]"
 ]) if(!js.includes(token)) throw new Error("archived evidence UI missing: "+token);
 
+// Layered SASE/SSE architecture fits must be confidence-colored and never
+// discard unverified vendor entries.
+for(const token of [
+  "const heading=layerItem&&atomicCurrentProof(layerItem.evidence)",
+  "pendingTagHtml(layerField,x.layer,0)",
+  "const vendors=x.vendors||[], vendorField=",
+  "verified?tagHtml(vendorField,v,i):pendingTagHtml(vendorField,v,i)",
+  "class=\"tag-list layer-heading\""
+]) if(!js.includes(token))throw new Error("architecture layer confidence tabs missing: "+token);
+if(js.includes("vendors.filter((v,i)=>atomicCurrentProof(itemFor(layerField"))
+  throw new Error("architecture hides unverified vendors");
+
 console.log('UI smoke v4.4.0 PASS');
 
 // Directly confirmed portfolio statements have no public URL. They must be
