@@ -5,7 +5,7 @@ on:
     paths: ["index.html","404.html","memoria-historica.html","assets/**","engine/**","config/current/**","tests/**","scripts/**",".github/workflows/pages-deploy.yml"]
   workflow_dispatch:
   workflow_run:
-    workflows: ["Westcon Intelligence Daily", "Westcon Intelligence Weekly", "Westcon Intelligence Monthly"]
+    workflows: ["Westcon Intelligence Daily", "Westcon Intelligence Weekly", "Westcon Intelligence Monthly", "Historical Source Diligence"]
     types: [completed]
     branches: [main]
 permissions:
