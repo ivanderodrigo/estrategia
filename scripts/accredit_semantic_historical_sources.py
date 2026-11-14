@@ -186,6 +186,28 @@ def classify(claim,url):
             return "VERIFIED_CITED_ANALYST_DOCUMENT"
     return "UNSUPPORTED_FIELD_OR_CONTEXT"
 
+def retained_comparison_is_still_explicit(old):
+    """Re-evaluate legacy comparison-page proof under the exact-pair rule."""
+    source = old.get("source") or {}
+    if (old.get("section"),old.get("field")) != ("manufacturers","competitors"):
+        return True
+    if (source.get("source_type") != "historical-verified-excerpt"
+        or source.get("verification_method") != "VERIFIED_EXPLICIT_COMPETITOR_CONTEXT"):
+        return True
+    url=str(source.get("url") or "")
+    path=canonical(urlparse(url).path)
+    if not any(term in path for term in (
+        "compare","comparison","comparativa","versus","alternatives"
+    )):
+        return True
+    description=str(source.get("description") or "")
+    excerpt=description.split("Extracto de evidencia:",1)[-1].strip()
+    candidate={"section":"manufacturers","field":"competitors",
+               "entity":old.get("entity"),"value":old.get("value"),
+               "source_context":excerpt}
+    return classify(candidate,url)=="VERIFIED_EXPLICIT_COMPETITOR_CONTEXT"
+
+
 def main():
     report=json.loads(CHECKS.read_text(encoding="utf-8"))
     results=report.get("results") or {}
@@ -281,6 +303,9 @@ def main():
         if (oldfield in {"services","capabilities","specializations"}
             and len(oldval.split())==1 and len(oldval)<12
             and oldpath in {"", "es", "es es", "pt", "pt pt", "en", "en us", "home", "inicio"}):
+            quarantined_legacy+=1
+            continue
+        if not retained_comparison_is_still_explicit(old):
             quarantined_legacy+=1
             continue
         key=signature(old)
