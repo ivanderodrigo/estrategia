@@ -45,7 +45,7 @@ Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/de
   const sourceLabel=!sourceValid?' · Verificación independiente de enlaces: sin informe publicado':
    ' · Revisión independiente de enlaces: '+dateLabel(sourceCheck.generated_at)+
    ' ('+fmt(sourceCheck.live_sample_reviewed)+' intentos de '+fmt(sourceCheck.total_live_review_candidates)+
-   ' referencias; NO acredita hechos)'+sourceHealthNote+
+   ' referencias · '+fmt(sourceCheck.live_sample_hosts)+' dominios; NO acredita hechos)'+sourceHealthNote+
    (!sourceMatches?' · ALERTA: revisión correspondiente a otro snapshot':'')+
    (sourceAge!==null&&sourceAge>2?' · ALERTA: verificación con más de 48 h':'');
   const actualResearch=Date.parse(researchAt||'');
