@@ -84,6 +84,49 @@ class PortfolioAndCrossDiscoveryTests(unittest.TestCase):
         overlaps = data["distributors"][0]["fields"]["westcon_overlap"]["value"]
         self.assertEqual(set(overlaps), {"Cloudflare", "Sonar"})
 
+    def test_competing_active_westcon_peers_are_not_external_channel_competitors(self):
+        # The product portfolios can compete technologically without making
+        # either active Westcon manufacturer an external competitor.
+        proof = {
+            "url": "https://example.org/partners/cisco",
+            "source": "Test primary",
+            "provenance_origin": "PUBLIC_PRIMARY",
+            "source_type": "official-web",
+            "atomic": True,
+        }
+        def relation(values):
+            return {
+                "value": values,
+                "items": [
+                    {"value": value, "evidence": [dict(proof)]}
+                    for value in values
+                ],
+                "evidence": [dict(proof)],
+            }
+        data = {
+            "manufacturers": [
+                {"name": "Extreme Networks", "fields": {
+                    "competitors": relation(["Cisco", "Arista Networks"])}},
+                {"name": "Cisco", "fields": {
+                    "competitors": relation(["Extreme Networks"])}},
+                {"name": "Arista Networks", "fields": {}},
+            ],
+            "distributors": [
+                {"name": "Channel Example", "fields": {
+                    "vendor_relations": relation(["Cisco", "Arista Networks"])}},
+            ],
+            "integrators": [],
+        }
+        derive_overlap_fields(data)
+        fields = data["distributors"][0]["fields"]
+        self.assertIn("Cisco", fields["westcon_overlap"]["value"])
+        competitors = fields.get("competitor_vendor_overlap", {}).get("value", [])
+        self.assertNotIn("Cisco", competitors)
+        self.assertNotIn("Extreme Networks", competitors)
+        # An external manufacturer remains eligible if both explicit claims
+        # have individual source binding.
+        self.assertIn("Arista Networks", competitors)
+
     def test_trends_use_analyst_and_standard_sources(self):
         row = {"name": "AI Security", "fields": {"domain": {"value": "Cybersecurity"}}}
         queries = intelligent_discovery_queries(
