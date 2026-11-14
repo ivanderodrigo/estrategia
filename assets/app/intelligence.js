@@ -766,7 +766,7 @@
         .map(url=>{
           const check=state.historicalChecks?.[url];
           const exactProof=(item?.evidence||field?.evidence||[]).some(ev=>ev.url===url
-             && (!ev.item_value||historicalKey(ev.item_value)===historicalKey(h.value))
+             && (ev.item_value ? historicalKey(ev.item_value)===historicalKey(h.value) : !Array.isArray(field?.value)&&historicalKey(field?.value)===historicalKey(h.value))
              && atomicCurrentProof([ev]));
            const otherProof=(item?.evidence||[]).some(ev=>atomicCurrentProof([ev])
              && ev.item_value && historicalKey(ev.item_value)===historicalKey(h.value));
