@@ -8,6 +8,7 @@ on:
       - '.github/workflows/historical-evidence-integration.yml'
       - 'engine/enrichment.py'
       - 'engine/historical_publication.py'
+      - 'engine/historical_gap_context.py'
       - 'tests/test_historical_publication_no_link_loss.py'
   workflow_run:
     workflows: ['Historical Source Diligence']
