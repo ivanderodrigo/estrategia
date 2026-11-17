@@ -51,6 +51,25 @@ class DeepHistoricalSourceTests(unittest.TestCase):
         self.assertEqual(item["status"],"VALUE_PRESENT_REQUIRES_CONTEXT")
         self.assertEqual(classify(item,PARTNERS),"VERIFIED_EXPLICIT_PARTNER_CONTEXT")
 
+    def test_multi_claim_homepage_follows_more_than_four_relevant_pages(self):
+        base="https://www.nunsys.com/"
+        claims=[{"section":"integrators","entity":"nunsys",
+                 "field":"vendor_relations","value":f"Vendor {i}"} for i in range(20)]
+        links="".join(f'<a href="/partners/vendor-{i}">Vendor {i} partner</a>' for i in range(10))
+        class ManyPages:
+            def get(self,url,*args,**kwargs):
+                if url==base:
+                    return Response("<html><body>Partner catalogue "+links+
+                                    " additional corporate technology information</body></html>")
+                return Response("<html><body>Official partner directory Vendor "+
+                                url.rsplit("-",1)[-1]+
+                                " lists enterprise alliance details and product portfolio.</body></html>")
+        with patch("scripts.revalidate_historical_sources.validate_public_url",side_effect=lambda x:x):
+            found=check_one(base,claims,session=ManyPages())
+        self.assertEqual(found["followup_budget"],10)
+        self.assertEqual(found["deep_links_fetched"],10)
+        self.assertLessEqual(found["deep_links_fetched"],10)
+
     def test_external_links_are_never_crawled(self):
         html='''<a href="https://www.attacker-example.com/partner">Partners</a>
                  <a href="/servicios">Servicios empresariales</a>
