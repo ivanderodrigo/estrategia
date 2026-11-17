@@ -15,8 +15,11 @@ function evaluate(manifest,debt,integrity=null){
  const detail=order.reduce((sum,k)=>{const a=bySection[k]||{};return sum+Number(a.claims_awaiting_evidence||0)+Number(a.derivation_support||0)+Number(a.empty_schema_fields||0);},0);
  const hasData=Boolean(manifest?.counts&&debt?.by_section&&Number.isFinite(total));
  const integrityMatch=Boolean(integrity?.status==='PASS'&&integrity?.snapshot_generated_at===published);
+ const integrityChecked=String(integrity?.audited_at||'');
+ const checkedMs=Date.parse(integrityChecked);
+ const integrityStale=Boolean(integrity&&(!Number.isFinite(checkedMs)||Date.now()-checkedMs>12*3600000));
  const consistent=hasData&&dateMatch&&headline===total&&detail===total&&(!integrity||integrityMatch);
- return {hasData,consistent,dateMatch,integrityAvailable:Boolean(integrity),integrityMatch,total,headline,detail,published,diagnosed,order:order.map(k=>{
+ return {hasData,consistent,dateMatch,integrityAvailable:Boolean(integrity),integrityMatch,integrityChecked,integrityStale,total,headline,detail,published,diagnosed,order:order.map(k=>{
    const section=bySection[k]||{},sources=manifest?.meta?.source_coverage?.[k]||{},meta=manifest?.sections?.[k]||{};
    const claims=Number(sources.claims),sourced=Number(sources.sourced);
    return {key:k,label:names[k],entities:manifest?.counts?.[k]??meta.rows??null,claims:sources.claims??null,sourced:sources.sourced??null,
@@ -30,6 +33,7 @@ function render(manifest,debt,integrity=null){
  const r=evaluate(manifest,debt,integrity);
  const details='<div class="cc-audit-meta"><b>Origen:</b> manifest.json · '+safe(r.published||'sin fecha')+
    ' | <b>Inventario:</b> debt_overview.json · '+safe(r.diagnosed||'sin fecha')+
+   ' | <b>Último control real:</b> '+safe(r.integrityChecked||'no disponible')+
    ' | <b>Fuente registrada:</b> '+number(manifest?.meta?.source_count)+' referencias</div>';
  if(!r.hasData){
   return '<p class="cc-audit-warning">Auditoría por área no disponible: faltan cifras verificables de la misma publicación. No se muestran ceros ficticios.</p>'+details+
@@ -38,7 +42,8 @@ function render(manifest,debt,integrity=null){
  const alert=r.consistent?'<p class="cc-audit-ok">Desglose conciliado con el inventario publicado.</p>':
   '<p class="cc-audit-warning">Advertencia: fechas, totales o auditoría integral no coinciden. Los valores se muestran con su procedencia.</p>';
  const integrityWarning=!r.integrityAvailable?'<p class="cc-audit-warning">Control de integridad de las siete áreas aún no disponible para esta publicación.</p>':
-   !r.integrityMatch?'<p class="cc-audit-warning">Auditoría integral fallida o correspondiente a otra publicación.</p>':'';
+   !r.integrityMatch?'<p class="cc-audit-warning">Auditoría integral fallida o correspondiente a otra publicación.</p>':
+   r.integrityStale?'<p class="cc-audit-warning">Última revisión integral anterior a 12 horas: comprobar las tareas de actualización. Una fecha reciente de publicación no demuestra una investigación nueva.</p>':'';
  const rows=r.order.map(a=>'<tr><th scope="row">'+safe(a.label)+'</th>'+
   '<td>'+number(a.entities)+'</td><td>'+number(a.sourced)+' / '+number(a.claims)+
   (a.coverage===null?'':' ('+a.coverage+'%)')+'</td>'+
