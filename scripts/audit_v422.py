@@ -46,10 +46,25 @@ def main() -> int:
         for alias in [name]+list((fact or {}).get('aliases') or []):
             aliases[canonical(alias)]=canonical(name)
 
+    # A dated current-portfolio override supersedes the earlier FY27 deck.
+    # Former vendors must remain market rows, but cannot be counted as active
+    # Westcon vendors merely because they appeared in the old presentation.
+    superseded={canonical(x) for x in ((cfg.get('portfolio_override_2026_11') or {}).get('excluded') or [])}
     es_ok=pt_ok=0
     current_cap_items=0
     missing_caps=[]
     for name,fact in (cfg.get('portfolio_spain') or {}).items():
+        if canonical(name) in superseded:
+            row=index.get(canonical(name))
+            if not row:
+                errors.append(f'superseded manufacturer missing as market entity: {name}')
+            else:
+                fields=row.get('fields') or {}
+                for field_id in ('westcon_spain','westcon_portugal'):
+                    field=fields.get(field_id) or {}
+                    if field.get('value') is not False or not has_current(field,field=field_id,value=False):
+                        errors.append(f'{name}: superseded portfolio exclusion not first-party accredited for {field_id}')
+            continue
         wanted=[canonical(name)]+[canonical(x) for x in ((fact or {}).get('aliases') or [])]
         row=next((index.get(k) for k in wanted if index.get(k)),None)
         if not row:
