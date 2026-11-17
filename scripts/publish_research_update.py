@@ -85,7 +85,12 @@ UNRELATED_DIAGNOSTICS=("data/current/daily_workflow_health.json",
                        # This independently sampled URL-health telemetry is
                        # not source accreditation and does not affect the
                        # canonical intelligence model or any claim binding.
-                       "data/public/source_verification_status.json")
+                       "data/public/source_verification_status.json",
+                       # The independent six-hour integrity check only rewrites
+                       # the audit timestamp for the OLD public snapshot. A
+                       # concurrent research build recomputes this same report
+                       # for its new snapshot before publishing.
+                       "data/public/audit_integrity.json")
 
 
 def safe_remote_only(paths: list[str]) -> bool:
