@@ -35,7 +35,8 @@ class HistoricalPublicationTests(unittest.TestCase):
         }]}
         return old, gaps
 
-    def test_exports_exact_historical_url_but_not_unrelated_url(self):
+    @patch("engine.historical_publication.read_json", return_value={})
+    def test_exports_exact_historical_url_but_not_unrelated_url(self, _previous):
         old, gaps = self._data()
         with patch("engine.historical_publication.history_by_gap", return_value={}):
             with patch("engine.historical_publication.history_by_identity",
@@ -52,7 +53,8 @@ class HistoricalPublicationTests(unittest.TestCase):
         self.assertNotIn("https://unrelated.example.org/other", str(arch))
         self.assertEqual(len(files), 9)
 
-    def test_does_not_export_derived_claim_or_source_for_wrong_value(self):
+    @patch("engine.historical_publication.read_json", return_value={})
+    def test_does_not_export_derived_claim_or_source_for_wrong_value(self, _previous):
         old, gaps = self._data()
         gaps["gaps"][0]["target_values"] = ["Zscaler"]
         gaps["gaps"][1]["gap_kind"] = "derivation-support"
