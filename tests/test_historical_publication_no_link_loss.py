@@ -28,6 +28,27 @@ class HistoricalLinkRetention(unittest.TestCase):
         self.assertEqual(summary["claims"],32)
         self.assertEqual(summary["unique_urls"],9)
 
+    def test_rebuild_keeps_previous_exact_claim_original_links(self):
+        v="Cisco"
+        history={"historical_samples":[{"value":json.dumps(v),
+            "source_urls":["https://example.org/partners/current"]}]}
+        earlier={"entities":{"example partner":{"vendor_relations":[{
+            "value":"Cisco","urls":["https://example.org/partners/archived",
+                                    "https://example.org/partners/current"]}]}}}}
+        gaps={"gaps":[{"section":"integrators","entity":"Example Partner",
+                        "field":"vendor_relations","target_values":[v]}]}
+        def previous(file, default=None):
+            return earlier if file.endswith("/integrators.json") else (default or {})
+        with patch("engine.historical_publication.history_by_gap",return_value={}), \
+             patch("engine.historical_publication.history_by_identity",return_value={}), \
+             patch("engine.historical_publication.historical_record_for_gap",return_value=history), \
+             patch("engine.historical_publication.read_json",side_effect=previous):
+            output,_=publish_historical_trails(gaps,"2026-11-17T00:00:00Z")
+        current=json.loads(output["data/public/historical/current/integrators.json"])
+        links=current["entities"]["example partner"]["vendor_relations"][0]["urls"]
+        self.assertEqual(links,["https://example.org/partners/current",
+                                "https://example.org/partners/archived"])
+
     def test_other_vendor_source_is_quarantined_not_misattributed(self):
         vals=["Cloud security"]
         history={"historical_samples":[{"value":json.dumps(vals[0]),
