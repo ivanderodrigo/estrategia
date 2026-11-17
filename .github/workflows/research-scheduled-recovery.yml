@@ -1,6 +1,7 @@
 name: Recover Failed Scheduled Research
-# One controlled retry using current main after a scheduled job fails.
-# A workflow_dispatch retry does not meet the 'schedule' guard, so it cannot
+# One controlled retry from current main after a scheduled job fails, or a
+# deliberate workflow-maintenance push races concurrent main updates.
+# workflow_dispatch retries do not meet the origin-event guard, so this cannot
 # recurse indefinitely, and the reusable researcher serializes writes.
 on:
   workflow_run:
@@ -16,7 +17,7 @@ permissions:
 jobs:
   retry-once:
     if: >-
-      github.event.workflow_run.event == 'schedule' &&
+      contains(fromJSON('["schedule","push"]'), github.event.workflow_run.event) &&
       github.event.workflow_run.conclusion == 'failure' &&
       github.event.workflow_run.run_attempt == 1
     runs-on: ubuntu-latest
