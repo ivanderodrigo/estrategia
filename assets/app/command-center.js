@@ -93,9 +93,11 @@ Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/de
     fmt(historyAudit.claim_source_pairs_reviewed)+' pares afirmación–fuente evaluados · '+
     fmt(historyAudit.verified_claim_source_pairs)+' acreditaciones registradas · '+
     fmt(historyAudit.retained_previous_verifications)+' acreditaciones previas conservadas · '+
-    fmt(historyAudit.historical_leads_not_accredited)+' indicios históricos sin acreditar.</p>'+
+    fmt(historyAudit.historical_leads_not_accredited)+' indicios históricos sin acreditar · '+
+    fmt(historyAudit.pending_individual_claim_source_links)+' enlaces pendientes de verificación individual.</p>'+
     (same?'':'<p class="cc-audit-warning">Aviso: esta revisión histórica no corresponde todavía a la última reconstrucción publicada.</p>')+
-    '<p>Detalle acreditado por área: '+(areas||'sin desglose')+'. Un enlace violeta no se convierte en verde solo por estar disponible.</p>'+
+    '<p>Detalle acreditado por área: '+(areas||'sin desglose')+'. Un enlace violeta no se convierte en verde solo por estar disponible. '+
+    '<a href="data/public/historical/current/pending_review_queue.json" target="_blank" rel="noopener noreferrer">Abrir cola completa de enlaces pendientes y motivos</a>.</p>'+
     '</section>';
  }else{
   audit.innerHTML+='<p class="cc-audit-warning">No se ha publicado todavía el resumen verificable de acreditación histórica para este snapshot.</p>';
