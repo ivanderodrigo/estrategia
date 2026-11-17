@@ -34,7 +34,7 @@ class HistoricalLinkRetention(unittest.TestCase):
             "source_urls":["https://example.org/partners/current"]}]}
         earlier={"entities":{"example partner":{"vendor_relations":[{
             "value":"Cisco","urls":["https://example.org/partners/archived",
-                                    "https://example.org/partners/current"]}]}}}}
+                                    "https://example.org/partners/current"]}]}}}
         gaps={"gaps":[{"section":"integrators","entity":"Example Partner",
                         "field":"vendor_relations","target_values":[v]}]}
         def previous(file, default=None):
