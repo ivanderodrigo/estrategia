@@ -36,7 +36,10 @@ def enrich_from_history(gaps: list[dict[str, Any]], index_path: Path = INDEX) ->
                 "historical_value":str(item.get("value") or "")[:500],
                 "first_revision":str(item.get("first_revision") or ""),
                 "last_revision":str(item.get("last_revision") or ""),
-                "source_urls":[u for u in item.get("urls") or [] if isinstance(u,str) and u.startswith(("https://","http://"))][:3],
+                "source_urls":list(dict.fromkeys(
+                    u for u in (item.get("urls") or [])
+                    if isinstance(u,str) and u.startswith(("https://","http://"))
+                )),
                 "review_status":"HISTORICAL_ONLY_NOT_CURRENTLY_ACCREDITED",
             })
         total += len(leads)
