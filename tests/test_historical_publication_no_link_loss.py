@@ -49,6 +49,23 @@ class HistoricalLinkRetention(unittest.TestCase):
         self.assertEqual(links,["https://example.org/partners/current",
                                 "https://example.org/partners/archived"])
 
+    def test_archive_index_disappearing_does_not_remove_still_pending_link(self):
+        old={"entities":{"example partner":{"vendor_relations":[{
+            "value":"Cisco","urls":["https://example.org/partners/cisco"]}]}}}
+        gaps={"gaps":[{"section":"integrators","entity":"Example Partner",
+                        "field":"vendor_relations","target_values":["Cisco"]}]}
+        def prior(file,default=None):
+            return old if file.endswith("/integrators.json") else {}
+        with patch("engine.historical_publication.history_by_gap",return_value={}), \
+             patch("engine.historical_publication.history_by_identity",return_value={}), \
+             patch("engine.historical_publication.historical_record_for_gap",return_value=None), \
+             patch("engine.historical_publication.read_json",side_effect=prior):
+            files,summary=publish_historical_trails(gaps,"2026-11-17T00:00:00Z")
+        current=json.loads(files["data/public/historical/current/integrators.json"])
+        self.assertEqual(current["entities"]["example partner"]["vendor_relations"][0]["urls"],
+                         ["https://example.org/partners/cisco"])
+        self.assertEqual(summary["claims"],1)
+
     def test_other_vendor_source_is_quarantined_not_misattributed(self):
         vals=["Cloud security"]
         history={"historical_samples":[{"value":json.dumps(vals[0]),
