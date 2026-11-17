@@ -557,7 +557,19 @@ def check_one(url: str, claims: list[dict], timeout: float = 7.0,
                         )
                         and canonical(c.get("entity") or "") in owned_entities]
             if unresolved:
-                deep_links=deep_source_links(response.text,safe,limit=4,claims=unresolved)
+                # A generic corporate landing page can carry dozens of
+                # independent historical vendor/service claims. Four generic
+                # follow-up pages cannot give each a fair chance of reaching
+                # the specific partner catalogue or service description.
+                # Expand only for many unresolved exact claims, and retain a
+                # strict upper bound per source host and per root URL.
+                followup_budget = 10 if len(unresolved) >= 20 else (
+                    7 if len(unresolved) >= 8 else 4
+                )
+                deep_links=deep_source_links(
+                    response.text,safe,limit=followup_budget,claims=unresolved
+                )
+                result["followup_budget"]=followup_budget
                 result["followup_candidates"]=len(deep_links)
                 result["deep_links_fetched"]=0
                 result["deep_claim_hits"]=0
