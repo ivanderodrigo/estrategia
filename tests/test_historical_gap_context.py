@@ -26,6 +26,21 @@ class HistoricalGapBridge(unittest.TestCase):
         self.assertNotIn("historical_research_leads",gaps[1])
         self.assertEqual(gaps[0]["historical_research_leads"][0]["review_status"],"HISTORICAL_ONLY_NOT_CURRENTLY_ACCREDITED")
 
+    def test_historical_task_preserves_more_than_three_source_urls(self):
+        urls=[f"https://example.org/partners/vendor-{i}" for i in range(10)]
+        data={"candidate_count":1,"candidates":[{
+            "section":"integrators","entity":"Example Partner",
+            "field":"vendor_relations","value":json.dumps("Cisco"),
+            "urls":urls,"status":"HISTORICAL_CANDIDATE_NOT_REVALIDATED"}]}
+        gaps=[{"section":"integrators","entity":"Example Partner",
+               "field":"vendor_relations","research_state":"Por investigar",
+               "revalidation_seeds":[]}]
+        with tempfile.TemporaryDirectory() as tmp:
+            index=Path(tmp)/"index.json"
+            index.write_text(json.dumps(data),encoding="utf-8")
+            enrich_from_history(gaps,index)
+        self.assertEqual(gaps[0]["historical_research_leads"][0]["source_urls"],urls)
+
     def test_fails_closed_on_incomplete_index(self):
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/"index.json"
