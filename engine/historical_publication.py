@@ -19,8 +19,11 @@ from .research.historical_leads import (
 )
 from .storage import json_bytes
 
-MAX_URLS = 3
-MAX_CLAIMS_PER_FIELD = 24
+# Historical links are a research archive, not a preview widget. Never drop
+# claim-specific URLs or values merely because a fixed display quota was hit.
+# Source identity alignment and safe-URL validation remain mandatory.
+MAX_URLS = None
+MAX_CLAIMS_PER_FIELD = None
 
 
 def publish_historical_trails(gap_report: dict[str, Any], generated_at: str) -> tuple[dict[str, bytes], dict[str, Any]]:
@@ -70,13 +73,10 @@ def publish_historical_trails(gap_report: dict[str, Any], generated_at: str) -> 
                                        "field": field, "value": target, "url": url,
                                        "reason": reason})
                     continue
-                if len(urls) < MAX_URLS:
-                    urls.append(url)
+                urls.append(url)
             if not urls:
                 continue
             claims = by_section[section][canonical(entity)][field]
-            if len(claims) >= MAX_CLAIMS_PER_FIELD:
-                continue
             if any(item["value"] == target for item in claims):
                 continue
             claims.append({
