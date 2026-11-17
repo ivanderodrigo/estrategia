@@ -17,13 +17,7 @@ from .research.historical_leads import (
     historical_record_for_gap, history_by_gap, history_by_identity,
     usable_historical_url,
 )
-from .storage import json_bytes
-
-# Historical links are a research archive, not a preview widget. Never drop
-# claim-specific URLs or values merely because a fixed display quota was hit.
-# Source identity alignment and safe-URL validation remain mandatory.
-MAX_URLS = None
-MAX_CLAIMS_PER_FIELD = None
+from .storage import json_bytes, read_json
 
 
 def publish_historical_trails(gap_report: dict[str, Any], generated_at: str) -> tuple[dict[str, bytes], dict[str, Any]]:
@@ -88,6 +82,31 @@ def publish_historical_trails(gap_report: dict[str, Any], generated_at: str) -> 
             unique_urls.update(urls)
             tally["claims"] += 1
             tally["claims_" + section] += 1
+
+    # A rebuild may regenerate the exact same pending claim with fewer URLs
+    # because an upstream research index was compacted or re-keyed. Preserve
+    # all previously published original links for that SAME entity+field+value,
+    # subject to URL safety and cross-vendor alignment. This is archival
+    # retention ONLY: none of these URLs becomes accreditation.
+    for section in SECTIONS:
+        old = read_json(f"data/public/historical/current/{section}.json", {})
+        for entity, fields in (by_section.get(section) or {}).items():
+            previous_fields = ((old.get("entities") or {}).get(entity) or {})
+            for field, claims in fields.items():
+                indexed = {
+                    canonical(claim.get("value")): claim
+                    for claim in previous_fields.get(field) or []
+                    if isinstance(claim, dict) and isinstance(claim.get("value"), str)
+                }
+                for claim in claims:
+                    previous = indexed.get(canonical(claim["value"])) or {}
+                    urls = claim["urls"]
+                    for url in previous.get("urls") or []:
+                        if (isinstance(url, str) and usable_historical_url(url)
+                                and url not in urls
+                                and source_alignment(section, entity, field, url)[0]):
+                            urls.append(url)
+                    unique_urls.update(urls)
 
     out: dict[str, bytes] = {}
     for section in SECTIONS:
