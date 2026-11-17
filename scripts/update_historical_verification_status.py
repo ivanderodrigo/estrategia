@@ -15,7 +15,7 @@ def read(relative):
     file=ROOT/relative
     return json.loads(file.read_text(encoding="utf-8")) if file.exists() else {}
 
-def make_status(manifest, report, registry, history):
+def make_status(manifest, report, registry, history, pending=None):
     audited=report.get("generated_at")
     claims=registry.get("existing_claim_sources") or []
     return {
@@ -30,6 +30,8 @@ def make_status(manifest, report, registry, history):
         "quarantined_legacy":int(report.get("quarantined_generic_homepage_claims") or 0),
         "pending_review_examples_count":len(report.get("pending_recheck_examples") or []),
         "historical_leads_not_accredited":int(history.get("claims") or 0),
+        "pending_individual_claim_source_links":int((pending or {}).get("pending_claim_source_pairs") or 0),
+        "pending_by_reason":(pending or {}).get("by_reason") or {},
         "by_section":report.get("by_section") or {},
         "method":"Exact historical source URL + claim + field semantic verification",
         "disclaimer":"A source URL or text mention alone is not a confirmed fact. This is verified claim-source proof, not full-market coverage.",
@@ -39,7 +41,8 @@ def main():
     status=make_status(read("data/public/manifest.json"),
         read("data/public/historical/current/semantic_claim_audit.json"),
         read("config/current/historical_semantic_verified.json"),
-        read("data/public/historical/current/summary.json"))
+        read("data/public/historical/current/summary.json"),
+        read("data/public/historical/current/pending_review_queue.json"))
     target=ROOT/"data/public/historical/current/verification_status.json"
     target.parent.mkdir(parents=True,exist_ok=True)
     target.write_text(json.dumps(status,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
