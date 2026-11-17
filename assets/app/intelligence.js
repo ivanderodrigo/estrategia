@@ -1,7 +1,7 @@
 // App v6.5.0
 (() => {
   'use strict';
-  const state = {historicalSections:{}, historicalSummary:null, historicalChecks:{}, historicalStructured:new Set(), historicalVerifiedRecords:new Map(), data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
+  const state = {historicalSections:{}, historicalSummary:null, historicalChecks:{}, historicalQuarantine:[], historicalStructured:new Set(), historicalVerifiedRecords:new Map(), data:null, manifest:null, loadedSections:new Set(), lastRun:null, view:'fabricantes', fontScale:Number(localStorage.getItem('westcon-font-scale')||1), sort:{}, columnOrder:{}, columnHidden:{}, columnWidths:{}, filters:{}, filteredRows:{}, baseRows:{}, headerCriteria:{}, analysisOpen:{}, filterTimers:{}, reportView:null, dragCol:null, resize:null, traceSource:null, helpSource:null};
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -89,6 +89,21 @@
                 }
               }
             }
+          }
+          // Historical URLs rejected for wrong-vendor attribution must remain
+          // visible as clearly DISCARDED archive references, not disappear.
+          for(const rejected of state.historicalQuarantine||[]){
+            if(rejected.section!==section||historicalKey(rejected.entity)!==key)continue;
+            const fieldId=String(rejected.field||'');
+            const valueKey=historicalKey(rejected.value);
+            const url=String(rejected.url||'');
+            if(!fieldId||!valueKey||!/^https:\/\/[^\s"'<>]+$/i.test(url))continue;
+            const claims=entries[fieldId]||(entries[fieldId]=[]);
+            let existing=claims.find(v=>historicalKey(v.value)===valueKey);
+            if(!existing){existing={value:rejected.value,urls:[],rejected_urls:[]};claims.push(existing);}
+            if(!Array.isArray(existing.rejected_urls))existing.rejected_urls=[];
+            if(!existing.rejected_urls.some(item=>item.url===url))
+              existing.rejected_urls.push({url,reason:rejected.reason||'No corresponde al fabricante indicado'});
           }
           row._historical={};
           for(const [fieldId,claims] of Object.entries(entries)){
@@ -248,12 +263,13 @@
     ({fabricantes:renderManufacturers,mayoristas:renderDistributors,integradores:renderIntegrators,clientes:renderClients,tendencias:renderTrends,arquitecturas:renderArchitectures}[state.view]||(()=>{}))();
   }
   async function load(){
-    const [res, runRes, historyRes, checkedRes, structuredRes] = await Promise.all([
+    const [res, runRes, historyRes, checkedRes, structuredRes, quarantineRes] = await Promise.all([
       fetch('data/public/manifest.json', {cache:'no-store'}),
       fetch('data/public/last_run.json', {cache:'no-store'}).catch(()=>null),
       fetch('data/public/historical/current/summary.json', {cache:'no-store'}).catch(()=>null),
       fetch('data/public/historical/current/source_checks.json', {cache:'no-store'}).catch(()=>null),
-      fetch('data/public/historical/current/structured_verification.json', {cache:'no-store'}).catch(()=>null)
+      fetch('data/public/historical/current/structured_verification.json', {cache:'no-store'}).catch(()=>null),
+      fetch('data/public/historical/current/quarantined_links.json', {cache:'no-store'}).catch(()=>null)
     ]);
     if(!res.ok) throw new Error(`No se pudo cargar data/public/manifest.json (${res.status})`);
     state.manifest = await res.json();
@@ -263,6 +279,10 @@
     if(runRes?.ok){ try{ state.lastRun = await runRes.json(); }catch(_){ state.lastRun=null; } }
     if(historyRes?.ok){ try{state.historicalSummary=await historyRes.json();}catch(_){state.historicalSummary=null;} }
     if(checkedRes?.ok){try{const check=await checkedRes.json();state.historicalChecks=check.results||{};}catch(_){state.historicalChecks={};}}
+    if(quarantineRes?.ok){try{
+      const archive=await quarantineRes.json();
+      state.historicalQuarantine=Array.isArray(archive.records)?archive.records:[];
+    }catch(_){state.historicalQuarantine=[];}}
     if(structuredRes?.ok){try{
       const review=await structuredRes.json();
       const accepted=(review.claims||[]).filter(c=>c.status==='VERIFIED_EXPLICIT_ALTERNATIVE'||c.status==='VERIFIED_CURATED_DIRECT_SOURCE');
@@ -857,7 +877,11 @@
           return '<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Fuente original</a>'+
             (status?'<small>'+esc(status)+'</small>':'');
         }).join(' · ');
-      return '<li><span>'+esc(val.slice(0,240))+'</span>'+(links?'<div>'+links+'</div>':'')+'</li>';
+      const rejected=(h.rejected_urls||[]).filter(item=>/^https:\/\/[^\s"'<>]+$/i.test(item?.url||''))
+        .map(item=>'<a href="'+esc(item.url)+'" target="_blank" rel="noopener noreferrer">Enlace original descartado</a>'+
+          '<small> · No acredita este dato: '+esc(item.reason||'fuente de otro fabricante')+'</small>').join(' · ');
+      return '<li><span>'+esc(val.slice(0,240))+'</span>'+
+        (links?'<div>'+links+'</div>':'')+(rejected?'<div class="historic-quarantine">'+rejected+'</div>':'')+'</li>';
     }).join('');
     return '<section class="trace-history"><strong>Referencias históricas relacionadas</strong>'+
       '<p>Las referencias históricas no acreditan por sí solas. Si el dato tiene prueba actual, esta aparece arriba y se identifica incluso cuando difiere del enlace original.</p>'+
