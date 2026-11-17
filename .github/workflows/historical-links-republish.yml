@@ -1,0 +1,51 @@
+name: Restore Historical Source Links
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/historical-links-republish.yml'
+      - 'engine/historical_publication.py'
+      - 'engine/historical_gap_context.py'
+      - 'scripts/rebuild_historical_trails_only.py'
+      - 'tests/test_historical_publication_no_link_loss.py'
+permissions:
+  contents: write
+concurrency:
+  group: westcon-historical-links-republish
+  cancel-in-progress: false
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Verify link-preservation regressions
+        run: |
+          python -m unittest discover -s tests -p 'test_historical_publication_no_link_loss.py'
+          python -m unittest discover -s tests -p 'test_mass_historical_publication.py'
+          python -m unittest discover -s tests -p 'test_historical_gap_context.py'
+      - name: Rebuild and republish historical links only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/rebuild_historical_trails_only.py
+            git add data/public/historical/current/{manufacturers,distributors,integrators,clients_public,clients_private,trends,architectures,summary,quarantined_links}.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m 'data: preserve all exact historical source URLs [skip ci]'
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          echo 'Cannot publish against a changing canonical snapshot'
+          exit 1
