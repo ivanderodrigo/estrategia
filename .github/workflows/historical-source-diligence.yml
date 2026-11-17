@@ -17,7 +17,9 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: historical-source-diligence
+  # Shares the canonical writer lock with Daily/Weekly/Monthly and historical
+  # integration, so historical evidence cannot mutate main mid-research.
+  group: westcon-intelligence-research
   cancel-in-progress: false
 jobs:
   audit:
