@@ -23,6 +23,10 @@ from .storage import json_bytes, read_json
 def publish_historical_trails(gap_report: dict[str, Any], generated_at: str) -> tuple[dict[str, bytes], dict[str, Any]]:
     previous_by_id = history_by_gap()
     previous_by_identity = history_by_identity()
+    previous_public = {
+        section: read_json(f"data/public/historical/current/{section}.json", {})
+        for section in SECTIONS
+    }
     by_section: dict[str, dict[str, dict[str, list[dict]]]] = defaultdict(
         lambda: defaultdict(lambda: defaultdict(list))
     )
@@ -40,8 +44,6 @@ def publish_historical_trails(gap_report: dict[str, Any], generated_at: str) -> 
         record = historical_record_for_gap(
             gap, previous_by_id, previous_by_identity
         )
-        if not record:
-            continue
         entity = str(gap.get("entity") or "")
         field = str(gap.get("field") or "")
         if not entity or not field:
@@ -49,16 +51,31 @@ def publish_historical_trails(gap_report: dict[str, Any], generated_at: str) -> 
         targets = gap.get("target_values") or []
         if not isinstance(targets, list):
             targets = [targets]
-        samples = record.get("historical_samples") or []
+        samples = (record or {}).get("historical_samples") or []
+        old_fields = (
+            (previous_public[section].get("entities") or {})
+            .get(canonical(entity), {})
+        )
+        prior = {
+            canonical(claim.get("value")): claim
+            for claim in old_fields.get(field) or []
+            if isinstance(claim, dict) and isinstance(claim.get("value"), str)
+        }
         for target in targets:
             import json
             key = json.dumps(target, ensure_ascii=False, sort_keys=True, default=str)
             sample = next((item for item in samples
                            if isinstance(item, dict) and item.get("value") == key), None)
-            if sample is None:
+            previous = prior.get(canonical(target)) or {}
+            if sample is None and not previous:
                 continue
+            sample = sample or previous
             urls = []
-            for url in dict.fromkeys(str(u) for u in sample.get("source_urls") or []):
+            # A missing or empty upstream seed must not erase the links already
+            # published for this exact still-pending historical assertion.
+            candidates = list(sample.get("source_urls") or sample.get("urls") or [])
+            candidates.extend(previous.get("urls") or [])
+            for url in dict.fromkeys(str(u) for u in candidates):
                 if not usable_historical_url(url):
                     continue
                 aligned, reason = source_alignment(section, entity, field, url)
@@ -76,8 +93,8 @@ def publish_historical_trails(gap_report: dict[str, Any], generated_at: str) -> 
             claims.append({
                 "value": target,
                 "urls": urls,
-                "first_revision": sample.get("first_revision") or record.get("historical_samples", [{}])[0].get("first_revision") or "",
-                "last_revision": sample.get("last_revision") or record.get("historical_samples", [{}])[0].get("last_revision") or "",
+                "first_revision": sample.get("first_revision") or "",
+                "last_revision": sample.get("last_revision") or "",
             })
             unique_urls.update(urls)
             tally["claims"] += 1
@@ -89,7 +106,7 @@ def publish_historical_trails(gap_report: dict[str, Any], generated_at: str) -> 
     # subject to URL safety and cross-vendor alignment. This is archival
     # retention ONLY: none of these URLs becomes accreditation.
     for section in SECTIONS:
-        old = read_json(f"data/public/historical/current/{section}.json", {})
+        old = previous_public[section]
         for entity, fields in (by_section.get(section) or {}).items():
             previous_fields = ((old.get("entities") or {}).get(entity) or {})
             for field, claims in fields.items():
