@@ -32,8 +32,11 @@ def main():
     manifest=read_json("data/public/manifest.json",{})
     gaps=read_json("data/current/research_gaps.json",{})
     stamp=manifest.get("generated_at")
-    if not stamp or gaps.get("generated_at")!=stamp:
-        raise SystemExit("Refusing to rebuild historical trails for mismatched manifest/gap snapshots")
+    debt=read_json("data/public/debt_overview.json",{})
+    if (not stamp or gaps.get("version")!=manifest.get("version")
+            or int(gaps.get("total_gaps") or -1)!=int(debt.get("total_open_gaps") or -2)
+            or debt.get("generated_at")!=stamp):
+        raise SystemExit("Refusing historical republish: canonical gaps/manifest/debt are not reconciled")
     prior={}
     for section in SECTIONS:
         path=f"data/public/historical/current/{section}.json"
