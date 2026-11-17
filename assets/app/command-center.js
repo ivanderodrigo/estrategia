@@ -14,12 +14,13 @@ showHome();
 const getJson=async path=>{const response=await fetch(path,{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);return response.json();};
 const metrics=document.getElementById('ccMetrics'),debt=document.getElementById('ccDebt'),audit=document.getElementById('ccAudit');
 const dateLabel=v=>v?String(v).slice(0,16).replace('T',' ')+' UTC':'fecha no disponible';
-Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/debt_overview.json'),getJson('data/public/audit_integrity.json'),getJson('data/public/last_run.json'),getJson('data/public/source_verification_status.json')]).then(([mr,dr,ir,rr,vr])=>{
+Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/debt_overview.json'),getJson('data/public/audit_integrity.json'),getJson('data/public/last_run.json'),getJson('data/public/source_verification_status.json'),getJson('data/public/historical/current/verification_status.json')]).then(([mr,dr,ir,rr,vr,hr])=>{
  const m=mr.status==='fulfilled'?mr.value:null;
  const d=dr.status==='fulfilled'?dr.value:null;
  const integrity=ir.status==='fulfilled'?ir.value:null;
  const lastRun=rr.status==='fulfilled'?rr.value:null;
  const sourceCheck=vr.status==='fulfilled'?vr.value:null;
+ const historyAudit=hr.status==='fulfilled'?hr.value:null;
  if(m?.counts){
   const c=m.counts,totalClients=Number(c.clients_public||0)+Number(c.clients_private||0);
   const tiles=[['Fabricantes',c.manufacturers],['Mayoristas',c.distributors],['Integradores',c.integrators],['Clientes',totalClients],['Tendencias y arquitecturas',Number(c.trends||0)+Number(c.architectures||0)]];
@@ -80,6 +81,24 @@ Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/de
     (statuses?'<ul>'+statuses+'</ul>':'<p>Historial programado aún no disponible.</p>')+
     (noContent?'<p class="cc-audit-warning">ALERTA: la última muestra de URL no pudo recuperar contenido de ninguna página. No existen nuevas acreditaciones semánticas derivadas de esa muestra.</p>':'')+
     '</section>';
+ }
+ if(historyAudit){
+  const same=historyAudit.snapshot_generated_at===m?.generated_at;
+  const audited=historyAudit.historical_check_generated_at||historyAudit.generated_at;
+  const by=historyAudit.by_section||{};
+  const areas=Object.entries(by).map(([name,value])=>clean(name)+': '+fmt(value)).join(' · ');
+  audit.innerHTML+='<section class="cc-audit-historical"><h3>Verificación individual de fuentes históricas</h3>'+
+    '<p>Última comprobación de enlaces: '+clean(dateLabel(audited))+
+    ' · '+fmt(historyAudit.urls_scanned)+' URL examinadas · '+
+    fmt(historyAudit.claim_source_pairs_reviewed)+' pares afirmación–fuente evaluados · '+
+    fmt(historyAudit.verified_claim_source_pairs)+' acreditaciones registradas · '+
+    fmt(historyAudit.retained_previous_verifications)+' acreditaciones previas conservadas · '+
+    fmt(historyAudit.historical_leads_not_accredited)+' indicios históricos sin acreditar.</p>'+
+    (same?'':'<p class="cc-audit-warning">Aviso: esta revisión histórica no corresponde todavía a la última reconstrucción publicada.</p>')+
+    '<p>Detalle acreditado por área: '+(areas||'sin desglose')+'. Un enlace violeta no se convierte en verde solo por estar disponible.</p>'+
+    '</section>';
+ }else{
+  audit.innerHTML+='<p class="cc-audit-warning">No se ha publicado todavía el resumen verificable de acreditación histórica para este snapshot.</p>';
  }
  if(r?.hasData){
   const c=d.debt_breakdown||{};
