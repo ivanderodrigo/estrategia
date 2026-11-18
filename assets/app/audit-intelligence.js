@@ -44,11 +44,21 @@ function render(manifest,debt,integrity=null){
  const integrityWarning=!r.integrityAvailable?'<p class="cc-audit-warning">Control de integridad de las siete áreas aún no disponible para esta publicación.</p>':
    !r.integrityMatch?'<p class="cc-audit-warning">Auditoría integral fallida o correspondiente a otra publicación.</p>':
    r.integrityStale?'<p class="cc-audit-warning">Última revisión integral anterior a 12 horas: comprobar las tareas de actualización. Una fecha reciente de publicación no demuestra una investigación nueva.</p>':'';
+ const history=integrity?.historical_link_coverage||{};
+ const verified=integrity?.historical_verification||{};
+ const historicalAudit=history.claims===undefined?'':
+   '<p class="cc-audit-method"><b>Archivo histórico:</b> '+number(history.claims)+' registros examinados · '+
+   number(history.claims_without_urls||0)+' sin URL · '+number(history.claims_with_invalid_urls||0)+' sin URL válida. '+
+   'Presencia de enlace no equivale a acreditación.</p>'+
+   (verified.available?'<p class="cc-audit-method"><b>Verificación documental:</b> '+
+     (verified.snapshot_matches?number(verified.verified_claim_source_pairs)+' relaciones afirmación–fuente verificadas entre '+number(verified.claim_source_pairs_reviewed)+' examinadas.':
+     'La verificación corresponde a otra instantánea y no se presenta como actual.')+
+     ' Última comprobación: '+safe(verified.checked_at||'no disponible')+'.</p>':'');
  const rows=r.order.map(a=>'<tr><th scope="row">'+safe(a.label)+'</th>'+
   '<td>'+number(a.entities)+'</td><td>'+number(a.sourced)+' / '+number(a.claims)+
   (a.coverage===null?'':' ('+a.coverage+'%)')+'</td>'+
   '<td>'+number(a.claimsPending)+'</td><td>'+number(a.derived)+'</td><td>'+number(a.empty)+'</td></tr>').join('');
- return alert+integrityWarning+details+'<div class="cc-audit-scroll"><table class="cc-audit-table">'+
+ return alert+integrityWarning+details+historicalAudit+'<div class="cc-audit-scroll"><table class="cc-audit-table">'+
   '<caption>Auditoría del dataset completo; no depende de los filtros de las tablas</caption>'+
   '<thead><tr><th>Área</th><th>Entidades</th><th>Afirmaciones con fuente / total</th><th>Por acreditar</th><th>Derivación</th><th>Vacíos</th></tr></thead><tbody>'+
   rows+'</tbody></table></div>'+
