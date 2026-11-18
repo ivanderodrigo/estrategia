@@ -266,6 +266,7 @@ def _document_from_cache(cached: dict[str, Any]) -> Document:
             if isinstance(link, dict)
         ),
         content_digest=str(cached.get("content_digest") or ""),
+        published_at=str(cached.get("published_at") or ""),
     )
 
 
@@ -365,6 +366,7 @@ class Fetcher:
                     "text": document.text,
                     "links": [asdict(link) for link in document.links],
                     "content_digest": document.content_digest,
+                    "published_at": document.published_at,
                     "content_type": content_type,
                     "status": status,
                     "ts": time.time(),
@@ -1228,6 +1230,7 @@ def _evidence(
         "official": seed.official,
         "classification": "public",
         "retrieved_at": _now_date(),
+        **({"published_at": document.published_at} if document.published_at else {}),
         "freshness_status": "current",
         "method": f"web-evidence:{seed.family}",
         "content_digest": document.content_digest,
