@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from datetime import date, timedelta
 from html.parser import HTMLParser
 from urllib.parse import urldefrag, urljoin, urlsplit
 
@@ -21,6 +22,7 @@ class Document:
     text: str
     links: tuple[Link, ...]
     content_digest: str
+    published_at: str = ""
 
 
 class TextExtractor(HTMLParser):
@@ -37,9 +39,19 @@ class TextExtractor(HTMLParser):
         self._title_depth = 0
         self._ignored_depth = 0
         self._active_link: tuple[str, list[str]] | None = None
+        self.publication_candidates: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         tag = tag.casefold()
+        attributes = {key.casefold(): value for key, value in attrs if value}
+        if tag == "meta" and (attributes.get("property") or attributes.get("name") or "").casefold() in {
+            "article:published_time", "datepublished", "date_published",
+            "dc.date.issued", "dc.date.created", "citation_publication_date",
+            "pubdate", "publishdate",
+        }:
+            self.publication_candidates.append(attributes.get("content", ""))
+        if tag == "time" and attributes.get("itemprop", "").casefold() == "datepublished":
+            self.publication_candidates.append(attributes.get("datetime", ""))
         if tag in {"script", "style", "noscript", "svg"}:
             self._ignored_depth += 1
         # Some distributors expose their entire vendor linecard as logo images.
@@ -101,6 +113,22 @@ class TextExtractor(HTMLParser):
 def parse_document(raw: str, final_url: str, digest: str) -> Document:
     parser = TextExtractor()
     parser.feed(raw)
+    # Only dates explicitly labelled as publication dates are eligible.
+    # Retrieval timestamps and generic modified dates must never masquerade as
+    # a newspaper or vendor announcement's publication date.
+    jsonld_dates = re.findall(r'"datePublished"\s*:\s*"([^"<>]{8,40})"', raw, flags=re.I)
+    publication_date = ""
+    for candidate in [*parser.publication_candidates, *jsonld_dates]:
+        match = re.match(r"^\s*(\d{4}-\d{2}-\d{2})(?:[T\s]|$)", candidate)
+        if not match:
+            continue
+        try:
+            parsed = date.fromisoformat(match.group(1))
+        except ValueError:
+            continue
+        if date(1990, 1, 1) <= parsed <= date.today() + timedelta(days=1):
+            publication_date = parsed.isoformat()
+            break
     links: list[Link] = []
     seen: set[str] = set()
     for href, label_parts in parser.links:
@@ -140,6 +168,7 @@ def parse_document(raw: str, final_url: str, digest: str) -> Document:
         )[:1_500_000],
         links=tuple(links[:1500]),
         content_digest=digest,
+        published_at=publication_date,
     )
 
 
