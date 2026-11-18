@@ -217,7 +217,8 @@ function uniqueNews(rows,section='manufacturers'){
      seen.add(key);
      // 'date' may be an evidence/retrieval date, not a publication date.
      const indexed=typeof window!=='undefined'?window.WestconPublicationDates?.[url]:null;
-     const pubDate=ev.published_at||ev.published_date||ev.date_published||(indexed?.method==='explicit-article-metadata'?indexed.published_at:'')||'';
+     const verifiedIndexDate=['explicit-article-metadata','explicit-article-byline'].includes(indexed?.method)?indexed.published_at:'';
+     const pubDate=ev.published_at||ev.published_date||ev.date_published||verifiedIndexDate||'';
      const stamp=Number.isFinite(Date.parse(pubDate))?Date.parse(pubDate):0;
      const summary=typeof value==='string' ? value : title;
      news.push({vendor:owner,title,url,date:stamp,dateLabel:pubDate,
