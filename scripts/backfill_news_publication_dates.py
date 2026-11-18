@@ -35,7 +35,7 @@ ARTICLE = re.compile(r'/(?:news|noticias?|actualidad|novidades|press|prensa|rele
 def urls_by_section() -> dict[str, set[str]]:
     result = {}
     for section, fields in FIELDS.items():
-        payload = json.loads((ROOT / f'data/public/sections/{section}.json').read_text())
+        payload = json.loads((ROOT / f'data/public/sections/{section}.json').read_text(encoding='utf-8'))
         urls = set()
         for row in payload.get('rows', []):
             for name in fields:
@@ -76,7 +76,7 @@ def main() -> None:
     parser.add_argument('--limit', type=int, default=180)
     args = parser.parse_args()
     groups = urls_by_section()
-    previous = json.loads(DEST.read_text()) if DEST.exists() else {}
+    previous = json.loads(DEST.read_text(encoding='utf-8')) if DEST.exists() else {}
     dates = previous.get('dates') or {}
     eligible = set().union(*groups.values())
     missing = sorted(eligible - dates.keys())[:max(0, args.limit)]
@@ -96,7 +96,7 @@ def main() -> None:
         'by_section': {name: {'eligible': len(urls), 'dated': len(urls & dates.keys())} for name, urls in groups.items()},
         'dates': {url: dates[url] for url in sorted(dates) if url in eligible},
     }
-    DEST.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
+    DEST.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({k: v for k, v in result.items() if k != 'dates'}, ensure_ascii=False))
 
 
