@@ -145,7 +145,10 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
                             "partnerships", "capabilities", "specializations", "services",
                             "technology_domains", "technology_specializations", "service_portfolio",
                             "alliances", "recent_signals", "public_cases"},
-            "clients_private": {"technology_signals", "hiring_signals"},
+            # The semantic checker also accredits exact first-party news.
+            # Omitting recent_signals here made historical integration fail
+            # after successfully verifying official Altri press releases.
+            "clients_private": {"technology_signals", "hiring_signals", "recent_signals"},
             "trends": {"sources"},
             "architectures": {"analyst_basis"},
         }
