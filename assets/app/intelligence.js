@@ -136,6 +136,14 @@
             const target=row.fields?.[fieldId];
             if(target&&Array.isArray(claims))target._historical=annotated;
           }
+          // Architecture layer/vendor chips are rendered from the nested
+          // `layers` field, while historical vendor links belong to `vendors`.
+          // Preserve exact vendor-by-vendor historical citations in those chips.
+          if(section==='architectures'&&row.fields?.layers){
+            row.fields.layers._historical=[
+              ...(row._historical.layers||[]),...(row._historical.vendors||[])
+            ];
+          }
         }
     } catch(e){console.warn('Referencias históricas no disponibles',section);}
 
@@ -590,7 +598,7 @@
           }
         }
         const roster=[...vendorIndex.values()];
-        const rosterField={value:roster.map(v=>v.value),items:roster,evidence:[]};
+        const rosterField={value:roster.map(v=>v.value),items:roster,evidence:[],_historical:field._historical||[]};
         const rosterHtml=roster.map((vendor,i)=>{
           const verified=atomicCurrentProof(vendor.evidence);
           return '<span class="tag-entry">'+
@@ -609,7 +617,7 @@
             ?tagHtml(layerField,x.layer,0,'emphasis')
             :pendingTagHtml(layerField,x.layer,0);
           const vendors=Array.isArray(x.vendors)?x.vendors:[];
-          const vendorField={value:vendors,items:x.vendor_items||[],evidence:[]};
+          const vendorField={value:vendors,items:x.vendor_items||[],evidence:[],_historical:field._historical||[]};
           const tags=vendors.map((vendor,i)=>{
             const item=itemFor(vendorField,vendor,i);
             const verified=atomicCurrentProof(item.evidence);
