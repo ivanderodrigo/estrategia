@@ -146,6 +146,8 @@ def main() -> None:
     previous = json.loads(DEST.read_text(encoding='utf-8')) if DEST.exists() else {}
     dates = previous.get('dates') or {}
     reviews = previous.get('reviews') or {}
+    for url in dates:
+        reviews.setdefault(url, {'status': 'VERIFIED_PREVIOUS_RUN'})
     eligible = set().union(*groups.values())
     missing = sorted(eligible - dates.keys())[:max(0, args.limit)]
     recovered = 0
