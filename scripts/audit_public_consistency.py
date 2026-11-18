@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -16,9 +17,11 @@ ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0,str(ROOT))
 from engine.publication import _source_coverage
+from engine.model import canonical
 PUBLIC=ROOT/"data/public"
 SECTIONS=("manufacturers","distributors","integrators","clients_public",
           "clients_private","trends","architectures")
+HISTORICAL=PUBLIC/"historical/current"
 ROLES={"Fuente pública primaria","Fuente pública secundaria / analista",
        "Fuente documental Westcon vigente","Fuente Westcon vigente"}
 
@@ -44,6 +47,7 @@ def evaluate():
     section_debt=debt.get("by_section") or {}
     section_total=0
     section_metrics={}
+    historic_totals={"claims":0,"claims_without_urls":0,"claims_with_invalid_urls":0,"unmatched_entities":0}
     for section in SECTIONS:
         info=(manifest.get("sections") or {}).get(section) or {}
         path=info.get("file")
@@ -86,6 +90,52 @@ def evaluate():
         section_metrics[section]={"entities":len(rows),"claims":claims,
             "sourced":sourced,"research_debt":this_debt,
             "source_registry_entries":len(source_registry)}
+        published_names={canonical(str(row.get('name') or '')) for row in rows}
+        section_historic={"claims":0,"claims_without_urls":0,
+                          "claims_with_invalid_urls":0,"unmatched_entities":0}
+        for layer in (section, 'git_'+section):
+            path=HISTORICAL/(layer+'.json')
+            if not path.exists():
+                errors.append(f"{section}: missing historical source layer {layer}")
+                continue
+            archive=json.loads(path.read_text(encoding='utf-8'))
+            for entity, fields in (archive.get('entities') or {}).items():
+                if canonical(entity) not in published_names:
+                    section_historic['unmatched_entities']+=1
+                for records in fields.values():
+                    if not isinstance(records,list):
+                        continue
+                    for claim in records:
+                        section_historic['claims']+=1
+                        urls=claim.get('urls') or []
+                        if not urls:
+                            section_historic['claims_without_urls']+=1
+                        elif not any(isinstance(url,str) and re.match(r'^https://[^\s"\'<>]+$',url)
+                                     for url in urls):
+                            section_historic['claims_with_invalid_urls']+=1
+        for metric, count in section_historic.items():
+            historic_totals[metric]+=count
+        section_metrics[section]['historical_links']=section_historic
+    if historic_totals['claims_without_urls'] or historic_totals['claims_with_invalid_urls']:
+        errors.append('Historical source records without a usable exact URL')
+    # Git archives deliberately retain deleted/renamed historical entities.
+    # Report these orphans separately without asserting the current dataset is broken.
+    historical_verification={"available":False,"snapshot_matches":False}
+    verification_path=HISTORICAL/'verification_status.json'
+    if verification_path.exists():
+        verification=json.loads(verification_path.read_text(encoding='utf-8'))
+        matching=verification.get('snapshot_generated_at')==stamped
+        historical_verification={
+            "available":True,
+            "snapshot_matches":matching,
+            "checked_at":verification.get('generated_at'),
+            "urls_scanned":int(verification.get('urls_scanned') or 0),
+            "claim_source_pairs_reviewed":int(verification.get('claim_source_pairs_reviewed') or 0),
+            "verified_claim_source_pairs":int(verification.get('verified_claim_source_pairs') or 0),
+            "historical_leads_not_accredited":int(verification.get('historical_leads_not_accredited') or 0),
+        }
+        if historical_verification['verified_claim_source_pairs']>historical_verification['claim_source_pairs_reviewed']:
+            errors.append('Historical accreditation count exceeds reviewed source/claim pairs')
     if section_total!=total:
         errors.append(f"area debt total mismatch: {section_total} != {total}")
     if not stamped:
@@ -95,6 +145,9 @@ def evaluate():
             "status":"PASS" if not errors else "FAIL",
             "source_coverage_is_not_verification":True,
             "integrity_score_is_not_evidence_coverage":True,
+            "historical_url_presence_is_not_claim_accreditation":True,
+            "historical_link_coverage":historic_totals,
+            "historical_verification":historical_verification,
             "total_open_gaps":total,"areas":section_metrics,"errors":errors}
 
 
