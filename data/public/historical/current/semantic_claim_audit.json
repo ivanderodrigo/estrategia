@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-18T12:18:16.122827+00:00",
-  "urls_scanned": 2350,
-  "claim_source_pairs_reviewed": 64297,
+  "generated_at": "2026-11-18T14:11:19.748837+00:00",
+  "urls_scanned": 2363,
+  "claim_source_pairs_reviewed": 64369,
   "verified_claim_source_pairs": 3293,
   "verified_this_run": 1694,
   "retained_prior_verified": 1599,
   "quarantined_generic_homepage_claims": 0,
   "expired_prior_verified": 0,
   "statuses": {
-    "VALUE_NOT_FOUND": 37958,
+    "VALUE_NOT_FOUND": 38028,
     "NOT_FIRST_PARTY": 1850,
     "VERIFIED_FIRST_PARTY_CATALOG_VALUE": 1819,
     "VERIFIED_EXPLICIT_DISTRIBUTION_AGREEMENT": 7,
@@ -20,10 +20,10 @@
     "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF": 18,
     "VERIFIED_FIRST_PARTY_NEWS_STATEMENT": 40,
     "GENERIC_CAPABILITY_NOT_SPECIFIC": 38,
-    "UNSUPPORTED_FIELD_OR_CONTEXT": 422,
+    "UNSUPPORTED_FIELD_OR_CONTEXT": 423,
     "GENERIC_DOMAIN_OR_HIRING_NOT_SPECIFIC": 46,
+    "AMBIGUOUS_SHORT_VALUE": 78,
     "VERIFIED_CITED_ANALYST_DOCUMENT": 30,
-    "AMBIGUOUS_SHORT_VALUE": 77,
     "VERIFIED_FIRST_PARTY_HIRING": 2,
     "VERIFIED_FIRST_PARTY_CASE_STUDY": 3,
     "COMPETITION_NOT_SHOWN": 7
@@ -7866,6 +7866,24 @@
       "url": "https://claroty.com/partners/technology-alliances",
       "historical_url": "https://claroty.com/resources/case-studies/phsa-and-fha-boost-cybersecurity-processes-and-compliance-with-claroty-xdome",
       "reason": "VERIFIED_FIRST_PARTY_CATALOG_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "field": "market_players",
+      "value": "AWS",
+      "url": "https://cloud.google.com/blog/products/networking/cross-cloud-interconnect-for-microsoft-azure",
+      "historical_url": "https://cloud.google.com/blog",
+      "reason": "AMBIGUOUS_SHORT_VALUE"
+    },
+    {
+      "section": "trends",
+      "entity": "Cloud Native Security / CNAPP",
+      "field": "market_players",
+      "value": "Microsoft Azure",
+      "url": "https://cloud.google.com/blog/products/networking/cross-cloud-interconnect-for-microsoft-azure",
+      "historical_url": "https://cloud.google.com/blog",
+      "reason": "UNSUPPORTED_FIELD_OR_CONTEXT"
     },
     {
       "section": "integrators",
