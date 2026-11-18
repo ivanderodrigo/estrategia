@@ -12,7 +12,9 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: westcon-historical-links-republish
+  # Link restoration writes canonical historical sidecars; serialize it with
+  # the research publisher to prevent avoidable stale-snapshot failures.
+  group: westcon-intelligence-research
   cancel-in-progress: false
 jobs:
   restore:
