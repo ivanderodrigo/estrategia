@@ -46,7 +46,7 @@ class TextExtractor(HTMLParser):
         attributes = {key.casefold(): value for key, value in attrs if value}
         if tag == "meta" and (attributes.get("property") or attributes.get("name") or "").casefold() in {
             "article:published_time", "datepublished", "date_published",
-            "dc.date.issued", "dc.date.created", "citation_publication_date",
+            "dc.date.issued", "citation_publication_date",
             "pubdate", "publishdate",
         }:
             self.publication_candidates.append(attributes.get("content", ""))
