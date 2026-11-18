@@ -64,11 +64,10 @@ jobs:
           python scripts/validate_active_portfolio_public.py
           python scripts/audit_competitor_portfolio_separation.py
           python scripts/audit_full_visible_source_coverage.py
-          python scripts/audit_published_historical_market.py
-          python scripts/audit_published_topic_markets.py
-          python scripts/audit_published_peer_competitors.py
-          python scripts/audit_published_semantic_historical.py
-          python scripts/audit_published_issuer_competitors.py
+          # The live evidence registries can legitimately advance before the
+          # next canonical snapshot is integrated. They are verified in the
+          # canonical research/integration jobs, not in this read-only deploy.
+          # This job validates only the immutable snapshot being published.
           python scripts/validate_mass_historical_publication.py
           node tests/observatory.js
           node tests/ui_smoke.js
