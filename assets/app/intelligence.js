@@ -1201,6 +1201,43 @@ const identityTone=atomicCurrentProof(identityEvidence)?'high':'unverified';cons
       .map(([key,label])=>'<div class="update-stat"><b>'+esc(debt[key])+'</b><span>'+esc(label)+'</span></div>').join('');
     const counts=[['Fabricantes',run.manufacturers??state.manifest?.counts?.manufacturers??state.data?.manufacturers?.length??0],['Mayoristas',run.distributors??state.manifest?.counts?.distributors??state.data?.distributors?.length??0],['Integradores',run.integrators??state.manifest?.counts?.integrators??state.data?.integrators?.length??0],['Clientes',run.clients??((state.manifest?.counts?.clients_public??state.data?.clients_public?.length??0)+(state.manifest?.counts?.clients_private??state.data?.clients_private?.length??0))],['Tendencias',run.trends??state.manifest?.counts?.trends??state.data?.trends?.length??0],['Arquitecturas',run.architectures??state.manifest?.counts?.architectures??state.data?.architectures?.length??0]];
     body.innerHTML=`<p class="update-note">Los huecos son tareas de investigación y validación, no equivalen a casillas vacías. Un campo puede originar varias tareas. Integridad 100/100 no significa cobertura completa.</p><div class="update-hero">${debtSummary}<div class="update-stat primary"><b>${esc(status)}</b><span>Última publicación: ${esc(localDateTime(finished))} · ${esc(ageText(finished))} · ciclo ${esc(updateProfileLabel(run.profile))}</span></div><div class="update-stat"><b>${esc(run.sources??meta.source_count??0)}</b><span>fuentes / familias activas</span></div><div class="update-stat"><b>${esc(run.traceable_fields??'Por investigar')}</b><span>campos trazables publicados</span></div><div class="update-stat"><b>${esc(run.research_gaps??'Por investigar')}</b><span>huecos que el motor volverá a investigar</span></div></div><div class="update-cycles"><div class="update-cycle"><b>DIARIA · incremental</b><strong>05:17 UTC · lunes a viernes</strong><span>Ciclo programado de lunes a viernes. Busca cambios recientes, nuevas relaciones, señales, empleo, casos y evidencias que puedan modificar confianza.</span></div><div class="update-cycle"><b>SEMANAL · profunda</b><strong>Domingo, lunes, miércoles y viernes · 22:29 UTC</strong><span>Investigación profunda programada cuatro noches por semana. Amplía partner locators, webs de integradores, mayoristas, clientes públicos/privados, contratación, certificaciones, servicios, casos, portales de empleo y fuentes de mercado.</span></div><div class="update-cycle"><b>MENSUAL · exhaustiva</b><strong>Día 1 de cada mes · 03:41 UTC</strong><span>Revisa long-tail, huecos persistentes, nuevas entidades, tendencias, arquitecturas, evidencias envejecidas y cobertura general.</span></div></div><div class="update-scope"><div><b>Qué datos pueden cambiar</b><span>Fabricante↔integrador, fabricante↔mayorista, fabricantes de cada integrador, servicios, especializaciones, verticales, casos, certificaciones, empleo, competidores, métricas y actores de tendencias, encaje de arquitecturas, fuentes, fechas y confianza.</span></div><div><b>Cómo comprobarlo</b><span>Este botón muestra la última publicación y el tipo de ciclo. En GitHub → Actions puedes verificar research-daily, research-weekly y research-monthly y comprobar si finalizaron correctamente.</span></div><div><b>Qué ocurre con una celda vacía</b><span>No se da por buena: entra en la cola de investigación y genera nuevas rutas de búsqueda. Si aparece una señal débil puede publicarse en rojo; si se corrobora, la confianza puede subir a amarillo o verde.</span></div><div><b>Qué ocurre con evidencia antigua</b><span>El motor conserva fecha y vigencia, vuelve a sondear la relación y puede mantener, degradar o elevar su confianza según la nueva evidencia encontrada.</span></div></div><div class="update-note">Los horarios indicados son UTC, que GitHub Actions utiliza para los cron programados; la hora en España cambia entre invierno y verano. El resultado de cada ejecución se debe consultar en GitHub Actions. La automatización actualiza inteligencia pública y trazabilidad; no genera salidas prescriptivas.</div><div class="update-scope">${counts.map(([k,v])=>`<div><b>${esc(k)}</b><span>${esc(v)} entidades en la fotografía publicada</span></div>`).join('')}</div>`;
+    renderScheduledHealth();
+  }
+
+  function renderScheduledHealth(){
+    const body=$('#updateStatusBody');
+    if(!body)return;
+    const slot=document.createElement('section');
+    slot.className='update-scope';
+    slot.id='scheduledWorkflowStatus';
+    slot.innerHTML='<div><b>Estado real de las tareas programadas</b><span>Consultando la auditoría independiente de GitHub Actions…</span></div>';
+    body.appendChild(slot);
+    if(!state.scheduledHealthPromise){
+      state.scheduledHealthPromise=fetch('data/public/scheduled_workflow_health.json',{cache:'no-store'})
+        .then(res=>res.ok?res.json():null).catch(()=>null);
+    }
+    state.scheduledHealthPromise.then(report=>{
+      const target=$('#scheduledWorkflowStatus');
+      if(!target)return;
+      const age=report?.generated_at?(Date.now()-new Date(report.generated_at).getTime())/36e5:Infinity;
+      if(!report||!Number.isFinite(age)||age<0||age>24){
+        target.innerHTML='<div><b>Estado de tareas no comprobable</b><span>Falta una auditoría operativa reciente. Consultar GitHub Actions antes de asumir que las tareas funcionan.</span></div>';
+        return;
+      }
+      const entries=Object.values(report.workflows||{});
+      const descriptions={PASS:'Última programación correcta',FAIL:'Última programación fallida',
+        STALE:'Último éxito antiguo',RUNNING:'Ejecución en curso',UNKNOWN:'Sin resultado verificable'};
+      target.innerHTML='<div><b>Salud de las tareas · '+esc(localDateTime(report.generated_at))+'</b>'+
+        '<span>Se comprueba cada workflow por separado. Una publicación correcta no oculta los fallos de programación.</span></div>'+
+        entries.map(entry=>{
+          const outcome=descriptions[entry.status]||'No comprobable';
+          const last=entry.scheduled_run||{};
+          const safeRun=/^https:\/\/github\.com\/ivanderodrigo\/estrategia\/actions\/runs\/\d+$/.test(last.url||'');
+          const link=safeRun?'<a target="_blank" rel="noopener noreferrer" href="'+esc(last.url)+'">Ver ejecución</a>':'Sin ejecución programada';
+          return '<div><b>'+esc(entry.name||'Tarea')+' · '+esc(outcome)+'</b><span>'+
+            esc(last.created_at?localDateTime(last.created_at):entry.reason||'Sin datos')+' · '+link+'</span></div>';
+        }).join('');
+    });
   }
 
   function renderConfidenceGuide(){
