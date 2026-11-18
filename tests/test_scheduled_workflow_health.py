@@ -48,9 +48,9 @@ class ScheduledHealthTests(unittest.TestCase):
 
     def test_monitor_and_pages_publish_operational_health(self):
         root = Path(__file__).resolve().parents[1]
-        monitor = (root / ".github/workflows/audit-live-integrity.yml").read_text()
-        pages = (root / ".github/workflows/pages-deploy.yml").read_text()
-        ui = (root / "assets/app/intelligence.js").read_text()
+        monitor = (root / ".github/workflows/audit-live-integrity.yml").read_text(encoding="utf-8")
+        pages = (root / ".github/workflows/pages-deploy.yml").read_text(encoding="utf-8")
+        ui = (root / "assets/app/intelligence.js").read_text(encoding="utf-8")
         self.assertIn("python scripts/audit_scheduled_workflows.py", monitor)
         self.assertIn("data/public/scheduled_workflow_health.json", monitor)
         self.assertIn("data/public/scheduled_workflow_health.json", pages)
