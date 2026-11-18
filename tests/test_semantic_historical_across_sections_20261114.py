@@ -54,7 +54,7 @@ class SemanticHistoricalTests(unittest.TestCase):
         ev=claim("architectures","vendors","Zero Trust","Okta",
                  "NIST Zero Trust Okta")
         self.assertEqual(classify(ev,"https://csrc.nist.gov/publications/detail/sp/800-207/final"),
-                         "AMBIGUOUS_SHORT_VALUE")
+                         "TECHNOLOGY_PARTICIPATION_NOT_FIRST_PARTY")
 
     def test_official_vendor_comparison_is_explicit_competitive_proof(self):
         ev=claim("manufacturers","competitors","Ciena","Huawei",

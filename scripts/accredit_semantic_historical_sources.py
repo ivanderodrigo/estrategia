@@ -63,7 +63,9 @@ def classify(claim,url):
     if any(s in clean for s in NEGATIVE):
         return "HYPOTHESIS_NOT_FACT"
     semantic_short = (field in {"distributors", "competitors", "integrators"}
-                      and section == "manufacturers") or field in OWN_CAPABILITY.get(section,set())
+                      and section == "manufacturers") or field in OWN_CAPABILITY.get(section,set()) or (
+                          (section,field) in {("trends","market_players"),("architectures","vendors")}
+                      )
     if field not in RELATION_FIELDS.get(section,set()) and not semantic_short and (len(clean)<7 or len(clean.split())<2):
         return "AMBIGUOUS_SHORT_VALUE"
     # Archived analyst citations often paraphrase the headline. The
@@ -112,7 +114,7 @@ def classify(claim,url):
             "competitor", "competition", "competes", "competidor",
             "alternative to", "alternativa a", "comparison", "compare to",
             "compare with", "comparativa", "comparacion",
-        )) or bool(re.search(r"\\b(?:vs|versus)\\b", context))
+        )) or bool(re.search(r"\b(?:vs|versus)\b", context))
         official_comparison_path = any(cue in canonical(urlparse(url).path) for cue in (
             "compare", "comparison", "comparativa", "versus", "alternatives",
         ))
@@ -142,6 +144,19 @@ def classify(claim,url):
         ):
             return "VERIFIED_EXPLICIT_COMPETITOR_CONTEXT"
         return "COMPETITION_NOT_SHOWN"
+    if (section,field) in {("trends","market_players"),("architectures","vendors")}:
+        # A manufacturer's own page can establish its participation in a
+        # technology area, provided that the excerpt actually describes that
+        # area. A third-party directory listing several vendors is not proof.
+        if not owner_site(value,url):
+            return "TECHNOLOGY_PARTICIPATION_NOT_FIRST_PARTY"
+        topic=canonical(entity)
+        stop={"and","the","with","native","platform","digital","cloud","security",
+              "network","networking","solution","solutions","automation","market"}
+        terms={t for t in topic.split() if len(t)>=5 and t not in stop}
+        if terms and any(t in context for t in terms):
+            return "VERIFIED_FIRST_PARTY_TECHNOLOGY_PARTICIPATION"
+        return "TECHNOLOGY_CONTEXT_NOT_SHOWN"
     if field=="recent_signals" and direct_owner and len(clean.split())>=5:
         return "VERIFIED_FIRST_PARTY_NEWS_STATEMENT"
     if field=="public_cases" and direct_owner and len(clean.split())>=5 and any(
