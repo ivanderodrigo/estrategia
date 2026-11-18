@@ -29,7 +29,8 @@ FIELDS = {
     'trends': ('recent_signals', 'sources', 'drivers', 'evolution', 'market_players', 'technology_signals', 'buyer_priorities'),
     'architectures': ('recent_signals', 'sources', 'use_cases', 'vendors', 'layers', 'technology_signals', 'market_drivers'),
 }
-ARTICLE = re.compile(r'/(?:news|noticias?|actualidad|novidades|press|prensa|releases?|announcements?|blog|insights|articles?|artigos?|research|reports?|estudios|publicaciones?|case.studies|newsroom)/[^/?#]{7,}', re.I)
+ARTICLE = re.compile(r'/(?:news|noticias?|actualidad|novidades|press|prensa|sala.de.prensa|press.releases?|releases?|comunicados?|announcements?|blog|insights|articles?|artigos?|actualites|research|reports?|estudios|publicaciones?|case.studies|casos.de.exito|success.stories|media|newsroom|comunicacao|comunicacion)/[^/?#]{7,}', re.I)
+DATED_ARTICLE = re.compile(r'/20(?:2[0-9]|3[0-5])/(?:0?[1-9]|1[012])/[a-z0-9-]{8,}', re.I)
 MONTHS = {name: month for month, names in enumerate((
     ('january', 'enero', 'janeiro'), ('february', 'febrero', 'fevereiro'),
     ('march', 'marzo', 'março', 'marco'), ('april', 'abril'),
@@ -96,7 +97,9 @@ def urls_by_section() -> dict[str, set[str]]:
                 for eid in ids:
                     ev = (payload.get('evidence') or {}).get(eid) or {}
                     url = ev.get('url') or ''
-                    if url.startswith('https://') and ARTICLE.search(urlsplit(url).path):
+                    path = urlsplit(url).path
+                    if (url.startswith('https://') and not re.search(r'\.(?:pdf|zip|xlsx?|pptx?|docx?|xml|json|csv|jpe?g|png|gif|webp)$', path, re.I)
+                            and (ARTICLE.search(path) or DATED_ARTICLE.search(path))):
                         urls.add(url)
         result[section] = urls
     return result
@@ -164,7 +167,7 @@ def main() -> None:
         'reviews': {url: reviews.get(url, {'status': 'NOT_YET_REVIEWED'}) for url in sorted(eligible)},
     }
     DEST.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print(json.dumps({k: v for k, v in result.items() if k != 'dates'}, ensure_ascii=False))
+    print(json.dumps({k: v for k, v in result.items() if k not in ('dates', 'reviews')}, ensure_ascii=False))
 
 
 if __name__ == '__main__':
