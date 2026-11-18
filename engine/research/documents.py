@@ -116,10 +116,10 @@ def parse_document(raw: str, final_url: str, digest: str) -> Document:
     # Only dates explicitly labelled as publication dates are eligible.
     # Retrieval timestamps and generic modified dates must never masquerade as
     # a newspaper or vendor announcement's publication date.
-    jsonld_dates = re.findall(r'"datePublished"\\s*:\\s*"([^"<>]{8,40})"', raw, flags=re.I)
+    jsonld_dates = re.findall(r'"datePublished"\s*:\s*"([^"<>]{8,40})"', raw, flags=re.I)
     publication_date = ""
     for candidate in [*parser.publication_candidates, *jsonld_dates]:
-        match = re.match(r"^\\s*(\\d{4}-\\d{2}-\\d{2})(?:[T\\s]|$)", candidate)
+        match = re.match(r"^\s*(\d{4}-\d{2}-\d{2})(?:[T\s]|$)", candidate)
         if not match:
             continue
         try:
