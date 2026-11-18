@@ -263,13 +263,14 @@
     ({fabricantes:renderManufacturers,mayoristas:renderDistributors,integradores:renderIntegrators,clientes:renderClients,tendencias:renderTrends,arquitecturas:renderArchitectures}[state.view]||(()=>{}))();
   }
   async function load(){
-    const [res, runRes, historyRes, checkedRes, structuredRes, quarantineRes] = await Promise.all([
+    const [res, runRes, historyRes, checkedRes, structuredRes, quarantineRes, newsDatesRes] = await Promise.all([
       fetch('data/public/manifest.json', {cache:'no-store'}),
       fetch('data/public/last_run.json', {cache:'no-store'}).catch(()=>null),
       fetch('data/public/historical/current/summary.json', {cache:'no-store'}).catch(()=>null),
       fetch('data/public/historical/current/source_checks.json', {cache:'no-store'}).catch(()=>null),
       fetch('data/public/historical/current/structured_verification.json', {cache:'no-store'}).catch(()=>null),
-      fetch('data/public/historical/current/quarantined_links.json', {cache:'no-store'}).catch(()=>null)
+      fetch('data/public/historical/current/quarantined_links.json', {cache:'no-store'}).catch(()=>null),
+      fetch('data/public/news_publication_dates.json', {cache:'no-store'}).catch(()=>null)
     ]);
     if(!res.ok) throw new Error(`No se pudo cargar data/public/manifest.json (${res.status})`);
     state.manifest = await res.json();
@@ -277,6 +278,8 @@
     migrateBusinessTablePrefs();
     for(const section of PUBLIC_SECTIONS) state.data[section]=[];
     if(runRes?.ok){ try{ state.lastRun = await runRes.json(); }catch(_){ state.lastRun=null; } }
+    window.WestconPublicationDates={};
+    if(newsDatesRes?.ok){try{window.WestconPublicationDates=(await newsDatesRes.json()).dates||{};}catch(_){}}
     if(historyRes?.ok){ try{state.historicalSummary=await historyRes.json();}catch(_){state.historicalSummary=null;} }
     if(checkedRes?.ok){try{const check=await checkedRes.json();state.historicalChecks=check.results||{};}catch(_){state.historicalChecks={};}}
     if(quarantineRes?.ok){try{
