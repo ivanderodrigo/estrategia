@@ -10,9 +10,9 @@ import argparse
 import json
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import urljoin, urlsplit
 
 import requests
 
@@ -30,6 +30,56 @@ FIELDS = {
     'architectures': ('recent_signals', 'sources', 'use_cases', 'vendors', 'layers', 'technology_signals', 'market_drivers'),
 }
 ARTICLE = re.compile(r'/(?:news|noticias?|actualidad|novidades|press|prensa|releases?|announcements?|blog|insights|articles?|artigos?|research|reports?|estudios|publicaciones?|case.studies|newsroom)/[^/?#]{7,}', re.I)
+MONTHS = {name: month for month, names in enumerate((
+    ('january', 'enero', 'janeiro'), ('february', 'febrero', 'fevereiro'),
+    ('march', 'marzo', 'março', 'marco'), ('april', 'abril'),
+    ('may', 'mayo', 'maio'), ('june', 'junio', 'junho'),
+    ('july', 'julio', 'julho'), ('august', 'agosto'),
+    ('september', 'septiembre', 'setembro'), ('october', 'octubre', 'outubro'),
+    ('november', 'noviembre', 'novembro'), ('december', 'diciembre', 'dezembro'),
+), 1) for name in names}
+
+
+def visible_publication_date(raw: str, text: str) -> str:
+    """Use a labelled article byline or press-release dateline, never generic dates."""
+    candidates = []
+    # <time> in article headers has a strong relation to the article itself.
+    for match in re.finditer(r'<time\b([^>]{0,450})>', raw[:80_000], re.I):
+        attributes = match.group(1)
+        if not re.search(r'(?:published|pubdate|fecha|publicad|post.date)', attributes, re.I):
+            continue
+        stamp = re.search(r'datetime\s*=\s*["\'](\d{4}-\d{2}-\d{2})', attributes, re.I)
+        if stamp:
+            candidates.append(stamp.group(1))
+    # The leading article text may explicitly identify when it was published.
+    # Avoid unrelated dates in recommendations, footers and body paragraphs.
+    opening = text[:1500]
+    label = r'(?:published\s*(?:on|:)?|publicad[oa]\s*(?:el|em|:)?|fecha\s+de\s+publicaci[oó]n\s*:?)'
+    numeric = r'\d{4}-\d{2}-\d{2}'
+    for match in re.finditer(label + r'\s*(' + numeric + r')', opening, re.I):
+        candidates.append(match.group(1))
+    months = '|'.join(re.escape(m) for m in MONTHS)
+    human = re.compile(r'(\d{1,2})\s*(?:de\s+)?(' + months + r')\s*(?:de\s+|,?\s*)(20\d{2})', re.I)
+    for match in human.finditer(opening):
+        before = opening[max(0, match.start()-85):match.start()]
+        # Press-release datelines have city/country followed by an em dash;
+        # other dates need an explicit publishing label close to the date.
+        if not (re.search(label, before, re.I) or re.search(r'[A-Z][A-Za-z .,-]{3,35}[–—-]\s*$', before)):
+            continue
+        try:
+            parsed = date(int(match.group(3)), MONTHS[match.group(2).casefold()], int(match.group(1)))
+            candidates.append(parsed.isoformat())
+        except ValueError:
+            continue
+    valid = set()
+    for candidate in candidates:
+        try:
+            parsed = date.fromisoformat(candidate)
+        except ValueError:
+            continue
+        if date(1990, 1, 1) <= parsed <= date.today() + timedelta(days=1):
+            valid.add(parsed.isoformat())
+    return next(iter(valid)) if len(valid) == 1 else ''
 
 
 def urls_by_section() -> dict[str, set[str]]:
@@ -52,23 +102,37 @@ def urls_by_section() -> dict[str, set[str]]:
     return result
 
 
-def retrieve(url: str) -> tuple[str, dict | None]:
+def retrieve(url: str) -> tuple[str, dict | None, str]:
     try:
         # Article URLs are collected exclusively from the site's curated evidence
         # registry, never arbitrary external input or untrusted redirect targets.
         from engine.research.security import validate_public_url
         validate_public_url(url)
-        response = requests.get(url, timeout=9, headers={'User-Agent': 'Westcon-Intelligence/1.0'}, allow_redirects=False)
+        current = url
+        for _ in range(4):
+            response = requests.get(current, timeout=9, headers={'User-Agent': 'Westcon-Intelligence/1.0'}, allow_redirects=False)
+            if response.status_code not in (301, 302, 303, 307, 308):
+                break
+            location = response.headers.get('location')
+            if not location:
+                return url, None, 'REDIRECT_WITHOUT_LOCATION'
+            current = validate_public_url(urljoin(current, location))
+        else:
+            return url, None, 'REDIRECT_LIMIT'
         response.raise_for_status()
         validate_public_url(response.url)
         if 'html' not in response.headers.get('content-type', '').lower() or len(response.content) > 2_000_000:
-            return url, None
+            return url, None, 'NOT_HTML'
         doc = parse_document(response.text, response.url, '')
-        if not doc.published_at:
-            return url, None
-        return url, {'published_at': doc.published_at, 'method': 'explicit-article-metadata', 'source_url': url}
-    except (requests.RequestException, ValueError, ImportError):
-        return url, None
+        publication = doc.published_at or visible_publication_date(response.text, doc.text)
+        if not publication:
+            return url, None, 'NO_EXPLICIT_PUBLICATION_DATE'
+        method = 'explicit-article-metadata' if doc.published_at else 'explicit-article-byline'
+        return url, {'published_at': publication, 'method': method, 'source_url': url}, 'VERIFIED'
+    except requests.HTTPError as exc:
+        return url, None, 'HTTP_' + str(exc.response.status_code if exc.response is not None else 'ERROR')
+    except (requests.RequestException, ValueError, ImportError) as exc:
+        return url, None, type(exc).__name__.upper()
 
 
 def main() -> None:
@@ -78,12 +142,14 @@ def main() -> None:
     groups = urls_by_section()
     previous = json.loads(DEST.read_text(encoding='utf-8')) if DEST.exists() else {}
     dates = previous.get('dates') or {}
+    reviews = previous.get('reviews') or {}
     eligible = set().union(*groups.values())
     missing = sorted(eligible - dates.keys())[:max(0, args.limit)]
     recovered = 0
     with ThreadPoolExecutor(max_workers=8) as pool:
         for future in as_completed([pool.submit(retrieve, url) for url in missing]):
-            url, item = future.result()
+            url, item, status = future.result()
+            reviews[url] = {'status': status, 'checked_at': datetime.now(timezone.utc).isoformat()}
             if item:
                 dates[url] = item
                 recovered += 1
@@ -95,6 +161,7 @@ def main() -> None:
         'recovered_this_run': recovered,
         'by_section': {name: {'eligible': len(urls), 'dated': len(urls & dates.keys())} for name, urls in groups.items()},
         'dates': {url: dates[url] for url in sorted(dates) if url in eligible},
+        'reviews': {url: reviews.get(url, {'status': 'NOT_YET_REVIEWED'}) for url in sorted(eligible)},
     }
     DEST.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({k: v for k, v in result.items() if k != 'dates'}, ensure_ascii=False))
