@@ -59,6 +59,7 @@ ALLOWED = [
     # Without the canonical semantic registry, the next rebuild loses proof.
     "config/current/historical_semantic_verified.json",
     "data/public/historical/current/semantic_claim_audit.json",
+    "data/public/historical/current/semantic_publication_audit.json",
     "data/public/historical/current/verification_status.json",
     "data/public/historical/current/pending_review_queue.json",
     "config/current/historical_structured_verified.json",

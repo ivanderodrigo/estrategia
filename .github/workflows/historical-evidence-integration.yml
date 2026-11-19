@@ -19,6 +19,7 @@ permissions:
   contents: write
 concurrency:
   group: westcon-intelligence-research
+  queue: max
   cancel-in-progress: false
 jobs:
   integrate:

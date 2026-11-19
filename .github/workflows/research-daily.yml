@@ -19,6 +19,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/research-daily.yml'
+      - '.github/workflows/research-run.yml'
   schedule:
     - cron: "17 5 * * 1-5"
   workflow_dispatch:
