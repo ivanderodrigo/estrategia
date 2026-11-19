@@ -28,6 +28,12 @@ class ScheduledHealthTests(unittest.TestCase):
         stale = classify([run(created="2026-10-01T12:00:00Z")], NOW, 72)
         self.assertEqual(stale["status"], "STALE")
 
+    def test_monitor_reports_previous_outcome_while_observing_itself(self):
+        observer = dict(run(), id=124, status="in_progress", conclusion=None)
+        result = classify([observer, run(conclusion="failure")], NOW, 24, "124")
+        self.assertEqual(result["status"], "FAIL")
+        self.assertEqual(result["latest_run"]["run_id"], 124)
+
     def test_good_recent_schedule_is_green(self):
         self.assertEqual(classify([run()], NOW, 48)["status"], "PASS")
 
