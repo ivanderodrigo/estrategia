@@ -43,7 +43,26 @@ def _terminate(process: subprocess.Popen[str]) -> None:
             pass
 
 
+def _worker_runtime(budget_s: int) -> tuple[int, int]:
+    """Keep time for the worker's final atomic checkpoint before watchdog kill.
+
+    The crawler can be inside a slow source request when its internal deadline
+    is reached, and its final state/learning JSON flush is not instantaneous.
+    A worker deadline equal to the process watchdog deadline repeatedly killed
+    the Weekly just after hundreds of successful source checks.
+    """
+    total = max(40, int(budget_s))
+    shutdown_reserve = min(120, max(30, total // 10))
+    return max(20, total - shutdown_reserve), shutdown_reserve
+
+
 def _run_research(profile: str, budget_s: int, *, max_tasks: int | None = None) -> dict[str, Any]:
+    worker_budget, shutdown_reserve = _worker_runtime(budget_s)
+    print(
+        f"supervisor budget: {profile} · worker {worker_budget}s · "
+        f"checkpoint reserve {shutdown_reserve}s · hard cap {budget_s+15}s",
+        flush=True,
+    )
     command = [
         sys.executable,
         "-m",
@@ -51,7 +70,7 @@ def _run_research(profile: str, budget_s: int, *, max_tasks: int | None = None) 
         "--profile",
         profile,
         "--max-runtime",
-        str(max(20, budget_s)),
+        str(worker_budget),
     ]
     if max_tasks:
         command.extend(["--max-tasks", str(max_tasks)])
