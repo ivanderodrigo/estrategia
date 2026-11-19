@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import subprocess
+from urllib.parse import urlsplit
 from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
@@ -121,8 +122,21 @@ def provenance_kind(evidence: Mapping[str, Any]) -> str:
     return "UNKNOWN"
 
 
+def sitemap_index_url(url: str) -> bool:
+    # Keep XML navigation indexes for discovery, including localized WP sitemaps.
+    if "sitemap" not in url.casefold():
+        return False
+    try:
+        path = urlsplit(url).path.casefold()
+    except ValueError:
+        return False
+    return "sitemap" in path and path.endswith((".xml", ".xml.gz"))
+
+
 def discovery_only(evidence: Mapping[str, Any]) -> bool:
     """Discovery can route research but can never accredit a visible claim."""
+    if sitemap_index_url(str(evidence.get("url") or "")):
+        return True
     if provenance_kind(evidence) in INTERNAL_RESEARCH_SEED_KINDS:
         return True
     binding = str(evidence.get("source_binding") or "").strip().casefold()

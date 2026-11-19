@@ -33,6 +33,14 @@ class HistoricalProvenanceRetention(unittest.TestCase):
             self.assertEqual(summary["verified_this_run"],0)
             self.assertEqual(summary["verified_claim_source_pairs"],1)
 
+    def test_sitemap_can_route_research_but_cannot_accredit_a_capability(self):
+        from engine.knowledge_provenance import discovery_only
+        url = "https://jobs.telefonica.com/sitemap.xml"
+        self.assertTrue(discovery_only({"url":url}))
+        self.assertEqual(audit.classify({"section":"integrators","field":"capabilities",
+            "entity":"acens telefonica tech","value":"Cloud","source_context":"Cloud"},url),
+            "DISCOVERY_INDEX_NOT_CLAIM_EVIDENCE")
+
     def test_old_unsupported_claim_does_not_remain_accredited_forever(self):
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder)
