@@ -2,6 +2,12 @@ name: Westcon Intelligence Weekly
 
 on:
   # Run a deep scan when its research policy/workflow is updated, as well as on schedule.
+  # Exercise the corrected watchdog on current main once, without waiting
+  # for the next cron; ordinary data commits cannot retrigger it.
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/research_supervisor.py'
   schedule:
     # Deep source corroboration four evenings/week, away from weekday Daily.
     - cron: "29 22 * * 0,1,3,5"
