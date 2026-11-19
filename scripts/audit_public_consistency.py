@@ -125,6 +125,8 @@ def evaluate():
     if verification_path.exists():
         verification=json.loads(verification_path.read_text(encoding='utf-8'))
         matching=verification.get('snapshot_generated_at')==stamped
+        if not matching:
+            errors.append("Historical verification snapshot timestamp mismatch")
         historical_verification={
             "available":True,
             "snapshot_matches":matching,
@@ -136,6 +138,8 @@ def evaluate():
         }
         if historical_verification['verified_claim_source_pairs']>historical_verification['claim_source_pairs_reviewed']:
             errors.append('Historical accreditation count exceeds reviewed source/claim pairs')
+    else:
+        errors.append("Missing historical verification status")
     if section_total!=total:
         errors.append(f"area debt total mismatch: {section_total} != {total}")
     if not stamped:

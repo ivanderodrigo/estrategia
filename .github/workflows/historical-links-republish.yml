@@ -15,6 +15,7 @@ concurrency:
   # Link restoration writes canonical historical sidecars; serialize it with
   # the research publisher to prevent avoidable stale-snapshot failures.
   group: westcon-intelligence-research
+  queue: max
   cancel-in-progress: false
 jobs:
   restore:
@@ -23,6 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
+          ref: ${{ github.ref_name }}
           fetch-depth: 0
       - uses: actions/setup-python@v6
         with:

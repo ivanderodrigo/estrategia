@@ -280,24 +280,29 @@ def publication_title_match(value: str, text: str, url: str, section: str,
     matched = score >= required and score / len(terms) >= .75
     return matched, excerpt if matched else ""
 
+def claim_identity(claim):
+    return (claim["section"], canonical(claim["entity"]), claim["field"], canonical(claim["value"]))
+
+
 def candidate_inventory() -> dict[str, list[dict]]:
     targets: dict[str, list[dict]] = defaultdict(list)
     for section in ("manufacturers", "distributors", "integrators",
-                    "trends", "architectures", "clients_private"):
-        path = f"data/public/historical/current/{section}.json"
-        store = read_json(path, {})
-        for entity, fields in (store.get("entities") or {}).items():
-            for field_id, claims in fields.items():
-                for claim in claims:
-                    value = claim.get("value")
-                    if not isinstance(value, str):
-                        continue  # Complex layer graphs need item-specific expert validation.
-                    for url in claim.get("urls") or []:
-                        if url.startswith("https://"):
-                            targets[url].append({
-                                "section": section, "entity": entity,
-                                "field": field_id, "value": value,
-                            })
+                    "trends", "architectures", "clients_public", "clients_private"):
+        for prefix in ("", "git_"):
+            path = f"data/public/historical/current/{prefix}{section}.json"
+            store = read_json(path, {})
+            for entity, fields in (store.get("entities") or {}).items():
+                for field_id, claims in fields.items():
+                    for claim in claims:
+                        value = claim.get("value")
+                        if not isinstance(value, str):
+                            continue  # Complex layer graphs need item-specific expert validation.
+                        for url in claim.get("urls") or []:
+                            if url.startswith("https://"):
+                                targets[url].append({
+                                    "section": section, "entity": entity,
+                                    "field": field_id, "value": value,
+                                })
     # Independently survey historical Git snapshots beyond the curated
     # sidecars. Archived evidence is never a proof by itself, but each exact
     # URL / entity / field / value tuple must enter the verification queue.
@@ -378,6 +383,12 @@ def candidate_inventory() -> dict[str, list[dict]]:
                                  "inventory_origin": "current-visible-unaccredited"}
                         if claim not in targets[url]:
                             targets[url].append(claim)
+    # Current rows and both archives can lead to the very same check.
+    for url, claims in targets.items():
+        unique = {}
+        for claim in claims:
+            unique.setdefault(claim_identity(claim), claim)
+        targets[url] = list(unique.values())
     return targets
 
 
@@ -626,7 +637,15 @@ def run(limit: int, timeout: float, workers: int = 1) -> dict:
     # Oldest checked first; never treat repeated search failure as lack of relevance.
     ordered = sorted(inventory, key=lambda url: (str(state.get(url, {}).get("checked_at") or ""),
                                                    url))
-    chosen = ordered[:max(1, limit)]
+    # Reserve half the batch for newly discovered assertions on known pages,
+    # leaving capacity for the oldest pages even during sustained discovery.
+    new_claim_pages = []
+    for url in ordered:
+        checked = {claim_identity(c) for c in state.get(url, {}).get("claim_checks", [])}
+        if any(claim_identity(c) not in checked for c in inventory[url]):
+            new_claim_pages.append(url)
+    priority = new_claim_pages[:(max(1, limit) + 1) // 2]
+    chosen = list(dict.fromkeys(priority + ordered))[:max(1, limit)]
     stats = Counter()
     if workers <= 1:
         with requests.Session() as session:

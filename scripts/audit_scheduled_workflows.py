@@ -31,8 +31,9 @@ SCHEDULES = {
 }
 
 
-def classify(runs, now, maximum_age_hours):
-    scheduled = next((r for r in runs if r.get("event") == "schedule"), None)
+def classify(runs, now, maximum_age_hours, observer_run_id=None):
+    scheduled = next((r for r in runs if r.get("event") == "schedule"
+                      and str(r.get("id")) != observer_run_id), None)
     latest = runs[0] if runs else None
     result = {
         "status": "UNKNOWN",
@@ -94,7 +95,8 @@ def evaluate(fetcher=fetch_runs, now=None, token=None):
     def examine(item):
         workflow, (label, max_age) = item
         try:
-            result = classify(fetcher(workflow, token), now, max_age)
+            observer = os.getenv("GITHUB_RUN_ID") if workflow == "audit-live-integrity.yml" else None
+            result = classify(fetcher(workflow, token), now, max_age, observer)
         except (HTTPError, URLError, TimeoutError, OSError, ValueError, KeyError) as exc:
             result = {
                 "status": "UNKNOWN",
@@ -114,7 +116,7 @@ def evaluate(fetcher=fetch_runs, now=None, token=None):
     return {
         "generated_at": now.isoformat(),
         "status": overall,
-        "scope": "Última ejecución programada por workflow; estado independiente de la integridad de datos",
+        "scope": "Última ejecución programada por tarea. El monitor muestra su ejecución anterior al muestreo.",
         "workflows": entries,
     }
 

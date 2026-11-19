@@ -59,6 +59,7 @@ ALLOWED = [
     # Without the canonical semantic registry, the next rebuild loses proof.
     "config/current/historical_semantic_verified.json",
     "data/public/historical/current/semantic_claim_audit.json",
+    "data/public/historical/current/semantic_publication_audit.json",
     "data/public/historical/current/verification_status.json",
     "data/public/historical/current/pending_review_queue.json",
     "config/current/historical_structured_verified.json",
@@ -83,6 +84,7 @@ PRESENTATION_PATHS=("assets/app/","assets/favicon.svg","index.html",
                     "404.html","memoria-historica.html")
 UNRELATED_DIAGNOSTICS=("data/current/daily_workflow_health.json",
                        "data/current/gap_debt_audit.json",
+                       "data/public/scheduled_workflow_health.json",
                        # This independently sampled URL-health telemetry is
                        # not source accreditation and does not affect the
                        # canonical intelligence model or any claim binding.
@@ -97,7 +99,7 @@ UNRELATED_DIAGNOSTICS=("data/current/daily_workflow_health.json",
 def safe_remote_only(paths: list[str]) -> bool:
     def allowed(path: str) -> bool:
         return path in UNRELATED_DIAGNOSTICS or any(
-            path == prefix or path.startswith(prefix)
+            path == prefix or (prefix.endswith("/") and path.startswith(prefix))
             for prefix in PRESENTATION_PATHS
         )
     return bool(paths) and all(allowed(path) for path in paths)
