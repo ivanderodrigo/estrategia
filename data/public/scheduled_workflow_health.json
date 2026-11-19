@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T17:22:55.144650+00:00",
+  "generated_at": "2026-11-19T00:11:57.332060+00:00",
   "status": "FAIL",
   "scope": "Última ejecución programada por workflow; estado independiente de la integridad de datos",
   "workflows": {
@@ -116,23 +116,23 @@
     "audit-live-integrity.yml": {
       "name": "Integridad de publicación",
       "max_age_hours": 24,
-      "status": "PASS",
-      "reason": "Última ejecución programada satisfactoria",
+      "status": "RUNNING",
+      "reason": "La última ejecución programada no ha terminado",
       "scheduled_run": {
-        "run_id": 44336313916,
+        "run_id": 44426997658,
         "event": "schedule",
-        "status": "completed",
-        "conclusion": "success",
-        "created_at": "2026-11-18T15:29:57Z",
-        "url": "https://github.com/ivanderodrigo/estrategia/actions/runs/44336313916"
-      },
-      "latest_run": {
-        "run_id": 44357930258,
-        "event": "push",
         "status": "in_progress",
         "conclusion": null,
-        "created_at": "2026-11-18T17:22:21Z",
-        "url": "https://github.com/ivanderodrigo/estrategia/actions/runs/44357930258"
+        "created_at": "2026-11-19T00:11:34Z",
+        "url": "https://github.com/ivanderodrigo/estrategia/actions/runs/44426997658"
+      },
+      "latest_run": {
+        "run_id": 44426997658,
+        "event": "schedule",
+        "status": "in_progress",
+        "conclusion": null,
+        "created_at": "2026-11-19T00:11:34Z",
+        "url": "https://github.com/ivanderodrigo/estrategia/actions/runs/44426997658"
       }
     },
     "news-publication-date-backfill.yml": {
