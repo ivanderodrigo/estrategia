@@ -108,6 +108,8 @@ def _compact_object(obj: Any, registry: dict[str, dict[str, Any]]) -> Any:
         out["confidence"] = min(float(out.get("confidence") or 0), 0.38)
         out["fact_confidence"] = min(float(out.get("fact_confidence") or 0), 0.38)
         out["interpretation_confidence"] = min(float(out.get("interpretation_confidence") or 0), 0.38)
+        if out.get("assertion_status") == "CONFIRMADO":
+            out["assertion_status"] = "PENDIENTE_DE_CONTRASTAR_AFIRMACION"
         out["confidence_band"] = "low"
         out["evidence_level"] = "weak"
         out["evidence_color"] = "red"
