@@ -15,6 +15,7 @@ import json,re,sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from engine.model import canonical
+from engine.knowledge_provenance import sitemap_index_url
 
 CHECKS=ROOT/"data/current/historical_source_checks.json"
 REGISTRY=ROOT/"config/current/historical_semantic_verified.json"
@@ -51,6 +52,8 @@ def owner_site(entity,url):
     return any(re.sub(r"[^a-z0-9]","",t) in host_flat for t in tokens)
 
 def classify(claim,url):
+    if sitemap_index_url(url):
+        return "DISCOVERY_INDEX_NOT_CLAIM_EVIDENCE"
     section=str(claim.get("section") or "")
     field=str(claim.get("field") or "")
     value=str(claim.get("value") or "").strip()
@@ -322,6 +325,9 @@ def main():
         # establish a one-word service, even if an old run once accepted it.
         oldsrc=old.get("source") or {}
         oldurl=str(oldsrc.get("url") or "")
+        if sitemap_index_url(oldurl):
+            quarantined_legacy += 1
+            continue
         oldval=canonical(old.get("value") or "")
         oldfield=str(old.get("field") or "")
         oldpath=canonical(urlparse(oldurl).path)
