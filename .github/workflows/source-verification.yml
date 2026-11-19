@@ -11,6 +11,16 @@ on:
   schedule:
     - cron: "11 20 * * *"
   workflow_dispatch:
+  workflow_run:
+    workflows:
+      - 'Westcon Intelligence Daily'
+      - 'Westcon Intelligence Weekly'
+      - 'Westcon Intelligence Monthly'
+      - 'Integrate Accredited Historical Evidence'
+      - 'Westcon Exact TED CPV Recovery'
+      - 'Restore Historical Source Links'
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: write
@@ -22,11 +32,13 @@ concurrency:
 
 jobs:
   verify:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.head_repository.full_name == github.repository && github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
     timeout-minutes: 50
     steps:
       - uses: actions/checkout@v5
         with:
+          ref: main
           fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
@@ -72,6 +84,10 @@ jobs:
           for attempt in 1 2 3; do
             git fetch origin main
             git reset --hard origin/main
+            if ! jq -e --slurpfile current data/public/manifest.json '.snapshot_generated_at == $current[0].generated_at' "$RUNNER_TEMP/source_verification_status.json" >/dev/null; then
+              echo "A newer snapshot has its own verification run. Keeping this sample in the workflow artifact."
+              exit 0
+            fi
             cp "$RUNNER_TEMP/source_verification_status.json" data/public/source_verification_status.json
             git add data/public/source_verification_status.json
             if git diff --cached --quiet; then exit 0; fi

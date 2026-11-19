@@ -4,6 +4,19 @@ on:
   schedule:
     - cron: "7 */6 * * *"
   workflow_dispatch:
+  workflow_run:
+    workflows:
+      - 'Westcon Intelligence Daily'
+      - 'Westcon Intelligence Weekly'
+      - 'Westcon Intelligence Monthly'
+      - 'Integrate Accredited Historical Evidence'
+      - 'Westcon Exact TED CPV Recovery'
+      - 'Restore Historical Source Links'
+      - 'Historical Source Diligence'
+      - 'Westcon Source Verification'
+      - 'Recover News Publication Dates'
+    types: [completed]
+    branches: [main]
   push:
     branches: [main]
     paths:
@@ -21,11 +34,13 @@ concurrency:
 
 jobs:
   audit:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.head_repository.full_name == github.repository)
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v5
         with:
+          ref: main
           fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
