@@ -7,6 +7,7 @@ binding, semantic extraction, typed provenance and atomic evidence promotion.
 from __future__ import annotations
 
 import re
+import time
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from typing import Iterable
@@ -163,6 +164,7 @@ def discover(
     timeout_s: float,
     max_queries: int,
     results_per_query: int,
+    deadline: float | None = None,
 ) -> tuple[list[SourceSeed], dict[str, int | dict[str, int]]]:
     """Return safe candidate URLs plus diagnostics.
 
@@ -189,19 +191,23 @@ def discover(
     for query in clean_queries:
         if not query:
             continue
+        query_start = len(output)
         for provider in providers:
+            remaining = timeout_s if deadline is None else min(timeout_s, deadline - time.monotonic())
+            if remaining < 2:
+                diagnostics["urls_discovered"] = len(output)
+                return output, diagnostics
             provider = str(provider or "").strip()
             if not provider:
                 continue
             diagnostics["queries_attempted"] += 1
             diagnostics["provider_attempts"][provider] = diagnostics["provider_attempts"].get(provider, 0) + 1
-            before_query_results = len(output)
             try:
                 urls = _search_provider(
                     session,
                     provider,
                     query,
-                    timeout_s=max(2.0, timeout_s),
+                    timeout_s=remaining,
                     result_limit=max(1, results_per_query),
                 )
                 diagnostics["queries_succeeded"] += 1
@@ -243,11 +249,11 @@ def discover(
             # hosts were found for this query (never turn hits into evidence).
             query_hosts = {
                 (urlparse(seed.url).hostname or "").casefold().removeprefix("www.")
-                for seed in output[before_query_results:]
+                for seed in output[query_start:]
             }
             if len(query_hosts) >= 2:
                 break
-        else:
+        if len(output) == query_start:
             diagnostics["empty_result_queries"] += 1
 
     diagnostics["urls_discovered"] = len(output)

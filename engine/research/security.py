@@ -7,6 +7,8 @@ import socket
 from functools import lru_cache
 from urllib.parse import urlparse
 
+import requests
+
 
 class UnsafeUrl(ValueError):
     pass
@@ -61,3 +63,11 @@ def validate_public_url(url: str, *, resolve_dns: bool = True) -> str:
         if not _is_public_ip(str(address)):
             raise UnsafeUrl("Private or reserved IP destination")
     return parsed.geturl()
+
+
+class PublicResearchSession(requests.Session):
+    """Apply the network policy before each prepared request, including redirects."""
+
+    def send(self, request, **kwargs):
+        validate_public_url(request.url)
+        return super().send(request, **kwargs)

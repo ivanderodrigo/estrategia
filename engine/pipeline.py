@@ -333,7 +333,10 @@ def run() -> dict[str, Any]:
         "architectures": metrics["architectures"],
         "research_quality": {
             "fetch_attempts": ledger.get("fetch_attempts", 0),
-            "fetch_successes": ledger.get("fetch_successes", 0),
+            # The ledger counts every delivered document, including cache hits.
+            "fetch_successes": ledger.get("fetch_successes", 0) - ledger.get("cache_hits", 0),
+            "cache_hits": ledger.get("cache_hits", 0),
+            "documents_processed": ledger.get("fetch_successes", 0),
             "pages_relevant": ledger.get("pages_relevant", 0),
             "candidate_values_seen": ledger.get("candidate_values_seen", 0),
             "candidate_values_promoted": ledger.get("candidate_values_promoted", 0),

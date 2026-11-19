@@ -41,7 +41,7 @@ from .planner import plan
 from .query_discovery import discover as discover_search_sources
 from .intelligent_discovery import intelligent_discovery_queries
 from .evidence_routing import precise_claim_queries, precise_navigation, prioritize_sources
-from .security import UnsafeUrl, validate_public_url
+from .security import PublicResearchSession, UnsafeUrl, validate_public_url
 from .sources import PATH_FAMILY_HINTS, SourceSeed, family_from_url, relevant_families, seeds_for
 from .state import ResearchState, now_iso
 from .ted import fetch_notices, upsert_notices
@@ -285,7 +285,7 @@ class Fetcher:
         self.cache = cache
         self.state = state
         self.stats = stats
-        self.session = requests.Session()
+        self.session = PublicResearchSession()
         self.session.headers.update({
             "User-Agent": USER_AGENT,
             "Accept-Language": "es,pt;q=0.9,en;q=0.8",
@@ -1877,6 +1877,7 @@ def run(
                 providers=query_policy.get("providers") or ["bing_rss", "duckduckgo_html"],
                 timeout_s=min(float(profile_config.request_timeout_s), max(2.5, deadline - time.monotonic() - 3)),
                 max_queries=query_limit,
+                deadline=deadline - 3,
                 results_per_query=int(query_budget.get("results_per_query") or 4),
             )
             stats["query_discovery_targets"] += 1

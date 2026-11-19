@@ -223,7 +223,9 @@ def main() -> int:
             status["stages"].append({
                 "research": result.get("status"),
                 "fetch_attempts": result.get("fetch_attempts", 0),
-                "fetch_successes": result.get("fetch_successes", 0),
+                "fetch_successes": result.get("fetch_successes", 0) - result.get("cache_hits", 0),
+                "cache_hits": result.get("cache_hits", 0),
+                "documents_processed": result.get("fetch_successes", 0),
                 "search_queries_attempted": result.get("search_queries_attempted", 0),
                 "search_queries_succeeded": result.get("search_queries_succeeded", 0),
                 "search_urls_discovered": result.get("search_urls_discovered", 0),
