@@ -1,11 +1,11 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-11-18T14:12:54.069687+00:00",
+  "generated_at": "2026-11-19T12:15:16.530749+00:00",
   "definition": "Todo campo declarado cuenta. Los hechos externos solo cierran con evidencia pública actual. PPT, portfolio e histórico se conservan como pistas internas y generan deuda de validación pública, no acreditación.",
-  "total_gaps": 18552,
+  "total_gaps": 18551,
   "debt_breakdown": {
     "empty_schema_fields": 9051,
-    "claims_awaiting_evidence": 5437,
+    "claims_awaiting_evidence": 5436,
     "derived_support": 4064,
     "other_open_debt": 0
   },
@@ -19,7 +19,7 @@
       "empty_fields": 799
     },
     "integrators": {
-      "unverified_claims": 3185,
+      "unverified_claims": 3184,
       "empty_fields": 1554
     },
     "clients_public": {
@@ -41,12 +41,12 @@
   },
   "public_status_summary": {
     "version": 1,
-    "defined_at": "2026-11-18T14:12:53.966221+00:00",
-    "total": 18552,
+    "defined_at": "2026-11-19T12:15:16.449479+00:00",
+    "total": 18551,
     "by_status": {
       "derivation-pending": 4064,
       "historical-validation": 82,
-      "insufficient-support": 1919,
+      "insufficient-support": 1918,
       "not-found": 9818,
       "not-researched": 37,
       "source-unavailable": 2632
@@ -73,7 +73,7 @@
         "not-found": 1361
       },
       "integrators": {
-        "insufficient-support": 1238,
+        "insufficient-support": 1237,
         "not-found": 3466,
         "not-researched": 35
       },
@@ -100,26 +100,26 @@
   },
   "historical_revalidation_gaps": 82,
   "research_seed_registry_gaps": 0,
-  "evidence_support_gaps": 5437,
+  "evidence_support_gaps": 5436,
   "derivation_support_gaps": 1845,
   "support_model": "DIRECT_OR_TRACEABLE_DERIVATION",
   "support_rule": "CURRENT_PUBLIC_ONLY",
   "public_validation_gaps": 82,
-  "unknown_research_gaps": 18470,
+  "unknown_research_gaps": 18469,
   "business_priority": {
     "model": "business-value-x-researchability-opportunity-v2",
     "tiers": {
       "P0": 41,
       "P1": 928,
       "P2": 4547,
-      "P3": 13036
+      "P3": 13035
     },
     "actionable_high_value_gaps": 969,
     "weighted_expected_debt": 31193.07,
     "weighted_open_debt": 20252.34,
     "business_weighted_coverage_pct": 35.07,
     "source_families": {
-      "official": 7685,
+      "official": 7684,
       "procurement": 3467,
       "services": 2474,
       "technology": 1025,
@@ -143,7 +143,7 @@
         "P0": 1
       },
       "integrators": {
-        "P3": 2573,
+        "P3": 2572,
         "P0": 40,
         "P2": 1318,
         "P1": 808
@@ -177,7 +177,7 @@
   "by_section": {
     "manufacturers": 1036,
     "distributors": 1794,
-    "integrators": 4739,
+    "integrators": 4738,
     "clients_public": 8468,
     "clients_private": 1641,
     "trends": 606,
@@ -197,7 +197,7 @@
     "integrators.services": 781,
     "integrators.capabilities": 732,
     "clients_public.westcon_area": 594,
-    "integrators.technology_domains": 575,
+    "integrators.technology_domains": 574,
     "clients_public.organization_size": 490,
     "clients_public.identified_integrators": 490,
     "clients_public.known_architectures": 490,
@@ -326,7 +326,7 @@
     "manufacturers.scope": 1
   },
   "research_states": {
-    "Por investigar": 18470,
+    "Por investigar": 18469,
     "Pendiente de validación pública": 82
   },
   "coverage": {
@@ -348,7 +348,7 @@
       "expected_fields": 2990,
       "populated_fields": 1436,
       "value_completeness_pct": 48.03,
-      "open_gaps": 4739,
+      "open_gaps": 4738,
       "critical_gaps": 2207
     },
     "clients_public": {
@@ -460259,68 +460259,6 @@
         "query_hints": [
           "\"Econocom Spain\" \"Observability\"",
           "\"Econocom Spain\" technology domains \"Observability\"",
-          "\"Econocom Spain\" technology domains",
-          "\"Econocom Spain\" technology domains Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=51.7/100; investigabilidad=60.3/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "insufficient-support",
-      "public_status_reason": "Se recogieron evidencias, pero todavía no acreditan el dato requerido."
-    },
-    {
-      "id": "integrators:econocom spain:technology_domains:evidence-support:4553f1aa77c3",
-      "section": "integrators",
-      "entity": "Econocom Spain",
-      "entity_id": "integrator-v313-002",
-      "field": "technology_domains",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "hecho externo preservado como pista interna/histórica; requiere fuente pública actual",
-      "gap_kind": "evidence-support",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "support_requirement": "CURRENT_PUBLIC_ONLY",
-      "target_level": "item",
-      "target_values": [
-        "Identity & Access"
-      ],
-      "preserve_value": true,
-      "historical_lineage_present": false,
-      "revalidation_seeds": [],
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 5,
-      "accepted_evidences": 1,
-      "consecutive_no_yield": 1,
-      "next_pass": 6,
-      "next_due_at": "2026-11-15T11:27:06.421168+00:00",
-      "last_attempt_at": "2026-11-13T11:27:06.421167+00:00",
-      "last_error": "",
-      "close_policy": "Conservar el valor/pista y cerrarlo solo cuando el mismo dato quede sustentado por una fuente pública actual.",
-      "strategy_profile": "evidence-support-public-verification",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 51.7,
-      "researchability_score": 60.3,
-      "priority_score": 36.0,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Econocom Spain\" \"Identity & Access\"",
-          "\"Econocom Spain\" technology domains \"Identity & Access\"",
           "\"Econocom Spain\" technology domains",
           "\"Econocom Spain\" technology domains Spain Portugal Iberia"
         ]
