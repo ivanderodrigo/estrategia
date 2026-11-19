@@ -9,6 +9,11 @@ on:
       - 'Westcon Intelligence Daily'
       - 'Westcon Intelligence Weekly'
       - 'Westcon Intelligence Monthly'
+      - 'Historical Source Diligence'
+      - 'Westcon Source Verification'
+      - 'Recover News Publication Dates'
+      - 'Westcon Published Integrity Monitor'
+      - 'Westcon Exact TED CPV Recovery'
     types: [completed]
     branches: [main]
 permissions:
@@ -35,6 +40,11 @@ jobs:
             "Westcon Intelligence Daily") target="research-daily.yml" ;;
             "Westcon Intelligence Weekly") target="research-weekly.yml" ;;
             "Westcon Intelligence Monthly") target="research-monthly.yml" ;;
+            "Historical Source Diligence") target="historical-source-diligence.yml" ;;
+            "Westcon Source Verification") target="source-verification.yml" ;;
+            "Recover News Publication Dates") target="news-publication-date-backfill.yml" ;;
+            "Westcon Published Integrity Monitor") target="audit-live-integrity.yml" ;;
+            "Westcon Exact TED CPV Recovery") target="ted-cpv-revalidate.yml" ;;
             *) echo "Unknown scheduled workflow: $FAILED_WORKFLOW"; exit 1 ;;
           esac
           echo "Recovering scheduled run $FAILED_URL on latest main via $target"

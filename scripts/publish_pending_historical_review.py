@@ -21,12 +21,29 @@ def read(path):
     p=ROOT/path
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
 
-def pending_index(historical,registry,checks):
+def published_item_proofs(section, snapshot):
+    proofs = set()
+    for row in snapshot.get("rows") or []:
+        for field, record in (row.get("fields") or {}).items():
+            for item in record.get("items") or []:
+                for ref in item.get("evidence_ids") or []:
+                    source = (snapshot.get("evidence") or {}).get(ref) or {}
+                    if (source.get("atomic") is True and source.get("field") == field
+                            and source.get("source_binding") == "claim-specific"
+                            and canonical(source.get("item_value")) == canonical(item.get("value"))
+                            and source.get("url")):
+                        proofs.add((section, canonical(row.get("name")), field,
+                                    canonical(item.get("value")), source["url"]))
+    return proofs
+
+
+def pending_index(historical,registry,checks,published_proofs=()):
     verified={
         (c.get("section"),canonical(c.get("entity")),c.get("field"),
          canonical(c.get("value")),str((c.get("source") or {}).get("url") or ""))
         for c in registry.get("existing_claim_sources") or []
     }
+    verified.update(published_proofs)
     pages=(checks.get("results") or {})
     results=[]
     counted=Counter()
@@ -70,9 +87,12 @@ def pending_index(historical,registry,checks):
 
 def main():
     historical={area:read(f"data/public/historical/current/{area}.json") for area in AREAS}
+    proofs=set()
+    for area in AREAS:
+        proofs.update(published_item_proofs(area, read(f"data/public/sections/{area}.json")))
     records,counters=pending_index(historical,
         read("config/current/historical_semantic_verified.json"),
-        read("data/current/historical_source_checks.json"))
+        read("data/current/historical_source_checks.json"), proofs)
     snapshot=read("data/public/manifest.json").get("generated_at")
     payload={
         "generated_at":datetime.now(timezone.utc).isoformat(),

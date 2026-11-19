@@ -130,7 +130,8 @@ def evaluate():
         historical_verification={
             "available":True,
             "snapshot_matches":matching,
-            "checked_at":verification.get('generated_at'),
+            "checked_at":verification.get('historical_check_generated_at'),
+            "report_generated_at":verification.get('generated_at'),
             "urls_scanned":int(verification.get('urls_scanned') or 0),
             "claim_source_pairs_reviewed":int(verification.get('claim_source_pairs_reviewed') or 0),
             "verified_claim_source_pairs":int(verification.get('verified_claim_source_pairs') or 0),

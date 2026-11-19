@@ -1834,7 +1834,7 @@ def run(
             if remaining >= 3.0:
                 discovered = discover_official_site(fetcher.session, target["entity"], timeout_s=remaining)
                 if discovered:
-                    seeds = [discovered]
+                    seeds = _merge_source_seeds([discovered], seeds)
                     stats["official_sites_discovered"] += 1
         # Search unsupported assertions inside first-party domains, not only
         # generic media queries. Search snippets never accredit any assertion.
@@ -1916,6 +1916,7 @@ def run(
         queue = list(seeds)
         seen: set[tuple[str, str]] = set()
         pages = 0
+        examined_families: set[str] = set()
         accepted_by_field: defaultdict[str, int] = defaultdict(int)
         wanted_families = relevant_families(target["fields"]) | set(target.get("source_families") or [])
         scope = str(((row.get("fields") or {}).get("scope") or {}).get("value") or "GLOBAL")
@@ -1948,6 +1949,7 @@ def run(
 
             stats["fetch_successes"] += 1
             family_stats["fetch_successes"] += 1
+            examined_families.add(seed.family)
             pages += 1
             pages_since_checkpoint += 1
             candidates = extract_candidates(
@@ -2128,8 +2130,15 @@ def run(
                 next_heartbeat = time.monotonic() + 25
 
         for gap_id in target["gap_ids"]:
-            field_id = str((gap_by_id.get(gap_id) or {}).get("field") or "")
-            research_state.record_gap(gap_id, accepted=accepted_by_field[field_id])
+            gap = gap_by_id.get(gap_id) or {}
+            field_id = str(gap.get("field") or "")
+            families = set((gap.get("source_strategy") or {}).get("preferred_families") or [])
+            families.update(relevant_families([field_id], section=target["section"]))
+            if gap.get("source_family"):
+                families.add(gap["source_family"])
+            # A page budget or open circuit may leave part of an entity untouched.
+            if accepted_by_field[field_id] or examined_families.intersection(families):
+                research_state.record_gap(gap_id, accepted=accepted_by_field[field_id])
 
     families_output = {}
     for key, row_stats in stats["families"].items():

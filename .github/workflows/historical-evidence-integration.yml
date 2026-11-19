@@ -6,6 +6,8 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/historical-evidence-integration.yml'
+      - 'scripts/publish_pending_historical_review.py'
+      - 'config/current/verified_research_20261113.json'
       - 'engine/enrichment.py'
       - 'engine/historical_publication.py'
       - 'engine/historical_gap_context.py'
