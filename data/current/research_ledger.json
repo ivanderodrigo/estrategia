@@ -1,142 +1,669 @@
 {
   "version": "4.3.0",
   "profile": "daily",
-  "started_at": "2026-11-18T13:57:43.994778+00:00",
+  "started_at": "2026-11-19T15:31:28.541975+00:00",
   "planned_entities": 160,
   "planned_sections": {
-    "architectures": 4,
-    "clients_private": 14,
+    "architectures": 3,
+    "clients_private": 28,
     "clients_public": 35,
     "distributors": 22,
-    "integrators": 68,
-    "manufacturers": 13,
-    "trends": 4
+    "integrators": 56,
+    "manufacturers": 15,
+    "trends": 1
   },
   "processed_sections": {
-    "distributors": 15,
+    "distributors": 16,
     "integrators": 8,
-    "manufacturers": 7,
+    "manufacturers": 8,
     "clients_private": 7,
     "clients_public": 7,
-    "trends": 4,
-    "architectures": 4
+    "trends": 1,
+    "architectures": 3
   },
   "rescue_targets_after_cooldown": 0,
-  "cooldown_lane_rescues": {},
-  "fetch_attempts": 337,
-  "fetch_successes": 306,
-  "pages_relevant": 121,
-  "candidate_evidences": 20,
-  "candidate_values_seen": 27,
-  "candidate_values_promoted": 27,
+  "cooldown_lane_rescues": {
+    "architectures": 3
+  },
+  "fetch_attempts": 281,
+  "fetch_successes": 299,
+  "pages_relevant": 104,
+  "candidate_evidences": 7,
+  "candidate_values_seen": 9,
+  "candidate_values_promoted": 9,
   "candidate_values_rejected": 0,
   "candidate_fields_rejected": 0,
-  "accepted_evidences": 20,
-  "fields_enriched": 20,
-  "values_added": 17,
-  "entities_added": 0,
-  "cache_hits": 37,
-  "circuit_skips": 127,
-  "unsafe_url_rejections": 0,
-  "official_sites_discovered": 1,
-  "financial_links_discovered": 69,
-  "query_discovery_targets": 52,
-  "search_queries_attempted": 422,
-  "search_queries_succeeded": 364,
-  "search_provider_failures": 58,
-  "search_urls_discovered": 1602,
-  "unsourced_value_queries": 82,
-  "precise_claim_queries": 108,
-  "official_navigation_links": 88,
+  "accepted_evidences": 7,
+  "fields_enriched": 7,
+  "values_added": 3,
+  "entities_added": 1,
+  "cache_hits": 61,
+  "circuit_skips": 78,
+  "unsafe_url_rejections": 1,
+  "official_sites_discovered": 2,
+  "financial_links_discovered": 14,
+  "query_discovery_targets": 49,
+  "search_queries_attempted": 396,
+  "search_queries_succeeded": 346,
+  "search_provider_failures": 50,
+  "search_urls_discovered": 1509,
+  "unsourced_value_queries": 105,
+  "precise_claim_queries": 145,
+  "official_navigation_links": 75,
   "manufacturer_revenue_rows_before": 1,
   "manufacturer_revenue_acceptances": 0,
   "stop_reason": "deadline",
-  "historical_lead_targets_planned": 65,
-  "historical_lead_urls_planned": 221,
-  "historical_lead_urls_attempted": 78,
-  "historical_lead_evidences_accepted": 0,
+  "historical_lead_targets_planned": 89,
+  "historical_lead_urls_planned": 356,
+  "historical_lead_urls_attempted": 114,
+  "historical_lead_evidences_accepted": 2,
   "structured_growth_restricted_for_debt": true,
-  "structured_growth_backlog": 18562,
+  "structured_growth_backlog": 18550,
   "structured_growth_floor": 6,
   "structured_entity_budget": 6,
-  "structured_entities_added": 0,
-  "structured_notices": 0,
-  "accepted_evidence_per_fetch_attempt": 0.0593,
+  "structured_entities_added": 1,
+  "structured_notices": 1,
+  "accepted_evidence_per_fetch_attempt": 0.0249,
   "candidate_acceptance_rate": 1.0,
   "candidate_value_promotion_rate": 1.0,
-  "values_per_accepted_evidence": 0.85,
-  "growth_pressure_ratio": 0.0,
+  "values_per_accepted_evidence": 0.4286,
+  "growth_pressure_ratio": 0.3333,
   "manufacturer_revenue_rows_after": 1,
   "manufacturer_revenue_rows_added": 0,
-  "elapsed_s": 629.16,
-  "finished_at": "2026-11-18T14:08:11.430896+00:00",
-  "result_rows_total": 501,
-  "accepted_result_rows_total": 20,
+  "elapsed_s": 564.15,
+  "finished_at": "2026-11-19T15:40:50.663905+00:00",
+  "result_rows_total": 421,
+  "accepted_result_rows_total": 7,
   "results_truncated": true,
   "results": [
     {
-      "section": "integrators",
-      "entity": "Logicalis",
-      "url": "https://community.f5.com/t/devcentrals-featured-member-for-july-sebastian-sierra-dominguez/70046",
+      "section": "distributors",
+      "entity": "V-Valley Advanced Solutions Portugal",
+      "url": "https://www.v-valley.com/en/services/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "V-Valley Advanced Solutions Portugal",
+      "url": "https://www.v-valley.com/es/servicios/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.exclusive-networks.com/cybersecurity/services/partner-enablement",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.exclusive-networks.com/cybersecurity/services/partner-portal-and-self-service-tools",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/about-us/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.firemon.com/about-us/investors",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/about/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.firemon.com/about/investors",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/annual-report",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.firemon.com/annual-report",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/annual-reports",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.firemon.com/annual-reports",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/company/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.firemon.com/company/investor-relations",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/company/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/earnings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/filings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/financial-information",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/financial-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/financials",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/informacao-financeira",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/informacion-financiera",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/investor",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/quarterly-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/relatorio-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/relatorios-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/reports",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/reports-and-filings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/resultados",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/resultados-financieros",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/sitemap.xml",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://www.firemon.com/es",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://docs.firemon.com/enterprise/Default.htm",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://docs.firemon.com/enterprise/Content/Start/StartPage.htm",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "FireMon",
+      "url": "https://famdocs.firemon.com/Content/Home.htm",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Sacyr",
+      "url": "https://sacyr.com/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Sacyr",
+      "url": "https://sacyr.com/actualidad",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Sacyr",
+      "url": "https://sacyr.com/en/innovation",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Sacyr",
+      "url": "https://www.lecturas.com/blogs/pilar-eyre",
+      "family": "official",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.lecturas.com/blogs/pilar-eyre",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Sacyr",
+      "url": "https://cnnespanol.cnn.com/2025/01/02/estados-unidos/cierre-cadenas-estados-unidos-trax",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Sacyr",
+      "url": "https://cnnespanol.cnn.com/economia",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Sacyr",
+      "url": "https://www.yelp.com/search?cflt=pizza&find_loc=Redmond%2C+WA+98052",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Sacyr",
+      "url": "https://pizza.dominos.com/washington/redmond/16260-redmond-way",
+      "family": "official",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Sacyr",
+      "url": "https://es.wikipedia.org/wiki/Pizza",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Sacyr",
+      "url": "https://www.pagliacci.com/locations/redmond",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Secretaria-Geral do Ministério da Administração Interna",
+      "url": "https://ted.europa.eu/en/notice/-/detail/596073-2026",
       "family": "news",
       "cached": false,
       "relevant": false,
       "accepted": 0,
-      "status": 200
+      "status": 202
     },
     {
-      "section": "integrators",
-      "entity": "Logicalis",
-      "url": "https://partners.amazonaws.com/partners/0010L00001rcPmTQAU/",
-      "family": "partners",
+      "section": "clients_public",
+      "entity": "Secretaria-Geral do Ministério da Administração Interna",
+      "url": "https://finance.yahoo.com/quote/VFINX/holdings/",
+      "family": "official",
       "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "Logicalis",
-      "url": "https://www.es.logicalis.com/es/partners/cisco",
-      "family": "partners",
+      "section": "clients_public",
+      "entity": "Secretaria-Geral do Ministério da Administração Interna",
+      "url": "https://finance.yahoo.com/quote/VFINX/",
+      "family": "official",
       "cached": false,
-      "relevant": true,
+      "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "Logicalis",
-      "url": "https://www.es.logicalis.com/es/perspectivas/noticias/logicalis-spain-ha-sido-reconocido-como-platform-partner-year-fy25-por-palo",
-      "family": "partners",
+      "section": "clients_public",
+      "entity": "Secretaria-Geral do Ministério da Administração Interna",
+      "url": "https://es.finance.yahoo.com/quote/VFINX/",
+      "family": "official",
       "cached": false,
-      "relevant": true,
+      "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "integrators",
-      "entity": "Logicalis",
-      "url": "https://aws.amazon.com/es/blogs/apn/",
-      "family": "cases",
-      "cached": true,
-      "relevant": true,
+      "section": "clients_public",
+      "entity": "Secretaria-Geral do Ministério da Administração Interna",
+      "url": "https://it.finance.yahoo.com/quote/VFINX/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
       "accepted": 0,
       "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Secretaria-Geral do Ministério da Administração Interna",
+      "url": "https://de.finance.yahoo.com/quote/VFINX/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "architectures",
+      "entity": "Modern SOC / SecOps",
+      "url": "https://www.gartner.com/en/newsroom/press-releases/2026-02-05-gartner-identifies-the-top-cybersecurity-trends-for-2026",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "architectures",
+      "entity": "Modern SOC / SecOps",
+      "url": "https://www.idc.com/resource-center/blog/european-ciso-priorities-in-2026-ai-agents-platformization-and-sovereignty/",
+      "family": "analyst",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "architectures",
+      "entity": "Modern SOC / SecOps",
+      "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "family": "news",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-announces-falcon-next-gen-siem-isv-ecosystem-open",
+      "accepted": 0
+    },
+    {
+      "section": "architectures",
+      "entity": "Modern SOC / SecOps",
+      "url": "https://www.enisa.europa.eu/publications/enisa-threat-landscape-2025",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "architectures",
+      "entity": "Modern SOC / SecOps",
+      "url": "https://www.enisa.europa.eu/topics/artificial-intelligence-and-next-gen-technologies",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "architectures",
+      "entity": "Modern SOC / SecOps",
+      "url": "https://www.visithatta.com/en/stay",
+      "family": "analyst",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "architectures",
+      "entity": "Modern SOC / SecOps",
+      "url": "https://www.visithatta.com/en",
+      "family": "analyst",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "architectures",
+      "entity": "Modern SOC / SecOps",
+      "url": "https://www.tripadvisor.es/Hotel_Review-g736302-d34430651-Reviews-Hatta_Resorts-Hatta_Emirate_of_Dubai.html",
+      "family": "analyst",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.tripadvisor.es/Hotel_Review-g736302-d34430651-Reviews-Hatta_Resorts-Hatta_Emirate_of_Dubai.html",
+      "accepted": 0
+    },
+    {
+      "section": "architectures",
+      "entity": "Modern SOC / SecOps",
+      "url": "https://es.planetofhotels.com/emiratos-arabes-unidos/hatta/hatta-resorts",
+      "family": "analyst",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://es.planetofhotels.com/emiratos-arabes-unidos/hatta/hatta-resorts",
+      "accepted": 0
+    },
+    {
+      "section": "architectures",
+      "entity": "Modern SOC / SecOps",
+      "url": "https://www.booking.com/hotel/ae/damani-lodges.es.html?label=gen173nr-10CAsoAkINZGFtYW5pLWxvZGdlc0gzWARokQKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4AsKu_NcGwAIB0gIkYjlkODhkNmUtY2E5OS00MTJjLTllMmEtMWY1NWI5MzM3Mzgz2AIB4AIB&sid=b74fc9ee5653e92554e2ba01707830d5&dist=0&keep_landing=1&sb_price_type=total&type=total&",
+      "family": "analyst",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
     },
     {
       "section": "distributors",
-      "entity": "CPCdi",
-      "url": "https://cpcdi.pt/",
+      "entity": "OptiVisus",
+      "url": "https://optivisus.com/",
       "family": "services",
       "cached": false,
-      "relevant": true,
+      "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "distributors",
-      "entity": "CPCdi",
+      "entity": "OptiVisus",
+      "url": "https://www.itchannel.pt/directorio/distribuidores/30",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.itchannel.pt/directorio/distribuidores/30",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "OptiVisus",
       "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
       "family": "services",
       "cached": true,
@@ -146,27 +673,7 @@
     },
     {
       "section": "distributors",
-      "entity": "CPCdi",
-      "url": "https://cpcdi.pt/cpcdi",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "CPCdi",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "CPCdi",
+      "entity": "OptiVisus",
       "url": "https://multimac.pt/servicos-e-solucoes/",
       "family": "services",
       "cached": false,
@@ -176,7 +683,136 @@
     },
     {
       "section": "distributors",
-      "entity": "CPCdi",
+      "entity": "OptiVisus",
+      "url": "https://www.also.com/ec/cms5/en_6000/6000/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "OptiVisus",
+      "url": "https://multimac.pt/solucoes-visuais/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "OptiVisus",
+      "url": "https://multimac.pt/solucoes-documentais/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Timestamp",
+      "url": "https://aws.amazon.com/es/blogs/apn/",
+      "family": "careers",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Timestamp",
+      "url": "https://jobs.atos.net/",
+      "family": "careers",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Timestamp",
+      "url": "https://aws.amazon.com/es/smart-business/solutions/artificial-intelligence-small-medium-business/?nc2=h_dsc_ex_s4",
+      "family": "services",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Timestamp",
+      "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQQmp4TlRRS2VjRG5HQi14dW05YmlESXdkNVJtSU1HOEtGSW5uZEIwLVhuc1ZVdEJHTmdJbm1OQTRDejVrZ2E5S29wbmcxNzdUQmJ0cDV0RHU5QWpRcEl6Zm5aQjRhaEFtQ0dRWEpRdlUxdlFhSEJmSkxsVmVjZzN4MURNcllDRjJzVUtndWRDSDA0V3ZSZTVPa2E1THJWTDBGOGxyOGJlY2dlblJzQk94bTNpeFRHRGFLXzhvVHVDQ3ZPazJ3U2JnXzlkQ2ZmZE5qUDJvclJKdnlTN3RQb1V2aE9nU2NMeE9NaDRXZUs3dG04S1JfclRDMl930gH_AUFVX3lxTE5xaHBWdWdiQmpJN2Q5X3pYSjJWR3lGVHpZQjVWc3RnbUo2UDNaZEtvMlVrSmRNRFJsZ0tHZ0xHUDFRdHlSMzMyNlRSaTlYeWNVTzMycnlKY0VoZGlkWmt1SWpPSERIcS1aVngzbDVlTDU4NnF3Q2RXZ3RDTU02MXJZWmhTSkN4QV80Q25wekp4eS1xTHgwVy1XOGctSXpTbnp4T21Na054cjg2TUQzTHFWeUpzTEszdVNzbVpESnhKTGlwbnZyTVJmclA4U0RLMUxVaDVoZXNva3I4T2NXZFpCOHh0MnV6NDZHb0ZBR1QxX1BWd3JPT3lwaGtXbXEwRQ?oc=5&hl=es-419&gl=US&ceid=US:es-419",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Timestamp",
+      "url": "https://ted.europa.eu/en/notice/-/detail/593224-2026",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "integrators",
+      "entity": "Timestamp",
+      "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQajNXWHNVWjRvSEx5YkNjLVhGdmxXbnRGYlM1c0QzUXFxc09ZSTBHcHNQNUI2YVlDbGEtaXJRSU13Z3E0U0xfanN3V21fLXNOeDZBQkZZd2hBd2J6TV9nMjM0MWdxV3JqMzNOdUtReGJDQ1ZpYW82TVpKMW5EN3ZjOGNpSEtjRmpDMUtmc2xKWGs4VDVTa1V2QUdPR2pyWkZiczNhZmNFVVR5aGZlX0o1Y0ZCWFB0M0hqR3dtclZrbXowZU4zeV9SSHoycHllQy1Cam4wNDd1RFBIOW5oc1ljbnFFRjQ4OHR5LW94eQ?oc=5&hl=es-419&gl=US&ceid=US:es-419",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "TBA",
+      "url": "https://www.itchannel.pt/directorio/distribuidores/30",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.itchannel.pt/directorio/distribuidores/30",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "TBA",
+      "url": "https://www.tba.pt/about-us.html",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "TBA",
+      "url": "https://multimac.pt/servicos-e-solucoes/",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "TBA",
+      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "TBA",
       "url": "https://www.also.com/ec/cms5/en_6000/6000/",
       "family": "official",
       "cached": true,
@@ -185,9 +821,49 @@
       "status": 200
     },
     {
+      "section": "distributors",
+      "entity": "TBA",
+      "url": "https://multimac.pt/solucoes-visuais/",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "TBA",
+      "url": "https://multimac.pt/solucoes-documentais/",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/",
+      "entity": "NETSCOUT",
+      "url": "https://www.infinigate.com/partner-with-infinigate/",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/solutions/carpet-bombing-ddos-protection",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/",
       "family": "financial",
       "cached": false,
       "relevant": false,
@@ -196,62 +872,53 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/about-us/investors",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/about-us/investors",
       "family": "financial",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://docs.sonarsource.com/about-us/investors",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.netscout.com/about-us/investors",
       "accepted": 0
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/about/investors",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/about/investors",
       "family": "financial",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://docs.sonarsource.com/about/investors",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.netscout.com/about/investors",
       "accepted": 0
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/annual-report",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/annual-report",
       "family": "financial",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://docs.sonarsource.com/annual-report",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.netscout.com/annual-report",
       "accepted": 0
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/annual-reports",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/annual-reports",
       "family": "financial",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://docs.sonarsource.com/annual-reports",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.netscout.com/annual-reports",
       "accepted": 0
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/company/investor-relations",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/company/investor-relations",
       "family": "financial",
       "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://docs.sonarsource.com/company/investor-relations",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.netscout.com/company/investor-relations",
       "accepted": 0
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/company/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/earnings",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/company/investors",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -259,8 +926,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/filings",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/earnings",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -268,8 +935,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/financial-information",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/filings",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -277,8 +944,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/financial-results",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/financial-information",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -286,8 +953,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/financials",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/financial-results",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -295,8 +962,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/informacao-financeira",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/financials",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -304,8 +971,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/informacion-financiera",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/informacao-financeira",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -313,8 +980,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/investor",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/informacion-financiera",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -322,8 +989,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/investor-relations",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/investor",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -331,8 +998,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/investors",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/investor-relations",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -340,8 +1007,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/quarterly-results",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/investors",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -349,8 +1016,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/relatorio-e-contas",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/quarterly-results",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -358,8 +1025,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/relatorios-e-contas",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/relatorio-e-contas",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -367,8 +1034,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/reports",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/relatorios-e-contas",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -376,8 +1043,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/reports-and-filings",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/reports",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -385,8 +1052,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/resultados",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/reports-and-filings",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -394,8 +1061,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/resultados-financieros",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/resultados",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -403,8 +1070,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/results",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/resultados-financieros",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -412,8 +1079,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/sitemap.xml",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/results",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -421,53 +1088,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/about-us/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.sonarsource.com/about-us/investors/",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/about/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.sonarsource.com/about/investors/",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/annual-report",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.sonarsource.com/annual-report/",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/annual-reports",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.sonarsource.com/annual-reports/",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/company/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.sonarsource.com/company/investor-relations/",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/company/investors",
+      "entity": "NETSCOUT",
+      "url": "https://www.netscout.com/sitemap.xml",
       "family": "financial",
       "status": 0,
       "error": "domain-circuit-open",
@@ -475,179 +1097,8 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/earnings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/financial-information",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/financial-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/financials",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/informacao-financeira",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/informacion-financiera",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/investor",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/quarterly-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/relatorio-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/relatorios-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/reports-and-filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/resultados",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/resultados-financieros",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/sitemap.xml",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://docs.sonarsource.com/sonarqube-server/advanced-security/introduction",
+      "entity": "NETSCOUT",
+      "url": "https://telefonicatech.com/actualidad/redes-privadas-5g-nokia",
       "family": "official",
       "status": 0,
       "error": "domain-circuit-open",
@@ -655,76 +1106,97 @@
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/company/partners/",
-      "family": "partners",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
+      "entity": "NETSCOUT",
+      "url": "https://partner.stratus.com/directory/search?f0=Markets+Served&f0v0=Spain",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
     },
     {
       "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/plans-and-pricing/sonarqube/",
+      "entity": "NETSCOUT",
+      "url": "https://www.levelblue.com/company/security-breach",
+      "family": "official",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "NETSCOUT",
+      "url": "https://forum.index.hu/Article/showArticle?t=9059044",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "The Navigator Company",
+      "url": "https://thenavigatorcompany.com/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "The Navigator Company",
+      "url": "https://thenavigatorcompany.com/media/press-releases/",
+      "family": "news",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "The Navigator Company",
+      "url": "https://thenavigatorcompany.com/en/media/press-releases/",
+      "family": "news",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "The Navigator Company",
+      "url": "https://en.wikipedia.org/wiki/The",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "The Navigator Company",
+      "url": "https://learnenglish.britishcouncil.org/free-resources/grammar/english-grammar-reference/definite-article",
+      "family": "analyst",
+      "status": 0,
+      "error": "ConnectionError: HTTPSConnectionPool(host='learnenglish.britishcouncil.org', port=443): Max retries exceeded with url: /free-resources/grammar/english-grammar-reference/definite-article (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host=",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "The Navigator Company",
+      "url": "https://www.merriam-webster.com/dictionary/the",
       "family": "official",
       "status": 0,
-      "error": "domain-circuit-open",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.merriam-webster.com/dictionary/the",
       "accepted": 0
     },
     {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.sonarsource.com/products/sonarqube/",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.levelblue.com/technology-partners",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.levelblue.com/pga-of-america-partnership",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.levelblue.com/technology-partners/microsoft",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.levelblue.com/technology-partners/sentinelone",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Sonar",
-      "url": "https://www.levelblue.com/technology-partners/zscaler",
-      "family": "partners",
+      "section": "clients_private",
+      "entity": "The Navigator Company",
+      "url": "https://dictionary.cambridge.org/dictionary/english/the",
+      "family": "official",
       "cached": false,
       "relevant": false,
       "accepted": 0,
@@ -732,365 +1204,9 @@
     },
     {
       "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/about-us/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.fluidra.com/about-us/investors/",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/about/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/annual-report",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/annual-reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/company/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/company/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/earnings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/financial-information",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/financial-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/financials",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/informacao-financeira",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/informacion-financiera",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/investor",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/quarterly-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/relatorio-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/relatorios-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/reports-and-filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/resultados",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/resultados-financieros",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/sitemap.xml",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.fluidra.com/wp-content/uploads/2026/03/1.-English_2025-Integrated-Anual-Report-ENG.pdf",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.answers.microsoft.com/ja-jp/windows/forum/windows_7-security/ÃƒÂ£Ã†â€™ÃƒÂ¢Ã‚Â£ÃƒÂ£Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÂ£Ã¢â‚¬Å¡ÃƒÂ¢Ã‚Â¦ÃƒÂ£Ã†â€™ÃƒÂ¢Ã‚Â£ÃƒÂ£Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÂ£Ã¢â‚¬Å¡ÃƒÂ¢Ã‚Â¼ÃƒÂ£Ã†â€™ÃƒÂ¢Ã‚Â£ÃƒÂ£Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¥Ã‚Â¡ÃƒÂ£Ã¢â‚¬Å¡ÃƒÂ¢Ã‚Â¶ÃƒÂ£Ã†â€™ÃƒÂ¢Ã‚Â£ÃƒÂ£Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÂ£Ã¢â‚¬Å¡ÃƒÂ¢Ã‚Â¼ÃƒÂ£Ã†â€™ÃƒÂ¢Ã‚Â£ÃƒÂ£Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¥Ã‚Â¡ÃƒÂ£Ã¢â‚¬Å¡ÃƒÂ¢Ã‚Â¢/7ffe7a9b-d0cf-454c-b3db-731542747656",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 400 Client Error: Bad Request for url: https://learn.microsoft.com/ja-jp/answers/questions/7ffe7a9b-d0cf-454c-b3db-731542747656/%C3%83%C6%92%C3%82%C2%A3%C3%83%E2%80%A0%C3%A2%E2%82%AC%E2%84%A2%C3%83%C6%92%C3%82%C2%A2%C3%83%E2%80%9",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.answers.microsoft.com/ja-jp/windows/forum/all/ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¹ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â®ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£/b45f8dde-aa4a-4598-ab6e-21a67f8b6ec2",
-      "family": "careers",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.amazon.com/dyson-cordless-vacuum-v11-absolute/s?k=dyson+cordless+vacuum+v11+absolute",
-      "family": "services",
-      "status": 0,
-      "error": "RetryError: HTTPSConnectionPool(host='www.amazon.com', port=443): Max retries exceeded with url: /dyson-cordless-vacuum-v11-absolute/s?k=dyson+cordless+vacuum+v11+absolute (Caused by ResponseError('too many 503 error responses'))",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.amazon.com/dyson-v11-absolute-vacuum/s?k=dyson+v11+absolute+vacuum",
-      "family": "services",
-      "status": 0,
-      "error": "RetryError: HTTPSConnectionPool(host='www.amazon.com', port=443): Max retries exceeded with url: /dyson-v11-absolute-vacuum/s?k=dyson+v11+absolute+vacuum (Caused by ResponseError('too many 503 error responses'))",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.homedepot.com/p/Dyson-V11-Cordless-Stick-Vacuum-Cleaner-447921-01/326076748",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.homedepot.com/p/Dyson-V11-Cordless-Stick-Vacuum-Cleaner-447921-01/326076748",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.walmart.com/search?q=dyson%20v11%20absolute",
-      "family": "services",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.dyson.com/vacuum-cleaners/cordless/v11",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.bestbuy.com/product/dyson-v11-cordless-vacuum-with-6-accessories-nickel-blue/J3ZCSYCVZ7",
-      "family": "technology",
-      "status": 0,
-      "error": "ConnectionError: HTTPSConnectionPool(host='www.bestbuy.com', port=443): Max retries exceeded with url: /product/dyson-v11-cordless-vacuum-with-6-accessories-nickel-blue/J3ZCSYCVZ7 (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.b",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.target.com/p/dyson-v11-cordless-stick-vacuum/-/A-88378380",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.ebay.com/sch/i.html?_nkw=dyson+v11+absolute&_sop=12",
-      "family": "careers",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.ebay.com/sch/i.html?_nkw=dyson+v11+absolute&_sop=12",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://en.wikipedia.org/wiki/Microsoft_Bing",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://blogs.bing.com/search/",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://co.hoteles.com/ca/",
-      "family": "careers",
-      "status": 0,
-      "error": "RetryError: HTTPSConnectionPool(host='co.hoteles.com', port=443): Max retries exceeded with url: /ca/ (Caused by ResponseError('too many 429 error responses'))",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Fluidra",
-      "url": "https://www.booking.com/region/us/california.es.html",
-      "family": "careers",
+      "entity": "The Navigator Company",
+      "url": "https://dictionary.cambridge.org/es/diccionario/ingles-espanol/the",
+      "family": "official",
       "cached": false,
       "relevant": false,
       "accepted": 0,
@@ -1098,8 +1214,8 @@
     },
     {
       "section": "clients_public",
-      "entity": "Consejería de Digitalización",
-      "url": "https://ted.europa.eu/en/notice/-/detail/581580-2026",
+      "entity": "SERVICIO ANDALUZ DE SALUD. SERVICIOS CENTRALES",
+      "url": "https://ted.europa.eu/en/notice/-/detail/583355-2026",
       "family": "news",
       "cached": false,
       "relevant": false,
@@ -1108,270 +1224,49 @@
     },
     {
       "section": "clients_public",
-      "entity": "Consejería de Digitalización",
-      "url": "https://es.wikipedia.org/wiki/Ant%C3%A1rtida",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Consejería de Digitalización",
-      "url": "https://concepto.de/antartida/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Consejería de Digitalización",
-      "url": "https://es.wikipedia.org/wiki/Geograf%C3%ADa_de_la_Ant%C3%A1rtida",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Consejería de Digitalización",
-      "url": "https://humanidades.com/antartida/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Consejería de Digitalización",
-      "url": "https://www.rae.es/dpd/Ant%C3%A1rtida",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Identity-first Security / ITDR",
-      "url": "https://www.gartner.com/en/documents/5554395",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Identity-first Security / ITDR",
-      "url": "https://www.gartner.com/en/documents/7169730",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Identity-first Security / ITDR",
-      "url": "https://www.gartner.com/en/documents/7241930",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Identity-first Security / ITDR",
-      "url": "https://mapcarta.com/es/20136224",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Identity-first Security / ITDR",
-      "url": "https://es-cl.topographic-map.com/map-ht1f3/Cerro-Chena/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Identity-first Security / ITDR",
-      "url": "https://www.andeshandbook.org/montanismo/cerro/2537/chena/tracks",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Identity-first Security / ITDR",
-      "url": "https://www.distanciasentre.com/Mapas-en-cerro%20chena/796058.aspx?LocationID=796058",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Identity-first Security / ITDR",
-      "url": "https://cl.maptons.com/p/2404992175",
-      "family": "official",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://cl.maptons.com/p/2404992175",
-      "accepted": 0
-    },
-    {
-      "section": "trends",
-      "entity": "Identity-first Security / ITDR",
-      "url": "https://mapy.com/es/?source=osm&id=136796960",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "trends",
-      "entity": "Identity-first Security / ITDR",
-      "url": "https://www.andeshandbook.org/montanismo/cerro/2537/chena",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Secure Campus / LAN",
-      "url": "https://www.forrester.com/blogs/predictions-2026-prepare-for-ai-security-and-integrated-network-infrastructure-and-operations/",
-      "family": "services",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Secure Campus / LAN",
-      "url": "https://www.gartner.com/en/documents/7860081",
-      "family": "technology",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Secure Campus / LAN",
-      "url": "https://www.marketwatch.com/investing/index/uty?countryCode=XX",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 401 Client Error: HTTP Forbidden for url: https://www.marketwatch.com/investing/index/uty?countryCode=XX",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Secure Campus / LAN",
-      "url": "https://music.youtube.com/watch?v=NGVj6eUfHBM",
-      "family": "technology",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Secure Campus / LAN",
-      "url": "https://gamejolt.com/games/UTY_shadesofjustice/935169",
-      "family": "technology",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Secure Campus / LAN",
-      "url": "https://abbreviationfinder.org/es/acronyms/uty.html",
-      "family": "technology",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "architectures",
-      "entity": "Secure Campus / LAN",
-      "url": "https://undertaleyellow.fandom.com/wiki/Undertale_Yellow",
-      "family": "technology",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://undertaleyellow.fandom.com/wiki/Undertale_Yellow",
-      "accepted": 0
-    },
-    {
-      "section": "architectures",
-      "entity": "Secure Campus / LAN",
+      "entity": "SERVICIO ANDALUZ DE SALUD. SERVICIOS CENTRALES",
       "url": "https://music.youtube.com/channel/UCBR8-60-B28hp2BmDPdntcQ",
-      "family": "technology",
+      "family": "official",
       "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "architectures",
-      "entity": "Secure Campus / LAN",
-      "url": "https://www.uty.co.jp/index.php",
-      "family": "technology",
+      "section": "clients_public",
+      "entity": "SERVICIO ANDALUZ DE SALUD. SERVICIOS CENTRALES",
+      "url": "https://accounts.google.com/v3/signin/identifier?service=youtube&flowName=WebLiteSignIn&flowEntry=ServiceLogin&ifkv=AdVBglfUXUJtPWuu3GKDF16W4PD9raR1NX4-vyUJm8ZFNu-ooA5bk2W0vzjldk5OY3hHZjn6OqEd1g&dsh=S-1056349811%3A1795102597422669",
+      "family": "official",
       "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "distributors",
-      "entity": "ITANCIA",
-      "url": "https://www.globomatik.com/ordenadores/software/servicios",
-      "family": "services",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.globomatik.com/ordenadores/software/servicios",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "ITANCIA",
-      "url": "https://www.globomatik.com/servicios-destacados",
-      "family": "services",
+      "section": "clients_public",
+      "entity": "SERVICIO ANDALUZ DE SALUD. SERVICIOS CENTRALES",
+      "url": "https://www.max.com.gt/refrigerador-top-mount-whirlpool-9-pies-cubicos-gris-whirlpool-wrw25dktww",
+      "family": "official",
       "cached": false,
-      "relevant": true,
+      "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
-      "section": "distributors",
-      "entity": "ITANCIA",
-      "url": "https://www.globomatik.com/tpv-pos/tpv-1/soluciones-tpv",
-      "family": "services",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.globomatik.com/tpv-pos/tpv-1/soluciones-tpv",
-      "accepted": 0
+      "section": "clients_public",
+      "entity": "SERVICIO ANDALUZ DE SALUD. SERVICIOS CENTRALES",
+      "url": "https://es.wikipedia.org/wiki/Kosovo",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
     },
     {
-      "section": "distributors",
-      "entity": "ITANCIA",
-      "url": "https://itancia.com/experiencia-itancia-technology/?lang=pt-pt",
-      "family": "technology",
+      "section": "clients_public",
+      "entity": "SERVICIO ANDALUZ DE SALUD. SERVICIOS CENTRALES",
+      "url": "https://en.wikipedia.org/wiki/Kosovo",
+      "family": "official",
       "cached": false,
       "relevant": false,
       "accepted": 0,
@@ -1379,164 +1274,8 @@
     },
     {
       "section": "distributors",
-      "entity": "ITANCIA",
-      "url": "https://itancia.com/page-carriere/",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "ITANCIA",
-      "url": "https://itancia.com/collaboration-solutions/?lang=en",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "ITANCIA",
-      "url": "https://itancia.com/collaboration-solutions-salle-reunion/",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "ITANCIA",
-      "url": "https://itancia.com/services-logistiques-industriels/",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "VASS",
-      "url": "https://aws.amazon.com/es/blogs/apn/",
-      "family": "services",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "VASS",
-      "url": "https://vasscompany.com/en/",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "VASS",
-      "url": "https://vasscompany.com/spain/es/what-we-do/solutions/",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "VASS",
-      "url": "https://vasscompany.com/en/our-work/new-services-based-on-the-best-customer-experience/",
-      "family": "cases",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "VASS",
-      "url": "https://vasscompany.com/en/what-we-do/solutions",
-      "family": "services",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://vasscompany.com/en/what-we-do/solutions",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "VASS",
-      "url": "https://vasscompany.com/en/what-we-do/industries/education-services",
-      "family": "services",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://vasscompany.com/en/what-we-do/industries/education-services",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "VASS",
-      "url": "https://vasscompany.com/en/what-we-do/solutions/SAP",
-      "family": "services",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://vasscompany.com/en/what-we-do/solutions/SAP",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "VASS",
-      "url": "https://vasscompany.com/en/what-we-do/solutions/adobe-studio",
-      "family": "services",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://vasscompany.com/en/what-we-do/solutions/adobe-studio",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "VASS",
-      "url": "https://vasscompany.com/en/what-we-do/solutions/ai-data/",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "VASS",
-      "url": "https://vasscompany.com/en/what-we-do/solutions/cybersecurity/",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/security/",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://hub.tdsynnex.com/es/aws/dsor/",
-      "family": "careers",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPUGxCcWc4TlhGMWRway1IdzFwVTJFVmZUTXEzTUJCbXhRM1FoWnFsVktuNVdUSjRXa3l4djV4dnMyYzVTZXd0SHVuVlZlMGhjaGlPZHF4VXR5Y1NXUUVqWl9WYkNfaU9ta0Fya1Fla2VrdTBGZTRyOWdCVVNmd0p4UkVOc19zR3hYaU9CMHJ3MXhsS2IwZFhEanVKN3BLRmF0YTViQUJHY3cwNDl3SkJ6dkRuWUZwaXdERi03ZGpxTFlZcEI0b0VaS1c1U2VsSm5nclE?oc=5&hl=es-419&gl=US&ceid=US:es-419",
+      "entity": "Exclusive Networks",
+      "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxNMXpJTWFwckZ4a1VrSkVabWxZaWZTejBmb3BjZTlKN0xwc3ZLajY0RmRuNHlXYWdHT0dydnJYZjhzWEJyRm1uMWhQNXFqRlZKOGZ3b2U4eVE3ZXJUNEtOVXJ2QW8xWkVlN2U1cDBlNU1HWXpkQ18wOUY3U2N1MVNmbEs2ems5WlFCTHh2QURrZ3loZWtHdW9FRV9OVV93TjJHNFdrT0JwLW5rUnRCSFMyUUctMUtSZHhabzBoamdfVXdxTmNSTDhiTDZlQzRDMnl0cFNtbTM4akRaZzFEZUt1amZlLVRMQXV0dU4tdUJRNA?oc=5&hl=es-419&gl=US&ceid=US:es-419",
       "family": "news",
       "cached": false,
       "relevant": false,
@@ -1545,8 +1284,28 @@
     },
     {
       "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/networking-and-content-delivery/",
+      "entity": "Exclusive Networks",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9EMHJIeUZ4TDBrcTRkaDlwTk9BVFAyUU9lZHJmZDhMRms4WGNmSWJITnR5T0xHelNWMEd1NVA5VVZOZ3NmODJOSXF5RXZPNmU4a3dBcnNjM0lOTVpLRHk2eXZFQjA1VVZtUGNVUWM0NHZwUldI0gF6QVVfeXFMT1YzUDdiYkNrNWxDdXVRbl9KMnhuVmZJM1VIbElMMmhHMGZlX3ZPTkkzTTJBQW14ZDNhSDhkRmlIdTczQjRJdkVtYXBMVGo1QUZRLXJxa3laTy1BcWJON09UdEpKZHJvc0hiLXp3c2t4bWUtVE9sZmNQREE?oc=5&hl=es-419&gl=US&ceid=US:es-419",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOR0hkaC1jTlprb0Q2alViSWo4dU11R0liUS1fVFZneVdvMkZqZmdsOUpPeW90c09DRnlnWENIcFN3eTN6aHpRUVduLUp2MUJrRFhJMUhzSlFVTkRITXkzZnJSNnlQOE5rREU2cmtMcEhtd1RCVGMxbktwY0lpR056RWF30gGHAUFVX3lxTE5IQlZuZ1dENWctVVdPNWZpd3RXRDlJZFJwbjVoLXFGSmlodXk2Y2RSOUxmeUNfTkVzZHVNaHhQTk5qblYtb1ZaejZGMVN0MEtCSXFlMmJLZUw5OTNNTmZWUmVfaDZ4LXFhQ0N3cG5UOGt1Q2NibVRuZXNabU5NYlJVOWlfaWZkYw?oc=5&hl=es-419&gl=US&ceid=US:es-419",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "url": "https://www.exclusive-networks.com/cybersecurity/services/cloud-and-subscription-management",
       "family": "services",
       "cached": false,
       "relevant": true,
@@ -1555,8 +1314,88 @@
     },
     {
       "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/architect",
+      "entity": "Exclusive Networks",
+      "url": "https://www.exclusive-networks.com/ecosystem/partners",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Exclusive Networks",
+      "url": "https://www.exclusive-networks.com/ecosystem/partners/become-a-partner",
+      "family": "partners",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Barrier Networks",
+      "url": "https://aws.amazon.com/es/blogs/apn/",
+      "family": "careers",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Barrier Networks",
+      "url": "https://jobs.atos.net/",
+      "family": "careers",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Barrier Networks",
+      "url": "https://www.itreseller.es/",
+      "family": "careers",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Barrier Networks",
+      "url": "https://www.menlosecurity.com/about/partners",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Barrier Networks",
+      "url": "https://www.extremenetworks.com/about-extreme-networks",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Barrier Networks",
+      "url": "https://www.extremenetworks.com/partners/consultant-relations",
+      "family": "partners",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforpor",
+      "url": "https://inforpor.com/",
       "family": "services",
       "cached": false,
       "relevant": true,
@@ -1565,11 +1404,1152 @@
     },
     {
       "section": "distributors",
-      "entity": "TD SYNNEX",
-      "url": "https://academy.tdsynnex.com/es/category/amazon-web-services-aws/%7B%7Bit.link%7D%7D",
+      "entity": "Inforpor",
+      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforpor",
+      "url": "https://multimac.pt/servicos-e-solucoes/",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforpor",
+      "url": "https://www.also.com/ec/cms5/en_6000/6000/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforpor",
+      "url": "https://multimac.pt/solucoes-visuais/",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Inforpor",
+      "url": "https://multimac.pt/solucoes-documentais/",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://services.ingrammicro.com/?lang=es-ES",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.timestampgroup.com/en/partners/google-cloud-partner",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.timestampgroup.com/en/industries/government-and-public-services",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.timestampgroup.com/en/offer/business-solutions-and-applications",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.timestampgroup.com/en/oferta/business-solutions",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.timestampgroup.com/en/oferta/business-solutions",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.timestampgroup.com/en/industries/services",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.timestampgroup.com/en/industrias/servicos",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.timestampgroup.com/en/industrias/servicos",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Avaya",
+      "url": "https://www.timestampgroup.com/en/offer/advanced-professional-services-en",
       "family": "services",
       "cached": false,
       "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://jobs.nos.pt/",
+      "family": "financial",
+      "status": 0,
+      "error": "unsafe-url: Host does not resolve exclusively to public addresses",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/about-us/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.nos.pt/about-us/investors",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/about/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.nos.pt/about/investors",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/annual-report",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.nos.pt/annual-report",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/annual-reports",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.nos.pt/annual-reports",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/company/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.nos.pt/company/investor-relations",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/company/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/earnings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/filings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/financial-information",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/financial-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/financials",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/informacao-financeira",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/informacion-financiera",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/investor",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/investor-relations",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/quarterly-results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/relatorio-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/relatorios-e-contas",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/reports",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/reports-and-filings",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/resultados",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/resultados-financieros",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/results",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/sitemap.xml",
+      "family": "financial",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/alarmes/alarme-apartamento",
+      "family": "official",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/condicoes-de-servico",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/menu/alarmes/solucoes-de-alarmes",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.nos.pt/tv/servicos-de-streaming",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://ludwig.guru/s/greatly+motivated+me",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://ludwig.guru/s/greatly+motivated+me",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.merriam-webster.com/dictionary/motivate",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.merriam-webster.com/dictionary/motivate",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://futureofworking.com/what-motivates-you/",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.themuse.com/advice/45-inspirational-quotes-that-will-get-you-through-the-work-week",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://selfdeterminationtheory.org/theory/",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://www.wikihow.com/Be-More-Enthusiastic",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "NOS",
+      "url": "https://positivity.org/quotes/motivation-quotes",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "url": "https://ted.europa.eu/en/notice/-/detail/581447-2026",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "url": "https://ted.europa.eu/en/notice/-/detail/596271-2026",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "url": "https://ted.europa.eu/en/notice/-/detail/595417-2026",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "url": "https://ted.europa.eu/en/notice/-/detail/595191-2026",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "url": "https://www.gauthmath.com/pe/solution/1985518543709316/No-es-un-proceso-del-aparato-digestivo-",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Serviços Partilhados do Ministério da Saúde, EPE",
+      "url": "https://es.wikipedia.org/wiki/Aparato_digestivo",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Ignition Technology",
+      "url": "https://www.also.com/ec/cms5/es_2610/2610/also-spain-technology/hazte-cliente-de-also/index.jsp",
+      "family": "cases",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Ignition Technology",
+      "url": "https://www.globomatik.com/customer/account/forgotpassword",
+      "family": "cases",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Ignition Technology",
+      "url": "https://www.globomatik.com/customer/account/login",
+      "family": "cases",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Ignition Technology",
+      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Ignition Technology",
+      "url": "https://www.esprinet.com/es/oferta/servicios/innovexya/",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Ignition Technology",
+      "url": "https://www.globomatik.com/ordenadores/software/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.globomatik.com/ordenadores/software/servicios",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "Ignition Technology",
+      "url": "https://www.ignition-technology.com/become-a-partner/",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "EY",
+      "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-customer-and-partner-awards-fal-con-2024/",
+      "family": "partners",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "EY",
+      "url": "https://www.nokia.com/",
+      "family": "cases",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "EY",
+      "url": "https://www.uipath.com/",
+      "family": "cases",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "EY",
+      "url": "https://www.nokia.com/customer-success/",
+      "family": "cases",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "EY",
+      "url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/?lang=es",
+      "family": "partners",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "EY",
+      "url": "https://www.extremenetworks.com/about-extreme-networks/company/newsroom",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "ALSO",
+      "url": "https://www.esprinet.com/es/oferta/servicios/innovexya/",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "ALSO",
+      "url": "https://www.globomatik.com/ordenadores/software/servicios",
+      "family": "services",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.globomatik.com/ordenadores/software/servicios",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "ALSO",
+      "url": "https://www.globomatik.com/servicios-destacados",
+      "family": "services",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "ALSO",
+      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/ciberseguridad/servicios_de_ciberseguridad/formacion_sobre_sensibilizacion_en_materia_de_seguridad/index.jsp",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "ALSO",
+      "url": "https://www.also.com/ec/cms5/2610/es_es/servicios_y_soluciones/m_index_services_solutions.jsp",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "ALSO",
+      "url": "https://www.also.com/ec/cms5/de_6000/6000/cloud/cybersecurity-plattform/index.jsp",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "ALSO",
+      "url": "https://www.also.com/ec/cms5/en_6000/6000/cloud/cybersecurity-platform/index.jsp",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.gartner.com/reviews/market/security-service-edge/compare/cisco-systems-vs-menlo-security",
+      "family": "services",
+      "status": 0,
+      "error": "domain-circuit-open",
+      "accepted": 0
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/services/data-security",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/company/security-breach",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/security-operations-platforms",
+      "family": "technology",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.levelblue.com/services/cyber-advisory",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/about/partners",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "Menlo Security",
+      "url": "https://www.menlosecurity.com/about/partners/technology-partners",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://www.bolsasymercados.es/en/home.sitemap.xml",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/composicion.html",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://www.bolsasymercados.es/es/home.html",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://finance.yahoo.com/quote/MSFT/?guccounter=1",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://finance.yahoo.com/quote/MSFT/key-statistics/",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://www.marketbeat.com/stocks/NASDAQ/MSFT/news/",
+      "family": "technology",
+      "status": 0,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.marketbeat.com/stocks/NASDAQ/MSFT/news/",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Cellnex",
+      "url": "https://es.finance.yahoo.com/quote/MSFT/",
+      "family": "technology",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Universidade de Évora",
+      "url": "https://ted.europa.eu/en/notice/-/detail/596328-2026",
+      "family": "news",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 202
+    },
+    {
+      "section": "clients_public",
+      "entity": "Universidade de Évora",
+      "url": "https://support.google.com/docs/answer/3093343?hl=en",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Universidade de Évora",
+      "url": "https://support.google.com/mail/answer/7190?hl=en&co=GENIE.Platform%3DDesktop",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Universidade de Évora",
+      "url": "https://www.coalicionporelevangelio.org/articulo/principios-biblicos-hospitalidad/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Universidade de Évora",
+      "url": "https://mujeres.lifeway.com/hospitalidad-biblica-una-mirada-desde-la-escritura/",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Universidade de Évora",
+      "url": "https://www.gotquestions.org/Espanol/Biblia-hospitalidad.html",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Aicox Soluciones",
+      "url": "https://www.aicox.com/partners/",
+      "family": "partners",
+      "cached": false,
+      "relevant": true,
+      "accepted": 1,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Aicox Soluciones",
+      "url": "https://www.also.com/ec/cms5/en_6000/6000/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Aicox Soluciones",
+      "url": "https://www.also.com/ec/cms5/2610/es_es/fabricantes/index.jsp",
+      "family": "partners",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Aicox Soluciones",
+      "url": "https://www.also.com/ec/cms5/es_2610/2610/also-cloud-marketplace/hazte-partner-de-also/index.jsp",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Aicox Soluciones",
+      "url": "https://www.infinigate.com/news/infinigate-france-appointed-as-a-specialist-distributor-for-hpe-networking-portfolio/",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Aicox Soluciones",
+      "url": "https://www.infinigate.com/es/services/partner-growth-enablement-services/",
+      "family": "partners",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Econocom Spain",
+      "url": "https://www.econocom.es/infraestructura/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Econocom Spain",
+      "url": "https://www.ingecom.net/en/technology-alliances/",
+      "family": "partners",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Econocom Spain",
+      "url": "https://www.econocom.es/workplace/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Econocom Spain",
+      "url": "https://aws.amazon.com/es/blogs/apn/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Econocom Spain",
+      "url": "https://jobs.atos.net/",
+      "family": "official",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "integrators",
+      "entity": "Econocom Spain",
+      "url": "https://www.econocom.es/",
+      "family": "official",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/email-marketing/",
+      "family": "analyst",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/cloud/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/networking/",
+      "family": "services",
+      "cached": false,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://dssi.pt/wp-content/uploads/2025/05/Wasabi-Cloud_Nas_Data_Sheet.pdf",
+      "family": "services",
+      "status": 200,
+      "error": "unsupported-content-type:application/pdf",
+      "accepted": 0
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://www.also.com/ec/cms5/en_6000/6000/",
+      "family": "official",
+      "cached": true,
+      "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://www.also.com/ec/cms5/2610/es_es/fabricantes/index.jsp",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "url": "https://www.also.com/ec/cms5/es_2610/2610/also-cloud-marketplace/hazte-partner-de-also/index.jsp",
+      "family": "partners",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "1Password",
+      "url": "https://www.levelblue.com/company/security-breach",
+      "family": "services",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "1Password",
+      "url": "https://www.levelblue.com/security-operations-platforms",
+      "family": "technology",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "1Password",
+      "url": "https://www.levelblue.com/services/cyber-advisory",
+      "family": "services",
+      "cached": true,
+      "relevant": false,
       "accepted": 0,
       "status": 200
     },
@@ -1586,38 +2566,8 @@
     {
       "section": "manufacturers",
       "entity": "1Password",
-      "url": "https://1password.com/compare/1password-vs-lastpass",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "1Password",
-      "url": "https://1password.com/compare/bitwarden-vs-1password",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "1Password",
-      "url": "https://1password.com/compare/password-manager",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "1Password",
-      "url": "https://1password.com/de/developers/secrets-management",
-      "family": "official",
+      "url": "https://1password.com/industry/financial-services",
+      "family": "services",
       "cached": false,
       "relevant": false,
       "accepted": 0,
@@ -1626,18 +2576,8 @@
     {
       "section": "manufacturers",
       "entity": "1Password",
-      "url": "https://1password.com/es/developers/secrets-management",
-      "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "IAG",
-      "url": "https://signin.costco.com/e0714dd4-784d-46d6-a278-3e29553483eb/B2C_1A_SSO_WCS_signup_signin_221/oauth2/v2.0/authorize?ClientName=USBC&ui_locales=en-US&scope=openid+offline_access&response_type=code+id_token&redirect_uri=https%3A%2F%2Fwww.costco.com%2FOAuthLogonCmd&state=guestUserId%3D-1002%26DM_PersistentCookieCreated%3Dtrue%26URL%3D%5BSSO%5D%2F%5BSSO%5D&nonce=zSjvvnVolHOAyU83&client_id=4900eb1f-0c10-4bd9-99c3-c59e6c1ecebf&TC=0&response_mode=form_post",
-      "family": "careers",
+      "url": "https://1password.com/solutions/agentic-ai",
+      "family": "services",
       "cached": false,
       "relevant": false,
       "accepted": 0,
@@ -1645,19 +2585,36 @@
     },
     {
       "section": "clients_private",
-      "entity": "IAG",
-      "url": "https://sameday.costco.com/store/costco/storefront",
-      "family": "careers",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/about-us/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://amadeus.com/about-us/investors",
+      "accepted": 0
     },
     {
       "section": "clients_private",
-      "entity": "IAG",
-      "url": "https://diasauth.truist.com/ui/login",
-      "family": "careers",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/about/investors",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://amadeus.com/about/investors",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/annual-report",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://amadeus.com/annual-report",
+      "accepted": 0
+    },
+    {
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/annual-reports",
+      "family": "financial",
       "cached": false,
       "relevant": false,
       "accepted": 0,
@@ -1665,9 +2622,9 @@
     },
     {
       "section": "clients_private",
-      "entity": "IAG",
-      "url": "https://bank.truist.com/web",
-      "family": "careers",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/company/investor-relations",
+      "family": "financial",
       "cached": false,
       "relevant": false,
       "accepted": 0,
@@ -1675,9 +2632,9 @@
     },
     {
       "section": "clients_private",
-      "entity": "IAG",
-      "url": "https://electroniclockbox.truist.com/ui/login",
-      "family": "careers",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/company/investors",
+      "family": "financial",
       "cached": false,
       "relevant": false,
       "accepted": 0,
@@ -1685,18 +2642,38 @@
     },
     {
       "section": "clients_private",
-      "entity": "IAG",
-      "url": "https://www.delmundo.top/mapas/mapa-francia/",
-      "family": "careers",
-      "cached": true,
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/earnings",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/filings",
+      "family": "financial",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_private",
+      "entity": "Amadeus IT Group",
+      "url": "https://amadeus.com/financial-information",
+      "family": "financial",
+      "cached": false,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "clients_public",
-      "entity": "Dirección de Suma Gestión Tributaria. Diputación de Alicante",
-      "url": "https://ted.europa.eu/en/notice/-/detail/583069-2026",
+      "entity": "Vicepresidencia Segunda de la Junta de Castilla y León",
+      "url": "https://ted.europa.eu/en/notice/-/detail/596254-2026",
       "family": "news",
       "cached": false,
       "relevant": false,
@@ -1705,8 +2682,8 @@
     },
     {
       "section": "clients_public",
-      "entity": "Dirección de Suma Gestión Tributaria. Diputación de Alicante",
-      "url": "https://translate.google.com/intl/lv/about/",
+      "entity": "Vicepresidencia Segunda de la Junta de Castilla y León",
+      "url": "https://music.youtube.com/channel/UC6TkzrwE4bYMvKL8HVASGBA",
       "family": "official",
       "cached": false,
       "relevant": false,
@@ -1715,64 +2692,8 @@
     },
     {
       "section": "clients_public",
-      "entity": "Dirección de Suma Gestión Tributaria. Diputación de Alicante",
-      "url": "https://parkroyal.estate/business/ajm-healthcare-limited/",
-      "family": "official",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://parkroyal.estate/business/ajm-healthcare-limited/",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección de Suma Gestión Tributaria. Diputación de Alicante",
-      "url": "https://www.ajmhealthcare.com/local-service-centres/north-west-london/contact/",
-      "family": "services",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección de Suma Gestión Tributaria. Diputación de Alicante",
-      "url": "https://www.ajmhealthcare.com/local-service-centres/camden-islington/contact/",
-      "family": "services",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección de Suma Gestión Tributaria. Diputación de Alicante",
-      "url": "https://open.endole.co.uk/explorer/postcode/nw10-7xf",
-      "family": "official",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://open.endole.co.uk/explorer/postcode/nw10-7xf",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección de Suma Gestión Tributaria. Diputación de Alicante",
-      "url": "https://www.192.com/places/nw/nw10-7/nw10-7xf/",
-      "family": "official",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.192.com/places/nw/nw10-7/nw10-7xf/",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección de Suma Gestión Tributaria. Diputación de Alicante",
-      "url": "https://www.streetlist.co.uk/nw/nw10/nw10-7/nw10-7xf",
-      "family": "official",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.streetlist.co.uk/nw/nw10/nw10-7/nw10-7xf",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección de Suma Gestión Tributaria. Diputación de Alicante",
-      "url": "https://www.google.com/maps/@36.6711342,-78.3384576,9z",
+      "entity": "Vicepresidencia Segunda de la Junta de Castilla y León",
+      "url": "https://music.youtube.com/channel/UCNpcQ002WElJqT9r--R-Xfg",
       "family": "official",
       "cached": false,
       "relevant": false,
@@ -1781,38 +2702,58 @@
     },
     {
       "section": "clients_public",
-      "entity": "Dirección de Suma Gestión Tributaria. Diputación de Alicante",
-      "url": "https://www.sanbernardo.cl/proyecto-cerro-chena/",
+      "entity": "Vicepresidencia Segunda de la Junta de Castilla y León",
+      "url": "https://support.google.com/docs/answer/3093343?hl=en",
       "family": "official",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Inforfoco Distribuição",
-      "url": "https://www.inforfoco.pt/sobreNos.php",
-      "family": "partners",
-      "status": 0,
-      "error": "ConnectionError: HTTPSConnectionPool(host='www.inforfoco.pt', port=443): Max retries exceeded with url: /sobreNos.php (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.inforfoco.pt', port=443): Read timed out. (read timeout=7.0)\"))",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Inforfoco Distribuição",
-      "url": "https://multimac.pt/servicos-e-solucoes/",
-      "family": "services",
       "cached": true,
-      "relevant": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Vicepresidencia Segunda de la Junta de Castilla y León",
+      "url": "https://support.google.com/mail/answer/7190?hl=en&co=GENIE.Platform%3DDesktop",
+      "family": "official",
+      "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "clients_public",
+      "entity": "Vicepresidencia Segunda de la Junta de Castilla y León",
+      "url": "https://www.marketwatch.com/investing/index/uty?countryCode=XX",
+      "family": "financial",
+      "status": 0,
+      "error": "HTTPError: 401 Client Error: HTTP Forbidden for url: https://www.marketwatch.com/investing/index/uty?countryCode=XX",
+      "accepted": 0
+    },
+    {
+      "section": "clients_public",
+      "entity": "Vicepresidencia Segunda de la Junta de Castilla y León",
+      "url": "https://en.wikipedia.org/wiki/UTY",
+      "family": "official",
+      "cached": false,
+      "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "distributors",
-      "entity": "Inforfoco Distribuição",
-      "url": "https://multimac.pt/solucoes-documentais/",
-      "family": "services",
+      "entity": "Voxsys",
+      "url": "https://voxsys.pt/quem-somos/",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "Voxsys",
+      "url": "https://voxsys.pt/lp-novos-clientes/",
+      "family": "cases",
       "cached": false,
       "relevant": true,
       "accepted": 0,
@@ -1820,9 +2761,9 @@
     },
     {
       "section": "distributors",
-      "entity": "Inforfoco Distribuição",
-      "url": "https://multimac.pt/solucoes-visuais/",
-      "family": "services",
+      "entity": "Voxsys",
+      "url": "https://voxsys.pt/marca/beronet/",
+      "family": "partners",
       "cached": false,
       "relevant": true,
       "accepted": 0,
@@ -1830,7 +2771,7 @@
     },
     {
       "section": "distributors",
-      "entity": "Inforfoco Distribuição",
+      "entity": "Voxsys",
       "url": "https://www.also.com/ec/cms5/en_6000/6000/",
       "family": "official",
       "cached": true,
@@ -1840,69 +2781,39 @@
     },
     {
       "section": "distributors",
-      "entity": "Inforfoco Distribuição",
+      "entity": "Voxsys",
       "url": "https://www.also.com/ec/cms5/2610/es_es/fabricantes/index.jsp",
       "family": "partners",
-      "cached": false,
+      "cached": true,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "distributors",
-      "entity": "Inforfoco Distribuição",
+      "entity": "Voxsys",
       "url": "https://www.also.com/ec/cms5/es_2610/2610/also-cloud-marketplace/hazte-partner-de-also/index.jsp",
       "family": "partners",
-      "cached": false,
+      "cached": true,
       "relevant": false,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "Evolutio",
-      "url": "https://news.microsoft.com/source/emea/features/microsoft-reconoce-a-los-lideres-de-la-innovacion-tecnologica-en-sus-premios-partner-of-the-year-awards-2025/?lang=es",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Evolutio",
-      "url": "https://partners.amazonaws.com/partners/0010h00001doO3HAAU/",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Evolutio",
-      "url": "https://www.muycanal.com/2023/01/31/efficientip-dns-partners",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Evolutio",
+      "entity": "SITS Group",
       "url": "https://aws.amazon.com/es/blogs/apn/",
-      "family": "careers",
+      "family": "official",
       "cached": true,
-      "relevant": false,
+      "relevant": true,
       "accepted": 0,
       "status": 200
     },
     {
       "section": "integrators",
-      "entity": "Evolutio",
+      "entity": "SITS Group",
       "url": "https://jobs.atos.net/",
-      "family": "careers",
+      "family": "official",
       "cached": true,
       "relevant": false,
       "accepted": 0,
@@ -1910,643 +2821,9 @@
     },
     {
       "section": "integrators",
-      "entity": "Evolutio",
-      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPSXprcm1lRTR0SUtuT0pFUmZoYllpSlNMeG0wd3VRMzlnYmlmRzZDbklLaFZWMGNLVnNPSGdGbTQwY1dsOWgxX2NhNXpjV0ZnN1RyY3FOSEVJeGlUeW1zZG1sbDI4RGt6bDRTZVBsanRIWXRuZy1OWU9UMHpCQVU1TkxRZ3E2QzVKZkNLSHlYNVNRZlZqU050Nm53d1JxcTM0OXp0OXRtOTNTLV9SOHF4NXA0UFA1Q3pzNlNyUExTVEFsSkhuU2RvM0NQMndtdEZyMzAwNVRR0gHbAUFVX3lxTE9kVUJxOGlJanpuU1lHLUdRNHJGYWtpUi1SUzQ0aE1LZnZ2RFc5MkRJblFFeUdRZGY4b2EzVUdPaHIzS1FlcHVwTWNCRUNsdWtKSHdzOFVyWG13Q0MtTzVMSF8yU1dmMS1MbDh0MG1tU2NyWmNZXzRiRWRoMnZOamtYZjRTT0dtOTllM1lOQzYzblR5QnVodjViSVpMTkdSNXBOb29hcTBieE5PdmUwTmRBNkdYd25QTVRqQjZhM3VXT25vbGRDWVU5SExzYURudk1kRmZKV0JrSmswaw?oc=5&hl=es-419&gl=US&ceid=US:es-419",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Wifidom",
-      "url": "https://wifidomtest.allnet-italia.it/zyxel-vs-sophos-firewall-pyme-alternativa-partners/",
-      "family": "partners",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Wifidom",
-      "url": "https://wifidomtest.allnet-italia.it/pt/zyxel-vs-sophos-firewall-pme-alternativa-parceiros",
-      "family": "partners",
-      "status": 0,
-      "error": "ConnectionError: HTTPSConnectionPool(host='wifidomtest.allnet-italia.it', port=443): Max retries exceeded with url: /pt/zyxel-vs-sophos-firewall-pme-alternativa-parceiros/ (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='wifidomtest.a",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Wifidom",
-      "url": "https://wifidomtest.allnet-italia.it/servicios-financieros/",
+      "entity": "SITS Group",
+      "url": "https://www.ingecom.net/solucion/acceso-seguro-ssl-vpn/",
       "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Wifidom",
-      "url": "https://wifidomtest.allnet-italia.it/servicios-tecnicos/",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Wifidom",
-      "url": "https://wifidomtest.allnet-italia.it/servicios-logisticos/",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Wifidom",
-      "url": "https://www.wifidom.com//fabricantes/",
-      "family": "partners",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Wifidom",
-      "url": "https://www.wifidom.com/fabricantes",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.wifidom.com/wifidom-manufacturers-page",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Wifidom",
-      "url": "https://www.wifidom.com/fabricantes/adeunis",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.wifidom.com/fabricantes/adeunis",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Wifidom",
-      "url": "https://www.wifidom.com/fabricantes/algo",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.wifidom.com/fabricantes/algo",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Wifidom",
-      "url": "https://www.wifidom.com/fabricantes/allnet",
-      "family": "partners",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.wifidom.com/fabricantes/allnet",
-      "accepted": 0
-    },
-    {
-      "section": "distributors",
-      "entity": "Wifidom",
-      "url": "https://www.wifidom.com/soluciones/ciberseguridad/secure-networking/",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Akamai / Noname",
-      "url": "https://telefonicatech.com/actualidad/redes-privadas-5g-nokia",
-      "family": "official",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://telefonicatech.com/actualidad/redes-privadas-5g-nokia",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Akamai / Noname",
-      "url": "https://partner.stratus.com/directory/search?f0=Markets+Served&f0v0=Spain",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Akamai / Noname",
-      "url": "https://www.levelblue.com/company/security-breach",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Akamai / Noname",
-      "url": "https://finance.yahoo.com/quote/MSFT/",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Akamai / Noname",
-      "url": "https://finance.yahoo.com/quote/MSFT/key-statistics/",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Akamai / Noname",
-      "url": "https://www.marketbeat.com/stocks/NASDAQ/MSFT/news/",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.marketbeat.com/stocks/NASDAQ/MSFT/news/",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Akamai / Noname",
-      "url": "https://www.cnn.com/markets/stocks/MSFT",
-      "family": "analyst",
-      "status": 200,
-      "error": "response-too-large",
-      "accepted": 0
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Akamai / Noname",
-      "url": "https://es.finance.yahoo.com/quote/MSFT/",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "Akamai / Noname",
-      "url": "https://stockanalysis.com/stocks/msft/",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/es/view-news/-/news/grifols-accelerates-healthcare-innovation-with-google-cloud-s-ai-and-analytics",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/about-us/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error:  for url: https://www.grifols.com/es/about-us/investors",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/about/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error:  for url: https://www.grifols.com/es/about/investors",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/annual-report",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error:  for url: https://www.grifols.com/es/annual-report",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/annual-reports",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error:  for url: https://www.grifols.com/es/annual-reports",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/company/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "HTTPError: 404 Client Error:  for url: https://www.grifols.com/es/company/investor-relations",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/company/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/earnings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/financial-information",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/financial-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/financials",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/informacao-financeira",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/informacion-financiera",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/investor",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/investor-relations",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/investors",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/quarterly-results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/relatorio-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/relatorios-e-contas",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/reports",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/reports-and-filings",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/resultados",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/resultados-financieros",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/results",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/sitemap.xml",
-      "family": "financial",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.grifols.com/en/view-news/-/news/grifols-accelerates-healthcare-innovation-with-google-cloud-s-ai-and-analytics",
-      "family": "services",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.betaseries.com/es/show/markiplier",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://skipvids.com/@markiplier",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://archive.org/details/markiplier-animated",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.letsplayindex.com/channels/13271-markiplier/videos",
-      "family": "careers",
-      "status": 0,
-      "error": "RetryError: HTTPSConnectionPool(host='www.letsplayindex.com', port=443): Max retries exceeded with url: /channels/13271-markiplier/videos (Caused by ResponseError('too many 429 error responses'))",
-      "accepted": 0
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://tubitv.com/person/d594a4/markiplier",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Grifols",
-      "url": "https://www.dailymotion.com/playlist/x6cx1k",
-      "family": "careers",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://ted.europa.eu/en/notice/-/detail/583047-2026",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 202
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://ted.europa.eu/en/notice/-/detail/582384-2026",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 202
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/wps/portal/plataforma/inicio/!ut/p/z0/04_Sj9CPykssy0xPLMnMz0vMAfIjo8zinYItLBydDB0NDIxDLQwczQIDnS1dDIwMLI31C7IdFQFQSibi/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://contrataciondelestado.es/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://finance.yahoo.com/quote/MSFT/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://www.marketbeat.com/stocks/NASDAQ/MSFT/news/",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-      "url": "https://finance.yahoo.com/quote/MSFT/key-statistics/",
-      "family": "official",
-      "cached": true,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "IREO",
-      "url": "https://www.itreseller.es/distribucion/2020/02/ireo-se-convierte-en-mayorista-para-espana-y-portugal-de-ping-identity",
-      "family": "careers",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "IREO",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 4,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "IREO",
-      "url": "https://multimac.pt/servicos-e-solucoes/",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "IREO",
-      "url": "https://www.also.com/ec/cms5/en_6000/6000/",
-      "family": "official",
-      "cached": true,
-      "relevant": true,
-      "accepted": 2,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "IREO",
-      "url": "https://multimac.pt/solucoes-visuais/",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "IREO",
-      "url": "https://multimac.pt/solucoes-documentais/",
-      "family": "services",
-      "cached": true,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Deloitte",
-      "url": "https://aws.amazon.com/es/blogs/apn/announcing-the-regional-2024-aws-partners-of-the-year-for-europe-middle-east-and-africa/",
-      "family": "partners",
       "cached": false,
       "relevant": true,
       "accepted": 0,
@@ -2554,28 +2831,9 @@
     },
     {
       "section": "integrators",
-      "entity": "Deloitte",
-      "url": "https://regionalevents.okta.com/identitysummitmadrid2025",
-      "family": "cases",
-      "status": 0,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://regionalevents.okta.com/identitysummitmadrid2025",
-      "accepted": 0
-    },
-    {
-      "section": "integrators",
-      "entity": "Deloitte",
-      "url": "https://www.checkpoint.com/es/partners/global-systems-integrators/",
-      "family": "partners",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Deloitte",
-      "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-customer-and-partner-awards-fal-con-2024/",
-      "family": "partners",
+      "entity": "SITS Group",
+      "url": "https://www.ingecom.net/solucion/balanceo-y-adc/",
+      "family": "services",
       "cached": false,
       "relevant": true,
       "accepted": 0,
@@ -2583,9 +2841,9 @@
     },
     {
       "section": "integrators",
-      "entity": "Deloitte",
-      "url": "https://www.deloitte.com/us/en/alliances/ping-identity.html",
-      "family": "partners",
+      "entity": "SITS Group",
+      "url": "https://www.ingecom.net/solucion/next-generation-firewall/",
+      "family": "services",
       "cached": false,
       "relevant": true,
       "accepted": 0,
@@ -2593,19 +2851,9 @@
     },
     {
       "section": "integrators",
-      "entity": "Deloitte",
-      "url": "https://www.checkpoint.com/",
-      "family": "cases",
-      "cached": true,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "integrators",
-      "entity": "Deloitte",
-      "url": "https://www.deloitte.com/es/es.html",
-      "family": "cases",
+      "entity": "SITS Group",
+      "url": "https://www.ingecom.net/solucion/seguridad-en-el-perimetro/",
+      "family": "services",
       "cached": false,
       "relevant": true,
       "accepted": 0,
@@ -2615,10 +2863,10 @@
       "section": "distributors",
       "entity": "White Hat",
       "url": "https://www.whitehat.pt/",
-      "family": "careers",
+      "family": "partners",
       "cached": false,
       "relevant": true,
-      "accepted": 1,
+      "accepted": 0,
       "status": 200
     },
     {
@@ -2634,8 +2882,8 @@
     {
       "section": "distributors",
       "entity": "White Hat",
-      "url": "https://www.whitehat.pt/about-us/investors",
-      "family": "financial",
+      "url": "https://www.tdsynnex.com/eu/es/es/partnerfirst.html",
+      "family": "partners",
       "cached": false,
       "relevant": false,
       "accepted": 0,
@@ -2644,288 +2892,80 @@
     {
       "section": "distributors",
       "entity": "White Hat",
-      "url": "https://www.whitehat.pt/about/investors",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "White Hat",
-      "url": "https://www.whitehat.pt/annual-report",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "White Hat",
-      "url": "https://www.whitehat.pt/annual-reports",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "AudioCodes",
-      "url": "https://www.audiocodes.com/products/products-for-microsoft-teams/direct-routing-sbcs-for-microsoft-teams",
-      "family": "technology",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "AudioCodes",
-      "url": "https://www.audiocodes.com/investor-relations/investors-faqs",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "AudioCodes",
-      "url": "https://www.audiocodes.com/investor-relations/investors-lobby",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "AudioCodes",
-      "url": "https://www.audiocodes.com/investor-relations/sec-filings",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "AudioCodes",
-      "url": "https://www.audiocodes.com/investor-relations/sec-notice",
-      "family": "financial",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "manufacturers",
-      "entity": "AudioCodes",
-      "url": "https://www.audiocodes.com/solutions/microsoft-teams-solutions/site-resiliency-for-microsoft-teams-phone",
-      "family": "services",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Altri",
-      "url": "https://altri.pt/pt",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Altri",
-      "url": "https://altri.pt/pt/noticias",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Altri",
-      "url": "https://altri.pt/es/noticias",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Altri",
-      "url": "https://altri.pt/es/noticias/afocelca-inaugura-un-nuevo-centro-de-coordinacion-operacional",
-      "family": "news",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Altri",
-      "url": "https://altri.pt/es/noticias/altri-alcanza-un-resultado-neto-de-1072-millones-de-euros-en-2024",
-      "family": "news",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "clients_private",
-      "entity": "Altri",
-      "url": "https://altri.pt/es/noticias/altri-impulsa-la-primera-produccion-industrial-mundial-de-hilo-textil-com-impacto-climatico-positivo",
-      "family": "news",
-      "cached": false,
-      "relevant": true,
-      "accepted": 1,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "IZFE - Sociedad Foral de Servicios Informáticos - IZFE - Sociedad Foral de Servicios Informáticos",
-      "url": "https://ted.europa.eu/en/notice/-/detail/595756-2026",
-      "family": "news",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 202
-    },
-    {
-      "section": "clients_public",
-      "entity": "IZFE - Sociedad Foral de Servicios Informáticos - IZFE - Sociedad Foral de Servicios Informáticos",
-      "url": "https://support.google.com/youtubetv/answer/9545212?hl=en",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "IZFE - Sociedad Foral de Servicios Informáticos - IZFE - Sociedad Foral de Servicios Informáticos",
-      "url": "https://support.google.com/youtube/answer/1646861?hl=zh-Hans",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "IZFE - Sociedad Foral de Servicios Informáticos - IZFE - Sociedad Foral de Servicios Informáticos",
-      "url": "https://obsproject.com/forum/tags/youtube/",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "IZFE - Sociedad Foral de Servicios Informáticos - IZFE - Sociedad Foral de Servicios Informáticos",
-      "url": "https://obsproject.com/forum/resources/youtube-chat-transparent-background-solely-css.486/",
-      "family": "analyst",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "clients_public",
-      "entity": "IZFE - Sociedad Foral de Servicios Informáticos - IZFE - Sociedad Foral de Servicios Informáticos",
-      "url": "https://www.answers.microsoft.com/ja-jp/windows/forum/windows_7-security/ÃƒÂ£Ã†â€™ÃƒÂ¢Ã‚Â£ÃƒÂ£Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÂ£Ã¢â‚¬Å¡ÃƒÂ¢Ã‚Â¦ÃƒÂ£Ã†â€™ÃƒÂ¢Ã‚Â£ÃƒÂ£Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÂ£Ã¢â‚¬Å¡ÃƒÂ¢Ã‚Â¼ÃƒÂ£Ã†â€™ÃƒÂ¢Ã‚Â£ÃƒÂ£Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¥Ã‚Â¡ÃƒÂ£Ã¢â‚¬Å¡ÃƒÂ¢Ã‚Â¶ÃƒÂ£Ã†â€™ÃƒÂ¢Ã‚Â£ÃƒÂ£Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÂ£Ã¢â‚¬Å¡ÃƒÂ¢Ã‚Â¼ÃƒÂ£Ã†â€™ÃƒÂ¢Ã‚Â£ÃƒÂ£Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¥Ã‚Â¡ÃƒÂ£Ã¢â‚¬Å¡ÃƒÂ¢Ã‚Â¢/7ffe7a9b-d0cf-454c-b3db-731542747656",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "IZFE - Sociedad Foral de Servicios Informáticos - IZFE - Sociedad Foral de Servicios Informáticos",
-      "url": "https://www.answers.microsoft.com/ja-jp/windows/forum/all/ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¹ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â®ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£/b45f8dde-aa4a-4598-ab6e-21a67f8b6ec2",
-      "family": "official",
-      "status": 0,
-      "error": "domain-circuit-open",
-      "accepted": 0
-    },
-    {
-      "section": "clients_public",
-      "entity": "IZFE - Sociedad Foral de Servicios Informáticos - IZFE - Sociedad Foral de Servicios Informáticos",
-      "url": "https://oldschool.runescape.wiki/w/Maggot_King%2FStrategies",
-      "family": "official",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Visiotech Security",
-      "url": "https://empleo.visiotechsecurity.com/jobs/comercial-interno-a-grandes-cuentas-y-proyectos?displayed_form=true",
-      "family": "careers",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Visiotech Security",
-      "url": "https://empleo.visiotechsecurity.com/jobs/cra-product-manager",
-      "family": "careers",
-      "cached": false,
-      "relevant": true,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Visiotech Security",
-      "url": "https://www.visiotechsecurity.com/es/productos/accesorios-it-y-seguridad/soportes-camaras/x-security-965",
-      "family": "technology",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Visiotech Security",
-      "url": "https://www.visiotechsecurity.com/es/productos/audio-visuales",
-      "family": "technology",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Visiotech Security",
-      "url": "https://www.visiotechsecurity.com/es/productos/audiovisuales/soportes",
-      "family": "technology",
-      "cached": false,
-      "relevant": false,
-      "accepted": 0,
-      "status": 200
-    },
-    {
-      "section": "distributors",
-      "entity": "Visiotech Security",
-      "url": "https://www.also.com/ec/cms5/2610/es_es/cloud_y_plataformas/cloud_marketplace/cloud_marketplace/index.jsp",
-      "family": "services",
+      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/distributors-ucopia-wifi/",
+      "family": "partners",
       "cached": true,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "White Hat",
+      "url": "https://ucopia.com/en/system-partners-ucopia-weblib-group/",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "distributors",
+      "entity": "White Hat",
+      "url": "https://ucopia.com/de/partnersystem-ucopia-weblib-gruppe/",
+      "family": "partners",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/es/",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/es/ai/",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/es/about-aws/whats-new/2026/08/aws-glue-5-1-european-sovereign-cloud/",
+      "family": "services",
+      "cached": false,
       "relevant": true,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/es/solutions/ai/",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
+      "accepted": 0,
+      "status": 200
+    },
+    {
+      "section": "manufacturers",
+      "entity": "AWS",
+      "url": "https://aws.amazon.com/es/free/",
+      "family": "services",
+      "cached": false,
+      "relevant": false,
       "accepted": 0,
       "status": 200
     }
