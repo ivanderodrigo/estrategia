@@ -20,10 +20,18 @@ class HistoricalVisibleLinkCoverage(unittest.TestCase):
 
     def test_nested_architecture_vendor_has_historical_source(self):
         section = json.loads((ROOT / 'data/public/sections/architectures.json').read_text(encoding='utf-8'))
-        history = json.loads((ROOT / 'data/public/historical/current/architectures.json').read_text(encoding='utf-8'))
         modern_soc = next(r for r in section['rows'] if r['name'] == 'Modern SOC / SecOps')
         nested_vendors = {v for layer in modern_soc['fields']['layers']['value'] for v in layer.get('vendors', [])}
-        sources = history['entities']['modern soc secops']['vendors']
+        # The UI merges pending trails with the permanent Git archive. A
+        # confirmed vendor legitimately leaves the pending-only sidecar.
+        sources = []
+        for name in ('architectures', 'git_architectures'):
+            history = json.loads((ROOT / f'data/public/historical/current/{name}.json').read_text(encoding='utf-8'))
+            sources.extend(history['entities'].get('modern soc secops', {}).get('vendors', []))
+        vendor = next(item for item in modern_soc['fields']['vendors']['items'] if item['value'] == 'Anomali')
+        if vendor.get('assertion_status') == 'CONFIRMADO':
+            attached = [section['evidence'][ref] for ref in vendor['evidence_ids']]
+            self.assertTrue(any(ev.get('item_value') == 'Anomali' and ev.get('url') for ev in attached))
         self.assertIn('Anomali', nested_vendors)
         self.assertTrue(any(c['value'] == 'Anomali' and c['urls'] for c in sources))
         frontend = (ROOT / 'assets/app/intelligence.js').read_text(encoding='utf-8')
