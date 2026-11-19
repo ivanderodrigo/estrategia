@@ -72,3 +72,27 @@ jobs:
             echo "Main changed during the audit; recheck full current snapshot"
           done
           exit 1
+
+  reconcile-source-sample:
+    needs: audit
+    if: github.event_name != 'workflow_run'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Request a fresh source sample when a publication event was missed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          repo="repos/$GITHUB_REPOSITORY"
+          sha=$(gh api "$repo/commits/main" --jq .sha)
+          raw="Accept: application/vnd.github.raw+json"
+          manifest=$(gh api -H "$raw" "$repo/contents/data/public/manifest.json?ref=$sha" | jq -er .generated_at)
+          sampled=$(gh api -H "$raw" "$repo/contents/data/public/source_verification_status.json?ref=$sha" | jq -r '.snapshot_generated_at // ""')
+          if [ "$manifest" = "$sampled" ]; then exit 0; fi
+          active=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow source-verification.yml --branch main --limit 30 --json status --jq 'any(.[]; .status != "completed")')
+          if [ "$active" = true ]; then exit 0; fi
+          gh workflow run source-verification.yml --repo "$GITHUB_REPOSITORY" --ref main
