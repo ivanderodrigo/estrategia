@@ -17,6 +17,9 @@ class PublicAuditConsistencyTests(unittest.TestCase):
         self.root_patch=patch.object(audit,"ROOT",self.root)
         self.public_patch=patch.object(audit,"PUBLIC",public)
         self.root_patch.start();self.public_patch.start()
+        historical_patch = patch.object(audit, "HISTORICAL", public/"historical/current")
+        historical_patch.start()
+        self.addCleanup(historical_patch.stop)
         stamp="2026-11-14T15:00:00+00:00"
         self.manifest={"generated_at":stamp,"counts":{s:1 for s in SECTIONS},
                        "sections":{s:{"file":f"data/public/sections/{s}.json","evidence":1} for s in SECTIONS},
@@ -25,6 +28,10 @@ class PublicAuditConsistencyTests(unittest.TestCase):
                    "debt_breakdown":{"empty_schema_fields":7,"claims_awaiting_evidence":0,"derived_support":0},
                    "by_section":{s:{"empty_schema_fields":1,"claims_awaiting_evidence":0,
                                     "derivation_support":0} for s in SECTIONS}}
+        self.write("historical/current/verification_status.json", {"snapshot_generated_at":stamp})
+        for area in SECTIONS:
+            for prefix in ("", "git_"):
+                self.write(f"historical/current/{prefix}{area}.json", {"entities":{}})
         self.write("manifest.json",self.manifest)
         self.write("debt_overview.json",self.debt)
         self.write("last_run.json",{"generated_at":stamp})
@@ -49,6 +56,10 @@ class PublicAuditConsistencyTests(unittest.TestCase):
         self.debt["generated_at"]="2026-11-13T15:00:00+00:00"
         self.write("debt_overview.json",self.debt)
         self.assertEqual(audit.evaluate()["status"],"FAIL")
+
+    def test_stale_historical_report_blocks_publication(self):
+        self.write("historical/current/verification_status.json", {"snapshot_generated_at":"old"})
+        self.assertEqual(audit.evaluate()["status"], "FAIL")
 
     def test_missing_source_role_must_fail(self):
         self.write("sections/architectures.json",{"rows":[{"name":"SASE"}],

@@ -11,6 +11,7 @@ from engine.research.query_discovery import (
 
 
 class QueryDiscoveryTests(unittest.TestCase):
+    @patch("engine.research.security._public_dns", new=lambda host: host in {"example.com", "example.org"})
     def test_bing_rss_extracts_public_result_and_drops_search_host(self):
         xml = """<rss><channel>
         <item><title>A</title><link>https://example.com/partners/acme</link></item>
@@ -18,6 +19,7 @@ class QueryDiscoveryTests(unittest.TestCase):
         </channel></rss>"""
         self.assertEqual(_parse_bing_rss(xml), ["https://example.com/partners/acme"])
 
+    @patch("engine.research.security._public_dns", new=lambda host: host in {"example.com", "example.org"})
     def test_duckduckgo_wrapper_is_unwrapped(self):
         html = '<a href="//duckduckgo.com/l/?uddg=https%3A%2F%2Fexample.org%2Fcase-study">x</a>'
         self.assertEqual(_parse_duckduckgo_html(html), ["https://example.org/case-study"])

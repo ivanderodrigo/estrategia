@@ -302,7 +302,17 @@ def main():
         src=item.get("source") or {}
         return (item.get("section"),canonical(item.get("entity")),
                 item.get("field"),canonical(item.get("value")),str(src.get("url") or ""))
-    existing={signature(item) for item in successes}
+    # Several inventory paths can resolve to the same canonical claim and URL.
+    unique = {}
+    for item in successes:
+        key = signature(item)
+        if key not in unique or item["source"]["retrieved_at"] > unique[key]["source"]["retrieved_at"]:
+            unique[key] = item
+    successes = list(unique.values())
+    existing = set(unique)
+    prior_keys = {signature(item) for item in old_records}
+    new_count = len(existing - prior_keys)
+    confirmed_again = len(existing & prior_keys)
     retained=0
     expired=0
     quarantined_legacy=0
@@ -352,14 +362,15 @@ def main():
     REPORT.write_text(json.dumps({"generated_at":str(report.get("generated_at") or ""),
           "urls_scanned":len(results),"claim_source_pairs_reviewed":sum(counter.values()),
           "verified_claim_source_pairs":len(successes),
-          "verified_this_run":len(successes)-retained,
+          "verified_this_run":new_count,
+          "previously_registered_positive_matches":confirmed_again,
           "retained_prior_verified":retained,
           "quarantined_generic_homepage_claims":quarantined_legacy,
           "expired_prior_verified":expired,
           "statuses":dict(counter),"by_section":dict(Counter(c["section"] for c in successes)),
           "pending_recheck_examples":review},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({"urls_scanned":len(results),"claims_checked":sum(counter.values()),
-          "verified":len(successes),"newly_verified":len(successes)-retained,
+          "verified":len(successes),"newly_verified":new_count,
           "retained_prior_verified":retained,
           "by_section":dict(Counter(c["section"] for c in successes)),
           "statuses":dict(counter)},ensure_ascii=False))
