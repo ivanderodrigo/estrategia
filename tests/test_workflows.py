@@ -86,6 +86,17 @@ class WorkflowIntegrity(unittest.TestCase):
                         integration.index("scripts/publish_research_update.py"))
         self.assertIn("group: westcon-intelligence-research", integration)
 
+    def test_historical_verification_is_bound_before_each_snapshot_validation(self) -> None:
+        runner = (WORKFLOWS / "research-run.yml").read_text(encoding="utf-8")
+        first_binding = runner.index("Bind historical verification telemetry to the generated snapshot")
+        first_validation = runner.index("Validate generated snapshot")
+        integration = runner.index("Integrate accredited historical claims into the public snapshot")
+        second_binding = runner.index("python scripts/update_historical_verification_status.py", integration)
+        second_audit = runner.index("python scripts/audit_public_consistency.py", integration)
+        self.assertLess(first_binding, first_validation)
+        self.assertLess(integration, second_binding)
+        self.assertLess(second_binding, second_audit)
+
     def test_structured_competitor_proof_runs_on_historical_schedule(self) -> None:
         diligence = (WORKFLOWS / "historical-source-diligence.yml").read_text(encoding="utf-8")
         publisher = (ROOT / "scripts/publish_research_update.py").read_text(encoding="utf-8")
