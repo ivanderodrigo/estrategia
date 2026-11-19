@@ -54,18 +54,19 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           RESEARCH_OUTCOME: ${{ needs.research.result }}
         run: |
-          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/jobs" --paginate > /tmp/daily_jobs.json
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/attempts/$GITHUB_RUN_ATTEMPT/jobs?per_page=100" --paginate --slurp > /tmp/daily_jobs.json
           python - <<'PY'
           import json, os
           from datetime import datetime,timezone
           from pathlib import Path
-          jobs=json.loads(Path('/tmp/daily_jobs.json').read_text()).get('jobs',[])
+          jobs=[job for page in json.loads(Path('/tmp/daily_jobs.json').read_text()) for job in page['jobs']]
           researched=[job for job in jobs if 'research' in job.get('name','').lower()]
           failed=[{'job':job.get('name'), 'step':step.get('name'), 'conclusion':step.get('conclusion')}
                   for job in researched for step in job.get('steps',[])
                   if step.get('conclusion') in ('failure','cancelled','timed_out')]
           report={'generated_at':datetime.now(timezone.utc).isoformat(),
                   'run_id':os.environ['GITHUB_RUN_ID'],
+                  'run_attempt':int(os.environ['GITHUB_RUN_ATTEMPT']),
                   'run_url':'https://github.com/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/'+os.environ['GITHUB_RUN_ID'],
                   'research_job_result':os.environ.get('RESEARCH_OUTCOME'),
                   'failed_steps':failed,
@@ -77,10 +78,20 @@ jobs:
           PY
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/current/daily_workflow_health.json
-          if ! git diff --cached --quiet; then
+          report=data/current/daily_workflow_health.json
+          cp "$report" "$RUNNER_TEMP/daily-health.json"
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard FETCH_HEAD
+            # A delayed health job must not replace the result of a newer run.
+            if jq -e --argjson id "$GITHUB_RUN_ID" --argjson n "$GITHUB_RUN_ATTEMPT" '[(.run_id | tonumber), (.run_attempt // 1)] > [$id, $n]' "$report" >/dev/null; then
+              exit 0
+            fi
+            cp "$RUNNER_TEMP/daily-health.json" "$report"
+            git add "$report"
+            if git diff --cached --quiet; then exit 0; fi
             git commit -m 'chore: record Daily workflow outcome [skip ci]'
-          fi
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
+            if git push origin HEAD:main; then exit 0; fi
+            sleep "$attempt"
+          done
+          exit 1

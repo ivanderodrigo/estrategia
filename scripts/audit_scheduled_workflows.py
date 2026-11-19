@@ -79,13 +79,19 @@ def run_summary(run):
 
 
 def fetch_runs(workflow, token):
-    url = f"https://api.github.com/repos/{REPO}/actions/workflows/{workflow}/runs?per_page=100"
+    url = f"https://api.github.com/repos/{REPO}/actions/workflows/{workflow}/runs"
     headers = {"Accept": "application/vnd.github+json", "User-Agent": "westcon-scheduled-health-audit"}
     if token:
         headers["Authorization"] = f"Bearer {token}"
-    request = Request(url, headers=headers)
-    with urlopen(request, timeout=25) as response:
-        return json.load(response).get("workflow_runs", [])
+    def query(params):
+        request = Request(f"{url}?{params}", headers=headers)
+        with urlopen(request, timeout=25) as response:
+            return json.load(response)["workflow_runs"]
+
+    # Workflow maintenance can generate hundreds of pushes between two crons.
+    latest = query("branch=main&per_page=1")
+    scheduled = query("branch=main&event=schedule&per_page=2")
+    return latest + scheduled
 
 
 def evaluate(fetcher=fetch_runs, now=None, token=None):
