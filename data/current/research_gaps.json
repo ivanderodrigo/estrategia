@@ -1,11 +1,11 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-11-19T12:15:16.530749+00:00",
+  "generated_at": "2026-11-19T15:26:53.347981+00:00",
   "definition": "Todo campo declarado cuenta. Los hechos externos solo cierran con evidencia pública actual. PPT, portfolio e histórico se conservan como pistas internas y generan deuda de validación pública, no acreditación.",
-  "total_gaps": 18551,
+  "total_gaps": 18550,
   "debt_breakdown": {
     "empty_schema_fields": 9051,
-    "claims_awaiting_evidence": 5436,
+    "claims_awaiting_evidence": 5435,
     "derived_support": 4064,
     "other_open_debt": 0
   },
@@ -15,7 +15,7 @@
       "empty_fields": 800
     },
     "distributors": {
-      "unverified_claims": 995,
+      "unverified_claims": 994,
       "empty_fields": 799
     },
     "integrators": {
@@ -41,13 +41,13 @@
   },
   "public_status_summary": {
     "version": 1,
-    "defined_at": "2026-11-19T12:15:16.449479+00:00",
-    "total": 18551,
+    "defined_at": "2026-11-19T15:26:53.257392+00:00",
+    "total": 18550,
     "by_status": {
       "derivation-pending": 4064,
       "historical-validation": 82,
       "insufficient-support": 1918,
-      "not-found": 9818,
+      "not-found": 9817,
       "not-researched": 37,
       "source-unavailable": 2632
     },
@@ -70,7 +70,7 @@
       },
       "distributors": {
         "insufficient-support": 433,
-        "not-found": 1361
+        "not-found": 1360
       },
       "integrators": {
         "insufficient-support": 1237,
@@ -100,26 +100,26 @@
   },
   "historical_revalidation_gaps": 82,
   "research_seed_registry_gaps": 0,
-  "evidence_support_gaps": 5436,
+  "evidence_support_gaps": 5435,
   "derivation_support_gaps": 1845,
   "support_model": "DIRECT_OR_TRACEABLE_DERIVATION",
   "support_rule": "CURRENT_PUBLIC_ONLY",
   "public_validation_gaps": 82,
-  "unknown_research_gaps": 18469,
+  "unknown_research_gaps": 18468,
   "business_priority": {
     "model": "business-value-x-researchability-opportunity-v2",
     "tiers": {
       "P0": 41,
       "P1": 928,
       "P2": 4547,
-      "P3": 13035
+      "P3": 13034
     },
     "actionable_high_value_gaps": 969,
     "weighted_expected_debt": 31193.07,
     "weighted_open_debt": 20252.34,
     "business_weighted_coverage_pct": 35.07,
     "source_families": {
-      "official": 7684,
+      "official": 7683,
       "procurement": 3467,
       "services": 2474,
       "technology": 1025,
@@ -137,7 +137,7 @@
         "P1": 30
       },
       "distributors": {
-        "P3": 904,
+        "P3": 903,
         "P2": 867,
         "P1": 22,
         "P0": 1
@@ -176,7 +176,7 @@
   "high_priority_gaps": 6677,
   "by_section": {
     "manufacturers": 1036,
-    "distributors": 1794,
+    "distributors": 1793,
     "integrators": 4738,
     "clients_public": 8468,
     "clients_private": 1641,
@@ -254,7 +254,7 @@
     "distributors.local_presence": 58,
     "distributors.acquisitions": 58,
     "manufacturers.capabilities": 58,
-    "distributors.technology_domains": 55,
+    "distributors.technology_domains": 54,
     "distributors.financing": 52,
     "distributors.job_vendors": 52,
     "distributors.competitor_vendor_overlap": 51,
@@ -326,7 +326,7 @@
     "manufacturers.scope": 1
   },
   "research_states": {
-    "Por investigar": 18469,
+    "Por investigar": 18468,
     "Pendiente de validación pública": 82
   },
   "coverage": {
@@ -341,7 +341,7 @@
       "expected_fields": 1508,
       "populated_fields": 709,
       "value_completeness_pct": 47.02,
-      "open_gaps": 1794,
+      "open_gaps": 1793,
       "critical_gaps": 457
     },
     "integrators": {
@@ -813971,68 +813971,6 @@
           "\"Arrow ECS\" marketplace \"Sí\"",
           "\"Arrow ECS\" marketplace",
           "\"Arrow ECS\" marketplace Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=50.0/100; investigabilidad=45.6/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "distributors:arrow ecs:technology_domains:evidence-support:5e0b8762a93d",
-      "section": "distributors",
-      "entity": "Arrow ECS",
-      "entity_id": "entity_78b32b8374eddb1261",
-      "field": "technology_domains",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "hecho externo preservado como pista interna/histórica; requiere fuente pública actual",
-      "gap_kind": "evidence-support",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "support_requirement": "CURRENT_PUBLIC_ONLY",
-      "target_level": "item",
-      "target_values": [
-        "Cloud"
-      ],
-      "preserve_value": true,
-      "historical_lineage_present": false,
-      "revalidation_seeds": [],
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 4,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 4,
-      "next_pass": 5,
-      "next_due_at": "2026-11-27T12:49:25.333598+00:00",
-      "last_attempt_at": "2026-11-11T12:49:25.333596+00:00",
-      "last_error": "",
-      "close_policy": "Conservar el valor/pista y cerrarlo solo cuando el mismo dato quede sustentado por una fuente pública actual.",
-      "strategy_profile": "evidence-support-public-verification",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 50.0,
-      "researchability_score": 45.6,
-      "priority_score": 26.4,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Arrow ECS\" \"Cloud\"",
-          "\"Arrow ECS\" technology domains \"Cloud\"",
-          "\"Arrow ECS\" technology domains",
-          "\"Arrow ECS\" technology domains Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=50.0/100; investigabilidad=45.6/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
