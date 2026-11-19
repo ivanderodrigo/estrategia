@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 from scripts.audit_public_consistency import evaluate
+from engine.publication import _compact_object
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -18,6 +19,14 @@ class HistoricalVisibleLinkCoverage(unittest.TestCase):
                 self.assertGreater(len(claims), 0)
                 self.assertTrue(all(any(u.startswith('https://') for u in c.get('urls', [])) for c in claims))
 
+    def test_public_projection_removes_confirmation_when_proof_is_filtered(self):
+        old = {"value": "Una relación", "confidence": 0.99, "assertion_status": "CONFIRMADO",
+               "evidence": [{"provenance_origin": "LEGACY_UNRESOLVED", "title": "Archivo"}]}
+        projected = _compact_object(old, {})
+        self.assertEqual(projected["evidence_ids"], [])
+        self.assertEqual(projected["assertion_status"], "PENDIENTE_DE_CONTRASTAR_AFIRMACION")
+        self.assertEqual(old["assertion_status"], "CONFIRMADO")
+
     def test_nested_architecture_vendor_has_historical_source(self):
         section = json.loads((ROOT / 'data/public/sections/architectures.json').read_text(encoding='utf-8'))
         modern_soc = next(r for r in section['rows'] if r['name'] == 'Modern SOC / SecOps')
@@ -29,7 +38,7 @@ class HistoricalVisibleLinkCoverage(unittest.TestCase):
             history = json.loads((ROOT / f'data/public/historical/current/{name}.json').read_text(encoding='utf-8'))
             sources.extend(history['entities'].get('modern soc secops', {}).get('vendors', []))
         vendor = next(item for item in modern_soc['fields']['vendors']['items'] if item['value'] == 'Anomali')
-        if vendor.get('assertion_status') == 'CONFIRMADO':
+        if vendor.get('confidence_band') == 'high':
             attached = [section['evidence'][ref] for ref in vendor['evidence_ids']]
             self.assertTrue(any(ev.get('item_value') == 'Anomali' and ev.get('url') for ev in attached))
         self.assertIn('Anomali', nested_vendors)
