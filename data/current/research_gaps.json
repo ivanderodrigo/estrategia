@@ -1,11 +1,11 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-11-24T06:44:00.483464+00:00",
+  "generated_at": "2026-11-24T12:35:57.672730+00:00",
   "definition": "Todo campo declarado cuenta. Los hechos externos solo cierran con evidencia pública actual. PPT, portfolio e histórico se conservan como pistas internas y generan deuda de validación pública, no acreditación.",
-  "total_gaps": 18507,
+  "total_gaps": 18500,
   "debt_breakdown": {
     "empty_schema_fields": 9035,
-    "claims_awaiting_evidence": 5367,
+    "claims_awaiting_evidence": 5360,
     "derived_support": 4105,
     "other_open_debt": 0
   },
@@ -23,7 +23,7 @@
       "empty_fields": 1536
     },
     "clients_public": {
-      "unverified_claims": 69,
+      "unverified_claims": 62,
       "empty_fields": 5377
     },
     "clients_private": {
@@ -41,13 +41,13 @@
   },
   "public_status_summary": {
     "version": 1,
-    "defined_at": "2026-11-24T06:44:00.374132+00:00",
-    "total": 18507,
+    "defined_at": "2026-11-24T12:35:57.570325+00:00",
+    "total": 18500,
     "by_status": {
       "derivation-pending": 4105,
       "historical-validation": 81,
       "insufficient-support": 1933,
-      "not-found": 9822,
+      "not-found": 9815,
       "not-researched": 23,
       "source-unavailable": 2543
     },
@@ -65,7 +65,7 @@
       "clients_public": {
         "derivation-pending": 3101,
         "insufficient-support": 101,
-        "not-found": 2802,
+        "not-found": 2795,
         "source-unavailable": 2543
       },
       "distributors": {
@@ -99,27 +99,27 @@
   },
   "historical_revalidation_gaps": 81,
   "research_seed_registry_gaps": 0,
-  "evidence_support_gaps": 5367,
+  "evidence_support_gaps": 5360,
   "derivation_support_gaps": 1868,
   "support_model": "DIRECT_OR_TRACEABLE_DERIVATION",
   "support_rule": "CURRENT_PUBLIC_ONLY",
   "public_validation_gaps": 81,
-  "unknown_research_gaps": 18426,
+  "unknown_research_gaps": 18419,
   "business_priority": {
     "model": "business-value-x-researchability-opportunity-v2",
     "tiers": {
       "P0": 44,
       "P1": 612,
       "P2": 4721,
-      "P3": 13130
+      "P3": 13123
     },
     "actionable_high_value_gaps": 656,
     "weighted_expected_debt": 31366.53,
-    "weighted_open_debt": 20184.24,
-    "business_weighted_coverage_pct": 35.65,
+    "weighted_open_debt": 20178.99,
+    "business_weighted_coverage_pct": 35.67,
     "source_families": {
       "official": 7696,
-      "procurement": 3488,
+      "procurement": 3481,
       "services": 2420,
       "technology": 1017,
       "careers": 983,
@@ -147,7 +147,7 @@
         "P1": 568
       },
       "clients_public": {
-        "P3": 7263,
+        "P3": 7256,
         "P2": 1268,
         "P1": 16
       },
@@ -166,7 +166,7 @@
     "clients_public_share_of_p0_p1_pct": 2.44,
     "low_context_public_gaps": 0,
     "low_context_public_p0_p1": 0,
-    "context_rich_public_gaps": 8156,
+    "context_rich_public_gaps": 8149,
     "controlled_growth_policy": "bounded-structured-growth-v1"
   },
   "critical_gaps": 6685,
@@ -175,7 +175,7 @@
     "manufacturers": 1033,
     "distributors": 1716,
     "integrators": 4716,
-    "clients_public": 8547,
+    "clients_public": 8540,
     "clients_private": 1638,
     "trends": 597,
     "architectures": 260
@@ -308,11 +308,11 @@
     "manufacturers.distributors": 18,
     "manufacturers.integrators": 16,
     "distributors.training": 16,
-    "clients_public.cpv_codes": 16,
     "trends.observed": 15,
     "trends.horizon": 15,
     "trends.evolution": 15,
     "architectures.analyst_basis": 11,
+    "clients_public.cpv_codes": 9,
     "architectures.context": 9,
     "integrators.westcon_overlap": 8,
     "trends.domain": 8,
@@ -323,7 +323,7 @@
     "manufacturers.scope": 1
   },
   "research_states": {
-    "Por investigar": 18426,
+    "Por investigar": 18419,
     "Pendiente de validación pública": 81
   },
   "coverage": {
@@ -352,7 +352,7 @@
       "expected_fields": 12375,
       "populated_fields": 4903,
       "value_completeness_pct": 39.62,
-      "open_gaps": 8547,
+      "open_gaps": 8540,
       "critical_gaps": 2616
     },
     "clients_private": {
@@ -403512,164 +403512,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "clients_public:presidencia del consejo de administración de la sociedad estatal de infraestructuras del transporte terrestre, s.m.e., s.a.:cpv_codes:evidence-support:cb919b8e5c87",
-      "section": "clients_public",
-      "entity": "Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.",
-      "entity_id": "clie_c54f304badf781e8",
-      "field": "cpv_codes",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "hecho externo preservado como pista interna/histórica; requiere fuente pública actual",
-      "gap_kind": "evidence-support",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "support_requirement": "CURRENT_PUBLIC_ONLY",
-      "target_level": "item",
-      "target_values": [
-        "48900000"
-      ],
-      "preserve_value": true,
-      "historical_lineage_present": false,
-      "revalidation_seeds": [],
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 2,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 2,
-      "next_pass": 3,
-      "next_due_at": "2026-11-28T06:17:35.726442+00:00",
-      "last_attempt_at": "2026-11-24T06:17:35.726439+00:00",
-      "last_error": "",
-      "close_policy": "Conservar el valor/pista y cerrarlo solo cuando el mismo dato quede sustentado por una fuente pública actual.",
-      "strategy_profile": "evidence-support-public-verification",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 35.0,
-      "researchability_score": 59.2,
-      "priority_score": 37.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.55,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "señal tecnológica existente",
-        "fabricante/integrador identificado",
-        "afinidad funcional Westcon ya derivada",
-        "importe >= 250 k€",
-        "hito <= 120 días"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" \"48900000\"",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" cpv codes \"48900000\"",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" contratación tecnología adjudicación",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" licitación informática redes ciberseguridad",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" contratação tecnologia adjudicação",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" concurso aquisição informática",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" site:contrataciondelestado.es",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" site:base.gov.pt",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" site:ted.europa.eu",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" \"adjudicatario\" \"ciberseguridad\"",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" \"adjudicatário\" \"rede\""
-        ]
-      },
-      "priority_reason": "valor=35.0/100; investigabilidad=59.2/100; contexto_oportunidad=x1.55; familia óptima=procurement; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "clients_public:presidencia del consejo de administración de la sociedad estatal de infraestructuras del transporte terrestre, s.m.e., s.a.:cpv_codes:evidence-support:4641b3088313",
-      "section": "clients_public",
-      "entity": "Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.",
-      "entity_id": "clie_c54f304badf781e8",
-      "field": "cpv_codes",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "hecho externo preservado como pista interna/histórica; requiere fuente pública actual",
-      "gap_kind": "evidence-support",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "support_requirement": "CURRENT_PUBLIC_ONLY",
-      "target_level": "item",
-      "target_values": [
-        "72261000"
-      ],
-      "preserve_value": true,
-      "historical_lineage_present": false,
-      "revalidation_seeds": [],
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 2,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 2,
-      "next_pass": 3,
-      "next_due_at": "2026-11-28T06:17:35.726453+00:00",
-      "last_attempt_at": "2026-11-24T06:17:35.726450+00:00",
-      "last_error": "",
-      "close_policy": "Conservar el valor/pista y cerrarlo solo cuando el mismo dato quede sustentado por una fuente pública actual.",
-      "strategy_profile": "evidence-support-public-verification",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 35.0,
-      "researchability_score": 59.2,
-      "priority_score": 37.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.55,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "señal tecnológica existente",
-        "fabricante/integrador identificado",
-        "afinidad funcional Westcon ya derivada",
-        "importe >= 250 k€",
-        "hito <= 120 días"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" \"72261000\"",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" cpv codes \"72261000\"",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" contratación tecnología adjudicación",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" licitación informática redes ciberseguridad",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" contratação tecnologia adjudicação",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" concurso aquisição informática",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" site:contrataciondelestado.es",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" site:base.gov.pt",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" site:ted.europa.eu",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" \"adjudicatario\" \"ciberseguridad\"",
-          "\"Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.\" \"adjudicatário\" \"rede\""
-        ]
-      },
-      "priority_reason": "valor=35.0/100; investigabilidad=59.2/100; contexto_oportunidad=x1.55; familia óptima=procurement; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "clients_public:presidencia del consorcio as mariñas:known_architectures",
       "section": "clients_public",
       "entity": "Presidencia del Consorcio As Mariñas",
@@ -535293,82 +535135,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "clients_public:ejie, s.a. - sociedad informática del gobierno vasco - ejie-sociedad informática del gobierno vasco:cpv_codes:evidence-support:2aefc5f64543",
-      "section": "clients_public",
-      "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
-      "entity_id": "clie_902c3f0e25d27254",
-      "field": "cpv_codes",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "hecho externo preservado como pista interna/histórica; requiere fuente pública actual",
-      "gap_kind": "evidence-support",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "support_requirement": "CURRENT_PUBLIC_ONLY",
-      "target_level": "item",
-      "target_values": [
-        "48730000"
-      ],
-      "preserve_value": true,
-      "historical_lineage_present": false,
-      "revalidation_seeds": [],
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 1,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 1,
-      "next_pass": 2,
-      "next_due_at": "2026-11-26T06:18:52.010706+00:00",
-      "last_attempt_at": "2026-11-24T06:18:52.010689+00:00",
-      "last_error": "",
-      "close_policy": "Conservar el valor/pista y cerrarlo solo cuando el mismo dato quede sustentado por una fuente pública actual.",
-      "strategy_profile": "evidence-support-public-verification",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 35.0,
-      "researchability_score": 64.4,
-      "priority_score": 33.1,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.27,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "afinidad funcional Westcon ya derivada",
-        "importe >= 250 k€"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" \"48730000\"",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" cpv codes \"48730000\"",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" contratación tecnología adjudicación",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" licitación informática redes ciberseguridad",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" contratação tecnologia adjudicação",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" concurso aquisição informática",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" site:contrataciondelestado.es",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" site:base.gov.pt",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" site:ted.europa.eu",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" \"adjudicatario\" \"ciberseguridad\"",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" \"adjudicatário\" \"rede\""
-        ]
-      },
-      "priority_reason": "valor=35.0/100; investigabilidad=64.4/100; contexto_oportunidad=x1.27; familia óptima=procurement; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "clients_public:entidade de serviços partilhados da administração pública, ip:known_architectures",
       "section": "clients_public",
       "entity": "Entidade de Serviços Partilhados da Administração Pública, IP",
@@ -594624,83 +594390,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "clients_public:dirección económico-financiera de enaire:cpv_codes:evidence-support:0774428d4839",
-      "section": "clients_public",
-      "entity": "Dirección Económico-Financiera de ENAIRE",
-      "entity_id": "clie_685432ea38efa1eb",
-      "field": "cpv_codes",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "hecho externo preservado como pista interna/histórica; requiere fuente pública actual",
-      "gap_kind": "evidence-support",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "support_requirement": "CURRENT_PUBLIC_ONLY",
-      "target_level": "item",
-      "target_values": [
-        "48825000"
-      ],
-      "preserve_value": true,
-      "historical_lineage_present": false,
-      "revalidation_seeds": [],
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-11-20T15:37:28.844876+00:00",
-      "last_attempt_at": "2026-11-12T15:37:28.844872+00:00",
-      "last_error": "",
-      "close_policy": "Conservar el valor/pista y cerrarlo solo cuando el mismo dato quede sustentado por una fuente pública actual.",
-      "strategy_profile": "evidence-support-public-verification",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 35.0,
-      "researchability_score": 54.0,
-      "priority_score": 31.9,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.46,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "afinidad funcional Westcon ya derivada",
-        "importe >= 1 M€",
-        "hito <= 120 días"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"Dirección Económico-Financiera de ENAIRE\" \"48825000\"",
-          "\"Dirección Económico-Financiera de ENAIRE\" cpv codes \"48825000\"",
-          "\"Dirección Económico-Financiera de ENAIRE\" contratación tecnología adjudicación",
-          "\"Dirección Económico-Financiera de ENAIRE\" licitación informática redes ciberseguridad",
-          "\"Dirección Económico-Financiera de ENAIRE\" contratação tecnologia adjudicação",
-          "\"Dirección Económico-Financiera de ENAIRE\" concurso aquisição informática",
-          "\"Dirección Económico-Financiera de ENAIRE\" site:contrataciondelestado.es",
-          "\"Dirección Económico-Financiera de ENAIRE\" site:base.gov.pt",
-          "\"Dirección Económico-Financiera de ENAIRE\" site:ted.europa.eu",
-          "\"Dirección Económico-Financiera de ENAIRE\" \"adjudicatario\" \"ciberseguridad\"",
-          "\"Dirección Económico-Financiera de ENAIRE\" \"adjudicatário\" \"rede\""
-        ]
-      },
-      "priority_reason": "valor=35.0/100; investigabilidad=54.0/100; contexto_oportunidad=x1.46; familia óptima=procurement; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "clients_public:dirección general de recursos económicos del servicio canario de la salud:strategic_programs",
       "section": "clients_public",
       "entity": "Dirección General de Recursos Económicos del Servicio Canario de la Salud",
@@ -641726,82 +641415,6 @@
         ]
       },
       "priority_reason": "valor=45.0/100; investigabilidad=43.6/100; contexto_oportunidad=x1.34; familia óptima=technology; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "clients_public:infraestruturas de portugal, sa:cpv_codes:evidence-support:d5312a9aaaa0",
-      "section": "clients_public",
-      "entity": "Infraestruturas de Portugal, SA",
-      "entity_id": "clie_d95457e6b68ca86a",
-      "field": "cpv_codes",
-      "country_context": "PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "hecho externo preservado como pista interna/histórica; requiere fuente pública actual",
-      "gap_kind": "evidence-support",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "support_requirement": "CURRENT_PUBLIC_ONLY",
-      "target_level": "item",
-      "target_values": [
-        "30210000"
-      ],
-      "preserve_value": true,
-      "historical_lineage_present": false,
-      "revalidation_seeds": [],
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 2,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 2,
-      "next_pass": 3,
-      "next_due_at": "2026-11-28T06:32:21.185959+00:00",
-      "last_attempt_at": "2026-11-24T06:32:21.185943+00:00",
-      "last_error": "",
-      "close_policy": "Conservar el valor/pista y cerrarlo solo cuando el mismo dato quede sustentado por una fuente pública actual.",
-      "strategy_profile": "evidence-support-public-verification",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 35.0,
-      "researchability_score": 59.2,
-      "priority_score": 30.4,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.27,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "afinidad funcional Westcon ya derivada",
-        "importe >= 250 k€"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"Infraestruturas de Portugal, SA\" \"30210000\"",
-          "\"Infraestruturas de Portugal, SA\" cpv codes \"30210000\"",
-          "\"Infraestruturas de Portugal, SA\" contratación tecnología adjudicación",
-          "\"Infraestruturas de Portugal, SA\" licitación informática redes ciberseguridad",
-          "\"Infraestruturas de Portugal, SA\" contratação tecnologia adjudicação",
-          "\"Infraestruturas de Portugal, SA\" concurso aquisição informática",
-          "\"Infraestruturas de Portugal, SA\" site:contrataciondelestado.es",
-          "\"Infraestruturas de Portugal, SA\" site:base.gov.pt",
-          "\"Infraestruturas de Portugal, SA\" site:ted.europa.eu",
-          "\"Infraestruturas de Portugal, SA\" \"adjudicatario\" \"ciberseguridad\"",
-          "\"Infraestruturas de Portugal, SA\" \"adjudicatário\" \"rede\""
-        ]
-      },
-      "priority_reason": "valor=35.0/100; investigabilidad=59.2/100; contexto_oportunidad=x1.27; familia óptima=procurement; estado=Por investigar",
       "public_status": "not-found",
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
@@ -698260,82 +697873,6 @@
       "priority_reason": "valor=33.3/100; investigabilidad=57.8/100; contexto_oportunidad=x1.31; familia óptima=official; estado=Por investigar",
       "public_status": "derivation-pending",
       "public_status_reason": "Requiere calcularse desde datos acreditados; no corresponde buscarlo directamente en la web."
-    },
-    {
-      "id": "clients_public:dirección general de la mutual midat cyclops, mutua colaboradora con la seguridad social, nº 1:cpv_codes:evidence-support:69d1dd377f8b",
-      "section": "clients_public",
-      "entity": "Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1",
-      "entity_id": "clie_4fbfab2e889e43bb",
-      "field": "cpv_codes",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "hecho externo preservado como pista interna/histórica; requiere fuente pública actual",
-      "gap_kind": "evidence-support",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "support_requirement": "CURRENT_PUBLIC_ONLY",
-      "target_level": "item",
-      "target_values": [
-        "48000000"
-      ],
-      "preserve_value": true,
-      "historical_lineage_present": false,
-      "revalidation_seeds": [],
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 2,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 2,
-      "next_pass": 3,
-      "next_due_at": "2026-11-16T16:07:20.109359+00:00",
-      "last_attempt_at": "2026-11-12T16:07:20.109356+00:00",
-      "last_error": "",
-      "close_policy": "Conservar el valor/pista y cerrarlo solo cuando el mismo dato quede sustentado por una fuente pública actual.",
-      "strategy_profile": "evidence-support-public-verification",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 35.0,
-      "researchability_score": 59.2,
-      "priority_score": 29.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.22,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "afinidad funcional Westcon ya derivada",
-        "importe conocido"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1\" \"48000000\"",
-          "\"Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1\" cpv codes \"48000000\"",
-          "\"Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1\" contratación tecnología adjudicación",
-          "\"Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1\" licitación informática redes ciberseguridad",
-          "\"Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1\" contratação tecnologia adjudicação",
-          "\"Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1\" concurso aquisição informática",
-          "\"Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1\" site:contrataciondelestado.es",
-          "\"Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1\" site:base.gov.pt",
-          "\"Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1\" site:ted.europa.eu",
-          "\"Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1\" \"adjudicatario\" \"ciberseguridad\"",
-          "\"Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1\" \"adjudicatário\" \"rede\""
-        ]
-      },
-      "priority_reason": "valor=35.0/100; investigabilidad=59.2/100; contexto_oportunidad=x1.22; familia óptima=procurement; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
       "id": "clients_public:dirección general de telecomunicaciones y digitalización:opportunity_notes",
@@ -832722,82 +832259,6 @@
         ]
       },
       "priority_reason": "valor=45.0/100; investigabilidad=34.2/100; contexto_oportunidad=x1.41; familia óptima=technology; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "clients_public:ejie, s.a. - sociedad informática del gobierno vasco - ejie-sociedad informática del gobierno vasco:cpv_codes:evidence-support:4641b3088313",
-      "section": "clients_public",
-      "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
-      "entity_id": "clie_902c3f0e25d27254",
-      "field": "cpv_codes",
-      "country_context": "ES",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "hecho externo preservado como pista interna/histórica; requiere fuente pública actual",
-      "gap_kind": "evidence-support",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "support_requirement": "CURRENT_PUBLIC_ONLY",
-      "target_level": "item",
-      "target_values": [
-        "72261000"
-      ],
-      "preserve_value": true,
-      "historical_lineage_present": false,
-      "revalidation_seeds": [],
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 4,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 4,
-      "next_pass": 5,
-      "next_due_at": "2026-12-10T06:18:52.010741+00:00",
-      "last_attempt_at": "2026-11-24T06:18:52.010738+00:00",
-      "last_error": "",
-      "close_policy": "Conservar el valor/pista y cerrarlo solo cuando el mismo dato quede sustentado por una fuente pública actual.",
-      "strategy_profile": "evidence-support-public-verification",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 35.0,
-      "researchability_score": 48.7,
-      "priority_score": 25.1,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.27,
-      "opportunity_context": [
-        "expediente/portal oficial identificado",
-        "necesidad tecnológica descrita",
-        "afinidad funcional Westcon ya derivada",
-        "importe >= 250 k€"
-      ],
-      "source_family": "procurement",
-      "source_strategy": {
-        "preferred_families": [
-          "procurement",
-          "official",
-          "news"
-        ],
-        "source_types": [
-          "TED",
-          "PLACSP",
-          "BASE.gov.pt",
-          "portal oficial del comprador"
-        ],
-        "rationale": "Importes, adjudicatarios, fechas y necesidades deben priorizar contratación pública estructurada y portales oficiales.",
-        "query_hints": [
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" \"72261000\"",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" cpv codes \"72261000\"",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" contratación tecnología adjudicación",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" licitación informática redes ciberseguridad",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" contratação tecnologia adjudicação",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" concurso aquisição informática",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" site:contrataciondelestado.es",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" site:base.gov.pt",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" site:ted.europa.eu",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" \"adjudicatario\" \"ciberseguridad\"",
-          "\"EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco\" \"adjudicatário\" \"rede\""
-        ]
-      },
-      "priority_reason": "valor=35.0/100; investigabilidad=48.7/100; contexto_oportunidad=x1.27; familia óptima=procurement; estado=Por investigar",
       "public_status": "not-found",
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
