@@ -1,29 +1,31 @@
 {
-  "generated_at": "2026-11-24T06:48:23.736793+00:00",
-  "snapshot_generated_at": "2026-11-24T06:41:11.063223+00:00",
-  "run_url": "https://github.com/ivanderodrigo/estrategia/actions/runs/45342759366",
+  "generated_at": "2026-11-24T12:40:20.793866+00:00",
+  "snapshot_generated_at": "2026-11-24T12:33:03.017892+00:00",
+  "run_url": "https://github.com/ivanderodrigo/estrategia/actions/runs/45395294957",
   "status": "REVIEW_QUEUE_NOT_FACT_ACCREDITATION",
   "scope": "Independent offline claim/source binding audit and rotating live URL sample",
   "source_content_semantically_verified": false,
-  "total_live_review_candidates": 21147,
+  "total_live_review_candidates": 21159,
   "live_sample_reviewed": 200,
   "live_sample_hosts": 176,
   "live_sampling_policy": "rotating-section-host-round-robin-v1",
-  "live_content_accessible": 160,
+  "live_content_accessible": 156,
   "live_collection_health": "PARTIAL_CONTENT",
   "live_review_statuses": {
-    "http_403": 10,
-    "page_mentions_entity_and_value_needs_semantic_review": 35,
-    "page_does_not_mention_value": 53,
+    "http_403": 11,
+    "page_mentions_entity_and_value_needs_semantic_review": 34,
+    "page_does_not_mention_value": 52,
     "document_format_requires_review": 5,
-    "page_mentions_value_only": 72,
+    "page_mentions_value_only": 70,
     "redirect_requires_review": 13,
     "http_404": 1,
+    "fetch_error_ReadTimeout": 2,
     "http_429": 1,
     "http_200_insufficient_content": 2,
     "fetch_error_UnsafeUrl": 6,
     "http_247_insufficient_content": 1,
-    "http_202_insufficient_content": 1
+    "http_202_insufficient_content": 1,
+    "http_503": 1
   },
   "by_section": {
     "manufacturers": {
@@ -70,11 +72,11 @@
       "claims": 6686,
       "references_generic_not_atomic": 3970,
       "generic_not_atomic": 3970,
-      "without_source": 1261,
+      "references_metadata_text_support": 1324,
+      "metadata_text_support": 1324,
+      "without_source": 1254,
       "references_bound_text_unconfirmed": 155,
-      "bound_text_unconfirmed": 138,
-      "references_metadata_text_support": 1317,
-      "metadata_text_support": 1317
+      "bound_text_unconfirmed": 138
     },
     "clients_private": {
       "claims": 1379,
@@ -100,8 +102,8 @@
     },
     "architectures": {
       "claims": 370,
-      "references_generic_not_atomic": 77,
       "references_bound_text_unconfirmed": 22,
+      "references_generic_not_atomic": 77,
       "bound_text_unconfirmed": 20,
       "generic_not_atomic": 73,
       "without_source": 251,
