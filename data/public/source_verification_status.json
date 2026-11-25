@@ -1,33 +1,29 @@
 {
-  "generated_at": "2026-11-25T13:49:07.754511+00:00",
-  "snapshot_generated_at": "2026-11-25T13:41:45.592559+00:00",
-  "run_url": "https://github.com/ivanderodrigo/estrategia/actions/runs/45626836754",
+  "generated_at": "2026-11-25T15:58:25.710114+00:00",
+  "snapshot_generated_at": "2026-11-25T15:50:17.253754+00:00",
+  "run_url": "https://github.com/ivanderodrigo/estrategia/actions/runs/45649627287",
   "status": "REVIEW_QUEUE_NOT_FACT_ACCREDITATION",
   "scope": "Independent offline claim/source binding audit and rotating live URL sample",
   "source_content_semantically_verified": false,
-  "total_live_review_candidates": 21359,
+  "total_live_review_candidates": 21406,
   "live_sample_reviewed": 200,
   "live_sample_hosts": 175,
   "live_sampling_policy": "rotating-section-host-round-robin-v1",
-  "live_content_accessible": 158,
+  "live_content_accessible": 160,
   "live_collection_health": "PARTIAL_CONTENT",
   "live_review_statuses": {
+    "http_403": 11,
     "page_mentions_entity_and_value_needs_semantic_review": 44,
     "page_mentions_value_only": 60,
-    "page_does_not_mention_value": 54,
-    "http_403": 8,
-    "redirect_requires_review": 14,
+    "page_does_not_mention_value": 56,
+    "redirect_requires_review": 13,
     "http_404": 1,
+    "fetch_error_ReadTimeout": 1,
     "http_429": 1,
     "http_200_insufficient_content": 2,
-    "fetch_error_ReadTimeout": 1,
     "fetch_error_UnsafeUrl": 6,
     "document_format_requires_review": 4,
-    "http_247_insufficient_content": 1,
-    "fetch_error_ConnectTimeout": 1,
-    "http_202_insufficient_content": 1,
-    "fetch_error_ConnectionError": 1,
-    "http_503": 1
+    "http_202_insufficient_content": 1
   },
   "by_section": {
     "manufacturers": {
@@ -58,11 +54,11 @@
       "references_entity_mismatch": 17
     },
     "integrators": {
-      "claims": 5866,
+      "claims": 5870,
       "references_generic_not_atomic": 1384,
       "generic_not_atomic": 1079,
-      "references_metadata_text_support": 1099,
-      "metadata_text_support": 1099,
+      "references_metadata_text_support": 1103,
+      "metadata_text_support": 1103,
       "without_source": 3172,
       "references_bound_text_unconfirmed": 419,
       "bound_text_unconfirmed": 345,
@@ -71,24 +67,24 @@
       "references_entity_mismatch": 17
     },
     "clients_public": {
-      "claims": 6712,
+      "claims": 6720,
       "references_generic_not_atomic": 3970,
       "generic_not_atomic": 3970,
-      "references_metadata_text_support": 1340,
-      "metadata_text_support": 1340,
+      "references_metadata_text_support": 1343,
+      "metadata_text_support": 1343,
       "without_source": 1255,
-      "references_bound_text_unconfirmed": 167,
-      "bound_text_unconfirmed": 147
+      "references_bound_text_unconfirmed": 173,
+      "bound_text_unconfirmed": 152
     },
     "clients_private": {
-      "claims": 1387,
+      "claims": 1390,
       "references_generic_not_atomic": 288,
       "generic_not_atomic": 287,
       "without_source": 1024,
       "references_bound_text_unconfirmed": 44,
       "bound_text_unconfirmed": 41,
-      "references_metadata_text_support": 35,
-      "metadata_text_support": 35
+      "references_metadata_text_support": 38,
+      "metadata_text_support": 38
     },
     "trends": {
       "claims": 838,
@@ -115,10 +111,10 @@
   },
   "scheduled_workflows": {
     "Westcon Intelligence Daily": {
-      "last_scheduled_at": "2026-11-24T15:51:53Z",
+      "last_scheduled_at": "2026-11-25T15:34:39Z",
       "last_status": "completed",
       "last_conclusion": "success",
-      "last_run_id": 45430421119,
+      "last_run_id": 45646724351,
       "recent_failures_in_sample": 12,
       "runs_in_api_sample": 20
     },
