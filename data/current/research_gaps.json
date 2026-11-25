@@ -1,11 +1,11 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-11-24T16:10:27.489750+00:00",
+  "generated_at": "2026-11-25T13:44:37.144065+00:00",
   "definition": "Todo campo declarado cuenta. Los hechos externos solo cierran con evidencia pública actual. PPT, portfolio e histórico se conservan como pistas internas y generan deuda de validación pública, no acreditación.",
-  "total_gaps": 18480,
+  "total_gaps": 18478,
   "debt_breakdown": {
     "empty_schema_fields": 9023,
-    "claims_awaiting_evidence": 5352,
+    "claims_awaiting_evidence": 5350,
     "derived_support": 4105,
     "other_open_debt": 0
   },
@@ -19,7 +19,7 @@
       "empty_fields": 772
     },
     "integrators": {
-      "unverified_claims": 3174,
+      "unverified_claims": 3172,
       "empty_fields": 1536
     },
     "clients_public": {
@@ -41,12 +41,12 @@
   },
   "public_status_summary": {
     "version": 1,
-    "defined_at": "2026-11-24T16:10:27.385338+00:00",
-    "total": 18480,
+    "defined_at": "2026-11-25T13:44:37.052223+00:00",
+    "total": 18478,
     "by_status": {
       "derivation-pending": 4105,
       "historical-validation": 81,
-      "insufficient-support": 1937,
+      "insufficient-support": 1935,
       "not-found": 9794,
       "not-researched": 21,
       "source-unavailable": 2542
@@ -73,7 +73,7 @@
         "not-found": 1325
       },
       "integrators": {
-        "insufficient-support": 1256,
+        "insufficient-support": 1254,
         "not-found": 3433,
         "not-researched": 21
       },
@@ -99,28 +99,28 @@
   },
   "historical_revalidation_gaps": 81,
   "research_seed_registry_gaps": 0,
-  "evidence_support_gaps": 5352,
+  "evidence_support_gaps": 5350,
   "derivation_support_gaps": 1869,
   "support_model": "DIRECT_OR_TRACEABLE_DERIVATION",
   "support_rule": "CURRENT_PUBLIC_ONLY",
   "public_validation_gaps": 81,
-  "unknown_research_gaps": 18399,
+  "unknown_research_gaps": 18397,
   "business_priority": {
     "model": "business-value-x-researchability-opportunity-v2",
     "tiers": {
       "P0": 34,
-      "P1": 540,
+      "P1": 539,
       "P2": 4779,
-      "P3": 13127
+      "P3": 13126
     },
-    "actionable_high_value_gaps": 574,
+    "actionable_high_value_gaps": 573,
     "weighted_expected_debt": 31366.53,
     "weighted_open_debt": 20159.04,
     "business_weighted_coverage_pct": 35.73,
     "source_families": {
-      "official": 7695,
+      "official": 7694,
       "procurement": 3471,
-      "services": 2414,
+      "services": 2413,
       "technology": 1016,
       "careers": 982,
       "partners": 829,
@@ -141,10 +141,10 @@
         "P1": 11
       },
       "integrators": {
-        "P3": 2600,
+        "P3": 2599,
         "P0": 34,
         "P2": 1580,
-        "P1": 496
+        "P1": 495
       },
       "clients_public": {
         "P3": 7254,
@@ -169,12 +169,12 @@
     "context_rich_public_gaps": 8138,
     "controlled_growth_policy": "bounded-structured-growth-v1"
   },
-  "critical_gaps": 6678,
-  "high_priority_gaps": 6678,
+  "critical_gaps": 6677,
+  "high_priority_gaps": 6677,
   "by_section": {
     "manufacturers": 1032,
     "distributors": 1716,
-    "integrators": 4710,
+    "integrators": 4708,
     "clients_public": 8529,
     "clients_private": 1637,
     "trends": 596,
@@ -183,7 +183,7 @@
   "critical_by_section": {
     "manufacturers": 372,
     "distributors": 437,
-    "integrators": 2201,
+    "integrators": 2200,
     "clients_public": 2615,
     "clients_private": 1053,
     "trends": 0,
@@ -192,9 +192,9 @@
   "missing_by_field": {
     "clients_public.westcon_fit": 1063,
     "integrators.services": 779,
-    "integrators.capabilities": 730,
+    "integrators.capabilities": 729,
     "clients_public.westcon_area": 613,
-    "integrators.technology_domains": 571,
+    "integrators.technology_domains": 570,
     "clients_public.organization_size": 495,
     "clients_public.identified_integrators": 495,
     "clients_public.known_architectures": 495,
@@ -323,7 +323,7 @@
     "manufacturers.scope": 1
   },
   "research_states": {
-    "Por investigar": 18399,
+    "Por investigar": 18397,
     "Pendiente de validación pública": 81
   },
   "coverage": {
@@ -345,8 +345,8 @@
       "expected_fields": 2990,
       "populated_fields": 1454,
       "value_completeness_pct": 48.63,
-      "open_gaps": 4710,
-      "critical_gaps": 2201
+      "open_gaps": 4708,
+      "critical_gaps": 2200
     },
     "clients_public": {
       "expected_fields": 12375,
@@ -37311,76 +37311,6 @@
           "\"SIRT\" filetype:pdf \"caso de sucesso\"",
           "\"SIRT\" \"reference architecture\"",
           "\"SIRT\" \"customer story\""
-        ]
-      },
-      "priority_reason": "valor=97.5/100; investigabilidad=54.0/100; contexto_oportunidad=x1.0; familia óptima=services; estado=Por investigar",
-      "public_status": "insufficient-support",
-      "public_status_reason": "Se recogieron evidencias, pero todavía no acreditan el dato requerido."
-    },
-    {
-      "id": "integrators:sits group:capabilities:evidence-support:9f2306265298",
-      "section": "integrators",
-      "entity": "SITS Group",
-      "entity_id": "integrator-v313-018",
-      "field": "capabilities",
-      "country_context": "GLOBAL",
-      "research_state": "Por investigar",
-      "priority": 1,
-      "reason": "hecho externo preservado como pista interna/histórica; requiere fuente pública actual",
-      "gap_kind": "evidence-support",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "support_requirement": "CURRENT_PUBLIC_ONLY",
-      "target_level": "item",
-      "target_values": [
-        "Networking"
-      ],
-      "preserve_value": true,
-      "historical_lineage_present": false,
-      "revalidation_seeds": [],
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 1,
-      "consecutive_no_yield": 3,
-      "next_pass": 8,
-      "next_due_at": "2026-12-02T06:32:54.607531+00:00",
-      "last_attempt_at": "2026-11-24T06:32:54.607515+00:00",
-      "last_error": "",
-      "close_policy": "Conservar el valor/pista y cerrarlo solo cuando el mismo dato quede sustentado por una fuente pública actual.",
-      "strategy_profile": "evidence-support-public-verification",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 97.5,
-      "researchability_score": 54.0,
-      "priority_score": 60.9,
-      "priority_tier": "P1",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "services",
-      "source_strategy": {
-        "preferred_families": [
-          "services",
-          "cases",
-          "official"
-        ],
-        "source_types": [
-          "service catalogue",
-          "solution page",
-          "case study"
-        ],
-        "rationale": "Capacidades y servicios deben provenir de catálogos o páginas de solución de la propia entidad.",
-        "query_hints": [
-          "\"SITS Group\" \"Networking\"",
-          "\"SITS Group\" capabilities \"Networking\"",
-          "\"SITS Group\" capabilities",
-          "\"SITS Group\" solutions services capabilities",
-          "\"SITS Group\" servicios soluciones capacidades",
-          "\"SITS Group\" serviços soluções competências",
-          "\"SITS Group\" filetype:pdf arquitectura infraestructura",
-          "\"SITS Group\" filetype:pdf \"caso de éxito\"",
-          "\"SITS Group\" filetype:pdf \"caso de sucesso\"",
-          "\"SITS Group\" \"reference architecture\"",
-          "\"SITS Group\" \"customer story\""
         ]
       },
       "priority_reason": "valor=97.5/100; investigabilidad=54.0/100; contexto_oportunidad=x1.0; familia óptima=services; estado=Por investigar",
@@ -658079,68 +658009,6 @@
           "\"SIRT\" technology domains \"AI / Data\"",
           "\"SIRT\" technology domains",
           "\"SIRT\" technology domains Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=51.7/100; investigabilidad=50.5/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "insufficient-support",
-      "public_status_reason": "Se recogieron evidencias, pero todavía no acreditan el dato requerido."
-    },
-    {
-      "id": "integrators:sits group:technology_domains:evidence-support:9f2306265298",
-      "section": "integrators",
-      "entity": "SITS Group",
-      "entity_id": "integrator-v313-018",
-      "field": "technology_domains",
-      "country_context": "GLOBAL",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "hecho externo preservado como pista interna/histórica; requiere fuente pública actual",
-      "gap_kind": "evidence-support",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "support_requirement": "CURRENT_PUBLIC_ONLY",
-      "target_level": "item",
-      "target_values": [
-        "Networking"
-      ],
-      "preserve_value": true,
-      "historical_lineage_present": false,
-      "revalidation_seeds": [],
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 8,
-      "accepted_evidences": 2,
-      "consecutive_no_yield": 3,
-      "next_pass": 9,
-      "next_due_at": "2026-12-02T06:32:54.607574+00:00",
-      "last_attempt_at": "2026-11-24T06:32:54.607571+00:00",
-      "last_error": "",
-      "close_policy": "Conservar el valor/pista y cerrarlo solo cuando el mismo dato quede sustentado por una fuente pública actual.",
-      "strategy_profile": "evidence-support-public-verification",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 51.7,
-      "researchability_score": 50.5,
-      "priority_score": 30.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"SITS Group\" \"Networking\"",
-          "\"SITS Group\" technology domains \"Networking\"",
-          "\"SITS Group\" technology domains",
-          "\"SITS Group\" technology domains Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=51.7/100; investigabilidad=50.5/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
