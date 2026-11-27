@@ -47,8 +47,15 @@ jobs:
       - run: python -m pip install -r requirements.txt
       - name: Audit all published claim bindings
         run: python -m scripts.audit_claim_sources --output claim-source-audit.json > /dev/null
-      - name: Inspect a rotating set of original source pages
-        run: python -m scripts.review_sources_live --limit 200 --output source-live-review.json
+      - name: Review original source pages and all their individual citations
+        env:
+          REVIEW_EVENT: ${{ github.event_name }}
+        run: |
+          args=(--limit 200)
+          if [[ "$REVIEW_EVENT" == schedule || "$REVIEW_EVENT" == push ]]; then
+            args=(--all-references)
+          fi
+          python -m scripts.review_sources_live "${args[@]}" --output source-live-review.json
       - name: Diagnose source HTTP transport without treating HTTP success as proof
         if: always()
         run: |

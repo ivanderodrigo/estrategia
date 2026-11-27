@@ -5,6 +5,19 @@ from scripts.review_sources_live import review_document, run
 
 
 class LiveSourceReviewTests(unittest.TestCase):
+    def test_complete_review_checks_each_reference_with_one_download_per_url(self):
+        from scripts.review_sources_live import full_review
+        claims = [dict(entity="Example Buyer", value=v, url="https://example.org/detail")
+                  for v in ["correct value", "another value"]]
+        with patch("scripts.review_sources_live.collect_claims",return_value=claims), \
+             patch("scripts.review_sources_live.fetch_document",
+                   return_value=("", " example buyer correct value ")) as fetch:
+            result = full_review(None)
+        self.assertEqual(fetch.call_count, 1)
+        self.assertEqual(result["sampled"], 2)
+        self.assertEqual(claims[0]["review_status"],"page_mentions_entity_and_value_needs_semantic_review")
+        self.assertEqual(claims[1]["review_status"],"page_does_not_mention_value")
+
     @patch("scripts.review_sources_live.validate_public_url", side_effect=lambda x: x)
     def test_page_word_match_is_not_semantic_verification(self, validate):
         response = Mock()

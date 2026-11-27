@@ -6,9 +6,11 @@ No dataset files are modified.
 """
 from __future__ import annotations
 
+from collections import defaultdict, deque
+from concurrent.futures import ThreadPoolExecutor
+from threading import BoundedSemaphore
 import argparse
 import json
-import re
 from datetime import date
 from html.parser import HTMLParser
 from pathlib import Path
@@ -17,7 +19,7 @@ from urllib.parse import urlparse
 import requests
 
 from engine.research.security import UnsafeUrl, validate_public_url
-from scripts.audit_claim_sources import SECTIONS, normal, text_mentions
+from scripts.audit_claim_sources import SECTIONS, normal
 
 
 class _VisibleText(HTMLParser):
@@ -39,7 +41,7 @@ class _VisibleText(HTMLParser):
             self.parts.append(data)
 
 
-def review_document(session: requests.Session, url: str, entity: str, value: str) -> str:
+def fetch_document(session, url):
     """Do not follow redirects or request non-public hosts."""
     try:
         public = validate_public_url(url)
@@ -47,15 +49,15 @@ def review_document(session: requests.Session, url: str, entity: str, value: str
                                stream=True, headers={"User-Agent": "Westcon-Research-Auditor/1.0"})
         try:
             if 300 <= response.status_code < 400:
-                return "redirect_requires_review"
+                return "redirect_requires_review", ""
             # HTTP 202 Accepted can carry the complete readable document.
             # Do not reject all 2xx statuses before checking the actual body.
             # Conversely, a 202 with no usable content is NOT a verified page.
             if not 200 <= response.status_code < 300:
-                return "http_" + str(response.status_code)
+                return "http_" + str(response.status_code), ""
             content_type = response.headers.get("Content-Type", "").lower()
             if "text/html" not in content_type and "text/plain" not in content_type:
-                return "document_format_requires_review"
+                return "document_format_requires_review", ""
             chunks = []
             total = 0
             for chunk in response.iter_content(chunk_size=16384):
@@ -73,14 +75,61 @@ def review_document(session: requests.Session, url: str, entity: str, value: str
         else:
             text = raw
         if len(text.strip()) < 20:
-            return "http_" + str(response.status_code) + "_insufficient_content"
-        if text_mentions(text, entity) and text_mentions(text, value):
-            return "page_mentions_entity_and_value_needs_semantic_review"
-        if text_mentions(text, value):
-            return "page_mentions_value_only"
-        return "page_does_not_mention_value"
+            return "http_" + str(response.status_code) + "_insufficient_content", ""
+        return "", " " + normal(text) + " "
     except (UnsafeUrl, requests.RequestException, UnicodeError, ValueError) as exc:
-        return "fetch_error_" + type(exc).__name__
+        return "fetch_error_" + type(exc).__name__, ""
+
+
+def assess_text(text, entity, value):
+    def mentions(label):
+        term = normal(label)
+        return len(term) >= 3 and f" {term} " in text
+    if mentions(value):
+        if mentions(entity):
+            return "page_mentions_entity_and_value_needs_semantic_review"
+        return "page_mentions_value_only"
+    return "page_does_not_mention_value"
+
+
+def review_document(session: requests.Session, url: str, entity: str, value: str) -> str:
+    status, text = fetch_document(session, url)
+    return status or assess_text(text, entity, value)
+
+
+def full_review(root):
+    claims = collect_claims(root)
+    by_url = defaultdict(list)
+    hosts = defaultdict(deque)
+    for claim in claims:
+        url = claim["url"]
+        if url not in by_url:
+            hosts[urlparse(url).hostname].append(url)
+        by_url[url].append(claim)
+    limits = {host: BoundedSemaphore(2) for host in hosts}
+
+    def assess(url):
+        with limits[urlparse(url).hostname], requests.Session() as session:
+            status, text = fetch_document(session, url)
+        for claim in by_url[url]:
+            claim["review_status"] = status or assess_text(text, claim["entity"], claim["value"])
+
+    # Interleave hosts so a slow vendor cannot occupy every worker.
+    queues = deque(hosts.values())
+    ordered = []
+    while queues:
+        queue = queues.popleft()
+        ordered.append(queue.popleft())
+        if queue:
+            queues.append(queue)
+    with ThreadPoolExecutor(max_workers=16) as pool:
+        for i, _ in enumerate(pool.map(assess, ordered), 1):
+            if i % 250 == 0:
+                print(f"Source review: {i}/{len(ordered)} URLs",flush=True)
+    return {"total_references":len(claims), "sampled":len(claims),
+            "unique_source_hosts_in_sample":len(hosts), "unique_urls":len(by_url),
+            "sampling_policy":"complete-current-reference-inventory",
+            "source_content_semantically_verified":False, "items":claims}
 
 
 def collect_claims(root: Path) -> list[dict]:
@@ -120,7 +169,6 @@ def run(root: Path, limit: int, day: int, session: requests.Session) -> dict:
     # for example), falsely reporting that *all* external sources failed.
     # Rotate across section+host strata first; rotate items inside each
     # stratum on successive days, retaining deterministic repeatability.
-    from collections import defaultdict
     buckets = defaultdict(list)
     for claim in claims:
         host = (urlparse(claim["url"]).hostname or "").lower()
@@ -166,10 +214,11 @@ def main() -> None:
     parser.add_argument("--root", type=Path, default=Path("data/public"))
     parser.add_argument("--limit", type=int, default=200)
     parser.add_argument("--day", type=int, default=date.today().toordinal())
+    parser.add_argument("--all-references", action="store_true")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     with requests.Session() as session:
-        report = run(args.root, max(1, min(args.limit, 300)), args.day, session)
+        report = full_review(args.root) if args.all_references else run(args.root, max(1, min(args.limit, 300)), args.day, session)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     counts: dict[str, int] = {}

@@ -44,7 +44,7 @@ def build(binding, live, manifest, *, checked_at, run_url, workflow_runs=None):
     statuses = Counter(str(item.get("review_status") or "unknown") for item in live.get("items") or [])
     sampled=int(live.get("sampled") or 0)
     readable=sum(n for k,n in statuses.items() if k.startswith("page_"))
-    review_health="NO_CONTENT_EXTRACTED" if sampled and not readable else (
+    review_health="NO_CONTENT_EXTRACTED" if not readable else (
         "PARTIAL_CONTENT" if readable<sampled else "CONTENT_READABLE"
     )
     return {
@@ -52,7 +52,8 @@ def build(binding, live, manifest, *, checked_at, run_url, workflow_runs=None):
         "snapshot_generated_at": manifest.get("generated_at"),
         "run_url": run_url,
         "status": "REVIEW_QUEUE_NOT_FACT_ACCREDITATION",
-        "scope": "Independent offline claim/source binding audit and rotating live URL sample",
+        "scope": "Independent claim/source binding audit and live source review",
+        "live_unique_urls": live.get("unique_urls"),
         "source_content_semantically_verified": False,
         "total_live_review_candidates": int(live.get("total_references") or 0),
         "live_sample_reviewed": sampled,
