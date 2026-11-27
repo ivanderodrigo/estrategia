@@ -37,6 +37,23 @@ def published_item_proofs(section, snapshot):
     return proofs
 
 
+def historical_inventory(historical):
+    if historical is None:
+        from scripts.revalidate_historical_sources import candidate_inventory
+        return candidate_inventory()
+    by_url = {}
+    for area, archive in historical.items():
+        for entity, fields in archive.get("entities", {}).items():
+            for field, entries in fields.items():
+                for entry in entries:
+                    value = entry.get("value")
+                    if isinstance(value,str) and value.strip():
+                        for url in entry.get("urls") or []:
+                            if isinstance(url,str) and url.startswith(("https://","http://")):
+                                by_url.setdefault(url,[]).append(dict(section=area,entity=entity,field=field,value=value))
+    return by_url
+
+
 def pending_index(historical,registry,checks,published_proofs=()):
     verified={
         (c.get("section"),canonical(c.get("entity")),c.get("field"),
@@ -47,50 +64,44 @@ def pending_index(historical,registry,checks,published_proofs=()):
     pages=(checks.get("results") or {})
     results=[]
     counted=Counter()
-    for area in AREAS:
-        entities=(historical.get(area) or {}).get("entities") or {}
-        for entity,fields in sorted(entities.items()):
-            for field,values in sorted(fields.items()):
-                for entry in values:
-                    value=entry.get("value")
-                    if not isinstance(value,str) or not value.strip():
-                        continue
-                    for url in sorted(set(entry.get("urls") or [])):
-                        if not isinstance(url,str) or not url.startswith(("https://","http://")):
-                            continue
-                        key=(area,canonical(entity),field,canonical(value),url)
-                        if key in verified:
-                            counted["already_accredited_exact_url"]+=1
-                            continue
-                        page=pages.get(url) or {}
-                        claims=page.get("claim_checks") or []
-                        match=next((c for c in claims
-                            if c.get("section")==area
-                            and canonical(c.get("entity"))==canonical(entity)
-                            and c.get("field")==field
-                            and canonical(c.get("value"))==canonical(value)),None)
-                        page_status=page.get("status") or "NOT_CHECKED"
-                        reason=(match or {}).get("status") or page_status
-                        # Text co-occurrence is a research lead, never proof.
-                        priority=1 if reason=="VALUE_PRESENT_REQUIRES_CONTEXT" else (
-                            2 if page_status=="REACHABLE_TEXT_MATCH" else
-                            3 if page_status=="REACHABLE_NO_EXACT_TEXT" else 4
-                        )
-                        results.append({"section":area,"entity":entity,"field":field,
-                            "value":value,"url":url,"priority":priority,
-                            "source_status":page_status,"claim_status":reason,
-                            "resolved_url":(match or {}).get("resolved_url") or url})
-                        counted[area]+=1
-                        counted["reason:"+reason]+=1
+    seen=set()
+    for url, claims_for_url in historical_inventory(historical).items():
+        page = pages.get(url) or {}
+        checks_by_claim = {
+            (c["section"],canonical(c["entity"]),c["field"],canonical(c["value"])): c
+            for c in page.get("claim_checks") or []
+        }
+        for claim in claims_for_url:
+            area,entity,field,value = (claim[k] for k in ("section","entity","field","value"))
+            identity = (area,canonical(entity),field,canonical(value))
+            key = (*identity,url)
+            if key in seen:
+                continue
+            seen.add(key)
+            match = checks_by_claim.get(identity) or {}
+            resolved = match.get("resolved_url") or url
+            if key in verified or (*identity,resolved) in verified:
+                counted["already_accredited_exact_url"] += 1
+                continue
+            page_status = page.get("status") or "NOT_CHECKED"
+            reason = match.get("status") or "CLAIM_NOT_CHECKED"
+            priority = 1 if reason=="VALUE_PRESENT_REQUIRES_CONTEXT" else (
+                2 if page_status=="REACHABLE_TEXT_MATCH" else
+                3 if page_status=="REACHABLE_NO_EXACT_TEXT" else 4
+            )
+            results.append({"section":area,"entity":entity,"field":field,
+                "value":value,"url":url,"priority":priority,
+                "source_status":page_status,"claim_status":reason,"resolved_url":resolved})
+            counted[area]+=1
+            counted["reason:"+reason]+=1
     results.sort(key=lambda c:(c["priority"],c["section"],c["entity"],c["field"],c["value"],c["url"]))
     return results,counted
 
 def main():
-    historical={area:read(f"data/public/historical/current/{area}.json") for area in AREAS}
     proofs=set()
     for area in AREAS:
         proofs.update(published_item_proofs(area, read(f"data/public/sections/{area}.json")))
-    records,counters=pending_index(historical,
+    records,counters=pending_index(None,
         read("config/current/historical_semantic_verified.json"),
         read("data/current/historical_source_checks.json"), proofs)
     snapshot=read("data/public/manifest.json").get("generated_at")

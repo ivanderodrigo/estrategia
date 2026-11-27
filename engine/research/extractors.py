@@ -121,7 +121,7 @@ def _matches(text: str, dictionary: dict[str, Iterable[str]]) -> tuple[list[str]
     labels: list[str] = []
     terms_found: list[str] = []
     for label, terms in dictionary.items():
-        matched = next((term for term in terms if f" {canonical(term)} " in blob or canonical(term) in blob), None)
+        matched = next((term for term in terms if f" {canonical(term)} " in blob), None)
         if matched:
             labels.append(label)
             terms_found.append(matched)
@@ -650,6 +650,14 @@ def extract_candidates(
         if family in {"financial", "official"}:
             add("revenue", revenues, revenue_terms, confidence=0.92 if official else 0.76)
         if family in {"services", "official", "technology"}:
+            # Deployment names and menu labels ("Cloud", "Data Center Edition")
+            # do not establish that a vendor supplies infrastructure services.
+            vendor_terms = dict(CAPABILITY_TERMS)
+            vendor_terms.update({
+                "Cloud": ("cloud infrastructure services", "cloud computing services", "servicios de computación en la nube"),
+                "Data Center": ("data center networking", "data center infrastructure", "data center solutions", "soluciones de centro de datos"),
+            })
+            capabilities, cap_terms = _matches(text, vendor_terms)
             add("capabilities", capabilities, cap_terms)
         if family in {"analyst", "news", "technology", "official", "cases"}:
             add("competitors", competitors, competitor_terms, confidence=0.83 if official else 0.76)

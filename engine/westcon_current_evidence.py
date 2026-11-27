@@ -111,6 +111,31 @@ def _catalog_evidence(details: Mapping[str, Any], fallback_rule: Mapping[str, An
     return ev
 
 
+def _attach_catalog_capabilities(row, details, rule):
+    existing_caps = (row.get("fields") or {}).get("capabilities") or {}
+    values = existing_caps.get("value") if isinstance(existing_caps.get("value"), list) else (
+        [existing_caps.get("value")] if _has_value(existing_caps.get("value")) else []
+    )
+    items = list(existing_caps.get("items") or [])
+    for capability in details.get("capabilities") or []:
+        actual = next((v for v in values if canonical(v) == canonical(capability)), None)
+        if actual is None:
+            actual = capability
+            values.append(actual)
+        item = next((v for v in items if canonical(v.get("value")) == canonical(actual)), None)
+        if item is None:
+            item = {"value": actual, "evidence": []}
+            items.append(item)
+        ev = _catalog_evidence(details, rule, field="capabilities", value=actual)
+        item["evidence"] = _dedupe_evidence(list(item.get("evidence") or []) + [ev])
+    row.setdefault("fields", {})["capabilities"] = {
+        **existing_caps, "value": values, "items": items,
+        "evidence": _dedupe_evidence(list(existing_caps.get("evidence") or []) + [
+            ev for item in items for ev in item.get("evidence") or []
+        ]),
+    }
+
+
 def _field(row: dict[str, Any], field_id: str, value: Any) -> dict[str, Any]:
     fields = row.setdefault("fields", {})
     target = fields.get(field_id)
@@ -336,28 +361,7 @@ def apply_westcon_current_evidence(data: dict[str, Any], config: Mapping[str, An
                 else:
                     _attach_scalar(row, "domain", current_value, domain_ev)
         if details.get("capabilities"):
-            existing_caps = (row.get("fields") or {}).get("capabilities") or {}
-            values = existing_caps.get("value") if isinstance(existing_caps.get("value"), list) else (
-                [existing_caps.get("value")] if _has_value(existing_caps.get("value")) else []
-            )
-            items = list(existing_caps.get("items") or [])
-            for capability in details["capabilities"]:
-                actual = next((v for v in values if canonical(v) == canonical(capability)), None)
-                if actual is None:
-                    actual = capability
-                    values.append(actual)
-                item = next((v for v in items if canonical(v.get("value")) == canonical(actual)), None)
-                if item is None:
-                    item = {"value": actual, "evidence": []}
-                    items.append(item)
-                ev = _catalog_evidence(details, portugal_rule, field="capabilities", value=actual)
-                item["evidence"] = _dedupe_evidence(list(item.get("evidence") or []) + [ev])
-            row.setdefault("fields", {})["capabilities"] = {
-                **existing_caps, "value": values, "items": items,
-                "evidence": _dedupe_evidence(list(existing_caps.get("evidence") or []) + [
-                    ev for item in items for ev in item.get("evidence") or []
-                ]),
-            }
+            _attach_catalog_capabilities(row, details, portugal_rule)
         row["evidence"] = _dedupe_evidence(list(row.get("evidence") or []) + [_rule_evidence(portugal_rule, field="portfolio", value=name)])
         stats["portfolio_portugal_rows"] += 1
 
@@ -398,12 +402,7 @@ def apply_westcon_current_evidence(data: dict[str, Any], config: Mapping[str, An
                     domain_ev = _catalog_evidence(details, override, field="domain", value=details["domain"])
                     _attach_scalar(row, "domain", details["domain"], domain_ev)
             if details.get("capabilities"):
-                capabilities = [str(x) for x in details["capabilities"]]
-                field = _field(row, "capabilities", capabilities)
-                field["items"] = [{"value": item, "evidence": [
-                    _catalog_evidence(details, override, field="capabilities", value=item)
-                ]} for item in capabilities]
-                field["evidence"] = [ev for item in field["items"] for ev in item["evidence"]]
+                _attach_catalog_capabilities(row, details, override)
             row["evidence"] = _dedupe_evidence(list(row.get("evidence") or []) + [
                 _rule_evidence(override, field="portfolio", value=name)])
             stats["portfolio_spain_rows"] += 1

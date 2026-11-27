@@ -34,6 +34,23 @@ class PortfolioAndCrossDiscoveryTests(unittest.TestCase):
             self.assertIs(by_name[name]["fields"]["westcon_spain"]["value"], True)
             self.assertIs(by_name[name]["fields"]["westcon_portugal"]["value"], True)
 
+    def test_weekly_rebuild_preserves_independent_sonar_capability_support(self):
+        proof = {"url": "https://example.org/code-analysis", "field": "capabilities",
+                 "item_value": "Code analysis", "atomic": True}
+        row = {"name": "Sonar", "fields": {"capabilities": {
+            "value": ["Code analysis"], "items": [{"value": "Code analysis", "evidence": [proof]}],
+            "evidence": [proof]}}}
+        data = {"manufacturers": [row], "meta": {}}
+        from engine.storage import read_json
+        config = read_json("config/current/westcon_fy27_document_facts.json", {})
+        for _ in range(2):
+            apply_westcon_current_evidence(data, config)
+        field = row["fields"]["capabilities"]
+        self.assertEqual(field["value"].count("Code analysis"), 1)
+        item = next(item for item in field["items"] if item["value"] == "Code analysis")
+        self.assertIn(proof, item["evidence"])
+        self.assertIn(proof, field["evidence"])
+
     def test_same_category_vendor_cross_searches_do_not_claim_competition(self):
         market = [
             {"name": "Extreme Networks", "fields": {"domain": {"value": "Networking"}}},

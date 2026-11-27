@@ -31,6 +31,7 @@ on:
     branches: [main]
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 concurrency:
@@ -93,4 +94,14 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+      - name: Wait for the uploaded Pages artifact to be indexed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for delay in 1 2 4 8 16 32; do
+            count=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts?name=github-pages" --jq '.artifacts | map(select(.expired == false)) | length')
+            if [ "$count" -eq 1 ]; then exit 0; fi
+            sleep "$delay"
+          done
+          exit 1
       - uses: actions/deploy-pages@v4
