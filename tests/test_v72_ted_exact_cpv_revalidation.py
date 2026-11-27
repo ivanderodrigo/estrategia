@@ -5,7 +5,7 @@ from unittest.mock import Mock
 from engine.provenance import evidence_for_item
 from engine.knowledge_provenance import typed_evidence_sufficient
 from scripts.revalidate_ted_cpv import (
-    eligible_notices, reconcile_notice, retrieve_batch, _api_payload,
+    eligible_notices, reconcile_notice, reconcile_selected_winners, retrieve_batch, _api_payload,
 )
 
 
@@ -104,6 +104,36 @@ class TedExactCPVProvenance(unittest.TestCase):
         self.assertEqual(payload["query"],
                          "publication-number IN (123456-2026 234567-2025)")
         self.assertIn("classification-cpv", payload["fields"])
+        self.assertIn("winner-name", payload["fields"])
+
+    def test_official_selected_winner_is_supplier_not_inferred_integrator(self):
+        source = row()
+        published = dict(notice(), **{"winner-name": ["Empresa Adjudicataria SL", "Proveedor PT Lda"]})
+        first = reconcile_selected_winners(source, published, "123456-2026", "2026-11-27")
+        self.assertEqual(first, 2)
+        self.assertEqual(reconcile_selected_winners(source, published, "123456-2026", "2026-11-27"), 0)
+        field = source["fields"]["identified_integrators"]
+        self.assertIn("Proveedor PT Lda", field["value"])
+        self.assertIn("no confirma que sea integrador", field["qualifier"])
+        for item in field["items"]:
+            ev = item["evidence"][0]
+            self.assertTrue(typed_evidence_sufficient(ev))
+            self.assertEqual(ev["item_value"], item["value"])
+            self.assertEqual(ev["method"], "ted-selected-winning-tender-v1")
+
+    def test_rejects_winner_if_buyer_or_notice_mismatches_or_no_selected_tender(self):
+        original = dict(notice(), **{"winner-name": ["Empresa Adjudicataria SL"]})
+        for unsupported in (
+            dict(original, **{"buyer-name": "Ayuntamiento de Murcia"}),
+            dict(original, **{"publication-number": "654321-2026"}),
+            dict(original, **{"winner-name": []}),
+            dict(original, **{"winner-name": ["unknown"]}),
+        ):
+            with self.subTest(unsupported=unsupported):
+                source = row()
+                self.assertEqual(reconcile_selected_winners(source, unsupported,
+                    "123456-2026", "2026-11-27"), 0)
+                self.assertNotIn("identified_integrators", source["fields"])
 
     def test_unavailable_batch_keeps_all_claims_unconfirmed(self):
         session = Mock()

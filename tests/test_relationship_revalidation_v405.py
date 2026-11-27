@@ -5,6 +5,8 @@ import unittest
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from engine.model import canonical
+
 from engine.relationship_revalidation import (
     _parse_ted_xml,
     _target_match,
@@ -33,6 +35,17 @@ def independently_supported_relation(relation):
         if source_type in {"official-procurement-notice", "official-procurement-notice-revalidated"}:
             if urlsplit(url).hostname == "ted.europa.eu" and str(ev.get("title") or "").strip():
                 return True
+        if (source_type == "official-procurement-api"
+                and ev.get("method") == "ted-literal-title-v1"
+                and ev.get("atomic") is True
+                and ev.get("source_binding") == "claim-specific"
+                and ev.get("field") == "technology_signals"
+                and urlsplit(url).hostname == "ted.europa.eu"
+                and canonical(ev.get("researched_entity")) == canonical(relation.get("entity_a"))
+                and canonical(ev.get("item_value")) == canonical(relation.get("entity_b"))
+                and ev.get("matched_terms")
+                and str(ev.get("title") or "").strip()):
+            return True
         if (str(ev.get("source_binding") or "") == "claim-specific"
                 and str(ev.get("provenance_origin") or "") == "PUBLIC_PRIMARY"
                 and not source_type.startswith(("historical", "legacy", "public-web"))):
@@ -124,6 +137,17 @@ class RelationshipRevalidationV405(unittest.TestCase):
             "title": "583069-2026 · Ordenadores personales y portátiles",
         }]}
         self.assertTrue(independently_supported_relation(modern))
+        bound = {"entity_a": "Diputación de Barcelona", "entity_b": "Cloud", "evidence": [{
+            "url": "https://ted.europa.eu/en/notice/-/detail/123456-2026",
+            "official": True, "source_type": "official-procurement-api",
+            "method": "ted-literal-title-v1", "source_binding": "claim-specific",
+            "atomic": True, "field": "technology_signals", "item_value": "Cloud",
+            "researched_entity": "Diputación de Barcelona",
+            "matched_terms": ["nube"], "title": "Servicios en la nube",
+        }]}
+        self.assertTrue(independently_supported_relation(bound))
+        bound["evidence"][0]["researched_entity"] = "Otra institución"
+        self.assertFalse(independently_supported_relation(bound))
 
     def test_ted_detail_url_is_converted_to_official_xml(self) -> None:
         url = "https://ted.europa.eu/en/notice/-/detail/595840-2026"

@@ -5,6 +5,8 @@ on:
     paths:
       - '.github/workflows/ted-cpv-revalidate.yml'
       - 'scripts/revalidate_ted_cpv.py'
+      - 'scripts/backfill_ted_title_signals.py'
+      - 'engine/research/ted_title_signals.py'
   workflow_dispatch:
   # TED's HTML pages can return 202 with no usable notice text. Recheck
   # exact published CPV claims independently via the official TED Search API.
@@ -38,7 +40,11 @@ jobs:
       - name: Install runtime
         run: python -m pip install -r requirements.txt
       - name: Strict exact-CPV regression tests
-        run: python -m unittest discover -s tests -p "test_v72_ted_exact_cpv_revalidation.py" -v
+        run: |
+          python -m unittest discover -s tests -p "test_v72_ted_exact_cpv_revalidation.py" -v
+          python -m unittest discover -s tests -p "test_ted_verified_title_signals.py" -v
+      - name: Recover only literal technology terms from already-accredited TED titles
+        run: python -m scripts.backfill_ted_title_signals
       - name: Recover historical CPV claims from live original TED announcements
         run: python -m scripts.revalidate_ted_cpv --max-runtime 600 --max-notices 1000 --batch-size 18
       - name: Validate that reconstructed output retains exact provenance
@@ -61,6 +67,7 @@ jobs:
           name: official-ted-cpv-revalidation-${{ github.run_id }}
           path: |
             data/current/ted_cpv_revalidation.json
+            data/current/ted_title_backfill.json
             data/current/debt_diagnostic.json
             data/current/quality_report.json
           if-no-files-found: warn

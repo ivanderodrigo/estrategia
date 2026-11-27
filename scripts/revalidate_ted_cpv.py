@@ -23,6 +23,7 @@ import requests
 from engine.enrichment import merge_field
 from engine.model import canonical
 from engine.research.ted import TED_SEARCH_URL, _cpv_codes, _first
+from engine.research.ted_title_signals import recover_verified_title_signals
 from engine.storage import atomic_write_json, read_json
 
 
@@ -57,6 +58,7 @@ def _api_payload(numbers: list[str]) -> dict[str, Any]:
             "publication-number", "publication-date", "buyer-name",
             "notice-title", "title-proc", "classification-cpv",
             "estimated-value-proc", "estimated-value-cur-proc",
+            "winner-name",
         ],
         "limit": min(250, max(1, len(numbers) * 2)),
         "scope": "ALL",
@@ -220,6 +222,75 @@ def reconcile_procurement_facts(row, notice, number, checked_date):
     return changed
 
 
+def reconcile_selected_winners(row, notice, number, checked_date):
+    """Record only TED's selected winning tenderer, as a *supplier*.
+
+    TED defines ``winner-name`` through a selected winning tender/lot result.
+    Being an awarded supplier never implies that a company is an integrator,
+    a Westcon partner, or even a manufacturer.
+    """
+    owner = str(row.get("name") or "")
+    buyer = _first(notice.get("buyer-name"))
+    if (not owner or canonical(buyer) != canonical(owner)
+            or _first(notice.get("publication-number")) != number):
+        return 0
+    raw = notice.get("winner-name") or []
+    nominees = raw if isinstance(raw, list) else [raw]
+    winners = list(dict.fromkeys(_first(item) for item in nominees))
+    winners = [name for name in winners
+               if 3 <= len(name) <= 200
+               and canonical(name) not in {"unknown", "n a", "none", "null", "sin adjudicatario", "sem adjudicatario"}]
+    if not winners:
+        return 0
+    fields = row.setdefault("fields", {})
+    field = fields.get("identified_integrators") or {}
+    url = f"https://ted.europa.eu/en/notice/-/detail/{number}"
+    old = {
+        canonical(item.get("value")): item
+        for item in field.get("items") or [] if isinstance(item, dict)
+    }
+    accepted = 0
+    for winner in winners:
+        if any(ev.get("method") == "ted-selected-winning-tender-v1"
+               and ev.get("url") == url and ev.get("item_value") == winner
+               for ev in (old.get(canonical(winner)) or {}).get("evidence") or []
+               if isinstance(ev, dict)):
+            continue
+        title = _first(notice.get("title-proc") or notice.get("notice-title"))
+        citation = {
+            "source": "TED · Diario Oficial de la Unión Europea",
+            "title": f"{number} · {title or 'Anuncio de adjudicación'}",
+            "url": url,
+            "date": _first(notice.get("publication-date"))[:10] or checked_date,
+            "retrieved_at": checked_date,
+            "description": (f"{buyer} · {number} · TED identifica a {winner} "
+                            "como adjudicatario de la oferta seleccionada. "
+                            "No se deduce categoría de integrador ni relación con Westcon."),
+            "scope": _first((fields.get("scope") or {}).get("value")) or "GLOBAL",
+            "source_grade": "A", "source_type": "official-procurement-api",
+            "official": True, "classification": "public",
+            "method": "ted-selected-winning-tender-v1",
+            "source_binding": "claim-specific",
+            "researched_entity": owner, "field": "identified_integrators",
+            "item_value": winner, "atomic": True, "accrediting": True,
+            "matched_terms": [winner],
+        }
+        fields["identified_integrators"] = merge_field(
+            fields.get("identified_integrators"), {
+                "value": [winner],
+                "items": [{"value": winner, "evidence": [citation],
+                           "confidence": 0.96, "claim_type": "fact",
+                           "assertion_status": "CONFIRMADO"}],
+                "confidence": 0.96, "claim_type": "fact",
+                "assertion_status": "CONFIRMADO",
+                "qualifier": ("Proveedor adjudicatario en TED; no confirma que sea "
+                              "integrador, partner o fabricante de Westcon."),
+            },
+        )
+        accepted += 1
+    return accepted
+
+
 def revalidate(
     data: dict[str, Any], session: requests.Session,
     *,
@@ -254,6 +325,9 @@ def revalidate(
             seen.add(number)
             for row in candidate_index.get(number) or []:
                 stats["procedure_facts_accredited"] += reconcile_procurement_facts(row, notice, number, today)
+                stats["selected_winners_accredited"] += reconcile_selected_winners(row, notice, number, today)
+                title_signals = recover_verified_title_signals(row, checked_date=today)
+                stats["title_atomic_claims_accredited"] += sum(title_signals.values())
                 count = reconcile_notice(
                     row, notice, claimed_number=number, checked_date=today,
                 )
@@ -290,7 +364,10 @@ def main() -> None:
 
     if stats.get("selected_notices") and not stats.get("matched_notices"):
         raise RuntimeError("TED returned no requested notice; publication withheld")
-    changed = stats.get("cpv_values_accredited", 0) + stats.get("procedure_facts_accredited", 0)
+    changed = (stats.get("cpv_values_accredited", 0)
+               + stats.get("procedure_facts_accredited", 0)
+               + stats.get("title_atomic_claims_accredited", 0)
+               + stats.get("selected_winners_accredited", 0))
     if changed:
         atomic_write_json("data/current/intelligence.json", data)
     from engine.pipeline import run as rebuild
