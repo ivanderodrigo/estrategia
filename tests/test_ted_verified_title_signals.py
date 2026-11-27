@@ -5,7 +5,7 @@ import unittest
 from engine.knowledge_provenance import typed_evidence_sufficient
 from engine.provenance import evidence_for_item
 from engine.research.ted_title_signals import (
-    literal_claims, recover_verified_title_signals,
+    literal_claims, recover_verified_title_signals, derive_verified_westcon_areas,
 )
 from scripts.backfill_ted_title_signals import backfill
 
@@ -95,8 +95,39 @@ class VerifiedTedTitleExtraction(unittest.TestCase):
         data = {"clients_public": [record(), {"name": "Sin fuentes", "fields": {}}]}
         first = backfill(data, checked_date="2026-11-27")
         self.assertEqual(first["buyers_with_new_atomic_claims"], 1)
-        self.assertEqual(first["new_atomic_claims"], 6)
+        self.assertEqual(first["new_atomic_claims"], 8)
         self.assertFalse(backfill(data, checked_date="2026-11-27").get("new_atomic_claims"))
+
+    def test_derived_westcon_area_requires_reproducible_official_title(self):
+        buyer = record()
+        buyer["fields"]["westcon_area"] = {
+            "value": ["Cloud", "Networking"],
+            "items": [{"value": "Cloud", "evidence": []},
+                      {"value": "Networking", "evidence": []}],
+        }
+        counts = derive_verified_westcon_areas(buyer, checked_date="2026-11-27")
+        self.assertEqual(counts["westcon_area"], 2)
+        area = buyer["fields"]["westcon_area"]
+        for item in area["items"]:
+            if item["value"] == "Networking":
+                self.assertEqual(item["evidence"], [])
+                continue
+            self.assertTrue(item["evidence"])
+            proof = item["evidence"][0]
+            self.assertEqual(proof["derivation_rule"], "official-TED-title ∩ TITLE_RULES.domain")
+            self.assertEqual(proof["derived_from_field"], "evidenced_needs")
+            self.assertEqual(proof["derived_from_value"], TITLE)
+            self.assertEqual(proof["item_value"], item["value"])
+            self.assertTrue(typed_evidence_sufficient(proof))
+        self.assertNotIn("westcon_fit", buyer["fields"])
+        self.assertEqual(sum(derive_verified_westcon_areas(buyer, checked_date="2026-11-28").values()), 0)
+
+    def test_cannot_derive_area_from_unrelated_or_non_ted_page(self):
+        buyer = record(title="Gestión de redes sociales y seguridad de edificios")
+        self.assertFalse(derive_verified_westcon_areas(buyer, checked_date="2026-11-27"))
+        other = record()
+        other["fields"]["evidenced_needs"]["items"][0]["evidence"][0]["method"] = "search-discovery"
+        self.assertFalse(derive_verified_westcon_areas(other, checked_date="2026-11-27"))
 
 
 if __name__ == "__main__":

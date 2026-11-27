@@ -10,7 +10,9 @@ import json
 from collections import Counter
 from datetime import datetime, timezone
 
-from engine.research.ted_title_signals import recover_verified_title_signals
+from engine.research.ted_title_signals import (
+    recover_verified_title_signals, derive_verified_westcon_areas,
+)
 from engine.storage import atomic_write_json, read_json
 
 
@@ -20,12 +22,13 @@ def backfill(data: dict, *, checked_date: str) -> dict:
         if not isinstance(row, dict):
             continue
         accredited = recover_verified_title_signals(row, checked_date=checked_date)
+        accredited.update(derive_verified_westcon_areas(row, checked_date=checked_date))
         if accredited:
             totals["buyers_with_new_atomic_claims"] += 1
             totals.update(accredited)
     totals["new_atomic_claims"] = sum(
         totals.get(field_id, 0)
-        for field_id in ("technology_signals", "technology_domains", "identified_vendors")
+        for field_id in ("technology_signals", "technology_domains", "identified_vendors", "westcon_area")
     )
     return dict(totals)
 

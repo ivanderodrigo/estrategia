@@ -5,7 +5,8 @@ from unittest.mock import Mock
 from engine.provenance import evidence_for_item
 from engine.knowledge_provenance import typed_evidence_sufficient
 from scripts.revalidate_ted_cpv import (
-    eligible_notices, reconcile_notice, reconcile_selected_winners, retrieve_batch, _api_payload,
+    eligible_notices, reconcile_notice, reconcile_selected_winners,
+    reconcile_eu_programmes, reconcile_description_technologies, retrieve_batch, _api_payload,
 )
 
 
@@ -105,6 +106,11 @@ class TedExactCPVProvenance(unittest.TestCase):
                          "publication-number IN (123456-2026 234567-2025)")
         self.assertIn("classification-cpv", payload["fields"])
         self.assertIn("winner-name", payload["fields"])
+        self.assertIn("eu-funds-programme-lot", payload["fields"])
+        self.assertIn("eu-funds-name", payload["fields"])
+        self.assertIn("description-lot", payload["fields"])
+        self.assertIn("description-proc", payload["fields"])
+        self.assertIn("title-lot", payload["fields"])
 
     def test_official_selected_winner_is_supplier_not_inferred_integrator(self):
         source = row()
@@ -134,6 +140,64 @@ class TedExactCPVProvenance(unittest.TestCase):
                 self.assertEqual(reconcile_selected_winners(source, unsupported,
                     "123456-2026", "2026-11-27"), 0)
                 self.assertNotIn("identified_integrators", source["fields"])
+
+    def test_eu_funding_must_be_declared_in_exact_notice_not_inferred(self):
+        buyer = row()
+        published = dict(notice(), **{
+            "eu-funds-programme-lot": ["ERDF", "EU4Health"],
+            "eu-funds-name": None,
+        })
+        self.assertEqual(reconcile_eu_programmes(buyer, published, "123456-2026", "2026-11-27"), 2)
+        self.assertEqual(reconcile_eu_programmes(buyer, published, "123456-2026", "2026-11-27"), 0)
+        programme = buyer["fields"]["strategic_programs"]
+        self.assertIn("Programa UE indicado en TED: ERDF", programme["value"])
+        self.assertIn("no implica un programa estratégico propio", programme["qualifier"])
+        for item in programme["items"]:
+            proof = item["evidence"][0]
+            self.assertEqual(proof["item_value"], item["value"])
+            self.assertEqual(proof["field"], "strategic_programs")
+            self.assertTrue(typed_evidence_sufficient(proof))
+        for altered in (
+            dict(published, **{"buyer-name": "Otro comprador"}),
+            dict(published, **{"publication-number": "654321-2026"}),
+            dict(published, **{"eu-funds-programme-lot": ["yes", "false", "unknown"], "eu-funds-name": []}),
+        ):
+            self.assertEqual(reconcile_eu_programmes(row(), altered, "123456-2026", "2026-11-27"), 0)
+
+    def test_exact_description_only_promotes_explicit_technology_mentions(self):
+        published = dict(notice(), **{
+            "description-proc": {"spa": "Servicio de operación SOC y firewalls de nueva generación para la red municipal."},
+            "description-lot": [{"spa": "Suministro de equipamiento de red LAN, infraestructura de red y backup."}],
+            "title-lot": [],
+        })
+        buyer = row()
+        first = reconcile_description_technologies(buyer, published, "123456-2026", "2026-11-27")
+        self.assertGreaterEqual(first, 4)
+        self.assertEqual(reconcile_description_technologies(buyer, published, "123456-2026", "2026-11-27"), 0)
+        self.assertIn("SOC", buyer["fields"]["technology_signals"]["value"])
+        self.assertIn("Data Center", buyer["fields"]["technology_domains"]["value"])
+        self.assertNotIn("identified_vendors", buyer["fields"])
+        for field_name in ("technology_signals", "technology_domains"):
+            for item in buyer["fields"][field_name]["items"]:
+                ev = item["evidence"][0]
+                self.assertEqual(ev["field"], field_name)
+                self.assertEqual(ev["item_value"], item["value"])
+                self.assertEqual(ev["method"], "ted-literal-description-v1")
+                self.assertTrue(typed_evidence_sufficient(ev))
+
+    def test_description_cannot_substitute_for_wrong_buyer_or_irrelevant_text(self):
+        original = dict(notice(), **{"description-lot": [
+            "Servicio de gestión de redes sociales y seguridad de edificios municipales."
+        ]})
+        self.assertEqual(reconcile_description_technologies(row(), original,
+            "123456-2026", "2026-11-27"), 0)
+        original["description-lot"] = ["Servicio de plataforma de ciberseguridad municipal."]
+        for unsupported in (
+            dict(original, **{"buyer-name": "Otro comprador"}),
+            dict(original, **{"publication-number": "654321-2026"}),
+        ):
+            self.assertEqual(reconcile_description_technologies(row(), unsupported,
+                "123456-2026", "2026-11-27"), 0)
 
     def test_unavailable_batch_keeps_all_claims_unconfirmed(self):
         session = Mock()

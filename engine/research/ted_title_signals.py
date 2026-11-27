@@ -199,3 +199,64 @@ def recover_verified_title_signals(row: dict[str, Any], *, checked_date: str) ->
             fields[field_id] = merge_field(field, spec)
             accepted[field_id] += 1
     return accepted
+
+
+def derive_verified_westcon_areas(row: dict[str, Any], *, checked_date: str) -> Counter[str]:
+    """Certify ONLY the functional area implied by an exact TED title term.
+
+    This is a reproducible internal classification, not evidence of Westcon
+    engagement or an open commercial opportunity. No manufacturer fit is
+    inferred. The source title, literal match, and exact classification rule
+    travel together with every derived area.
+    """
+    fields = row.setdefault("fields", {})
+    accepted: Counter[str] = Counter()
+    for title, source in _eligible_title_evidence(row):
+        for field_id, area, matched, rule in literal_claims(title):
+            if field_id != "technology_domains":
+                continue
+            field = fields.get("westcon_area") or {}
+            previous = [item for item in field.get("items") or [] if isinstance(item, dict)]
+            if any(canonical(item.get("value")) == canonical(area)
+                   and any(ev.get("method") == "ted-title-area-derivation-v1"
+                           and ev.get("url") == source["url"]
+                           and ev.get("field") == "westcon_area"
+                           and ev.get("item_value") == area
+                           for ev in item.get("evidence") or [] if isinstance(ev, dict))
+                   for item in previous):
+                continue
+            proof = dict(source)
+            proof.update({
+                "retrieved_at": checked_date,
+                "description": (
+                    f"{row['name']} · {source['url'].rsplit('/', 1)[-1]} · "
+                    f"título oficial «{title}» · término exacto «{matched}» "
+                    f"clasificado como área funcional Westcon «{area}». "
+                    "No prueba implantación ni oportunidad adjudicable."
+                ),
+                "method": "ted-title-area-derivation-v1",
+                "derivation_rule": "official-TED-title ∩ TITLE_RULES.domain",
+                "derivation_rule_id": rule,
+                "derived_from_field": "evidenced_needs",
+                "derived_from_value": title,
+                "source_binding": "claim-specific",
+                "researched_entity": row["name"],
+                "field": "westcon_area",
+                "item_value": area,
+                "matched_terms": [matched],
+                "atomic": True,
+                "accrediting": True,
+            })
+            fields["westcon_area"] = merge_field(field, {
+                "value": [area],
+                "items": [{"value": area, "evidence": [proof],
+                           "confidence": 0.68, "claim_type": "interpretation",
+                           "assertion_status": "DERIVADO"}],
+                "confidence": 0.68,
+                "claim_type": "interpretation",
+                "assertion_status": "DERIVADO",
+                "qualifier": ("Clasificación funcional reproducible de una necesidad publicada "
+                              "en TED, sin afirmar uso ni relación comercial con Westcon."),
+            })
+            accepted["westcon_area"] += 1
+    return accepted

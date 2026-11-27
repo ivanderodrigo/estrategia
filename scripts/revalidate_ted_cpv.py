@@ -23,7 +23,9 @@ import requests
 from engine.enrichment import merge_field
 from engine.model import canonical
 from engine.research.ted import TED_SEARCH_URL, _cpv_codes, _first
-from engine.research.ted_title_signals import recover_verified_title_signals
+from engine.research.ted_title_signals import (
+    recover_verified_title_signals, derive_verified_westcon_areas, literal_claims,
+)
 from engine.storage import atomic_write_json, read_json
 
 
@@ -58,7 +60,8 @@ def _api_payload(numbers: list[str]) -> dict[str, Any]:
             "publication-number", "publication-date", "buyer-name",
             "notice-title", "title-proc", "classification-cpv",
             "estimated-value-proc", "estimated-value-cur-proc",
-            "winner-name",
+            "winner-name", "eu-funds-programme-lot", "eu-funds-name",
+            "description-proc", "description-lot", "title-lot",
         ],
         "limit": min(250, max(1, len(numbers) * 2)),
         "scope": "ALL",
@@ -291,6 +294,143 @@ def reconcile_selected_winners(row, notice, number, checked_date):
     return accepted
 
 
+def reconcile_eu_programmes(row, notice, number, checked_date):
+    """Accredit an EU programme only if TED declares it for this notice/lot.
+
+    A programme name is an observed source field; it is never inferred from
+    the buyer's geography, dates, a funding boolean or a broad search result.
+    No company-wide transformation programme is implied.
+    """
+    owner = str(row.get("name") or "")
+    buyer = _first(notice.get("buyer-name"))
+    if (not owner or canonical(buyer) != canonical(owner)
+            or _first(notice.get("publication-number")) != number):
+        return 0
+    candidates: list[str] = []
+    for field_name in ("eu-funds-programme-lot", "eu-funds-name"):
+        raw = notice.get(field_name) or []
+        terms = raw if isinstance(raw, list) else [raw]
+        for term in terms:
+            name = _first(term)
+            if (2 <= len(name) <= 120
+                    and canonical(name) not in {"yes", "no", "true", "false", "unknown", "none", "null", "n a"}
+                    and not name.startswith(("http://", "https://"))):
+                candidates.append(name)
+    if not candidates:
+        return 0
+    fields = row.setdefault("fields", {})
+    url = f"https://ted.europa.eu/en/notice/-/detail/{number}"
+    accepted = 0
+    for raw_programme in dict.fromkeys(candidates):
+        value = f"Programa UE indicado en TED: {raw_programme}"
+        field = fields.get("strategic_programs") or {}
+        item = next((item for item in field.get("items") or []
+                     if isinstance(item, dict) and item.get("value") == value), {})
+        if any(ev.get("method") == "ted-eu-programme-lot-v1"
+               and ev.get("url") == url and ev.get("item_value") == value
+               for ev in item.get("evidence") or [] if isinstance(ev, dict)):
+            continue
+        title = _first(notice.get("title-proc") or notice.get("notice-title"))
+        proof = {
+            "source": "TED · Diario Oficial de la Unión Europea",
+            "title": f"{number} · {title or 'Anuncio de contratación'}",
+            "url": url,
+            "date": _first(notice.get("publication-date"))[:10] or checked_date,
+            "retrieved_at": checked_date,
+            "description": (f"{buyer} · {number} · programa de financiación de la UE "
+                            f"declarado en el anuncio/lote: {raw_programme}. "
+                            "No se deduce estrategia institucional ni financiación adjudicada."),
+            "scope": _first((fields.get("scope") or {}).get("value")) or "GLOBAL",
+            "source_grade": "A", "source_type": "official-procurement-api",
+            "official": True, "classification": "public",
+            "method": "ted-eu-programme-lot-v1", "source_binding": "claim-specific",
+            "researched_entity": owner, "field": "strategic_programs",
+            "item_value": value, "matched_terms": [raw_programme],
+            "atomic": True, "accrediting": True,
+        }
+        fields["strategic_programs"] = merge_field(field, {
+            "value": [value],
+            "items": [{"value": value, "evidence": [proof], "confidence": 0.95,
+                       "claim_type": "fact", "assertion_status": "CONFIRMADO"}],
+            "confidence": 0.95, "claim_type": "fact",
+            "assertion_status": "CONFIRMADO",
+            "qualifier": ("Programa de financiación de la UE declarado en el anuncio TED; "
+                          "no implica un programa estratégico propio de toda la entidad."),
+        })
+        accepted += 1
+    return accepted
+
+
+def reconcile_description_technologies(row, notice, number, checked_date):
+    """Record explicit mentions in the ORIGINAL TED procedure/lot description.
+
+    No manufacturer or commercial relationship can be inferred from a
+    description. A source's broad IT relevance is not a technology term;
+    exact, bounded title taxonomy patterns must be present in the text.
+    """
+    owner = str(row.get("name") or "")
+    buyer = _first(notice.get("buyer-name"))
+    if (not owner or canonical(buyer) != canonical(owner)
+            or _first(notice.get("publication-number")) != number):
+        return 0
+    fields = row.setdefault("fields", {})
+    url = f"https://ted.europa.eu/en/notice/-/detail/{number}"
+    accepted = 0
+    for source_field in ("title-lot", "description-proc", "description-lot"):
+        raw = notice.get(source_field) or []
+        passages = raw if isinstance(raw, list) else [raw]
+        for passage in passages[:12]:
+            exact_text = _first(passage)
+            if len(exact_text) < 20 or len(exact_text) > 20000:
+                continue
+            for field_id, value, matched, rule in literal_claims(exact_text):
+                if field_id not in {"technology_signals", "technology_domains"}:
+                    continue
+                field = fields.get(field_id) or {}
+                item = next((item for item in field.get("items") or []
+                             if isinstance(item, dict) and canonical(item.get("value")) == canonical(value)), {})
+                # A stronger exact-title proof for the same notice/claim already
+                # exists. Keep it; adding a lot description would not close debt.
+                if any(ev.get("url") == url and ev.get("item_value") == value
+                       and ev.get("method") in {"ted-literal-title-v1", "ted-literal-description-v1"}
+                       for ev in item.get("evidence") or [] if isinstance(ev, dict)):
+                    continue
+                proof = {
+                    "source": "TED · Diario Oficial de la Unión Europea",
+                    "title": f"{number} · {_first(notice.get('title-proc') or notice.get('notice-title')) or source_field}",
+                    "url": url,
+                    "date": _first(notice.get("publication-date"))[:10] or checked_date,
+                    "retrieved_at": checked_date,
+                    "description": (f"{buyer} · TED {number} · {source_field}: "
+                                    f"texto oficial contiene «{matched}». "
+                                    "Es una mención técnica, no evidencia de producto implantado."),
+                    "scope": _first((fields.get("scope") or {}).get("value")) or "GLOBAL",
+                    "source_grade": "A", "source_type": "official-procurement-api",
+                    "official": True, "classification": "public",
+                    "method": "ted-literal-description-v1",
+                    "source_field": source_field,
+                    "extraction_rule": rule,
+                    "source_binding": "claim-specific",
+                    "researched_entity": owner, "field": field_id,
+                    "item_value": value, "matched_terms": [matched],
+                    "atomic": True, "accrediting": True,
+                }
+                interpreted = field_id == "technology_domains"
+                fields[field_id] = merge_field(field, {
+                    "value": [value],
+                    "items": [{"value": value, "evidence": [proof],
+                               "confidence": 0.66 if interpreted else 0.57,
+                               "claim_type": "interpretation" if interpreted else "signal",
+                               "assertion_status": "DERIVADO" if interpreted else "SEÑAL"}],
+                    "confidence": 0.66 if interpreted else 0.57,
+                    "claim_type": "interpretation" if interpreted else "signal",
+                    "assertion_status": "DERIVADO" if interpreted else "SEÑAL",
+                    "qualifier": "Mención explícita en un lote/procedimiento TED; no demuestra despliegue ni adjudicación.",
+                })
+                accepted += 1
+    return accepted
+
+
 def revalidate(
     data: dict[str, Any], session: requests.Session,
     *,
@@ -326,7 +466,10 @@ def revalidate(
             for row in candidate_index.get(number) or []:
                 stats["procedure_facts_accredited"] += reconcile_procurement_facts(row, notice, number, today)
                 stats["selected_winners_accredited"] += reconcile_selected_winners(row, notice, number, today)
+                stats["eu_programmes_accredited"] += reconcile_eu_programmes(row, notice, number, today)
+                stats["description_technologies_accredited"] += reconcile_description_technologies(row, notice, number, today)
                 title_signals = recover_verified_title_signals(row, checked_date=today)
+                title_signals.update(derive_verified_westcon_areas(row, checked_date=today))
                 stats["title_atomic_claims_accredited"] += sum(title_signals.values())
                 count = reconcile_notice(
                     row, notice, claimed_number=number, checked_date=today,
@@ -367,7 +510,9 @@ def main() -> None:
     changed = (stats.get("cpv_values_accredited", 0)
                + stats.get("procedure_facts_accredited", 0)
                + stats.get("title_atomic_claims_accredited", 0)
-               + stats.get("selected_winners_accredited", 0))
+               + stats.get("selected_winners_accredited", 0)
+               + stats.get("eu_programmes_accredited", 0)
+               + stats.get("description_technologies_accredited", 0))
     if changed:
         atomic_write_json("data/current/intelligence.json", data)
     from engine.pipeline import run as rebuild
