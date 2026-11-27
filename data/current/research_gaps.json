@@ -1,10 +1,10 @@
 {
   "version": "4.3.0",
-  "generated_at": "2026-11-27T15:21:19.353533+00:00",
+  "generated_at": "2026-11-27T16:35:29.746109+00:00",
   "definition": "Todo campo declarado cuenta. Los hechos externos solo cierran con evidencia pública actual. PPT, portfolio e histórico se conservan como pistas internas y generan deuda de validación pública, no acreditación.",
-  "total_gaps": 18406,
+  "total_gaps": 18368,
   "debt_breakdown": {
-    "empty_schema_fields": 8963,
+    "empty_schema_fields": 8925,
     "claims_awaiting_evidence": 5338,
     "derived_support": 4105,
     "other_open_debt": 0
@@ -12,7 +12,7 @@
   "actionable_by_section": {
     "manufacturers": {
       "unverified_claims": 154,
-      "empty_fields": 800
+      "empty_fields": 762
     },
     "distributors": {
       "unverified_claims": 941,
@@ -41,13 +41,13 @@
   },
   "public_status_summary": {
     "version": 1,
-    "defined_at": "2026-11-27T15:21:19.253872+00:00",
-    "total": 18406,
+    "defined_at": "2026-11-27T16:35:29.685629+00:00",
+    "total": 18368,
     "by_status": {
       "derivation-pending": 4105,
       "historical-validation": 81,
       "insufficient-support": 1901,
-      "not-found": 9798,
+      "not-found": 9760,
       "not-researched": 15,
       "source-unavailable": 2506
     },
@@ -81,7 +81,7 @@
         "derivation-pending": 78,
         "historical-validation": 19,
         "insufficient-support": 57,
-        "not-found": 878
+        "not-found": 840
       },
       "trends": {
         "derivation-pending": 124,
@@ -104,21 +104,21 @@
   "support_model": "DIRECT_OR_TRACEABLE_DERIVATION",
   "support_rule": "CURRENT_PUBLIC_ONLY",
   "public_validation_gaps": 81,
-  "unknown_research_gaps": 18325,
+  "unknown_research_gaps": 18287,
   "business_priority": {
     "model": "business-value-x-researchability-opportunity-v2",
     "tiers": {
       "P0": 28,
       "P1": 342,
       "P2": 4840,
-      "P3": 13196
+      "P3": 13158
     },
     "actionable_high_value_gaps": 370,
     "weighted_expected_debt": 31366.53,
-    "weighted_open_debt": 20046.91,
-    "business_weighted_coverage_pct": 36.09,
+    "weighted_open_debt": 19993.71,
+    "business_weighted_coverage_pct": 36.26,
     "source_families": {
-      "official": 7661,
+      "official": 7623,
       "procurement": 3465,
       "services": 2395,
       "technology": 1009,
@@ -131,7 +131,7 @@
     },
     "by_section_tier": {
       "manufacturers": {
-        "P3": 899,
+        "P3": 861,
         "P2": 120,
         "P1": 13
       },
@@ -172,7 +172,7 @@
   "critical_gaps": 6669,
   "high_priority_gaps": 6669,
   "by_section": {
-    "manufacturers": 1032,
+    "manufacturers": 994,
     "distributors": 1670,
     "integrators": 4695,
     "clients_public": 8523,
@@ -291,7 +291,6 @@
     "manufacturers.direct_sales_presence": 39,
     "manufacturers.hiring_signals": 39,
     "manufacturers.revenue": 38,
-    "manufacturers.partner_program": 38,
     "manufacturers.subcategories": 37,
     "manufacturers.products_platforms": 37,
     "manufacturers.use_cases": 37,
@@ -323,15 +322,15 @@
     "manufacturers.scope": 1
   },
   "research_states": {
-    "Por investigar": 18325,
+    "Por investigar": 18287,
     "Pendiente de validación pública": 81
   },
   "coverage": {
     "manufacturers": {
       "expected_fields": 1209,
-      "populated_fields": 331,
-      "value_completeness_pct": 27.38,
-      "open_gaps": 1032,
+      "populated_fields": 369,
+      "value_completeness_pct": 30.52,
+      "open_gaps": 994,
       "critical_gaps": 372
     },
     "distributors": {
@@ -867049,58 +867048,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:cloudflare:partner_program",
-      "section": "manufacturers",
-      "entity": "Cloudflare",
-      "entity_id": "mfr-cloudflare",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 3,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 3,
-      "next_pass": 4,
-      "next_due_at": "2026-12-02T15:54:03.389114+00:00",
-      "last_attempt_at": "2026-11-24T15:54:03.389111+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 44.8,
-      "priority_score": 24.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Cloudflare\" partner program",
-          "\"Cloudflare\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=44.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:cloudflare:related_trends",
       "section": "manufacturers",
       "entity": "Cloudflare",
@@ -1080592,58 +1080539,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:1password:partner_program",
-      "section": "manufacturers",
-      "entity": "1Password",
-      "entity_id": "mfr-1password",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-27T12:51:42.569703+00:00",
-      "last_attempt_at": "2026-11-11T12:51:42.569702+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"1Password\" partner program",
-          "\"1Password\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:1password:related_trends",
       "section": "manufacturers",
       "entity": "1Password",
@@ -1081105,58 +1081000,6 @@
         "query_hints": [
           "\"Akamai / Noname\" partner levels",
           "\"Akamai / Noname\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:akamai / noname:partner_program",
-      "section": "manufacturers",
-      "entity": "Akamai / Noname",
-      "entity_id": "mfr-akamai-noname",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-26T19:05:56.214518+00:00",
-      "last_attempt_at": "2026-11-10T19:05:56.214516+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Akamai / Noname\" partner program",
-          "\"Akamai / Noname\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1081632,58 +1081475,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:anomali:partner_program",
-      "section": "manufacturers",
-      "entity": "Anomali",
-      "entity_id": "mfr-anomali",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-27T12:44:05.642012+00:00",
-      "last_attempt_at": "2026-11-11T12:44:05.642010+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Anomali\" partner program",
-          "\"Anomali\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:anomali:related_trends",
       "section": "manufacturers",
       "entity": "Anomali",
@@ -1082145,58 +1081936,6 @@
         "query_hints": [
           "\"AudioCodes\" partner levels",
           "\"AudioCodes\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:audiocodes:partner_program",
-      "section": "manufacturers",
-      "entity": "AudioCodes",
-      "entity_id": "mfr-audiocodes",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-27T12:51:31.748701+00:00",
-      "last_attempt_at": "2026-11-11T12:51:31.748699+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"AudioCodes\" partner program",
-          "\"AudioCodes\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1082672,58 +1082411,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:avaya:partner_program",
-      "section": "manufacturers",
-      "entity": "Avaya",
-      "entity_id": "mfr-avaya",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-26T19:00:51.425878+00:00",
-      "last_attempt_at": "2026-11-10T19:00:51.425876+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Avaya\" partner program",
-          "\"Avaya\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:avaya:related_trends",
       "section": "manufacturers",
       "entity": "Avaya",
@@ -1083185,58 +1082872,6 @@
         "query_hints": [
           "\"Certes Networks\" partner levels",
           "\"Certes Networks\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:certes networks:partner_program",
-      "section": "manufacturers",
-      "entity": "Certes Networks",
-      "entity_id": "mfr-certes-networks",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-27T12:51:28.798294+00:00",
-      "last_attempt_at": "2026-11-11T12:51:28.798292+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Certes Networks\" partner program",
-          "\"Certes Networks\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1083712,58 +1083347,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:check point:partner_program",
-      "section": "manufacturers",
-      "entity": "Check Point",
-      "entity_id": "mfr-check-point",
-      "field": "partner_program",
-      "country_context": "PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-27T12:52:16.826268+00:00",
-      "last_attempt_at": "2026-11-11T12:52:16.826267+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Check Point\" partner program",
-          "\"Check Point\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:check point:related_trends",
       "section": "manufacturers",
       "entity": "Check Point",
@@ -1084225,58 +1083808,6 @@
         "query_hints": [
           "\"CrowdStrike\" partner levels",
           "\"CrowdStrike\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:crowdstrike:partner_program",
-      "section": "manufacturers",
-      "entity": "CrowdStrike",
-      "entity_id": "mfr-crowdstrike",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-27T12:43:58.085182+00:00",
-      "last_attempt_at": "2026-11-11T12:43:58.085180+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"CrowdStrike\" partner program",
-          "\"CrowdStrike\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1084752,58 +1084283,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:efficientip:partner_program",
-      "section": "manufacturers",
-      "entity": "EfficientIP",
-      "entity_id": "mfr-efficientip",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-27T12:51:45.473848+00:00",
-      "last_attempt_at": "2026-11-11T12:51:45.473846+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"EfficientIP\" partner program",
-          "\"EfficientIP\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:efficientip:related_trends",
       "section": "manufacturers",
       "entity": "EfficientIP",
@@ -1085265,58 +1084744,6 @@
         "query_hints": [
           "\"Ericsson Cradlepoint\" partner levels",
           "\"Ericsson Cradlepoint\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:ericsson cradlepoint:partner_program",
-      "section": "manufacturers",
-      "entity": "Ericsson Cradlepoint",
-      "entity_id": "mfr-ericsson-cradlepoint",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-27T12:51:42.275654+00:00",
-      "last_attempt_at": "2026-11-11T12:51:42.275652+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Ericsson Cradlepoint\" partner program",
-          "\"Ericsson Cradlepoint\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1085792,58 +1085219,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:extreme networks:partner_program",
-      "section": "manufacturers",
-      "entity": "Extreme Networks",
-      "entity_id": "mfr-extreme-networks",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-27T12:43:55.366791+00:00",
-      "last_attempt_at": "2026-11-11T12:43:55.366789+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Extreme Networks\" partner program",
-          "\"Extreme Networks\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:extreme networks:related_trends",
       "section": "manufacturers",
       "entity": "Extreme Networks",
@@ -1086305,58 +1085680,6 @@
         "query_hints": [
           "\"FireMon\" partner levels",
           "\"FireMon\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:firemon:partner_program",
-      "section": "manufacturers",
-      "entity": "FireMon",
-      "entity_id": "mfr-firemon",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-28T15:41:11.179865+00:00",
-      "last_attempt_at": "2026-11-12T15:41:11.179863+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"FireMon\" partner program",
-          "\"FireMon\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1086832,58 +1086155,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:fortanix:partner_program",
-      "section": "manufacturers",
-      "entity": "Fortanix",
-      "entity_id": "mfr-fortanix",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-27T12:44:03.476612+00:00",
-      "last_attempt_at": "2026-11-11T12:44:03.476611+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Fortanix\" partner program",
-          "\"Fortanix\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:fortanix:related_trends",
       "section": "manufacturers",
       "entity": "Fortanix",
@@ -1087345,58 +1086616,6 @@
         "query_hints": [
           "\"Juniper Networks\" partner levels",
           "\"Juniper Networks\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:juniper networks:partner_program",
-      "section": "manufacturers",
-      "entity": "Juniper Networks",
-      "entity_id": "mfr-juniper-networks",
-      "field": "partner_program",
-      "country_context": "No pertenece al portfolio Westcon Iberia vigente",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-28T03:16:10.090922+00:00",
-      "last_attempt_at": "2026-11-12T03:16:10.090920+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Juniper Networks\" partner program",
-          "\"Juniper Networks\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1087872,58 +1087091,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:menlo security:partner_program",
-      "section": "manufacturers",
-      "entity": "Menlo Security",
-      "entity_id": "mfr-menlo-security",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-26T19:00:58.190402+00:00",
-      "last_attempt_at": "2026-11-10T19:00:58.190400+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Menlo Security\" partner program",
-          "\"Menlo Security\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:menlo security:related_trends",
       "section": "manufacturers",
       "entity": "Menlo Security",
@@ -1088385,58 +1087552,6 @@
         "query_hints": [
           "\"Ping Identity\" partner levels",
           "\"Ping Identity\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:ping identity:partner_program",
-      "section": "manufacturers",
-      "entity": "Ping Identity",
-      "entity_id": "mfr-ping-identity",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-28T03:15:30.154550+00:00",
-      "last_attempt_at": "2026-11-12T03:15:30.154549+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Ping Identity\" partner program",
-          "\"Ping Identity\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1088912,58 +1088027,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:uipath:partner_program",
-      "section": "manufacturers",
-      "entity": "UiPath",
-      "entity_id": "mfr-uipath",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-26T19:06:14.558865+00:00",
-      "last_attempt_at": "2026-11-10T19:06:14.558863+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"UiPath\" partner program",
-          "\"UiPath\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:uipath:related_trends",
       "section": "manufacturers",
       "entity": "UiPath",
@@ -1089425,58 +1088488,6 @@
         "query_hints": [
           "\"Weblib\" partner levels",
           "\"Weblib\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:weblib:partner_program",
-      "section": "manufacturers",
-      "entity": "Weblib",
-      "entity_id": "mfr-weblib",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-27T12:51:42.367884+00:00",
-      "last_attempt_at": "2026-11-11T12:51:42.367882+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Weblib\" partner program",
-          "\"Weblib\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1089952,58 +1088963,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:xm cyber:partner_program",
-      "section": "manufacturers",
-      "entity": "XM Cyber",
-      "entity_id": "mfr-xm-cyber",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-28T03:15:57.050981+00:00",
-      "last_attempt_at": "2026-11-12T03:15:57.050979+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"XM Cyber\" partner program",
-          "\"XM Cyber\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:xm cyber:related_trends",
       "section": "manufacturers",
       "entity": "XM Cyber",
@@ -1090465,58 +1089424,6 @@
         "query_hints": [
           "\"Zscaler\" partner levels",
           "\"Zscaler\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:zscaler:partner_program",
-      "section": "manufacturers",
-      "entity": "Zscaler",
-      "entity_id": "mfr-zscaler",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 6,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 6,
-      "next_pass": 7,
-      "next_due_at": "2026-11-28T12:36:32.117364+00:00",
-      "last_attempt_at": "2026-11-12T12:36:32.117362+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 31.8,
-      "priority_score": 17.2,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Zscaler\" partner program",
-          "\"Zscaler\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=31.8/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1121729,58 +1120636,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:attackiq:partner_program",
-      "section": "manufacturers",
-      "entity": "AttackIQ",
-      "entity_id": "mfr-attackiq",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-11-29T11:21:35.032931+00:00",
-      "last_attempt_at": "2026-11-13T11:21:35.032929+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"AttackIQ\" partner program",
-          "\"AttackIQ\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:attackiq:related_trends",
       "section": "manufacturers",
       "entity": "AttackIQ",
@@ -1122242,58 +1121097,6 @@
         "query_hints": [
           "\"AWS\" partner levels",
           "\"AWS\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:aws:partner_program",
-      "section": "manufacturers",
-      "entity": "AWS",
-      "entity_id": "mfr-aws",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-12-13T15:12:24.645825+00:00",
-      "last_attempt_at": "2026-11-27T15:12:24.645823+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"AWS\" partner program",
-          "\"AWS\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1122769,58 +1121572,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:ciena:partner_program",
-      "section": "manufacturers",
-      "entity": "Ciena",
-      "entity_id": "mfr-ciena",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-11-29T11:26:41.518990+00:00",
-      "last_attempt_at": "2026-11-13T11:26:41.518989+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Ciena\" partner program",
-          "\"Ciena\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:ciena:related_trends",
       "section": "manufacturers",
       "entity": "Ciena",
@@ -1123282,58 +1122033,6 @@
         "query_hints": [
           "\"Cisco\" partner levels",
           "\"Cisco\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:cisco:partner_program",
-      "section": "manufacturers",
-      "entity": "Cisco",
-      "entity_id": "mfr-cisco",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-11-29T11:22:27.960966+00:00",
-      "last_attempt_at": "2026-11-13T11:22:27.960964+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Cisco\" partner program",
-          "\"Cisco\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1123809,58 +1122508,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:claroty:partner_program",
-      "section": "manufacturers",
-      "entity": "Claroty",
-      "entity_id": "mfr-claroty",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-11-26T19:06:24.903896+00:00",
-      "last_attempt_at": "2026-11-10T19:06:24.903894+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Claroty\" partner program",
-          "\"Claroty\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:claroty:related_trends",
       "section": "manufacturers",
       "entity": "Claroty",
@@ -1124322,58 +1122969,6 @@
         "query_hints": [
           "\"F5\" partner levels",
           "\"F5\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:f5:partner_program",
-      "section": "manufacturers",
-      "entity": "F5",
-      "entity_id": "mfr-f5",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-11-26T19:05:25.498726+00:00",
-      "last_attempt_at": "2026-11-10T19:05:25.498725+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"F5\" partner program",
-          "\"F5\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1124849,58 +1123444,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:levelblue:partner_program",
-      "section": "manufacturers",
-      "entity": "LevelBlue",
-      "entity_id": "mfr-levelblue",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-12-13T15:11:18.129868+00:00",
-      "last_attempt_at": "2026-11-27T15:11:18.129866+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"LevelBlue\" partner program",
-          "\"LevelBlue\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:levelblue:related_trends",
       "section": "manufacturers",
       "entity": "LevelBlue",
@@ -1125362,58 +1123905,6 @@
         "query_hints": [
           "\"Microsoft Azure\" partner levels",
           "\"Microsoft Azure\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:microsoft azure:partner_program",
-      "section": "manufacturers",
-      "entity": "Microsoft Azure",
-      "entity_id": "mfr-microsoft-azure",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-11-29T11:25:51.917728+00:00",
-      "last_attempt_at": "2026-11-13T11:25:51.917727+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Microsoft Azure\" partner program",
-          "\"Microsoft Azure\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1125889,58 +1124380,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:netscout:partner_program",
-      "section": "manufacturers",
-      "entity": "NETSCOUT",
-      "entity_id": "mfr-netscout",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-11-28T09:34:02.047381+00:00",
-      "last_attempt_at": "2026-11-12T09:34:02.047379+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"NETSCOUT\" partner program",
-          "\"NETSCOUT\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:netscout:related_trends",
       "section": "manufacturers",
       "entity": "NETSCOUT",
@@ -1126402,58 +1124841,6 @@
         "query_hints": [
           "\"Nokia\" partner levels",
           "\"Nokia\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:nokia:partner_program",
-      "section": "manufacturers",
-      "entity": "Nokia",
-      "entity_id": "mfr-nokia",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-12-13T15:06:41.038540+00:00",
-      "last_attempt_at": "2026-11-27T15:06:41.038538+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Nokia\" partner program",
-          "\"Nokia\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1126929,58 +1125316,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:okta:partner_program",
-      "section": "manufacturers",
-      "entity": "Okta",
-      "entity_id": "mfr-okta",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-12-13T15:14:00.005581+00:00",
-      "last_attempt_at": "2026-11-27T15:14:00.005578+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Okta\" partner program",
-          "\"Okta\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:okta:related_trends",
       "section": "manufacturers",
       "entity": "Okta",
@@ -1127442,58 +1125777,6 @@
         "query_hints": [
           "\"Palo Alto Networks\" partner levels",
           "\"Palo Alto Networks\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:palo alto networks:partner_program",
-      "section": "manufacturers",
-      "entity": "Palo Alto Networks",
-      "entity_id": "mfr-palo-alto-networks",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-12-13T15:08:17.207746+00:00",
-      "last_attempt_at": "2026-11-27T15:08:17.207744+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Palo Alto Networks\" partner program",
-          "\"Palo Alto Networks\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1127969,58 +1126252,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:proofpoint:partner_program",
-      "section": "manufacturers",
-      "entity": "Proofpoint",
-      "entity_id": "mfr-proofpoint",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-12-13T15:09:25.041452+00:00",
-      "last_attempt_at": "2026-11-27T15:09:25.041450+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Proofpoint\" partner program",
-          "\"Proofpoint\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:proofpoint:related_trends",
       "section": "manufacturers",
       "entity": "Proofpoint",
@@ -1128482,58 +1126713,6 @@
         "query_hints": [
           "\"Ruckus Networks\" partner levels",
           "\"Ruckus Networks\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:ruckus networks:partner_program",
-      "section": "manufacturers",
-      "entity": "Ruckus Networks",
-      "entity_id": "mfr-ruckus-networks",
-      "field": "partner_program",
-      "country_context": "No pertenece al portfolio Westcon Iberia vigente",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-11-26T19:06:10.423695+00:00",
-      "last_attempt_at": "2026-11-10T19:06:10.423693+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Ruckus Networks\" partner program",
-          "\"Ruckus Networks\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1129009,58 +1127188,6 @@
       "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
     },
     {
-      "id": "manufacturers:stratus / penguin solutions:partner_program",
-      "section": "manufacturers",
-      "entity": "Stratus / Penguin Solutions",
-      "entity_id": "mfr-stratus-penguin-solutions",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-11-27T12:43:47.449965+00:00",
-      "last_attempt_at": "2026-11-11T12:43:47.449964+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Stratus / Penguin Solutions\" partner program",
-          "\"Stratus / Penguin Solutions\" partner program Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
       "id": "manufacturers:stratus / penguin solutions:related_trends",
       "section": "manufacturers",
       "entity": "Stratus / Penguin Solutions",
@@ -1129522,58 +1127649,6 @@
         "query_hints": [
           "\"Vectra AI\" partner levels",
           "\"Vectra AI\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:vectra ai:partner_program",
-      "section": "manufacturers",
-      "entity": "Vectra AI",
-      "entity_id": "mfr-vectra-ai",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 7,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 7,
-      "next_pass": 8,
-      "next_due_at": "2026-11-26T19:06:16.370200+00:00",
-      "last_attempt_at": "2026-11-10T19:06:16.370198+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 27.4,
-      "priority_score": 14.8,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Vectra AI\" partner program",
-          "\"Vectra AI\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=27.4/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
@@ -1155048,58 +1153123,6 @@
         "query_hints": [
           "\"Ivanti\" partner levels",
           "\"Ivanti\" partner levels Spain Portugal Iberia"
-        ]
-      },
-      "priority_reason": "valor=46.7/100; investigabilidad=24.3/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
-      "public_status": "not-found",
-      "public_status_reason": "No se ha encontrado soporte suficiente en los intentos registrados."
-    },
-    {
-      "id": "manufacturers:ivanti:partner_program",
-      "section": "manufacturers",
-      "entity": "Ivanti",
-      "entity_id": "mfr-ivanti",
-      "field": "partner_program",
-      "country_context": "ES + PT",
-      "research_state": "Por investigar",
-      "priority": 2,
-      "reason": "valor pendiente",
-      "gap_kind": "standard",
-      "claim_class": "EXTERNAL_FACT",
-      "research_mode": "public-source-verification",
-      "derivation_rule": "direct support required",
-      "dependency_fields": [],
-      "attempts_completed": 8,
-      "accepted_evidences": 0,
-      "consecutive_no_yield": 8,
-      "next_pass": 9,
-      "next_due_at": "2026-12-13T15:05:31.337411+00:00",
-      "last_attempt_at": "2026-11-27T15:05:31.337409+00:00",
-      "last_error": "",
-      "close_policy": "Solo cerrar con valor y evidencia pública suficiente. PPT/portfolio/histórico conservan la pista pero no acreditan el hecho; una señal no se convierte en hecho.",
-      "strategy_profile": "adaptive-source-cascade",
-      "retry_policy": "persistent-backoff-with-circuit-breaker",
-      "business_value_score": 46.7,
-      "researchability_score": 24.3,
-      "priority_score": 13.1,
-      "priority_tier": "P3",
-      "opportunity_context_multiplier": 1.0,
-      "opportunity_context": [],
-      "source_family": "official",
-      "source_strategy": {
-        "preferred_families": [
-          "official",
-          "services",
-          "news"
-        ],
-        "source_types": [
-          "official website",
-          "official documentation"
-        ],
-        "rationale": "Priorizar siempre una fuente primaria explícita antes de recurrir a fuentes secundarias.",
-        "query_hints": [
-          "\"Ivanti\" partner program",
-          "\"Ivanti\" partner program Spain Portugal Iberia"
         ]
       },
       "priority_reason": "valor=46.7/100; investigabilidad=24.3/100; contexto_oportunidad=x1.0; familia óptima=official; estado=Por investigar",
