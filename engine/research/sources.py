@@ -162,7 +162,10 @@ def seeds_for(
     ):
         registry = read_json("config/current/linecard_source_leads.json", {})
         for entry in (registry.get("entries") or []):
-            if canonical(entry.get("name")) != canonical(row.get("name")):
+            allowed_names = [entry.get("name")] + list(entry.get("aliases") or [])
+            # An explicitly declared legacy brand may route to the exact
+            # combined entity without creating a duplicate distributor row.
+            if canonical(row.get("name")) not in {canonical(name) for name in allowed_names}:
                 continue
             url = str(entry.get("url") or "")
             if not url.startswith("https://"):
