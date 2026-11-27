@@ -12,6 +12,7 @@ bounded-run fairness so one large section cannot monopolise research.
 from __future__ import annotations
 
 from collections import defaultdict
+from functools import lru_cache
 from urllib.parse import urlsplit
 from typing import Any
 
@@ -104,21 +105,38 @@ def _learning_yield(learning: dict[str, Any], section: str, family: str) -> floa
     return max(0.32, min(1.18, score))
 
 
+@lru_cache(maxsize=4096)
 def _first_party_catalogue_boost(section: str, entity: str, field: str) -> float:
-    """Route actual official linecard leads before low-yield generic discovery.
+    """Research verified owner-host catalogues before blind web discovery.
 
-    A source lead is not evidence and cannot by itself satisfy a gap.
-    Boost only the vendor-relations research task, never derived overlaps.
+    A source lead is not evidence and cannot by itself satisfy a gap. Boost
+    only the underlying factual fields, never calculated vendor overlaps.
     """
-    if section != "distributors" or field != "vendor_relations":
-        return 1.0
-    registry = read_json("config/current/linecard_source_leads.json", {})
-    known = {
-        " ".join(str(item.get("name") or "").casefold().split())
-        for item in (registry.get("entries") or [])
-        if isinstance(item, dict) and item.get("url")
-    }
-    return 2.0 if " ".join(entity.casefold().split()) in known else 1.0
+    normalized = " ".join(entity.casefold().split())
+    if section == "distributors" and field == "vendor_relations":
+        registry = read_json("config/current/linecard_source_leads.json", {})
+        if any(
+            " ".join(str(item.get("name") or "").casefold().split()) == normalized
+            and item.get("url")
+            for item in (registry.get("entries") or [])
+            if isinstance(item, dict)
+        ):
+            return 2.0
+    if section in {"integrators", "distributors"} and field in {
+        "services", "capabilities", "specializations", "technology_domains",
+        "managed_services", "msp_mssp", "differential_capabilities",
+        "logistics", "marketplace", "training", "financing",
+    }:
+        registry = read_json("config/current/official_service_source_leads.json", {})
+        if any(
+            str(item.get("section") or "") == section
+            and " ".join(str(item.get("name") or "").casefold().split()) == normalized
+            and item.get("url")
+            for item in (registry.get("entries") or [])
+            if isinstance(item, dict)
+        ):
+            return 1.75
+    return 1.0
 
 
 def _fallback_score(gap: dict[str, Any], section: str, field: str) -> float:

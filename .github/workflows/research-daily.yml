@@ -14,12 +14,15 @@ on:
   # Validation regression recovery 2026-11-17: the dated Iberia
   # exclusion of Juniper/Ruckus supersedes the old FY27 first-party deck.
   # This change explicitly exercises the fixed canonical preflight on main.
-  # Ordinary application/code commits never trigger the expensive crawler.
+  # A vetted change to first-party research leads must be crawled promptly;
+  # ordinary application/code commits never trigger the expensive crawler.
   push:
     branches: [main]
     paths:
       - '.github/workflows/research-daily.yml'
       - '.github/workflows/research-run.yml'
+      - 'config/current/linecard_source_leads.json'
+      - 'config/current/official_service_source_leads.json'
   schedule:
     - cron: "17 5 * * 1-5"
   workflow_dispatch:
