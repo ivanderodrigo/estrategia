@@ -100,6 +100,21 @@ class EvidenceFirstRoutingV70(unittest.TestCase):
             [seed("https://sample.example")],
         ), [])
 
+    def test_composite_service_precise_query_does_not_search_literal_label(self):
+        target = {
+            "entity": "Acme", "target_values_by_field": {
+                "services": ["Integración de soluciones · Check Point"],
+            },
+        }
+        result = precise_claim_queries(
+            target, [seed("https://www.acme.com/solutions", "services")],
+        )
+        self.assertEqual(len(result), 1)
+        self.assertIn('"Check Point"', result[0])
+        self.assertIn('site:acme.com', result[0])
+        self.assertIn('integration', result[0])
+        self.assertNotIn('Integración de soluciones ·', result[0])
+
     def test_linecard_query_precedes_generic_press_when_budget_one(self):
         result = _prioritize_research_queries(
             ['"Dist" "Fortinet"'],

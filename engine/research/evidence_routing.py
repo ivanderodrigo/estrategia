@@ -11,6 +11,7 @@ from collections import defaultdict
 from urllib.parse import urlsplit
 
 from ..model import canonical
+from .claim_queries import claim_search_query
 from .documents import Document
 from .sources import SourceSeed, family_from_url, relevant_families
 
@@ -201,7 +202,7 @@ def precise_claim_queries(
     output = []
     for field, value in items:
         for host in official_hosts[:2]:
-            query = f'"{entity}" "{value}" site:{host}'
+            query = claim_search_query(entity, field, value, site=host)
             if query not in output:
                 output.append(query)
             if len(output) >= limit:
