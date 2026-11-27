@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import unittest
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from engine.relationship_revalidation import (
     _parse_ted_xml,
@@ -12,6 +13,31 @@ from engine.relationship_revalidation import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def independently_supported_relation(relation):
+    """A pending historical lead may coexist with independent *current* proof.
+
+    A newly discovered official TED notice can create a valid technology edge
+    without changing the status of an old, unrelated historical lead. The old
+    assertion that the edge must NEVER appear caused successful research runs
+    to fail when they found such independent evidence.
+    """
+    for ev in relation.get("evidence") or []:
+        if not isinstance(ev, dict):
+            continue
+        url = str(ev.get("url") or "")
+        source_type = str(ev.get("source_type") or "").casefold()
+        if not (ev.get("official") and url.startswith("https://")):
+            continue
+        if source_type in {"official-procurement-notice", "official-procurement-notice-revalidated"}:
+            if urlsplit(url).hostname == "ted.europa.eu" and str(ev.get("title") or "").strip():
+                return True
+        if (str(ev.get("source_binding") or "") == "claim-specific"
+                and str(ev.get("provenance_origin") or "") == "PUBLIC_PRIMARY"
+                and not source_type.startswith(("historical", "legacy", "public-web"))):
+            return True
+    return False
 
 
 class RelationshipRevalidationV405(unittest.TestCase):
@@ -57,7 +83,7 @@ class RelationshipRevalidationV405(unittest.TestCase):
             gaps.get("relationship_revalidation_debt_total"),
         )
 
-    def test_current_graph_does_not_count_pending_h_relationships(self) -> None:
+    def test_pending_historical_relation_needs_independent_graph_proof(self) -> None:
         registry = self._registry()
         graph = json.loads(
             (ROOT / "data/current/relationship_graph.json").read_text(encoding="utf-8")
@@ -67,7 +93,7 @@ class RelationshipRevalidationV405(unittest.TestCase):
                 str(r.get("entity_a") or "").casefold(),
                 str(r.get("relation") or "").casefold(),
                 str(r.get("entity_b") or "").casefold(),
-            )
+            ): r
             for r in graph.get("relationships") or []
         }
         for row in registry.get("candidates") or []:
@@ -78,7 +104,26 @@ class RelationshipRevalidationV405(unittest.TestCase):
                 str(row.get("relation") or "").casefold(),
                 str(row.get("entity_b") or "").casefold(),
             )
-            self.assertNotIn(key, visible)
+            if key in visible:
+                self.assertTrue(
+                    independently_supported_relation(visible[key]),
+                    f"La relación {key} sólo conserva un indicio histórico pendiente, "
+                    "sin prueba actual independiente",
+                )
+
+    def test_old_historical_mention_alone_never_unlocks_graph_proof(self) -> None:
+        historical = {"evidence": [{
+            "url": "https://legacy.example/mention", "official": True,
+            "source_type": "historical-unresolved", "provenance_origin": "HISTORICAL_RECOVERED",
+            "title": "Mención sin revalidar",
+        }]}
+        self.assertFalse(independently_supported_relation(historical))
+        modern = {"evidence": [{
+            "url": "https://ted.europa.eu/en/notice/-/detail/583069-2026",
+            "official": True, "source_type": "official-procurement-notice",
+            "title": "583069-2026 · Ordenadores personales y portátiles",
+        }]}
+        self.assertTrue(independently_supported_relation(modern))
 
     def test_ted_detail_url_is_converted_to_official_xml(self) -> None:
         url = "https://ted.europa.eu/en/notice/-/detail/595840-2026"

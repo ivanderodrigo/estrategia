@@ -4,7 +4,11 @@ const audit=require('../assets/app/audit-intelligence.js');
 const script=fs.readFileSync('assets/app/command-center.js','utf8');
 const manifest=JSON.parse(fs.readFileSync('data/public/manifest.json','utf8'));
 const debt=JSON.parse(fs.readFileSync('data/public/debt_overview.json','utf8'));
-async function render(failDebt=false){
+async function render(failDebt=false,showHygiene=false){
+ const visibleManifest=showHygiene?{...manifest,meta:{...manifest.meta,vendor_label_quarantine:{
+  removed_from_public_views:3,by_section:{distributors:2,integrators:1},
+  examples:[{entity:'Distributor',field:'vendor_relations',value:'Marketing',reason:'navigation'}],
+ }}}:manifest;
  const nodes=Object.fromEntries(['commandCenter','homeNav','ccMetrics','ccDebt','ccAudit','ccFreshness'].map(id=>[id,{id,innerHTML:'',textContent:'',addEventListener(){},classList:{add(){},remove(){},toggle(){}}}]));
  const document={
   getElementById:id=>nodes[id]||null,
@@ -13,9 +17,9 @@ async function render(failDebt=false){
  };
  const fetch=async path=>{
   if(failDebt&&path.includes('debt_overview'))throw Error('offline');
-  return {ok:true,json:async()=>path.includes('manifest')?manifest:path.includes('audit_integrity')
-   ?{status:'PASS',snapshot_generated_at:manifest.generated_at}:path.includes('last_run')
-   ?{generated_at:manifest.generated_at,research_finished_at:'2026-11-13T11:31:21+00:00'}:debt};
+  return {ok:true,json:async()=>path.includes('manifest')?visibleManifest:path.includes('audit_integrity')
+   ?{status:'PASS',snapshot_generated_at:visibleManifest.generated_at}:path.includes('last_run')
+   ?{generated_at:visibleManifest.generated_at,research_finished_at:'2026-11-13T11:31:21+00:00'}:debt};
  };
  vm.runInNewContext(script,{document,window:{WestconAudit:audit,scrollTo(){}},fetch,console});
  for(let i=0;i<5;i++)await Promise.resolve();
@@ -32,6 +36,11 @@ async function render(failDebt=false){
  assert.ok(!ok.ccFreshness.textContent.includes('registro de investigación de otro corte'));
  assert.ok(ok.ccAudit.innerHTML.includes('Desglose conciliado'));
  assert.ok(!ok.ccAudit.innerHTML.includes('Auditoría integral fallida'));
+ const hygiene=await render(false,true);
+ assert.ok(hygiene.ccAudit.innerHTML.includes('Etiquetas no válidas como fabricantes'));
+ assert.ok(hygiene.ccAudit.innerHTML.includes('Marketing'));
+ assert.ok(hygiene.ccAudit.innerHTML.includes('no se computan como fabricantes acreditados')||
+  hygiene.ccAudit.innerHTML.includes('No se computan como fabricantes acreditados'));
  const degraded=await render(true);
  assert.ok(degraded.ccAudit.innerHTML.includes('no disponible'),'Missing debt must show a message, never an empty audit');
  assert.ok(degraded.ccDebt.innerHTML.includes('sin datos consistentes'));

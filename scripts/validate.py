@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from engine.model import canonical  # noqa: E402
+from engine.vendor_labels import non_vendor_reason  # noqa: E402
 from engine.settings import SECTIONS, VERSION  # noqa: E402
 from engine.storage import read_json  # noqa: E402
 
@@ -85,6 +86,23 @@ for item in gaps.get("gaps") or []:
         error("open gap has an invalid state")
 if set(manifest.get("sections") or {}) != set(SECTIONS):
     error("public manifest sections are invalid")
+
+# The preflight may inspect an older, not-yet-rebuilt snapshot. Once a release
+# advertises the quarantine policy, however, no navigation/image/category label
+# may be published as a distributor or integrator manufacturer — least of all
+# with a green confidence pill. Canonical historical leads remain preserved.
+if isinstance((manifest.get("meta") or {}).get("vendor_label_quarantine"), dict):
+    for section in ("distributors", "integrators"):
+        public = read_json(f"data/public/sections/{section}.json", {})
+        for row in public.get("rows") or []:
+            for field_id in (
+                "vendor_relations", "manufacturer_relations", "vendor_partnerships",
+                "linecard_remainder", "westcon_overlap", "competitor_vendor_overlap",
+            ):
+                field = ((row.get("fields") or {}).get(field_id) or {})
+                for value in field.get("value") or []:
+                    if isinstance(value, str) and non_vendor_reason(value):
+                        error(f"non-vendor published as manufacturer: {section}/{row.get('name')}/{field_id}/{value}")
 
 manufacturers = {canonical(row.get("name")) for row in data.get("manufacturers") or []}
 distributors = {canonical(row.get("name")) for row in data.get("distributors") or []}

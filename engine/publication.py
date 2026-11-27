@@ -7,6 +7,77 @@ from typing import Any
 from .settings import SECTIONS, VERSION
 from .knowledge_provenance import accrediting_evidence, provenance_kind
 from .storage import atomic_write_many, json_bytes
+from .vendor_labels import non_vendor_reason
+
+
+_VENDOR_RELATION_FIELDS = {
+    "vendor_relations", "manufacturer_relations", "vendor_partnerships",
+    "linecard_remainder", "westcon_overlap", "competitor_vendor_overlap",
+}
+
+
+def _quarantine_public_vendor_labels(
+    rows: list[dict[str, Any]], section: str,
+) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
+    """Suppress provably non-vendor labels in publication, not in provenance.
+
+    The canonical snapshot, research clues and historical source archive remain
+    untouched. Rebuilds can still audit those origins, but users must never see
+    'Marketing', image filenames or product categories as GREEN manufacturers.
+    """
+    output = deepcopy(rows)
+    exceptions: list[dict[str, str]] = []
+    if section not in {"distributors", "integrators"}:
+        return output, exceptions
+    for row in output:
+        entity = str(row.get("name") or "")
+        fields = row.get("fields") or {}
+        for field_name in _VENDOR_RELATION_FIELDS:
+            field = fields.get(field_name)
+            if not isinstance(field, dict):
+                continue
+            values = field.get("value")
+            if not isinstance(values, list):
+                continue
+            filtered = []
+            for value in values:
+                reason = non_vendor_reason(value) if isinstance(value, str) else None
+                if reason:
+                    exceptions.append({
+                        "section": section, "entity": entity, "field": field_name,
+                        "value": value, "reason": reason,
+                    })
+                else:
+                    filtered.append(value)
+            if len(filtered) == len(values):
+                continue
+            field["value"] = filtered
+            if isinstance(field.get("items"), list):
+                field["items"] = [
+                    item for item in field["items"]
+                    if not isinstance(item, dict)
+                    or not non_vendor_reason(item.get("value"))
+                ]
+            field["evidence"] = [
+                ev for ev in field.get("evidence") or []
+                if not isinstance(ev, dict)
+                or not (str(ev.get("field") or field_name) == field_name
+                        and ev.get("item_value")
+                        and non_vendor_reason(ev.get("item_value")))
+            ]
+            if not filtered:
+                # Leave the field in the schema, but with no falsely accredited
+                # manufacturer. _compact_object will downgrade it to pending.
+                field["evidence"] = []
+        # Exact claim-bound noise can also be present on entity-level evidence.
+        if exceptions and isinstance(row.get("evidence"), list):
+            row["evidence"] = [
+                ev for ev in row["evidence"]
+                if not isinstance(ev, dict)
+                or str(ev.get("field") or "") not in _VENDOR_RELATION_FIELDS
+                or not non_vendor_reason(ev.get("item_value"))
+            ]
+    return output, exceptions
 
 
 def _evidence_key(ev: dict[str, Any]) -> str:
@@ -288,11 +359,16 @@ def public_payloads(
     section_meta = {}
     coverage_meta: dict[str, dict[str, int]] = {}
     rebound_meta: dict[str, int] = {}
+    publication_data = dict(data)
+    quarantined: list[dict[str, str]] = []
     for section in SECTIONS:
         registry: dict[str, dict[str, Any]] = {}
         repaired, rebound = _rebind_exact_item_evidence(data.get(section) or [])
         rebound_meta[section] = rebound
-        rows = _compact_object(repaired, registry)
+        clean_rows, exceptions = _quarantine_public_vendor_labels(repaired, section)
+        quarantined.extend(exceptions)
+        publication_data[section] = clean_rows
+        rows = _compact_object(clean_rows, registry)
         payload = {"version": VERSION, "section": section, "rows": rows, "evidence": registry}
         coverage_meta[section] = _source_coverage(rows, registry)
         relative = f"data/public/sections/{section}.json"
@@ -313,14 +389,23 @@ def public_payloads(
     meta["version"] = VERSION
     meta["source_coverage"] = coverage_meta
     meta["exact_source_rebindings"] = rebound_meta
+    meta["vendor_label_quarantine"] = {
+        "removed_from_public_views": len(quarantined),
+        "by_section": {
+            section: sum(1 for item in quarantined if item["section"] == section)
+            for section in ("distributors", "integrators")
+        },
+        "examples": quarantined[:40],
+        "policy": "Sólo etiquetas genéricas; el valor y sus fuentes permanecen en la memoria interna/histórica, no se acreditan como fabricantes.",
+    }
     manifest = {
         "version": VERSION,
         "generated_at": meta.get("generated_at"),
         "meta": meta,
         "schemas": data.get("schemas") or {},
-        "source_catalog": _public_source_catalog(data),
+        "source_catalog": _public_source_catalog(publication_data),
         "counts": {section: len(data.get(section) or []) for section in SECTIONS},
-        "confidence_distribution": _confidence_distribution(data),
+        "confidence_distribution": _confidence_distribution(publication_data),
         "sections": section_meta,
     }
     files["data/public/manifest.json"] = json_bytes(manifest, pretty=False)

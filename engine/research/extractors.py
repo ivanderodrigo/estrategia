@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from typing import Iterable
 
 from ..model import canonical
+from ..vendor_labels import plausible_vendor_name
 from .documents import Document
 
 
@@ -133,6 +134,8 @@ def vendors_in_text(text: str, vendor_names: Iterable[str]) -> tuple[list[str], 
     found: list[str] = []
     matched: list[str] = []
     for vendor in vendor_names:
+        if not plausible_vendor_name(vendor):
+            continue
         token = canonical(vendor)
         if len(token) < 3:
             continue
@@ -386,7 +389,8 @@ def _official_menu_brand_links(document: Document) -> list[str]:
         label = " ".join(str(link.label or "").split()).strip()
         key = canonical(label)
         if (not 2 <= len(label) <= 48 or len(label.split()) > 5 or
-            key in excluded or not re.search(r"[a-zA-Z]", label)):
+            key in excluded or not plausible_vendor_name(label)
+            or not re.search(r"[a-zA-Z]", label)):
             continue
         # Restrict to named menu entities, never unrelated site-wide links.
         if " "+key+" " not in normalized_region:
@@ -444,6 +448,8 @@ def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]
     known, terms = vendors_in_text(body, vendor_names)
     known_keys = {canonical(value) for value in known}
     for brand in menu_brands:
+        if not plausible_vendor_name(brand):
+            continue
         key = canonical(brand)
         if key not in known_keys:
             known.append(brand)
@@ -470,6 +476,7 @@ def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]
             key = canonical(brand)
             if (not 2 <= len(brand) <= 48 or len(brand.split()) > 5 or
                 not re.search(r"[a-zA-Z]", brand) or key in excluded or
+                not plausible_vendor_name(brand) or
                 any(word in key.split() for word in ("image", "imagen", "banner", "icono")) or
                 re.fullmatch(r"\d+", brand)):
                 continue
@@ -496,6 +503,8 @@ def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]
             key = canonical(brand)
             if key in {"fabricantes", "productos", "marcas"} or not re.search(r"[a-zA-Z]", brand):
                 continue
+            if not plausible_vendor_name(brand):
+                continue
             if key not in known_keys:
                 known.append(brand)
                 terms.append(link.label)
@@ -511,7 +520,7 @@ def distributor_linecard_vendors(document: Document, vendor_names: Iterable[str]
             brand = " ".join(raw.split()).strip(".,;: ")
             key = canonical(brand)
             if (not 2 <= len(brand) <= 48 or len(brand.split()) > 5 or
-                    not re.search(r"[a-zA-Z]", brand) or
+                    not re.search(r"[a-zA-Z]", brand) or not plausible_vendor_name(brand) or
                     key in {"entre otros", "fabricantes", "productos"}):
                 continue
             if key not in known_keys:
@@ -539,6 +548,8 @@ def _explicit_official_vendor_detail(document: Document) -> tuple[list[str], lis
         "resources", "empresa", "casos", "clientes", "industries",
     }
     if not 3 <= len(slug_key) <= 36 or slug_key in excluded:
+        return [], []
+    if not plausible_vendor_name(slug_key):
         return [], []
     title_part = re.split(r"\s+[–—|]\s+|\s+-\s+", document.title or "")[0].strip()
     title_key = canonical(title_part)

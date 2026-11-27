@@ -25,6 +25,7 @@ from urllib3.util.retry import Retry
 from ..enrichment import merge_field
 from ..knowledge_provenance import typed_evidence_sufficient, accrediting_evidence
 from ..model import canonical
+from ..vendor_labels import plausible_vendor_name
 from ..provenance import evidence_for_item, evidence_for_relationship, infer_scope_from_text
 from ..settings import RESEARCH_POLICY, RESEARCH_PROFILES, VERSION
 from ..storage import atomic_write_json, prune_json_mapping, read_json
@@ -224,6 +225,8 @@ def _vendor_names(data: dict[str, Any]) -> list[str]:
     result: dict[str, str] = {}
     for name in names:
         if not 3 <= len(name) <= 55 or len(name.split()) > 6:
+            continue
+        if not plausible_vendor_name(name):
             continue
         key = canonical(name)
         if key not in result and key not in {"unknown", "por investigar", "sin dato"}:

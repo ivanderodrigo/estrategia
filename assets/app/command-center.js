@@ -52,9 +52,11 @@ Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/de
   const actualResearch=Date.parse(researchAt||'');
   const researchAge=Number.isFinite(actualResearch)?Math.max(0,(Date.now()-actualResearch)/86400000):null;
   const researchWarning=researchAge!==null&&researchAge>2?' · ALERTA: última investigación real hace más de 48 h':'';
+  const hygieneCount=Number(m.meta?.vendor_label_quarantine?.removed_from_public_views||0);
+  const hygieneNote=hygieneCount>0?' · Calidad factual: '+fmt(hygieneCount)+' etiquetas no válidas apartadas del catálogo público.':'';
   document.getElementById('ccFreshness').textContent='Fotografía publicada: '+dateLabel(m.generated_at)+researchLabel+
-    ' · Calidad de integridad '+(m.meta?.quality_score??'N/D')+'/100 (NO es cobertura de evidencia).'+
-    stale+provenanceWarning+researchWarning+sourceLabel;
+    ' · Integridad estructural '+(m.meta?.quality_score??'N/D')+'/100 (NO mide veracidad ni cobertura de evidencia).'+
+    hygieneNote+stale+provenanceWarning+researchWarning+sourceLabel;
  }else{
   metrics.textContent='No se han podido cargar las métricas verificables del dataset.';
   document.getElementById('ccFreshness').textContent='Estado de la publicación: no disponible; revisar manifest.json.';
@@ -62,6 +64,20 @@ Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/de
  const r=window.WestconAudit?.evaluate(m,d,integrity);
  audit.innerHTML=window.WestconAudit?.render(m,d,integrity)||
   '<p class="cc-audit-warning">La herramienta de auditoría no se ha cargado. Consulta data/public/debt_overview.json.</p>';
+ const quarantine=m?.meta?.vendor_label_quarantine;
+ const removed=Number(quarantine?.removed_from_public_views);
+ if(Number.isFinite(removed)&&removed>0){
+  const by=quarantine.by_section||{};
+  const examples=(quarantine.examples||[]).slice(0,8).map(item=>
+   '<li>'+clean(item.entity)+' · '+clean(item.field)+' · <strong>'+clean(item.value)+
+   '</strong> ('+clean(item.reason)+')</li>').join('');
+  audit.innerHTML+='<section class="cc-audit-schedule"><h3>Etiquetas no válidas como fabricantes</h3>'+
+   '<p>Se han apartado de la vista pública '+fmt(removed)+' instancias de etiquetas de navegación, categorías o imágenes ' +
+   'que habían llegado a mostrarse como relaciones comerciales. Mayoristas: '+fmt(by.distributors||0)+
+   ' · Integradores: '+fmt(by.integrators||0)+'. ' +
+   'No se computan como fabricantes acreditados ni como huecos resueltos. Los originales siguen en la memoria interna e histórica para auditoría.</p>'+
+   (examples?'<p>Ejemplos de exclusión:</p><ul>'+examples+'</ul>':'')+'</section>';
+ }
  if(sourceCheck?.status==='REVIEW_QUEUE_NOT_FACT_ACCREDITATION'){
   const live=sourceCheck.live_claim_review||{};
   const bySection=Object.entries(live.by_section||{});
