@@ -1,50 +1,48 @@
 {
-  "generated_at": "2026-11-27T17:40:08.800917+00:00",
-  "snapshot_generated_at": "2026-11-27T17:32:24.463883+00:00",
-  "run_url": "https://github.com/ivanderodrigo/estrategia/actions/runs/46043142118",
+  "generated_at": "2026-11-27T18:27:30.802419+00:00",
+  "snapshot_generated_at": "2026-11-27T18:21:19.858373+00:00",
+  "run_url": "https://github.com/ivanderodrigo/estrategia/actions/runs/46049248478",
   "status": "REVIEW_QUEUE_NOT_FACT_ACCREDITATION",
   "scope": "Independent claim/source binding audit and live source review",
   "live_unique_urls": null,
   "source_content_semantically_verified": false,
-  "total_live_review_candidates": 21281,
+  "total_live_review_candidates": 18781,
   "live_sample_reviewed": 200,
   "live_sample_hosts": 176,
   "live_sampling_policy": "rotating-section-host-round-robin-v1",
-  "live_content_accessible": 155,
+  "live_content_accessible": 162,
   "live_collection_health": "PARTIAL_CONTENT",
   "live_review_statuses": {
-    "page_mentions_entity_and_value_needs_semantic_review": 56,
-    "fetch_error_ReadTimeout": 1,
-    "page_does_not_mention_value": 43,
-    "http_403": 14,
-    "fetch_error_SSLError": 1,
-    "document_format_requires_review": 6,
-    "page_mentions_value_only": 56,
-    "redirect_requires_review": 12,
+    "page_does_not_mention_value": 63,
+    "document_format_requires_review": 5,
+    "redirect_requires_review": 13,
+    "page_mentions_entity_and_value_needs_semantic_review": 34,
+    "http_403": 9,
     "http_429": 1,
+    "page_mentions_value_only": 65,
     "http_200_insufficient_content": 2,
-    "fetch_error_ConnectionError": 1,
     "fetch_error_UnsafeUrl": 6,
-    "http_247_insufficient_content": 1
+    "http_247_insufficient_content": 1,
+    "http_202_insufficient_content": 1
   },
   "live_claim_review": {
     "by_section": {
       "manufacturers": {
-        "reviewed": 58,
-        "content_readable": 43,
-        "value_absent": 8,
-        "value_only": 3,
-        "joint_mention_unverified": 32,
-        "unreadable_or_blocked": 15,
+        "reviewed": 20,
+        "content_readable": 15,
+        "value_absent": 6,
+        "value_only": 0,
+        "joint_mention_unverified": 9,
+        "unreadable_or_blocked": 5,
         "broken_url_references": 0
       },
       "trends": {
         "reviewed": 50,
-        "content_readable": 42,
+        "content_readable": 41,
         "value_absent": 6,
-        "value_only": 35,
+        "value_only": 34,
         "joint_mention_unverified": 1,
-        "unreadable_or_blocked": 8,
+        "unreadable_or_blocked": 9,
         "broken_url_references": 0
       },
       "architectures": {
@@ -66,12 +64,12 @@
         "broken_url_references": 0
       },
       "clients_public": {
-        "reviewed": 19,
-        "content_readable": 19,
-        "value_absent": 9,
-        "value_only": 10,
-        "joint_mention_unverified": 0,
-        "unreadable_or_blocked": 0,
+        "reviewed": 57,
+        "content_readable": 55,
+        "value_absent": 31,
+        "value_only": 23,
+        "joint_mention_unverified": 1,
+        "unreadable_or_blocked": 2,
         "broken_url_references": 0
       }
     },
@@ -112,33 +110,33 @@
       {
         "section": "clients_public",
         "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "technology_signals",
+        "value": "Networking",
+        "url": "https://agenciadetrabajo.us/nueva-york/",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
         "field": "technology_domains",
         "value": "Networking",
         "url": "https://amtega.xunta.gal/gl",
         "review_status": "page_does_not_mention_value"
       },
       {
-        "section": "clients_public",
-        "entity": "Agencia para la Modernización Tecnológica de Galicia",
-        "field": "technology_signals",
-        "value": "Networking",
-        "url": "https://blogs.eltiempo.com/el-tiempo-del-cine/2019/09/13/100-peliculas-imperdibles-del-cine-colombiano/",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
-        "section": "manufacturers",
-        "entity": "AttackIQ",
-        "field": "recent_signals",
-        "value": "What Adversarial Exposure Validation (AEV) Means for Federal Cybersecurity",
-        "url": "https://www.attackiq.com/2020/06/15/think-bad-do-good-ep-2-how-to-achieve-cybersecurity-effectiveness/",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
         "section": "manufacturers",
         "entity": "Cisco",
         "field": "integrators",
-        "value": "Bechtle Spain",
-        "url": "https://www.bechtle.com/es/soluciones-de-it/networking/data-centre-networking",
+        "value": "Nunsys",
+        "url": "https://www.nunsys.com/personas/nosotros/partners/",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "manufacturers",
+        "entity": "Stratus / Penguin Solutions",
+        "field": "partner_program",
+        "value": "Programa de canal de Fault Tolerant Computing",
+        "url": "https://www.penguinsolutions.com/en-us/partners/partner-program-channel-partners",
         "review_status": "page_does_not_mention_value"
       },
       {
@@ -177,30 +175,27 @@
     },
     "distributors": {
       "claims": 2329,
-      "references_generic_not_atomic": 511,
-      "generic_not_atomic": 365,
-      "without_source": 941,
+      "references_generic_not_atomic": 394,
+      "generic_not_atomic": 298,
+      "without_source": 1073,
       "references_metadata_text_support": 660,
       "metadata_text_support": 660,
       "references_bound_text_unconfirmed": 348,
       "bound_text_unconfirmed": 294,
-      "references_field_mismatch": 92,
-      "mismatch_or_broken": 69,
-      "references_item_mismatch": 17,
-      "references_entity_mismatch": 17
+      "references_entity_mismatch": 15,
+      "mismatch_or_broken": 4
     },
     "integrators": {
       "claims": 5848,
-      "references_generic_not_atomic": 1384,
-      "generic_not_atomic": 1079,
+      "references_generic_not_atomic": 879,
+      "generic_not_atomic": 671,
       "references_metadata_text_support": 1093,
       "metadata_text_support": 1093,
-      "without_source": 3163,
+      "without_source": 3734,
       "references_bound_text_unconfirmed": 412,
       "bound_text_unconfirmed": 342,
-      "references_field_mismatch": 255,
-      "mismatch_or_broken": 171,
-      "references_entity_mismatch": 17
+      "references_entity_mismatch": 12,
+      "mismatch_or_broken": 8
     },
     "clients_public": {
       "claims": 7470,
