@@ -24,11 +24,14 @@ class WatchdogShutdownReserve(unittest.TestCase):
         self.assertGreaterEqual(reserve, 30)
         self.assertLess(worker + 15, daily)
 
-    def test_weekly_runs_corrected_watchdog_once_after_merge(self):
+    def test_watchdog_change_does_not_enqueue_another_expensive_weekly(self):
         root = Path(__file__).resolve().parents[1]
         weekly = (root / ".github/workflows/research-weekly.yml").read_text(encoding="utf-8")
-        self.assertIn("'scripts/research_supervisor.py'", weekly)
+        fast_ci = (root / ".github/workflows/ci-fast.yml").read_text(encoding="utf-8")
+        self.assertNotIn("'scripts/research_supervisor.py'", weekly)
+        self.assertIn("'scripts/**'", fast_ci)
         self.assertIn("branches: [main]", weekly)
+        self.assertIn("cron:", weekly)
 
 
 if __name__ == "__main__":

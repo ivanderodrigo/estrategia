@@ -19,7 +19,6 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from engine.pipeline import run as build  # noqa: E402
 from engine.settings import VERSION  # noqa: E402
 from engine.storage import ProcessLock, atomic_write_json, read_json  # noqa: E402
 
@@ -169,6 +168,44 @@ def _append_history(status: dict[str, Any]) -> None:
     )
 
 
+def _run_bounded_build(timeout_s: int) -> dict[str, Any]:
+    """Isolate the large canonical rebuild behind an explicit hard deadline.
+
+    The crawler already has a process-group watchdog, but the subsequent
+    in-process build was unbounded. If it stalled, a 65-minute GitHub runner
+    could monopolize the single research queue without publishing diagnostics.
+    """
+    code = (
+        "import json; from engine.pipeline import run; "
+        "print('SUPERVISOR_METRICS_JSON=' + json.dumps(run()), flush=True)"
+    )
+    command = [sys.executable, "-c", code]
+    process = subprocess.Popen(
+        command, cwd=ROOT, text=True,
+        stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+        start_new_session=os.name != "nt",
+        creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if os.name == "nt" else 0,
+    )
+    try:
+        output, _ = process.communicate(timeout=timeout_s)
+    except subprocess.TimeoutExpired as exc:
+        _terminate(process)
+        raise TimeoutError(
+            f"Canonical rebuild exceeded {timeout_s}s; workflow should retry "
+            "from the last valid snapshot, without pretending publication succeeded."
+        ) from exc
+    if process.returncode:
+        raise RuntimeError(
+            f"Canonical rebuild failed ({process.returncode}): {output[-1800:]}"
+        )
+    for line in reversed(output.splitlines()):
+        if line.startswith("SUPERVISOR_METRICS_JSON="):
+            metrics = json.loads(line.partition("=")[2])
+            if isinstance(metrics, dict) and isinstance(metrics.get("after"), dict):
+                return metrics
+    raise RuntimeError("Canonical rebuild returned no machine-readable metrics")
+
+
 def _allocate_budgets(max_runtime: int, requested_fallback: int) -> tuple[int, int, int, int]:
     """Reserve build time without ever reporting a budget larger than the total."""
 
@@ -254,12 +291,14 @@ def main() -> int:
                     "error": fallback.get("error", ""),
                 })
 
-            metrics = build()
+            build_timeout_s = max(240, min(480, reserve * 2))
+            metrics = _run_bounded_build(build_timeout_s)
             after = metrics["after"]
             before = metrics["before"]
             quality = read_json("data/current/quality_report.json")
             status["stages"].append({
                 "build": "ok",
+                "build_timeout_s": build_timeout_s,
                 "gaps": after["gaps_total"],
                 "debt_breakdown": dict((metrics.get("debt_breakdown") or {})),
                 "gaps_closed_vs_release_baseline": before["gaps_total"] - after["gaps_total"],

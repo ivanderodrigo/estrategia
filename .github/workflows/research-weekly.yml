@@ -1,13 +1,13 @@
 name: Westcon Intelligence Weekly
 
 on:
-  # Run a deep scan when its research policy/workflow is updated, as well as on schedule.
-  # Exercise the corrected watchdog on current main once, without waiting
-  # for the next cron; ordinary data commits cannot retrigger it.
+  # Run on schedule; changed watchdog code is validated by Fast CI and
+  # deployed into the next queued research job. A push to the supervisor
+  # must not enqueue an additional 65-minute deep run while the shared
+  # evidence/research queue already contains work.
   push:
     branches: [main]
     paths:
-      - 'scripts/research_supervisor.py'
       - 'engine/westcon_current_evidence.py'
   schedule:
     # Deep source corroboration four evenings/week, away from weekday Daily.
