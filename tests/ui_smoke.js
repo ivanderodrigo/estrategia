@@ -84,6 +84,20 @@ if(js.includes("vendors.filter((v,i)=>atomicCurrentProof(itemFor(layerField"))
 
 console.log('UI smoke v4.4.0 PASS');
 
+// The target indicator executes from global update/status paths, outside
+// renderObservatorio() where its local formatter is defined. Catch runtime
+// ReferenceErrors instead of merely checking that the source parses.
+const goalBlock = js.slice(js.indexOf('function gapGoalLabel('), js.indexOf('function renderUpdateStatus(')).trim();
+if (!goalBlock.startsWith('function gapGoalLabel('))
+  throw new Error('research gap target indicator missing');
+const gapGoalLabel = new Function('return (' + goalBlock + ')')();
+if (!gapGoalLabel(17629).includes('16.630'))
+  throw new Error('research gap target does not render a scoped, localized count');
+if (!gapGoalLabel(999).includes('alcanzada numéricamente'))
+  throw new Error('research gap target reached state is incorrect');
+if (!gapGoalLabel(undefined).includes('no comprobable'))
+  throw new Error('research gap target silently treats unknown as zero');
+
 // Directly confirmed portfolio statements have no public URL. They must be
 // recognized as exact proof without accepting an untyped or unrelated claim.
 const proofFunction = js.slice(js.indexOf('function atomicCurrentProof('), js.indexOf('function sourcedScalarForTable(')).trim();

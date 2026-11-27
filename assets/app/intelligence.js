@@ -1203,7 +1203,7 @@ const identityTone=atomicCurrentProof(identityEvidence)?'high':'unverified';cons
     if(!Number.isFinite(n)||n<0)return 'Meta de investigación: 999 huecos o menos; último total no comprobable.';
     const remaining=Math.max(0,Math.ceil(n)-999);
     return remaining
-      ? `Meta ≤999 huecos · faltan ${count(remaining)} cierres verificables según la última publicación.`
+      ? `Meta ≤999 huecos · faltan ${remaining.toLocaleString('es-ES')} cierres verificables según la última publicación.`
       : 'Meta ≤999 huecos alcanzada numéricamente; mantener la auditoría de fuentes y registros.';
   }
   function renderUpdateStatus(){
