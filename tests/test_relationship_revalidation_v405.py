@@ -6,6 +6,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from engine.model import canonical
+from engine.graph import build_graph
 
 from engine.relationship_revalidation import (
     _parse_ted_xml,
@@ -54,6 +55,35 @@ def independently_supported_relation(relation):
 
 
 class RelationshipRevalidationV405(unittest.TestCase):
+    def test_historical_only_technology_signal_is_not_a_current_graph_edge(self) -> None:
+        item = {
+            "value": "Colaboración", "evidence": [{
+                "source": "Archivo", "title": "Pista histórica", "date": "2024-02-01",
+                "description": "Mención previa por comprobar",
+                "url": "https://example.org/historical-source",
+                "provenance_origin": "HISTORICAL_RECOVERED",
+            }],
+        }
+        row = {"name": "Entidad de prueba", "fields": {
+            "technology_signals": {"value": ["Colaboración"], "items": [item]},
+        }}
+        data = {"clients_public": [row]}
+        self.assertFalse(any(r.get("relation") == "technology_signal"
+                             and r.get("entity_a") == "Entidad de prueba"
+                             and r.get("entity_b") == "Colaboración"
+                             for r in build_graph(data)["relationships"]))
+
+        item["evidence"].append({
+            "source": "Entidad de prueba", "title": "Plan de colaboración tecnológica",
+            "date": "2026-11-27", "description": "La entidad menciona colaboración.",
+            "url": "https://example.org/official-plan", "official": True,
+            "source_type": "official",
+        })
+        self.assertTrue(any(r.get("relation") == "technology_signal"
+                            and r.get("entity_a") == "Entidad de prueba"
+                            and r.get("entity_b") == "Colaboración"
+                            for r in build_graph(data)["relationships"]))
+
     def _registry(self):
         return json.loads(
             (ROOT / "config/current/relationship_revalidation_registry.json").read_text(

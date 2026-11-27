@@ -615,6 +615,18 @@ def _financial_entry_seed(seeds: list[SourceSeed], entity: str) -> SourceSeed | 
         )
     return None
 
+
+def _source_attempt_limits(profile: str, pages_per_entity: int) -> tuple[int, int]:
+    """Bound attempted URLs, not only successfully fetched pages.
+
+    A source list containing hundreds of dead financial links must never
+    monopolize a whole deep research cycle while other entities wait. Keep
+    financial diligence present but rotate it across later runs.
+    """
+    total = max(10, max(1, int(pages_per_entity)) * 2)
+    financial = {"daily": 2, "deep": 4, "exhaustive": 6}.get(profile, 4)
+    return total, min(financial, total)
+
 def _decode_http_body(body: bytes, response: Any) -> str:
     if body.startswith(b"\xef\xbb\xbf"):
         return body.decode("utf-8-sig", errors="strict")
@@ -1694,6 +1706,8 @@ def run(
         "unsafe_url_rejections": 0,
         "official_sites_discovered": 0,
         "financial_links_discovered": 0,
+        "source_attempt_budget_skips": 0,
+        "financial_attempt_budget_skips": 0,
         "query_discovery_targets": 0,
         "search_queries_attempted": 0,
         "search_queries_succeeded": 0,
@@ -1919,17 +1933,29 @@ def run(
         queue = list(seeds)
         seen: set[tuple[str, str]] = set()
         pages = 0
+        attempted_urls = 0
+        financial_attempts = 0
+        max_attempts, max_financial_attempts = _source_attempt_limits(
+            profile, profile_config.pages_per_entity,
+        )
         examined_families: set[str] = set()
         accepted_by_field: defaultdict[str, int] = defaultdict(int)
         wanted_families = relevant_families(target["fields"]) | set(target.get("source_families") or [])
         scope = str(((row.get("fields") or {}).get("scope") or {}).get("value") or "GLOBAL")
 
-        while queue and pages < profile_config.pages_per_entity and time.monotonic() < deadline - 3:
+        while (queue and pages < profile_config.pages_per_entity
+               and attempted_urls < max_attempts and time.monotonic() < deadline - 3):
             seed = queue.pop(0)
             seed_key = (seed.url, seed.family)
             if seed_key in seen:
                 continue
             seen.add(seed_key)
+            if seed.family == "financial" and financial_attempts >= max_financial_attempts:
+                stats["financial_attempt_budget_skips"] += 1
+                continue
+            attempted_urls += 1
+            if seed.family == "financial":
+                financial_attempts += 1
             from_history = seed.url in archived_urls
             if from_history:
                 stats["historical_lead_urls_attempted"] += 1
@@ -2131,6 +2157,9 @@ def run(
                     flush=True,
                 )
                 next_heartbeat = time.monotonic() + 25
+
+        if queue and attempted_urls >= max_attempts:
+            stats["source_attempt_budget_skips"] += 1
 
         for gap_id in target["gap_ids"]:
             gap = gap_by_id.get(gap_id) or {}

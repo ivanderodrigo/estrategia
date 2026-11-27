@@ -1,5 +1,6 @@
 """v7.2: CPV accreditation requires fresh official TED notice evidence."""
 import unittest
+from pathlib import Path
 from unittest.mock import Mock
 
 from engine.provenance import evidence_for_item
@@ -35,6 +36,13 @@ def notice(code="30234000", number="123456-2026",
 
 
 class TedExactCPVProvenance(unittest.TestCase):
+    def test_cached_official_proofs_always_refresh_published_debt(self):
+        workflow = (Path(__file__).resolve().parents[1] /
+                    ".github/workflows/ted-cpv-revalidate.yml").read_text(encoding="utf-8")
+        self.assertIn("run: python -m engine.pipeline", workflow)
+        self.assertLess(workflow.index("run: python -m engine.pipeline"),
+                        workflow.index("name: Validate that reconstructed output"))
+
     def test_indexes_existing_notice_without_guessing_unknown_ids(self):
         source = row()
         skipped = row(number="unknown")

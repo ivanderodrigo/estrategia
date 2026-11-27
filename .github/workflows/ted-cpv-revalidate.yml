@@ -47,6 +47,11 @@ jobs:
         run: python -m scripts.backfill_ted_title_signals
       - name: Recover historical CPV claims from live original TED announcements
         run: python -m scripts.revalidate_ted_cpv --max-runtime 600 --max-notices 1000 --batch-size 18
+      - name: Reconcile the canonical gap and public projection even when source claims were already cached
+        # An earlier run may have persisted atomic TED proofs while its public
+        # debt snapshot remained stale. 'No newly added claims' is not proof
+        # that the public projection has been rebuilt from those claims.
+        run: python -m engine.pipeline
       - name: Validate that reconstructed output retains exact provenance
         run: |
           python scripts/attach_sase_layer_vendor_sources.py

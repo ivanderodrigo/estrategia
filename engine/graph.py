@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from .entity_resolution import resolve
+from .knowledge_provenance import accrediting_evidence
 from .model import canonical, stable_id, values
 from .provenance import evidence_for_relationship, evidence_scopes
 from .settings import VERSION
@@ -88,6 +89,11 @@ def build_graph(data: dict[str, Any]) -> dict[str, Any]:
         if not source_name or not target_name or canonical(source_name) == canonical(target_name):
             return
         clean = _clean_evidence(evidence)
+        if relation == "technology_signal":
+            # A URL recovered from an old snapshot is useful for further
+            # research but is not an independently accredited graph edge.
+            # Keep it on the original field; do not promote it here.
+            clean = [ev for ev in clean if accrediting_evidence(ev)]
         if relation in {"distributes", "partners_with"}:
             clean = evidence_for_relationship(clean, source_name, target_name)
         if not clean:
