@@ -22,6 +22,14 @@ class HistoricalExactDiscoveryTests(unittest.TestCase):
         self.assertLessEqual(len(result), 4)
         self.assertFalse(any("localhost" in q for q in result))
 
+    def test_composite_service_query_preserves_official_domain_but_not_template(self):
+        result = historical_exact_queries(
+            "Acme", {"services": ["Integración de soluciones · Check Point"]},
+            [{"url": "https://www.acme.com/services"}])
+        self.assertTrue(any('"Check Point"' in q and "integration" in q for q in result))
+        self.assertTrue(any("site:www.acme.com" in q and '"Check Point"' in q for q in result))
+        self.assertFalse(any("Integración de soluciones ·" in q for q in result))
+
 
 if __name__ == "__main__":
     unittest.main()

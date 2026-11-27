@@ -31,6 +31,7 @@ from ..settings import RESEARCH_POLICY, RESEARCH_PROFILES, VERSION
 from ..storage import atomic_write_json, prune_json_mapping, read_json
 from .documents import Document, Link, parse_document, sitemap_urls
 from .client_discovery import discover_official_site
+from .claim_queries import SERVICE_RELATION_CUES, claim_search_query, service_template_parts
 from .extractors import (
     Candidate,
     evidence_snippet,
@@ -153,12 +154,12 @@ def _unsourced_value_queries(
     entity = str(row.get("name") or "").strip()
     if not entity or limit <= 0:
         return []
-    groups: list[list[str]] = []
+    groups: list[list[tuple[str, str]]] = []
     for field_name in target_fields:
         field = (row.get("fields") or {}).get(field_name) or {}
         if not isinstance(field, dict):
             continue
-        candidates: list[str] = []
+        candidates: list[tuple[str, str]] = []
         seen: set[str] = set()
         for item in field.get("items") or []:
             if not isinstance(item, dict):
@@ -173,7 +174,7 @@ def _unsourced_value_queries(
                 continue
             if canonical(value) not in seen:
                 seen.add(canonical(value))
-                candidates.append(value)
+                candidates.append((field_name, value))
         if candidates:
             offset = rotation % len(candidates)
             groups.append(candidates[offset:] + candidates[:offset])
@@ -183,7 +184,8 @@ def _unsourced_value_queries(
         for group in groups:
             if index >= len(group):
                 continue
-            query = f'"{entity}" "{group[index]}"'
+            field_name, value = group[index]
+            query = claim_search_query(entity, field_name, value)
             key = query.casefold()
             if key in used:
                 continue
@@ -996,24 +998,6 @@ def _subject_value_match(
     return False
 
 
-_COMPOSITE_SERVICE_RELATIONS = {
-    "integracion de soluciones": (
-        r"(?:integra[a-z]*|integrac[a-z]*|integrat[a-z]*|"
-        r"implement[a-z]*|implant[a-z]*|deploy[a-z]*|"
-        r"desplieg[a-z]*|despleg[a-z]*)"
-    ),
-    "suministro reventa": (
-        r"(?:resell[a-z]*|resal[a-z]*|revend[a-z]*|"
-        r"distribu[a-z]*|suministr[a-z]*|venta[s]?|"
-        r"sales|suppl[a-z]*)"
-    ),
-    "servicios gestionados": (
-        r"(?:managed|managing|manage[a-z]*|management|"
-        r"gestion[a-z]*|administra[a-z]*)"
-    ),
-}
-
-
 def _explicit_composite_service_quote(
     entity: str,
     value: Any,
@@ -1031,17 +1015,13 @@ def _explicit_composite_service_quote(
     if field_id != "services":
         return ""
 
-    label = canonical(value)
-    relation = ""
-    vendor = ""
-    for prefix in _COMPOSITE_SERVICE_RELATIONS:
-        if label.startswith(prefix + " "):
-            relation, vendor = prefix, label[len(prefix) + 1:]
-            break
-    if not relation or len(vendor) < 3 or len(vendor) > 90:
+    parts = service_template_parts(value, field_id)
+    if not parts:
         return ""
+    relation, vendor_label = parts
+    vendor = canonical(vendor_label)
 
-    cue = _COMPOSITE_SERVICE_RELATIONS[relation]
+    cue = SERVICE_RELATION_CUES[relation]
     vendor_boundary = rf"(?<![a-z0-9]){re.escape(vendor)}(?![a-z0-9])"
     # The assertion must be local (five words at most) and may be expressed
     # in either order. No proximity across separate sentences or list lines.

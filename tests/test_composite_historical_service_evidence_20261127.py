@@ -93,6 +93,10 @@ class CompositeHistoricalServiceEvidenceTests(unittest.TestCase):
         self.assertIsNotNone(_exact_historical_candidate(doc, [RESALE], True, "Acme", "services"))
         self.assertEqual(_explicit_composite_service_quote("Acme", RESALE, doc, field_id="verticals"), "")
 
+    def test_unformatted_service_description_is_not_mistaken_for_template(self):
+        doc = document("Acme integrates managed cloud solutions.")
+        self.assertEqual(_explicit_composite_service_quote("Acme", "Servicios gestionados de cloud", doc, field_id="services"), "")
+
 
 if __name__ == "__main__":
     unittest.main()

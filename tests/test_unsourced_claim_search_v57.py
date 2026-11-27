@@ -60,6 +60,19 @@ class UnsourcedClaimSearchTests(unittest.TestCase):
         }}}
         self.assertEqual(_unsourced_value_queries(row, ["capabilities"], limit=1), ['"Integrator A" "SASE"'])
 
+    def test_composite_service_labels_query_underlying_relation_not_literal_template(self):
+        row = {"name": "Integrator A", "fields": {"services": {"items": [
+            {"value": "Integración de soluciones · Check Point", "evidence": []},
+            {"value": "Suministro / reventa · AWS", "evidence": []},
+            {"value": "Servicios gestionados · Microsoft Azure", "evidence": []},
+        ]}}}
+        queries = _unsourced_value_queries(row, ["services"])
+        self.assertEqual(len(queries), 3)
+        self.assertTrue(any('"Check Point"' in query and "integration" in query for query in queries))
+        self.assertTrue(any('"AWS"' in query and "reseller" in query for query in queries))
+        self.assertTrue(any('"Microsoft Azure"' in query and "managed services" in query for query in queries))
+        self.assertFalse(any("Integración de soluciones ·" in query for query in queries))
+
 
 if __name__ == "__main__":
     unittest.main()

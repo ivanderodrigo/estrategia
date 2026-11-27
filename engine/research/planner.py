@@ -19,6 +19,7 @@ from typing import Any
 from ..gap_intelligence import FAMILY_BY_FIELD as GAP_FAMILY_BY_FIELD
 from ..settings import RESEARCH_POLICY, RESEARCH_PROFILES
 from ..storage import read_json
+from .claim_queries import claim_search_query, service_template_parts
 
 # Backwards-compatible export used by engine.research.sources.
 FAMILY_BY_FIELD = dict(GAP_FAMILY_BY_FIELD)
@@ -347,7 +348,10 @@ def presentation_signal_queries(entity: str, targets: dict[str, list], limit: in
             value = str(raw).strip()
             if not 3 <= len(value) <= 100 or value.casefold() in {"unknown", "por investigar"}:
                 continue
-            buckets.append([f'"{entity}" "{value}" {context}' for context in contexts])
+            buckets.append([
+                claim_search_query(entity, field, value, context=context)
+                for context in contexts
+            ])
     depth = 0
     while len(output) < limit and any(depth < len(bucket) for bucket in buckets):
         for bucket in buckets:
@@ -375,8 +379,9 @@ def historical_exact_queries(entity: str, targets: dict[str, list], leads: list[
             value = str(raw).strip()
             if not value or len(value) > 160 or value.casefold() in {"none", "unknown", "por investigar"}:
                 continue
-            push(f'"{entity}" "{value}"')
-            push(f'"{entity}" "{value}" {str(field).replace("_", " ")}')
+            push(claim_search_query(entity, field, value))
+            if not service_template_parts(value, field):
+                push(claim_search_query(entity, field, value, context=str(field).replace("_", " ")))
     for seed in leads[:5]:
         url = str(seed.get("url") or "")
         parsed = urlsplit(url)
@@ -384,11 +389,11 @@ def historical_exact_queries(entity: str, targets: dict[str, list], leads: list[
         if host and "." in host and not host.endswith((".local", ".internal")):
             # Search the original domain for the actual historical assertion,
             # not merely any page mentioning the entity.
-            for values in targets.values():
+            for field, values in targets.items():
                 for raw in values[:1]:
                     value = str(raw).strip()
                     if 3 <= len(value) <= 120:
-                        push(f'"{entity}" "{value}" site:{host}')
+                        push(claim_search_query(entity, field, value, site=host))
             push(f'"{entity}" site:{host}')
     return output
 
