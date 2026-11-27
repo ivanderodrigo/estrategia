@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT))
 
 from engine.model import canonical  # noqa: E402
 from engine.vendor_labels import non_vendor_reason  # noqa: E402
+from engine.vendor_claims import VENDOR_RELATION_FIELDS, exact_vendor_source  # noqa: E402
 from engine.settings import SECTIONS, VERSION  # noqa: E402
 from engine.storage import read_json  # noqa: E402
 
@@ -103,6 +104,24 @@ if isinstance((manifest.get("meta") or {}).get("vendor_label_quarantine"), dict)
                 for value in field.get("value") or []:
                     if isinstance(value, str) and non_vendor_reason(value):
                         error(f"non-vendor published as manufacturer: {section}/{row.get('name')}/{field_id}/{value}")
+
+if isinstance((manifest.get("meta") or {}).get("vendor_relation_evidence_quarantine"), dict):
+    for section in ("distributors", "integrators"):
+        public = read_json(f"data/public/sections/{section}.json", {})
+        registry = public.get("evidence") or {}
+        for row in public.get("rows") or []:
+            for field_id in VENDOR_RELATION_FIELDS:
+                field = ((row.get("fields") or {}).get(field_id) or {})
+                for item in field.get("items") or []:
+                    if not isinstance(item, dict) or item.get("evidence_color") != "green":
+                        continue
+                    value = item.get("value")
+                    refs = item.get("evidence_ids") or []
+                    if not isinstance(value, str) or not any(
+                        exact_vendor_source(registry.get(ref), field_id, value)
+                        for ref in refs
+                    ):
+                        error(f"non-atomic green vendor relationship: {section}/{row.get('name')}/{field_id}/{value}")
 
 manufacturers = {canonical(row.get("name")) for row in data.get("manufacturers") or []}
 distributors = {canonical(row.get("name")) for row in data.get("distributors") or []}

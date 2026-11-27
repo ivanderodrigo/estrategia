@@ -36,10 +36,12 @@ if (js.includes('data-col-toggle data-view=')) throw new Error('column chooser c
 if (!js.includes('data-view="${esc(view)}" data-col-toggle="${esc(c.id)}"')) throw new Error('column chooser does not expose the selected column id');
 
 const html = fs.readFileSync('index.html', 'utf8');
-if (!html.includes('assets/app/vendor-hygiene.js?v=20261127-v1'))
+if (!html.includes('assets/app/vendor-hygiene.js?v=20261127-v2'))
   throw new Error('published app does not load vendor hygiene guard');
 if (!js.includes('WestconVendorHygiene.quarantinePublicRows'))
   throw new Error('published data sections bypass browser vendor hygiene');
+if (!js.includes('WestconVendorHygiene.downgradeUnboundVendorItems'))
+  throw new Error('published manufacturer badges bypass individual source binding');
 if (html.includes('data-view="observatorio"')) throw new Error('legacy Hoy en Westcon tab is still primary navigation');
 for (const label of ['Fabricantes','Mayoristas','Integradores','Clientes','Tendencias','Arquitecturas']) {
   if (!html.includes('>'+label+'</button>')) throw new Error('missing primary observatory area: '+label);

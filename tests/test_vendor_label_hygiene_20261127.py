@@ -18,7 +18,7 @@ def evidence(value):
         "provenance_origin": "PUBLIC_PRIMARY", "source_type": "official-domain",
         "source_grade": "A", "official": True, "classification": "public",
         "source_binding": "claim-specific", "researched_entity": "Distributor",
-        "field": "vendor_relations", "item_value": value,
+        "field": "vendor_relations", "item_value": value, "atomic": True,
     }
 
 
@@ -31,6 +31,7 @@ class VendorLabelHygiene(unittest.TestCase):
             "Partner Portal", "Infinigate Group", "Poland", "Pan-EMEA",
             "Arrow Capital Solutions", "RUCKUS Networks Endorsed",
             "Google Cloud Partner", "Parceria Sharp e Multimac",
+            "Placas Base Intel", "Portátiles Acer", "Pasta Térmica",
         ]
         for label in invalid:
             with self.subTest(label=label):

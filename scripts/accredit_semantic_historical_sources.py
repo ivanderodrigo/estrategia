@@ -17,6 +17,8 @@ sys.path.insert(0,str(ROOT))
 from engine.enrichment import excluded_catalog_label
 from engine.model import canonical
 from engine.knowledge_provenance import sitemap_index_url
+from engine.vendor_labels import non_vendor_reason
+from engine.vendor_claims import VENDOR_RELATION_FIELDS
 
 CHECKS=ROOT/"data/current/historical_source_checks.json"
 REGISTRY=ROOT/"config/current/historical_semantic_verified.json"
@@ -59,6 +61,8 @@ def classify(claim,url):
     field=str(claim.get("field") or "")
     value=str(claim.get("value") or "").strip()
     entity=str(claim.get("entity") or "").strip()
+    if section in {"distributors", "integrators"} and field in VENDOR_RELATION_FIELDS and non_vendor_reason(value):
+        return "CATALOG_CATEGORY_NOT_VENDOR"
     if excluded_catalog_label(section,entity,field,value):
         return "CATALOG_CATEGORY_NOT_VENDOR"
     excerpt=str(claim.get("source_context") or "").strip()

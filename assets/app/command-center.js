@@ -78,6 +78,28 @@ Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/de
    'No se computan como fabricantes acreditados ni como huecos resueltos. Los originales siguen en la memoria interna e histórica para auditoría.</p>'+
    (examples?'<p>Ejemplos de exclusión:</p><ul>'+examples+'</ul>':'')+'</section>';
  }
+ const unbound=m?.meta?.vendor_relation_evidence_quarantine;
+ const downgraded=Number(unbound?.downgraded_from_unproven);
+ if(Number.isFinite(downgraded)&&downgraded>0){
+  const by=unbound.by_section||{};
+  const examples=(unbound.examples||[]).slice(0,8).map(item=>
+   '<li>'+clean(item.entity)+' · '+clean(item.field)+' · <strong>'+clean(item.value)+'</strong></li>').join('');
+  audit.innerHTML+='<section class="cc-audit-schedule"><h3>Relaciones con fabricantes pendientes de fuente específica</h3>'+
+   '<p>'+fmt(downgraded)+' acreditaciones aparentes se han rebajado a pendientes porque sus enlaces no prueban de forma atómica la relación concreta. '+
+   'Mayoristas: '+fmt(by.distributors||0)+' · Integradores: '+fmt(by.integrators||0)+'. '+
+   'Los valores y las fuentes originales se conservan para revalidación; no son hechos acreditados ni huecos resueltos.</p>'+
+   (examples?'<p>Ejemplos que requieren comprobación:</p><ul>'+examples+'</ul>':'')+'</section>';
+ }
+ const semantic=m?.meta?.historical_semantic_misclassification;
+ const historicalInvalid=Number(semantic?.excluded_claim_source_pairs);
+ if(Number.isFinite(historicalInvalid)&&historicalInvalid>0){
+  const examples=(semantic.examples||[]).slice(0,5).map(item=>
+   '<li>'+clean(item.entity)+' · <strong>'+clean(item.value)+'</strong></li>').join('');
+  audit.innerHTML+='<section class="cc-audit-schedule"><h3>Verificaciones históricas reclasificadas</h3>'+
+   '<p>'+fmt(historicalInvalid)+' pares afirmación–fuente del registro histórico se referían a categorías, menús o productos, no a fabricantes. '+
+   'Se conservan sus URLs para auditoría, pero quedan excluidos de las relaciones comerciales acreditadas.</p>'+
+   (examples?'<p>Ejemplos:</p><ul>'+examples+'</ul>':'')+'</section>';
+ }
  if(sourceCheck?.status==='REVIEW_QUEUE_NOT_FACT_ACCREDITATION'){
   const live=sourceCheck.live_claim_review||{};
   const bySection=Object.entries(live.by_section||{});

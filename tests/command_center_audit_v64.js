@@ -8,6 +8,11 @@ async function render(failDebt=false,showHygiene=false){
  const visibleManifest=showHygiene?{...manifest,meta:{...manifest.meta,vendor_label_quarantine:{
   removed_from_public_views:3,by_section:{distributors:2,integrators:1},
   examples:[{entity:'Distributor',field:'vendor_relations',value:'Marketing',reason:'navigation'}],
+ },vendor_relation_evidence_quarantine:{
+  downgraded_from_unproven:2,by_section:{distributors:1,integrators:1},
+  examples:[{entity:'Integrator',field:'vendor_relations',value:'Zscaler'}]
+ },historical_semantic_misclassification:{
+  excluded_claim_source_pairs:4,examples:[{entity:'Globomatik',value:'Placas Base Intel'}]
  }}}:manifest;
  const nodes=Object.fromEntries(['commandCenter','homeNav','ccMetrics','ccDebt','ccAudit','ccFreshness'].map(id=>[id,{id,innerHTML:'',textContent:'',addEventListener(){},classList:{add(){},remove(){},toggle(){}}}]));
  const document={
@@ -41,6 +46,10 @@ async function render(failDebt=false,showHygiene=false){
  assert.ok(hygiene.ccAudit.innerHTML.includes('Marketing'));
  assert.ok(hygiene.ccAudit.innerHTML.includes('no se computan como fabricantes acreditados')||
   hygiene.ccAudit.innerHTML.includes('No se computan como fabricantes acreditados'));
+ assert.ok(hygiene.ccAudit.innerHTML.includes('Relaciones con fabricantes pendientes de fuente específica'));
+ assert.ok(hygiene.ccAudit.innerHTML.includes('Zscaler'));
+ assert.ok(hygiene.ccAudit.innerHTML.includes('Verificaciones históricas reclasificadas'));
+ assert.ok(hygiene.ccAudit.innerHTML.includes('Placas Base Intel'));
  const degraded=await render(true);
  assert.ok(degraded.ccAudit.innerHTML.includes('no disponible'),'Missing debt must show a message, never an empty audit');
  assert.ok(degraded.ccDebt.innerHTML.includes('sin datos consistentes'));

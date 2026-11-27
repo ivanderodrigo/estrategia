@@ -61,7 +61,49 @@
     }
     return removed;
   }
-  const api={labelsFromPolicy,loadPolicy,nonVendor,quarantinePublicRows};
+  function atomicVendorProof(ev,field,value){
+    if(!ev||typeof ev!=='object'||ev.atomic!==true||ev.accrediting===false||ev.contradicted)return false;
+    if(['stale','rejected','contradicted'].includes(String(ev.freshness_status||'')))return false;
+    if(!['claim-specific','atomic-item'].includes(String(ev.source_binding||'').toLowerCase()))return false;
+    if(ev.field!==field||!value||normalize(ev.item_value)!==normalize(value))return false;
+    if(/HISTORICAL|ARCHIVE|REPORT_CORROBORATION|RESEARCH_SEED|LEGACY_UNRESOLVED/.test(String(ev.provenance_origin||'').toUpperCase()))return false;
+    if(!/^https?:\/\//.test(String(ev.url||'')))return false;
+    return ['source','title','date','description'].every(key=>String(ev[key]||'').trim());
+  }
+  function downgradeUnboundVendorItems(rows){
+    let downgraded=0;
+    for(const row of rows||[]){
+      if(!row||typeof row!=='object')continue;
+      for(const fieldId of FIELDS){
+        const field=row.fields?.[fieldId];
+        if(!field||!Array.isArray(field.items))continue;
+        const supported=new Set();
+        for(const item of field.items){
+          if(typeof item?.value!=='string')continue;
+          const proof=(item.evidence||[]).filter(ev=>atomicVendorProof(ev,fieldId,item.value));
+          if(proof.length){supported.add(normalize(item.value));item.evidence=proof;continue;}
+          if(item.evidence_color==='green'||item.assertion_status==='CONFIRMADO')downgraded++;
+          item.evidence=[];
+          item.confidence=Math.min(Number(item.confidence)||0,0.38);
+          item.fact_confidence=Math.min(Number(item.fact_confidence)||0,0.38);
+          item.confidence_band='low';
+          item.evidence_color='red';
+          if(item.assertion_status==='CONFIRMADO')item.assertion_status='PENDIENTE_DE_CONTRASTAR_AFIRMACION';
+          item.confidence_reason='Sin una fuente atómica vinculada a esta relación concreta.';
+        }
+        if(Array.isArray(field.evidence))field.evidence=field.evidence.filter(ev=>
+          supported.has(normalize(ev?.item_value))&&atomicVendorProof(ev,fieldId,ev.item_value));
+        if(field.items.length&&!supported.size){
+          field.confidence=Math.min(Number(field.confidence)||0,0.38);
+          field.confidence_band='low';
+          field.evidence_color='red';
+          if(field.assertion_status==='CONFIRMADO')field.assertion_status='PENDIENTE_DE_CONTRASTAR_AFIRMACION';
+        }
+      }
+    }
+    return downgraded;
+  }
+  const api={labelsFromPolicy,loadPolicy,nonVendor,quarantinePublicRows,atomicVendorProof,downgradeUnboundVendorItems};
   root.WestconVendorHygiene=api;
   if(typeof module==='object'&&module.exports)module.exports=api;
 })(typeof window==='object'?window:globalThis);

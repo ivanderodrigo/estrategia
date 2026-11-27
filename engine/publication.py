@@ -6,14 +6,12 @@ from typing import Any
 
 from .settings import SECTIONS, VERSION
 from .knowledge_provenance import accrediting_evidence, provenance_kind
-from .storage import atomic_write_many, json_bytes
+from .storage import atomic_write_many, json_bytes, read_json
 from .vendor_labels import non_vendor_reason
+from .vendor_claims import VENDOR_RELATION_FIELDS, exact_vendor_source
 
 
-_VENDOR_RELATION_FIELDS = {
-    "vendor_relations", "manufacturer_relations", "vendor_partnerships",
-    "linecard_remainder", "westcon_overlap", "competitor_vendor_overlap",
-}
+_VENDOR_RELATION_FIELDS = VENDOR_RELATION_FIELDS
 
 
 def _quarantine_public_vendor_labels(
@@ -78,6 +76,72 @@ def _quarantine_public_vendor_labels(
                 or not non_vendor_reason(ev.get("item_value"))
             ]
     return output, exceptions
+
+
+def _downgrade_unbound_public_vendor_claims(
+    rows: list[dict[str, Any]], section: str,
+) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
+    """Never display a vendor in green based on a generic/unrelated URL.
+
+    This operates on the already-copied public view. Canonical per-item
+    evidence, including rejected leads, remains in data/current.
+    """
+    exceptions: list[dict[str, str]] = []
+    if section not in {"distributors", "integrators"}:
+        return rows, exceptions
+    for row in rows:
+        for field_name in _VENDOR_RELATION_FIELDS:
+            field = (row.get("fields") or {}).get(field_name)
+            if not isinstance(field, dict):
+                continue
+            items = field.get("items") or []
+            if not isinstance(items, list):
+                continue
+            supported: set[str] = set()
+            for item in items:
+                if not isinstance(item, dict) or not isinstance(item.get("value"), str):
+                    continue
+                value = item["value"]
+                exact = [ev for ev in item.get("evidence") or []
+                         if exact_vendor_source(ev, field_name, value)]
+                if exact:
+                    supported.add(value.casefold())
+                    item["evidence"] = exact
+                    continue
+                # Explicitly mark the item as pending even if a legacy graph
+                # score or unrelated official link had granted a green pill.
+                if item.get("evidence_color") == "green" or item.get("assertion_status") == "CONFIRMADO":
+                    exceptions.append({"section": section, "entity": str(row.get("name") or ""),
+                                       "field": field_name, "value": value,
+                                       "reason": "no_atomic_item_bound_source"})
+                item["evidence"] = []
+                _downgrade_unproven_public_claim(item)
+            if isinstance(field.get("evidence"), list):
+                field["evidence"] = [
+                    ev for ev in field["evidence"]
+                    if isinstance(ev, dict)
+                    and str(ev.get("item_value") or "").casefold() in supported
+                    and exact_vendor_source(ev, field_name, str(ev.get("item_value") or ""))
+                ]
+            if items and not supported:
+                _downgrade_unproven_public_claim(field)
+    return rows, exceptions
+
+
+def _downgrade_unproven_public_claim(claim: dict[str, Any]) -> None:
+    for key in ("confidence", "fact_confidence", "interpretation_confidence"):
+        if key in claim:
+            claim[key] = min(float(claim.get(key) or 0), 0.38)
+    claim["confidence_band"] = "low"
+    claim["evidence_color"] = "red"
+    claim["evidence_level"] = "weak"
+    claim["action_risk"] = "alto"
+    if claim.get("assertion_status") == "CONFIRMADO":
+        claim["assertion_status"] = "PENDIENTE_DE_CONTRASTAR_AFIRMACION"
+    claim["confidence_reason"] = (
+        "No hay prueba atómica pública específica de esta relación entidad–fabricante; "
+        "los enlaces genéricos permanecen como pistas para investigación."
+    )
 
 
 def _evidence_key(ev: dict[str, Any]) -> str:
@@ -361,12 +425,15 @@ def public_payloads(
     rebound_meta: dict[str, int] = {}
     publication_data = dict(data)
     quarantined: list[dict[str, str]] = []
+    unbound_vendor_claims: list[dict[str, str]] = []
     for section in SECTIONS:
         registry: dict[str, dict[str, Any]] = {}
         repaired, rebound = _rebind_exact_item_evidence(data.get(section) or [])
         rebound_meta[section] = rebound
         clean_rows, exceptions = _quarantine_public_vendor_labels(repaired, section)
         quarantined.extend(exceptions)
+        clean_rows, unbound = _downgrade_unbound_public_vendor_claims(clean_rows, section)
+        unbound_vendor_claims.extend(unbound)
         publication_data[section] = clean_rows
         rows = _compact_object(clean_rows, registry)
         payload = {"version": VERSION, "section": section, "rows": rows, "evidence": registry}
@@ -397,6 +464,29 @@ def public_payloads(
         },
         "examples": quarantined[:40],
         "policy": "Sólo etiquetas genéricas; el valor y sus fuentes permanecen en la memoria interna/histórica, no se acreditan como fabricantes.",
+    }
+    meta["vendor_relation_evidence_quarantine"] = {
+        "downgraded_from_unproven": len(unbound_vendor_claims),
+        "by_section": {
+            section: sum(1 for item in unbound_vendor_claims if item["section"] == section)
+            for section in ("distributors", "integrators")
+        },
+        "examples": unbound_vendor_claims[:40],
+        "policy": "Relaciones conservadas como hipótesis; verde sólo con evidencia atómica de entidad, campo y fabricante.",
+    }
+    semantic_registry = read_json("config/current/historical_semantic_verified.json", {})
+    misclassified = [
+        claim for claim in semantic_registry.get("existing_claim_sources") or []
+        if claim.get("section") in {"distributors", "integrators"}
+        and claim.get("field") in VENDOR_RELATION_FIELDS
+        and non_vendor_reason(claim.get("value"))
+    ]
+    meta["historical_semantic_misclassification"] = {
+        "excluded_claim_source_pairs": len(misclassified),
+        "examples": [{"entity": x.get("entity"), "value": x.get("value"),
+                      "field": x.get("field"), "url": (x.get("source") or {}).get("url")}
+                     for x in misclassified[:20]],
+        "policy": "Antiguas verificaciones de categorías que no son fabricantes: se conserva la fuente histórica, nunca se acredita la relación de fabricante.",
     }
     manifest = {
         "version": VERSION,

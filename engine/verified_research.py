@@ -13,6 +13,8 @@ from typing import Any
 from .enrichment import merge_field
 from .model import canonical
 from .storage import read_json
+from .vendor_claims import VENDOR_RELATION_FIELDS
+from .vendor_labels import non_vendor_reason
 
 
 def _claim_field(field_id: str, claims: list[list[Any]]) -> dict[str, Any]:
@@ -133,6 +135,13 @@ def apply_verified_research(data: dict[str, Any]) -> dict[str, int]:
     for claim in exact_sources:
         section = str(claim.get("section") or "")
         field_id = str(claim.get("field") or "")
+        # Historic source registries can contain an individually fetched URL
+        # for a product category or menu text. Preserve the registry record,
+        # but never resurrect it as a manufacturer relationship in canonical.
+        if (section in {"distributors", "integrators"}
+                and field_id in VENDOR_RELATION_FIELDS
+                and non_vendor_reason(claim.get("value"))):
+            continue
         # The semantic registry is a separately reviewed, exact historical
         # URL/excerpt assertion. All other registries retain their narrow scope.
         semantic_fields = {

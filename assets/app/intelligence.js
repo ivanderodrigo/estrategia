@@ -65,6 +65,7 @@
       // A deployed code fix must also protect an older static JSON snapshot.
       // Historical lead panels are intentionally not modified.
       window.WestconVendorHygiene.quarantinePublicRows(state.data[section],labels);
+      window.WestconVendorHygiene.downgradeUnboundVendorItems(state.data[section]);
     }
     state.loadedSections.add(section);
     // Public historical clues and deeper Git-history clues are separate,
