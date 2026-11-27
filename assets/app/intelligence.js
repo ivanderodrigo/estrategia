@@ -43,6 +43,7 @@
     market_players:'analyst',analyst_basis:'analyst',recent_signals:'news',iberia_context:'news',layers:'technology',vendors:'technology'
   };
   const PUBLIC_PROCUREMENT_CRITERIA_FIELDS=new Set(['notice_id','request_or_need','technology_signals','identified_vendors','identified_integrators','known_architectures','technology_domains','estimated_amount','milestone_date','procurement_stage','source_portal','cpv_codes','evidenced_needs','opportunity_area']);
+  let vendorHygienePolicyPromise=null;
   function hydrateEvidence(obj, registry){
     if(Array.isArray(obj)) return obj.map(x=>hydrateEvidence(x,registry));
     if(!obj || typeof obj!=='object') return obj;
@@ -57,7 +58,15 @@
     if(state.loadedSections.has(section)) return;
     const info=state.manifest?.sections?.[section]; if(!info) throw new Error(`Sección pública no disponible: ${section}`);
     const res=await fetch(info.file,{cache:'no-store'}); if(!res.ok) throw new Error(`No se pudo cargar ${info.file} (${res.status})`);
-    const payload=await res.json(); state.data[section]=hydrateEvidence(payload.rows||[],payload.evidence||{}); state.loadedSections.add(section);
+    const payload=await res.json(); state.data[section]=hydrateEvidence(payload.rows||[],payload.evidence||{});
+    if((section==='distributors'||section==='integrators')&&window.WestconVendorHygiene){
+      vendorHygienePolicyPromise ||= window.WestconVendorHygiene.loadPolicy(fetch);
+      const labels=await vendorHygienePolicyPromise;
+      // A deployed code fix must also protect an older static JSON snapshot.
+      // Historical lead panels are intentionally not modified.
+      window.WestconVendorHygiene.quarantinePublicRows(state.data[section],labels);
+    }
+    state.loadedSections.add(section);
     // Public historical clues and deeper Git-history clues are separate,
     // explicitly NON-accrediting layers. Merge only their item-bound links.
     try {
