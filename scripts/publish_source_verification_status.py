@@ -15,6 +15,71 @@ SCHEDULED_NAMES = (
     "Westcon Source Verification",
 )
 
+BROKEN_SOURCE_STATUSES = frozenset({"http_404", "http_410"})
+
+
+def live_claim_review(live):
+    """Surface individually traceable source warnings without claiming falsity.
+
+    HTTP failures and missing literal terms are triage signals only. In particular,
+    dynamic pages and a vendor's first-party pages can omit a text string while
+    still supporting the assertion in another representation or document.
+    """
+    sections = {}
+    example_buckets = {}
+    seen = set()
+    unique_broken_urls = set()
+    for row in live.get("items") or []:
+        if not isinstance(row, dict):
+            continue
+        section = str(row.get("section") or "unknown")
+        status = str(row.get("review_status") or "unknown")
+        counts = sections.setdefault(section, {
+            "reviewed": 0, "content_readable": 0, "value_absent": 0,
+            "value_only": 0, "joint_mention_unverified": 0,
+            "unreadable_or_blocked": 0, "broken_url_references": 0,
+        })
+        counts["reviewed"] += 1
+        if status.startswith("page_"):
+            counts["content_readable"] += 1
+            category = {
+                "page_does_not_mention_value": "value_absent",
+                "page_mentions_value_only": "value_only",
+                "page_mentions_entity_and_value_needs_semantic_review": "joint_mention_unverified",
+            }.get(status)
+            if category:
+                counts[category] += 1
+        else:
+            counts["unreadable_or_blocked"] += 1
+        if status in BROKEN_SOURCE_STATUSES:
+            counts["broken_url_references"] += 1
+            unique_broken_urls.add(str(row.get("url") or ""))
+        # Illustrations stay small, section-diverse and attributable to an
+        # exact published claim. The complete inspection remains in the Actions
+        # artifact; these examples must never be described as an exhaustive list.
+        if status in BROKEN_SOURCE_STATUSES or status == "page_does_not_mention_value":
+            priority = status in BROKEN_SOURCE_STATUSES
+            key = (section, priority, str(row.get("url") or ""))
+            bucket = example_buckets.setdefault((section, priority), [])
+            if key not in seen and len(bucket) < 2:
+                seen.add(key)
+                bucket.append({
+                    key: str(row.get(key) or "")[:300]
+                    for key in ("section", "entity", "field", "value", "url", "review_status")
+                })
+    # Prioritise broken links, with a small fair sample from every section.
+    selected = []
+    for priority in (True, False):
+        for section in sorted(sections):
+            selected.extend(example_buckets.get((section, priority), []))
+    return {
+        "by_section": sections,
+        "broken_unique_urls": len(unique_broken_urls),
+        "review_examples": selected[:28],
+        "examples_are_exhaustive": False,
+        "semantic_accreditation_from_live_review": False,
+    }
+
 
 def scheduled_health(runs):
     """Summarize actual scheduled Actions runs, never infer success from cron."""
@@ -47,6 +112,7 @@ def build(binding, live, manifest, *, checked_at, run_url, workflow_runs=None):
     review_health="NO_CONTENT_EXTRACTED" if not readable else (
         "PARTIAL_CONTENT" if readable<sampled else "CONTENT_READABLE"
     )
+    review = live_claim_review(live)
     return {
         "generated_at": checked_at,
         "snapshot_generated_at": manifest.get("generated_at"),
@@ -62,6 +128,7 @@ def build(binding, live, manifest, *, checked_at, run_url, workflow_runs=None):
         "live_content_accessible": readable,
         "live_collection_health": review_health,
         "live_review_statuses": dict(statuses),
+        "live_claim_review": review,
         "by_section": sections,
         "scheduled_workflows": scheduled_health(workflow_runs),
         "warning": "HTTP access and text co-occurrence do not validate a factual relationship. Consult claim-specific proof.",

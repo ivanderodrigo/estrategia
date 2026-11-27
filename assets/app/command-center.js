@@ -63,6 +63,33 @@ Promise.allSettled([getJson('data/public/manifest.json'),getJson('data/public/de
  audit.innerHTML=window.WestconAudit?.render(m,d,integrity)||
   '<p class="cc-audit-warning">La herramienta de auditoría no se ha cargado. Consulta data/public/debt_overview.json.</p>';
  if(sourceCheck?.status==='REVIEW_QUEUE_NOT_FACT_ACCREDITATION'){
+  const live=sourceCheck.live_claim_review||{};
+  const bySection=Object.entries(live.by_section||{});
+  if(bySection.length){
+   const labels={manufacturers:'Fabricantes',distributors:'Mayoristas',integrators:'Integradores',
+    clients_public:'Clientes públicos',clients_private:'Clientes privados',trends:'Tendencias',architectures:'Arquitecturas'};
+   const rows=bySection.map(([key,item])=>'<li><strong>'+clean(labels[key]||key)+'</strong>: '+
+    fmt(item.reviewed)+' referencias examinadas · '+fmt(item.value_absent)+' sin mención literal del valor · '+
+    fmt(item.unreadable_or_blocked)+' sin contenido legible · '+
+    fmt(item.broken_url_references)+' referencias con URL 404/410</li>').join('');
+   const safeExternalUrl=value=>{try{const url=new URL(String(value||''));
+    return ['https:','http:'].includes(url.protocol)&&!url.username&&!url.password?url.href:null;
+   }catch(_error){return null;}};
+   const examples=(live.review_examples||[]).slice(0,12).map(item=>{
+    const url=safeExternalUrl(item.url);
+    const link=url?' · <a href="'+clean(url)+'" target="_blank" rel="noopener noreferrer">Examinar fuente</a>':'';
+    const issue=['http_404','http_410'].includes(item.review_status)?'Enlace roto':'Valor no localizado en el texto';
+    return '<li>'+clean(labels[item.section]||item.section)+' · <strong>'+clean(item.entity)+'</strong> · '+
+      clean(item.field)+': '+clean(item.value)+' · '+clean(issue)+link+'</li>';
+   }).join('');
+   audit.innerHTML+='<section class="cc-audit-schedule"><h3>Discrepancias de fuentes examinadas</h3>'+
+    '<p>Inspección de '+fmt(sourceCheck.live_sample_reviewed)+' referencias del snapshot indicado. '+
+    'Se han detectado '+fmt(live.broken_unique_urls)+' URL distintas con HTTP 404/410. '+
+    'La ausencia de una mención literal no demuestra que un dato sea falso, pero exige revisar su fuente antes de considerarlo corroborado.</p>'+
+    '<ul>'+rows+'</ul>'+
+    (examples?'<p>Ejemplos para revisión individual (selección, no lista completa):</p><ul>'+examples+'</ul>':'')+
+    '</section>';
+  }
   const health=sourceCheck.scheduled_workflows||{};
   const entries=Object.entries(health);
   const statuses=entries.map(([name,item])=>{

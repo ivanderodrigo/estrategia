@@ -54,5 +54,31 @@ class SourceVerificationTelemetryTests(unittest.TestCase):
         self.assertEqual(result["live_content_accessible"],0)
         self.assertFalse(result["source_content_semantically_verified"])
 
+    def test_live_discrepancies_are_item_specific_and_never_factual_verdicts(self):
+        live={"sampled":5,"total_references":100,"items":[
+            {"section":"manufacturers","entity":"Sonar","field":"capabilities",
+             "value":"Cloud","url":"https://sonar.example/cloud","review_status":"page_does_not_mention_value"},
+            {"section":"manufacturers","entity":"Sonar","field":"capabilities",
+             "value":"SAST","url":"https://sonar.example/sast","review_status":"page_mentions_entity_and_value_needs_semantic_review"},
+            {"section":"distributors","entity":"Mayorista","field":"vendor_relations",
+             "value":"Cisco","url":"https://dist.example/old","review_status":"http_404"},
+            {"section":"distributors","entity":"Mayorista","field":"vendor_relations",
+             "value":"Arista","url":"https://dist.example/old","review_status":"http_404"},
+            {"section":"integrators","entity":"Integrador","field":"services",
+             "value":"SOC","url":"https://integrator.example/soc","review_status":"http_202_insufficient_content"},
+        ]}
+        report=build({"sections":{}},live,{"generated_at":"2026-11-27T11:00:00Z"},
+                     checked_at="2026-11-27T12:00:00Z",run_url="")
+        review=report["live_claim_review"]
+        self.assertEqual(review["broken_unique_urls"],1)
+        self.assertEqual(review["by_section"]["distributors"]["broken_url_references"],2)
+        self.assertEqual(review["by_section"]["manufacturers"]["value_absent"],1)
+        self.assertEqual(review["by_section"]["integrators"]["unreadable_or_blocked"],1)
+        self.assertFalse(review["semantic_accreditation_from_live_review"])
+        self.assertFalse(review["examples_are_exhaustive"])
+        self.assertTrue(any(x["entity"]=="Mayorista" and x["value"]=="Cisco"
+                            for x in review["review_examples"]))
+        self.assertTrue(any(x["entity"]=="Sonar" for x in review["review_examples"]))
+
 if __name__=="__main__":
     unittest.main()
