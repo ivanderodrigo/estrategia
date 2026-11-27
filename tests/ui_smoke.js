@@ -36,6 +36,8 @@ if (js.includes('data-col-toggle data-view=')) throw new Error('column chooser c
 if (!js.includes('data-view="${esc(view)}" data-col-toggle="${esc(c.id)}"')) throw new Error('column chooser does not expose the selected column id');
 
 const html = fs.readFileSync('index.html', 'utf8');
+if (!html.includes('assets/app/intelligence.js?v=20261127-gap-target-r3'))
+  throw new Error('the corrected status script must bust the published cache');
 if (!html.includes('assets/app/vendor-hygiene.js?v=20261127-v2'))
   throw new Error('published app does not load vendor hygiene guard');
 if (!js.includes('WestconVendorHygiene.quarantinePublicRows'))
