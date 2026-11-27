@@ -996,6 +996,86 @@ def _subject_value_match(
     return False
 
 
+_COMPOSITE_SERVICE_RELATIONS = {
+    "integracion de soluciones": (
+        r"(?:integra[a-z]*|integrac[a-z]*|integrat[a-z]*|"
+        r"implement[a-z]*|implant[a-z]*|deploy[a-z]*|"
+        r"desplieg[a-z]*|despleg[a-z]*)"
+    ),
+    "suministro reventa": (
+        r"(?:resell[a-z]*|resal[a-z]*|revend[a-z]*|"
+        r"distribu[a-z]*|suministr[a-z]*|venta[s]?|"
+        r"sales|suppl[a-z]*)"
+    ),
+    "servicios gestionados": (
+        r"(?:managed|managing|manage[a-z]*|management|"
+        r"gestion[a-z]*|administra[a-z]*)"
+    ),
+}
+
+
+def _explicit_composite_service_quote(
+    entity: str,
+    value: Any,
+    document: Document,
+    *,
+    field_id: str,
+) -> str:
+    """Find literal evidence for an old *relationship*, not its template label.
+
+    E.g. a historical value "Integración de soluciones · Check Point" may be
+    supported by "Acme implements Check Point solutions" on Acme's own page.
+    A standalone vendor logo or a vendor appearing in the same catalogue is
+    insufficient. This applies only to known historical service templates.
+    """
+    if field_id != "services":
+        return ""
+
+    label = canonical(value)
+    relation = ""
+    vendor = ""
+    for prefix in _COMPOSITE_SERVICE_RELATIONS:
+        if label.startswith(prefix + " "):
+            relation, vendor = prefix, label[len(prefix) + 1:]
+            break
+    if not relation or len(vendor) < 3 or len(vendor) > 90:
+        return ""
+
+    cue = _COMPOSITE_SERVICE_RELATIONS[relation]
+    vendor_boundary = rf"(?<![a-z0-9]){re.escape(vendor)}(?![a-z0-9])"
+    # The assertion must be local (five words at most) and may be expressed
+    # in either order. No proximity across separate sentences or list lines.
+    pattern = re.compile(
+        rf"\b{cue}\b(?: [a-z0-9]+){{0,5}} {vendor_boundary}"
+        rf"|{vendor_boundary}(?: [a-z0-9]+){{0,5}} \b{cue}\b"
+    )
+    entity_owned = _host_entity_owned(document.url, entity)
+    entity_key = canonical(entity)
+    anchors = [token for token in _entity_anchor_tokens(entity) if len(token) >= 5]
+    for raw_segment in re.split(r"(?<=[.!?])\s+|[\n;]+", document.text):
+        segment = canonical(raw_segment)
+        if not vendor in segment:
+            continue
+        for match in pattern.finditer(segment):
+            before = segment[max(0, match.start() - 55):match.start()]
+            phrase = segment[match.start():match.end()]
+            # Explicit denial in the same local phrase is not affirmative
+            # evidence; this also handles "no longer integrates".
+            if re.search(r"\b(?:no|not|never|sin|without|does not|do not|dont)\b(?: [a-z0-9]+){0,3}$", before.strip()):
+                continue
+            if re.search(r"\b(?:no|not|never|sin|without)\b", phrase):
+                continue
+            if not entity_owned:
+                local_context = segment[max(0, match.start() - 220):min(len(segment), match.end() + 220)]
+                if not (
+                    (entity_key and _target_match(entity_key, local_context))
+                    or any(_target_match(anchor, local_context) for anchor in anchors[:3])
+                ):
+                    continue
+            return phrase
+    return ""
+
+
 def _exact_historical_candidate(
     document: Document,
     wanted: list[Any],
@@ -1003,15 +1083,21 @@ def _exact_historical_candidate(
     entity: str,
     field_id: str,
 ) -> Candidate | None:
-    matched = [
-        value for value in wanted
-        if _subject_value_match(
-            entity,
-            value,
-            document,
-            field_id=field_id,
+    matched: list[Any] = []
+    matched_terms: list[str] = []
+    for value in wanted:
+        # Original descriptions often label a relationship with a fixed
+        # template, e.g. "Integración de soluciones · Check Point". The exact
+        # template need not occur on the live page; the underlying explicit
+        # integration/resale assertion must occur nearby and be entity-bound.
+        contextual_quote = _explicit_composite_service_quote(
+            entity, value, document, field_id=field_id,
         )
-    ]
+        if contextual_quote or _subject_value_match(
+            entity, value, document, field_id=field_id,
+        ):
+            matched.append(value)
+            matched_terms.append(contextual_quote or str(value))
     if not matched:
         return None
     labels = [str(value) for value in matched]
@@ -1019,8 +1105,8 @@ def _exact_historical_candidate(
         tuple(labels),
         "fact",
         0.90 if official else 0.76,
-        evidence_snippet(document.text, labels),
-        tuple(labels),
+        evidence_snippet(document.text, matched_terms),
+        tuple(matched_terms),
     )
 
 
