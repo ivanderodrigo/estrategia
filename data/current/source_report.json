@@ -2,8 +2,8 @@
   "version": "4.3.0",
   "sources": 3533,
   "domains_unique": 550,
-  "official_evidences": 5257,
-  "traceable_fields": 7742,
+  "official_evidences": 5510,
+  "traceable_fields": 8355,
   "provenance": {
     "policy": "typed-provenance-non-destructive",
     "types": {
@@ -13,7 +13,7 @@
       "WESTCON_FIRST_PARTY_CURRENT": 223,
       "RESEARCH_SEED": 190,
       "LEGACY_UNRESOLVED": 173,
-      "PUBLIC_PRIMARY": 30867,
+      "PUBLIC_PRIMARY": 32279,
       "PUBLIC_SECONDARY": 7914,
       "PUBLIC_ANALYST": 542
     },
@@ -38,30 +38,30 @@
     "model_revision": "r6-public-plus-current-westcon-first-party",
     "policy": "Hechos externos: fuente pública actual. Hechos propiedad de Westcon sobre portfolio/capacidades: documentación o regla Westcon vigente y atómica. Histórico: pista no acreditativa. Conclusiones internas/derivadas: inputs sustentados + regla trazable.",
     "support_rule": "CURRENT_PUBLIC_OR_CURRENT_WESTCON_OWNED_OR_TRACEABLE_DERIVATION",
-    "targets_total": 19527,
-    "targets_direct_supported": 12134,
+    "targets_total": 20190,
+    "targets_direct_supported": 12835,
     "targets_supported_westcon_only": 244,
-    "targets_supported_public_only": 11792,
+    "targets_supported_public_only": 12493,
     "targets_supported_westcon_and_public": 98,
     "claim_classes": {
-      "EXTERNAL_FACT": 17325,
+      "EXTERNAL_FACT": 17917,
       "DERIVED_FACT": 1534,
-      "INTERNAL_CLASSIFICATION": 668
+      "INTERNAL_CLASSIFICATION": 739
     },
-    "support_pending_occurrences": 7393,
-    "support_pending_unique_claims": 7207,
-    "duplicate_pending_occurrences": 186,
-    "external_search_required_occurrences": 5338,
-    "external_search_required_unique": 5338,
-    "derived_support_required_occurrences": 2055,
-    "derived_support_required_unique": 1869,
+    "support_pending_occurrences": 7355,
+    "support_pending_unique_claims": 7185,
+    "duplicate_pending_occurrences": 170,
+    "external_search_required_occurrences": 5336,
+    "external_search_required_unique": 5336,
+    "derived_support_required_occurrences": 2019,
+    "derived_support_required_unique": 1849,
     "historical_total": 258,
     "historical_supported_westcon": 111,
     "historical_supported_public": 37,
     "historical_supported_westcon_and_public": 25,
     "historical_search_required": 85,
-    "targets_supported": 12134,
-    "targets_search_required": 7393,
+    "targets_supported": 12835,
+    "targets_search_required": 7355,
     "unsupported_targets": [
       {
         "section": "manufacturers",
@@ -59677,42 +59677,10 @@
       },
       {
         "section": "clients_public",
-        "entity": "Dirección Económico-Financiera de ENAIRE",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.",
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -59773,22 +59741,6 @@
       },
       {
         "section": "clients_public",
-        "entity": "Institut de Diagnòstic per la Imatge (IDI)",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "AI / Data",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Junta de Gobierno del Ayuntamiento de Ciudad Real",
         "field": "westcon_area",
         "level": "item",
@@ -59808,7 +59760,7 @@
         "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
         "field": "westcon_area",
         "level": "item",
-        "value": "Observability",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -59905,38 +59857,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Identity & Access",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Dirección Económico-Financiera de ENAIRE",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -60029,38 +59949,6 @@
       },
       {
         "section": "clients_public",
-        "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "AI / Data",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Parc Tecnocampus Mataró",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Parc Tecnocampus Mataró",
         "field": "westcon_area",
         "level": "item",
@@ -60128,7 +60016,7 @@
         "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
         "field": "westcon_area",
         "level": "item",
-        "value": "Data Center",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -60174,38 +60062,6 @@
       {
         "section": "clients_public",
         "entity": "Dirección Gerencia de Mutualia, Mutua Colaboradora con la Seguridad Social nº 02",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Dirección Gerencia de Mutualia, Mutua Colaboradora con la Seguridad Social nº 02",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "AI / Data",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Junta de Gobierno Local del Ayuntamiento de Jerez",
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
@@ -60573,74 +60429,10 @@
       },
       {
         "section": "clients_public",
-        "entity": "Alcaldía del Ayuntamiento de Langreo",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Infraestruturas de Portugal, SA",
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Oficina Española de Patentes y Marcas, O.A.",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Oficina Española de Patentes y Marcas, O.A.",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Dirección de la Fundación Biodiversidad",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -60673,22 +60465,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Identity & Access",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Autoridad Portuaria de Sevilla",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -60797,42 +60573,10 @@
       },
       {
         "section": "clients_public",
-        "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Infraestruturas de Portugal, SA",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1",
         "field": "westcon_area",
         "level": "item",
-        "value": "Cloud",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -60877,7 +60621,55 @@
       },
       {
         "section": "clients_public",
-        "entity": "Município de Lisboa",
+        "entity": "Instituto de Vivienda, Infraestructura y Equipamiento de la Defensa",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Instituto de Vivienda, Infraestructura y Equipamiento de la Defensa",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Data Center",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Instituto de Vivienda, Infraestructura y Equipamiento de la Defensa",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S.A.",
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
@@ -60925,74 +60717,10 @@
       },
       {
         "section": "clients_public",
-        "entity": "DIPUTACIÓN DE BARCELONA",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Corporació de Salut del Maresme i la Selva",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Presidencia de la Agencia Estatal de Meteorología",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Presidencia de la Agencia Estatal de Meteorología",
         "field": "westcon_area",
         "level": "item",
         "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Consejo de Administración de la Sociedad de Gestión de Activos procedentes de la Reestructuración Bancaria, S.A",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -61021,10 +60749,10 @@
       },
       {
         "section": "clients_public",
-        "entity": "Autoridade Nacional de Segurança Rodoviária",
+        "entity": "Consejo de Administración de la Sociedad de Gestión de Activos procedentes de la Reestructuración Bancaria, S.A",
         "field": "westcon_area",
         "level": "item",
-        "value": "Cloud",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -61056,7 +60784,7 @@
         "entity": "Autoridade Nacional de Segurança Rodoviária",
         "field": "westcon_area",
         "level": "item",
-        "value": "AI / Data",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -61181,6 +60909,22 @@
       },
       {
         "section": "clients_public",
+        "entity": "Gerencia umivale Activa, Mutua Colaboradora con la Seguridad Social número 3",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Consejería de Educación, Formación Profesional, Actividad Física y Deportes de Canarias",
         "field": "westcon_area",
         "level": "item",
@@ -61217,22 +60961,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Identity & Access",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Comunidade Intermunicipal da Região de Coimbra",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -61297,22 +61025,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -61453,42 +61165,10 @@
       },
       {
         "section": "clients_public",
-        "entity": "Salut Sant Joan de Reus - Baix Camp",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Junta de Gobierno del Ayuntamiento de Majadahonda",
         "field": "westcon_area",
         "level": "item",
         "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Junta de Gobierno del Ayuntamiento de Majadahonda",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -61534,22 +61214,6 @@
       {
         "section": "clients_public",
         "entity": "Presidencia de la Diputación Provincial de A Coruña",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
         "field": "westcon_area",
         "level": "item",
         "value": "Data Center",
@@ -61629,7 +61293,7 @@
       },
       {
         "section": "clients_public",
-        "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
+        "entity": "Junta de Gobierno del Ayuntamiento de Alzira",
         "field": "westcon_area",
         "level": "item",
         "value": "Cloud",
@@ -61648,7 +61312,7 @@
         "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
         "field": "westcon_area",
         "level": "item",
-        "value": "Data Center",
+        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -61729,22 +61393,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -61997,22 +61645,6 @@
       },
       {
         "section": "clients_public",
-        "entity": "Município de Barcelos",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Dirección de Asuntos Económicos del Ejército",
         "field": "westcon_area",
         "level": "item",
@@ -62157,6 +61789,22 @@
       },
       {
         "section": "clients_public",
+        "entity": "Junta de Gobierno de la Diputación Provincial de Segovia",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Universidade de Coimbra",
         "field": "westcon_area",
         "level": "item",
@@ -62193,54 +61841,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Junta de Gobierno del Ayuntamiento de Torrent",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -62381,42 +61981,10 @@
       },
       {
         "section": "clients_public",
-        "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Dirección Gerencia de Mutualia, Mutua Colaboradora con la Seguridad Social nº 02",
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Dirección Gerencia de Mutualia, Mutua Colaboradora con la Seguridad Social nº 02",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "AI / Data",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -62461,6 +62029,22 @@
       },
       {
         "section": "clients_public",
+        "entity": "Junta de Gobierno Local del Ayuntamiento de Palencia",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Agencia Catalana de Turismo",
         "field": "westcon_area",
         "level": "item",
@@ -62525,10 +62109,10 @@
       },
       {
         "section": "clients_public",
-        "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
+        "entity": "Servei Meteorològic de Catalunya",
         "field": "westcon_area",
         "level": "item",
-        "value": "Cybersecurity",
+        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -62544,7 +62128,7 @@
         "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
         "field": "westcon_area",
         "level": "item",
-        "value": "Cloud",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -62561,6 +62145,22 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Data Center",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Consejería de Presidencia, Reto Demográfico, Igualdad y Turismo del Principado de Asturias",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "AI / Data",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -62701,38 +62301,6 @@
       },
       {
         "section": "clients_public",
-        "entity": "Alcaldía del Ayuntamiento de Ronda",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Fundació Privada Institut de Recerca de l'Hospital de la Santa Creu i Sant Pau",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Fundació Privada Institut de Recerca de l'Hospital de la Santa Creu i Sant Pau",
         "field": "westcon_area",
         "level": "item",
@@ -62785,22 +62353,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Identity & Access",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Secretaría General de la Consejería de Hacienda, Administraciones Públicas y Transformación Digital de la Junta de Comunidades de Castilla-La Mancha",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -63036,39 +62588,7 @@
         "entity": "Entidade de Serviços Partilhados da Administração Pública, IP",
         "field": "westcon_area",
         "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Entidade de Serviços Partilhados da Administração Pública, IP",
-        "field": "westcon_area",
-        "level": "item",
         "value": "AI / Data",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Pleno del Ayuntamiento de Medina del Campo",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -63084,7 +62604,39 @@
         "entity": "Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1",
         "field": "westcon_area",
         "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Organismo Autónomo Informática del Ayuntamiento de Madrid",
+        "field": "westcon_area",
+        "level": "item",
         "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Organismo Autónomo Informática del Ayuntamiento de Madrid",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "AI / Data",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -63542,22 +63094,6 @@
       {
         "section": "clients_public",
         "entity": "Município de Lagos",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Município de Lagos",
         "field": "westcon_fit",
         "level": "item",
         "value": "Certes Networks",
@@ -63908,7 +63444,23 @@
         "entity": "Presidencia del Consejo de Administración de PROCESA, Sociedad de Desarrollo de Ceuta S.A.",
         "field": "westcon_area",
         "level": "item",
-        "value": "AI / Data",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Organismo Autónomo Informática del Ayuntamiento de Madrid",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -64161,22 +63713,6 @@
       },
       {
         "section": "clients_public",
-        "entity": "Dirección General de Mutua Montañesa",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "AI / Data",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Fundación Donostia International Physics Center - Fundación Donostia International Physics Center",
         "field": "westcon_area",
         "level": "item",
@@ -64197,22 +63733,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Estado-Maior do Exército",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -64498,22 +64018,6 @@
       {
         "section": "clients_public",
         "entity": "Dirección Económico-Financiera de ENAIRE",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Dirección Económico-Financiera de ENAIRE",
         "field": "westcon_fit",
         "level": "item",
         "value": "CrowdStrike",
@@ -64676,7 +64180,7 @@
         "entity": "Gerencia umivale Activa, Mutua Colaboradora con la Seguridad Social número 3",
         "field": "westcon_area",
         "level": "item",
-        "value": "Cloud",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -64821,22 +64325,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Presidente de la Autoridad Portuaria de Santander",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -65249,22 +64737,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Serviços Partilhados do Ministério da Saúde, EPE",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -66690,54 +66162,6 @@
         "entity": "Comissão do Mercado de Valores Mobiliários",
         "field": "westcon_area",
         "level": "item",
-        "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Comissão do Mercado de Valores Mobiliários",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Comissão do Mercado de Valores Mobiliários",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Secretaría General de la Consejería de Hacienda, Administraciones Públicas y Transformación Digital de la Junta de Comunidades de Castilla-La Mancha",
-        "field": "westcon_area",
-        "level": "item",
         "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
@@ -67023,22 +66447,6 @@
       },
       {
         "section": "clients_public",
-        "entity": "Unidade Local de Saúde do Alentejo Central, EPE",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "MUNICIPIO DE ARGANIL",
         "field": "westcon_area",
         "level": "item",
@@ -67075,6 +66483,22 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Gerencia de MAZ Mútua de Accidentes de Trabajo y Enfermedades Profesionales de la Seguridad Social nº 11",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -67199,10 +66623,58 @@
       },
       {
         "section": "clients_public",
+        "entity": "Consell Executiu del Consell Insular d'Eivissa",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Consell Executiu del Consell Insular d'Eivissa",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Presidencia del Consejo de Administración de la Autoridad Portuaria de Barcelona (PORT DE BARCELONA)",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Servicios de la Comarca de Pamplona , S.A.",
         "field": "westcon_area",
         "level": "item",
-        "value": "UC / CX",
+        "value": "Identity & Access",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -67631,6 +67103,22 @@
       },
       {
         "section": "clients_public",
+        "entity": "Junta de Gobierno del Ayuntamiento de Rivas Vaciamadrid",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Servicio de Salud de las Illes Balears",
         "field": "westcon_area",
         "level": "item",
@@ -68002,7 +67490,7 @@
         "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
         "field": "westcon_area",
         "level": "item",
-        "value": "UC / CX",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -68179,22 +67667,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Ayuntamiento de Reus",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -70170,7 +69642,7 @@
         "entity": "IZFE - Sociedad Foral de Servicios Informáticos - IZFE - Sociedad Foral de Servicios Informáticos",
         "field": "westcon_area",
         "level": "item",
-        "value": "Data Center",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -70299,6 +69771,22 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Data Center",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Ente Público de Radiotelevisión de las Illes Balears",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -70726,20 +70214,6 @@
         "entity": "Junta de Gobierno Local del Ayuntamiento de Fuenlabrada",
         "field": "technology_signals",
         "level": "item",
-        "value": "Cloud",
-        "claim_class": "EXTERNAL_FACT",
-        "research_mode": "public-source-verification",
-        "derivation_rule": "direct support required",
-        "dependency_fields": [],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Junta de Gobierno Local del Ayuntamiento de Fuenlabrada",
-        "field": "technology_signals",
-        "level": "item",
         "value": "colaboración",
         "claim_class": "EXTERNAL_FACT",
         "research_mode": "public-source-verification",
@@ -70914,22 +70388,6 @@
         "entity": "Junta de Gobierno Local del Ayuntamiento de Fuenlabrada",
         "field": "westcon_area",
         "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Junta de Gobierno Local del Ayuntamiento de Fuenlabrada",
-        "field": "westcon_area",
-        "level": "item",
         "value": "UC / CX",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
@@ -71059,22 +70517,6 @@
         "dependency_fields": [],
         "support_basis": "SEARCH_REQUIRED",
         "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Serviços Partilhados do Ministério da Saúde, EPE",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Observability",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
         "preserve_value": true
       },
       {
@@ -72272,22 +71714,6 @@
       {
         "section": "clients_public",
         "entity": "Ente Público de Radiotelevisión de las Illes Balears",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Ente Público de Radiotelevisión de las Illes Balears",
         "field": "westcon_fit",
         "level": "item",
         "value": "Cisco",
@@ -72502,6 +71928,54 @@
         "claim_class": "DERIVED_FACT",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "client signals/needs ∩ supported Westcon portfolio/capabilities",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Dirección General de la Sociedad de Proyectos para la Transformación Digital, SAU",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Consejería de Presidencia, Justicia, Seguridad y Simplificación Administrativa de la Comunidad Autónoma de Cantabria",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "The European Joint Undertaking for ITER and the Development of Fusion Energy ('Fusion for Energy')",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
         "dependency_fields": [
           "technology_signals"
         ],
@@ -73026,7 +72500,7 @@
         "entity": "IZFE - Sociedad Foral de Servicios Informáticos - IZFE - Sociedad Foral de Servicios Informáticos",
         "field": "westcon_area",
         "level": "item",
-        "value": "Data Center",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -74018,7 +73492,7 @@
         "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
         "field": "westcon_area",
         "level": "item",
-        "value": "Networking",
+        "value": "Data Center",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -74034,7 +73508,7 @@
         "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
         "field": "westcon_area",
         "level": "item",
-        "value": "Data Center",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -74767,6 +74241,22 @@
       },
       {
         "section": "clients_public",
+        "entity": "Dirección General de Infraestructuras Educativas",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Data Center",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
         "field": "westcon_area",
         "level": "item",
@@ -74803,22 +74293,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Secretaría General de la Consejería de Hacienda, Administraciones Públicas y Transformación Digital de la Junta de Comunidades de Castilla-La Mancha",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -75183,6 +74657,22 @@
       },
       {
         "section": "clients_public",
+        "entity": "Dirección Gerencia de Mutua Balear, Mutua de Accidentes de Trabajo y Enfermedades Profesionales de la Seguridad Social Nº 183",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "SERVICIO ANDALUZ DE SALUD. SERVICIOS CENTRALES",
         "field": "technology_signals",
         "level": "item",
@@ -75215,20 +74705,6 @@
         "field": "technology_signals",
         "level": "item",
         "value": "Data center",
-        "claim_class": "EXTERNAL_FACT",
-        "research_mode": "public-source-verification",
-        "derivation_rule": "direct support required",
-        "dependency_fields": [],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-        "field": "technology_signals",
-        "level": "item",
-        "value": "servidores",
         "claim_class": "EXTERNAL_FACT",
         "research_mode": "public-source-verification",
         "derivation_rule": "direct support required",
@@ -75278,22 +74754,6 @@
         "claim_class": "DERIVED_FACT",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "client signals/needs ∩ supported Westcon portfolio/capabilities",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
         "dependency_fields": [
           "technology_signals"
         ],
@@ -76026,22 +75486,6 @@
       {
         "section": "clients_public",
         "entity": "Autoritat del Transport Metropolità, Consorci per a la coordinació del sistema metropolità del transport públic de l'àrea de Barcelona",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Autoritat del Transport Metropolità, Consorci per a la coordinació del sistema metropolità del transport públic de l'àrea de Barcelona",
         "field": "westcon_fit",
         "level": "item",
         "value": "AudioCodes",
@@ -76538,22 +75982,6 @@
       {
         "section": "clients_public",
         "entity": "Gerencia de Infraestructures i Serveis de Telecom. I Certificació S.A.U.",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Gerencia de Infraestructures i Serveis de Telecom. I Certificació S.A.U.",
         "field": "westcon_fit",
         "level": "item",
         "value": "Cisco",
@@ -76588,7 +76016,7 @@
         "entity": "Autoritat del Transport Metropolità, Consorci per a la coordinació del sistema metropolità del transport públic de l'àrea de Barcelona",
         "field": "westcon_area",
         "level": "item",
-        "value": "Cybersecurity",
+        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -77868,22 +77296,6 @@
         "entity": "Autoridad Portuaria de Cartagena",
         "field": "westcon_area",
         "level": "item",
-        "value": "AI / Data",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Autoridad Portuaria de Cartagena",
-        "field": "westcon_area",
-        "level": "item",
         "value": "Networking",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
@@ -77901,22 +77313,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Agência para a Reforma Tecnológica do Estado, IP",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Observability",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -176929,42 +176325,10 @@
       },
       {
         "section": "clients_public",
-        "entity": "Dirección Económico-Financiera de ENAIRE",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.",
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Presidencia del Consejo de Administración de la Sociedad Estatal de Infraestructuras del Transporte Terrestre, S.M.E., S.A.",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -177025,22 +176389,6 @@
       },
       {
         "section": "clients_public",
-        "entity": "Institut de Diagnòstic per la Imatge (IDI)",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "AI / Data",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Junta de Gobierno del Ayuntamiento de Ciudad Real",
         "field": "westcon_area",
         "level": "item",
@@ -177060,7 +176408,7 @@
         "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
         "field": "westcon_area",
         "level": "item",
-        "value": "Observability",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -177157,22 +176505,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Identity & Access",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -177265,38 +176597,6 @@
       },
       {
         "section": "clients_public",
-        "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "AI / Data",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Parc Tecnocampus Mataró",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Parc Tecnocampus Mataró",
         "field": "westcon_area",
         "level": "item",
@@ -177361,22 +176661,6 @@
       },
       {
         "section": "clients_public",
-        "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Salut Sant Joan de Reus - Baix Camp",
         "field": "westcon_area",
         "level": "item",
@@ -177410,38 +176694,6 @@
       {
         "section": "clients_public",
         "entity": "Dirección Gerencia de Mutualia, Mutua Colaboradora con la Seguridad Social nº 02",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Dirección Gerencia de Mutualia, Mutua Colaboradora con la Seguridad Social nº 02",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "AI / Data",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Junta de Gobierno Local del Ayuntamiento de Jerez",
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
@@ -177809,74 +177061,10 @@
       },
       {
         "section": "clients_public",
-        "entity": "Alcaldía del Ayuntamiento de Langreo",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Infraestruturas de Portugal, SA",
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Oficina Española de Patentes y Marcas, O.A.",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Oficina Española de Patentes y Marcas, O.A.",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Dirección de la Fundación Biodiversidad",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -177909,22 +177097,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Identity & Access",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Autoridad Portuaria de Sevilla",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -178033,26 +177205,10 @@
       },
       {
         "section": "clients_public",
-        "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Dirección General de la Mutual Midat Cyclops, Mutua Colaboradora con la Seguridad Social, nº 1",
         "field": "westcon_area",
         "level": "item",
-        "value": "Cloud",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -178097,7 +177253,55 @@
       },
       {
         "section": "clients_public",
-        "entity": "Município de Lisboa",
+        "entity": "Instituto de Vivienda, Infraestructura y Equipamiento de la Defensa",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Instituto de Vivienda, Infraestructura y Equipamiento de la Defensa",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Data Center",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Instituto de Vivienda, Infraestructura y Equipamiento de la Defensa",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S.A.",
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
@@ -178145,74 +177349,10 @@
       },
       {
         "section": "clients_public",
-        "entity": "DIPUTACIÓN DE BARCELONA",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Corporació de Salut del Maresme i la Selva",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Presidencia de la Agencia Estatal de Meteorología",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Presidencia de la Agencia Estatal de Meteorología",
         "field": "westcon_area",
         "level": "item",
         "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Consejo de Administración de la Sociedad de Gestión de Activos procedentes de la Reestructuración Bancaria, S.A",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -178241,10 +177381,10 @@
       },
       {
         "section": "clients_public",
-        "entity": "Autoridade Nacional de Segurança Rodoviária",
+        "entity": "Consejo de Administración de la Sociedad de Gestión de Activos procedentes de la Reestructuración Bancaria, S.A",
         "field": "westcon_area",
         "level": "item",
-        "value": "Cloud",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -178276,7 +177416,7 @@
         "entity": "Autoridade Nacional de Segurança Rodoviária",
         "field": "westcon_area",
         "level": "item",
-        "value": "AI / Data",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -178401,6 +177541,22 @@
       },
       {
         "section": "clients_public",
+        "entity": "Gerencia umivale Activa, Mutua Colaboradora con la Seguridad Social número 3",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Consejería de Educación, Formación Profesional, Actividad Física y Deportes de Canarias",
         "field": "westcon_area",
         "level": "item",
@@ -178437,22 +177593,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Identity & Access",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Comunidade Intermunicipal da Região de Coimbra",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -178516,7 +177656,7 @@
         "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
         "field": "westcon_area",
         "level": "item",
-        "value": "Data Center",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -178532,7 +177672,7 @@
         "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
         "field": "westcon_area",
         "level": "item",
-        "value": "Cybersecurity",
+        "value": "Data Center",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -178641,42 +177781,10 @@
       },
       {
         "section": "clients_public",
-        "entity": "Salut Sant Joan de Reus - Baix Camp",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Junta de Gobierno del Ayuntamiento de Majadahonda",
         "field": "westcon_area",
         "level": "item",
         "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Junta de Gobierno del Ayuntamiento de Majadahonda",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -178789,6 +177897,22 @@
         "field": "westcon_area",
         "level": "item",
         "value": "AI / Data",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Junta de Gobierno del Ayuntamiento de Alzira",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -179121,22 +178245,6 @@
       },
       {
         "section": "clients_public",
-        "entity": "Município de Barcelos",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Dirección de Asuntos Económicos del Ejército",
         "field": "westcon_area",
         "level": "item",
@@ -179281,6 +178389,22 @@
       },
       {
         "section": "clients_public",
+        "entity": "Junta de Gobierno de la Diputación Provincial de Segovia",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Universidade de Coimbra",
         "field": "westcon_area",
         "level": "item",
@@ -179317,22 +178441,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Junta de Gobierno del Ayuntamiento de Torrent",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -179397,6 +178505,22 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Consejero Delegado de Ingeniería de Sistemas para la Defensa de España S.A., S.M.E. y M.P.",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -179457,6 +178581,22 @@
       },
       {
         "section": "clients_public",
+        "entity": "Junta de Gobierno Local del Ayuntamiento de Palencia",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Agencia Catalana de Turismo",
         "field": "westcon_area",
         "level": "item",
@@ -179509,6 +178649,38 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Servei Meteorològic de Catalunya",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Consejería de Presidencia, Reto Demográfico, Igualdad y Turismo del Principado de Asturias",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "AI / Data",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -179649,38 +178821,6 @@
       },
       {
         "section": "clients_public",
-        "entity": "Alcaldía del Ayuntamiento de Ronda",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Fundació Privada Institut de Recerca de l'Hospital de la Santa Creu i Sant Pau",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Fundació Privada Institut de Recerca de l'Hospital de la Santa Creu i Sant Pau",
         "field": "westcon_area",
         "level": "item",
@@ -179733,22 +178873,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Identity & Access",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Secretaría General de la Consejería de Hacienda, Administraciones Públicas y Transformación Digital de la Junta de Comunidades de Castilla-La Mancha",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -179984,22 +179108,6 @@
         "entity": "Entidade de Serviços Partilhados da Administração Pública, IP",
         "field": "westcon_area",
         "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Entidade de Serviços Partilhados da Administração Pública, IP",
-        "field": "westcon_area",
-        "level": "item",
         "value": "AI / Data",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
@@ -180013,10 +179121,26 @@
       },
       {
         "section": "clients_public",
-        "entity": "Pleno del Ayuntamiento de Medina del Campo",
+        "entity": "Organismo Autónomo Informática del Ayuntamiento de Madrid",
         "field": "westcon_area",
         "level": "item",
         "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Organismo Autónomo Informática del Ayuntamiento de Madrid",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "AI / Data",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -180474,22 +179598,6 @@
       {
         "section": "clients_public",
         "entity": "Município de Lagos",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Município de Lagos",
         "field": "westcon_fit",
         "level": "item",
         "value": "Certes Networks",
@@ -180840,7 +179948,23 @@
         "entity": "Presidencia del Consejo de Administración de PROCESA, Sociedad de Desarrollo de Ceuta S.A.",
         "field": "westcon_area",
         "level": "item",
-        "value": "AI / Data",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Organismo Autónomo Informática del Ayuntamiento de Madrid",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -181093,22 +180217,6 @@
       },
       {
         "section": "clients_public",
-        "entity": "Dirección General de Mutua Montañesa",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "AI / Data",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "Fundación Donostia International Physics Center - Fundación Donostia International Physics Center",
         "field": "westcon_area",
         "level": "item",
@@ -181129,22 +180237,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Estado-Maior do Exército",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -181590,22 +180682,6 @@
       {
         "section": "clients_public",
         "entity": "Gerencia umivale Activa, Mutua Colaboradora con la Seguridad Social número 3",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Gerencia umivale Activa, Mutua Colaboradora con la Seguridad Social número 3",
         "field": "westcon_fit",
         "level": "item",
         "value": "AudioCodes",
@@ -181737,22 +180813,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Presidente de la Autoridad Portuaria de Santander",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -183366,54 +182426,6 @@
         "entity": "Comissão do Mercado de Valores Mobiliários",
         "field": "westcon_area",
         "level": "item",
-        "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Comissão do Mercado de Valores Mobiliários",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Comissão do Mercado de Valores Mobiliários",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Secretaría General de la Consejería de Hacienda, Administraciones Públicas y Transformación Digital de la Junta de Comunidades de Castilla-La Mancha",
-        "field": "westcon_area",
-        "level": "item",
         "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
@@ -183651,22 +182663,6 @@
       },
       {
         "section": "clients_public",
-        "entity": "Unidade Local de Saúde do Alentejo Central, EPE",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
         "entity": "MUNICIPIO DE ARGANIL",
         "field": "westcon_area",
         "level": "item",
@@ -183703,6 +182699,22 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Gerencia de MAZ Mútua de Accidentes de Trabajo y Enfermedades Profesionales de la Seguridad Social nº 11",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -183827,10 +182839,58 @@
       },
       {
         "section": "clients_public",
+        "entity": "Consell Executiu del Consell Insular d'Eivissa",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Consell Executiu del Consell Insular d'Eivissa",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Presidencia del Consejo de Administración de la Autoridad Portuaria de Barcelona (PORT DE BARCELONA)",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Servicios de la Comarca de Pamplona , S.A.",
         "field": "westcon_area",
         "level": "item",
-        "value": "UC / CX",
+        "value": "Identity & Access",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -184243,6 +183303,22 @@
       },
       {
         "section": "clients_public",
+        "entity": "Junta de Gobierno del Ayuntamiento de Rivas Vaciamadrid",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Identity & Access",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Servicio de Salud de las Illes Balears",
         "field": "westcon_area",
         "level": "item",
@@ -184598,7 +183674,7 @@
         "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
         "field": "westcon_area",
         "level": "item",
-        "value": "UC / CX",
+        "value": "Data Center",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -184775,22 +183851,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Cybersecurity",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Ayuntamiento de Reus",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -186750,7 +185810,7 @@
         "entity": "IZFE - Sociedad Foral de Servicios Informáticos - IZFE - Sociedad Foral de Servicios Informáticos",
         "field": "westcon_area",
         "level": "item",
-        "value": "Data Center",
+        "value": "Cybersecurity",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -186815,6 +185875,22 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Data Center",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Ente Público de Radiotelevisión de las Illes Balears",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -187178,20 +186254,6 @@
         "entity": "Junta de Gobierno Local del Ayuntamiento de Fuenlabrada",
         "field": "technology_signals",
         "level": "item",
-        "value": "Cloud",
-        "claim_class": "EXTERNAL_FACT",
-        "research_mode": "public-source-verification",
-        "derivation_rule": "direct support required",
-        "dependency_fields": [],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Junta de Gobierno Local del Ayuntamiento de Fuenlabrada",
-        "field": "technology_signals",
-        "level": "item",
         "value": "colaboración",
         "claim_class": "EXTERNAL_FACT",
         "research_mode": "public-source-verification",
@@ -187366,22 +186428,6 @@
         "entity": "Junta de Gobierno Local del Ayuntamiento de Fuenlabrada",
         "field": "westcon_area",
         "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Junta de Gobierno Local del Ayuntamiento de Fuenlabrada",
-        "field": "westcon_area",
-        "level": "item",
         "value": "UC / CX",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
@@ -187511,22 +186557,6 @@
         "dependency_fields": [],
         "support_basis": "SEARCH_REQUIRED",
         "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Serviços Partilhados do Ministério da Saúde, EPE",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Observability",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
         "preserve_value": true
       },
       {
@@ -188442,6 +187472,54 @@
         "claim_class": "DERIVED_FACT",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "client signals/needs ∩ supported Westcon portfolio/capabilities",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Dirección General de la Sociedad de Proyectos para la Transformación Digital, SAU",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Consejería de Presidencia, Justicia, Seguridad y Simplificación Administrativa de la Comunidad Autónoma de Cantabria",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "The European Joint Undertaking for ITER and the Development of Fusion Energy ('Fusion for Energy')",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cloud",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
         "dependency_fields": [
           "technology_signals"
         ],
@@ -189620,22 +188698,6 @@
       {
         "section": "clients_public",
         "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
         "field": "westcon_fit",
         "level": "item",
         "value": "Certes Networks",
@@ -190115,6 +189177,54 @@
       },
       {
         "section": "clients_public",
+        "entity": "Dirección General de Infraestructuras Educativas",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Data Center",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "EJIE, S.A. - Sociedad Informática del Gobierno Vasco - EJIE-Sociedad Informática del Gobierno Vasco",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Networking",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
+        "entity": "Secretaría General de la Consejería de Hacienda, Administraciones Públicas y Transformación Digital de la Junta de Comunidades de Castilla-La Mancha",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "Instituto para os Comportamentos Aditivos e as Dependências, IP",
         "field": "westcon_area",
         "level": "item",
@@ -190307,6 +189417,22 @@
       },
       {
         "section": "clients_public",
+        "entity": "Dirección Gerencia de Mutua Balear, Mutua de Accidentes de Trabajo y Enfermedades Profesionales de la Seguridad Social Nº 183",
+        "field": "westcon_area",
+        "level": "item",
+        "value": "Cybersecurity",
+        "claim_class": "INTERNAL_CLASSIFICATION",
+        "research_mode": "derive-from-supported-inputs",
+        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
+        "dependency_fields": [
+          "technology_signals"
+        ],
+        "support_basis": "SEARCH_REQUIRED",
+        "expected_gap_kind": "derivation-support",
+        "preserve_value": true
+      },
+      {
+        "section": "clients_public",
         "entity": "SERVICIO ANDALUZ DE SALUD. SERVICIOS CENTRALES",
         "field": "technology_signals",
         "level": "item",
@@ -190339,20 +189465,6 @@
         "field": "technology_signals",
         "level": "item",
         "value": "Data center",
-        "claim_class": "EXTERNAL_FACT",
-        "research_mode": "public-source-verification",
-        "derivation_rule": "direct support required",
-        "dependency_fields": [],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "evidence-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Dirección General de Racionalización y Centralización de la Contratación-Junta de Contratación Centralizada",
-        "field": "technology_signals",
-        "level": "item",
-        "value": "servidores",
         "claim_class": "EXTERNAL_FACT",
         "research_mode": "public-source-verification",
         "derivation_rule": "direct support required",
@@ -191102,22 +190214,6 @@
       {
         "section": "clients_public",
         "entity": "Autoritat del Transport Metropolità, Consorci per a la coordinació del sistema metropolità del transport públic de l'àrea de Barcelona",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Cloud",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Autoritat del Transport Metropolità, Consorci per a la coordinació del sistema metropolità del transport públic de l'àrea de Barcelona",
         "field": "westcon_fit",
         "level": "item",
         "value": "AudioCodes",
@@ -191390,22 +190486,6 @@
       {
         "section": "clients_public",
         "entity": "Gerencia de Infraestructures i Serveis de Telecom. I Certificació S.A.U.",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Data Center",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Gerencia de Infraestructures i Serveis de Telecom. I Certificació S.A.U.",
         "field": "westcon_fit",
         "level": "item",
         "value": "Cisco",
@@ -191440,7 +190520,7 @@
         "entity": "Autoritat del Transport Metropolità, Consorci per a la coordinació del sistema metropolità del transport públic de l'àrea de Barcelona",
         "field": "westcon_area",
         "level": "item",
-        "value": "Cybersecurity",
+        "value": "Cloud",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
@@ -192144,22 +191224,6 @@
         "entity": "Autoridad Portuaria de Cartagena",
         "field": "westcon_area",
         "level": "item",
-        "value": "AI / Data",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Autoridad Portuaria de Cartagena",
-        "field": "westcon_area",
-        "level": "item",
         "value": "Networking",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
@@ -192177,22 +191241,6 @@
         "field": "westcon_area",
         "level": "item",
         "value": "Networking",
-        "claim_class": "INTERNAL_CLASSIFICATION",
-        "research_mode": "derive-from-supported-inputs",
-        "derivation_rule": "supported client technology signals → Westcon area taxonomy",
-        "dependency_fields": [
-          "technology_signals"
-        ],
-        "support_basis": "SEARCH_REQUIRED",
-        "expected_gap_kind": "derivation-support",
-        "preserve_value": true
-      },
-      {
-        "section": "clients_public",
-        "entity": "Agência para a Reforma Tecnológica do Estado, IP",
-        "field": "westcon_area",
-        "level": "item",
-        "value": "Observability",
         "claim_class": "INTERNAL_CLASSIFICATION",
         "research_mode": "derive-from-supported-inputs",
         "derivation_rule": "supported client technology signals → Westcon area taxonomy",
