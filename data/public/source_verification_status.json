@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-27T16:44:28.451074+00:00",
+  "generated_at": "2026-11-27T16:59:05.366443+00:00",
   "snapshot_generated_at": "2026-11-27T16:33:45.572507+00:00",
-  "run_url": "https://github.com/ivanderodrigo/estrategia/actions/runs/46035788549",
+  "run_url": "https://github.com/ivanderodrigo/estrategia/actions/runs/46037774409",
   "status": "REVIEW_QUEUE_NOT_FACT_ACCREDITATION",
   "scope": "Independent claim/source binding audit and live source review",
   "live_unique_urls": 2716,
@@ -10,27 +10,266 @@
   "live_sample_reviewed": 21677,
   "live_sample_hosts": 370,
   "live_sampling_policy": "complete-current-reference-inventory",
-  "live_content_accessible": 14135,
+  "live_content_accessible": 14185,
   "live_collection_health": "PARTIAL_CONTENT",
   "live_review_statuses": {
-    "http_403": 769,
-    "page_does_not_mention_value": 4668,
-    "page_mentions_value_only": 2903,
-    "page_mentions_entity_and_value_needs_semantic_review": 6564,
-    "http_404": 41,
-    "redirect_requires_review": 572,
-    "document_format_requires_review": 158,
+    "http_403": 758,
+    "page_does_not_mention_value": 4394,
+    "page_mentions_value_only": 2916,
+    "page_mentions_entity_and_value_needs_semantic_review": 6875,
+    "http_404": 42,
+    "fetch_error_ReadTimeout": 296,
+    "document_format_requires_review": 140,
     "fetch_error_UnsafeUrl": 13,
+    "redirect_requires_review": 584,
     "http_247_insufficient_content": 2,
-    "http_202_insufficient_content": 5602,
-    "http_503": 2,
-    "fetch_error_ReadTimeout": 319,
+    "http_202_insufficient_content": 5600,
     "fetch_error_SSLError": 13,
-    "http_429": 19,
     "http_410": 1,
-    "http_200_insufficient_content": 16,
     "http_406": 13,
-    "http_400": 2
+    "http_400": 2,
+    "http_429": 17,
+    "http_200_insufficient_content": 11
+  },
+  "live_claim_review": {
+    "by_section": {
+      "architectures": {
+        "reviewed": 86,
+        "content_readable": 51,
+        "value_absent": 30,
+        "value_only": 16,
+        "joint_mention_unverified": 5,
+        "unreadable_or_blocked": 35,
+        "broken_url_references": 2
+      },
+      "clients_private": {
+        "reviewed": 839,
+        "content_readable": 801,
+        "value_absent": 583,
+        "value_only": 64,
+        "joint_mention_unverified": 154,
+        "unreadable_or_blocked": 38,
+        "broken_url_references": 0
+      },
+      "clients_public": {
+        "reviewed": 5936,
+        "content_readable": 468,
+        "value_absent": 274,
+        "value_only": 165,
+        "joint_mention_unverified": 29,
+        "unreadable_or_blocked": 5468,
+        "broken_url_references": 0
+      },
+      "distributors": {
+        "reviewed": 5984,
+        "content_readable": 5504,
+        "value_absent": 1799,
+        "value_only": 512,
+        "joint_mention_unverified": 3193,
+        "unreadable_or_blocked": 480,
+        "broken_url_references": 22
+      },
+      "integrators": {
+        "reviewed": 5757,
+        "content_readable": 4956,
+        "value_absent": 1197,
+        "value_only": 1732,
+        "joint_mention_unverified": 2027,
+        "unreadable_or_blocked": 801,
+        "broken_url_references": 10
+      },
+      "manufacturers": {
+        "reviewed": 2279,
+        "content_readable": 1933,
+        "value_absent": 328,
+        "value_only": 139,
+        "joint_mention_unverified": 1466,
+        "unreadable_or_blocked": 346,
+        "broken_url_references": 9
+      },
+      "trends": {
+        "reviewed": 796,
+        "content_readable": 472,
+        "value_absent": 183,
+        "value_only": 288,
+        "joint_mention_unverified": 1,
+        "unreadable_or_blocked": 324,
+        "broken_url_references": 0
+      }
+    },
+    "broken_unique_urls": 9,
+    "review_examples": [
+      {
+        "section": "architectures",
+        "entity": "AI Security",
+        "field": "analyst_basis",
+        "value": "UiPath · AI Agent Governance and Enterprise AI Security",
+        "url": "https://www.uipath.com/platform/agentic-automation/governance",
+        "review_status": "http_404"
+      },
+      {
+        "section": "distributors",
+        "entity": "Exclusive Networks",
+        "field": "competitor_vendor_overlap",
+        "value": "One Identity",
+        "url": "https://www.pingidentity.com/de/lp/ciam-landscape.html",
+        "review_status": "http_404"
+      },
+      {
+        "section": "distributors",
+        "entity": "Infortisa",
+        "field": "services",
+        "value": "Soporte",
+        "url": "https://www.infortisa.com/producto/rivacase-va1090-powerbank-20000mah-turbo-pd-100w100326135504/",
+        "review_status": "http_410"
+      },
+      {
+        "section": "integrators",
+        "entity": "ITCM Solutions",
+        "field": "scope",
+        "value": "ES",
+        "url": "https://itcm.es/soluciones/gestion-de-accesos/",
+        "review_status": "http_404"
+      },
+      {
+        "section": "integrators",
+        "entity": "Orcinus",
+        "field": "roles",
+        "value": "Business Partner / Integrador",
+        "url": "https://www.avaya.com/en/documents/cs-torrestir-smb15164en.pdf",
+        "review_status": "http_404"
+      },
+      {
+        "section": "manufacturers",
+        "entity": "Fortanix",
+        "field": "capabilities",
+        "value": "Cloud",
+        "url": "https://www.fortanix.com/ai",
+        "review_status": "http_404"
+      },
+      {
+        "section": "manufacturers",
+        "entity": "Ping Identity",
+        "field": "competitors",
+        "value": "Microsoft Entra",
+        "url": "https://www.pingidentity.com/de/lp/ciam-landscape.html",
+        "review_status": "http_404"
+      },
+      {
+        "section": "architectures",
+        "entity": "Agentic Automation",
+        "field": "analyst_basis",
+        "value": "UiPath · Enterprise Automation Platform Foundation",
+        "url": "https://www.uipath.com/platform/agentic-automation/foundation",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "architectures",
+        "entity": "Agentic Automation",
+        "field": "principles",
+        "value": "UiPath se sitúa en automatización/orquestación, no en Identity",
+        "url": "https://www.uipath.com/platform/agentic-automation",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "clients_private",
+        "entity": "Acciona",
+        "field": "account_priority",
+        "value": "Cobertura estructural · IBEX 35",
+        "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/composicion.html",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "clients_private",
+        "entity": "Acciona",
+        "field": "technology_signals",
+        "value": "AI / Data",
+        "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia Catalana de Turismo",
+        "field": "technology_signals",
+        "value": "Networking",
+        "url": "https://www.spain.info/es/",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia Digital de Andalucía",
+        "field": "technology_signals",
+        "value": "AI / Data",
+        "url": "https://en.wikipedia.org/wiki/Google",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "distributors",
+        "entity": "Aicox Soluciones",
+        "field": "differential_capabilities",
+        "value": "65 partners estratégicos",
+        "url": "https://www.aicox.com/partners/",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "distributors",
+        "entity": "Aicox Soluciones",
+        "field": "distributor_type",
+        "value": "Mayorista / soluciones",
+        "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "integrators",
+        "entity": "3Hold Technologies",
+        "field": "capabilities",
+        "value": "Cloud",
+        "url": "https://aws.amazon.com/es/blogs/apn/",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "integrators",
+        "entity": "3Hold Technologies",
+        "field": "managed_services",
+        "value": "Sí",
+        "url": "https://www.f5.com/industries/service-providers",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "manufacturers",
+        "entity": "1Password",
+        "field": "capabilities",
+        "value": "Identity & Access",
+        "url": "https://1password.com/platform",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "manufacturers",
+        "entity": "1Password",
+        "field": "capabilities",
+        "value": "Password Management",
+        "url": "https://1password.com/developers/secrets-management",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "trends",
+        "entity": "Agentic Automation",
+        "field": "domain",
+        "value": "AI / Automation",
+        "url": "https://www.idc.com/resource-center/blog/emea-it-market-2026-q2-updates-5-key-takeaways-on-ai-it-spending-and-market-trends/",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "trends",
+        "entity": "AI-Native Networking / AIOps",
+        "field": "domain",
+        "value": "Networking / AI",
+        "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+        "review_status": "page_does_not_mention_value"
+      }
+    ],
+    "examples_are_exhaustive": false,
+    "semantic_accreditation_from_live_review": false
   },
   "by_section": {
     "manufacturers": {
@@ -98,8 +337,8 @@
       "references_generic_not_atomic": 79,
       "generic_not_atomic": 76,
       "without_source": 543,
-      "references_bound_text_unconfirmed": 133,
       "references_metadata_text_support": 128,
+      "references_bound_text_unconfirmed": 133,
       "metadata_text_support": 128,
       "bound_text_unconfirmed": 90,
       "references_entity_mismatch": 2,
