@@ -9,6 +9,7 @@ on:
       - '404.html'
       - 'memoria-historica.html'
       - 'assets/**'
+      - 'config/current/non_vendor_labels.json'
       # Wait for an atomic canonical rebuild; historical sidecars alone are
       # intermediate research results and can precede a public snapshot.
       - 'data/public/manifest.json'
@@ -82,14 +83,16 @@ jobs:
           node tests/filter_builder_v410.js
       - name: Build immutable site from checked-out main
         run: |
-          mkdir -p _site/assets/app _site/data/public
+          mkdir -p _site/assets/app _site/data/public _site/config/current
           cp index.html 404.html memoria-historica.html _site/
           cp assets/favicon.svg _site/assets/
           cp -R assets/app/. _site/assets/app/
           cp -R data/public/. _site/data/public/
+          cp config/current/non_vendor_labels.json _site/config/current/
           [ -f CNAME ] && cp CNAME _site/CNAME || true
           echo "Publishing commit $(git rev-parse HEAD)"
           test -s _site/data/public/manifest.json
+          test -s _site/config/current/non_vendor_labels.json
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -100,7 +103,12 @@ jobs:
         run: |
           for delay in 1 2 4 8 16 32; do
             count=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts?name=github-pages" --jq '.artifacts | map(select(.expired == false)) | length')
-            if [ "$count" -eq 1 ]; then exit 0; fi
+            if [ "$count" -eq 1 ]; then
+              # GitHub's artifact metadata is eventually consistent across the
+              # Actions and Pages backends; give deploy-pages time to index it.
+              sleep 15
+              exit 0
+            fi
             sleep "$delay"
           done
           exit 1
