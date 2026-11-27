@@ -3,23 +3,24 @@
   "urls_scanned": 2646,
   "claim_source_pairs_reviewed": 57777,
   "verified_claim_source_pairs": 3507,
-  "verified_this_run": 2,
-  "previously_registered_positive_matches": 2003,
-  "retained_prior_verified": 1502,
-  "quarantined_generic_homepage_claims": 429,
+  "verified_this_run": 0,
+  "previously_registered_positive_matches": 1958,
+  "retained_prior_verified": 1549,
+  "quarantined_generic_homepage_claims": 0,
   "expired_prior_verified": 0,
   "statuses": {
     "VALUE_NOT_FOUND": 35356,
     "VERIFIED_FIRST_PARTY_CATALOG_VALUE": 2944,
     "VERIFIED_EXPLICIT_DISTRIBUTION_AGREEMENT": 12,
     "NOT_FIRST_PARTY": 1873,
-    "RELATIONSHIP_NOT_SHOWN": 1008,
-    "VERIFIED_EXPLICIT_PARTNER_CONTEXT": 1677,
+    "RELATIONSHIP_NOT_SHOWN": 972,
+    "VERIFIED_EXPLICIT_PARTNER_CONTEXT": 1593,
     "VERIFIED_EXPLICIT_COMPETITOR_CONTEXT": 37,
     "UNSUPPORTED_FIELD_OR_CONTEXT": 371,
     "DISTRIBUTION_RELATIONSHIP_NOT_SHOWN": 166,
     "SOURCE_UNAVAILABLE": 13261,
     "VERIFIED_FIRST_PARTY_NEWS_STATEMENT": 94,
+    "CATALOG_CATEGORY_NOT_VENDOR": 519,
     "GENERIC_HOMEPAGE_NOT_SERVICE_PROOF": 27,
     "GENERIC_CAPABILITY_NOT_SPECIFIC": 67,
     "GENERIC_DOMAIN_OR_HIRING_NOT_SPECIFIC": 34,
@@ -33,7 +34,6 @@
     "VERIFIED_FIRST_PARTY_HIRING": 2,
     "VERIFIED_FIRST_PARTY_CASE_STUDY": 3,
     "COMPARISON_PAGE_DOES_NOT_NAME_PAIR": 6,
-    "CATALOG_CATEGORY_NOT_VENDOR": 399,
     "VERIFIED_FIRST_PARTY_TECHNOLOGY_PARTICIPATION": 4
   },
   "by_section": {
@@ -1190,6 +1190,15 @@
     },
     {
       "section": "distributors",
+      "entity": "Aseminfor",
+      "field": "vendor_relations",
+      "value": "NOVEDADES",
+      "url": "https://aseminfor.es/novedades-amd/",
+      "historical_url": "https://aseminfor.es/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
       "entity": "aseminfor",
       "field": "vendor_relations",
       "value": "AMD",
@@ -1258,7 +1267,16 @@
       "value": "NOVEDADES",
       "url": "https://aseminfor.es/novedades-amd/",
       "historical_url": "https://aseminfor.es/catalogo/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "field": "vendor_relations",
+      "value": "Redes",
+      "url": "https://aseminfor.es/catalogo/",
+      "historical_url": "https://aseminfor.es/catalogo/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -1276,7 +1294,25 @@
       "value": "NOVEDADES",
       "url": "https://aseminfor.es/novedades-amd/",
       "historical_url": "https://aseminfor.es/fabricantes/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "field": "vendor_relations",
+      "value": "Redes",
+      "url": "https://aseminfor.es/fabricantes/",
+      "historical_url": "https://aseminfor.es/fabricantes/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "Aseminfor",
+      "field": "vendor_relations",
+      "value": "NOVEDADES",
+      "url": "https://aseminfor.es/novedades-asrock/",
+      "historical_url": "https://aseminfor.es/novedades-amd/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -1330,7 +1366,7 @@
       "value": "NOVEDADES",
       "url": "https://aseminfor.es/novedades-amd/",
       "historical_url": "https://aseminfor.es/novedades-asrock/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -1411,7 +1447,7 @@
       "value": "NOVEDADES",
       "url": "https://aseminfor.es/novedades-amd/",
       "historical_url": "https://aseminfor.es/novedades-asus-business/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -6028,7 +6064,7 @@
       "value": "NOVEDADES",
       "url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
       "historical_url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "integrators",
@@ -6037,7 +6073,7 @@
       "value": "Recursos",
       "url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
       "historical_url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "integrators",
@@ -6046,7 +6082,7 @@
       "value": "Seguridad en la nube",
       "url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
       "historical_url": "https://aws.amazon.com/es/partners/success/ekon-acens/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "integrators",
@@ -8238,6 +8274,87 @@
     {
       "section": "distributors",
       "entity": "DSSI",
+      "field": "vendor_relations",
+      "value": "Contactos",
+      "url": "https://dssi.pt/networking/",
+      "historical_url": "https://dssi.pt/cloud/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "field": "vendor_relations",
+      "value": "Marketing",
+      "url": "https://dssi.pt/partner-portal/",
+      "historical_url": "https://dssi.pt/cloud/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "field": "vendor_relations",
+      "value": "Monitorização e Help Desk",
+      "url": "https://dssi.pt/networking/",
+      "historical_url": "https://dssi.pt/cloud/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "field": "vendor_relations",
+      "value": "Partner Portal",
+      "url": "https://dssi.pt/networking/",
+      "historical_url": "https://dssi.pt/cloud/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "field": "vendor_relations",
+      "value": "Recursos",
+      "url": "https://dssi.pt/partner-portal/",
+      "historical_url": "https://dssi.pt/cloud/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "field": "vendor_relations",
+      "value": "Redes",
+      "url": "https://dssi.pt/networking/",
+      "historical_url": "https://dssi.pt/cloud/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "field": "vendor_relations",
+      "value": "Segurança e Mobilidade",
+      "url": "https://dssi.pt/networking/",
+      "historical_url": "https://dssi.pt/cloud/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "field": "vendor_relations",
+      "value": "Sobre Nós",
+      "url": "https://dssi.pt/networking/",
+      "historical_url": "https://dssi.pt/cloud/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "field": "vendor_relations",
+      "value": "Soluções",
+      "url": "https://dssi.pt/networking/",
+      "historical_url": "https://dssi.pt/cloud/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
       "field": "westcon_overlap",
       "value": "AWS",
       "url": "https://dssi.pt/cloud/",
@@ -8284,10 +8401,37 @@
       "section": "distributors",
       "entity": "DSSI",
       "field": "vendor_relations",
+      "value": "Contactos",
+      "url": "https://dssi.pt/cloud/",
+      "historical_url": "https://dssi.pt/networking/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "field": "vendor_relations",
       "value": "Marketing",
       "url": "https://dssi.pt/partner-portal/",
       "historical_url": "https://dssi.pt/networking/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "field": "vendor_relations",
+      "value": "Monitorização e Help Desk",
+      "url": "https://dssi.pt/cloud/",
+      "historical_url": "https://dssi.pt/networking/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "field": "vendor_relations",
+      "value": "Partner Portal",
+      "url": "https://dssi.pt/cloud/",
+      "historical_url": "https://dssi.pt/networking/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -8296,7 +8440,7 @@
       "value": "Recursos",
       "url": "https://dssi.pt/partner-portal/",
       "historical_url": "https://dssi.pt/networking/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -8305,7 +8449,34 @@
       "value": "Redes",
       "url": "https://dssi.pt/networking/",
       "historical_url": "https://dssi.pt/networking/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "field": "vendor_relations",
+      "value": "Segurança e Mobilidade",
+      "url": "https://dssi.pt/cloud/",
+      "historical_url": "https://dssi.pt/networking/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "field": "vendor_relations",
+      "value": "Sobre Nós",
+      "url": "https://dssi.pt/cloud/",
+      "historical_url": "https://dssi.pt/networking/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "DSSI",
+      "field": "vendor_relations",
+      "value": "Soluções",
+      "url": "https://dssi.pt/cloud/",
+      "historical_url": "https://dssi.pt/networking/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "manufacturers",
@@ -16698,6 +16869,15 @@
     {
       "section": "distributors",
       "entity": "ajoomal",
+      "field": "vendor_relations",
+      "value": "Rackmount",
+      "url": "https://www.ajoomal.com/soluciones/dlp/",
+      "historical_url": "https://www.ajoomal.com/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ajoomal",
       "field": "competitor_vendor_overlap",
       "value": "BlueCat",
       "url": "https://www.ajoomal.com/soluciones/dlp/",
@@ -16855,7 +17035,7 @@
       "value": "Rackmount",
       "url": "https://www.ajoomal.com/soluciones/dlp/",
       "historical_url": "https://www.ajoomal.com/bluecat/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -16946,6 +17126,15 @@
       "url": "https://www.ajoomal.com/kaseya/",
       "historical_url": "https://www.ajoomal.com/check-point/",
       "reason": "RELATIONSHIP_NOT_SHOWN"
+    },
+    {
+      "section": "distributors",
+      "entity": "Ajoomal",
+      "field": "vendor_relations",
+      "value": "Rackmount",
+      "url": "https://www.ajoomal.com/bluecat/",
+      "historical_url": "https://www.ajoomal.com/check-point/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -17103,6 +17292,15 @@
     {
       "section": "distributors",
       "entity": "ajoomal",
+      "field": "vendor_relations",
+      "value": "Rackmount",
+      "url": "https://www.ajoomal.com/bluecat/",
+      "historical_url": "https://www.ajoomal.com/soluciones/anti-ransomware/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ajoomal",
       "field": "competitor_vendor_overlap",
       "value": "BlueCat",
       "url": "https://www.ajoomal.com/bluecat/",
@@ -17260,7 +17458,7 @@
       "value": "Rackmount",
       "url": "https://www.ajoomal.com/bluecat/",
       "historical_url": "https://www.ajoomal.com/soluciones/back-up/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -17494,7 +17692,7 @@
       "value": "Rackmount",
       "url": "https://www.ajoomal.com/bluecat/",
       "historical_url": "https://www.ajoomal.com/soluciones/dlp/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -17899,7 +18097,7 @@
       "value": "Marketing",
       "url": "https://www.also.com/ec/cms5/2610/es_es/fabricantes/index.jsp",
       "historical_url": "https://www.also.com/ec/cms5/2610/es_es/fabricantes/index.jsp",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -17926,7 +18124,7 @@
       "value": "Recursos",
       "url": "https://www.also.com/ec/cms5/2610/es_es/fabricantes/index.jsp",
       "historical_url": "https://www.also.com/ec/cms5/2610/es_es/fabricantes/index.jsp",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -25072,7 +25270,7 @@
       "value": "Company",
       "url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/europe-middle-east-africa?page=3",
       "historical_url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/europe-middle-east-africa?page=3",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "integrators",
@@ -25081,7 +25279,7 @@
       "value": "History",
       "url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/europe-middle-east-africa?page=3",
       "historical_url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/europe-middle-east-africa?page=3",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "integrators",
@@ -25171,7 +25369,7 @@
       "value": "Company",
       "url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/global",
       "historical_url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/global",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "integrators",
@@ -25180,7 +25378,7 @@
       "value": "History",
       "url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/global",
       "historical_url": "https://www.audiocodes.com/partners/locators/channel-partner-locator/global",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "integrators",
@@ -31560,8 +31758,98 @@
       "field": "vendor_relations",
       "value": "Case Studies",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "historical_url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Company",
+      "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "historical_url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Contacts",
+      "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "historical_url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Cookies Policy",
+      "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "historical_url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "History",
+      "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "historical_url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Privacy Policy",
+      "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "historical_url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Quality Policy",
+      "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "historical_url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Terms and Conditions",
+      "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "historical_url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Vision, Mission and Values",
+      "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "historical_url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Why Ésistemas?",
+      "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "historical_url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Case Studies",
+      "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/esistemas/company/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31570,7 +31858,7 @@
       "value": "Company",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/esistemas/company/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31579,7 +31867,7 @@
       "value": "Contacts",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/esistemas/company/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31588,7 +31876,7 @@
       "value": "Cookies Policy",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/esistemas/company/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31597,7 +31885,7 @@
       "value": "History",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/esistemas/company/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31606,7 +31894,7 @@
       "value": "Privacy Policy",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/esistemas/company/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31615,7 +31903,7 @@
       "value": "Quality Policy",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/esistemas/company/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31624,7 +31912,7 @@
       "value": "Terms and Conditions",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/esistemas/company/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31633,7 +31921,7 @@
       "value": "Vision, Mission and Values",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/esistemas/company/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31642,7 +31930,25 @@
       "value": "Why Ésistemas?",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/esistemas/company/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Case Studies",
+      "url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
+      "historical_url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Company",
+      "url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
+      "historical_url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31651,7 +31957,7 @@
       "value": "Contacts",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31660,7 +31966,7 @@
       "value": "Cookies Policy",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31669,7 +31975,7 @@
       "value": "History",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31678,7 +31984,7 @@
       "value": "Privacy Policy",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31687,7 +31993,7 @@
       "value": "Quality Policy",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31696,7 +32002,7 @@
       "value": "Redes",
       "url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
       "historical_url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31705,7 +32011,7 @@
       "value": "Terms and Conditions",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31714,7 +32020,7 @@
       "value": "Vision, Mission and Values",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31723,7 +32029,7 @@
       "value": "Why Ésistemas?",
       "url": "https://www.esistemas.pt/en/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31747,10 +32053,28 @@
       "section": "distributors",
       "entity": "ésistemas",
       "field": "vendor_relations",
+      "value": "Case Studies",
+      "url": "https://www.esistemas.pt/pt/esistemas-portfolio-seccoes/",
+      "historical_url": "https://www.esistemas.pt/pt/as-nossas-marcas/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
       "value": "Company",
       "url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
       "historical_url": "https://www.esistemas.pt/pt/as-nossas-marcas/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Redes",
+      "url": "https://www.esistemas.pt/pt/esistemas-portfolio-seccoes/",
+      "historical_url": "https://www.esistemas.pt/pt/as-nossas-marcas/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31786,7 +32110,7 @@
       "value": "Case Studies",
       "url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
       "historical_url": "https://www.esistemas.pt/pt/esistemas-portfolio-seccoes/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31795,7 +32119,7 @@
       "value": "Company",
       "url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
       "historical_url": "https://www.esistemas.pt/pt/esistemas-portfolio-seccoes/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31804,7 +32128,7 @@
       "value": "Redes",
       "url": "https://www.esistemas.pt/pt/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/pt/esistemas-portfolio-seccoes/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31813,7 +32137,43 @@
       "value": "Case Studies",
       "url": "https://www.esistemas.pt/pt/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/pt/esistemas/empresa/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Company",
+      "url": "https://www.esistemas.pt/en/esistemas/company/",
+      "historical_url": "https://www.esistemas.pt/pt/esistemas/empresa/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Contacts",
+      "url": "https://www.esistemas.pt/en/esistemas/company/",
+      "historical_url": "https://www.esistemas.pt/pt/esistemas/empresa/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Cookies Policy",
+      "url": "https://www.esistemas.pt/en/esistemas/company/",
+      "historical_url": "https://www.esistemas.pt/pt/esistemas/empresa/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "History",
+      "url": "https://www.esistemas.pt/en/esistemas/company/",
+      "historical_url": "https://www.esistemas.pt/pt/esistemas/empresa/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31822,7 +32182,7 @@
       "value": "Privacy Policy",
       "url": "https://www.esistemas.pt/en/esistemas/company/",
       "historical_url": "https://www.esistemas.pt/pt/esistemas/empresa/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31831,7 +32191,7 @@
       "value": "Quality Policy",
       "url": "https://www.esistemas.pt/en/esistemas/company/",
       "historical_url": "https://www.esistemas.pt/pt/esistemas/empresa/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31840,7 +32200,7 @@
       "value": "Redes",
       "url": "https://www.esistemas.pt/pt/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/pt/esistemas/empresa/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31849,7 +32209,25 @@
       "value": "Terms and Conditions",
       "url": "https://www.esistemas.pt/en/esistemas/company/",
       "historical_url": "https://www.esistemas.pt/pt/esistemas/empresa/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Vision, Mission and Values",
+      "url": "https://www.esistemas.pt/en/esistemas/company/",
+      "historical_url": "https://www.esistemas.pt/pt/esistemas/empresa/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Why Ésistemas?",
+      "url": "https://www.esistemas.pt/en/esistemas/company/",
+      "historical_url": "https://www.esistemas.pt/pt/esistemas/empresa/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31885,7 +32263,43 @@
       "value": "Case Studies",
       "url": "https://www.esistemas.pt/pt/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Company",
+      "url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
+      "historical_url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Contacts",
+      "url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
+      "historical_url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Cookies Policy",
+      "url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
+      "historical_url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "History",
+      "url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
+      "historical_url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31894,7 +32308,7 @@
       "value": "Privacy Policy",
       "url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
       "historical_url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31903,7 +32317,7 @@
       "value": "Quality Policy",
       "url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
       "historical_url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31912,7 +32326,7 @@
       "value": "Redes",
       "url": "https://www.esistemas.pt/pt/esistemas-portfolio-seccoes/",
       "historical_url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
-      "reason": "VERIFIED_EXPLICIT_PARTNER_CONTEXT"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -31921,7 +32335,25 @@
       "value": "Terms and Conditions",
       "url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
       "historical_url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Vision, Mission and Values",
+      "url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
+      "historical_url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
+    },
+    {
+      "section": "distributors",
+      "entity": "ésistemas",
+      "field": "vendor_relations",
+      "value": "Why Ésistemas?",
+      "url": "https://www.esistemas.pt/en/solutions/audiovisual-consulting/",
+      "historical_url": "https://www.esistemas.pt/pt/solucoes/consultoria-audiovisual/",
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -39247,7 +39679,7 @@
       "value": "Base de conocimientos",
       "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
       "historical_url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -39256,7 +39688,7 @@
       "value": "Centro de prensa",
       "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
       "historical_url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -39265,7 +39697,7 @@
       "value": "GSI",
       "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
       "historical_url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -39274,7 +39706,7 @@
       "value": "Liderazgo",
       "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
       "historical_url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -39283,7 +39715,7 @@
       "value": "MSSP",
       "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
       "historical_url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -39292,7 +39724,7 @@
       "value": "Marketing",
       "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
       "historical_url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -39301,7 +39733,7 @@
       "value": "Recursos",
       "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
       "historical_url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -39310,7 +39742,7 @@
       "value": "Redes",
       "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
       "historical_url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -39319,7 +39751,7 @@
       "value": "Seguridad en la nube",
       "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
       "historical_url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -39328,7 +39760,7 @@
       "value": "VAR",
       "url": "https://www.exclusive-networks.com/es/ecosistema/partners",
       "historical_url": "https://www.exclusive-networks.com/es/ecosistema/partners",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -42829,7 +43261,7 @@
       "value": "Recursos",
       "url": "https://www.f5.com/es_es/company/blog/f5-distributed-cloud-services-sees-tremendous-momentum-stopping-20-billion-malicious-attacks",
       "historical_url": "https://www.f5.com/es_es/company/blog/f5-distributed-cloud-services-sees-tremendous-momentum-stopping-20-billion-malicious-attacks",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "integrators",
@@ -42838,7 +43270,7 @@
       "value": "Seguridad en la nube",
       "url": "https://www.f5.com/es_es/company/blog/f5-distributed-cloud-services-sees-tremendous-momentum-stopping-20-billion-malicious-attacks",
       "historical_url": "https://www.f5.com/es_es/company/blog/f5-distributed-cloud-services-sees-tremendous-momentum-stopping-20-billion-malicious-attacks",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "integrators",
@@ -43846,7 +44278,7 @@
       "value": "Company",
       "url": "https://www.firemon.com/partners/find-a-partner",
       "historical_url": "https://www.firemon.com/partners/find-a-partner",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "integrators",
@@ -49885,7 +50317,7 @@
       "value": "Aumentar",
       "url": "https://www.infinigate.com/es/services/partner-growth-enablement-services/",
       "historical_url": "https://www.infinigate.com/es/services/partner-growth-enablement-services/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -49894,7 +50326,7 @@
       "value": "Marketing",
       "url": "https://www.infinigate.com/es/services/partner-growth-enablement-services/",
       "historical_url": "https://www.infinigate.com/es/services/partner-growth-enablement-services/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -49903,7 +50335,7 @@
       "value": "Recursos",
       "url": "https://www.infinigate.com/es/services/partner-growth-enablement-services/",
       "historical_url": "https://www.infinigate.com/es/services/partner-growth-enablement-services/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -49912,7 +50344,7 @@
       "value": "Redes",
       "url": "https://www.infinigate.com/es/services/partner-growth-enablement-services/",
       "historical_url": "https://www.infinigate.com/es/services/partner-growth-enablement-services/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -49921,7 +50353,7 @@
       "value": "VAR",
       "url": "https://www.infinigate.com/es/services/partner-growth-enablement-services/",
       "historical_url": "https://www.infinigate.com/es/services/partner-growth-enablement-services/",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "distributors",
@@ -55312,7 +55744,7 @@
       "value": "Recursos",
       "url": "https://www.muycanal.com/2023/01/31/efficientip-dns-partners",
       "historical_url": "https://www.muycanal.com/2023/01/31/efficientip-dns-partners",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "integrators",
@@ -60883,7 +61315,7 @@
       "value": "Company",
       "url": "https://www.zscaler.com/partners",
       "historical_url": "https://www.zscaler.com/partners",
-      "reason": "RELATIONSHIP_NOT_SHOWN"
+      "reason": "CATALOG_CATEGORY_NOT_VENDOR"
     },
     {
       "section": "integrators",
