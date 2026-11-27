@@ -49,6 +49,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_historical_source_retention_20261114.py'
       - name: Rebuild from the newest confirmed source registry
         run: |
+          python scripts/accredit_semantic_historical_sources.py
           python -m engine.pipeline
           python scripts/attach_sase_layer_vendor_sources.py
           python scripts/publish_pending_historical_review.py
@@ -75,6 +76,7 @@ jobs:
             if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
               echo "Main advanced: discard the stale snapshot and rebuild (attempt $attempt)"
               git reset --hard origin/main
+              python scripts/accredit_semantic_historical_sources.py
               python -m engine.pipeline
               python scripts/attach_sase_layer_vendor_sources.py
               python scripts/publish_pending_historical_review.py

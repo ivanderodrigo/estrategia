@@ -56,6 +56,7 @@ def _api_payload(numbers: list[str]) -> dict[str, Any]:
         "fields": [
             "publication-number", "publication-date", "buyer-name",
             "notice-title", "title-proc", "classification-cpv",
+            "estimated-value-proc", "estimated-value-cur-proc",
         ],
         "limit": min(250, max(1, len(numbers) * 2)),
         "scope": "ALL",
@@ -97,12 +98,7 @@ def retrieve_batch(
 
 def _buyer_bound(owner: str, published_buyer: str) -> bool:
     """Reject an unrelated buyer if the notice row was attached incorrectly."""
-    left = set(canonical(owner).split()) - {"de", "del", "da", "do", "y", "e", "the"}
-    right = set(canonical(published_buyer).split()) - {"de", "del", "da", "do", "y", "e", "the"}
-    significant = {word for word in left if len(word) >= 5}
-    if not published_buyer:
-        return False
-    return bool(significant & right) or canonical(owner) == canonical(published_buyer)
+    return bool(published_buyer and canonical(owner) == canonical(published_buyer))
 
 
 def reconcile_notice(
@@ -187,6 +183,43 @@ def reconcile_notice(
     return accepted
 
 
+def reconcile_procurement_facts(row, notice, number, checked_date):
+    """Bind the procedure title and estimated budget to the named buyer and notice."""
+    owner = row.get("name") or ""
+    buyer = _first(notice.get("buyer-name"))
+    if not buyer or canonical(buyer) != canonical(owner) or _first(notice.get("publication-number")) != number:
+        return 0
+    title = _first(notice.get("title-proc"))
+    amount = _first(notice.get("estimated-value-proc"))
+    currency = _first(notice.get("estimated-value-cur-proc"))
+    facts = {}
+    if title:
+        facts["evidenced_needs"] = title
+    if re.fullmatch(r"[0-9]+(?:[.][0-9]+)?", amount) and re.fullmatch(r"[A-Z]{3}", currency):
+        facts["investment_signals"] = f"Valor estimado del procedimiento {number}: {amount} {currency}"
+    changed = 0
+    fields = row.setdefault("fields", {})
+    url = f"https://ted.europa.eu/en/notice/-/detail/{number}"
+    for field_id, value in facts.items():
+        field = fields.get(field_id) or {}
+        if any(item.get("value") == value and any(
+                ev.get("url") == url and ev.get("method") == "ted-exact-procedure"
+                for ev in item.get("evidence") or []) for item in field.get("items") or []):
+            continue
+        proof = {"source":"TED", "url":url, "title":f"{number} · {title or buyer}",
+                 "date":_first(notice.get("publication-date"))[:10] or checked_date,
+                 "retrieved_at":checked_date, "description":f"{buyer} · {value}",
+                 "scope":_first((fields.get("scope") or {}).get("value")) or "GLOBAL",
+                 "source_grade":"A","source_type":"official-procurement-api","official":True,
+                 "classification":"public","method":"ted-exact-procedure","source_binding":"claim-specific",
+                 "researched_entity":owner,"field":field_id,"item_value":value,"atomic":True}
+        fields[field_id] = merge_field(field, {"value":[value],
+            "items":[{"value":value,"evidence":[proof]}], "evidence":[proof],
+            "claim_type":"fact","confidence":0.96,"assertion_status":"CONFIRMADO"})
+        changed += 1
+    return changed
+
+
 def revalidate(
     data: dict[str, Any], session: requests.Session,
     *,
@@ -220,6 +253,7 @@ def revalidate(
                 continue
             seen.add(number)
             for row in candidate_index.get(number) or []:
+                stats["procedure_facts_accredited"] += reconcile_procurement_facts(row, notice, number, today)
                 count = reconcile_notice(
                     row, notice, claimed_number=number, checked_date=today,
                 )
@@ -254,10 +288,13 @@ def main() -> None:
                            max_notices=args.max_notices,
                            batch_size=args.batch_size)
 
-    if stats.get("cpv_values_accredited", 0):
+    if stats.get("selected_notices") and not stats.get("matched_notices"):
+        raise RuntimeError("TED returned no requested notice; publication withheld")
+    changed = stats.get("cpv_values_accredited", 0) + stats.get("procedure_facts_accredited", 0)
+    if changed:
         atomic_write_json("data/current/intelligence.json", data)
     from engine.pipeline import run as rebuild
-    if stats.get("cpv_values_accredited", 0):
+    if changed:
         rebuild()
     after_gaps = read_json("data/current/research_gaps.json", {})
     after = sum(1 for g in after_gaps.get("gaps") or []

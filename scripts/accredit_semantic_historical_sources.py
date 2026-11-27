@@ -14,6 +14,7 @@ import json,re,sys
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
+from engine.enrichment import excluded_catalog_label
 from engine.model import canonical
 from engine.knowledge_provenance import sitemap_index_url
 
@@ -58,6 +59,8 @@ def classify(claim,url):
     field=str(claim.get("field") or "")
     value=str(claim.get("value") or "").strip()
     entity=str(claim.get("entity") or "").strip()
+    if excluded_catalog_label(section,entity,field,value):
+        return "CATALOG_CATEGORY_NOT_VENDOR"
     excerpt=str(claim.get("source_context") or "").strip()
     if not entity or not value or not excerpt or len(value)>1200:
         return "INSUFFICIENT_EXCERPT"
@@ -325,7 +328,7 @@ def main():
         # establish a one-word service, even if an old run once accepted it.
         oldsrc=old.get("source") or {}
         oldurl=str(oldsrc.get("url") or "")
-        if sitemap_index_url(oldurl):
+        if excluded_catalog_label(old.get("section"),old.get("entity"),old.get("field"),old.get("value")) or sitemap_index_url(oldurl):
             quarantined_legacy += 1
             continue
         oldval=canonical(old.get("value") or "")

@@ -302,6 +302,22 @@ def itemized_field(
     )
 
 
+from functools import lru_cache
+
+
+@lru_cache(maxsize=1)
+def _excluded_catalog_labels():
+    catalogs = _load("config/current/curated_distributors.json", {})
+    return {canonical(owner): {canonical(v) for v in spec["excluded_catalog_labels"]}
+            for owner, spec in catalogs.items() if spec.get("excluded_catalog_labels")}
+
+
+def excluded_catalog_label(section, entity, field, value):
+    return (section == "distributors" and field in {
+        "vendor_relations", "linecard_remainder", "westcon_overlap", "competitor_vendor_overlap"
+    } and canonical(value) in _excluded_catalog_labels().get(canonical(entity), ()))
+
+
 def normalize_fields(data: dict[str, Any]) -> dict[str, Any]:
     """Normalize list-valued fields once so the UI/graph do not carry legacy duplicates.
 
@@ -333,6 +349,8 @@ def normalize_fields(data: dict[str, Any]) -> dict[str, Any]:
                     if field_id in {"vendor_relations", "distributors", "integrators"} and isinstance(item, str):
                         item = resolve(item.split(" · ", 1)[0].strip())
                     item_key = canonical(item)
+                    if excluded_catalog_label(section,row.get("name"),field_id,item):
+                        continue
                     if field_id in {"vendor_relations", "distributors", "integrators"} and item_key == canonical(row.get("name")):
                         continue
                     if field_id in {"vendor_relations", "distributors", "integrators", "westcon_overlap", "competitor_vendor_overlap"} and any(
@@ -437,6 +455,21 @@ def apply_curated_distributors(data: dict[str, Any]) -> dict[str, Any]:
             val = spec.get(key)
             if val not in (None, "", [], {}):
                 fields[field_id] = merge_field(fields.get(field_id), {"value":val,"evidence":evidence,"confidence":0.88 if source.get("official") else 0.72,"claim_type":"fact","assertion_status":"CONFIRMADO" if source.get("official") else "PROBABLE"})
+        pages = spec.get("vendor_pages") or {}
+        if pages:
+            items = []
+            for vendor, url in pages.items():
+                ev = {"source":name, "url":url, "title":f"{name} · {vendor}",
+                      "description":f"Ficha oficial de distribución de {vendor} en el catálogo de {name}.",
+                      "date":spec["catalog_review_date"], "retrieved_at":spec["catalog_review_date"],
+                      "source_type":"official-web", "source_grade":"A", "official":True,
+                      "scope":spec["scope"], "classification":"public", "atomic":True,
+                      "field":"vendor_relations","item_value":vendor,"researched_entity":name,
+                      "source_binding":"claim-specific"}
+                items.append({"value":vendor, "evidence":[ev]})
+            fields["vendor_relations"] = merge_field(fields.get("vendor_relations"), {
+                "value":list(pages), "items":items, "evidence":[],
+                "claim_type":"fact", "confidence":0.91, "assertion_status":"CONFIRMADO"})
         job = spec.get("job") or {}
         if job.get("profiles") and (job.get("source") or {}).get("url"):
             fields["job_profiles"] = merge_field(fields.get("job_profiles"), {"value":job["profiles"],"evidence":[job["source"]],"confidence":0.58,"claim_type":"signal","assertion_status":"SEÑAL"})

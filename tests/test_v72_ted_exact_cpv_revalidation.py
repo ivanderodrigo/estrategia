@@ -87,6 +87,17 @@ class TedExactCPVProvenance(unittest.TestCase):
                                   claimed_number="123456-2026", checked_date="2026-11-13")
         self.assertEqual((first, second), (1, 0))
 
+    def test_procedure_title_and_estimate_stay_bound_to_buyer_and_notice(self):
+        from scripts.revalidate_ted_cpv import reconcile_procurement_facts
+        source = row()
+        record = dict(notice(), **{"title-proc":{"spa":"Equipamiento de red"},
+            "estimated-value-proc":"1040.75", "estimated-value-cur-proc":"EUR"})
+        self.assertEqual(reconcile_procurement_facts(source,record,"123456-2026","2026-11-27"), 2)
+        self.assertEqual(reconcile_procurement_facts(source,record,"123456-2026","2026-11-27"), 0)
+        self.assertIn("1040.75 EUR", source["fields"]["investment_signals"]["value"][0])
+        record["buyer-name"] = "DIPUTACIÓN DE VALENCIA"
+        self.assertEqual(reconcile_procurement_facts(row(),record,"123456-2026","2026-11-27"), 0)
+
     def test_api_scope_is_all_notices_including_closed(self):
         payload = _api_payload(["123456-2026", "234567-2025"])
         self.assertEqual(payload["scope"], "ALL")

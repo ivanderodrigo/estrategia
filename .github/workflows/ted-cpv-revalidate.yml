@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/ted-cpv-revalidate.yml'
+      - 'scripts/revalidate_ted_cpv.py'
   workflow_dispatch:
   # TED's HTML pages can return 202 with no usable notice text. Recheck
   # exact published CPV claims independently via the official TED Search API.
