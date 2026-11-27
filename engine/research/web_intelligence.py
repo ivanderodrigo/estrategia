@@ -1464,9 +1464,15 @@ def _checkpoint(
     discovery: dict[str, Any],
     stats: dict[str, Any],
     active_gap_ids: set[str],
+    query_cache: dict[str, Any] | None = None,
 ) -> None:
     atomic_write_json("data/current/intelligence.json", data, pretty=False)
     atomic_write_json("data/current/research_cache.json", cache)
+    if query_cache is not None:
+        atomic_write_json(
+            "data/current/query_discovery_cache.json",
+            prune_json_mapping(query_cache, limit=1_800, timestamp_key="ts"),
+        )
     atomic_write_json("data/current/research_state.json", state.export(active_gap_ids))
     atomic_write_json("data/current/discovery_queue.json", {
         "version": VERSION,
@@ -1535,6 +1541,35 @@ def _query_limit_for_target(
             and any(seed.official and seed.family == "partners" for seed in seeds)):
         return min(budget, 1)
     return budget
+
+
+def _primary_probe_budget(profile: str, page_budget: int, source_count: int) -> int:
+    """Inspect known, attributable URLs before searching for more URLs.
+
+    An entity with no source leads needs search immediately. For others the
+    first-party/historical probe must remain bounded: a 200-link historical
+    registry must not prevent the discovery lane from ever running.
+    """
+    if source_count <= 0:
+        return 0
+    budget = max(1, int(page_budget))
+    maximum = {"daily": 4, "deep": 8, "exhaustive": 12}.get(profile, 6)
+    return min(source_count, budget, maximum)
+
+
+def _primary_sources_resolved_target(
+    target: dict[str, Any], accepted_by_field: dict[str, int],
+) -> bool:
+    """Skip generic search only when known sources genuinely resolved the task.
+
+    Never suppress exact historical-claim corroboration merely because another
+    value in the same field was accepted. Remaining unsupported claims always
+    retain their discovery opportunity and the canonical gap KPI is untouched.
+    """
+    if any(values for values in (target.get("target_values_by_field") or {}).values()):
+        return False
+    fields = [field for field in (target.get("fields") or []) if field != "recent_signals"]
+    return bool(fields) and all(int(accepted_by_field.get(field) or 0) > 0 for field in fields)
 
 
 
@@ -1638,6 +1673,11 @@ def run(
     gaps = read_json("data/current/research_gaps.json")
     learning = read_json("data/current/research_learning.json", {"version": VERSION, "families": {}})
     cache = read_json("data/current/research_cache.json", {})
+    # URL discovery is ephemeral intelligence. Reuse safe leads for twelve
+    # hours, but always fetch and substantiate the underlying document anew.
+    query_cache = read_json("data/current/query_discovery_cache.json", {})
+    if not isinstance(query_cache, dict):
+        query_cache = {}
     research_state = ResearchState(read_json("data/current/research_state.json", {}))
     discovery_raw = read_json("data/current/discovery_queue.json", {})
     discovery = discovery_raw.get("candidates") if isinstance(discovery_raw, dict) else {}
@@ -1713,6 +1753,10 @@ def run(
         "search_queries_succeeded": 0,
         "search_provider_failures": 0,
         "search_urls_discovered": 0,
+        "search_query_cache_hits": 0,
+        "primary_source_probes_before_search": 0,
+        "search_discovery_skipped_after_primary": 0,
+        "target_fields_resolved_early": 0,
         "unsourced_value_queries": 0,
         "precise_claim_queries": 0,
         "official_navigation_links": 0,
@@ -1866,61 +1910,21 @@ def run(
             int(query_budget.get("queries_per_entity") or 0),
             section=target["section"],
         )
-        # Query discovery closes the blind spot between generated query hints and
-        # the URL-only crawler. Search results are discovery leads, never evidence.
-        query_policy = RESEARCH_POLICY.get("query_discovery") or {}
-        query_budgets = query_policy.get("budgets") or {}
-        query_budget = query_budgets.get(profile) or {}
-        # Official catalogue URLs are already concrete high-quality research
-        # leads. Avoid spending six generic searches before even fetching one.
-        # Keep one fallback discovery query for ES/PT distributors; deeper
-        # profiles retain their original full query budget.
+        # URL discovery is the fallback, not the first step. Existing exact
+        # first-party and historical leads deserve a bounded live probe before
+        # another search-engine query is submitted.
         query_limit = _query_limit_for_target(
             profile, target, seeds,
             int(query_budget.get("queries_per_entity") or 0),
         )
         can_query_discover = (
             bool(query_policy.get("enabled", True))
+            and query_limit > 0
             and bool(target.get("query_hints"))
             and stats["query_discovery_targets"] < int(query_budget.get("max_entities") or 0)
             and time.monotonic() < deadline - max(5.0, float(profile_config.request_timeout_s))
         )
-        if can_query_discover:
-            fallback_family = next(iter(target.get("families") or []), "official")
-            discovered, query_stats = discover_search_sources(
-                fetcher.session,
-                target.get("query_hints") or [],
-                fallback_family=fallback_family,
-                providers=query_policy.get("providers") or ["bing_rss", "duckduckgo_html"],
-                timeout_s=min(float(profile_config.request_timeout_s), max(2.5, deadline - time.monotonic() - 3)),
-                max_queries=query_limit,
-                deadline=deadline - 3,
-                results_per_query=int(query_budget.get("results_per_query") or 4),
-            )
-            stats["query_discovery_targets"] += 1
-            stats["search_queries_attempted"] += int(query_stats.get("queries_attempted") or 0)
-            stats["search_queries_succeeded"] += int(query_stats.get("queries_succeeded") or 0)
-            stats["search_provider_failures"] += int(query_stats.get("provider_failures") or 0)
-            stats["search_urls_discovered"] += int(query_stats.get("urls_discovered") or 0)
-            # A discovered page is official only when its host is demonstrably owned
-            # by the researched entity. Everything else remains grade-C discovery.
-            discovered = [
-                SourceSeed(
-                    seed.url,
-                    seed.family,
-                    True,
-                    "A",
-                    "search-discovery:official-owned-host",
-                    target["entity"],
-                )
-                if _host_entity_owned(seed.url, target["entity"])
-                else seed
-                for seed in discovered
-            ]
-            seeds = _merge_source_seeds(seeds, discovered)
-            seeds = _filter_entity_seeds(seeds, target["entity"], target["section"])
-
-        if not seeds:
+        if not seeds and not can_query_discover:
             for gap_id in target["gap_ids"]:
                 research_state.record_gap(gap_id, accepted=0, error="no-seed-source")
             continue
@@ -1938,13 +1942,68 @@ def run(
         max_attempts, max_financial_attempts = _source_attempt_limits(
             profile, profile_config.pages_per_entity,
         )
+        probe_budget = _primary_probe_budget(
+            profile, profile_config.pages_per_entity, len(queue),
+        )
+        pending_discovery = can_query_discover
         examined_families: set[str] = set()
         accepted_by_field: defaultdict[str, int] = defaultdict(int)
         wanted_families = relevant_families(target["fields"]) | set(target.get("source_families") or [])
         scope = str(((row.get("fields") or {}).get("scope") or {}).get("value") or "GLOBAL")
 
-        while (queue and pages < profile_config.pages_per_entity
+        while ((queue or pending_discovery) and pages < profile_config.pages_per_entity
                and attempted_urls < max_attempts and time.monotonic() < deadline - 3):
+            if pending_discovery and (not queue or attempted_urls >= probe_budget):
+                pending_discovery = False
+                if _primary_sources_resolved_target(target, accepted_by_field):
+                    stats["search_discovery_skipped_after_primary"] += 1
+                    stats["target_fields_resolved_early"] += 1
+                    break
+                if time.monotonic() < deadline - max(5.0, float(profile_config.request_timeout_s)):
+                    stats["primary_source_probes_before_search"] += attempted_urls
+                    fallback_family = next(iter(target.get("families") or []), "official")
+                    discovered, query_stats = discover_search_sources(
+                        fetcher.session,
+                        target.get("query_hints") or [],
+                        fallback_family=fallback_family,
+                        providers=query_policy.get("providers") or ["bing_rss", "duckduckgo_html"],
+                        timeout_s=min(float(profile_config.request_timeout_s), max(2.5, deadline - time.monotonic() - 3)),
+                        max_queries=query_limit,
+                        deadline=deadline - 3,
+                        results_per_query=int(query_budget.get("results_per_query") or 4),
+                        query_cache=query_cache,
+                        cache_ttl_s=43_200,
+                    )
+                    stats["query_discovery_targets"] += 1
+                    stats["search_queries_attempted"] += int(query_stats.get("queries_attempted") or 0)
+                    stats["search_queries_succeeded"] += int(query_stats.get("queries_succeeded") or 0)
+                    stats["search_provider_failures"] += int(query_stats.get("provider_failures") or 0)
+                    stats["search_urls_discovered"] += int(query_stats.get("urls_discovered") or 0)
+                    stats["search_query_cache_hits"] += int(query_stats.get("provider_cache_hits") or 0)
+                    # Search hits remain only leads; ownership is validated by
+                    # host binding, and every resulting fact uses canonical gates.
+                    discovered = [
+                        SourceSeed(
+                            seed.url, seed.family, True, "A",
+                            "search-discovery:official-owned-host", target["entity"],
+                        ) if _host_entity_owned(seed.url, target["entity"]) else seed
+                        for seed in discovered
+                    ]
+                    discovered = _filter_entity_seeds(
+                        discovered, target["entity"], target["section"],
+                    )
+                    fresh = [
+                        seed for seed in prioritize_sources(discovered, target)
+                        if (seed.url, seed.family) not in seen
+                    ]
+                    # Give new leads a genuine chance after a failed primary
+                    # probe; otherwise keep authoritative URLs ahead of search.
+                    if not any(accepted_by_field.values()):
+                        queue = _merge_source_seeds(fresh, queue)
+                    else:
+                        queue = prioritize_sources(_merge_source_seeds(queue, fresh), target)
+            if not queue:
+                break
             seed = queue.pop(0)
             seed_key = (seed.url, seed.family)
             if seed_key in seen:
@@ -2082,6 +2141,15 @@ def run(
                 "status": status,
             })
 
+            # Stop reading near-duplicate pages once every targeted empty field
+            # has obtained atomic proof. Do not short-circuit unresolved values
+            # from historical claims: their exact individual proof is still due.
+            if _primary_sources_resolved_target(target, accepted_by_field):
+                stats["target_fields_resolved_early"] += 1
+                if pending_discovery:
+                    stats["search_discovery_skipped_after_primary"] += 1
+                break
+
             # Navigate explicit first-party menus even when the homepage did not
             # contain extractable facts; investigate named catalogue documents.
             if profile == "daily" and seed.official:
@@ -2148,7 +2216,7 @@ def run(
                             stats["financial_links_discovered"] += 1
 
             if pages_since_checkpoint >= profile_config.checkpoint_every:
-                _checkpoint(data, cache, research_state, discovery, stats, active_gap_ids)
+                _checkpoint(data, cache, research_state, discovery, stats, active_gap_ids, query_cache)
                 pages_since_checkpoint = 0
             if time.monotonic() >= next_heartbeat:
                 print(
@@ -2213,7 +2281,7 @@ def run(
     stats["elapsed_s"] = round(time.monotonic() - started, 2)
     stats["finished_at"] = now_iso()
     cache = prune_json_mapping(cache, limit=1_600, timestamp_key="ts")
-    _checkpoint(data, cache, research_state, discovery, stats, active_gap_ids)
+    _checkpoint(data, cache, research_state, discovery, stats, active_gap_ids, query_cache)
     atomic_write_json("data/current/research_learning.json", learning)
     return stats
 

@@ -6,11 +6,12 @@ binding, semantic extraction, typed provenance and atomic evidence promotion.
 """
 from __future__ import annotations
 
+import hashlib
 import re
 import time
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
-from typing import Iterable
+from typing import Any, Iterable
 from collections import Counter
 from urllib.parse import parse_qs, unquote, urlparse
 
@@ -165,6 +166,8 @@ def discover(
     max_queries: int,
     results_per_query: int,
     deadline: float | None = None,
+    query_cache: dict[str, Any] | None = None,
+    cache_ttl_s: int = 43_200,
 ) -> tuple[list[SourceSeed], dict[str, int | dict[str, int]]]:
     """Return safe candidate URLs plus diagnostics.
 
@@ -186,6 +189,7 @@ def discover(
     diagnostics["empty_result_queries"] = 0
     diagnostics["provider_attempts"] = {}
     diagnostics["provider_urls"] = {}
+    diagnostics["provider_cache_hits"] = 0
 
     clean_queries = _unique((_disambiguate_technical_query(str(value).strip()) for value in queries), max(0, max_queries))
     for query in clean_queries:
@@ -200,21 +204,49 @@ def discover(
             provider = str(provider or "").strip()
             if not provider:
                 continue
-            diagnostics["queries_attempted"] += 1
-            diagnostics["provider_attempts"][provider] = diagnostics["provider_attempts"].get(provider, 0) + 1
+            cache_key = hashlib.sha256(
+                f"{provider}\x00{max(1, results_per_query)}\x00{query}".encode("utf-8")
+            ).hexdigest()
+            cached = (query_cache or {}).get(cache_key) if query_cache is not None else None
+            now = time.time()
             try:
-                urls = _search_provider(
-                    session,
-                    provider,
-                    query,
-                    timeout_s=remaining,
-                    result_limit=max(1, results_per_query),
-                )
-                diagnostics["queries_succeeded"] += 1
-                diagnostics["provider_urls"][provider] = diagnostics["provider_urls"].get(provider, 0) + len(urls)
-            except (requests.RequestException, ValueError, UnicodeError):
-                diagnostics["provider_failures"] += 1
-                continue
+                cached_at = float(cached.get("ts") or 0) if isinstance(cached, dict) else 0.0
+            except (TypeError, ValueError):
+                cached_at = 0.0
+            cache_valid = (
+                isinstance(cached, dict)
+                and 0 <= now - cached_at < cache_ttl_s
+                and isinstance(cached.get("urls"), list)
+                and bool(cached["urls"])
+            )
+            cached_urls = (
+                [_safe_result_url(url) for url in cached["urls"][:max(1, results_per_query)]]
+                if cache_valid else []
+            )
+            cache_valid = bool(cache_valid and any(cached_urls))
+            if cache_valid:
+                # A cached search hit is still just an unverified lead. Check
+                # its URL safety again on every consumption.
+                urls = [url for url in cached_urls if url]
+                diagnostics["provider_cache_hits"] += 1
+            else:
+                diagnostics["queries_attempted"] += 1
+                diagnostics["provider_attempts"][provider] = diagnostics["provider_attempts"].get(provider, 0) + 1
+                try:
+                    urls = _search_provider(
+                        session,
+                        provider,
+                        query,
+                        timeout_s=remaining,
+                        result_limit=max(1, results_per_query),
+                    )
+                    diagnostics["queries_succeeded"] += 1
+                    diagnostics["provider_urls"][provider] = diagnostics["provider_urls"].get(provider, 0) + len(urls)
+                    if query_cache is not None and urls:
+                        query_cache[cache_key] = {"ts": now, "urls": urls}
+                except (requests.RequestException, ValueError, UnicodeError):
+                    diagnostics["provider_failures"] += 1
+                    continue
             for url in urls:
                 inferred_family = family_from_url(url, fallback=fallback_family)
                 # Preserve the query intent for generic home/news URLs; explicit

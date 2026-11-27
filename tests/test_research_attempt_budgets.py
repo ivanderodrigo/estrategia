@@ -3,7 +3,11 @@ from __future__ import annotations
 
 import unittest
 
-from engine.research.web_intelligence import _source_attempt_limits
+from engine.research.web_intelligence import (
+    _primary_probe_budget,
+    _primary_sources_resolved_target,
+    _source_attempt_limits,
+)
 from engine.settings import RESEARCH_POLICY
 
 
@@ -29,6 +33,24 @@ class ResearchAttemptBudgets(unittest.TestCase):
         self.assertLessEqual(budgets["exhaustive"]["queries_per_entity"], 12)
         self.assertGreater(budgets["deep"]["queries_per_entity"],
                            budgets["daily"]["queries_per_entity"])
+
+    def test_direct_source_probe_precedes_unbounded_discovery(self):
+        self.assertEqual(_primary_probe_budget("deep", 16, 40), 8)
+        self.assertEqual(_primary_probe_budget("exhaustive", 32, 90), 12)
+        self.assertEqual(_primary_probe_budget("daily", 5, 1), 1)
+        self.assertEqual(_primary_probe_budget("deep", 16, 0), 0)
+
+    def test_only_genuinely_resolved_empty_fields_skip_search(self):
+        empty_fields = {"fields": ["services", "capabilities"],
+                        "target_values_by_field": {}}
+        self.assertFalse(_primary_sources_resolved_target(empty_fields, {"services": 1}))
+        self.assertTrue(_primary_sources_resolved_target(empty_fields,
+                        {"services": 1, "capabilities": 2}))
+
+        unresolved_claim = {"fields": ["services"],
+                            "target_values_by_field": {"services": ["SOC"]}}
+        self.assertFalse(_primary_sources_resolved_target(unresolved_claim,
+                         {"services": 10}))
 
 
 if __name__ == "__main__":

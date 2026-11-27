@@ -129,6 +129,36 @@ def _matches(text: str, dictionary: dict[str, Iterable[str]]) -> tuple[list[str]
     return labels, terms_found
 
 
+def specialization_observations(text: str) -> tuple[list[str], list[str]]:
+    """Capture only explicitly claimed technical expertise, not menus or news.
+
+    A provider mentioning cloud and having an unrelated 'experts' page is not
+    automatically a cloud specialist. The expertise cue and technology must
+    occur in the same short phrase of an attributable document.
+    """
+    body = canonical(text[:120_000])
+    explicit_cue = re.compile(
+        r"\b(?:speciali[sz](?:ed|es|ing|ation)?\s+(?:in|on)|"
+        r"especializad[oa]s?\s+en|especialista[s]?\s+en|"
+        r"especializac[aã]o\s+em|especializac[ií]on\s+en|"
+        r"expert(?:s|ise)?\s+(?:in|on)|expert[oa]s?\s+en|"
+        r"certified\s+in|certificad[oa]s?\s+en)\b"
+    )
+    spans = [body[match.end():match.end() + 80]
+             for match in explicit_cue.finditer(body)]
+    result: list[str] = []
+    matched: list[str] = []
+    for label, terms in CAPABILITY_TERMS.items():
+        for term in terms:
+            normalized = canonical(term)
+            if any(re.search(rf"(?<![a-z0-9]){re.escape(normalized)}(?![a-z0-9])", span)
+                   for span in spans):
+                result.append(label)
+                matched.append(term)
+                break
+    return result, matched
+
+
 def vendors_in_text(text: str, vendor_names: Iterable[str]) -> tuple[list[str], list[str]]:
     blob = canonical(text)
     found: list[str] = []
@@ -588,6 +618,11 @@ def extract_candidates(
     verticals, vertical_terms = _matches(text, VERTICAL_TERMS)
     vendors, vendor_terms = vendors_in_text(text, vendor_names)
     revenues, revenue_terms = revenue_observations(text, global_only=(section == "manufacturers"))
+    specializations, specialization_terms = (
+        specialization_observations(text)
+        if section == "integrators" and family in {"services", "official", "technology"}
+        else ([], [])
+    )
     competitors, competitor_terms = competitors_in_text(text, researched_entity, vendor_names) if section == 'manufacturers' else ([], [])
 
     def add(field: str, values: list[str], terms: list[str], claim: str = "fact", confidence: float | None = None) -> None:
@@ -621,10 +656,13 @@ def extract_candidates(
             # First-party catalogues may be classified as generic or technical.
             listed, listed_terms = distributor_linecard_vendors(document, vendor_names)
             add("vendor_relations", listed, listed_terms, confidence=0.90)
-        if family in {"services", "official"}:
+        if family in {"services", "official", "technology"}:
             add("capabilities", capabilities, cap_terms)
             add("services", services, service_terms)
             add("technology_domains", capabilities, cap_terms, "interpretation", 0.68 if official else 0.60)
+            if section == "integrators":
+                add("specializations", specializations, specialization_terms,
+                    confidence=0.86 if official else 0.71)
             if "Managed Services" in capabilities or "Servicios gestionados" in services:
                 add("managed_services", ["Sí"], ["managed services"], confidence=base_fact)
             if section == "integrators" and "MSSP" in capabilities:

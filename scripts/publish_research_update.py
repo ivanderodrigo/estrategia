@@ -26,6 +26,8 @@ ALLOWED = [
     "data/current/debt_diagnostic.json",
     "data/current/source_report.json",
     "data/current/research_learning.json",
+    # Discovery-only cache: URLs are leads with a 12-hour TTL, not evidence.
+    "data/current/query_discovery_cache.json",
     "data/current/research_ledger.json",
     "data/current/ted_cpv_revalidation.json",
     "data/current/ted_title_backfill.json",
