@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-27T19:33:03.700988+00:00",
-  "snapshot_generated_at": "2026-11-27T19:23:46.236340+00:00",
-  "run_url": "https://github.com/ivanderodrigo/estrategia/actions/runs/46057036080",
+  "generated_at": "2026-11-27T19:36:53.757049+00:00",
+  "snapshot_generated_at": "2026-11-27T19:30:56.364468+00:00",
+  "run_url": "https://github.com/ivanderodrigo/estrategia/actions/runs/46057578878",
   "status": "REVIEW_QUEUE_NOT_FACT_ACCREDITATION",
   "scope": "Independent claim/source binding audit and live source review",
   "live_unique_urls": null,
@@ -10,18 +10,19 @@
   "live_sample_reviewed": 200,
   "live_sample_hosts": 176,
   "live_sampling_policy": "rotating-section-host-round-robin-v1",
-  "live_content_accessible": 162,
+  "live_content_accessible": 163,
   "live_collection_health": "PARTIAL_CONTENT",
   "live_review_statuses": {
-    "page_does_not_mention_value": 64,
+    "page_mentions_value_only": 69,
     "document_format_requires_review": 5,
-    "redirect_requires_review": 14,
+    "redirect_requires_review": 12,
     "page_mentions_entity_and_value_needs_semantic_review": 34,
+    "page_does_not_mention_value": 60,
     "http_403": 9,
     "http_429": 1,
-    "page_mentions_value_only": 64,
     "http_200_insufficient_content": 2,
     "fetch_error_UnsafeUrl": 6,
+    "http_247_insufficient_content": 1,
     "http_202_insufficient_content": 1
   },
   "live_claim_review": {
@@ -29,19 +30,19 @@
       "manufacturers": {
         "reviewed": 20,
         "content_readable": 15,
-        "value_absent": 6,
-        "value_only": 0,
+        "value_absent": 5,
+        "value_only": 1,
         "joint_mention_unverified": 9,
         "unreadable_or_blocked": 5,
         "broken_url_references": 0
       },
       "trends": {
         "reviewed": 50,
-        "content_readable": 41,
+        "content_readable": 42,
         "value_absent": 6,
-        "value_only": 34,
+        "value_only": 35,
         "joint_mention_unverified": 1,
-        "unreadable_or_blocked": 9,
+        "unreadable_or_blocked": 8,
         "broken_url_references": 0
       },
       "architectures": {
@@ -65,8 +66,8 @@
       "clients_public": {
         "reviewed": 57,
         "content_readable": 55,
-        "value_absent": 32,
-        "value_only": 22,
+        "value_absent": 29,
+        "value_only": 25,
         "joint_mention_unverified": 1,
         "unreadable_or_blocked": 2,
         "broken_url_references": 0
@@ -109,25 +110,17 @@
       {
         "section": "clients_public",
         "entity": "Agencia para la Modernización Tecnológica de Galicia",
-        "field": "technology_signals",
-        "value": "Networking",
-        "url": "https://agenciadetrabajo.us/nueva-york/",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
-        "section": "clients_public",
-        "entity": "Agencia para la Modernización Tecnológica de Galicia",
         "field": "technology_domains",
         "value": "Networking",
         "url": "https://amtega.xunta.gal/gl",
         "review_status": "page_does_not_mention_value"
       },
       {
-        "section": "manufacturers",
-        "entity": "Cisco",
-        "field": "integrators",
-        "value": "Nunsys",
-        "url": "https://www.nunsys.com/personas/nosotros/partners/",
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "technology_signals",
+        "value": "Networking",
+        "url": "https://blogs.eltiempo.com/el-tiempo-del-cine/2019/09/13/100-peliculas-imperdibles-del-cine-colombiano/",
         "review_status": "page_does_not_mention_value"
       },
       {
@@ -136,6 +129,14 @@
         "field": "partner_program",
         "value": "Programa de canal de Fault Tolerant Computing",
         "url": "https://www.penguinsolutions.com/en-us/partners/partner-program-channel-partners",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "manufacturers",
+        "entity": "Proofpoint",
+        "field": "capabilities",
+        "value": "Threat Intelligence",
+        "url": "https://www.proofpoint.com/es/compare/proofpoint-vs-abnormal-security",
         "review_status": "page_does_not_mention_value"
       },
       {
@@ -230,8 +231,8 @@
     },
     "architectures": {
       "claims": 370,
-      "references_bound_text_unconfirmed": 22,
       "references_generic_not_atomic": 77,
+      "references_bound_text_unconfirmed": 22,
       "bound_text_unconfirmed": 20,
       "generic_not_atomic": 73,
       "without_source": 251,
