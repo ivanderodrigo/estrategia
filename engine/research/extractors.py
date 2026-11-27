@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import unicodedata
 from dataclasses import dataclass
 from typing import Iterable
 
@@ -136,7 +137,13 @@ def specialization_observations(text: str) -> tuple[list[str], list[str]]:
     automatically a cloud specialist. The expertise cue and technology must
     occur in the same short phrase of an attributable document.
     """
-    body = canonical(text[:120_000])
+    # Keep sentence boundaries: normalising the whole page first would erase
+    # punctuation and let "specialists in finance. We sell cloud" falsely
+    # promote cloud expertise merely because the words are near one another.
+    raw = unicodedata.normalize("NFKD", text[:120_000]).encode(
+        "ascii", "ignore"
+    ).decode().casefold()
+    sentences = [canonical(piece) for piece in re.split(r"[.!?;\r\n]+", raw)]
     explicit_cue = re.compile(
         r"\b(?:speciali[sz](?:ed|es|ing|ation)?\s+(?:in|on)|"
         r"especializad[oa]s?\s+en|especialista[s]?\s+en|"
@@ -144,8 +151,9 @@ def specialization_observations(text: str) -> tuple[list[str], list[str]]:
         r"expert(?:s|ise)?\s+(?:in|on)|expert[oa]s?\s+en|"
         r"certified\s+in|certificad[oa]s?\s+en)\b"
     )
-    spans = [body[match.end():match.end() + 80]
-             for match in explicit_cue.finditer(body)]
+    spans = [sentence[match.end():match.end() + 80]
+             for sentence in sentences
+             for match in explicit_cue.finditer(sentence)]
     result: list[str] = []
     matched: list[str] = []
     for label, terms in CAPABILITY_TERMS.items():

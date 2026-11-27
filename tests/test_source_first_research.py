@@ -123,6 +123,8 @@ class SourceFirstResearch(unittest.TestCase):
     def test_specialization_requires_explicit_expertise_phrase(self):
         self.assertEqual(specialization_observations(
             "Acme ofrece servicios de cloud y networking"), ([], []))
+        self.assertNotIn("Cloud", specialization_observations(
+            "Somos especialistas en contabilidad. También distribuimos cloud.")[0])
         self.assertIn("Cybersecurity", specialization_observations(
             "Somos especialistas en ciberseguridad y gestión de incidentes")[0])
 
