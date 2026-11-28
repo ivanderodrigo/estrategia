@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import re
 from typing import Any, Iterable
+from urllib.parse import urlsplit
 
 from .model import canonical
 
@@ -62,6 +63,45 @@ def _evidence_blob(evidence: dict[str, Any]) -> str:
     )
 
 
+def _unbound_web_research(evidence: dict[str, Any], owner: Any) -> bool:
+    """Reject a web extraction whose *page* cannot identify its subject.
+
+    A research target or source catalogue is routing metadata, not proof that a
+    third-party article concerns that target. In particular, a CrowdStrike
+    article about Ignition Technology cannot establish Lidera's distribution
+    agreement just because a crawler attached ``researched_entity=Lidera``.
+    Scope this check to automated public-web extraction: historic curated and
+    typed documentary sources retain their existing provenance contracts.
+    """
+    if (
+        not str(evidence.get("method") or "").startswith("web-evidence:")
+        or str(evidence.get("field") or "") not in {"vendor_relations", "identified_vendors"}
+    ):
+        return False
+    page_text = canonical(" ".join(
+        str(evidence.get(key) or "")
+        for key in ("title", "description")
+    ))
+    if any(_mentioned(page_text, alias) for alias in entity_aliases(owner)):
+        return False
+
+    # An owner's own web domain may legitimately use a generic page title.
+    # Require a distinct, sufficiently specific hostname label, not a weak
+    # substring such as "sia" inside "asia".
+    try:
+        hostname = (urlsplit(str(evidence.get("url") or "")).hostname or "").casefold()
+    except ValueError:
+        return True
+    host_labels = {canonical(label) for label in hostname.split(".") if label}
+    owner_tokens = canonical(owner).split()
+    joined = "".join(owner_tokens)
+    if len(joined) >= 5 and any(joined == label for label in host_labels):
+        return False
+    if len(owner_tokens) == 1 and any(canonical(owner) == label for label in host_labels):
+        return False
+    return True
+
+
 def _dedupe(rows: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
     unique: dict[tuple[str, str, str, str], dict[str, Any]] = {}
     for evidence in rows:
@@ -99,6 +139,9 @@ def evidence_for_item(
 
     for evidence in evidence_rows:
         if not isinstance(evidence, dict):
+            continue
+
+        if _unbound_web_research(evidence, owner):
             continue
 
         binding = str(
@@ -215,6 +258,7 @@ def evidence_for_relationship(
     # Reversing the display must not discard an exact, atomic endpoint binding.
     # Do not reverse generic entity-owned pages or unbound catalogue evidence.
     inverse = [ev for ev in rows if isinstance(ev, dict)
+               and not _unbound_web_research(ev, value)
                and ev.get("atomic") is True
                and ev.get("accrediting") is not False
                and str(ev.get("source_binding") or "").casefold() in ACCREDITING_ATOMIC_BINDINGS

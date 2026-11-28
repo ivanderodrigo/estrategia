@@ -51,11 +51,11 @@ class HF6R11R3MetadataAndGraphPreservation(unittest.TestCase):
         }
         self.assertEqual(evidence_for_relationship([ev], "CloudIT", "Ivanti"), [])
 
-    def test_exact_atomic_metadata_pair_still_accredits(self):
+    def test_exact_atomic_metadata_pair_with_page_identity_accredits(self):
         ev = {
             "source": "vendor-directory.example",
-            "title": "Partner directory",
-            "description": "Certified partner entry.",
+            "title": "CloudIT partner directory",
+            "description": "CloudIT certified partner entry for Ivanti.",
             "url": "https://vendor-directory.example/partners/123",
             "researched_entity": "CloudIT",
             "item_value": "Ivanti",
@@ -67,6 +67,35 @@ class HF6R11R3MetadataAndGraphPreservation(unittest.TestCase):
             "accrediting": True,
         }
         self.assertEqual(evidence_for_relationship([ev], "CloudIT", "Ivanti"), [ev])
+
+    def test_web_research_target_metadata_does_not_relabel_foreign_article(self):
+        ev = {
+            "source": "crowdstrike.com",
+            "source_catalog_name": "Ignition Technology",
+            "researched_entity": "Lidera Networks",
+            "source_binding": "atomic-item",
+            "title": "Ignition Technology Partnership Expands to Meet European Demand",
+            "description": "CrowdStrike and Ignition Technology extend their partnership.",
+            "url": "https://www.crowdstrike.com/press-releases/ignition-partnership/",
+            "method": "web-evidence:partners",
+            "field": "vendor_relations",
+            "item_value": "CrowdStrike",
+            "atomic": True,
+            "accrediting": True,
+        }
+        self.assertEqual(evidence_for_relationship([ev], "Lidera Networks", "CrowdStrike"), [])
+        self.assertEqual(evidence_for_relationship([ev], "CrowdStrike", "Lidera Networks"), [])
+        url_only = {**ev, "url": "https://crowdstrike.com/search?q=Lidera+Networks"}
+        self.assertEqual(evidence_for_relationship([url_only], "Lidera Networks", "CrowdStrike"), [])
+
+        # The same third-party publisher *can* support a relationship when the
+        # actual page identifies the distributor, not only crawler metadata.
+        bound = {**ev, "title": "Lidera Networks and CrowdStrike partnership"}
+        self.assertEqual(evidence_for_relationship([bound], "Lidera Networks", "CrowdStrike"), [bound])
+
+        # Owner domains need not repeat their brand on every page title.
+        owned = {**ev, "url": "https://lideranetworks.com/portfolio/crowdstrike"}
+        self.assertEqual(evidence_for_relationship([owned], "Lidera Networks", "CrowdStrike"), [owned])
 
     def test_r7_table_only_fixture_still_restores_and_prunes(self):
         valid = web_relation("SIA", "1Password")

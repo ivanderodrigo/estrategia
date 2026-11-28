@@ -29,6 +29,12 @@ def independently_supported_relation(relation):
     for ev in relation.get("evidence") or []:
         if not isinstance(ev, dict):
             continue
+        # A recovered historical record is still a lead, including when its
+        # original publisher is an official procurement portal.
+        if str(ev.get("provenance_origin") or "").upper() in {
+            "HISTORICAL_RECOVERED", "LEGACY_UNRESOLVED"
+        }:
+            continue
         url = str(ev.get("url") or "")
         source_type = str(ev.get("source_type") or "").casefold()
         if not (ev.get("official") and url.startswith("https://")):
@@ -148,11 +154,18 @@ class RelationshipRevalidationV405(unittest.TestCase):
                 str(row.get("entity_b") or "").casefold(),
             )
             if key in visible:
-                self.assertTrue(
-                    independently_supported_relation(visible[key]),
-                    f"La relación {key} sólo conserva un indicio histórico pendiente, "
-                    "sin prueba actual independiente",
-                )
+                relation = visible[key]
+                if independently_supported_relation(relation):
+                    continue
+                # A new public observation is permitted as a *provisional*
+                # signal. It must not be confused with the independent proof
+                # required to confirm an old historical relationship. This
+                # distinction avoids aborting otherwise successful research.
+                self.assertEqual(relation.get("relation"), "technology_signal", key)
+                self.assertEqual(relation.get("status"), "SEÑAL", key)
+                self.assertEqual(relation.get("validity"), "needs-corroboration", key)
+                self.assertTrue(relation.get("derived"), key)
+                self.assertLessEqual(float(relation.get("confidence") or 0), 0.48, key)
 
     def test_old_historical_mention_alone_never_unlocks_graph_proof(self) -> None:
         historical = {"evidence": [{
@@ -167,6 +180,8 @@ class RelationshipRevalidationV405(unittest.TestCase):
             "title": "583069-2026 · Ordenadores personales y portátiles",
         }]}
         self.assertTrue(independently_supported_relation(modern))
+        modern["evidence"][0]["provenance_origin"] = "HISTORICAL_RECOVERED"
+        self.assertFalse(independently_supported_relation(modern))
         bound = {"entity_a": "Diputación de Barcelona", "entity_b": "Cloud", "evidence": [{
             "url": "https://ted.europa.eu/en/notice/-/detail/123456-2026",
             "official": True, "source_type": "official-procurement-api",
