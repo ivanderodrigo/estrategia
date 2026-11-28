@@ -1,103 +1,73 @@
 {
-  "generated_at": "2026-11-28T02:40:33.148429+00:00",
-  "snapshot_generated_at": "2026-11-27T19:54:48.162513+00:00",
-  "run_url": "https://github.com/ivanderodrigo/estrategia/actions/runs/46099002930",
+  "generated_at": "2026-11-28T12:34:54.240084+00:00",
+  "snapshot_generated_at": "2026-11-28T12:29:14.348686+00:00",
+  "run_url": "https://github.com/ivanderodrigo/estrategia/actions/runs/46145113383",
   "status": "REVIEW_QUEUE_NOT_FACT_ACCREDITATION",
   "scope": "Independent claim/source binding audit and live source review",
-  "live_unique_urls": 2717,
+  "live_unique_urls": null,
   "source_content_semantically_verified": false,
-  "total_live_review_candidates": 19541,
-  "live_sample_reviewed": 19541,
-  "live_sample_hosts": 368,
-  "live_sampling_policy": "complete-current-reference-inventory",
-  "live_content_accessible": 11082,
+  "total_live_review_candidates": 20545,
+  "live_sample_reviewed": 200,
+  "live_sample_hosts": 192,
+  "live_sampling_policy": "rotating-section-host-round-robin-v1",
+  "live_content_accessible": 165,
   "live_collection_health": "PARTIAL_CONTENT",
   "live_review_statuses": {
-    "http_403": 556,
-    "page_does_not_mention_value": 3432,
-    "page_mentions_value_only": 2262,
-    "page_mentions_entity_and_value_needs_semantic_review": 5388,
-    "http_404": 32,
-    "redirect_requires_review": 468,
-    "document_format_requires_review": 130,
-    "fetch_error_UnsafeUrl": 13,
-    "fetch_error_ReadTimeout": 195,
-    "http_247_insufficient_content": 2,
-    "http_202_insufficient_content": 7022,
-    "fetch_error_SSLError": 10,
-    "http_200_insufficient_content": 8,
-    "http_429": 12,
-    "http_410": 1,
-    "http_406": 8,
-    "http_400": 2
+    "http_403": 5,
+    "page_mentions_value_only": 9,
+    "http_404": 1,
+    "page_mentions_entity_and_value_needs_semantic_review": 43,
+    "page_does_not_mention_value": 113,
+    "redirect_requires_review": 10,
+    "fetch_error_UnsafeUrl": 7,
+    "document_format_requires_review": 4,
+    "http_247_insufficient_content": 1,
+    "http_202_insufficient_content": 2,
+    "http_503": 1,
+    "fetch_error_SSLError": 1,
+    "http_200_insufficient_content": 1,
+    "fetch_error_ReadTimeout": 2
   },
   "live_claim_review": {
     "by_section": {
       "architectures": {
-        "reviewed": 86,
-        "content_readable": 51,
-        "value_absent": 30,
-        "value_only": 16,
-        "joint_mention_unverified": 5,
-        "unreadable_or_blocked": 35,
-        "broken_url_references": 2
+        "reviewed": 5,
+        "content_readable": 3,
+        "value_absent": 0,
+        "value_only": 2,
+        "joint_mention_unverified": 1,
+        "unreadable_or_blocked": 2,
+        "broken_url_references": 1
       },
       "clients_private": {
-        "reviewed": 843,
-        "content_readable": 801,
-        "value_absent": 584,
-        "value_only": 63,
-        "joint_mention_unverified": 154,
-        "unreadable_or_blocked": 42,
+        "reviewed": 59,
+        "content_readable": 41,
+        "value_absent": 22,
+        "value_only": 0,
+        "joint_mention_unverified": 19,
+        "unreadable_or_blocked": 18,
         "broken_url_references": 0
       },
       "clients_public": {
-        "reviewed": 7377,
-        "content_readable": 468,
-        "value_absent": 274,
-        "value_only": 165,
-        "joint_mention_unverified": 29,
-        "unreadable_or_blocked": 6909,
+        "reviewed": 71,
+        "content_readable": 66,
+        "value_absent": 58,
+        "value_only": 6,
+        "joint_mention_unverified": 2,
+        "unreadable_or_blocked": 5,
         "broken_url_references": 0
       },
       "distributors": {
-        "reviewed": 3770,
-        "content_readable": 3526,
-        "value_absent": 1025,
-        "value_only": 392,
-        "joint_mention_unverified": 2109,
-        "unreadable_or_blocked": 244,
-        "broken_url_references": 18
-      },
-      "integrators": {
-        "reviewed": 4381,
-        "content_readable": 3830,
-        "value_absent": 1006,
-        "value_only": 1202,
-        "joint_mention_unverified": 1622,
-        "unreadable_or_blocked": 551,
-        "broken_url_references": 4
-      },
-      "manufacturers": {
-        "reviewed": 2288,
-        "content_readable": 1934,
-        "value_absent": 327,
-        "value_only": 139,
-        "joint_mention_unverified": 1468,
-        "unreadable_or_blocked": 354,
-        "broken_url_references": 9
-      },
-      "trends": {
-        "reviewed": 796,
-        "content_readable": 472,
-        "value_absent": 186,
-        "value_only": 285,
-        "joint_mention_unverified": 1,
-        "unreadable_or_blocked": 324,
+        "reviewed": 65,
+        "content_readable": 55,
+        "value_absent": 33,
+        "value_only": 1,
+        "joint_mention_unverified": 21,
+        "unreadable_or_blocked": 10,
         "broken_url_references": 0
       }
     },
-    "broken_unique_urls": 8,
+    "broken_unique_urls": 1,
     "review_examples": [
       {
         "section": "architectures",
@@ -108,163 +78,51 @@
         "review_status": "http_404"
       },
       {
+        "section": "clients_private",
+        "entity": "Amadeus IT Group",
+        "field": "technology_domains",
+        "value": "AI / Data",
+        "url": "https://amadeus.com/en",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "clients_private",
+        "entity": "EDP",
+        "field": "technology_signals",
+        "value": "Networking",
+        "url": "https://edp.com/en/what-we-do/networks",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "technology_domains",
+        "value": "Networking",
+        "url": "https://agenciadetrabajo.us/nueva-york/",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
+        "section": "clients_public",
+        "entity": "Agencia para la Modernización Tecnológica de Galicia",
+        "field": "technology_signals",
+        "value": "AI / Data",
+        "url": "https://amtega.xunta.gal/es/noticia/el-vi-encuentro-cibergal-que-se-celebrara-del-4-6-de-noviembre-en-la-cidade-da-cultura",
+        "review_status": "page_does_not_mention_value"
+      },
+      {
         "section": "distributors",
-        "entity": "Infortisa",
-        "field": "services",
-        "value": "Soporte",
-        "url": "https://www.infortisa.com/producto/rivacase-va1090-powerbank-20000mah-turbo-pd-100w100326135504/",
-        "review_status": "http_410"
+        "entity": "ésistemas",
+        "field": "marketplace",
+        "value": "Sí",
+        "url": "https://1password.com/solutions/device-security",
+        "review_status": "page_does_not_mention_value"
       },
       {
         "section": "distributors",
         "entity": "Wifidom",
-        "field": "capabilities",
-        "value": "Cloud",
-        "url": "https://www.wifidom.com/soluciones/ciberseguridad/secure-networking/",
-        "review_status": "http_404"
-      },
-      {
-        "section": "integrators",
-        "entity": "ITCM Solutions",
-        "field": "scope",
-        "value": "ES",
-        "url": "https://itcm.es/soluciones/gestion-de-accesos/",
-        "review_status": "http_404"
-      },
-      {
-        "section": "integrators",
-        "entity": "Orcinus",
-        "field": "roles",
-        "value": "Business Partner / Integrador",
-        "url": "https://www.avaya.com/en/documents/cs-torrestir-smb15164en.pdf",
-        "review_status": "http_404"
-      },
-      {
-        "section": "manufacturers",
-        "entity": "Fortanix",
-        "field": "capabilities",
-        "value": "Cloud",
-        "url": "https://www.fortanix.com/ai",
-        "review_status": "http_404"
-      },
-      {
-        "section": "manufacturers",
-        "entity": "Ping Identity",
-        "field": "competitors",
-        "value": "Microsoft Entra",
-        "url": "https://www.pingidentity.com/de/lp/ciam-landscape.html",
-        "review_status": "http_404"
-      },
-      {
-        "section": "architectures",
-        "entity": "Agentic Automation",
-        "field": "analyst_basis",
-        "value": "UiPath · Enterprise Automation Platform Foundation",
-        "url": "https://www.uipath.com/platform/agentic-automation/foundation",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
-        "section": "architectures",
-        "entity": "Agentic Automation",
-        "field": "principles",
-        "value": "UiPath se sitúa en automatización/orquestación, no en Identity",
-        "url": "https://www.uipath.com/platform/agentic-automation",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
-        "section": "clients_private",
-        "entity": "Acciona",
-        "field": "account_priority",
-        "value": "Cobertura estructural · IBEX 35",
-        "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/composicion.html",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
-        "section": "clients_private",
-        "entity": "Acciona",
-        "field": "technology_signals",
-        "value": "AI / Data",
-        "url": "https://www.bolsasymercados.es/en/bme-exchange.html",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
-        "section": "clients_public",
-        "entity": "Agencia Catalana de Turismo",
-        "field": "technology_signals",
-        "value": "Networking",
-        "url": "https://www.spain.info/es/",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
-        "section": "clients_public",
-        "entity": "Agencia Digital de Andalucía",
-        "field": "technology_signals",
-        "value": "AI / Data",
-        "url": "https://en.wikipedia.org/wiki/Google",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
-        "section": "distributors",
-        "entity": "Aicox Soluciones",
-        "field": "differential_capabilities",
-        "value": "65 partners estratégicos",
-        "url": "https://www.aicox.com/partners/",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
-        "section": "distributors",
-        "entity": "Aicox Soluciones",
-        "field": "distributor_type",
-        "value": "Mayorista / soluciones",
-        "url": "https://www.channelpartner.es/mayoristas/los-primeros-mayoristas-de-capital-nacional-por-ingresos/",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
-        "section": "integrators",
-        "entity": "3Hold Technologies",
-        "field": "capabilities",
-        "value": "Cloud",
-        "url": "https://aws.amazon.com/es/blogs/apn/",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
-        "section": "integrators",
-        "entity": "3Hold Technologies",
-        "field": "managed_services",
+        "field": "marketplace",
         "value": "Sí",
-        "url": "https://www.f5.com/industries/service-providers",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
-        "section": "manufacturers",
-        "entity": "1Password",
-        "field": "capabilities",
-        "value": "Identity & Access",
-        "url": "https://1password.com/platform",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
-        "section": "manufacturers",
-        "entity": "1Password",
-        "field": "capabilities",
-        "value": "Password Management",
-        "url": "https://1password.com/developers/secrets-management",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
-        "section": "trends",
-        "entity": "Agentic Automation",
-        "field": "domain",
-        "value": "AI / Automation",
-        "url": "https://www.idc.com/resource-center/blog/emea-it-market-2026-q2-updates-5-key-takeaways-on-ai-it-spending-and-market-trends/",
-        "review_status": "page_does_not_mention_value"
-      },
-      {
-        "section": "trends",
-        "entity": "AI-Native Networking / AIOps",
-        "field": "domain",
-        "value": "Networking / AI",
-        "url": "https://www.forrester.com/blogs/networking-vendors-are-finally-starting-to-build-platforms-not-just-dashboards/",
+        "url": "https://aws.amazon.com/es/what-is/cybersecurity/",
         "review_status": "page_does_not_mention_value"
       }
     ],
@@ -273,61 +131,61 @@
   },
   "by_section": {
     "manufacturers": {
-      "claims": 1083,
-      "references_bound_text_unconfirmed": 337,
-      "references_field_mismatch": 93,
-      "bound_text_unconfirmed": 283,
-      "references_metadata_text_support": 467,
-      "metadata_text_support": 467,
-      "without_source": 151,
-      "references_generic_not_atomic": 235,
-      "generic_not_atomic": 165,
-      "references_entity_mismatch": 66,
-      "mismatch_or_broken": 17
+      "claims": 1087,
+      "references_bound_text_unconfirmed": 346,
+      "references_field_mismatch": 90,
+      "bound_text_unconfirmed": 288,
+      "references_metadata_text_support": 474,
+      "metadata_text_support": 474,
+      "without_source": 149,
+      "references_generic_not_atomic": 236,
+      "generic_not_atomic": 166,
+      "references_entity_mismatch": 35,
+      "mismatch_or_broken": 10
     },
     "distributors": {
-      "claims": 2336,
+      "claims": 2730,
       "references_generic_not_atomic": 394,
-      "generic_not_atomic": 298,
-      "without_source": 1073,
-      "references_metadata_text_support": 661,
-      "metadata_text_support": 661,
-      "references_bound_text_unconfirmed": 354,
-      "bound_text_unconfirmed": 300,
-      "references_entity_mismatch": 15,
-      "mismatch_or_broken": 4
+      "generic_not_atomic": 296,
+      "without_source": 1041,
+      "references_metadata_text_support": 1053,
+      "metadata_text_support": 1053,
+      "references_bound_text_unconfirmed": 395,
+      "bound_text_unconfirmed": 330,
+      "references_entity_mismatch": 23,
+      "mismatch_or_broken": 10
     },
     "integrators": {
-      "claims": 5853,
+      "claims": 5611,
       "references_generic_not_atomic": 879,
-      "generic_not_atomic": 671,
-      "references_metadata_text_support": 1099,
-      "metadata_text_support": 1099,
-      "without_source": 3730,
-      "references_bound_text_unconfirmed": 415,
-      "bound_text_unconfirmed": 345,
+      "generic_not_atomic": 669,
+      "references_metadata_text_support": 985,
+      "metadata_text_support": 985,
+      "without_source": 3611,
+      "references_bound_text_unconfirmed": 402,
+      "bound_text_unconfirmed": 338,
       "references_entity_mismatch": 12,
       "mismatch_or_broken": 8
     },
     "clients_public": {
-      "claims": 8133,
+      "claims": 8134,
       "references_generic_not_atomic": 3970,
       "generic_not_atomic": 3970,
-      "references_metadata_text_support": 2613,
-      "metadata_text_support": 2613,
-      "without_source": 1217,
-      "references_bound_text_unconfirmed": 356,
-      "bound_text_unconfirmed": 333
+      "references_metadata_text_support": 2552,
+      "metadata_text_support": 2552,
+      "without_source": 1310,
+      "references_bound_text_unconfirmed": 308,
+      "bound_text_unconfirmed": 302
     },
     "clients_private": {
-      "claims": 1413,
+      "claims": 1429,
       "references_generic_not_atomic": 288,
       "generic_not_atomic": 287,
-      "without_source": 1023,
+      "without_source": 1039,
       "references_bound_text_unconfirmed": 45,
-      "bound_text_unconfirmed": 42,
-      "references_metadata_text_support": 61,
-      "metadata_text_support": 61
+      "bound_text_unconfirmed": 39,
+      "references_metadata_text_support": 64,
+      "metadata_text_support": 64
     },
     "trends": {
       "claims": 838,
@@ -343,8 +201,8 @@
     },
     "architectures": {
       "claims": 370,
-      "references_bound_text_unconfirmed": 22,
       "references_generic_not_atomic": 77,
+      "references_bound_text_unconfirmed": 22,
       "bound_text_unconfirmed": 20,
       "generic_not_atomic": 73,
       "without_source": 251,
@@ -362,10 +220,10 @@
       "runs_in_api_sample": 20
     },
     "Westcon Intelligence Weekly": {
-      "last_scheduled_at": "2026-11-26T04:15:50Z",
+      "last_scheduled_at": "2026-11-28T04:05:09Z",
       "last_status": "completed",
       "last_conclusion": "failure",
-      "last_run_id": 45754094846,
+      "last_run_id": 46105875709,
       "recent_failures_in_sample": 16,
       "runs_in_api_sample": 20
     },
@@ -378,17 +236,17 @@
       "runs_in_api_sample": 3
     },
     "Historical Source Diligence": {
-      "last_scheduled_at": "2026-11-27T13:01:49Z",
+      "last_scheduled_at": "2026-11-28T12:15:07Z",
       "last_status": "completed",
       "last_conclusion": "success",
-      "last_run_id": 46003573105,
+      "last_run_id": 46143710201,
       "recent_failures_in_sample": 0,
-      "runs_in_api_sample": 11
+      "runs_in_api_sample": 12
     },
     "Westcon Source Verification": {
       "last_scheduled_at": "2026-11-28T02:37:37Z",
-      "last_status": "in_progress",
-      "last_conclusion": "NOT_OBSERVED",
+      "last_status": "completed",
+      "last_conclusion": "success",
       "last_run_id": 46099002930,
       "recent_failures_in_sample": 0,
       "runs_in_api_sample": 20
